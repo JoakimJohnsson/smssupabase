@@ -4,6 +4,10 @@ import { supabase } from './supabaseClient';
 import Auth from './Auth';
 import Account from './Account';
 
+/*
+https://app.supabase.io/project/cxlyzmsjbvzlocvndmnw - login with GitHub.
+*/
+
 function Home() {
   const [session, setSession] = useState(null)
 
