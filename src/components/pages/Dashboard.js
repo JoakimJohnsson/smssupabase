@@ -1,48 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from './supabaseClient';
-import Avatar from './Avatar';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../contexts/Auth';
+import React, {useEffect, useState} from "react";
+import {supabase} from "../../supabase/supabaseClient";
+import Avatar from "../Avatar";
 
-function Account({ session }) {
-    const [loading, setLoading] = useState(true)
-    const [username, setUsername] = useState(null)
-    const [website, setWebsite] = useState(null)
-    const [avatar_url, setAvatarUrl] = useState(null)
+const Dashboard = () => {
+
+    const [loading, setLoading] = useState(true);
+    const [username, setUsername] = useState(null);
+    const [website, setWebsite] = useState(null);
+    const [avatar_url, setAvatarUrl] = useState(null);
+
+    // Get current user and signOut function from context
+    const { user, signOut, session } = useAuth()
+
+    const history = useHistory();
 
     useEffect(() => {
-        getProfile()
-    }, [session])
+        async function getProfile() {
+            try {
+                setLoading(true)
 
-    async function getProfile() {
-        try {
-            setLoading(true)
-            const user = supabase.auth.user()
+                let { data, error, status } = await supabase
+                    .from('profiles')
+                    .select(`username, website, avatar_url`)
+                    .eq('id', user.id)
+                    .single()
 
-            let { data, error, status } = await supabase
-                .from('profiles')
-                .select(`username, website, avatar_url`)
-                .eq('id', user.id)
-                .single()
+                if (error && status !== 406) {
+                    throw error
+                }
 
-            if (error && status !== 406) {
-                throw error
+                if (data) {
+                    setUsername(data.username)
+                    setWebsite(data.website)
+                    setAvatarUrl(data.avatar_url)
+                }
+            } catch (error) {
+                alert(error.message)
+            } finally {
+                setLoading(false)
             }
-
-            if (data) {
-                setUsername(data.username)
-                setWebsite(data.website)
-                setAvatarUrl(data.avatar_url)
-            }
-        } catch (error) {
-            alert(error.message)
-        } finally {
-            setLoading(false)
         }
+        getProfile()
+    }, [user.id, session])
+
+    async function handleSignOut() {
+        // Ends user session
+        await signOut()
+
+        // Redirects the user to Login page
+        history.push('/login')
     }
 
     async function updateProfile({ username, website, avatar_url }) {
         try {
             setLoading(true)
-            const user = supabase.auth.user()
 
             const updates = {
                 id: user.id,
@@ -67,7 +80,10 @@ function Account({ session }) {
     }
 
     return (
+        <>
+            <h1>Dashboard</h1>
         <div className="form-widget">
+            <p>Welcome, {user?.id}!</p>
             <Avatar
                 url={avatar_url}
                 size={150}
@@ -78,7 +94,7 @@ function Account({ session }) {
             />
             <div>
                 <label htmlFor="email">Email</label>
-                <input id="email" type="text" value={session.user.email} disabled />
+                <input id="email" type="text" value={user.email} disabled />
             </div>
             <div>
                 <label htmlFor="username">Name</label>
@@ -110,12 +126,11 @@ function Account({ session }) {
             </div>
 
             <div>
-                <button className="button block" onClick={() => supabase.auth.signOut()}>
-                    Sign Out
-                </button>
+                <button onClick={handleSignOut}>Sign out</button>
             </div>
         </div>
+        </>
     )
 }
 
-export default Account;
+export default Dashboard;

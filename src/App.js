@@ -1,29 +1,32 @@
 import './index.css';
-import React, { useState, useEffect } from 'react';
-import { supabase } from './supabaseClient';
-import Auth from './Auth';
-import Account from './Account';
+import React from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Signup from './components/pages/Signup';
+import Login from './components/pages/Login';
+import Dashboard from './components/pages/Dashboard';
+import {AuthProvider} from './contexts/Auth'
 
 /*
 https://app.supabase.io/project/cxlyzmsjbvzlocvndmnw - login with GitHub.
 */
 
-function Home() {
-  const [session, setSession] = useState(null)
+const App = () => {
 
-  useEffect(() => {
-    setSession(supabase.auth.session())
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
-
-  return (
-      <div className="container" style={{ padding: '50px 0 100px 0' }}>
-        {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
-      </div>
-  )
+    return (
+        <div>
+            <h1>supabase-auth-react</h1>
+            <Router>
+                <AuthProvider>
+                    <Switch>
+                        <Route exact path="/" component={Dashboard}/>
+                        <Route path="/signup" component={Signup}/>
+                        <Route path="/login" component={Login}/>
+                    </Switch>
+                </AuthProvider>
+            </Router>
+        </div>
+    )
 }
 
-export default Home;
+export default App;
