@@ -15,7 +15,7 @@ const Routes = () => {
             <Route exact path="/"> {user ? <Redirect to="/dashboard"/> : <Landing/>}</Route>
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
-            <Route exact path="/dashboard"> {!user ? <Redirect to="/"/> : <Dashboard/>}</Route>
+            <Route exact path="/dashboard"> {!user ? <Redirect to="/login"/> : <Dashboard/>}</Route>
         </>
     )
 }
