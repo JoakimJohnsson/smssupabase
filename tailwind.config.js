@@ -13,6 +13,11 @@ module.exports = {
       blue: colors.sky,
       yellow: colors.amber,
       green: colors.lime
+    },
+    fontFamily: {
+      'sans': ['Zen Kaku Gothic Antique', 'ui-sans-serif', 'system-ui'],
+      'serif': ['Libre Baskerville', 'ui-serif', 'Georgia'],
+      'mono': ['ui-monospace', 'SFMono-Regular'],
     }
   },
   variants: {
