@@ -17,10 +17,11 @@ const Dashboard = () => {
     const history = useHistory();
 
     useEffect(() => {
+
+
         async function getProfile() {
             try {
                 setLoading(true)
-
                 let {data, error, status} = await supabase
                     .from('profiles')
                     .select(`username, website, avatar_url`)
@@ -43,7 +44,7 @@ const Dashboard = () => {
             }
         }
 
-        getProfile()
+        getProfile().then(r => "hej")
     }, [user.id, session])
 
     async function handleSignOut() {
@@ -51,7 +52,7 @@ const Dashboard = () => {
         await signOut()
 
         // Redirects the user to Login page
-        history.push('/login')
+        history.push('/')
     }
 
     async function updateProfile({username, website, avatar_url}) {

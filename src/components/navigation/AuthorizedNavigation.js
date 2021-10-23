@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Navigation = () => {
+const AuthorizedNavigation = () => {
 
     return (
         <>
+            <h2>AuthorizedNavigation</h2>
             <p><Link to="/">Start</Link></p>
             <p><Link to="/login">Login</Link></p>
             <p><Link to="/signup">Signup</Link></p>
@@ -13,4 +14,4 @@ const Navigation = () => {
     )
 };
 
-export default Navigation;
+export default AuthorizedNavigation;

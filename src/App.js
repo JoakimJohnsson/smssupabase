@@ -2,7 +2,7 @@ import './assets/css/index.css';
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {AuthProvider} from './contexts/Auth'
-import Navigation from "./components/Navigation";
+import Navigation from "./components/navigation/Navigation";
 import Routes from "./components/Routes";
 
 /*
