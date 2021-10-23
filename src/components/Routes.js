@@ -8,14 +8,14 @@ import {useAuth} from "../contexts/Auth";
 
 const Routes = () => {
 
-    const {user} = useAuth()
+    const {isAuthorized} = useAuth()
 
     return (
         <>
-            <Route exact path="/"> {user ? <Redirect to="/dashboard"/> : <Landing/>}</Route>
+            <Route exact path="/"> {isAuthorized ? <Redirect to="/dashboard"/> : <Landing/>}</Route>
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
-            <Route exact path="/dashboard"> {!user ? <Redirect to="/login"/> : <Dashboard/>}</Route>
+            <Route exact path="/dashboard"> {!isAuthorized ? <Redirect to="/login"/> : <Dashboard/>}</Route>
         </>
     )
 }

@@ -23,5 +23,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('./src/assets/css/tw-plugins/headingFontSize'),
+  ],
 }
