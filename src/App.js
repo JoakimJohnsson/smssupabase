@@ -7,6 +7,9 @@ import Routes from "./components/Routes";
 
 /*
 https://app.supabase.io/project/cxlyzmsjbvzlocvndmnw - login with GitHub.
+https://heroicons.com/ - icon library
+https://github.com/tailwindlabs/heroicons- icon library usage
+import { BeakerIcon } from '@heroicons/react/{solid/outline}}'; <BeakerIcon className="h-16 w-16 text-blue-900"/>
 */
 
 const App = () => {
