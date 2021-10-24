@@ -12,7 +12,9 @@ module.exports = {
       red: colors.red,
       blue: colors.sky,
       yellow: colors.amber,
-      green: colors.lime
+      green: colors.lime,
+      black: colors.black,
+      white: colors.white
     },
     fontFamily: {
       'sans': ['Zen Kaku Gothic Antique', 'ui-sans-serif', 'system-ui'],
