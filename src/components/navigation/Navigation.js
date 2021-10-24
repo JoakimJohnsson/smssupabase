@@ -5,11 +5,11 @@ import {useAuth} from "../../contexts/Auth";
 
 const Navigation = () => {
 
-    const {isAuthorized} = useAuth();
+    const {user} = useAuth();
 
     return (
         <>
-            {isAuthorized ?
+            {user ?
                 <AuthorizedNavigation/> : <UnauthorizedNavigation/>}
         </>
     )
