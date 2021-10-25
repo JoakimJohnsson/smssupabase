@@ -31,7 +31,7 @@ const Signup = () => {
     }
 
     return (
-        <>
+        <div className={"p-6"}>
             <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="input-email">Email</label>
@@ -50,7 +50,7 @@ const Signup = () => {
             <p>
                 Already have an account? <Link to="/login">Log In</Link>
             </p>
-        </>
+        </div>
     )
 }
 

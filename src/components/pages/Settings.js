@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import {supabase} from "../../supabase/supabaseClient";
 import Avatar from "../Avatar";
 
-const Dashboard = () => {
+const Settings = () => {
 
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState(null);
@@ -83,7 +83,7 @@ const Dashboard = () => {
 
     return (
         <div className={"p-6"}>
-            <h1>Dashboard</h1>
+            <h1>Settings</h1>
             <div className="form-widget">
                 <p>Welcome, {user?.id}!</p>
                 <Avatar
@@ -135,4 +135,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default Settings;

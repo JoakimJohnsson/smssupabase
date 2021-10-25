@@ -1,17 +1,9 @@
-import {Link} from 'react-router-dom';
-
 const Landing = () => {
 
     return (
-        <>
+        <div className={"p-6"}>
             <h1>Landing</h1>
-            <p>
-                Login? <Link to="/login">Log In</Link>
-            </p>
-            <p>
-                Signin? <Link to="/signup">Sign In</Link>
-            </p>
-        </>
+        </div>
     )
 }
 

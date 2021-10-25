@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import React from "react";
 import {useAuth} from "../contexts/Auth";
+import Settings from "./pages/Settings";
 
 const Routes = () => {
 
@@ -16,6 +17,7 @@ const Routes = () => {
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
             <Route exact path="/dashboard"> {!user ? <Redirect to="/login"/> : <Dashboard/>}</Route>
+            <Route path="/dashboard/settings"> {!user ? <Redirect to="/login"/> : <Settings/>}</Route>
         </>
     )
 }

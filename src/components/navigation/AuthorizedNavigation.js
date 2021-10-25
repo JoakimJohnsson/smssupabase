@@ -34,6 +34,7 @@ const AuthorizedNavigation = () => {
                 <div className="text-sm lg:flex-grow">
                     <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 hover:opacity-70 mr-4" onClick={() => setIsOpen(!isOpen)}>Start</Link>
                     <Link to="/dashboard" className="block mt-4 lg:inline-block lg:mt-0 hover:opacity-70 mr-4" onClick={() => setIsOpen(!isOpen)}>Dashboard</Link>
+                    <Link to="/dashboard/settings" className="block mt-4 lg:inline-block lg:mt-0 hover:opacity-70 mr-4" onClick={() => setIsOpen(!isOpen)}>Settings</Link>
                 </div>
             </div>
         </nav>
