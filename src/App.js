@@ -4,6 +4,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import {AuthProvider} from './contexts/Auth'
 import Navigation from "./components/navigation/Navigation";
 import Routes from "./components/Routes";
+import Footer from "./components/Footer";
 
 /*
 https://app.supabase.io/project/cxlyzmsjbvzlocvndmnw - login with GitHub.
@@ -19,6 +20,7 @@ const App = () => {
             <Router>
                 <Navigation/>
                 <Routes/>
+                <Footer/>
             </Router>
         </AuthProvider>
     )
