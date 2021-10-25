@@ -2,3 +2,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a:hover, a:active, a:focus {
+    opacity: 70%;
+}
+
+.button {
+    @apply border border-blue-900 bg-blue-900 hover:bg-blue-700 focus:bg-blue-700 text-white py-1 px-6;
+}
+.button-ghost {
+    @apply border border-blue-900 hover:bg-blue-100 focus:bg-blue-700 text-blue-900 py-1 px-6;
+}
+.button-xl {
+    @apply border border-blue-900 bg-blue-900 hover:bg-blue-700 focus:bg-blue-700 text-white text-xl py-3 px-8;
+}
+.button-ghost-xl {
+    @apply border border-blue-900 hover:bg-blue-100 focus:bg-blue-700 text-blue-900 text-xl py-3 px-8;
+}

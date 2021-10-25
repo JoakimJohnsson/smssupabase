@@ -26,6 +26,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('./src/assets/css/tw-plugins/headingFontSize'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
   ],
 }

@@ -1,13 +1,13 @@
-import { useRef } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { useAuth } from '../../contexts/Auth';
+import {useRef} from 'react';
+import {useHistory, Link} from 'react-router-dom';
+import {useAuth} from '../../contexts/Auth';
 
 const Signup = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
 
     // Get signUp function from the auth context
-    const { signUp } = useAuth();
+    const {signUp} = useAuth();
 
     const history = useHistory();
 
@@ -19,7 +19,7 @@ const Signup = () => {
         const password = passwordRef.current.value
 
         // Calls `signUp` function from the context
-        const { error } = await signUp({ email, password })
+        const {error} = await signUp({email, password})
 
         if (error) {
             alert('error signing in')
@@ -31,22 +31,15 @@ const Signup = () => {
     }
 
     return (
-        <div className={"p-6"}>
-            <h1>Signup</h1>
+        <div className={"p-6 prose"}>
+            <h1>Sign up</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="input-email">Email</label>
-                <input id="input-email" type="email" ref={emailRef} />
-
+                <input id="input-email" type="email" ref={emailRef} className={"block rounded text-sm mb-2"}/>
                 <label htmlFor="input-password">Password</label>
-                <input id="input-password" type="password" ref={passwordRef} />
-
-                <br />
-
-                <button type="submit">Sign up</button>
+                <input id="input-password" type="password" ref={passwordRef} className={"block rounded text-sm mb-5"}/>
+                <button type="submit" className={"button"}>Sign up</button>
             </form>
-
-            <br />
-
             <p>
                 Already have an account? <Link to="/login">Log In</Link>
             </p>
