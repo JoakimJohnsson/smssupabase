@@ -82,7 +82,7 @@ const Settings = () => {
     }
 
     return (
-        <div className={"p-6"}>
+        <div className={"p-6 prose"}>
             <h1>Settings</h1>
             <div className="form-widget">
                 <p>Welcome, {user?.id}!</p>
@@ -96,12 +96,13 @@ const Settings = () => {
                 />
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input id="email" type="text" value={user.email} disabled/>
+                    <input id="email" className={"block rounded text-sm mb-2"} type="text" value={user.email} disabled/>
                 </div>
                 <div>
                     <label htmlFor="username">Name</label>
                     <input
                         id="username"
+                        className={"block rounded text-sm mb-2"}
                         type="text"
                         value={username || ''}
                         onChange={(e) => setUsername(e.target.value)}
@@ -111,25 +112,26 @@ const Settings = () => {
                     <label htmlFor="website">Website</label>
                     <input
                         id="website"
-                        type="website"
+                        className={"block rounded text-sm mb-5"}
+                        type="text"
                         value={website || ''}
                         onChange={(e) => setWebsite(e.target.value)}
                     />
                 </div>
 
-                <div>
+
                     <button
-                        className="button block primary"
+                        className="button mr-3"
                         onClick={() => updateProfile({username, website, avatar_url})}
                         disabled={loading}
                     >
                         {loading ? 'Loading ...' : 'Update'}
                     </button>
-                </div>
 
-                <div>
-                    <button onClick={handleSignOut}>Sign out</button>
-                </div>
+
+
+                    <button onClick={handleSignOut} className="button-ghost">Sign out</button>
+
             </div>
         </div>
     )

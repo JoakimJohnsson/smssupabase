@@ -37,7 +37,7 @@ const Login = () => {
                 <input id="input-email" type="email" ref={emailRef} className={"block rounded text-sm mb-2"}/>
                 <label htmlFor="input-password">Password</label>
                 <input id="input-password" type="password" ref={passwordRef} className={"block rounded text-sm mb-5"}/>
-                <button type="submit" className={"button"}>Login</button>
+                <button type="submit" className={"button block"}>Login</button>
             </form>
             <p>
                 Don't have an account? <Link to="/signup">Sign up</Link>

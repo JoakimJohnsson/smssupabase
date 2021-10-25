@@ -13,7 +13,7 @@ const Routes = () => {
 
     return (
         <>
-            <Route exact path="/"> {user ? <Redirect to="/dashboard"/> : <Landing/>}</Route>
+            <Route exact path="/" component={Landing}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
             <Route exact path="/dashboard"> {!user ? <Redirect to="/login"/> : <Dashboard/>}</Route>

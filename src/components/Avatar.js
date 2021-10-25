@@ -69,7 +69,7 @@ function Avatar({url, size, onUpload}) {
                 <div className="avatar no-image" style={{height: size, width: size}}/>
             )}
             <div style={{width: size}}>
-                <label className="button primary block" htmlFor="single">
+                <label className="button-xl block mb-10 text-center cursor-pointer" htmlFor="single">
                     {uploading ? 'Uploading ...' : 'Upload'}
                 </label>
                 <input
