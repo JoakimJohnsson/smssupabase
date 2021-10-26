@@ -35,8 +35,8 @@ const UnauthorizedNavigation = () => {
             }>
                 <div className="text-sm lg:flex-grow lg:flex justify-end">
                     <NavLink exact to="/" className="nav-link" onClick={() => setIsOpen(!isOpen)}><HomeIcon className="h-5 w-5 inline mr-1"/>Start</NavLink>
-                    <NavLink to="/login" className="nav-link" onClick={() => setIsOpen(!isOpen)}><LoginIcon className="h-5 w-5 inline mr-1"/>Login</NavLink>
                     <NavLink to="/signup" className="nav-link" onClick={() => setIsOpen(!isOpen)}><UserAddIcon className="h-5 w-5 inline mr-1"/>Sign up</NavLink>
+                    <NavLink to="/login" className="nav-link" onClick={() => setIsOpen(!isOpen)}><LoginIcon className="h-5 w-5 inline mr-1"/>Login</NavLink>
                 </div>
             </div>
         </nav>

@@ -9,7 +9,7 @@ import Settings from "./pages/Settings";
 
 const Routes = () => {
 
-    const {user} = useAuth()
+    const {user} = useAuth();
 
     return (
         <>

@@ -16,7 +16,7 @@ const Footer = () => {
                             according to the Fair use doctrin of the United States.
                         </p>
                         <p className="text-xs">
-                            © 2020 Joakim Johnsson
+                            © 2021-2022 Joakim Johnsson
                         </p>
                     </div>
                 </div>

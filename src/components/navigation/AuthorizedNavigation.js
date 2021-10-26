@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import shieldBlack from "../../assets/images/shield__black.svg";
 import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon} from "@heroicons/react/solid";
+import SignOutButton from "../SignOutButton";
 
 const AuthorizedNavigation = () => {
 
@@ -38,6 +39,7 @@ const AuthorizedNavigation = () => {
                     <NavLink exact to="/dashboard" className="nav-link" onClick={() => setIsOpen(!isOpen)}><PresentationChartLineIcon className="h-5 w-5 inline mr-1"/>Dashboard</NavLink>
                     <NavLink to="/dashboard/settings" className="nav-link"
                           onClick={() => setIsOpen(!isOpen)}><CogIcon className="h-5 w-5 inline mr-1"/>Settings</NavLink>
+                    <SignOutButton/>
                 </div>
             </div>
         </nav>

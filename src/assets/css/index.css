@@ -23,7 +23,7 @@
 
 /* Links */
 p a {
-    @apply underline;
+    @apply underline font-bold;
 }
 
 a:hover, a:active, a:focus {

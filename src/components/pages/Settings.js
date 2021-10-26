@@ -1,4 +1,3 @@
-import {useHistory} from 'react-router-dom';
 import {useAuth} from '../../contexts/Auth';
 import React, {useEffect, useState} from "react";
 import {supabase} from "../../supabase/supabaseClient";
@@ -12,13 +11,9 @@ const Settings = () => {
     const [avatar_url, setAvatarUrl] = useState(null);
 
     // Get current user and signOut function from context
-    const {user, signOut, session} = useAuth()
-
-    const history = useHistory();
+    const {user, session} = useAuth();
 
     useEffect(() => {
-
-
         async function getProfile() {
             try {
                 setLoading(true)
@@ -46,14 +41,6 @@ const Settings = () => {
 
         getProfile().then(r => "hej")
     }, [user.id, session])
-
-    async function handleSignOut() {
-        // Ends user session
-        await signOut()
-
-        // Redirects the user to Login page
-        history.push('/')
-    }
 
     async function updateProfile({username, website, avatar_url}) {
         try {
@@ -118,8 +105,6 @@ const Settings = () => {
                         onChange={(e) => setWebsite(e.target.value)}
                     />
                 </div>
-
-
                     <button
                         className="button mr-3"
                         onClick={() => updateProfile({username, website, avatar_url})}
@@ -127,11 +112,6 @@ const Settings = () => {
                     >
                         {loading ? 'Loading ...' : 'Update'}
                     </button>
-
-
-
-                    <button onClick={handleSignOut} className="button-ghost">Sign out</button>
-
             </div>
         </div>
     )
