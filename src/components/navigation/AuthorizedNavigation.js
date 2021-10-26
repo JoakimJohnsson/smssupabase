@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import shieldBlack from "../../assets/images/shield__black.svg";
-import {MenuIcon, XIcon} from "@heroicons/react/solid";
+import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon} from "@heroicons/react/solid";
 
 const AuthorizedNavigation = () => {
 
@@ -33,11 +33,11 @@ const AuthorizedNavigation = () => {
                     :
                     "w-full hidden flex-grow lg:flex lg:items-center lg:w-auto"
             }>
-                <div className="text-sm lg:flex-grow lg:flex justify-end">
-
-                    <Link to="/dashboard" className="block mt-4 lg:inline-block lg:mt-0 mr-4" onClick={() => setIsOpen(!isOpen)}>Dashboard</Link>
-                    <Link to="/dashboard/settings" className="block mt-4 lg:inline-block lg:mt-0 mr-4"
-                          onClick={() => setIsOpen(!isOpen)}>Settings</Link>
+                <div className="text-sm lg:flex-grow lg:flex justify-end group">
+                    <NavLink exact to="/" className="nav-link" onClick={() => setIsOpen(!isOpen)}><HomeIcon className="h-5 w-5 inline mr-1"/>Start</NavLink>
+                    <NavLink exact to="/dashboard" className="nav-link" onClick={() => setIsOpen(!isOpen)}><PresentationChartLineIcon className="h-5 w-5 inline mr-1"/>Dashboard</NavLink>
+                    <NavLink to="/dashboard/settings" className="nav-link"
+                          onClick={() => setIsOpen(!isOpen)}><CogIcon className="h-5 w-5 inline mr-1"/>Settings</NavLink>
                 </div>
             </div>
         </nav>

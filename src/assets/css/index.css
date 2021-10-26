@@ -1,21 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Buttons */
+.button {
+    @apply tracking-widest text-yellow-300 border border-blue-900 bg-blue-900 focus:text-white hover:text-white hover:opacity-95 py-1 px-6 transition-all;
+}
+
+.button-ghost {
+    @apply tracking-widest text-blue-900 border border-blue-900 hover:bg-blue-50 focus:bg-blue-50 hover:opacity-95 py-1 px-6 transition-all;
+}
+
+.button-xl {
+    @apply tracking-widest text-yellow-300 text-xl font-bold border-blue-900 bg-blue-900 hover:text-white hover:opacity-95 py-3 px-8 transition-all;
+}
+
+.button-ghost-xl {
+    @apply tracking-widest text-blue-900 text-xl font-bold border border-blue-900 hover:bg-blue-50 focus:bg-blue-50 hover:opacity-95 py-3 px-8 transition-all;
+}
+
+/* Links */
+p a {
+    @apply underline;
+}
 
 a:hover, a:active, a:focus {
     opacity: 70%;
 }
 
-.button {
-    @apply tracking-widest text-yellow-300 border border-blue-900 bg-blue-900 focus:text-white hover:text-white hover:opacity-95 py-1 px-6 transition-all;
+.nav-link {
+    @apply block mt-1 lg:inline-block lg:mt-0 mr-4 py-1 px-3 rounded hover:bg-yellow-100;
 }
-.button-ghost {
-    @apply tracking-widest text-blue-900 border border-blue-900 hover:bg-blue-50 focus:bg-blue-50 hover:opacity-95 py-1 px-6 transition-all;
-}
-.button-xl {
-    @apply tracking-widest text-yellow-300 text-xl font-bold border-blue-900 bg-blue-900 hover:text-white hover:opacity-95 py-3 px-8 transition-all;
-}
-.button-ghost-xl {
-    @apply tracking-widest text-blue-900 text-xl font-bold border border-blue-900 hover:bg-blue-50 focus:bg-blue-50 hover:opacity-95 py-3 px-8 transition-all;
+
+.nav-link.active {
+    @apply underline bg-yellow-300;
 }

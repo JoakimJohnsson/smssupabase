@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import shieldBlack from "../../assets/images/shield__black.svg";
-import {MenuIcon, XIcon} from '@heroicons/react/solid';
+import {HomeIcon, MenuIcon, XIcon, LoginIcon, UserAddIcon} from '@heroicons/react/solid';
 
 const UnauthorizedNavigation = () => {
 
@@ -34,8 +34,9 @@ const UnauthorizedNavigation = () => {
                     "w-full hidden flex-grow lg:flex lg:items-center lg:w-auto"
             }>
                 <div className="text-sm lg:flex-grow lg:flex justify-end">
-                    <Link to="/login" className="block mt-4 lg:inline-block lg:mt-0 mr-4" onClick={() => setIsOpen(!isOpen)}>Login</Link>
-                    <Link to="/signup" className="block mt-4 lg:inline-block lg:mt-0 mr-4" onClick={() => setIsOpen(!isOpen)}>Sign up</Link>
+                    <NavLink exact to="/" className="nav-link" onClick={() => setIsOpen(!isOpen)}><HomeIcon className="h-5 w-5 inline mr-1"/>Start</NavLink>
+                    <NavLink to="/login" className="nav-link" onClick={() => setIsOpen(!isOpen)}><LoginIcon className="h-5 w-5 inline mr-1"/>Login</NavLink>
+                    <NavLink to="/signup" className="nav-link" onClick={() => setIsOpen(!isOpen)}><UserAddIcon className="h-5 w-5 inline mr-1"/>Sign up</NavLink>
                 </div>
             </div>
         </nav>
