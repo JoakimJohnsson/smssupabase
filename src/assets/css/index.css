@@ -4,24 +4,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Buttons */
-.button {
-    @apply tracking-widest text-yellow-300 border border-blue-900 bg-blue-900 focus:text-white hover:text-white hover:opacity-95 py-1 px-6 transition-all;
+/* *** BUTTONS *** */
+.btn-defaults {
+    @apply tracking-widest transition-all hover:opacity-90 border;
 }
 
-.button-ghost {
-    @apply tracking-widest text-blue-900 border border-blue-900 hover:bg-blue-50 focus:bg-blue-50 hover:opacity-95 py-1 px-6 transition-all;
+.btn-primary-defaults {
+    @apply text-yellow-300 border-blue-1000 bg-blue-1000;
 }
 
-.button-xl {
-    @apply tracking-widest text-yellow-300 text-xl font-bold border-blue-900 bg-blue-900 hover:text-white hover:opacity-95 py-3 px-8 transition-all;
+.btn-secondary-defaults {
+    @apply text-blue-1000 border-yellow-300 bg-yellow-300;
 }
 
-.button-ghost-xl {
-    @apply tracking-widest text-blue-900 text-xl font-bold border border-blue-900 hover:bg-blue-50 focus:bg-blue-50 hover:opacity-95 py-3 px-8 transition-all;
+.btn-primary-ghost-light-defaults {
+    @apply text-blue-1000 border-blue-1000 bg-transparent hover:bg-blue-1000 hover:text-yellow-300;
 }
 
-/* Links */
+.btn-primary-ghost-dark-defaults {
+    @apply text-yellow-300 border-blue-1000 bg-transparent hover:bg-blue-1000;
+}
+
+.btn-secondary-ghost-light-defaults {
+    @apply text-blue-1000 border-yellow-300 bg-transparent hover:bg-yellow-300;
+}
+
+.btn-secondary-ghost-dark-defaults {
+    @apply text-yellow-300 border-yellow-300 hover:bg-yellow-300 hover:text-blue-1000;
+}
+
+/* button sizes */
+.btn-xs {
+    @apply py-0.5 px-3 text-sm
+}
+
+.btn-sm {
+    @apply py-1 px-6;
+}
+
+.btn-lg {
+    @apply py-3 px-8;
+}
+
+.btn-xl {
+    @apply py-4 px-16;
+}
+
+/* LINKS */
 p a {
     @apply underline font-bold;
 }

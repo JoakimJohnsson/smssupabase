@@ -1,6 +1,7 @@
 import {useRef} from 'react';
-import {useHistory, Link} from 'react-router-dom';
-import {useAuth} from '../../contexts/Auth';
+import {useHistory} from 'react-router-dom';
+import {useAuth} from '../contexts/Auth';
+import {TwButtonPrimary} from "./tw-components/buttons";
 
 const Signup = () => {
     const emailRef = useRef()
@@ -27,23 +28,19 @@ const Signup = () => {
             // Redirect user to Dashboard
             history.push('/')
         }
-
     }
 
     return (
-        <div className={"p-6 prose"}>
-            <h1>Sign up</h1>
+        <>
+            <h2 className={"font-bold mb-3"}>Sign up</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="input-email">Email</label>
                 <input id="input-email" type="email" ref={emailRef} className={"block rounded text-sm mb-2"}/>
                 <label htmlFor="input-password">Password</label>
                 <input id="input-password" type="password" ref={passwordRef} className={"block rounded text-sm mb-5"}/>
-                <button type="submit" className={"button block"}>Sign up</button>
+                <TwButtonPrimary type="submit" label={"Sign up"}/>
             </form>
-            <p>
-                Already have an account? <Link to="/login">Login</Link>
-            </p>
-        </div>
+        </>
     )
 }
 

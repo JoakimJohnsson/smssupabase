@@ -9,7 +9,7 @@ const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="flex items-center justify-between flex-wrap p-6 border-b-4 border-blue-900">
+        <nav className="flex items-center justify-between flex-wrap p-6">
             <Link to="/">
                 <div className="flex items-center flex-shrink-0 mr-6">
                     <img className={"w-5 h-5 mr-1 sm:w-8 sm:h-8 sm:mr-3"} src={shieldBlack} alt={"Svenska marvelsamlare logo"}/>
