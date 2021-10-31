@@ -35,10 +35,12 @@ const AuthorizedNavigation = () => {
                     "w-full hidden flex-grow lg:flex lg:items-center lg:w-auto"
             }>
                 <div className="text-sm lg:flex-grow lg:flex justify-end group">
-                    <NavLink exact to="/" className="nav-link" onClick={() => setIsOpen(!isOpen)}><HomeIcon className="h-5 w-5 inline mr-1"/>Start</NavLink>
-                    <NavLink exact to="/dashboard" className="nav-link" onClick={() => setIsOpen(!isOpen)}><PresentationChartLineIcon className="h-5 w-5 inline mr-1"/>Dashboard</NavLink>
+                    <NavLink exact to="/" className="nav-link" onClick={() => setIsOpen(!isOpen)}><HomeIcon
+                        className="h-5 w-5 inline mr-1"/>Start</NavLink>
+                    <NavLink exact to="/dashboard" className="nav-link" onClick={() => setIsOpen(!isOpen)}><PresentationChartLineIcon
+                        className="h-5 w-5 inline mr-1"/>Dashboard</NavLink>
                     <NavLink to="/dashboard/settings" className="nav-link"
-                          onClick={() => setIsOpen(!isOpen)}><CogIcon className="h-5 w-5 inline mr-1"/>Settings</NavLink>
+                             onClick={() => setIsOpen(!isOpen)}><CogIcon className="h-5 w-5 inline mr-1"/>Settings</NavLink>
                     <SignOutButton/>
                 </div>
             </div>
