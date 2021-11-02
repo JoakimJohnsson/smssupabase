@@ -1,7 +1,7 @@
 import {Redirect, Route} from "react-router-dom";
 import Start from "./pages/Start";
 import Signup from "./Signup";
-import Login from "./pages/Login";
+import Login from "./Login";
 import Dashboard from "./pages/Dashboard";
 import React from "react";
 import {useAuth} from "../contexts/Auth";

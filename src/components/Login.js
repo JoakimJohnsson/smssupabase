@@ -5,7 +5,7 @@ import {TwButtonPrimary} from "./tw-components/buttons";
 import {MESSAGES} from "../helpers/constants";
 import {validateEmail, validatePassword} from "../helpers/validations";
 
-const Signup = () => {
+const Login = () => {
     // Success and error variants of form-input is available
     const [emailInputClass, setEmailInputClass] = useState("form-input-default");
     const [passwordInputClass, setPasswordInputClass] = useState("form-input-default");
@@ -17,15 +17,15 @@ const Signup = () => {
 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {signUp} = useAuth();
+    const {signIn} = useAuth();
     const history = useHistory();
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
 
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const {error} = await signUp({email, password});
+        const {error} = await signIn({email, password});
 
         if (error) {
             setFormErrorMessage(MESSAGES.ERROR.signupFormValidation);
@@ -64,6 +64,7 @@ const Signup = () => {
 
     return (
         <>
+            <h2 className={"font-bold mb-3"}>Log in</h2>
             <form onSubmit={handleSubmit}>
                 <label className={"form-label"} htmlFor="input-email">Email</label>
                 <input id="input-email"
@@ -74,7 +75,6 @@ const Signup = () => {
                        placeholder={"name@myplace.se"}
                        required/>
                 <p className={"mb-3 mt-2 text-gray-500"}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
-
                 <label className={"form-label"} htmlFor="input-password">Password</label>
                 <input id="input-password"
                        type="password"
@@ -84,7 +84,7 @@ const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <p className={"mb-3 mt-2 text-gray-500"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
-                <TwButtonPrimary type="submit" label={"Sign up"} className={"block"}/>
+                <TwButtonPrimary type="submit" label={"Log in"} className={"block"}/>
                 {showFormError ?
                     <p className={"mb-3 mt-2 bg-red-50 border border-red-700 text-red-900"}>{formErrorMessage}</p>
                     :
@@ -95,4 +95,4 @@ const Signup = () => {
     )
 }
 
-export default Signup;
+export default Login;
