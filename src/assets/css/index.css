@@ -33,7 +33,6 @@
     @apply text-yellow-300 border-yellow-300 hover:bg-yellow-300 hover:text-blue-1000;
 }
 
-/* button sizes */
 .btn-xs {
     @apply py-0.5 px-3 text-sm
 }
@@ -50,7 +49,7 @@
     @apply py-4 px-16;
 }
 
-/* LINKS */
+/* *** LINKS *** */
 p a {
     @apply underline font-bold;
 }
@@ -65,4 +64,20 @@ a:hover, a:active, a:focus {
 
 .nav-link.active {
     @apply underline bg-yellow-300;
+}
+
+/* *** LINKS *** */
+
+.form-label {
+    @apply text-sm font-medium text-gray-900 block mb-2;
+}
+
+.form-input-default {
+    @apply bg-gray-50 border border-gray-300 rounded-lg focus:bg-transparent focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5;
+}
+.form-input-error {
+    @apply bg-red-50 border border-red-700 text-red-900 placeholder-red-700 rounded-lg focus:bg-transparent focus:ring-red-700 focus:border-red-700 block w-full p-2.5;
+}
+.form-input-success {
+    @apply bg-green-50 border border-green-700 text-green-900 placeholder-green-700 rounded-lg focus:bg-transparent focus:ring-green-700 focus:border-green-700 block w-full p-2.5;
 }
