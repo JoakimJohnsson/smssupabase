@@ -63,7 +63,7 @@ const Login = () => {
     }
 
     return (
-        <>
+        <div class={"bg-yellow-300 p-10 rounded-2xl"}>
             <h2 className={"font-bold mb-3"}>Log in</h2>
             <form onSubmit={handleSubmit}>
                 <label className={"form-label"} htmlFor="input-email">Email</label>
@@ -91,7 +91,7 @@ const Login = () => {
                     false
                 }
             </form>
-        </>
+        </div>
     )
 }
 

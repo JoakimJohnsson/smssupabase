@@ -31,7 +31,12 @@ const Signup = () => {
             setFormErrorMessage(MESSAGES.ERROR.signupFormValidation);
             setShowFormError(true);
         } else {
-            history.push('/')
+
+            //             // todo submitknapp disabled
+            //             // todo checkbox
+
+
+            history.push('/success')
         }
     }
 
