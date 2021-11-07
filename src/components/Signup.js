@@ -2,18 +2,20 @@ import {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/Auth';
 import {TwButtonPrimary} from "./tw-components/buttons";
-import {MESSAGES} from "../helpers/constants";
+import {MESSAGES, CLASSES} from "../helpers/constants";
 import {validateEmail, validatePassword} from "../helpers/validations";
 
 const Signup = () => {
     // Success and error variants of form-input is available
-    const [emailInputClass, setEmailInputClass] = useState("form-input-default");
-    const [passwordInputClass, setPasswordInputClass] = useState("form-input-default");
+    const [emailInputClass, setEmailInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
+    const [passwordInputClass, setPasswordInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
     // Error and validation handling
     const [showFormError, setShowFormError] = useState(false);
     const [formErrorMessage, setFormErrorMessage] = useState("");
     const [emailValidationMessage, setEmailValidationMessage] = useState("");
     const [passwordValidationMessage, setPasswordValidationMessage] = useState("");
+    const [emailValidated, setEmailValidated] = useState(false);
+    const [passwordValidated, setPasswordValidated] = useState(false);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -28,49 +30,55 @@ const Signup = () => {
         const {error} = await signUp({email, password});
 
         if (error) {
-            setFormErrorMessage(MESSAGES.ERROR.signupFormValidation);
+            setFormErrorMessage(MESSAGES.ERROR.VALIDATION_SIGNUP_FORM);
             setShowFormError(true);
         } else {
-
-            //             // todo submitknapp disabled
-            //             // todo checkbox
-
-
+            //             // todo checkbox (I understand)
             history.push('/success')
         }
     }
 
     const handleEmailValidation = (e) => {
-        validateEmail(e) ? handleEmailSuccess() : handleEmailError();
+        // Send true for success
+        validateEmail(e) ? handleEmailInput(true) : handleEmailInput(false);
     }
 
     const handlePasswordValidation = (e) => {
-        validatePassword(e) ? handlePasswordSuccess() : handlePasswordError();
+        validatePassword(e) ? handlePasswordInput(true) : handlePasswordInput(false);
     }
 
-    const handleEmailSuccess = () => {
-        setEmailInputClass("form-input-success");
-        setEmailValidationMessage(MESSAGES.SUCCESS.emailValidation);
+    const handleEmailInput = (success) => {
+        if (success) {
+            setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setEmailValidated(true);
+            setEmailValidationMessage(MESSAGES.SUCCESS.VALIDATION_EMAIL);
+        } else {
+            setEmailInputClass(CLASSES.FORM_INPUT_ERROR);
+            setEmailValidated(false);
+            setEmailValidationMessage(MESSAGES.ERROR.VALIDATION_EMAIL);
+        }
     }
 
-    const handleEmailError = () => {
-        setEmailInputClass("form-input-error");
-        setEmailValidationMessage(MESSAGES.ERROR.emailValidation);
-    }
-    const handlePasswordSuccess = () => {
-        setPasswordInputClass("form-input-success");
-        setPasswordValidationMessage(MESSAGES.SUCCESS.passwordValidation);
+    const handlePasswordInput = (success) => {
+        if (success) {
+            setPasswordInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setPasswordValidated(true);
+            setPasswordValidationMessage(MESSAGES.SUCCESS.VALIDATION_PASSWORD);
+        } else {
+            setPasswordInputClass(CLASSES.FORM_INPUT_ERROR);
+            setPasswordValidated(false)
+            setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
+        }
     }
 
-    const handlePasswordError = () => {
-        setPasswordInputClass("form-input-error");
-        setPasswordValidationMessage(MESSAGES.ERROR.passwordValidation);
+    const enableSubmitButton = () => {
+        return emailValidated && passwordValidated;
     }
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <label className={"form-label"} htmlFor="input-email">Email</label>
+            <form onSubmit={handleSubmit} className={""}>
+                <label className={""} htmlFor="input-email">Email</label>
                 <input id="input-email"
                        type="email"
                        ref={emailRef}
@@ -78,9 +86,9 @@ const Signup = () => {
                        className={emailInputClass}
                        placeholder={"name@myplace.se"}
                        required/>
-                <p className={"mb-3 mt-2 text-gray-500"}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
+                <p className={""}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
 
-                <label className={"form-label"} htmlFor="input-password">Password</label>
+                <label className={""} htmlFor="input-password">Password</label>
                 <input id="input-password"
                        type="password"
                        ref={passwordRef}
@@ -89,9 +97,9 @@ const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <p className={"mb-3 mt-2 text-gray-500"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
-                <TwButtonPrimary type="submit" label={"Sign up"} className={"block"}/>
+                <TwButtonPrimary type="submit" label={"Sign up"} className={enableSubmitButton() === true ? "" : ""}/>
                 {showFormError ?
-                    <p className={"mb-3 mt-2 bg-red-50 border border-red-700 text-red-900"}>{formErrorMessage}</p>
+                    <p className={""}>{formErrorMessage}</p>
                     :
                     false
                 }

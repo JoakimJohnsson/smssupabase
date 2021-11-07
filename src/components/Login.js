@@ -2,13 +2,13 @@ import {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/Auth';
 import {TwButtonPrimary} from "./tw-components/buttons";
-import {MESSAGES} from "../helpers/constants";
+import {CLASSES, MESSAGES} from "../helpers/constants";
 import {validateEmail, validatePassword} from "../helpers/validations";
 
 const Login = () => {
     // Success and error variants of form-input is available
-    const [emailInputClass, setEmailInputClass] = useState("form-input-default");
-    const [passwordInputClass, setPasswordInputClass] = useState("form-input-default");
+    const [emailInputClass, setEmailInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
+    const [passwordInputClass, setPasswordInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
     // Error and validation handling
     const [showFormError, setShowFormError] = useState(false);
     const [formErrorMessage, setFormErrorMessage] = useState("");
@@ -28,7 +28,7 @@ const Login = () => {
         const {error} = await signIn({email, password});
 
         if (error) {
-            setFormErrorMessage(MESSAGES.ERROR.signupFormValidation);
+            setFormErrorMessage(MESSAGES.ERROR.VALIDATION_SIGNUP_FORM);
             setShowFormError(true);
         } else {
             history.push('/')
@@ -44,29 +44,29 @@ const Login = () => {
     }
 
     const handleEmailSuccess = () => {
-        setEmailInputClass("form-input-success");
-        setEmailValidationMessage(MESSAGES.SUCCESS.emailValidation);
+        setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        setEmailValidationMessage(MESSAGES.SUCCESS.VALIDATION_EMAIL);
     }
 
     const handleEmailError = () => {
-        setEmailInputClass("form-input-error");
-        setEmailValidationMessage(MESSAGES.ERROR.emailValidation);
+        setEmailInputClass(CLASSES.FORM_INPUT_ERROR);
+        setEmailValidationMessage(MESSAGES.ERROR.VALIDATION_EMAIL);
     }
     const handlePasswordSuccess = () => {
-        setPasswordInputClass("form-input-success");
-        setPasswordValidationMessage(MESSAGES.SUCCESS.passwordValidation);
+        setPasswordInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        setPasswordValidationMessage(MESSAGES.SUCCESS.VALIDATION_PASSWORD);
     }
 
     const handlePasswordError = () => {
-        setPasswordInputClass("form-input-error");
-        setPasswordValidationMessage(MESSAGES.ERROR.passwordValidation);
+        setPasswordInputClass(CLASSES.FORM_INPUT_ERROR);
+        setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
     }
 
     return (
-        <div class={"bg-yellow-300 p-10 rounded-2xl"}>
-            <h2 className={"font-bold mb-3"}>Log in</h2>
+        <div className={""}>
+            <h2 className={""}>Log in</h2>
             <form onSubmit={handleSubmit}>
-                <label className={"form-label"} htmlFor="input-email">Email</label>
+                <label className={""} htmlFor="input-email">Email</label>
                 <input id="input-email"
                        type="email"
                        ref={emailRef}
@@ -74,7 +74,7 @@ const Login = () => {
                        className={emailInputClass}
                        placeholder={"name@myplace.se"}
                        required/>
-                <p className={"mb-3 mt-2 text-gray-500"}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
+                <p className={""}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
                 <label className={"form-label"} htmlFor="input-password">Password</label>
                 <input id="input-password"
                        type="password"
@@ -83,10 +83,10 @@ const Login = () => {
                        className={passwordInputClass}
                        placeholder={"********"}
                        required/>
-                <p className={"mb-3 mt-2 text-gray-500"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
-                <TwButtonPrimary type="submit" label={"Log in"} className={"block"}/>
+                <p className={""}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
+                <TwButtonPrimary type="submit" label={"Log in"} className={""}/>
                 {showFormError ?
-                    <p className={"mb-3 mt-2 bg-red-50 border border-red-700 text-red-900"}>{formErrorMessage}</p>
+                    <p className={""}>{formErrorMessage}</p>
                     :
                     false
                 }

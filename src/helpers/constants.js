@@ -1,11 +1,17 @@
 export const MESSAGES = {
     ERROR: {
-        emailValidation: "Please enter a valid email adress",
-        passwordValidation: "Please enter a stronger password - at least 16 characters",
-        signupFormValidation: "Something went wrong when signing up"
+        VALIDATION_EMAIL: "Please enter a valid email adress",
+        VALIDATION_PASSWORD: "Please enter a stronger password - at least 16 characters",
+        VALIDATION_SIGNUP_FORM: "Something went wrong when signing up"
     },
     SUCCESS: {
-        emailValidation: "Good job on entering that email!",
-        passwordValidation: "Now, that's an uncrackable password!"
+        VALIDATION_EMAIL: "Good job on entering that email!",
+        VALIDATION_PASSWORD: "Now, that's an uncrackable password!"
     }
+}
+
+export const CLASSES = {
+    FORM_INPUT_DEFAULT: "form-input-default",
+    FORM_INPUT_SUCCESS: "form-input-success",
+    FORM_INPUT_ERROR: "form-input-error",
 }
