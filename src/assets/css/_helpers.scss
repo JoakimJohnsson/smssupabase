@@ -1,13 +1,24 @@
 // Imports
 @import "variables";
 
+// Global helpers
+.hocus-standard {
+  transition: all .2s ease;
+  text-decoration: none;
+  &:hover,
+  &:focus,
+  &:active {
+    opacity: 90%;
+  }
+}
+
+// Backgrounds
 .bg-elephant {
   background-color: $color-bg-elephant !important;
 }
 
 .bg-horse {
   background-color: $color-bg-horse !important;
-
 }
 
 .bg-dog {

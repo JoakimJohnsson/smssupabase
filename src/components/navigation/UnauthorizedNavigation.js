@@ -3,43 +3,15 @@ import {Link} from 'react-router-dom';
 import shieldWhite from "../../assets/images/shield__white.svg";
 
 const UnauthorizedNavigation = () => {
-
     return (
-        <nav className={"bg-info"}>
-            <div className={""}>
-            <Link to="/">
-                <div className={"bg-primary"}>
-                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
-                    <span className={""}>SVENSKA MARVELSAMLARE</span>
-                    <span className={""}>SMS</span>
-                </div>
-                <div className={"bg-secondary"}>
-                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
-                    <span className={""}>SVENSKA MARVELSAMLARE</span>
-                    <span className={""}>SMS</span>
-                </div>
-                <div className={"bg-info"}>
-                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
-                    <span className={""}>SVENSKA MARVELSAMLARE</span>
-                    <span className={""}>SMS</span>
-                </div>
-                <div className={"bg-warning"}>
-                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
-                    <span className={""}>SVENSKA MARVELSAMLARE</span>
-                    <span className={""}>SMS</span>
-                </div>
-                <div className={"bg-success"}>
-                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
-                    <span className={""}>SVENSKA MARVELSAMLARE</span>
-                    <span className={""}>SMS</span>
-                </div>
-                <div className={"bg-danger"}>
-                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
-                    <span className={""}>SVENSKA MARVELSAMLARE</span>
-                    <span className={""}>SMS</span>
+        <nav className={"p-3"}>
+            <Link to="/" className={"hocus-standard h-100 d-flex align-items-center"}>
+                <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                <div className={"sms-logo-text"}>
+                    <span className={"d-none d-sm-inline"}>SVENSKA MARVELSAMLARE</span>
+                    <span className={"d-inline d-sm-none"}>SMS</span>
                 </div>
             </Link>
-            </div>
         </nav>
     )
 };

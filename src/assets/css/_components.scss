@@ -1,0 +1,20 @@
+// Imports
+@import "variables";
+
+// Header
+.sms-header {
+  background-color: $color-bg-dog;
+  .sms-logo-shield {
+    width: 30px;
+    height: 30px;
+  }
+  .sms-logo-text {
+    display: inline;
+    color: $white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    span {
+      text-decoration: none;
+    }
+  }
+}

@@ -2,8 +2,8 @@ import './assets/css/main.css';
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {AuthProvider} from './contexts/Auth'
-import Navigation from "./components/navigation/Navigation";
 import Routes from "./components/Routes";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 /*
@@ -19,7 +19,7 @@ const App = () => {
     return (
         <AuthProvider>
             <Router>
-                <Navigation/>
+                <Header/>
                 <Routes/>
                 <Footer/>
             </Router>

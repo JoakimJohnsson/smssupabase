@@ -8679,6 +8679,12 @@ textarea.form-control-lg {
 
   .d-print-none {
     display: none !important; } }
+.hocus-standard {
+  transition: all .2s ease;
+  text-decoration: none; }
+  .hocus-standard:hover, .hocus-standard:focus, .hocus-standard:active {
+    opacity: 90%; }
+
 .bg-elephant {
   background-color: #1d1f2f !important; }
 
@@ -8687,5 +8693,18 @@ textarea.form-control-lg {
 
 .bg-dog {
   background-color: #27293b !important; }
+
+.sms-header {
+  background-color: #27293b; }
+  .sms-header .sms-logo-shield {
+    width: 30px;
+    height: 30px; }
+  .sms-header .sms-logo-text {
+    display: inline;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3rem; }
+    .sms-header .sms-logo-text span {
+      text-decoration: none; }
 
 /*# sourceMappingURL=main.css.map */
