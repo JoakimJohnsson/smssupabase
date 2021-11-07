@@ -8,7 +8,32 @@ const UnauthorizedNavigation = () => {
         <nav className={"bg-info"}>
             <div className={""}>
             <Link to="/">
-                <div className={""}>
+                <div className={"bg-primary"}>
+                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                    <span className={""}>SVENSKA MARVELSAMLARE</span>
+                    <span className={""}>SMS</span>
+                </div>
+                <div className={"bg-secondary"}>
+                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                    <span className={""}>SVENSKA MARVELSAMLARE</span>
+                    <span className={""}>SMS</span>
+                </div>
+                <div className={"bg-info"}>
+                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                    <span className={""}>SVENSKA MARVELSAMLARE</span>
+                    <span className={""}>SMS</span>
+                </div>
+                <div className={"bg-warning"}>
+                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                    <span className={""}>SVENSKA MARVELSAMLARE</span>
+                    <span className={""}>SMS</span>
+                </div>
+                <div className={"bg-success"}>
+                    <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                    <span className={""}>SVENSKA MARVELSAMLARE</span>
+                    <span className={""}>SMS</span>
+                </div>
+                <div className={"bg-danger"}>
                     <img className={""} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
                     <span className={""}>SVENSKA MARVELSAMLARE</span>
                     <span className={""}>SMS</span>

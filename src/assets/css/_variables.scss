@@ -1,0 +1,32 @@
+// Bootstrap overrides
+$primary: #35caf4;
+$secondary: #d8a6f7;
+$success: #70e559;
+$info: #d2d021;
+$warning: #eeb242;
+$danger: #eea9a9;
+
+$font-family-sans-serif: "Work Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$headings-font-weight: 600;
+$font-weight-normal: 300;
+$font-weight-bold: 400;
+
+
+// Colors
+$color-bg-elephant: #1d1f2f;
+$color-bg-horse: #232536;
+$color-bg-dog: #27293b;
+
+$primary--darker: darken($primary, 10%);
+$secondary--darker: darken($secondary, 10%);
+$success--darker: darken($success, 10%);
+$info--darker: darken($info, 10%);
+$warning--darker: darken($warning, 10%);
+$danger--darker: darken($danger, 20%);
+
+$primary--lighter: lighter($primary, 10%);
+$secondary--lighter: lighter($secondary, 10%);
+$success--lighter: lighter($success, 10%);
+$info--lighter: lighter($info, 10%);
+$warning--lighter: lighter($warning, 10%);
+$danger--lighter: lighter($danger, 20%);
