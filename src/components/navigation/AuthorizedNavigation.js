@@ -1,47 +1,61 @@
 import React, {useState} from 'react';
 import {Link, NavLink} from 'react-router-dom';
-import shieldBlack from "../../assets/images/shield__black.svg";
 import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon} from "@heroicons/react/solid";
+import shieldWhite from "../../assets/images/shield__white.svg";
 import SignOutButton from "../SignOutButton";
 
 const AuthorizedNavigation = () => {
 
     const [isOpen, setIsOpen] = useState(false);
+    const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
+    const collapseClass = "collapse navbar-collapse";
 
     return (
-        <nav className={""}>
-            <Link to="/">
-                <div className={""}>
-                    <img className={""} src={shieldBlack} alt={"Svenska marvelsamlare logo"}/>
-                    <span className={""}>SVENSKA MARVELSAMLARE</span>
-                    <span className={""}>SMS</span>
-                </div>
-            </Link>
-            <div className={""}>
-                <button className={""} onClick={() => setIsOpen(!isOpen)}>
-                    <span className={"sr-only"}>menu</span>
+        <nav className="navbar navbar-expand-lg navbar-dark py-3">
+            <div className="container-fluid">
+                <Link to="/" className={"hocus-standard h-100 d-flex align-items-center"}>
+                    <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                    <div className={"sms-logo-text"}>
+                        <span className={"d-none d-sm-inline"}>SVENSKA MARVELSAMLARE</span>
+                        <span className={"d-inline d-sm-none"}>SMS</span>
+                    </div>
+                </Link>
+                <button className={"btn text-white d-block d-lg-none"} onClick={() => setIsOpen(!isOpen)}>
+                    <span className={"visually-hidden"}>menu</span>
                     {
                         isOpen ?
-                            <XIcon className={""}/>
+                            <XIcon className={"sms-icon--hamburger"}/>
                             :
-                            <MenuIcon className={""}/>
+                            <MenuIcon className={"sms-icon--hamburger"}/>
                     }
                 </button>
-            </div>
-            <div className={
-                isOpen ?
-                    ""
-                    :
-                    ""
-            }>
-                <div className={""}>
-                    <NavLink exact to="/" className={""} onClick={() => setIsOpen(!isOpen)}><HomeIcon
-                        className={""}/>Start</NavLink>
-                    <NavLink exact to="/dashboard" className={""} onClick={() => setIsOpen(!isOpen)}><PresentationChartLineIcon
-                        className={""}/>Dashboard</NavLink>
-                    <NavLink to="/dashboard/settings" className={""}
-                             onClick={() => setIsOpen(!isOpen)}><CogIcon className={""}/>Settings</NavLink>
-                    <SignOutButton/>
+                <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
+                    <ul className="navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
+                        <li className="nav-item">
+                            <NavLink exact to="/" className={"nav-link"}
+                                     onClick={() => setIsOpen(!isOpen)}><HomeIcon className={"sms-icon--link"}/>
+                                <span className={"sms-nav-link--text"}>Start</span>
+                            </NavLink>
+
+                        </li>
+                        <li className="nav-item">
+                            <NavLink exact to="/dashboard" className={"nav-link"}
+                                     onClick={() => setIsOpen(!isOpen)}><PresentationChartLineIcon className={"sms-icon--link"}/>
+                                <span className={"sms-nav-link--text"}>Dashboard</span>
+                            </NavLink>
+
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/dashboard/settings" className={"nav-link"}
+                                     onClick={() => setIsOpen(!isOpen)}><CogIcon className={"sms-icon--link"}/>
+                                <span className={"sms-nav-link--text"}>Settings</span>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <SignOutButton/>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </nav>

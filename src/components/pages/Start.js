@@ -3,6 +3,7 @@ import {CollectionIcon, ClipboardListIcon, BadgeCheckIcon, ChevronDoubleDownIcon
 import React from "react";
 import Login from "../Login";
 import {useAuth} from "../../contexts/Auth";
+import SignOutButton from "../SignOutButton";
 
 const Start = () => {
 
@@ -28,55 +29,10 @@ const Start = () => {
                     <div className={"bg-elephant"}>
                         <Login/>
                     </div>
-                    <div className={"bg-horse"}>
-                        <Login/>
-                    </div>
-                    <div className={""}>
-                        <Login/>
-                    </div>
                     <div className={""}>
                         <h1 className={"text-primary"}>
                             Welcome to Svenska Marvelsamlare!
                         </h1>
-                        <h1 className={"text-secondary"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </h1>
-                        <h1 className={"text-info"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </h1>
-                        <h1 className={"text-warning"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </h1>
-                        <h1 className={"text-danger"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </h1>
-                        <h1 className={"text-success"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </h1>
-                        <h1 className={"text-light"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </h1>
-                        <p className={"text-primary"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </p>
-                        <p className={"text-secondary"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </p>
-                        <p className={"text-info"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </p>
-                        <p className={"text-warning"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </p>
-                        <p className={"text-danger"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </p>
-                        <p className={"text-success"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </p>
-                        <p className={"text-light"}>
-                            Welcome to Svenska Marvelsamlare!
-                        </p>
                         <p className={""}>Do you collect swedish marvel comics?</p>
                         <ul className={""}>
                             <li className={""}><BadgeCheckIcon className=""/>

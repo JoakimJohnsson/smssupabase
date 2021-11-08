@@ -1,5 +1,6 @@
 // Imports
 @import "variables";
+@import "./bootstrap/scss/variables";
 
 // Header
 .sms-header {
@@ -17,4 +18,46 @@
       text-decoration: none;
     }
   }
+  .navbar-nav {
+    border-top: $border--default;
+    @include media-breakpoint-up(lg) {
+      border-top: none;
+    }
+  }
+  .nav-item {
+    @include media-breakpoint-up(lg) {
+      margin-right: 1rem;
+    }
+    .nav-link {
+      border-radius: $border-radius;
+      background-color: transparent;
+      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      color: $primary;
+      padding-right: .5rem;
+      padding-left: .5rem;
+      &.active {
+        background-color: $primary--darker;
+        color: $primary--lighter;
+      }
+      &:hover, &:focus {
+        color: $primary--lighter;
+      }
+    }
+    .sms-nav-link--text {
+      font-weight: 300;
+      display: inline-block;
+      margin-top: 2px;
+    }
+  }
+}
+
+// Icons
+.sms-icon--link {
+  width: 24px;
+  @extend .me-2;
+}
+.sms-icon--hamburger {
+  width: 24px;
 }
