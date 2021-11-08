@@ -3,8 +3,14 @@ import React from "react";
 const Dashboard = () => {
 
     return (
-        <div className={"p-6 prose"}>
-            <h1>Dashboard</h1>
+        <div className={"container-fluid p-3"}>
+            <div className={"row"}>
+                <div className={"col-12"}>
+                    <h1 className={""}>
+                        Dashboard
+                    </h1>
+                </div>
+            </div>
         </div>
     )
 }

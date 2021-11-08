@@ -16,21 +16,21 @@ const Settings = () => {
     useEffect(() => {
         async function getProfile() {
             try {
-                setLoading(true)
+                setLoading(true);
                 let {data, error, status} = await supabase
                     .from('profiles')
                     .select(`username, website, avatar_url`)
                     .eq('id', user.id)
-                    .single()
+                    .single();
 
                 if (error && status !== 406) {
                     throw error
                 }
 
                 if (data) {
-                    setUsername(data.username)
-                    setWebsite(data.website)
-                    setAvatarUrl(data.avatar_url)
+                    setUsername(data.username);
+                    setWebsite(data.website);
+                    setAvatarUrl(data.avatar_url);
                 }
             } catch (error) {
                 alert(error.message)
@@ -69,49 +69,54 @@ const Settings = () => {
     }
 
     return (
-        <div className={"p-6 prose"}>
-            <h1>Settings</h1>
-            <div className="form-widget">
-                <p>Welcome, {user?.id}!</p>
-                <Avatar
-                    url={avatar_url}
-                    size={150}
-                    onUpload={(url) => {
-                        setAvatarUrl(url)
-                        updateProfile({username, website, avatar_url: url})
-                    }}
-                />
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input id="email" className={"block rounded text-sm mb-2"} type="text" value={user.email} disabled/>
+        <div className={"container-fluid p-3"}>
+            <div className={"row"}>
+                <div className={"col-12"}>
+
+                    <h1>Settings</h1>
+                    <div className={""}>
+                        <p>Welcome, {user?.id}!</p>
+                        <Avatar
+                            url={avatar_url}
+                            size={150}
+                            onUpload={(url) => {
+                                setAvatarUrl(url)
+                                updateProfile({username, website, avatar_url: url})
+                            }}
+                        />
+                        <div>
+                            <label htmlFor="email">Email</label>
+                            <input id="email" className={""} type="text" value={user.email} disabled/>
+                        </div>
+                        <div>
+                            <label htmlFor="username">Name</label>
+                            <input
+                                id="username"
+                                className={""}
+                                type="text"
+                                value={username || ''}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="website">Website</label>
+                            <input
+                                id="website"
+                                className={""}
+                                type="text"
+                                value={website || ''}
+                                onChange={(e) => setWebsite(e.target.value)}
+                            />
+                        </div>
+                        <button
+                            className={""}
+                            onClick={() => updateProfile({username, website, avatar_url})}
+                            disabled={loading}
+                        >
+                            {loading ? 'Loading ...' : 'Update'}
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="username">Name</label>
-                    <input
-                        id="username"
-                        className={"block rounded text-sm mb-2"}
-                        type="text"
-                        value={username || ''}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="website">Website</label>
-                    <input
-                        id="website"
-                        className={"block rounded text-sm mb-5"}
-                        type="text"
-                        value={website || ''}
-                        onChange={(e) => setWebsite(e.target.value)}
-                    />
-                </div>
-                    <button
-                        className="button mr-3"
-                        onClick={() => updateProfile({username, website, avatar_url})}
-                        disabled={loading}
-                    >
-                        {loading ? 'Loading ...' : 'Update'}
-                    </button>
             </div>
         </div>
     )
