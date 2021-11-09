@@ -77,8 +77,8 @@ const Signup = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={""}>
-                <label className={""} htmlFor="input-email">Email</label>
+            <form onSubmit={handleSubmit} className={"sms-form"}>
+                <label className={"form-label"} htmlFor="input-email">Email</label>
                 <input id="input-email"
                        type="email"
                        ref={emailRef}
@@ -86,9 +86,9 @@ const Signup = () => {
                        className={emailInputClass}
                        placeholder={"name@myplace.se"}
                        required/>
-                <p className={""}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
+                <p className={"form-text"}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
 
-                <label className={""} htmlFor="input-password">Password</label>
+                <label className={"form-label"} htmlFor="input-password">Password</label>
                 <input id="input-password"
                        type="password"
                        ref={passwordRef}
@@ -96,8 +96,8 @@ const Signup = () => {
                        className={passwordInputClass}
                        placeholder={"********"}
                        required/>
-                <p className={"mb-3 mt-2 text-gray-500"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
-                <TwButtonPrimary type="submit" label={"Sign up"} className={enableSubmitButton() === true ? "" : ""}/>
+                <p className={"form-text"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
+                <TwButtonPrimary type="submit" label={"Sign up"} className={enableSubmitButton() === true ? "btn btn-primary" : "btn btn-primary disabled"}/>
                 {showFormError ?
                     <p className={""}>{formErrorMessage}</p>
                     :

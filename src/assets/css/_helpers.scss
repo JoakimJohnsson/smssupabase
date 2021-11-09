@@ -12,6 +12,14 @@
   }
 }
 
+input:autofill {
+  background: #fff;
+}
+
+input {
+  filter: none;
+}
+
 // Backgrounds
 .bg-elephant {
   background-color: $color-bg-elephant !important;
@@ -23,6 +31,18 @@
 
 .bg-dog {
   background-color: $color-bg-dog !important;
+}
+
+.bg-elephant--trans {
+  background-color: $color-bg-elephant--trans !important;
+}
+
+.bg-horse--trans {
+  background-color: $color-bg-horse--trans !important;
+}
+
+.bg-dog--trans {
+  background-color: $color-bg-dog--trans !important;
 }
 
 .bg-primary--lighter {

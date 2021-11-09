@@ -2,6 +2,9 @@
 $color-bg-elephant: #1d1f2f;
 $color-bg-horse: #232536;
 $color-bg-dog: #27293b;
+$color-bg-elephant--trans: rgba(29, 31, 47, .8);
+$color-bg-horse--trans: rgba(35, 37, 54, .8);
+$color-bg-dog--trans: rgba(39, 41, 59, .8);
 
 $primary--darker: #0e3b48;
 $secondary--darker: #442359;
@@ -12,10 +15,10 @@ $danger--darker: #4f1111;
 
 $primary--lighter: #a8e6f8;
 $secondary--lighter: #e9d1f8;
-$success--lighter: #b6f4aa;
+$success--lighter: #ddf3d8;
 $info--lighter: #f6f594;
 $warning--lighter: #f9d590;
-$danger--lighter: #fad2d2;
+$danger--lighter: #f7e7e7;
 
 // Bootstrap overrides
 $primary: #66dafa;
@@ -25,16 +28,23 @@ $info: #f3f00f;
 $warning: #fbbd4a;
 $danger: #eea9a9;
 $white: #fff;
+$white--darker: #ced4da;
 $black: #000;
+$black--lighter: #444;
 
 $font-family-sans-serif: "Work Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $headings-font-weight: 600;
 $font-weight-normal: 300;
 $font-weight-bold: 400;
-
+$input-placeholder-color: $black--lighter;
+$input-color: $black;
+$text-muted: $white--darker;
+$form-text-color: $white--darker;
 $body-bg: $color-bg-elephant;
+$input-bg: $white;
 $body-color: $white;
+$btn-disabled-opacity: 0.45;
 
 // Borders
-$border-color: #444;
+$border-color: $black--lighter;
 $border--default: 1px solid $border-color;

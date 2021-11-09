@@ -53,14 +53,34 @@
   }
 }
 
+.sms-hero-header {
+  background: center / cover no-repeat url("../images/heroimage.jpg");
+}
+
 // Icons
 .sms-icon--link {
   width: 24px;
   @extend .me-2;
 }
+
 .sms-icon--hamburger {
   width: 24px;
 }
+
 .sms-icon--large {
   width: 55px;
+}
+
+// Forms
+.sms-form {
+  .form-control {
+    &.success {
+      background-color: $success--lighter;
+      border: 1px solid $success;
+    }
+    &.danger {
+      background-color: $danger--lighter;
+      border: 1px solid $danger;
+    }
+  }
 }

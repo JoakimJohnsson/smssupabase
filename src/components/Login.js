@@ -63,10 +63,10 @@ const Login = () => {
     }
 
     return (
-        <div className={""}>
+        <div className={"w-100"}>
             <h2 className={""}>Log in</h2>
-            <form onSubmit={handleSubmit}>
-                <label className={""} htmlFor="input-email">Email</label>
+            <form onSubmit={handleSubmit} className={"sms-form"}>
+                <label className={"form-label"} htmlFor="input-email">Email</label>
                 <input id="input-email"
                        type="email"
                        ref={emailRef}
@@ -74,7 +74,7 @@ const Login = () => {
                        className={emailInputClass}
                        placeholder={"name@myplace.se"}
                        required/>
-                <p className={""}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
+                <p className={"form-text"}>{emailValidationMessage !== "" ? emailValidationMessage : false}</p>
                 <label className={"form-label"} htmlFor="input-password">Password</label>
                 <input id="input-password"
                        type="password"
@@ -83,8 +83,8 @@ const Login = () => {
                        className={passwordInputClass}
                        placeholder={"********"}
                        required/>
-                <p className={""}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
-                <TwButtonPrimary type="submit" label={"Log in"} className={""}/>
+                <p className={"form-text"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
+                <TwButtonPrimary type="submit" label={"Log in"} className={"btn btn-primary"}/>
                 {showFormError ?
                     <p className={""}>{formErrorMessage}</p>
                     :

@@ -3,7 +3,7 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {AuthProvider} from './contexts/Auth'
 import Routes from "./components/Routes";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import Footer from "./components/Footer";
 
 /*

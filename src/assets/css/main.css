@@ -252,7 +252,7 @@ table {
 caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: #6c757d;
+  color: #ced4da;
   text-align: left; }
 
 th {
@@ -1731,7 +1731,7 @@ progress {
 .form-text {
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: #6c757d; }
+  color: #ced4da; }
 
 .form-control {
   display: block;
@@ -1740,8 +1740,8 @@ progress {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.5;
-  color: #fff;
-  background-color: #1d1f2f;
+  color: #000;
+  background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   appearance: none;
@@ -1755,15 +1755,15 @@ progress {
     .form-control[type="file"]:not(:disabled):not([readonly]) {
       cursor: pointer; }
   .form-control:focus {
-    color: #fff;
-    background-color: #1d1f2f;
+    color: #000;
+    background-color: #fff;
     border-color: #b3edfd;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(102, 218, 250, 0.25); }
   .form-control::-webkit-date-and-time-value {
     height: 1.5em; }
   .form-control::placeholder {
-    color: #6c757d;
+    color: #444;
     opacity: 1; }
   .form-control:disabled, .form-control[readonly] {
     background-color: #e9ecef;
@@ -1772,7 +1772,7 @@ progress {
     padding: 0.375rem 0.75rem;
     margin: -0.375rem -0.75rem;
     margin-inline-end: 0.75rem;
-    color: #fff;
+    color: #000;
     background-color: #e9ecef;
     pointer-events: none;
     border-color: inherit;
@@ -1790,7 +1790,7 @@ progress {
     padding: 0.375rem 0.75rem;
     margin: -0.375rem -0.75rem;
     margin-inline-end: 0.75rem;
-    color: #fff;
+    color: #000;
     background-color: #e9ecef;
     pointer-events: none;
     border-color: inherit;
@@ -1875,8 +1875,8 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.5;
-  color: #fff;
-  background-color: #1d1f2f;
+  color: #000;
+  background-color: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -1899,7 +1899,7 @@ textarea.form-control-lg {
     background-color: #e9ecef; }
   .form-select:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 #fff; }
+    text-shadow: 0 0 0 #000; }
 
 .form-select-sm {
   padding-top: 0.25rem;
@@ -1929,7 +1929,7 @@ textarea.form-control-lg {
   height: 1em;
   margin-top: 0.25em;
   vertical-align: top;
-  background-color: #1d1f2f;
+  background-color: #fff;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -1993,7 +1993,7 @@ textarea.form-control-lg {
   .btn-check[disabled] + .btn, .btn-check:disabled + .btn {
     pointer-events: none;
     filter: none;
-    opacity: 0.65; }
+    opacity: 0.45; }
 
 .form-range {
   width: 100%;
@@ -2128,7 +2128,7 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.5;
-  color: #fff;
+  color: #000;
   text-align: center;
   white-space: nowrap;
   background-color: #e9ecef;
@@ -2340,7 +2340,7 @@ textarea.form-control-lg {
     box-shadow: 0 0 0 0.25rem rgba(102, 218, 250, 0.25); }
   .btn:disabled, .btn.disabled, fieldset:disabled .btn {
     pointer-events: none;
-    opacity: 0.65; }
+    opacity: 0.45; }
 
 .btn-primary {
   color: #000;
@@ -6020,7 +6020,7 @@ textarea.form-control-lg {
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: #6c757d !important; }
+  color: #ced4da !important; }
 
 .text-black-50 {
   --bs-text-opacity: 1;
@@ -8688,6 +8688,12 @@ textarea.form-control-lg {
   .hocus-standard:hover, .hocus-standard:focus, .hocus-standard:active {
     opacity: 90%; }
 
+input:autofill {
+  background: #fff; }
+
+input {
+  filter: none; }
+
 .bg-elephant {
   background-color: #1d1f2f !important; }
 
@@ -8696,6 +8702,15 @@ textarea.form-control-lg {
 
 .bg-dog {
   background-color: #27293b !important; }
+
+.bg-elephant--trans {
+  background-color: rgba(29, 31, 47, 0.8) !important; }
+
+.bg-horse--trans {
+  background-color: rgba(35, 37, 54, 0.8) !important; }
+
+.bg-dog--trans {
+  background-color: rgba(39, 41, 59, 0.8) !important; }
 
 .bg-primary--lighter {
   background-color: #a8e6f8 !important; }
@@ -8710,7 +8725,7 @@ textarea.form-control-lg {
   background-color: #442359 !important; }
 
 .bg-success--lighter {
-  background-color: #b6f4aa !important; }
+  background-color: #ddf3d8 !important; }
 
 .bg-success--darker {
   background-color: #1b4214 !important; }
@@ -8731,7 +8746,7 @@ textarea.form-control-lg {
   background-color: #4f1111 !important; }
 
 .bg-danger--darker {
-  background-color: #fad2d2 !important; }
+  background-color: #f7e7e7 !important; }
 
 .text-primary--lighter {
   color: #a8e6f8 !important; }
@@ -8746,7 +8761,7 @@ textarea.form-control-lg {
   color: #442359 !important; }
 
 .text-success--lighter {
-  color: #b6f4aa !important; }
+  color: #ddf3d8 !important; }
 
 .text-success--darker {
   color: #1b4214 !important; }
@@ -8767,7 +8782,7 @@ textarea.form-control-lg {
   color: #4f1111 !important; }
 
 .text-danger--darker {
-  color: #fad2d2 !important; }
+  color: #f7e7e7 !important; }
 
 .fs-small {
   font-size: .875rem; }
@@ -8846,6 +8861,9 @@ textarea.form-control-lg {
     display: inline-block;
     margin-top: 2px; }
 
+.sms-hero-header {
+  background: center/cover no-repeat url("../images/heroimage.jpg"); }
+
 .sms-icon--link {
   width: 24px; }
 
@@ -8854,5 +8872,12 @@ textarea.form-control-lg {
 
 .sms-icon--large {
   width: 55px; }
+
+.sms-form .form-control.success {
+  background-color: #ddf3d8;
+  border: 1px solid #7ff268; }
+.sms-form .form-control.danger {
+  background-color: #f7e7e7;
+  border: 1px solid #eea9a9; }
 
 /*# sourceMappingURL=main.css.map */
