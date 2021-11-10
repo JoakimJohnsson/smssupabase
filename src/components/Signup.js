@@ -29,10 +29,9 @@ const Signup = () => {
         const {error} = await signUp({email, password});
 
         if (error) {
-            setFormErrorMessage(MESSAGES.ERROR.VALIDATION_SIGNUP_FORM);
+            setFormErrorMessage(error.message);
             setShowFormError(true);
         } else {
-            //             // todo checkbox (I understand)
             history.push('/success')
         }
     }
@@ -96,7 +95,7 @@ const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <p className={"form-text"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
-                <button type="submit" className={enableSubmitButton() === true ? "btn btn-secondary" : "btn btn-secondary disabled"}>Sign up</button>
+                <button type="submit" className={enableSubmitButton() === true ? "btn btn-primary" : "btn btn-primary disabled"}>Sign up</button>
                 {showFormError ?
                     <p className={""}>{formErrorMessage}</p>
                     :
