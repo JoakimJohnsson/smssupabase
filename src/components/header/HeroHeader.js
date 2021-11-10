@@ -14,22 +14,25 @@ const HeroHeader = () => {
                         <Login/>
                     </div>
 
-                    <div className={"col-12 col-md-6 p-5 bg-elephant--trans"}>
+                    <div className={"col-12 col-md-6 p-5 bg-elephant--trans text-center"}>
                         <h1 className={"text-primary"}>
                             Welcome to Svenska Marvelsamlare!
                         </h1>
                         <p className={"lead mb-5"}>Do you collect swedish marvel comics?</p>
-                        <ul className={"list-unstyled"}>
-                            <li className={"d-flex align-items-center mb-3"}><BadgeCheckIcon className="sms-icon--large me-3"/>
-                                Manage and keep track of your comics collection
-                            </li>
-                            <li className={"d-flex align-items-center mb-3"}><CollectionIcon className="sms-icon--large me-3"/>
-                                New titles added continuously
-                            </li>
-                            <li className={"d-flex align-items-center"}><ClipboardListIcon className="sms-icon--large me-3"/>
-                                Always have your notes ready in the palm of your hand
-                            </li>
-                        </ul>
+
+                            <div className={"mb-4"}>
+                                <BadgeCheckIcon className="sms-icon--large mb-2 text-info"/>
+                                <p>Manage and keep track of your comics collection</p>
+                            </div>
+                            <div className={"mb-4"}>
+                                <CollectionIcon className="sms-icon--large mb-2 text-info"/>
+                                <p>New titles added continuously</p>
+                            </div>
+                            <div className={""}>
+                                <ClipboardListIcon className="sms-icon--large mb-2 text-info"/>
+                                <p>Always have your notes ready in the palm of your hand</p>
+                            </div>
+
 
                     </div>
 

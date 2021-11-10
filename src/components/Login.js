@@ -1,7 +1,6 @@
 import {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/Auth';
-import {TwButtonPrimary} from "./tw-components/buttons";
 import {CLASSES, MESSAGES} from "../helpers/constants";
 import {validateEmail, validatePassword} from "../helpers/validations";
 
@@ -84,7 +83,7 @@ const Login = () => {
                        placeholder={"********"}
                        required/>
                 <p className={"form-text"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
-                <TwButtonPrimary type="submit" label={"Log in"} className={"btn btn-primary"}/>
+                <button type="submit" className={"btn btn-secondary"}>Log in</button>
                 {showFormError ?
                     <p className={""}>{formErrorMessage}</p>
                     :

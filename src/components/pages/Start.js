@@ -1,7 +1,6 @@
 import Signup from "../Signup";
-import {CollectionIcon, ClipboardListIcon, BadgeCheckIcon, ChevronDoubleDownIcon} from "@heroicons/react/solid";
+import {ChevronDoubleDownIcon} from "@heroicons/react/solid";
 import React from "react";
-import Login from "../Login";
 import {useAuth} from "../../contexts/Auth";
 import HeroHeader from "../header/HeroHeader";
 
