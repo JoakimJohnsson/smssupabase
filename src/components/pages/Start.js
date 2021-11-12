@@ -34,7 +34,6 @@ const Start = () => {
                             <Signup/>
                         </div>
                     </div>
-
                 </div>
             </>
         )

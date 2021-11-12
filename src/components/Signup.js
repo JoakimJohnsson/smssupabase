@@ -97,7 +97,7 @@ const Signup = () => {
                 <p className={"form-text"}>{passwordValidationMessage !== "" ? passwordValidationMessage : false}</p>
                 <button type="submit" className={enableSubmitButton() === true ? "btn btn-primary" : "btn btn-primary disabled"}>Sign up</button>
                 {showFormError ?
-                    <p className={""}>{formErrorMessage}</p>
+                    <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>
                     :
                     false
                 }
