@@ -108,11 +108,9 @@ const Settings = () => {
                                 onChange={(e) => setWebsite(e.target.value)}
                             />
                         </div>
-                        <button
-                            className={""}
-                            onClick={() => updateProfile({username, website, avatar_url})}
-                            disabled={loading}
-                        >
+                        <button className={""}
+                                onClick={() => updateProfile({username, website, avatar_url})}
+                                disabled={loading}>
                             {loading ? 'Loading ...' : 'Update'}
                         </button>
                     </div>

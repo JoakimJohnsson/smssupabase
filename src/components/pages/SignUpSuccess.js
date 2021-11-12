@@ -3,7 +3,6 @@ import Login from "../Login";
 
 const SignupSuccess = () => {
 
-
     return (
         <>
             <div className={"bg-gradient-to-br from-blue-1000 via-blue-800 to-blue-900 bg-black"}>
