@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import {Link, NavLink} from 'react-router-dom';
-import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon} from "@heroicons/react/solid";
+import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} from "@heroicons/react/solid";
 import shieldWhite from "../../assets/images/shield__white.svg";
 import SignOutButton from "../SignOutButton";
+import {useAuth} from "../../contexts/Auth";
 
 const AuthorizedNavigation = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
     const collapseClass = "collapse navbar-collapse";
+    const {role} = useAuth();
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark py-3">
@@ -45,12 +47,25 @@ const AuthorizedNavigation = () => {
                             </NavLink>
 
                         </li>
+
                         <li className="nav-item">
                             <NavLink to="/dashboard/settings" className={"nav-link"}
                                      onClick={() => setIsOpen(!isOpen)}><CogIcon className={"sms-icon--link"}/>
                                 <span className={"sms-nav-link--text"}>Settings</span>
                             </NavLink>
                         </li>
+
+                        {role === 1 ?
+                            <li className="nav-item">
+                                <NavLink to="/dashboard/admin" className={"nav-link"}
+                                         onClick={() => setIsOpen(!isOpen)}><BanIcon className={"sms-icon--link"}/>
+                                    <span className={"sms-nav-link--text"}>Admin</span>
+                                </NavLink>
+                            </li>
+                            :
+                            undefined
+                        }
+
                         <li className="nav-item">
                             <SignOutButton/>
                         </li>

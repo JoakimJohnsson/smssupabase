@@ -39,7 +39,7 @@ const Settings = () => {
             }
         }
 
-        getProfile().then(r => "hej")
+        getProfile().then(() => "Profile retrieved")
     }, [user.id, session])
 
     async function updateProfile({username, website, avatar_url}) {
@@ -69,8 +69,8 @@ const Settings = () => {
     }
 
     return (
-        <div className={"container-fluid p-3"}>
-            <div className={"row"}>
+        <div className={"container"}>
+            <div className={"row py-5"}>
                 <div className={"col-12"}>
 
                     <h1>Settings</h1>
@@ -81,7 +81,9 @@ const Settings = () => {
                             size={150}
                             onUpload={(url) => {
                                 setAvatarUrl(url)
-                                updateProfile({username, website, avatar_url: url})
+                                updateProfile({username, website, avatar_url: url}).then(() => {
+                                    console.log("Profile updated");
+                                })
                             }}
                         />
                         <div>
