@@ -1,7 +1,8 @@
 export const MESSAGES = {
     ERROR: {
         VALIDATION_EMAIL: "Please enter a valid email adress",
-        VALIDATION_PASSWORD: "Please enter a stronger password - at least 16 characters",
+        VALIDATION_EMAIL_EXISTS: "Please try to register with a different email",
+        VALIDATION_PASSWORD: "Please enter a stronger password - at least 10 characters",
         VALIDATION_SIGNUP_FORM: "Something went wrong when signing up",
         VALIDATION_LOGIN_FORM: "Something went wrong when logging in"
     },

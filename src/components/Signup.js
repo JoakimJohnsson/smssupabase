@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/Auth';
 import {MESSAGES, CLASSES} from "../helpers/constants";
 import {validateEmail, validatePassword} from "../helpers/validations";
+import {supabase} from "../supabase/supabaseClient";
 
 const Signup = () => {
     // Success and error variants of form-input is available
@@ -26,14 +27,26 @@ const Signup = () => {
 
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const {error} = await signUp({email, password});
 
-        if (error) {
-            setFormErrorMessage(error.message);
+        const emailExists = checkIfEmailExists(email)
+
+        if (emailExists) {
+            setFormErrorMessage(MESSAGES.ERROR.VALIDATION_EMAIL_EXISTS);
             setShowFormError(true);
         } else {
-            history.push('/success')
+            const {error} = await signUp({email, password});
+            if (error) {
+                setFormErrorMessage(error.message);
+                setShowFormError(true);
+            } else {
+                history.push('/success')
+            }
         }
+    }
+
+    async function checkIfEmailExists(e) {
+        let {data: email} = await supabase.from('users').select('email').match({email: e})
+        return email.length > 0;
     }
 
     const handleEmailValidation = (e) => {
