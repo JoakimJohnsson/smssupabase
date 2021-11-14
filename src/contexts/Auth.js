@@ -50,8 +50,7 @@ export function AuthProvider({ children }) {
             let {data, error, status} = await supabase
                 .from('profiles')
                 .select(`role`)
-                .eq('id', user.id)
-                .single();
+                .eq('id', user.id);
 
             if (error && status !== 406) {
                 throw error

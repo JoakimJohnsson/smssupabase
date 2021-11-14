@@ -16,6 +16,7 @@ const Signup = () => {
     const [passwordValidationMessage, setPasswordValidationMessage] = useState("");
     const [emailValidated, setEmailValidated] = useState(false);
     const [passwordValidated, setPasswordValidated] = useState(false);
+    const [emailExists, setEmailExists] = useState(false);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -28,9 +29,10 @@ const Signup = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        const emailExists = checkIfEmailExists(email)
+        await checkIfEmailExists(email);
 
-        if (emailExists) {
+        // Never sign up if user tries to sign up with an email that already exists
+        if (emailExists === true) {
             setFormErrorMessage(MESSAGES.ERROR.VALIDATION_EMAIL_EXISTS);
             setShowFormError(true);
         } else {
@@ -45,8 +47,14 @@ const Signup = () => {
     }
 
     async function checkIfEmailExists(e) {
-        let {data: email} = await supabase.from('users').select('email').match({email: e})
-        return email.length > 0;
+        let {data: email} = await supabase.from('users').select('email').eq('email', e)
+        if (email.length > 0) {
+            console.log("email.length", email.length);
+            setEmailExists(true);
+        } else {
+            console.log("set false email.length", email.length);
+            setEmailExists(false);
+        }
     }
 
     const handleEmailValidation = (e) => {
