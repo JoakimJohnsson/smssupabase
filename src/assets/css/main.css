@@ -5683,7 +5683,7 @@ textarea.form-control-lg {
 .me-0 {
   margin-right: 0 !important; }
 
-.me-1 {
+.me-1, .sms-icon--text {
   margin-right: 0.25rem !important; }
 
 .me-2, .sms-icon--link {
@@ -8866,6 +8866,9 @@ input {
 
 .sms-icon--link {
   width: 24px; }
+
+.sms-icon--text {
+  width: 18px; }
 
 .sms-icon--hamburger {
   width: 24px; }

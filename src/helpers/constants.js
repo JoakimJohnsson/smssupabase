@@ -13,7 +13,7 @@ export const MESSAGES = {
 }
 
 export const CLASSES = {
-    FORM_INPUT_DEFAULT: "form-control",
+    FORM_INPUT_DEFAULT: "form-control mb-3",
     FORM_INPUT_SUCCESS: "form-control success",
     FORM_INPUT_ERROR: "form-control danger",
 }

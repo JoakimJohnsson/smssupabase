@@ -63,6 +63,11 @@
   @extend .me-2;
 }
 
+.sms-icon--text {
+  width: 18px;
+  @extend .me-1;
+}
+
 .sms-icon--hamburger {
   width: 24px;
 }
