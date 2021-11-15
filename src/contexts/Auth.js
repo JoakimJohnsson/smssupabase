@@ -4,9 +4,18 @@ import {supabase} from '../supabase/supabaseClient';
 const AuthContext = React.createContext();
 
 export function AuthProvider({children}) {
-    const [user, setUser] = useState()
-    const [role, setRole] = useState(0)
-    const [loading, setLoading] = useState(true)
+
+    const defaultProfile = {
+        firstname: "",
+        lastname: "",
+        website: "",
+        avatar_url: "",
+        role: 0
+    }
+
+    const [user, setUser] = useState();
+    const [profile, setProfile] = useState(defaultProfile);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // Check active sessions and sets the user
@@ -16,7 +25,7 @@ export function AuthProvider({children}) {
 
         if (user) {
             // Check if user has admin privileges and set role.
-            updateRole(user).then(() => console.log("Role updated: " + role));
+            updateProfile(user).then(() => console.log("Profile updated"));
         }
 
         setLoading(false)
@@ -32,7 +41,7 @@ export function AuthProvider({children}) {
         return () => {
             listener?.unsubscribe()
         }
-    }, [role, user])
+    }, [user])
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
@@ -40,25 +49,23 @@ export function AuthProvider({children}) {
         signIn: (data) => supabase.auth.signIn(data),
         signOut: () => supabase.auth.signOut(),
         user,
-        role,
+        profile,
         session: () => supabase.auth.session()
     }
 
-    async function updateRole(user) {
+    async function updateProfile(user) {
         try {
             setLoading(true);
             let {data, error, status} = await supabase
                 .from('profiles')
-                .select(`role`)
+                .select(`firstname, lastname, role, website, avatar_url`)
                 .eq('id', user.id);
 
             if (error && status !== 406) {
                 throw error
             }
             if (data) {
-                if (data[0].role === 1) {
-                    setRole(1);
-                }
+                setProfile(...data)
             }
         } catch (error) {
             alert(error.message)

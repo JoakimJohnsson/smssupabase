@@ -10,7 +10,7 @@ const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
     const collapseClass = "collapse navbar-collapse";
-    const {role} = useAuth();
+    const {profile} = useAuth();
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark py-3">
@@ -55,11 +55,11 @@ const AuthorizedNavigation = () => {
                             </NavLink>
                         </li>
 
-                        {role === 1 ?
+                        {profile.role === 1 ?
                             <li className="nav-item">
                                 <NavLink to="/dashboard/admin" className={"nav-link"}
                                          onClick={() => setIsOpen(!isOpen)}><BanIcon className={"sms-icon--link"}/>
-                                    <span className={"sms-nav-link--text"}>Admin</span>
+                                    <span className={"sms-nav-link--text"}>Admin {profile.firstname}</span>
                                 </NavLink>
                             </li>
                             :
