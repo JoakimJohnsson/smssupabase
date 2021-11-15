@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 
 const AuthContext = React.createContext();
@@ -17,15 +17,23 @@ export function AuthProvider({children}) {
     const [profile, setProfile] = useState(defaultProfile);
     const [loading, setLoading] = useState(true);
 
+    const updateProfileOnChange = useCallback( () => {
+        supabase
+            .from('profiles')
+            .on('UPDATE', payload => {
+                updateProfile(user).then()
+            })
+            .subscribe()}, [user]);
+
     useEffect(() => {
         // Check active sessions and sets the user
-        const session = supabase.auth.session()
-
+        const session = supabase.auth.session();
         setUser(session?.user ?? null)
 
         if (user) {
             // Check if user has admin privileges and set role.
-            updateProfile(user).then(() => console.log("Profile updated"));
+            updateProfileOnChange(user);
+            updateProfile(user).then(() => supabase.removeSubscription(updateProfileOnChange));
         }
 
         setLoading(false)
@@ -41,7 +49,7 @@ export function AuthProvider({children}) {
         return () => {
             listener?.unsubscribe()
         }
-    }, [user])
+    }, [user, updateProfileOnChange])
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {

@@ -42,7 +42,7 @@ const Settings = () => {
             }
         }
 
-        getProfile().then(() => "Profile retrieved")
+        getProfile().then(() => "Do something")
     }, [user.id, session])
 
     async function updateProfile({firstname, lastname, website, avatar_url}) {
@@ -87,10 +87,8 @@ const Settings = () => {
                             <Avatar
                                 url={avatar_url}
                                 onUpload={(url) => {
-                                    setAvatarUrl(url)
-                                    updateProfile({avatar_url: url}).then(() => {
-                                        console.log("Profile updated");
-                                    })
+                                    setAvatarUrl(url);
+                                    updateProfile({avatar_url: url}).then(() => "Do something");
                                 }}
                             />
                         </div>
@@ -134,8 +132,6 @@ const Settings = () => {
                         </div>
 
                     </div>
-
-
                 </div>
             </div>
         </div>

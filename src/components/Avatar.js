@@ -7,9 +7,7 @@ function Avatar({url, onUpload}) {
 
     useEffect(() => {
         if (url) {
-            downloadImage(url).then(() => {
-                console.log('Image downloaded');
-            });
+            downloadImage(url).then(() => "Do something");
         }
     }, [url]);
 

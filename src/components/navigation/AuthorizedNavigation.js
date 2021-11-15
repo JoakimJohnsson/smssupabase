@@ -8,12 +8,12 @@ import {useAuth} from "../../contexts/Auth";
 const AuthorizedNavigation = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
+    const collapseClassShow = "collapse navbar-collapse show pt-3 pt-xl-0";
     const collapseClass = "collapse navbar-collapse";
     const {profile} = useAuth();
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark py-3">
+        <nav className="navbar navbar-expand-xl navbar-dark py-3">
             <div className="container-fluid">
                 <Link to="/" className={"hocus-standard h-100 d-flex align-items-center"}>
                     <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
@@ -22,7 +22,7 @@ const AuthorizedNavigation = () => {
                         <span className={"d-inline d-sm-none"}>SMS</span>
                     </div>
                 </Link>
-                <button className={"btn text-white d-block d-lg-none"} onClick={() => setIsOpen(!isOpen)}>
+                <button className={"btn text-white d-block d-xl-none"} onClick={() => setIsOpen(!isOpen)}>
                     <span className={"visually-hidden"}>menu</span>
                     {
                         isOpen ?
@@ -32,7 +32,7 @@ const AuthorizedNavigation = () => {
                     }
                 </button>
                 <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
+                    <ul className="navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-xl-0">
                         <li className="nav-item">
                             <NavLink exact to="/" className={"nav-link"}
                                      onClick={() => setIsOpen(!isOpen)}><HomeIcon className={"sms-icon--link"}/>
