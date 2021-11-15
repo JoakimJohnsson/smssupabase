@@ -26,28 +26,22 @@ function Avatar({url, size, onUpload}) {
         }
     }
 
-
     async function uploadAvatar(event) {
         try {
             setUploading(true);
-
             if (!event.target.files || event.target.files.length === 0) {
                 throw new Error('You must select an image to upload.');
             }
-
             const file = event.target.files[0];
             const fileExt = file.name.split('.').pop();
             const fileName = `${Math.random()}.${fileExt}`;
             const filePath = `${fileName}`;
-
             let {error: uploadError} = await supabase.storage
                 .from('avatars')
                 .upload(filePath, file);
-
             if (uploadError) {
                 throw uploadError;
             }
-
             onUpload(filePath);
         } catch (error) {
             alert(error.message);
@@ -61,29 +55,29 @@ function Avatar({url, size, onUpload}) {
             {avatarUrl ?
                 <img
                     src={avatarUrl}
-                    alt="Avatar"
-                    className="avatar image"
-                    style={{height: size, width: size}}
+                    alt="User avatar"
+                    className="w-100 mb-3"
                 />
                 :
-                <div className="avatar no-image" style={{height: size, width: size}}/>
+                false
             }
-            <div style={{width: size}}>
-                <label className="btn-primary-defaults btn-lg block mb-10 text-center cursor-pointer" htmlFor="single">
-                    {uploading ? 'Uploading ...' : 'Upload'}
+            {avatarUrl ?
+                <label className="form-label" htmlFor="single">
+                    {uploading ? 'Uploading ...' : 'Change image'}
                 </label>
-                <input
-                    style={{
-                        visibility: 'hidden',
-                        position: 'absolute',
-                    }}
-                    type="file"
-                    id="single"
-                    accept="image/*"
-                    onChange={uploadAvatar}
-                    disabled={uploading}
-                />
-            </div>
+                :
+                <label className="form-label" htmlFor="single">
+                    {uploading ? 'Uploading ...' : 'Upload new image'}
+                </label>
+            }
+            <input
+                className={"form-control"}
+                type="file"
+                id="single"
+                accept="image/*"
+                onChange={uploadAvatar}
+                disabled={uploading}
+            />
         </div>
     )
 }

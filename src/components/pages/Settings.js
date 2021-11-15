@@ -2,11 +2,13 @@ import {useAuth} from '../../contexts/Auth';
 import React, {useEffect, useState} from "react";
 import {supabase} from "../../supabase/supabaseClient";
 import Avatar from "../Avatar";
+import {CLASSES} from "../../helpers/constants";
 
 const Settings = () => {
 
     const [loading, setLoading] = useState(true);
-    const [username, setUsername] = useState(null);
+    const [firstname, setFirstname] = useState(null);
+    const [lastname, setLastname] = useState(null);
     const [website, setWebsite] = useState(null);
     const [avatar_url, setAvatarUrl] = useState(null);
 
@@ -19,7 +21,7 @@ const Settings = () => {
                 setLoading(true);
                 let {data, error, status} = await supabase
                     .from('profiles')
-                    .select(`username, website, avatar_url`)
+                    .select(`firstname, lastname, website, avatar_url`)
                     .eq('id', user.id)
                     .single();
 
@@ -28,7 +30,8 @@ const Settings = () => {
                 }
 
                 if (data) {
-                    setUsername(data.username);
+                    setFirstname(data.firstname);
+                    setLastname(data.lastname);
                     setWebsite(data.website);
                     setAvatarUrl(data.avatar_url);
                 }
@@ -42,13 +45,14 @@ const Settings = () => {
         getProfile().then(() => "Profile retrieved")
     }, [user.id, session])
 
-    async function updateProfile({username, website, avatar_url}) {
+    async function updateProfile({firstname, lastname, website, avatar_url}) {
         try {
             setLoading(true)
 
             const updates = {
                 id: user.id,
-                username,
+                firstname,
+                lastname,
                 website,
                 avatar_url,
                 updated_at: new Date(),
@@ -74,48 +78,65 @@ const Settings = () => {
                 <div className={"col-12"}>
 
                     <h1>Settings</h1>
-                    <div className={""}>
-                        <p>Welcome, {user?.id}!</p>
-                        <Avatar
-                            url={avatar_url}
-                            size={150}
-                            onUpload={(url) => {
-                                setAvatarUrl(url)
-                                updateProfile({username, website, avatar_url: url}).then(() => {
-                                    console.log("Profile updated");
-                                })
-                            }}
-                        />
-                        <div>
-                            <label htmlFor="email">Email</label>
-                            <input id="email" className={""} type="text" value={user.email} disabled/>
-                        </div>
-                        <div>
-                            <label htmlFor="username">Name</label>
-                            <input
-                                id="username"
-                                className={""}
-                                type="text"
-                                value={username || ''}
-                                onChange={(e) => setUsername(e.target.value)}
+
+                    <div className={"row mt-5"}>
+
+                        <div className={"col-12 col-md-6 col-lg-4 mb-5 p-4 p-md-5"}>
+                            <h2>Profile image</h2>
+
+                            <Avatar
+                                url={avatar_url}
+                                size={150}
+                                onUpload={(url) => {
+                                    setAvatarUrl(url)
+                                    updateProfile({avatar_url: url}).then(() => {
+                                        console.log("Profile updated");
+                                    })
+                                }}
                             />
                         </div>
-                        <div>
-                            <label htmlFor="website">Website</label>
+
+                        <div className={"col-12 col-md-6 col-lg-4 mb-5 p-4 p-md-5"}>
+                            <h2>Information</h2>
+                            <label className={"form-label"} htmlFor="email">Email</label>
+                            <input id="email" className={CLASSES.FORM_INPUT_DISABLED} type="text" value={user.email} disabled/>
+                            <label className={"form-label"} htmlFor="firstname">First name</label>
+                            <input
+                                id="firstname"
+                                className={CLASSES.FORM_INPUT_DEFAULT}
+                                type="text"
+                                value={firstname || ''}
+                                onChange={(e) => setFirstname(e.target.value)}
+                            />
+                            <label className={"form-label"} htmlFor="lastname">Last name</label>
+                            <input
+                                id="lastname"
+                                className={CLASSES.FORM_INPUT_DEFAULT}
+                                type="text"
+                                value={lastname || ''}
+                                onChange={(e) => setLastname(e.target.value)}
+                            />
+                            <label className={"form-label"} htmlFor="website">Website</label>
                             <input
                                 id="website"
-                                className={""}
+                                className={CLASSES.FORM_INPUT_DEFAULT}
                                 type="text"
                                 value={website || ''}
                                 onChange={(e) => setWebsite(e.target.value)}
                             />
+                            <button className={"btn btn-primary"}
+                                    onClick={() => updateProfile({firstname, lastname, website})}
+                                    disabled={loading}>
+                                {loading ? 'Saving ...' : 'Update'}
+                            </button>
                         </div>
-                        <button className={""}
-                                onClick={() => updateProfile({username, website, avatar_url})}
-                                disabled={loading}>
-                            {loading ? 'Loading ...' : 'Update'}
-                        </button>
+
+                        <div className={"col-12 col-md-6 col-lg-4"}>
+                        </div>
+
                     </div>
+
+
                 </div>
             </div>
         </div>

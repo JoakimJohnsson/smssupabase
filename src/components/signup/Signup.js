@@ -48,6 +48,7 @@ const Signup = () => {
     }
 
     async function checkIfEmailExists(e) {
+        
         let {data: email} = await supabase.from('users').select('email').eq('email', e)
         if (email.length > 0) {
             console.log("email.length", email.length);
@@ -59,56 +60,35 @@ const Signup = () => {
     }
 
     const handleEmailValidation = (e) => {
-        if (e.nativeEvent.data !== null) {
-            // Send true for success
-            validateEmail(e) ? handleEmailInput(true, false) : handleEmailInput(false, false);
-        } else {
-            handleEmailInput(false, true)
-        }
+        // Send true for success
+        validateEmail(e) ? handleEmailInput(true) : handleEmailInput(false);
     }
 
     const handlePasswordValidation = (e) => {
-        if (e.nativeEvent.data !== null) {
-            // Send true for success
-            validatePassword(e) ? handlePasswordInput(true, false) : handlePasswordInput(false, false);
-        } else {
-            handlePasswordInput(false, true)
-        }
+        validatePassword(e) ? handlePasswordInput(true) : handlePasswordInput(false);
     }
 
-    const handleEmailInput = (success, empty) => {
-        if (empty) {
-            setEmailInputClass(CLASSES.FORM_INPUT_DEFAULT);
+    const handleEmailInput = (success) => {
+        if (success) {
+            setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setEmailValidated(true);
+            setEmailValidationMessage(MESSAGES.SUCCESS.VALIDATION_EMAIL);
+        } else {
+            setEmailInputClass(CLASSES.FORM_INPUT_ERROR);
             setEmailValidated(false);
-            setEmailValidationMessage("");
-        } else {
-            if (success) {
-                setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);
-                setEmailValidated(true);
-                setEmailValidationMessage(MESSAGES.SUCCESS.VALIDATION_EMAIL);
-            } else {
-                setEmailInputClass(CLASSES.FORM_INPUT_ERROR);
-                setEmailValidated(false);
-                setEmailValidationMessage(MESSAGES.ERROR.VALIDATION_EMAIL);
-            }
+            setEmailValidationMessage(MESSAGES.ERROR.VALIDATION_EMAIL);
         }
     }
 
-    const handlePasswordInput = (success, empty) => {
-        if (empty) {
-            setPasswordInputClass(CLASSES.FORM_INPUT_DEFAULT);
-            setPasswordValidated(false);
-            setPasswordValidationMessage("");
+    const handlePasswordInput = (success) => {
+        if (success) {
+            setPasswordInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setPasswordValidated(true);
+            setPasswordValidationMessage(MESSAGES.SUCCESS.VALIDATION_PASSWORD);
         } else {
-            if (success) {
-                setPasswordInputClass(CLASSES.FORM_INPUT_SUCCESS);
-                setPasswordValidated(true);
-                setPasswordValidationMessage(MESSAGES.SUCCESS.VALIDATION_PASSWORD);
-            } else {
-                setPasswordInputClass(CLASSES.FORM_INPUT_ERROR);
-                setPasswordValidated(false)
-                setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
-            }
+            setPasswordInputClass(CLASSES.FORM_INPUT_ERROR);
+            setPasswordValidated(false)
+            setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
         }
     }
 

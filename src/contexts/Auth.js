@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { supabase } from '../supabase/supabaseClient';
+import React, {useContext, useState, useEffect} from 'react';
+import {supabase} from '../supabase/supabaseClient';
 
 const AuthContext = React.createContext();
 
-export function AuthProvider({ children }) {
+export function AuthProvider({children}) {
     const [user, setUser] = useState()
     const [role, setRole] = useState(0)
     const [loading, setLoading] = useState(true)
@@ -16,13 +16,13 @@ export function AuthProvider({ children }) {
 
         if (user) {
             // Check if user has admin privileges and set role.
-            updateRole(user).then(() => console.log("Role updated"));
+            updateRole(user).then(() => console.log("Role updated: " + role));
         }
 
         setLoading(false)
 
         // Listen for changes on auth state (logged in, signed out, etc.)
-        const { data: listener } = supabase.auth.onAuthStateChange(
+        const {data: listener} = supabase.auth.onAuthStateChange(
             async (event, session) => {
                 setUser(session?.user ?? null)
                 setLoading(false)
@@ -55,12 +55,10 @@ export function AuthProvider({ children }) {
             if (error && status !== 406) {
                 throw error
             }
-
             if (data) {
-                if (data.role === 1) {
+                if (data[0].role === 1) {
                     setRole(1);
                 }
-
             }
         } catch (error) {
             alert(error.message)
