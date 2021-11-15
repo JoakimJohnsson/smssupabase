@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 
-function Avatar({url, size, onUpload}) {
+function Avatar({url, onUpload}) {
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [uploading, setUploading] = useState(false);
 
@@ -62,16 +62,16 @@ function Avatar({url, size, onUpload}) {
                 false
             }
             {avatarUrl ?
-                <label className="form-label" htmlFor="single">
+                <label className="btn btn-primary" htmlFor="single">
                     {uploading ? 'Uploading ...' : 'Change image'}
                 </label>
                 :
-                <label className="form-label" htmlFor="single">
+                <label className="btn btn-primary" htmlFor="single">
                     {uploading ? 'Uploading ...' : 'Upload new image'}
                 </label>
             }
             <input
-                className={"form-control"}
+                className={"d-none"}
                 type="file"
                 id="single"
                 accept="image/*"

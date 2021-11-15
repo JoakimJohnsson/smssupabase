@@ -86,7 +86,6 @@ const Settings = () => {
 
                             <Avatar
                                 url={avatar_url}
-                                size={150}
                                 onUpload={(url) => {
                                     setAvatarUrl(url)
                                     updateProfile({avatar_url: url}).then(() => {
