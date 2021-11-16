@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
+import {downloadImage} from "../helpers/functions";
 
 function Avatar({url, onUpload}) {
     const [avatarUrl, setAvatarUrl] = useState(null);
@@ -7,22 +8,9 @@ function Avatar({url, onUpload}) {
 
     useEffect(() => {
         if (url) {
-            downloadImage(url).then(() => "Do something");
+            downloadImage(url, setAvatarUrl).then(() => "Do something");
         }
     }, [url]);
-
-    async function downloadImage(path) {
-        try {
-            const {data, error} = await supabase.storage.from('avatars').download(path);
-            if (error) {
-                console.log('Error trying to download image: ', error.message);
-            }
-            const url = URL.createObjectURL(data);
-            setAvatarUrl(url);
-        } catch (error) {
-            console.log('Error downloading image: ', error.message);
-        }
-    }
 
     async function uploadAvatar(event) {
         try {

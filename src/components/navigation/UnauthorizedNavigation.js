@@ -4,7 +4,7 @@ import shieldWhite from "../../assets/images/shield__white.svg";
 
 const UnauthorizedNavigation = () => {
     return (
-        <nav className={"p-3"}>
+        <nav className={"p-3 navbar navbar-dark"}>
             <Link to="/" className={"hocus-standard h-100 d-flex align-items-center"}>
                 <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
                 <div className={"sms-logo-text"}>

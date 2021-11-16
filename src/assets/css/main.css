@@ -8937,27 +8937,36 @@ input {
     @media (min-width: 992px) {
       .sms-header .navbar-nav {
         border-top: none; } }
-  @media (min-width: 992px) {
-    .sms-header .nav-item {
-      margin-right: 1rem; } }
-  .sms-header .nav-item .nav-link {
-    border-radius: 0.25rem;
-    background-color: transparent;
-    border: 1px solid transparent;
+  .sms-header .nav-item {
     display: flex;
-    align-items: center;
-    color: #66dafa;
-    padding-right: .5rem;
-    padding-left: .5rem; }
-    .sms-header .nav-item .nav-link.active {
-      background-color: #0e3b48;
-      color: #a8e6f8; }
-    .sms-header .nav-item .nav-link:hover, .sms-header .nav-item .nav-link:focus {
-      color: #a8e6f8; }
-  .sms-header .nav-item .sms-nav-link--text {
-    font-weight: 300;
-    display: inline-block;
-    margin-top: 2px; }
+    align-items: center; }
+    @media (min-width: 992px) {
+      .sms-header .nav-item {
+        margin-right: .5rem; } }
+    .sms-header .nav-item .nav-link {
+      border-radius: 0.25rem;
+      background-color: transparent;
+      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      color: #66dafa;
+      padding-right: .5rem;
+      padding-left: .5rem; }
+      .sms-header .nav-item .nav-link.active {
+        background-color: #0e3b48;
+        color: #a8e6f8; }
+      .sms-header .nav-item .nav-link:hover, .sms-header .nav-item .nav-link:focus {
+        color: #a8e6f8; }
+    .sms-header .nav-item .sms-nav-link--text {
+      font-weight: 300;
+      display: inline-block;
+      margin-top: 2px; }
+    .sms-header .nav-item .avatar-image {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 25px;
+      margin-right: .5rem; }
 
 .sms-hero-header {
   background: center/cover no-repeat url("../images/heroimage.jpg"); }

@@ -4,6 +4,7 @@ import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} 
 import shieldWhite from "../../assets/images/shield__white.svg";
 import SignOutButton from "../SignOutButton";
 import {useAuth} from "../../contexts/Auth";
+import NavbarProfileInformation from "../NavbarProfileInformation";
 
 const AuthorizedNavigation = () => {
 
@@ -59,12 +60,16 @@ const AuthorizedNavigation = () => {
                             <li className="nav-item">
                                 <NavLink to="/dashboard/admin" className={"nav-link"}
                                          onClick={() => setIsOpen(!isOpen)}><BanIcon className={"sms-icon--link"}/>
-                                    <span className={"sms-nav-link--text"}>Admin {profile.firstname}</span>
+                                    <span className={"sms-nav-link--text"}>Admin</span>
                                 </NavLink>
                             </li>
                             :
-                            undefined
+                            false
                         }
+
+                        <li className="nav-item">
+                            <NavbarProfileInformation/>
+                        </li>
 
                         <li className="nav-item">
                             <SignOutButton/>
