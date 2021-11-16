@@ -30,7 +30,6 @@ const Login = () => {
 
     return (
         <div className={"w-100"}>
-            <h2 className={"mb-4"}>Log in</h2>
             <form onSubmit={handleSubmit} className={"sms-form"}>
                 <label className={"form-label"} htmlFor="input-email">Email</label>
                 <input id="input-email"

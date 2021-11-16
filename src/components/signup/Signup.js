@@ -117,7 +117,7 @@ const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <SignupValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type="submit" className={enableSubmitButton() === true ? "btn btn-primary" : "btn btn-primary disabled"}>Sign up</button>
+                <button type="submit" className={enableSubmitButton() === true ? "btn btn-secondary" : "btn btn-secondary disabled"}>Sign up</button>
                 {showFormError ?
                     <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>
                     :

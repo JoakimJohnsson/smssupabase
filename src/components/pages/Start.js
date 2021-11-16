@@ -23,12 +23,11 @@ const Start = () => {
         (
             <>
                 <HeroHeader/>
-                <div className={"container-fluid p-3"}>
-                    <div className={"row justify-content-center pb-5"}>
+                <div className={"container-fluid p-5"}>
+                    <div className={"row justify-content-center pb-5 mb-5"}>
                         <div className={"col-12 col-md-6 d-flex flex-column"}>
                             <div className={"align-self-center mb-4 d-flex align-items-center flex-column"}>
-                                <h2 className={"fs-1 text-primary"}>Register here!</h2>
-                                <p className={"lead mb-4"}>Sometimes they come back.</p>
+                                <h2 className={"fs-1 text-secondary mb-4"} id={"create-account-section"}>Create account</h2>
                                 <ChevronDoubleDownIcon className="sms-icon--large text-info"/>
                             </div>
                             <Signup/>

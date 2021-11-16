@@ -79,13 +79,26 @@
 // Forms
 .sms-form {
   .form-control {
+    border-bottom: 3px solid $gray-600;
+    border-radius: 0;
+    &:focus {
+      border-bottom: 3px solid $primary;
+    }
     &.success {
-      background-color: $success--lighter;
-      border: 1px solid $success;
+      border-bottom: 3px solid $success;
     }
     &.danger {
-      background-color: $danger--lighter;
-      border: 1px solid $danger;
+      border-bottom: 3px solid $danger;
     }
+
   }
+}
+
+// Buttons
+.btn-cta {
+  min-width: 50%;
+  padding: 1rem 3rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.3rem;
 }

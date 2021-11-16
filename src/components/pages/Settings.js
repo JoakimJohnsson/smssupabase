@@ -93,7 +93,7 @@ const Settings = () => {
                             />
                         </div>
 
-                        <div className={"col-12 col-md-6 col-lg-4 mb-5 p-4 p-md-5"}>
+                        <div className={"col-12 col-md-6 col-lg-4 mb-5 p-4 p-md-5 sms-form"}>
                             <h2>Information</h2>
                             <label className={"form-label"} htmlFor="email">Email</label>
                             <input id="email" className={CLASSES.FORM_INPUT_DISABLED} type="text" value={user.email} disabled/>
