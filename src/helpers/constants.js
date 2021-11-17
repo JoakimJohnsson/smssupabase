@@ -17,4 +17,8 @@ export const CLASSES = {
     FORM_INPUT_DISABLED: "form-control opacity-50 mb-3",
     FORM_INPUT_SUCCESS: "form-control success",
     FORM_INPUT_ERROR: "form-control danger",
+    SPINNER: "spinner-border",
+    SPINNER_SMALL: "spinner-border spinner-border-sm",
+    SPINNER_GROW: "spinner-grow",
+    SPINNER_GROW_SMALL: "spinner-grow spinner-grow-sm",
 }
