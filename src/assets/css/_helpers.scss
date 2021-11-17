@@ -205,3 +205,27 @@ input {
     border-right: $border--default !important;
   }
 }
+
+.border-sm-start {
+  @include media-breakpoint-up(sm) {
+    border-left: $border--default !important;
+  }
+}
+
+.border-md-start {
+  @include media-breakpoint-up(md) {
+    border-left: $border--default !important;
+  }
+}
+
+.border-lg-start {
+  @include media-breakpoint-up(lg) {
+    border-left: $border--default !important;
+  }
+}
+
+.border-xl-start {
+  @include media-breakpoint-up(xl) {
+    border-left: $border--default !important;
+  }
+}

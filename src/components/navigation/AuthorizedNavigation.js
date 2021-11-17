@@ -14,8 +14,8 @@ const AuthorizedNavigation = () => {
     const {profile} = useAuth();
 
     return (
-        <nav className="navbar navbar-expand-xl navbar-dark py-3">
-            <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark py-3">
+            <div className="container-fluid px-3">
                 <Link to="/" className={"hocus-standard h-100 d-flex align-items-center"}>
                     <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
                     <div className={"sms-logo-text"}>
@@ -23,7 +23,7 @@ const AuthorizedNavigation = () => {
                         <span className={"d-inline d-sm-none"}>SMS</span>
                     </div>
                 </Link>
-                <button className={"btn text-white d-block d-xl-none"} onClick={() => setIsOpen(!isOpen)}>
+                <button className={"btn text-white d-block d-lg-none"} onClick={() => setIsOpen(!isOpen)}>
                     <span className={"visually-hidden"}>menu</span>
                     {
                         isOpen ?
@@ -33,7 +33,7 @@ const AuthorizedNavigation = () => {
                     }
                 </button>
                 <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-xl-0">
+                    <ul className="navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
                         <li className="nav-item">
                             <NavLink exact to="/" className={"nav-link"}
                                      onClick={() => setIsOpen(!isOpen)}><HomeIcon className={"sms-icon--link"}/>
@@ -48,14 +48,12 @@ const AuthorizedNavigation = () => {
                             </NavLink>
 
                         </li>
-
                         <li className="nav-item">
                             <NavLink to="/dashboard/settings" className={"nav-link"}
                                      onClick={() => setIsOpen(!isOpen)}><CogIcon className={"sms-icon--link"}/>
                                 <span className={"sms-nav-link--text"}>Settings</span>
                             </NavLink>
                         </li>
-
                         {profile.role === 1 ?
                             <li className="nav-item">
                                 <NavLink to="/dashboard/admin" className={"nav-link"}
@@ -66,12 +64,8 @@ const AuthorizedNavigation = () => {
                             :
                             false
                         }
-
-                        <li className="nav-item">
+                        <li className="nav-item border-start-0 border-lg-start">
                             <NavbarProfileInformation/>
-                        </li>
-
-                        <li className="nav-item">
                             <SignOutButton/>
                         </li>
                     </ul>

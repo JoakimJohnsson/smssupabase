@@ -73,8 +73,8 @@ const Settings = () => {
     }
 
     return (
-        <main className={"container main-container"}>
-            <div className={"row py-5"}>
+        <main className={"container-fluid main-container"}>
+            <div className={"row"}>
                 <div className={"col-12"}>
 
                     <h1>Settings</h1>

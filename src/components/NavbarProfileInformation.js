@@ -4,9 +4,16 @@ import {downloadImage} from "../helpers/functions";
 import Spinner from "./Spinner";
 
 const NavbarProfileInformation = () => {
-
     const [avatarUrl, setAvatarUrl] = useState(null);
     const {profile} = useAuth();
+    const prepareUrl = (url) => {
+        if (url.substring(0, 7) !== 'http://') {
+            return 'https://' + url;
+        } else {
+            return url;
+        }
+    }
+    const userUrl = profile.website ? prepareUrl(profile.website) : false;
 
     useEffect(() => {
         if (profile.avatar_url) {
@@ -16,8 +23,11 @@ const NavbarProfileInformation = () => {
 
     return avatarUrl ? (
             <div className="nav-link">
-                <img src={avatarUrl} className={"avatar-image"} alt={"avatar"}/>
-                <p className={"m-0"}>{profile.firstname}</p>
+                {userUrl ?
+                    <a href={userUrl}><img src={avatarUrl} className={"avatar-image"} alt={"avatar"}/></a>
+                    :
+                    <img src={avatarUrl} className={"avatar-image"} alt={"avatar"}/>
+                }
             </div>
         )
         :

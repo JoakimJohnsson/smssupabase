@@ -1,7 +1,7 @@
 import {useHistory} from "react-router-dom";
 import React from "react";
 import {useAuth} from "../contexts/Auth";
-import {LoginIcon} from "@heroicons/react/solid";
+import {LogoutIcon} from "@heroicons/react/solid";
 
 const SignOutButton = () => {
 
@@ -14,8 +14,8 @@ const SignOutButton = () => {
     }
 
     return (
-        <button onClick={handleSignOut} className="nav-link">
-            <LoginIcon className="sms-icon--link"/><span className={"sms-nav-link--text"}>Sign out</span>
+        <button onClick={handleSignOut} className="nav-link px-0" aria-label={"sign-out"}>
+            <LogoutIcon className="sms-icon--link"/><span className={"sms-nav-link--text d-lg-none d-xl-inline"}>Sign out</span>
         </button>
     )
 }
