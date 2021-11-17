@@ -73,7 +73,7 @@ const Settings = () => {
     }
 
     return (
-        <div className={"container"}>
+        <main className={"container main-container"}>
             <div className={"row py-5"}>
                 <div className={"col-12"}>
 
@@ -134,7 +134,7 @@ const Settings = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     )
 }
 

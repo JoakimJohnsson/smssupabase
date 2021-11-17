@@ -8786,6 +8786,10 @@ textarea.form-control-lg {
   .hocus-standard:hover, .hocus-standard:focus, .hocus-standard:active {
     opacity: 90%; }
 
+.main-container {
+  padding: 3rem;
+  min-height: calc(100vh - 260px); }
+
 input:autofill {
   background: #fff; }
 
@@ -8970,6 +8974,9 @@ input {
 
 .sms-hero-header {
   background: center/cover no-repeat url("../images/heroimage.jpg"); }
+
+footer {
+  min-height: 170px; }
 
 .sms-icon--link {
   width: 24px; }

@@ -9,7 +9,7 @@ import Admin from "./pages/Admin";
 
 const Routes = () => {
 
-    const {user, role} = useAuth();
+    const {user, profile} = useAuth();
 
     return (
         <>
@@ -17,7 +17,7 @@ const Routes = () => {
             <Route path="/success" component={SignupSuccess}/>
             <Route exact path="/dashboard"> {!user ? <Redirect to="/"/> : <Dashboard/>}</Route>
             <Route path="/dashboard/settings"> {!user ? <Redirect to="/"/> : <Settings/>}</Route>
-            <Route path="/dashboard/admin"> {!(user && role === 1) ? <Redirect to="/"/> : <Admin/>}</Route>
+            <Route path="/dashboard/admin"> {!(user && profile.role === 1) ? <Redirect to="/"/> : <Admin/>}</Route>
         </>
     )
 }

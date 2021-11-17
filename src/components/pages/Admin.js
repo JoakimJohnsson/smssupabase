@@ -3,7 +3,7 @@ import React from "react";
 const Admin = () => {
 
     return (
-        <div className={"container-fluid p-3"}>
+        <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12"}>
                     <h1 className={""}>
@@ -11,7 +11,7 @@ const Admin = () => {
                     </h1>
                 </div>
             </div>
-        </div>
+        </main>
     )
 }
 

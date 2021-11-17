@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const SignupSuccess = () => {
 
     return (
-        <div className={"container-fluid p-3"}>
+        <main className={"container-fluid main-container"}>
             <div className={"row justify-content-center py-5"}>
                 <div className={"col-12 col-md-6 d-flex flex-column"}>
                     <div className={"align-self-center mb-4 d-flex align-items-center flex-column w-100"}>
@@ -20,7 +20,7 @@ const SignupSuccess = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </main>
     )
 }
 

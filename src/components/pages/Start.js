@@ -9,7 +9,7 @@ const Start = () => {
     const {user} = useAuth();
 
     return user ? (
-            <div className={"container-fluid p-3"}>
+            <div className={"container-fluid main-container"}>
                 <div className={"row"}>
                     <div className={"col-12"}>
                         <h1 className={""}>
@@ -23,7 +23,7 @@ const Start = () => {
         (
             <>
                 <HeroHeader/>
-                <div className={"container-fluid p-5"}>
+                <main className={"container-fluid p-5"}>
                     <div className={"row justify-content-center pb-5 mb-5"}>
                         <div className={"col-12 col-md-6 d-flex flex-column"}>
                             <div className={"align-self-center mb-4 d-flex align-items-center flex-column"}>
@@ -33,7 +33,7 @@ const Start = () => {
                             <Signup/>
                         </div>
                     </div>
-                </div>
+                </main>
             </>
         )
 }
