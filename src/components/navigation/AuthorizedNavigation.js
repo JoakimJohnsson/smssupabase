@@ -9,12 +9,12 @@ import NavbarProfileInformation from "../NavbarProfileInformation";
 const AuthorizedNavigation = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const collapseClassShow = "collapse navbar-collapse show pt-3 pt-xl-0";
+    const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
     const collapseClass = "collapse navbar-collapse";
     const {profile} = useAuth();
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark py-3">
+        <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid px-3">
                 <Link to="/" className={"hocus-standard h-100 d-flex align-items-center"}>
                     <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
@@ -23,7 +23,7 @@ const AuthorizedNavigation = () => {
                         <span className={"d-inline d-sm-none"}>SMS</span>
                     </div>
                 </Link>
-                <button className={"btn text-white d-block d-lg-none"} onClick={() => setIsOpen(!isOpen)}>
+                <button className={isOpen ? "btn d-block d-lg-none text-danger" : "btn d-block d-lg-none text-primary"} onClick={() => setIsOpen(!isOpen)}>
                     <span className={"visually-hidden"}>menu</span>
                     {
                         isOpen ?

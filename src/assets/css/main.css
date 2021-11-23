@@ -8876,7 +8876,8 @@ input {
     border-left: 1px solid #444 !important; } }
 
 .sms-header {
-  background-color: #27293b; }
+  background-color: #27293b;
+  font-size: .875rem; }
   .sms-header .sms-logo-shield {
     width: 30px;
     height: 30px; }
@@ -8899,19 +8900,20 @@ input {
       .sms-header .nav-item {
         margin-right: .5rem; } }
     .sms-header .nav-item .nav-link {
-      border-radius: 0.25rem;
       background-color: transparent;
       border: 1px solid transparent;
       display: flex;
       align-items: center;
       color: #66dafa;
-      padding-right: .5rem;
-      padding-left: .5rem; }
+      padding: .4rem .4rem; }
       .sms-header .nav-item .nav-link.active {
-        background-color: #0e3b48;
+        border: none;
         color: #a8e6f8; }
       .sms-header .nav-item .nav-link:hover, .sms-header .nav-item .nav-link:focus {
         color: #a8e6f8; }
+      @media (min-width: 992px) {
+        .sms-header .nav-item .nav-link {
+          padding: .2rem .4rem; } }
     .sms-header .nav-item .sms-nav-link--text {
       font-weight: 300;
       display: inline-block;

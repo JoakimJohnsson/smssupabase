@@ -5,6 +5,7 @@
 // Header
 .sms-header {
   background-color: $color-bg-dog;
+  font-size: .875rem;
   .sms-logo-shield {
     width: 30px;
     height: 30px;
@@ -31,20 +32,21 @@
       margin-right: .5rem;
     }
     .nav-link {
-      border-radius: $border-radius;
       background-color: transparent;
       border: 1px solid transparent;
       display: flex;
       align-items: center;
       color: $primary;
-      padding-right: .5rem;
-      padding-left: .5rem;
+      padding: .4rem .4rem;
       &.active {
-        background-color: $primary--darker;
+        border: none;
         color: $primary--lighter;
       }
       &:hover, &:focus {
         color: $primary--lighter;
+      }
+      @include media-breakpoint-up(lg) {
+        padding: .2rem .4rem;
       }
     }
     .sms-nav-link--text {
