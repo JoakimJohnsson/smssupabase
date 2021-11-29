@@ -1,6 +1,7 @@
 import {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/Auth';
+import {simpleInputValidation} from "../helpers/validations";
 
 const Login = () => {
 
@@ -30,19 +31,6 @@ const Login = () => {
         }
     }
 
-    const handleEmailValidation = (e) => {
-        // Send true for success
-        e.target.value !== "" ? setEmailValidated(true) : setEmailValidated(false);
-    }
-
-    const handlePasswordValidation = (e) => {
-        e.target.value !== "" ? setPasswordValidated(true) : setPasswordValidated(false);
-    }
-
-    const enableSubmitButton = () => {
-        return emailValidated && passwordValidated;
-    }
-
     return (
         <div className={"w-100"}>
             <form onSubmit={handleSubmit} className={"sms-form"}>
@@ -50,7 +38,7 @@ const Login = () => {
                 <input id="input-email"
                        type="email"
                        ref={emailRef}
-                       onChange={(e) => handleEmailValidation(e)}
+                       onChange={(e) => simpleInputValidation(e, setEmailValidated)}
                        className={emailValidated ? "form-control success mb-3" : "form-control mb-3"}
                        placeholder={"name@myplace.se"}
                        required/>
@@ -58,11 +46,11 @@ const Login = () => {
                 <input id="input-password"
                        type="password"
                        ref={passwordRef}
-                       onChange={(e) => handlePasswordValidation(e)}
+                       onChange={(e) => simpleInputValidation(e, setPasswordValidated)}
                        className={passwordValidated ? "form-control success mb-3" : "form-control mb-3"}
                        placeholder={"********"}
                        required/>
-                <button type="submit" className={enableSubmitButton() === true ? "btn btn-primary" : "btn btn-primary disabled"}>Log in</button>
+                <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary" : "btn btn-primary disabled"}>Log in</button>
                 {showFormError ?
                     <p className={"alert alert-danger mt-3"} role={"alert"}>{formErrorMessage}</p>
                     :
