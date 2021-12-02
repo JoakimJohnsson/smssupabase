@@ -38,14 +38,12 @@ function Avatar({url, onUpload}) {
 
     return (
         <div>
-            {avatarUrl ?
+            {avatarUrl &&
                 <img
                     src={avatarUrl}
                     alt="User avatar"
                     className="w-100 mb-3"
                 />
-                :
-                false
             }
             {avatarUrl ?
                 <label className="btn btn-primary" htmlFor="single">

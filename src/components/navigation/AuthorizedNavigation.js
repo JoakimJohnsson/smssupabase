@@ -54,15 +54,13 @@ const AuthorizedNavigation = () => {
                                 <span className={"sms-nav-link--text"}>Settings</span>
                             </NavLink>
                         </li>
-                        {profile.role === 1 ?
+                        {profile.role === 1 &&
                             <li className="nav-item">
                                 <NavLink to="/dashboard/admin" className={"nav-link"}
                                          onClick={() => setIsOpen(!isOpen)}><BanIcon className={"sms-icon--link"}/>
                                     <span className={"sms-nav-link--text"}>Admin</span>
                                 </NavLink>
                             </li>
-                            :
-                            false
                         }
                         <li className="nav-item border-start-0 border-lg-start">
                             <NavbarProfileInformation/>
