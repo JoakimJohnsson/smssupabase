@@ -4,11 +4,14 @@ export const MESSAGES = {
         VALIDATION_EMAIL_EXISTS: "Please try to register with a different email",
         VALIDATION_PASSWORD: "Please enter a stronger password - at least 10 characters",
         VALIDATION_SIGNUP_FORM: "Something went wrong when signing up",
-        VALIDATION_LOGIN_FORM: "Something went wrong when logging in"
+        VALIDATION_LOGIN_FORM: "Something went wrong when logging in",
+        VALIDATION_UPLOAD_IMAGE: "You must select an image to upload",
+        VALIDATION_UPLOAD: "Something went wrong when uploading"
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Good job on entering that email!",
-        VALIDATION_PASSWORD: "Now, that's an uncrackable password!"
+        VALIDATION_PASSWORD: "Now, that's an uncrackable password!",
+        VALIDATION_DOWNLOAD_IMAGE: "An image was downloaded"
     }
 }
 

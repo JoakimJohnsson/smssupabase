@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {downloadImage} from "../helpers/functions";
+import {MESSAGES} from "../helpers/constants";
 
 function Avatar({url, onUpload}) {
     const [avatarUrl, setAvatarUrl] = useState(null);
@@ -8,7 +9,7 @@ function Avatar({url, onUpload}) {
 
     useEffect(() => {
         if (url) {
-            downloadImage(url, setAvatarUrl).then(() => "Do something");
+            downloadImage(url, setAvatarUrl).then(() => console.log(MESSAGES.SUCCESS.VALIDATION_DOWNLOAD_IMAGE));
         }
     }, [url]);
 
@@ -16,7 +17,7 @@ function Avatar({url, onUpload}) {
         try {
             setUploading(true);
             if (!event.target.files || event.target.files.length === 0) {
-                throw new Error('You must select an image to upload.');
+                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
             }
             const file = event.target.files[0];
             const fileExt = file.name.split('.').pop();
@@ -26,7 +27,7 @@ function Avatar({url, onUpload}) {
                 .from('avatars')
                 .upload(filePath, file);
             if (uploadError) {
-                throw uploadError;
+                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
             onUpload(filePath);
         } catch (error) {
@@ -39,11 +40,11 @@ function Avatar({url, onUpload}) {
     return (
         <div>
             {avatarUrl &&
-                <img
-                    src={avatarUrl}
-                    alt="User avatar"
-                    className="w-100 mb-3"
-                />
+            <img
+                src={avatarUrl}
+                alt="User avatar"
+                className="w-100 mb-3"
+            />
             }
             {avatarUrl ?
                 <label className="btn btn-primary" htmlFor="single">
