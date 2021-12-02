@@ -3,8 +3,8 @@ import {useHistory} from 'react-router-dom';
 import {useAuth} from '../../contexts/Auth';
 import {MESSAGES, CLASSES} from "../../helpers/constants";
 import {validateEmail, validatePassword} from "../../helpers/validations";
-import {supabase} from "../../supabase/supabaseClient";
 import SignupValidationMessage from "./SignupValidationMessage";
+import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
 
 const Signup = () => {
     // Success and error variants of form-input is available
@@ -30,7 +30,7 @@ const Signup = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        await checkIfEmailExists(email);
+        await checkIfEmailExists(email, setEmailExists);
 
         // Never sign up if user tries to sign up with an email that already exists
         if (emailExists === true) {
@@ -47,49 +47,19 @@ const Signup = () => {
         }
     }
 
-    async function checkIfEmailExists(e) {
-
-        let {data: email} = await supabase.from('users').select('email').eq('email', e)
-        if (email.length > 0) {
-            console.log("email.length", email.length);
-            setEmailExists(true);
-        } else {
-            console.log("set false email.length", email.length);
-            setEmailExists(false);
-        }
-    }
-
     const handleEmailValidation = (e) => {
         // Send true for success
-        validateEmail(e) ? handleEmailInput(true) : handleEmailInput(false);
+        validateEmail(e) ?
+            handleEmailInput(true, setEmailInputClass, setEmailValidated, setEmailValidationMessage)
+            :
+            handleEmailInput(false, setEmailInputClass, setEmailValidated, setEmailValidationMessage);
     }
 
     const handlePasswordValidation = (e) => {
-        validatePassword(e) ? handlePasswordInput(true) : handlePasswordInput(false);
-    }
-
-    const handleEmailInput = (success) => {
-        if (success) {
-            setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);
-            setEmailValidated(true);
-            setEmailValidationMessage(MESSAGES.SUCCESS.VALIDATION_EMAIL);
-        } else {
-            setEmailInputClass(CLASSES.FORM_INPUT_ERROR);
-            setEmailValidated(false);
-            setEmailValidationMessage(MESSAGES.ERROR.VALIDATION_EMAIL);
-        }
-    }
-
-    const handlePasswordInput = (success) => {
-        if (success) {
-            setPasswordInputClass(CLASSES.FORM_INPUT_SUCCESS);
-            setPasswordValidated(true);
-            setPasswordValidationMessage(MESSAGES.SUCCESS.VALIDATION_PASSWORD);
-        } else {
-            setPasswordInputClass(CLASSES.FORM_INPUT_ERROR);
-            setPasswordValidated(false)
-            setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
-        }
+        validatePassword(e) ?
+            handlePasswordInput(true, setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage)
+            :
+            handlePasswordInput(false, setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage);
     }
 
     return (
