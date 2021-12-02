@@ -48,7 +48,7 @@ const Signup = () => {
     }
 
     async function checkIfEmailExists(e) {
-        
+
         let {data: email} = await supabase.from('users').select('email').eq('email', e)
         if (email.length > 0) {
             console.log("email.length", email.length);
@@ -113,12 +113,10 @@ const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <SignupValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type="submit" className={emailValidated && passwordValidated ? "btn btn-secondary" : "btn btn-secondary disabled"}>Sign up</button>
-                {showFormError ?
-                    <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>
-                    :
-                    false
-                }
+                <button type="submit" className={emailValidated && passwordValidated ? "btn btn-secondary" : "btn btn-secondary disabled"}>
+                    Sign up
+                </button>
+                {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
             </form>
         </>
     )

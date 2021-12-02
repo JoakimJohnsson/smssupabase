@@ -157,6 +157,10 @@ input {
   font-size: .775rem;
 }
 
+.fs-smallest {
+  font-size: .675rem;
+}
+
 // Borders
 .border-sm-none {
   @include media-breakpoint-up(sm) {

@@ -8827,6 +8827,9 @@ input {
 .fs-smaller {
   font-size: .775rem; }
 
+.fs-smallest {
+  font-size: .675rem; }
+
 @media (min-width: 576px) {
   .border-sm-none {
     border: none !important; } }
@@ -8952,11 +8955,13 @@ footer {
   .sms-form .form-control.danger {
     border-bottom: 3px solid #eea9a9; }
 
-.btn-cta {
-  min-width: 50%;
-  padding: 1rem 3rem;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 1.3rem; }
+.btn {
+  border-radius: 0; }
+  .btn.btn-cta {
+    min-width: 50%;
+    padding: 1rem 3rem;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 1.3rem; }
 
 /*# sourceMappingURL=main.css.map */

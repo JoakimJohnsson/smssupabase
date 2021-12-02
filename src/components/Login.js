@@ -51,11 +51,7 @@ const Login = () => {
                        placeholder={"********"}
                        required/>
                 <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary" : "btn btn-primary disabled"}>Log in</button>
-                {showFormError ?
-                    <p className={"alert alert-danger mt-3"} role={"alert"}>{formErrorMessage}</p>
-                    :
-                    false
-                }
+                {showFormError && <p className={"alert alert-danger mt-3"} role={"alert"}>{formErrorMessage}</p>}
             </form>
         </div>
     )
