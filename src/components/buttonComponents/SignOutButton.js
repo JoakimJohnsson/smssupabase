@@ -1,6 +1,6 @@
 import {useHistory} from "react-router-dom";
 import React from "react";
-import {useAuth} from "../contexts/Auth";
+import {useAuth} from "../../contexts/Auth";
 import {LogoutIcon} from "@heroicons/react/solid";
 
 const SignOutButton = () => {

@@ -48,6 +48,11 @@
       @include media-breakpoint-up(lg) {
         padding: .2rem .4rem;
       }
+      // Icons
+      svg {
+        width: 24px;
+        margin-right: .5rem;
+      }
     }
     .sms-nav-link--text {
       font-weight: 300;
@@ -70,12 +75,6 @@
 // Footer
 footer {
   min-height: 170px;
-}
-
-// Icons
-.sms-icon--link {
-  width: 24px;
-  @extend .me-2;
 }
 
 .sms-icon--text {

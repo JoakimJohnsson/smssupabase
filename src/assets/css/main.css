@@ -5719,7 +5719,7 @@ textarea.form-control-lg {
 .me-1, .sms-icon--text {
   margin-right: 0.25rem !important; }
 
-.me-2, .sms-icon--link {
+.me-2 {
   margin-right: 0.5rem !important; }
 
 .me-3 {
@@ -8917,6 +8917,9 @@ input {
       @media (min-width: 992px) {
         .sms-header .nav-item .nav-link {
           padding: .2rem .4rem; } }
+      .sms-header .nav-item .nav-link svg {
+        width: 24px;
+        margin-right: .5rem; }
     .sms-header .nav-item .sms-nav-link--text {
       font-weight: 300;
       display: inline-block;
@@ -8932,9 +8935,6 @@ input {
 
 footer {
   min-height: 170px; }
-
-.sms-icon--link {
-  width: 24px; }
 
 .sms-icon--text {
   width: 18px; }
