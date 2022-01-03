@@ -1,4 +1,5 @@
 import React from "react";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 const Admin = () => {
 
@@ -7,7 +8,7 @@ const Admin = () => {
             <div className={"row"}>
                 <div className={"col-12"}>
                     <h1 className={""}>
-                        Admin
+                        {LABELS_AND_HEADINGS.ADMIN}
                     </h1>
                 </div>
             </div>

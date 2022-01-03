@@ -14,7 +14,7 @@ const Start = () => {
                 <div className={'row'}>
                     <div className={'col-12'}>
                         <h1 className={''}>
-                            You are now logged in
+                            {LABELS_AND_HEADINGS.START}
                         </h1>
                     </div>
                 </div>

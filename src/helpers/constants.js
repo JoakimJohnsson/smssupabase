@@ -29,9 +29,21 @@ export const CLASSES = {
 export const LABELS_AND_HEADINGS = {
     WELCOME: 'Välkommen till Svenska Marvelsamlare!',
     LOG_IN: 'Logga in',
+    SIGN_OUT: 'Logga ut',
     CREATE_ACCOUNT: 'Registrera dig',
     EMAIL: 'E-postadress',
-    PASSWORD: 'Lösenord'
+    PASSWORD: 'Lösenord',
+    DASHBOARD: 'Kontrollpanel',
+    START: 'Översikt',
+    SETTINGS: 'Inställningar',
+    ADMIN: 'Admin',
+    PROFILE_IMAGE: 'Profilbild',
+    INFORMATION: 'Information',
+    FIRST_NAME: 'Förnamn',
+    LAST_NAME: 'Efternamn',
+    WEBSITE: 'Webbplats',
+    SVENSKA_MARVELSAMLARE: 'Svenska marvelsamlare',
+    SVENSKA_MARVELSAMLARE_SHORT: 'SMS'
 }
 
 export const TEXTS = {

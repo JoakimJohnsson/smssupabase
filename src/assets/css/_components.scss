@@ -13,7 +13,8 @@
   .sms-logo-text {
     display: inline;
     color: $white;
-    font-weight: bold;
+    font-weight: 400;
+    letter-spacing: 1px;
     font-size: 1.3rem;
     span {
       text-decoration: none;
@@ -33,13 +34,11 @@
     }
     .nav-link {
       background-color: transparent;
-      border: 1px solid transparent;
       display: flex;
       align-items: center;
       color: $primary;
       padding: .4rem .4rem;
       &.active {
-        border: none;
         color: $primary--lighter;
       }
       &:hover, &:focus {
@@ -47,6 +46,12 @@
       }
       @include media-breakpoint-up(lg) {
         padding: .2rem .4rem;
+      }
+      @include media-breakpoint-up(lg) {
+        border-left: 1px solid $border-color;
+        &.active {
+          border-left: 1px solid;
+        }
       }
       // Icons
       svg {

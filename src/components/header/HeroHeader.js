@@ -38,6 +38,7 @@ const HeroHeader = () => {
                             </div>
                             <Login/>
                         </div>
+                        <h3 className={'mb-3 text-primary fs-large'}>Är du inte registrerad?</h3>
                         <a href={'#create-account-section'} className={'btn btn-outline-secondary btn-cta'}>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</a>
                     </div>
                 </div>

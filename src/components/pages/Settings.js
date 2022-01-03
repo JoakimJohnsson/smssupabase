@@ -2,7 +2,7 @@ import {useAuth} from '../../contexts/Auth';
 import React, {useEffect, useState} from "react";
 import {supabase} from "../../supabase/supabaseClient";
 import Avatar from "../Avatar";
-import {CLASSES} from "../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 const Settings = () => {
 
@@ -77,12 +77,12 @@ const Settings = () => {
             <div className={"row"}>
                 <div className={"col-12"}>
 
-                    <h1>Settings</h1>
+                    <h1>{LABELS_AND_HEADINGS.SETTINGS}</h1>
 
                     <div className={"row mt-5"}>
 
                         <div className={"col-12 col-md-6 col-lg-4 mb-5 p-4 p-md-5"}>
-                            <h2>Profile image</h2>
+                            <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
 
                             <Avatar
                                 url={avatar_url}
@@ -94,10 +94,10 @@ const Settings = () => {
                         </div>
 
                         <div className={"col-12 col-md-6 col-lg-4 mb-5 p-4 p-md-5 sms-form"}>
-                            <h2>Information</h2>
-                            <label className={"form-label"} htmlFor="email">Email</label>
+                            <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
+                            <label className={"form-label"} htmlFor="email">{LABELS_AND_HEADINGS.EMAIL}</label>
                             <input id="email" className={CLASSES.FORM_INPUT_DISABLED} type="text" value={user.email} disabled/>
-                            <label className={"form-label"} htmlFor="firstname">First name</label>
+                            <label className={"form-label"} htmlFor="firstname">{LABELS_AND_HEADINGS.FIRST_NAME}</label>
                             <input
                                 id="firstname"
                                 className={CLASSES.FORM_INPUT_DEFAULT}
@@ -105,7 +105,7 @@ const Settings = () => {
                                 value={firstname || ''}
                                 onChange={(e) => setFirstname(e.target.value)}
                             />
-                            <label className={"form-label"} htmlFor="lastname">Last name</label>
+                            <label className={"form-label"} htmlFor="lastname">{LABELS_AND_HEADINGS.LAST_NAME}</label>
                             <input
                                 id="lastname"
                                 className={CLASSES.FORM_INPUT_DEFAULT}
@@ -113,7 +113,7 @@ const Settings = () => {
                                 value={lastname || ''}
                                 onChange={(e) => setLastname(e.target.value)}
                             />
-                            <label className={"form-label"} htmlFor="website">Website</label>
+                            <label className={"form-label"} htmlFor="website">{LABELS_AND_HEADINGS.WEBSITE}</label>
                             <input
                                 id="website"
                                 className={CLASSES.FORM_INPUT_DEFAULT}

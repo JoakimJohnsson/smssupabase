@@ -22,7 +22,7 @@ const NavbarProfileInformation = () => {
     }, [profile.avatar_url]);
 
     return avatarUrl ? (
-            <div className="nav-link">
+            <div className="nav-link pe-0 d-none d-lg-flex">
                 {userUrl ?
                     <a href={userUrl}><img src={avatarUrl} className={"avatar-image"} alt={"avatar"}/></a>
                     :
