@@ -1,27 +1,42 @@
 export const MESSAGES = {
     ERROR: {
-        VALIDATION_EMAIL: "Please enter a valid email adress",
-        VALIDATION_EMAIL_EXISTS: "Please try to register with a different email",
-        VALIDATION_PASSWORD: "Please enter a stronger password - at least 10 characters",
-        VALIDATION_SIGNUP_FORM: "Something went wrong when signing up",
-        VALIDATION_LOGIN_FORM: "Something went wrong when logging in",
-        VALIDATION_UPLOAD_IMAGE: "You must select an image to upload",
-        VALIDATION_UPLOAD: "Something went wrong when uploading"
+        VALIDATION_EMAIL: 'Ange en korrekt e-postadress',
+        VALIDATION_EMAIL_EXISTS: 'Försök med en annan e-postadress',
+        VALIDATION_PASSWORD: 'Ange ett starkare lösenord - minst 10 tecken',
+        VALIDATION_SIGNUP_FORM: 'Något gick fel vid registrering',
+        VALIDATION_LOGIN_FORM: 'Något gick fel vid inloggning',
+        VALIDATION_UPLOAD_IMAGE: 'Du måste välja en bild för uppladdning',
+        VALIDATION_UPLOAD: 'Något gick fel vid uppladdning'
     },
     SUCCESS: {
-        VALIDATION_EMAIL: "Good job on entering that email!",
-        VALIDATION_PASSWORD: "Now, that's an uncrackable password!",
-        VALIDATION_DOWNLOAD_IMAGE: "An image was downloaded"
+        VALIDATION_EMAIL: 'Det där är en korrekt e-postadress!',
+        VALIDATION_PASSWORD: 'Det där är ett starkt lösenord!',
+        VALIDATION_DOWNLOAD_IMAGE: 'En bild laddades ned'
     }
 }
 
 export const CLASSES = {
-    FORM_INPUT_DEFAULT: "form-control mb-3",
-    FORM_INPUT_DISABLED: "form-control opacity-50 mb-3",
-    FORM_INPUT_SUCCESS: "form-control success",
-    FORM_INPUT_ERROR: "form-control danger",
-    SPINNER: "spinner-border m-2",
-    SPINNER_SMALL: "spinner-border spinner-border-sm m-1",
-    SPINNER_GROW: "spinner-grow m-2",
-    SPINNER_GROW_SMALL: "spinner-grow spinner-grow-sm m-1",
+    FORM_INPUT_DEFAULT: 'form-control mb-3',
+    FORM_INPUT_DISABLED: 'form-control opacity-50 mb-3',
+    FORM_INPUT_SUCCESS: 'form-control success',
+    FORM_INPUT_ERROR: 'form-control danger',
+    SPINNER: 'spinner-border m-2',
+    SPINNER_SMALL: 'spinner-border spinner-border-sm m-1',
+    SPINNER_GROW: 'spinner-grow m-2',
+    SPINNER_GROW_SMALL: 'spinner-grow spinner-grow-sm m-1',
+}
+
+export const LABELS_AND_HEADINGS = {
+    WELCOME: 'Välkommen till Svenska Marvelsamlare!',
+    LOG_IN: 'Logga in',
+    CREATE_ACCOUNT: 'Registrera dig',
+    EMAIL: 'E-postadress',
+    PASSWORD: 'Lösenord'
+}
+
+export const TEXTS = {
+    DO_YOU_COLLECT: 'Samlar du på svenska marveltidningar?',
+    MANAGE_YOUR_COLLECTION: 'Övervaka och administrera din samling',
+    NEW_TITLES: 'Nya titlar och funktioner läggs till regelbundet',
+    ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar'
 }

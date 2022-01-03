@@ -1,7 +1,7 @@
 import {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useAuth} from '../../contexts/Auth';
-import {MESSAGES, CLASSES} from "../../helpers/constants";
+import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import SignupValidationMessage from "./SignupValidationMessage";
 import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
@@ -65,7 +65,7 @@ const Signup = () => {
     return (
         <>
             <form onSubmit={handleSubmit} className={"sms-form"}>
-                <label className={"form-label"} htmlFor="input-email">Email</label>
+                <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
                 <input id="input-email"
                        type="email"
                        ref={emailRef}
@@ -74,7 +74,7 @@ const Signup = () => {
                        placeholder={"name@myplace.se"}
                        required/>
                 <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
-                <label className={"form-label"} htmlFor="input-password">Password</label>
+                <label className={"form-label"} htmlFor="input-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
                 <input id="input-password"
                        type="password"
                        ref={passwordRef}
@@ -84,7 +84,7 @@ const Signup = () => {
                        required/>
                 <SignupValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
                 <button type="submit" className={emailValidated && passwordValidated ? "btn btn-secondary" : "btn btn-secondary disabled"}>
-                    Sign up
+                    {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
             </form>
