@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} from "@heroicons/react/solid";
 import shieldWhite from "../../assets/images/shield__white.svg";
-import SignOutButton from "../buttonComponents/SignOutButton";
+import SignOutButton from "../miniComponents/SignOutButton";
 import {useAuth} from "../../contexts/Auth";
 import NavbarProfileInformation from "../NavbarProfileInformation";
 import LiNavItem from "../listComponents/LiNavItem";

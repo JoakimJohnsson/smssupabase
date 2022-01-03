@@ -1,20 +1,21 @@
-import {useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useAuth} from '../../contexts/Auth';
-import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {validateEmail, validatePassword} from "../../helpers/validations";
-import SignupValidationMessage from "./SignupValidationMessage";
-import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
+import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
+import {validateEmail, validatePassword} from '../../helpers/validations';
+import SignupValidationMessage from './SignupValidationMessage';
+import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from '../../helpers/functions';
 
 const Signup = () => {
     // Success and error variants of form-input is available
     const [emailInputClass, setEmailInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
     const [passwordInputClass, setPasswordInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
+    const [passwordInputType, setPasswordInputType] = useState('password');
     // Error and validation handling
     const [showFormError, setShowFormError] = useState(false);
-    const [formErrorMessage, setFormErrorMessage] = useState("");
-    const [emailValidationMessage, setEmailValidationMessage] = useState("");
-    const [passwordValidationMessage, setPasswordValidationMessage] = useState("");
+    const [formErrorMessage, setFormErrorMessage] = useState('');
+    const [emailValidationMessage, setEmailValidationMessage] = useState('');
+    const [passwordValidationMessage, setPasswordValidationMessage] = useState('');
     const [emailValidated, setEmailValidated] = useState(false);
     const [passwordValidated, setPasswordValidated] = useState(false);
     const [emailExists, setEmailExists] = useState(false);
@@ -64,29 +65,29 @@ const Signup = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={"sms-form"}>
-                <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
-                <input id="input-email"
-                       type="email"
+            <form onSubmit={handleSubmit} className={'sms-form'}>
+                <label className={'form-label'} htmlFor='input-email'>{LABELS_AND_HEADINGS.EMAIL}</label>
+                <input id='input-email'
+                       type='email'
                        ref={emailRef}
-                       onChange={(e) => handleEmailValidation(e)}
+                       onSubmit={(e) => handleEmailValidation(e)}
                        className={emailInputClass}
-                       placeholder={"name@myplace.se"}
+                       placeholder={'name@myplace.se'}
                        required/>
                 <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
-                <label className={"form-label"} htmlFor="input-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
-                <input id="input-password"
-                       type="password"
+                <label className={'form-label d-flex'} htmlFor='input-password'>{LABELS_AND_HEADINGS.PASSWORD}</label>
+                <input id='input-password'
+                       type={passwordInputType}
                        ref={passwordRef}
                        onChange={(e) => handlePasswordValidation(e)}
                        className={passwordInputClass}
-                       placeholder={"********"}
+                       placeholder={'********'}
                        required/>
                 <SignupValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type="submit" className={emailValidated && passwordValidated ? "btn btn-secondary" : "btn btn-secondary disabled"}>
+                <button type='submit' className={emailValidated && passwordValidated ? 'btn btn-secondary' : 'btn btn-secondary disabled'}>
                     {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
-                {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
+                {showFormError && <p className={'alert alert-danger mt-3'}>{formErrorMessage}</p>}
             </form>
         </>
     )
