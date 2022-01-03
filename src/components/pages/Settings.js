@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {supabase} from "../../supabase/supabaseClient";
 import Avatar from "../Avatar";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import Spinner from "../Spinner";
 
 const Settings = () => {
 
@@ -81,7 +82,7 @@ const Settings = () => {
 
                     <div className={"row mt-5"}>
 
-                        <div className={"col-12 col-md-6 col-lg-4 mb-5 p-4 p-md-5"}>
+                        <div className={"settings-col"}>
                             <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
 
                             <Avatar
@@ -93,7 +94,7 @@ const Settings = () => {
                             />
                         </div>
 
-                        <div className={"col-12 col-md-6 col-lg-4 mb-5 p-4 p-md-5 sms-form"}>
+                        <div className={"settings-col sms-form border-left"}>
                             <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                             <label className={"form-label"} htmlFor="email">{LABELS_AND_HEADINGS.EMAIL}</label>
                             <input id="email" className={CLASSES.FORM_INPUT_DISABLED} type="text" value={user.email} disabled/>
@@ -124,7 +125,7 @@ const Settings = () => {
                             <button className={"btn btn-primary"}
                                     onClick={() => updateProfile({firstname, lastname, website})}
                                     disabled={loading}>
-                                {loading ? 'Saving ...' : 'Update'}
+                                {loading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.UPDATE}
                             </button>
                         </div>
 

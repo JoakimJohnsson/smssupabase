@@ -43,7 +43,11 @@ export const LABELS_AND_HEADINGS = {
     LAST_NAME: 'Efternamn',
     WEBSITE: 'Webbplats',
     SVENSKA_MARVELSAMLARE: 'Svenska marvelsamlare',
-    SVENSKA_MARVELSAMLARE_SHORT: 'SMS'
+    SVENSKA_MARVELSAMLARE_SHORT: 'SMS',
+    CHANGE_IMAGE: 'Byt bild',
+    UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
+    UPDATE: 'Uppdatera',
+    LOADING: 'Loading'
 }
 
 export const TEXTS = {

@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {downloadImage} from "../helpers/functions";
-import {MESSAGES} from "../helpers/constants";
+import {LABELS_AND_HEADINGS, MESSAGES} from "../helpers/constants";
+import Spinner from "./Spinner";
 
 function Avatar({url, onUpload}) {
     const [avatarUrl, setAvatarUrl] = useState(null);
@@ -48,11 +49,11 @@ function Avatar({url, onUpload}) {
             }
             {avatarUrl ?
                 <label className="btn btn-primary" htmlFor="single">
-                    {uploading ? 'Uploading ...' : 'Change image'}
+                    {uploading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
                 </label>
                 :
                 <label className="btn btn-primary" htmlFor="single">
-                    {uploading ? 'Uploading ...' : 'Upload new image'}
+                    {uploading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}
                 </label>
             }
             <input
