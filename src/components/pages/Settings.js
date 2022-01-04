@@ -1,8 +1,8 @@
 import {useAuth} from '../../contexts/Auth';
-import React, {useEffect, useState} from "react";
-import {supabase} from "../../supabase/supabaseClient";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
-import Spinner from "../Spinner";
+import React, {useEffect, useState} from 'react';
+import {supabase} from '../../supabase/supabaseClient';
+import {CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
+import Spinner from '../Spinner';
 
 const Settings = () => {
 
@@ -25,7 +25,7 @@ const Settings = () => {
                     .single();
 
                 if (error && status !== 406) {
-                    console.log("Error: ", error);
+                    console.log('Error: ', error);
                 }
 
                 if (data) {
@@ -40,7 +40,7 @@ const Settings = () => {
             }
         }
 
-        getProfile().then(() => "Do something")
+        getProfile().then(() => 'Do something')
     }, [user.id, session])
 
     async function updateProfile() {
@@ -60,7 +60,7 @@ const Settings = () => {
             })
 
             if (error) {
-                console.log("Error: ", error);
+                console.log('Error: ', error);
             }
         } catch (error) {
             alert(error.message)
@@ -70,54 +70,53 @@ const Settings = () => {
     }
 
     return (
-        <main className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12"}>
+        <main className={'container-fluid main-container'}>
+            <div className={'row'}>
+                <div className={'col-12'}>
 
                     <h1>{LABELS_AND_HEADINGS.SETTINGS}</h1>
 
-                    <div className={"row mt-5"}>
+                    <div className={'row mt-5'}>
 
-                        <div className={"settings-col"}>
-                            <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
-                        </div>
 
-                        <div className={"settings-col sms-form border-left"}>
-                            <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
-                            <label className={"form-label"} htmlFor="email">{LABELS_AND_HEADINGS.EMAIL}</label>
-                            <input id="email" className={CLASSES.FORM_INPUT_DISABLED} type="text" value={user.email} disabled/>
-                            <label className={"form-label"} htmlFor="firstname">{LABELS_AND_HEADINGS.FIRST_NAME}</label>
+                        <div className={'sms-form-col'}>
+                        <div className={'sms-form'}>
+                            <h2 className={'border-bottom pb-2 mb-4'}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
+                            <label className={'form-label'} htmlFor='email'>{LABELS_AND_HEADINGS.EMAIL}</label>
+                            <input id='email' className={CLASSES.FORM_INPUT_DISABLED} type='text' value={user.email} disabled/>
+                            <label className={'form-label'} htmlFor='firstname'>{LABELS_AND_HEADINGS.FIRST_NAME}</label>
                             <input
-                                id="firstname"
+                                id='firstname'
                                 className={CLASSES.FORM_INPUT_DEFAULT}
-                                type="text"
+                                type='text'
                                 value={firstname || ''}
                                 onChange={(e) => setFirstname(e.target.value)}
                             />
-                            <label className={"form-label"} htmlFor="lastname">{LABELS_AND_HEADINGS.LAST_NAME}</label>
+                            <label className={'form-label'} htmlFor='lastname'>{LABELS_AND_HEADINGS.LAST_NAME}</label>
                             <input
-                                id="lastname"
+                                id='lastname'
                                 className={CLASSES.FORM_INPUT_DEFAULT}
-                                type="text"
+                                type='text'
                                 value={lastname || ''}
                                 onChange={(e) => setLastname(e.target.value)}
                             />
-                            <label className={"form-label"} htmlFor="website">{LABELS_AND_HEADINGS.WEBSITE}</label>
+                            <label className={'form-label'} htmlFor='website'>{LABELS_AND_HEADINGS.WEBSITE}</label>
                             <input
-                                id="website"
+                                id='website'
                                 className={CLASSES.FORM_INPUT_DEFAULT}
-                                type="text"
+                                type='text'
                                 value={website || ''}
                                 onChange={(e) => setWebsite(e.target.value)}
                             />
-                            <button className={"btn btn-primary"}
+                            <button className={'btn btn-primary'}
                                     onClick={() => updateProfile()}
                                     disabled={loading}>
-                                {loading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.UPDATE}
+                                {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPDATE}
                             </button>
                         </div>
+                        </div>
 
-                        <div className={"col-12 col-md-6 col-lg-4"}>
+                        <div className={'col-12 col-md-6 col-lg-4'}>
                         </div>
 
                     </div>
