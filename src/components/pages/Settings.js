@@ -1,7 +1,6 @@
 import {useAuth} from '../../contexts/Auth';
 import React, {useEffect, useState} from "react";
 import {supabase} from "../../supabase/supabaseClient";
-import Avatar from "../Avatar";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import Spinner from "../Spinner";
 
@@ -11,7 +10,6 @@ const Settings = () => {
     const [firstname, setFirstname] = useState(null);
     const [lastname, setLastname] = useState(null);
     const [website, setWebsite] = useState(null);
-    const [avatar_url, setAvatarUrl] = useState(null);
 
     // Get current user and signOut function from context
     const {user, session} = useAuth();
@@ -27,14 +25,13 @@ const Settings = () => {
                     .single();
 
                 if (error && status !== 406) {
-                    throw error
+                    console.log("Error: ", error);
                 }
 
                 if (data) {
                     setFirstname(data.firstname);
                     setLastname(data.lastname);
                     setWebsite(data.website);
-                    setAvatarUrl(data.avatar_url);
                 }
             } catch (error) {
                 alert(error.message)
@@ -46,7 +43,7 @@ const Settings = () => {
         getProfile().then(() => "Do something")
     }, [user.id, session])
 
-    async function updateProfile({firstname, lastname, website, avatar_url}) {
+    async function updateProfile() {
         try {
             setLoading(true)
 
@@ -55,7 +52,6 @@ const Settings = () => {
                 firstname,
                 lastname,
                 website,
-                avatar_url,
                 updated_at: new Date(),
             }
 
@@ -64,7 +60,7 @@ const Settings = () => {
             })
 
             if (error) {
-                throw error
+                console.log("Error: ", error);
             }
         } catch (error) {
             alert(error.message)
@@ -84,14 +80,6 @@ const Settings = () => {
 
                         <div className={"settings-col"}>
                             <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
-
-                            <Avatar
-                                url={avatar_url}
-                                onUpload={(url) => {
-                                    setAvatarUrl(url);
-                                    updateProfile({avatar_url: url}).then(() => "Do something");
-                                }}
-                            />
                         </div>
 
                         <div className={"settings-col sms-form border-left"}>
@@ -123,7 +111,7 @@ const Settings = () => {
                                 onChange={(e) => setWebsite(e.target.value)}
                             />
                             <button className={"btn btn-primary"}
-                                    onClick={() => updateProfile({firstname, lastname, website})}
+                                    onClick={() => updateProfile()}
                                     disabled={loading}>
                                 {loading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.UPDATE}
                             </button>

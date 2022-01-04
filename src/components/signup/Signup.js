@@ -10,7 +10,6 @@ const Signup = () => {
     // Success and error variants of form-input is available
     const [emailInputClass, setEmailInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
     const [passwordInputClass, setPasswordInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
-    const [passwordInputType, setPasswordInputType] = useState('password');
     // Error and validation handling
     const [showFormError, setShowFormError] = useState(false);
     const [formErrorMessage, setFormErrorMessage] = useState('');
@@ -77,7 +76,7 @@ const Signup = () => {
                 <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
                 <label className={'form-label d-flex'} htmlFor='input-password'>{LABELS_AND_HEADINGS.PASSWORD}</label>
                 <input id='input-password'
-                       type={passwordInputType}
+                       type='password'
                        ref={passwordRef}
                        onChange={(e) => handlePasswordValidation(e)}
                        className={passwordInputClass}
