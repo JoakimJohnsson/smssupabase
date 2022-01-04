@@ -20,7 +20,7 @@ const Settings = () => {
                 setLoading(true);
                 let {data, error, status} = await supabase
                     .from('profiles')
-                    .select(`firstname, lastname, website, avatar_url`)
+                    .select(`firstname, lastname, website`)
                     .eq('id', user.id)
                     .single();
 
