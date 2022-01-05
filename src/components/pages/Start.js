@@ -1,13 +1,13 @@
 import Signup from '../signup/Signup';
 import {ChevronDoubleDownIcon} from '@heroicons/react/solid';
 import React from 'react';
-import {useAuth} from '../../contexts/Auth';
+import {useAppContext} from '../../contexts/AppContext';
 import HeroHeader from '../header/HeroHeader';
 import {LABELS_AND_HEADINGS} from '../../helpers/constants';
 
 const Start = () => {
 
-    const {user} = useAuth();
+    const {user} = useAppContext();
 
     return user ? (
             <div className={'container-fluid main-container'}>

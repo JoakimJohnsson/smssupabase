@@ -1,7 +1,7 @@
 import './assets/css/main.css';
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
-import {AuthProvider} from './contexts/Auth'
+import {AppContextProvider} from './contexts/AppContext'
 import Routes from "./components/Routes";
 import Header from "./components/header/Header";
 import Footer from "./components/Footer";
@@ -17,13 +17,13 @@ https://github.com/validatorjs/validator.js
 const App = () => {
 
     return (
-        <AuthProvider>
+        <AppContextProvider>
             <Router>
                 <Header/>
                 <Routes/>
                 <Footer/>
             </Router>
-        </AuthProvider>
+        </AppContextProvider>
     )
 }
 

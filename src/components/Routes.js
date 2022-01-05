@@ -2,14 +2,14 @@ import {Redirect, Route} from "react-router-dom";
 import Start from "./pages/Start";
 import Dashboard from "./pages/Dashboard";
 import React from "react";
-import {useAuth} from "../contexts/Auth";
+import {useAppContext} from "../contexts/AppContext";
 import Settings from "./pages/Settings";
 import SignupSuccess from "./pages/SignUpSuccess";
 import Admin from "./pages/Admin";
 
 const Routes = () => {
 
-    const {user, profile} = useAuth();
+    const {user, profile} = useAppContext();
 
     return (
         <>

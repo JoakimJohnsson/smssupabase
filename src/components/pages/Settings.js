@@ -1,4 +1,4 @@
-import {useAuth} from '../../contexts/Auth';
+import {useAppContext} from '../../contexts/AppContext';
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../../supabase/supabaseClient';
 import {CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
@@ -12,7 +12,7 @@ const Settings = () => {
     const [website, setWebsite] = useState(null);
 
     // Get current user and signOut function from context
-    const {user, session} = useAuth();
+    const {user, session} = useAppContext();
 
     useEffect(() => {
         async function getProfile() {

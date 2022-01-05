@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import {useAuth} from '../contexts/Auth';
+import {useAppContext} from '../contexts/AppContext';
 import {simpleInputValidation} from "../helpers/validations";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
 
@@ -14,7 +14,7 @@ const Login = () => {
 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {signIn} = useAuth();
+    const {signIn} = useAppContext();
     const history = useHistory();
 
     async function handleSubmit(e) {

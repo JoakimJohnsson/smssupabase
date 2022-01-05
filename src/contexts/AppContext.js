@@ -1,9 +1,9 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 
-const AuthContext = React.createContext();
+const AppContext = React.createContext();
 
-export function AuthProvider({children}) {
+export function AppContextProvider({children}) {
 
     const defaultProfile = {
         firstname: "",
@@ -82,12 +82,12 @@ export function AuthProvider({children}) {
     }
 
     return (
-        <AuthContext.Provider value={value}>
+        <AppContext.Provider value={value}>
             {!loading && children}
-        </AuthContext.Provider>
+        </AppContext.Provider>
     )
 }
 
-export function useAuth() {
-    return useContext(AuthContext)
+export function useAppContext() {
+    return useContext(AppContext)
 }

@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import {useAuth} from '../../contexts/Auth';
+import {useAppContext} from '../../contexts/AppContext';
 import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
 import {validateEmail, validatePassword} from '../../helpers/validations';
 import SignupValidationMessage from './SignupValidationMessage';
@@ -21,7 +21,7 @@ const Signup = () => {
 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {signUp} = useAuth();
+    const {signUp} = useAppContext();
     const history = useHistory();
 
     async function handleSubmit(e) {

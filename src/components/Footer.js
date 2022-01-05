@@ -1,10 +1,10 @@
 import React from 'react';
-import {useAuth} from "../contexts/Auth";
+import {useAppContext} from "../contexts/AppContext";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
 
 const Footer = () => {
 
-    const {user} = useAuth();
+    const {user} = useAppContext();
 
     return !user &&
         <footer className={"p-5 border-top"}>

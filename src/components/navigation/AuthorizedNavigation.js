@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} from "@heroicons/react/solid";
 import shieldWhite from "../../assets/images/shield__white.svg";
 import SignOutButton from "../miniComponents/SignOutButton";
-import {useAuth} from "../../contexts/Auth";
+import {useAppContext} from "../../contexts/AppContext";
 import LiNavItem from "../listComponents/LiNavItem";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
@@ -12,7 +12,7 @@ const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
     const collapseClass = "collapse navbar-collapse";
-    const {profile} = useAuth();
+    const {profile} = useAppContext();
 
     const handleClick = () => {
         setIsOpen(!isOpen)
