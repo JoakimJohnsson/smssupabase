@@ -1,0 +1,243 @@
+// Imports
+@import "variables";
+
+// Global helpers
+.hocus-standard {
+  transition: all .2s ease;
+  text-decoration: none;
+  &:hover,
+  &:focus,
+  &:active {
+    opacity: 90%;
+  }
+}
+
+.main-container {
+  padding: 3rem;
+  // header - 90px - footer 170px;
+  min-height: calc(100vh - 260px);
+}
+
+input:autofill {
+  background: #fff;
+}
+
+input {
+  filter: none;
+}
+
+// Backgrounds
+.bg-elephant {
+  background-color: $color-bg-elephant !important;
+}
+
+.bg-horse {
+  background-color: $color-bg-horse !important;
+}
+
+.bg-dog {
+  background-color: $color-bg-dog !important;
+}
+
+.bg-elephant--trans {
+  background-color: $color-bg-elephant--trans !important;
+}
+
+.bg-horse--trans {
+  background-color: $color-bg-horse--trans !important;
+}
+
+.bg-dog--trans {
+  background-color: $color-bg-dog--trans !important;
+}
+
+.bg-primary--lighter {
+  background-color: $primary--lighter !important;
+}
+
+.bg-primary--darker {
+  background-color: $primary--darker !important;
+}
+
+.bg-secondary--lighter {
+  background-color: $secondary--lighter !important;
+}
+
+.bg-secondary--darker {
+  background-color: $secondary--darker !important;
+}
+
+.bg-success--lighter {
+  background-color: $success--lighter !important;
+}
+
+.bg-success--darker {
+  background-color: $success--darker !important;
+}
+
+.bg-info--lighter {
+  background-color: $info--lighter !important;
+}
+
+.bg-info--darker {
+  background-color: $info--darker !important;
+}
+
+.bg-warning--lighter {
+  background-color: $warning--lighter !important;
+}
+
+.bg-warning--darker {
+  background-color: $warning--darker !important;
+}
+
+.bg-danger--lighter {
+  background-color: $danger--darker !important;
+}
+
+.bg-danger--darker {
+  background-color: $danger--lighter !important;
+}
+
+// Text
+.text-primary--lighter {
+  color: $primary--lighter !important;
+}
+
+.text-primary--darker {
+  color: $primary--darker !important;
+}
+
+.text-secondary--lighter {
+  color: $secondary--lighter !important;
+}
+
+.text-secondary--darker {
+  color: $secondary--darker !important;
+}
+
+.text-success--lighter {
+  color: $success--lighter !important;
+}
+
+.text-success--darker {
+  color: $success--darker !important;
+}
+
+.text-info--lighter {
+  color: $info--lighter !important;
+}
+
+.text-info--darker {
+  color: $info--darker !important;
+}
+
+.text-warning--lighter {
+  color: $warning--lighter !important;
+}
+
+.text-warning--darker {
+  color: $warning--darker !important;
+}
+
+.text-danger--lighter {
+  color: $danger--darker !important;
+}
+
+.text-danger--darker {
+  color: $danger--lighter !important;
+}
+
+// Font size
+.fs-large {
+  font-size: 1.125rem;
+}
+
+.fs-normal {
+  font-size: 1rem;
+}
+
+.fs-small {
+  font-size: .875rem;
+}
+
+.fs-smaller {
+  font-size: .775rem;
+}
+
+.fs-smallest {
+  font-size: .675rem;
+}
+
+// Borders
+.border-sm-none {
+  @include media-breakpoint-up(sm) {
+    border: none !important;
+  }
+}
+
+.border-md-none {
+  @include media-breakpoint-up(md) {
+    border: none !important;
+  }
+}
+
+.border-lg-none {
+  @include media-breakpoint-up(lg) {
+    border: none !important;
+  }
+}
+
+.border-xl-none {
+  @include media-breakpoint-up(xl) {
+    border: none !important;
+  }
+}
+
+.border-sm-end {
+  @include media-breakpoint-up(sm) {
+    border-right: $border--default !important;
+  }
+}
+
+.border-md-end {
+  @include media-breakpoint-up(md) {
+    border-right: $border--default !important;
+  }
+}
+
+.border-lg-end {
+  @include media-breakpoint-up(lg) {
+    border-right: $border--default !important;
+  }
+}
+
+.border-xl-end {
+  @include media-breakpoint-up(xl) {
+    border-right: $border--default !important;
+  }
+}
+
+.border-sm-start {
+  @include media-breakpoint-up(sm) {
+    border-left: $border--default !important;
+  }
+}
+
+.border-md-start {
+  @include media-breakpoint-up(md) {
+    border-left: $border--default !important;
+  }
+}
+
+.border-lg-start {
+  @include media-breakpoint-up(lg) {
+    border-left: $border--default !important;
+  }
+}
+
+.border-xl-start {
+  @include media-breakpoint-up(xl) {
+    border-left: $border--default !important;
+  }
+}
