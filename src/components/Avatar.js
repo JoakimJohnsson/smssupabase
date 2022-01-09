@@ -4,15 +4,15 @@ import {downloadImage} from "../helpers/functions";
 import {LABELS_AND_HEADINGS, MESSAGES} from "../helpers/constants";
 import Spinner from "./Spinner";
 
-function Avatar({url, onUpload}) {
+function Avatar({avatar_image_filename, onUpload}) {
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [uploading, setUploading] = useState(false);
 
     useEffect(() => {
-        if (url) {
-            downloadImage(url, setAvatarUrl).then(() => console.log(MESSAGES.SUCCESS.VALIDATION_DOWNLOAD_IMAGE));
+        if (avatar_image_filename) {
+            downloadImage(avatar_image_filename, setAvatarUrl).then(() => console.log(MESSAGES.SUCCESS.VALIDATION_DOWNLOAD_IMAGE));
         }
-    }, [url]);
+    }, [avatar_image_filename]);
 
     async function uploadAvatar(event) {
         try {

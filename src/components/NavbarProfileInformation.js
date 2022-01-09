@@ -16,10 +16,10 @@ const NavbarProfileInformation = () => {
     const userUrl = profile.website ? prepareUrl(profile.website) : false;
 
     useEffect(() => {
-        if (profile.avatar_url) {
-            downloadImage(profile.avatar_url, setAvatarUrl).then(() => "Do something");
+        if (profile.avatar_image_filename) {
+            downloadImage(profile.avatar_image_filename, setAvatarUrl).then(() => "Do something");
         }
-    }, [profile.avatar_url]);
+    }, [profile.avatar_image_filename]);
 
     return avatarUrl ? (
             <div className="nav-link pe-0 d-none d-lg-flex">

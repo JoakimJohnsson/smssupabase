@@ -11,7 +11,7 @@ const Settings = () => {
     const [firstname, setFirstname] = useState(null);
     const [lastname, setLastname] = useState(null);
     const [website, setWebsite] = useState(null);
-    const [avatar_url, setAvatarUrl] = useState(null);
+    const [avatar_image_filename, setAvatarImageFilename] = useState(null);
 
     // Get current user and signOut function from context
     const {user, session} = useAppContext();
@@ -22,7 +22,7 @@ const Settings = () => {
                 setLoading(true);
                 let {data, error, status} = await supabase
                     .from('profiles')
-                    .select(`firstname, lastname, website, avatar_url`)
+                    .select(`firstname, lastname, website, avatar_image_filename`)
                     .eq('id', user.id)
                     .single();
 
@@ -34,7 +34,7 @@ const Settings = () => {
                     setFirstname(data.firstname);
                     setLastname(data.lastname);
                     setWebsite(data.website);
-                    setAvatarUrl(data.avatar_url);
+                    setAvatarImageFilename(data.avatar_image_filename);
                 }
             } catch (error) {
                 alert(error.message)
@@ -46,7 +46,7 @@ const Settings = () => {
         getProfile().then(() => 'Do something')
     }, [user.id, session])
 
-    async function updateProfile({firstname, lastname, website, avatar_url}) {
+    async function updateProfile({firstname, lastname, website, avatar_image_filename}) {
         try {
             setLoading(true)
 
@@ -55,7 +55,7 @@ const Settings = () => {
                 firstname,
                 lastname,
                 website,
-                avatar_url,
+                avatar_image_filename,
                 updated_at: new Date(),
             }
 
@@ -88,10 +88,10 @@ const Settings = () => {
                                 <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
 
                                 <Avatar
-                                    url={avatar_url}
-                                    onUpload={(url) => {
-                                        setAvatarUrl(url);
-                                        updateProfile({avatar_url: url}).then(() => "Do something");
+                                    avatar_image_filename={avatar_image_filename}
+                                    onUpload={(avatar_image_filename) => {
+                                        setAvatarImageFilename(avatar_image_filename);
+                                        updateProfile({avatar_image_filename: avatar_image_filename}).then(() => "Do something");
                                     }}
                                 />
 
@@ -129,7 +129,7 @@ const Settings = () => {
                                     onChange={(e) => setWebsite(e.target.value)}
                                 />
                                 <button className={'btn btn-primary'}
-                                        onClick={() => updateProfile()}
+                                        onClick={() => updateProfile({firstname, lastname, website})}
                                         disabled={loading}>
                                     {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPDATE}
                                 </button>
