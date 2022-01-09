@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import {useAppContext} from '../../contexts/AppContext';
+import {useAppContext} from '../../context/AppContext';
 import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
 import {validateEmail, validatePassword} from '../../helpers/validations';
 import SignupValidationMessage from './SignupValidationMessage';

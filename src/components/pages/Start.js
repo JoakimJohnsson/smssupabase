@@ -1,7 +1,7 @@
 import Signup from '../signup/Signup';
 import {ChevronDoubleDownIcon} from '@heroicons/react/solid';
 import React from 'react';
-import {useAppContext} from '../../contexts/AppContext';
+import {useAppContext} from '../../context/AppContext';
 import HeroHeader from '../header/HeroHeader';
 import {LABELS_AND_HEADINGS} from '../../helpers/constants';
 

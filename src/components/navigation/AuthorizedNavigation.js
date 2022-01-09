@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} from "@heroicons/react/solid";
 import shieldWhite from "../../assets/images/shield__white.svg";
 import SignOutButton from "../miniComponents/SignOutButton";
-import {useAppContext} from "../../contexts/AppContext";
+import {useAppContext} from "../../context/AppContext";
+import NavbarProfileInformation from "../NavbarProfileInformation";
 import LiNavItem from "../listComponents/LiNavItem";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
@@ -42,6 +43,7 @@ const AuthorizedNavigation = () => {
                         <LiNavItem route={"/dashboard/admin"} onClick={handleClick} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className="nav-item border-start-0 border-lg-start">
+                            <NavbarProfileInformation/>
                             <SignOutButton/>
                         </li>
                     </ul>

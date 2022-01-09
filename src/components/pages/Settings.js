@@ -1,6 +1,7 @@
-import {useAppContext} from '../../contexts/AppContext';
+import {useAppContext} from '../../context/AppContext';
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../../supabase/supabaseClient';
+import Avatar from "../Avatar";
 import {CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
 import Spinner from '../Spinner';
 
@@ -10,6 +11,7 @@ const Settings = () => {
     const [firstname, setFirstname] = useState(null);
     const [lastname, setLastname] = useState(null);
     const [website, setWebsite] = useState(null);
+    const [avatar_url, setAvatarUrl] = useState(null);
 
     // Get current user and signOut function from context
     const {user, session} = useAppContext();
@@ -20,7 +22,7 @@ const Settings = () => {
                 setLoading(true);
                 let {data, error, status} = await supabase
                     .from('profiles')
-                    .select(`firstname, lastname, website`)
+                    .select(`firstname, lastname, website, avatar_url`)
                     .eq('id', user.id)
                     .single();
 
@@ -32,6 +34,7 @@ const Settings = () => {
                     setFirstname(data.firstname);
                     setLastname(data.lastname);
                     setWebsite(data.website);
+                    setAvatarUrl(data.avatar_url);
                 }
             } catch (error) {
                 alert(error.message)
@@ -43,7 +46,7 @@ const Settings = () => {
         getProfile().then(() => 'Do something')
     }, [user.id, session])
 
-    async function updateProfile() {
+    async function updateProfile({firstname, lastname, website, avatar_url}) {
         try {
             setLoading(true)
 
@@ -52,6 +55,7 @@ const Settings = () => {
                 firstname,
                 lastname,
                 website,
+                avatar_url,
                 updated_at: new Date(),
             }
 
@@ -78,42 +82,58 @@ const Settings = () => {
 
                     <div className={'row mt-5'}>
 
+                        <div className={'sms-form-col'}>
+                            <div className={'sms-form'}>
+
+                                <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
+
+                                <Avatar
+                                    url={avatar_url}
+                                    onUpload={(url) => {
+                                        setAvatarUrl(url);
+                                        updateProfile({avatar_url: url}).then(() => "Do something");
+                                    }}
+                                />
+
+                            </div>
+                        </div>
+
 
                         <div className={'sms-form-col'}>
-                        <div className={'sms-form'}>
-                            <h2 className={'border-bottom pb-2 mb-4'}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
-                            <label className={'form-label'} htmlFor='email'>{LABELS_AND_HEADINGS.EMAIL}</label>
-                            <input id='email' className={CLASSES.FORM_INPUT_DISABLED} type='text' value={user.email} disabled/>
-                            <label className={'form-label'} htmlFor='firstname'>{LABELS_AND_HEADINGS.FIRST_NAME}</label>
-                            <input
-                                id='firstname'
-                                className={CLASSES.FORM_INPUT_DEFAULT}
-                                type='text'
-                                value={firstname || ''}
-                                onChange={(e) => setFirstname(e.target.value)}
-                            />
-                            <label className={'form-label'} htmlFor='lastname'>{LABELS_AND_HEADINGS.LAST_NAME}</label>
-                            <input
-                                id='lastname'
-                                className={CLASSES.FORM_INPUT_DEFAULT}
-                                type='text'
-                                value={lastname || ''}
-                                onChange={(e) => setLastname(e.target.value)}
-                            />
-                            <label className={'form-label'} htmlFor='website'>{LABELS_AND_HEADINGS.WEBSITE}</label>
-                            <input
-                                id='website'
-                                className={CLASSES.FORM_INPUT_DEFAULT}
-                                type='text'
-                                value={website || ''}
-                                onChange={(e) => setWebsite(e.target.value)}
-                            />
-                            <button className={'btn btn-primary'}
-                                    onClick={() => updateProfile()}
-                                    disabled={loading}>
-                                {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPDATE}
-                            </button>
-                        </div>
+                            <div className={'sms-form'}>
+                                <h2 className={'border-bottom pb-2 mb-4'}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
+                                <label className={'form-label'} htmlFor='email'>{LABELS_AND_HEADINGS.EMAIL}</label>
+                                <input id='email' className={CLASSES.FORM_INPUT_DISABLED} type='text' value={user.email} disabled/>
+                                <label className={'form-label'} htmlFor='firstname'>{LABELS_AND_HEADINGS.FIRST_NAME}</label>
+                                <input
+                                    id='firstname'
+                                    className={CLASSES.FORM_INPUT_DEFAULT}
+                                    type='text'
+                                    value={firstname || ''}
+                                    onChange={(e) => setFirstname(e.target.value)}
+                                />
+                                <label className={'form-label'} htmlFor='lastname'>{LABELS_AND_HEADINGS.LAST_NAME}</label>
+                                <input
+                                    id='lastname'
+                                    className={CLASSES.FORM_INPUT_DEFAULT}
+                                    type='text'
+                                    value={lastname || ''}
+                                    onChange={(e) => setLastname(e.target.value)}
+                                />
+                                <label className={'form-label'} htmlFor='website'>{LABELS_AND_HEADINGS.WEBSITE}</label>
+                                <input
+                                    id='website'
+                                    className={CLASSES.FORM_INPUT_DEFAULT}
+                                    type='text'
+                                    value={website || ''}
+                                    onChange={(e) => setWebsite(e.target.value)}
+                                />
+                                <button className={'btn btn-primary'}
+                                        onClick={() => updateProfile()}
+                                        disabled={loading}>
+                                    {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPDATE}
+                                </button>
+                            </div>
                         </div>
 
                         <div className={'col-12 col-md-6 col-lg-4'}>

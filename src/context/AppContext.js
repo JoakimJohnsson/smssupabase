@@ -9,6 +9,7 @@ export function AppContextProvider({children}) {
         firstname: "",
         lastname: "",
         website: "",
+        avatar_url: "",
         role: 0
     }
 
@@ -65,7 +66,7 @@ export function AppContextProvider({children}) {
             setLoading(true);
             let {data, error, status} = await supabase
                 .from('profiles')
-                .select(`firstname, lastname, role, website`)
+                .select(`firstname, lastname, role, website, avatar_url`)
                 .eq('id', user.id);
 
             if (error && status !== 406) {

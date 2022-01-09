@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import {useAppContext} from '../contexts/AppContext';
+import {useAppContext} from '../context/AppContext';
 import {simpleInputValidation} from "../helpers/validations";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
 

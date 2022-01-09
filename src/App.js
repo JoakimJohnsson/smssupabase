@@ -1,7 +1,7 @@
 import './assets/css/main.css';
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
-import {AppContextProvider} from './contexts/AppContext'
+import {AppContextProvider} from './context/AppContext'
 import Routes from "./components/Routes";
 import Header from "./components/header/Header";
 import Footer from "./components/Footer";
