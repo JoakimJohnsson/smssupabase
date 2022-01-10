@@ -100,7 +100,7 @@ const Settings = () => {
 
                         <div className={'sms-form-col'}>
                             <div className={'sms-form'}>
-                                <h2 className={'border-bottom pb-2 mb-4'}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
+                                <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                                 <label className={'form-label'} htmlFor='email'>{LABELS_AND_HEADINGS.EMAIL}</label>
                                 <input id='email' className={CLASSES.FORM_INPUT_DISABLED} type='text' value={user.email} disabled/>
                                 <label className={'form-label'} htmlFor='firstname'>{LABELS_AND_HEADINGS.FIRST_NAME}</label>

@@ -97,10 +97,10 @@ footer {
 
 // Forms
 .sms-form-col {
-  @extend .col-12, .col-md-6, .col-lg-4, .mb-5, .p-2, .p-md-3;
+  @extend .col-12, .col-md-6, .mb-5, .p-2, .p-md-3;
 }
 .sms-form {
-  @extend .p-0, .p-sm-5;
+  @extend .p-0, .p-sm-5, .h-100;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
     background-color: $color-bg-horse;
@@ -115,8 +115,11 @@ footer {
       border-bottom: 3px solid $success;
     }
     &.danger {
-      border-bottom: 3px solid $danger;
+      border-bottom:6px solid $danger;
     }
+  }
+  h2 {
+    @extend .border-bottom, .pb-2, .mb-4;
   }
 }
 
