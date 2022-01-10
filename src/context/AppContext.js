@@ -15,15 +15,17 @@ export function AppContextProvider({children}) {
 
     const [user, setUser] = useState();
     const [profile, setProfile] = useState(defaultProfile);
+    const [avatarImageUrl, setAvatarImageUrl] = useState("");
     const [loading, setLoading] = useState(true);
 
-    const updateProfileOnChange = useCallback( () => {
+    const updateProfileOnChange = useCallback(() => {
         supabase
             .from('profiles')
             .on('UPDATE', payload => {
                 updateProfile(user).then()
             })
-            .subscribe()}, [user]);
+            .subscribe()
+    }, [user]);
 
     useEffect(() => {
         // Check active sessions and sets the user
@@ -58,6 +60,7 @@ export function AppContextProvider({children}) {
         signOut: () => supabase.auth.signOut(),
         user,
         profile,
+        avatarImageUrl,
         session: () => supabase.auth.session()
     }
 
@@ -74,6 +77,10 @@ export function AppContextProvider({children}) {
             }
             if (data) {
                 setProfile(...data)
+                setAvatarImageUrl(supabase
+                    .storage
+                    .from('avatars')
+                    .getPublicUrl(data[0].avatar_image_filename).publicURL)
             }
         } catch (error) {
             alert(error.message)
