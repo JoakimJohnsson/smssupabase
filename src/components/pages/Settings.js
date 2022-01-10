@@ -46,7 +46,7 @@ const Settings = () => {
         getProfile().then(() => 'Do something')
     }, [user.id, session])
 
-    async function updateProfile({firstname, lastname, website, avatar_image_filename}) {
+    async function updateProfileData({firstname, lastname, website, avatar_image_filename}) {
         try {
             setLoading(true)
 
@@ -88,10 +88,9 @@ const Settings = () => {
                                 <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
 
                                 <Avatar
-                                    avatar_image_filename={avatar_image_filename}
                                     onUpload={(avatar_image_filename) => {
                                         setAvatarImageFilename(avatar_image_filename);
-                                        updateProfile({avatar_image_filename: avatar_image_filename}).then(() => "Do something");
+                                        updateProfileData({avatar_image_filename: avatar_image_filename}).then(() => "Do something");
                                     }}
                                 />
 
@@ -129,7 +128,7 @@ const Settings = () => {
                                     onChange={(e) => setWebsite(e.target.value)}
                                 />
                                 <button className={'btn btn-primary'}
-                                        onClick={() => updateProfile({firstname, lastname, website})}
+                                        onClick={() => updateProfileData({firstname, lastname, website})}
                                         disabled={loading}>
                                     {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPDATE}
                                 </button>

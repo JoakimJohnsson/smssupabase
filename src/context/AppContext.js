@@ -61,6 +61,7 @@ export function AppContextProvider({children}) {
         user,
         profile,
         avatarImageUrl,
+        setAvatarImageUrl,
         session: () => supabase.auth.session()
     }
 

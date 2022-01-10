@@ -1,18 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {downloadImage} from "../helpers/functions";
 import {LABELS_AND_HEADINGS, MESSAGES} from "../helpers/constants";
 import Spinner from "./Spinner";
+import {useAppContext} from "../context/AppContext";
 
-function Avatar({avatar_image_filename, onUpload}) {
-    const [avatarUrl, setAvatarUrl] = useState(null);
+function Avatar({onUpload}) {
     const [uploading, setUploading] = useState(false);
-
-    useEffect(() => {
-        if (avatar_image_filename) {
-            downloadImage(avatar_image_filename, setAvatarUrl).then(() => console.log(MESSAGES.SUCCESS.VALIDATION_DOWNLOAD_IMAGE));
-        }
-    }, [avatar_image_filename]);
+    const {avatarImageUrl, setAvatarImageUrl} = useAppContext();
 
     async function uploadAvatar(event) {
         try {
@@ -27,6 +21,12 @@ function Avatar({avatar_image_filename, onUpload}) {
             let {error: uploadError} = await supabase.storage
                 .from('avatars')
                 .upload(filePath, file);
+
+            setAvatarImageUrl(supabase
+                .storage
+                .from('avatars')
+                .getPublicUrl(fileName).publicURL)
+
             if (uploadError) {
                 console.log(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
@@ -40,14 +40,14 @@ function Avatar({avatar_image_filename, onUpload}) {
 
     return (
         <div>
-            {avatarUrl &&
+            {avatarImageUrl &&
             <img
-                src={avatarUrl}
+                src={avatarImageUrl}
                 alt="User avatar"
                 className="w-100 mb-3"
             />
             }
-            {avatarUrl ?
+            {avatarImageUrl ?
                 <label className="btn btn-primary" htmlFor="single">
                     {uploading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
                 </label>

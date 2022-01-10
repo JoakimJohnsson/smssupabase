@@ -1,19 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
 import {CLASSES, MESSAGES} from "./constants";
 
-export async function downloadImage(path, setAvatarUrl) {
-    try {
-        const {data, error} = await supabase.storage.from('avatars').download(path);
-        if (error) {
-            console.log('Error trying to download image: ', error.message);
-        }
-        const url = URL.createObjectURL(data);
-        setAvatarUrl(url);
-    } catch (error) {
-        console.log('Error downloading image: ', error.message);
-    }
-}
-
 export async function checkIfEmailExists(emailReference, setEmailExists) {
     let {data: email} = await supabase.from('users').select('email').eq('email', emailReference)
     if (email.length > 0) {
