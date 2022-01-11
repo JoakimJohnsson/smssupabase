@@ -132,5 +132,12 @@ footer {
     border-radius: 16px;
     font-weight: bold;
     font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sms-icon {
+      width: 2rem;
+      @extend .me-2;
+    }
   }
 }

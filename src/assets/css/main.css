@@ -5719,7 +5719,7 @@ textarea.form-control-lg {
 .me-1, .sms-icon--text {
   margin-right: 0.25rem !important; }
 
-.me-2 {
+.me-2, .btn.btn-cta .sms-icon {
   margin-right: 0.5rem !important; }
 
 .me-3 {
@@ -8977,6 +8977,11 @@ footer {
     padding: 1rem 3rem;
     border-radius: 16px;
     font-weight: bold;
-    font-size: 1.3rem; }
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .btn.btn-cta .sms-icon {
+      width: 2rem; }
 
 /*# sourceMappingURL=main.css.map */
