@@ -27,7 +27,7 @@ const Settings = () => {
                     .single();
 
                 if (error && status !== 406) {
-                    console.log('Error: ', error);
+                    console.log('Error: ', error + ' ' + avatar_image_filename);
                 }
 
                 if (data) {
@@ -44,8 +44,9 @@ const Settings = () => {
         }
 
         getProfile().then(() => 'Do something')
-    }, [user.id, session])
+    }, [user.id, session, avatar_image_filename])
 
+    // Updates profiles table in db
     async function updateProfileData({firstname, lastname, website, avatar_image_filename}) {
         try {
             setLoading(true)

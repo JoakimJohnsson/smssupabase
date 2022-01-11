@@ -16,12 +16,13 @@ export function AppContextProvider({children}) {
     const [user, setUser] = useState();
     const [profile, setProfile] = useState(defaultProfile);
     const [avatarImageUrl, setAvatarImageUrl] = useState("");
+    const [avatarFilename, setAvatarFilename] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const updateProfileOnChange = useCallback(() => {
         supabase
             .from('profiles')
-            .on('UPDATE', payload => {
+            .on('*', payload => {
                 updateProfile(user).then()
             })
             .subscribe()
@@ -60,7 +61,10 @@ export function AppContextProvider({children}) {
         signOut: () => supabase.auth.signOut(),
         user,
         profile,
+        setProfile,
         avatarImageUrl,
+        avatarFilename,
+        setAvatarFilename,
         setAvatarImageUrl,
         session: () => supabase.auth.session()
     }
@@ -77,11 +81,22 @@ export function AppContextProvider({children}) {
                 console.log("Error: ", error);
             }
             if (data) {
+
+                console.log("updating data: ", data);
+
                 setProfile(...data)
-                setAvatarImageUrl(supabase
-                    .storage
-                    .from('avatars')
-                    .getPublicUrl(data[0].avatar_image_filename).publicURL)
+                if (data[0].avatar_image_filename) {
+                    setAvatarImageUrl(supabase
+                        .storage
+                        .from('avatars')
+                        .getPublicUrl(data[0].avatar_image_filename).publicURL)
+
+                    console.log(data[0].avatar_image_filename);
+
+                    const fileName = data[0].avatar_image_filename;
+
+                    setAvatarFilename( fileName )
+                }
             }
         } catch (error) {
             alert(error.message)

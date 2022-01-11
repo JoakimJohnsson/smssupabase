@@ -6,9 +6,10 @@ import {useAppContext} from "../context/AppContext";
 
 function Avatar({onUpload}) {
     const [uploading, setUploading] = useState(false);
-    const {avatarImageUrl, setAvatarImageUrl} = useAppContext();
+    const {avatarImageUrl, setAvatarImageUrl, avatarFilename, setAvatarFilename} = useAppContext();
 
     async function uploadAvatar(event) {
+        await deleteImage();
         try {
             setUploading(true);
             if (!event.target.files || event.target.files.length === 0) {
@@ -21,6 +22,8 @@ function Avatar({onUpload}) {
             let {error: uploadError} = await supabase.storage
                 .from('avatars')
                 .upload(filePath, file);
+            setAvatarFilename(fileName);
+            console.log("profile here with updated name", avatarFilename);
 
             setAvatarImageUrl(supabase
                 .storage
@@ -28,13 +31,40 @@ function Avatar({onUpload}) {
                 .getPublicUrl(fileName).publicURL)
 
             if (uploadError) {
-                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD);
+                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
             }
             onUpload(filePath);
         } catch (error) {
             alert(error.message);
         } finally {
             setUploading(false);
+        }
+    }
+
+    async function deleteImage() {
+        console.log("trying to delete image with filename", avatarFilename);
+        if (avatarFilename) {
+            console.log("deleting image filename: ", avatarFilename);
+            try {
+                setUploading(true);
+                let {error: deleteError} = await supabase.storage
+                    .from('avatars')
+                    .remove([avatarFilename]);
+
+                let {error} = await supabase
+                    .from('profiles')
+                    .update({avatar_image_filename: null})
+                    .match({avatar_image_filename: avatarFilename})
+                setAvatarImageUrl(null);
+                setAvatarFilename(null);
+                if (deleteError || error) {
+                    console.log(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 23');
+                }
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                setUploading(false);
+            }
         }
     }
 
@@ -48,9 +78,12 @@ function Avatar({onUpload}) {
             />
             }
             {avatarImageUrl ?
-                <label className="btn btn-primary" htmlFor="single">
-                    {uploading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
-                </label>
+                <div>
+                    <label className="btn btn-primary" htmlFor="single">
+                        {uploading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
+                    </label>
+                    <button className={"btn btn-outline-secondary ms-3"} onClick={deleteImage}>Delete image</button>
+                </div>
                 :
                 <label className="btn btn-primary" htmlFor="single">
                     {uploading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}

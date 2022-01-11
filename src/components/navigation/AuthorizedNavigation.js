@@ -13,7 +13,7 @@ const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
     const collapseClass = "collapse navbar-collapse";
-    const {profile} = useAppContext();
+    const {profile, avatarImageUrl} = useAppContext();
 
     const handleClick = () => {
         setIsOpen(!isOpen)
@@ -43,7 +43,7 @@ const AuthorizedNavigation = () => {
                         <LiNavItem route={"/dashboard/admin"} onClick={handleClick} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className="nav-item border-start-0 border-lg-start">
-                            <NavbarProfileInformation/>
+                            {avatarImageUrl ? <NavbarProfileInformation/> : false}
                             <SignOutButton/>
                         </li>
                     </ul>
