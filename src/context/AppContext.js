@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
+import {prepareUrl} from "../helpers/functions";
 
 const AppContext = React.createContext();
 
@@ -17,6 +18,7 @@ export function AppContextProvider({children}) {
     const [profile, setProfile] = useState(defaultProfile);
     const [avatarImageUrl, setAvatarImageUrl] = useState("");
     const [avatarFilename, setAvatarFilename] = useState(null);
+    const [userUrl, setUserUrl] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const updateProfileOnChange = useCallback(() => {
@@ -63,9 +65,11 @@ export function AppContextProvider({children}) {
         profile,
         setProfile,
         avatarImageUrl,
+        setAvatarImageUrl,
         avatarFilename,
         setAvatarFilename,
-        setAvatarImageUrl,
+        userUrl,
+        setUserUrl,
         session: () => supabase.auth.session()
     }
 
@@ -81,20 +85,16 @@ export function AppContextProvider({children}) {
                 console.log("Error: ", error);
             }
             if (data) {
-
-                console.log("updating data: ", data);
-
-                setProfile(...data)
+                // Set profile - to be removed
+                setProfile(...data);
+                setUserUrl(prepareUrl(data[0].website));
+                // Get and set avatar url from storage via filename
                 if (data[0].avatar_image_filename) {
                     setAvatarImageUrl(supabase
                         .storage
                         .from('avatars')
                         .getPublicUrl(data[0].avatar_image_filename).publicURL)
-
-                    console.log(data[0].avatar_image_filename);
-
                     const fileName = data[0].avatar_image_filename;
-
                     setAvatarFilename( fileName )
                 }
             }

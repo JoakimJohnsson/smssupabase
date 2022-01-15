@@ -29,6 +29,7 @@
   .nav-item {
     display: flex;
     align-items: center;
+    min-height: 47px;
     @include media-breakpoint-up(lg) {
       margin-right: .5rem;
     }

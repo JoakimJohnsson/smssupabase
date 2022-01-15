@@ -4,6 +4,7 @@ import {supabase} from '../../supabase/supabaseClient';
 import Avatar from "../Avatar";
 import {CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
 import Spinner from '../Spinner';
+import {prepareUrl} from "../../helpers/functions";
 
 const Settings = () => {
 
@@ -14,7 +15,7 @@ const Settings = () => {
     const [avatar_image_filename, setAvatarImageFilename] = useState(null);
 
     // Get current user and signOut function from context
-    const {user, session} = useAppContext();
+    const {user, session, setUserUrl} = useAppContext();
 
     useEffect(() => {
         async function getProfile() {
@@ -44,13 +45,12 @@ const Settings = () => {
         }
 
         getProfile().then(() => 'Do something')
-    }, [user.id, session, avatar_image_filename])
+    }, [user.id, session, avatar_image_filename, setUserUrl])
 
     // Updates profiles table in db
     async function updateProfileData({firstname, lastname, website, avatar_image_filename}) {
         try {
             setLoading(true)
-
             const updates = {
                 id: user.id,
                 firstname,
@@ -59,17 +59,17 @@ const Settings = () => {
                 avatar_image_filename,
                 updated_at: new Date(),
             }
-
             let {error} = await supabase.from('profiles').upsert(updates, {
                 returning: 'minimal', // Don't return the value after inserting
             })
-
             if (error) {
                 console.log('Error: ', error);
             }
         } catch (error) {
             alert(error.message)
         } finally {
+            // Update App context
+            setUserUrl(prepareUrl(website));
             setLoading(false)
         }
     }

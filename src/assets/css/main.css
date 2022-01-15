@@ -8905,7 +8905,8 @@ input {
         border-top: none; } }
   .sms-header .nav-item {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    min-height: 47px; }
     @media (min-width: 992px) {
       .sms-header .nav-item {
         margin-right: .5rem; } }

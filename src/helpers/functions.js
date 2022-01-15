@@ -10,6 +10,14 @@ export async function checkIfEmailExists(emailReference, setEmailExists) {
     }
 }
 
+export const prepareUrl = (url) => {
+    if (url && url.substring(0, 7) !== 'http://') {
+        return 'https://' + url;
+    } else {
+        return url;
+    }
+}
+
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
     if (success) {
         setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);

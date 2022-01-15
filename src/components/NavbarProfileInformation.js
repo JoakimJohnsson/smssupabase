@@ -3,17 +3,7 @@ import {useAppContext} from "../context/AppContext";
 import Spinner from "./Spinner";
 
 const NavbarProfileInformation = () => {
-    const {profile} = useAppContext();
-    const prepareUrl = (url) => {
-        if (url.substring(0, 7) !== 'http://') {
-            return 'https://' + url;
-        } else {
-            return url;
-        }
-    }
-    const userUrl = profile.website ? prepareUrl(profile.website) : false;
-    const {avatarImageUrl} = useAppContext();
-
+    const {avatarImageUrl, userUrl} = useAppContext();
     return avatarImageUrl ? (
             <div className="nav-link pe-0 d-none d-lg-flex">
                 {userUrl ?
