@@ -61,7 +61,6 @@
       }
     }
     .sms-nav-link--text {
-      font-weight: 300;
       display: inline-block;
       margin-top: 2px;
     }
@@ -76,6 +75,23 @@
 
 .sms-hero-header {
   background: center / cover no-repeat url("../images/heroimage.jpg");
+}
+
+// Content
+.main-container {
+  padding: 1rem;
+  // header - 90px - footer 170px;
+  min-height: calc(100vh - 260px);
+  h1, .h1 {
+    margin-bottom: 3rem;
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+img {
+  border-radius: $border-radius--md;
 }
 
 // Footer
@@ -102,6 +118,7 @@ footer {
 }
 .sms-form {
   @extend .p-0, .p-sm-5, .h-100;
+  border-radius: $border-radius--lg;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
     background-color: $color-bg-horse;
@@ -122,15 +139,19 @@ footer {
   h2 {
     @extend .border-bottom, .pb-2, .mb-4;
   }
+  .form-label {
+    opacity: .7;
+    font-weight: 300;
+  }
 }
 
 // Buttons
 .btn {
-  border-radius: 0;
+  border-radius: $border-radius--sm;
   &.btn-cta {
     min-width: 50%;
     padding: 1rem 3rem;
-    border-radius: 16px;
+    border-radius: $border-radius--lg;
     font-weight: bold;
     font-size: 1.3rem;
     display: flex;
