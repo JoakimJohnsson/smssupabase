@@ -1,48 +1,56 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} from "@heroicons/react/solid";
-import shieldWhite from "../../assets/images/shield__white.svg";
-import SignOutButton from "../miniComponents/SignOutButton";
-import {useAppContext} from "../../context/AppContext";
-import NavbarProfileInformation from "../NavbarProfileInformation";
-import LiNavItem from "../listComponents/LiNavItem";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} from '@heroicons/react/solid';
+import shieldWhite from '../../assets/images/shield__white.svg';
+import SignOutButton from '../miniComponents/SignOutButton';
+import {useAppContext} from '../../context/AppContext';
+import NavbarProfileInformation from '../NavbarProfileInformation';
+import LiNavItem from '../listComponents/LiNavItem';
+import {LABELS_AND_HEADINGS} from '../../helpers/constants';
+import {getRole} from '../../helpers/functions';
 
 const AuthorizedNavigation = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
-    const collapseClass = "collapse navbar-collapse";
-    const {profile, avatarImageUrl} = useAppContext();
+    const [role, setRole] = useState(0);
+    const collapseClassShow = 'collapse navbar-collapse show pt-3 pt-lg-0';
+    const collapseClass = 'collapse navbar-collapse';
+    const {user, avatarImageUrl} = useAppContext();
+
+
+    useEffect(() => {
+        getRole(user, setRole).then(() => 'Do something!')
+    }, [user])
 
     const handleClick = () => {
         setIsOpen(!isOpen)
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark">
-            <div className="container-fluid px-3">
-                <Link to="/" className={"hocus-standard h-100 d-flex align-items-center"}>
-                    <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
-                    <div className={"sms-logo-text"}>
-                        <span className={"d-none d-sm-inline"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}</span>
-                        <span className={"d-inline d-sm-none"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE_SHORT}</span>
+        <nav className='navbar navbar-expand-lg navbar-dark'>
+            <div className='container-fluid px-3'>
+                <Link to='/' className={'hocus-standard h-100 d-flex align-items-center'}>
+                    <img className={'sms-logo-shield me-2'} src={shieldWhite} alt={'Svenska marvelsamlare logo'}/>
+                    <div className={'sms-logo-text'}>
+                        <span className={'d-none d-sm-inline'}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}</span>
+                        <span className={'d-inline d-sm-none'}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE_SHORT}</span>
                     </div>
                 </Link>
-                <button className={isOpen ? "btn d-block d-lg-none text-danger" : "btn d-block d-lg-none text-primary"}
+                <button className={isOpen ? 'btn d-block d-lg-none text-danger' : 'btn d-block d-lg-none text-primary'}
                         onClick={handleClick}>
-                    <span className={"visually-hidden"}>menu</span>
-                    {isOpen ? <XIcon className={"sms-icon--hamburger"}/> : <MenuIcon className={"sms-icon--hamburger"}/>}
+                    <span className={'visually-hidden'}>menu</span>
+                    {isOpen ? <XIcon className={'sms-icon--hamburger'}/> : <MenuIcon className={'sms-icon--hamburger'}/>}
                 </button>
-                <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem route={"/"} onClick={() => setIsOpen(!isOpen)} icon={<HomeIcon/>} text={LABELS_AND_HEADINGS.START}/>
-                        <LiNavItem route={"/dashboard"} onClick={handleClick} icon={<PresentationChartLineIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
-                        <LiNavItem route={"/dashboard/settings"} onClick={handleClick} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
-                        {profile.role === 1 &&
-                        <LiNavItem route={"/dashboard/admin"} onClick={handleClick} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
+                <div className={isOpen ? collapseClassShow : collapseClass} id='navbarSupportedContent'>
+                    <ul className='navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0'>
+                        <LiNavItem route={'/'} onClick={() => setIsOpen(!isOpen)} icon={<HomeIcon/>} text={LABELS_AND_HEADINGS.START}/>
+                        <LiNavItem route={'/dashboard'} onClick={handleClick} icon={<PresentationChartLineIcon/>}
+                                   text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={'/dashboard/settings'} onClick={handleClick} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
+                        {role === 1 &&
+                        <LiNavItem route={'/dashboard/admin'} onClick={handleClick} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
-                        <li className="nav-item border-start-0 border-lg-start">
+                        <li className='nav-item border-start-0 border-lg-start'>
                             {avatarImageUrl ? <NavbarProfileInformation/> : false}
                             <SignOutButton/>
                         </li>

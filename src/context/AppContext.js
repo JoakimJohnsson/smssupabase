@@ -1,22 +1,13 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {prepareUrl} from "../helpers/functions";
+import {prepareUrl} from '../helpers/functions';
 
 const AppContext = React.createContext();
 
 export function AppContextProvider({children}) {
 
-    const defaultProfile = {
-        firstname: "",
-        lastname: "",
-        website: "",
-        avatar_image_filename: "",
-        role: 0
-    }
-
     const [user, setUser] = useState();
-    const [profile, setProfile] = useState(defaultProfile);
-    const [avatarImageUrl, setAvatarImageUrl] = useState("");
+    const [avatarImageUrl, setAvatarImageUrl] = useState('');
     const [avatarFilename, setAvatarFilename] = useState(null);
     const [userUrl, setUserUrl] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -62,8 +53,6 @@ export function AppContextProvider({children}) {
         signIn: (data) => supabase.auth.signIn(data),
         signOut: () => supabase.auth.signOut(),
         user,
-        profile,
-        setProfile,
         avatarImageUrl,
         setAvatarImageUrl,
         avatarFilename,
@@ -82,11 +71,9 @@ export function AppContextProvider({children}) {
                 .eq('id', user.id);
 
             if (error && status !== 406) {
-                console.log("Error: ", error);
+                console.log('Error: ', error);
             }
             if (data) {
-                // Set profile - to be removed
-                setProfile(...data);
                 setUserUrl(prepareUrl(data[0].website));
                 // Get and set avatar url from storage via filename
                 if (data[0].avatar_image_filename) {

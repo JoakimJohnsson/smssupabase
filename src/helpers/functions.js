@@ -1,5 +1,5 @@
-import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, MESSAGES} from "./constants";
+import {supabase} from '../supabase/supabaseClient';
+import {CLASSES, MESSAGES} from './constants';
 
 export async function checkIfEmailExists(emailReference, setEmailExists) {
     let {data: email} = await supabase.from('users').select('email').eq('email', emailReference)
@@ -39,5 +39,27 @@ export const handlePasswordInput = (success, setPasswordInputClass, setPasswordV
         setPasswordInputClass(CLASSES.FORM_INPUT_ERROR);
         setPasswordValidated(false)
         setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
+    }
+}
+
+// API functions
+
+export async function getRole(user, setRole) {
+    if (user) {
+        try {
+            let {data, error, status} = await supabase
+                .from('profiles')
+                .select(`role`)
+                .eq('id', user.id)
+                .single();
+            if (error && status !== 406) {
+                console.log('Error: ', error);
+            }
+            if (data) {
+                setRole(data.role);
+            }
+        } catch (error) {
+            alert(error.message)
+        }
     }
 }

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {LABELS_AND_HEADINGS, MESSAGES} from "../helpers/constants";
-import Spinner from "./Spinner";
-import {useAppContext} from "../context/AppContext";
+import {LABELS_AND_HEADINGS, MESSAGES} from '../helpers/constants';
+import Spinner from './Spinner';
+import {useAppContext} from '../context/AppContext';
 
 function Avatar({onUpload}) {
     const [uploading, setUploading] = useState(false);
@@ -23,7 +23,7 @@ function Avatar({onUpload}) {
                 .from('avatars')
                 .upload(filePath, file);
             setAvatarFilename(fileName);
-            console.log("profile here with updated name", avatarFilename);
+            console.log('profile here with updated name', avatarFilename);
 
             setAvatarImageUrl(supabase
                 .storage
@@ -42,9 +42,7 @@ function Avatar({onUpload}) {
     }
 
     async function deleteImage() {
-        console.log("trying to delete image with filename", avatarFilename);
         if (avatarFilename) {
-            console.log("deleting image filename: ", avatarFilename);
             try {
                 setUploading(true);
                 let {error: deleteError} = await supabase.storage
@@ -58,7 +56,7 @@ function Avatar({onUpload}) {
                 setAvatarImageUrl(null);
                 setAvatarFilename(null);
                 if (deleteError || error) {
-                    console.log(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 23');
+                    console.log(MESSAGES.ERROR.VALIDATION_UPLOAD);
                 }
             } catch (error) {
                 alert(error.message);
@@ -73,27 +71,27 @@ function Avatar({onUpload}) {
             {avatarImageUrl &&
             <img
                 src={avatarImageUrl}
-                alt="User avatar"
-                className="w-100 mb-3"
+                alt='User avatar'
+                className='w-100 mb-3'
             />
             }
             {avatarImageUrl ?
                 <div>
-                    <label className="btn btn-primary" htmlFor="single">
-                        {uploading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
+                    <label className='btn btn-primary' htmlFor='single'>
+                        {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
                     </label>
-                    <button className={"btn btn-outline-secondary ms-3"} onClick={deleteImage}>Delete image</button>
+                    <button className={'btn btn-outline-secondary ms-3'} onClick={deleteImage}>Delete image</button>
                 </div>
                 :
-                <label className="btn btn-primary" htmlFor="single">
-                    {uploading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}
+                <label className='btn btn-primary' htmlFor='single'>
+                    {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}
                 </label>
             }
             <input
-                className={"d-none"}
-                type="file"
-                id="single"
-                accept="image/*"
+                className={'d-none'}
+                type='file'
+                id='single'
+                accept='image/*'
                 onChange={uploadAvatar}
                 disabled={uploading}
             />
