@@ -8722,7 +8722,7 @@ textarea.form-control-lg {
     opacity: 90%; }
 
 .main-container {
-  padding: 3rem;
+  padding: 1rem;
   min-height: calc(100vh - 260px); }
 
 input:autofill {
