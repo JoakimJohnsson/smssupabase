@@ -7,20 +7,12 @@ import {useAppContext} from '../../context/AppContext';
 import NavbarProfileInformation from '../NavbarProfileInformation';
 import LiNavItem from '../listComponents/LiNavItem';
 import {LABELS_AND_HEADINGS} from '../../helpers/constants';
-import {getRole} from '../../helpers/functions';
 
 const AuthorizedNavigation = () => {
-
     const [isOpen, setIsOpen] = useState(false);
-    const [role, setRole] = useState(0);
     const collapseClassShow = 'collapse navbar-collapse show pt-3 pt-lg-0';
     const collapseClass = 'collapse navbar-collapse';
-    const {user, avatarImageUrl} = useAppContext();
-
-
-    useEffect(() => {
-        getRole(user, setRole).then(() => 'Do something!')
-    }, [user])
+    const {avatarImageUrl, role} = useAppContext();
 
     const handleClick = () => {
         setIsOpen(!isOpen)

@@ -112,7 +112,7 @@ footer {
   width: 55px;
 }
 
-// Forms
+// Dashboard
 .sms-form-col {
   @extend .col-12, .col-md-6, .mb-5, .p-md-3;
 }
@@ -144,6 +144,11 @@ footer {
     font-weight: 300;
   }
 }
+
+.dashboard-card {
+
+}
+
 
 // Buttons
 .btn {

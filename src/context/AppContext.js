@@ -6,10 +6,12 @@ const AppContext = React.createContext();
 
 export function AppContextProvider({children}) {
 
+    // Global states
     const [user, setUser] = useState();
     const [avatarImageUrl, setAvatarImageUrl] = useState('');
     const [avatarFilename, setAvatarFilename] = useState(null);
     const [userUrl, setUserUrl] = useState(null);
+    const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const updateProfileOnChange = useCallback(() => {
@@ -59,6 +61,7 @@ export function AppContextProvider({children}) {
         setAvatarFilename,
         userUrl,
         setUserUrl,
+        role,
         session: () => supabase.auth.session()
     }
 
@@ -82,7 +85,9 @@ export function AppContextProvider({children}) {
                         .from('avatars')
                         .getPublicUrl(data[0].avatar_image_filename).publicURL)
                     const fileName = data[0].avatar_image_filename;
-                    setAvatarFilename( fileName )
+                    setAvatarFilename(fileName);
+                    console.log("dddd", data[0].role);
+                    setRole(data[0].role)
                 }
             }
         } catch (error) {

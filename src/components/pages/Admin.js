@@ -9,6 +9,11 @@ const Admin = () => {
                 <div className={"col-12"}>
                     <h1>{LABELS_AND_HEADINGS.ADMIN}</h1>
                 </div>
+                <div className={'col-4'}>
+                <div className={'dashboard-card'}>
+                    <h2>{LABELS_AND_HEADINGS.FORMAT}</h2>
+                </div>
+                </div>
             </div>
         </main>
     )

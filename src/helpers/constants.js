@@ -29,6 +29,7 @@ export const CLASSES = {
 
 export const LABELS_AND_HEADINGS = {
     WELCOME: 'Välkommen till Svenska Marvelsamlare!',
+    FORMAT: 'Format',
     LOG_IN: 'Logga in',
     SIGN_OUT: 'Logga ut',
     CREATE_ACCOUNT: 'Registrera dig',

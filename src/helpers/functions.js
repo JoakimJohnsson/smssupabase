@@ -41,25 +41,3 @@ export const handlePasswordInput = (success, setPasswordInputClass, setPasswordV
         setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
     }
 }
-
-// API functions
-
-export async function getRole(user, setRole) {
-    if (user) {
-        try {
-            let {data, error, status} = await supabase
-                .from('profiles')
-                .select(`role`)
-                .eq('id', user.id)
-                .single();
-            if (error && status !== 406) {
-                console.log('Error: ', error);
-            }
-            if (data) {
-                setRole(data.role);
-            }
-        } catch (error) {
-            alert(error.message)
-        }
-    }
-}
