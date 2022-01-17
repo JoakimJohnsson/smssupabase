@@ -158,6 +158,12 @@ footer {
   p {
     font-size: .875rem;
   }
+  .list-group-item:nth-child(odd) {
+    background-color: $color-bg-dog;
+  }
+  .list-group-item:nth-child(even) {
+    background-color: $color-bg-elephant;
+  }
 }
 
 

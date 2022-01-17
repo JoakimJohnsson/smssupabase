@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, FORMATS} from "../../helpers/constants";
 import {supabase} from "../../supabase/supabaseClient";
 import Spinner from "../Spinner";
 
@@ -29,11 +29,19 @@ const FormatCard = () => {
         getFormats().then(() => 'Do something')
     }, [])
 
+    const printFormatData = (fd) => {
+        return fd.map( (f) =>
+            <li key={f.id} className={'list-group-item'}>{FORMATS[f.type - 1]}</li>)
+    }
+
     return loading ? (<Spinner/>) : (
         <div className={'col-12 col-md-4'}>
             <div className={'dashboard-card'}>
                 <h2>{LABELS_AND_HEADINGS.FORMAT}</h2>
-                <p>Det finns {formatData.length} olika format att välja på.</p>
+                <p>Det finns {formatData.length} olika typer av format att välja på.</p>
+                <ul className={'list-group small'}>
+                {printFormatData(formatData)}
+                </ul>
             </div>
         </div>
     )

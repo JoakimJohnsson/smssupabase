@@ -58,3 +58,5 @@ export const TEXTS = {
     NEW_TITLES: 'Nya titlar och funktioner läggs till regelbundet',
     ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar'
 }
+
+export const FORMATS = ['Serietidning', 'Album', 'Pocket', 'Inbunden', 'Specialtidning'];
