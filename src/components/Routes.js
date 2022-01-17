@@ -10,7 +10,7 @@ import Admin from './pages/Admin';
 const Routes = () => {
     const {user, role} = useAppContext();
     // Conditional rendering - must have user and role
-    return user && role && (
+    return (
         <>
             <Route exact path='/' component={Start}/>
             <Route path='/success' component={SignupSuccess}/>

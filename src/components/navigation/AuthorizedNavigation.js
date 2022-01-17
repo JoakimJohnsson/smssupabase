@@ -42,7 +42,7 @@ const AuthorizedNavigation = () => {
                         {role === 1 &&
                         <LiNavItem route={'/dashboard/admin'} onClick={handleClick} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
-                        <li className='nav-item border-start-0 border-lg-start'>
+                        <li className='nav-item'>
                             {avatarImageUrl ? <NavbarProfileInformation/> : false}
                             <SignOutButton/>
                         </li>

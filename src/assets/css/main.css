@@ -4,7 +4,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -48,7 +48,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 255, 255, 255;
   --bs-body-bg-rgb: 29, 31, 47;
-  --bs-font-sans-serif: "Open Sans", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-sans-serif: "Roboto", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -5453,7 +5453,7 @@ textarea.form-control-lg {
 .h-75 {
   height: 75% !important; }
 
-.h-100, .sms-form {
+.h-100, .sms-form, .dashboard-card {
   height: 100% !important; }
 
 .h-auto {
@@ -5785,7 +5785,7 @@ textarea.form-control-lg {
 .p-2 {
   padding: 0.5rem !important; }
 
-.p-3 {
+.p-3, .dashboard-card {
   padding: 1rem !important; }
 
 .p-4 {
@@ -8979,8 +8979,19 @@ footer {
     .sms-form .form-control.danger {
       border-bottom: 6px solid #eea9a9; }
   .sms-form .form-label {
-    opacity: .7;
+    opacity: 0.85;
     font-weight: 300; }
+
+.dashboard-card {
+  background-color: #232536;
+  border-radius: 16px; }
+  .dashboard-card h2, .dashboard-card .h2 {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #66dafa; }
+  .dashboard-card p {
+    font-size: .875rem; }
 
 .btn {
   border-radius: 4px; }

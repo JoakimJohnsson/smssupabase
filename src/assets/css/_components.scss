@@ -140,13 +140,24 @@ footer {
     @extend .border-bottom, .pb-2, .mb-4;
   }
   .form-label {
-    opacity: .7;
+    opacity: $standard-opacity;
     font-weight: 300;
   }
 }
 
 .dashboard-card {
-
+  @extend .p-3, .h-100;
+  background-color: $color-bg-horse;
+  border-radius: $border-radius--lg;
+  h2 {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1rem;
+    color: $primary;
+  }
+  p {
+    font-size: .875rem;
+  }
 }
 
 
