@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} from '@heroicons/react/solid';
 import shieldWhite from '../../assets/images/shield__white.svg';

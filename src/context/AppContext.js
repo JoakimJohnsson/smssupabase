@@ -86,7 +86,6 @@ export function AppContextProvider({children}) {
                         .getPublicUrl(data[0].avatar_image_filename).publicURL)
                     const fileName = data[0].avatar_image_filename;
                     setAvatarFilename(fileName);
-                    console.log("dddd", data[0].role);
                     setRole(data[0].role)
                 }
             }
