@@ -38,8 +38,9 @@ const FormatCard = () => {
         <div className={'col-12 col-md-4'}>
             <div className={'dashboard-card'}>
                 <h2>{LABELS_AND_HEADINGS.FORMAT}</h2>
-                <p>Det finns {formatData.length} olika typer av format att välja på.</p>
-                <ul className={'list-group small'}>
+                <p>Det finns för närvarande {formatData.length} olika typer av format att välja på. Dessa läggs in och
+                    redigeras direkt i databasen på <a href={'https://supabase.com/'}>Supabase</a>.</p>
+                <ul className={'list-group list-group-flush small'}>
                 {printFormatData(formatData)}
                 </ul>
             </div>

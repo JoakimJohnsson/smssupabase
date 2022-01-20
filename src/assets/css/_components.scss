@@ -140,7 +140,7 @@ footer {
     @extend .border-bottom, .pb-2, .mb-4;
   }
   .form-label {
-    opacity: $standard-opacity;
+    color: $white--darker;
     font-weight: 300;
   }
 }
@@ -158,11 +158,15 @@ footer {
   p {
     font-size: .875rem;
   }
-  .list-group-item:nth-child(odd) {
-    background-color: $color-bg-dog;
-  }
-  .list-group-item:nth-child(even) {
-    background-color: $color-bg-elephant;
+
+  .list-group-item {
+    color: $white--darker;
+    &:nth-child(odd) {
+      background-color: $color-bg-elephant;
+    }
+    &:nth-child(even) {
+      background-color: $color-bg-horse;
+    }
   }
 }
 

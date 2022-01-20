@@ -252,7 +252,7 @@ table {
 caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: #ced4da;
+  color: #c0c7cf;
   text-align: left; }
 
 th {
@@ -1732,7 +1732,7 @@ progress {
 .form-text {
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: #ced4da; }
+  color: #c0c7cf; }
 
 .form-control {
   display: block;
@@ -6053,7 +6053,7 @@ textarea.form-control-lg {
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: #ced4da !important; }
+  color: #c0c7cf !important; }
 
 .text-black-50 {
   --bs-text-opacity: 1;
@@ -8724,6 +8724,9 @@ textarea.form-control-lg {
 input:autofill {
   background: #fff; }
 
+body {
+  letter-spacing: .02em; }
+
 input {
   filter: none; }
 
@@ -8979,7 +8982,7 @@ footer {
     .sms-form .form-control.danger {
       border-bottom: 6px solid #eea9a9; }
   .sms-form .form-label {
-    opacity: 0.85;
+    color: #c0c7cf;
     font-weight: 300; }
 
 .dashboard-card {
@@ -8992,10 +8995,12 @@ footer {
     color: #66dafa; }
   .dashboard-card p {
     font-size: .875rem; }
-  .dashboard-card .list-group-item:nth-child(odd) {
-    background-color: #27293b; }
-  .dashboard-card .list-group-item:nth-child(even) {
-    background-color: #1d1f2f; }
+  .dashboard-card .list-group-item {
+    color: #c0c7cf; }
+    .dashboard-card .list-group-item:nth-child(odd) {
+      background-color: #1d1f2f; }
+    .dashboard-card .list-group-item:nth-child(even) {
+      background-color: #232536; }
 
 .btn {
   border-radius: 4px; }
