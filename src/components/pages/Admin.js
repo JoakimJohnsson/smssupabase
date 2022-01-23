@@ -7,7 +7,7 @@ const Admin = () => {
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
-                <div className={"col-12"}>
+                <div className={"col-12 main-col"}>
                     <h1>{LABELS_AND_HEADINGS.ADMIN}</h1>
                 </div>
                 <FormatCard/>

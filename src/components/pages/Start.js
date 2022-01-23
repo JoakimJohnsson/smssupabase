@@ -12,7 +12,7 @@ const Start = () => {
     return user ? (
             <div className={'container-fluid main-container'}>
                 <div className={'row'}>
-                    <div className={'col-12'}>
+                    <div className={'col-12 main-col'}>
                         <h1 className={''}>
                             {LABELS_AND_HEADINGS.START}
                         </h1>

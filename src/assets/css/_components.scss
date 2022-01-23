@@ -6,6 +6,10 @@
 .sms-header {
   background-color: $color-bg-dog;
   font-size: .875rem;
+  min-height: $sms-header-min-height;
+  @include media-breakpoint-up(lg) {
+    min-height: $sms-header-min-height--lg;
+  }
   .sms-logo-shield {
     width: 30px;
     height: 30px;
@@ -79,7 +83,6 @@
 
 // Content
 .main-container {
-  padding: 1rem;
   // header - 90px - footer 170px;
   min-height: calc(100vh - 260px);
   h1, .h1 {
@@ -87,6 +90,9 @@
     @include media-breakpoint-up(sm) {
       margin-bottom: 1rem;
     }
+  }
+  .main-col {
+    padding: 1rem;
   }
 }
 
@@ -101,11 +107,14 @@ footer {
 
 .sms-icon--text {
   width: 18px;
-  @extend .me-1;
+  margin-right: .25rem;
 }
 
 .sms-icon--hamburger {
   width: 24px;
+  &:hover, &:focus {
+    opacity: $standard-opacity;
+  }
 }
 
 .sms-icon--large {
@@ -170,6 +179,21 @@ footer {
   }
 }
 
+.dashboard-sidebar {
+  height: 100vh;
+  width: 250px;
+  background-color: $color-bg-whale;
+}
+
+.offcanvas {
+  background-color: $color-bg-whale;
+  &.offcanvas-start {
+    top: $sms-header-min-height;
+    @include media-breakpoint-up(lg) {
+      top: $sms-header-min-height--lg;
+    }
+  }
+}
 
 // Buttons
 .btn {

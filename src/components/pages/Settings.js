@@ -77,7 +77,7 @@ const Settings = () => {
     return (
         <main className={'container-fluid main-container'}>
             <div className={'row'}>
-                <div className={'col-12'}>
+                <div className={'col-12 main-col'}>
                     <h1>{LABELS_AND_HEADINGS.SETTINGS}</h1>
                 </div>
                 <div className={'sms-form-col'}>

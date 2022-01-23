@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, FORMATS} from "../../helpers/constants";
-import {supabase} from "../../supabase/supabaseClient";
-import Spinner from "../Spinner";
+import {LABELS_AND_HEADINGS, FORMATS} from "../../../helpers/constants";
+import {supabase} from "../../../supabase/supabaseClient";
+import Spinner from "../../Spinner";
 
 const FormatCard = () => {
     const [loading, setLoading] = useState(true);
@@ -35,7 +35,7 @@ const FormatCard = () => {
     }
 
     return loading ? (<Spinner/>) : (
-        <div className={'col-12 col-md-4'}>
+        <div className={'col-12 col-md-4 main-col'}>
             <div className={'dashboard-card'}>
                 <h2>{LABELS_AND_HEADINGS.FORMAT}</h2>
                 <p>Det finns för närvarande {formatData.length} olika typer av format att välja på. Dessa läggs in och
