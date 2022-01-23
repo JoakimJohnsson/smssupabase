@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import FormatCard from "../dashboardCards/FormatCard";
+import FormatCard from "../dashboardComponents/dashboardCards/FormatCard";
 
 const Admin = () => {
 
@@ -10,7 +10,6 @@ const Admin = () => {
                 <div className={"col-12"}>
                     <h1>{LABELS_AND_HEADINGS.ADMIN}</h1>
                 </div>
-
                 <FormatCard/>
             </div>
         </main>
