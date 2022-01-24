@@ -14,10 +14,9 @@ const Dashboard = () => {
         <main className={"container-fluid main-container dashboard"}>
             <div className={"row"}>
                 <Sidebar isOpen={isOpen} handleClick={handleClick}/>
-
                 <div className={"col main-col"}>
-                    <button className={'btn btn-outline-secondary d-inline-block d-flex d-md-none mb-3'} onClick={handleClick}>
-                        <ChevronDoubleRightIcon className={'sms-icon--text me-0'}/>
+                    <button className={'btn btn-link p-0 w-100 text-start d-block d-md-none mb-3'} onClick={handleClick}>
+                        <ChevronDoubleRightIcon className={'sms-icon--hamburger me-0'}/>
                     </button>
                     <h1>{LABELS_AND_HEADINGS.DASHBOARD}</h1>
                 </div>
