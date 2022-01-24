@@ -15,7 +15,7 @@ const Dashboard = () => {
             <div className={"row"}>
                 <Sidebar isOpen={isOpen} handleClick={handleClick}/>
                 <div className={"col main-col"}>
-                    <button className={'btn btn-link p-0 w-100 text-start d-block d-md-none mb-3'} onClick={handleClick}>
+                    <button className={'btn btn-link d-block d-md-none mb-3'} onClick={handleClick}>
                         <ChevronDoubleRightIcon className={'sms-icon--hamburger me-0'}/>
                     </button>
                     <h1>{LABELS_AND_HEADINGS.DASHBOARD}</h1>
