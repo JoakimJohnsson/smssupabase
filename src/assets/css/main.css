@@ -92,7 +92,7 @@ hr:not([size]) {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 1.2; }
 
 h1, .h1 {
@@ -5785,7 +5785,7 @@ textarea.form-control-lg {
 .p-2 {
   padding: 0.5rem !important; }
 
-.p-3, .dashboard-card {
+.p-3, .main-container .main-col, .dashboard-card {
   padding: 1rem !important; }
 
 .p-4 {
@@ -6566,7 +6566,7 @@ textarea.form-control-lg {
   .p-sm-4 {
     padding: 1.5rem !important; }
 
-  .p-sm-5, .sms-form {
+  .p-sm-5, .main-container .main-col, .sms-form {
     padding: 3rem !important; }
 
   .px-sm-0 {
@@ -7054,7 +7054,7 @@ textarea.form-control-lg {
   .p-md-2 {
     padding: 0.5rem !important; }
 
-  .p-md-3, .sms-form-col {
+  .p-md-3 {
     padding: 1rem !important; }
 
   .p-md-4 {
@@ -8953,8 +8953,6 @@ input {
     @media (min-width: 576px) {
       .main-container h1, .main-container .h1, .main-container .h1 {
         margin-bottom: 1rem; } }
-  .main-container .main-col {
-    padding: 1rem; }
 
 img {
   border-radius: 8px; }
@@ -9014,6 +9012,15 @@ footer {
   height: 100vh;
   width: 250px;
   background-color: #0e101a; }
+  .dashboard-sidebar .sidebar-label {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 0.875rem;
+    opacity: 0.85;
+    margin-bottom: .5rem; }
+  .dashboard-sidebar .nav-link svg {
+    margin-bottom: 4px;
+    margin-right: 1rem; }
 
 .offcanvas {
   background-color: #0e101a; }

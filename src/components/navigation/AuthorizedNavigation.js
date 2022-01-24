@@ -35,7 +35,7 @@ const AuthorizedNavigation = () => {
                 </button>
                 <div className={isOpen ? collapseClassShow : collapseClass} id='navbarSupportedContent'>
                     <ul className='navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0'>
-                        <LiNavItem route={'/'} onClick={() => setIsOpen(!isOpen)} icon={<HomeIcon/>} text={LABELS_AND_HEADINGS.START}/>
+                        <LiNavItem route={'/'} onClick={handleClick} icon={<HomeIcon/>} text={LABELS_AND_HEADINGS.START}/>
                         <LiNavItem route={'/dashboard'} onClick={handleClick} icon={<PresentationChartLineIcon/>}
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={'/dashboard/settings'} onClick={handleClick} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>

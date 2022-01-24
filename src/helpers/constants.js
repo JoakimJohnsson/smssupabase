@@ -51,7 +51,8 @@ export const LABELS_AND_HEADINGS = {
     CHANGE_IMAGE: 'Byt bild',
     UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
     UPDATE: 'Uppdatera',
-    LOADING: 'Laddar'
+    LOADING: 'Laddar',
+    MY_COLLECTION: 'Min samling'
 }
 
 export const TEXTS = {

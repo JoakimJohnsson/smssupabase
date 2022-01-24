@@ -92,7 +92,7 @@
     }
   }
   .main-col {
-    padding: 1rem;
+    @extend .p-3, .p-sm-5;
   }
 }
 
@@ -123,7 +123,7 @@ footer {
 
 // Dashboard
 .sms-form-col {
-  @extend .col-12, .col-md-6, .mb-5, .p-md-3;
+  @extend .col-12, .col-md-6, .mb-5;
 }
 .sms-form {
   @extend .p-0, .p-sm-5, .h-100;
@@ -183,6 +183,17 @@ footer {
   height: 100vh;
   width: 250px;
   background-color: $color-bg-whale;
+  .sidebar-label {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: $font-size-sm;
+    opacity: $standard-opacity;
+    margin-bottom: .5rem;
+  }
+  .nav-link svg {
+    margin-bottom: 4px;
+    margin-right: 1rem;
+  }
 }
 
 .offcanvas {
