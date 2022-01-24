@@ -8913,25 +8913,26 @@ input {
     @media (min-width: 992px) {
       .sms-header .nav-item {
         margin-right: .5rem; } }
-    .sms-header .nav-item .nav-link {
+    .sms-header .nav-item .nav-link, .sms-header .nav-item.nav-link {
+      cursor: pointer;
       background-color: transparent;
       display: flex;
       align-items: center;
       color: #66dafa;
       padding: .4rem .4rem; }
-      .sms-header .nav-item .nav-link.active {
+      .sms-header .nav-item .nav-link.active, .sms-header .nav-item.nav-link.active {
         color: #a8e6f8; }
-      .sms-header .nav-item .nav-link:hover, .sms-header .nav-item .nav-link:focus {
+      .sms-header .nav-item .nav-link:hover, .sms-header .nav-item .nav-link:focus, .sms-header .nav-item.nav-link:hover, .sms-header .nav-item.nav-link:focus {
         color: #a8e6f8; }
       @media (min-width: 992px) {
-        .sms-header .nav-item .nav-link {
+        .sms-header .nav-item .nav-link, .sms-header .nav-item.nav-link {
           padding: .2rem .4rem; } }
       @media (min-width: 992px) {
-        .sms-header .nav-item .nav-link {
+        .sms-header .nav-item .nav-link, .sms-header .nav-item.nav-link {
           border-left: 1px solid #444; }
-          .sms-header .nav-item .nav-link.active {
+          .sms-header .nav-item .nav-link.active, .sms-header .nav-item.nav-link.active {
             border-left: 1px solid; } }
-      .sms-header .nav-item .nav-link svg {
+      .sms-header .nav-item .nav-link svg, .sms-header .nav-item.nav-link svg {
         width: 24px;
         margin-right: .5rem; }
     .sms-header .nav-item .sms-nav-link--text {
@@ -8942,6 +8943,21 @@ input {
       height: 40px;
       object-fit: cover;
       border-radius: 25px; }
+
+.nav-link {
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  color: #66dafa;
+  padding: .4rem .4rem; }
+  .nav-link.active {
+    color: #a8e6f8; }
+  .nav-link:hover, .nav-link:focus {
+    color: #a8e6f8; }
+  .nav-link svg {
+    width: 24px;
+    margin-right: .5rem; }
 
 .sms-hero-header {
   background: center/cover no-repeat url("../images/heroimage.jpg"); }

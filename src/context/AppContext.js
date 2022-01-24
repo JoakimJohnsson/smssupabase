@@ -90,7 +90,7 @@ export function AppContextProvider({children}) {
                 }
             }
         } catch (error) {
-            alert(error.message)
+            console.log(error.message)
         } finally {
             setLoading(false)
         }

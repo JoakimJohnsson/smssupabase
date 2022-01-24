@@ -38,7 +38,7 @@ const Settings = () => {
                     setAvatarImageFilename(data.avatar_image_filename);
                 }
             } catch (error) {
-                alert(error.message)
+                console.log(error.message)
             } finally {
                 setLoading(false)
             }
@@ -66,7 +66,7 @@ const Settings = () => {
                 console.log('Error: ', error);
             }
         } catch (error) {
-            alert(error.message)
+            console.log(error.message)
         } finally {
             // Update App context
             setUserUrl(prepareUrl(website));

@@ -21,7 +21,7 @@ const FormatCard = () => {
                     setFormatData(data)
                 }
             } catch (error) {
-                alert(error.message)
+                console.log(error.message)
             } finally {
                 setLoading(false)
             }

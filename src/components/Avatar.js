@@ -35,7 +35,7 @@ function Avatar({onUpload}) {
             }
             onUpload(filePath);
         } catch (error) {
-            alert(error.message);
+            console.log(error.message);
         } finally {
             setUploading(false);
         }
@@ -59,7 +59,7 @@ function Avatar({onUpload}) {
                     console.log(MESSAGES.ERROR.VALIDATION_UPLOAD);
                 }
             } catch (error) {
-                alert(error.message);
+                console.log(error.message);
             } finally {
                 setUploading(false);
             }
