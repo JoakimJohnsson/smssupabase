@@ -1,8 +1,10 @@
-import {useAppContext} from '../../contexts/AppContext';
+import {useAppContext} from '../../context/AppContext';
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../../supabase/supabaseClient';
+import Avatar from '../Avatar';
 import {CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
 import Spinner from '../Spinner';
+import {prepareUrl} from '../../helpers/functions';
 
 const Settings = () => {
 
@@ -10,9 +12,10 @@ const Settings = () => {
     const [firstname, setFirstname] = useState(null);
     const [lastname, setLastname] = useState(null);
     const [website, setWebsite] = useState(null);
+    const [avatar_image_filename, setAvatarImageFilename] = useState(null);
 
     // Get current user and signOut function from context
-    const {user, session} = useAppContext();
+    const {user, session, setUserUrl} = useAppContext();
 
     useEffect(() => {
         async function getProfile() {
@@ -20,51 +23,53 @@ const Settings = () => {
                 setLoading(true);
                 let {data, error, status} = await supabase
                     .from('profiles')
-                    .select(`firstname, lastname, website`)
+                    .select(`firstname, lastname, website, avatar_image_filename`)
                     .eq('id', user.id)
                     .single();
 
                 if (error && status !== 406) {
-                    console.log('Error: ', error);
+                    console.log('Error: ', error + ' ' + avatar_image_filename);
                 }
 
                 if (data) {
                     setFirstname(data.firstname);
                     setLastname(data.lastname);
                     setWebsite(data.website);
+                    setAvatarImageFilename(data.avatar_image_filename);
                 }
             } catch (error) {
-                alert(error.message)
+                console.log(error.message)
             } finally {
                 setLoading(false)
             }
         }
 
         getProfile().then(() => 'Do something')
-    }, [user.id, session])
+    }, [user.id, session, avatar_image_filename, setUserUrl])
 
-    async function updateProfile() {
+    // Updates profiles table in db
+    async function updateProfileData({firstname, lastname, website, avatar_image_filename}) {
         try {
             setLoading(true)
-
             const updates = {
                 id: user.id,
                 firstname,
                 lastname,
                 website,
+                avatar_image_filename,
                 updated_at: new Date(),
             }
-
             let {error} = await supabase.from('profiles').upsert(updates, {
                 returning: 'minimal', // Don't return the value after inserting
             })
-
             if (error) {
                 console.log('Error: ', error);
             }
         } catch (error) {
-            alert(error.message)
+            console.log(error.message)
         } finally {
+            // Update App context
+            setUserUrl(prepareUrl(website));
             setLoading(false)
         }
     }
@@ -72,16 +77,27 @@ const Settings = () => {
     return (
         <main className={'container-fluid main-container'}>
             <div className={'row'}>
-                <div className={'col-12'}>
-
+                <div className={'col-12 main-col'}>
                     <h1>{LABELS_AND_HEADINGS.SETTINGS}</h1>
+                </div>
 
-                    <div className={'row mt-5'}>
+                <div className={'row main-col'}>
 
-
-                        <div className={'sms-form-col'}>
+                    <div className={'sms-form-col'}>
                         <div className={'sms-form'}>
-                            <h2 className={'border-bottom pb-2 mb-4'}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
+                            <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
+                            <Avatar
+                                onUpload={(avatar_image_filename) => {
+                                    setAvatarImageFilename(avatar_image_filename);
+                                    updateProfileData({avatar_image_filename: avatar_image_filename}).then(() => 'Do something');
+                                }}
+                            />
+                        </div>
+                    </div>
+
+                    <div className={'sms-form-col'}>
+                        <div className={'sms-form'}>
+                            <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                             <label className={'form-label'} htmlFor='email'>{LABELS_AND_HEADINGS.EMAIL}</label>
                             <input id='email' className={CLASSES.FORM_INPUT_DISABLED} type='text' value={user.email} disabled/>
                             <label className={'form-label'} htmlFor='firstname'>{LABELS_AND_HEADINGS.FIRST_NAME}</label>
@@ -109,18 +125,21 @@ const Settings = () => {
                                 onChange={(e) => setWebsite(e.target.value)}
                             />
                             <button className={'btn btn-primary'}
-                                    onClick={() => updateProfile()}
+                                    onClick={() => updateProfileData({firstname, lastname, website})}
                                     disabled={loading}>
                                 {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPDATE}
                             </button>
                         </div>
-                        </div>
-
-                        <div className={'col-12 col-md-6 col-lg-4'}>
-                        </div>
-
                     </div>
+
+
+
+
+
                 </div>
+
+
+
             </div>
         </main>
     )

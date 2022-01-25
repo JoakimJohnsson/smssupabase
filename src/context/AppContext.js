@@ -1,28 +1,27 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
+import {prepareUrl} from '../helpers/functions';
 
 const AppContext = React.createContext();
 
 export function AppContextProvider({children}) {
 
-    const defaultProfile = {
-        firstname: "",
-        lastname: "",
-        website: "",
-        role: 0
-    }
-
+    // Global states
     const [user, setUser] = useState();
-    const [profile, setProfile] = useState(defaultProfile);
+    const [avatarImageUrl, setAvatarImageUrl] = useState('');
+    const [avatarFilename, setAvatarFilename] = useState(null);
+    const [userUrl, setUserUrl] = useState(null);
+    const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const updateProfileOnChange = useCallback( () => {
+    const updateProfileOnChange = useCallback(() => {
         supabase
             .from('profiles')
-            .on('UPDATE', payload => {
+            .on('*', payload => {
                 updateProfile(user).then()
             })
-            .subscribe()}, [user]);
+            .subscribe()
+    }, [user]);
 
     useEffect(() => {
         // Check active sessions and sets the user
@@ -56,7 +55,13 @@ export function AppContextProvider({children}) {
         signIn: (data) => supabase.auth.signIn(data),
         signOut: () => supabase.auth.signOut(),
         user,
-        profile,
+        avatarImageUrl,
+        setAvatarImageUrl,
+        avatarFilename,
+        setAvatarFilename,
+        userUrl,
+        setUserUrl,
+        role,
         session: () => supabase.auth.session()
     }
 
@@ -65,17 +70,27 @@ export function AppContextProvider({children}) {
             setLoading(true);
             let {data, error, status} = await supabase
                 .from('profiles')
-                .select(`firstname, lastname, role, website`)
+                .select(`firstname, lastname, role, website, avatar_image_filename`)
                 .eq('id', user.id);
 
             if (error && status !== 406) {
-                console.log("Error: ", error);
+                console.log('Error: ', error);
             }
             if (data) {
-                setProfile(...data)
+                setUserUrl(prepareUrl(data[0].website));
+                // Get and set avatar url from storage via filename
+                if (data[0].avatar_image_filename) {
+                    setAvatarImageUrl(supabase
+                        .storage
+                        .from('avatars')
+                        .getPublicUrl(data[0].avatar_image_filename).publicURL)
+                    const fileName = data[0].avatar_image_filename;
+                    setAvatarFilename(fileName);
+                    setRole(data[0].role)
+                }
             }
         } catch (error) {
-            alert(error.message)
+            console.log(error.message)
         } finally {
             setLoading(false)
         }

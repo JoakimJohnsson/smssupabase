@@ -1,0 +1,72 @@
+@import "variables";
+// Text & Typography
+
+// Text color
+.text-primary--lighter {
+  color: $primary--lighter !important;
+}
+
+.text-primary--darker {
+  color: $primary--darker !important;
+}
+
+.text-secondary--lighter {
+  color: $secondary--lighter !important;
+}
+
+.text-secondary--darker {
+  color: $secondary--darker !important;
+}
+
+.text-success--lighter {
+  color: $success--lighter !important;
+}
+
+.text-success--darker {
+  color: $success--darker !important;
+}
+
+.text-info--lighter {
+  color: $info--lighter !important;
+}
+
+.text-info--darker {
+  color: $info--darker !important;
+}
+
+.text-warning--lighter {
+  color: $warning--lighter !important;
+}
+
+.text-warning--darker {
+  color: $warning--darker !important;
+}
+
+.text-danger--lighter {
+  color: $danger--darker !important;
+}
+
+.text-danger--darker {
+  color: $danger--lighter !important;
+}
+
+// Font size
+.fs-large {
+  font-size: 1.125rem;
+}
+
+.fs-normal {
+  font-size: 1rem;
+}
+
+.fs-small {
+  font-size: .875rem;
+}
+
+.fs-smaller {
+  font-size: .775rem;
+}
+
+.fs-smallest {
+  font-size: .675rem;
+}

@@ -6,6 +6,7 @@ export const MESSAGES = {
         VALIDATION_SIGNUP_FORM: 'Något gick fel vid registrering',
         VALIDATION_LOGIN_FORM: 'Något gick fel vid inloggning',
         VALIDATION_UPLOAD_IMAGE: 'Du måste välja en bild för uppladdning',
+        VALIDATION_DELETE_IMAGE: 'Något gick fel vid borttagning av bild',
         VALIDATION_UPLOAD: 'Något gick fel vid uppladdning'
     },
     SUCCESS: {
@@ -26,8 +27,18 @@ export const CLASSES = {
     SPINNER_GROW_SMALL: 'spinner-grow spinner-grow-sm m-1',
 }
 
+export const ROUTES = {
+    DEFAULT: '/',
+    SUCCESS: '/success',
+    SETTINGS: '/settings',
+    ADMIN: '/admin',
+}
+
 export const LABELS_AND_HEADINGS = {
     WELCOME: 'Välkommen till Svenska Marvelsamlare!',
+    CLOSE: 'Stäng',
+    OPEN: 'Öppna',
+    FORMAT: 'Format',
     LOG_IN: 'Logga in',
     SIGN_OUT: 'Logga ut',
     CREATE_ACCOUNT: 'Registrera dig',
@@ -47,7 +58,9 @@ export const LABELS_AND_HEADINGS = {
     CHANGE_IMAGE: 'Byt bild',
     UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
     UPDATE: 'Uppdatera',
-    LOADING: 'Loading'
+    LOADING: 'Laddar',
+    MY_COLLECTION: 'Min samling',
+    COMMUNITY: 'Socialt'
 }
 
 export const TEXTS = {
@@ -56,3 +69,19 @@ export const TEXTS = {
     NEW_TITLES: 'Nya titlar och funktioner läggs till regelbundet',
     ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar'
 }
+
+export const PANES = {
+    TITLES: {
+        KEY: "titles-pane",
+        NAME: "Titlar"
+    },OVERVIEW: {
+        KEY: "overview-pane",
+        NAME: "Översikt"
+    },
+    OTHER_COLLECTIONS: {
+        KEY: "other-collections-pane",
+        NAME: "Andra samlingar"
+    }
+}
+
+export const FORMATS = ['Serietidning', 'Album', 'Pocket', 'Inbunden', 'Specialtidning'];

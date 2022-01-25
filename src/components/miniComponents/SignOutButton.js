@@ -1,6 +1,6 @@
 import {useHistory} from "react-router-dom";
 import React from "react";
-import {useAppContext} from "../../contexts/AppContext";
+import {useAppContext} from "../../context/AppContext";
 import {LogoutIcon} from "@heroicons/react/solid";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 

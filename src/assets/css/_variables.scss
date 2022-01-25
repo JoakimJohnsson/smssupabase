@@ -1,4 +1,5 @@
 // Custom colors
+$color-bg-whale: #0e101a;
 $color-bg-elephant: #1d1f2f;
 $color-bg-horse: #232536;
 $color-bg-dog: #27293b;
@@ -20,6 +21,9 @@ $info--lighter: #f6f594;
 $warning--lighter: #f9d590;
 $danger--lighter: #f7e7e7;
 
+// Misc
+$standard-opacity: .85;
+
 // BOOTSTRAP OVERRIDES
 // Colors
 $primary: #66dafa;
@@ -29,19 +33,38 @@ $info: #f3f00f;
 $warning: #fbbd4a;
 $danger: #eea9a9;
 $white: #fff;
-$white--darker: #ced4da;
+$white--darker: #c0c7cf;
 $black: #000;
 $black--lighter: #444;
+$black--lightest: #999;
+
+$btn-close-opacity: 1;
+$btn-close-hover-opacity: $standard-opacity;
+$btn-close-focus-opacity: $standard-opacity;
+$btn-close-width: 1.3rem;
+$btn-close-color: $danger;
+$btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z' /></svg>") !default;
+
+// Typography
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 1.75;
+$h2-font-size: $font-size-base * 1.60;
+$h3-font-size: $font-size-base * 1.40;
+$h4-font-size: $font-size-base * 1.30;
+$h5-font-size: $font-size-base * 1.15;
+$h6-font-size: $font-size-base;
 
 // Global
 $body-bg: $color-bg-elephant;
 $body-color: $white;
-$font-family-sans-serif: "Lato", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$headings-font-weight: 600;
-$font-weight-normal: 300;
-$font-weight-bold: 400;
+$font-family-sans-serif: "Roboto", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$headings-font-weight: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
 $text-muted: $white--darker;
 $btn-disabled-opacity: 0.45;
+$sms-header-min-height: 60px;
+$sms-header-min-height--lg: 65px;
 
 // Form and input
 $input-placeholder-color: $black--lighter;
@@ -58,3 +81,11 @@ $enable-gradients: false;
 // Borders
 $border-color: $black--lighter;
 $border--default: 1px solid $border-color;
+$border-radius--sm: 4px;
+$border-radius--md: 8px;
+$border-radius--lg: 16px;
+
+// List group
+$list-group-bg: transparent;
+$list-group-color: $body-color;
+$list-group-border-color: $border-color;

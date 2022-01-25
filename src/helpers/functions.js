@@ -1,5 +1,5 @@
-import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, MESSAGES} from "./constants";
+import {supabase} from '../supabase/supabaseClient';
+import {CLASSES, MESSAGES} from './constants';
 
 export async function checkIfEmailExists(emailReference, setEmailExists) {
     let {data: email} = await supabase.from('users').select('email').eq('email', emailReference)
@@ -7,6 +7,14 @@ export async function checkIfEmailExists(emailReference, setEmailExists) {
         setEmailExists(true);
     } else {
         setEmailExists(false);
+    }
+}
+
+export const prepareUrl = (url) => {
+    if (url && url.substring(0, 7) !== 'http://') {
+        return 'https://' + url;
+    } else {
+        return url;
     }
 }
 

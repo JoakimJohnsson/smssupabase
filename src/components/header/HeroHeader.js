@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from '../Login';
 import {LABELS_AND_HEADINGS, TEXTS} from '../../helpers/constants';
-import {BadgeCheckIcon, ChevronDoubleDownIcon, ClipboardListIcon, CollectionIcon} from '@heroicons/react/solid';
+import {BadgeCheckIcon, ChevronDoubleDownIcon, ClipboardListIcon, CollectionIcon, UserAddIcon} from '@heroicons/react/solid';
 
 const HeroHeader = () => {
     return (
@@ -38,7 +38,7 @@ const HeroHeader = () => {
                             <Login/>
                         </div>
                         <h3 className={'mb-3 text-primary fs-large'}>Är du inte registrerad?</h3>
-                        <a href={'#create-account-section'} className={'btn btn-outline-secondary btn-cta'}>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</a>
+                        <a href={'#create-account-section'} className={'btn btn-outline-secondary btn-cta'}><UserAddIcon className={"sms-icon"}/>  {LABELS_AND_HEADINGS.CREATE_ACCOUNT}</a>
                     </div>
                 </div>
             </div>

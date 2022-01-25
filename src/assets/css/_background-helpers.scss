@@ -1,0 +1,73 @@
+@import "variables";
+// Backgrounds
+.bg-elephant {
+  background-color: $color-bg-elephant !important;
+}
+
+.bg-horse {
+  background-color: $color-bg-horse !important;
+}
+
+.bg-dog {
+  background-color: $color-bg-dog !important;
+}
+
+.bg-elephant--trans {
+  background-color: $color-bg-elephant--trans !important;
+}
+
+.bg-horse--trans {
+  background-color: $color-bg-horse--trans !important;
+}
+
+.bg-dog--trans {
+  background-color: $color-bg-dog--trans !important;
+}
+
+.bg-primary--lighter {
+  background-color: $primary--lighter !important;
+}
+
+.bg-primary--darker {
+  background-color: $primary--darker !important;
+}
+
+.bg-secondary--lighter {
+  background-color: $secondary--lighter !important;
+}
+
+.bg-secondary--darker {
+  background-color: $secondary--darker !important;
+}
+
+.bg-success--lighter {
+  background-color: $success--lighter !important;
+}
+
+.bg-success--darker {
+  background-color: $success--darker !important;
+}
+
+.bg-info--lighter {
+  background-color: $info--lighter !important;
+}
+
+.bg-info--darker {
+  background-color: $info--darker !important;
+}
+
+.bg-warning--lighter {
+  background-color: $warning--lighter !important;
+}
+
+.bg-warning--darker {
+  background-color: $warning--darker !important;
+}
+
+.bg-danger--lighter {
+  background-color: $danger--darker !important;
+}
+
+.bg-danger--darker {
+  background-color: $danger--lighter !important;
+}

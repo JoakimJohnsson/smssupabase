@@ -2,74 +2,23 @@
 @import "variables";
 @import "./bootstrap/scss/variables";
 
-// Header
-.sms-header {
-  background-color: $color-bg-dog;
-  font-size: .875rem;
-  .sms-logo-shield {
-    width: 30px;
-    height: 30px;
+.nav-link {
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  color: $primary;
+  padding: .4rem .4rem;
+  &.active {
+    color: $primary--lighter;
   }
-  .sms-logo-text {
-    display: inline;
-    color: $white;
-    font-weight: 400;
-    letter-spacing: 1px;
-    font-size: 1.3rem;
-    span {
-      text-decoration: none;
-    }
+  &:hover, &:focus {
+    color: $primary--lighter;
   }
-  .navbar-nav {
-    border-top: $border--default;
-    @include media-breakpoint-up(lg) {
-      border-top: none;
-    }
-  }
-  .nav-item {
-    display: flex;
-    align-items: center;
-    @include media-breakpoint-up(lg) {
-      margin-right: .5rem;
-    }
-    .nav-link {
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      color: $primary;
-      padding: .4rem .4rem;
-      &.active {
-        color: $primary--lighter;
-      }
-      &:hover, &:focus {
-        color: $primary--lighter;
-      }
-      @include media-breakpoint-up(lg) {
-        padding: .2rem .4rem;
-      }
-      @include media-breakpoint-up(lg) {
-        border-left: 1px solid $border-color;
-        &.active {
-          border-left: 1px solid;
-        }
-      }
-      // Icons
-      svg {
-        width: 24px;
-        margin-right: .5rem;
-      }
-    }
-    .sms-nav-link--text {
-      font-weight: 300;
-      display: inline-block;
-      margin-top: 2px;
-    }
-    .avatar-image {
-      width: 40px;
-      height: 40px;
-      object-fit: cover;
-      border-radius: 25px;
-    }
+  // Icons
+  svg {
+    width: 24px;
+    margin-right: .5rem;
   }
 }
 
@@ -77,30 +26,29 @@
   background: center / cover no-repeat url("../images/heroimage.jpg");
 }
 
-// Footer
-footer {
-  min-height: 170px;
+// Content
+.main-container {
+  // header - 90px - footer 170px;
+  min-height: calc(100vh - 260px);
+  h1, .h1 {
+    margin-bottom: 3rem;
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 1rem;
+    }
+  }
+  .main-col {
+    @extend .p-3, .p-sm-5;
+  }
 }
 
-.sms-icon--text {
-  width: 18px;
-  @extend .me-1;
-}
-
-.sms-icon--hamburger {
-  width: 24px;
-}
-
-.sms-icon--large {
-  width: 55px;
-}
-
-// Forms
+// Dashboard
 .sms-form-col {
-  @extend .col-12, .col-md-6, .col-lg-4, .mb-5, .p-2, .p-md-3;
+  @extend .col-12, .col-md-6, .mb-5;
 }
+
 .sms-form {
-  @extend .p-0, .p-sm-5;
+  @extend .p-0, .p-sm-5, .h-100;
+  border-radius: $border-radius--lg;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
     background-color: $color-bg-horse;
@@ -115,19 +63,39 @@ footer {
       border-bottom: 3px solid $success;
     }
     &.danger {
-      border-bottom: 3px solid $danger;
+      border-bottom: 6px solid $danger;
     }
+  }
+  h2 {
+    @extend .border-bottom, .pb-2, .mb-4;
+  }
+  .form-label {
+    color: $white--darker;
+    font-weight: 300;
   }
 }
 
-// Buttons
-.btn {
-  border-radius: 0;
-  &.btn-cta {
-    min-width: 50%;
-    padding: 1rem 3rem;
-    border-radius: 16px;
-    font-weight: bold;
-    font-size: 1.3rem;
+.dashboard-card {
+  @extend .p-3, .h-100;
+  background-color: $color-bg-horse;
+  border-radius: $border-radius--lg;
+  h2 {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1rem;
+    color: $primary;
+  }
+  p {
+    font-size: .875rem;
+  }
+
+  .list-group-item {
+    color: $white--darker;
+    &:nth-child(odd) {
+      background-color: $color-bg-elephant;
+    }
+    &:nth-child(even) {
+      background-color: $color-bg-horse;
+    }
   }
 }

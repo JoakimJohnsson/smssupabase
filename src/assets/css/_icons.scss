@@ -1,0 +1,19 @@
+// Imports
+@import "variables";
+
+// Icons
+.sms-icon--text {
+  width: 18px;
+  margin-right: .25rem;
+}
+
+.sms-icon--hamburger {
+  width: 24px;
+  &:hover, &:focus {
+    opacity: $standard-opacity;
+  }
+}
+
+.sms-icon--large {
+  width: 55px;
+}

@@ -1,0 +1,90 @@
+// Imports
+@import "variables";
+
+.dashboard-sidebar {
+  height: 100vh;
+  width: 250px;
+  background-color: $color-bg-whale;
+  padding: 0;
+  .sidebar-label {
+    @extend .sidebar-x-padding;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: $font-size-sm;
+    opacity: $standard-opacity;
+    margin-bottom: .5rem;
+  }
+  .nav-link {
+    @extend .sidebar-x-padding, .fs-smaller;
+    &:hover, &:focus {
+      background-color: lighten($color-bg-whale, 3%);
+    }
+    &.primary {
+      color: $primary;
+      &:hover, &:focus {
+        color: $primary--lighter;
+      }
+    }
+    &.secondary {
+      color: $secondary;
+      &:hover, &:focus {
+        color: $secondary--lighter;
+      }
+    }
+    &.success {
+      color: $success;
+      &:hover, &:focus {
+        color: $success--lighter;
+      }
+    }
+    &.warning {
+      color: $warning;
+      &:hover, &:focus {
+        color: $warning--lighter;
+      }
+    }
+    &.info {
+      color: $info;
+      &:hover, &:focus {
+        color: $info--lighter;
+      }
+    }
+    &.active.primary {
+      background-color: $primary--darker;
+      color: $primary--lighter;
+    }
+    &.active.secondary {
+      background-color: $secondary--darker;
+      color: $secondary--lighter;
+    }
+    &.active.success {
+      background-color: $success--darker;
+      color: $success--lighter;
+    }
+    &.active.warning {
+      background-color: $warning--darker;
+      color: $warning--lighter;
+    }
+    &.active.info {
+      background-color: $info--darker;
+      color: $info--lighter;
+    }
+    svg {
+      width: 16px;
+      margin-right: 1rem;
+    }
+  }
+}
+
+.offcanvas {
+  background-color: $color-bg-whale;
+  &.offcanvas-start {
+    top: $sms-header-min-height;
+    @include media-breakpoint-up(lg) {
+      top: $sms-header-min-height--lg;
+    }
+  }
+  .offcanvas-body {
+    padding: 0;
+  }
+}

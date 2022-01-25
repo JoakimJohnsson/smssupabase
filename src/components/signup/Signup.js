@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import {useAppContext} from '../../contexts/AppContext';
+import {useAppContext} from '../../context/AppContext';
 import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
 import {validateEmail, validatePassword} from '../../helpers/validations';
 import SignupValidationMessage from './SignupValidationMessage';
@@ -83,7 +83,7 @@ const Signup = () => {
                        placeholder={'********'}
                        required/>
                 <SignupValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type='submit' className={emailValidated && passwordValidated ? 'btn btn-secondary' : 'btn btn-secondary disabled'}>
+                <button type='submit' className={'btn btn-secondary'}>
                     {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
                 {showFormError && <p className={'alert alert-danger mt-3'}>{formErrorMessage}</p>}
