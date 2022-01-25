@@ -52,7 +52,8 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
     UPDATE: 'Uppdatera',
     LOADING: 'Laddar',
-    MY_COLLECTION: 'Min samling'
+    MY_COLLECTION: 'Min samling',
+    COMMUNITY: 'Socialt'
 }
 
 export const TEXTS = {
@@ -60,6 +61,17 @@ export const TEXTS = {
     MANAGE_YOUR_COLLECTION: 'Övervaka och administrera din samling',
     NEW_TITLES: 'Nya titlar och funktioner läggs till regelbundet',
     ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar'
+}
+
+export const PANES = {
+    P_TITLES: {
+        KEY: "titles-pane",
+        NAME: "Titlar"
+    },
+    P_OTHER_COLLECTIONS: {
+        KEY: "other-collections-pane",
+        NAME: "Andra samlingar"
+    }
 }
 
 export const FORMATS = ['Serietidning', 'Album', 'Pocket', 'Inbunden', 'Specialtidning'];
