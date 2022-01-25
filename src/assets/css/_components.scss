@@ -225,19 +225,49 @@ footer {
         color: $primary--lighter;
       }
     }
+    &.secondary {
+      color: $secondary;
+      &:hover, &:focus {
+        color: $secondary--lighter;
+      }
+    }
     &.success {
       color: $success;
       &:hover, &:focus {
         color: $success--lighter;
       }
     }
+    &.warning {
+      color: $warning;
+      &:hover, &:focus {
+        color: $warning--lighter;
+      }
+    }
+    &.info {
+      color: $info;
+      &:hover, &:focus {
+        color: $info--lighter;
+      }
+    }
     &.active.primary {
       background-color: $primary--darker;
       color: $primary--lighter;
     }
+    &.active.secondary {
+      background-color: $secondary--darker;
+      color: $secondary--lighter;
+    }
     &.active.success {
       background-color: $success--darker;
       color: $success--lighter;
+    }
+    &.active.warning {
+      background-color: $warning--darker;
+      color: $warning--lighter;
+    }
+    &.active.info {
+      background-color: $info--darker;
+      color: $info--lighter;
     }
     svg {
       width: 16px;
