@@ -1,0 +1,21 @@
+// Imports
+@import "variables";
+
+// Buttons
+.btn {
+  border-radius: $border-radius--sm;
+  &.btn-cta {
+    min-width: 50%;
+    padding: 1rem 3rem;
+    border-radius: $border-radius--lg;
+    font-weight: bold;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sms-icon {
+      width: 2rem;
+      @extend .me-2;
+    }
+  }
+}

@@ -20,8 +20,16 @@ body {
   letter-spacing: .02em;
 }
 
+footer {
+  min-height: 170px;
+}
+
 input {
   filter: none;
+}
+
+img {
+  border-radius: $border-radius--md;
 }
 
 // Borders
