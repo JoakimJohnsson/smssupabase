@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {MenuIcon, XIcon, HomeIcon, PresentationChartLineIcon, CogIcon, BanIcon} from '@heroicons/react/solid';
+import {MenuIcon, XIcon, PresentationChartLineIcon, CogIcon, BanIcon} from '@heroicons/react/solid';
 import shieldWhite from '../../assets/images/shield__white.svg';
 import SignOutButton from '../miniComponents/SignOutButton';
 import {useAppContext} from '../../context/AppContext';
 import NavbarProfileInformation from '../NavbarProfileInformation';
 import LiNavItem from '../listComponents/LiNavItem';
-import {LABELS_AND_HEADINGS} from '../../helpers/constants';
+import {LABELS_AND_HEADINGS, ROUTES} from '../../helpers/constants';
 
 const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ const AuthorizedNavigation = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-dark'>
             <div className='container-fluid px-3'>
-                <Link to='/' className={'hocus-standard h-100 d-flex align-items-center'}>
+                <Link to={ROUTES.DEFAULT} className={'hocus-standard h-100 d-flex align-items-center'}>
                     <img className={'sms-logo-shield me-2'} src={shieldWhite} alt={'Svenska marvelsamlare logo'}/>
                     <div className={'sms-logo-text'}>
                         <span className={'d-none d-sm-inline'}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}</span>
@@ -35,12 +35,10 @@ const AuthorizedNavigation = () => {
                 </button>
                 <div className={isOpen ? collapseClassShow : collapseClass} id='navbarSupportedContent'>
                     <ul className='navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0'>
-                        <LiNavItem route={'/'} onClick={handleClick} icon={<HomeIcon/>} text={LABELS_AND_HEADINGS.START}/>
-                        <LiNavItem route={'/dashboard'} onClick={handleClick} icon={<PresentationChartLineIcon/>}
-                                   text={LABELS_AND_HEADINGS.DASHBOARD}/>
-                        <LiNavItem route={'/dashboard/settings'} onClick={handleClick} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
+                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<PresentationChartLineIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.SETTINGS} onClick={handleClick} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
-                        <LiNavItem route={'/dashboard/admin'} onClick={handleClick} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
+                        <LiNavItem route={ROUTES.ADMIN} onClick={handleClick} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className='nav-item'>
                             {avatarImageUrl ? <NavbarProfileInformation/> : false}

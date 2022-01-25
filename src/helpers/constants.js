@@ -27,6 +27,13 @@ export const CLASSES = {
     SPINNER_GROW_SMALL: 'spinner-grow spinner-grow-sm m-1',
 }
 
+export const ROUTES = {
+    DEFAULT: '/',
+    SUCCESS: '/success',
+    SETTINGS: '/settings',
+    ADMIN: '/admin',
+}
+
 export const LABELS_AND_HEADINGS = {
     WELCOME: 'Välkommen till Svenska Marvelsamlare!',
     CLOSE: 'Stäng',
@@ -64,11 +71,14 @@ export const TEXTS = {
 }
 
 export const PANES = {
-    P_TITLES: {
+    TITLES: {
         KEY: "titles-pane",
         NAME: "Titlar"
+    },OVERVIEW: {
+        KEY: "overview-pane",
+        NAME: "Översikt"
     },
-    P_OTHER_COLLECTIONS: {
+    OTHER_COLLECTIONS: {
         KEY: "other-collections-pane",
         NAME: "Andra samlingar"
     }

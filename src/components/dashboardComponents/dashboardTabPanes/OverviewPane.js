@@ -2,14 +2,14 @@ import React from "react";
 import {Tab} from "react-bootstrap";
 import {PANES} from "../../../helpers/constants";
 
-const TitlesPane = () => {
+const OverviewPane = () => {
     return (
-        <Tab.Pane eventKey={PANES.TITLES.KEY}>
-            <h2>{PANES.TITLES.NAME}</h2>
+        <Tab.Pane eventKey={PANES.OVERVIEW.KEY}>
+            <h2>{PANES.OVERVIEW.NAME}</h2>
             <p className="lead mb-5">
-                Mina coola titlar.
+                En cool översikt.
             </p>
         </Tab.Pane>
     )
 }
-export default TitlesPane;
+export default OverviewPane;

@@ -4,8 +4,8 @@ import {PANES} from "../../../helpers/constants";
 
 const OtherCollectionsPane = () => {
     return (
-        <Tab.Pane eventKey={PANES.P_OTHER_COLLECTIONS.KEY}>
-            <h2>{PANES.P_OTHER_COLLECTIONS.NAME}</h2>
+        <Tab.Pane eventKey={PANES.OTHER_COLLECTIONS.KEY}>
+            <h2>{PANES.OTHER_COLLECTIONS.NAME}</h2>
             <p className="lead mb-5">
                 Andras fräna samlingar
             </p>
