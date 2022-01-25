@@ -8730,6 +8730,54 @@ body {
 input {
   filter: none; }
 
+@media (min-width: 576px) {
+  .border-sm-none {
+    border: none !important; } }
+
+@media (min-width: 768px) {
+  .border-md-none {
+    border: none !important; } }
+
+@media (min-width: 992px) {
+  .border-lg-none {
+    border: none !important; } }
+
+@media (min-width: 1200px) {
+  .border-xl-none {
+    border: none !important; } }
+
+@media (min-width: 576px) {
+  .border-sm-end {
+    border-right: 1px solid #444 !important; } }
+
+@media (min-width: 768px) {
+  .border-md-end {
+    border-right: 1px solid #444 !important; } }
+
+@media (min-width: 992px) {
+  .border-lg-end {
+    border-right: 1px solid #444 !important; } }
+
+@media (min-width: 1200px) {
+  .border-xl-end {
+    border-right: 1px solid #444 !important; } }
+
+@media (min-width: 576px) {
+  .border-sm-start {
+    border-left: 1px solid #444 !important; } }
+
+@media (min-width: 768px) {
+  .border-md-start {
+    border-left: 1px solid #444 !important; } }
+
+@media (min-width: 992px) {
+  .border-lg-start {
+    border-left: 1px solid #444 !important; } }
+
+@media (min-width: 1200px) {
+  .border-xl-start {
+    border-left: 1px solid #444 !important; } }
+
 .bg-elephant {
   background-color: #1d1f2f !important; }
 
@@ -8834,54 +8882,6 @@ input {
 
 .fs-smallest {
   font-size: .675rem; }
-
-@media (min-width: 576px) {
-  .border-sm-none {
-    border: none !important; } }
-
-@media (min-width: 768px) {
-  .border-md-none {
-    border: none !important; } }
-
-@media (min-width: 992px) {
-  .border-lg-none {
-    border: none !important; } }
-
-@media (min-width: 1200px) {
-  .border-xl-none {
-    border: none !important; } }
-
-@media (min-width: 576px) {
-  .border-sm-end {
-    border-right: 1px solid #444 !important; } }
-
-@media (min-width: 768px) {
-  .border-md-end {
-    border-right: 1px solid #444 !important; } }
-
-@media (min-width: 992px) {
-  .border-lg-end {
-    border-right: 1px solid #444 !important; } }
-
-@media (min-width: 1200px) {
-  .border-xl-end {
-    border-right: 1px solid #444 !important; } }
-
-@media (min-width: 576px) {
-  .border-sm-start {
-    border-left: 1px solid #444 !important; } }
-
-@media (min-width: 768px) {
-  .border-md-start {
-    border-left: 1px solid #444 !important; } }
-
-@media (min-width: 992px) {
-  .border-lg-start {
-    border-left: 1px solid #444 !important; } }
-
-@media (min-width: 1200px) {
-  .border-xl-start {
-    border-left: 1px solid #444 !important; } }
 
 .sms-header {
   background-color: #27293b;
@@ -9074,7 +9074,6 @@ footer {
     color: #f6f594; }
   .dashboard-sidebar .nav-link svg {
     width: 16px;
-    margin-bottom: 4px;
     margin-right: 1rem; }
 
 .offcanvas {
