@@ -239,3 +239,9 @@ input {
     border-left: $border--default !important;
   }
 }
+
+// Spacing
+
+.sidebar-x-padding {
+  @extend .ps-4, .pe-3;
+}

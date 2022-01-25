@@ -46,6 +46,25 @@ const Dashboard = () => {
                                 </p>
                             </Tab.Pane>
 
+                            <Tab.Pane eventKey="third">
+                                <h2>asdfsadf</h2>
+                                <p className="lead mb-5">
+                                    But the practice of making sites accessible also
+                                    benefits other groups such as those using mobile devices, or those with slow network connections.
+                                    Accessibility and accessibility is the practice of making your websites usable by as many people as possible.
+                                    We traditionally think of this as being about people with disabilities, but the practice of making sites accessible also
+                                    benefits other groups such as those using mobile devices, or those with slow network connections.
+                                </p>
+                            </Tab.Pane>
+
+                            <Tab.Pane eventKey="fourth">
+                                <h2>adsfsdafsdf</h2>
+                                <p className="lead mb-5">
+                                    But the practice of making sites accessible also
+                                    benefits other groups such as those using mobile devices, or those with slow network connections.
+                                </p>
+                            </Tab.Pane>
+
 
 
 
