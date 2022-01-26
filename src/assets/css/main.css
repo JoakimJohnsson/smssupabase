@@ -8788,6 +8788,9 @@ img {
   .sidebar-x-padding, .dashboard-sidebar .nav-link {
     padding-left: 2rem;
     padding-right: 1rem; } }
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .sidebar-x-padding, .dashboard-sidebar .nav-link {
+    padding: .5rem; } }
 
 .bg-elephant {
   background-color: #1d1f2f !important; }
@@ -9031,19 +9034,26 @@ img {
   @media (min-width: 576px) {
     .dashboard-sidebar {
       width: 250px; } }
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .dashboard-sidebar {
+      width: 150px; } }
   .dashboard-sidebar .sidebar-label {
     padding: .5rem;
+    margin-bottom: .2rem;
     text-transform: uppercase;
     font-weight: 500;
     font-size: .875rem;
-    text-align: center;
-    margin-bottom: .5rem; }
+    text-align: center; }
     @media (min-width: 576px) {
       .dashboard-sidebar .sidebar-label {
         font-size: 1rem;
         text-align: left;
         padding-left: 2rem;
         padding-right: 1rem; } }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .dashboard-sidebar .sidebar-label {
+        text-align: center;
+        padding: .5rem; } }
   .dashboard-sidebar .sidebar-navlink-text {
     text-align: center;
     font-size: .775rem; }
@@ -9051,7 +9061,11 @@ img {
       .dashboard-sidebar .sidebar-navlink-text {
         font-size: .885rem;
         text-align: left; } }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .dashboard-sidebar .sidebar-navlink-text {
+        text-align: center; } }
   .dashboard-sidebar .nav-link {
+    background-color: #10121d;
     min-height: 80px;
     border-bottom: 1px solid #131624; }
     @media (min-width: 576px) {
@@ -9109,6 +9123,9 @@ img {
       @media (min-width: 576px) {
         .dashboard-sidebar .nav-link svg {
           margin-right: 1rem; } }
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        .dashboard-sidebar .nav-link svg {
+          margin-right: 0; } }
 
 .offcanvas {
   background-color: #0e101a; }
