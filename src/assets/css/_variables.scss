@@ -1,5 +1,6 @@
 // Custom colors
 $color-bg-whale: #0e101a;
+$color-bg-whale--lighter: lighten($color-bg-whale, 3%);
 $color-bg-elephant: #1d1f2f;
 $color-bg-horse: #232536;
 $color-bg-dog: #27293b;
@@ -80,7 +81,9 @@ $enable-gradients: false;
 
 // Borders
 $border-color: $black--lighter;
+$border-color--vague: $color-bg-whale--lighter;
 $border--default: 1px solid $border-color;
+$border--vague: 1px solid $border-color--vague;
 $border-radius--sm: 4px;
 $border-radius--md: 8px;
 $border-radius--lg: 16px;

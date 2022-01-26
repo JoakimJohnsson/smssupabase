@@ -5869,7 +5869,7 @@ textarea.form-control-lg {
 .pe-2 {
   padding-right: 0.5rem !important; }
 
-.pe-3, .sidebar-x-padding, .dashboard-sidebar .sidebar-label, .dashboard-sidebar .nav-link {
+.pe-3 {
   padding-right: 1rem !important; }
 
 .pe-4 {
@@ -5908,7 +5908,7 @@ textarea.form-control-lg {
 .ps-3 {
   padding-left: 1rem !important; }
 
-.ps-4, .sidebar-x-padding, .dashboard-sidebar .sidebar-label, .dashboard-sidebar .nav-link {
+.ps-4 {
   padding-left: 1.5rem !important; }
 
 .ps-5 {
@@ -8784,6 +8784,11 @@ img {
   .border-xl-start {
     border-left: 1px solid #444 !important; } }
 
+@media (min-width: 576px) {
+  .sidebar-x-padding, .dashboard-sidebar .nav-link {
+    padding-left: 2rem;
+    padding-right: 1rem; } }
+
 .bg-elephant {
   background-color: #1d1f2f !important; }
 
@@ -8883,13 +8888,17 @@ img {
 .fs-small, .dashboard-sidebar .nav-link {
   font-size: .875rem; }
 
+@media (min-width: 576px) {
+  .fs-sm-small {
+    font-size: .875rem; } }
+
 .fs-smaller {
   font-size: .775rem; }
 
 .fs-smallest {
   font-size: .675rem; }
 
-.text-label, .dashboard-card h2, .dashboard-card .h2, .dashboard-sidebar .sidebar-label {
+.text-label, .dashboard-card h2, .dashboard-card .h2 {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 1rem; }
@@ -9016,58 +9025,90 @@ img {
 
 .dashboard-sidebar {
   height: 100vh;
-  width: 250px;
+  width: 100px;
   background-color: #0e101a;
   padding: 0; }
+  @media (min-width: 576px) {
+    .dashboard-sidebar {
+      width: 250px; } }
   .dashboard-sidebar .sidebar-label {
+    padding: .5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .875rem;
+    text-align: center;
     margin-bottom: .5rem; }
-  .dashboard-sidebar .nav-link:hover, .dashboard-sidebar .nav-link:focus {
-    background-color: #131624; }
-  .dashboard-sidebar .nav-link.primary {
-    color: #66dafa; }
-    .dashboard-sidebar .nav-link.primary:hover, .dashboard-sidebar .nav-link.primary:focus {
+    @media (min-width: 576px) {
+      .dashboard-sidebar .sidebar-label {
+        font-size: 1rem;
+        text-align: left;
+        padding-left: 2rem;
+        padding-right: 1rem; } }
+  .dashboard-sidebar .sidebar-navlink-text {
+    text-align: center;
+    font-size: .775rem; }
+    @media (min-width: 576px) {
+      .dashboard-sidebar .sidebar-navlink-text {
+        font-size: .885rem;
+        text-align: left; } }
+  .dashboard-sidebar .nav-link {
+    min-height: 80px;
+    border-bottom: 1px solid #131624; }
+    @media (min-width: 576px) {
+      .dashboard-sidebar .nav-link {
+        min-height: 50px; } }
+    .dashboard-sidebar .nav-link:first-of-type {
+      border-top: 1px solid #131624; }
+    .dashboard-sidebar .nav-link:hover, .dashboard-sidebar .nav-link:focus {
+      background-color: #131624; }
+    .dashboard-sidebar .nav-link.primary {
+      color: #66dafa; }
+      .dashboard-sidebar .nav-link.primary:hover, .dashboard-sidebar .nav-link.primary:focus {
+        color: #beecfa; }
+    .dashboard-sidebar .nav-link.danger {
+      color: #eea9a9; }
+      .dashboard-sidebar .nav-link.danger:hover, .dashboard-sidebar .nav-link.danger:focus {
+        color: #f7e7e7; }
+    .dashboard-sidebar .nav-link.secondary {
+      color: #ddb1f8; }
+      .dashboard-sidebar .nav-link.secondary:hover, .dashboard-sidebar .nav-link.secondary:focus {
+        color: #e9d1f8; }
+    .dashboard-sidebar .nav-link.success {
+      color: #7ff268; }
+      .dashboard-sidebar .nav-link.success:hover, .dashboard-sidebar .nav-link.success:focus {
+        color: #ddf3d8; }
+    .dashboard-sidebar .nav-link.warning {
+      color: #fbbd4a; }
+      .dashboard-sidebar .nav-link.warning:hover, .dashboard-sidebar .nav-link.warning:focus {
+        color: #f9d590; }
+    .dashboard-sidebar .nav-link.info {
+      color: #f3f00f; }
+      .dashboard-sidebar .nav-link.info:hover, .dashboard-sidebar .nav-link.info:focus {
+        color: #f6f594; }
+    .dashboard-sidebar .nav-link.active.primary {
+      background-color: #0e3b48;
       color: #beecfa; }
-  .dashboard-sidebar .nav-link.danger {
-    color: #eea9a9; }
-    .dashboard-sidebar .nav-link.danger:hover, .dashboard-sidebar .nav-link.danger:focus {
+    .dashboard-sidebar .nav-link.active.danger {
+      background-color: #4f1111;
       color: #f7e7e7; }
-  .dashboard-sidebar .nav-link.secondary {
-    color: #ddb1f8; }
-    .dashboard-sidebar .nav-link.secondary:hover, .dashboard-sidebar .nav-link.secondary:focus {
+    .dashboard-sidebar .nav-link.active.secondary {
+      background-color: #442359;
       color: #e9d1f8; }
-  .dashboard-sidebar .nav-link.success {
-    color: #7ff268; }
-    .dashboard-sidebar .nav-link.success:hover, .dashboard-sidebar .nav-link.success:focus {
+    .dashboard-sidebar .nav-link.active.success {
+      background-color: #1b4214;
       color: #ddf3d8; }
-  .dashboard-sidebar .nav-link.warning {
-    color: #fbbd4a; }
-    .dashboard-sidebar .nav-link.warning:hover, .dashboard-sidebar .nav-link.warning:focus {
+    .dashboard-sidebar .nav-link.active.warning {
+      background-color: #442f08;
       color: #f9d590; }
-  .dashboard-sidebar .nav-link.info {
-    color: #f3f00f; }
-    .dashboard-sidebar .nav-link.info:hover, .dashboard-sidebar .nav-link.info:focus {
+    .dashboard-sidebar .nav-link.active.info {
+      background-color: #4d4c08;
       color: #f6f594; }
-  .dashboard-sidebar .nav-link.active.primary {
-    background-color: #0e3b48;
-    color: #beecfa; }
-  .dashboard-sidebar .nav-link.active.danger {
-    background-color: #4f1111;
-    color: #f7e7e7; }
-  .dashboard-sidebar .nav-link.active.secondary {
-    background-color: #442359;
-    color: #e9d1f8; }
-  .dashboard-sidebar .nav-link.active.success {
-    background-color: #1b4214;
-    color: #ddf3d8; }
-  .dashboard-sidebar .nav-link.active.warning {
-    background-color: #442f08;
-    color: #f9d590; }
-  .dashboard-sidebar .nav-link.active.info {
-    background-color: #4d4c08;
-    color: #f6f594; }
-  .dashboard-sidebar .nav-link svg {
-    width: 22px;
-    margin-right: 1rem; }
+    .dashboard-sidebar .nav-link svg {
+      width: 22px;
+      margin-right: 0; }
+      @media (min-width: 576px) {
+        .dashboard-sidebar .nav-link svg {
+          margin-right: 1rem; } }
 
 .offcanvas {
   background-color: #0e101a; }

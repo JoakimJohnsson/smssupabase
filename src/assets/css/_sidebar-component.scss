@@ -3,17 +3,46 @@
 
 .dashboard-sidebar {
   height: 100vh;
-  width: 250px;
+  width: 100px;
+  @include media-breakpoint-up(sm) {
+    width: 250px;
+  }
   background-color: $color-bg-whale;
   padding: 0;
   .sidebar-label {
-    @extend .sidebar-x-padding, .text-label;
+    padding: .5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .875rem;
+    text-align: center;
+    @include media-breakpoint-up(sm) {
+      font-size: 1rem;
+      text-align: left;
+      padding-left: 2rem;
+      padding-right: 1rem;
+    }
     margin-bottom: .5rem;
+  }
+  .sidebar-navlink-text {
+    text-align: center;
+    font-size: .775rem;
+    @include media-breakpoint-up(sm) {
+      font-size: .885rem;
+      text-align: left;
+    }
   }
   .nav-link {
     @extend .sidebar-x-padding, .fs-small;
+    min-height: 80px;
+    @include media-breakpoint-up(sm) {
+      min-height: 50px;
+    }
+    border-bottom: $border--vague;
+    &:first-of-type {
+      border-top: $border--vague;
+    }
     &:hover, &:focus {
-      background-color: lighten($color-bg-whale, 3%);
+      background-color: $border-color--vague;
     }
     &.primary {
       color: $primary;
@@ -77,7 +106,10 @@
     }
     svg {
       width: 22px;
-      margin-right: 1rem;
+      margin-right: 0;
+      @include media-breakpoint-up(sm) {
+        margin-right: 1rem;
+      }
     }
   }
 }
