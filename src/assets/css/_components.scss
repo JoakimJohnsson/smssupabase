@@ -80,9 +80,7 @@
   background-color: $color-bg-horse;
   border-radius: $border-radius--lg;
   h2 {
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 1rem;
+    @extend .text-label;
     color: $primary;
   }
   p {

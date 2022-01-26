@@ -7,15 +7,11 @@
   background-color: $color-bg-whale;
   padding: 0;
   .sidebar-label {
-    @extend .sidebar-x-padding;
-    text-transform: uppercase;
-    font-weight: 300;
-    font-size: $font-size-sm;
-    opacity: $standard-opacity;
+    @extend .sidebar-x-padding, .text-label;
     margin-bottom: .5rem;
   }
   .nav-link {
-    @extend .sidebar-x-padding, .fs-smaller;
+    @extend .sidebar-x-padding, .fs-small;
     &:hover, &:focus {
       background-color: lighten($color-bg-whale, 3%);
     }
@@ -23,6 +19,12 @@
       color: $primary;
       &:hover, &:focus {
         color: $primary--lighter;
+      }
+    }
+    &.danger {
+      color: $danger;
+      &:hover, &:focus {
+        color: $danger--lighter;
       }
     }
     &.secondary {
@@ -53,6 +55,10 @@
       background-color: $primary--darker;
       color: $primary--lighter;
     }
+    &.active.danger {
+      background-color: $danger--darker;
+      color: $danger--lighter;
+    }
     &.active.secondary {
       background-color: $secondary--darker;
       color: $secondary--lighter;
@@ -70,7 +76,7 @@
       color: $info--lighter;
     }
     svg {
-      width: 16px;
+      width: 22px;
       margin-right: 1rem;
     }
   }
@@ -86,5 +92,10 @@
   }
   .offcanvas-body {
     padding: 0;
+  }
+}
+.offcanvas-backdrop {
+  @include media-breakpoint-up(md) {
+    display: none;
   }
 }
