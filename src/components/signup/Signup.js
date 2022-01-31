@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useAppContext} from '../../context/AppContext';
 import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
 import {validateEmail, validatePassword} from '../../helpers/validations';
@@ -22,7 +22,7 @@ const Signup = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const {signUp} = useAppContext();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -42,7 +42,7 @@ const Signup = () => {
                 setFormErrorMessage(error.message);
                 setShowFormError(true);
             } else {
-                history.push('/success')
+                navigate('/success');
             }
         }
     }

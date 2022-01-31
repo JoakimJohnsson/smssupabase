@@ -2,7 +2,7 @@ import './assets/css/main.css';
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {AppContextProvider} from './context/AppContext'
-import Routes from "./components/Routes";
+import MyRoutes from "./components/MyRoutes";
 import Header from "./components/header/Header";
 import Footer from "./components/Footer";
 
@@ -20,7 +20,7 @@ const App = () => {
         <AppContextProvider>
             <Router>
                 <Header/>
-                <Routes/>
+                <MyRoutes/>
                 <Footer/>
             </Router>
         </AppContextProvider>

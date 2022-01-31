@@ -1,4 +1,4 @@
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import React from "react";
 import {useAppContext} from "../../context/AppContext";
 import {LogoutIcon} from "@heroicons/react/solid";
@@ -7,11 +7,11 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 const SignOutButton = () => {
 
     const {signOut} = useAppContext();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     async function handleSignOut() {
         await signOut()
-        history.push('/')
+        navigate('/');
     }
 
     return (
