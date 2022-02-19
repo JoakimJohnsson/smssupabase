@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {MenuIcon, XIcon, PresentationChartLineIcon, CogIcon, BanIcon} from '@heroicons/react/solid';
 import shieldWhite from '../../assets/images/shield__white.svg';
-import SignOutButton from '../miniComponents/SignOutButton';
+import {SignOutButton} from '../miniComponents/SignOutButton';
 import {useAppContext} from '../../context/AppContext';
-import NavbarProfileInformation from '../NavbarProfileInformation';
-import LiNavItem from '../listComponents/LiNavItem';
+import {NavbarProfileInformation} from '../NavbarProfileInformation';
+import {LiNavItem} from '../listComponents/LiNavItem';
 import {LABELS_AND_HEADINGS, ROUTES} from '../../helpers/constants';
 
-const AuthorizedNavigation = () => {
+export const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const collapseClassShow = 'collapse navbar-collapse show pt-3 pt-lg-0';
     const collapseClass = 'collapse navbar-collapse';
@@ -64,5 +64,3 @@ const AuthorizedNavigation = () => {
         </nav>
     )
 };
-
-export default AuthorizedNavigation;

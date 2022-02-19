@@ -8,7 +8,7 @@ import {OtherCollectionsPane} from "../dashboardComponents/dashboardTabPanes/Oth
 import {OverviewPane} from "../dashboardComponents/dashboardTabPanes/OverviewPane";
 import {useAppContext} from "../../context/AppContext";
 import {HeroHeader} from "../header/HeroHeader";
-import Signup from "../signup/Signup";
+import {Signup} from "../signup/Signup";
 
 export const Dashboard = () => {
 

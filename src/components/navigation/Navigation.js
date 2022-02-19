@@ -1,9 +1,9 @@
 import React from 'react';
-import AuthorizedNavigation from "./AuthorizedNavigation";
-import UnauthorizedNavigation from "./UnauthorizedNavigation";
+import {AuthorizedNavigation} from "./AuthorizedNavigation";
+import {UnauthorizedNavigation} from "./UnauthorizedNavigation";
 import {useAppContext} from "../../context/AppContext";
 
-const Navigation = () => {
+export const Navigation = () => {
 
     const {user} = useAppContext();
 
@@ -14,5 +14,3 @@ const Navigation = () => {
         </>
     )
 };
-
-export default Navigation;

@@ -4,7 +4,7 @@ import {useAppContext} from "../../context/AppContext";
 import {LogoutIcon} from "@heroicons/react/solid";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
-const SignOutButton = () => {
+export const SignOutButton = () => {
 
     const {signOut} = useAppContext();
     const navigate = useNavigate();
@@ -20,5 +20,3 @@ const SignOutButton = () => {
         </button>
     )
 }
-
-export default SignOutButton;

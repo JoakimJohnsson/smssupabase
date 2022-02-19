@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import shieldWhite from "../../assets/images/shield__white.svg";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
-const UnauthorizedNavigation = () => {
+export const UnauthorizedNavigation = () => {
     return (
         <nav className={"p-3 navbar navbar-dark"}>
             <Link to="/" className={"hocus-standard h-100 d-flex align-items-center"}>
@@ -16,5 +16,3 @@ const UnauthorizedNavigation = () => {
         </nav>
     )
 };
-
-export default UnauthorizedNavigation;

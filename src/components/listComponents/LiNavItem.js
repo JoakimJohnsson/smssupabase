@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
 
-const LiNavItem = ({route, onClick, icon, text}) => {
+export const LiNavItem = ({route, onClick, icon, text}) => {
 
     return (
         <li className="nav-item">
@@ -12,5 +12,3 @@ const LiNavItem = ({route, onClick, icon, text}) => {
         </li>
     )
 }
-
-export default LiNavItem;

@@ -6,7 +6,7 @@ import {validateEmail, validatePassword} from '../../helpers/validations';
 import SignupValidationMessage from './SignupValidationMessage';
 import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from '../../helpers/functions';
 
-const Signup = () => {
+export const Signup = () => {
     // Success and error variants of form-input is available
     const [emailInputClass, setEmailInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
     const [passwordInputClass, setPasswordInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
@@ -91,5 +91,3 @@ const Signup = () => {
         </>
     )
 }
-
-export default Signup;
