@@ -6563,7 +6563,7 @@ textarea.form-control-lg {
   .p-sm-3 {
     padding: 1rem !important; }
 
-  .p-sm-4 {
+  .p-sm-4, .dashboard-card {
     padding: 1.5rem !important; }
 
   .p-sm-5, .main-container .main-col, .sms-form {

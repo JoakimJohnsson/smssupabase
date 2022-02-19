@@ -4,10 +4,10 @@ import React from 'react';
 import {useAppContext} from '../context/AppContext';
 import Settings from './pages/Settings';
 import SignupSuccess from './pages/SignUpSuccess';
-import Admin from './pages/Admin';
+import {Admin} from './pages/Admin';
 import {ROUTES} from '../helpers/constants';
 
-const MyRoutes = () => {
+export const MyRoutes = () => {
     const {user, role} = useAppContext();
     // Conditional rendering - must have user and role
     return (
@@ -19,5 +19,3 @@ const MyRoutes = () => {
         </Routes>
     )
 }
-
-export default MyRoutes;

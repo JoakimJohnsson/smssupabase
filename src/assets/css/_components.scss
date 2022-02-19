@@ -76,7 +76,7 @@
 }
 
 .dashboard-card {
-  @extend .p-3, .h-100;
+  @extend .p-3, .p-sm-4 , .h-100;
   background-color: $color-bg-horse;
   border-radius: $border-radius--lg;
   h2 {

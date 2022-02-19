@@ -1,8 +1,8 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import FormatCard from "../dashboardComponents/dashboardCards/FormatCard";
+import {FormatCard} from "../dashboardComponents/dashboardCards/FormatCard";
 
-const Admin = () => {
+export const Admin = () => {
 
     return (
         <main className={"container-fluid main-container"}>
@@ -15,5 +15,3 @@ const Admin = () => {
         </main>
     )
 }
-
-export default Admin;
