@@ -8882,6 +8882,9 @@ img {
 .text-danger--darker {
   color: #f7e7e7 !important; }
 
+.text-black--lighter {
+  color: #444 !important; }
+
 .fs-large {
   font-size: 1.125rem; }
 

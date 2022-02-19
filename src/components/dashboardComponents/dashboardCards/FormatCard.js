@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, FORMATS} from "../../../helpers/constants";
 import {supabase} from "../../../supabase/supabaseClient";
-import Spinner from "../../Spinner";
+import {Spinner} from "../../Spinner";
 
 export const FormatCard = () => {
     const [loading, setLoading] = useState(true);

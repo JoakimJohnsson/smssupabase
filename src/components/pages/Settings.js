@@ -1,9 +1,9 @@
 import {useAppContext} from '../../context/AppContext';
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../../supabase/supabaseClient';
-import Avatar from '../Avatar';
+import {Avatar} from '../Avatar';
 import {CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
-import Spinner from '../Spinner';
+import {Spinner} from '../Spinner';
 import {prepareUrl} from '../../helpers/functions';
 import {getProfile} from "../serviceFunctions";
 
