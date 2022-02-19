@@ -2,7 +2,7 @@ import React from "react";
 import {Tab} from "react-bootstrap";
 import {PANES} from "../../../helpers/constants";
 
-const OtherCollectionsPane = () => {
+export const OtherCollectionsPane = () => {
     return (
         <Tab.Pane eventKey={PANES.OTHER_COLLECTIONS.KEY}>
             <h2>{PANES.OTHER_COLLECTIONS.NAME}</h2>
@@ -12,4 +12,3 @@ const OtherCollectionsPane = () => {
         </Tab.Pane>
     )
 }
-export default OtherCollectionsPane;

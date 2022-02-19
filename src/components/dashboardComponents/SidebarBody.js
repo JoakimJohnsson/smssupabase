@@ -2,9 +2,9 @@ import React from "react";
 import {DocumentDuplicateIcon, UserGroupIcon, PresentationChartBarIcon} from "@heroicons/react/solid";
 import {LABELS_AND_HEADINGS, PANES} from "../../helpers/constants";
 import {Nav} from "react-bootstrap";
-import SidebarNavLink from "./SidebarNavLink";
+import {SidebarNavLink} from "./SidebarNavLink";
 
-const SidebarBody = ({handleClick}) => {
+export const SidebarBody = ({handleClick}) => {
     return (
         <>
             <Nav className={'w-100 d-block pt-3 pt-md-5'}>
@@ -24,5 +24,3 @@ const SidebarBody = ({handleClick}) => {
         </>
     )
 }
-
-export default SidebarBody;

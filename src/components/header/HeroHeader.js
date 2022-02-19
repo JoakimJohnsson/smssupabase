@@ -3,7 +3,7 @@ import Login from '../Login';
 import {LABELS_AND_HEADINGS, TEXTS} from '../../helpers/constants';
 import {BadgeCheckIcon, ChevronDoubleDownIcon, ClipboardListIcon, CollectionIcon, UserAddIcon} from '@heroicons/react/solid';
 
-const HeroHeader = () => {
+export const HeroHeader = () => {
     return (
         <div className={'sms-hero-header p-3 p-sm-5 mb-5'}>
 
@@ -45,5 +45,3 @@ const HeroHeader = () => {
         </div>
     )
 };
-
-export default HeroHeader;

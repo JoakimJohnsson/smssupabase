@@ -1,8 +1,8 @@
 import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import SidebarBody from "./SidebarBody";
+import {SidebarBody} from "./SidebarBody";
 
-const Sidebar = ({isOpen, handleClick}) => {
+export const Sidebar = ({isOpen, handleClick}) => {
 
     return (
         <div className={'d-none d-md-flex dashboard-sidebar'}>
@@ -15,5 +15,3 @@ const Sidebar = ({isOpen, handleClick}) => {
         </div>
     )
 }
-
-export default Sidebar;

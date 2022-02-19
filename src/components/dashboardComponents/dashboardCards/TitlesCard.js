@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS, FORMATS} from "../../../helpers/constants";
 import {supabase} from "../../../supabase/supabaseClient";
 import Spinner from "../../Spinner";
 
-const TitlesCard = () => {
+export const TitlesCard = () => {
     const [loading, setLoading] = useState(true);
     const [formatData, setFormatData] = useState(null);
 
@@ -47,5 +47,3 @@ const TitlesCard = () => {
         </div>
     )
 }
-
-export default TitlesCard;
