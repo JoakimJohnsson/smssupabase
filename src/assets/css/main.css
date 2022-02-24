@@ -3997,7 +3997,7 @@ textarea.form-control-lg {
   color: #fff;
   text-decoration: none;
   background-color: transparent;
-  border: 1px solid #444; }
+  border: 1px solid #2d3749; }
   .list-group-item:first-child {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit; }
@@ -8956,17 +8956,15 @@ img {
 
 .dashboard-card {
   background-color: #232536;
-  border-radius: 16px; }
+  border-radius: 16px;
+  border: 1px solid #444; }
   .dashboard-card h2, .dashboard-card .h2 {
     color: #66dafa; }
   .dashboard-card p {
     font-size: .875rem; }
   .dashboard-card .list-group-item {
-    color: #c0c7cf; }
-    .dashboard-card .list-group-item:nth-child(odd) {
-      background-color: #1d1f2f; }
-    .dashboard-card .list-group-item:nth-child(even) {
-      background-color: #232536; }
+    color: #c0c7cf;
+    padding: .5rem 0; }
 
 .sms-header {
   background-color: #27293b;

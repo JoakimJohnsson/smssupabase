@@ -10,9 +10,12 @@ export const Admin = () => {
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
                     <h1>{LABELS_AND_HEADINGS.ADMIN}</h1>
+                    <div className={'row'}>
+                    <FormatCard/>
+                    <TitlesCard/>
+                    </div>
                 </div>
-                <FormatCard/>
-                <TitlesCard/>
+
             </div>
         </main>
     )

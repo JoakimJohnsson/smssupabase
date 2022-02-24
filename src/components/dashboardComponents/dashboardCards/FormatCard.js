@@ -35,7 +35,7 @@ export const FormatCard = () => {
     }
 
     return loading ? (<Spinner/>) : (
-        <div className={'col-12 col-md-6 col-xl-4 main-col'}>
+        <div className={'col-12 col-md-6 col-xl-4'}>
             <div className={'dashboard-card'}>
                 <h2>{LABELS_AND_HEADINGS.FORMAT}</h2>
                 <p>Det finns för närvarande {formatData.length} olika typer av format att välja på. Dessa läggs in och

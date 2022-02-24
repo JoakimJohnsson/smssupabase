@@ -37,7 +37,7 @@ export const TitlesCard = () => {
     }
 
     return loading ? (<Spinner/>) : (
-        <div className={'col-12 col-md-6 col-xl-4 main-col'}>
+        <div className={'col-12 col-md-6 col-xl-4'}>
             <div className={'dashboard-card'}>
                 <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                 <p>Det finns för närvarande {titlesData.length} titlar inlagda i databasen.</p>
