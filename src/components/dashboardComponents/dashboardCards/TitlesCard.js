@@ -4,6 +4,7 @@ import {supabase} from "../../../supabase/supabaseClient";
 import {Spinner} from "../../Spinner";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
 import {TextSpacer} from "../../miniComponents/TextSpacer";
+import {DocumentDuplicateIcon} from "@heroicons/react/solid";
 
 export const TitlesCard = () => {
     const [loading, setLoading] = useState(true);
@@ -39,7 +40,7 @@ export const TitlesCard = () => {
     return loading ? (<Spinner/>) : (
         <div className={'col-12 col-md-6 col-xl-4'}>
             <div className={'dashboard-card'}>
-                <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
+                <h2><DocumentDuplicateIcon className={'sms-icon--text'}/> {LABELS_AND_HEADINGS.TITLES}</h2>
                 <p>Det finns för närvarande {titlesData.length} titlar inlagda i databasen.</p>
                 <ul className={'list-group list-group-flush small mb-3'}>
                 {printTitlesData(titlesData)}
