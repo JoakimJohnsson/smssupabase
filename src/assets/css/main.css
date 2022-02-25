@@ -9160,6 +9160,10 @@ img {
   width: 18px;
   margin-right: .25rem; }
 
+.sms-icon--text-lg {
+  width: 24px;
+  margin-right: .25rem; }
+
 .sms-icon--hamburger {
   width: 24px; }
   .sms-icon--hamburger:hover, .sms-icon--hamburger:focus {

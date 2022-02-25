@@ -5,10 +5,14 @@ import {Spinner} from "../../Spinner";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
 import {TextSpacer} from "../../miniComponents/TextSpacer";
 import {DocumentDuplicateIcon} from "@heroicons/react/solid";
+import {useNavigate} from "react-router-dom";
+import {toAddTitlesPage} from "../../navigation/navFunctions";
 
 export const TitlesCard = () => {
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function getTitles() {
@@ -40,12 +44,12 @@ export const TitlesCard = () => {
     return loading ? (<Spinner/>) : (
         <div className={'col-12 col-md-6 col-xl-4'}>
             <div className={'dashboard-card'}>
-                <h2><DocumentDuplicateIcon className={'sms-icon--text'}/> {LABELS_AND_HEADINGS.TITLES}</h2>
+                <h2><DocumentDuplicateIcon className={'sms-icon--text-lg'}/> {LABELS_AND_HEADINGS.TITLES}</h2>
                 <p>Det finns för närvarande {titlesData.length} titlar inlagda i databasen.</p>
                 <ul className={'list-group list-group-flush small mb-3'}>
                 {printTitlesData(titlesData)}
                 </ul>
-                <button className={'btn btn-primary'}>{LABELS_AND_HEADINGS.ADD_TITLE}</button>
+                <button className={'btn btn-primary'} onClick={() => toAddTitlesPage(navigate)}>{LABELS_AND_HEADINGS.ADD_TITLE}</button>
             </div>
         </div>
     )
