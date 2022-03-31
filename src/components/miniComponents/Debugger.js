@@ -1,6 +1,6 @@
 import React from "react";
 
-const Debugger = ({logThis}) => {
+export const Debugger = ({logThis}) => {
     console.log("DEBUGGER - LOG")
     console.log("-------")
     console.log(logThis)
@@ -9,5 +9,3 @@ const Debugger = ({logThis}) => {
         <></>
     )
 }
-
-export default Debugger;

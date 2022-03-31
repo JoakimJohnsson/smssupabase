@@ -1,5 +1,7 @@
 // Custom colors
 $color-bg-whale: #0e101a;
+$color-bg-whale--lighter: lighten($color-bg-whale, 3%);
+$color-bg-whale--light: lighten($color-bg-whale, 1%);
 $color-bg-elephant: #1d1f2f;
 $color-bg-horse: #232536;
 $color-bg-dog: #27293b;
@@ -8,13 +10,17 @@ $color-bg-horse--trans: rgba(35, 37, 54, .8);
 $color-bg-dog--trans: rgba(39, 41, 59, .8);
 
 $primary--darker: #0e3b48;
+$primary--muted: #2d3749;
 $secondary--darker: #442359;
+$secondary--muted: #363349;
 $success--darker: #1b4214;
+$success--muted: #2c3a3a;
 $info--darker: #4d4c08;
+$info--muted: #383a31;
 $warning--darker: #442f08;
 $danger--darker: #4f1111;
 
-$primary--lighter: #a8e6f8;
+$primary--lighter: #beecfa;
 $secondary--lighter: #e9d1f8;
 $success--lighter: #ddf3d8;
 $info--lighter: #f6f594;
@@ -80,7 +86,11 @@ $enable-gradients: false;
 
 // Borders
 $border-color: $black--lighter;
+$border-color--vague: $color-bg-whale--lighter;
+$border-color--strong: $primary;
 $border--default: 1px solid $border-color;
+$border--strong: 1px solid $border-color--strong;
+$border--vague: 1px solid $border-color--vague;
 $border-radius--sm: 4px;
 $border-radius--md: 8px;
 $border-radius--lg: 16px;
@@ -88,4 +98,4 @@ $border-radius--lg: 16px;
 // List group
 $list-group-bg: transparent;
 $list-group-color: $body-color;
-$list-group-border-color: $border-color;
+$list-group-border-color: $primary--muted;

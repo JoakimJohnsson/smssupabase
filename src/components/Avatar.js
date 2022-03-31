@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {LABELS_AND_HEADINGS, MESSAGES} from '../helpers/constants';
-import Spinner from './Spinner';
+import {Spinner} from './Spinner';
 import {useAppContext} from '../context/AppContext';
 
-function Avatar({onUpload}) {
+export const Avatar = ({onUpload}) => {
     const [uploading, setUploading] = useState(false);
     const {avatarImageUrl, setAvatarImageUrl, avatarFilename, setAvatarFilename} = useAppContext();
 
@@ -98,5 +98,3 @@ function Avatar({onUpload}) {
         </div>
     )
 }
-
-export default Avatar;

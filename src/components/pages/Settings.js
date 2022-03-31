@@ -1,10 +1,11 @@
 import {useAppContext} from '../../context/AppContext';
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../../supabase/supabaseClient';
-import Avatar from '../Avatar';
+import {Avatar} from '../Avatar';
 import {CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
-import Spinner from '../Spinner';
+import {Spinner} from '../Spinner';
 import {prepareUrl} from '../../helpers/functions';
+import {getProfile} from "../serviceFunctions";
 
 const Settings = () => {
 
@@ -18,33 +19,7 @@ const Settings = () => {
     const {user, session, setUserUrl} = useAppContext();
 
     useEffect(() => {
-        async function getProfile() {
-            try {
-                setLoading(true);
-                let {data, error, status} = await supabase
-                    .from('profiles')
-                    .select(`firstname, lastname, website, avatar_image_filename`)
-                    .eq('id', user.id)
-                    .single();
-
-                if (error && status !== 406) {
-                    console.log('Error: ', error + ' ' + avatar_image_filename);
-                }
-
-                if (data) {
-                    setFirstname(data.firstname);
-                    setLastname(data.lastname);
-                    setWebsite(data.website);
-                    setAvatarImageFilename(data.avatar_image_filename);
-                }
-            } catch (error) {
-                console.log(error.message)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        getProfile().then(() => 'Do something')
+        getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, user.id).then(() => 'Do something')
     }, [user.id, session, avatar_image_filename, setUserUrl])
 
     // Updates profiles table in db
@@ -133,11 +108,7 @@ const Settings = () => {
                     </div>
 
 
-
-
-
                 </div>
-
 
 
             </div>

@@ -1,0 +1,45 @@
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {supabase} from "../../supabase/supabaseClient";
+import {Spinner} from "../Spinner";
+
+export const TitlePage = () => {
+    const [title, setTitle] = useState({});
+    const [loading, setLoading] = useState(true);
+    const {id} = useParams();
+
+    useEffect(() => {
+        async function getTitle() {
+            try {
+                setLoading(true);
+                let {data, error, status} = await supabase
+                    .from('titles')
+                    .select('*').eq('id', id)
+                if (error && status !== 406) {
+                    console.log('Error: ', error);
+                }
+                if (data) {
+                    setTitle(data[0])
+                }
+            } catch (error) {
+                console.log(error.message)
+            } finally {
+                setLoading(false)
+            }
+        }
+        getTitle().then(() => 'Do something')
+    }, [])
+
+    return loading ? (<Spinner/>) : (
+        <main className={"container-fluid main-container"}>
+            <div className={"row"}>
+                <div className={"col-12 main-col"}>
+                    <h1>Name: {title.name}</h1>
+                    <h2>Id: {title.id}</h2>
+                    <h3>Year start: {title.start_year}</h3>
+                    <h3>Year end: {title.end_year}</h3>
+                </div>
+            </div>
+        </main>
+    )
+}

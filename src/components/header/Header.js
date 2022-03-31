@@ -1,12 +1,12 @@
 import React from 'react';
-import Navigation from "../navigation/Navigation";
+import {useAppContext} from "../../context/AppContext";
+import {AuthorizedNavigation} from "../navigation/AuthorizedNavigation";
 
-const Header = () => {
-    return (
+export const Header = () => {
+    const {user} = useAppContext();
+    return user && (
         <header className={"sms-header"}>
-            <Navigation/>
+            <AuthorizedNavigation/>
         </header>
     )
 };
-
-export default Header;

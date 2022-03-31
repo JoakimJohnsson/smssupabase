@@ -1,7 +1,7 @@
 import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../helpers/constants";
 
-const Spinner = ({small, color}) => {
+export const Spinner = ({small, color}) => {
     const spinnerClass = small ? CLASSES.SPINNER_SMALL : CLASSES.SPINNER;
     return (
         <div className={spinnerClass + ' ' + color} role="status">
@@ -10,7 +10,7 @@ const Spinner = ({small, color}) => {
     )
 }
 
-const SpinnerGrow = ({small, color}) => {
+export const SpinnerGrow = ({small, color}) => {
     const spinnerClass = small ? CLASSES.SPINNER_GROW_SMALL : CLASSES.SPINNER_GROW;
     return (
         <div className={spinnerClass + ' ' + color} role="status">
@@ -18,6 +18,3 @@ const SpinnerGrow = ({small, color}) => {
         </div>
     )
 }
-
-export default Spinner;
-export {SpinnerGrow}

@@ -2,8 +2,8 @@ import './assets/css/main.css';
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {AppContextProvider} from './context/AppContext'
-import Routes from "./components/Routes";
-import Header from "./components/header/Header";
+import {MyRoutes} from "./components/MyRoutes";
+import {Header} from "./components/header/Header";
 import Footer from "./components/Footer";
 
 /*
@@ -14,17 +14,15 @@ import { BeakerIcon } from '@heroicons/react/{solid/outline}}'; <BeakerIcon clas
 https://github.com/validatorjs/validator.js
 */
 
-const App = () => {
+export const App = () => {
 
     return (
         <AppContextProvider>
             <Router>
                 <Header/>
-                <Routes/>
+                <MyRoutes/>
                 <Footer/>
             </Router>
         </AppContextProvider>
     )
 }
-
-export default App;

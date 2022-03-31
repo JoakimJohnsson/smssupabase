@@ -2,7 +2,7 @@ import React from "react";
 import {Tab} from "react-bootstrap";
 import {PANES} from "../../../helpers/constants";
 
-const TitlesPane = () => {
+export const TitlesPane = () => {
     return (
         <Tab.Pane eventKey={PANES.TITLES.KEY}>
             <h2>{PANES.TITLES.NAME}</h2>
@@ -12,4 +12,3 @@ const TitlesPane = () => {
         </Tab.Pane>
     )
 }
-export default TitlesPane;

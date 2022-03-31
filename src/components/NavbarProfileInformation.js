@@ -1,8 +1,8 @@
 import React from 'react';
 import {useAppContext} from '../context/AppContext';
-import Spinner from './Spinner';
+import {Spinner} from './Spinner';
 
-const NavbarProfileInformation = () => {
+export const NavbarProfileInformation = () => {
     const {avatarImageUrl, userUrl} = useAppContext();
     return avatarImageUrl ? (
             <div className='nav-link pe-0 d-none d-lg-flex'>
@@ -16,5 +16,3 @@ const NavbarProfileInformation = () => {
         :
         <Spinner small={true} color={'text-primary'}/>
 }
-
-export default NavbarProfileInformation;

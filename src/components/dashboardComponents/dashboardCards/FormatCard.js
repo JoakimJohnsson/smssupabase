@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, FORMATS} from "../../../helpers/constants";
 import {supabase} from "../../../supabase/supabaseClient";
-import Spinner from "../../Spinner";
+import {Spinner} from "../../Spinner";
+import {TemplateIcon} from "@heroicons/react/solid";
 
-const FormatCard = () => {
+export const FormatCard = () => {
     const [loading, setLoading] = useState(true);
     const [formatData, setFormatData] = useState(null);
 
@@ -35,9 +36,9 @@ const FormatCard = () => {
     }
 
     return loading ? (<Spinner/>) : (
-        <div className={'col-12 col-md-4 main-col'}>
+        <div className={'col-12 col-md-6 col-xl-4 mb-3 mb-md-0'}>
             <div className={'dashboard-card'}>
-                <h2>{LABELS_AND_HEADINGS.FORMAT}</h2>
+                <h2><TemplateIcon className={'sms-icon--text-lg'}/> {LABELS_AND_HEADINGS.FORMAT}</h2>
                 <p>Det finns för närvarande {formatData.length} olika typer av format att välja på. Dessa läggs in och
                     redigeras direkt i databasen på <a href={'https://supabase.com/'}>Supabase</a>.</p>
                 <ul className={'list-group list-group-flush small'}>
@@ -47,5 +48,3 @@ const FormatCard = () => {
         </div>
     )
 }
-
-export default FormatCard;

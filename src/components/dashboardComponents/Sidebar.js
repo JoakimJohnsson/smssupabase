@@ -1,21 +1,13 @@
 import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import SidebarBody from "./SidebarBody";
-import {ChevronDoubleLeftIcon} from "@heroicons/react/solid";
+import {SidebarBody} from "./SidebarBody";
 
-
-const Sidebar = ({isOpen, handleClick}) => {
+export const Sidebar = ({isOpen, handleClick}) => {
 
     return (
         <div className={'d-none d-md-flex dashboard-sidebar'}>
-            <SidebarBody />
-            <Offcanvas show={isOpen} onHide={handleClick} className={'dashboard-sidebar'}>
-                <Offcanvas.Header className={'py-0 justify-content-end'}>
-                    <button className={'btn btn-link d-block d-md-none pe-0'} onClick={handleClick} aria-label={LABELS_AND_HEADINGS.CLOSE}>
-                        <ChevronDoubleLeftIcon className={'sms-icon--hamburger text-danger me-0'}/>
-                    </button>
-                </Offcanvas.Header>
+            <SidebarBody/>
+            <Offcanvas show={isOpen} onHide={handleClick} className={'dashboard-sidebar d-block d-md-none pt-3'}>
                 <Offcanvas.Body className={'pt-0'}>
                     <SidebarBody handleClick={handleClick}/>
                 </Offcanvas.Body>
@@ -23,5 +15,3 @@ const Sidebar = ({isOpen, handleClick}) => {
         </div>
     )
 }
-
-export default Sidebar;

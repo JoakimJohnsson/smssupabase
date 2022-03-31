@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS, PANES} from "../../helpers/constants";
-import Sidebar from "../dashboardComponents/Sidebar";
+import {Sidebar} from "../dashboardComponents/Sidebar";
 import {ChevronDoubleDownIcon, ChevronDoubleRightIcon} from '@heroicons/react/solid';
 import {Tab} from "react-bootstrap";
-import TitlesPane from "../dashboardComponents/dashboardTabPanes/TitlesPane";
-import OtherCollectionsPane from "../dashboardComponents/dashboardTabPanes/OtherCollectionsPane";
-import OverviewPane from "../dashboardComponents/dashboardTabPanes/OverviewPane";
+import {TitlesPane} from "../dashboardComponents/dashboardTabPanes/TitlesPane";
+import {OtherCollectionsPane} from "../dashboardComponents/dashboardTabPanes/OtherCollectionsPane";
+import {OverviewPane} from "../dashboardComponents/dashboardTabPanes/OverviewPane";
 import {useAppContext} from "../../context/AppContext";
-import HeroHeader from "../header/HeroHeader";
-import Signup from "../signup/Signup";
+import {HeroHeader} from "../header/HeroHeader";
+import {Signup} from "../signup/Signup";
 
-const Dashboard = () => {
+export const Dashboard = () => {
 
     const {user} = useAppContext();
     const [isOpen, setIsOpen] = useState(false);
@@ -59,5 +59,3 @@ const Dashboard = () => {
 
         )
 }
-
-export default Dashboard;

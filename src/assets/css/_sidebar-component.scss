@@ -3,26 +3,68 @@
 
 .dashboard-sidebar {
   height: 100vh;
-  width: 250px;
+  width: 100px;
+  @include media-breakpoint-up(sm) {
+    width: 250px;
+  }
+  @include media-breakpoint-only(md) {
+    width: 150px;
+  }
   background-color: $color-bg-whale;
   padding: 0;
   .sidebar-label {
-    @extend .sidebar-x-padding;
+    padding: .5rem;
+    margin-bottom: .2rem;
     text-transform: uppercase;
-    font-weight: 300;
-    font-size: $font-size-sm;
-    opacity: $standard-opacity;
-    margin-bottom: .5rem;
+    font-weight: 500;
+    font-size: .875rem;
+    text-align: center;
+    @include media-breakpoint-up(sm) {
+      font-size: 1rem;
+      text-align: left;
+      padding-left: 2rem;
+      padding-right: 1rem;
+    }
+    @include media-breakpoint-only(md) {
+      text-align: center;
+      padding: .5rem;
+    }
+  }
+  .sidebar-navlink-text {
+    text-align: center;
+    font-size: .775rem;
+    @include media-breakpoint-up(sm) {
+      font-size: .885rem;
+      text-align: left;
+    }
+    @include media-breakpoint-only(md) {
+      text-align: center;
+    }
   }
   .nav-link {
-    @extend .sidebar-x-padding, .fs-smaller;
+    background-color: $color-bg-whale--light;
+    @extend .sidebar-x-padding, .fs-small;
+    min-height: 80px;
+    @include media-breakpoint-up(sm) {
+      min-height: 50px;
+    }
+    border-bottom: $border--vague;
+    &:first-of-type {
+      border-top: $border--vague;
+    }
     &:hover, &:focus {
-      background-color: lighten($color-bg-whale, 3%);
+      background-color: $border-color--vague;
     }
     &.primary {
       color: $primary;
       &:hover, &:focus {
         color: $primary--lighter;
+      }
+    }
+    &.danger {
+      color: $danger;
+      &:hover, &:focus {
+        color: $danger--lighter;
       }
     }
     &.secondary {
@@ -53,6 +95,10 @@
       background-color: $primary--darker;
       color: $primary--lighter;
     }
+    &.active.danger {
+      background-color: $danger--darker;
+      color: $danger--lighter;
+    }
     &.active.secondary {
       background-color: $secondary--darker;
       color: $secondary--lighter;
@@ -70,8 +116,14 @@
       color: $info--lighter;
     }
     svg {
-      width: 16px;
-      margin-right: 1rem;
+      width: 22px;
+      margin-right: 0;
+      @include media-breakpoint-up(sm) {
+        margin-right: 1rem;
+      }
+      @include media-breakpoint-only(md) {
+        margin-right: 0;
+      }
     }
   }
 }
@@ -86,5 +138,10 @@
   }
   .offcanvas-body {
     padding: 0;
+  }
+}
+.offcanvas-backdrop {
+  @include media-breakpoint-up(md) {
+    display: none;
   }
 }

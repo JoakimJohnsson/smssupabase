@@ -50,6 +50,10 @@
   color: $danger--lighter !important;
 }
 
+.text-black--lighter {
+  color: $black--lighter !important;
+}
+
 // Font size
 .fs-large {
   font-size: 1.125rem;
@@ -62,6 +66,11 @@
 .fs-small {
   font-size: .875rem;
 }
+.fs-sm-small {
+  @include media-breakpoint-up(sm) {
+    font-size: .875rem;
+  }
+}
 
 .fs-smaller {
   font-size: .775rem;
@@ -69,4 +78,11 @@
 
 .fs-smallest {
   font-size: .675rem;
+}
+
+// Variants
+.text-label {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1rem;
 }
