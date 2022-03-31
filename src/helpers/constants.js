@@ -32,7 +32,9 @@ export const ROUTES = {
     SUCCESS: '/success',
     SETTINGS: '/settings',
     ADMIN: '/admin',
-    ADMIN_ADD_TITLE: '/admin/title',
+    ADMIN_ADD_TITLE: '/admin/add-title',
+    TITLES: '/admin/titles',
+    TITLE: '/admin/titles/:id',
 }
 
 export const LABELS_AND_HEADINGS = {

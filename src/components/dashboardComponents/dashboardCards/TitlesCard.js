@@ -5,7 +5,7 @@ import {Spinner} from "../../Spinner";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
 import {TextSpacer} from "../../miniComponents/TextSpacer";
 import {DocumentDuplicateIcon} from "@heroicons/react/solid";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {toAddTitlesPage} from "../../navigation/navFunctions";
 
 export const TitlesCard = () => {
@@ -38,7 +38,14 @@ export const TitlesCard = () => {
 
     const printTitlesData = (td) => {
         return td.map( (t) =>
-            <li key={t.id} className={'list-group-item'}>{t.name} {t.start_year}<TextSpacer character={'|'} margin={'mx-2'}/>Inlagd: <FriendlyDate dateString={t.created_at}/></li>)
+            <li key={t.id} className={'list-group-item'}>
+                <Link to={`/admin/titles/${t.id}`} className={'me-2'}>
+                    {t.name}
+                </Link>
+                {t.start_year}
+                <TextSpacer character={'|'} margin={'mx-2'}/>
+                Inlagd: <FriendlyDate dateString={t.created_at}/>
+            </li>)
     }
 
     return loading ? (<Spinner/>) : (
