@@ -38,6 +38,8 @@ export const TitlePage = () => {
                     <h2>Id: {title.id}</h2>
                     <h3>Year start: {title.start_year}</h3>
                     <h3>Year end: {title.end_year}</h3>
+                    <h3>Format: {title.format}</h3>
+                    <h3>Total number of issues: {title.total_issues}</h3>
                 </div>
             </div>
         </main>

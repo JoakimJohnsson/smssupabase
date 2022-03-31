@@ -25,3 +25,22 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
         setLoading(false)
     }
 }
+
+export async function getFormats(setLoading, setFormatData) {
+    try {
+        setLoading(true);
+        let {data, error, status} = await supabase
+            .from('formats')
+            .select('*')
+        if (error && status !== 406) {
+            console.log('Error: ', error);
+        }
+        if (data) {
+            setFormatData(data)
+        }
+    } catch (error) {
+        console.log(error.message)
+    } finally {
+        setLoading(false)
+    }
+}
