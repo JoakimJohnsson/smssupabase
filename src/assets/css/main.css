@@ -8792,6 +8792,9 @@ img {
   .sidebar-x-padding, .dashboard-sidebar .nav-link {
     padding: .5rem; } }
 
+.bg-whale {
+  background-color: #0e101a !important; }
+
 .bg-elephant {
   background-color: #1d1f2f !important; }
 
@@ -9027,6 +9030,22 @@ img {
       object-fit: cover;
       border-radius: 25px; }
 
+.sms-logo-shield {
+  width: 60px;
+  height: 60px; }
+
+.sms-logo-text {
+  display: inline;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center; }
+  @media (min-width: 576px) {
+    .sms-logo-text {
+      font-size: 1.6rem; } }
+
 .dashboard-sidebar {
   height: 100vh;
   width: 100px;
@@ -9146,7 +9165,7 @@ img {
   border-radius: 4px; }
   .btn.btn-cta {
     min-width: 50%;
-    padding: 1rem 3rem;
+    padding: .8rem 2rem;
     border-radius: 16px;
     font-weight: bold;
     font-size: 1.3rem;
@@ -9155,6 +9174,9 @@ img {
     justify-content: center; }
     .btn.btn-cta .sms-icon {
       width: 2rem; }
+    @media (min-width: 576px) {
+      .btn.btn-cta {
+        padding: 1rem 3rem; } }
 
 .sms-icon--text {
   width: 18px;
