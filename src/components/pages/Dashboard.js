@@ -24,7 +24,12 @@ export const Dashboard = () => {
                     <div className={"row"}>
                         <Sidebar isOpen={isOpen} handleClick={handleClick}/>
                         <div className={'col-12 d-block d-md-none '}>
-                            <button className={'btn btn-link mb-3 text-start ps-0'} onClick={handleClick}>
+                            <button
+                                className={'btn btn-link mb-3 mt-3 text-start'}
+                                onClick={handleClick}
+                                aria-label={LABELS_AND_HEADINGS.MENU}
+                                aria-controls={'sidebar-menu'}
+                            >
                                 <ChevronDoubleRightIcon className={'sms-icon--hamburger me-0'}/>
                             </button>
                         </div>

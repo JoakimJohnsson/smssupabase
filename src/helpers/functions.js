@@ -41,3 +41,13 @@ export const handlePasswordInput = (success, setPasswordInputClass, setPasswordV
         setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
     }
 }
+
+export const handleGenericFormInput = (success, setInputClass, setValidated) => {
+    if (success) {
+        setInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        setValidated(true);
+    } else {
+        setInputClass(CLASSES.FORM_INPUT_ERROR);
+        setValidated(false);
+    }
+}

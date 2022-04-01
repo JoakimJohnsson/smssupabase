@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {useAppContext} from '../../context/AppContext';
 import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
 import {validateEmail, validatePassword} from '../../helpers/validations';
-import SignupValidationMessage from './SignupValidationMessage';
+import ValidationMessage from './ValidationMessage';
 import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from '../../helpers/functions';
 
 export const Signup = () => {
@@ -73,7 +73,7 @@ export const Signup = () => {
                        className={emailInputClass}
                        placeholder={'name@myplace.se'}
                        required/>
-                <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
+                <ValidationMessage success={emailValidated} message={emailValidationMessage}/>
                 <label className={'form-label d-flex'} htmlFor='input-password'>{LABELS_AND_HEADINGS.PASSWORD}</label>
                 <input id='input-password'
                        type='password'
@@ -82,7 +82,7 @@ export const Signup = () => {
                        className={passwordInputClass}
                        placeholder={'********'}
                        required/>
-                <SignupValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
+                <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
                 <button type='submit' className={'btn btn-secondary'}>
                     {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>

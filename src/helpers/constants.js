@@ -7,20 +7,22 @@ export const MESSAGES = {
         VALIDATION_LOGIN_FORM: 'Något gick fel vid inloggning',
         VALIDATION_UPLOAD_IMAGE: 'Du måste välja en bild för uppladdning',
         VALIDATION_DELETE_IMAGE: 'Något gick fel vid borttagning av bild',
-        VALIDATION_UPLOAD: 'Något gick fel vid uppladdning'
+        VALIDATION_UPLOAD: 'Något gick fel vid uppladdning',
+        VALIDATION_INSERT: 'Något gick fel vid validering av formulär'
     },
     SUCCESS: {
         VALIDATION_EMAIL: 'Det där är en korrekt e-postadress!',
         VALIDATION_PASSWORD: 'Det där är ett starkt lösenord!',
-        VALIDATION_DOWNLOAD_IMAGE: 'En bild laddades ned'
+        VALIDATION_DOWNLOAD_IMAGE: 'En bild laddades ned',
+        VALIDATION_INSERT: 'Titeln lades till i databasen'
     }
 }
 
 export const CLASSES = {
     FORM_INPUT_DEFAULT: 'form-control mb-3',
     FORM_INPUT_DISABLED: 'form-control opacity-50 mb-3',
-    FORM_INPUT_SUCCESS: 'form-control success',
-    FORM_INPUT_ERROR: 'form-control danger',
+    FORM_INPUT_SUCCESS: 'form-control success mb-3',
+    FORM_INPUT_ERROR: 'form-control danger mb-3',
     SPINNER: 'spinner-border m-2',
     SPINNER_SMALL: 'spinner-border spinner-border-sm m-1',
     SPINNER_GROW: 'spinner-grow m-2',
@@ -39,6 +41,7 @@ export const ROUTES = {
 
 export const LABELS_AND_HEADINGS = {
     ADMIN: 'Admin',
+    ADD: 'Lägg till',
     ADD_TITLE: 'Lägg till ny titel',
     CHANGE_IMAGE: 'Byt bild',
     CHOOSE: '--- Välj ---',
@@ -55,11 +58,14 @@ export const LABELS_AND_HEADINGS = {
     LAST_NAME: 'Efternamn',
     LOADING: 'Laddar',
     LOG_IN: 'Logga in',
+    MENU: 'Meny',
     MY_COLLECTION: 'Min samling',
     NAME: 'Namn (name)',
     OPEN: 'Öppna',
     PASSWORD: 'Lösenord',
     PROFILE_IMAGE: 'Profilbild',
+    RESET_FORM: 'Rensa formulär',
+    SAVE: 'Spara',
     SETTINGS: 'Inställningar',
     SIGN_OUT: 'Logga ut',
     START: 'Översikt',
