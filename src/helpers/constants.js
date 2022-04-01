@@ -34,15 +34,18 @@ export const ROUTES = {
     SUCCESS: '/success',
     SETTINGS: '/settings',
     ADMIN: '/admin',
+    TITLES: '/titles',
+    TITLE: '/titles/:id',
     ADMIN_ADD_TITLE: '/admin/add-title',
-    TITLES: '/admin/titles',
-    TITLE: '/admin/titles/:id',
+    ADMIN_TITLES: '/admin/titles',
+    ADMIN_TITLE: '/admin/titles/:id',
 }
 
 export const LABELS_AND_HEADINGS = {
     ADMIN: 'Admin',
     ADD: 'Lägg till',
     ADD_TITLE: 'Lägg till ny titel',
+    ALL_TITLES: 'Alla titlar',
     CHANGE_IMAGE: 'Byt bild',
     CHOOSE: '--- Välj ---',
     CLOSE: 'Stäng',
@@ -66,6 +69,7 @@ export const LABELS_AND_HEADINGS = {
     PROFILE_IMAGE: 'Profilbild',
     RESET_FORM: 'Rensa formulär',
     SAVE: 'Spara',
+    EDIT_ALL_TITLES: 'Redigera alla titlar',
     SETTINGS: 'Inställningar',
     SIGN_OUT: 'Logga ut',
     START: 'Översikt',
@@ -90,7 +94,7 @@ export const TEXTS = {
 export const PANES = {
     TITLES: {
         KEY: "titles-pane",
-        NAME: "Titlar"
+        NAME: "Mina titlar"
     },OVERVIEW: {
         KEY: "overview-pane",
         NAME: "Översikt"

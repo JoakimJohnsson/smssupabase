@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../../helpers/constants";
 import {supabase} from "../../../supabase/supabaseClient";
 import {Spinner} from "../../Spinner";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
@@ -51,12 +51,13 @@ export const TitlesCard = () => {
     return loading ? (<Spinner/>) : (
         <div className={'col-12 col-md-6 col-xl-4'}>
             <div className={'dashboard-card'}>
-                <h2><DocumentDuplicateIcon className={'sms-icon--text-lg'}/> {LABELS_AND_HEADINGS.TITLES}</h2>
+                <h2><DocumentDuplicateIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.TITLES}</h2>
                 <p>Det finns för närvarande {titlesData.length} titlar inlagda i databasen.</p>
                 <ul className={'list-group list-group-flush small mb-3'}>
                 {printTitlesData(titlesData)}
                 </ul>
-                <button className={'btn btn-primary'} onClick={() => toAddTitlesPage(navigate)}>{LABELS_AND_HEADINGS.ADD_TITLE}</button>
+                <button className={'btn btn-primary me-3'} onClick={() => toAddTitlesPage(navigate)}>{LABELS_AND_HEADINGS.ADD_TITLE}</button>
+                <Link className={'btn btn-outline-secondary'} to={ROUTES.ADMIN_TITLES}>{LABELS_AND_HEADINGS.EDIT_ALL_TITLES}</Link>
             </div>
         </div>
     )
