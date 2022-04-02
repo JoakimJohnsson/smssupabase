@@ -1,6 +1,7 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES} from "../helpers/constants";
 
+// PROFILE FUNCTIONS
 export async function getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) {
     try {
         setLoading(true);
@@ -27,36 +28,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
     }
 }
 
-export async function getFormats(setLoading, setFormatData) {
-    try {
-        setLoading(true);
-        let {data, error, status} = await supabase
-            .from('formats')
-            .select('*')
-        if (error && status !== 406) {
-            console.log('Error: ', error);
-        }
-        if (data) {
-            setFormatData(data)
-        }
-    } catch (error) {
-        console.log(error.message)
-    } finally {
-        setLoading(false)
-    }
-}
-
-export const resetAddTitleForm = (setName, setStartYear, setEndYear, setFormat, setTotalIssues, setShowFormError, setShowFormSuccess) => {
-    setName("");
-    setStartYear(1975);
-    setEndYear(1975);
-    setFormat("");
-    setTotalIssues(12);
-    setShowFormError(false);
-    setShowFormSuccess(false);
-}
-
-// Add title db
+// TITLE FUNCTIONS
 export async function addTitleData(name, startYear, endYear, format, totalIssues, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
         let {error} = await supabase.from('titles').insert([{
@@ -75,5 +47,63 @@ export async function addTitleData(name, startYear, endYear, format, totalIssues
         }
     } catch (error) {
         console.log(error.message)
+    }
+}
+
+// GENERAL FUNCTIONS
+export async function getRowsByTable(setLoading, table, setData) {
+    try {
+        setLoading(true);
+        let {data, error, status} = await supabase
+            .from(table)
+            .select('*')
+        if (error && status !== 406) {
+            console.log('Error: ', error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.log(error.message)
+    } finally {
+        setLoading(false)
+    }
+}
+
+export async function getRowsByTableWithLimitAndOrderByColumn(setLoading, table, column, setData, limit, ascending) {
+    try {
+        setLoading(true);
+        let {data, error, status} = await supabase
+            .from(table)
+            .select('*').limit(limit).order(column, {ascending})
+        if (error && status !== 406) {
+            console.log('Error: ', error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.log(error.message)
+    } finally {
+        setLoading(false)
+    }
+}
+
+export async function getRowCountOfTable(setLoading, table, setRowCount) {
+    try {
+        setLoading(true);
+        let {data, error, status} = await supabase
+            .from(table)
+            .select('*', {count: 'exact'});
+        if (error && status !== 406) {
+            console.log('Error: ', error);
+        }
+        if (data) {
+            setRowCount(data.length)
+        }
+    } catch (error) {
+        console.log(error.message)
+    } finally {
+        setLoading(false)
     }
 }

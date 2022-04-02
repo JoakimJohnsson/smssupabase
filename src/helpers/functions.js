@@ -51,3 +51,13 @@ export const handleGenericFormInput = (success, setInputClass, setValidated) => 
         setValidated(false);
     }
 }
+
+export const resetAddTitleForm = (setName, setStartYear, setEndYear, setFormat, setTotalIssues, setShowFormError, setShowFormSuccess) => {
+    setName("");
+    setStartYear(1975);
+    setEndYear(1975);
+    setFormat("");
+    setTotalIssues(12);
+    setShowFormError(false);
+    setShowFormSuccess(false);
+}

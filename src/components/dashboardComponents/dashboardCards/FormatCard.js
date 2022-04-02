@@ -2,14 +2,14 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, FORMATS} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
 import {TemplateIcon} from "@heroicons/react/solid";
-import {getFormats} from "../../serviceFunctions";
+import {getRowsByTable} from "../../serviceFunctions";
 
 export const FormatCard = () => {
     const [loading, setLoading] = useState(true);
     const [formatData, setFormatData] = useState(null);
 
     useEffect(() => {
-        getFormats(setLoading, setFormatData).then(() => 'Do something')
+        getRowsByTable(setLoading, 'formats', setFormatData).then(() => 'Do something')
     }, [])
 
     const printFormatData = (fd) => {
