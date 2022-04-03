@@ -68,6 +68,7 @@ export const LABELS_AND_HEADINGS = {
     PASSWORD: 'Lösenord',
     PROFILE_IMAGE: 'Profilbild',
     RESET_FORM: 'Rensa formulär',
+    RESET_PASSWORD: 'Ändra lösenord',
     SAVE: 'Spara',
     EDIT_ALL_TITLES: 'Redigera alla titlar',
     SETTINGS: 'Inställningar',
@@ -88,7 +89,9 @@ export const TEXTS = {
     DO_YOU_COLLECT: 'Samlar du på svenska marveltidningar?',
     MANAGE_YOUR_COLLECTION: 'Övervaka och administrera din samling',
     NEW_TITLES: 'Nya titlar och funktioner läggs till regelbundet',
-    ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar'
+    ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar',
+    SETTINGS_LEAD: 'Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.',
+    SETTINGS_RESET_PASSWORD: 'Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.'
 }
 
 export const PANES = {
