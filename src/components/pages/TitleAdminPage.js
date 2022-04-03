@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {supabase} from "../../supabase/supabaseClient";
 import {Spinner} from "../Spinner";
 
-export const TitlePage = () => {
+export const TitleAdminPage = () => {
     const [title, setTitle] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();

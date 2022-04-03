@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {MenuIcon, XIcon, PresentationChartLineIcon, CogIcon, BanIcon} from '@heroicons/react/solid';
+import {MenuIcon, XIcon, PresentationChartLineIcon, CogIcon, BanIcon, DocumentDuplicateIcon} from '@heroicons/react/solid';
 import shieldWhite from '../../assets/images/shield__white.svg';
 import {SignOutButton} from '../miniComponents/SignOutButton';
 import {useAppContext} from '../../context/AppContext';
@@ -38,6 +38,7 @@ export const AuthorizedNavigation = () => {
                     {/* desktop ul (no click handler) */}
                     <ul className='d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0'>
                         <LiNavItem route={ROUTES.DEFAULT} icon={<PresentationChartLineIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.TITLES} icon={<DocumentDuplicateIcon/>} text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.SETTINGS} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
                         <LiNavItem route={ROUTES.ADMIN} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>

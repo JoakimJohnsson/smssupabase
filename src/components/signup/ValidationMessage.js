@@ -1,7 +1,7 @@
 import React from "react";
 import {CheckCircleIcon, ExclamationCircleIcon} from "@heroicons/react/solid";
 
-const SignupValidationMessage = ({success, message}) => {
+const ValidationMessage = ({success, message}) => {
     return (
         message !== "" &&
         <p className={"form-text"}>
@@ -15,4 +15,4 @@ const SignupValidationMessage = ({success, message}) => {
     )
 }
 
-export default SignupValidationMessage;
+export default ValidationMessage;
