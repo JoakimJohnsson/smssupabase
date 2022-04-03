@@ -50,7 +50,7 @@ export async function addTitleData(name, startYear, endYear, format, totalIssues
     }
 }
 
-// GENERAL FUNCTIONS
+// GENERIC FUNCTIONS
 export async function getRowsByTable(setLoading, table, setData) {
     try {
         setLoading(true);
