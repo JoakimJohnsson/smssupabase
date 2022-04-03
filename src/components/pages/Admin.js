@@ -10,10 +10,10 @@ export const Admin = () => {
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
                     <h1>{LABELS_AND_HEADINGS.ADMIN}</h1>
-                    <div className={'row'}>
+                </div>
+                <div className={'row main-col'}>
                     <FormatCard/>
                     <TitlesCard/>
-                    </div>
                 </div>
 
             </div>

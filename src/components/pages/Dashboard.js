@@ -34,7 +34,6 @@ export const Dashboard = () => {
                             </button>
                         </div>
                         <div className={"col main-col"}>
-                            <h1>{LABELS_AND_HEADINGS.DASHBOARD}</h1>
                             <Tab.Content>
                                 <OverviewPane/>
                                 <TitlesPane/>

@@ -5,7 +5,7 @@ import {PANES} from "../../../helpers/constants";
 export const TitlesPane = () => {
     return (
         <Tab.Pane eventKey={PANES.TITLES.KEY}>
-            <h2>{PANES.TITLES.NAME}</h2>
+            <h1>{PANES.TITLES.NAME}</h1>
             <p className="lead mb-5">
                 Mina coola titlar.
             </p>
