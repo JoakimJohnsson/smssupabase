@@ -29,7 +29,7 @@ export const MyRoutes = () => {
             <Route path={ROUTES.TITLES} element={!user ? <Navigate replace to={ROUTES.DEFAULT}/> : <Titles/>}/>
 
             {/* Admin routes */}
-            <Route path={ROUTES.ADMIN.ADMIN} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <Admin/>}/>
+            <Route path={ROUTES.ADMIN.ROOT} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <Admin/>}/>
             <Route path={ROUTES.ADMIN.TITLE} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminTitle/>}/>
             <Route path={ROUTES.ADMIN.TITLES} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminTitles/>}/>
             <Route path={ROUTES.ADMIN.TITLE_ADD} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminTitleAdd/>}/>

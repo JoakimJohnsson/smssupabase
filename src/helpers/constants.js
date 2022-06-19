@@ -36,7 +36,7 @@ export const ROUTES = {
     TITLES: '/titles',
     TITLE: '/titles/:id',
     ADMIN: {
-        ADMIN: '/admin',
+        ROOT: '/admin',
         TITLE: '/admin/titles/:id',
         TITLE_ADD: '/admin/titles/title-add',
         TITLE_EDIT: '/admin/titles/title-edit',
