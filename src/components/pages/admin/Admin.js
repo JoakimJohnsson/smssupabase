@@ -1,7 +1,8 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {FormatCard} from "../dashboardComponents/dashboardCards/FormatCard";
-import {TitlesCard} from "../dashboardComponents/dashboardCards/TitlesCard";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {FormatCard} from "../../dashboardComponents/dashboardCards/FormatCard";
+import {TitlesCard} from "../../dashboardComponents/dashboardCards/TitlesCard";
+
 
 export const Admin = () => {
 

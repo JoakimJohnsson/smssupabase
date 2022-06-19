@@ -33,12 +33,15 @@ export const ROUTES = {
     DEFAULT: '/',
     SUCCESS: '/success',
     SETTINGS: '/settings',
-    ADMIN: '/admin',
     TITLES: '/titles',
     TITLE: '/titles/:id',
-    ADMIN_ADD_TITLE: '/admin/add-title',
-    ADMIN_TITLES: '/admin/titles',
-    ADMIN_TITLE: '/admin/titles/:id',
+    ADMIN: {
+        ADMIN: '/admin',
+        TITLE: '/admin/titles/:id',
+        TITLE_ADD: '/admin/titles/title-add',
+        TITLE_EDIT: '/admin/titles/title-edit',
+        TITLES: '/admin/titles'
+    }
 }
 
 export const LABELS_AND_HEADINGS = {

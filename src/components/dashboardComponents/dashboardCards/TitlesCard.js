@@ -43,7 +43,7 @@ export const TitlesCard = () => {
                 {printTitlesData(titlesData)}
                 </ul>
                 <button className={'btn btn-primary me-3 mb-2'} onClick={() => toAddTitlesPage(navigate)}>{LABELS_AND_HEADINGS.ADD_TITLE}</button>
-                <Link className={'btn btn-outline-secondary mb-2'} to={ROUTES.ADMIN_TITLES}>{LABELS_AND_HEADINGS.EDIT_ALL_TITLES}</Link>
+                <Link className={'btn btn-outline-secondary mb-2'} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.EDIT_ALL_TITLES}</Link>
             </div>
         </div>
     )

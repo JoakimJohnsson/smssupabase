@@ -1,4 +1,3 @@
-import './assets/css/main.css';
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import {AppContextProvider} from './context/AppContext'
@@ -13,6 +12,7 @@ https://github.com/tailwindlabs/heroicons- icon library usage
 import { BeakerIcon } from '@heroicons/react/{solid/outline}}'; <BeakerIcon className="h-16 w-16 text-blue-900"/>
 https://github.com/validatorjs/validator.js
 */
+
 
 export const App = () => {
 

@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, FORMATS, LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {Spinner} from "../Spinner";
-import {addTitleData, getRowsByTable} from "../serviceFunctions";
-import {validateText} from "../../helpers/validations";
-import {handleGenericFormInput, resetAddTitleForm} from "../../helpers/functions";
+import {CLASSES, FORMATS, LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {Spinner} from "../../Spinner";
+import {addTitleData, getRowsByTable} from "../../serviceFunctions";
+import {validateText} from "../../../helpers/validations";
+import {handleGenericFormInput, resetAddTitleForm} from "../../../helpers/functions";
 
-export const AddTitle = () => {
+
+export const AdminTitleAdd = () => {
 
     const [name, setName] = useState("");
     const [startYear, setStartYear] = useState(1975);
