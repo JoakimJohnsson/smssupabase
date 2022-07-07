@@ -18,6 +18,8 @@ export const Dashboard = () => {
         setIsOpen(!isOpen)
     }
 
+ // https://thekenyandev.com/blog/building-a-react-router-sidebar-with-react/
+
     return user ? (
             <Tab.Container id="dashboard-tabs" defaultActiveKey={PANES.OVERVIEW.KEY}>
                 <main className={"container-fluid main-container dashboard"}>
