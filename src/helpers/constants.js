@@ -33,12 +33,15 @@ export const ROUTES = {
     DEFAULT: '/',
     SUCCESS: '/success',
     SETTINGS: '/settings',
-    ADMIN: '/admin',
     TITLES: '/titles',
     TITLE: '/titles/:id',
-    ADMIN_ADD_TITLE: '/admin/add-title',
-    ADMIN_TITLES: '/admin/titles',
-    ADMIN_TITLE: '/admin/titles/:id',
+    ADMIN: {
+        ROOT: '/admin',
+        TITLE: '/admin/titles/:id',
+        TITLE_ADD: '/admin/titles/add',
+        TITLE_EDIT: '/admin/titles/edit/:id',
+        TITLES: '/admin/titles'
+    }
 }
 
 export const LABELS_AND_HEADINGS = {
@@ -52,6 +55,8 @@ export const LABELS_AND_HEADINGS = {
     COMMUNITY: 'Socialt',
     CREATE_ACCOUNT: 'Registrera dig',
     DASHBOARD: 'Kontrollpanel',
+    DELETE_IMAGE: 'Radera bild',
+    EDIT: 'Redigera',
     EMAIL: 'E-postadress',
     END_YEAR: 'Slutår (end_year)',
     FIRST_NAME: 'Förnamn',
@@ -68,8 +73,9 @@ export const LABELS_AND_HEADINGS = {
     PASSWORD: 'Lösenord',
     PROFILE_IMAGE: 'Profilbild',
     RESET_FORM: 'Rensa formulär',
+    RESET_PASSWORD: 'Ändra lösenord',
     SAVE: 'Spara',
-    EDIT_ALL_TITLES: 'Redigera alla titlar',
+    SEE_ALL_TITLES: 'Se alla titlar',
     SETTINGS: 'Inställningar',
     SIGN_OUT: 'Logga ut',
     START: 'Översikt',
@@ -88,7 +94,9 @@ export const TEXTS = {
     DO_YOU_COLLECT: 'Samlar du på svenska marveltidningar?',
     MANAGE_YOUR_COLLECTION: 'Övervaka och administrera din samling',
     NEW_TITLES: 'Nya titlar och funktioner läggs till regelbundet',
-    ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar'
+    ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar',
+    SETTINGS_LEAD: 'Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.',
+    SETTINGS_RESET_PASSWORD: 'Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.'
 }
 
 export const PANES = {

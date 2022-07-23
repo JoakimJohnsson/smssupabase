@@ -12,7 +12,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
             .single();
 
         if (error && status !== 406) {
-            console.log('Error: ', error);
+            console.error('Error: ', error);
         }
 
         if (data) {
@@ -22,7 +22,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
             setAvatarImageFilename(data.avatar_image_filename);
         }
     } catch (error) {
-        console.log(error.message)
+        console.error(error.message)
     } finally {
         setLoading(false)
     }
@@ -35,18 +35,18 @@ export async function addTitleData(name, startYear, endYear, format, totalIssues
             name: name, start_year: startYear, end_year: endYear, format: format, total_issues: totalIssues
         }])
         if (error) {
-            console.log('Error: ', error);
+            console.error('Error: ', error);
             setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
             setShowFormSuccess(false);
             setShowFormError(true);
         } else {
-            console.log("Done")
+            console.info("Done")
             setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
             setShowFormError(false);
             setShowFormSuccess(true);
         }
     } catch (error) {
-        console.log(error.message)
+        console.error(error.message)
     }
 }
 
@@ -58,13 +58,13 @@ export async function getRowsByTable(setLoading, table, setData) {
             .from(table)
             .select('*')
         if (error && status !== 406) {
-            console.log('Error: ', error);
+            console.error('Error: ', error);
         }
         if (data) {
             setData(data)
         }
     } catch (error) {
-        console.log(error.message)
+        console.error(error.message)
     } finally {
         setLoading(false)
     }
@@ -77,13 +77,13 @@ export async function getRowsByTableWithLimitAndOrderByColumn(setLoading, table,
             .from(table)
             .select('*').limit(limit).order(column, {ascending})
         if (error && status !== 406) {
-            console.log('Error: ', error);
+            console.error('Error: ', error);
         }
         if (data) {
             setData(data)
         }
     } catch (error) {
-        console.log(error.message)
+        console.error(error.message)
     } finally {
         setLoading(false)
     }
@@ -96,13 +96,13 @@ export async function getRowCountOfTable(setLoading, table, setRowCount) {
             .from(table)
             .select('*', {count: 'exact'});
         if (error && status !== 406) {
-            console.log('Error: ', error);
+            console.error('Error: ', error);
         }
         if (data) {
             setRowCount(data.length)
         }
     } catch (error) {
-        console.log(error.message)
+        console.error(error.message)
     } finally {
         setLoading(false)
     }

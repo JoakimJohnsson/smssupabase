@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {supabase} from "../../supabase/supabaseClient";
-import {Spinner} from "../Spinner";
+import {supabase} from "../../../supabase/supabaseClient";
+import {Spinner} from "../../Spinner";
+import {BanIcon} from "@heroicons/react/solid";
 
-export const TitlePage = () => {
+
+export const AdminTitle = () => {
     const [title, setTitle] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
@@ -28,13 +30,13 @@ export const TitlePage = () => {
             }
         }
         getTitle().then(() => 'Do something')
-    }, [])
+    }, [id])
 
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1>Name: {title.name}</h1>
+                    <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{title.name}</span></h1>
                     <h2>Id: {title.id}</h2>
                     <h3>Year start: {title.start_year}</h3>
                     <h3>Year end: {title.end_year}</h3>

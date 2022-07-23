@@ -2,7 +2,7 @@ import {useAppContext} from '../../context/AppContext';
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../../supabase/supabaseClient';
 import {Avatar} from '../Avatar';
-import {CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
+import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from '../../helpers/constants';
 import {Spinner} from '../Spinner';
 import {prepareUrl} from '../../helpers/functions';
 import {getProfile} from "../serviceFunctions";
@@ -49,11 +49,28 @@ const Settings = () => {
         }
     }
 
+    // Trigger a reset of password
+    async function requestPasswordResetForEmail(email) {
+        try {
+            const {data, error} = await supabase.auth.api
+                .resetPasswordForEmail(email)
+            if (error) {
+                console.log('Error: ', error);
+                console.log('Data: ', data);
+            }
+        } catch (error) {
+            console.log(error.message)
+        } finally {
+            console.log("Reset password request sent for email: ", email);
+        }
+    }
+
     return (
         <main className={'container-fluid main-container'}>
             <div className={'row'}>
-                <div className={'col-12 main-col'}>
+                <div className={'col-12 col-lg-8 main-col'}>
                     <h1>{LABELS_AND_HEADINGS.SETTINGS}</h1>
+                    <p className={'lead'}>{TEXTS.SETTINGS_LEAD}</p>
                 </div>
 
                 <div className={'row main-col'}>
@@ -107,10 +124,18 @@ const Settings = () => {
                         </div>
                     </div>
 
-
+                    <div className={'sms-form-col'}>
+                        <div className={'sms-form'}>
+                            <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
+                            <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
+                            <button className={'btn btn-outline-secondary btn-cta'}
+                                    onClick={() => requestPasswordResetForEmail(user.email)}
+                                    disabled={loading}>
+                                {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.RESET_PASSWORD}
+                            </button>
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
         </main>
     )
