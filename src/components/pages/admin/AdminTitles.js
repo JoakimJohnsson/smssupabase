@@ -19,7 +19,7 @@ export const AdminTitles = () => {
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
                     <h1>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
-                    {loading ? <Spinner/> : <TitlesList titlesData={titlesData} addToolBox={true}/>}
+                    {loading ? <Spinner/> : <TitlesList titlesData={titlesData} showAdminToolBox={true}/>}
                 </div>
             </div>
         </main>
