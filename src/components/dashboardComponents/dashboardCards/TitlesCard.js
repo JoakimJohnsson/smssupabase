@@ -22,6 +22,7 @@ export const TitlesCard = () => {
             })
     }, [])
 
+    // TODO TitlesLoist component
     const printTitlesData = (td) => {
         return td.map( (t, index) =>
             <li key={index} className={'list-group-item'}>
