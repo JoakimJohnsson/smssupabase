@@ -3,6 +3,7 @@ import {getRowsByTable} from "../../serviceFunctions";
 import {Spinner} from "../../Spinner";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {TitlesList} from "../../listComponents/titles/TitlesList";
+import {BanIcon} from "@heroicons/react/solid";
 
 
 export const AdminTitles = () => {
@@ -18,8 +19,8 @@ export const AdminTitles = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
-                    {loading ? <Spinner/> : <TitlesList titlesData={titlesData} showAdminToolBox={true}/>}
+                    <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ALL_TITLES}</span></h1>
+                    {loading ? <Spinner/> : <TitlesList titlesData={titlesData} showAdminInfo={true}/>}
                 </div>
             </div>
         </main>

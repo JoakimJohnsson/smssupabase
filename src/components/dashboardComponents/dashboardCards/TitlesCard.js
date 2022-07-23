@@ -26,7 +26,7 @@ export const TitlesCard = () => {
             <div className={'dashboard-card'}>
                 <h2><DocumentDuplicateIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.TITLES}</h2>
                 <p>Visar de {titlesData.length} senast inlagda titlarna från databasen. Det finns för närvarande {totalTitlesCount} titlar totalt.</p>
-                <TitlesList titlesData={titlesData}/>
+                <TitlesList titlesData={titlesData} showAdminInfo={true}/>
                 <button className={'btn btn-primary me-3 mb-2'} onClick={() => toAddTitlesPage(navigate)}>{LABELS_AND_HEADINGS.ADD_TITLE}</button>
                 <Link className={'btn btn-outline-secondary mb-2'} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
             </div>

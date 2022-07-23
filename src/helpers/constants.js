@@ -38,8 +38,8 @@ export const ROUTES = {
     ADMIN: {
         ROOT: '/admin',
         TITLE: '/admin/titles/:id',
-        TITLE_ADD: '/admin/titles/title-add',
-        TITLE_EDIT: '/admin/titles/title-edit',
+        TITLE_ADD: '/admin/titles/add',
+        TITLE_EDIT: '/admin/titles/edit/:id',
         TITLES: '/admin/titles'
     }
 }
@@ -55,6 +55,8 @@ export const LABELS_AND_HEADINGS = {
     COMMUNITY: 'Socialt',
     CREATE_ACCOUNT: 'Registrera dig',
     DASHBOARD: 'Kontrollpanel',
+    DELETE_IMAGE: 'Radera bild',
+    EDIT: 'Redigera',
     EMAIL: 'E-postadress',
     END_YEAR: 'Slutår (end_year)',
     FIRST_NAME: 'Förnamn',

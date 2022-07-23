@@ -4,6 +4,7 @@ import {Spinner} from "../../Spinner";
 import {addTitleData, getRowsByTable} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
 import {handleGenericFormInput, resetAddTitleForm} from "../../../helpers/functions";
+import {BanIcon} from "@heroicons/react/solid";
 
 
 export const AdminTitleAdd = () => {
@@ -40,7 +41,7 @@ export const AdminTitleAdd = () => {
     return formatData && (<main className={"container-fluid main-container"}>
         <div className={"row"}>
             <div className={"col-12 main-col"}>
-                <h1>{LABELS_AND_HEADINGS.ADD_TITLE}</h1>
+                <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ADD_TITLE}</span></h1>
                 <div className={'row'}>
 
                     <div className={'sms-form-col'}>

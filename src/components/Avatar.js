@@ -80,7 +80,7 @@ export const Avatar = ({onUpload}) => {
                     <label className='btn btn-primary' htmlFor='single'>
                         {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
                     </label>
-                    <button className={'btn btn-outline-secondary ms-3'} onClick={deleteImage}>Delete image</button>
+                    <button className={'btn btn-outline-secondary ms-3'} onClick={deleteImage}>{LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
                 </div>
                 :
                 <label className='btn btn-primary' htmlFor='single'>
