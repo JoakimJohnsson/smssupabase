@@ -2,9 +2,10 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {TextSpacer} from "../../miniComponents/TextSpacer";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
+import {TitlesListToolBox} from "./TitlesListToolBox";
 
 
-export const TitlesList = ({titlesData}) => {
+export const TitlesList = ({titlesData, addToolBox}) => {
 
     return (
         <ul className={"list-group list-group-flush small mb-3"}>
@@ -17,6 +18,7 @@ export const TitlesList = ({titlesData}) => {
                         {t.start_year}
                         <TextSpacer character={'|'} margin={'mx-2'}/>
                         Inlagd: <FriendlyDate dateString={t.created_at}/>
+                        {addToolBox && <TitlesListToolBox/>}
                     </li>)
             }
         </ul>
