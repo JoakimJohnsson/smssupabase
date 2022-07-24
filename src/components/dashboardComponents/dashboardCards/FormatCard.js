@@ -23,7 +23,7 @@ export const FormatCard = () => {
                 <h2><TemplateIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.FORMAT}</h2>
                 <p>Det finns för närvarande {formatData.length} olika typer av format att välja på. Dessa läggs in och
                     redigeras direkt i databasen på <a href={'https://supabase.com/'}>Supabase</a>.</p>
-                <ul className={'list-group list-group-flush small'}>
+                <ul className={'list-group list-group-flush small list-unstyled'}>
                 {printFormatData(formatData)}
                 </ul>
             </div>

@@ -4,6 +4,7 @@ import {Spinner} from "../../Spinner";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {TitlesList} from "../../listComponents/titles/TitlesList";
 import {BanIcon} from "@heroicons/react/solid";
+import {BackButton} from "../../miniComponents/BackButton";
 
 
 export const AdminTitles = () => {
@@ -20,6 +21,7 @@ export const AdminTitles = () => {
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
                     <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ALL_TITLES}</span></h1>
+                    <BackButton customClass={"mb-5"}/>
                     {loading ? <Spinner/> : <TitlesList titlesData={titlesData} showAdminInfo={true}/>}
                 </div>
             </div>

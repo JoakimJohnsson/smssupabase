@@ -5,6 +5,7 @@ import {addTitleData, getRowsByTable} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
 import {handleGenericFormInput, resetAddTitleForm} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
+import {BackButton} from "../../miniComponents/BackButton";
 
 
 export const AdminTitleAdd = () => {
@@ -42,6 +43,7 @@ export const AdminTitleAdd = () => {
         <div className={"row"}>
             <div className={"col-12 main-col"}>
                 <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ADD_TITLE}</span></h1>
+                <BackButton customClass={"mb-3"}/>
                 <div className={'row'}>
 
                     <div className={'sms-form-col'}>

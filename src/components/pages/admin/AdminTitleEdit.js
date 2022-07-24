@@ -4,6 +4,7 @@ import {supabase} from "../../../supabase/supabaseClient";
 import {Spinner} from "../../Spinner";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {BanIcon} from "@heroicons/react/solid";
+import {BackButton} from "../../miniComponents/BackButton";
 
 
 export const AdminTitleEdit = () => {
@@ -44,6 +45,7 @@ export const AdminTitleEdit = () => {
                     <h3>Year end: {title.end_year}</h3>
                     <h3>Format: {title.format}</h3>
                     <h3>Total number of issues: {title.total_issues}</h3>
+                    <BackButton/>
                 </div>
             </div>
         </main>
