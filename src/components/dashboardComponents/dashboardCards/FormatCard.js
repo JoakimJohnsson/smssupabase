@@ -18,7 +18,7 @@ export const FormatCard = () => {
     }
 
     return loading ? (<Spinner/>) : (
-        <div className={'col-12 col-md-6 col-xl-4 mb-3 mb-md-0'}>
+        <div className={'sms-dashboard-col'}>
             <div className={'dashboard-card'}>
                 <h2><TemplateIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.FORMAT}</h2>
                 <p>Det finns för närvarande {formatData.length} olika typer av format att välja på. Dessa läggs in och

@@ -22,7 +22,7 @@ export const TitlesCard = () => {
     }, [])
 
     return loading ? (<Spinner/>) : (
-        <div className={'col-12 col-md-6 col-xl-4'}>
+        <div className={'sms-dashboard-col'}>
             <div className={'dashboard-card'}>
                 <h2><DocumentDuplicateIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.TITLES}</h2>
                 <p>Visar de {titlesData.length} senast inlagda titlarna från databasen. Det finns för närvarande {totalTitlesCount} titlar totalt.</p>

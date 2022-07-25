@@ -75,7 +75,7 @@ const Settings = () => {
 
                 <div className={'row main-col'}>
 
-                    <div className={'sms-form-col'}>
+                    <div className={'sms-dashboard-col'}>
                         <div className={'sms-form'}>
                             <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
                             <Avatar
@@ -87,7 +87,7 @@ const Settings = () => {
                         </div>
                     </div>
 
-                    <div className={'sms-form-col'}>
+                    <div className={'sms-dashboard-col'}>
                         <div className={'sms-form'}>
                             <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                             <label className={'form-label'} htmlFor='email'>{LABELS_AND_HEADINGS.EMAIL}</label>
@@ -124,7 +124,7 @@ const Settings = () => {
                         </div>
                     </div>
 
-                    <div className={'sms-form-col'}>
+                    <div className={'sms-dashboard-col'}>
                         <div className={'sms-form'}>
                             <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
                             <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>

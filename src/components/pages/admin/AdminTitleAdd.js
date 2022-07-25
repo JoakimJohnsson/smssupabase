@@ -46,7 +46,7 @@ export const AdminTitleAdd = () => {
                 <BackButton customClass={"mb-3"}/>
                 <div className={'row'}>
 
-                    <div className={'sms-form-col'}>
+                    <div className={'sms-dashboard-col'}>
                         <div className={'sms-form'}>
                             <label className={'form-label'} htmlFor='name'>{LABELS_AND_HEADINGS.NAME}</label>
                             <input
