@@ -33,9 +33,10 @@ export const AdminTitleAdd = () => {
     }
 
     const printFormatSelectOptions = (fd) => {
-        return fd.map((f) =>
-            <option key={f.id} value={f.id}>{FORMATS[f.type - 1]}</option>
-        )
+        return fd.length ?
+            fd.map((f) => <option key={f.id} value={f.id}>{FORMATS[f.type - 1]}</option>)
+            :
+            <p>Det var ingen straff!!</p>
     }
 
     return (
@@ -91,7 +92,7 @@ export const AdminTitleAdd = () => {
                                     onChange={(e) => setTotalIssues(e.target.value)}
                                 />
                                 <button className={'btn btn-primary me-3 mb-2'}
-                                        onClick={() => addTitleData(name, startYear, endYear, format, totalIssues, setFormMessage, setShowFormSuccess, setShowFormError)}
+                                        onClick={() => addTitleData(name, startYear, endYear, format, totalIssues, setFormMessage, setShowFormSuccess, setShowFormError).then()}
                                         disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>

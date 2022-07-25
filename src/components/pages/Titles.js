@@ -1,13 +1,16 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {Spinner} from "../Spinner";
 import {TitlesList} from "../listComponents/titles/TitlesList";
-import {useAppContext} from "../../context/AppContext";
+import {getRowsByTable} from "../serviceFunctions";
 
 
 export const Titles = () => {
 
-    const {titlesData} = useAppContext();
+    const [titlesData, setTitlesData] = useState(null);
+    useEffect(() => {
+        getRowsByTable("titles", setTitlesData).then(r => console.info('Got titles'))
+    }, [])
 
     return (
         <main className={"container-fluid main-container"}>

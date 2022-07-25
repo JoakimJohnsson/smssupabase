@@ -12,8 +12,10 @@ export const FormatCard = () => {
     }, [])
 
     const printFormatData = (fd) => {
-        return fd.map((f) =>
-            <li key={f.id} className={'list-group-item'}>{FORMATS[f.type - 1]}</li>)
+        return fd.length ?
+            fd.map((f) => <li key={f.id} className={'list-group-item'}>{FORMATS[f.type - 1]}</li>)
+            :
+            <p>Det var ingen straff!!</p>
     }
 
     return (

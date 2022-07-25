@@ -1,15 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Spinner} from "../../Spinner";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {TitlesList} from "../../listComponents/titles/TitlesList";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
-import {useAppContext} from "../../../context/AppContext";
+import {getRowsByTable} from "../../serviceFunctions";
 
 
 export const AdminTitles = () => {
 
-    const {titlesData} = useAppContext();
+    const [titlesData, setTitlesData] = useState(null);
+    useEffect(() => {
+        getRowsByTable("titles", setTitlesData).then();
+    }, [])
 
     return (
         <main className={"container-fluid main-container"}>
