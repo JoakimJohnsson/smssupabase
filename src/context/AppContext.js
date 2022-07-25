@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
+import {getRowsByTable} from "../components/serviceFunctions";
 
 const AppContext = React.createContext();
 
@@ -13,6 +14,7 @@ export function AppContextProvider({children}) {
     const [userUrl, setUserUrl] = useState(null);
     const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [titlesData, setTitlesData] = useState(true);
 
     const updateProfileOnChange = useCallback(() => {
         supabase
@@ -49,6 +51,10 @@ export function AppContextProvider({children}) {
         }
     }, [user, updateProfileOnChange])
 
+    useEffect(() => {
+        getRowsByTable("titles", setTitlesData).then(() => console.log("hej"));
+    }, [])
+
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
         signUp: (data) => supabase.auth.signUp(data),
@@ -62,7 +68,9 @@ export function AppContextProvider({children}) {
         userUrl,
         setUserUrl,
         role,
-        session: () => supabase.auth.session()
+        session: () => supabase.auth.session(),
+        titlesData,
+        setTitlesData
     }
 
     async function updateProfile(user) {

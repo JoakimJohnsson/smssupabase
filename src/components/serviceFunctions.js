@@ -14,7 +14,6 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
         if (error && status !== 406) {
             console.error('Error: ', error);
         }
-
         if (data) {
             setFirstname(data.firstname);
             setLastname(data.lastname);
@@ -51,9 +50,8 @@ export async function addTitleData(name, startYear, endYear, format, totalIssues
 }
 
 // GENERIC FUNCTIONS
-export async function getRowsByTable(setLoading, table, setData) {
+export async function getRowsByTable(table, setData) {
     try {
-        setLoading(true);
         let {data, error, status} = await supabase
             .from(table)
             .select('*')
@@ -65,14 +63,11 @@ export async function getRowsByTable(setLoading, table, setData) {
         }
     } catch (error) {
         console.error(error.message)
-    } finally {
-        setLoading(false)
     }
 }
 
-export async function getRowsByTableWithLimitAndOrderByColumn(setLoading, table, column, setData, limit, ascending) {
+export async function getRowsByTableWithLimitAndOrderByColumn(table, column, setData, limit, ascending) {
     try {
-        setLoading(true);
         let {data, error, status} = await supabase
             .from(table)
             .select('*').limit(limit).order(column, {ascending})
@@ -84,14 +79,11 @@ export async function getRowsByTableWithLimitAndOrderByColumn(setLoading, table,
         }
     } catch (error) {
         console.error(error.message)
-    } finally {
-        setLoading(false)
     }
 }
 
-export async function getRowCountOfTable(setLoading, table, setRowCount) {
+export async function getRowCountOfTable(table, setRowCount) {
     try {
-        setLoading(true);
         let {data, error, status} = await supabase
             .from(table)
             .select('*', {count: 'exact'});
@@ -103,7 +95,5 @@ export async function getRowCountOfTable(setLoading, table, setRowCount) {
         }
     } catch (error) {
         console.error(error.message)
-    } finally {
-        setLoading(false)
     }
 }

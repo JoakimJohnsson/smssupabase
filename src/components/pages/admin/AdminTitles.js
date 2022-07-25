@@ -1,20 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {getRowsByTable} from "../../serviceFunctions";
+import React from "react";
 import {Spinner} from "../../Spinner";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {TitlesList} from "../../listComponents/titles/TitlesList";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
+import {useAppContext} from "../../../context/AppContext";
 
 
 export const AdminTitles = () => {
 
-    const [titlesData, setTitlesData] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        getRowsByTable(setLoading, "titles", setTitlesData).then(r => console.info('Got titles'))
-    }, [])
+    const {titlesData} = useAppContext();
 
     return (
         <main className={"container-fluid main-container"}>
@@ -22,7 +17,7 @@ export const AdminTitles = () => {
                 <div className={"col-12 main-col"}>
                     <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ALL_TITLES}</span></h1>
                     <BackButton customClass={"mb-5"}/>
-                    {loading ? <Spinner/> : <TitlesList titlesData={titlesData} showAdminInfo={true}/>}
+                    {titlesData ? <TitlesList titlesData={titlesData} showAdminInfo={true}/> : <Spinner/>}
                 </div>
             </div>
         </main>
