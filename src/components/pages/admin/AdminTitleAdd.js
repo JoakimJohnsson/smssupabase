@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, FORMATS, LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {BUCKETS, CLASSES, FILETYPES, FORMATS, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
 import {addTitleData, getRowsByTable} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
-import {handleGenericFormInput, resetAddTitleForm} from "../../../helpers/functions";
+import {generateUniqueHashedFilename, handleGenericFormInput, resetAddTitleForm} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
+import {supabase} from "../../../supabase/supabaseClient";
+import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 
 export const AdminTitleAdd = () => {
@@ -21,6 +23,9 @@ export const AdminTitleAdd = () => {
     const [formMessage, setFormMessage] = useState('');
     const [nameValidated, setNameValidated] = useState(false);
     const [formInputClass, setFormInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
+    const [uploading, setUploading] = useState(false);
+    const [titleImageFilename, setTitleImageFilename] = useState('');
+    const [titleImageUrl, setTitleImageUrl] = useState('');
 
     useEffect(() => {
         getRowsByTable('formats', setFormatData).then();
@@ -36,7 +41,56 @@ export const AdminTitleAdd = () => {
         return fd.length ?
             fd.map((f) => <option key={f.id} value={f.id}>{FORMATS[f.type - 1]}</option>)
             :
-            <p>Det var ingen straff!!</p>
+            <NoDataAvailable/>
+    }
+
+    async function uploadTitleImage(event) {
+        await deleteTitleImage();
+        try {
+            setUploading(true);
+            if (!event.target.files || event.target.files.length === 0) {
+                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
+            }
+            const file = event.target.files[0];
+            const fileExt = file.name.split('.').pop();
+            const fileName = generateUniqueHashedFilename(fileExt, FILETYPES.TITLE_IMAGE);
+            let {error: uploadError} = await supabase.storage
+                .from(BUCKETS.TITLE_IMAGES)
+                .upload(fileName, file);
+            setTitleImageFilename(fileName);
+            setTitleImageUrl(supabase
+                .storage
+                .from(BUCKETS.TITLE_IMAGES)
+                .getPublicUrl(fileName).publicURL)
+            if (uploadError) {
+                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
+            }
+        } catch (error) {
+            console.error(error.message);
+        } finally {
+            setUploading(false);
+        }
+    }
+
+    async function deleteTitleImage() {
+        if (titleImageFilename) {
+            try {
+                setUploading(true);
+                let {error} = await supabase.storage
+                    .from(BUCKETS.TITLE_IMAGES)
+                    .remove([titleImageFilename]);
+
+                setTitleImageUrl(null);
+                setTitleImageFilename(null);
+                if (error) {
+                    console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
+                }
+            } catch (error) {
+                console.error(error.message);
+            } finally {
+                setUploading(false);
+            }
+        }
     }
 
     return (
@@ -46,9 +100,37 @@ export const AdminTitleAdd = () => {
                     <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ADD_TITLE}</span></h1>
                     <BackButton customClass={"mb-3"}/>
                     <div className={'row'}>
-
                         <div className={'sms-dashboard-col'}>
                             <div className={'sms-form'}>
+                                <div className={"mb-3"}>
+                                    <label className={'form-label d-block mb-2'} htmlFor='name'>{LABELS_AND_HEADINGS.TITLE_IMAGE}</label>
+                                    {
+                                        titleImageUrl ?
+                                            <>
+                                                <img
+                                                    src={titleImageUrl}
+                                                    alt={titleImageFilename}
+                                                    className='w-100 mb-3'
+                                                />
+                                                <label className='btn btn-primary' htmlFor='single'>
+                                                    {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
+                                                </label>
+                                            </>
+                                            :
+                                            <label className='btn btn-primary' htmlFor='single'>
+                                                {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}
+                                            </label>
+                                    }
+                                </div>
+                                <input
+                                    className={'d-none'}
+                                    type='file'
+                                    id='single'
+                                    accept='image/*'
+                                    onChange={uploadTitleImage}
+                                    disabled={uploading}
+                                />
+
                                 <label className={'form-label'} htmlFor='name'>{LABELS_AND_HEADINGS.NAME}</label>
                                 <input
                                     id='name'
@@ -92,7 +174,7 @@ export const AdminTitleAdd = () => {
                                     onChange={(e) => setTotalIssues(e.target.value)}
                                 />
                                 <button className={'btn btn-primary me-3 mb-2'}
-                                        onClick={() => addTitleData(name, startYear, endYear, format, totalIssues, setFormMessage, setShowFormSuccess, setShowFormError).then()}
+                                        onClick={() => addTitleData(name, startYear, endYear, format, totalIssues, titleImageFilename, titleImageUrl, setFormMessage, setShowFormSuccess, setShowFormError).then()}
                                         disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>

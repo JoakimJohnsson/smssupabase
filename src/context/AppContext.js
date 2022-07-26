@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
+import {BUCKETS} from "../helpers/constants";
 
 const AppContext = React.createContext();
 
@@ -82,7 +83,7 @@ export function AppContextProvider({children}) {
                 if (data[0].avatar_image_filename) {
                     setAvatarImageUrl(supabase
                         .storage
-                        .from('avatars')
+                        .from(BUCKETS.AVATAR_IMAGES)
                         .getPublicUrl(data[0].avatar_image_filename).publicURL)
                     const fileName = data[0].avatar_image_filename;
                     setAvatarImageFilename(fileName);

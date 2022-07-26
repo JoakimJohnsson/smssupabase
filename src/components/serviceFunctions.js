@@ -28,10 +28,10 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
 }
 
 // TITLE FUNCTIONS
-export async function addTitleData(name, startYear, endYear, format, totalIssues, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function addTitleData(name, startYear, endYear, format, totalIssues, titleImageFileName, titleImageUrl, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
         let {error} = await supabase.from('titles').insert([{
-            name: name, start_year: startYear, end_year: endYear, format: format, total_issues: totalIssues
+            name: name, start_year: startYear, end_year: endYear, format: format, total_issues: totalIssues, title_image_filename: titleImageFileName, title_image_url: titleImageUrl
         }])
         if (error) {
             console.error('Error: ', error);

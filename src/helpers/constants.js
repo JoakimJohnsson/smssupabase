@@ -91,6 +91,7 @@ export const LABELS_AND_HEADINGS = {
     SVENSKA_MARVELSAMLARE: 'Svenska marvelsamlare',
     SVENSKA_MARVELSAMLARE_SHORT: 'SMS',
     TITLES: 'Titlar',
+    TITLE_IMAGE: 'Bild (logotyp)',
     TOTAL_ISSUES: 'Totalt antal (total_issues)',
     UPDATE: 'Uppdatera',
     UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
@@ -109,8 +110,17 @@ export const TEXTS = {
 }
 
 export const FILETYPES = {
-    AVATAR_IMAGE: 'avatar_img_',
-    TITLE_IMAGE: 'title_img_',
+    AVATAR_IMAGE: 'avatar-img-',
+    TITLE_IMAGE: 'title-img-',
+}
+
+// NOTE: Supabase policies needed for buckets. Example =>
+// Authenticated can edit buckets jocke4.0
+// authenticated
+// (bucket_id = 'avatar-images'::text)
+export const BUCKETS = {
+    AVATAR_IMAGES: 'avatar-images',
+    TITLE_IMAGES: 'title-images',
 }
 
 export const PANES = {

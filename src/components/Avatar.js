@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from '../helpers/constants';
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from '../helpers/constants';
 import {Spinner} from './Spinner';
 import {useAppContext} from '../context/AppContext';
 import {generateUniqueHashedFilename} from "../helpers/functions";
@@ -22,12 +22,12 @@ export const Avatar = ({onUpload}) => {
             const fileName = generateUniqueHashedFilename(fileExt, FILETYPES.AVATAR_IMAGE);
             const filePath = fileName;
             let {error: uploadError} = await supabase.storage
-                .from('avatars')
+                .from(BUCKETS.AVATAR_IMAGES)
                 .upload(filePath, file);
             setAvatarImageFilename(fileName);
             setAvatarImageUrl(supabase
                 .storage
-                .from('avatars')
+                .from(BUCKETS.AVATAR_IMAGES)
                 .getPublicUrl(fileName).publicURL)
             if (uploadError) {
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
@@ -45,7 +45,7 @@ export const Avatar = ({onUpload}) => {
             try {
                 setUploading(true);
                 let {error: deleteError} = await supabase.storage
-                    .from('avatars')
+                    .from(BUCKETS.AVATAR_IMAGES)
                     .remove([avatarImageFilename]);
                 let {error} = await supabase
                     .from('profiles')

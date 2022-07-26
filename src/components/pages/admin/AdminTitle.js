@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import {supabase} from "../../../supabase/supabaseClient";
 import {Spinner} from "../../Spinner";
 import {BanIcon} from "@heroicons/react/solid";
+import {BackButton} from "../../miniComponents/BackButton";
 
 
 export const AdminTitle = () => {
@@ -29,7 +30,7 @@ export const AdminTitle = () => {
                 setLoading(false)
             }
         }
-        getTitle().then(() => 'Do something')
+        getTitle().then();
     }, [id])
 
     return loading ? (<Spinner/>) : (
@@ -37,6 +38,17 @@ export const AdminTitle = () => {
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
                     <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{title.name}</span></h1>
+                    <BackButton customClass={"mb-3"}/>
+                    {
+                        title.title_image_url && title.title_image_filename &&
+                        <div className={"col-12 col-sm-6 col-md-4"}>
+                            <img
+                                src={title.title_image_url}
+                                alt={title.title_image_filename}
+                                className='w-100 mb-3'
+                            />
+                        </div>
+                    }
                     <h2>Id: {title.id}</h2>
                     <h3>Year start: {title.start_year}</h3>
                     <h3>Year end: {title.end_year}</h3>
