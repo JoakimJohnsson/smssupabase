@@ -15,6 +15,10 @@ export const MESSAGES = {
         VALIDATION_PASSWORD: 'Det där är ett starkt lösenord!',
         VALIDATION_DOWNLOAD_IMAGE: 'En bild laddades ned',
         VALIDATION_INSERT: 'Titeln lades till i databasen'
+    },
+    CONFIRM: {
+        DELETE: 'Du kommer nu ta bort ',
+        FROM: ' från ',
     }
 }
 
@@ -72,6 +76,7 @@ export const LABELS_AND_HEADINGS = {
     MENU: 'Meny',
     MY_COLLECTION: 'Min samling',
     NAME: 'Namn (name)',
+    NO_DATA_AVAILABLE: 'Det finns inget att visa!',
     OPEN: 'Öppna',
     PASSWORD: 'Lösenord',
     PROFILE_IMAGE: 'Profilbild',
@@ -99,7 +104,8 @@ export const TEXTS = {
     NEW_TITLES: 'Nya titlar och funktioner läggs till regelbundet',
     ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar',
     SETTINGS_LEAD: 'Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.',
-    SETTINGS_RESET_PASSWORD: 'Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.'
+    SETTINGS_RESET_PASSWORD: 'Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.',
+    SHOWING_LATEST_TITLES: 'Visar de senast inlagda titlarna från databasen.'
 }
 
 export const PANES = {

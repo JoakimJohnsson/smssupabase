@@ -66,6 +66,20 @@ export async function getRowsByTable(table, setData) {
     }
 }
 
+export async function deleteRowsByTableAndId(table, id, name, setData, initialData) {
+    if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + '.')) {
+        return false;
+    }
+    try {
+        await supabase
+            .from(table)
+            .delete().match({id: id})
+        setData(initialData.filter((x) => x.id !== id));
+    } catch (error) {
+        console.error(error.message)
+    }
+}
+
 export async function getRowsByTableWithLimitAndOrderByColumn(table, column, setData, limit, ascending) {
     try {
         let {data, error, status} = await supabase
@@ -76,22 +90,6 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
         }
         if (data) {
             setData(data)
-        }
-    } catch (error) {
-        console.error(error.message)
-    }
-}
-
-export async function getRowCountOfTable(table, setRowCount) {
-    try {
-        let {data, error, status} = await supabase
-            .from(table)
-            .select('*', {count: 'exact'});
-        if (error && status !== 406) {
-            console.error('Error: ', error);
-        }
-        if (data) {
-            setRowCount(data.length)
         }
     } catch (error) {
         console.error(error.message)

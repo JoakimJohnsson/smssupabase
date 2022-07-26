@@ -4,9 +4,10 @@ import {TextSpacer} from "../../miniComponents/TextSpacer";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
 import {TitlesListAdminToolBox} from "./TitlesListAdminToolBox";
 import {TitlesListUserToolBox} from "./TitlesListUserToolBox";
+import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 
-export const TitlesList = ({titlesData, showAdminInfo}) => {
+export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
 
     return titlesData && (
         <ul className={"list-group list-group-flush small mb-3 list-unstyled"}>
@@ -24,13 +25,13 @@ export const TitlesList = ({titlesData, showAdminInfo}) => {
                                         Inlagd: <FriendlyDate dateString={t.created_at}/>
                                     </div>
                                     <div className={"col-4"}>
-                                        {showAdminInfo ? <TitlesListAdminToolBox id={t.id}/> : <TitlesListUserToolBox/>}
+                                        {showAdminInfo ? <TitlesListAdminToolBox id={t.id} name={t.name} titlesData={titlesData} setTitlesData={setTitlesData} /> : <TitlesListUserToolBox/>}
                                     </div>
                                 </div>
                             </li>)
                     )
                     :
-                    (<p>Det var ingen straff!!</p>)
+                    (<NoDataAvailable/>)
             }
         </ul>
     )

@@ -20,7 +20,7 @@ export const AdminTitles = () => {
                 <div className={"col-12 main-col"}>
                     <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ALL_TITLES}</span></h1>
                     <BackButton customClass={"mb-5"}/>
-                    {titlesData ? <TitlesList titlesData={titlesData} showAdminInfo={true}/> : <Spinner/>}
+                    {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <Spinner/>}
                 </div>
             </div>
         </main>
