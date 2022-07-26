@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {LABELS_AND_HEADINGS, MESSAGES} from '../helpers/constants';
+import {FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from '../helpers/constants';
 import {Spinner} from './Spinner';
 import {useAppContext} from '../context/AppContext';
+import {generateUniqueHashedFilename} from "../helpers/functions";
 
 export const Avatar = ({onUpload}) => {
     const [uploading, setUploading] = useState(false);
-    const {avatarImageUrl, setAvatarImageUrl, avatarFilename, setAvatarFilename} = useAppContext();
+    const {avatarImageUrl, setAvatarImageUrl, avatarImageFilename, setAvatarImageFilename} = useAppContext();
 
     async function uploadAvatar(event) {
         await deleteImage();
@@ -17,49 +18,45 @@ export const Avatar = ({onUpload}) => {
             }
             const file = event.target.files[0];
             const fileExt = file.name.split('.').pop();
-            const fileName = `${Math.random()}.${fileExt}`;
+            const fileName = generateUniqueHashedFilename(fileExt, FILETYPES.AVATAR_IMAGE);
             const filePath = `${fileName}`;
             let {error: uploadError} = await supabase.storage
                 .from('avatars')
                 .upload(filePath, file);
-            setAvatarFilename(fileName);
-            console.log('profile here with updated name', avatarFilename);
-
+            setAvatarImageFilename(fileName);
             setAvatarImageUrl(supabase
                 .storage
                 .from('avatars')
                 .getPublicUrl(fileName).publicURL)
-
             if (uploadError) {
-                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
+                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
             }
             onUpload(filePath);
         } catch (error) {
-            console.log(error.message);
+            console.error(error.message);
         } finally {
             setUploading(false);
         }
     }
 
     async function deleteImage() {
-        if (avatarFilename) {
+        if (avatarImageFilename) {
             try {
                 setUploading(true);
                 let {error: deleteError} = await supabase.storage
                     .from('avatars')
-                    .remove([avatarFilename]);
-
+                    .remove([avatarImageFilename]);
                 let {error} = await supabase
                     .from('profiles')
                     .update({avatar_image_filename: null})
-                    .match({avatar_image_filename: avatarFilename})
+                    .match({avatar_image_filename: avatarImageFilename})
                 setAvatarImageUrl(null);
-                setAvatarFilename(null);
+                setAvatarImageFilename(null);
                 if (deleteError || error) {
-                    console.log(MESSAGES.ERROR.VALIDATION_UPLOAD);
+                    console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
                 }
             } catch (error) {
-                console.log(error.message);
+                console.error(error.message);
             } finally {
                 setUploading(false);
             }

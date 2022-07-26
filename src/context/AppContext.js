@@ -9,7 +9,7 @@ export function AppContextProvider({children}) {
     // Global states
     const [user, setUser] = useState();
     const [avatarImageUrl, setAvatarImageUrl] = useState('');
-    const [avatarFilename, setAvatarFilename] = useState(null);
+    const [avatarImageFilename, setAvatarImageFilename] = useState(null);
     const [userUrl, setUserUrl] = useState(null);
     const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -57,8 +57,8 @@ export function AppContextProvider({children}) {
         user,
         avatarImageUrl,
         setAvatarImageUrl,
-        avatarFilename,
-        setAvatarFilename,
+        avatarImageFilename,
+        setAvatarImageFilename,
         userUrl,
         setUserUrl,
         role,
@@ -85,7 +85,7 @@ export function AppContextProvider({children}) {
                         .from('avatars')
                         .getPublicUrl(data[0].avatar_image_filename).publicURL)
                     const fileName = data[0].avatar_image_filename;
-                    setAvatarFilename(fileName);
+                    setAvatarImageFilename(fileName);
                 }
                 // Set role
                 if (data[0].role) {

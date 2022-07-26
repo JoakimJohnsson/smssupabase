@@ -108,6 +108,11 @@ export const TEXTS = {
     SHOWING_LATEST_TITLES: 'Visar de senast inlagda titlarna från databasen.'
 }
 
+export const FILETYPES = {
+    AVATAR_IMAGE: 'avatar_img_',
+    TITLE_IMAGE: 'title_img_',
+}
+
 export const PANES = {
     TITLES: {
         KEY: "titles-pane",
