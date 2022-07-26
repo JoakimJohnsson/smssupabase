@@ -5,6 +5,7 @@ import {Spinner} from './Spinner';
 import {useAppContext} from '../context/AppContext';
 import {generateUniqueHashedFilename} from "../helpers/functions";
 
+
 export const Avatar = ({onUpload}) => {
     const [uploading, setUploading] = useState(false);
     const {avatarImageUrl, setAvatarImageUrl, avatarImageFilename, setAvatarImageFilename} = useAppContext();
@@ -65,24 +66,26 @@ export const Avatar = ({onUpload}) => {
 
     return (
         <div>
-            {avatarImageUrl &&
-            <img
-                src={avatarImageUrl}
-                alt='User avatar'
-                className='w-100 mb-3'
-            />
+            {
+                avatarImageUrl &&
+                <img
+                    src={avatarImageUrl}
+                    alt='User avatar'
+                    className='w-100 mb-3'
+                />
             }
-            {avatarImageUrl ?
-                <div>
+            {
+                avatarImageUrl ?
+                    <div>
+                        <label className='btn btn-primary' htmlFor='single'>
+                            {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
+                        </label>
+                        <button className={'btn btn-outline-secondary ms-3'} onClick={deleteImage}>{LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
+                    </div>
+                    :
                     <label className='btn btn-primary' htmlFor='single'>
-                        {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
+                        {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}
                     </label>
-                    <button className={'btn btn-outline-secondary ms-3'} onClick={deleteImage}>{LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
-                </div>
-                :
-                <label className='btn btn-primary' htmlFor='single'>
-                    {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}
-                </label>
             }
             <input
                 className={'d-none'}
