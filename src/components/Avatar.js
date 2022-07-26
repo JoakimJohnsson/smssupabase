@@ -20,7 +20,7 @@ export const Avatar = ({onUpload}) => {
             const file = event.target.files[0];
             const fileExt = file.name.split('.').pop();
             const fileName = generateUniqueHashedFilename(fileExt, FILETYPES.AVATAR_IMAGE);
-            const filePath = `${fileName}`;
+            const filePath = fileName;
             let {error: uploadError} = await supabase.storage
                 .from('avatars')
                 .upload(filePath, file);
