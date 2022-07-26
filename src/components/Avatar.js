@@ -10,8 +10,8 @@ export const Avatar = ({onUpload}) => {
     const [uploading, setUploading] = useState(false);
     const {avatarImageUrl, setAvatarImageUrl, avatarImageFilename, setAvatarImageFilename} = useAppContext();
 
-    async function uploadAvatar(event) {
-        await deleteImage();
+    async function uploadAvatarImage(event) {
+        await deleteAvatarImage();
         try {
             setUploading(true);
             if (!event.target.files || event.target.files.length === 0) {
@@ -40,7 +40,7 @@ export const Avatar = ({onUpload}) => {
         }
     }
 
-    async function deleteImage() {
+    async function deleteAvatarImage() {
         if (avatarImageFilename) {
             try {
                 setUploading(true);
@@ -80,7 +80,7 @@ export const Avatar = ({onUpload}) => {
                         <label className='btn btn-primary' htmlFor='single'>
                             {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
                         </label>
-                        <button className={'btn btn-outline-secondary ms-3'} onClick={deleteImage}>{LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
+                        <button className={'btn btn-outline-secondary ms-3'} onClick={deleteAvatarImage}>{LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
                     </div>
                     :
                     <label className='btn btn-primary' htmlFor='single'>
@@ -92,7 +92,7 @@ export const Avatar = ({onUpload}) => {
                 type='file'
                 id='single'
                 accept='image/*'
-                onChange={uploadAvatar}
+                onChange={uploadAvatarImage}
                 disabled={uploading}
             />
         </div>
