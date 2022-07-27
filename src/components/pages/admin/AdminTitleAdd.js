@@ -3,7 +3,7 @@ import {BUCKETS, CLASSES, FILETYPES, FORMATS, LABELS_AND_HEADINGS, MESSAGES} fro
 import {Spinner} from "../../Spinner";
 import {addTitleData, getRowsByTable} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
-import {generateUniqueHashedFilename, handleGenericFormInput, resetAddTitleForm} from "../../../helpers/functions";
+import {generateUniqueHashedFilename, handleGenericFormInput} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {supabase} from "../../../supabase/supabaseClient";
@@ -93,6 +93,17 @@ export const AdminTitleAdd = () => {
         }
     }
 
+    async function resetAddTitleForm() {
+        await deleteTitleImage();
+        setName("");
+        setStartYear(1975);
+        setEndYear(1975);
+        setFormat("");
+        setTotalIssues(12);
+        setShowFormError(false);
+        setShowFormSuccess(false);
+    }
+
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
@@ -112,14 +123,18 @@ export const AdminTitleAdd = () => {
                                                     alt={titleImageFilename}
                                                     className='w-100 mb-3'
                                                 />
+                                                <p>{titleImageFilename}</p>
                                                 <label className='btn btn-primary' htmlFor='single'>
                                                     {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
                                                 </label>
                                             </>
                                             :
-                                            <label className='btn btn-primary' htmlFor='single'>
-                                                {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}
-                                            </label>
+                                            <>
+                                                <NoDataAvailable/>
+                                                <label className='btn btn-primary' htmlFor='single'>
+                                                    {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                                </label>
+                                            </>
                                     }
                                 </div>
                                 <input

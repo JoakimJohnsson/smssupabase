@@ -91,10 +91,11 @@ export const LABELS_AND_HEADINGS = {
     SVENSKA_MARVELSAMLARE: 'Svenska marvelsamlare',
     SVENSKA_MARVELSAMLARE_SHORT: 'SMS',
     TITLES: 'Titlar',
-    TITLE_IMAGE: 'Bild (logotyp)',
+    TITLE_IMAGE: 'Bild',
     TOTAL_ISSUES: 'Totalt antal (total_issues)',
     UPDATE: 'Uppdatera',
     UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
+    UPLOAD_IMAGE: 'Ladda upp en bild',
     WEBSITE: 'Webbplats',
     WELCOME: 'Välkommen till Svenska Marvelsamlare!'
 }

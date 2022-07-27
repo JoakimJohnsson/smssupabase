@@ -56,13 +56,3 @@ export const generateUniqueHashedFilename = (fileExt, fileType) => {
     let number = Math.random() * 100;
     return fileType + number.toString().replace('.', '') + '.' + fileExt;
 }
-
-export const resetAddTitleForm = (setName, setStartYear, setEndYear, setFormat, setTotalIssues, setShowFormError, setShowFormSuccess) => {
-    setName("");
-    setStartYear(1975);
-    setEndYear(1975);
-    setFormat("");
-    setTotalIssues(12);
-    setShowFormError(false);
-    setShowFormSuccess(false);
-}
