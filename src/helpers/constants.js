@@ -41,17 +41,22 @@ export const ROUTES = {
     TITLE: '/titles/:id',
     ADMIN: {
         ROOT: '/admin',
+        PUBLISHERS: '/admin/publishers/',
+        PUBLISHER_ID: '/admin/publishers/:id',
+        PUBLISHER_ADD: '/admin/publishers/add/',
+        PUBLISHER_EDIT: '/admin/publishers/edit/',
         TITLE_ID: '/admin/titles/:id',
-        TITLE_ADD: '/admin/titles/add',
+        TITLE_ADD: '/admin/titles/add/',
         TITLE_EDIT: '/admin/titles/edit/',
         TITLE_EDIT_ID: '/admin/titles/edit/:id',
-        TITLES: '/admin/titles'
+        TITLES: '/admin/titles/'
     }
 }
 
 export const LABELS_AND_HEADINGS = {
     ADMIN: 'Admin',
     ADD: 'Lägg till',
+    ADD_PUBLISHER: 'Lägg till ny förläggare',
     ADD_TITLE: 'Lägg till ny titel',
     ALL_TITLES: 'Alla titlar',
     BACK: 'Tillbaka',
@@ -80,9 +85,11 @@ export const LABELS_AND_HEADINGS = {
     OPEN: 'Öppna',
     PASSWORD: 'Lösenord',
     PROFILE_IMAGE: 'Profilbild',
+    PUBLISHERS: 'Förläggare',
     RESET_FORM: 'Rensa formulär',
     RESET_PASSWORD: 'Ändra lösenord',
     SAVE: 'Spara',
+    SEE_ALL_PUBLISHERS: 'Se alla förläggare',
     SEE_ALL_TITLES: 'Se alla titlar',
     SETTINGS: 'Inställningar',
     SIGN_OUT: 'Logga ut',
@@ -107,6 +114,7 @@ export const TEXTS = {
     ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar',
     SETTINGS_LEAD: 'Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.',
     SETTINGS_RESET_PASSWORD: 'Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.',
+    SHOWING_LATEST_PUBLISHERS: 'Visar de senast inlagda förläggarna från databasen.',
     SHOWING_LATEST_TITLES: 'Visar de senast inlagda titlarna från databasen.'
 }
 

@@ -3,6 +3,7 @@ import {LABELS_AND_HEADINGS, FORMATS} from "../../../../helpers/constants";
 import {Spinner} from "../../../Spinner";
 import {TemplateIcon} from "@heroicons/react/solid";
 import {getRowsByTable} from "../../../serviceFunctions";
+import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
 
 export const FormatCard = () => {
     const [formatData, setFormatData] = useState(null);
@@ -15,7 +16,7 @@ export const FormatCard = () => {
         return fd.length ?
             fd.map((f) => <li key={f.id} className={'list-group-item'}>{FORMATS[f.type - 1]}</li>)
             :
-            <p>Det var ingen straff!!</p>
+            <NoDataAvailable/>
     }
 
     return (

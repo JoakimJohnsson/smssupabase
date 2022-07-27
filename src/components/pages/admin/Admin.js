@@ -3,6 +3,7 @@ import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {FormatCard} from "../../dashboardComponents/dashboardCards/admin/FormatCard";
 import {TitlesCard} from "../../dashboardComponents/dashboardCards/admin/TitlesCard";
 import {BanIcon} from "@heroicons/react/solid";
+import {PublishersCard} from "../../dashboardComponents/dashboardCards/admin/PublishersCard";
 
 
 export const Admin = () => {
@@ -16,6 +17,7 @@ export const Admin = () => {
                 <div className={'row main-col'}>
                     <FormatCard/>
                     <TitlesCard/>
+                    <PublishersCard/>
                 </div>
 
             </div>
