@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants";
 import {DocumentDuplicateIcon} from "@heroicons/react/solid";
 import {Link, useNavigate} from "react-router-dom";
-import {toAddTitlesPage} from "../../navigation/navFunctions";
-import {getRowsByTableWithLimitAndOrderByColumn} from "../../serviceFunctions";
-import {TitlesList} from "../../listComponents/titles/TitlesList";
-import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
+import {toAddTitlesPage} from "../../../navigation/navFunctions";
+import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
+import {TitlesList} from "../../../listComponents/titles/TitlesList";
+import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
 
 
 export const TitlesCard = () => {

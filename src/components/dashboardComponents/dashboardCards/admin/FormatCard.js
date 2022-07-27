@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, FORMATS} from "../../../helpers/constants";
-import {Spinner} from "../../Spinner";
+import {LABELS_AND_HEADINGS, FORMATS} from "../../../../helpers/constants";
+import {Spinner} from "../../../Spinner";
 import {TemplateIcon} from "@heroicons/react/solid";
-import {getRowsByTable} from "../../serviceFunctions";
+import {getRowsByTable} from "../../../serviceFunctions";
 
 export const FormatCard = () => {
     const [formatData, setFormatData] = useState(null);
