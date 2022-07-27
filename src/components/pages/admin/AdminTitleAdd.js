@@ -189,7 +189,7 @@ export const AdminTitleAdd = () => {
                                 />
                                 <button className={'btn btn-primary me-3 mb-2'}
                                         onClick={() => addTitleData(name, startYear, endYear, format, totalIssues, titleImageFilename, titleImageUrl, setFormMessage, setShowFormSuccess, setShowFormError).then()}
-                                        disabled={!nameValidated}>
+                                        disabled={!nameValidated || !titleImageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
                                 <button className={'btn btn-outline-secondary mb-2'}

@@ -25,7 +25,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                         Inlagd: <FriendlyDate dateString={t.created_at}/>
                                     </div>
                                     <div className={"col-4"}>
-                                        {showAdminInfo ? <TitlesListAdminToolBox id={t.id} name={t.name} titlesData={titlesData} setTitlesData={setTitlesData} /> : <TitlesListUserToolBox/>}
+                                        {showAdminInfo ? <TitlesListAdminToolBox id={t.id} name={t.name} image={t.title_image_filename} titlesData={titlesData} setTitlesData={setTitlesData} /> : <TitlesListUserToolBox/>}
                                     </div>
                                 </div>
                             </li>)
