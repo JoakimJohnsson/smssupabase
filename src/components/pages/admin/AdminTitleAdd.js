@@ -98,7 +98,6 @@ export const AdminTitleAdd = () => {
         setName("");
         setStartYear(1975);
         setEndYear(1975);
-        setFormat("");
         setTotalIssues(12);
         setShowFormError(false);
         setShowFormSuccess(false);
