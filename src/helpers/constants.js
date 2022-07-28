@@ -130,6 +130,7 @@ export const FILETYPES = {
 export const BUCKETS = {
     AVATAR_IMAGES: 'avatar-images',
     TITLE_IMAGES: 'title-images',
+    PUBLISHER_IMAGES: 'publisher-images',
 }
 
 export const PANES = {

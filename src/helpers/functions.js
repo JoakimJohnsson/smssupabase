@@ -56,3 +56,8 @@ export const generateUniqueHashedFilename = (fileExt, fileType) => {
     let number = Math.random() * 100;
     return fileType + number.toString().replace('.', '') + '.' + fileExt;
 }
+
+export const logErrorMessage = (error) => {
+    console.error('Error: ', error);
+    console.error('Error message: ', error.message);
+}

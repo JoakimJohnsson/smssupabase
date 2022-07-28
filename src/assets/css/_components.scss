@@ -43,7 +43,8 @@
 
 // Dashboard
 .sms-dashboard-col {
-  @extend .col-12, .col-lg-6, .mb-5;
+  @extend .col-12, .col-lg-6;
+  margin-bottom: 1.5rem;
 }
 
 .sms-form {
