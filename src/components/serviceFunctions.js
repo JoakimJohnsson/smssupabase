@@ -12,7 +12,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
             .single();
 
         if (error && status !== 406) {
-            console.error('Error: ', error);
+            logErrorMessage(error);
         }
         if (data) {
             setFirstname(data.firstname);
@@ -21,31 +21,48 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
             setAvatarImageFilename(data.avatar_image_filename);
         }
     } catch (error) {
-        console.error(error.message)
+        logErrorMessage(error);
     } finally {
         setLoading(false)
     }
 }
 
 // TITLE FUNCTIONS
-export async function addTitleData(name, startYear, endYear, format, totalIssues, titleImageFileName, titleImageUrl, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function addTitleData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
+        console.log("data", data);
         let {error} = await supabase.from('titles').insert([{
-            name: name, start_year: startYear, end_year: endYear, format: format, total_issues: totalIssues, title_image_filename: titleImageFileName, title_image_url: titleImageUrl
+            name: data.name,
+            start_year: data.startYear,
+            end_year: data.endYear,
+            format: data.format,
+            total_issues: data.totalIssues,
+            image_filename: data.titleImageFilename,
+            image_url: data.titleImageUrl
         }])
         if (error) {
-            console.error('Error: ', error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
-            setShowFormSuccess(false);
-            setShowFormError(true);
+            handleError(error, setFormMessage, setShowFormSuccess, setShowFormError);
         } else {
-            console.info("Done")
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
-            setShowFormError(false);
-            setShowFormSuccess(true);
+            handleSuccess(error, setFormMessage, setShowFormSuccess, setShowFormError);
         }
     } catch (error) {
-        console.error(error.message)
+        logErrorMessage(error);
+    }
+}
+
+// PUBLISHER FUNCTIONS
+export async function addPublisherData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
+    try {
+        let {error} = await supabase.from('titles').insert([{
+            name: data.name, image_filename: data.publisherImageFilename, image_url: data.publisherImageUrl
+        }])
+        if (error) {
+            handleError(error, setFormMessage, setShowFormSuccess, setShowFormError);
+        } else {
+            handleSuccess(error, setFormMessage, setShowFormSuccess, setShowFormError);
+        }
+    } catch (error) {
+        logErrorMessage(error);
     }
 }
 
@@ -56,13 +73,13 @@ export async function getRowsByTable(table, setData) {
             .from(table)
             .select('*')
         if (error && status !== 406) {
-            console.error('Error: ', error);
+            logErrorMessage(error);
         }
         if (data) {
             setData(data)
         }
     } catch (error) {
-        console.error(error.message)
+        logErrorMessage(error);
     }
 }
 
@@ -76,7 +93,7 @@ export async function deleteRowsByTableAndId(table, id, name, setData, initialDa
             .delete().match({id: id})
         setData(initialData.filter((x) => x.id !== id));
     } catch (error) {
-        console.error(error.message)
+        logErrorMessage(error);
     }
 }
 
@@ -86,12 +103,32 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
             .from(table)
             .select('*').limit(limit).order(column, {ascending})
         if (error && status !== 406) {
-            console.error('Error: ', error);
+            logErrorMessage(error);
         }
         if (data) {
             setData(data)
         }
     } catch (error) {
-        console.error(error.message)
+        logErrorMessage(error);
     }
+}
+
+// UTILS
+const logErrorMessage = (error) => {
+    console.error('Error: ', error);
+    console.error('Error message: ', error.message);
+}
+
+const handleError = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
+    console.error('Error: ', error);
+    setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
+    setShowFormSuccess(false);
+    setShowFormError(true);
+}
+
+const handleSuccess = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
+    console.info("Done")
+    setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
+    setShowFormError(false);
+    setShowFormSuccess(true);
 }
