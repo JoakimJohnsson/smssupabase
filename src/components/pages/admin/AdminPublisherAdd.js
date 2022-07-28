@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {BUCKETS, CLASSES, FILETYPES, FORMATS, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
+import React, {useState} from "react";
+import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
-import {addPublisherData, addTitleData, deleteImage, getRowsByTable} from "../../serviceFunctions";
+import {addPublisherData, deleteImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
 import {generateUniqueHashedFilename, handleGenericFormInput} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
@@ -42,8 +42,8 @@ export const AdminPublisherAdd = () => {
             let {error: uploadError} = await supabase.storage
                 .from(BUCKETS.TITLE_IMAGES)
                 .upload(fileName, file);
-            setTitleImageFilename(fileName);
-            setTitleImageUrl(supabase
+            setPublisherImageFilename(fileName);
+            setPublisherImageUrl(supabase
                 .storage
                 .from(BUCKETS.TITLE_IMAGES)
                 .getPublicUrl(fileName).publicURL)
