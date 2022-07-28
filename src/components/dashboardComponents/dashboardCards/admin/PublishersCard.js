@@ -3,17 +3,17 @@ import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants"
 import {DocumentDuplicateIcon} from "@heroicons/react/solid";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
-import {TitlesList} from "../../../listComponents/titles/TitlesList";
 import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
+import {PublishersList} from "../../../listComponents/publishers/PublishersList";
 
 
 export const PublishersCard = () => {
 
-    const [limitedTitlesData, setLimitedTitlesData] = useState(null);
+    const [limitedPublishersData, setLimitedPublishersData] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn('titles', 'created_at', setLimitedTitlesData, 5, false).then()
+        getRowsByTableWithLimitAndOrderByColumn('publishers', 'created_at', setLimitedPublishersData, 5, false).then()
     }, [])
 
     return (
@@ -21,12 +21,12 @@ export const PublishersCard = () => {
             <div className={'dashboard-card'}>
                 <h2><DocumentDuplicateIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
                 {
-                    limitedTitlesData ?
+                    limitedPublishersData ?
                         <>
                             <p>
                                 {TEXTS.SHOWING_LATEST_PUBLISHERS}
                             </p>
-                            <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showAdminInfo={true}/>
+                            <PublishersList titlesData={limitedPublishersData} setTitlesData={setLimitedPublishersData} showAdminInfo={true}/>
                         </>
                         :
                         <NoDataAvailable />

@@ -2,12 +2,12 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {TextSpacer} from "../../miniComponents/TextSpacer";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
-import {TitlesListAdminToolBox} from "./TitlesListAdminToolBox";
-import {TitlesListUserToolBox} from "./TitlesListUserToolBox";
+import {TitlesListAdminToolBox} from "../titles/TitlesListAdminToolBox";
+import {TitlesListUserToolBox} from "../titles/TitlesListUserToolBox";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 
-export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
+export const PublishersList = ({titlesData, setTitlesData, showAdminInfo}) => {
 
     return titlesData && (
         <ul className={"list-group list-group-flush small mb-3 list-unstyled"}>

@@ -1,23 +1,18 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {BUCKETS, LABELS_AND_HEADINGS, MESSAGES, ROUTES} from "../../../helpers/constants";
+import {BUCKETS, LABELS_AND_HEADINGS, ROUTES} from "../../../helpers/constants";
 import {PencilAltIcon, XCircleIcon} from "@heroicons/react/solid";
-import {deleteRowsByTableAndId} from "../../serviceFunctions";
-import {supabase} from "../../../supabase/supabaseClient";
+import {deleteImageSimple, deleteRowsByTableAndId} from "../../serviceFunctions";
+import {logErrorMessage} from "../../../helpers/functions";
 
 
 export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesData}) => {
 
     const handleDelete = async () => {
         try {
-            let {error} = await supabase.storage
-                .from(BUCKETS.TITLE_IMAGES)
-                .remove([image]);
-            if (error) {
-                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
-            }
+            await deleteImageSimple(image, BUCKETS.TITLE_IMAGES);
         } catch (error) {
-            console.error(error.message);
+            logErrorMessage(error);
         } finally {
             deleteRowsByTableAndId('titles', id, name, setTitlesData, titlesData).then();
         }
