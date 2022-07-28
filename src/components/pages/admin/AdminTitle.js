@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {supabase} from "../../../supabase/supabaseClient";
 import {Spinner} from "../../Spinner";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
+import {getTitle} from "../../serviceFunctions";
 
 
 export const AdminTitle = () => {
@@ -12,25 +12,7 @@ export const AdminTitle = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        async function getTitle() {
-            try {
-                setLoading(true);
-                let {data, error, status} = await supabase
-                    .from('titles')
-                    .select('*').eq('id', id)
-                if (error && status !== 406) {
-                    console.log('Error: ', error);
-                }
-                if (data) {
-                    setTitle(data[0])
-                }
-            } catch (error) {
-                console.log(error.message)
-            } finally {
-                setLoading(false)
-            }
-        }
-        getTitle().then();
+        getTitle(setLoading, setTitle, id).then();
     }, [id])
 
     return loading ? (<Spinner/>) : (
@@ -40,11 +22,11 @@ export const AdminTitle = () => {
                     <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{title.name}</span></h1>
                     <BackButton customClass={"mb-3"}/>
                     {
-                        title.title_image_url && title.title_image_filename &&
+                        title.image_url && title.image_filename &&
                         <div className={"col-12 col-sm-6 col-md-4"}>
                             <img
-                                src={title.title_image_url}
-                                alt={title.title_image_filename}
+                                src={title.image_url}
+                                alt={title.image_filename}
                                 className='w-100 mb-3'
                             />
                         </div>

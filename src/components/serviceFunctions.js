@@ -1,5 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES} from "../helpers/constants";
+import {logErrorMessage} from "../helpers/functions";
 
 // PROFILE FUNCTIONS
 export async function getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) {
@@ -28,9 +29,26 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
 }
 
 // TITLE FUNCTIONS
+export async function getTitle(setLoading, setTitle, id) {
+    try {
+        setLoading(true);
+        let {data, error, status} = await supabase
+            .from('titles')
+            .select('*').eq('id', id)
+        if (error && status !== 406) {
+            logErrorMessage(error);
+        }
+        if (data) {
+            setTitle(data[0])
+        }
+    } catch (error) {
+        logErrorMessage(error);
+    } finally {
+        setLoading(false)
+    }
+}
 export async function addTitleData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
-        console.log("data", data);
         let {error} = await supabase.from('titles').insert([{
             name: data.name,
             start_year: data.startYear,
@@ -113,12 +131,41 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
     }
 }
 
-// UTILS
-const logErrorMessage = (error) => {
-    console.error('Error: ', error);
-    console.error('Error message: ', error.message);
+export const deleteImage = async (fileName, setUploading, bucketName, setImageUrl, setImageFilename) => {
+    if (fileName) {
+        try {
+            setUploading(true);
+            let {error} = await supabase.storage
+                .from(bucketName)
+                .remove([fileName]);
+
+            setImageUrl(null);
+            setImageFilename(null);
+            if (error) {
+                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
+            }
+        } catch (error) {
+            logErrorMessage(error);
+        } finally {
+            setUploading(false);
+        }
+    }
 }
 
+export const deleteImageSimple = async (fileName, bucketName) => {
+    try {
+        let {error} = await supabase.storage
+            .from(bucketName)
+            .remove([fileName]);
+        if (error) {
+            console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
+        }
+    } catch (error) {
+        logErrorMessage(error);
+    }
+}
+
+// SERVICE FUNCTIONS UTILS
 const handleError = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
     console.error('Error: ', error);
     setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
