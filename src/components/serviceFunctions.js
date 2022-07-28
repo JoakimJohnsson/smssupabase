@@ -47,6 +47,7 @@ export async function getTitle(setLoading, setTitle, id) {
         setLoading(false)
     }
 }
+
 export async function addTitleData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
         let {error} = await supabase.from('titles').insert([{
@@ -165,7 +166,7 @@ export const deleteImageSimple = async (fileName, bucketName) => {
     }
 }
 
-// SERVICE FUNCTIONS UTILS
+// UTILS
 const handleError = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
     console.error('Error: ', error);
     setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
