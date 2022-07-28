@@ -168,14 +168,13 @@ export const deleteImageSimple = async (fileName, bucketName) => {
 
 // UTILS
 const handleError = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
-    console.error('Error: ', error);
+    logErrorMessage(error);
     setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
     setShowFormSuccess(false);
     setShowFormError(true);
 }
 
 const handleSuccess = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
-    console.info("Done")
     setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
     setShowFormError(false);
     setShowFormSuccess(true);
