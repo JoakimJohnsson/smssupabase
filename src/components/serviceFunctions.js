@@ -1,6 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES} from "../helpers/constants";
-import {logErrorMessage} from "../helpers/functions";
+import {generateUniqueHashedFilename, logErrorMessage} from "../helpers/functions";
 
 // PROFILE FUNCTIONS
 export async function getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) {
@@ -129,6 +129,28 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
         }
     } catch (error) {
         logErrorMessage(error);
+    }
+}
+
+ export const uploadImage = async (file, fileName, setUploading, bucket, fileType, imageUrl, setImageFilename, setImageUrl) => {
+    try {
+        const fileExt = file.name.split('.').pop();
+        const newFileName = generateUniqueHashedFilename(fileExt, fileType);
+        let {error: uploadError} = await supabase.storage
+            .from(bucket)
+            .upload(newFileName, file);
+        setImageFilename(newFileName);
+        setImageUrl(supabase
+            .storage
+            .from(bucket)
+            .getPublicUrl(newFileName).publicURL)
+        if (uploadError) {
+            console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
+        }
+    } catch (error) {
+        logErrorMessage(error);
+    } finally {
+        setUploading(false);
     }
 }
 

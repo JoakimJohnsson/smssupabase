@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {BUCKETS, CLASSES, FILETYPES, FORMATS, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
-import {addTitleData, deleteImage, getRowsByTable} from "../../serviceFunctions";
+import {addTitleData, deleteImage, getRowsByTable, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
-import {generateUniqueHashedFilename, handleGenericFormInput} from "../../../helpers/functions";
+import {handleGenericFormInput} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
-import {supabase} from "../../../supabase/supabaseClient";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 
@@ -44,34 +43,17 @@ export const AdminTitleAdd = () => {
             <NoDataAvailable/>
     }
 
-
-    // TODO: GENERIC IMAGE UPLOAD FUNCTION!!!!!
     async function uploadTitleImage(event) {
+        setUploading(true);
+        let file = null;
         await deleteImage(titleImageFilename, setUploading, BUCKETS.TITLE_IMAGES,
             setTitleImageUrl, setTitleImageFilename);
-        try {
-            setUploading(true);
-            if (!event.target.files || event.target.files.length === 0) {
-                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
-            }
-            const file = event.target.files[0];
-            const fileExt = file.name.split('.').pop();
-            const fileName = generateUniqueHashedFilename(fileExt, FILETYPES.TITLE_IMAGE);
-            let {error: uploadError} = await supabase.storage
-                .from(BUCKETS.TITLE_IMAGES)
-                .upload(fileName, file);
-            setTitleImageFilename(fileName);
-            setTitleImageUrl(supabase
-                .storage
-                .from(BUCKETS.TITLE_IMAGES)
-                .getPublicUrl(fileName).publicURL)
-            if (uploadError) {
-                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
-            }
-        } catch (error) {
-            console.error(error.message);
-        } finally {
-            setUploading(false);
+        if (!event.target.files || event.target.files.length === 0) {
+            console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
+        } else {
+            file = event.target.files[0];
+            await uploadImage(file, titleImageFilename, setUploading, BUCKETS.TITLE_IMAGES, FILETYPES.TITLE_IMAGE,
+                titleImageUrl, setTitleImageFilename, setTitleImageUrl)
         }
     }
 
@@ -171,7 +153,15 @@ export const AdminTitleAdd = () => {
                                     onChange={(e) => setTotalIssues(e.target.value)}
                                 />
                                 <button className={'btn btn-primary me-3 mb-2'}
-                                        onClick={() => addTitleData({name: name, startYear: startYear, endYear: endYear, format: format, totalIssues: totalIssues, titleImageFilename: titleImageFilename, titleImageUrl: titleImageUrl}, setFormMessage, setShowFormSuccess, setShowFormError).then()}
+                                        onClick={() => addTitleData({
+                                            name: name,
+                                            startYear: startYear,
+                                            endYear: endYear,
+                                            format: format,
+                                            totalIssues: totalIssues,
+                                            titleImageFilename: titleImageFilename,
+                                            titleImageUrl: titleImageUrl
+                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then()}
                                         disabled={!nameValidated || !titleImageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
