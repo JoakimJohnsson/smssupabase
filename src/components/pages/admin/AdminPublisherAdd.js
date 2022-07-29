@@ -11,7 +11,7 @@ import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 export const AdminPublisherAdd = () => {
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState('');
     const [showFormError, setShowFormError] = useState(false);
     const [showFormSuccess, setShowFormSuccess] = useState(false);
     const [formMessage, setFormMessage] = useState('');
@@ -44,7 +44,7 @@ export const AdminPublisherAdd = () => {
     const resetAddPublisherForm = async () => {
         await deleteImage(publisherImageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES,
             setPublisherImageUrl, setPublisherImageFilename);
-        setName("");
+        setName('');
         setShowFormError(false);
         setShowFormSuccess(false);
     }

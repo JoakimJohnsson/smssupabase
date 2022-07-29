@@ -13,7 +13,7 @@ export const BackButton = ({customClass}) => {
 
     return (
         <button onClick={handleBacking} className={className} aria-label={LABELS_AND_HEADINGS.BACK}>
-            <ArrowLeftIcon className="sms-icon--text-lg"/><span className={""}>{LABELS_AND_HEADINGS.BACK}</span>
+            <ArrowLeftIcon className="sms-icon--text-lg"/><span>{LABELS_AND_HEADINGS.BACK}</span>
         </button>
     )
 }

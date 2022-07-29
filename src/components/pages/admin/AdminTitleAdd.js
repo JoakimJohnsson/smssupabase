@@ -14,10 +14,10 @@ export const AdminTitleAdd = () => {
     // TODO: Admin add title page
     // * Add country selector to title ??
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState('');
     const [startYear, setStartYear] = useState(1975);
     const [endYear, setEndYear] = useState(1975);
-    const [format, setFormat] = useState("");
+    const [format, setFormat] = useState('');
     const [totalIssues, setTotalIssues] = useState(12);
     const [formatData, setFormatData] = useState(null);
     const [showFormError, setShowFormError] = useState(false);
@@ -63,7 +63,7 @@ export const AdminTitleAdd = () => {
     const resetAddTitleForm = async () => {
         await deleteImage(titleImageFilename, setUploading, BUCKETS.TITLE_IMAGES,
             setTitleImageUrl, setTitleImageFilename);
-        setName("");
+        setName('');
         setStartYear(1975);
         setEndYear(1975);
         setTotalIssues(12);
