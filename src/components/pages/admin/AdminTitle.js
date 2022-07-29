@@ -5,7 +5,6 @@ import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {getTitle} from "../../serviceFunctions";
 import {FORMATS, LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {LabelList} from "recharts";
 
 
 export const AdminTitle = () => {

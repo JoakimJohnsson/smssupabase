@@ -9,6 +9,9 @@ import {BackButton} from "../../miniComponents/BackButton";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 
+// TODO: Lägga till förlag väljare
+// TODO: På title - visa upp land från valt förlag
+
 export const AdminTitleAdd = () => {
 
     const [name, setName] = useState('');
