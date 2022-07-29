@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
+import React, {useEffect, useState} from "react";
+import {BUCKETS, CLASSES, COUNTRIES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
 import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
-import {handleGenericFormInput} from "../../../helpers/functions";
+import {handleGenericFormInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
@@ -12,6 +12,8 @@ import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 export const AdminPublisherAdd = () => {
 
     const [name, setName] = useState('');
+    const [countries, setCountries] = useState({});
+    const [country, setCountry] = useState('');
     const [showFormError, setShowFormError] = useState(false);
     const [showFormSuccess, setShowFormSuccess] = useState(false);
     const [formMessage, setFormMessage] = useState('');
@@ -20,6 +22,10 @@ export const AdminPublisherAdd = () => {
     const [uploading, setUploading] = useState(false);
     const [publisherImageFilename, setPublisherImageFilename] = useState('');
     const [publisherImageUrl, setPublisherImageUrl] = useState('');
+
+    useEffect(() => {
+        setCountries(COUNTRIES);
+    }, [])
 
     const handleNameInputChange = (e) => {
         setName(e.target.value)
@@ -90,7 +96,6 @@ export const AdminPublisherAdd = () => {
                                     onChange={uploadPublisherImage}
                                     disabled={uploading}
                                 />
-
                                 <label className={'form-label'} htmlFor='name'>{LABELS_AND_HEADINGS.NAME}</label>
                                 <input
                                     id='name'
@@ -99,9 +104,19 @@ export const AdminPublisherAdd = () => {
                                     value={name || ''}
                                     onChange={handleNameInputChange}
                                 />
+                                <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
+                                {
+                                    countries &&
+                                        <select name="countries" id="country" className={"form-select mb-3"}
+                                                onChange={(e) => setCountry(e.target.value)}>
+                                            <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                            {printOptions(countries)}
+                                        </select>
+                                }
                                 <button className={'btn btn-primary me-3 mb-2'}
                                         onClick={() => addPublisherData({
                                             name: name,
+                                            country: country,
                                             publisherImageFilename: publisherImageFilename,
                                             publisherImageUrl: publisherImageUrl
                                         }, setFormMessage, setShowFormSuccess, setShowFormError).then()}

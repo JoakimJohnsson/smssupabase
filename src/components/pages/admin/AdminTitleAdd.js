@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {BUCKETS, CLASSES, FILETYPES, FORMATS, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
-import {addTitleData, deleteImage, getRowsByTable, uploadImage} from "../../serviceFunctions";
+import {addTitleData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
-import {handleGenericFormInput} from "../../../helpers/functions";
+import {handleGenericFormInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
@@ -11,15 +11,11 @@ import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 export const AdminTitleAdd = () => {
 
-    // TODO: Admin add title page
-    // * Add country selector to title ??
-
     const [name, setName] = useState('');
     const [startYear, setStartYear] = useState(1975);
     const [endYear, setEndYear] = useState(1975);
     const [format, setFormat] = useState('');
     const [totalIssues, setTotalIssues] = useState(12);
-    const [formatData, setFormatData] = useState(null);
     const [showFormError, setShowFormError] = useState(false);
     const [showFormSuccess, setShowFormSuccess] = useState(false);
     const [formMessage, setFormMessage] = useState('');
@@ -29,21 +25,10 @@ export const AdminTitleAdd = () => {
     const [titleImageFilename, setTitleImageFilename] = useState('');
     const [titleImageUrl, setTitleImageUrl] = useState('');
 
-    useEffect(() => {
-        getRowsByTable('formats', setFormatData).then();
-    }, [])
-
     const handleNameInputChange = (e) => {
         setName(e.target.value)
         // Send true for success
         validateText(e) ? handleGenericFormInput(true, setFormInputClass, setNameValidated) : handleGenericFormInput(false, setFormInputClass, setNameValidated);
-    }
-
-    const printFormatSelectOptions = (fd) => {
-        return fd.length ?
-            fd.map((f) => <option key={f.id} value={f.id}>{FORMATS[f.type - 1]}</option>)
-            :
-            <NoDataAvailable/>
     }
 
     async function uploadTitleImage(event) {
@@ -139,15 +124,13 @@ export const AdminTitleAdd = () => {
                                 />
                                 <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                                 {
-                                    formatData ?
+                                    FORMATS &&
                                         <select name="formats" id="format" className={"form-select mb-3"} onChange={(e) => setFormat(e.target.value)}>
                                             <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                                            {printFormatSelectOptions(formatData)}
+                                            {printOptions(FORMATS)}
                                         </select>
-                                        :
-                                        <Spinner/>
                                 }
-                                <label className={'form-label'} htmlFor='totalissues'>{LABELS_AND_HEADINGS.TOTAL_ISSUES}</label>
+                                <label className={'form-label'} htmlFor='totalissues'>{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>
                                 <input
                                     id='totalissues'
                                     className={formInputClass}

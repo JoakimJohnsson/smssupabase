@@ -65,6 +65,8 @@ export const LABELS_AND_HEADINGS = {
     CHOOSE: '--- Välj ---',
     CLOSE: 'Stäng',
     COMMUNITY: 'Socialt',
+    COUNTRY: 'Land',
+    COUNTRY_DB: 'Land (country)',
     CREATE_ACCOUNT: 'Registrera dig',
     DASHBOARD: 'Kontrollpanel',
     DELETE: 'Ta bort',
@@ -75,6 +77,7 @@ export const LABELS_AND_HEADINGS = {
     FIRST_NAME: 'Förnamn',
     FORMAT: 'Format',
     FORMAT_DB: 'Format (format)',
+    ID: 'Id',
     IMAGE: 'Bild',
     INFORMATION: 'Information',
     LAST_NAME: 'Efternamn',
@@ -87,7 +90,7 @@ export const LABELS_AND_HEADINGS = {
     OPEN: 'Öppna',
     PASSWORD: 'Lösenord',
     PROFILE_IMAGE: 'Profilbild',
-    PUBLISHERS: 'Förläggare',
+    PUBLISHERS: 'Förlag',
     RESET_FORM: 'Rensa formulär',
     RESET_PASSWORD: 'Ändra lösenord',
     SAVE: 'Spara',
@@ -100,7 +103,8 @@ export const LABELS_AND_HEADINGS = {
     SVENSKA_MARVELSAMLARE: 'Svenska marvelsamlare',
     SVENSKA_MARVELSAMLARE_SHORT: 'SMS',
     TITLES: 'Titlar',
-    TOTAL_ISSUES: 'Totalt antal (total_issues)',
+    TOTAL_ISSUES: 'Totalt antal utgivna nummer',
+    TOTAL_ISSUES_DB: 'Totalt antal (total_issues)',
     UPDATE: 'Uppdatera',
     UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
     UPLOAD_IMAGE: 'Ladda upp en bild',
@@ -149,4 +153,32 @@ export const PANES = {
     }
 }
 
-export const FORMATS = ['Serietidning', 'Album', 'Pocket', 'Inbunden', 'Specialtidning'];
+export const FORMATS = {
+    1: {
+        name: 'Serietidning',
+        nameEn: 'Comic'},
+    2: {
+        name: 'Album',
+        nameEn: 'Album'},
+    3: {
+        name: 'Pocket',
+        nameEn: 'Pocket'},
+    4: {
+        name: 'Inbunden',
+        nameEn: 'Hard cover'},
+    5: {
+        name: 'Specialtidning',
+        nameEn: 'Special'},
+};
+
+export const COUNTRIES = {
+    1: {
+    name: 'Sverige',
+    nameEn: 'Sweden'},
+    2: {
+    name: 'Storbritannien',
+    nameEn: 'United Kingdom'},
+    3: {
+    name: 'USA',
+    nameEn: 'USA'},
+};

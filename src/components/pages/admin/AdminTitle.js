@@ -4,6 +4,8 @@ import {Spinner} from "../../Spinner";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {getTitle} from "../../serviceFunctions";
+import {FORMATS, LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LabelList} from "recharts";
 
 
 export const AdminTitle = () => {
@@ -19,7 +21,7 @@ export const AdminTitle = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{title.name}</span></h1>
+                    <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{title.name} {title.start_year} - {title.end_year}</span></h1>
                     <BackButton customClass={"mb-3"}/>
                     {
                         title.image_url && title.image_filename &&
@@ -31,11 +33,9 @@ export const AdminTitle = () => {
                             />
                         </div>
                     }
-                    <h2>Id: {title.id}</h2>
-                    <h3>Year start: {title.start_year}</h3>
-                    <h3>Year end: {title.end_year}</h3>
-                    <h3>Format: {title.format}</h3>
-                    <h3>Total number of issues: {title.total_issues}</h3>
+                    <h2>{LABELS_AND_HEADINGS.ID}: {title.id}</h2>
+                    <h3>{LABELS_AND_HEADINGS.FORMAT}: {FORMATS[title.format].name}</h3>
+                    <h3>{LABELS_AND_HEADINGS.TOTAL_ISSUES}: {title.total_issues}</h3>
                 </div>
             </div>
         </main>

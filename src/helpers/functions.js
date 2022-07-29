@@ -1,5 +1,6 @@
 import {supabase} from '../supabase/supabaseClient';
 import {CLASSES, MESSAGES} from './constants';
+import React from "react";
 
 export async function checkIfEmailExists(emailReference, setEmailExists) {
     let {data: email} = await supabase.from('users').select('email').eq('email', emailReference)
@@ -60,4 +61,10 @@ export const generateUniqueHashedFilename = (fileExt, fileType) => {
 export const logErrorMessage = (error) => {
     console.error('Error: ', error);
     console.error('Error message: ', error.message);
+}
+export const printOptions = (obj) => {
+    return obj && (
+        Object.keys(obj).map(
+            (c) => <option key={c} value={c}>{obj[c].name}</option>)
+    )
 }

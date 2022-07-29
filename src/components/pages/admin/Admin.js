@@ -1,6 +1,5 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {FormatCard} from "../../dashboardComponents/dashboardCards/admin/FormatCard";
 import {TitlesCard} from "../../dashboardComponents/dashboardCards/admin/TitlesCard";
 import {BanIcon} from "@heroicons/react/solid";
 import {PublishersCard} from "../../dashboardComponents/dashboardCards/admin/PublishersCard";
@@ -15,7 +14,6 @@ export const Admin = () => {
                     <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ADMIN}</span></h1>
                 </div>
                 <div className={'row main-col'}>
-                    <FormatCard/>
                     <TitlesCard/>
                     <PublishersCard/>
                 </div>
