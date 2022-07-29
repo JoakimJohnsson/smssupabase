@@ -11,6 +11,9 @@ import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 export const AdminTitleAdd = () => {
 
+    // TODO: Admin add title page
+    // * Add country selector to title ??
+
     const [name, setName] = useState("");
     const [startYear, setStartYear] = useState(1975);
     const [endYear, setEndYear] = useState(1975);
@@ -78,7 +81,7 @@ export const AdminTitleAdd = () => {
                         <div className={'sms-dashboard-col'}>
                             <div className={'sms-form'}>
                                 <div className={"mb-3"}>
-                                    <label className={'form-label d-block mb-2'} htmlFor='name'>{LABELS_AND_HEADINGS.TITLE_IMAGE}</label>
+                                    <label className={'form-label d-block mb-2'} htmlFor='name'>{LABELS_AND_HEADINGS.IMAGE}</label>
                                     {
                                         titleImageUrl ?
                                             <>

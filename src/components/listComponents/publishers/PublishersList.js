@@ -1,31 +1,31 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {TextSpacer} from "../../miniComponents/TextSpacer";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
-import {TitlesListAdminToolBox} from "../titles/TitlesListAdminToolBox";
 import {TitlesListUserToolBox} from "../titles/TitlesListUserToolBox";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
+import {PublishersListAdminToolBox} from "./PublishersListAdminToolBox";
 
 
-export const PublishersList = ({titlesData, setTitlesData, showAdminInfo}) => {
+export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {
 
-    return titlesData && (
+    return publishersData && (
         <ul className={"list-group list-group-flush small mb-3 list-unstyled"}>
             {
-                titlesData.length ?
-                    (titlesData.map((t, index) =>
+                publishersData.length ?
+                    (publishersData.map((p, index) =>
                             <li key={index} className={'list-group-item ps-0'}>
                                 <div className={"row"}>
                                     <div className={"col-8"}>
-                                        <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={'me-2'}>
-                                            {t.name}
+                                        <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={'me-2'}>
+                                            {p.name}
                                         </Link>
-                                        {t.start_year}
-                                        <TextSpacer character={'|'} margin={'mx-2'}/>
-                                        Inlagd: <FriendlyDate dateString={t.created_at}/>
+                                        Inlagd: <FriendlyDate dateString={p.created_at}/>
                                     </div>
                                     <div className={"col-4"}>
-                                        {showAdminInfo ? <TitlesListAdminToolBox id={t.id} name={t.name} image={t.image_filename} titlesData={titlesData} setTitlesData={setTitlesData} /> : <TitlesListUserToolBox/>}
+                                        {showAdminInfo ? <PublishersListAdminToolBox id={p.id} name={p.name} image={p.image_filename}
+                                                                                     publishersData={publishersData}
+                                                                                     setPublishersData={setPublishersData}/> :
+                                            <TitlesListUserToolBox/>}
                                     </div>
                                 </div>
                             </li>)

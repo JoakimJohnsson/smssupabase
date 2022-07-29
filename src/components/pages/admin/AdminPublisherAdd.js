@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
-import {addPublisherData, deleteImage} from "../../serviceFunctions";
+import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
-import {generateUniqueHashedFilename, handleGenericFormInput} from "../../../helpers/functions";
+import {handleGenericFormInput} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
-import {supabase} from "../../../supabase/supabaseClient";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 
 
@@ -29,31 +28,16 @@ export const AdminPublisherAdd = () => {
     }
 
     async function uploadPublisherImage(event) {
+        setUploading(true);
+        let file = null;
         await deleteImage(publisherImageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES,
             setPublisherImageUrl, setPublisherImageFilename);
-        try {
-            setUploading(true);
-            if (!event.target.files || event.target.files.length === 0) {
-                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
-            }
-            const file = event.target.files[0];
-            const fileExt = file.name.split('.').pop();
-            const fileName = generateUniqueHashedFilename(fileExt, FILETYPES.TITLE_IMAGE);
-            let {error: uploadError} = await supabase.storage
-                .from(BUCKETS.TITLE_IMAGES)
-                .upload(fileName, file);
-            setPublisherImageFilename(fileName);
-            setPublisherImageUrl(supabase
-                .storage
-                .from(BUCKETS.TITLE_IMAGES)
-                .getPublicUrl(fileName).publicURL)
-            if (uploadError) {
-                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
-            }
-        } catch (error) {
-            console.error(error.message);
-        } finally {
-            setUploading(false);
+        if (!event.target.files || event.target.files.length === 0) {
+            console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
+        } else {
+            file = event.target.files[0];
+            await uploadImage(file, publisherImageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES, FILETYPES.PUBLISHER_IMAGE,
+                publisherImageUrl, setPublisherImageFilename, setPublisherImageUrl)
         }
     }
 
@@ -69,13 +53,13 @@ export const AdminPublisherAdd = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ADD_TITLE}</span></h1>
+                    <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ADD_PUBLISHER}</span></h1>
                     <BackButton customClass={"mb-3"}/>
                     <div className={'row'}>
                         <div className={'sms-dashboard-col'}>
                             <div className={'sms-form'}>
                                 <div className={"mb-3"}>
-                                    <label className={'form-label d-block mb-2'} htmlFor='name'>{LABELS_AND_HEADINGS.TITLE_IMAGE}</label>
+                                    <label className={'form-label d-block mb-2'} htmlFor='name'>{LABELS_AND_HEADINGS.IMAGE}</label>
                                     {
                                         publisherImageUrl ?
                                             <>

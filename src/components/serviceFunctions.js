@@ -72,7 +72,7 @@ export async function addTitleData(data, setFormMessage, setShowFormSuccess, set
 // PUBLISHER FUNCTIONS
 export async function addPublisherData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
-        let {error} = await supabase.from('titles').insert([{
+        let {error} = await supabase.from('publishers').insert([{
             name: data.name, image_filename: data.publisherImageFilename, image_url: data.publisherImageUrl
         }])
         if (error) {

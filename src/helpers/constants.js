@@ -56,8 +56,9 @@ export const ROUTES = {
 export const LABELS_AND_HEADINGS = {
     ADMIN: 'Admin',
     ADD: 'Lägg till',
-    ADD_PUBLISHER: 'Lägg till ny förläggare',
+    ADD_PUBLISHER: 'Lägg till nytt förlag',
     ADD_TITLE: 'Lägg till ny titel',
+    ALL_PUBLISHERS: 'Alla förlag',
     ALL_TITLES: 'Alla titlar',
     BACK: 'Tillbaka',
     CHANGE_IMAGE: 'Byt bild',
@@ -74,6 +75,7 @@ export const LABELS_AND_HEADINGS = {
     FIRST_NAME: 'Förnamn',
     FORMAT: 'Format',
     FORMAT_DB: 'Format (format)',
+    IMAGE: 'Bild',
     INFORMATION: 'Information',
     LAST_NAME: 'Efternamn',
     LOADING: 'Laddar',
@@ -89,7 +91,7 @@ export const LABELS_AND_HEADINGS = {
     RESET_FORM: 'Rensa formulär',
     RESET_PASSWORD: 'Ändra lösenord',
     SAVE: 'Spara',
-    SEE_ALL_PUBLISHERS: 'Se alla förläggare',
+    SEE_ALL_PUBLISHERS: 'Se alla förlag',
     SEE_ALL_TITLES: 'Se alla titlar',
     SETTINGS: 'Inställningar',
     SIGN_OUT: 'Logga ut',
@@ -98,7 +100,6 @@ export const LABELS_AND_HEADINGS = {
     SVENSKA_MARVELSAMLARE: 'Svenska marvelsamlare',
     SVENSKA_MARVELSAMLARE_SHORT: 'SMS',
     TITLES: 'Titlar',
-    TITLE_IMAGE: 'Bild',
     TOTAL_ISSUES: 'Totalt antal (total_issues)',
     UPDATE: 'Uppdatera',
     UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
@@ -114,12 +115,13 @@ export const TEXTS = {
     ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar',
     SETTINGS_LEAD: 'Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.',
     SETTINGS_RESET_PASSWORD: 'Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.',
-    SHOWING_LATEST_PUBLISHERS: 'Visar de senast inlagda förläggarna från databasen.',
+    SHOWING_LATEST_PUBLISHERS: 'Visar de senast inlagda förlagen från databasen.',
     SHOWING_LATEST_TITLES: 'Visar de senast inlagda titlarna från databasen.'
 }
 
 export const FILETYPES = {
     AVATAR_IMAGE: 'avatar-img-',
+    PUBLISHER_IMAGE: 'publisher-img-',
     TITLE_IMAGE: 'title-img-',
 }
 

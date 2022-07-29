@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from "react";
 import {Spinner} from "../../Spinner";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {TitlesList} from "../../listComponents/titles/TitlesList";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {getRowsByTable} from "../../serviceFunctions";
+import {PublishersList} from "../../listComponents/publishers/PublishersList";
 
 
 export const AdminPublishers = () => {
 
-    const [titlesData, setTitlesData] = useState(null);
+    const [publishersData, setPublishersData] = useState(null);
     useEffect(() => {
-        getRowsByTable("titles", setTitlesData).then();
+        getRowsByTable("publishers", setPublishersData).then();
     }, [])
 
     return (
@@ -20,7 +20,10 @@ export const AdminPublishers = () => {
                 <div className={"col-12 main-col"}>
                     <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ALL_TITLES}</span></h1>
                     <BackButton customClass={"mb-5"}/>
-                    {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <Spinner/>}
+                    {publishersData ?
+                        <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}/>
+                        :
+                        <Spinner/>}
                 </div>
             </div>
         </main>

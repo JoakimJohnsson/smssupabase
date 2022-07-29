@@ -16,7 +16,7 @@ export const AdminPublisher = () => {
             try {
                 setLoading(true);
                 let {data, error, status} = await supabase
-                    .from('publisher')
+                    .from('publishers')
                     .select('*').eq('id', id)
                 if (error && status !== 406) {
                     console.log('Error: ', error);
