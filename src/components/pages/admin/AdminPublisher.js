@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {supabase} from "../../../supabase/supabaseClient";
-import {Spinner} from "../../Spinner";
+import {Spinner} from "../../miniComponents/Spinner";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";

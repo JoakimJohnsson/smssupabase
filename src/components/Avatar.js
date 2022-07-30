@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from '../helpers/constants';
-import {Spinner} from './Spinner';
+import {BUCKETS, FILETYPES, MESSAGES} from '../helpers/constants';
 import {useAppContext} from '../context/AppContext';
 import {generateUniqueHashedFilename} from "../helpers/functions";
+import {ImageUploader} from "./ImageUploader";
 
 
 export const Avatar = ({onUpload}) => {
@@ -65,36 +65,12 @@ export const Avatar = ({onUpload}) => {
     }
 
     return (
-        <div>
-            {
-                avatarImageUrl &&
-                <img
-                    src={avatarImageUrl}
-                    alt='User avatar'
-                    className='w-100 mb-3'
-                />
-            }
-            {
-                avatarImageUrl ?
-                    <div>
-                        <label className='btn btn-primary' htmlFor='single'>
-                            {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
-                        </label>
-                        <button className={'btn btn-outline-secondary ms-3'} onClick={deleteAvatarImage}>{LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
-                    </div>
-                    :
-                    <label className='btn btn-primary' htmlFor='single'>
-                        {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_NEW_IMAGE}
-                    </label>
-            }
-            <input
-                className={'d-none'}
-                type='file'
-                id='single'
-                accept='image/*'
-                onChange={uploadAvatarImage}
-                disabled={uploading}
-            />
-        </div>
+        <ImageUploader
+            imageUrl={avatarImageUrl}
+            imageFilename={avatarImageFilename}
+            uploading={uploading}
+            uploadImage={uploadAvatarImage}
+            deleteImage={deleteAvatarImage}
+        />
     )
 }

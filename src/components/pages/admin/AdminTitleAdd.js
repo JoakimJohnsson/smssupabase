@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
-import {Spinner} from "../../Spinner";
 import {addTitleData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
 import {handleGenericFormInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
-import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 import formatData from "../../../helpers/valueLists/formats.json";
+import {ImageUploader} from "../../ImageUploader";
 
 
 // TODO: Lägga till förlag väljare
@@ -30,6 +29,7 @@ export const AdminTitleAdd = () => {
     const [uploading, setUploading] = useState(false);
     const [titleImageFilename, setTitleImageFilename] = useState('');
     const [titleImageUrl, setTitleImageUrl] = useState('');
+    const [disableReset, setDisableReset] = useState(false);
 
     const handleNameInputChange = (e) => {
         setName(e.target.value)
@@ -37,11 +37,15 @@ export const AdminTitleAdd = () => {
         validateText(e) ? handleGenericFormInput(true, setFormInputClass, setNameValidated) : handleGenericFormInput(false, setFormInputClass, setNameValidated);
     }
 
-    const uploadTitleImage = async (event) => {
-        setUploading(true);
-        let file = null;
+    const deleteTitleImage = async () => {
         await deleteImage(titleImageFilename, setUploading, BUCKETS.TITLE_IMAGES,
             setTitleImageUrl, setTitleImageFilename);
+    }
+
+    const uploadTitleImage = async (event) => {
+        setUploading(true);
+        setDisableReset(true);
+        let file = null;
         if (!event.target.files || event.target.files.length === 0) {
             console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
         } else {
@@ -52,8 +56,8 @@ export const AdminTitleAdd = () => {
     }
 
     const resetAddTitleForm = async () => {
-        await deleteImage(titleImageFilename, setUploading, BUCKETS.TITLE_IMAGES,
-            setTitleImageUrl, setTitleImageFilename);
+        setTitleImageFilename(null);
+        setTitleImageUrl(null);
         setName('');
         setStartYear(1975);
         setEndYear(1975);
@@ -71,39 +75,13 @@ export const AdminTitleAdd = () => {
                     <div className={'row'}>
                         <div className={'sms-dashboard-col'}>
                             <div className={'sms-form'}>
-                                <div className={"mb-3"}>
-                                    <label className={'form-label d-block mb-2'} htmlFor='name'>{LABELS_AND_HEADINGS.IMAGE}</label>
-                                    {
-                                        titleImageUrl ?
-                                            <>
-                                                <img
-                                                    src={titleImageUrl}
-                                                    alt={titleImageFilename}
-                                                    className='w-100 mb-3'
-                                                />
-                                                <p>{titleImageFilename}</p>
-                                                <label className='btn btn-primary' htmlFor='single'>
-                                                    {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
-                                                </label>
-                                            </>
-                                            :
-                                            <>
-                                                <NoDataAvailable/>
-                                                <label className='btn btn-primary' htmlFor='single'>
-                                                    {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_IMAGE}
-                                                </label>
-                                            </>
-                                    }
-                                </div>
-                                <input
-                                    className={'d-none'}
-                                    type='file'
-                                    id='single'
-                                    accept='image/*'
-                                    onChange={uploadTitleImage}
-                                    disabled={uploading}
+                                <ImageUploader
+                                    imageUrl={titleImageUrl}
+                                    imageFilename={titleImageFilename}
+                                    uploading={uploading}
+                                    uploadImage={uploadTitleImage}
+                                    deleteImage={deleteTitleImage}
                                 />
-
                                 <label className={'form-label'} htmlFor='name'>{LABELS_AND_HEADINGS.NAME}</label>
                                 <input
                                     id='name'
@@ -131,10 +109,10 @@ export const AdminTitleAdd = () => {
                                 <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                                 {
                                     formatData &&
-                                        <select name="formats" id="format" className={"form-select mb-3"} onChange={(e) => setFormatId(e.target.value)}>
-                                            <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                                            {printOptions(formatData)}
-                                        </select>
+                                    <select name="formats" id="format" className={"form-select mb-3"} onChange={(e) => setFormatId(e.target.value)}>
+                                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                        {printOptions(formatData)}
+                                    </select>
                                 }
                                 <label className={'form-label'} htmlFor='totalissues'>{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>
                                 <input
@@ -153,12 +131,12 @@ export const AdminTitleAdd = () => {
                                             totalIssues: totalIssues,
                                             titleImageFilename: titleImageFilename,
                                             titleImageUrl: titleImageUrl
-                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then()}
+                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then(() => setDisableReset(false))}
                                         disabled={!nameValidated || !titleImageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
                                 <button className={'btn btn-outline-secondary mb-2'}
-                                        onClick={resetAddTitleForm}>
+                                        onClick={resetAddTitleForm} disabled={disableReset}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
                                 {showFormError && <p className={'alert alert-danger mt-3'}>{formMessage}</p>}

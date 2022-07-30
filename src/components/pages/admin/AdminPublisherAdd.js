@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
-import {Spinner} from "../../Spinner";
+import {Spinner} from "../../miniComponents/Spinner";
 import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
 import {handleGenericFormInput, printOptions} from "../../../helpers/functions";

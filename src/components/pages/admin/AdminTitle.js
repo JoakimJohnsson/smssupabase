@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Spinner} from "../../Spinner";
+import {Spinner} from "../../miniComponents/Spinner";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {getTitle} from "../../serviceFunctions";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import formatData from "../../../helpers/valueLists/formats.json";
-import {Debugger} from "../../miniComponents/Debugger";
 import {getName} from "../../../helpers/functions";
-import countryData from "../../../helpers/valueLists/countries.json";
 
 
 export const AdminTitle = () => {
@@ -37,8 +35,7 @@ export const AdminTitle = () => {
                         </div>
                     }
                     <h2>{LABELS_AND_HEADINGS.ID}: {title.id}</h2>
-                    <h3>{LABELS_AND_HEADINGS.COUNTRY}: {getName(formatData, title.format_id)}</h3>
-                    <Debugger logThis={formatData}/>
+                    <h3>{LABELS_AND_HEADINGS.FORMAT}: {getName(formatData, title.format_id)}</h3>
                     <h3>{LABELS_AND_HEADINGS.TOTAL_ISSUES}: {title.total_issues}</h3>
                 </div>
             </div>

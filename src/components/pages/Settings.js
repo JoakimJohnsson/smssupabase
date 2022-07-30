@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {supabase} from '../../supabase/supabaseClient';
 import {Avatar} from '../Avatar';
 import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from '../../helpers/constants';
-import {Spinner} from '../Spinner';
+import {Spinner} from '../miniComponents/Spinner';
 import {prepareUrl} from '../../helpers/functions';
 import {getProfile} from "../serviceFunctions";
 

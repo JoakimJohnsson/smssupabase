@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Spinner} from "../../Spinner";
+import {Spinner} from "../../miniComponents/Spinner";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {TitlesList} from "../../listComponents/titles/TitlesList";
 import {BanIcon} from "@heroicons/react/solid";
