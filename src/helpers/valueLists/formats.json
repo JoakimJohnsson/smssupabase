@@ -1,0 +1,27 @@
+[
+  {
+    "id": 0,
+    "name": "Serietidning",
+    "nameEn": "Comic"
+  },
+  {
+    "id": 1,
+    "name": "Album",
+    "nameEn": "Album"
+  },
+  {
+    "id": 2,
+    "name": "Pocket",
+    "nameEn": "Pocket"
+  },
+  {
+    "id": 3,
+    "name": "Inbunden",
+    "nameEn": "Hard cover"
+  },
+  {
+    "id": 4,
+    "name": "Specialtidning",
+    "nameEn": "Special"
+  }
+]

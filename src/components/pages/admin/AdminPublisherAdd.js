@@ -7,12 +7,12 @@ import {handleGenericFormInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
+import countryData from "../../../helpers/valueLists/countries.json";
 
 
 export const AdminPublisherAdd = () => {
 
     const [name, setName] = useState('');
-    const [countries, setCountries] = useState({});
     const [country, setCountry] = useState('');
     const [showFormError, setShowFormError] = useState(false);
     const [showFormSuccess, setShowFormSuccess] = useState(false);
@@ -23,17 +23,13 @@ export const AdminPublisherAdd = () => {
     const [publisherImageFilename, setPublisherImageFilename] = useState('');
     const [publisherImageUrl, setPublisherImageUrl] = useState('');
 
-    useEffect(() => {
-        setCountries(COUNTRIES);
-    }, [])
-
     const handleNameInputChange = (e) => {
         setName(e.target.value)
         // Send true for success
         validateText(e) ? handleGenericFormInput(true, setFormInputClass, setNameValidated) : handleGenericFormInput(false, setFormInputClass, setNameValidated);
     }
 
-    async function uploadPublisherImage(event) {
+    const uploadPublisherImage = async (event) => {
         setUploading(true);
         let file = null;
         await deleteImage(publisherImageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES,
@@ -106,11 +102,11 @@ export const AdminPublisherAdd = () => {
                                 />
                                 <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                                 {
-                                    countries &&
+                                    countryData &&
                                         <select name="countries" id="country" className={"form-select mb-3"}
                                                 onChange={(e) => setCountry(e.target.value)}>
                                             <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                                            {printOptions(countries)}
+                                            {printOptions(countryData)}
                                         </select>
                                 }
                                 <button className={'btn btn-primary me-3 mb-2'}

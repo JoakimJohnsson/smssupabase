@@ -152,33 +152,3 @@ export const PANES = {
         NAME: "Andra samlingar"
     }
 }
-
-export const FORMATS = {
-    1: {
-        name: 'Serietidning',
-        nameEn: 'Comic'},
-    2: {
-        name: 'Album',
-        nameEn: 'Album'},
-    3: {
-        name: 'Pocket',
-        nameEn: 'Pocket'},
-    4: {
-        name: 'Inbunden',
-        nameEn: 'Hard cover'},
-    5: {
-        name: 'Specialtidning',
-        nameEn: 'Special'},
-};
-
-export const COUNTRIES = {
-    1: {
-    name: 'Sverige',
-    nameEn: 'Sweden'},
-    2: {
-    name: 'Storbritannien',
-    nameEn: 'United Kingdom'},
-    3: {
-    name: 'USA',
-    nameEn: 'USA'},
-};

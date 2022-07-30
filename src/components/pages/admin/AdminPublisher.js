@@ -4,8 +4,8 @@ import {supabase} from "../../../supabase/supabaseClient";
 import {Spinner} from "../../Spinner";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
-import {COUNTRIES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {LabelList} from "recharts";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import countryData from "../../../helpers/valueLists/countries.json";
 
 
 export const AdminPublisher = () => {
@@ -52,7 +52,7 @@ export const AdminPublisher = () => {
                         </div>
                     }
                     <h2>{LABELS_AND_HEADINGS.ID}: {publisher.id}</h2>
-                    <h3>{LABELS_AND_HEADINGS.COUNTRY}: {COUNTRIES[publisher.country].name}</h3>
+                    <h3>{LABELS_AND_HEADINGS.COUNTRY}: {countryData[publisher.country].name}</h3>
                 </div>
             </div>
         </main>

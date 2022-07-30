@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {BUCKETS, CLASSES, FILETYPES, FORMATS, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
+import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
 import {addTitleData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
@@ -7,6 +7,7 @@ import {handleGenericFormInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
+import formatData from "../../../helpers/valueLists/formats.json";
 
 
 // TODO: Lägga till förlag väljare
@@ -34,7 +35,7 @@ export const AdminTitleAdd = () => {
         validateText(e) ? handleGenericFormInput(true, setFormInputClass, setNameValidated) : handleGenericFormInput(false, setFormInputClass, setNameValidated);
     }
 
-    async function uploadTitleImage(event) {
+    const uploadTitleImage = async (event) => {
         setUploading(true);
         let file = null;
         await deleteImage(titleImageFilename, setUploading, BUCKETS.TITLE_IMAGES,
@@ -127,10 +128,10 @@ export const AdminTitleAdd = () => {
                                 />
                                 <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                                 {
-                                    FORMATS &&
+                                    formatData &&
                                         <select name="formats" id="format" className={"form-select mb-3"} onChange={(e) => setFormat(e.target.value)}>
                                             <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                                            {printOptions(FORMATS)}
+                                            {printOptions(formatData)}
                                         </select>
                                 }
                                 <label className={'form-label'} htmlFor='totalissues'>{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>

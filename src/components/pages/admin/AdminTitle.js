@@ -4,7 +4,9 @@ import {Spinner} from "../../Spinner";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {getTitle} from "../../serviceFunctions";
-import {FORMATS, LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import formatData from "../../../helpers/valueLists/formats.json";
+import {Debugger} from "../../miniComponents/Debugger";
 
 
 export const AdminTitle = () => {
@@ -33,7 +35,8 @@ export const AdminTitle = () => {
                         </div>
                     }
                     <h2>{LABELS_AND_HEADINGS.ID}: {title.id}</h2>
-                    <h3>{LABELS_AND_HEADINGS.FORMAT}: {FORMATS[title.format].name}</h3>
+                    <h3>{LABELS_AND_HEADINGS.FORMAT}: {formatData[title.format].name}</h3>
+                    <Debugger logThis={formatData}/>
                     <h3>{LABELS_AND_HEADINGS.TOTAL_ISSUES}: {title.total_issues}</h3>
                 </div>
             </div>

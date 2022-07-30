@@ -62,9 +62,9 @@ export const logErrorMessage = (error) => {
     console.error('Error: ', error);
     console.error('Error message: ', error.message);
 }
-export const printOptions = (obj) => {
-    return obj && (
-        Object.keys(obj).map(
-            (c) => <option key={c} value={c}>{obj[c].name}</option>)
+export const printOptions = (data) => {
+    return data && (
+        data.map(
+            (item) => <option key={item.id} value={item.id}>{item.name}</option>)
     )
 }
