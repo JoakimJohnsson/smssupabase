@@ -12,6 +12,8 @@ import formatData from "../../../helpers/valueLists/formats.json";
 
 // TODO: Lägga till förlag väljare
 // TODO: På title - visa upp land från valt förlag
+// TODO: Refaktorera avatar image upload
+// TODO: Se över importerna - samma struktur
 
 export const AdminTitleAdd = () => {
 
