@@ -18,7 +18,7 @@ export const AdminTitleAdd = () => {
     const [name, setName] = useState('');
     const [startYear, setStartYear] = useState(1975);
     const [endYear, setEndYear] = useState(1975);
-    const [format, setFormat] = useState('');
+    const [formatId, setFormatId] = useState('');
     const [totalIssues, setTotalIssues] = useState(12);
     const [showFormError, setShowFormError] = useState(false);
     const [showFormSuccess, setShowFormSuccess] = useState(false);
@@ -129,7 +129,7 @@ export const AdminTitleAdd = () => {
                                 <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                                 {
                                     formatData &&
-                                        <select name="formats" id="format" className={"form-select mb-3"} onChange={(e) => setFormat(e.target.value)}>
+                                        <select name="formats" id="format" className={"form-select mb-3"} onChange={(e) => setFormatId(e.target.value)}>
                                             <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                             {printOptions(formatData)}
                                         </select>
@@ -147,7 +147,7 @@ export const AdminTitleAdd = () => {
                                             name: name,
                                             startYear: startYear,
                                             endYear: endYear,
-                                            format: format,
+                                            formatId: formatId,
                                             totalIssues: totalIssues,
                                             titleImageFilename: titleImageFilename,
                                             titleImageUrl: titleImageUrl

@@ -6,6 +6,7 @@ import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import countryData from "../../../helpers/valueLists/countries.json";
+import {getName} from "../../../helpers/functions";
 
 
 export const AdminPublisher = () => {
@@ -52,7 +53,7 @@ export const AdminPublisher = () => {
                         </div>
                     }
                     <h2>{LABELS_AND_HEADINGS.ID}: {publisher.id}</h2>
-                    <h3>{LABELS_AND_HEADINGS.COUNTRY}: {countryData[publisher.country].name}</h3>
+                    <h3>{LABELS_AND_HEADINGS.COUNTRY}: {getName(countryData, publisher.country_id)}</h3>
                 </div>
             </div>
         </main>

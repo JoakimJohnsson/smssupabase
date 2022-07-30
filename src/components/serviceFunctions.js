@@ -54,7 +54,7 @@ export async function addTitleData(data, setFormMessage, setShowFormSuccess, set
             name: data.name,
             start_year: data.startYear,
             end_year: data.endYear,
-            format: data.format,
+            format_id: data.formatId,
             total_issues: data.totalIssues,
             image_filename: data.titleImageFilename,
             image_url: data.titleImageUrl
@@ -73,7 +73,7 @@ export async function addTitleData(data, setFormMessage, setShowFormSuccess, set
 export async function addPublisherData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
         let {error} = await supabase.from('publishers').insert([{
-            name: data.name, country: data.country, image_filename: data.publisherImageFilename, image_url: data.publisherImageUrl
+            name: data.name, country_id: data.countryId, image_filename: data.publisherImageFilename, image_url: data.publisherImageUrl
         }])
         if (error) {
             handleError(error, setFormMessage, setShowFormSuccess, setShowFormError);

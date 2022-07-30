@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {BUCKETS, CLASSES, COUNTRIES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
+import React, {useState} from "react";
+import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {Spinner} from "../../Spinner";
 import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
@@ -13,7 +13,7 @@ import countryData from "../../../helpers/valueLists/countries.json";
 export const AdminPublisherAdd = () => {
 
     const [name, setName] = useState('');
-    const [country, setCountry] = useState('');
+    const [countryId, setCountryId] = useState('');
     const [showFormError, setShowFormError] = useState(false);
     const [showFormSuccess, setShowFormSuccess] = useState(false);
     const [formMessage, setFormMessage] = useState('');
@@ -104,7 +104,7 @@ export const AdminPublisherAdd = () => {
                                 {
                                     countryData &&
                                         <select name="countries" id="country" className={"form-select mb-3"}
-                                                onChange={(e) => setCountry(e.target.value)}>
+                                                onChange={(e) => setCountryId(e.target.value)}>
                                             <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                             {printOptions(countryData)}
                                         </select>
@@ -112,7 +112,7 @@ export const AdminPublisherAdd = () => {
                                 <button className={'btn btn-primary me-3 mb-2'}
                                         onClick={() => addPublisherData({
                                             name: name,
-                                            country: country,
+                                            countryId: countryId,
                                             publisherImageFilename: publisherImageFilename,
                                             publisherImageUrl: publisherImageUrl
                                         }, setFormMessage, setShowFormSuccess, setShowFormError).then()}
