@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
+import {BUCKETS} from "../helpers/constants";
 
 const AppContext = React.createContext();
 
@@ -9,7 +10,7 @@ export function AppContextProvider({children}) {
     // Global states
     const [user, setUser] = useState();
     const [avatarImageUrl, setAvatarImageUrl] = useState('');
-    const [avatarFilename, setAvatarFilename] = useState(null);
+    const [avatarImageFilename, setAvatarImageFilename] = useState(null);
     const [userUrl, setUserUrl] = useState(null);
     const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -57,12 +58,12 @@ export function AppContextProvider({children}) {
         user,
         avatarImageUrl,
         setAvatarImageUrl,
-        avatarFilename,
-        setAvatarFilename,
+        avatarImageFilename,
+        setAvatarImageFilename,
         userUrl,
         setUserUrl,
         role,
-        session: () => supabase.auth.session()
+        session: () => supabase.auth.session(),
     }
 
     async function updateProfile(user) {
@@ -82,10 +83,10 @@ export function AppContextProvider({children}) {
                 if (data[0].avatar_image_filename) {
                     setAvatarImageUrl(supabase
                         .storage
-                        .from('avatars')
+                        .from(BUCKETS.AVATAR_IMAGES)
                         .getPublicUrl(data[0].avatar_image_filename).publicURL)
                     const fileName = data[0].avatar_image_filename;
-                    setAvatarFilename(fileName);
+                    setAvatarImageFilename(fileName);
                 }
                 // Set role
                 if (data[0].role) {

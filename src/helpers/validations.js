@@ -1,7 +1,7 @@
 import validator from 'validator';
 
 export const simpleInputValidation = (e, setValidation) => {
-    e.target.value !== "" ? setValidation(true) : setValidation(false);
+    e.target.value !== '' ? setValidation(true) : setValidation(false);
 }
 
 export const validateEmail = (e) => {

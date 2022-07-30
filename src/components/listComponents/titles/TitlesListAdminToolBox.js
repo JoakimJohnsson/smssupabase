@@ -1,13 +1,35 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {BUCKETS, LABELS_AND_HEADINGS, ROUTES} from "../../../helpers/constants";
+import {PencilAltIcon, XCircleIcon} from "@heroicons/react/solid";
+import {deleteImageSimple, deleteRowsByTableAndId} from "../../serviceFunctions";
+import {logErrorMessage} from "../../../helpers/functions";
 
 
-export const TitlesListAdminToolBox = ({id}) => {
+export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesData}) => {
+
+    const handleDelete = async () => {
+        try {
+            await deleteImageSimple(image, BUCKETS.TITLE_IMAGES);
+        } catch (error) {
+            logErrorMessage(error);
+        } finally {
+            deleteRowsByTableAndId('titles', id, name, setTitlesData, titlesData).then();
+        }
+    }
 
     return (
-        <span className={"ms-2 bg-dog p-2 rounded-3 d-inline-block"}>
-            <Link to={`/admin/titles/edit/${id}`} className={'me-2'}>{LABELS_AND_HEADINGS.EDIT}</Link>
-        </span>
+        <div className={"ms-2 d-inline-block"}>
+            <Link to={ROUTES.ADMIN.TITLE_EDIT + id} className={'btn btn-primary m-1 p-1'} title={LABELS_AND_HEADINGS.EDIT}>
+                <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
+                <span className={"visually-hidden"}>{LABELS_AND_HEADINGS.EDIT}</span>
+            </Link>
+            <button
+                className={'btn btn-danger m-1 p-1'}
+                aria-label={LABELS_AND_HEADINGS.DELETE}
+                onClick={handleDelete}>
+                <XCircleIcon className={"sms-icon--text-lg m-0"}/>
+            </button>
+        </div>
     )
 }

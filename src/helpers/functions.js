@@ -1,5 +1,6 @@
 import {supabase} from '../supabase/supabaseClient';
 import {CLASSES, MESSAGES} from './constants';
+import React from "react";
 
 export async function checkIfEmailExists(emailReference, setEmailExists) {
     let {data: email} = await supabase.from('users').select('email').eq('email', emailReference)
@@ -52,12 +53,23 @@ export const handleGenericFormInput = (success, setInputClass, setValidated) => 
     }
 }
 
-export const resetAddTitleForm = (setName, setStartYear, setEndYear, setFormat, setTotalIssues, setShowFormError, setShowFormSuccess) => {
-    setName("");
-    setStartYear(1975);
-    setEndYear(1975);
-    setFormat("");
-    setTotalIssues(12);
-    setShowFormError(false);
-    setShowFormSuccess(false);
+export const generateUniqueHashedFilename = (fileExt, fileType) => {
+    let number = Math.random() * 100;
+    return fileType + number.toString().replace('.', '') + '.' + fileExt;
+}
+
+export const logErrorMessage = (error) => {
+    console.error('Error: ', error);
+    console.error('Error message: ', error.message);
+}
+export const printOptions = (data) => {
+    return data && (
+        data.map(
+            (item) => <option key={item.id} value={item.id}>{item.name}</option>)
+    )
+}
+
+export const getName = (data, myId) => {
+    let obj = data.filter(item => item.id === myId);
+    return obj[0].name;
 }

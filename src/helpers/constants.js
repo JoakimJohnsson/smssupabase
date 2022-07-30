@@ -15,6 +15,10 @@ export const MESSAGES = {
         VALIDATION_PASSWORD: 'Det där är ett starkt lösenord!',
         VALIDATION_DOWNLOAD_IMAGE: 'En bild laddades ned',
         VALIDATION_INSERT: 'Titeln lades till i databasen'
+    },
+    CONFIRM: {
+        DELETE: 'Du kommer nu ta bort ',
+        FROM: ' från ',
     }
 }
 
@@ -37,31 +41,44 @@ export const ROUTES = {
     TITLE: '/titles/:id',
     ADMIN: {
         ROOT: '/admin',
-        TITLE: '/admin/titles/:id',
-        TITLE_ADD: '/admin/titles/add',
-        TITLE_EDIT: '/admin/titles/edit/:id',
-        TITLES: '/admin/titles'
+        PUBLISHERS: '/admin/publishers/',
+        PUBLISHER_ID: '/admin/publishers/:id',
+        PUBLISHER_ADD: '/admin/publishers/add/',
+        PUBLISHER_EDIT: '/admin/publishers/edit/',
+        TITLE_ID: '/admin/titles/:id',
+        TITLE_ADD: '/admin/titles/add/',
+        TITLE_EDIT: '/admin/titles/edit/',
+        TITLE_EDIT_ID: '/admin/titles/edit/:id',
+        TITLES: '/admin/titles/'
     }
 }
 
 export const LABELS_AND_HEADINGS = {
     ADMIN: 'Admin',
     ADD: 'Lägg till',
+    ADD_PUBLISHER: 'Lägg till nytt förlag',
     ADD_TITLE: 'Lägg till ny titel',
+    ALL_PUBLISHERS: 'Alla förlag',
     ALL_TITLES: 'Alla titlar',
+    BACK: 'Tillbaka',
     CHANGE_IMAGE: 'Byt bild',
     CHOOSE: '--- Välj ---',
     CLOSE: 'Stäng',
     COMMUNITY: 'Socialt',
+    COUNTRY: 'Land',
+    COUNTRY_DB: 'Land (country)',
     CREATE_ACCOUNT: 'Registrera dig',
     DASHBOARD: 'Kontrollpanel',
-    DELETE_IMAGE: 'Radera bild',
+    DELETE: 'Ta bort',
+    DELETE_IMAGE: 'Ta bort bild',
     EDIT: 'Redigera',
     EMAIL: 'E-postadress',
     END_YEAR: 'Slutår (end_year)',
     FIRST_NAME: 'Förnamn',
     FORMAT: 'Format',
     FORMAT_DB: 'Format (format)',
+    ID: 'Id',
+    IMAGE: 'Bild',
     INFORMATION: 'Information',
     LAST_NAME: 'Efternamn',
     LOADING: 'Laddar',
@@ -69,12 +86,15 @@ export const LABELS_AND_HEADINGS = {
     MENU: 'Meny',
     MY_COLLECTION: 'Min samling',
     NAME: 'Namn (name)',
+    NO_DATA_AVAILABLE: 'Det finns inget att visa!',
     OPEN: 'Öppna',
     PASSWORD: 'Lösenord',
     PROFILE_IMAGE: 'Profilbild',
+    PUBLISHERS: 'Förlag',
     RESET_FORM: 'Rensa formulär',
     RESET_PASSWORD: 'Ändra lösenord',
     SAVE: 'Spara',
+    SEE_ALL_PUBLISHERS: 'Se alla förlag',
     SEE_ALL_TITLES: 'Se alla titlar',
     SETTINGS: 'Inställningar',
     SIGN_OUT: 'Logga ut',
@@ -83,9 +103,11 @@ export const LABELS_AND_HEADINGS = {
     SVENSKA_MARVELSAMLARE: 'Svenska marvelsamlare',
     SVENSKA_MARVELSAMLARE_SHORT: 'SMS',
     TITLES: 'Titlar',
-    TOTAL_ISSUES: 'Totalt antal (total_issues)',
+    TOTAL_ISSUES: 'Totalt antal utgivna nummer',
+    TOTAL_ISSUES_DB: 'Totalt antal (total_issues)',
     UPDATE: 'Uppdatera',
     UPLOAD_NEW_IMAGE: 'Ladda upp en ny bild',
+    UPLOAD_IMAGE: 'Ladda upp en bild',
     WEBSITE: 'Webbplats',
     WELCOME: 'Välkommen till Svenska Marvelsamlare!'
 }
@@ -96,7 +118,25 @@ export const TEXTS = {
     NEW_TITLES: 'Nya titlar och funktioner läggs till regelbundet',
     ALWAYS_AVAILABLE: 'Perfekt att använda när du är ute på fältet och letar tidningar',
     SETTINGS_LEAD: 'Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.',
-    SETTINGS_RESET_PASSWORD: 'Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.'
+    SETTINGS_RESET_PASSWORD: 'Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.',
+    SHOWING_LATEST_PUBLISHERS: 'Visar de senast inlagda förlagen från databasen.',
+    SHOWING_LATEST_TITLES: 'Visar de senast inlagda titlarna från databasen.'
+}
+
+export const FILETYPES = {
+    AVATAR_IMAGE: 'avatar-img-',
+    PUBLISHER_IMAGE: 'publisher-img-',
+    TITLE_IMAGE: 'title-img-',
+}
+
+// NOTE: Supabase policies needed for buckets. Example =>
+// Authenticated can edit buckets jocke4.0
+// authenticated
+// (bucket_id = 'avatar-images'::text)
+export const BUCKETS = {
+    AVATAR_IMAGES: 'avatar-images',
+    TITLE_IMAGES: 'title-images',
+    PUBLISHER_IMAGES: 'publisher-images',
 }
 
 export const PANES = {
@@ -112,5 +152,3 @@ export const PANES = {
         NAME: "Andra samlingar"
     }
 }
-
-export const FORMATS = ['Serietidning', 'Album', 'Pocket', 'Inbunden', 'Specialtidning'];
