@@ -90,6 +90,7 @@ export const LABELS_AND_HEADINGS = {
     PASSWORD: 'Lösenord',
     PROFILE_IMAGE: 'Profilbild',
     PUBLISHERS: 'Förlag',
+    PUBLISHERS_DB: 'Förlag (publisher)',
     RESET_FORM: 'Rensa formulär',
     RESET_PASSWORD: 'Ändra lösenord',
     SAVE: 'Spara',
@@ -136,6 +137,12 @@ export const BUCKETS = {
     AVATAR_IMAGES: 'avatar-images',
     TITLE_IMAGES: 'title-images',
     PUBLISHER_IMAGES: 'publisher-images',
+}
+
+export const TABLES = {
+    PROFILES: 'profiles',
+    PUBLISHERS: 'publishers',
+    TITLES: 'titles',
 }
 
 export const PANES = {

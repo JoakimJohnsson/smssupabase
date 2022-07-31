@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {BUCKETS, FILETYPES, MESSAGES} from '../helpers/constants';
+import {BUCKETS, FILETYPES, MESSAGES, TABLES} from '../helpers/constants';
 import {useAppContext} from '../context/AppContext';
 import {generateUniqueHashedFilename} from "../helpers/functions";
 import {ImageUploader} from "./ImageUploader";
@@ -48,7 +48,7 @@ export const Avatar = ({onUpload}) => {
                     .from(BUCKETS.AVATAR_IMAGES)
                     .remove([avatarImageFilename]);
                 let {error} = await supabase
-                    .from('profiles')
+                    .from(TABLES.PROFILES)
                     .update({avatar_image_filename: null})
                     .match({avatar_image_filename: avatarImageFilename})
                 setAvatarImageUrl(null);

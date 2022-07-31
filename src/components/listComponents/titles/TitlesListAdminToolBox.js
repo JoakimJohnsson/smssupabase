@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {BUCKETS, LABELS_AND_HEADINGS, ROUTES} from "../../../helpers/constants";
+import {BUCKETS, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../helpers/constants";
 import {PencilAltIcon, XCircleIcon} from "@heroicons/react/solid";
 import {deleteImageSimple, deleteRowsByTableAndId} from "../../serviceFunctions";
 import {logErrorMessage} from "../../../helpers/functions";
@@ -14,7 +14,7 @@ export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesDa
         } catch (error) {
             logErrorMessage(error);
         } finally {
-            deleteRowsByTableAndId('titles', id, name, setTitlesData, titlesData).then();
+            deleteRowsByTableAndId(TABLES.TITLES, id, name, setTitlesData, titlesData).then();
         }
     }
 

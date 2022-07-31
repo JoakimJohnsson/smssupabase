@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
-import {addTitleData, deleteImage, uploadImage} from "../../serviceFunctions";
+import React, {useEffect, useState} from "react";
+import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES} from "../../../helpers/constants";
+import {addTitleData, deleteImage, getRowsByTable, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
 import {handleGenericFormInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
@@ -9,27 +9,32 @@ import formatData from "../../../helpers/valueLists/formats.json";
 import {ImageUploader} from "../../ImageUploader";
 
 
-// TODO: Lägga till förlag väljare
 // TODO: På title - visa upp land från valt förlag
-// TODO: Refaktorera avatar image upload
 // TODO: Se över importerna - samma struktur
 
 export const AdminTitleAdd = () => {
 
     const [name, setName] = useState('');
-    const [startYear, setStartYear] = useState(1975);
-    const [endYear, setEndYear] = useState(1975);
-    const [formatId, setFormatId] = useState('');
-    const [totalIssues, setTotalIssues] = useState(12);
     const [showFormError, setShowFormError] = useState(false);
     const [showFormSuccess, setShowFormSuccess] = useState(false);
     const [formMessage, setFormMessage] = useState('');
     const [nameValidated, setNameValidated] = useState(false);
     const [formInputClass, setFormInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
     const [uploading, setUploading] = useState(false);
-    const [titleImageFilename, setTitleImageFilename] = useState('');
-    const [titleImageUrl, setTitleImageUrl] = useState('');
+    const [imageFilename, setImageFilename] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
     const [disableReset, setDisableReset] = useState(false);
+
+    const [startYear, setStartYear] = useState(1975);
+    const [endYear, setEndYear] = useState(1975);
+    const [formatId, setFormatId] = useState('');
+    const [totalIssues, setTotalIssues] = useState(12);
+    const [publishersData, setPublishersData] = useState(null);
+    const [publisherId, setPublisherId] = useState('');
+
+    useEffect(() => {
+        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
+    }, [])
 
     const handleNameInputChange = (e) => {
         setName(e.target.value)
@@ -38,8 +43,8 @@ export const AdminTitleAdd = () => {
     }
 
     const deleteTitleImage = async () => {
-        await deleteImage(titleImageFilename, setUploading, BUCKETS.TITLE_IMAGES,
-            setTitleImageUrl, setTitleImageFilename);
+        await deleteImage(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
+            setImageUrl, setImageFilename);
     }
 
     const uploadTitleImage = async (event) => {
@@ -50,14 +55,14 @@ export const AdminTitleAdd = () => {
             console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
         } else {
             file = event.target.files[0];
-            await uploadImage(file, titleImageFilename, setUploading, BUCKETS.TITLE_IMAGES, FILETYPES.TITLE_IMAGE,
-                titleImageUrl, setTitleImageFilename, setTitleImageUrl)
+            await uploadImage(file, imageFilename, setUploading, BUCKETS.TITLE_IMAGES, FILETYPES.TITLE_IMAGE,
+                imageUrl, setImageFilename, setImageUrl)
         }
     }
 
     const resetAddTitleForm = async () => {
-        setTitleImageFilename(null);
-        setTitleImageUrl(null);
+        setImageFilename(null);
+        setImageUrl(null);
         setName('');
         setStartYear(1975);
         setEndYear(1975);
@@ -76,8 +81,8 @@ export const AdminTitleAdd = () => {
                         <div className={'sms-dashboard-col'}>
                             <div className={'sms-form'}>
                                 <ImageUploader
-                                    imageUrl={titleImageUrl}
-                                    imageFilename={titleImageFilename}
+                                    imageUrl={imageUrl}
+                                    imageFilename={imageFilename}
                                     uploading={uploading}
                                     uploadImage={uploadTitleImage}
                                     deleteImage={deleteTitleImage}
@@ -106,6 +111,14 @@ export const AdminTitleAdd = () => {
                                     value={endYear || 1977}
                                     onChange={(e) => setEndYear(e.target.value)}
                                 />
+                                <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
+                                {
+                                    publishersData &&
+                                    <select name="publisher" id="publisher" className={"form-select mb-3"} onChange={(e) => setPublisherId(e.target.value)}>
+                                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                        {printOptions(publishersData)}
+                                    </select>
+                                }
                                 <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                                 {
                                     formatData &&
@@ -127,12 +140,13 @@ export const AdminTitleAdd = () => {
                                             name: name,
                                             startYear: startYear,
                                             endYear: endYear,
+                                            publisherId: publisherId,
                                             formatId: formatId,
                                             totalIssues: totalIssues,
-                                            titleImageFilename: titleImageFilename,
-                                            titleImageUrl: titleImageUrl
-                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then(() => setDisableReset(false))}
-                                        disabled={!nameValidated || !titleImageFilename}>
+                                            titleImageFilename: imageFilename,
+                                            titleImageUrl: imageUrl
+                                        }, deleteTitleImage,setFormMessage, setShowFormSuccess, setShowFormError).then(() => setDisableReset(false))}
+                                        disabled={!nameValidated || !imageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
                                 <button className={'btn btn-outline-secondary mb-2'}

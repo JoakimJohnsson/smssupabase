@@ -12,16 +12,17 @@ import {ImageUploader} from "../../ImageUploader";
 export const AdminPublisherAdd = () => {
 
     const [name, setName] = useState('');
-    const [countryId, setCountryId] = useState('');
     const [showFormError, setShowFormError] = useState(false);
     const [showFormSuccess, setShowFormSuccess] = useState(false);
     const [formMessage, setFormMessage] = useState('');
     const [nameValidated, setNameValidated] = useState(false);
     const [formInputClass, setFormInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
     const [uploading, setUploading] = useState(false);
-    const [publisherImageFilename, setPublisherImageFilename] = useState('');
-    const [publisherImageUrl, setPublisherImageUrl] = useState('');
+    const [imageFilename, setImageFilename] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
     const [disableReset, setDisableReset] = useState(false);
+
+    const [countryId, setCountryId] = useState('');
 
     const handleNameInputChange = (e) => {
         setName(e.target.value)
@@ -30,8 +31,8 @@ export const AdminPublisherAdd = () => {
     }
 
     const deletePublisherImage = async () => {
-        await deleteImage(publisherImageFilename, setUploading, BUCKETS.TITLE_IMAGES,
-            setPublisherImageUrl, setPublisherImageFilename);
+        await deleteImage(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
+            setImageUrl, setImageFilename);
     }
 
     const uploadPublisherImage = async (event) => {
@@ -42,14 +43,14 @@ export const AdminPublisherAdd = () => {
             console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
         } else {
             file = event.target.files[0];
-            await uploadImage(file, publisherImageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES, FILETYPES.PUBLISHER_IMAGE,
-                publisherImageUrl, setPublisherImageFilename, setPublisherImageUrl)
+            await uploadImage(file, imageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES, FILETYPES.PUBLISHER_IMAGE,
+                imageUrl, setImageFilename, setImageUrl)
         }
     }
 
     const resetAddPublisherForm = async () => {
-        setPublisherImageFilename(null);
-        setPublisherImageUrl(null);
+        setImageFilename(null);
+        setImageUrl(null);
         setName('');
         setShowFormError(false);
         setShowFormSuccess(false);
@@ -65,8 +66,8 @@ export const AdminPublisherAdd = () => {
                         <div className={'sms-dashboard-col'}>
                             <div className={'sms-form'}>
                                 <ImageUploader
-                                    imageUrl={publisherImageUrl}
-                                    imageFilename={publisherImageFilename}
+                                    imageUrl={imageUrl}
+                                    imageFilename={imageFilename}
                                     uploading={uploading}
                                     uploadImage={uploadPublisherImage}
                                     deleteImage={deletePublisherImage}
@@ -92,10 +93,10 @@ export const AdminPublisherAdd = () => {
                                         onClick={() => addPublisherData({
                                             name: name,
                                             countryId: countryId,
-                                            publisherImageFilename: publisherImageFilename,
-                                            publisherImageUrl: publisherImageUrl
-                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then(() => setDisableReset(false))}
-                                        disabled={!nameValidated || !publisherImageFilename}>
+                                            publisherImageFilename: imageFilename,
+                                            publisherImageUrl: imageUrl
+                                        }, deletePublisherImage, setFormMessage, setShowFormSuccess, setShowFormError).then(() => setDisableReset(false))}
+                                        disabled={!nameValidated || !imageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
                                 <button className={'btn btn-outline-secondary mb-2'}
