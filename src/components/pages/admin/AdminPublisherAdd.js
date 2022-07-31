@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
 import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
-import {validateText} from "../../../helpers/validations";
-import {handleGenericFormInput, printOptions} from "../../../helpers/functions";
+import {handleNameInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import countryData from "../../../helpers/valueLists/countries.json";
@@ -26,12 +25,6 @@ export const AdminPublisherAdd = () => {
     ] = useCommonFormStates();
 
     const [countryId, setCountryId] = useState('');
-
-    const handleNameInputChange = (e) => {
-        setName(e.target.value)
-        // Send true for success
-        validateText(e) ? handleGenericFormInput(true, setFormInputClass, setNameValidated) : handleGenericFormInput(false, setFormInputClass, setNameValidated);
-    }
 
     const deletePublisherImage = async () => {
         await deleteImage(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
@@ -81,7 +74,7 @@ export const AdminPublisherAdd = () => {
                                     className={formInputClass}
                                     type='text'
                                     value={name || ''}
-                                    onChange={handleNameInputChange}
+                                    onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
                                 />
                                 <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                                 {
