@@ -19,9 +19,6 @@ export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, 
                                 className='w-100 mb-3'
                             />
                             <p>{imageFilename}</p>
-                            <label className='btn btn-primary me-3 mb-2' htmlFor='single'>
-                                {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
-                            </label>
                             <button className={'btn btn-outline-secondary mb-2'} onClick={deleteImage}>{LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
                         </>
                         :

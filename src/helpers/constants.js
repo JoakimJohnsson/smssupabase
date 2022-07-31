@@ -61,7 +61,6 @@ export const LABELS_AND_HEADINGS = {
     ALL_PUBLISHERS: 'Alla förlag',
     ALL_TITLES: 'Alla titlar',
     BACK: 'Tillbaka',
-    CHANGE_IMAGE: 'Byt bild',
     CHOOSE: '--- Välj ---',
     CLOSE: 'Stäng',
     COMMUNITY: 'Socialt',
