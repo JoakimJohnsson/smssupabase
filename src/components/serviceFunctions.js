@@ -137,25 +137,32 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
     }
 }
 
- export const uploadImage = async (file, fileName, setUploading, bucket, fileType, imageUrl, setImageFilename, setImageUrl) => {
-    try {
-        const fileExt = file.name.split('.').pop();
-        const newFileName = generateUniqueHashedFilename(fileExt, fileType);
-        let {error: uploadError} = await supabase.storage
-            .from(bucket)
-            .upload(newFileName, file);
-        setImageFilename(newFileName);
-        setImageUrl(supabase
-            .storage
-            .from(bucket)
-            .getPublicUrl(newFileName).publicURL)
-        if (uploadError) {
-            console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
+export const uploadImage = async (e, fileName, setUploading, setDisableReset, bucket, fileType, imageUrl, setImageFilename, setImageUrl) => {
+    setUploading(true);
+    setDisableReset(true);
+    if (!e.target.files || e.target.files.length === 0) {
+        console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
+    } else {
+        let file = e.target.files[0];
+        try {
+            const fileExt = file.name.split('.').pop();
+            const newFileName = generateUniqueHashedFilename(fileExt, fileType);
+            let {error: uploadError} = await supabase.storage
+                .from(bucket)
+                .upload(newFileName, file);
+            setImageFilename(newFileName);
+            setImageUrl(supabase
+                .storage
+                .from(bucket)
+                .getPublicUrl(newFileName).publicURL)
+            if (uploadError) {
+                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
+            }
+        } catch (error) {
+            logErrorMessage(error);
+        } finally {
+            setUploading(false);
         }
-    } catch (error) {
-        logErrorMessage(error);
-    } finally {
-        setUploading(false);
     }
 }
 

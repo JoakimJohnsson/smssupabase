@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES} from "../../../helpers/constants";
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import {addTitleData, deleteImage, getRowsByTable, uploadImage} from "../../serviceFunctions";
 import {handleNameInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
@@ -40,19 +40,6 @@ export const AdminTitleAdd = () => {
             setImageUrl, setImageFilename);
     }
 
-    const uploadTitleImage = async (event) => {
-        setUploading(true);
-        setDisableReset(true);
-        let file = null;
-        if (!event.target.files || event.target.files.length === 0) {
-            console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
-        } else {
-            file = event.target.files[0];
-            await uploadImage(file, imageFilename, setUploading, BUCKETS.TITLE_IMAGES, FILETYPES.TITLE_IMAGE,
-                imageUrl, setImageFilename, setImageUrl)
-        }
-    }
-
     const resetAddTitleForm = async () => {
         setImageFilename(null);
         setImageUrl(null);
@@ -77,7 +64,8 @@ export const AdminTitleAdd = () => {
                                     imageUrl={imageUrl}
                                     imageFilename={imageFilename}
                                     uploading={uploading}
-                                    uploadImage={uploadTitleImage}
+                                    uploadImage={e => uploadImage(e, imageFilename, setUploading, setDisableReset, BUCKETS.TITLE_IMAGES,
+                                        FILETYPES.TITLE_IMAGE, imageUrl, setImageFilename ,setImageUrl)}
                                     deleteImage={deleteTitleImage}
                                 />
                                 <label className={'form-label'} htmlFor='name'>{LABELS_AND_HEADINGS.NAME}</label>

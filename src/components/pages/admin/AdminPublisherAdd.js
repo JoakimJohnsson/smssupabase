@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {handleNameInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
@@ -31,19 +31,6 @@ export const AdminPublisherAdd = () => {
             setImageUrl, setImageFilename);
     }
 
-    const uploadPublisherImage = async (event) => {
-        setUploading(true);
-        setDisableReset(true);
-        let file = null;
-        if (!event.target.files || event.target.files.length === 0) {
-            console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
-        } else {
-            file = event.target.files[0];
-            await uploadImage(file, imageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES, FILETYPES.PUBLISHER_IMAGE,
-                imageUrl, setImageFilename, setImageUrl)
-        }
-    }
-
     const resetAddPublisherForm = async () => {
         setImageFilename(null);
         setImageUrl(null);
@@ -65,7 +52,8 @@ export const AdminPublisherAdd = () => {
                                     imageUrl={imageUrl}
                                     imageFilename={imageFilename}
                                     uploading={uploading}
-                                    uploadImage={uploadPublisherImage}
+                                    uploadImage={e => uploadImage(e, imageFilename, setUploading, setDisableReset, BUCKETS.PUBLISHER_IMAGES,
+                                        FILETYPES.PUBLISHER_IMAGE, imageUrl, setImageFilename ,setImageUrl)}
                                     deleteImage={deletePublisherImage}
                                 />
                                 <label className={'form-label'} htmlFor='name'>{LABELS_AND_HEADINGS.NAME}</label>
