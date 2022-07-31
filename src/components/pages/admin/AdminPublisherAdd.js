@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES} from "../../../helpers/constants";
-import {Spinner} from "../../miniComponents/Spinner";
 import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {validateText} from "../../../helpers/validations";
 import {handleGenericFormInput, printOptions} from "../../../helpers/functions";
 import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
-import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 import countryData from "../../../helpers/valueLists/countries.json";
+import {ImageUploader} from "../../ImageUploader";
 
 
 export const AdminPublisherAdd = () => {
@@ -22,6 +21,7 @@ export const AdminPublisherAdd = () => {
     const [uploading, setUploading] = useState(false);
     const [publisherImageFilename, setPublisherImageFilename] = useState('');
     const [publisherImageUrl, setPublisherImageUrl] = useState('');
+    const [disableReset, setDisableReset] = useState(false);
 
     const handleNameInputChange = (e) => {
         setName(e.target.value)
@@ -29,11 +29,15 @@ export const AdminPublisherAdd = () => {
         validateText(e) ? handleGenericFormInput(true, setFormInputClass, setNameValidated) : handleGenericFormInput(false, setFormInputClass, setNameValidated);
     }
 
+    const deletePublisherImage = async () => {
+        await deleteImage(publisherImageFilename, setUploading, BUCKETS.TITLE_IMAGES,
+            setPublisherImageUrl, setPublisherImageFilename);
+    }
+
     const uploadPublisherImage = async (event) => {
         setUploading(true);
+        setDisableReset(true);
         let file = null;
-        await deleteImage(publisherImageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES,
-            setPublisherImageUrl, setPublisherImageFilename);
         if (!event.target.files || event.target.files.length === 0) {
             console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
         } else {
@@ -44,8 +48,8 @@ export const AdminPublisherAdd = () => {
     }
 
     const resetAddPublisherForm = async () => {
-        await deleteImage(publisherImageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES,
-            setPublisherImageUrl, setPublisherImageFilename);
+        setPublisherImageFilename(null);
+        setPublisherImageUrl(null);
         setName('');
         setShowFormError(false);
         setShowFormSuccess(false);
@@ -60,37 +64,12 @@ export const AdminPublisherAdd = () => {
                     <div className={'row'}>
                         <div className={'sms-dashboard-col'}>
                             <div className={'sms-form'}>
-                                <div className={"mb-3"}>
-                                    <label className={'form-label d-block mb-2'} htmlFor='name'>{LABELS_AND_HEADINGS.IMAGE}</label>
-                                    {
-                                        publisherImageUrl ?
-                                            <>
-                                                <img
-                                                    src={publisherImageUrl}
-                                                    alt={publisherImageFilename}
-                                                    className='w-100 mb-3'
-                                                />
-                                                <p>{publisherImageFilename}</p>
-                                                <label className='btn btn-primary' htmlFor='single'>
-                                                    {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.CHANGE_IMAGE}
-                                                </label>
-                                            </>
-                                            :
-                                            <>
-                                                <NoDataAvailable/>
-                                                <label className='btn btn-primary' htmlFor='single'>
-                                                    {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_IMAGE}
-                                                </label>
-                                            </>
-                                    }
-                                </div>
-                                <input
-                                    className={'d-none'}
-                                    type='file'
-                                    id='single'
-                                    accept='image/*'
-                                    onChange={uploadPublisherImage}
-                                    disabled={uploading}
+                                <ImageUploader
+                                    imageUrl={publisherImageUrl}
+                                    imageFilename={publisherImageFilename}
+                                    uploading={uploading}
+                                    uploadImage={uploadPublisherImage}
+                                    deleteImage={deletePublisherImage}
                                 />
                                 <label className={'form-label'} htmlFor='name'>{LABELS_AND_HEADINGS.NAME}</label>
                                 <input
@@ -115,12 +94,12 @@ export const AdminPublisherAdd = () => {
                                             countryId: countryId,
                                             publisherImageFilename: publisherImageFilename,
                                             publisherImageUrl: publisherImageUrl
-                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then()}
+                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then(() => setDisableReset(false))}
                                         disabled={!nameValidated || !publisherImageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
                                 <button className={'btn btn-outline-secondary mb-2'}
-                                        onClick={resetAddPublisherForm}>
+                                        onClick={resetAddPublisherForm} disabled={disableReset}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
                                 {showFormError && <p className={'alert alert-danger mt-3'}>{formMessage}</p>}

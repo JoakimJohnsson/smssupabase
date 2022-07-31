@@ -10,7 +10,7 @@ export const Avatar = ({onUpload}) => {
     const [uploading, setUploading] = useState(false);
     const {avatarImageUrl, setAvatarImageUrl, avatarImageFilename, setAvatarImageFilename} = useAppContext();
 
-    async function uploadAvatarImage(event) {
+    const uploadAvatarImage = async (event) => {
         await deleteAvatarImage();
         try {
             setUploading(true);
@@ -40,7 +40,7 @@ export const Avatar = ({onUpload}) => {
         }
     }
 
-    async function deleteAvatarImage() {
+    const deleteAvatarImage = async () => {
         if (avatarImageFilename) {
             try {
                 setUploading(true);
