@@ -29,25 +29,6 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
 }
 
 // TITLES FUNCTIONS
-export async function getTitle(setLoading, setTitle, id) {
-    try {
-        setLoading(true);
-        let {data, error, status} = await supabase
-            .from(TABLES.TITLES)
-            .select('*').eq('id', id)
-        if (error && status !== 406) {
-            logErrorMessage(error);
-        }
-        if (data) {
-            setTitle(data[0])
-        }
-    } catch (error) {
-        logErrorMessage(error);
-    } finally {
-        setLoading(false)
-    }
-}
-
 export async function addTitleData(data, deleteTitleImage, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
         let {error} = await supabase.from(TABLES.TITLES).insert([{
@@ -102,6 +83,22 @@ export async function getRowsByTable(table, setData) {
         }
         if (data) {
             setData(data)
+        }
+    } catch (error) {
+        logErrorMessage(error);
+    }
+}
+
+export async function getRowByTableAndId(table, setData, id) {
+    try {
+        let {data, error, status} = await supabase
+            .from(table)
+            .select('*').eq('id', id)
+        if (error && status !== 406) {
+            logErrorMessage(error);
+        }
+        if (data) {
+            setData(data[0])
         }
     } catch (error) {
         logErrorMessage(error);
