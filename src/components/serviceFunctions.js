@@ -1,13 +1,13 @@
 import {supabase} from "../supabase/supabaseClient";
-import {MESSAGES} from "../helpers/constants";
+import {MESSAGES, TABLES} from "../helpers/constants";
 import {generateUniqueHashedFilename, logErrorMessage} from "../helpers/functions";
 
-// PROFILE FUNCTIONS
+// PROFILES FUNCTIONS
 export async function getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) {
     try {
         setLoading(true);
         let {data, error, status} = await supabase
-            .from('profiles')
+            .from(TABLES.PROFILES)
             .select(`firstname, lastname, website, avatar_image_filename`)
             .eq('id', id)
             .single();
@@ -28,12 +28,12 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
     }
 }
 
-// TITLE FUNCTIONS
+// TITLES FUNCTIONS
 export async function getTitle(setLoading, setTitle, id) {
     try {
         setLoading(true);
         let {data, error, status} = await supabase
-            .from('titles')
+            .from(TABLES.TITLES)
             .select('*').eq('id', id)
         if (error && status !== 406) {
             logErrorMessage(error);
@@ -48,44 +48,50 @@ export async function getTitle(setLoading, setTitle, id) {
     }
 }
 
-export async function addTitleData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function addTitleData(data, deleteTitleImage, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
-        let {error} = await supabase.from('titles').insert([{
+        let {error} = await supabase.from(TABLES.TITLES).insert([{
             name: data.name,
             start_year: data.startYear,
             end_year: data.endYear,
+            publisher: data.publisherId,
             format_id: data.formatId,
             total_issues: data.totalIssues,
             image_filename: data.titleImageFilename,
             image_url: data.titleImageUrl
         }])
         if (error) {
+            deleteTitleImage();
             handleError(error, setFormMessage, setShowFormSuccess, setShowFormError);
         } else {
             handleSuccess(error, setFormMessage, setShowFormSuccess, setShowFormError);
         }
     } catch (error) {
+        deleteTitleImage();
         logErrorMessage(error);
     }
 }
 
-// PUBLISHER FUNCTIONS
-export async function addPublisherData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
+// PUBLISHERS FUNCTIONS
+export async function addPublisherData(data, deletePublisherImage, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
-        let {error} = await supabase.from('publishers').insert([{
+        let {error} = await supabase.from(TABLES.PUBLISHERS).insert([{
             name: data.name, country_id: data.countryId, image_filename: data.publisherImageFilename, image_url: data.publisherImageUrl
         }])
         if (error) {
+            deletePublisherImage();
             handleError(error, setFormMessage, setShowFormSuccess, setShowFormError);
         } else {
             handleSuccess(error, setFormMessage, setShowFormSuccess, setShowFormError);
         }
     } catch (error) {
+        deletePublisherImage();
         logErrorMessage(error);
     }
 }
 
 // GENERIC FUNCTIONS
+
 export async function getRowsByTable(table, setData) {
     try {
         let {data, error, status} = await supabase
@@ -132,25 +138,34 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
     }
 }
 
- export const uploadImage = async (file, fileName, setUploading, bucket, fileType, imageUrl, setImageFilename, setImageUrl) => {
-    try {
-        const fileExt = file.name.split('.').pop();
-        const newFileName = generateUniqueHashedFilename(fileExt, fileType);
-        let {error: uploadError} = await supabase.storage
-            .from(bucket)
-            .upload(newFileName, file);
-        setImageFilename(newFileName);
-        setImageUrl(supabase
-            .storage
-            .from(bucket)
-            .getPublicUrl(newFileName).publicURL)
-        if (uploadError) {
-            console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
+// IMAGE FUNCTIONS
+
+export const uploadImage = async (e, fileName, setUploading, setDisableReset, bucket, fileType, imageUrl, setImageFilename, setImageUrl) => {
+    setUploading(true);
+    setDisableReset(true);
+    if (!e.target.files || e.target.files.length === 0) {
+        console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
+    } else {
+        let file = e.target.files[0];
+        try {
+            const fileExt = file.name.split('.').pop();
+            const newFileName = generateUniqueHashedFilename(fileExt, fileType);
+            let {error: uploadError} = await supabase.storage
+                .from(bucket)
+                .upload(newFileName, file);
+            setImageFilename(newFileName);
+            setImageUrl(supabase
+                .storage
+                .from(bucket)
+                .getPublicUrl(newFileName).publicURL)
+            if (uploadError) {
+                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
+            }
+        } catch (error) {
+            logErrorMessage(error);
+        } finally {
+            setUploading(false);
         }
-    } catch (error) {
-        logErrorMessage(error);
-    } finally {
-        setUploading(false);
     }
 }
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {DocumentDuplicateIcon} from "@heroicons/react/solid";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
@@ -13,7 +13,7 @@ export const PublishersCard = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn('publishers', 'created_at', setLimitedPublishersData, 5, false).then()
+        getRowsByTableWithLimitAndOrderByColumn(TABLES.PUBLISHERS, 'created_at', setLimitedPublishersData, 5, false).then()
     }, [])
 
     return (

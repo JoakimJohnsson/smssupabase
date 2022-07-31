@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
-import {BUCKETS} from "../helpers/constants";
+import {BUCKETS, TABLES} from "../helpers/constants";
 
 const AppContext = React.createContext();
 
@@ -17,7 +17,7 @@ export function AppContextProvider({children}) {
 
     const updateProfileOnChange = useCallback(() => {
         supabase
-            .from('profiles')
+            .from(TABLES.PROFILES)
             .on('*', payload => {
                 updateProfile(user).then()
             })
@@ -70,7 +70,7 @@ export function AppContextProvider({children}) {
         try {
             setLoading(true);
             let {data, error, status} = await supabase
-                .from('profiles')
+                .from(TABLES.PROFILES)
                 .select(`firstname, lastname, role, website, avatar_image_filename`)
                 .eq('id', user.id);
 

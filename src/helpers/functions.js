@@ -1,6 +1,7 @@
 import {supabase} from '../supabase/supabaseClient';
 import {CLASSES, MESSAGES} from './constants';
 import React from "react";
+import {validateText} from "./validations";
 
 export async function checkIfEmailExists(emailReference, setEmailExists) {
     let {data: email} = await supabase.from('users').select('email').eq('email', emailReference)
@@ -72,4 +73,13 @@ export const printOptions = (data) => {
 export const getName = (data, myId) => {
     let obj = data.filter(item => item.id === myId);
     return obj[0].name;
+}
+
+export const handleNameInput = (e, setName, setFormInputClass, setNameValidated) => {
+    setName(e.target.value)
+    // Send true for success
+    validateText(e) ?
+        handleGenericFormInput(true, setFormInputClass, setNameValidated)
+        :
+        handleGenericFormInput(false, setFormInputClass, setNameValidated);
 }

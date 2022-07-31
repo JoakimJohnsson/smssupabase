@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {Spinner} from "../Spinner";
+import {Spinner} from "../miniComponents/Spinner";
 import {TitlesList} from "../listComponents/titles/TitlesList";
 import {getRowsByTable} from "../serviceFunctions";
 

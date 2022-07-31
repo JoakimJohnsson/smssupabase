@@ -2,8 +2,8 @@ import {useAppContext} from '../../context/AppContext';
 import React, {useEffect, useState} from 'react';
 import {supabase} from '../../supabase/supabaseClient';
 import {Avatar} from '../Avatar';
-import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from '../../helpers/constants';
-import {Spinner} from '../Spinner';
+import {CLASSES, LABELS_AND_HEADINGS, TABLES, TEXTS} from '../../helpers/constants';
+import {Spinner} from '../miniComponents/Spinner';
 import {prepareUrl} from '../../helpers/functions';
 import {getProfile} from "../serviceFunctions";
 
@@ -34,7 +34,7 @@ const Settings = () => {
                 avatar_image_filename,
                 updated_at: new Date(),
             }
-            let {error} = await supabase.from('profiles').upsert(updates, {
+            let {error} = await supabase.from(TABLES.PROFILES).upsert(updates, {
                 returning: 'minimal', // Don't return the value after inserting
             })
             if (error) {
