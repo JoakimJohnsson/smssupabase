@@ -8,6 +8,11 @@ import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {getName} from "../../../helpers/functions";
 
+// TODO: Admin title page
+// * in servicefunctions - instead of using getRowsbyTable in a component - we can create a servicefunction for every table - getBlaBlas() that uses getrowsbytable instead.
+// * show publisher - with link to publisher
+// * Get country from publisher
+// * Users can chose if they want to start collecting this title
 
 export const AdminTitle = () => {
     const [title, setTitle] = useState({});

@@ -91,6 +91,7 @@ export async function addPublisherData(data, deletePublisherImage, setFormMessag
 }
 
 // GENERIC FUNCTIONS
+
 export async function getRowsByTable(table, setData) {
     try {
         let {data, error, status} = await supabase
@@ -136,6 +137,8 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
         logErrorMessage(error);
     }
 }
+
+// IMAGE FUNCTIONS
 
 export const uploadImage = async (e, fileName, setUploading, setDisableReset, bucket, fileType, imageUrl, setImageFilename, setImageUrl) => {
     setUploading(true);
