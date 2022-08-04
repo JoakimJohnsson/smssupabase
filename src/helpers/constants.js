@@ -39,6 +39,7 @@ export const ROUTES = {
     SETTINGS: '/settings',
     TITLES: '/titles',
     TITLE: '/titles/:id',
+    DASHBOARD: '/dashboard',
     ADMIN: {
         ROOT: '/admin',
         PUBLISHERS: '/admin/publishers/',
@@ -76,6 +77,7 @@ export const LABELS_AND_HEADINGS = {
     FIRST_NAME: 'Förnamn',
     FORMAT: 'Format',
     FORMAT_DB: 'Format (format)',
+    HOME: 'Hem',
     ID: 'Id',
     IMAGE: 'Bild',
     INFORMATION: 'Information',

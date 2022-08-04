@@ -16,6 +16,7 @@ import {AdminPublisher} from "./pages/admin/AdminPublisher";
 import {AdminPublishers} from "./pages/admin/AdminPublishers";
 import {AdminPublisherAdd} from "./pages/admin/AdminPublisherAdd";
 import {AdminPublisherEdit} from "./pages/admin/AdminPublisherEdit";
+import {Home} from "./pages/Home";
 
 
 export const MyRoutes = () => {
@@ -24,10 +25,11 @@ export const MyRoutes = () => {
 
     return (
         <Routes>
-            <Route exact path={ROUTES.DEFAULT} element={<Dashboard/>}/>
+            <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
             <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
 
             {/* User routes */}
+            <Route path={ROUTES.DASHBOARD} element={!user ? <Navigate replace to={ROUTES.DEFAULT}/> : <Dashboard/>}/>
             <Route path={ROUTES.SETTINGS} element={!user ? <Navigate replace to={ROUTES.DEFAULT}/> : <Settings/>}/>
             <Route path={ROUTES.TITLE} element={!user ? <Navigate replace to={ROUTES.DEFAULT}/> : <Title/>}/>
             <Route path={ROUTES.TITLES} element={!user ? <Navigate replace to={ROUTES.DEFAULT}/> : <Titles/>}/>
