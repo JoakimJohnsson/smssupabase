@@ -38,7 +38,7 @@ export const AuthorizedNavigation = () => {
                     {/* desktop ul (no click handler) */}
                     <ul className='d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0'>
                         <LiNavItem route={ROUTES.DEFAULT} icon={<HomeIcon/>} text={LABELS_AND_HEADINGS.HOME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD} icon={<PresentationChartLineIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<PresentationChartLineIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.TITLES} icon={<DocumentDuplicateIcon/>} text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.SETTINGS} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&

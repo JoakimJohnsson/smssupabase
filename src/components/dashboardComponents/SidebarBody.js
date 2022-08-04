@@ -1,8 +1,9 @@
 import React from "react";
 import {DocumentDuplicateIcon, UserGroupIcon, PresentationChartBarIcon} from "@heroicons/react/solid";
-import {LABELS_AND_HEADINGS, PANES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, PANES, ROUTES} from "../../helpers/constants";
 import {Nav} from "react-bootstrap";
 import {SidebarNavLink} from "./SidebarNavLink";
+import {Link} from "react-router-dom";
 
 export const SidebarBody = ({handleClick}) => {
     return (
@@ -10,6 +11,9 @@ export const SidebarBody = ({handleClick}) => {
             <Nav className={'w-100 d-block pt-3 pt-md-5'}>
                 <div className={'mb-4'}>
                     <p className={'sidebar-label'}>{LABELS_AND_HEADINGS.MY_COLLECTION}</p>
+                    <Link className={'d-block'} to={ROUTES.DASHBOARD.TITLES}>Titles</Link>
+                    <Link className={'d-block'} to={ROUTES.DASHBOARD.OVERVIEW}>Overview</Link>
+                    <Link className={'d-block'} to={ROUTES.DASHBOARD.OTHER_COLLECTIONS}>Other</Link>
                     <SidebarNavLink eventKey={PANES.OVERVIEW.KEY} variant={'primary'} Icon={<PresentationChartBarIcon className={'sms-icon--text'}/>}
                                     text={PANES.OVERVIEW.NAME} handleClick={handleClick}/>
                     <SidebarNavLink eventKey={PANES.TITLES.KEY} variant={'primary'} Icon={<DocumentDuplicateIcon className={'sms-icon--text'}/>}

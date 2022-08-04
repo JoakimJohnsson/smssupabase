@@ -39,7 +39,12 @@ export const ROUTES = {
     SETTINGS: '/settings',
     TITLES: '/titles',
     TITLE: '/titles/:id',
-    DASHBOARD: '/dashboard',
+    DASHBOARD: {
+        ROOT: 'dashboard',
+        OVERVIEW: 'overview',
+        TITLES: 'titles',
+        OTHER_COLLECTIONS: 'other-collections',
+    },
     ADMIN: {
         ROOT: '/admin',
         PUBLISHERS: '/admin/publishers/',
