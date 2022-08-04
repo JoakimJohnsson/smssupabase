@@ -45,12 +45,12 @@ export const ROUTES = {
         PUBLISHERS: '/admin/publishers/',
         PUBLISHER_ID: '/admin/publishers/:id',
         PUBLISHER_ADD: '/admin/publishers/add/',
-        PUBLISHER_EDIT: '/admin/publishers/edit/',
+        PUBLISHER_EDIT: '/admin/publishers/edit/:id',
+        TITLES: '/admin/titles/',
         TITLE_ID: '/admin/titles/:id',
         TITLE_ADD: '/admin/titles/add/',
         TITLE_EDIT: '/admin/titles/edit/',
-        TITLE_EDIT_ID: '/admin/titles/edit/:id',
-        TITLES: '/admin/titles/'
+        TITLE_EDIT_ID: '/admin/titles/edit/:id'
     }
 }
 

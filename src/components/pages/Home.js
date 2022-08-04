@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {ChevronDoubleDownIcon} from '@heroicons/react/solid';
 import {useAppContext} from "../../context/AppContext";
