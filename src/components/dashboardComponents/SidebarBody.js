@@ -3,26 +3,23 @@ import {DocumentDuplicateIcon, UserGroupIcon, PresentationChartBarIcon} from "@h
 import {LABELS_AND_HEADINGS, PANES, ROUTES} from "../../helpers/constants";
 import {Nav} from "react-bootstrap";
 import {SidebarNavLink} from "./SidebarNavLink";
-import {Link} from "react-router-dom";
 
-export const SidebarBody = ({handleClick}) => {
+
+export const SidebarBody = () => {
     return (
         <>
             <Nav className={'w-100 d-block pt-3 pt-md-5'}>
                 <div className={'mb-4'}>
                     <p className={'sidebar-label'}>{LABELS_AND_HEADINGS.MY_COLLECTION}</p>
-                    <Link className={'d-block'} to={ROUTES.DASHBOARD.TITLES}>Titles</Link>
-                    <Link className={'d-block'} to={ROUTES.DASHBOARD.OVERVIEW}>Overview</Link>
-                    <Link className={'d-block'} to={ROUTES.DASHBOARD.OTHER_COLLECTIONS}>Other</Link>
-                    <SidebarNavLink eventKey={PANES.OVERVIEW.KEY} variant={'primary'} Icon={<PresentationChartBarIcon className={'sms-icon--text'}/>}
-                                    text={PANES.OVERVIEW.NAME} handleClick={handleClick}/>
-                    <SidebarNavLink eventKey={PANES.TITLES.KEY} variant={'primary'} Icon={<DocumentDuplicateIcon className={'sms-icon--text'}/>}
-                                    text={PANES.TITLES.NAME} handleClick={handleClick}/>
+                    <SidebarNavLink route={ROUTES.DASHBOARD.OVERVIEW} text={PANES.OVERVIEW.NAME} variant={"primary"}
+                                    icon={<PresentationChartBarIcon className={'sms-icon--text'}/>}/>
+                    <SidebarNavLink route={ROUTES.DASHBOARD.TITLES} text={PANES.TITLES.NAME} variant={"primary"}
+                                    icon={<DocumentDuplicateIcon className={'sms-icon--text'}/>}/>
                 </div>
-                <div className={''}>
+                <div>
                     <p className={'sidebar-label'}>{LABELS_AND_HEADINGS.COMMUNITY}</p>
-                    <SidebarNavLink eventKey={PANES.OTHER_COLLECTIONS.KEY} variant={'secondary'} Icon={<UserGroupIcon className={'sms-icon--text'}/>}
-                                    text={PANES.OTHER_COLLECTIONS.NAME} handleClick={handleClick}/>
+                    <SidebarNavLink route={ROUTES.DASHBOARD.OTHER_COLLECTIONS} text={PANES.OTHER_COLLECTIONS.NAME} variant={"secondary"}
+                                    icon={<UserGroupIcon className={'sms-icon--text'}/>}/>
                 </div>
             </Nav>
         </>

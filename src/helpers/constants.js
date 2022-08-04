@@ -154,14 +154,11 @@ export const TABLES = {
 
 export const PANES = {
     TITLES: {
-        KEY: "titles-pane",
         NAME: "Mina titlar"
     },OVERVIEW: {
-        KEY: "overview-pane",
         NAME: "Översikt"
     },
     OTHER_COLLECTIONS: {
-        KEY: "other-collections-pane",
         NAME: "Andra samlingar"
     }
 }
