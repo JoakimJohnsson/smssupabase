@@ -70,7 +70,7 @@ export const printOptions = (data) => {
     )
 }
 
-export const getName = (data, myId) => {
+export const getObjectNameById = (data, myId) => {
     let obj = data.filter(item => item.id === myId);
     return obj[0].name;
 }

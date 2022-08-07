@@ -39,17 +39,23 @@ export const ROUTES = {
     SETTINGS: '/settings',
     TITLES: '/titles',
     TITLE: '/titles/:id',
+    DASHBOARD: {
+        ROOT: 'dashboard',
+        OVERVIEW: 'overview',
+        TITLES: 'titles',
+        OTHER_COLLECTIONS: 'other-collections',
+    },
     ADMIN: {
         ROOT: '/admin',
         PUBLISHERS: '/admin/publishers/',
         PUBLISHER_ID: '/admin/publishers/:id',
         PUBLISHER_ADD: '/admin/publishers/add/',
-        PUBLISHER_EDIT: '/admin/publishers/edit/',
+        PUBLISHER_EDIT: '/admin/publishers/edit/:id',
+        TITLES: '/admin/titles/',
         TITLE_ID: '/admin/titles/:id',
         TITLE_ADD: '/admin/titles/add/',
         TITLE_EDIT: '/admin/titles/edit/',
-        TITLE_EDIT_ID: '/admin/titles/edit/:id',
-        TITLES: '/admin/titles/'
+        TITLE_EDIT_ID: '/admin/titles/edit/:id'
     }
 }
 
@@ -76,6 +82,7 @@ export const LABELS_AND_HEADINGS = {
     FIRST_NAME: 'Förnamn',
     FORMAT: 'Format',
     FORMAT_DB: 'Format (format)',
+    HOME: 'Hem',
     ID: 'Id',
     IMAGE: 'Bild',
     INFORMATION: 'Information',
@@ -147,14 +154,11 @@ export const TABLES = {
 
 export const PANES = {
     TITLES: {
-        KEY: "titles-pane",
         NAME: "Mina titlar"
     },OVERVIEW: {
-        KEY: "overview-pane",
         NAME: "Översikt"
     },
     OTHER_COLLECTIONS: {
-        KEY: "other-collections-pane",
         NAME: "Andra samlingar"
     }
 }

@@ -9,7 +9,7 @@ export const Titles = () => {
 
     const [titlesData, setTitlesData] = useState(null);
     useEffect(() => {
-        getRowsByTable("titles", setTitlesData).then(r => console.info('Got titles'))
+        getRowsByTable("titles", setTitlesData).then()
     }, [])
 
     return (
