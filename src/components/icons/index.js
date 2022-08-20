@@ -1,5 +1,5 @@
 import React from "react";
-import {PresentationChartLineIcon, ShieldExclamationIcon} from "@heroicons/react/solid";
+import {DocumentDuplicateIcon, PresentationChartLineIcon, ShieldExclamationIcon} from "@heroicons/react/solid";
 
 export const AdminIcon = ({textVariant}) => {
     const className = textVariant ? "sms-icon--text-" + textVariant : "";
@@ -12,5 +12,12 @@ export const DashboardIcon = ({textVariant}) => {
     const className = textVariant ? "sms-icon--text-" + textVariant : "";
     return (
         <PresentationChartLineIcon className={className}/>
+    )
+}
+
+export const TitlesIcon = ({textVariant}) => {
+    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+    return (
+        <DocumentDuplicateIcon className={className}/>
     )
 }

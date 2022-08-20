@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
-import {DocumentDuplicateIcon} from "@heroicons/react/solid";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
 import {TitlesList} from "../../../listComponents/titles/TitlesList";
 import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
+import {TitlesIcon} from "../../../icons";
 
 
 export const TitlesCard = () => {
@@ -19,7 +19,7 @@ export const TitlesCard = () => {
     return (
         <div className={'sms-dashboard-col'}>
             <div className={'dashboard-card'}>
-                <h2><DocumentDuplicateIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.TITLES}</h2>
+                <h2><span className={"me-2"}><TitlesIcon textVariant={'lg'}/></span>{LABELS_AND_HEADINGS.TITLES}</h2>
                 {
                     limitedTitlesData ?
                         <>
