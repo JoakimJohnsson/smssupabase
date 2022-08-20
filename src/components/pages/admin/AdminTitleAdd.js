@@ -6,7 +6,7 @@ import {BackButton} from "../../miniComponents/BackButton";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {ImageUploader} from "../../ImageUploader";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
-import {AdminIcon} from "../../icons/AdminIcon";
+import {AdminIcon} from "../../icons";
 
 
 export const AdminTitleAdd = () => {

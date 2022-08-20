@@ -4,7 +4,7 @@ import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {TitlesList} from "../../listComponents/titles/TitlesList";
 import {BackButton} from "../../miniComponents/BackButton";
 import {getRowsByTable} from "../../serviceFunctions";
-import {AdminIcon} from "../../icons/AdminIcon";
+import {AdminIcon} from "../../icons";
 
 
 export const AdminTitles = () => {

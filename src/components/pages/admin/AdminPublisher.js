@@ -6,7 +6,7 @@ import {BackButton} from "../../miniComponents/BackButton";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import countryData from "../../../helpers/valueLists/countries.json";
 import {getObjectNameById} from "../../../helpers/functions";
-import {AdminIcon} from "../../icons/AdminIcon";
+import {AdminIcon} from "../../icons";
 
 
 export const AdminPublisher = () => {

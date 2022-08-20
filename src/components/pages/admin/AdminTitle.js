@@ -7,7 +7,7 @@ import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {getObjectNameById} from "../../../helpers/functions";
 import {PublisherInformation} from "../../miniComponents/PublisherInformation";
-import {AdminIcon} from "../../icons/AdminIcon";
+import {AdminIcon} from "../../icons";
 
 
 export const AdminTitle = () => {

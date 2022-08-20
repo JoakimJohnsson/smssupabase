@@ -7,8 +7,7 @@ import {useAppContext} from '../../context/AppContext';
 import {NavbarProfileInformation} from '../NavbarProfileInformation';
 import {LiNavItem} from '../listComponents/LiNavItem';
 import {LABELS_AND_HEADINGS, ROUTES} from '../../helpers/constants';
-import {AdminIcon} from "../icons/AdminIcon";
-import {DashboardIcon} from "../icons/DashboardIcon";
+import {AdminIcon, DashboardIcon} from "../icons";
 
 export const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);

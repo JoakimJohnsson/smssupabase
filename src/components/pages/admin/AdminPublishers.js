@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import {BackButton} from "../../miniComponents/BackButton";
 import {getRowsByTable} from "../../serviceFunctions";
 import {PublishersList} from "../../listComponents/publishers/PublishersList";
-import {AdminIcon} from "../../icons/AdminIcon";
+import {AdminIcon} from "../../icons";
 
 
 export const AdminPublishers = () => {
