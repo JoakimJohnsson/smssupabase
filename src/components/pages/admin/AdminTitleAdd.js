@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import {addTitleData, deleteImage, getRowsByTable, uploadImage} from "../../serviceFunctions";
 import {handleNameInput, printOptions} from "../../../helpers/functions";
-import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {ImageUploader} from "../../ImageUploader";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
+import {AdminIcon} from "../../icons";
 
 
 export const AdminTitleAdd = () => {
@@ -55,7 +55,7 @@ export const AdminTitleAdd = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1 className={"text-icon-header"}><BanIcon className={"sms-icon--text-xl"}/><span>{LABELS_AND_HEADINGS.ADD_TITLE}</span></h1>
+                    <h1 className={"text-icon-header"}><AdminIcon textVariant={"xl"}/><span>{LABELS_AND_HEADINGS.ADD_TITLE}</span></h1>
                     <BackButton customClass={"mb-3"}/>
                     <div className={'row'}>
                         <div className={'sms-dashboard-col'}>

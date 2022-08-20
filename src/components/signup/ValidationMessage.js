@@ -6,9 +6,9 @@ const ValidationMessage = ({success, message}) => {
         message !== '' &&
         <p className={"form-text"}>
             {success ?
-                <CheckCircleIcon className={"sms-icon--text text-success"}/>
+                <CheckCircleIcon className={"sms-icon--text-md text-success"}/>
                 :
-                <ExclamationCircleIcon className={"sms-icon--text text-danger"}/>
+                <ExclamationCircleIcon className={"sms-icon--text-md text-danger"}/>
             }
             {message}
         </p>

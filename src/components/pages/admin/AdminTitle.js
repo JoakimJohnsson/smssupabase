@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Spinner} from "../../miniComponents/Spinner";
-import {BanIcon} from "@heroicons/react/solid";
 import {BackButton} from "../../miniComponents/BackButton";
 import {getRowByTableAndId} from "../../serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {getObjectNameById} from "../../../helpers/functions";
 import {PublisherInformation} from "../../miniComponents/PublisherInformation";
+import {AdminIcon} from "../../icons";
 
 
 export const AdminTitle = () => {
@@ -22,8 +22,9 @@ export const AdminTitle = () => {
             <main className={"container-fluid main-container"}>
                 <div className={"row"}>
                     <div className={"col-12 main-col"}>
-                        <h1 className={"text-icon-header"}><BanIcon
-                            className={"sms-icon--text-xl"}/><span>{title.name} {title.start_year} - {title.end_year}</span></h1>
+                        <h1 className={"text-icon-header"}>
+                            <AdminIcon titleVariant={"xl"}/><span>{title.name} {title.start_year} - {title.end_year}</span>
+                        </h1>
                         <BackButton customClass={"mb-3"}/>
                         {
                             title.image_url && title.image_filename &&
