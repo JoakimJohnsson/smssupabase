@@ -23,7 +23,7 @@ export const AdminTitle = () => {
                 <div className={"row"}>
                     <div className={"col-12 main-col"}>
                         <h1 className={"text-icon-header"}>
-                            <AdminIcon titleVariant={"xl"}/><span>{title.name} {title.start_year} - {title.end_year}</span>
+                            <AdminIcon textVariant={"xl"}/><span>{title.name} {title.start_year} - {title.end_year}</span>
                         </h1>
                         <BackButton customClass={"mb-3"}/>
                         {

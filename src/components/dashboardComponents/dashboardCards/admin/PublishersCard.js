@@ -19,7 +19,7 @@ export const PublishersCard = () => {
     return (
         <div className={'sms-dashboard-col'}>
             <div className={'dashboard-card'}>
-                <h2><PublishersIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
+                <h2><span className={"me-2"}><PublishersIcon textVariant={'lg'}/></span>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
                 {
                     limitedPublishersData ?
                         <>

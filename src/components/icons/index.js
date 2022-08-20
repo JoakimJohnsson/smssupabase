@@ -2,6 +2,7 @@ import React from "react";
 import {CogIcon, DocumentDuplicateIcon, HomeIcon, LibraryIcon, PresentationChartLineIcon, ShieldExclamationIcon} from "@heroicons/react/solid";
 
 export const AdminIcon = ({textVariant}) => {
+    console.log("tv", textVariant);
     const className = textVariant ? "sms-icon--text-" + textVariant : "";
     return (
         <ShieldExclamationIcon className={className}/>
