@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {MenuIcon, XIcon, PresentationChartLineIcon, CogIcon, BanIcon, DocumentDuplicateIcon, HomeIcon} from '@heroicons/react/solid';
+import {MenuIcon, XIcon, PresentationChartLineIcon, CogIcon, DocumentDuplicateIcon, HomeIcon} from '@heroicons/react/solid';
 import shieldWhite from '../../assets/images/shield__white.svg';
 import {SignOutButton} from '../miniComponents/SignOutButton';
 import {useAppContext} from '../../context/AppContext';
 import {NavbarProfileInformation} from '../NavbarProfileInformation';
 import {LiNavItem} from '../listComponents/LiNavItem';
 import {LABELS_AND_HEADINGS, ROUTES} from '../../helpers/constants';
+import {AdminIcon} from "../icons/AdminIcon";
 
 export const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +43,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.TITLES} icon={<DocumentDuplicateIcon/>} text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.SETTINGS} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
-                        <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
+                        <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className='nav-item'>
                             {avatarImageUrl ? <NavbarProfileInformation/> : false}
@@ -54,7 +55,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<PresentationChartLineIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.SETTINGS} onClick={handleClick} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
-                        <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<BanIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
+                        <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className='nav-item'>
                             {avatarImageUrl ? <NavbarProfileInformation/> : false}
