@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
-import {LibraryIcon} from "@heroicons/react/solid";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
 import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
 import {PublishersList} from "../../../listComponents/publishers/PublishersList";
+import {PublishersIcon} from "../../../icons";
 
 
 export const PublishersCard = () => {
@@ -19,7 +19,7 @@ export const PublishersCard = () => {
     return (
         <div className={'sms-dashboard-col'}>
             <div className={'dashboard-card'}>
-                <h2><LibraryIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
+                <h2><PublishersIcon className={'sms-icon--text-lg me-2'}/>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
                 {
                     limitedPublishersData ?
                         <>
