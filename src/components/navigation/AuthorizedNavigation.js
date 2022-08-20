@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {MenuIcon, XIcon, PresentationChartLineIcon, CogIcon, DocumentDuplicateIcon, HomeIcon} from '@heroicons/react/solid';
+import {MenuIcon, XIcon, CogIcon, DocumentDuplicateIcon, HomeIcon} from '@heroicons/react/solid';
 import shieldWhite from '../../assets/images/shield__white.svg';
 import {SignOutButton} from '../miniComponents/SignOutButton';
 import {useAppContext} from '../../context/AppContext';
@@ -8,6 +8,7 @@ import {NavbarProfileInformation} from '../NavbarProfileInformation';
 import {LiNavItem} from '../listComponents/LiNavItem';
 import {LABELS_AND_HEADINGS, ROUTES} from '../../helpers/constants';
 import {AdminIcon} from "../icons/AdminIcon";
+import {DashboardIcon} from "../icons/DashboardIcon";
 
 export const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,7 @@ export const AuthorizedNavigation = () => {
                     {/* desktop ul (no click handler) */}
                     <ul className='d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0'>
                         <LiNavItem route={ROUTES.DEFAULT} icon={<HomeIcon/>} text={LABELS_AND_HEADINGS.HOME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<PresentationChartLineIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<DashboardIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.TITLES} icon={<DocumentDuplicateIcon/>} text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.SETTINGS} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
@@ -52,7 +53,7 @@ export const AuthorizedNavigation = () => {
                     </ul>
                     {/* mobile ul */}
                     <ul className='d-lg-none navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0'>
-                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<PresentationChartLineIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<DashboardIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.SETTINGS} onClick={handleClick} icon={<CogIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
                         <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>
