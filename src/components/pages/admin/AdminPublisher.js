@@ -2,11 +2,10 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {supabase} from "../../../supabase/supabaseClient";
 import {Spinner} from "../../miniComponents/Spinner";
-import {BackButton} from "../../miniComponents/BackButton";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import countryData from "../../../helpers/valueLists/countries.json";
 import {getObjectNameById} from "../../../helpers/functions";
-import {AdminIcon} from "../../icons";
+import {AdminH1} from "../../headings";
 
 
 export const AdminPublisher = () => {
@@ -40,8 +39,7 @@ export const AdminPublisher = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1 className={"text-icon-header"}><AdminIcon textVariant={"xl"}/><span>{publisher.name}</span></h1>
-                    <BackButton customClass={"mb-3"}/>
+                    <AdminH1 text={publisher.name}/>
                     {
                         publisher.image_url && publisher.image_filename &&
                         <div className={"col-12 col-sm-6 col-md-4"}>

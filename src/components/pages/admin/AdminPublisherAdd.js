@@ -2,11 +2,10 @@ import React, {useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
 import {handleNameInput, printOptions} from "../../../helpers/functions";
-import {BackButton} from "../../miniComponents/BackButton";
 import countryData from "../../../helpers/valueLists/countries.json";
 import {ImageUploader} from "../../ImageUploader";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
-import {AdminIcon} from "../../icons";
+import {AdminH1} from "../../headings";
 
 
 export const AdminPublisherAdd = () => {
@@ -43,8 +42,7 @@ export const AdminPublisherAdd = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1 className={"text-icon-header"}><AdminIcon textVariant={"xl"}/><span>{LABELS_AND_HEADINGS.ADD_PUBLISHER}</span></h1>
-                    <BackButton customClass={"mb-3"}/>
+                    <AdminH1 text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                     <div className={'row'}>
                         <div className={'sms-dashboard-col'}>
                             <div className={'sms-form'}>

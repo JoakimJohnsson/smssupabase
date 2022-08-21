@@ -50,13 +50,11 @@ export const ROUTES = {
         PUBLISHERS: '/admin/publishers/',
         PUBLISHER_ID: '/admin/publishers/:id',
         PUBLISHER_ADD: '/admin/publishers/add/',
-        PUBLISHER_EDIT: '/admin/publishers/edit/',
-        PUBLISHER_EDIT_ID: '/admin/publishers/edit/:id',
+        PUBLISHER_EDIT_ID: '/admin/publishers/:id/edit',
         TITLES: '/admin/titles/',
         TITLE_ID: '/admin/titles/:id',
         TITLE_ADD: '/admin/titles/add/',
-        TITLE_EDIT: '/admin/titles/edit/',
-        TITLE_EDIT_ID: '/admin/titles/edit/:id'
+        TITLE_EDIT_ID: '/admin/titles/:id/edit'
     }
 }
 
@@ -64,6 +62,7 @@ export const LABELS_AND_HEADINGS = {
     ADMIN: 'Admin',
     ADD: 'Lägg till',
     ADD_PUBLISHER: 'Lägg till nytt förlag',
+    EDIT_PUBLISHER: 'Redigera förlag',
     ADD_TITLE: 'Lägg till ny titel',
     ALL_PUBLISHERS: 'Alla förlag',
     ALL_TITLES: 'Alla titlar',

@@ -1,5 +1,5 @@
 import React from "react";
-import {BackButton} from "../../miniComponents/BackButton";
+import {AdminH1} from "../../headings";
 
 
 export const AdminTitleEdit = () => {
@@ -8,7 +8,7 @@ export const AdminTitleEdit = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <BackButton/>
+                    <AdminH1 text={"hej"}/>
                 </div>
             </div>
         </main>

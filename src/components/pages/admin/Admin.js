@@ -2,7 +2,7 @@ import React from "react";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {TitlesCard} from "../../dashboardComponents/dashboardCards/admin/TitlesCard";
 import {PublishersCard} from "../../dashboardComponents/dashboardCards/admin/PublishersCard";
-import {AdminIcon} from "../../icons";
+import {AdminH1} from "../../headings";
 
 
 export const Admin = () => {
@@ -11,7 +11,7 @@ export const Admin = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1 className={"text-icon-header"}><AdminIcon textVariant={"xl"}/><span>{LABELS_AND_HEADINGS.ADMIN}</span></h1>
+                    <AdminH1 text={LABELS_AND_HEADINGS.ADMIN}/>
                 </div>
                 <div className={'row main-col'}>
                     <TitlesCard/>
