@@ -98,7 +98,23 @@ export async function getRowByTableAndId(table, setData, id) {
             logErrorMessage(error);
         }
         if (data) {
-            setData(data[0])
+            setData(data[0]);
+        }
+    } catch (error) {
+        logErrorMessage(error);
+    }
+}
+
+export async function getNameByTableAndId(table, id, setData) {
+    try {
+        let {data, error, status} = await supabase
+            .from(table)
+            .select('name').eq('id', id)
+        if (error && status !== 406) {
+            logErrorMessage(error);
+        }
+        if (data) {
+            setData(data[0].name);
         }
     } catch (error) {
         logErrorMessage(error);
