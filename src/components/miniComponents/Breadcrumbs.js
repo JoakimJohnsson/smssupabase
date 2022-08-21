@@ -8,7 +8,6 @@ import {getNameByTableAndId} from "../serviceFunctions";
 export const Breadcrumbs = () => {
 
     const {id} = useParams();
-
     const [fetchedName, setFetchedName] = useState("");
     let previousCrumb = "";
     const breadcrumbs = useBreadcrumbs();
@@ -18,36 +17,39 @@ export const Breadcrumbs = () => {
         previousCrumb = breadcrumb.props.children.toString().toLowerCase();
     }
 
-    const getTranslatedBreadcrumbName = (breadcrumb) => {
+    const getTranslatedBreadcrumbName = (breadcrumbName, breadcrumb) => {
+        switch (breadcrumbName) {
+            case "home":
+                updatePreviousCrumb(breadcrumb);
+                return LABELS_AND_HEADINGS.HOME;
+            case "admin":
+                updatePreviousCrumb(breadcrumb);
+                return LABELS_AND_HEADINGS.ADMIN;
+            case "titles":
+                updatePreviousCrumb(breadcrumb);
+                return LABELS_AND_HEADINGS.ALL_TITLES;
+            case "publishers":
+                updatePreviousCrumb(breadcrumb);
+                return LABELS_AND_HEADINGS.ALL_PUBLISHERS;
+            case "edit":
+                updatePreviousCrumb(breadcrumb);
+                return LABELS_AND_HEADINGS.EDIT;
+            default:
+                updatePreviousCrumb(breadcrumb);
+                return breadcrumbName;
+        }
+    }
+
+    const getBreadcrumbName = (breadcrumb) => {
         const breadcrumbName = breadcrumb.props.children.toString().toLowerCase();
-        if (breadcrumbName.length > 30 ) {
+        if (id && breadcrumbName.length > 30) {
             getNameByTableAndId(previousCrumb, id, setFetchedName).then();
         }
-
         if ((fetchedName !== "") && (previousCrumb === 'titles' || previousCrumb === 'publishers')) {
             updatePreviousCrumb(breadcrumb);
             return fetchedName;
         } else {
-            switch (breadcrumbName) {
-                case "home":
-                    updatePreviousCrumb(breadcrumb);
-                    return LABELS_AND_HEADINGS.HOME;
-                case "admin":
-                    updatePreviousCrumb(breadcrumb);
-                    return LABELS_AND_HEADINGS.ADMIN;
-                case "titles":
-                    updatePreviousCrumb(breadcrumb);
-                    return LABELS_AND_HEADINGS.ALL_TITLES;
-                case "publishers":
-                    updatePreviousCrumb(breadcrumb);
-                    return LABELS_AND_HEADINGS.ALL_PUBLISHERS;
-                case "edit":
-                    updatePreviousCrumb(breadcrumb);
-                    return LABELS_AND_HEADINGS.EDIT;
-                default:
-                    updatePreviousCrumb(breadcrumb);
-                    return breadcrumbName;
-            }
+            return getTranslatedBreadcrumbName(breadcrumbName, breadcrumb);
         }
     }
 
@@ -55,13 +57,13 @@ export const Breadcrumbs = () => {
         if (index === size) {
             return (
                 <li className={"breadcrumb-item active"} aria-current={"page"} key={index}>
-                    {getTranslatedBreadcrumbName(breadcrumb)}
+                    {getBreadcrumbName(breadcrumb)}
                 </li>
             )
         } else {
             return (
                 <li className={"breadcrumb-item"} key={index}>
-                    <Link to={match.pathname}>{getTranslatedBreadcrumbName(breadcrumb)}</Link>
+                    <Link to={match.pathname}>{getBreadcrumbName(breadcrumb)}</Link>
                 </li>
             )
         }
