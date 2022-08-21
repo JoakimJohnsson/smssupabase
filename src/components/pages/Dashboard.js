@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import {Outlet} from 'react-router-dom';
-import {LABELS_AND_HEADINGS, PANES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {Sidebar} from "../dashboardComponents/Sidebar";
 import {ChevronDoubleDownIcon, ChevronDoubleRightIcon} from '@heroicons/react/solid';
-import {Tab} from "react-bootstrap";
 import {useAppContext} from "../../context/AppContext";
 import {HeroHeader} from "../header/HeroHeader";
 import {Signup} from "../signup/Signup";
+
 
 export const Dashboard = () => {
 
@@ -16,35 +16,25 @@ export const Dashboard = () => {
         setIsOpen(!isOpen)
     }
 
- // https://thekenyandev.com/blog/building-a-react-router-sidebar-with-react/
-
     return user ? (
-            <Tab.Container id="dashboard-tabs" defaultActiveKey={PANES.OVERVIEW.KEY}>
-                <main className={"container-fluid main-container dashboard"}>
-                    <div className={"row"}>
-                        <Sidebar isOpen={isOpen} handleClick={handleClick}/>
-                        <div className={'col-12 d-block d-md-none '}>
-                            <button
-                                className={'btn btn-link mb-3 mt-3 text-start'}
-                                onClick={handleClick}
-                                aria-label={LABELS_AND_HEADINGS.MENU}
-                                aria-controls={'sidebar-menu'}
-                            >
-                                <ChevronDoubleRightIcon className={'sms-icon--hamburger me-0'}/>
-                            </button>
-                        </div>
-                        <div className={"col main-col"}>
-                            <Outlet />
-                            {/*TODO: Remove TAB functionality and replace with our nested routes*/}
-                          {/*  <Tab.Content>
-                                <OverviewPane/>
-                                <TitlesPane/>
-                                <OtherCollectionsPane/>
-                            </Tab.Content>*/}
-                        </div>
+            <main className={"container-fluid main-container dashboard"}>
+                <div className={"row"}>
+                    <Sidebar isOpen={isOpen} handleClick={handleClick}/>
+                    <div className={'col-12 d-block d-md-none '}>
+                        <button
+                            className={'btn btn-sm btn-primary mb-3 mt-3 text-start'}
+                            onClick={handleClick}
+                            aria-label={LABELS_AND_HEADINGS.MENU}
+                            aria-controls={'sidebar-menu'}
+                        >
+                            <ChevronDoubleRightIcon className={'sms-icon--hamburger me-0'}/>
+                        </button>
                     </div>
-                </main>
-            </Tab.Container>
+                    <div className={"col main-col"}>
+                        <Outlet/>
+                    </div>
+                </div>
+            </main>
         )
         :
         (
@@ -62,6 +52,5 @@ export const Dashboard = () => {
                     </div>
                 </main>
             </>
-
         )
 }
