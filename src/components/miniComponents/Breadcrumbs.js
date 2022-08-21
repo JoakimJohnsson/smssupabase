@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {getNameByTableAndId} from "../serviceFunctions";
 
 
@@ -18,24 +18,19 @@ export const Breadcrumbs = () => {
     }
 
     const getTranslatedBreadcrumbName = (breadcrumbName, breadcrumb) => {
+        updatePreviousCrumb(breadcrumb);
         switch (breadcrumbName) {
             case "home":
-                updatePreviousCrumb(breadcrumb);
                 return LABELS_AND_HEADINGS.HOME;
             case "admin":
-                updatePreviousCrumb(breadcrumb);
                 return LABELS_AND_HEADINGS.ADMIN;
             case "titles":
-                updatePreviousCrumb(breadcrumb);
                 return LABELS_AND_HEADINGS.ALL_TITLES;
             case "publishers":
-                updatePreviousCrumb(breadcrumb);
                 return LABELS_AND_HEADINGS.ALL_PUBLISHERS;
             case "edit":
-                updatePreviousCrumb(breadcrumb);
                 return LABELS_AND_HEADINGS.EDIT;
             default:
-                updatePreviousCrumb(breadcrumb);
                 return breadcrumbName;
         }
     }
@@ -45,7 +40,7 @@ export const Breadcrumbs = () => {
         if (id && breadcrumbName.length > 30) {
             getNameByTableAndId(previousCrumb, id, setFetchedName).then();
         }
-        if ((fetchedName !== "") && (previousCrumb === 'titles' || previousCrumb === 'publishers')) {
+        if ((fetchedName !== "") && (previousCrumb === TABLES.TITLES || previousCrumb === TABLES.PUBLISHERS)) {
             updatePreviousCrumb(breadcrumb);
             return fetchedName;
         } else {
@@ -70,7 +65,7 @@ export const Breadcrumbs = () => {
     }
 
     return (
-        <nav aria-label="breadcrumb" className={"mb-5"}>
+        <nav aria-label={LABELS_AND_HEADINGS.BREADCRUMB} className={"mb-5 breadcrumb-nav hide"}>
             <ol className="breadcrumb small">
                 {breadcrumbs.map(({match, breadcrumb}, index) => {
                         return printBreadCrumbLinkItems(index, breadcrumb, match);

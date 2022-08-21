@@ -67,6 +67,7 @@ export const LABELS_AND_HEADINGS = {
     ALL_PUBLISHERS: 'Alla förlag',
     ALL_TITLES: 'Alla titlar',
     BACK: 'Tillbaka',
+    BREADCRUMB: 'Brödsmula',
     CHOOSE: '--- Välj ---',
     CLOSE: 'Stäng',
     COMMUNITY: 'Socialt',
