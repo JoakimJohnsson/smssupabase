@@ -1,14 +1,13 @@
 import React, {useState} from "react";
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {getNameByTableAndId} from "../serviceFunctions";
 
 
 export const Breadcrumbs = () => {
 
-    // Todo Använda en useeffect istället - och använda state breadCrumbName, setBreadCrumbName
-    // Todo istället för get translatedBreadCrumbname direkt i rendern
+    const {id} = useParams();
 
     const [fetchedName, setFetchedName] = useState("");
     let previousCrumb = "";
@@ -19,11 +18,9 @@ export const Breadcrumbs = () => {
         previousCrumb = breadcrumb.props.children.toString().toLowerCase();
     }
 
-    const getTranslatedBreadCrumbName = (breadcrumb) => {
-        const breadCrumbName = breadcrumb.props.children.toString().toLowerCase();
-        let id = "";
-        if (breadCrumbName.length > 30 ) {
-            id = breadCrumbName.replaceAll(' ', '-');
+    const getTranslatedBreadcrumbName = (breadcrumb) => {
+        const breadcrumbName = breadcrumb.props.children.toString().toLowerCase();
+        if (breadcrumbName.length > 30 ) {
             getNameByTableAndId(previousCrumb, id, setFetchedName).then();
         }
 
@@ -31,7 +28,7 @@ export const Breadcrumbs = () => {
             updatePreviousCrumb(breadcrumb);
             return fetchedName;
         } else {
-            switch (breadCrumbName) {
+            switch (breadcrumbName) {
                 case "home":
                     updatePreviousCrumb(breadcrumb);
                     return LABELS_AND_HEADINGS.HOME;
@@ -49,7 +46,7 @@ export const Breadcrumbs = () => {
                     return LABELS_AND_HEADINGS.EDIT;
                 default:
                     updatePreviousCrumb(breadcrumb);
-                    return breadCrumbName;
+                    return breadcrumbName;
             }
         }
     }
@@ -58,13 +55,13 @@ export const Breadcrumbs = () => {
         if (index === size) {
             return (
                 <li className={"breadcrumb-item active"} aria-current={"page"} key={index}>
-                    {getTranslatedBreadCrumbName(breadcrumb)}
+                    {getTranslatedBreadcrumbName(breadcrumb)}
                 </li>
             )
         } else {
             return (
                 <li className={"breadcrumb-item"} key={index}>
-                    <Link to={match.pathname}>{getTranslatedBreadCrumbName(breadcrumb)}</Link>
+                    <Link to={match.pathname}>{getTranslatedBreadcrumbName(breadcrumb)}</Link>
                 </li>
             )
         }
