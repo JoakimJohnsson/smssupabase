@@ -35,32 +35,35 @@ export const Breadcrumbs = () => {
         }
     }
 
-    const getBreadcrumbName = (breadcrumb) => {
-        const breadcrumbName = breadcrumb.props.children.toString().toLowerCase();
+    const getNameFromBreadcrumbName = (breadcrumbName, breadcrumb) => {
         if (id && breadcrumbName.length > 30) {
             getNameByTableAndId(previousCrumb, id, setFetchedName).then();
-        }
-        if ((fetchedName !== "") && (previousCrumb === TABLES.TITLES || previousCrumb === TABLES.PUBLISHERS)) {
-            updatePreviousCrumb(breadcrumb);
-            return fetchedName;
+            if ((fetchedName !== "") && (previousCrumb === TABLES.TITLES || previousCrumb === TABLES.PUBLISHERS)) {
+                updatePreviousCrumb(breadcrumb);
+                return fetchedName || "";
+            }
         } else {
             return getTranslatedBreadcrumbName(breadcrumbName, breadcrumb);
         }
     }
 
     const printBreadCrumbLinkItems = (index, breadcrumb, match) => {
-        if (index === size) {
-            return (
-                <li className={"breadcrumb-item active"} aria-current={"page"} key={index}>
-                    {getBreadcrumbName(breadcrumb)}
-                </li>
-            )
-        } else {
-            return (
-                <li className={"breadcrumb-item"} key={index}>
-                    <Link to={match.pathname}>{getBreadcrumbName(breadcrumb)}</Link>
-                </li>
-            )
+        let breadcrumbName = breadcrumb.props.children.toString().toLowerCase();
+        let name = getNameFromBreadcrumbName(breadcrumbName, breadcrumb);
+        if (name) {
+            if (index === size) {
+                return (
+                    <li className={"breadcrumb-item active"} aria-current={"page"} key={index}>
+                        {name}
+                    </li>
+                )
+            } else {
+                return (
+                    <li className={"breadcrumb-item"} key={index}>
+                        <Link to={match.pathname}>{name}</Link>
+                    </li>
+                )
+            }
         }
     }
 

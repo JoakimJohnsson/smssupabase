@@ -52,7 +52,7 @@ const Settings = () => {
     // Trigger a reset of password
     async function requestPasswordResetForEmail(email) {
         try {
-            const {data, error} = await supabase.auth.api
+            const {error} = await supabase.auth.api
                 .resetPasswordForEmail(email)
             if (error) {
                 console.error('Error: ', error);
