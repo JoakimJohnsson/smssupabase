@@ -38,10 +38,10 @@ const Settings = () => {
                 returning: 'minimal', // Don't return the value after inserting
             })
             if (error) {
-                console.log('Error: ', error);
+                console.error('Error: ', error);
             }
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
         } finally {
             // Update App context
             setUserUrl(prepareUrl(website));
@@ -55,13 +55,12 @@ const Settings = () => {
             const {data, error} = await supabase.auth.api
                 .resetPasswordForEmail(email)
             if (error) {
-                console.log('Error: ', error);
-                console.log('Data: ', data);
+                console.error('Error: ', error);
             }
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
         } finally {
-            console.log("Reset password request sent for email: ", email);
+            console.info("Reset password request sent for email: ", email);
         }
     }
 

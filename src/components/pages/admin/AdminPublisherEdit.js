@@ -22,13 +22,13 @@ export const AdminPublisherEdit = () => {
                     .from('publishers')
                     .select('*').eq('id', id)
                 if (error && status !== 406) {
-                    console.log('Error: ', error);
+                    console.error('Error: ', error);
                 }
                 if (data) {
                     setPublisher(data[0])
                 }
             } catch (error) {
-                console.log(error.message)
+                console.error(error.message)
             } finally {
                 setLoading(false)
             }

@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import {BUCKETS, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../helpers/constants";
 import {PencilAltIcon, XCircleIcon} from "@heroicons/react/solid";
 import {deleteImageSimple, deleteRowsByTableAndId} from "../../serviceFunctions";
-import {logErrorMessage} from "../../../helpers/functions";
 
 
 export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesData}) => {
@@ -12,7 +11,7 @@ export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesDa
         try {
             await deleteImageSimple(image, BUCKETS.TITLE_IMAGES);
         } catch (error) {
-            logErrorMessage(error);
+            console.error("Error", error);
         } finally {
             deleteRowsByTableAndId(TABLES.TITLES, id, name, setTitlesData, titlesData).then();
         }

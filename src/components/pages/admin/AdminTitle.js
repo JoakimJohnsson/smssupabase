@@ -35,7 +35,7 @@ export const AdminTitle = () => {
                         <h2>{LABELS_AND_HEADINGS.ID}: {title.id}</h2>
                         <h3>{LABELS_AND_HEADINGS.FORMAT}: {getObjectNameById(formatData, title.format_id)}</h3>
                         <h3>{LABELS_AND_HEADINGS.TOTAL_ISSUES}: {title.total_issues}</h3>
-                        <PublisherInformation title={title}/>
+                        {title && <PublisherInformation title={title}/>}
                     </div>
                 </div>
             </main>

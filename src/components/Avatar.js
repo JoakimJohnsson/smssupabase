@@ -15,7 +15,7 @@ export const Avatar = ({onUpload}) => {
         try {
             setUploading(true);
             if (!event.target.files || event.target.files.length === 0) {
-                console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
+                console.info(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
             }
             const file = event.target.files[0];
             const fileExt = file.name.split('.').pop();

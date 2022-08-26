@@ -1,6 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../helpers/constants";
-import {generateUniqueHashedFilename, logErrorMessage} from "../helpers/functions";
+import {generateUniqueHashedFilename} from "../helpers/functions";
 
 // PROFILES FUNCTIONS
 export async function getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) {
@@ -13,7 +13,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
             .single();
 
         if (error && status !== 406) {
-            logErrorMessage(error);
+            console.error("Error", error);
         }
         if (data) {
             setFirstname(data.firstname);
@@ -22,7 +22,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
             setAvatarImageFilename(data.avatar_image_filename);
         }
     } catch (error) {
-        logErrorMessage(error);
+        console.error("Error", error);
     } finally {
         setLoading(false)
     }
@@ -49,7 +49,7 @@ export async function addTitleData(data, deleteTitleImage, setFormMessage, setSh
         }
     } catch (error) {
         deleteTitleImage();
-        logErrorMessage(error);
+        console.error("Error", error);
     }
 }
 
@@ -67,7 +67,7 @@ export async function addPublisherData(data, deletePublisherImage, setFormMessag
         }
     } catch (error) {
         deletePublisherImage();
-        logErrorMessage(error);
+        console.error("Error", error);
     }
 }
 
@@ -79,13 +79,13 @@ export async function getRowsByTable(table, setData) {
             .from(table)
             .select('*')
         if (error && status !== 406) {
-            logErrorMessage(error);
+            console.error("Error", error);
         }
         if (data) {
             setData(data)
         }
     } catch (error) {
-        logErrorMessage(error);
+        console.error("Error", error);
     }
 }
 
@@ -95,13 +95,13 @@ export async function getRowByTableAndId(table, setData, id) {
             .from(table)
             .select('*').eq('id', id)
         if (error && status !== 406) {
-            logErrorMessage(error);
+            console.error("Error", error);
         }
         if (data) {
             setData(data[0]);
         }
     } catch (error) {
-        logErrorMessage(error);
+        console.error("Error", error);
     }
 }
 
@@ -111,13 +111,13 @@ export async function getNameByTableAndId(table, id, setData) {
             .from(table)
             .select('name').eq('id', id)
         if (error && status !== 406) {
-            logErrorMessage(error);
+            console.error("Error", error);
         }
         if (data) {
             setData(data[0].name);
         }
     } catch (error) {
-        logErrorMessage(error);
+        console.error("Error", error);
     }
 }
 
@@ -131,7 +131,7 @@ export async function deleteRowsByTableAndId(table, id, name, setData, initialDa
             .delete().match({id: id})
         setData(initialData.filter((x) => x.id !== id));
     } catch (error) {
-        logErrorMessage(error);
+        console.error("Error", error);
     }
 }
 
@@ -141,13 +141,13 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
             .from(table)
             .select('*').limit(limit).order(column, {ascending})
         if (error && status !== 406) {
-            logErrorMessage(error);
+            console.error("Error", error);
         }
         if (data) {
             setData(data)
         }
     } catch (error) {
-        logErrorMessage(error);
+        console.error("Error", error);
     }
 }
 
@@ -157,7 +157,7 @@ export const uploadImage = async (e, fileName, setUploading, setDisableReset, bu
     setUploading(true);
     setDisableReset(true);
     if (!e.target.files || e.target.files.length === 0) {
-        console.log(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
+        console.info(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
     } else {
         let file = e.target.files[0];
         try {
@@ -175,7 +175,7 @@ export const uploadImage = async (e, fileName, setUploading, setDisableReset, bu
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
             }
         } catch (error) {
-            logErrorMessage(error);
+            console.error("Error", error);
         } finally {
             setUploading(false);
         }
@@ -196,7 +196,7 @@ export const deleteImage = async (fileName, setUploading, bucketName, setImageUr
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
         } catch (error) {
-            logErrorMessage(error);
+            console.error("Error", error);
         } finally {
             setUploading(false);
         }
@@ -212,13 +212,13 @@ export const deleteImageSimple = async (fileName, bucketName) => {
             console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
         }
     } catch (error) {
-        logErrorMessage(error);
+        console.error("Error", error);
     }
 }
 
 // UTILS
 const handleError = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
-    logErrorMessage(error);
+    console.error("Error", error);
     setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
     setShowFormSuccess(false);
     setShowFormError(true);
