@@ -22,7 +22,7 @@ export const PublishersListAdminToolBox = ({id, name, image, setPublishersData, 
 
     return (
         <div className={"ms-2 d-inline-block"}>
-            <Link to={ROUTES.ADMIN.PUBLISHERS + id + "/edit"} className={'btn btn-primary m-1 p-1'} title={editText}>
+            <Link to={ROUTES.ADMIN.PUBLISHERS + id + "?edit=true"} className={'btn btn-primary m-1 p-1'} title={editText}>
                 <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
                 <span className={"visually-hidden"}>{editText}</span>
             </Link>

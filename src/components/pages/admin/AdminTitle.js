@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 import {Spinner} from "../../miniComponents/Spinner";
 import {getRowByTableAndId} from "../../serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import formatData from "../../../helpers/valueLists/formats.json";
-import {getObjectNameById} from "../../../helpers/functions";
+import {getObjectNameById, isTrue} from "../../../helpers/functions";
 import {PublisherInformation} from "../../miniComponents/PublisherInformation";
 import {AdminH1} from "../../headings";
+import {ToggleEditButtons} from "../../miniComponents/ToggleEditButton";
 
 
 export const AdminTitle = () => {
+
+    const [searchParams, setSearchParams] = useSearchParams({edit: false})
+    const edit = isTrue(searchParams.get('edit'));
     const [title, setTitle] = useState(null);
     const {id} = useParams();
 
@@ -32,6 +36,7 @@ export const AdminTitle = () => {
                                 />
                             </div>
                         }
+                        <ToggleEditButtons edit={edit} setSearchParams={setSearchParams}/>
                         <h2>{LABELS_AND_HEADINGS.ID}: {title.id}</h2>
                         <h3>{LABELS_AND_HEADINGS.FORMAT}: {getObjectNameById(formatData, title.format_id)}</h3>
                         <h3>{LABELS_AND_HEADINGS.TOTAL_ISSUES}: {title.total_issues}</h3>

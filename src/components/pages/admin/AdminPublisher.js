@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 import {Spinner} from "../../miniComponents/Spinner";
 import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import countryData from "../../../helpers/valueLists/countries.json";
-import {getObjectNameById} from "../../../helpers/functions";
+import {getObjectNameById, isTrue} from "../../../helpers/functions";
 import {AdminH1} from "../../headings";
 import {getRowByTableAndId} from "../../serviceFunctions";
+import {ToggleEditButtons} from "../../miniComponents/ToggleEditButton";
 
 
 export const AdminPublisher = () => {
 
+    const [searchParams, setSearchParams] = useSearchParams({edit: false})
+    const edit = isTrue(searchParams.get('edit'));
     const [publisher, setPublisher] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
@@ -33,6 +36,7 @@ export const AdminPublisher = () => {
                             />
                         </div>
                     }
+                    <ToggleEditButtons edit={edit} setSearchParams={setSearchParams}/>
                     <h2>{LABELS_AND_HEADINGS.ID}: {publisher.id}</h2>
                     <h3>{LABELS_AND_HEADINGS.COUNTRY}: {getObjectNameById(countryData, publisher.country_id)}</h3>
                 </div>

@@ -79,3 +79,6 @@ export const handleNameInput = (e, setName, setFormInputClass, setNameValidated)
         :
         handleGenericFormInput(false, setFormInputClass, setNameValidated);
 }
+
+// Helper function for converting string value 'true' to boolean value.
+export const isTrue = (string) => (string === 'true');

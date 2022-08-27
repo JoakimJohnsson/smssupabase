@@ -22,7 +22,7 @@ export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesDa
 
     return (
         <div className={"ms-2 d-inline-block"}>
-            <Link to={ROUTES.ADMIN.TITLES + id + "/edit"} className={'btn btn-primary m-1 p-1'} title={editText}>
+            <Link to={ROUTES.ADMIN.TITLES + id + "?edit=true"} className={'btn btn-primary m-1 p-1'} title={editText}>
                 <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
                 <span className={"visually-hidden"}>{editText}</span>
             </Link>

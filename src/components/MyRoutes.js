@@ -15,11 +15,9 @@ import {Admin} from "./pages/admin/Admin";
 import {AdminPublisher} from "./pages/admin/AdminPublisher";
 import {AdminPublishers} from "./pages/admin/AdminPublishers";
 import {AdminPublisherAdd} from "./pages/admin/AdminPublisherAdd";
-import {AdminPublisherEdit} from "./pages/admin/AdminPublisherEdit";
 import {AdminTitle} from "./pages/admin/AdminTitle";
 import {AdminTitles} from "./pages/admin/AdminTitles";
 import {AdminTitleAdd} from "./pages/admin/AdminTitleAdd";
-import {AdminTitleEdit} from "./pages/admin/AdminTitleEdit";
 
 
 export const MyRoutes = () => {
@@ -46,11 +44,9 @@ export const MyRoutes = () => {
             <Route path={ROUTES.ADMIN.PUBLISHER_ID} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminPublisher/>}/>
             <Route path={ROUTES.ADMIN.PUBLISHERS} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminPublishers/>}/>
             <Route path={ROUTES.ADMIN.PUBLISHER_ADD} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminPublisherAdd/>}/>
-            <Route path={ROUTES.ADMIN.PUBLISHER_EDIT_ID} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminPublisherEdit/>}/>
             <Route path={ROUTES.ADMIN.TITLE_ID} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminTitle/>}/>
             <Route path={ROUTES.ADMIN.TITLES} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminTitles/>}/>
             <Route path={ROUTES.ADMIN.TITLE_ADD} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminTitleAdd/>}/>
-            <Route path={ROUTES.ADMIN.TITLE_EDIT_ID} element={(!user && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminTitleEdit/>}/>
             <Route path={"*"} element={<p>No match!</p>}/>
         </Routes>
     )
