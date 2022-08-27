@@ -7,6 +7,9 @@ import {deleteImageSimple, deleteRowsByTableAndId} from "../../serviceFunctions"
 
 export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesData}) => {
 
+    const editText = LABELS_AND_HEADINGS.EDIT + ' ' + name;
+    const deleteText = LABELS_AND_HEADINGS.DELETE + ' ' + name;
+
     const handleDelete = async () => {
         try {
             await deleteImageSimple(image, BUCKETS.TITLE_IMAGES);
@@ -19,13 +22,13 @@ export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesDa
 
     return (
         <div className={"ms-2 d-inline-block"}>
-            <Link to={ROUTES.ADMIN.TITLES + id + "/edit"} className={'btn btn-primary m-1 p-1'} title={LABELS_AND_HEADINGS.EDIT}>
+            <Link to={ROUTES.ADMIN.TITLES + id + "/edit"} className={'btn btn-primary m-1 p-1'} title={editText}>
                 <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
-                <span className={"visually-hidden"}>{LABELS_AND_HEADINGS.EDIT}</span>
+                <span className={"visually-hidden"}>{editText}</span>
             </Link>
             <button
                 className={'btn btn-danger m-1 p-1'}
-                aria-label={LABELS_AND_HEADINGS.DELETE}
+                aria-label={deleteText}
                 onClick={handleDelete}>
                 <XCircleIcon className={"sms-icon--text-lg m-0"}/>
             </button>

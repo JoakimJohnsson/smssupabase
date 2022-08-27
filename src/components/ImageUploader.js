@@ -2,6 +2,7 @@ import React from "react";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
 import {Spinner} from "./miniComponents/Spinner";
 import {NoDataAvailable} from "./miniComponents/NoDataAvailable";
+import {TrashIcon} from "@heroicons/react/solid";
 
 
 export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, deleteImage}) => {
@@ -19,7 +20,7 @@ export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, 
                                 className='w-100 mb-3'
                             />
                             <p>{imageFilename}</p>
-                            <button className={'btn btn-outline-secondary mb-2'} onClick={deleteImage}>{LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
+                            <button className={'btn btn-danger mb-2'} onClick={deleteImage}><TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
                         </>
                         :
                         <>

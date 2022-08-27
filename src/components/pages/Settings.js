@@ -127,7 +127,7 @@ const Settings = () => {
                         <div className={'sms-form'}>
                             <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
                             <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
-                            <button className={'btn btn-outline-secondary btn-cta'}
+                            <button className={'btn btn-secondary btn-cta'}
                                     onClick={() => requestPasswordResetForEmail(user.email)}
                                     disabled={loading}>
                                 {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.RESET_PASSWORD}
