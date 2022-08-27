@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import {AdminH1} from "../../headings";
 import {useParams} from "react-router-dom";
-import {supabase} from "../../../supabase/supabaseClient";
 import {getObjectNameById} from "../../../helpers/functions";
 import countryData from "../../../helpers/valueLists/countries.json";
 import {Spinner} from "../../miniComponents/Spinner";
+import {getRowByTableAndId} from "../../serviceFunctions";
 
 
 export const AdminPublisherEdit = () => {
@@ -15,25 +15,7 @@ export const AdminPublisherEdit = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        async function getPublisher() {
-            try {
-                setLoading(true);
-                let {data, error, status} = await supabase
-                    .from('publishers')
-                    .select('*').eq('id', id)
-                if (error && status !== 406) {
-                    console.error('Error: ', error);
-                }
-                if (data) {
-                    setPublisher(data[0])
-                }
-            } catch (error) {
-                console.error(error.message)
-            } finally {
-                setLoading(false)
-            }
-        }
-        getPublisher().then();
+        getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, id).then(() => setLoading(false));
     }, [id])
 
     return loading ? (<Spinner/>) : (
