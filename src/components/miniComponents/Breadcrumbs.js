@@ -40,7 +40,7 @@ export const Breadcrumbs = () => {
             getNameByTableAndId(previousCrumb, id, setFetchedName).then();
             if ((fetchedName !== "") && (previousCrumb === TABLES.TITLES || previousCrumb === TABLES.PUBLISHERS)) {
                 updatePreviousCrumb(breadcrumb);
-                return fetchedName || "";
+                return <span className={"animate"}>{fetchedName || ""}</span>;
             }
         } else {
             return getTranslatedBreadcrumbName(breadcrumbName, breadcrumb);
