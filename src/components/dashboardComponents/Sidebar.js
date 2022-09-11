@@ -5,10 +5,10 @@ import {SidebarBody} from "./SidebarBody";
 export const Sidebar = ({isOpen, handleClick}) => {
 
     return (
-        <div className={'d-none d-md-flex dashboard-sidebar'}>
+        <div className={"d-none d-md-flex dashboard-sidebar"}>
             <SidebarBody/>
-            <Offcanvas id={'sidebar-menu'} show={isOpen} onHide={handleClick} className={'dashboard-sidebar d-block d-md-none pt-3'}>
-                <Offcanvas.Body className={'pt-0'}>
+            <Offcanvas id={"sidebar-menu"} show={isOpen} onHide={handleClick} className={"dashboard-sidebar d-block d-md-none pt-3"}>
+                <Offcanvas.Body className={"pt-0"}>
                     <SidebarBody handleClick={handleClick}/>
                 </Offcanvas.Body>
             </Offcanvas>

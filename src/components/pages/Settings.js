@@ -1,10 +1,10 @@
-import {useAppContext} from '../../context/AppContext';
-import React, {useEffect, useState} from 'react';
-import {supabase} from '../../supabase/supabaseClient';
-import {Avatar} from '../Avatar';
-import {CLASSES, LABELS_AND_HEADINGS, TABLES, TEXTS} from '../../helpers/constants';
-import {Spinner} from '../miniComponents/Spinner';
-import {prepareUrl} from '../../helpers/functions';
+import {useAppContext} from "../../context/AppContext";
+import React, {useEffect, useState} from "react";
+import {supabase} from "../../supabase/supabaseClient";
+import {Avatar} from "../Avatar";
+import {CLASSES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
+import {Spinner} from "../miniComponents/Spinner";
+import {prepareUrl} from "../../helpers/functions";
 import {getProfile} from "../serviceFunctions";
 
 const Settings = () => {
@@ -19,7 +19,7 @@ const Settings = () => {
     const {user, session, setUserUrl} = useAppContext();
 
     useEffect(() => {
-        getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, user.id).then(() => 'Do something')
+        getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, user.id).then(() => "Do something")
     }, [user.id, session, avatar_image_filename, setUserUrl])
 
     // Updates profiles table in db
@@ -35,13 +35,13 @@ const Settings = () => {
                 updated_at: new Date(),
             }
             let {error} = await supabase.from(TABLES.PROFILES).upsert(updates, {
-                returning: 'minimal', // Don't return the value after inserting
+                returning: "minimal", // Don"t return the value after inserting
             })
             if (error) {
-                console.log('Error: ', error);
+                console.error("Error: ", error);
             }
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
         } finally {
             // Update App context
             setUserUrl(prepareUrl(website));
@@ -52,86 +52,85 @@ const Settings = () => {
     // Trigger a reset of password
     async function requestPasswordResetForEmail(email) {
         try {
-            const {data, error} = await supabase.auth.api
+            const {error} = await supabase.auth.api
                 .resetPasswordForEmail(email)
             if (error) {
-                console.log('Error: ', error);
-                console.log('Data: ', data);
+                console.error("Error: ", error);
             }
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
         } finally {
-            console.log("Reset password request sent for email: ", email);
+            console.info("Reset password request sent for email: ", email);
         }
     }
 
     return (
-        <main className={'container-fluid main-container'}>
-            <div className={'row'}>
-                <div className={'col-12 col-lg-8 main-col'}>
+        <main className={"container-fluid main-container"}>
+            <div className={"row"}>
+                <div className={"col-12 col-lg-8 main-col"}>
                     <h1>{LABELS_AND_HEADINGS.SETTINGS}</h1>
-                    <p className={'lead'}>{TEXTS.SETTINGS_LEAD}</p>
+                    <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                 </div>
 
-                <div className={'row main-col'}>
+                <div className={"row main-col"}>
 
-                    <div className={'sms-dashboard-col'}>
-                        <div className={'sms-form'}>
+                    <div className={"sms-dashboard-col"}>
+                        <div className={"sms-form"}>
                             <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
                             <Avatar
                                 onUpload={(avatar_image_filename) => {
                                     setAvatarImageFilename(avatar_image_filename);
-                                    updateProfileData({avatar_image_filename: avatar_image_filename}).then(() => 'Do something');
+                                    updateProfileData({avatar_image_filename: avatar_image_filename}).then(() => "Do something");
                                 }}
                             />
                         </div>
                     </div>
 
-                    <div className={'sms-dashboard-col'}>
-                        <div className={'sms-form'}>
+                    <div className={"sms-dashboard-col"}>
+                        <div className={"sms-form"}>
                             <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
-                            <label className={'form-label'} htmlFor='email'>{LABELS_AND_HEADINGS.EMAIL}</label>
-                            <input id='email' className={CLASSES.FORM_INPUT_DISABLED} type='text' value={user.email} disabled/>
-                            <label className={'form-label'} htmlFor='firstname'>{LABELS_AND_HEADINGS.FIRST_NAME}</label>
+                            <label className={"form-label"} htmlFor="email">{LABELS_AND_HEADINGS.EMAIL}</label>
+                            <input id="email" className={CLASSES.FORM_INPUT_DISABLED} type="text" value={user.email} disabled/>
+                            <label className={"form-label"} htmlFor="firstname">{LABELS_AND_HEADINGS.FIRST_NAME}</label>
                             <input
-                                id='firstname'
+                                id="firstname"
                                 className={CLASSES.FORM_INPUT_DEFAULT}
-                                type='text'
-                                value={firstname || ''}
+                                type="text"
+                                value={firstname || ""}
                                 onChange={(e) => setFirstname(e.target.value)}
                             />
-                            <label className={'form-label'} htmlFor='lastname'>{LABELS_AND_HEADINGS.LAST_NAME}</label>
+                            <label className={"form-label"} htmlFor="lastname">{LABELS_AND_HEADINGS.LAST_NAME}</label>
                             <input
-                                id='lastname'
+                                id="lastname"
                                 className={CLASSES.FORM_INPUT_DEFAULT}
-                                type='text'
-                                value={lastname || ''}
+                                type="text"
+                                value={lastname || ""}
                                 onChange={(e) => setLastname(e.target.value)}
                             />
-                            <label className={'form-label'} htmlFor='website'>{LABELS_AND_HEADINGS.WEBSITE}</label>
+                            <label className={"form-label"} htmlFor="website">{LABELS_AND_HEADINGS.WEBSITE}</label>
                             <input
-                                id='website'
+                                id="website"
                                 className={CLASSES.FORM_INPUT_DEFAULT}
-                                type='text'
-                                value={website || ''}
+                                type="text"
+                                value={website || ""}
                                 onChange={(e) => setWebsite(e.target.value)}
                             />
-                            <button className={'btn btn-primary'}
+                            <button className={"btn btn-primary"}
                                     onClick={() => updateProfileData({firstname, lastname, website})}
                                     disabled={loading}>
-                                {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPDATE}
+                                {loading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.UPDATE}
                             </button>
                         </div>
                     </div>
 
-                    <div className={'sms-dashboard-col'}>
-                        <div className={'sms-form'}>
+                    <div className={"sms-dashboard-col"}>
+                        <div className={"sms-form"}>
                             <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
                             <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
-                            <button className={'btn btn-outline-secondary btn-cta'}
+                            <button className={"btn btn-secondary btn-cta"}
                                     onClick={() => requestPasswordResetForEmail(user.email)}
                                     disabled={loading}>
-                                {loading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.RESET_PASSWORD}
+                                {loading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.RESET_PASSWORD}
                             </button>
                         </div>
                     </div>

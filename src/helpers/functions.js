@@ -59,10 +59,6 @@ export const generateUniqueHashedFilename = (fileExt, fileType) => {
     return fileType + number.toString().replace('.', '') + '.' + fileExt;
 }
 
-export const logErrorMessage = (error) => {
-    console.error('Error: ', error);
-    console.error('Error message: ', error.message);
-}
 export const printOptions = (data) => {
     return data && (
         data.map(
@@ -82,4 +78,15 @@ export const handleNameInput = (e, setName, setFormInputClass, setNameValidated)
         handleGenericFormInput(true, setFormInputClass, setNameValidated)
         :
         handleGenericFormInput(false, setFormInputClass, setNameValidated);
+}
+
+// Helper function for converting string value 'true' to boolean value.
+export const isTrue = (string) => (string === 'true');
+
+export const hideAndResetMessage = (setShowFormError, setShowFormSuccess, setFormMessage) => {
+    setTimeout(() => {
+        setShowFormError(false);
+        setShowFormSuccess(false);
+        setFormMessage("");
+    }, 3000)
 }

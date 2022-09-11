@@ -14,7 +14,7 @@ export const MESSAGES = {
         VALIDATION_EMAIL: 'Det där är en korrekt e-postadress!',
         VALIDATION_PASSWORD: 'Det där är ett starkt lösenord!',
         VALIDATION_DOWNLOAD_IMAGE: 'En bild laddades ned',
-        VALIDATION_INSERT: 'Titeln lades till i databasen'
+        VALIDATION_INSERT: 'Informationen lades till i databasen'
     },
     CONFIRM: {
         DELETE: 'Du kommer nu ta bort ',
@@ -50,23 +50,25 @@ export const ROUTES = {
         PUBLISHERS: '/admin/publishers/',
         PUBLISHER_ID: '/admin/publishers/:id',
         PUBLISHER_ADD: '/admin/publishers/add/',
-        PUBLISHER_EDIT: '/admin/publishers/edit/:id',
+        PUBLISHER_EDIT_ID: '/admin/publishers/:id/edit',
         TITLES: '/admin/titles/',
         TITLE_ID: '/admin/titles/:id',
         TITLE_ADD: '/admin/titles/add/',
-        TITLE_EDIT: '/admin/titles/edit/',
-        TITLE_EDIT_ID: '/admin/titles/edit/:id'
+        TITLE_EDIT_ID: '/admin/titles/:id/edit'
     }
 }
 
 export const LABELS_AND_HEADINGS = {
+    ABORT: 'Avbryt',
     ADMIN: 'Admin',
     ADD: 'Lägg till',
     ADD_PUBLISHER: 'Lägg till nytt förlag',
+    EDIT_PUBLISHER: 'Redigera förlag',
     ADD_TITLE: 'Lägg till ny titel',
     ALL_PUBLISHERS: 'Alla förlag',
     ALL_TITLES: 'Alla titlar',
     BACK: 'Tillbaka',
+    BREADCRUMB: 'Brödsmula',
     CHOOSE: '--- Välj ---',
     CLOSE: 'Stäng',
     COMMUNITY: 'Socialt',

@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, useCallback} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
 import {BUCKETS, TABLES} from "../helpers/constants";
@@ -15,15 +15,6 @@ export function AppContextProvider({children}) {
     const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const updateProfileOnChange = useCallback(() => {
-        supabase
-            .from(TABLES.PROFILES)
-            .on('*', payload => {
-                updateProfile(user).then()
-            })
-            .subscribe()
-    }, [user]);
-
     useEffect(() => {
         // Check active sessions and sets the user
         const session = supabase.auth.session();
@@ -31,8 +22,13 @@ export function AppContextProvider({children}) {
 
         if (user) {
             // Check if user has admin privileges and set role.
-            updateProfileOnChange(user);
-            updateProfile(user).then(() => supabase.removeSubscription(updateProfileOnChange));
+            const mySub = supabase
+                .from(TABLES.PROFILES)
+                .on('*', payload => {
+                    updateProfile(user).then()
+                })
+                .subscribe()
+            updateProfile(user).then(() => supabase.removeSubscription(mySub));
         }
 
         setLoading(false)
@@ -48,7 +44,7 @@ export function AppContextProvider({children}) {
         return () => {
             listener?.unsubscribe()
         }
-    }, [user, updateProfileOnChange])
+    }, [user])
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
@@ -75,7 +71,7 @@ export function AppContextProvider({children}) {
                 .eq('id', user.id);
 
             if (error && status !== 406) {
-                console.log('Error: ', error);
+                console.error('Error: ', error);
             }
             if (data) {
                 setUserUrl(prepareUrl(data[0].website));
@@ -94,7 +90,7 @@ export function AppContextProvider({children}) {
                 }
             }
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
         } finally {
             setLoading(false)
         }

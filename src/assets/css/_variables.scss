@@ -37,7 +37,7 @@ $secondary: #ddb1f8;
 $success: #7ff268;
 $info: #f3f00f;
 $warning: #fbbd4a;
-$danger: #eea9a9;
+$danger: #fa5a5a;
 $white: #fff;
 $white--darker: #c0c7cf;
 $black: #000;
@@ -71,6 +71,7 @@ $text-muted: $white--darker;
 $btn-disabled-opacity: 0.45;
 $sms-header-min-height: 60px;
 $sms-header-min-height--lg: 65px;
+$breadcrumb-active-color: $primary--lighter;
 
 // Form and input
 $input-placeholder-color: $black--lighter;

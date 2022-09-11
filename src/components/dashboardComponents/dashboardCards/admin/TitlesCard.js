@@ -13,13 +13,13 @@ export const TitlesCard = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn(TABLES.TITLES, 'created_at', setLimitedTitlesData, 5, false).then()
+        getRowsByTableWithLimitAndOrderByColumn(TABLES.TITLES, "created_at", setLimitedTitlesData, 5, false).then()
     }, [])
 
     return (
-        <div className={'sms-dashboard-col'}>
-            <div className={'dashboard-card'}>
-                <h2><span className={"me-2"}><TitlesIcon textVariant={'lg'}/></span>{LABELS_AND_HEADINGS.TITLES}</h2>
+        <div className={"sms-dashboard-col"}>
+            <div className={"dashboard-card"}>
+                <h2><span className={"me-2"}><TitlesIcon textVariant={"lg"}/></span>{LABELS_AND_HEADINGS.TITLES}</h2>
                 {
                     limitedTitlesData ?
                         <>
@@ -31,10 +31,10 @@ export const TitlesCard = () => {
                         :
                         <NoDataAvailable />
                 }
-                <button className={'btn btn-primary me-3 mb-2'}
+                <button className={"btn btn-primary me-3 mb-2"}
                         onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD) }>{LABELS_AND_HEADINGS.ADD_TITLE}
                 </button>
-                <Link className={'btn btn-outline-secondary mb-2'} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
+                <Link className={"btn btn-outline-secondary mb-2"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
             </div>
         </div>
     )

@@ -83,7 +83,6 @@
   border: $border--default;
   h2 {
     @extend .text-label;
-    color: $primary;
   }
   p {
     font-size: .875rem;
@@ -92,5 +91,16 @@
   .list-group-item {
     color: $white--darker;
     padding: .5rem 0;
+  }
+}
+@keyframes breadcrumb-item-animation {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.breadcrumb-item {
+  .animate {
+    opacity: 1;
+    animation-name: breadcrumb-item-animation;
+    animation-duration: 1s;
   }
 }

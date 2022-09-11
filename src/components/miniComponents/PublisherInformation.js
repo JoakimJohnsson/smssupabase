@@ -10,7 +10,9 @@ export const PublisherInformation = ({title}) => {
     const [publisher, setPublisher] = useState(null);
 
     useEffect(() => {
-        getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher).then();
+        if (title.publisher) {
+            getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher).then();
+        }
     }, [title.publisher])
 
     return publisher && countryData && (
