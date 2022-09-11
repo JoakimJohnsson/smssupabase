@@ -35,7 +35,7 @@ export async function addTitleData(data, deleteTitleImage, setFormMessage, setSh
             name: data.name,
             start_year: data.startYear,
             end_year: data.endYear,
-            publisher: data.publisherId,
+            publisher_id: data.publisherId,
             format_id: data.formatId,
             total_issues: data.totalIssues,
             image_filename: data.titleImageFilename,
@@ -43,9 +43,14 @@ export async function addTitleData(data, deleteTitleImage, setFormMessage, setSh
         }])
         if (error) {
             deleteTitleImage();
-            handleError(error, setFormMessage, setShowFormSuccess, setShowFormError);
+            console.error("Error", error);
+            setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
+            setShowFormSuccess(false);
+            setShowFormError(true);
         } else {
-            handleSuccess(error, setFormMessage, setShowFormSuccess, setShowFormError);
+            setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
+            setShowFormError(false);
+            setShowFormSuccess(true);
         }
     } catch (error) {
         deleteTitleImage();
@@ -61,9 +66,14 @@ export async function addPublisherData(data, deletePublisherImage, setFormMessag
         }])
         if (error) {
             deletePublisherImage();
-            handleError(error, setFormMessage, setShowFormSuccess, setShowFormError);
+            console.error("Error", error);
+            setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
+            setShowFormSuccess(false);
+            setShowFormError(true);
         } else {
-            handleSuccess(error, setFormMessage, setShowFormSuccess, setShowFormError);
+            setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
+            setShowFormError(false);
+            setShowFormSuccess(true);
         }
     } catch (error) {
         deletePublisherImage();
@@ -214,18 +224,4 @@ export const deleteImageSimple = async (fileName, bucketName) => {
     } catch (error) {
         console.error("Error", error);
     }
-}
-
-// UTILS
-const handleError = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
-    console.error("Error", error);
-    setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
-    setShowFormSuccess(false);
-    setShowFormError(true);
-}
-
-const handleSuccess = (error, setFormMessage, setShowFormSuccess, setShowFormError) => {
-    setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
-    setShowFormError(false);
-    setShowFormSuccess(true);
 }

@@ -20,13 +20,18 @@ export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, 
                                 className='w-100 mb-3'
                             />
                             <p>{imageFilename}</p>
-                            <button className={'btn btn-danger mb-2'} onClick={deleteImage}><TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}</button>
+                            <button className={'btn btn-danger mb-2'} onClick={deleteImage}>
+                                <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
+                            </button>
                         </>
                         :
                         <>
                             <NoDataAvailable/>
                             <label className='btn btn-primary' htmlFor='single'>
-                                {uploading ? <Spinner small={true} color={'text-black'}/> : LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                {uploading ?
+                                    <Spinner small={true} color={'text-black'}/>
+                                    :
+                                    LABELS_AND_HEADINGS.UPLOAD_IMAGE}
                             </label>
                         </>
                 }

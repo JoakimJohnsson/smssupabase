@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import {addTitleData, deleteImage, getRowsByTable, uploadImage} from "../../serviceFunctions";
-import {handleNameInput, printOptions} from "../../../helpers/functions";
+import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {ImageUploader} from "../../ImageUploader";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
@@ -46,8 +46,8 @@ export const AdminTitleAdd = () => {
         setStartYear(1975);
         setEndYear(1975);
         setTotalIssues(12);
-        setShowFormError(false);
-        setShowFormSuccess(false);
+        setDisableReset(false);
+        hideAndResetMessage(setShowFormError, setShowFormSuccess, setFormMessage);
     }
 
     return (
@@ -124,7 +124,7 @@ export const AdminTitleAdd = () => {
                                             totalIssues: totalIssues,
                                             titleImageFilename: imageFilename,
                                             titleImageUrl: imageUrl
-                                        }, deleteTitleImage,setFormMessage, setShowFormSuccess, setShowFormError).then(() => setDisableReset(false))}
+                                        }, deleteTitleImage,setFormMessage, setShowFormSuccess, setShowFormError).then(() => resetAddTitleForm())}
                                         disabled={!nameValidated || !imageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
-import {handleNameInput, printOptions} from "../../../helpers/functions";
+import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import countryData from "../../../helpers/valueLists/countries.json";
 import {ImageUploader} from "../../ImageUploader";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
@@ -34,8 +34,8 @@ export const AdminPublisherAdd = () => {
         setImageFilename(null);
         setImageUrl(null);
         setName('');
-        setShowFormError(false);
-        setShowFormSuccess(false);
+        setDisableReset(false);
+        hideAndResetMessage(setShowFormError, setShowFormSuccess, setFormMessage);
     }
 
     return (
@@ -77,7 +77,7 @@ export const AdminPublisherAdd = () => {
                                             countryId: countryId,
                                             publisherImageFilename: imageFilename,
                                             publisherImageUrl: imageUrl
-                                        }, deletePublisherImage, setFormMessage, setShowFormSuccess, setShowFormError).then(() => setDisableReset(false))}
+                                        }, deletePublisherImage, setFormMessage, setShowFormSuccess, setShowFormError).then(() => resetAddPublisherForm())}
                                         disabled={!nameValidated || !imageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
