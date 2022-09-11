@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {addPublisherData, deleteImage, uploadImage} from "../../serviceFunctions";
+import {addPublisherData, deleteImage} from "../../serviceFunctions";
 import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import countryData from "../../../helpers/valueLists/countries.json";
-import {ImageUploader} from "../../ImageUploader";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../headings";
+import {ImageUploaderSimple} from "../../ImageUploaderSimple";
 
 
 export const AdminPublisherAdd = () => {
@@ -26,7 +26,7 @@ export const AdminPublisherAdd = () => {
     const [countryId, setCountryId] = useState("");
 
     const deletePublisherImage = async () => {
-        await deleteImage(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
+        await deleteImage(imageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES,
             setImageUrl, setImageFilename);
     }
 
@@ -46,13 +46,16 @@ export const AdminPublisherAdd = () => {
                     <div className={"row"}>
                         <div className={"sms-dashboard-col"}>
                             <div className={"sms-form"}>
-                                <ImageUploader
+                                <ImageUploaderSimple
                                     imageUrl={imageUrl}
+                                    setImageUrl={setImageUrl}
                                     imageFilename={imageFilename}
+                                    setImageFilename={setImageFilename}
                                     uploading={uploading}
-                                    uploadImage={e => uploadImage(e, imageFilename, setUploading, setDisableReset, BUCKETS.PUBLISHER_IMAGES,
-                                        FILETYPES.PUBLISHER_IMAGE, imageUrl, setImageFilename ,setImageUrl)}
-                                    deleteImage={deletePublisherImage}
+                                    setUploading={setUploading}
+                                    bucketName={BUCKETS.PUBLISHER_IMAGES}
+                                    setDisableReset={setDisableReset}
+                                    fileType={FILETYPES.PUBLISHER_IMAGE}
                                 />
                                 <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME}</label>
                                 <input
@@ -65,11 +68,11 @@ export const AdminPublisherAdd = () => {
                                 <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                                 {
                                     countryData &&
-                                        <select name="countries" id="country" className={"form-select mb-3"}
-                                                onChange={(e) => setCountryId(e.target.value)}>
-                                            <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                                            {printOptions(countryData)}
-                                        </select>
+                                    <select name="countries" id="country" className={"form-select mb-3"}
+                                            onChange={(e) => setCountryId(e.target.value)}>
+                                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                        {printOptions(countryData)}
+                                    </select>
                                 }
                                 <button className={"btn btn-primary me-3 mb-2"}
                                         onClick={() => addPublisherData({

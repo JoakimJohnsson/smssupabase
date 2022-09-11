@@ -29,7 +29,7 @@ export const AdminPublisher = () => {
                     <AdminH1 text={publisher.name}/>
                     {
                         edit ?
-                            <AdminPublisherEditInfo />
+                            <AdminPublisherEditInfo publisher={publisher}/>
                             :
                             <AdminPublisherInfo publisher={publisher}/>
                     }

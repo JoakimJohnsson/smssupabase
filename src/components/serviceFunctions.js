@@ -136,10 +136,15 @@ export async function deleteRowsByTableAndId(table, id, name, setData, initialDa
         return false;
     }
     try {
-        await supabase
+        let {data, error, status} = await supabase
             .from(table)
             .delete().match({id: id})
-        setData(initialData.filter((x) => x.id !== id));
+        if (error && status !== 406) {
+            console.error("Error: ", error);
+        }
+        if (data) {
+            setData(initialData.filter((x) => x.id !== id))
+        }
     } catch (error) {
         console.error("Error: ", error);
     }
@@ -163,7 +168,7 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
 
 // IMAGE FUNCTIONS
 
-export const uploadImage = async (e, fileName, setUploading, setDisableReset, bucket, fileType, imageUrl, setImageFilename, setImageUrl) => {
+export const uploadImage = async (e, fileName, setUploading, setDisableReset, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {
     setUploading(true);
     setDisableReset(true);
     if (!e.target.files || e.target.files.length === 0) {
@@ -174,12 +179,12 @@ export const uploadImage = async (e, fileName, setUploading, setDisableReset, bu
             const fileExt = file.name.split(".").pop();
             const newFileName = generateUniqueHashedFilename(fileExt, fileType);
             let {error: uploadError} = await supabase.storage
-                .from(bucket)
+                .from(bucketName)
                 .upload(newFileName, file);
             setImageFilename(newFileName);
             setImageUrl(supabase
                 .storage
-                .from(bucket)
+                .from(bucketName)
                 .getPublicUrl(newFileName).publicURL)
             if (uploadError) {
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
@@ -199,7 +204,6 @@ export const deleteImage = async (fileName, setUploading, bucketName, setImageUr
             let {error} = await supabase.storage
                 .from(bucketName)
                 .remove([fileName]);
-
             setImageUrl(null);
             setImageFilename(null);
             if (error) {

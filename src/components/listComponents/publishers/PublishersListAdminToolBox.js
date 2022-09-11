@@ -12,11 +12,10 @@ export const PublishersListAdminToolBox = ({id, name, image, setPublishersData, 
 
     const handleDelete = async () => {
         try {
-            await deleteImageSimple(image, BUCKETS.PUBLISHER_IMAGES);
+            deleteRowsByTableAndId(TABLES.PUBLISHERS, id, name, setPublishersData, publishersData)
+                .then(() => deleteImageSimple(image, BUCKETS.PUBLISHER_IMAGES));
         } catch (error) {
             console.error("Error: ", error);
-        } finally {
-            deleteRowsByTableAndId(TABLES.PUBLISHERS, id, name, setPublishersData, publishersData).then();
         }
     }
 
