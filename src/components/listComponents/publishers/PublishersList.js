@@ -13,10 +13,10 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
             {
                 publishersData.length ?
                     (publishersData.map((p, index) =>
-                            <li key={index} className={'list-group-item ps-0'}>
+                            <li key={index} className={"list-group-item ps-0"}>
                                 <div className={"row"}>
                                     <div className={"col-8"}>
-                                        <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={'me-2'}>
+                                        <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-2"}>
                                             {p.name}
                                         </Link>
                                         Inlagd: <FriendlyDate dateString={p.created_at}/>

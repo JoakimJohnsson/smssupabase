@@ -13,7 +13,7 @@ import {AdminPublisherInfo} from "./AdminPublisherInfo";
 export const AdminPublisher = () => {
 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
-    const edit = isTrue(searchParams.get('edit'));
+    const edit = isTrue(searchParams.get("edit"));
     const [publisher, setPublisher] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();

@@ -14,7 +14,7 @@ import {AdminTitleEditInfo} from "./AdminTitleEditInfo";
 export const AdminTitle = () => {
 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
-    const edit = isTrue(searchParams.get('edit'));
+    const edit = isTrue(searchParams.get("edit"));
     const [title, setTitle] = useState(null);
     const {id} = useParams();
 

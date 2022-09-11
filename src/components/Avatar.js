@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {supabase} from '../supabase/supabaseClient';
-import {BUCKETS, FILETYPES, MESSAGES, TABLES} from '../helpers/constants';
-import {useAppContext} from '../context/AppContext';
+import React, {useState} from "react";
+import {supabase} from "../supabase/supabaseClient";
+import {BUCKETS, FILETYPES, MESSAGES, TABLES} from "../helpers/constants";
+import {useAppContext} from "../context/AppContext";
 import {generateUniqueHashedFilename} from "../helpers/functions";
 import {ImageUploader} from "./ImageUploader";
 
@@ -18,7 +18,7 @@ export const Avatar = ({onUpload}) => {
                 console.info(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
             }
             const file = event.target.files[0];
-            const fileExt = file.name.split('.').pop();
+            const fileExt = file.name.split(".").pop();
             const fileName = generateUniqueHashedFilename(fileExt, FILETYPES.AVATAR_IMAGE);
             const filePath = fileName;
             let {error: uploadError} = await supabase.storage
@@ -30,7 +30,7 @@ export const Avatar = ({onUpload}) => {
                 .from(BUCKETS.AVATAR_IMAGES)
                 .getPublicUrl(fileName).publicURL)
             if (uploadError) {
-                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD + ' 1');
+                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
             onUpload(filePath);
         } catch (error) {

@@ -14,7 +14,7 @@ export const AdminPublisherInfo = ({publisher}) => {
                     <img
                         src={publisher.image_url}
                         alt={publisher.image_filename}
-                        className='w-100 mb-3'
+                        className="w-100 mb-3"
                     />
                 </div>
             }

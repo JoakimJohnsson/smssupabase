@@ -11,7 +11,7 @@ export const SignOutButton = () => {
 
     async function handleSignOut() {
         await signOut()
-        navigate('/');
+        navigate("/");
     }
 
     return (

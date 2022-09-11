@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {useAppContext} from '../../context/AppContext';
-import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from '../../helpers/constants';
-import {validateEmail, validatePassword} from '../../helpers/validations';
-import ValidationMessage from './ValidationMessage';
-import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from '../../helpers/functions';
+import React, {useRef, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useAppContext} from "../../context/AppContext";
+import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {validateEmail, validatePassword} from "../../helpers/validations";
+import ValidationMessage from "./ValidationMessage";
+import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
 
 export const Signup = () => {
     // Success and error variants of form-input is available
@@ -12,9 +12,9 @@ export const Signup = () => {
     const [passwordInputClass, setPasswordInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
     // Error and validation handling
     const [showFormError, setShowFormError] = useState(false);
-    const [formErrorMessage, setFormErrorMessage] = useState('');
-    const [emailValidationMessage, setEmailValidationMessage] = useState('');
-    const [passwordValidationMessage, setPasswordValidationMessage] = useState('');
+    const [formErrorMessage, setFormErrorMessage] = useState("");
+    const [emailValidationMessage, setEmailValidationMessage] = useState("");
+    const [passwordValidationMessage, setPasswordValidationMessage] = useState("");
     const [emailValidated, setEmailValidated] = useState(false);
     const [passwordValidated, setPasswordValidated] = useState(false);
     const [emailExists, setEmailExists] = useState(false);
@@ -42,7 +42,7 @@ export const Signup = () => {
                 setFormErrorMessage(error.message);
                 setShowFormError(true);
             } else {
-                navigate('/success');
+                navigate("/success");
             }
         }
     }
@@ -64,29 +64,29 @@ export const Signup = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={'sms-form'}>
-                <label className={'form-label'} htmlFor='input-email'>{LABELS_AND_HEADINGS.EMAIL}</label>
-                <input id='input-email'
-                       type='email'
+            <form onSubmit={handleSubmit} className={"sms-form"}>
+                <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
+                <input id="input-email"
+                       type="email"
                        ref={emailRef}
                        onSubmit={(e) => handleEmailValidation(e)}
                        className={emailInputClass}
-                       placeholder={'name@myplace.se'}
+                       placeholder={"name@myplace.se"}
                        required/>
                 <ValidationMessage success={emailValidated} message={emailValidationMessage}/>
-                <label className={'form-label d-flex'} htmlFor='input-password'>{LABELS_AND_HEADINGS.PASSWORD}</label>
-                <input id='input-password'
-                       type='password'
+                <label className={"form-label d-flex"} htmlFor="input-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
+                <input id="input-password"
+                       type="password"
                        ref={passwordRef}
                        onChange={(e) => handlePasswordValidation(e)}
                        className={passwordInputClass}
-                       placeholder={'********'}
+                       placeholder={"********"}
                        required/>
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type='submit' className={'btn btn-secondary'}>
+                <button type="submit" className={"btn btn-secondary"}>
                     {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
-                {showFormError && <p className={'alert alert-danger mt-3'}>{formErrorMessage}</p>}
+                {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
             </form>
         </>
     )

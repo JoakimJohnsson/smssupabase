@@ -13,7 +13,7 @@ export const Admin = () => {
                 <div className={"col-12 main-col"}>
                     <AdminH1 text={LABELS_AND_HEADINGS.ADMIN}/>
                 </div>
-                <div className={'row main-col'}>
+                <div className={"row main-col"}>
                     <TitlesCard/>
                     <PublishersCard/>
                 </div>

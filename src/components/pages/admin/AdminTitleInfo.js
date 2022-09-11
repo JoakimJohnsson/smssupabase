@@ -14,7 +14,7 @@ export const AdminTitleInfo = ({title, formatData}) => {
                     <img
                         src={title.image_url}
                         alt={title.image_filename}
-                        className='w-100 mb-3'
+                        className="w-100 mb-3"
                     />
                 </div>
             }

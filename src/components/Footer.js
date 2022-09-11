@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {useAppContext} from "../context/AppContext";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
 

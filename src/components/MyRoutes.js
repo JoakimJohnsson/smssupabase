@@ -1,7 +1,7 @@
-import {Navigate, Route, Routes} from 'react-router-dom';
-import React from 'react';
-import SignupSuccess from './pages/SignUpSuccess';
-import {ROUTES} from '../helpers/constants';
+import {Navigate, Route, Routes} from "react-router-dom";
+import React from "react";
+import SignupSuccess from "./pages/SignUpSuccess";
+import {ROUTES} from "../helpers/constants";
 import {Home} from "./pages/Home";
 import {Dashboard} from "./pages/Dashboard";
 import {OverviewPane} from "./dashboardComponents/dashboardTabPanes/OverviewPane";

@@ -23,7 +23,7 @@ export const AdminPublisherAdd = () => {
         disableReset, setDisableReset
     ] = useCommonFormStates();
 
-    const [countryId, setCountryId] = useState('');
+    const [countryId, setCountryId] = useState("");
 
     const deletePublisherImage = async () => {
         await deleteImage(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
@@ -33,7 +33,7 @@ export const AdminPublisherAdd = () => {
     const resetAddPublisherForm = async () => {
         setImageFilename(null);
         setImageUrl(null);
-        setName('');
+        setName("");
         setDisableReset(false);
         hideAndResetMessage(setShowFormError, setShowFormSuccess, setFormMessage);
     }
@@ -43,9 +43,9 @@ export const AdminPublisherAdd = () => {
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
                     <AdminH1 text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
-                    <div className={'row'}>
-                        <div className={'sms-dashboard-col'}>
-                            <div className={'sms-form'}>
+                    <div className={"row"}>
+                        <div className={"sms-dashboard-col"}>
+                            <div className={"sms-form"}>
                                 <ImageUploader
                                     imageUrl={imageUrl}
                                     imageFilename={imageFilename}
@@ -54,15 +54,15 @@ export const AdminPublisherAdd = () => {
                                         FILETYPES.PUBLISHER_IMAGE, imageUrl, setImageFilename ,setImageUrl)}
                                     deleteImage={deletePublisherImage}
                                 />
-                                <label className={'form-label'} htmlFor='name'>{LABELS_AND_HEADINGS.NAME}</label>
+                                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME}</label>
                                 <input
-                                    id='name'
+                                    id="name"
                                     className={formInputClass}
-                                    type='text'
-                                    value={name || ''}
+                                    type="text"
+                                    value={name || ""}
                                     onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
                                 />
-                                <label className={'form-label'} htmlFor='format'>{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
+                                <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                                 {
                                     countryData &&
                                         <select name="countries" id="country" className={"form-select mb-3"}
@@ -71,7 +71,7 @@ export const AdminPublisherAdd = () => {
                                             {printOptions(countryData)}
                                         </select>
                                 }
-                                <button className={'btn btn-primary me-3 mb-2'}
+                                <button className={"btn btn-primary me-3 mb-2"}
                                         onClick={() => addPublisherData({
                                             name: name,
                                             countryId: countryId,
@@ -81,12 +81,12 @@ export const AdminPublisherAdd = () => {
                                         disabled={!nameValidated || !imageFilename}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
-                                <button className={'btn btn-outline-secondary mb-2'}
+                                <button className={"btn btn-outline-secondary mb-2"}
                                         onClick={resetAddPublisherForm} disabled={disableReset}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
-                                {showFormError && <p className={'alert alert-danger mt-3'}>{formMessage}</p>}
-                                {showFormSuccess && <p className={'alert alert-success mt-3'}>{formMessage}</p>}
+                                {showFormError && <p className={"alert alert-danger mt-3"}>{formMessage}</p>}
+                                {showFormSuccess && <p className={"alert alert-success mt-3"}>{formMessage}</p>}
                             </div>
                         </div>
                     </div>
