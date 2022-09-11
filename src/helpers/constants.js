@@ -14,7 +14,7 @@ export const MESSAGES = {
         VALIDATION_EMAIL: 'Det där är en korrekt e-postadress!',
         VALIDATION_PASSWORD: 'Det där är ett starkt lösenord!',
         VALIDATION_DOWNLOAD_IMAGE: 'En bild laddades ned',
-        VALIDATION_INSERT: 'Titeln lades till i databasen'
+        VALIDATION_INSERT: 'Informationen lades till i databasen'
     },
     CONFIRM: {
         DELETE: 'Du kommer nu ta bort ',
