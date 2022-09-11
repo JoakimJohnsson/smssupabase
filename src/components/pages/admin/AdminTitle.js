@@ -2,12 +2,13 @@ import React, {useEffect, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
 import {Spinner} from "../../miniComponents/Spinner";
 import {getRowByTableAndId} from "../../serviceFunctions";
-import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
+import {TABLES} from "../../../helpers/constants";
 import formatData from "../../../helpers/valueLists/formats.json";
-import {getObjectNameById, isTrue} from "../../../helpers/functions";
-import {PublisherInformation} from "../../miniComponents/PublisherInformation";
+import {isTrue} from "../../../helpers/functions";
 import {AdminH1} from "../../headings";
 import {ToggleEditButtons} from "../../miniComponents/ToggleEditButton";
+import {AdminTitleInfo} from "./AdminTitleInfo";
+import {AdminTitleEditInfo} from "./AdminTitleEditInfo";
 
 
 export const AdminTitle = () => {
@@ -27,20 +28,12 @@ export const AdminTitle = () => {
                     <div className={"col-12 main-col"}>
                         <AdminH1 text={title.name + " " + title.start_year + " - " + title.end_year}/>
                         {
-                            title.image_url && title.image_filename &&
-                            <div className={"col-12 col-sm-6 col-md-4"}>
-                                <img
-                                    src={title.image_url}
-                                    alt={title.image_filename}
-                                    className='w-100 mb-3'
-                                />
-                            </div>
+                            edit ?
+                                <AdminTitleEditInfo />
+                                :
+                                <AdminTitleInfo title={title} formatData={formatData}/>
                         }
                         <ToggleEditButtons edit={edit} setSearchParams={setSearchParams}/>
-                        <h2>{LABELS_AND_HEADINGS.ID}: {title.id}</h2>
-                        <h3>{LABELS_AND_HEADINGS.FORMAT}: {getObjectNameById(formatData, title.format_id)}</h3>
-                        <h3>{LABELS_AND_HEADINGS.TOTAL_ISSUES}: {title.total_issues}</h3>
-                        {title && <PublisherInformation title={title}/>}
                     </div>
                 </div>
             </main>

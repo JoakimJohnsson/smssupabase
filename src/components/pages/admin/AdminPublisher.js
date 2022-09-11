@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
 import {Spinner} from "../../miniComponents/Spinner";
-import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
-import countryData from "../../../helpers/valueLists/countries.json";
-import {getObjectNameById, isTrue} from "../../../helpers/functions";
+import {TABLES} from "../../../helpers/constants";
+import {isTrue} from "../../../helpers/functions";
 import {AdminH1} from "../../headings";
 import {getRowByTableAndId} from "../../serviceFunctions";
 import {ToggleEditButtons} from "../../miniComponents/ToggleEditButton";
+import {AdminPublisherEditInfo} from "./AdminPublisherEditInfo";
+import {AdminPublisherInfo} from "./AdminPublisherInfo";
 
 
 export const AdminPublisher = () => {
@@ -27,18 +28,12 @@ export const AdminPublisher = () => {
                 <div className={"col-12 main-col"}>
                     <AdminH1 text={publisher.name}/>
                     {
-                        publisher.image_url && publisher.image_filename &&
-                        <div className={"col-12 col-sm-6 col-md-4"}>
-                            <img
-                                src={publisher.image_url}
-                                alt={publisher.image_filename}
-                                className='w-100 mb-3'
-                            />
-                        </div>
+                        edit ?
+                            <AdminPublisherEditInfo />
+                            :
+                            <AdminPublisherInfo publisher={publisher}/>
                     }
                     <ToggleEditButtons edit={edit} setSearchParams={setSearchParams}/>
-                    <h2>{LABELS_AND_HEADINGS.ID}: {publisher.id}</h2>
-                    <h3>{LABELS_AND_HEADINGS.COUNTRY}: {getObjectNameById(countryData, publisher.country_id)}</h3>
                 </div>
             </div>
         </main>
