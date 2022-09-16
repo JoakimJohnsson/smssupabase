@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
-import {addTitleData, deleteImage, getRowsByTable, uploadImage} from "../../serviceFunctions";
+import {addTitleData, deleteImage, getRowsByTable} from "../../serviceFunctions";
 import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import formatData from "../../../helpers/valueLists/formats.json";
-import {ImageUploader} from "../../ImageUploader";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../headings";
+import {ImageUploader} from "../../ImageUploader";
 
 
 export const AdminTitleAdd = () => {
@@ -60,11 +60,14 @@ export const AdminTitleAdd = () => {
                             <div className={"sms-form"}>
                                 <ImageUploader
                                     imageUrl={imageUrl}
+                                    setImageUrl={setImageUrl}
                                     imageFilename={imageFilename}
+                                    setImageFilename={setImageFilename}
                                     uploading={uploading}
-                                    uploadImage={e => uploadImage(e, imageFilename, setUploading, setDisableReset, BUCKETS.TITLE_IMAGES,
-                                        FILETYPES.TITLE_IMAGE, imageUrl, setImageFilename ,setImageUrl)}
-                                    deleteImage={deleteTitleImage}
+                                    setUploading={setUploading}
+                                    bucketName={BUCKETS.TITLE_IMAGES}
+                                    setDisableReset={setDisableReset}
+                                    fileType={FILETYPES.TITLE_IMAGE}
                                 />
                                 <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME}</label>
                                 <input

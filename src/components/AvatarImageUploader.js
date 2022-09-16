@@ -3,20 +3,9 @@ import {LABELS_AND_HEADINGS} from "../helpers/constants";
 import {Spinner} from "./miniComponents/Spinner";
 import {NoDataAvailable} from "./miniComponents/NoDataAvailable";
 import {TrashIcon} from "@heroicons/react/solid";
-import {deleteImage, uploadImage} from "./serviceFunctions";
 
 
-export const ImageUploaderSimple = ({
-                                        imageUrl,
-                                        setImageUrl,
-                                        imageFilename,
-                                        setImageFilename,
-                                        uploading,
-                                        setUploading,
-                                        bucketName,
-                                        setDisableReset,
-                                        fileType
-                                    }) => {
+export const AvatarImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, deleteImage}) => {
 
     return (
         <>
@@ -31,8 +20,7 @@ export const ImageUploaderSimple = ({
                                 className="w-100 mb-3"
                             />
                             <p>{imageFilename}</p>
-                            <button className={"btn btn-danger mb-2"}
-                                    onClick={() => deleteImage(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)}>
+                            <button className={"btn btn-danger mb-2"} onClick={deleteImage}>
                                 <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
                             </button>
                         </>
@@ -53,8 +41,7 @@ export const ImageUploaderSimple = ({
                 type="file"
                 id="single"
                 accept="image/*"
-                onChange={(e) => uploadImage(e, imageFilename, setUploading, setDisableReset, bucketName, fileType,
-                    imageUrl, setImageFilename, setImageUrl)}
+                onChange={uploadImage}
                 disabled={uploading}
             />
         </>

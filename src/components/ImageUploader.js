@@ -3,9 +3,20 @@ import {LABELS_AND_HEADINGS} from "../helpers/constants";
 import {Spinner} from "./miniComponents/Spinner";
 import {NoDataAvailable} from "./miniComponents/NoDataAvailable";
 import {TrashIcon} from "@heroicons/react/solid";
+import {deleteImage, uploadImage} from "./serviceFunctions";
 
 
-export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, deleteImage}) => {
+export const ImageUploader = ({
+                                        imageUrl,
+                                        setImageUrl,
+                                        imageFilename,
+                                        setImageFilename,
+                                        uploading,
+                                        setUploading,
+                                        bucketName,
+                                        setDisableReset,
+                                        fileType
+                                    }) => {
 
     return (
         <>
@@ -20,7 +31,8 @@ export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, 
                                 className="w-100 mb-3"
                             />
                             <p>{imageFilename}</p>
-                            <button className={"btn btn-danger mb-2"} onClick={deleteImage}>
+                            <button className={"btn btn-danger mb-2"}
+                                    onClick={() => deleteImage(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)}>
                                 <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
                             </button>
                         </>
@@ -41,7 +53,8 @@ export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, 
                 type="file"
                 id="single"
                 accept="image/*"
-                onChange={uploadImage}
+                onChange={(e) => uploadImage(e, imageFilename, setUploading, setDisableReset, bucketName, fileType,
+                    imageUrl, setImageFilename, setImageUrl)}
                 disabled={uploading}
             />
         </>

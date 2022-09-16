@@ -5,7 +5,7 @@ import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpe
 import countryData from "../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../headings";
-import {ImageUploaderSimple} from "../../ImageUploaderSimple";
+import {ImageUploader} from "../../ImageUploader";
 
 
 export const AdminPublisherAdd = () => {
@@ -46,7 +46,7 @@ export const AdminPublisherAdd = () => {
                     <div className={"row"}>
                         <div className={"sms-dashboard-col"}>
                             <div className={"sms-form"}>
-                                <ImageUploaderSimple
+                                <ImageUploader
                                     imageUrl={imageUrl}
                                     setImageUrl={setImageUrl}
                                     imageFilename={imageFilename}
