@@ -31,6 +31,11 @@ export const ImageUploader = ({
                                 className="w-100 mb-3"
                             />
                             <p>{imageFilename}</p>
+
+                            {/*
+                                TODO: Should this delete button do like handleDelete() in PublishersListAdminToolBox instead?
+                            */}
+
                             <button className={"btn btn-danger mb-2"}
                                     onClick={() => deleteImage(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)}>
                                 <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
