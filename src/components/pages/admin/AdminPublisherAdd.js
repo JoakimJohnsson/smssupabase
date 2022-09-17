@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {addPublisherData, deleteImage} from "../../serviceFunctions";
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
+import {addPublisherData, deleteImageFromBucket} from "../../serviceFunctions";
 import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import countryData from "../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
@@ -26,8 +26,8 @@ export const AdminPublisherAdd = () => {
     const [countryId, setCountryId] = useState("");
 
     const deletePublisherImage = async () => {
-        await deleteImage(imageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES,
-            setImageUrl, setImageFilename);
+        await deleteImageFromBucket(imageFilename, setUploading, BUCKETS.PUBLISHER_IMAGES,
+            setImageUrl, setImageFilename, TABLES.PUBLISHERS);
     }
 
     const resetAddPublisherForm = async () => {

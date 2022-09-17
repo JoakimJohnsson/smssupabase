@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
-import {addTitleData, deleteImage, getRowsByTable} from "../../serviceFunctions";
+import {addTitleData, deleteImageFromBucket, getRowsByTable} from "../../serviceFunctions";
 import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
@@ -35,7 +35,7 @@ export const AdminTitleAdd = () => {
     }, [])
 
     const deleteTitleImage = async () => {
-        await deleteImage(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
+        await deleteImageFromBucket(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
             setImageUrl, setImageFilename);
     }
 

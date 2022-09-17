@@ -197,7 +197,7 @@ export const uploadImage = async (e, fileName, setUploading, setDisableReset, bu
     }
 }
 
-export const deleteImage = async (fileName, setUploading, bucketName, setImageUrl, setImageFilename) => {
+export const deleteImageFromBucket = async (fileName, setUploading, bucketName, setImageUrl, setImageFilename, table) => {
     if (fileName) {
         try {
             setUploading(true);
@@ -217,7 +217,7 @@ export const deleteImage = async (fileName, setUploading, bucketName, setImageUr
     }
 }
 
-export const deleteImageSimple = async (fileName, bucketName) => {
+export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
     try {
         let {error} = await supabase.storage
             .from(bucketName)

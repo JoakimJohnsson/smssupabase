@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS} from "../helpers/constants";
 import {Spinner} from "./miniComponents/Spinner";
 import {NoDataAvailable} from "./miniComponents/NoDataAvailable";
 import {TrashIcon} from "@heroicons/react/solid";
-import {deleteImage, uploadImage} from "./serviceFunctions";
+import {deleteImageFromBucket, uploadImage} from "./serviceFunctions";
 
 
 export const ImageUploader = ({
@@ -32,12 +32,8 @@ export const ImageUploader = ({
                             />
                             <p>{imageFilename}</p>
 
-                            {/*
-                                TODO: Should this delete button do like handleDelete() in PublishersListAdminToolBox instead?
-                            */}
-
                             <button className={"btn btn-danger mb-2"}
-                                    onClick={() => deleteImage(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)}>
+                                    onClick={() => deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)}>
                                 <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
                             </button>
                         </>

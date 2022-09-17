@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {BUCKETS, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../helpers/constants";
 import {PencilAltIcon, XCircleIcon} from "@heroicons/react/solid";
-import {deleteImageSimple, deleteRowsByTableAndId} from "../../serviceFunctions";
+import {deleteImageFromBucketSimple, deleteRowsByTableAndId} from "../../serviceFunctions";
 
 
 export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesData}) => {
@@ -12,7 +12,7 @@ export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesDa
 
     const handleDelete = async () => {
         try {
-            await deleteImageSimple(image, BUCKETS.TITLE_IMAGES);
+            await deleteImageFromBucketSimple(image, BUCKETS.TITLE_IMAGES);
         } catch (error) {
             console.error("Error: ", error);
         } finally {
