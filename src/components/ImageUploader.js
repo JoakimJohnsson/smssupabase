@@ -3,20 +3,30 @@ import {LABELS_AND_HEADINGS} from "../helpers/constants";
 import {Spinner} from "./miniComponents/Spinner";
 import {NoDataAvailable} from "./miniComponents/NoDataAvailable";
 import {TrashIcon} from "@heroicons/react/solid";
-import {deleteImageFromBucket, uploadImage} from "./serviceFunctions";
+import {deleteImageFromBucket, removeImageDataFromTable, uploadImage} from "./serviceFunctions";
 
 
 export const ImageUploader = ({
-                                        imageUrl,
-                                        setImageUrl,
-                                        imageFilename,
-                                        setImageFilename,
-                                        uploading,
-                                        setUploading,
-                                        bucketName,
-                                        setDisableReset,
-                                        fileType
-                                    }) => {
+                                  imageUrl,
+                                  setImageUrl,
+                                  imageFilename,
+                                  setImageFilename,
+                                  uploading,
+                                  setUploading,
+                                  bucketName,
+                                  tableName,
+                                  setDisableReset,
+                                  fileType
+                              }) => {
+
+    const handleDeleteImage = async () => {
+        try {
+            await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
+                .then(() => removeImageDataFromTable(tableName, imageFilename));
+        } catch (error) {
+            console.error("Error: ", error);
+        }
+    }
 
     return (
         <>
@@ -33,7 +43,7 @@ export const ImageUploader = ({
                             <p>{imageFilename}</p>
 
                             <button className={"btn btn-danger mb-2"}
-                                    onClick={() => deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)}>
+                                    onClick={handleDeleteImage}>
                                 <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
                             </button>
                         </>

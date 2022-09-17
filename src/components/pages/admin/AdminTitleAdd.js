@@ -66,6 +66,7 @@ export const AdminTitleAdd = () => {
                                     uploading={uploading}
                                     setUploading={setUploading}
                                     bucketName={BUCKETS.TITLE_IMAGES}
+                                    tableName={TABLES.TITLES}
                                     setDisableReset={setDisableReset}
                                     fileType={FILETYPES.TITLE_IMAGE}
                                 />

@@ -54,6 +54,7 @@ export const AdminPublisherAdd = () => {
                                     uploading={uploading}
                                     setUploading={setUploading}
                                     bucketName={BUCKETS.PUBLISHER_IMAGES}
+                                    tableName={TABLES.PUBLISHERS}
                                     setDisableReset={setDisableReset}
                                     fileType={FILETYPES.PUBLISHER_IMAGE}
                                 />

@@ -217,6 +217,22 @@ export const deleteImageFromBucket = async (fileName, setUploading, bucketName, 
     }
 }
 
+export const removeImageDataFromTable = async (tableName, imageName) => {
+    if (imageName) {
+        try {
+            let {error} = await supabase
+                .from(tableName)
+                .update({image_filename: "", image_url: ""})
+                .match({image_filename: imageName})
+            if (error) {
+                console.error(MESSAGES.ERROR.VALIDATION_DELETE_IMAGE_FROM_TABLE);
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+        }
+    }
+}
+
 export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
     try {
         let {error} = await supabase.storage

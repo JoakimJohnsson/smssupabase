@@ -7,6 +7,7 @@ export const MESSAGES = {
         VALIDATION_LOGIN_FORM: 'Något gick fel vid inloggning',
         VALIDATION_UPLOAD_IMAGE: 'Du måste välja en bild för uppladdning',
         VALIDATION_DELETE_IMAGE: 'Något gick fel vid borttagning av bild',
+        VALIDATION_DELETE_IMAGE_FROM_TABLE: 'Något gick fel vid borttagning av bilddata från tabell',
         VALIDATION_UPLOAD: 'Något gick fel vid uppladdning',
         VALIDATION_INSERT: 'Något gick fel vid validering av formulär'
     },
