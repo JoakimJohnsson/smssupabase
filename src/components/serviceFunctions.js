@@ -217,13 +217,13 @@ export const deleteImageFromBucket = async (fileName, setUploading, bucketName, 
     }
 }
 
-export const removeImageDataFromTable = async (tableName, imageName) => {
-    if (imageName) {
+export const updateImageDataOnTable = async (tableName, imageFileName, updatedImageFileName, updatedImageUrl) => {
+    if (imageFileName) {
         try {
             let {error} = await supabase
                 .from(tableName)
-                .update({image_filename: "", image_url: ""})
-                .match({image_filename: imageName})
+                .update({image_filename: updatedImageUrl, image_url: updatedImageUrl})
+                .match({image_filename: imageFileName})
             if (error) {
                 console.error(MESSAGES.ERROR.VALIDATION_DELETE_IMAGE_FROM_TABLE);
             }

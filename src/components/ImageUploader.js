@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS} from "../helpers/constants";
 import {Spinner} from "./miniComponents/Spinner";
 import {NoDataAvailable} from "./miniComponents/NoDataAvailable";
 import {TrashIcon} from "@heroicons/react/solid";
-import {deleteImageFromBucket, removeImageDataFromTable, uploadImage} from "./serviceFunctions";
+import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "./serviceFunctions";
 
 
 export const ImageUploader = ({
@@ -22,7 +22,7 @@ export const ImageUploader = ({
     const handleDeleteImage = async () => {
         try {
             await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
-                .then(() => removeImageDataFromTable(tableName, imageFilename));
+                .then(() => updateImageDataOnTable(tableName, imageFilename, "", ""));
         } catch (error) {
             console.error("Error: ", error);
         }
