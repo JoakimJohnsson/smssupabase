@@ -57,6 +57,7 @@ export const AdminPublisherAdd = () => {
                                     tableName={TABLES.PUBLISHERS}
                                     setDisableReset={setDisableReset}
                                     fileType={FILETYPES.PUBLISHER_IMAGE}
+                                    id={false}
                                 />
                                 <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME}</label>
                                 <input

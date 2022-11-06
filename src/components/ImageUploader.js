@@ -16,13 +16,25 @@ export const ImageUploader = ({
                                   bucketName,
                                   tableName,
                                   setDisableReset,
-                                  fileType
+                                  fileType,
+                                  id
                               }) => {
 
     const handleDeleteImage = async () => {
         try {
             await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
-                .then(() => updateImageDataOnTable(tableName, imageFilename, "", ""));
+                .then(() => {
+                    updateImageDataOnTable(tableName, id, "", "");
+                });
+        } catch (error) {
+            console.error("Error: ", error);
+        }
+    }
+
+    const handleUploadImage = async (e) => {
+        try {
+            await uploadImage(e, tableName, id, setUploading, setDisableReset, bucketName, fileType,
+                imageUrl, setImageFilename, setImageUrl);
         } catch (error) {
             console.error("Error: ", error);
         }
@@ -64,8 +76,7 @@ export const ImageUploader = ({
                 type="file"
                 id="single"
                 accept="image/*"
-                onChange={(e) => uploadImage(e, imageFilename, setUploading, setDisableReset, bucketName, fileType,
-                    imageUrl, setImageFilename, setImageUrl)}
+                onChange={(e) => handleUploadImage(e)}
                 disabled={uploading}
             />
         </>

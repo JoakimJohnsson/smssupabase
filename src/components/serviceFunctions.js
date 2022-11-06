@@ -168,7 +168,7 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
 
 // IMAGE FUNCTIONS
 
-export const uploadImage = async (e, fileName, setUploading, setDisableReset, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {
+export const uploadImage = async (e, tableName, id, setUploading, setDisableReset, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {
     setUploading(true);
     setDisableReset(true);
     if (!e.target.files || e.target.files.length === 0) {
@@ -185,7 +185,16 @@ export const uploadImage = async (e, fileName, setUploading, setDisableReset, bu
             setImageUrl(supabase
                 .storage
                 .from(bucketName)
-                .getPublicUrl(newFileName).publicURL)
+                .getPublicUrl(newFileName).publicURL);
+
+            // Only used when updating image on existing row
+            if (id) {
+                await updateImageDataOnTable(tableName, id, newFileName, supabase
+                    .storage
+                    .from(bucketName)
+                    .getPublicUrl(newFileName).publicURL);
+            }
+
             if (uploadError) {
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
@@ -217,13 +226,13 @@ export const deleteImageFromBucket = async (fileName, setUploading, bucketName, 
     }
 }
 
-export const updateImageDataOnTable = async (tableName, imageFileName, updatedImageFileName, updatedImageUrl) => {
-    if (imageFileName) {
+export const updateImageDataOnTable = async (tableName, id, updatedImageFileName, updatedImageUrl) => {
+    if (id) {
         try {
             let {error} = await supabase
                 .from(tableName)
-                .update({image_filename: updatedImageUrl, image_url: updatedImageUrl})
-                .match({image_filename: imageFileName})
+                .update({image_filename: updatedImageFileName, image_url: updatedImageUrl})
+                .match({id: id})
             if (error) {
                 console.error(MESSAGES.ERROR.VALIDATION_DELETE_IMAGE_FROM_TABLE);
             }
