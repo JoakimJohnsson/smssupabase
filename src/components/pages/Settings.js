@@ -38,7 +38,7 @@ const Settings = () => {
                 returning: "minimal", // Don"t return the value after inserting
             })
             if (error) {
-                console.error("Error: ", error);
+                console.error(error);
             }
         } catch (error) {
             console.error(error.message)
@@ -55,7 +55,7 @@ const Settings = () => {
             const {error} = await supabase.auth.api
                 .resetPasswordForEmail(email)
             if (error) {
-                console.error("Error: ", error);
+                console.error(error);
             }
         } catch (error) {
             console.error(error.message)

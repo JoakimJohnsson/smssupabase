@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
-import {addTitleData, deleteImageFromBucket, getRowsByTable} from "../../serviceFunctions";
+import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
+import {addTitleData, getRowsByTable} from "../../serviceFunctions";
 import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../headings";
-import {ImageUploader} from "../../ImageUploader";
 
 
 export const AdminTitleAdd = () => {
@@ -17,10 +16,6 @@ export const AdminTitleAdd = () => {
         formMessage, setFormMessage,
         nameValidated, setNameValidated,
         formInputClass, setFormInputClass,
-        uploading, setUploading,
-        imageFilename, setImageFilename,
-        imageUrl, setImageUrl,
-        disableReset, setDisableReset
     ] = useCommonFormStates();
 
     const [startYear, setStartYear] = useState(1975);
@@ -34,19 +29,11 @@ export const AdminTitleAdd = () => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
     }, [])
 
-    const deleteTitleImage = async () => {
-        await deleteImageFromBucket(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
-            setImageUrl, setImageFilename);
-    }
-
     const resetAddTitleForm = async () => {
-        setImageFilename(null);
-        setImageUrl(null);
         setName("");
         setStartYear(1975);
         setEndYear(1975);
         setTotalIssues(12);
-        setDisableReset(false);
         hideAndResetMessage(setShowFormError, setShowFormSuccess, setFormMessage);
     }
 
@@ -58,18 +45,6 @@ export const AdminTitleAdd = () => {
                     <div className={"row"}>
                         <div className={"sms-dashboard-col"}>
                             <div className={"sms-form"}>
-                                <ImageUploader
-                                    imageUrl={imageUrl}
-                                    setImageUrl={setImageUrl}
-                                    imageFilename={imageFilename}
-                                    setImageFilename={setImageFilename}
-                                    uploading={uploading}
-                                    setUploading={setUploading}
-                                    bucketName={BUCKETS.TITLE_IMAGES}
-                                    tableName={TABLES.TITLES}
-                                    setDisableReset={setDisableReset}
-                                    fileType={FILETYPES.TITLE_IMAGE}
-                                />
                                 <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME}</label>
                                 <input
                                     id="name"
@@ -125,15 +100,13 @@ export const AdminTitleAdd = () => {
                                             endYear: endYear,
                                             publisherId: publisherId,
                                             formatId: formatId,
-                                            totalIssues: totalIssues,
-                                            titleImageFilename: imageFilename,
-                                            titleImageUrl: imageUrl
-                                        }, deleteTitleImage,setFormMessage, setShowFormSuccess, setShowFormError).then(() => resetAddTitleForm())}
-                                        disabled={!nameValidated || !imageFilename}>
+                                            totalIssues: totalIssues
+                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then(() => resetAddTitleForm())}
+                                        disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
                                 <button className={"btn btn-outline-secondary mb-2"}
-                                        onClick={resetAddTitleForm} disabled={disableReset}>
+                                        onClick={resetAddTitleForm}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
                                 {showFormError && <p className={"alert alert-danger mt-3"}>{formMessage}</p>}

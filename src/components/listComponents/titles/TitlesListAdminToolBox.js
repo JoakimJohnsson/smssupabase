@@ -14,7 +14,7 @@ export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesDa
         try {
             await deleteImageFromBucketSimple(image, BUCKETS.TITLE_IMAGES);
         } catch (error) {
-            console.error("Error: ", error);
+            console.error(error);
         } finally {
             deleteRowsByTableAndId(TABLES.TITLES, id, name, setTitlesData, titlesData).then();
         }

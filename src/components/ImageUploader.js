@@ -15,7 +15,6 @@ export const ImageUploader = ({
                                   setUploading,
                                   bucketName,
                                   tableName,
-                                  setDisableReset,
                                   fileType,
                                   id
                               }) => {
@@ -27,16 +26,16 @@ export const ImageUploader = ({
                     updateImageDataOnTable(tableName, id, "", "");
                 });
         } catch (error) {
-            console.error("Error: ", error);
+            console.error(error);
         }
     }
 
     const handleUploadImage = async (e) => {
         try {
-            await uploadImage(e, tableName, id, setUploading, setDisableReset, bucketName, fileType,
+            await uploadImage(e, tableName, id, setUploading, bucketName, fileType,
                 imageUrl, setImageFilename, setImageUrl);
         } catch (error) {
-            console.error("Error: ", error);
+            console.error(error);
         }
     }
 

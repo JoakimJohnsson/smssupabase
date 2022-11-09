@@ -8,12 +8,12 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
         setLoading(true);
         let {data, error, status} = await supabase
             .from(TABLES.PROFILES)
-            .select(`firstname, lastname, website, avatar_image_filename`)
+            .select("firstname, lastname, website, avatar_image_filename")
             .eq("id", id)
             .single();
 
         if (error && status !== 406) {
-            console.error("Error: ", error);
+            console.error(error);
         }
         if (data) {
             setFirstname(data.firstname);
@@ -22,28 +22,27 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
             setAvatarImageFilename(data.avatar_image_filename);
         }
     } catch (error) {
-        console.error("Error: ", error);
+        console.error(error);
     } finally {
         setLoading(false)
     }
 }
 
 // TITLES FUNCTIONS
-export async function addTitleData(data, deleteTitleImage, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function addTitleData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
-        let {error} = await supabase.from(TABLES.TITLES).insert([{
-            name: data.name,
-            start_year: data.startYear,
-            end_year: data.endYear,
-            publisher_id: data.publisherId,
-            format_id: data.formatId,
-            total_issues: data.totalIssues,
-            image_filename: data.titleImageFilename,
-            image_url: data.titleImageUrl
-        }])
+        let {error} = await supabase
+            .from(TABLES.TITLES)
+            .insert([{
+                name: data.name,
+                start_year: data.startYear,
+                end_year: data.endYear,
+                publisher_id: data.publisherId,
+                format_id: data.formatId,
+                total_issues: data.totalIssues
+            }])
         if (error) {
-            deleteTitleImage();
-            console.error("Error: ", error);
+            console.error(error);
             setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
             setShowFormSuccess(false);
             setShowFormError(true);
@@ -53,20 +52,48 @@ export async function addTitleData(data, deleteTitleImage, setFormMessage, setSh
             setShowFormSuccess(true);
         }
     } catch (error) {
-        deleteTitleImage();
-        console.error("Error: ", error);
+        console.error(error);
+    }
+}
+
+export async function updateTitleData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
+    try {
+        let {error} = await supabase
+            .from(TABLES.TITLES)
+            .update([{
+                name: data.name,
+                start_year: data.startYear,
+                end_year: data.endYear,
+                publisher_id: data.publisherId,
+                format_id: data.formatId,
+                total_issues: data.totalIssues
+            }])
+        if (error) {
+            console.error(error);
+            setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
+            setShowFormSuccess(false);
+            setShowFormError(true);
+        } else {
+            setFormMessage(MESSAGES.SUCCESS.VALIDATION_UPDATE);
+            setShowFormError(false);
+            setShowFormSuccess(true);
+        }
+    } catch (error) {
+        console.error(error);
     }
 }
 
 // PUBLISHERS FUNCTIONS
-export async function addPublisherData(data, deletePublisherImage, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function addPublisherData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
     try {
-        let {error} = await supabase.from(TABLES.PUBLISHERS).insert([{
-            name: data.name, country_id: data.countryId, image_filename: data.publisherImageFilename, image_url: data.publisherImageUrl
-        }])
+        let {error} = await supabase
+            .from(TABLES.PUBLISHERS)
+            .insert([{
+                name: data.name,
+                country_id: data.countryId
+            }])
         if (error) {
-            deletePublisherImage();
-            console.error("Error: ", error);
+            console.error(error);
             setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
             setShowFormSuccess(false);
             setShowFormError(true);
@@ -76,8 +103,31 @@ export async function addPublisherData(data, deletePublisherImage, setFormMessag
             setShowFormSuccess(true);
         }
     } catch (error) {
-        deletePublisherImage();
-        console.error("Error: ", error);
+        console.error(error);
+    }
+}
+
+export async function updatePublisherData(id, data, setFormMessage, setShowFormSuccess, setShowFormError) {
+    try {
+        let {error} = await supabase
+            .from(TABLES.PUBLISHERS)
+            .update([{
+                name: data.name,
+                country_id: data.countryId
+            }])
+            .eq("id", id)
+        if (error) {
+            console.error(error);
+            setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
+            setShowFormSuccess(false);
+            setShowFormError(true);
+        } else {
+            setFormMessage(MESSAGES.SUCCESS.VALIDATION_UPDATE);
+            setShowFormError(false);
+            setShowFormSuccess(true);
+        }
+    } catch (error) {
+        console.error(error);
     }
 }
 
@@ -89,13 +139,13 @@ export async function getRowsByTable(table, setData) {
             .from(table)
             .select("*")
         if (error && status !== 406) {
-            console.error("Error: ", error);
+            console.error(error);
         }
         if (data) {
             setData(data)
         }
     } catch (error) {
-        console.error("Error: ", error);
+        console.error(error);
     }
 }
 
@@ -103,15 +153,16 @@ export async function getRowByTableAndId(table, setData, id) {
     try {
         let {data, error, status} = await supabase
             .from(table)
-            .select("*").eq("id", id)
+            .select("*")
+            .eq("id", id)
         if (error && status !== 406) {
-            console.error("Error: ", error);
+            console.error(error);
         }
         if (data) {
             setData(data[0]);
         }
     } catch (error) {
-        console.error("Error: ", error);
+        console.error(error);
     }
 }
 
@@ -119,15 +170,16 @@ export async function getNameByTableAndId(table, id, setData) {
     try {
         let {data, error, status} = await supabase
             .from(table)
-            .select("name").eq("id", id)
+            .select("name")
+            .eq("id", id)
         if (error && status !== 406) {
-            console.error("Error: ", error);
+            console.error(error);
         }
         if (data) {
             setData(data[0].name);
         }
     } catch (error) {
-        console.error("Error: ", error);
+        console.error(error);
     }
 }
 
@@ -138,15 +190,16 @@ export async function deleteRowsByTableAndId(table, id, name, setData, initialDa
     try {
         let {data, error, status} = await supabase
             .from(table)
-            .delete().match({id: id})
+            .delete()
+            .match({id: id})
         if (error && status !== 406) {
-            console.error("Error: ", error);
+            console.error(error);
         }
         if (data) {
             setData(initialData.filter((x) => x.id !== id))
         }
     } catch (error) {
-        console.error("Error: ", error);
+        console.error(error);
     }
 }
 
@@ -154,23 +207,24 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
     try {
         let {data, error, status} = await supabase
             .from(table)
-            .select("*").limit(limit).order(column, {ascending})
+            .select("*")
+            .limit(limit)
+            .order(column, {ascending})
         if (error && status !== 406) {
-            console.error("Error: ", error);
+            console.error(error);
         }
         if (data) {
             setData(data)
         }
     } catch (error) {
-        console.error("Error: ", error);
+        console.error(error);
     }
 }
 
 // IMAGE FUNCTIONS
 
-export const uploadImage = async (e, tableName, id, setUploading, setDisableReset, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {
+export const uploadImage = async (e, tableName, id, setUploading, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {
     setUploading(true);
-    setDisableReset(true);
     if (!e.target.files || e.target.files.length === 0) {
         console.info(MESSAGES.ERROR.VALIDATION_UPLOAD_IMAGE);
     } else {
@@ -178,7 +232,8 @@ export const uploadImage = async (e, tableName, id, setUploading, setDisableRese
         try {
             const fileExt = file.name.split(".").pop();
             const newFileName = generateUniqueHashedFilename(fileExt, fileType);
-            let {error: uploadError} = await supabase.storage
+            let {error: uploadError} = await supabase
+                .storage
                 .from(bucketName)
                 .upload(newFileName, file);
             setImageFilename(newFileName);
@@ -199,7 +254,7 @@ export const uploadImage = async (e, tableName, id, setUploading, setDisableRese
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
         } catch (error) {
-            console.error("Error: ", error);
+            console.error(error);
         } finally {
             setUploading(false);
         }
@@ -219,7 +274,7 @@ export const deleteImageFromBucket = async (fileName, setUploading, bucketName, 
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
         } catch (error) {
-            console.error("Error: ", error);
+            console.error(error);
         } finally {
             setUploading(false);
         }
@@ -237,7 +292,7 @@ export const updateImageDataOnTable = async (tableName, id, updatedImageFileName
                 console.error(MESSAGES.ERROR.VALIDATION_DELETE_IMAGE_FROM_TABLE);
             }
         } catch (error) {
-            console.error("Error: ", error);
+            console.error(error);
         }
     }
 }
@@ -251,6 +306,6 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
             console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
         }
     } catch (error) {
-        console.error("Error: ", error);
+        console.error(error);
     }
 }

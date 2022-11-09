@@ -15,7 +15,7 @@ export const PublishersListAdminToolBox = ({id, name, image, setPublishersData, 
             deleteRowsByTableAndId(TABLES.PUBLISHERS, id, name, setPublishersData, publishersData)
                 .then(() => deleteImageFromBucketSimple(image, BUCKETS.PUBLISHER_IMAGES));
         } catch (error) {
-            console.error("Error: ", error);
+            console.error(error);
         }
     }
 

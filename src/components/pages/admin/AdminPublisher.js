@@ -20,7 +20,6 @@ export const AdminPublisher = () => {
     const [uploading, setUploading] = useState(false);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
-    const [disableReset, setDisableReset] = useState(false);
     const {id} = useParams();
 
     const fetchPublisherData = useCallback(() => {
@@ -33,7 +32,7 @@ export const AdminPublisher = () => {
         setImageUrl(publisher.image_url);
     }, [id, fetchPublisherData, setImageFilename, setImageUrl, imageFilename, imageUrl, publisher.image_filename, publisher.image_url])
 
-    return loading && !disableReset ? (<Spinner/>) : (
+    return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
@@ -54,7 +53,6 @@ export const AdminPublisher = () => {
                                             setUploading={setUploading}
                                             bucketName={BUCKETS.PUBLISHER_IMAGES}
                                             tableName={TABLES.PUBLISHERS}
-                                            setDisableReset={setDisableReset}
                                             fileType={FILETYPES.PUBLISHER_IMAGE}
                                             id={publisher.id}
                                         />
