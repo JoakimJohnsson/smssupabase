@@ -10,7 +10,7 @@ import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
 
     return titlesData && (
-        <ul className={"sms-list list-group"}>
+        <ul className={"sms-list--with-tools"}>
             {
                 titlesData.length ?
                     (titlesData.map((t, index) =>

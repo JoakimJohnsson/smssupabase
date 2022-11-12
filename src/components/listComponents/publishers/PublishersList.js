@@ -9,7 +9,7 @@ import {PublishersListUserToolBox} from "./PublishersListUserToolBox";
 export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {
 
     return publishersData && (
-        <ul className={"sms-list list-group"}>
+        <ul className={"sms-list--with-tools"}>
             {
                 publishersData.length ?
                     (publishersData.map((p, index) =>

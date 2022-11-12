@@ -112,14 +112,12 @@
 }
 
 // List
-.sms-list {
-  &.list-group {
-    @extend .list-group-flush, .small, .mb-3, .list-unstyled;
+.sms-list--with-tools {
+    @extend .list-group, .list-group-flush, .small, .mb-3, .list-unstyled;
     .sms-list-col--main {
       @extend .col-8, .d-flex, .flex-column, .justify-content-center;
     }
     .sms-list-col--tools {
       @extend .col-4, .text-end;
     }
-  }
 }
