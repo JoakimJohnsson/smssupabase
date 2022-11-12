@@ -9,19 +9,40 @@ export const MESSAGES = {
         VALIDATION_DELETE_IMAGE: "Något gick fel vid borttagning av bild",
         VALIDATION_DELETE_IMAGE_FROM_TABLE: "Något gick fel vid borttagning av bilddata från tabell",
         VALIDATION_UPLOAD: "Något gick fel vid uppladdning",
-        VALIDATION_INSERT: "Något gick fel vid validering av formulär",
-        VALIDATION_UPDATE: "Lyckades inte uppdatera informationen"
+        VALIDATION_INSERT: {
+            show: true,
+            error: true,
+            message: "Något gick fel vid validering av formulär"
+        },
+        VALIDATION_UPDATE: {
+            show: true,
+            error: true,
+            message: "Lyckades inte uppdatera informationen"
+        }
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
         VALIDATION_PASSWORD: "Det där är ett starkt lösenord!",
         VALIDATION_DOWNLOAD_IMAGE: "En bild laddades ned",
-        VALIDATION_INSERT: "Informationen lades till i databasen",
-        VALIDATION_UPDATE: "Informationen uppdaterades"
+        VALIDATION_INSERT: {
+            show: true,
+            error: false,
+            message: "Informationen lades till i databasen"
+        },
+        VALIDATION_UPDATE: {
+            show: true,
+            error: false,
+            message: "Informationen uppdaterades"
+        }
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
         FROM: " från ",
+    },
+    EMPTY: {
+        show: false,
+        error: false,
+        message: ""
     }
 }
 
@@ -160,7 +181,7 @@ export const TABLES = {
 export const PANES = {
     TITLES: {
         NAME: "Mina titlar"
-    },OVERVIEW: {
+    }, OVERVIEW: {
         NAME: "Översikt"
     },
     OTHER_COLLECTIONS: {

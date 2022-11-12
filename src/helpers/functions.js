@@ -83,10 +83,8 @@ export const handleNameInput = (e, setName, setFormInputClass, setNameValidated)
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");
 
-export const hideAndResetMessage = (setShowFormError, setShowFormSuccess, setFormMessage) => {
+export const hideAndResetMessage = (setFormMessage) => {
     setTimeout(() => {
-        setShowFormError(false);
-        setShowFormSuccess(false);
-        setFormMessage("");
+        setFormMessage(MESSAGES.EMPTY);
     }, 3000)
 }

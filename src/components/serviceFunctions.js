@@ -29,7 +29,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
 }
 
 // TITLES FUNCTIONS
-export async function addTitleData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function addTitleData(data, setFormMessage) {
     try {
         let {error} = await supabase
             .from(TABLES.TITLES)
@@ -44,19 +44,15 @@ export async function addTitleData(data, setFormMessage, setShowFormSuccess, set
         if (error) {
             console.error(error);
             setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
-            setShowFormSuccess(false);
-            setShowFormError(true);
         } else {
             setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
-            setShowFormError(false);
-            setShowFormSuccess(true);
         }
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function updateTitleData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function updateTitleData(data, setFormMessage) {
     try {
         let {error} = await supabase
             .from(TABLES.TITLES)
@@ -71,12 +67,8 @@ export async function updateTitleData(data, setFormMessage, setShowFormSuccess, 
         if (error) {
             console.error(error);
             setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
-            setShowFormSuccess(false);
-            setShowFormError(true);
         } else {
             setFormMessage(MESSAGES.SUCCESS.VALIDATION_UPDATE);
-            setShowFormError(false);
-            setShowFormSuccess(true);
         }
     } catch (error) {
         console.error(error);
@@ -84,7 +76,7 @@ export async function updateTitleData(data, setFormMessage, setShowFormSuccess, 
 }
 
 // PUBLISHERS FUNCTIONS
-export async function addPublisherData(data, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function addPublisherData(data, setFormMessage) {
     try {
         let {error} = await supabase
             .from(TABLES.PUBLISHERS)
@@ -95,19 +87,15 @@ export async function addPublisherData(data, setFormMessage, setShowFormSuccess,
         if (error) {
             console.error(error);
             setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
-            setShowFormSuccess(false);
-            setShowFormError(true);
         } else {
             setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
-            setShowFormError(false);
-            setShowFormSuccess(true);
         }
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function updatePublisherData(id, data, setFormMessage, setShowFormSuccess, setShowFormError) {
+export async function updatePublisherData(id, data, setFormMessage) {
     try {
         let {error} = await supabase
             .from(TABLES.PUBLISHERS)
@@ -119,12 +107,8 @@ export async function updatePublisherData(id, data, setFormMessage, setShowFormS
         if (error) {
             console.error(error);
             setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
-            setShowFormSuccess(false);
-            setShowFormError(true);
         } else {
             setFormMessage(MESSAGES.SUCCESS.VALIDATION_UPDATE);
-            setShowFormError(false);
-            setShowFormSuccess(true);
         }
     } catch (error) {
         console.error(error);

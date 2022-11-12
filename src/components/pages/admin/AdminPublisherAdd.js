@@ -11,8 +11,6 @@ export const AdminPublisherAdd = () => {
 
     const [
         name, setName,
-        showFormError, setShowFormError,
-        showFormSuccess, setShowFormSuccess,
         formMessage, setFormMessage,
         nameValidated, setNameValidated,
         formInputClass, setFormInputClass
@@ -22,7 +20,8 @@ export const AdminPublisherAdd = () => {
 
     const resetAddPublisherForm = async () => {
         setName("");
-        hideAndResetMessage(setShowFormError, setShowFormSuccess, setFormMessage);
+        setNameValidated(false);
+        hideAndResetMessage(setFormMessage);
     }
 
     return (
@@ -54,16 +53,20 @@ export const AdminPublisherAdd = () => {
                                         onClick={() => addPublisherData({
                                             name: name,
                                             countryId: countryId
-                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then(() => resetAddPublisherForm())}
+                                        }, setFormMessage).then(() => resetAddPublisherForm())}
                                         disabled={!nameValidated}>
-                                    {LABELS_AND_HEADINGS.ADD}
+                                    {LABELS_AND_HEADINGS.ADD + " " + nameValidated}
                                 </button>
                                 <button className={"btn btn-outline-secondary mb-2"}
                                         onClick={resetAddPublisherForm}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
-                                {showFormError && <p className={"alert alert-danger mt-3"}>{formMessage}</p>}
-                                {showFormSuccess && <p className={"alert alert-success mt-3"}>{formMessage}</p>}
+                                {
+                                    formMessage.show &&
+                                    <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
+                                        {formMessage.message}
+                                    </p>
+                                }
                             </div>
                         </div>
                     </div>

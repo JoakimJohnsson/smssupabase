@@ -11,8 +11,6 @@ export const AdminTitleAdd = () => {
 
     const [
         name, setName,
-        showFormError, setShowFormError,
-        showFormSuccess, setShowFormSuccess,
         formMessage, setFormMessage,
         nameValidated, setNameValidated,
         formInputClass, setFormInputClass,
@@ -34,7 +32,7 @@ export const AdminTitleAdd = () => {
         setStartYear(1975);
         setEndYear(1975);
         setTotalIssues(12);
-        hideAndResetMessage(setShowFormError, setShowFormSuccess, setFormMessage);
+        hideAndResetMessage(setFormMessage);
     }
 
     return (
@@ -101,7 +99,7 @@ export const AdminTitleAdd = () => {
                                             publisherId: publisherId,
                                             formatId: formatId,
                                             totalIssues: totalIssues
-                                        }, setFormMessage, setShowFormSuccess, setShowFormError).then(() => resetAddTitleForm())}
+                                        }, setFormMessage).then(() => resetAddTitleForm())}
                                         disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
@@ -109,8 +107,12 @@ export const AdminTitleAdd = () => {
                                         onClick={resetAddTitleForm}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
-                                {showFormError && <p className={"alert alert-danger mt-3"}>{formMessage}</p>}
-                                {showFormSuccess && <p className={"alert alert-success mt-3"}>{formMessage}</p>}
+                                {
+                                    formMessage.show &&
+                                    <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
+                                        {formMessage.message}
+                                    </p>
+                                }
                             </div>
                         </div>
                     </div>
