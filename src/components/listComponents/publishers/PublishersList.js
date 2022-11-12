@@ -9,19 +9,23 @@ import {PublishersListUserToolBox} from "./PublishersListUserToolBox";
 export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {
 
     return publishersData && (
-        <ul className={"list-group list-group-flush small mb-3 list-unstyled"}>
+        <ul className={"sms-list list-group"}>
             {
                 publishersData.length ?
                     (publishersData.map((p, index) =>
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
-                                    <div className={"col-8 d-flex align-items-center"}>
-                                        <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-2"}>
-                                            {p.name}
-                                        </Link>
-                                        Inlagd: <FriendlyDate dateString={p.created_at}/>
+                                    <div className={"sms-list-col--main"}>
+                                        <div>
+                                            <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-2"}>
+                                                {p.name}
+                                            </Link>
+                                        </div>
+                                        <div>
+                                            Inlagd: <FriendlyDate dateString={p.created_at}/>
+                                        </div>
                                     </div>
-                                    <div className={"col-4 text-end"}>
+                                    <div className={"sms-list-col--tools"}>
                                         {
                                             showAdminInfo ?
                                                 <PublishersListAdminToolBox

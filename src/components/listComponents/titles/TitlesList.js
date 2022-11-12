@@ -10,21 +10,25 @@ import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
 
     return titlesData && (
-        <ul className={"list-group list-group-flush small mb-3 list-unstyled"}>
+        <ul className={"sms-list list-group"}>
             {
                 titlesData.length ?
                     (titlesData.map((t, index) =>
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
-                                    <div className={"col-8 d-flex align-items-center"}>
-                                        <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={"me-2"}>
-                                            {t.name}
-                                        </Link>
-                                        {t.start_year}
-                                        <TextSpacer character={"|"} margin={"mx-2"}/>
-                                        Inlagd: <FriendlyDate dateString={t.created_at}/>
+                                    <div className={"sms-list-col--main"}>
+                                        <div>
+                                            <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={"me-2"}>
+                                                {t.name}
+                                            </Link>
+                                        </div>
+                                        <div>
+                                            {t.start_year}
+                                            <TextSpacer character={"|"} margin={"mx-2"}/>
+                                            Inlagd: <FriendlyDate dateString={t.created_at}/>
+                                        </div>
                                     </div>
-                                    <div className={"col-4 text-end"}>
+                                    <div className={"sms-list-col--tools"}>
                                         {
                                             showAdminInfo ?
                                                 <TitlesListAdminToolBox
