@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {FriendlyDate} from "../../miniComponents/FriendlyDate";
-import {TitlesListUserToolBox} from "../titles/TitlesListUserToolBox";
 import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
 import {PublishersListAdminToolBox} from "./PublishersListAdminToolBox";
+import {PublishersListUserToolBox} from "./PublishersListUserToolBox";
 
 
 export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {
@@ -13,19 +13,25 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
             {
                 publishersData.length ?
                     (publishersData.map((p, index) =>
-                            <li key={index} className={"list-group-item ps-0"}>
+                            <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
-                                    <div className={"col-8"}>
+                                    <div className={"col-8 d-flex align-items-center"}>
                                         <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-2"}>
                                             {p.name}
                                         </Link>
                                         Inlagd: <FriendlyDate dateString={p.created_at}/>
                                     </div>
-                                    <div className={"col-4"}>
-                                        {showAdminInfo ? <PublishersListAdminToolBox id={p.id} name={p.name} image={p.image_filename}
-                                                                                     publishersData={publishersData}
-                                                                                     setPublishersData={setPublishersData}/> :
-                                            <TitlesListUserToolBox/>}
+                                    <div className={"col-4 text-end"}>
+                                        {
+                                            showAdminInfo ?
+                                                <PublishersListAdminToolBox
+                                                    publisher={p}
+                                                    publishersData={publishersData}
+                                                    setPublishersData={setPublishersData}
+                                                />
+                                                :
+                                                <PublishersListUserToolBox/>
+                                        }
                                     </div>
                                 </div>
                             </li>)

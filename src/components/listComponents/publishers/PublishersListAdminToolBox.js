@@ -5,15 +5,15 @@ import {PencilAltIcon, XCircleIcon} from "@heroicons/react/solid";
 import {deleteImageFromBucketSimple, deleteRowsByTableAndId} from "../../serviceFunctions";
 
 
-export const PublishersListAdminToolBox = ({id, name, image, setPublishersData, publishersData}) => {
+export const PublishersListAdminToolBox = ({publisher, setPublishersData, publishersData}) => {
 
-    const editText = LABELS_AND_HEADINGS.EDIT + " " + name;
-    const deleteText = LABELS_AND_HEADINGS.DELETE + " " + name;
+    const editText = LABELS_AND_HEADINGS.EDIT + " " + publisher.name;
+    const deleteText = LABELS_AND_HEADINGS.DELETE + " " + publisher.name;
 
     const handleDelete = async () => {
         try {
-            deleteRowsByTableAndId(TABLES.PUBLISHERS, id, name, setPublishersData, publishersData)
-                .then(() => deleteImageFromBucketSimple(image, BUCKETS.PUBLISHER_IMAGES));
+            deleteRowsByTableAndId(TABLES.PUBLISHERS, publisher.id, publisher.name, setPublishersData, publishersData)
+                .then(() => deleteImageFromBucketSimple(publisher.image, BUCKETS.PUBLISHER_IMAGES));
         } catch (error) {
             console.error(error);
         }
@@ -21,7 +21,7 @@ export const PublishersListAdminToolBox = ({id, name, image, setPublishersData, 
 
     return (
         <div className={"ms-2 d-inline-block"}>
-            <Link to={ROUTES.ADMIN.PUBLISHERS + id + "?edit=true"} className={"btn btn-primary m-1 p-1"} title={editText}>
+            <Link to={ROUTES.ADMIN.PUBLISHERS + publisher.id + "?edit=true"} className={"btn btn-primary m-1 p-1"} title={editText}>
                 <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
                 <span className={"visually-hidden"}>{editText}</span>
             </Link>

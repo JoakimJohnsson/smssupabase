@@ -5,24 +5,24 @@ import {PencilAltIcon, XCircleIcon} from "@heroicons/react/solid";
 import {deleteImageFromBucketSimple, deleteRowsByTableAndId} from "../../serviceFunctions";
 
 
-export const TitlesListAdminToolBox = ({id, name, image, setTitlesData, titlesData}) => {
+export const TitlesListAdminToolBox = ({title, setTitlesData, titlesData}) => {
 
-    const editText = LABELS_AND_HEADINGS.EDIT + " " + name;
-    const deleteText = LABELS_AND_HEADINGS.DELETE + " " + name;
+    const editText = LABELS_AND_HEADINGS.EDIT + " " + title.name;
+    const deleteText = LABELS_AND_HEADINGS.DELETE + " " + title.name;
 
     const handleDelete = async () => {
         try {
-            await deleteImageFromBucketSimple(image, BUCKETS.TITLE_IMAGES);
+            await deleteImageFromBucketSimple(title.image, BUCKETS.TITLE_IMAGES);
         } catch (error) {
             console.error(error);
         } finally {
-            deleteRowsByTableAndId(TABLES.TITLES, id, name, setTitlesData, titlesData).then();
+            deleteRowsByTableAndId(TABLES.TITLES, title.id, title.name, setTitlesData, titlesData).then();
         }
     }
 
     return (
         <div className={"ms-2 d-inline-block"}>
-            <Link to={ROUTES.ADMIN.TITLES + id + "?edit=true"} className={"btn btn-primary m-1 p-1"} title={editText}>
+            <Link to={ROUTES.ADMIN.TITLES + title.id + "?edit=true"} className={"btn btn-primary m-1 p-1"} title={editText}>
                 <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
                 <span className={"visually-hidden"}>{editText}</span>
             </Link>
