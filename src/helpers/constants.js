@@ -181,7 +181,8 @@ export const TABLES = {
 export const PANES = {
     TITLES: {
         NAME: "Mina titlar"
-    }, OVERVIEW: {
+    },
+    OVERVIEW: {
         NAME: "Översikt"
     },
     OTHER_COLLECTIONS: {

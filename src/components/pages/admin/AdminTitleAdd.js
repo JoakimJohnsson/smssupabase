@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import {addTitleData, getRowsByTable} from "../../serviceFunctions";
 import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import formatData from "../../../helpers/valueLists/formats.json";
@@ -32,6 +32,8 @@ export const AdminTitleAdd = () => {
         setStartYear(1975);
         setEndYear(1975);
         setTotalIssues(12);
+        setNameValidated(false);
+        setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         hideAndResetMessage(setFormMessage);
     }
 

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {addPublisherData} from "../../serviceFunctions";
 import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import countryData from "../../../helpers/valueLists/countries.json";
@@ -21,6 +21,7 @@ export const AdminPublisherAdd = () => {
     const resetAddPublisherForm = async () => {
         setName("");
         setNameValidated(false);
+        setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         hideAndResetMessage(setFormMessage);
     }
 
@@ -55,7 +56,7 @@ export const AdminPublisherAdd = () => {
                                             countryId: countryId
                                         }, setFormMessage).then(() => resetAddPublisherForm())}
                                         disabled={!nameValidated}>
-                                    {LABELS_AND_HEADINGS.ADD + " " + nameValidated}
+                                    {LABELS_AND_HEADINGS.ADD}
                                 </button>
                                 <button className={"btn btn-outline-secondary mb-2"}
                                         onClick={resetAddPublisherForm}>
