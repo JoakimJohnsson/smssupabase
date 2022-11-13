@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
-import {TitlesList} from "../../../listComponents/titles/TitlesList";
-import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
+import {TitlesList} from "../../../lists/titles/TitlesList";
+import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {TitlesIcon} from "../../../icons";
 
 

@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
-import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
-import {PublishersList} from "../../../listComponents/publishers/PublishersList";
+import {NoDataAvailable} from "../../../minis/NoDataAvailable";
+import {PublishersList} from "../../../lists/publishers/PublishersList";
 import {PublishersIcon} from "../../../icons";
 
 

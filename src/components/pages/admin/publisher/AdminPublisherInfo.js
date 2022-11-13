@@ -1,7 +1,7 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import countryData from "../../../helpers/valueLists/countries.json";
-import {getObjectNameById} from "../../../helpers/functions";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import countryData from "../../../../helpers/valueLists/countries.json";
+import {getObjectNameById} from "../../../../helpers/functions";
 
 
 export const AdminPublisherInfo = ({publisher}) => {

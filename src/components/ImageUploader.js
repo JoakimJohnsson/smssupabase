@@ -1,7 +1,7 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
-import {Spinner} from "./miniComponents/Spinner";
-import {NoDataAvailable} from "./miniComponents/NoDataAvailable";
+import {Spinner} from "./minis/Spinner";
+import {NoDataAvailable} from "./minis/NoDataAvailable";
 import {TrashIcon} from "@heroicons/react/solid";
 import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "./serviceFunctions";
 

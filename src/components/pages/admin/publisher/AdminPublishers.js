@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
-import {getRowsByTable} from "../../serviceFunctions";
-import {PublishersList} from "../../listComponents/publishers/PublishersList";
-import {AdminH1} from "../../headings";
+import {LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {getRowsByTable} from "../../../serviceFunctions";
+import {PublishersList} from "../../../lists/publishers/PublishersList";
+import {AdminH1} from "../../../headings";
 
 
 export const AdminPublishers = () => {

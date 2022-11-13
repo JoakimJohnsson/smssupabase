@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {TextSpacer} from "../../miniComponents/TextSpacer";
-import {FriendlyDate} from "../../miniComponents/FriendlyDate";
+import {TextSpacer} from "../../minis/TextSpacer";
+import {FriendlyDate} from "../../minis/FriendlyDate";
 import {TitlesListAdminToolBox} from "./TitlesListAdminToolBox";
 import {TitlesListUserToolBox} from "./TitlesListUserToolBox";
-import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
+import {NoDataAvailable} from "../../minis/NoDataAvailable";
 
 
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {

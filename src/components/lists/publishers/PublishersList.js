@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {FriendlyDate} from "../../miniComponents/FriendlyDate";
-import {NoDataAvailable} from "../../miniComponents/NoDataAvailable";
+import {FriendlyDate} from "../../minis/FriendlyDate";
+import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {PublishersListAdminToolBox} from "./PublishersListAdminToolBox";
 import {PublishersListUserToolBox} from "./PublishersListUserToolBox";
 

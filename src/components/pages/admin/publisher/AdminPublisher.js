@@ -1,14 +1,14 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
-import {Spinner} from "../../miniComponents/Spinner";
-import {BUCKETS, FILETYPES, TABLES} from "../../../helpers/constants";
-import {isTrue} from "../../../helpers/functions";
-import {AdminH1} from "../../headings";
-import {getRowByTableAndId} from "../../serviceFunctions";
-import {ToggleEditButtons} from "../../miniComponents/ToggleEditButton";
+import {Spinner} from "../../../minis/Spinner";
+import {BUCKETS, FILETYPES, TABLES} from "../../../../helpers/constants";
+import {isTrue} from "../../../../helpers/functions";
+import {AdminH1} from "../../../headings";
+import {getRowByTableAndId} from "../../../serviceFunctions";
+import {ToggleEditButtons} from "../../../minis/ToggleEditButton";
 import {AdminPublisherEditInfo} from "./AdminPublisherEditInfo";
 import {AdminPublisherInfo} from "./AdminPublisherInfo";
-import {ImageUploader} from "../../ImageUploader";
+import {ImageUploader} from "../../../ImageUploader";
 
 
 export const AdminPublisher = () => {

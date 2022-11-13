@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useParams, useSearchParams} from "react-router-dom";
-import {Spinner} from "../../miniComponents/Spinner";
-import {getRowByTableAndId} from "../../serviceFunctions";
-import {TABLES} from "../../../helpers/constants";
-import formatData from "../../../helpers/valueLists/formats.json";
-import {isTrue} from "../../../helpers/functions";
-import {AdminH1} from "../../headings";
-import {ToggleEditButtons} from "../../miniComponents/ToggleEditButton";
+import {Spinner} from "../../../minis/Spinner";
+import {getRowByTableAndId} from "../../../serviceFunctions";
+import {TABLES} from "../../../../helpers/constants";
+import formatData from "../../../../helpers/valueLists/formats.json";
+import {isTrue} from "../../../../helpers/functions";
+import {AdminH1} from "../../../headings";
+import {ToggleEditButtons} from "../../../minis/ToggleEditButton";
 import {AdminTitleInfo} from "./AdminTitleInfo";
 import {AdminTitleEditInfo} from "./AdminTitleEditInfo";
 

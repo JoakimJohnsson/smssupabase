@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {addPublisherData} from "../../serviceFunctions";
-import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
-import countryData from "../../../helpers/valueLists/countries.json";
-import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
-import {AdminH1} from "../../headings";
-import {ArrowLeftButton} from "../../miniComponents/ArrowLeftButton";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {addPublisherData} from "../../../serviceFunctions";
+import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import countryData from "../../../../helpers/valueLists/countries.json";
+import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
+import {AdminH1} from "../../../headings";
+import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {useNavigate} from "react-router-dom";
 
 

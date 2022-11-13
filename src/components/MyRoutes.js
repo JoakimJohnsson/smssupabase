@@ -4,20 +4,20 @@ import SignupSuccess from "./pages/SignUpSuccess";
 import {ROUTES} from "../helpers/constants";
 import {Home} from "./pages/Home";
 import {Dashboard} from "./pages/Dashboard";
-import {OverviewPane} from "./dashboardComponents/dashboardTabPanes/OverviewPane";
-import {TitlesPane} from "./dashboardComponents/dashboardTabPanes/TitlesPane";
-import {OtherCollectionsPane} from "./dashboardComponents/dashboardTabPanes/OtherCollectionsPane";
+import {OverviewPane} from "./dashboard/dashboardTabPanes/OverviewPane";
+import {TitlesPane} from "./dashboard/dashboardTabPanes/TitlesPane";
+import {OtherCollectionsPane} from "./dashboard/dashboardTabPanes/OtherCollectionsPane";
 import Settings from "./pages/Settings";
 import {Title} from "./pages/Title";
 import {Titles} from "./pages/Titles";
 import {useAppContext} from "../context/AppContext";
 import {Admin} from "./pages/admin/Admin";
-import {AdminPublisher} from "./pages/admin/AdminPublisher";
-import {AdminPublishers} from "./pages/admin/AdminPublishers";
-import {AdminPublisherAdd} from "./pages/admin/AdminPublisherAdd";
-import {AdminTitle} from "./pages/admin/AdminTitle";
-import {AdminTitles} from "./pages/admin/AdminTitles";
-import {AdminTitleAdd} from "./pages/admin/AdminTitleAdd";
+import {AdminPublisher} from "./pages/admin/publisher/AdminPublisher";
+import {AdminPublishers} from "./pages/admin/publisher/AdminPublishers";
+import {AdminPublisherAdd} from "./pages/admin/publisher/AdminPublisherAdd";
+import {AdminTitle} from "./pages/admin/title/AdminTitle";
+import {AdminTitles} from "./pages/admin/title/AdminTitles";
+import {AdminTitleAdd} from "./pages/admin/title/AdminTitleAdd";
 
 
 export const MyRoutes = () => {

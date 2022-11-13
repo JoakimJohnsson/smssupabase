@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Spinner} from "../../miniComponents/Spinner";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {TitlesList} from "../../listComponents/titles/TitlesList";
-import {getRowsByTable} from "../../serviceFunctions";
-import {AdminH1} from "../../headings";
+import {Spinner} from "../../../minis/Spinner";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {TitlesList} from "../../../lists/titles/TitlesList";
+import {getRowsByTable} from "../../../serviceFunctions";
+import {AdminH1} from "../../../headings";
 
 
 export const AdminTitles = () => {

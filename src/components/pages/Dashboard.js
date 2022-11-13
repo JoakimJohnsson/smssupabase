@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Outlet} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {Sidebar} from "../dashboardComponents/Sidebar";
+import {Sidebar} from "../dashboard/Sidebar";
 import {ChevronDoubleDownIcon, ChevronDoubleRightIcon} from "@heroicons/react/solid";
 import {useAppContext} from "../../context/AppContext";
 import {HeroHeader} from "../header/HeroHeader";

@@ -1,6 +1,6 @@
 import React from "react";
 import {useAppContext} from "../context/AppContext";
-import {Spinner} from "./miniComponents/Spinner";
+import {Spinner} from "./minis/Spinner";
 
 export const NavbarProfileInformation = () => {
     const {avatarImageUrl, userUrl} = useAppContext();
