@@ -5,6 +5,7 @@ import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {PublishersList} from "../../../lists/publishers/PublishersList";
 import {PublishersIcon} from "../../../icons";
+import {PlusButton} from "../../../minis/PlusButton";
 
 
 export const PublishersCard = () => {
@@ -31,9 +32,7 @@ export const PublishersCard = () => {
                         :
                         <NoDataAvailable />
                 }
-                <button className={"btn btn-primary me-3 mb-2"}
-                        onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}>{LABELS_AND_HEADINGS.ADD_PUBLISHER}
-                </button>
+                <PlusButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)} customClass={"me-3 mb-2"} label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                 <Link className={"btn btn-outline-secondary mb-2"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
             </div>
         </div>

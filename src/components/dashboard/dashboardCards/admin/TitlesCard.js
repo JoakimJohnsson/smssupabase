@@ -5,6 +5,7 @@ import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions
 import {TitlesList} from "../../../lists/titles/TitlesList";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {TitlesIcon} from "../../../icons";
+import {PlusButton} from "../../../minis/PlusButton";
 
 
 export const TitlesCard = () => {
@@ -31,9 +32,7 @@ export const TitlesCard = () => {
                         :
                         <NoDataAvailable />
                 }
-                <button className={"btn btn-primary me-3 mb-2"}
-                        onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD) }>{LABELS_AND_HEADINGS.ADD_TITLE}
-                </button>
+                <PlusButton onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} customClass={"me-3 mb-2"} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
                 <Link className={"btn btn-outline-secondary mb-2"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
             </div>
         </div>
