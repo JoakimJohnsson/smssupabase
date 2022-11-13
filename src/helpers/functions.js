@@ -54,6 +54,10 @@ export const handleGenericFormInput = (success, setInputClass, setValidated) => 
     }
 }
 
+export const handleBacking = (navigate) => {
+    navigate(-1);
+}
+
 export const generateUniqueHashedFilename = (fileExt, fileType) => {
     let number = Math.random() * 100;
     return fileType + number.toString().replace(".", "") + "." + fileExt;

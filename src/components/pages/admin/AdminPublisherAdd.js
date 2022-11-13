@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {addPublisherData} from "../../serviceFunctions";
-import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
+import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import countryData from "../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../headings";
+import {ArrowLeftButton} from "../../miniComponents/ArrowLeftButton";
+import {useNavigate} from "react-router-dom";
 
 
 export const AdminPublisherAdd = () => {
@@ -15,6 +17,8 @@ export const AdminPublisherAdd = () => {
         nameValidated, setNameValidated,
         formInputClass, setFormInputClass
     ] = useCommonFormStates();
+
+    const navigate = useNavigate();
 
     const [countryId, setCountryId] = useState("");
 
@@ -58,10 +62,11 @@ export const AdminPublisherAdd = () => {
                                         disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
-                                <button className={"btn btn-outline-secondary mb-2"}
+                                <button className={"btn btn-outline-secondary mb-2 me-3"}
                                         onClick={resetAddPublisherForm}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
+                                <ArrowLeftButton customClass={"mb-2"} onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
                                 {
                                     formMessage.show &&
                                     <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>

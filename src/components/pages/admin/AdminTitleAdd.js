@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import {addTitleData, getRowsByTable} from "../../serviceFunctions";
-import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
+import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
 import formatData from "../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../headings";
+import {ArrowLeftButton} from "../../miniComponents/ArrowLeftButton";
+import {useNavigate} from "react-router-dom";
 
 
 export const AdminTitleAdd = () => {
@@ -22,6 +24,8 @@ export const AdminTitleAdd = () => {
     const [totalIssues, setTotalIssues] = useState(12);
     const [publishersData, setPublishersData] = useState(null);
     const [publisherId, setPublisherId] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
@@ -105,10 +109,11 @@ export const AdminTitleAdd = () => {
                                         disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
-                                <button className={"btn btn-outline-secondary mb-2"}
+                                <button className={"btn btn-outline-secondary mb-2 me-3"}
                                         onClick={resetAddTitleForm}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
+                                <ArrowLeftButton customClass={"mb-2"} onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
                                 {
                                     formMessage.show &&
                                     <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
