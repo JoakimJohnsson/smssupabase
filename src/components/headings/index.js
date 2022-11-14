@@ -1,6 +1,6 @@
 import React from "react";
 import {AdminIcon} from "../icons";
-import {Breadcrumbs} from "../miniComponents/Breadcrumbs";
+import {Breadcrumbs} from "../minis/Breadcrumbs";
 
 
 export const AdminH1 = ({text}) => {

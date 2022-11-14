@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
-import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
-import {PublishersList} from "../../../listComponents/publishers/PublishersList";
-import {PublishersIcon} from "../../../icons";
+import {NoDataAvailable} from "../../../minis/NoDataAvailable";
+import {PublishersList} from "../../../lists/publishers/PublishersList";
+import {PlusButton} from "../../../minis/PlusButton";
 
 
 export const PublishersCard = () => {
@@ -19,7 +19,7 @@ export const PublishersCard = () => {
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"dashboard-card"}>
-                <h2><span className={"me-2"}><PublishersIcon textVariant={"lg"}/></span>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
+                <h2>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
                 {
                     limitedPublishersData ?
                         <>
@@ -31,10 +31,8 @@ export const PublishersCard = () => {
                         :
                         <NoDataAvailable />
                 }
-                <button className={"btn btn-primary me-3 mb-2"}
-                        onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}>{LABELS_AND_HEADINGS.ADD_PUBLISHER}
-                </button>
-                <Link className={"btn btn-outline-secondary mb-2"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
+                <PlusButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)} label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                <Link className={"btn btn-outline-secondary"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
             </div>
         </div>
     )

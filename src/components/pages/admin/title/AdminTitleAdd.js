@@ -1,26 +1,21 @@
 import React, {useEffect, useState} from "react";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
-import {addTitleData, deleteImage, getRowsByTable, uploadImage} from "../../serviceFunctions";
-import {handleNameInput, hideAndResetMessage, printOptions} from "../../../helpers/functions";
-import formatData from "../../../helpers/valueLists/formats.json";
-import {ImageUploader} from "../../ImageUploader";
-import {useCommonFormStates} from "../../../helpers/customHooks/useCommonFormStates";
-import {AdminH1} from "../../headings";
+import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {addTitleData, getRowsByTable} from "../../../serviceFunctions";
+import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import formatData from "../../../../helpers/valueLists/formats.json";
+import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
+import {AdminH1} from "../../../headings";
+import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
+import {useNavigate} from "react-router-dom";
 
 
 export const AdminTitleAdd = () => {
 
     const [
         name, setName,
-        showFormError, setShowFormError,
-        showFormSuccess, setShowFormSuccess,
         formMessage, setFormMessage,
         nameValidated, setNameValidated,
         formInputClass, setFormInputClass,
-        uploading, setUploading,
-        imageFilename, setImageFilename,
-        imageUrl, setImageUrl,
-        disableReset, setDisableReset
     ] = useCommonFormStates();
 
     const [startYear, setStartYear] = useState(1975);
@@ -30,24 +25,20 @@ export const AdminTitleAdd = () => {
     const [publishersData, setPublishersData] = useState(null);
     const [publisherId, setPublisherId] = useState("");
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
     }, [])
 
-    const deleteTitleImage = async () => {
-        await deleteImage(imageFilename, setUploading, BUCKETS.TITLE_IMAGES,
-            setImageUrl, setImageFilename);
-    }
-
     const resetAddTitleForm = async () => {
-        setImageFilename(null);
-        setImageUrl(null);
         setName("");
         setStartYear(1975);
         setEndYear(1975);
         setTotalIssues(12);
-        setDisableReset(false);
-        hideAndResetMessage(setShowFormError, setShowFormSuccess, setFormMessage);
+        setNameValidated(false);
+        setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        hideAndResetMessage(setFormMessage);
     }
 
     return (
@@ -58,15 +49,7 @@ export const AdminTitleAdd = () => {
                     <div className={"row"}>
                         <div className={"sms-dashboard-col"}>
                             <div className={"sms-form"}>
-                                <ImageUploader
-                                    imageUrl={imageUrl}
-                                    imageFilename={imageFilename}
-                                    uploading={uploading}
-                                    uploadImage={e => uploadImage(e, imageFilename, setUploading, setDisableReset, BUCKETS.TITLE_IMAGES,
-                                        FILETYPES.TITLE_IMAGE, imageUrl, setImageFilename ,setImageUrl)}
-                                    deleteImage={deleteTitleImage}
-                                />
-                                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME}</label>
+                                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                                 <input
                                     id="name"
                                     className={formInputClass}
@@ -74,7 +57,7 @@ export const AdminTitleAdd = () => {
                                     value={name || ""}
                                     onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
                                 />
-                                <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR}</label>
+                                <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                                 <input
                                     id="startyear"
                                     className={formInputClass}
@@ -82,7 +65,7 @@ export const AdminTitleAdd = () => {
                                     value={startYear || 1975}
                                     onChange={(e) => setStartYear(e.target.value)}
                                 />
-                                <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR}</label>
+                                <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                                 <input
                                     id="endyear"
                                     className={formInputClass}
@@ -114,26 +97,29 @@ export const AdminTitleAdd = () => {
                                     value={totalIssues || 12}
                                     onChange={(e) => setTotalIssues(e.target.value)}
                                 />
-                                <button className={"btn btn-primary me-3 mb-2"}
+                                <button className={"btn btn-primary"}
                                         onClick={() => addTitleData({
                                             name: name,
                                             startYear: startYear,
                                             endYear: endYear,
                                             publisherId: publisherId,
                                             formatId: formatId,
-                                            totalIssues: totalIssues,
-                                            titleImageFilename: imageFilename,
-                                            titleImageUrl: imageUrl
-                                        }, deleteTitleImage,setFormMessage, setShowFormSuccess, setShowFormError).then(() => resetAddTitleForm())}
-                                        disabled={!nameValidated || !imageFilename}>
+                                            totalIssues: totalIssues
+                                        }, setFormMessage).then(() => resetAddTitleForm())}
+                                        disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
-                                <button className={"btn btn-outline-secondary mb-2"}
-                                        onClick={resetAddTitleForm} disabled={disableReset}>
+                                <button className={"btn btn-outline-secondary"}
+                                        onClick={resetAddTitleForm}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
-                                {showFormError && <p className={"alert alert-danger mt-3"}>{formMessage}</p>}
-                                {showFormSuccess && <p className={"alert alert-success mt-3"}>{formMessage}</p>}
+                                <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
+                                {
+                                    formMessage.show &&
+                                    <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
+                                        {formMessage.message}
+                                    </p>
+                                }
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,7 @@ import {supabase} from "../supabase/supabaseClient";
 import {BUCKETS, FILETYPES, MESSAGES, TABLES} from "../helpers/constants";
 import {useAppContext} from "../context/AppContext";
 import {generateUniqueHashedFilename} from "../helpers/functions";
-import {ImageUploader} from "./ImageUploader";
+import {AvatarImageUploader} from "./AvatarImageUploader";
 
 
 export const Avatar = ({onUpload}) => {
@@ -65,7 +65,7 @@ export const Avatar = ({onUpload}) => {
     }
 
     return (
-        <ImageUploader
+        <AvatarImageUploader
             imageUrl={avatarImageUrl}
             imageFilename={avatarImageFilename}
             uploading={uploading}

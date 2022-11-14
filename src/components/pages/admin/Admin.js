@@ -1,7 +1,7 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {TitlesCard} from "../../dashboardComponents/dashboardCards/admin/TitlesCard";
-import {PublishersCard} from "../../dashboardComponents/dashboardCards/admin/PublishersCard";
+import {TitlesCard} from "../../dashboard/dashboardCards/admin/TitlesCard";
+import {PublishersCard} from "../../dashboard/dashboardCards/admin/PublishersCard";
 import {AdminH1} from "../../headings";
 
 

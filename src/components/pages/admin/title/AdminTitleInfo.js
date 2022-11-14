@@ -1,7 +1,7 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {getObjectNameById} from "../../../helpers/functions";
-import {PublisherInformation} from "../../miniComponents/PublisherInformation";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {getObjectNameById} from "../../../../helpers/functions";
+import {PublisherInformation} from "../../../minis/PublisherInformation";
 
 
 export const AdminTitleInfo = ({title, formatData}) => {

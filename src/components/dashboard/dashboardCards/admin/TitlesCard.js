@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
-import {TitlesList} from "../../../listComponents/titles/TitlesList";
-import {NoDataAvailable} from "../../../miniComponents/NoDataAvailable";
-import {TitlesIcon} from "../../../icons";
+import {TitlesList} from "../../../lists/titles/TitlesList";
+import {NoDataAvailable} from "../../../minis/NoDataAvailable";
+import {PlusButton} from "../../../minis/PlusButton";
 
 
 export const TitlesCard = () => {
@@ -19,7 +19,7 @@ export const TitlesCard = () => {
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"dashboard-card"}>
-                <h2><span className={"me-2"}><TitlesIcon textVariant={"lg"}/></span>{LABELS_AND_HEADINGS.TITLES}</h2>
+                <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                 {
                     limitedTitlesData ?
                         <>
@@ -31,10 +31,8 @@ export const TitlesCard = () => {
                         :
                         <NoDataAvailable />
                 }
-                <button className={"btn btn-primary me-3 mb-2"}
-                        onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD) }>{LABELS_AND_HEADINGS.ADD_TITLE}
-                </button>
-                <Link className={"btn btn-outline-secondary mb-2"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
+                <PlusButton onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                <Link className={"btn btn-outline-secondary"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
             </div>
         </div>
     )

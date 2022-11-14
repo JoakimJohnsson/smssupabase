@@ -1,10 +1,10 @@
-import {supabase} from '../supabase/supabaseClient';
-import {CLASSES, MESSAGES} from './constants';
+import {supabase} from "../supabase/supabaseClient";
+import {CLASSES, MESSAGES} from "./constants";
 import React from "react";
 import {validateText} from "./validations";
 
 export async function checkIfEmailExists(emailReference, setEmailExists) {
-    let {data: email} = await supabase.from('users').select('email').eq('email', emailReference)
+    let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
     if (email.length > 0) {
         setEmailExists(true);
     } else {
@@ -13,8 +13,8 @@ export async function checkIfEmailExists(emailReference, setEmailExists) {
 }
 
 export const prepareUrl = (url) => {
-    if (url && url.substring(0, 7) !== 'http://') {
-        return 'https://' + url;
+    if (url && url.substring(0, 7) !== "http://") {
+        return "https://" + url;
     } else {
         return url;
     }
@@ -54,9 +54,13 @@ export const handleGenericFormInput = (success, setInputClass, setValidated) => 
     }
 }
 
+export const handleBacking = (navigate) => {
+    navigate(-1);
+}
+
 export const generateUniqueHashedFilename = (fileExt, fileType) => {
     let number = Math.random() * 100;
-    return fileType + number.toString().replace('.', '') + '.' + fileExt;
+    return fileType + number.toString().replace(".", "") + "." + fileExt;
 }
 
 export const printOptions = (data) => {
@@ -80,13 +84,11 @@ export const handleNameInput = (e, setName, setFormInputClass, setNameValidated)
         handleGenericFormInput(false, setFormInputClass, setNameValidated);
 }
 
-// Helper function for converting string value 'true' to boolean value.
-export const isTrue = (string) => (string === 'true');
+// Helper function for converting string value "true" to boolean value.
+export const isTrue = (string) => (string === "true");
 
-export const hideAndResetMessage = (setShowFormError, setShowFormSuccess, setFormMessage) => {
+export const hideAndResetMessage = (setFormMessage) => {
     setTimeout(() => {
-        setShowFormError(false);
-        setShowFormSuccess(false);
-        setFormMessage("");
+        setFormMessage(MESSAGES.EMPTY);
     }, 3000)
 }

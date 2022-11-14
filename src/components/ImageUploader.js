@@ -1,11 +1,46 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
-import {Spinner} from "./miniComponents/Spinner";
-import {NoDataAvailable} from "./miniComponents/NoDataAvailable";
+import {Spinner} from "./minis/Spinner";
+import {NoDataAvailable} from "./minis/NoDataAvailable";
 import {TrashIcon} from "@heroicons/react/solid";
+import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "./serviceFunctions";
 
 
-export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, deleteImage}) => {
+export const ImageUploader = ({
+                                  imageUrl,
+                                  setImageUrl,
+                                  imageFilename,
+                                  setImageFilename,
+                                  uploading,
+                                  setUploading,
+                                  bucketName,
+                                  tableName,
+                                  fileType,
+                                  id,
+                                  update
+                              }) => {
+
+    const handleDeleteImage = async () => {
+        try {
+            await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
+                .then(() => {
+                    updateImageDataOnTable(tableName, id, "", "");
+                    update();
+                });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const handleUploadImage = async (e) => {
+        try {
+            await uploadImage(e, tableName, id, setUploading, bucketName, fileType,
+                imageUrl, setImageFilename, setImageUrl);
+            update();
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <>
@@ -20,7 +55,9 @@ export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, 
                                 className="w-100 mb-3"
                             />
                             <p>{imageFilename}</p>
-                            <button className={"btn btn-danger mb-2"} onClick={deleteImage}>
+
+                            <button className={"btn btn-danger"}
+                                    onClick={handleDeleteImage}>
                                 <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
                             </button>
                         </>
@@ -41,7 +78,7 @@ export const ImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, 
                 type="file"
                 id="single"
                 accept="image/*"
-                onChange={uploadImage}
+                onChange={(e) => handleUploadImage(e)}
                 disabled={uploading}
             />
         </>
