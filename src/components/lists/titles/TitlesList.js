@@ -5,6 +5,7 @@ import {FriendlyDate} from "../../minis/FriendlyDate";
 import {TitlesListAdminToolBox} from "./TitlesListAdminToolBox";
 import {TitlesListUserToolBox} from "./TitlesListUserToolBox";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
+import {TitlesIcon} from "../../icons";
 
 
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
@@ -18,6 +19,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
                                         <div>
+                                            <TitlesIcon textVariant={"md"}/>
                                             <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={"me-2"}>
                                                 {t.name}
                                             </Link>

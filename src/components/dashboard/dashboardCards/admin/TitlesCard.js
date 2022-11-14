@@ -4,7 +4,6 @@ import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
 import {TitlesList} from "../../../lists/titles/TitlesList";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {TitlesIcon} from "../../../icons";
 import {PlusButton} from "../../../minis/PlusButton";
 
 
@@ -20,7 +19,7 @@ export const TitlesCard = () => {
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"dashboard-card"}>
-                <h2><span className={"me-2"}><TitlesIcon textVariant={"lg"}/></span>{LABELS_AND_HEADINGS.TITLES}</h2>
+                <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                 {
                     limitedTitlesData ?
                         <>

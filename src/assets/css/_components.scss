@@ -113,7 +113,7 @@
 
 // List
 .sms-list--with-tools {
-    @extend .list-group, .list-group-flush, .small, .mb-3, .list-unstyled;
+    @extend .list-group, .list-group-flush, .small, .mb-4, .list-unstyled;
     .sms-list-col--main {
       @extend .col-8, .d-flex, .flex-column, .justify-content-center;
     }

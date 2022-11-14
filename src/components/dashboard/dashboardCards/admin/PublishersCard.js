@@ -4,7 +4,6 @@ import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {PublishersList} from "../../../lists/publishers/PublishersList";
-import {PublishersIcon} from "../../../icons";
 import {PlusButton} from "../../../minis/PlusButton";
 
 
@@ -20,7 +19,7 @@ export const PublishersCard = () => {
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"dashboard-card"}>
-                <h2><span className={"me-2"}><PublishersIcon textVariant={"lg"}/></span>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
+                <h2>{LABELS_AND_HEADINGS.PUBLISHERS}</h2>
                 {
                     limitedPublishersData ?
                         <>
