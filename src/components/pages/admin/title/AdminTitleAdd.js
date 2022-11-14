@@ -49,7 +49,7 @@ export const AdminTitleAdd = () => {
                     <div className={"row"}>
                         <div className={"sms-dashboard-col"}>
                             <div className={"sms-form"}>
-                                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME}</label>
+                                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                                 <input
                                     id="name"
                                     className={formInputClass}
@@ -57,7 +57,7 @@ export const AdminTitleAdd = () => {
                                     value={name || ""}
                                     onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
                                 />
-                                <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR}</label>
+                                <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                                 <input
                                     id="startyear"
                                     className={formInputClass}
@@ -65,7 +65,7 @@ export const AdminTitleAdd = () => {
                                     value={startYear || 1975}
                                     onChange={(e) => setStartYear(e.target.value)}
                                 />
-                                <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR}</label>
+                                <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                                 <input
                                     id="endyear"
                                     className={formInputClass}

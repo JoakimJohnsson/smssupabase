@@ -37,7 +37,7 @@ export const AdminPublisherAdd = () => {
                     <div className={"row"}>
                         <div className={"sms-dashboard-col"}>
                             <div className={"sms-form"}>
-                                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME}</label>
+                                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                                 <input
                                     id="name"
                                     className={formInputClass}

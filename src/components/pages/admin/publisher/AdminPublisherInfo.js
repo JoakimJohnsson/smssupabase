@@ -8,10 +8,10 @@ export const AdminPublisherInfo = ({publisher}) => {
 
     return publisher && (
         <>
-            <h2>{LABELS_AND_HEADINGS.ID}: {publisher.id}</h2>
-            <h3>{LABELS_AND_HEADINGS.COUNTRY}: {getObjectNameById(countryData, publisher.country_id)}</h3>
-            <p>image_filename: {publisher.image_filename}</p>
-            <p>image_url: {publisher.image_url}</p>
+            <h2>{publisher.name}</h2>
+            <p><span className={"text-label"}>{LABELS_AND_HEADINGS.COUNTRY}:</span> {getObjectNameById(countryData, publisher.country_id)}</p>
+            <p><span className={"text-label"}>{LABELS_AND_HEADINGS.IMAGE}:</span> {publisher.image_filename}</p>
+            <p><span className={"text-label"}>{LABELS_AND_HEADINGS.IMAGE} URL:</span> {publisher.image_url}</p>
         </>
     )
 }
