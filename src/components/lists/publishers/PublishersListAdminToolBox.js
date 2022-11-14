@@ -21,12 +21,12 @@ export const PublishersListAdminToolBox = ({publisher, setPublishersData, publis
 
     return (
         <div className={"ms-2 d-inline-block"}>
-            <Link to={ROUTES.ADMIN.PUBLISHERS + publisher.id + "?edit=true"} className={"btn btn-primary m-1 p-1"} title={editText}>
+            <Link to={ROUTES.ADMIN.PUBLISHERS + publisher.id + "?edit=true"} className={"btn btn-primary sms-icon-btn"} title={editText}>
                 <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
                 <span className={"visually-hidden"}>{editText}</span>
             </Link>
             <button
-                className={"btn btn-danger m-1 p-1"}
+                className={"btn btn-danger sms-icon-btn"}
                 aria-label={deleteText}
                 onClick={handleDelete}>
                 <XCircleIcon className={"sms-icon--text-lg m-0"}/>

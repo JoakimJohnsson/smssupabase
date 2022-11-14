@@ -21,4 +21,11 @@
       padding: 1rem 3rem;
     }
   }
+  &:not(.sms-icon-btn) {
+    @extend .mb-3, .me-3;
+  }
+}
+
+.sms-icon-btn {
+  @extend .m-1, .p-1;
 }

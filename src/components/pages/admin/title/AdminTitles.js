@@ -21,10 +21,12 @@ export const AdminTitles = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1 className={"text-icon-header"}><TitlesIcon textVariant={"xl"}/><span>{LABELS_AND_HEADINGS.ALL_TITLES}</span></h1>
-                    <Breadcrumbs/>
-                    {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <Spinner/>}
-                    <PlusButton onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} customClass={"me-3 mb-2"} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                    <div className={"sms-dashboard-col"}>
+                        <h1 className={"text-icon-header"}><TitlesIcon textVariant={"xl"}/><span>{LABELS_AND_HEADINGS.ALL_TITLES}</span></h1>
+                        <Breadcrumbs/>
+                        {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <Spinner/>}
+                        <PlusButton onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                    </div>
                 </div>
             </div>
         </main>

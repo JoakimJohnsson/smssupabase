@@ -20,10 +20,13 @@ export const AdminPublishers = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
-                    <h1 className={"text-icon-header"}><PublishersIcon textVariant={"xl"}/><span>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</span></h1>
-                    <Breadcrumbs/>
-                    {publishersData && <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}/>}
-                    <PlusButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)} customClass={"me-3 mb-2"} label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                    <div className={"sms-dashboard-col"}>
+                        <h1 className={"text-icon-header"}><PublishersIcon textVariant={"xl"}/><span>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</span></h1>
+                        <Breadcrumbs/>
+                        {publishersData &&
+                            <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}/>}
+                        <PlusButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)} label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                    </div>
                 </div>
             </div>
         </main>

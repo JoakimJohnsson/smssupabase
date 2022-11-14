@@ -10,7 +10,7 @@ export const AvatarImageUploader = ({imageUrl, imageFilename, uploading, uploadI
     return (
         <>
             <div className={"mb-3"}>
-                <label className={"form-label d-block mb-2"}>{LABELS_AND_HEADINGS.IMAGE}</label>
+                <label className={"form-label d-block"}>{LABELS_AND_HEADINGS.IMAGE}</label>
                 {
                     imageUrl ?
                         <>
@@ -20,7 +20,7 @@ export const AvatarImageUploader = ({imageUrl, imageFilename, uploading, uploadI
                                 className="w-100 mb-3"
                             />
                             <p>{imageFilename}</p>
-                            <button className={"btn btn-danger mb-2"} onClick={deleteImage}>
+                            <button className={"btn btn-danger"} onClick={deleteImage}>
                                 <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
                             </button>
                         </>

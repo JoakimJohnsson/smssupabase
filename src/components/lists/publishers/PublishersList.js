@@ -19,7 +19,7 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                                     <div className={"sms-list-col--main"}>
                                         <div>
                                             <PublishersIcon textVariant={"md"}/>
-                                            <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-2"}>
+                                            <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-3"}>
                                                 {p.name}
                                             </Link>
                                         </div>

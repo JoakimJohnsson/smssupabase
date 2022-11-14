@@ -97,7 +97,7 @@ export const AdminTitleAdd = () => {
                                     value={totalIssues || 12}
                                     onChange={(e) => setTotalIssues(e.target.value)}
                                 />
-                                <button className={"btn btn-primary me-3 mb-2"}
+                                <button className={"btn btn-primary"}
                                         onClick={() => addTitleData({
                                             name: name,
                                             startYear: startYear,
@@ -109,11 +109,11 @@ export const AdminTitleAdd = () => {
                                         disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
-                                <button className={"btn btn-outline-secondary mb-2 me-3"}
+                                <button className={"btn btn-outline-secondary"}
                                         onClick={resetAddTitleForm}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
-                                <ArrowLeftButton customClass={"mb-2"} onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
+                                <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
                                 {
                                     formMessage.show &&
                                     <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>

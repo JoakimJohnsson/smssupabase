@@ -31,8 +31,8 @@ export const TitlesCard = () => {
                         :
                         <NoDataAvailable />
                 }
-                <PlusButton onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} customClass={"me-3 mb-2"} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
-                <Link className={"btn btn-outline-secondary mb-2"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
+                <PlusButton onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                <Link className={"btn btn-outline-secondary"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
             </div>
         </div>
     )

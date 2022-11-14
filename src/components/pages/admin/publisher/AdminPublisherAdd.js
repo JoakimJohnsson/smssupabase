@@ -54,7 +54,7 @@ export const AdminPublisherAdd = () => {
                                         {printOptions(countryData)}
                                     </select>
                                 }
-                                <button className={"btn btn-primary me-3 mb-2"}
+                                <button className={"btn btn-primary"}
                                         onClick={() => addPublisherData({
                                             name: name,
                                             countryId: countryId
@@ -62,11 +62,11 @@ export const AdminPublisherAdd = () => {
                                         disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}
                                 </button>
-                                <button className={"btn btn-outline-secondary mb-2 me-3"}
+                                <button className={"btn btn-outline-secondary"}
                                         onClick={resetAddPublisherForm}>
                                     {LABELS_AND_HEADINGS.RESET_FORM}
                                 </button>
-                                <ArrowLeftButton customClass={"mb-2"} onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
+                                <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
                                 {
                                     formMessage.show &&
                                     <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>

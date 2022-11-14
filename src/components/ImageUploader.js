@@ -53,7 +53,7 @@ export const ImageUploader = ({
                             />
                             <p>{imageFilename}</p>
 
-                            <button className={"btn btn-danger mb-2"}
+                            <button className={"btn btn-danger"}
                                     onClick={handleDeleteImage}>
                                 <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
                             </button>
