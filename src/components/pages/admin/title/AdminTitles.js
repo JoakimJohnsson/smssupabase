@@ -5,8 +5,9 @@ import {TitlesList} from "../../../lists/titles/TitlesList";
 import {getRowsByTable} from "../../../serviceFunctions";
 import {PlusButton} from "../../../minis/PlusButton";
 import {useNavigate} from "react-router-dom";
-import {TitlesIcon} from "../../../icons";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
+import {handleBacking} from "../../../../helpers/functions";
+import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 
 
 export const AdminTitles = () => {
@@ -22,10 +23,11 @@ export const AdminTitles = () => {
             <div className={"row"}>
                 <div className={"col-12 main-col"}>
                     <div className={"sms-dashboard-col"}>
-                        <h1 className={"text-icon-header"}><TitlesIcon textVariant={"xl"}/><span>{LABELS_AND_HEADINGS.ALL_TITLES}</span></h1>
+                        <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                         <Breadcrumbs/>
                         {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <Spinner/>}
                         <PlusButton onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                        <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
             </div>
