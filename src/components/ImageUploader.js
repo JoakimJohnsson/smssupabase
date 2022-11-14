@@ -16,7 +16,8 @@ export const ImageUploader = ({
                                   bucketName,
                                   tableName,
                                   fileType,
-                                  id
+                                  id,
+                                  update
                               }) => {
 
     const handleDeleteImage = async () => {
@@ -24,6 +25,7 @@ export const ImageUploader = ({
             await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
                 .then(() => {
                     updateImageDataOnTable(tableName, id, "", "");
+                    update();
                 });
         } catch (error) {
             console.error(error);
@@ -34,6 +36,7 @@ export const ImageUploader = ({
         try {
             await uploadImage(e, tableName, id, setUploading, bucketName, fileType,
                 imageUrl, setImageFilename, setImageUrl);
+            update();
         } catch (error) {
             console.error(error);
         }

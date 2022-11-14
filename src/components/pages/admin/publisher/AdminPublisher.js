@@ -55,6 +55,7 @@ export const AdminPublisher = () => {
                                             tableName={TABLES.PUBLISHERS}
                                             fileType={FILETYPES.PUBLISHER_IMAGE}
                                             id={publisher.id}
+                                            update={fetchPublisherData}
                                         />
                                         <AdminPublisherInfo publisher={publisher}/>
                                     </>
