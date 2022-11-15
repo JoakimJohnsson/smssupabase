@@ -84,6 +84,7 @@ export const ROUTES = {
 
 export const LABELS_AND_HEADINGS = {
     ABORT: "Avbryt",
+    ADDED: "Inlagd",
     ADMIN: "Admin",
     ADD: "Lägg till",
     ADD_PUBLISHER: "Lägg till nytt förlag",
