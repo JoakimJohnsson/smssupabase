@@ -43,13 +43,13 @@ export const AdminPublisher = () => {
     }
 
     const handleSubmit = () => {
-        updatePublisherData(publisher.id, newPublisher, setFormMessage).then(() => setSearchParams({edit: !edit}));
+        updatePublisherData(publisher.id, newPublisher, setFormMessage).then(() => setSearchParams({edit: false}));
         setPublisher({...newPublisher});
     }
 
     const handleAbort = () => {
         setNewPublisher({...publisher});
-        setSearchParams({edit: !edit});
+        setSearchParams({edit: false});
     }
 
     return loading ? (<Spinner/>) : (
@@ -108,7 +108,7 @@ export const AdminPublisher = () => {
                                     </>
                                     :
                                     <>
-                                        <button onClick={() => setSearchParams({edit: !edit})} className={"btn btn-primary"}>
+                                        <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
                                             {LABELS_AND_HEADINGS.EDIT}
                                         </button>
                                         <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)} label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>

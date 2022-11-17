@@ -48,13 +48,13 @@ export const AdminTitle = () => {
     }
 
     const handleSubmit = () => {
-        updateTitleData(title.id, newTitle, setFormMessage).then(() => setSearchParams({edit: !edit}));
+        updateTitleData(title.id, newTitle, setFormMessage).then(() => setSearchParams({edit: false}));
         setTitle({...newTitle});
     }
 
     const handleAbort = () => {
         setNewTitle({...title});
-        setSearchParams({edit: !edit});
+        setSearchParams({edit: false});
     }
 
     return loading ? (<Spinner/>) : (
@@ -157,7 +157,7 @@ export const AdminTitle = () => {
                                     </>
                                     :
                                     <>
-                                        <button onClick={() => setSearchParams({edit: !edit})} className={"btn btn-primary"}>
+                                        <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
                                             {LABELS_AND_HEADINGS.EDIT}
                                         </button>
                                         <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.TITLES)} label={LABELS_AND_HEADINGS.ALL_TITLES}/>
