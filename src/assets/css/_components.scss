@@ -66,6 +66,9 @@
     &.danger {
       border-bottom: 6px solid $danger;
     }
+    &:disabled {
+      opacity: .7;
+    }
   }
   h2 {
     @extend .border-bottom, .pb-2, .mb-4;
