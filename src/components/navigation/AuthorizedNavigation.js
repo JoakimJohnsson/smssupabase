@@ -29,7 +29,7 @@ export const AuthorizedNavigation = () => {
                         <span className={"d-inline d-sm-none"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE_SHORT}</span>
                     </div>
                 </Link>
-                <button className={isOpen ? "btn d-block d-lg-none text-danger" : "btn d-block d-lg-none text-primary"}
+                <button className={isOpen ? "btn sms-icon-btn d-block d-lg-none text-danger" : "btn sms-icon-btn d-block d-lg-none text-primary"}
                         onClick={handleClick}>
                     <span className={"visually-hidden"}>menu</span>
                     {isOpen ? <XIcon className={"sms-icon--hamburger"}/> : <MenuIcon className={"sms-icon--hamburger"}/>}

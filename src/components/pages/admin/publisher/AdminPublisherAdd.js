@@ -45,11 +45,13 @@ export const AdminPublisherAdd = () => {
                                     value={name || ""}
                                     onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
                                 />
-                                <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
+                                <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                                 {
                                     countryData &&
-                                    <select name="countries" id="country" className={"form-select mb-3"}
-                                            onChange={(e) => setCountryId(e.target.value)}>
+                                    <select
+                                        id="country"
+                                        className={"form-select mb-3"}
+                                        onChange={(e) => setCountryId(e.target.value)}>
                                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                         {printOptions(countryData)}
                                     </select>

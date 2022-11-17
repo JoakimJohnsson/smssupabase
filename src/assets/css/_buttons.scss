@@ -27,5 +27,10 @@
 }
 
 .sms-icon-btn {
-  @extend .m-1, .p-1;
+  @extend .m-1, .p-0;
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: .9;
+  }
 }

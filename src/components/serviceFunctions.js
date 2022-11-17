@@ -52,18 +52,19 @@ export async function addTitleData(data, setFormMessage) {
     }
 }
 
-export async function updateTitleData(data, setFormMessage) {
+export async function updateTitleData(id, data, setFormMessage) {
     try {
         let {error} = await supabase
             .from(TABLES.TITLES)
             .update([{
                 name: data.name,
-                start_year: data.startYear,
-                end_year: data.endYear,
-                publisher_id: data.publisherId,
-                format_id: data.formatId,
-                total_issues: data.totalIssues
+                start_year: data.start_year,
+                end_year: data.end_year,
+                publisher_id: data.publisher_id,
+                format_id: data.format_id,
+                total_issues: data.total_issues
             }])
+            .eq("id", id)
         if (error) {
             console.error(error);
             setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
@@ -101,7 +102,7 @@ export async function updatePublisherData(id, data, setFormMessage) {
             .from(TABLES.PUBLISHERS)
             .update([{
                 name: data.name,
-                country_id: data.countryId
+                country_id: data.country_id
             }])
             .eq("id", id)
         if (error) {

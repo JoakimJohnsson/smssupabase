@@ -73,10 +73,13 @@ export const AdminTitleAdd = () => {
                                     value={endYear || 1977}
                                     onChange={(e) => setEndYear(e.target.value)}
                                 />
-                                <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
+                                <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
                                 {
                                     publishersData &&
-                                    <select name="publisher" id="publisher" className={"form-select mb-3"} onChange={(e) => setPublisherId(e.target.value)}>
+                                    <select
+                                        id="publisher"
+                                        className={"form-select mb-3"}
+                                        onChange={(e) => setPublisherId(e.target.value)}>
                                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                         {printOptions(publishersData)}
                                     </select>
@@ -84,7 +87,10 @@ export const AdminTitleAdd = () => {
                                 <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                                 {
                                     formatData &&
-                                    <select name="formats" id="format" className={"form-select mb-3"} onChange={(e) => setFormatId(e.target.value)}>
+                                    <select
+                                        id="format"
+                                        className={"form-select mb-3"}
+                                        onChange={(e) => setFormatId(e.target.value)}>
                                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                         {printOptions(formatData)}
                                     </select>
