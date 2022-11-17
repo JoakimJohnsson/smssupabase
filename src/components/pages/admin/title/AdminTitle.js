@@ -1,13 +1,13 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {useParams, useSearchParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {Spinner} from "../../../minis/Spinner";
-import {getRowByTableAndId, getRowsByTable} from "../../../serviceFunctions";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {getRowByTableAndId, getRowsByTable, updateTitleData} from "../../../serviceFunctions";
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import {AdminH1} from "../../../headings";
-import {ToggleEditButtons} from "../../../minis/ToggleEditButton";
 import {ImageUploader} from "../../../ImageUploader";
 import formatData from "../../../../helpers/valueLists/formats.json";
+import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 
 
 export const AdminTitle = () => {
@@ -20,7 +20,10 @@ export const AdminTitle = () => {
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [publishersData, setPublishersData] = useState(null);
+    const [formMessage, setFormMessage] = useState({show: false, error: false, message: ""});
     const {id} = useParams();
+    const [newTitle, setNewTitle] = useState({});
+    const navigate = useNavigate();
 
     const fetchTitleData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => setLoading(false));
@@ -35,6 +38,24 @@ export const AdminTitle = () => {
         setImageFilename(title.image_filename);
         setImageUrl(title.image_url);
     }, [id, fetchTitleData, setImageFilename, setImageUrl, imageFilename, imageUrl, title.image_filename, title.image_url])
+
+    useEffect(() => {
+        setNewTitle({...title});
+    }, [title])
+
+    const handleChange = (name, value) => {
+        setNewTitle({...newTitle, [name]: value});
+    }
+
+    const handleSubmit = () => {
+        updateTitleData(title.id, newTitle, setFormMessage).then(() => setSearchParams({edit: !edit}));
+        setTitle({...newTitle});
+    }
+
+    const handleAbort = () => {
+        setNewTitle({...title});
+        setSearchParams({edit: !edit});
+    }
 
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
@@ -58,40 +79,44 @@ export const AdminTitle = () => {
                             />
                             <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                             <input
-                                id="name"
+                                id={"name"}
+                                name={"name"}
                                 className={"form-control mb-3"}
                                 type="text"
-                                value={title.name}
-                                onChange={() => console.log("name")}
+                                value={newTitle.name}
+                                onChange={e => handleChange(e.target.name, e.target.value)}
                                 disabled={!edit}
                             />
                             <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                             <input
-                                id="startyear"
+                                id={"startyear"}
+                                name={"start_year"}
                                 className={"form-control mb-3"}
                                 type="number"
-                                value={title.start_year}
-                                onChange={() => console.log("start year")}
+                                value={newTitle.start_year}
+                                onChange={e => handleChange(e.target.name, e.target.value)}
                                 disabled={!edit}
                             />
                             <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                             <input
-                                id="endyear"
+                                id={"endyear"}
+                                name={"end_year"}
                                 className={"form-control mb-3"}
                                 type="number"
-                                value={title.end_year}
-                                onChange={() => console.log("end year")}
+                                value={newTitle.end_year}
+                                onChange={e => handleChange(e.target.name, e.target.value)}
                                 disabled={!edit}
                             />
                             <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
                             {
                                 publishersData &&
                                 <select
-                                    id="publisher"
+                                    id={"publisher"}
+                                    name={"publisher_id"}
                                     className={"form-select mb-3"}
-                                    value={title.publisher_id}
+                                    value={newTitle.publisher_id}
                                     disabled={!edit}
-                                    onChange={() => console.log("publisher")}>
+                                    onChange={e => handleChange(e.target.name, e.target.value)}>
                                     <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                     {printOptions(publishersData)}
                                 </select>
@@ -100,25 +125,50 @@ export const AdminTitle = () => {
                             {
                                 formatData &&
                                 <select
-                                    id="format"
+                                    id={"format"}
+                                    name={"format_id"}
                                     className={"form-select mb-3"}
-                                    value={title.format_id}
+                                    value={newTitle.format_id}
                                     disabled={!edit}
-                                    onChange={() => console.log("format")}>
+                                    onChange={e => handleChange(e.target.name, e.target.value)}>
                                     <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                     {printOptions(formatData)}
                                 </select>
                             }
                             <label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>
                             <input
-                                id="totalissues"
+                                id={"totalissues"}
+                                name={"total_issues"}
                                 className={"form-control mb-3"}
                                 type="number"
-                                value={title.total_issues}
-                                onChange={() => console.log("total issues")}
+                                value={newTitle.total_issues}
+                                onChange={e => handleChange(e.target.name, e.target.value)}
                                 disabled={!edit}
                             />
-                            <ToggleEditButtons edit={edit} setSearchParams={setSearchParams}/>
+                            {
+                                edit ?
+                                    <>
+                                        <button onClick={handleSubmit} className={"btn btn-primary"}>
+                                            {LABELS_AND_HEADINGS.SAVE}
+                                        </button>
+                                        <button className={"btn btn-outline-secondary"} onClick={handleAbort}>
+                                            {LABELS_AND_HEADINGS.ABORT}
+                                        </button>
+                                    </>
+                                    :
+                                    <>
+                                        <button onClick={() => setSearchParams({edit: !edit})} className={"btn btn-primary"}>
+                                            {LABELS_AND_HEADINGS.EDIT}
+                                        </button>
+                                        <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.TITLES)} label={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                                    </>
+                            }
+                            {
+                                formMessage.show &&
+                                <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
+                                    {formMessage.message}
+                                </p>
+                            }
                         </div>
                     </div>
                 </div>
