@@ -22,6 +22,7 @@ export const AdminTitleAdd = () => {
     const [endYear, setEndYear] = useState(1975);
     const [formatId, setFormatId] = useState("");
     const [totalIssues, setTotalIssues] = useState(12);
+    const [issuesPerYear, setIssuesPerYear] = useState(12);
     const [publishersData, setPublishersData] = useState(null);
     const [publisherId, setPublisherId] = useState("");
 
@@ -36,6 +37,7 @@ export const AdminTitleAdd = () => {
         setStartYear(1975);
         setEndYear(1975);
         setTotalIssues(12);
+        setIssuesPerYear(12);
         setNameValidated(false);
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         hideAndResetMessage(setFormMessage);
@@ -103,6 +105,14 @@ export const AdminTitleAdd = () => {
                                     value={totalIssues || 12}
                                     onChange={(e) => setTotalIssues(e.target.value)}
                                 />
+                                <label className={"form-label"} htmlFor="issuesperyear">{LABELS_AND_HEADINGS.ISSUES_PER_YEAR_DB}</label>
+                                <input
+                                    id="issuesperyear"
+                                    className={formInputClass}
+                                    type="number"
+                                    value={issuesPerYear || 12}
+                                    onChange={(e) => setIssuesPerYear(e.target.value)}
+                                />
                                 <button className={"btn btn-primary"}
                                         onClick={() => addTitleData({
                                             name: name,
@@ -110,7 +120,8 @@ export const AdminTitleAdd = () => {
                                             endYear: endYear,
                                             publisherId: publisherId,
                                             formatId: formatId,
-                                            totalIssues: totalIssues
+                                            totalIssues: totalIssues,
+                                            issuesPerYear: issuesPerYear
                                         }, setFormMessage).then(() => resetAddTitleForm())}
                                         disabled={!nameValidated}>
                                     {LABELS_AND_HEADINGS.ADD}

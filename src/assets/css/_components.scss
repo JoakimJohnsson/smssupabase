@@ -48,7 +48,7 @@
 }
 
 .sms-form {
-  @extend .p-0, .p-sm-5, .h-100;
+  @extend .p-0, .p-sm-5;
   border-radius: $border-radius--lg;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
@@ -64,14 +64,14 @@
       border-bottom: 3px solid $success;
     }
     &.danger {
-      border-bottom: 6px solid $danger;
+      border-bottom: 3px solid $danger;
     }
     &:disabled {
       opacity: .8;
     }
   }
   h2 {
-    @extend .border-bottom, .pb-2, .mb-4;
+    @extend .border-bottom, .pb-2, .mb-4, .h4;
   }
   .form-label {
     color: $white--darker;

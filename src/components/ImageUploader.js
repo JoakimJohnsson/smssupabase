@@ -45,7 +45,6 @@ export const ImageUploader = ({
     return (
         <>
             <div className={"mb-3"}>
-                <label className={"form-label d-block mb-2"}>{LABELS_AND_HEADINGS.IMAGE}</label>
                 {
                     imageUrl ?
                         <>

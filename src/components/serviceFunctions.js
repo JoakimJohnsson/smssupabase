@@ -39,7 +39,8 @@ export async function addTitleData(data, setFormMessage) {
                 end_year: data.endYear,
                 publisher_id: data.publisherId,
                 format_id: data.formatId,
-                total_issues: data.totalIssues
+                total_issues: data.totalIssues,
+                issues_per_year: data.issuesPerYear
             }])
         if (error) {
             console.error(error);
