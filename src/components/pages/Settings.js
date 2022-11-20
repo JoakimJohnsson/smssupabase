@@ -71,20 +71,10 @@ const Settings = () => {
                 <div className={"col-12 col-lg-8"}>
                     <SettingsH1 text={LABELS_AND_HEADINGS.SETTINGS}/>
                     <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
+                    <p>{TEXTS.SETTINGS_INFO} <span><a href={"mailto: admin@svenskamarvelsamlare.se"}>admin@svenskamarvelsamlare.se</a></span>.</p>
                 </div>
             </div>
             <div className={"row secondary-row-padding"}>
-                <div className={"sms-dashboard-col"}>
-                    <div className={"sms-form"}>
-                        <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
-                        <Avatar
-                            onUpload={(avatar_image_filename) => {
-                                setAvatarImageFilename(avatar_image_filename);
-                                updateProfileData({avatar_image_filename: avatar_image_filename}).then(() => "Do something");
-                            }}
-                        />
-                    </div>
-                </div>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form"}>
                         <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
@@ -119,6 +109,17 @@ const Settings = () => {
                                 disabled={loading}>
                             {loading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.UPDATE}
                         </button>
+                    </div>
+                </div>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-form"}>
+                        <h2>{LABELS_AND_HEADINGS.PROFILE_IMAGE}</h2>
+                        <Avatar
+                            onUpload={(avatar_image_filename) => {
+                                setAvatarImageFilename(avatar_image_filename);
+                                updateProfileData({avatar_image_filename: avatar_image_filename}).then(() => "Do something");
+                            }}
+                        />
                     </div>
                 </div>
 

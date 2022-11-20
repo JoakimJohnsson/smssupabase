@@ -10,7 +10,6 @@ export const AvatarImageUploader = ({imageUrl, imageFilename, uploading, uploadI
     return (
         <>
             <div className={"mb-3"}>
-                <label className={"form-label d-block"}>{LABELS_AND_HEADINGS.IMAGE}</label>
                 {
                     imageUrl ?
                         <>

@@ -153,11 +153,14 @@ export const LABELS_AND_HEADINGS = {
 }
 
 export const TEXTS = {
+    ADMIN_LEAD: "Här kan du lägga in data i databasen.",
+    ADMIN_INFO: "Hejsan hej.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet",
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.",
+    SETTINGS_INFO: "För frågor - kontakta:",
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen."
