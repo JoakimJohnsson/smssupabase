@@ -30,21 +30,21 @@ export function AppContextProvider({children}) {
                 .subscribe()
             updateProfile(user).then(() => supabase.removeSubscription(mySub));
         }
-
         setLoading(false)
+    }, [user])
 
-        // Listen for changes on auth state (logged in, signed out, etc.)
+    useEffect(() => {
+        // Listen for changes on auth state. Log in/out etc.
         const {data: listener} = supabase.auth.onAuthStateChange(
             async (event, session) => {
                 setUser(session?.user ?? null)
                 setLoading(false)
             }
         )
-
         return () => {
             listener?.unsubscribe()
         }
-    }, [user])
+    }, [])
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
@@ -59,7 +59,7 @@ export function AppContextProvider({children}) {
         userUrl,
         setUserUrl,
         role,
-        session: () => supabase.auth.session(),
+        session: () => supabase.auth.session()
     }
 
     async function updateProfile(user) {
