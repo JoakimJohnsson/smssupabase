@@ -34,12 +34,12 @@ export const AdminTitle = () => {
 
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
-            <div className={"row main-row-padding"}>
+            <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
                     <AdminH1 text={title.name + " " + title.start_year + " - " + title.end_year}/>
                 </div>
             </div>
-            <div className={"row secondary-row-padding"}>
+            <div className={"row row-padding--secondary"}>
                 <AdminTitleInfoEdit title={title} setTitle={setTitle} newTitle={newTitle} setNewTitle={setNewTitle}/>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form"}>

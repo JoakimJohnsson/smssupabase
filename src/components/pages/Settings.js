@@ -67,14 +67,14 @@ const Settings = () => {
 
     return (
         <main className={"container-fluid main-container"}>
-            <div className={"row main-row-padding"}>
+            <div className={"row row-padding--main"}>
                 <div className={"col-12 col-lg-8"}>
                     <SettingsH1 text={LABELS_AND_HEADINGS.SETTINGS}/>
                     <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                     <p>{TEXTS.SETTINGS_INFO} <span><a href={"mailto: admin@svenskamarvelsamlare.se"}>admin@svenskamarvelsamlare.se</a></span>.</p>
                 </div>
             </div>
-            <div className={"row secondary-row-padding"}>
+            <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form"}>
                         <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>

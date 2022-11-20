@@ -15,7 +15,7 @@ export const Titles = () => {
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
-                <div className={"col-12 main-row-padding"}>
+                <div className={"col-12 row-padding--main"}>
                     <h1>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                     {
                         titlesData ?

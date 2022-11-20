@@ -43,12 +43,12 @@ export const AdminTitleAdd = () => {
 
     return (
         <main className={"container-fluid main-container"}>
-            <div className={"row main-row-padding"}>
+            <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
                     <AdminH1 text={LABELS_AND_HEADINGS.ADD_TITLE}/>
                 </div>
             </div>
-            <div className={"row secondary-row-padding"}>
+            <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form"}>
                         <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
