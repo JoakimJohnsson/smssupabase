@@ -54,73 +54,75 @@ export const AdminPublisher = () => {
 
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12 main-col"}>
+            <div className={"row main-row-padding"}>
+                <div className={"col-12"}>
                     <AdminH1 text={publisher.name}/>
-                    <div className={"sms-dashboard-col"}>
-                        <div className={"sms-form"}>
-                            <ImageUploader
-                                imageUrl={imageUrl}
-                                setImageUrl={setImageUrl}
-                                imageFilename={imageFilename}
-                                setImageFilename={setImageFilename}
-                                uploading={uploading}
-                                setUploading={setUploading}
-                                bucketName={BUCKETS.PUBLISHER_IMAGES}
-                                tableName={TABLES.PUBLISHERS}
-                                fileType={FILETYPES.PUBLISHER_IMAGE}
-                                id={publisher.id}
-                                update={fetchPublisherData}
-                            />
-                            <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
-                            <input
-                                id={"name"}
-                                name={"name"}
-                                className={"form-control mb-3"}
-                                type="text"
-                                value={newPublisher.name}
-                                onChange={e => handleChange(e.target.name, e.target.value)}
+                </div>
+            </div>
+            <div className={"row secondary-row-padding"}>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-form"}>
+                        <ImageUploader
+                            imageUrl={imageUrl}
+                            setImageUrl={setImageUrl}
+                            imageFilename={imageFilename}
+                            setImageFilename={setImageFilename}
+                            uploading={uploading}
+                            setUploading={setUploading}
+                            bucketName={BUCKETS.PUBLISHER_IMAGES}
+                            tableName={TABLES.PUBLISHERS}
+                            fileType={FILETYPES.PUBLISHER_IMAGE}
+                            id={publisher.id}
+                            update={fetchPublisherData}
+                        />
+                        <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                        <input
+                            id={"name"}
+                            name={"name"}
+                            className={"form-control mb-3"}
+                            type="text"
+                            value={newPublisher.name}
+                            onChange={e => handleChange(e.target.name, e.target.value)}
+                            disabled={!edit}
+                        />
+                        <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
+                        {
+                            countryData &&
+                            <select
+                                id={"country"}
+                                name={"country_id"}
+                                className={"form-select mb-3"}
+                                value={newPublisher.country_id}
                                 disabled={!edit}
-                            />
-                            <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
-                            {
-                                countryData &&
-                                <select
-                                    id={"country"}
-                                    name={"country_id"}
-                                    className={"form-select mb-3"}
-                                    value={newPublisher.country_id}
-                                    disabled={!edit}
-                                    onChange={e => handleChange(e.target.name, e.target.value)}>
-                                    <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                                    {printOptions(countryData)}
-                                </select>
-                            }
-                            {
-                                edit ?
-                                    <>
-                                        <button onClick={handleSubmit} className={"btn btn-primary"}>
-                                            {LABELS_AND_HEADINGS.SAVE}
-                                        </button>
-                                        <button className={"btn btn-outline-secondary"} onClick={handleAbort}>
-                                            {LABELS_AND_HEADINGS.ABORT}
-                                        </button>
-                                    </>
-                                    :
-                                    <>
-                                        <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
-                                            {LABELS_AND_HEADINGS.EDIT}
-                                        </button>
-                                        <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)} label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
-                                    </>
-                            }
-                            {
-                                formMessage.show &&
-                                <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                                    {formMessage.message}
-                                </p>
-                            }
-                        </div>
+                                onChange={e => handleChange(e.target.name, e.target.value)}>
+                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                {printOptions(countryData)}
+                            </select>
+                        }
+                        {
+                            edit ?
+                                <>
+                                    <button onClick={handleSubmit} className={"btn btn-primary"}>
+                                        {LABELS_AND_HEADINGS.SAVE}
+                                    </button>
+                                    <button className={"btn btn-outline-secondary"} onClick={handleAbort}>
+                                        {LABELS_AND_HEADINGS.ABORT}
+                                    </button>
+                                </>
+                                :
+                                <>
+                                    <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
+                                        {LABELS_AND_HEADINGS.EDIT}
+                                    </button>
+                                    <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)} label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                                </>
+                        }
+                        {
+                            formMessage.show &&
+                            <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
+                                {formMessage.message}
+                            </p>
+                        }
                     </div>
                 </div>
             </div>

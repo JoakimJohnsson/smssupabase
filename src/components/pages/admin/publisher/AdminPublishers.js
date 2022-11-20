@@ -20,7 +20,7 @@ export const AdminPublishers = () => {
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
-                <div className={"col-12 main-col"}>
+                <div className={"col-12 main-row-padding"}>
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>

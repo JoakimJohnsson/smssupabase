@@ -11,7 +11,7 @@ export const Home = () => {
     return user ? (
             <main className={"container-fluid main-container dashboard"}>
                 <div className={"row"}>
-                    <div className={"col main-col"}>
+                    <div className={"col main-row-padding"}>
                         <p>Home</p>
                         <p>Länkar till min dashboard o.s.v.</p>
                     </div>

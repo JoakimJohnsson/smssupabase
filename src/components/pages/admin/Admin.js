@@ -9,16 +9,17 @@ export const Admin = () => {
 
     return (
         <main className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12 main-col"}>
+            <div className={"row main-row-padding"}>
+                <div className={"col-12 col-lg-8"}>
                     <AdminH1 text={LABELS_AND_HEADINGS.ADMIN}/>
                 </div>
-                <div className={"row main-col"}>
-                    <TitlesCard/>
-                    <PublishersCard/>
-                </div>
-
             </div>
+            <div className={"row secondary-row-padding"}>
+                <TitlesCard/>
+                <PublishersCard/>
+            </div>
+
+
         </main>
     )
 }

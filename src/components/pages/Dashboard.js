@@ -30,7 +30,7 @@ export const Dashboard = () => {
                             <ChevronDoubleRightIcon className={"sms-icon--hamburger me-0"}/>
                         </button>
                     </div>
-                    <div className={"col main-col"}>
+                    <div className={"col main-row-padding"}>
                         <Outlet/>
                     </div>
                 </div>

@@ -34,57 +34,57 @@ export const AdminTitle = () => {
 
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12 main-col"}>
+            <div className={"row main-row-padding"}>
+                <div className={"col-12"}>
                     <AdminH1 text={title.name + " " + title.start_year + " - " + title.end_year}/>
-                    <div className={"row"}>
-                        <AdminTitleInfoEdit title={title} setTitle={setTitle} newTitle={newTitle} setNewTitle={setNewTitle}/>
-                        <div className={"sms-dashboard-col"}>
-                            <div className={"sms-form"}>
-                                <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
-                                <ImageUploader
-                                    imageUrl={imageUrl}
-                                    setImageUrl={setImageUrl}
-                                    imageFilename={imageFilename}
-                                    setImageFilename={setImageFilename}
-                                    uploading={uploading}
-                                    setUploading={setUploading}
-                                    bucketName={BUCKETS.TITLE_IMAGES}
-                                    tableName={TABLES.TITLES}
-                                    fileType={FILETYPES.TITLE_IMAGE}
-                                    id={title.id}
-                                    update={fetchTitleData}
-                                />
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div className={"row secondary-row-padding"}>
+                <AdminTitleInfoEdit title={title} setTitle={setTitle} newTitle={newTitle} setNewTitle={setNewTitle}/>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-form"}>
+                        <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
+                        <ImageUploader
+                            imageUrl={imageUrl}
+                            setImageUrl={setImageUrl}
+                            imageFilename={imageFilename}
+                            setImageFilename={setImageFilename}
+                            uploading={uploading}
+                            setUploading={setUploading}
+                            bucketName={BUCKETS.TITLE_IMAGES}
+                            tableName={TABLES.TITLES}
+                            fileType={FILETYPES.TITLE_IMAGE}
+                            id={title.id}
+                            update={fetchTitleData}
+                        />
                     </div>
-                    <div className={"row"}>
-                        <div className={"sms-dashboard-col"}>
-                            <div className={"sms-form mb-4"}>
-                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
-                            </div>
-                        </div>
-                        <div className={"sms-dashboard-col"}>
-                            <div className={"sms-form pb-5"}>
-                                <h2>{LABELS_AND_HEADINGS.ADD_ISSUES}</h2>
-                                {/*<label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>*/}
-                                {/*<input*/}
-                                {/*    id="year"*/}
-                                {/*    className={"form-control mb-3"}*/}
-                                {/*    type="number"*/}
-                                {/*    value={title.start_year}*/}
-                                {/*    onChange={() => console.log("hej")}*/}
-                                {/*/>*/}
-                                {/*<label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>*/}
-                                {/*<input*/}
-                                {/*    id="totalissues"*/}
-                                {/*    className={"form-control mb-3"}*/}
-                                {/*    type="number"*/}
-                                {/*    value={12}*/}
-                                {/*    onChange={() => console.log("hej")}*/}
-                                {/*/>*/}
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div className={"row"}>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-form mb-4"}>
+                        <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                    </div>
+                </div>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-form pb-5"}>
+                        <h2>{LABELS_AND_HEADINGS.ADD_ISSUES}</h2>
+                        {/*<label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>*/}
+                        {/*<input*/}
+                        {/*    id="year"*/}
+                        {/*    className={"form-control mb-3"}*/}
+                        {/*    type="number"*/}
+                        {/*    value={title.start_year}*/}
+                        {/*    onChange={() => console.log("hej")}*/}
+                        {/*/>*/}
+                        {/*<label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>*/}
+                        {/*<input*/}
+                        {/*    id="totalissues"*/}
+                        {/*    className={"form-control mb-3"}*/}
+                        {/*    type="number"*/}
+                        {/*    value={12}*/}
+                        {/*    onChange={() => console.log("hej")}*/}
+                        {/*/>*/}
                     </div>
                 </div>
             </div>

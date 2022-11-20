@@ -24,6 +24,8 @@ export const Breadcrumbs = () => {
                 return LABELS_AND_HEADINGS.HOME;
             case "admin":
                 return LABELS_AND_HEADINGS.ADMIN;
+            case "settings":
+                return LABELS_AND_HEADINGS.SETTINGS;
             case "titles":
                 return LABELS_AND_HEADINGS.ALL_TITLES;
             case "publishers":
