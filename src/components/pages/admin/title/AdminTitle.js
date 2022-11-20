@@ -61,9 +61,10 @@ export const AdminTitle = () => {
                     <div className={"row"}>
                         <div className={"sms-dashboard-col"}>
                             <div className={"sms-form mb-4"}>
-                                <h2>{LABELS_AND_HEADINGS.MISCELLANEOUS}</h2>
-                                <p>{LABELS_AND_HEADINGS.ISSUES_PER_YEAR}: {title.issues_per_year}</p>
+                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                             </div>
+                        </div>
+                        <div className={"sms-dashboard-col"}>
                             <div className={"sms-form pb-5"}>
                                 <h2>{LABELS_AND_HEADINGS.ADD_ISSUES}</h2>
                                 {/*<label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>*/}
@@ -82,11 +83,6 @@ export const AdminTitle = () => {
                                 {/*    value={12}*/}
                                 {/*    onChange={() => console.log("hej")}*/}
                                 {/*/>*/}
-                            </div>
-                        </div>
-                        <div className={"sms-dashboard-col"}>
-                            <div className={"sms-form mb-4"}>
-                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                             </div>
                         </div>
                     </div>

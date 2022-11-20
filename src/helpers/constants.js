@@ -116,8 +116,6 @@ export const LABELS_AND_HEADINGS = {
     IMAGE: "Bild",
     INFORMATION: "Information",
     ISSUES: "Publikationer",
-    ISSUES_PER_YEAR: "Antal publikationer per år",
-    ISSUES_PER_YEAR_DB: "Antal publikationer per år (issues_per_year)",
     LAST_NAME: "Efternamn",
     LOADING: "Laddar",
     LOG_IN: "Logga in",
