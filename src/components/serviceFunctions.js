@@ -225,14 +225,14 @@ export const uploadImage = async (e, tableName, id, setUploading, bucketName, fi
             setImageUrl(supabase
                 .storage
                 .from(bucketName)
-                .getPublicUrl(newFileName).publicURL);
+                .getPublicUrl(newFileName).data.publicUrl);
 
             // Only used when updating image on existing row
             if (id) {
                 await updateImageDataOnTable(tableName, id, newFileName, supabase
                     .storage
                     .from(bucketName)
-                    .getPublicUrl(newFileName).publicURL);
+                    .getPublicUrl(newFileName).data.publicUrl);
             }
 
             if (uploadError) {

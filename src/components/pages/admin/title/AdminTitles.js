@@ -20,8 +20,8 @@ export const AdminTitles = () => {
 
     return (
         <main className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12 row-padding--main"}>
+            <div className={"row row-padding--main"}>
+                <div className={"col-12"}>
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                         <Breadcrumbs/>

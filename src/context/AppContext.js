@@ -8,7 +8,7 @@ const AppContext = React.createContext();
 export function AppContextProvider({children}) {
 
     // Global states
-    const [user, setUser] = useState();
+    const [user, setUser] = useState({});
     const [avatarImageUrl, setAvatarImageUrl] = useState('');
     const [avatarImageFilename, setAvatarImageFilename] = useState(null);
     const [userUrl, setUserUrl] = useState(null);
@@ -16,40 +16,39 @@ export function AppContextProvider({children}) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check active sessions and sets the user
-        const session = supabase.auth.session();
-        setUser(session?.user ?? null)
+        // Check active session and sets the user
+        supabase.auth.getSession().then(({data: {session}}) => {
+            setUser(session?.user ?? null)
+        })
+    }, [])
 
+    useEffect(() => {
         if (user) {
             // Check if user has admin privileges and set role.
             const mySub = supabase
-                .from(TABLES.PROFILES)
-                .on('*', payload => {
-                    updateProfile(user).then()
+                .channel('public:profiles')
+                .on('postgres_changes', {event: '*', schema: '*'}, payload => {
+                    updateProfile(user).then(() => console.log("Profile updated"))
                 })
                 .subscribe()
-            updateProfile(user).then(() => supabase.removeSubscription(mySub));
+            updateProfile(user).then(() => supabase.removeChannel(mySub));
         }
         setLoading(false)
     }, [user])
 
     useEffect(() => {
         // Listen for changes on auth state. Log in/out etc.
-        const {data: listener} = supabase.auth.onAuthStateChange(
-            async (event, session) => {
+        supabase.auth.onAuthStateChange((event, session) => {
                 setUser(session?.user ?? null)
                 setLoading(false)
             }
         )
-        return () => {
-            listener?.unsubscribe()
-        }
     }, [])
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
         signUp: (data) => supabase.auth.signUp(data),
-        signIn: (data) => supabase.auth.signIn(data),
+        signIn: (data) => supabase.auth.signInWithPassword(data),
         signOut: () => supabase.auth.signOut(),
         user,
         avatarImageUrl,
@@ -59,7 +58,7 @@ export function AppContextProvider({children}) {
         userUrl,
         setUserUrl,
         role,
-        session: () => supabase.auth.session()
+        session: () => supabase.auth.getSession()
     }
 
     async function updateProfile(user) {
@@ -77,11 +76,12 @@ export function AppContextProvider({children}) {
                 setUserUrl(prepareUrl(data[0].website));
                 // Get and set avatar url from storage via filename
                 if (data[0].avatar_image_filename) {
-                    setAvatarImageUrl(supabase
+                    const url = supabase
                         .storage
                         .from(BUCKETS.AVATAR_IMAGES)
-                        .getPublicUrl(data[0].avatar_image_filename).publicURL)
+                        .getPublicUrl(data[0].avatar_image_filename).data.publicUrl;
                     const fileName = data[0].avatar_image_filename;
+                    setAvatarImageUrl(url);
                     setAvatarImageFilename(fileName);
                 }
                 // Set role

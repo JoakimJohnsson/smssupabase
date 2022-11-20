@@ -28,7 +28,7 @@ export const Avatar = ({onUpload}) => {
             setAvatarImageUrl(supabase
                 .storage
                 .from(BUCKETS.AVATAR_IMAGES)
-                .getPublicUrl(fileName).publicURL)
+                .getPublicUrl(fileName).data.publicUrl)
             if (uploadError) {
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
