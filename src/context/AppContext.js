@@ -9,10 +9,10 @@ export function AppContextProvider({children}) {
 
     // Global states
     const [user, setUser] = useState({});
-    const [avatarImageUrl, setAvatarImageUrl] = useState('');
-    const [avatarImageFilename, setAvatarImageFilename] = useState(null);
-    const [userUrl, setUserUrl] = useState(null);
-    const [role, setRole] = useState(null);
+    const [avatarImageUrl, setAvatarImageUrl] = useState("");
+    const [avatarImageFilename, setAvatarImageFilename] = useState("");
+    const [userUrl, setUserUrl] = useState("");
+    const [role, setRole] = useState(0);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export function AppContextProvider({children}) {
             // Check if user has admin privileges and set role.
             const mySub = supabase
                 .channel('public:profiles')
-                .on('postgres_changes', {event: '*', schema: '*'}, payload => {
+                .on('postgres_changes', {event: '*', schema: 'profiles'}, payload => {
                     updateProfile(user).then(() => console.log("Profile updated"))
                 })
                 .subscribe()
@@ -62,31 +62,37 @@ export function AppContextProvider({children}) {
     }
 
     async function updateProfile(user) {
+        // Reset
+        setRole(0);
+        setAvatarImageFilename("");
+        setAvatarImageUrl("");
+        setUserUrl("");
         try {
-            setLoading(true);
-            let {data, error, status} = await supabase
-                .from(TABLES.PROFILES)
-                .select(`firstname, lastname, role, website, avatar_image_filename`)
-                .eq('id', user.id);
-
-            if (error && status !== 406) {
-                console.error('Error: ', error);
-            }
-            if (data) {
-                setUserUrl(prepareUrl(data[0].website));
-                // Get and set avatar url from storage via filename
-                if (data[0].avatar_image_filename) {
-                    const url = supabase
-                        .storage
-                        .from(BUCKETS.AVATAR_IMAGES)
-                        .getPublicUrl(data[0].avatar_image_filename).data.publicUrl;
-                    const fileName = data[0].avatar_image_filename;
-                    setAvatarImageUrl(url);
-                    setAvatarImageFilename(fileName);
+            if (user && user.id) {
+                setLoading(true);
+                let {data, error, status} = await supabase
+                    .from(TABLES.PROFILES)
+                    .select(`firstname, lastname, role, website, avatar_image_filename`)
+                    .eq('id', user.id);
+                if (error && status !== 406) {
+                    console.error('Error: ', error);
                 }
-                // Set role
-                if (data[0].role) {
-                    setRole(data[0].role)
+                if (data) {
+                    setUserUrl(prepareUrl(data[0].website));
+                    // Get and set avatar url from storage via filename
+                    if (data[0].avatar_image_filename) {
+                        const url = supabase
+                            .storage
+                            .from(BUCKETS.AVATAR_IMAGES)
+                            .getPublicUrl(data[0].avatar_image_filename).data.publicUrl;
+                        const fileName = data[0].avatar_image_filename;
+                        setAvatarImageUrl(url);
+                        setAvatarImageFilename(fileName);
+                    }
+                    // Set role
+                    if (data[0].role) {
+                        setRole(data[0].role)
+                    }
                 }
             }
         } catch (error) {

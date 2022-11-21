@@ -5,21 +5,23 @@ import {generateUniqueHashedFilename} from "../helpers/functions";
 // PROFILES FUNCTIONS
 export async function getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) {
     try {
-        setLoading(true);
-        let {data, error, status} = await supabase
-            .from(TABLES.PROFILES)
-            .select("firstname, lastname, website, avatar_image_filename")
-            .eq("id", id)
-            .single();
+        if (id) {
+            setLoading(true);
+            let {data, error, status} = await supabase
+                .from(TABLES.PROFILES)
+                .select("firstname, lastname, website, avatar_image_filename")
+                .eq("id", id)
+                .single();
 
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data) {
-            setFirstname(data.firstname);
-            setLastname(data.lastname);
-            setWebsite(data.website);
-            setAvatarImageFilename(data.avatar_image_filename);
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data) {
+                setFirstname(data.firstname);
+                setLastname(data.lastname);
+                setWebsite(data.website);
+                setAvatarImageFilename(data.avatar_image_filename);
+            }
         }
     } catch (error) {
         console.error(error);
