@@ -8,7 +8,7 @@ const AppContext = React.createContext();
 export function AppContextProvider({children}) {
 
     // Global states
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     const [avatarImageUrl, setAvatarImageUrl] = useState("");
     const [avatarImageFilename, setAvatarImageFilename] = useState("");
     const [userUrl, setUserUrl] = useState("");
