@@ -12,7 +12,6 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
                 .select("firstname, lastname, website, avatar_image_filename")
                 .eq("id", id)
                 .single();
-
             if (error && status !== 406) {
                 console.error(error);
             }
@@ -175,16 +174,15 @@ export async function deleteRowsByTableAndId(table, id, name, setData, initialDa
         return false;
     }
     try {
-        let {data, error, status} = await supabase
+        let {error, status} = await supabase
             .from(table)
             .delete()
             .match({id: id})
         if (error && status !== 406) {
             console.error(error);
         }
-        if (data) {
-            setData(initialData.filter((x) => x.id !== id))
-        }
+        console.info("Refreshing list data");
+        setData(initialData.filter((x) => x.id !== id))
     } catch (error) {
         console.error(error);
     }

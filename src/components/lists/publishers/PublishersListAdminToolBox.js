@@ -13,7 +13,9 @@ export const PublishersListAdminToolBox = ({publisher, setPublishersData, publis
     const handleDelete = async () => {
         try {
             deleteRowsByTableAndId(TABLES.PUBLISHERS, publisher.id, publisher.name, setPublishersData, publishersData)
-                .then(() => deleteImageFromBucketSimple(publisher.image, BUCKETS.PUBLISHER_IMAGES));
+                .then(() => {
+                    deleteImageFromBucketSimple(publisher.image, BUCKETS.PUBLISHER_IMAGES)
+                });
         } catch (error) {
             console.error(error);
         }

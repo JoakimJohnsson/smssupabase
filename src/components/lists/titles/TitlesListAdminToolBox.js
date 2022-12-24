@@ -12,11 +12,12 @@ export const TitlesListAdminToolBox = ({title, setTitlesData, titlesData}) => {
 
     const handleDelete = async () => {
         try {
-            await deleteImageFromBucketSimple(title.image, BUCKETS.TITLE_IMAGES);
+            deleteRowsByTableAndId(TABLES.TITLES, title.id, title.name, setTitlesData, titlesData)
+                .then(() => {
+                    deleteImageFromBucketSimple(title.image, BUCKETS.TITLE_IMAGES)
+                });
         } catch (error) {
             console.error(error);
-        } finally {
-            deleteRowsByTableAndId(TABLES.TITLES, title.id, title.name, setTitlesData, titlesData).then();
         }
     }
 
