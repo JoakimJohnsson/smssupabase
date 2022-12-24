@@ -29,6 +29,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
     }
 }
 
+
 // TITLES FUNCTIONS
 export async function addTitleData(data, setFormMessage) {
     try {
@@ -77,6 +78,7 @@ export async function updateTitleData(id, data, setFormMessage) {
     }
 }
 
+
 // PUBLISHERS FUNCTIONS
 export async function addPublisherData(data, setFormMessage) {
     try {
@@ -117,8 +119,8 @@ export async function updatePublisherData(id, data, setFormMessage) {
     }
 }
 
-// GENERIC FUNCTIONS
 
+// GENERIC FUNCTIONS
 export async function getRowsByTable(table, setData) {
     try {
         let {data, error, status} = await supabase
@@ -206,8 +208,8 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
     }
 }
 
-// IMAGE FUNCTIONS
 
+// IMAGE FUNCTIONS
 export const uploadImage = async (e, tableName, id, setUploading, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {
     setUploading(true);
     if (!e.target.files || e.target.files.length === 0) {
@@ -290,6 +292,19 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
         if (error) {
             console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
         }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+// HANDLER FUNCTIONS
+export async function handleDelete(table, id, name, setData, initialData, image, bucket) {
+    try {
+        deleteRowsByTableAndId(table, id, name, setData, initialData)
+            .then(() => {
+                deleteImageFromBucketSimple(image, bucket)
+            });
     } catch (error) {
         console.error(error);
     }
