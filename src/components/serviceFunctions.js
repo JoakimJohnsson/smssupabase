@@ -5,21 +5,22 @@ import {generateUniqueHashedFilename} from "../helpers/functions";
 // PROFILES FUNCTIONS
 export async function getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) {
     try {
-        setLoading(true);
-        let {data, error, status} = await supabase
-            .from(TABLES.PROFILES)
-            .select("firstname, lastname, website, avatar_image_filename")
-            .eq("id", id)
-            .single();
-
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data) {
-            setFirstname(data.firstname);
-            setLastname(data.lastname);
-            setWebsite(data.website);
-            setAvatarImageFilename(data.avatar_image_filename);
+        if (id) {
+            setLoading(true);
+            let {data, error, status} = await supabase
+                .from(TABLES.PROFILES)
+                .select("firstname, lastname, website, avatar_image_filename")
+                .eq("id", id)
+                .single();
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data) {
+                setFirstname(data.firstname);
+                setLastname(data.lastname);
+                setWebsite(data.website);
+                setAvatarImageFilename(data.avatar_image_filename);
+            }
         }
     } catch (error) {
         console.error(error);
@@ -27,6 +28,7 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
         setLoading(false)
     }
 }
+
 
 // TITLES FUNCTIONS
 export async function addTitleData(data, setFormMessage) {
@@ -76,6 +78,7 @@ export async function updateTitleData(id, data, setFormMessage) {
     }
 }
 
+
 // PUBLISHERS FUNCTIONS
 export async function addPublisherData(data, setFormMessage) {
     try {
@@ -116,8 +119,8 @@ export async function updatePublisherData(id, data, setFormMessage) {
     }
 }
 
-// GENERIC FUNCTIONS
 
+// GENERIC FUNCTIONS
 export async function getRowsByTable(table, setData) {
     try {
         let {data, error, status} = await supabase
@@ -173,16 +176,15 @@ export async function deleteRowsByTableAndId(table, id, name, setData, initialDa
         return false;
     }
     try {
-        let {data, error, status} = await supabase
+        let {error, status} = await supabase
             .from(table)
             .delete()
             .match({id: id})
         if (error && status !== 406) {
             console.error(error);
         }
-        if (data) {
-            setData(initialData.filter((x) => x.id !== id))
-        }
+        console.info("Refreshing list data");
+        setData(initialData.filter((x) => x.id !== id))
     } catch (error) {
         console.error(error);
     }
@@ -206,8 +208,8 @@ export async function getRowsByTableWithLimitAndOrderByColumn(table, column, set
     }
 }
 
-// IMAGE FUNCTIONS
 
+// IMAGE FUNCTIONS
 export const uploadImage = async (e, tableName, id, setUploading, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {
     setUploading(true);
     if (!e.target.files || e.target.files.length === 0) {
@@ -225,14 +227,14 @@ export const uploadImage = async (e, tableName, id, setUploading, bucketName, fi
             setImageUrl(supabase
                 .storage
                 .from(bucketName)
-                .getPublicUrl(newFileName).publicURL);
+                .getPublicUrl(newFileName).data.publicUrl);
 
             // Only used when updating image on existing row
             if (id) {
                 await updateImageDataOnTable(tableName, id, newFileName, supabase
                     .storage
                     .from(bucketName)
-                    .getPublicUrl(newFileName).publicURL);
+                    .getPublicUrl(newFileName).data.publicUrl);
             }
 
             if (uploadError) {
@@ -290,6 +292,19 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
         if (error) {
             console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
         }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+// HANDLER FUNCTIONS
+export async function handleDelete(table, id, name, setData, initialData, image, bucket) {
+    try {
+        deleteRowsByTableAndId(table, id, name, setData, initialData)
+            .then(() => {
+                deleteImageFromBucketSimple(image, bucket)
+            });
     } catch (error) {
         console.error(error);
     }

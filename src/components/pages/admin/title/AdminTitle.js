@@ -60,7 +60,7 @@ export const AdminTitle = () => {
                     </div>
                 </div>
             </div>
-            <div className={"row"}>
+            <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form mb-4"}>
                         <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
