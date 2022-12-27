@@ -101,6 +101,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     name={"total_issues"}
                     className={"form-control mb-3"}
                     type="number"
+                    min="1"
                     value={newTitle.total_issues}
                     onChange={e => handleChange(e.target.name, e.target.value)}
                     disabled={!edit}

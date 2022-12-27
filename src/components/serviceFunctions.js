@@ -37,6 +37,7 @@ export async function addTitleData(data, setFormMessage) {
             .from(TABLES.TITLES)
             .insert([{
                 name: data.name,
+                description: data.description,
                 start_year: data.startYear,
                 end_year: data.endYear,
                 publisher_id: data.publisherId,
@@ -86,6 +87,7 @@ export async function addPublisherData(data, setFormMessage) {
             .from(TABLES.PUBLISHERS)
             .insert([{
                 name: data.name,
+                description: data.description,
                 country_id: data.countryId
             }])
         if (error) {

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
 import {addTitleData, getRowsByTable} from "../../../serviceFunctions";
-import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import {handleBacking, handleInput, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../../headings";
@@ -13,8 +13,8 @@ export const AdminTitleAdd = () => {
 
     const [
         name, setName,
+        description, setDescription,
         formMessage, setFormMessage,
-        nameValidated, setNameValidated,
         formInputClass, setFormInputClass,
     ] = useCommonFormStates();
 
@@ -33,13 +33,24 @@ export const AdminTitleAdd = () => {
 
     const resetAddTitleForm = async () => {
         setName("");
+        setDescription("");
         setStartYear(1975);
         setEndYear(1975);
         setTotalIssues(12);
-        setNameValidated(false);
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         hideAndResetMessage(setFormMessage);
     }
+
+    useEffect(() => {
+        if (formatId && publisherId && startYear && endYear && totalIssues && name !== "" && description !== "") {
+            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        } else if (formatId || publisherId || startYear || endYear || totalIssues || name !== "" || description !== "") {
+            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+        } else {
+            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        }
+    }, [formatId, publisherId, name, description, startYear, endYear, totalIssues, setFormInputClass])
+
 
     return (
         <main className={"container-fluid main-container"}>
@@ -57,7 +68,15 @@ export const AdminTitleAdd = () => {
                             className={formInputClass}
                             type="text"
                             value={name || ""}
-                            onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
+                            onChange={e => handleInput(e, setName)}
+                        />
+                        <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                        <input
+                            id="description"
+                            className={formInputClass}
+                            type="text"
+                            value={description || ""}
+                            onChange={e => handleInput(e, setDescription)}
                         />
                         <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                         <input
@@ -80,7 +99,7 @@ export const AdminTitleAdd = () => {
                             publishersData &&
                             <select
                                 id="publisher"
-                                className={"form-select mb-3"}
+                                className={formInputClass}
                                 onChange={(e) => setPublisherId(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(publishersData)}
@@ -91,7 +110,7 @@ export const AdminTitleAdd = () => {
                             formatData &&
                             <select
                                 id="format"
-                                className={"form-select mb-3"}
+                                className={formInputClass}
                                 onChange={(e) => setFormatId(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(formatData)}
@@ -102,19 +121,21 @@ export const AdminTitleAdd = () => {
                             id="totalissues"
                             className={formInputClass}
                             type="number"
+                            min="1"
                             value={totalIssues || 12}
                             onChange={(e) => setTotalIssues(e.target.value)}
                         />
                         <button className={"btn btn-primary"}
                                 onClick={() => addTitleData({
                                     name: name,
+                                    description: description,
                                     startYear: startYear,
                                     endYear: endYear,
                                     publisherId: publisherId,
                                     formatId: formatId,
                                     totalIssues: totalIssues,
                                 }, setFormMessage).then(() => resetAddTitleForm())}
-                                disabled={!nameValidated}>
+                                disabled={!startYear || !endYear || !totalIssues || name === "" || description === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-outline-secondary"}

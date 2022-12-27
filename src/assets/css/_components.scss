@@ -51,7 +51,7 @@
 }
 
 .sms-form {
-  @extend .p-0, .p-sm-5;
+  @extend .p-0, .p-sm-5, .h-100;
   border-radius: $border-radius--lg;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
