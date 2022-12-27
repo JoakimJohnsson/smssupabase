@@ -302,7 +302,7 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
 
 
 // HANDLER FUNCTIONS
-export async function handleDelete(table, id, name, setData, initialData, image, bucket) {
+export const handleDelete = async (table, id, name, setData, initialData, image, bucket) => {
     try {
         deleteRowsByTableAndId(table, id, name, setData, initialData)
             .then(() => {
@@ -311,4 +311,8 @@ export async function handleDelete(table, id, name, setData, initialData, image,
     } catch (error) {
         console.error(error);
     }
+}
+
+export const handleChange = (obj, setObj, name, value) => {
+    setObj({...obj, [name]: value});
 }
