@@ -61,6 +61,7 @@ export async function updateTitleData(id, data, setFormMessage) {
             .from(TABLES.TITLES)
             .update([{
                 name: data.name,
+                description: data.description,
                 start_year: data.start_year,
                 end_year: data.end_year,
                 publisher_id: data.publisher_id,

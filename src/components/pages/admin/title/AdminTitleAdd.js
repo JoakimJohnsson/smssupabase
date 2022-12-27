@@ -64,17 +64,19 @@ export const AdminTitleAdd = () => {
                     <div className={"sms-form"}>
                         <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                         <input
-                            id="name"
+                            id={"name"}
+                            name={"name"}
                             className={formInputClass}
-                            type="text"
+                            type={"text"}
                             value={name || ""}
                             onChange={e => handleInput(e, setName)}
                         />
                         <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                         <input
-                            id="description"
+                            id={"description"}
+                            name={"description"}
                             className={formInputClass}
-                            type="text"
+                            type={"text"}
                             value={description || ""}
                             onChange={e => handleInput(e, setDescription)}
                         />

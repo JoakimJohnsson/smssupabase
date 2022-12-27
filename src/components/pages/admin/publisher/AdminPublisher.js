@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {Spinner} from "../../../minis/Spinner";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
+import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import {AdminH1} from "../../../headings";
 import {getRowByTableAndId, updatePublisherData} from "../../../serviceFunctions";
@@ -79,7 +79,7 @@ export const AdminPublisher = () => {
                         <input
                             id={"name"}
                             name={"name"}
-                            className={"form-control mb-3"}
+                            className={CLASSES.FORM_INPUT_DEFAULT}
                             type="text"
                             value={newPublisher.name}
                             onChange={e => handleChange(e.target.name, e.target.value)}

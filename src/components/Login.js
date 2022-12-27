@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/AppContext";
 import {simpleInputValidation} from "../helpers/validations";
-import {LABELS_AND_HEADINGS} from "../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../helpers/constants";
 
 const Login = () => {
 
@@ -40,7 +40,7 @@ const Login = () => {
                        type="email"
                        ref={emailRef}
                        onChange={(e) => simpleInputValidation(e, setEmailValidated)}
-                       className={emailValidated ? "form-control success mb-3" : "form-control mb-3"}
+                       className={emailValidated ? "form-control success mb-3" : CLASSES.FORM_INPUT_DEFAULT}
                        placeholder={"name@myplace.se"}
                        required/>
                 <label className={"form-label"} htmlFor="input-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
@@ -48,7 +48,7 @@ const Login = () => {
                        type="password"
                        ref={passwordRef}
                        onChange={(e) => simpleInputValidation(e, setPasswordValidated)}
-                       className={passwordValidated ? "form-control success mb-3" : "form-control mb-3"}
+                       className={passwordValidated ? "form-control success mb-3" : CLASSES.FORM_INPUT_DEFAULT}
                        placeholder={"********"}
                        required/>
                 <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary" : "btn btn-primary disabled"}>{LABELS_AND_HEADINGS.LOG_IN}</button>
