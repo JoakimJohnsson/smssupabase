@@ -108,6 +108,7 @@ export async function updatePublisherData(id, data, setFormMessage) {
             .from(TABLES.PUBLISHERS)
             .update([{
                 name: data.name,
+                description: data.description,
                 country_id: data.country_id
             }])
             .eq("id", id)
@@ -315,4 +316,8 @@ export const handleDelete = async (table, id, name, setData, initialData, image,
 
 export const handleChange = (obj, setObj, name, value) => {
     setObj({...obj, [name]: value});
+}
+
+export const handleInput = (e, setInput) => {
+    setInput(e.target.value)
 }

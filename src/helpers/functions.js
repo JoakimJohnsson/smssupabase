@@ -74,10 +74,6 @@ export const getObjectNameById = (data, myId) => {
     return obj[0].name;
 }
 
-export const handleInput = (e, setInput) => {
-    setInput(e.target.value)
-}
-
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");
 

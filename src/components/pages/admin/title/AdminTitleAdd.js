@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {addTitleData, getRowsByTable} from "../../../serviceFunctions";
-import {handleBacking, handleInput, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import {addTitleData, getRowsByTable, handleInput} from "../../../serviceFunctions";
+import {handleBacking, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../../headings";
