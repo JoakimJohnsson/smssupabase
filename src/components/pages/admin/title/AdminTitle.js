@@ -72,7 +72,7 @@ export const AdminTitle = () => {
                         {/*<label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>*/}
                         {/*<input*/}
                         {/*    id="year"*/}
-                        {/*    className={"form-control mb-3"}*/}
+                        {/*    className={CLASSES.FORM_INPUT_DEFAULT}*/}
                         {/*    type="number"*/}
                         {/*    value={title.start_year}*/}
                         {/*    onChange={() => console.log("hej")}*/}
@@ -80,7 +80,7 @@ export const AdminTitle = () => {
                         {/*<label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>*/}
                         {/*<input*/}
                         {/*    id="totalissues"*/}
-                        {/*    className={"form-control mb-3"}*/}
+                        {/*    className={CLASSES.FORM_INPUT_DEFAULT}*/}
                         {/*    type="number"*/}
                         {/*    value={12}*/}
                         {/*    onChange={() => console.log("hej")}*/}

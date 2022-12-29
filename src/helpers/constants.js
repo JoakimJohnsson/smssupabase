@@ -104,6 +104,8 @@ export const LABELS_AND_HEADINGS = {
     DASHBOARD: "Kontrollpanel",
     DELETE: "Ta bort",
     DELETE_IMAGE: "Ta bort bild",
+    DESCRIPTION: "Beskrivning",
+    DESCRIPTION_DB: "Beskrivning (description)",
     EDIT: "Redigera",
     EMAIL: "E-postadress",
     END_YEAR: "Slutår",
@@ -153,8 +155,8 @@ export const LABELS_AND_HEADINGS = {
 }
 
 export const TEXTS = {
-    ADMIN_LEAD: "Här kan du lägga in data i databasen.",
-    ADMIN_INFO: "Hejsan hej.",
+    ADMIN_LEAD: "Här kan du som är Admin lägga in och redigera data i databasen.",
+    ADMIN_INFO: "För frågor och instruktioner - maila Super-admin.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet",

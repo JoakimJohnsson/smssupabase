@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
-import {addPublisherData} from "../../../serviceFunctions";
-import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import {addPublisherData, handleInput} from "../../../serviceFunctions";
+import {handleBacking, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../../headings";
@@ -13,8 +13,8 @@ export const AdminPublisherAdd = () => {
 
     const [
         name, setName,
+        description, setDescription,
         formMessage, setFormMessage,
-        nameValidated, setNameValidated,
         formInputClass, setFormInputClass
     ] = useCommonFormStates();
 
@@ -24,10 +24,20 @@ export const AdminPublisherAdd = () => {
 
     const resetAddPublisherForm = async () => {
         setName("");
-        setNameValidated(false);
+        setDescription("");
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         hideAndResetMessage(setFormMessage);
     }
+
+    useEffect(() => {
+        if (countryId && name !== "" && description !== "") {
+            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        } else if (countryId || name !== "" || description !== "") {
+            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+        } else {
+            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        }
+    }, [name, description, countryId, setFormInputClass])
 
     return (
         <main className={"container-fluid main-container"}>
@@ -45,14 +55,22 @@ export const AdminPublisherAdd = () => {
                             className={formInputClass}
                             type="text"
                             value={name || ""}
-                            onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
+                            onChange={e => handleInput(e, setName)}
+                        />
+                        <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                        <input
+                            id="description"
+                            className={formInputClass}
+                            type="text"
+                            value={description || ""}
+                            onChange={e => handleInput(e, setDescription)}
                         />
                         <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                         {
                             countryData &&
                             <select
                                 id="country"
-                                className={"form-select mb-3"}
+                                className={formInputClass}
                                 onChange={(e) => setCountryId(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(countryData)}
@@ -61,9 +79,10 @@ export const AdminPublisherAdd = () => {
                         <button className={"btn btn-primary"}
                                 onClick={() => addPublisherData({
                                     name: name,
+                                    description: description,
                                     countryId: countryId
                                 }, setFormMessage).then(() => resetAddPublisherForm())}
-                                disabled={!nameValidated}>
+                                disabled={!countryId || name === "" || description === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-outline-secondary"}

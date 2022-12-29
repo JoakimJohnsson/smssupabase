@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
-import {getRowsByTable, updateTitleData} from "../../../serviceFunctions";
+import {getRowsByTable, handleChange, updateTitleData} from "../../../serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 
 
@@ -16,12 +16,8 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     const [publishersData, setPublishersData] = useState(null);
 
     useEffect(() => {
-        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
+        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then(() => console.info("Fetched publisher data"));
     }, [])
-
-    const handleChange = (name, value) => {
-        setNewTitle({...newTitle, [name]: value});
-    }
 
     const handleSubmit = () => {
         updateTitleData(title.id, newTitle, setFormMessage).then(() => setSearchParams({edit: false}));
@@ -41,30 +37,39 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"name"}
                     name={"name"}
-                    className={"form-control mb-3"}
-                    type="text"
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
                     value={newTitle.name}
-                    onChange={e => handleChange(e.target.name, e.target.value)}
+                    onChange={e => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
+                />
+                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                <input
+                    id={"description"}
+                    name={"description"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
+                    value={newTitle.description || ""}
+                    onChange={e => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                 />
                 <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                 <input
                     id={"startyear"}
                     name={"start_year"}
-                    className={"form-control mb-3"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
                     value={newTitle.start_year}
-                    onChange={e => handleChange(e.target.name, e.target.value)}
+                    onChange={e => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                 <input
                     id={"endyear"}
                     name={"end_year"}
-                    className={"form-control mb-3"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
                     value={newTitle.end_year}
-                    onChange={e => handleChange(e.target.name, e.target.value)}
+                    onChange={e => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
@@ -76,7 +81,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         className={"form-select mb-3"}
                         value={newTitle.publisher_id}
                         disabled={!edit}
-                        onChange={e => handleChange(e.target.name, e.target.value)}>
+                        onChange={e => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(publishersData)}
                     </select>
@@ -90,7 +95,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         className={"form-select mb-3"}
                         value={newTitle.format_id}
                         disabled={!edit}
-                        onChange={e => handleChange(e.target.name, e.target.value)}>
+                        onChange={e => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(formatData)}
                     </select>
@@ -99,10 +104,11 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"totalissues"}
                     name={"total_issues"}
-                    className={"form-control mb-3"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
+                    min="1"
                     value={newTitle.total_issues}
-                    onChange={e => handleChange(e.target.name, e.target.value)}
+                    onChange={e => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
                 {

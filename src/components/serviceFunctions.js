@@ -37,6 +37,7 @@ export async function addTitleData(data, setFormMessage) {
             .from(TABLES.TITLES)
             .insert([{
                 name: data.name,
+                description: data.description,
                 start_year: data.startYear,
                 end_year: data.endYear,
                 publisher_id: data.publisherId,
@@ -60,6 +61,7 @@ export async function updateTitleData(id, data, setFormMessage) {
             .from(TABLES.TITLES)
             .update([{
                 name: data.name,
+                description: data.description,
                 start_year: data.start_year,
                 end_year: data.end_year,
                 publisher_id: data.publisher_id,
@@ -86,6 +88,7 @@ export async function addPublisherData(data, setFormMessage) {
             .from(TABLES.PUBLISHERS)
             .insert([{
                 name: data.name,
+                description: data.description,
                 country_id: data.countryId
             }])
         if (error) {
@@ -105,6 +108,7 @@ export async function updatePublisherData(id, data, setFormMessage) {
             .from(TABLES.PUBLISHERS)
             .update([{
                 name: data.name,
+                description: data.description,
                 country_id: data.country_id
             }])
             .eq("id", id)
@@ -299,7 +303,7 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
 
 
 // HANDLER FUNCTIONS
-export async function handleDelete(table, id, name, setData, initialData, image, bucket) {
+export const handleDelete = async (table, id, name, setData, initialData, image, bucket) => {
     try {
         deleteRowsByTableAndId(table, id, name, setData, initialData)
             .then(() => {
@@ -308,4 +312,12 @@ export async function handleDelete(table, id, name, setData, initialData, image,
     } catch (error) {
         console.error(error);
     }
+}
+
+export const handleChange = (obj, setObj, name, value) => {
+    setObj({...obj, [name]: value});
+}
+
+export const handleInput = (e, setInput) => {
+    setInput(e.target.value)
 }
