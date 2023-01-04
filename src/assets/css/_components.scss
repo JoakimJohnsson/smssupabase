@@ -26,6 +26,15 @@
   background: center / cover no-repeat url("../images/heroimage.jpg");
 }
 
+.sms-information-message {
+  position: fixed;
+  top: 4vh;
+  left: 0;
+  right: 0;
+  width: 90vw;
+  margin: 0 auto;
+}
+
 // Content
 .main-container {
   // header - 90px - footer 170px;

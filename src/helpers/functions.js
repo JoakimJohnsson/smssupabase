@@ -76,9 +76,3 @@ export const getObjectNameById = (data, myId) => {
 
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");
-
-export const hideAndResetMessage = (setFormMessage) => {
-    setTimeout(() => {
-        setFormMessage(MESSAGES.EMPTY);
-    }, 3000)
-}

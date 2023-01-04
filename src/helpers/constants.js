@@ -6,34 +6,11 @@ export const MESSAGES = {
         VALIDATION_SIGNUP_FORM: "Något gick fel vid registrering",
         VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning",
         VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning",
-        VALIDATION_DELETE_IMAGE: "Något gick fel vid borttagning av bild",
-        VALIDATION_DELETE_IMAGE_FROM_TABLE: "Något gick fel vid borttagning av bilddata från tabell",
-        VALIDATION_UPLOAD: "Något gick fel vid uppladdning",
-        VALIDATION_INSERT: {
-            show: true,
-            error: true,
-            message: "Något gick fel vid validering av formulär"
-        },
-        VALIDATION_UPDATE: {
-            show: true,
-            error: true,
-            message: "Lyckades inte uppdatera informationen"
-        }
+        VALIDATION_UPLOAD: "Något gick fel vid uppladdning"
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
-        VALIDATION_PASSWORD: "Det där är ett starkt lösenord!",
-        VALIDATION_DOWNLOAD_IMAGE: "En bild laddades ned",
-        VALIDATION_INSERT: {
-            show: true,
-            error: false,
-            message: "Informationen lades till i databasen"
-        },
-        VALIDATION_UPDATE: {
-            show: true,
-            error: false,
-            message: "Informationen uppdaterades"
-        }
+        VALIDATION_PASSWORD: "Det där är ett starkt lösenord!"
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
@@ -41,8 +18,13 @@ export const MESSAGES = {
     },
     EMPTY: {
         show: false,
-        error: false,
-        message: ""
+        status: 0,
+        error: {}
+    },
+    CODES: {
+        201: "Lyckades lägga till informationen i databasen.",
+        204: "Lyckades uppdatera informationen i databasen.",
+        409: "Kunde inte genomföra processen på grund av en konflikt. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort.",
     }
 }
 
@@ -84,13 +66,12 @@ export const ROUTES = {
 
 export const LABELS_AND_HEADINGS = {
     ABORT: "Avbryt",
+    ADD: "Lägg till",
+    ADD_ISSUES: "Lägg till publikationer",
+    ADD_PUBLISHER: "Lägg till nytt förlag",
+    ADD_TITLE: "Lägg till ny titel",
     ADDED: "Inlagd",
     ADMIN: "Admin",
-    ADD: "Lägg till",
-    ADD_PUBLISHER: "Lägg till nytt förlag",
-    ADD_ISSUES: "Lägg till publikationer",
-    EDIT_PUBLISHER: "Redigera förlag",
-    ADD_TITLE: "Lägg till ny titel",
     ALL_PUBLISHERS: "Alla förlag",
     ALL_TITLES: "Alla titlar",
     BACK: "Tillbaka",
@@ -107,6 +88,7 @@ export const LABELS_AND_HEADINGS = {
     DESCRIPTION: "Beskrivning",
     DESCRIPTION_DB: "Beskrivning (description)",
     EDIT: "Redigera",
+    EDIT_PUBLISHER: "Redigera förlag",
     EMAIL: "E-postadress",
     END_YEAR: "Slutår",
     END_YEAR_DB: "Slutår (end_year)",

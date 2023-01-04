@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
 import {addTitleData, getRowsByTable, handleInput} from "../../../serviceFunctions";
-import {handleBacking, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import {handleBacking, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../../headings";
 import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {useNavigate} from "react-router-dom";
+import {useAppContext} from "../../../../context/AppContext";
 
 
 export const AdminTitleAdd = () => {
@@ -14,10 +15,10 @@ export const AdminTitleAdd = () => {
     const [
         name, setName,
         description, setDescription,
-        formMessage, setFormMessage,
         formInputClass, setFormInputClass,
     ] = useCommonFormStates();
 
+    const {setInformationMessage} = useAppContext();
     const [startYear, setStartYear] = useState(1975);
     const [endYear, setEndYear] = useState(1975);
     const [formatId, setFormatId] = useState("");
@@ -38,7 +39,6 @@ export const AdminTitleAdd = () => {
         setEndYear(1975);
         setTotalIssues(12);
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
-        hideAndResetMessage(setFormMessage);
     }
 
     useEffect(() => {
@@ -136,7 +136,7 @@ export const AdminTitleAdd = () => {
                                     publisherId: publisherId,
                                     formatId: formatId,
                                     totalIssues: totalIssues,
-                                }, setFormMessage).then(() => resetAddTitleForm())}
+                                }, setInformationMessage).then(() => resetAddTitleForm())}
                                 disabled={!startYear || !endYear || !totalIssues || name === "" || description === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
@@ -145,17 +145,9 @@ export const AdminTitleAdd = () => {
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
                         <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
-                        {
-                            formMessage.show &&
-                            <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                                {formMessage.message}
-                            </p>
-                        }
                     </div>
                 </div>
             </div>
-
-
         </main>
     )
 }

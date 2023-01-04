@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
-import {BUCKETS, TABLES} from "../helpers/constants";
+import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
 
 const AppContext = React.createContext();
 
@@ -14,6 +14,7 @@ export function AppContextProvider({children}) {
     const [userUrl, setUserUrl] = useState("");
     const [role, setRole] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [informationMessage, setInformationMessage] = useState(MESSAGES.EMPTY);
 
     useEffect(() => {
         // Check active session and sets the user
@@ -57,6 +58,8 @@ export function AppContextProvider({children}) {
         setAvatarImageFilename,
         userUrl,
         setUserUrl,
+        informationMessage: informationMessage,
+        setInformationMessage: setInformationMessage,
         role,
         session: () => supabase.auth.getSession()
     }

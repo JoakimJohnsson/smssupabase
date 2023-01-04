@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {handleChange, updatePublisherData} from "../../../serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
+import {useAppContext} from "../../../../context/AppContext";
 
 
 export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, setNewPublisher}) => {
@@ -12,10 +13,10 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
     const navigate = useNavigate();
-    const [formMessage, setFormMessage] = useState({show: false, error: false, message: ""});
+    const {setInformationMessage} = useAppContext();
 
     const handleSubmit = () => {
-        updatePublisherData(publisher.id, newPublisher, setFormMessage).then(() => setSearchParams({edit: false}));
+        updatePublisherData(publisher.id, newPublisher, setInformationMessage).then(() => setSearchParams({edit: false}));
         setPublisher({...newPublisher});
     }
 
@@ -78,12 +79,6 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                             </button>
                             <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)} label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
                         </>
-                }
-                {
-                    formMessage.show &&
-                    <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                        {formMessage.message}
-                    </p>
                 }
             </div>
         </div>

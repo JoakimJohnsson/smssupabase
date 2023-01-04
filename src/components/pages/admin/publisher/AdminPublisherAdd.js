@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
 import {addPublisherData, handleInput} from "../../../serviceFunctions";
-import {handleBacking, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import {handleBacking, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {AdminH1} from "../../../headings";
 import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {useNavigate} from "react-router-dom";
+import {useAppContext} from "../../../../context/AppContext";
 
 
 export const AdminPublisherAdd = () => {
@@ -14,19 +15,17 @@ export const AdminPublisherAdd = () => {
     const [
         name, setName,
         description, setDescription,
-        formMessage, setFormMessage,
         formInputClass, setFormInputClass
     ] = useCommonFormStates();
 
+    const {setInformationMessage} = useAppContext();
     const navigate = useNavigate();
-
     const [countryId, setCountryId] = useState("");
 
     const resetAddPublisherForm = async () => {
         setName("");
         setDescription("");
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
-        hideAndResetMessage(setFormMessage);
     }
 
     useEffect(() => {
@@ -81,7 +80,7 @@ export const AdminPublisherAdd = () => {
                                     name: name,
                                     description: description,
                                     countryId: countryId
-                                }, setFormMessage).then(() => resetAddPublisherForm())}
+                                }, setInformationMessage).then(() => resetAddPublisherForm())}
                                 disabled={!countryId || name === "" || description === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
@@ -90,12 +89,6 @@ export const AdminPublisherAdd = () => {
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
                         <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
-                        {
-                            formMessage.show &&
-                            <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                                {formMessage.message}
-                            </p>
-                        }
                     </div>
                 </div>
             </div>

@@ -31,9 +31,9 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
 
 
 // TITLES FUNCTIONS
-export async function addTitleData(data, setFormMessage) {
+export async function addTitleData(data, setInformationMessage) {
     try {
-        let {error} = await supabase
+        let {error, status} = await supabase
             .from(TABLES.TITLES)
             .insert([{
                 name: data.name,
@@ -44,20 +44,15 @@ export async function addTitleData(data, setFormMessage) {
                 format_id: data.formatId,
                 total_issues: data.totalIssues
             }])
-        if (error) {
-            console.error(error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
-        } else {
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
-        }
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function updateTitleData(id, data, setFormMessage) {
+export async function updateTitleData(id, data, setInformationMessage) {
     try {
-        let {error} = await supabase
+        let {error, status} = await supabase
             .from(TABLES.TITLES)
             .update([{
                 name: data.name,
@@ -69,12 +64,7 @@ export async function updateTitleData(id, data, setFormMessage) {
                 total_issues: data.total_issues
             }])
             .eq("id", id)
-        if (error) {
-            console.error(error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
-        } else {
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_UPDATE);
-        }
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
@@ -82,29 +72,24 @@ export async function updateTitleData(id, data, setFormMessage) {
 
 
 // PUBLISHERS FUNCTIONS
-export async function addPublisherData(data, setFormMessage) {
+export async function addPublisherData(data, setInformationMessage) {
     try {
-        let {error} = await supabase
+        let {error, status} = await supabase
             .from(TABLES.PUBLISHERS)
             .insert([{
                 name: data.name,
                 description: data.description,
                 country_id: data.countryId
             }])
-        if (error) {
-            console.error(error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
-        } else {
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
-        }
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function updatePublisherData(id, data, setFormMessage) {
+export async function updatePublisherData(id, data, setInformationMessage) {
     try {
-        let {error} = await supabase
+        let {error, status} = await supabase
             .from(TABLES.PUBLISHERS)
             .update([{
                 name: data.name,
@@ -112,12 +97,7 @@ export async function updatePublisherData(id, data, setFormMessage) {
                 country_id: data.country_id
             }])
             .eq("id", id)
-        if (error) {
-            console.error(error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
-        } else {
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_UPDATE);
-        }
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
@@ -175,7 +155,7 @@ export async function getNameByTableAndId(table, id, setData) {
     }
 }
 
-export async function deleteRowsByTableAndId(table, id, name, setData, initialData) {
+export async function deleteRowsByTableAndId(table, id, name, setData, initialData, setInformationMessage) {
     if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
         return false;
     }
@@ -185,10 +165,11 @@ export async function deleteRowsByTableAndId(table, id, name, setData, initialDa
             .delete()
             .match({id: id})
         if (error && status !== 406) {
-            console.error(error);
+            setInformationMessage({show: true, status: status, error: error});
+        } else {
+            setInformationMessage({show: true, status: status, error: error});
+            setData(initialData.filter((x) => x.id !== id))
         }
-        console.info("Refreshing list data");
-        setData(initialData.filter((x) => x.id !== id))
     } catch (error) {
         console.error(error);
     }
@@ -242,7 +223,7 @@ export const uploadImage = async (e, tableName, id, setUploading, bucketName, fi
             }
 
             if (uploadError) {
-                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
+                console.error(uploadError);
             }
         } catch (error) {
             console.error(error);
@@ -280,7 +261,7 @@ export const updateImageDataOnTable = async (tableName, id, updatedImageFileName
                 .update({image_filename: updatedImageFileName, image_url: updatedImageUrl})
                 .match({id: id})
             if (error) {
-                console.error(MESSAGES.ERROR.VALIDATION_DELETE_IMAGE_FROM_TABLE);
+                console.error(error);
             }
         } catch (error) {
             console.error(error);
@@ -294,7 +275,7 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
             .from(bucketName)
             .remove([fileName]);
         if (error) {
-            console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
+            console.error(error);
         }
     } catch (error) {
         console.error(error);
@@ -303,9 +284,9 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
 
 
 // HANDLER FUNCTIONS
-export const handleDelete = async (table, id, name, setData, initialData, image, bucket) => {
+export const handleDelete = async (table, id, name, setData, initialData, image, bucket, setInformationMessage) => {
     try {
-        deleteRowsByTableAndId(table, id, name, setData, initialData)
+        deleteRowsByTableAndId(table, id, name, setData, initialData, setInformationMessage)
             .then(() => {
                 deleteImageFromBucketSimple(image, bucket)
             });

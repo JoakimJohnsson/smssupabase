@@ -5,6 +5,7 @@ import formatData from "../../../../helpers/valueLists/formats.json";
 import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {getRowsByTable, handleChange, updateTitleData} from "../../../serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
+import {useAppContext} from "../../../../context/AppContext";
 
 
 export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => {
@@ -12,15 +13,15 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
     const navigate = useNavigate();
-    const [formMessage, setFormMessage] = useState({show: false, error: false, message: ""});
     const [publishersData, setPublishersData] = useState(null);
+    const {setInformationMessage} = useAppContext();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then(() => console.info("Fetched publisher data"));
     }, [])
 
     const handleSubmit = () => {
-        updateTitleData(title.id, newTitle, setFormMessage).then(() => setSearchParams({edit: false}));
+        updateTitleData(title.id, newTitle, setInformationMessage).then(() => setSearchParams({edit: false}));
         setTitle({...newTitle});
     }
 
@@ -128,12 +129,6 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                             </button>
                             <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.TITLES)} label={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         </>
-                }
-                {
-                    formMessage.show &&
-                    <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                        {formMessage.message}
-                    </p>
                 }
             </div>
         </div>
