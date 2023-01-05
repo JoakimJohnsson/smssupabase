@@ -4,7 +4,7 @@ import {addPublisherData, handleInput} from "../../../serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
-import {AdminH1} from "../../../headings";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
@@ -42,7 +42,7 @@ export const AdminPublisherAdd = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
-                    <AdminH1 text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

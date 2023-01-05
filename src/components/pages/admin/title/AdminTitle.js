@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {Spinner} from "../../../minis/Spinner";
 import {getRowByTableAndId} from "../../../serviceFunctions";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {AdminH1} from "../../../headings";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 
@@ -36,7 +36,7 @@ export const AdminTitle = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
-                    <AdminH1 text={title.name + " " + title.start_year + " - " + title.end_year}/>
+                    <HeadingWithBreadCrumbs text={title.name + " " + title.start_year + " - " + title.end_year}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Spinner} from "../../../minis/Spinner";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {AdminH1} from "../../../headings";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
@@ -36,7 +36,7 @@ export const AdminPublisher = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
-                    <AdminH1 text={publisher.name}/>
+                    <HeadingWithBreadCrumbs text={publisher.name}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
