@@ -20,7 +20,7 @@ export const AdminPublisherAdd = () => {
 
     const {setInformationMessage} = useAppContext();
     const navigate = useNavigate();
-    const [countryId, setCountryId] = useState("");
+    const [country_id, setCountry_id] = useState("");
 
     const resetAddPublisherForm = async () => {
         setName("");
@@ -29,14 +29,14 @@ export const AdminPublisherAdd = () => {
     }
 
     useEffect(() => {
-        if (countryId && name !== "" && description !== "") {
+        if (country_id && name !== "" && description !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
-        } else if (countryId || name !== "" || description !== "") {
+        } else if (country_id || name !== "" || description !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
         } else {
             setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         }
-    }, [name, description, countryId, setFormInputClass])
+    }, [name, description, country_id, setFormInputClass])
 
     return (
         <main className={"container-fluid main-container"}>
@@ -70,7 +70,7 @@ export const AdminPublisherAdd = () => {
                             <select
                                 id="country"
                                 className={formInputClass}
-                                onChange={(e) => setCountryId(e.target.value)}>
+                                onChange={(e) => setCountry_id(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(countryData)}
                             </select>
@@ -79,9 +79,9 @@ export const AdminPublisherAdd = () => {
                                 onClick={() => addPublisherData({
                                     name: name,
                                     description: description,
-                                    countryId: countryId
+                                    country_id: country_id
                                 }, setInformationMessage).then(() => resetAddPublisherForm())}
-                                disabled={!countryId || name === "" || description === ""}>
+                                disabled={!country_id || name === "" || description === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-outline-secondary"}

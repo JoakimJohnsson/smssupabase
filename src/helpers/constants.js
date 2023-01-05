@@ -24,7 +24,8 @@ export const MESSAGES = {
     CODES: {
         201: "Lyckades lägga till informationen i databasen.",
         204: "Lyckades uppdatera informationen i databasen.",
-        409: "Kunde inte genomföra processen på grund av en konflikt. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort.",
+        400: "400 \"Bad request\" - Klientfel. Kunde inte genomföra processen på grund av en ofullständig data.",
+        409: "409 \"Conflict\" - Klientfel. Kunde inte genomföra processen. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort.",
     }
 }
 
@@ -167,6 +168,7 @@ export const BUCKETS = {
 }
 
 export const TABLES = {
+    ISSUES: "issues",
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
     TITLES: "titles",
