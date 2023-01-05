@@ -3,7 +3,6 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {ChevronDoubleDownIcon} from "@heroicons/react/solid";
 import {useAppContext} from "../../context/AppContext";
 import {HeroHeader} from "../header/HeroHeader";
-import {Signup} from "../signup/Signup";
 
 export const Home = () => {
 

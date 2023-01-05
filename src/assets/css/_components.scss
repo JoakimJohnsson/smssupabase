@@ -33,6 +33,9 @@
   right: 0;
   width: 90vw;
   margin: 0 auto;
+  -moz-box-shadow: $information-message-box-shadow;
+  -webkit-box-shadow: $information-message-box-shadow;
+  box-shadow: $information-message-box-shadow;
 }
 
 // Content

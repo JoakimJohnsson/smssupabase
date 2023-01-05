@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
 import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
@@ -14,7 +14,7 @@ export function AppContextProvider({children}) {
     const [userUrl, setUserUrl] = useState("");
     const [role, setRole] = useState(0);
     const [loading, setLoading] = useState(true);
-    const [informationMessage, setInformationMessage] = useState(MESSAGES.EMPTY);
+    const [informationMessage, _setInformationMessage] = useState(MESSAGES.EMPTY);
 
     useEffect(() => {
         // Check active session and sets the user
@@ -45,6 +45,17 @@ export function AppContextProvider({children}) {
             }
         )
     }, [])
+
+    // Public wrapper for setting messages:
+    const setInformationMessage = useCallback((msg) => {
+        const oldMsg = informationMessage;
+        _setInformationMessage(MESSAGES.EMPTY);
+        if (msg && oldMsg) {
+            setTimeout(() => {_setInformationMessage(msg)}, 150);
+        } else if (msg) {
+            _setInformationMessage(msg);
+        }
+    }, [informationMessage]);
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
