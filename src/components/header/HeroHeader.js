@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "../Login";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
-import {BadgeCheckIcon, ChevronDoubleDownIcon, ClipboardListIcon, CollectionIcon, UserAddIcon} from "@heroicons/react/solid";
+import {BadgeCheckIcon, ClipboardListIcon, CollectionIcon, UserAddIcon} from "@heroicons/react/solid";
 import shieldWhite from "../../assets/images/shield__white.svg";
 
 export const HeroHeader = () => {
@@ -17,10 +17,6 @@ export const HeroHeader = () => {
                                 <p className={"sms-logo-text"}>
                                     {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                                 </p>
-                            </div>
-                            <div className={"align-self-center mb-4 d-flex align-items-center flex-column"}>
-                                <h2 className={"fs-1 text-primary mb-4"} id={"log-in-section"}>{LABELS_AND_HEADINGS.LOG_IN}</h2>
-                                <ChevronDoubleDownIcon className="sms-icon--large text-info"/>
                             </div>
                             <Login/>
                         </div>
