@@ -29,7 +29,8 @@ export const Home = () => {
                                 <h2 className={"fs-1 text-secondary mb-4"} id={"create-account-section"}>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</h2>
                                 <ChevronDoubleDownIcon className="sms-icon--large text-info"/>
                             </div>
-                            <Signup/>
+                            {/*Disabled signup for now*/}
+                            {/*<Signup/>*/}
                         </div>
                     </div>
                 </main>
