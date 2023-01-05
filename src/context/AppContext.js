@@ -8,7 +8,7 @@ const AppContext = React.createContext();
 export function AppContextProvider({children}) {
 
     // Global states
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const [avatarImageUrl, setAvatarImageUrl] = useState("");
     const [avatarImageFilename, setAvatarImageFilename] = useState("");
     const [userUrl, setUserUrl] = useState("");
@@ -19,7 +19,7 @@ export function AppContextProvider({children}) {
     useEffect(() => {
         // Check active session and sets the user
         supabase.auth.getSession().then(({data: {session}}) => {
-            setUser(session?.user ?? null)
+            setUser(session?.user ?? {})
         })
     }, [])
 
