@@ -21,7 +21,7 @@ export const AuthorizedNavigation = () => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark">
-            <div className="container-fluid px-3">
+            <div className="container-fluid px-3 pt-1">
                 <Link to={ROUTES.DEFAULT} className={"hocus-standard h-100 d-flex align-items-center"}>
                     <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
                     <div className={"sms-logo-text"}>
