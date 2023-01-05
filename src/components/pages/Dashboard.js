@@ -27,7 +27,7 @@ export const Dashboard = () => {
                             aria-label={LABELS_AND_HEADINGS.MENU}
                             aria-controls={"sidebar-menu"}
                         >
-                            <ChevronDoubleRightIcon className={"sms-icon--hamburger me-0"}/>
+                            <ChevronDoubleRightIcon className={"sms-icon--hovering me-0"}/>
                         </button>
                     </div>
                     <div className={"col row-padding--main"}>

@@ -32,7 +32,7 @@ export const AuthorizedNavigation = () => {
                 <button className={isOpen ? "btn sms-icon-btn d-block d-lg-none text-danger" : "btn sms-icon-btn d-block d-lg-none text-primary"}
                         onClick={handleClick}>
                     <span className={"visually-hidden"}>menu</span>
-                    {isOpen ? <XIcon className={"sms-icon--hamburger"}/> : <MenuIcon className={"sms-icon--hamburger"}/>}
+                    {isOpen ? <XIcon className={"sms-icon--hovering"}/> : <MenuIcon className={"sms-icon--hovering"}/>}
                 </button>
                 <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
 

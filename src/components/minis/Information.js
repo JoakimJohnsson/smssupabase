@@ -51,7 +51,7 @@ export const Information = ({message}) => {
             <button type="button" className="position-absolute top-0 end-0 p-2 btn sms-icon-btn text-black-50" data-bs-dismiss="alert"
                     aria-label="Stäng"
                     onClick={() => setInformationMessage(MESSAGES.EMPTY)}>
-                <XIcon className={"sms-icon--hamburger"}/>
+                <XIcon className={"sms-icon--hovering"}/>
             </button>
         </div>
     )
