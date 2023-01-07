@@ -83,7 +83,7 @@ export const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type="submit" className={"btn btn-secondary"} disabled>
+                <button type="submit" className={"btn btn-primary"} disabled>
                     {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}

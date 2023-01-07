@@ -19,7 +19,7 @@ export const HeroHeader = () => {
                             </div>
                             <Login/>
                         </div>
-                        <a href={"#create-account-section"} className={"btn btn-secondary btn-cta mb-5"}>
+                        <a href={"#create-account-section"} className={"btn btn-primary btn-cta mb-5"}>
                             <UserAddIcon className={"sms-icon"}/> {LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
                         </a>
                     </div>
