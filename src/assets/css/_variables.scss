@@ -34,28 +34,15 @@ $info--lighter: #f6f594;
 $warning--lighter: #f9d590;
 $danger--lighter: #f7e7e7;
 
-$color-bg-whale: scale-color($primary--darker, $lightness: -70%);
-$color-bg-whale--lighter: scale-color($color-bg-whale, $lightness: 3%);
-$color-bg-whale--light: scale-color($color-bg-whale, $lightness: 1%);
+$color-bg-whale: scale-color($primary--darker, $lightness: -90%, $saturation: -80%);
+$color-bg-whale--lighter: scale-color($color-bg-whale, $lightness: 7%);
+$color-bg-whale--light: scale-color($color-bg-whale, $lightness: 3%);
 $color-bg-elephant: scale-color($color-bg-whale, $lightness: 3%);
 $color-bg-horse: scale-color($color-bg-whale, $lightness: 5%);
 $color-bg-dog: scale-color($color-bg-whale, $lightness: 10%);
 $color-bg-elephant--trans: rgba(29, 31, 47, .8);
 $color-bg-horse--trans: rgba(35, 37, 54, .8);
 $color-bg-dog--trans: rgba(39, 41, 59, .8);
-
-
-/*
-$color-bg-whale: #0e101a;
-$color-bg-whale--lighter: lighten($color-bg-whale, 3%);
-$color-bg-whale--light: lighten($color-bg-whale, 1%);
-$color-bg-elephant: #1d1f2f;
-$color-bg-horse: #232536;
-$color-bg-dog: #27293b;
-$color-bg-elephant--trans: rgba(29, 31, 47, .8);
-$color-bg-horse--trans: rgba(35, 37, 54, .8);
-$color-bg-dog--trans: rgba(39, 41, 59, .8);
-*/
 
 // BOOTSTRAP OVERRIDES
 
