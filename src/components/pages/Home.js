@@ -6,8 +6,8 @@ import {Signup} from "../signup/Signup";
 
 export const Home = () => {
 
-    const {user} = useAppContext();
-    return user ? (
+    const {loggedIn} = useAppContext();
+    return loggedIn ? (
             <main className={"container-fluid main-container dashboard"}>
                 <div className={"row"}>
                     <div className={"col row-padding--main"}>

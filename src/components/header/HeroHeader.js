@@ -7,7 +7,6 @@ import shieldWhite from "../../assets/images/shield__white.svg";
 export const HeroHeader = () => {
     return (
         <div className={"sms-hero-header mb-5"}>
-
             <div className={"container-fluid"}>
                 <div className={"row"}>
                     <div className={"col-12 col-xl-6 p-5 bg-whale d-flex align-items-center flex-column justify-content-center"}>
@@ -20,18 +19,15 @@ export const HeroHeader = () => {
                             </div>
                             <Login/>
                         </div>
-                        <h3 className={"mb-3 text-primary fs-large"}>Är du inte registrerad?</h3>
                         <a href={"#create-account-section"} className={"btn btn-secondary btn-cta mb-5"}>
-                            <UserAddIcon className={"sms-icon"}/> {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
+                            <UserAddIcon className={"sms-icon"}/> {LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
                         </a>
                     </div>
-
                     <div className={"col-12 col-xl-6 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
                         <h1 className={"text-primary"}>
                             {LABELS_AND_HEADINGS.WELCOME}
                         </h1>
                         <p className={"lead mb-5"}>{TEXTS.DO_YOU_COLLECT}</p>
-
                         <div className={"mb-4"}>
                             <BadgeCheckIcon className="sms-icon--large mb-2 text-info"/>
                             <p>{TEXTS.MANAGE_YOUR_COLLECTION}</p>
@@ -45,7 +41,6 @@ export const HeroHeader = () => {
                             <p>{TEXTS.ALWAYS_AVAILABLE}</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
