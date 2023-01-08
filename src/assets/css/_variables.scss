@@ -34,7 +34,7 @@ $info--lighter: #f6f594;
 $warning--lighter: #f9d590;
 $danger--lighter: #f7e7e7;
 
-$color-bg-whale: scale-color($primary--darker, $lightness: -90%, $saturation: -80%);
+$color-bg-whale: scale-color($primary--darker, $lightness: -60%, $saturation: -80%);
 $color-bg-whale--lighter: scale-color($color-bg-whale, $lightness: 7%);
 $color-bg-whale--light: scale-color($color-bg-whale, $lightness: 3%);
 $color-bg-elephant: scale-color($color-bg-whale, $lightness: 3%);
