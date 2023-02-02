@@ -21,7 +21,7 @@ export const AuthorizedNavigation = () => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark">
-            <div className="container-fluid px-3">
+            <div className="container-fluid px-3 pt-1">
                 <Link to={ROUTES.DEFAULT} className={"hocus-standard h-100 d-flex align-items-center"}>
                     <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
                     <div className={"sms-logo-text"}>
@@ -32,7 +32,7 @@ export const AuthorizedNavigation = () => {
                 <button className={isOpen ? "btn sms-icon-btn d-block d-lg-none text-danger" : "btn sms-icon-btn d-block d-lg-none text-primary"}
                         onClick={handleClick}>
                     <span className={"visually-hidden"}>menu</span>
-                    {isOpen ? <XIcon className={"sms-icon--hamburger"}/> : <MenuIcon className={"sms-icon--hamburger"}/>}
+                    {isOpen ? <XIcon className={"sms-icon--hovering"}/> : <MenuIcon className={"sms-icon--hovering"}/>}
                 </button>
                 <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
 
@@ -52,7 +52,8 @@ export const AuthorizedNavigation = () => {
                     </ul>
                     {/* mobile ul */}
                     <ul className="d-lg-none navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<DashboardIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<StartIcon/>} text={LABELS_AND_HEADINGS.HOME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<DashboardIcon/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.SETTINGS} onClick={handleClick} icon={<SettingsIcon/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
                         <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIcon/>} text={LABELS_AND_HEADINGS.ADMIN}/>

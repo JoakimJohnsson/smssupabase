@@ -16,11 +16,15 @@
   margin-right: .5rem;
 }
 
-.sms-icon--hamburger {
+.sms-icon--hovering {
   width: 24px;
   &:hover, &:focus {
     opacity: $standard-opacity;
   }
+}
+
+.sms-icon--medium {
+  width: 35px;
 }
 
 .sms-icon--large {

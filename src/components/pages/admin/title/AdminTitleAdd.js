@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
 import {addTitleData, getRowsByTable, handleInput} from "../../../serviceFunctions";
-import {handleBacking, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import {handleBacking, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
-import {AdminH1} from "../../../headings";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {useNavigate} from "react-router-dom";
+import {useAppContext} from "../../../../context/AppContext";
 
 
 export const AdminTitleAdd = () => {
@@ -14,16 +15,16 @@ export const AdminTitleAdd = () => {
     const [
         name, setName,
         description, setDescription,
-        formMessage, setFormMessage,
         formInputClass, setFormInputClass,
     ] = useCommonFormStates();
 
-    const [startYear, setStartYear] = useState(1975);
-    const [endYear, setEndYear] = useState(1975);
-    const [formatId, setFormatId] = useState("");
-    const [totalIssues, setTotalIssues] = useState(12);
+    const {setInformationMessage} = useAppContext();
+    const [start_year, setStart_year] = useState(1975);
+    const [end_year, setEnd_year] = useState(1975);
+    const [format_id, setFormat_id] = useState("");
+    const [total_issues, setTotal_issues] = useState(12);
     const [publishersData, setPublishersData] = useState(null);
-    const [publisherId, setPublisherId] = useState("");
+    const [publisher_id, setPublisher_id] = useState("");
 
     const navigate = useNavigate();
 
@@ -34,29 +35,28 @@ export const AdminTitleAdd = () => {
     const resetAddTitleForm = async () => {
         setName("");
         setDescription("");
-        setStartYear(1975);
-        setEndYear(1975);
-        setTotalIssues(12);
+        setStart_year(1975);
+        setEnd_year(1975);
+        setTotal_issues(12);
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
-        hideAndResetMessage(setFormMessage);
     }
 
     useEffect(() => {
-        if (formatId && publisherId && startYear && endYear && totalIssues && name !== "" && description !== "") {
+        if (format_id && publisher_id && start_year && end_year && total_issues && name !== "" && description !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
-        } else if (formatId || publisherId || startYear || endYear || totalIssues || name !== "" || description !== "") {
+        } else if (format_id || publisher_id || start_year || end_year || total_issues || name !== "" || description !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
         } else {
             setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         }
-    }, [formatId, publisherId, name, description, startYear, endYear, totalIssues, setFormInputClass])
+    }, [format_id, publisher_id, name, description, start_year, end_year, total_issues, setFormInputClass])
 
 
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
-                    <AdminH1 text={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_TITLE}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
@@ -85,16 +85,16 @@ export const AdminTitleAdd = () => {
                             id="startyear"
                             className={formInputClass}
                             type="number"
-                            value={startYear || 1975}
-                            onChange={(e) => setStartYear(e.target.value)}
+                            value={start_year || 1975}
+                            onChange={(e) => setStart_year(e.target.value)}
                         />
                         <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                         <input
                             id="endyear"
                             className={formInputClass}
                             type="number"
-                            value={endYear || 1977}
-                            onChange={(e) => setEndYear(e.target.value)}
+                            value={end_year || 1977}
+                            onChange={(e) => setEnd_year(e.target.value)}
                         />
                         <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
                         {
@@ -102,7 +102,7 @@ export const AdminTitleAdd = () => {
                             <select
                                 id="publisher"
                                 className={formInputClass}
-                                onChange={(e) => setPublisherId(e.target.value)}>
+                                onChange={(e) => setPublisher_id(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(publishersData)}
                             </select>
@@ -113,7 +113,7 @@ export const AdminTitleAdd = () => {
                             <select
                                 id="format"
                                 className={formInputClass}
-                                onChange={(e) => setFormatId(e.target.value)}>
+                                onChange={(e) => setFormat_id(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(formatData)}
                             </select>
@@ -124,20 +124,20 @@ export const AdminTitleAdd = () => {
                             className={formInputClass}
                             type="number"
                             min="1"
-                            value={totalIssues || 12}
-                            onChange={(e) => setTotalIssues(e.target.value)}
+                            value={total_issues || 12}
+                            onChange={(e) => setTotal_issues(e.target.value)}
                         />
                         <button className={"btn btn-primary"}
                                 onClick={() => addTitleData({
                                     name: name,
                                     description: description,
-                                    startYear: startYear,
-                                    endYear: endYear,
-                                    publisherId: publisherId,
-                                    formatId: formatId,
-                                    totalIssues: totalIssues,
-                                }, setFormMessage).then(() => resetAddTitleForm())}
-                                disabled={!startYear || !endYear || !totalIssues || name === "" || description === ""}>
+                                    start_year: start_year,
+                                    end_year: end_year,
+                                    publisher_id: publisher_id,
+                                    format_id: format_id,
+                                    total_issues: total_issues,
+                                }, setInformationMessage).then(() => resetAddTitleForm())}
+                                disabled={!start_year || !end_year || !total_issues || name === "" || description === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-outline-secondary"}
@@ -145,17 +145,9 @@ export const AdminTitleAdd = () => {
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
                         <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
-                        {
-                            formMessage.show &&
-                            <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                                {formMessage.message}
-                            </p>
-                        }
                     </div>
                 </div>
             </div>
-
-
         </main>
     )
 }

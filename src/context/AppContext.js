@@ -1,29 +1,31 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
-import {BUCKETS, TABLES} from "../helpers/constants";
+import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
 
 const AppContext = React.createContext();
 
 export function AppContextProvider({children}) {
 
     // Global states
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
+    const [loggedIn, setLoggedIn] = useState(null);
     const [avatarImageUrl, setAvatarImageUrl] = useState("");
     const [avatarImageFilename, setAvatarImageFilename] = useState("");
     const [userUrl, setUserUrl] = useState("");
     const [role, setRole] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [informationMessage, _setInformationMessage] = useState(MESSAGES.EMPTY);
 
     useEffect(() => {
         // Check active session and sets the user
         supabase.auth.getSession().then(({data: {session}}) => {
-            setUser(session?.user ?? null)
+            setUser(session?.user ?? {})
         })
     }, [])
 
     useEffect(() => {
-        if (user) {
+        if (user && user.id) {
             // Check if user has admin privileges and set role.
             const mySub = supabase
                 .channel('public:profiles')
@@ -31,7 +33,12 @@ export function AppContextProvider({children}) {
                     updateProfile(user).then(() => console.log("Profile updated"))
                 })
                 .subscribe()
-            updateProfile(user).then(() => supabase.removeChannel(mySub));
+            updateProfile(user).then(() => {
+                supabase.removeChannel(mySub);
+                setLoggedIn(true);
+            });
+        } else {
+            setLoggedIn(false);
         }
         setLoading(false)
     }, [user])
@@ -45,18 +52,32 @@ export function AppContextProvider({children}) {
         )
     }, [])
 
+    // Public wrapper for setting messages:
+    const setInformationMessage = useCallback((msg) => {
+        const oldMsg = informationMessage;
+        _setInformationMessage(MESSAGES.EMPTY);
+        if (msg && oldMsg) {
+            setTimeout(() => {_setInformationMessage(msg)}, 150);
+        } else if (msg) {
+            _setInformationMessage(msg);
+        }
+    }, [informationMessage]);
+
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
         signUp: (data) => supabase.auth.signUp(data),
         signIn: (data) => supabase.auth.signInWithPassword(data),
         signOut: () => supabase.auth.signOut(),
         user,
+        loggedIn,
         avatarImageUrl,
         setAvatarImageUrl,
         avatarImageFilename,
         setAvatarImageFilename,
         userUrl,
         setUserUrl,
+        informationMessage: informationMessage,
+        setInformationMessage: setInformationMessage,
         role,
         session: () => supabase.auth.getSession()
     }

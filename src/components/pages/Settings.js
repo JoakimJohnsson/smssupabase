@@ -6,7 +6,7 @@ import {CLASSES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constan
 import {Spinner} from "../minis/Spinner";
 import {prepareUrl} from "../../helpers/functions";
 import {getProfile} from "../serviceFunctions";
-import {SettingsH1} from "../headings";
+import {HeadingWithBreadCrumbs} from "../headings";
 
 const Settings = () => {
 
@@ -69,7 +69,7 @@ const Settings = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12 col-lg-8"}>
-                    <SettingsH1 text={LABELS_AND_HEADINGS.SETTINGS}/>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.SETTINGS}/>
                     <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                     <p>{TEXTS.SETTINGS_INFO} <span><a href={"mailto: admin@svenskamarvelsamlare.se"}>admin@svenskamarvelsamlare.se</a></span>.</p>
                 </div>
@@ -127,7 +127,7 @@ const Settings = () => {
                     <div className={"sms-form"}>
                         <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
                         <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
-                        <button className={"btn btn-secondary btn-cta"}
+                        <button className={"btn btn-primary btn-cta"}
                                 onClick={() => requestPasswordResetForEmail(user.email)}
                                 disabled={loading}>
                             {loading ? <Spinner small={true} color={"text-black"}/> : LABELS_AND_HEADINGS.RESET_PASSWORD}

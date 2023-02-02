@@ -20,14 +20,14 @@ export const Dashboard = () => {
             <main className={"container-fluid main-container dashboard"}>
                 <div className={"row"}>
                     <Sidebar isOpen={isOpen} handleClick={handleClick}/>
-                    <div className={"col-12 d-block d-md-none "}>
+                    <div className={"p-0 d-block d-md-none "}>
                         <button
-                            className={"btn btn-sm btn-primary mb-3 mt-3 text-start"}
+                            className={"btn btn-sm btn-primary rounded-0 rounded-end mb-3 mt-3 text-start"}
                             onClick={handleClick}
                             aria-label={LABELS_AND_HEADINGS.MENU}
                             aria-controls={"sidebar-menu"}
                         >
-                            <ChevronDoubleRightIcon className={"sms-icon--hamburger me-0"}/>
+                            <ChevronDoubleRightIcon className={"sms-icon--hovering me-0"}/>
                         </button>
                     </div>
                     <div className={"col row-padding--main"}>

@@ -3,7 +3,7 @@ import {MESSAGES, TABLES} from "../helpers/constants";
 import {generateUniqueHashedFilename} from "../helpers/functions";
 
 // PROFILES FUNCTIONS
-export async function getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) {
+export const getProfile = async (setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) => {
     try {
         if (id) {
             setLoading(true);
@@ -31,33 +31,28 @@ export async function getProfile(setLoading, setFirstname, setLastname, setWebsi
 
 
 // TITLES FUNCTIONS
-export async function addTitleData(data, setFormMessage) {
+export const addTitleData = async (data, setInformationMessage) => {
     try {
-        let {error} = await supabase
+        let {error, status} = await supabase
             .from(TABLES.TITLES)
             .insert([{
                 name: data.name,
                 description: data.description,
-                start_year: data.startYear,
-                end_year: data.endYear,
-                publisher_id: data.publisherId,
-                format_id: data.formatId,
-                total_issues: data.totalIssues
+                start_year: data.start_year,
+                end_year: data.end_year,
+                publisher_id: data.publisher_id,
+                format_id: data.format_id,
+                total_issues: data.total_issues
             }])
-        if (error) {
-            console.error(error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
-        } else {
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
-        }
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function updateTitleData(id, data, setFormMessage) {
+export const updateTitleData = async (id, data, setInformationMessage) => {
     try {
-        let {error} = await supabase
+        let {error, status} = await supabase
             .from(TABLES.TITLES)
             .update([{
                 name: data.name,
@@ -69,12 +64,7 @@ export async function updateTitleData(id, data, setFormMessage) {
                 total_issues: data.total_issues
             }])
             .eq("id", id)
-        if (error) {
-            console.error(error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
-        } else {
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_UPDATE);
-        }
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
@@ -82,29 +72,24 @@ export async function updateTitleData(id, data, setFormMessage) {
 
 
 // PUBLISHERS FUNCTIONS
-export async function addPublisherData(data, setFormMessage) {
+export const addPublisherData = async (data, setInformationMessage) => {
     try {
-        let {error} = await supabase
+        let {error, status} = await supabase
             .from(TABLES.PUBLISHERS)
             .insert([{
                 name: data.name,
                 description: data.description,
-                country_id: data.countryId
+                country_id: data.country_id
             }])
-        if (error) {
-            console.error(error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_INSERT);
-        } else {
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_INSERT);
-        }
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function updatePublisherData(id, data, setFormMessage) {
+export const updatePublisherData = async (id, data, setInformationMessage) => {
     try {
-        let {error} = await supabase
+        let {error, status} = await supabase
             .from(TABLES.PUBLISHERS)
             .update([{
                 name: data.name,
@@ -112,12 +97,44 @@ export async function updatePublisherData(id, data, setFormMessage) {
                 country_id: data.country_id
             }])
             .eq("id", id)
-        if (error) {
-            console.error(error);
-            setFormMessage(MESSAGES.ERROR.VALIDATION_UPDATE);
-        } else {
-            setFormMessage(MESSAGES.SUCCESS.VALIDATION_UPDATE);
-        }
+        setInformationMessage({show: true, status: status, error: error});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+// ISSUES FUNCTIONS
+export const addIssueData = async (data, setInformationMessage) => {
+    try {
+        let {error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .insert([{
+                title_id: data.title_id,
+                year: data.year,
+                number: data.number,
+                is_marvelklubben: data.is_marvelklubben,
+                marvelklubben_number: data.marvelklubben_number,
+            }])
+        setInformationMessage({show: true, status: status, error: error});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const updateIssueData = async (id, data, setInformationMessage) => {
+    try {
+        let {error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .update([{
+                title_id: data.title_id,
+                year: data.year,
+                number: data.number,
+                is_marvelklubben: data.is_marvelklubben,
+                marvelklubben_number: data.marvelklubben_number,
+            }])
+            .eq("id", id)
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
@@ -125,7 +142,7 @@ export async function updatePublisherData(id, data, setFormMessage) {
 
 
 // GENERIC FUNCTIONS
-export async function getRowsByTable(table, setData) {
+export const getRowsByTable = async (table, setData) => {
     try {
         let {data, error, status} = await supabase
             .from(table)
@@ -141,7 +158,7 @@ export async function getRowsByTable(table, setData) {
     }
 }
 
-export async function getRowByTableAndId(table, setData, id) {
+export const getRowByTableAndId = async (table, setData, id) => {
     try {
         let {data, error, status} = await supabase
             .from(table)
@@ -158,7 +175,7 @@ export async function getRowByTableAndId(table, setData, id) {
     }
 }
 
-export async function getNameByTableAndId(table, id, setData) {
+export const getNameByTableAndId = async (table, id, setData) => {
     try {
         let {data, error, status} = await supabase
             .from(table)
@@ -175,7 +192,7 @@ export async function getNameByTableAndId(table, id, setData) {
     }
 }
 
-export async function deleteRowsByTableAndId(table, id, name, setData, initialData) {
+export const deleteRowsByTableAndId = async (table, id, name, setData, initialData, setInformationMessage) => {
     if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
         return false;
     }
@@ -185,16 +202,17 @@ export async function deleteRowsByTableAndId(table, id, name, setData, initialDa
             .delete()
             .match({id: id})
         if (error && status !== 406) {
-            console.error(error);
+            setInformationMessage({show: true, status: status, error: error});
+        } else {
+            setInformationMessage({show: true, status: status, error: error});
+            setData(initialData.filter((x) => x.id !== id))
         }
-        console.info("Refreshing list data");
-        setData(initialData.filter((x) => x.id !== id))
     } catch (error) {
         console.error(error);
     }
 }
 
-export async function getRowsByTableWithLimitAndOrderByColumn(table, column, setData, limit, ascending) {
+export const getRowsByTableWithLimitAndOrderByColumn = async (table, column, setData, limit, ascending) => {
     try {
         let {data, error, status} = await supabase
             .from(table)
@@ -242,7 +260,7 @@ export const uploadImage = async (e, tableName, id, setUploading, bucketName, fi
             }
 
             if (uploadError) {
-                console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
+                console.error(uploadError);
             }
         } catch (error) {
             console.error(error);
@@ -280,7 +298,7 @@ export const updateImageDataOnTable = async (tableName, id, updatedImageFileName
                 .update({image_filename: updatedImageFileName, image_url: updatedImageUrl})
                 .match({id: id})
             if (error) {
-                console.error(MESSAGES.ERROR.VALIDATION_DELETE_IMAGE_FROM_TABLE);
+                console.error(error);
             }
         } catch (error) {
             console.error(error);
@@ -294,7 +312,7 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
             .from(bucketName)
             .remove([fileName]);
         if (error) {
-            console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
+            console.error(error);
         }
     } catch (error) {
         console.error(error);
@@ -303,9 +321,9 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
 
 
 // HANDLER FUNCTIONS
-export const handleDelete = async (table, id, name, setData, initialData, image, bucket) => {
+export const handleDelete = async (table, id, name, setData, initialData, image, bucket, setInformationMessage) => {
     try {
-        deleteRowsByTableAndId(table, id, name, setData, initialData)
+        deleteRowsByTableAndId(table, id, name, setData, initialData, setInformationMessage)
             .then(() => {
                 deleteImageFromBucketSimple(image, bucket)
             });
