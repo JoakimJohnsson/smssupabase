@@ -58,7 +58,6 @@ export const ROUTES = {
         ROOT: "/admin",
         ISSUES: "/admin/issues/",
         ISSUE_ID: "/admin/issues/:id",
-        ISSUE_ADD: "/admin/issues/add/",
         ISSUE_EDIT_ID: "/admin/issues/:id/edit",
         PUBLISHERS: "/admin/publishers/",
         PUBLISHER_ID: "/admin/publishers/:id",

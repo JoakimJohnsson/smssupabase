@@ -26,7 +26,6 @@ export const AdminIssues = () => {
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                         <Breadcrumbs/>
                         {issuesData ? <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/> : <Spinner/>}
-                        <PlusButton onClick={() => navigate(ROUTES.ADMIN.ISSUE_ADD)} label={LABELS_AND_HEADINGS.ADD_ISSUE}/>
                         <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
