@@ -1,6 +1,5 @@
 import React from "react";
-import {IssuesListAdminToolBox} from "./IssuesListAdminToolBox";
-import {IssuesListUserToolBox} from "./IssuesListUserToolBox";
+import {IssuesListToolBox} from "./IssuesListToolBox";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {TitlesIcon} from "../../icons";
 import {IssueLink} from "./IssueLink";
@@ -38,14 +37,12 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) =>
                                                             </div>
                                                             <div className={"sms-list-col--tools"}>
                                                                 {
-                                                                    showAdminInfo ?
-                                                                        <IssuesListAdminToolBox
-                                                                            issue={issue}
-                                                                            issuesData={issuesData}
-                                                                            setIssuesData={setIssuesData}
-                                                                        />
-                                                                        :
-                                                                        <IssuesListUserToolBox/>
+                                                                    <IssuesListToolBox
+                                                                        issue={issue}
+                                                                        issuesData={issuesData}
+                                                                        setIssuesData={setIssuesData}
+                                                                        showAdminInfo={showAdminInfo}
+                                                                    />
                                                                 }
                                                             </div>
                                                         </div>
