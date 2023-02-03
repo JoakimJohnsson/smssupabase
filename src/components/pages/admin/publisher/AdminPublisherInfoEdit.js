@@ -36,7 +36,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
                     value={newPublisher.name}
-                    onChange={e => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
+                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
@@ -46,7 +46,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
                     value={newPublisher.description || ""}
-                    onChange={e => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
+                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                 />
                 <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                 {
@@ -57,7 +57,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                         className={"form-select mb-3"}
                         value={newPublisher.country_id}
                         disabled={!edit}
-                        onChange={e => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}>
+                        onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(countryData)}
                     </select>

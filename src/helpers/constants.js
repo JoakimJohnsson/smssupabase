@@ -25,6 +25,8 @@ export const MESSAGES = {
         201: "Lyckades lägga till informationen i databasen.",
         204: "Lyckades uppdatera informationen i databasen.",
         400: "400 \"Bad request\" - Klientfel. Kunde inte genomföra processen på grund av en ofullständig data.",
+        403: "403 \"Forbidden\" - Klientfel. Kunde inte genomföra processen på grund av säkerhetsproblem.",
+        404: "404 \"Relation\" - Klientfel. Kunde inte genomföra processen. Hittar inte det du letar efter.",
         409: "409 \"Conflict\" - Klientfel. Kunde inte genomföra processen. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort.",
     }
 }
@@ -54,6 +56,9 @@ export const ROUTES = {
     },
     ADMIN: {
         ROOT: "/admin",
+        ISSUES: "/admin/issues/",
+        ISSUE_ID: "/admin/issues/:id",
+        ISSUE_EDIT_ID: "/admin/issues/:id/edit",
         PUBLISHERS: "/admin/publishers/",
         PUBLISHER_ID: "/admin/publishers/:id",
         PUBLISHER_ADD: "/admin/publishers/add/",
@@ -69,6 +74,8 @@ export const LABELS_AND_HEADINGS = {
     ABORT: "Avbryt",
     ADD: "Lägg till",
     ADD_ISSUES: "Lägg till publikationer",
+    ADD_ISSUES_FOR: "Lägg till publikationer för",
+    ADD_ISSUE: "Lägg till ny publikation",
     ADD_PUBLISHER: "Lägg till nytt förlag",
     ADD_TITLE: "Lägg till ny titel",
     ADDED: "Inlagd",
@@ -101,21 +108,27 @@ export const LABELS_AND_HEADINGS = {
     ID: "Id",
     IMAGE: "Bild",
     INFORMATION: "Information",
+    IS_MARVELKLUBBEN: "Ingår i marvelklubben",
+    IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
     ISSUES: "Publikationer",
     LAST_NAME: "Efternamn",
     LOADING: "Laddar",
     LOG_IN: "Logga in",
+    MARVELKLUBBEN_NUMBER: "Marvelklubben nummer",
+    MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",
     MENU: "Meny",
     MISCELLANEOUS: "Övrigt",
     MY_COLLECTION: "Min samling",
     NAME: "Namn",
     NAME_DB: "Namn (name)",
+    NUMBER: "Nummer",
+    NUMBER_DB: "Nummer (number)",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     OPEN: "Öppna",
     PASSWORD: "Lösenord",
     PROFILE_IMAGE: "Profilbild",
     PUBLISHERS: "Förlag",
-    PUBLISHERS_DB: "Förlag (publisher)",
+    PUBLISHER_DB: "Förlag (publisher)",
     RESET_FORM: "Rensa formulär",
     RESET_PASSWORD: "Ändra lösenord",
     SAVE: "Spara",
@@ -129,13 +142,16 @@ export const LABELS_AND_HEADINGS = {
     SVENSKA_MARVELSAMLARE: "Svenska marvelsamlare",
     SVENSKA_MARVELSAMLARE_SHORT: "SMS",
     TITLES: "Titlar",
+    TITLE_DB: "Titel (title)",
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     TOTAL_ISSUES_DB: "Totalt antal (total_issues)",
     UPDATE: "Uppdatera",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     WEBSITE: "Webbplats",
-    WELCOME: "Välkommen till Svenska Marvelsamlare!"
+    WELCOME: "Välkommen till Svenska Marvelsamlare!",
+    YEAR: "År",
+    YEAR_DB: "År (year)"
 }
 
 export const TEXTS = {
@@ -154,6 +170,7 @@ export const TEXTS = {
 
 export const FILETYPES = {
     AVATAR_IMAGE: "avatar-img-",
+    ISSUE_IMAGE: "issue-img-",
     PUBLISHER_IMAGE: "publisher-img-",
     TITLE_IMAGE: "title-img-",
 }
@@ -164,6 +181,7 @@ export const FILETYPES = {
 // (bucket_id = "avatar-images"::text)
 export const BUCKETS = {
     AVATAR_IMAGES: "avatar-images",
+    ISSUE_IMAGES: "issue-images",
     TITLE_IMAGES: "title-images",
     PUBLISHER_IMAGES: "publisher-images",
 }

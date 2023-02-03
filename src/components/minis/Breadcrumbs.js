@@ -5,7 +5,7 @@ import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {getNameByTableAndId} from "../serviceFunctions";
 
 
-export const Breadcrumbs = () => {
+export const Breadcrumbs = ({doIgnoreName}) => {
 
     const {id} = useParams();
     const [fetchedName, setFetchedName] = useState("");
@@ -32,6 +32,10 @@ export const Breadcrumbs = () => {
                 return LABELS_AND_HEADINGS.ALL_PUBLISHERS;
             case "edit":
                 return LABELS_AND_HEADINGS.EDIT;
+            case "issues":
+                return LABELS_AND_HEADINGS.ISSUES;
+            case "add":
+                return LABELS_AND_HEADINGS.ADD;
             default:
                 return breadcrumbName;
         }
@@ -51,7 +55,7 @@ export const Breadcrumbs = () => {
 
     const printBreadCrumbLinkItems = (index, breadcrumb, match) => {
         let breadcrumbName = breadcrumb.props.children.toString().toLowerCase();
-        let name = getNameFromBreadcrumbName(breadcrumbName, breadcrumb);
+        let name = doIgnoreName && index === size ? breadcrumbName.substring(0,5) + "..." : getNameFromBreadcrumbName(breadcrumbName, breadcrumb);
         if (name) {
             if (index === size) {
                 return (

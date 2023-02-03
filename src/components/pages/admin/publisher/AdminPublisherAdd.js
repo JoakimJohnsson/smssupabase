@@ -54,7 +54,7 @@ export const AdminPublisherAdd = () => {
                             className={formInputClass}
                             type="text"
                             value={name || ""}
-                            onChange={e => handleInput(e, setName)}
+                            onChange={(e) => handleInput(e, setName)}
                         />
                         <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                         <input
@@ -62,7 +62,7 @@ export const AdminPublisherAdd = () => {
                             className={formInputClass}
                             type="text"
                             value={description || ""}
-                            onChange={e => handleInput(e, setDescription)}
+                            onChange={(e) => handleInput(e, setDescription)}
                         />
                         <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                         {

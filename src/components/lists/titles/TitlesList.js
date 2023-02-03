@@ -2,8 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {TextSpacer} from "../../minis/TextSpacer";
 import {FriendlyDate} from "../../minis/FriendlyDate";
-import {TitlesListAdminToolBox} from "./TitlesListAdminToolBox";
-import {TitlesListUserToolBox} from "./TitlesListUserToolBox";
+import {TitlesListToolBox} from "./TitlesListToolBox";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {TitlesIcon} from "../../icons";
 
@@ -11,7 +10,7 @@ import {TitlesIcon} from "../../icons";
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
 
     return titlesData && (
-        <ul className={"sms-list--with-tools"}>
+        <ul className={"sms-list--with-tools mb-4"}>
             {
                 titlesData.length ?
                     (titlesData.map((t, index) =>
@@ -32,14 +31,12 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                     </div>
                                     <div className={"sms-list-col--tools"}>
                                         {
-                                            showAdminInfo ?
-                                                <TitlesListAdminToolBox
-                                                    title={t}
-                                                    titlesData={titlesData}
-                                                    setTitlesData={setTitlesData}
-                                                />
-                                                :
-                                                <TitlesListUserToolBox/>
+                                            <TitlesListToolBox
+                                                title={t}
+                                                titlesData={titlesData}
+                                                setTitlesData={setTitlesData}
+                                                showAdminInfo={showAdminInfo}
+                                            />
                                         }
                                     </div>
                                 </div>

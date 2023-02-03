@@ -158,6 +158,23 @@ export const getRowsByTable = async (table, setData) => {
     }
 }
 
+export const getRowsByTableForeignKeyColumnAndForeignKeyId = async (table, keyCol, keyId, setData) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(table)
+            .select("*")
+            .eq(keyCol, keyId)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const getRowByTableAndId = async (table, setData, id) => {
     try {
         let {data, error, status} = await supabase
@@ -184,7 +201,7 @@ export const getNameByTableAndId = async (table, id, setData) => {
         if (error && status !== 406) {
             console.error(error);
         }
-        if (data) {
+        if (data && data[0].name) {
             setData(data[0].name);
         }
     } catch (error) {

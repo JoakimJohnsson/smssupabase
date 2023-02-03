@@ -2,15 +2,14 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {FriendlyDate} from "../../minis/FriendlyDate";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {PublishersListAdminToolBox} from "./PublishersListAdminToolBox";
-import {PublishersListUserToolBox} from "./PublishersListUserToolBox";
+import {PublishersListToolBox} from "./PublishersListToolBox";
 import {PublishersIcon} from "../../icons";
 
 
 export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {
 
     return publishersData && (
-        <ul className={"sms-list--with-tools"}>
+        <ul className={"sms-list--with-tools mb-4"}>
             {
                 publishersData.length ?
                     (publishersData.map((p, index) =>
@@ -29,14 +28,12 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                                     </div>
                                     <div className={"sms-list-col--tools"}>
                                         {
-                                            showAdminInfo ?
-                                                <PublishersListAdminToolBox
-                                                    publisher={p}
-                                                    publishersData={publishersData}
-                                                    setPublishersData={setPublishersData}
-                                                />
-                                                :
-                                                <PublishersListUserToolBox/>
+                                            <PublishersListToolBox
+                                                publisher={p}
+                                                publishersData={publishersData}
+                                                setPublishersData={setPublishersData}
+                                                showAdminInfo={showAdminInfo}
+                                            />
                                         }
                                     </div>
                                 </div>
