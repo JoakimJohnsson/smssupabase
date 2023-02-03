@@ -20,6 +20,7 @@ import {AdminTitles} from "./pages/admin/title/AdminTitles";
 import {AdminTitleAdd} from "./pages/admin/title/AdminTitleAdd";
 import {AdminIssue} from "./pages/admin/issue/AdminIssue";
 import {AdminIssueAdd} from "./pages/admin/issue/AdminIssueAdd";
+import {AdminIssues} from "./pages/admin/issue/AdminIssues";
 
 
 export const MyRoutes = () => {
@@ -56,6 +57,7 @@ export const MyRoutes = () => {
             <Route path={ROUTES.ADMIN.TITLE_ADD} element={(!loggedIn && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminTitleAdd/>}/>
             {/* Issue */}
             <Route path={ROUTES.ADMIN.ISSUE_ID} element={(!loggedIn && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminIssue/>}/>
+            <Route path={ROUTES.ADMIN.ISSUES} element={(!loggedIn && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminIssues/>}/>
             <Route path={ROUTES.ADMIN.ISSUE_ADD} element={(!loggedIn && role !== 1) ? <Navigate replace to={ROUTES.DEFAULT}/> : <AdminIssueAdd/>}/>
             {/* Catch all */}
             <Route path={"*"} element={<p>No match!</p>}/>

@@ -60,12 +60,11 @@ export const AdminIssueAdd = () => {
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form"}>
                         <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.TITLE_DB}</label>
-                        publishersData &&
                         <select
                             id="title"
                             name="title_id"
                             className={formInputClass}
-                            onChange={e => handleInput(e, setTitle_id)}>
+                            onChange={(e) => handleInput(e, setTitle_id)}>
                             <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                             {printOptions(titlesData)}
                         </select>
@@ -76,7 +75,7 @@ export const AdminIssueAdd = () => {
                             className={formInputClass}
                             type="number"
                             value={year || 1975}
-                            onChange={e => handleInput(e, setYear)}
+                            onChange={(e) => handleInput(e, setYear)}
                         />
                         <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
                         <input
@@ -86,16 +85,19 @@ export const AdminIssueAdd = () => {
                             type="number"
                             min="1"
                             value={number || 1}
-                            onChange={e => handleInput(e, setNumber)}
+                            onChange={(e) => handleInput(e, setNumber)}
                         />
-                        <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
+                        <div>
+
                         <input
                             id="marvelklubben"
-                            className={formInputClass}
+                            className={"form-check-input me-2"}
                             type="checkbox"
                             value={is_marvelklubben || false}
-                            onChange={e => handleInput(e, setIs_marvelklubben)}
+                            onChange={(e) => handleInput(e, setIs_marvelklubben)}
                         />
+                            <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                        </div>
                         <label className={"form-label"} htmlFor="marvelklubbennumber">{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER_DB}</label>
                         <input
                             id="marvelklubbennumber"
@@ -104,7 +106,7 @@ export const AdminIssueAdd = () => {
                             type="number"
                             min="1"
                             value={marvelklubben_number || 1}
-                            onChange={e => handleInput(e, setMarvelklubben_number)}
+                            onChange={(e) => handleInput(e, setMarvelklubben_number)}
                         />
                         <button className={"btn btn-primary"}
                                 onClick={() => addIssueData({
@@ -115,7 +117,7 @@ export const AdminIssueAdd = () => {
                                     marvelklubben_number: marvelklubben_number,
                                 }, setInformationMessage)}
                                 disabled={!title_id || !year || !number || is_marvelklubben || marvelklubben_number}>
-                            {LABELS_AND_HEADINGS.ADD} hej
+                            {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-outline-secondary"}
                                 onClick={resetAddIssueForm}>
