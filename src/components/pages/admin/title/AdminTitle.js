@@ -1,19 +1,27 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Spinner} from "../../../minis/Spinner";
-import {addIssueData, getRowByTableAndId, getRowsByTableForeignKeyColumnAndForeignKeyId, handleInput} from "../../../serviceFunctions";
-import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {
+    addIssueData,
+    generateIssuesForTitle,
+    getRowByTableAndId,
+    getRowsByTableForeignKeyColumnAndForeignKeyId,
+    handleInput
+} from "../../../serviceFunctions";
+import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
+import {getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
 
 
 export const AdminTitle = () => {
 
     const [title, setTitle] = useState({});
+    const [titleData, setTitleData] = useState({});
     const [issuesData, setIssuesData] = useState({});
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
@@ -44,6 +52,15 @@ export const AdminTitle = () => {
     useEffect(() => {
         setNewTitle({...title});
     }, [title])
+
+    useEffect(() => {
+        if (newTitle) {
+            setTitleData({
+                years: getYearsList(newTitle.start_year, newTitle.end_year),
+                issuesPerYear: getIssuesPerYear(newTitle.total_issues, newTitle.start_year, newTitle.end_year)
+            });
+        }
+    }, [newTitle])
 
     const resetAddIssueForm = async () => {
         setNumber(1);
@@ -93,7 +110,8 @@ export const AdminTitle = () => {
                 </div>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form pb-5"}>
-                        <h2>{LABELS_AND_HEADINGS.ADD_ISSUES_FOR} {title.name}</h2>
+                        <div className={"mb-4"}>
+                        <h2>{LABELS_AND_HEADINGS.ADD_ISSUE_FOR} {title.name}</h2>
                         <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
                         <input
                             id="year"
@@ -152,6 +170,14 @@ export const AdminTitle = () => {
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
                     </div>
+                        <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
+                        <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
+                        <button className={"btn btn-primary"}
+                                onClick={() => generateIssuesForTitle(titleData)}>
+                            {LABELS_AND_HEADINGS.GENERATE_ISSUES}
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </main>

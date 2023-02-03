@@ -140,6 +140,18 @@ export const updateIssueData = async (id, data, setInformationMessage) => {
     }
 }
 
+export const generateIssuesForTitle = async (titleData) => {
+    if (!window.confirm(MESSAGES.CONFIRM.GENERATE_ISSUES)) {
+        return false;
+    }
+    try {
+        console.log("Generating issues!");
+        console.log("Title data: ", titleData);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 // GENERIC FUNCTIONS
 export const getRowsByTable = async (table, setData) => {

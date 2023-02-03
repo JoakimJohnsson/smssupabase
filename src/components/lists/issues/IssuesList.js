@@ -23,7 +23,7 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) =>
             {
                 groupedIssuesData.length ?
                     (groupedIssuesData.map((year, index) =>
-                            <AccordionItem eventKey={index.toString()}>
+                            <AccordionItem eventKey={index.toString()} key={index}>
                                 <AccordionHeader as={"h3"} className={"pb-0 mb-0"}>{year[0].year}</AccordionHeader>
                                 <AccordionBody>
                                     <ul className={"sms-list--with-tools mb-0"}>
