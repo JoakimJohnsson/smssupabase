@@ -1,8 +1,6 @@
 import React from "react";
-import {IssuesListToolBox} from "./IssuesListToolBox";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {TitlesIcon} from "../../icons";
-import {IssueLink} from "./IssueLink";
+import {IssueListItem} from "./IssueListItem";
 
 
 export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) => {
@@ -27,27 +25,15 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) =>
                                     {
                                         year.length ?
                                             (year.map((issue, index) =>
-                                                    <li key={index} className={"list-group-item px-0"}>
-                                                        <div className={"row"}>
-                                                            <div className={"sms-list-col--main"}>
-                                                                <div>
-                                                                    <TitlesIcon textVariant={"md"}/>
-                                                                    <IssueLink showAdminInfo={showAdminInfo} issue={issue} title={title}/>
-                                                                </div>
-                                                            </div>
-                                                            <div className={"sms-list-col--tools"}>
-                                                                {
-                                                                    <IssuesListToolBox
-                                                                        issue={issue}
-                                                                        issuesData={issuesData}
-                                                                        setIssuesData={setIssuesData}
-                                                                        showAdminInfo={showAdminInfo}
-                                                                    />
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                    </li>)
-                                            )
+                                                <IssueListItem
+                                                    key={issue.id}
+                                                    index={index}
+                                                    showAdminInfo={showAdminInfo}
+                                                    issue={issue}
+                                                    title={title}
+                                                    setIssuesData={setIssuesData}
+                                                    issuesData={issuesData}
+                                                />))
                                             :
                                             (<NoDataAvailable/>)
                                     }
