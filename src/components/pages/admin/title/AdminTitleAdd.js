@@ -69,7 +69,7 @@ export const AdminTitleAdd = () => {
                             className={formInputClass}
                             type={"text"}
                             value={name || ""}
-                            onChange={e => handleInput(e, setName)}
+                            onChange={(e) => handleInput(e, setName)}
                         />
                         <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                         <input
@@ -78,31 +78,34 @@ export const AdminTitleAdd = () => {
                             className={formInputClass}
                             type={"text"}
                             value={description || ""}
-                            onChange={e => handleInput(e, setDescription)}
+                            onChange={(e) => handleInput(e, setDescription)}
                         />
                         <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                         <input
                             id="startyear"
+                            name={"start_year"}
                             className={formInputClass}
                             type="number"
                             value={start_year || 1975}
-                            onChange={(e) => setStart_year(e.target.value)}
+                            onChange={(e) => handleInput(e, setStart_year)}
                         />
                         <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                         <input
                             id="endyear"
+                            name={"end_year"}
                             className={formInputClass}
                             type="number"
                             value={end_year || 1977}
-                            onChange={(e) => setEnd_year(e.target.value)}
+                            onChange={(e) => handleInput(e, setEnd_year)}
                         />
-                        <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
+                        <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
                         {
                             publishersData &&
                             <select
                                 id="publisher"
+                                name={"publisher_id"}
                                 className={formInputClass}
-                                onChange={(e) => setPublisher_id(e.target.value)}>
+                                onChange={(e) => handleInput(e, setPublisher_id)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(publishersData)}
                             </select>
@@ -112,8 +115,9 @@ export const AdminTitleAdd = () => {
                             formatData &&
                             <select
                                 id="format"
+                                name={"format_id"}
                                 className={formInputClass}
-                                onChange={(e) => setFormat_id(e.target.value)}>
+                                onChange={(e) => handleInput(e, setFormat_id)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(formatData)}
                             </select>
@@ -121,11 +125,12 @@ export const AdminTitleAdd = () => {
                         <label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>
                         <input
                             id="totalissues"
+                            name={"total_issues"}
                             className={formInputClass}
                             type="number"
                             min="1"
                             value={total_issues || 12}
-                            onChange={(e) => setTotal_issues(e.target.value)}
+                            onChange={(e) => handleInput(e, setTotal_issues)}
                         />
                         <button className={"btn btn-primary"}
                                 onClick={() => addTitleData({

@@ -36,6 +36,7 @@
   -moz-box-shadow: $information-message-box-shadow;
   -webkit-box-shadow: $information-message-box-shadow;
   box-shadow: $information-message-box-shadow;
+  z-index: 100;
 }
 
 // Content

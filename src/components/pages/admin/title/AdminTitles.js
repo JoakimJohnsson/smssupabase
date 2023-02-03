@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Spinner} from "../../../minis/Spinner";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
 import {TitlesList} from "../../../lists/titles/TitlesList";
 import {getRowsByTable} from "../../../serviceFunctions";
 import {PlusButton} from "../../../minis/PlusButton";
@@ -15,7 +15,7 @@ export const AdminTitles = () => {
     const [titlesData, setTitlesData] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
-        getRowsByTable("titles", setTitlesData).then();
+        getRowsByTable(TABLES.TITLES, setTitlesData).then();
     }, [])
 
     return (
