@@ -50,6 +50,7 @@ export const TitlesIcon = ({textVariant}) => {
         <DocumentDuplicateIcon className={className}/>
     )
 }
+
 export const IssuesIcon = ({textVariant}) => {
     const className = textVariant ? "sms-icon--text-" + textVariant : "";
     return (
