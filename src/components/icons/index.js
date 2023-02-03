@@ -1,5 +1,13 @@
 import React from "react";
-import {CogIcon, DocumentDuplicateIcon, HomeIcon, LibraryIcon, PresentationChartLineIcon, ShieldExclamationIcon} from "@heroicons/react/solid";
+import {
+    CogIcon,
+    DocumentDuplicateIcon,
+    DocumentIcon,
+    HomeIcon,
+    LibraryIcon,
+    PresentationChartLineIcon,
+    ShieldExclamationIcon
+} from "@heroicons/react/solid";
 
 export const AdminIcon = ({textVariant}) => {
     const className = textVariant ? "sms-icon--text-" + textVariant : "";
@@ -40,5 +48,11 @@ export const TitlesIcon = ({textVariant}) => {
     const className = textVariant ? "sms-icon--text-" + textVariant : "";
     return (
         <DocumentDuplicateIcon className={className}/>
+    )
+}
+export const IssuesIcon = ({textVariant}) => {
+    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+    return (
+        <DocumentIcon className={className}/>
     )
 }

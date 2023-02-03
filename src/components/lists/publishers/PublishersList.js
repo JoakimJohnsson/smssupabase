@@ -9,7 +9,7 @@ import {PublishersIcon} from "../../icons";
 export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {
 
     return publishersData && (
-        <ul className={"sms-list--with-tools"}>
+        <ul className={"sms-list--with-tools mb-4"}>
             {
                 publishersData.length ?
                     (publishersData.map((p, index) =>

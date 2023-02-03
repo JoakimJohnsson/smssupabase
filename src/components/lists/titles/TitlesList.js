@@ -10,7 +10,7 @@ import {TitlesIcon} from "../../icons";
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
 
     return titlesData && (
-        <ul className={"sms-list--with-tools"}>
+        <ul className={"sms-list--with-tools mb-4"}>
             {
                 titlesData.length ?
                     (titlesData.map((t, index) =>

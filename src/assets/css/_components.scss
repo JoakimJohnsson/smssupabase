@@ -132,11 +132,35 @@
 
 // List
 .sms-list--with-tools {
-    @extend .list-group, .list-group-flush, .small, .mb-4, .list-unstyled;
+    @extend .list-group, .list-group-flush, .small, .list-unstyled;
     .sms-list-col--main {
       @extend .col-8, .d-flex, .flex-column, .justify-content-center;
     }
     .sms-list-col--tools {
       @extend .col-4, .text-end;
     }
+}
+
+// Accordion
+.accordion.sms-list--accordion {
+  .accordion-item {
+    background-color: transparent;
+    border: none;
+    &:not(:last-child) {
+      border-bottom: $border--default;
+    }
+    &:first-of-type {
+      .accordion-button {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+  .accordion-body {
+    padding: 1rem 0;
+  }
+  .accordion-button {
+    padding: 1rem 0;
+    background-color: transparent;
+  }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import {TitlesIcon} from "../../icons";
+import {IssuesIcon} from "../../icons";
 import {IssueLink} from "./IssueLink";
 import {IssuesListToolBox} from "./IssuesListToolBox";
 
@@ -10,7 +10,7 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
             <div className={"row"}>
                 <div className={"sms-list-col--main"}>
                     <div>
-                        <TitlesIcon textVariant={"md"}/>
+                        <IssuesIcon textVariant={"md"}/>
                         <IssueLink showAdminInfo={showAdminInfo} issue={issue} title={title}/>
                     </div>
                 </div>
