@@ -201,7 +201,7 @@ export const getNameByTableAndId = async (table, id, setData) => {
         if (error && status !== 406) {
             console.error(error);
         }
-        if (data) {
+        if (data && data[0].name) {
             setData(data[0].name);
         }
     } catch (error) {

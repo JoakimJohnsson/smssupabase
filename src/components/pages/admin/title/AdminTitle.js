@@ -85,7 +85,7 @@ export const AdminTitle = () => {
                         <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                         {
                             issuesData ?
-                                <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/>
+                                <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true} title={title}/>
                                 :
                                 <NoDataAvailable />
                         }
