@@ -83,7 +83,11 @@ export const getYearsList = (startYear, endYear) => {
 }
 
 export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
-    return Math.floor(totalIssues / (endYear - startYear + 1));
+    if (startYear < endYear) {
+        return Math.floor(totalIssues / (endYear - startYear + 1));
+    } else {
+        return 1;
+    }
 }
 
 // Helper function for converting string value "true" to boolean value.

@@ -147,7 +147,7 @@ export const generateIssuesForTitle = async (titleData, setInformationMessage) =
     }
     try {
         titleData.years.map(async (year) => {
-            for (let i = 0; i <= titleData.issuesPerYear; i++) {
+            for (let i = 0; i < titleData.issuesPerYear; i++) {
                 try {
                     await supabase
                         .from(TABLES.ISSUES)
