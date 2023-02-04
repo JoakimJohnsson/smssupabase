@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Spinner} from "../../../minis/Spinner";
 import {
-    addIssueData,
+    addIssueData, deleteAllIssues,
     generateIssuesForTitle,
     getRowByTableAndId,
     getRowsByTableForeignKeyColumnAndForeignKeyId,
@@ -93,11 +93,21 @@ export const AdminTitle = () => {
         }
     }
 
-    const handleDeleteIssues = () => {
+    const handleDeleteIssues = (issuesData) => {
         setLoadingDI(true);
-        setTimeout(() => {
-            setLoadingDI(false);
-        }, 1000);
+        if (issuesData && issuesData.length > 0) {
+            deleteAllIssues(issuesData, setIssuesData, setInformationMessage).then(() => {
+                setTimeout(() => {
+                    setLoadingDI(false);
+                    fetchTitleAndIssuesData();
+                }, 1000);
+            })
+        } else {
+            setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_DELETE});
+            setTimeout(() => {
+                setLoadingDI(false);
+            }, 1000);
+        }
     }
 
     return title && loading ? (<Spinner/>) : (
@@ -218,7 +228,7 @@ export const AdminTitle = () => {
                         </div>
                         <h2>{LABELS_AND_HEADINGS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
                         <p>{TEXTS.DELETE_ALL_ISSUES_INFO}</p>
-                        <button className={"btn btn-danger"} disabled={!(issuesData && issuesData.length > 0)} onClick={() => handleDeleteIssues()}>
+                        <button className={"btn btn-danger"} disabled={!(issuesData && issuesData.length > 0)} onClick={() => handleDeleteIssues(issuesData)}>
                             {
                                 loadingDI ?
                                     <>

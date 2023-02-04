@@ -7,6 +7,7 @@ export const MESSAGES = {
         VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning.",
         VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning.",
         VALIDATION_UPLOAD: "Något gick fel vid uppladdning.",
+        VALIDATION_DELETE: "Något gick fel vid borttagning.",
         VALIDATION_UPLOAD_MISSING_INFO: "Något gick fel vid uppladdning. Information saknades.",
         GENERAL_ERROR: "Ett mindre allvarligt fel har inträffat."
     },
@@ -15,11 +16,13 @@ export const MESSAGES = {
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
-        VALIDATION_PASSWORD: "Det där är ett starkt lösenord!"
+        VALIDATION_PASSWORD: "Det där är ett starkt lösenord!",
+        VALIDATION_DELETE: "Lyckades radera informationen från databasen"
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
         FROM: " från ",
+        DELETE_ISSUES: "Vill du verkligen ta bort alla publikationer för den här titeln?",
         GENERATE_ISSUES: "Vill du verkligen lägga till publikationer för den här titeln?",
         GENERATE: "Du kommer automatiskt lägga till ",
         ISSUES_PER_YEAR: " publikationer per år.",
