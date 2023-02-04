@@ -18,7 +18,7 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) =>
         }, {}));
     }
 
-    return issuesData && groupedIssuesData.length && (
+    return issuesData && issuesData.length && groupedIssuesData.length && (
         <Accordion className={"sms-list--accordion mb-4"}>
             {
                 groupedIssuesData.length ?

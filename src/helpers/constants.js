@@ -10,6 +10,9 @@ export const MESSAGES = {
         VALIDATION_UPLOAD_MISSING_INFO: "Något gick fel vid uppladdning. Information saknades.",
         GENERAL_ERROR: "Ett mindre allvarligt fel har inträffat."
     },
+    INFO: {
+        ABORTED: "Operationen avbröts!"
+    },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
         VALIDATION_PASSWORD: "Det där är ett starkt lösenord!"
@@ -83,6 +86,7 @@ export const LABELS_AND_HEADINGS = {
     ADD_TITLE: "Lägg till ny titel",
     ADDED: "Inlagd",
     ADMIN: "Admin",
+    ALL_ISSUES: "Alla publikationer",
     ALL_PUBLISHERS: "Alla förlag",
     ALL_TITLES: "Alla titlar",
     AUTO_GENERATE_ISSUES_FOR: "Autogenerera publikationer för",

@@ -58,7 +58,8 @@ export const AdminTitle = () => {
         if (newTitle) {
             setTitleData({
                 years: getYearsList(newTitle.start_year, newTitle.end_year),
-                issuesPerYear: getIssuesPerYear(newTitle.total_issues, newTitle.start_year, newTitle.end_year)
+                issuesPerYear: getIssuesPerYear(newTitle.total_issues, newTitle.start_year, newTitle.end_year),
+                titleId: newTitle.id
             });
         }
     }, [newTitle])
@@ -69,15 +70,24 @@ export const AdminTitle = () => {
         setMarvelklubben_number(0);
     }
 
+    const validateTitleData = (titleData) => {
+        return titleData.years.length && titleData.issuesPerYear > 0 && titleData.titleId;
+    }
+
     const handleGenerateIssues = () => {
         setLoadingGI(true);
-        if (!titleData) {
-            generateIssuesForTitle(titleData).then(() => {
-                setLoadingGI(false);
+        if (titleData && validateTitleData(titleData)) {
+            generateIssuesForTitle(titleData, setInformationMessage).then(() => {
+                setTimeout(() => {
+                    setLoadingGI(false);
+                    fetchTitleAndIssuesData();
+                }, 1000)
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_UPLOAD_MISSING_INFO});
-            setLoadingGI(false);
+            setTimeout(() => {
+                setLoadingGI(false);
+            }, 1000)
         }
     }
 
@@ -114,7 +124,7 @@ export const AdminTitle = () => {
                     <div className={"sms-form mb-4"}>
                         <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                         {
-                            issuesData ?
+                            issuesData && issuesData.length ?
                                 <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true} title={title}/>
                                 :
                                 <NoDataAvailable />
@@ -194,7 +204,6 @@ export const AdminTitle = () => {
                             }
                         </button>
                     </div>
-
                 </div>
             </div>
         </main>

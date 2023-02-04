@@ -140,13 +140,30 @@ export const updateIssueData = async (id, data, setInformationMessage) => {
     }
 }
 
-export const generateIssuesForTitle = async (titleData) => {
+export const generateIssuesForTitle = async (titleData, setInformationMessage) => {
     if (!window.confirm(MESSAGES.CONFIRM.GENERATE_ISSUES)) {
+        setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
         return false;
     }
     try {
-        console.log("Generating issues!");
-        console.log("Title data: ", titleData);
+        titleData.years.map(async (year) => {
+            for (let i = 0; i <= titleData.issuesPerYear; i++) {
+                try {
+                    await supabase
+                        .from(TABLES.ISSUES)
+                        .insert([{
+                            title_id: titleData.titleId,
+                            year: year,
+                            number: i + 1,
+                            is_marvelklubben: false,
+                            marvelklubben_number: 0,
+                        }])
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        })
+        setInformationMessage({show: true, status: 201, error: null});
     } catch (error) {
         console.error(error);
     }
@@ -222,9 +239,6 @@ export const getNameByTableAndId = async (table, id, setData) => {
 }
 
 export const deleteRowsByTableAndId = async (table, id, name, setData, initialData, setInformationMessage) => {
-    if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
-        return false;
-    }
     try {
         let {error, status} = await supabase
             .from(table)
