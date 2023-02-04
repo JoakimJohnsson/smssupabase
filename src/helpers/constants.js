@@ -1,20 +1,31 @@
 export const MESSAGES = {
     ERROR: {
-        VALIDATION_EMAIL: "Ange en korrekt e-postadress",
-        VALIDATION_EMAIL_EXISTS: "Försök med en annan e-postadress",
-        VALIDATION_PASSWORD: "Ange ett starkare lösenord - minst 10 tecken",
-        VALIDATION_SIGNUP_FORM: "Något gick fel vid registrering",
-        VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning",
-        VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning",
-        VALIDATION_UPLOAD: "Något gick fel vid uppladdning"
+        VALIDATION_EMAIL: "Ange en korrekt e-postadress.",
+        VALIDATION_EMAIL_EXISTS: "Försök med en annan e-postadress.",
+        VALIDATION_PASSWORD: "Ange ett starkare lösenord - minst 10 tecken.",
+        VALIDATION_SIGNUP_FORM: "Något gick fel vid registrering.",
+        VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning.",
+        VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning.",
+        VALIDATION_UPLOAD: "Något gick fel vid uppladdning.",
+        VALIDATION_DELETE: "Något gick fel vid borttagning.",
+        VALIDATION_UPLOAD_MISSING_INFO: "Något gick fel vid uppladdning. Information saknades.",
+        GENERAL_ERROR: "Ett mindre allvarligt fel har inträffat."
+    },
+    INFO: {
+        ABORTED: "Operationen avbröts!"
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
-        VALIDATION_PASSWORD: "Det där är ett starkt lösenord!"
+        VALIDATION_PASSWORD: "Det där är ett starkt lösenord!",
+        VALIDATION_DELETE: "Lyckades radera informationen från databasen"
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
         FROM: " från ",
+        DELETE_ISSUES: "Vill du verkligen ta bort alla publikationer för den här titeln?",
+        GENERATE_ISSUES: "Vill du verkligen lägga till publikationer för den här titeln?",
+        GENERATE: "Du kommer automatiskt lägga till ",
+        ISSUES_PER_YEAR: " publikationer per år.",
     },
     EMPTY: {
         show: false,
@@ -27,7 +38,7 @@ export const MESSAGES = {
         400: "400 \"Bad request\" - Klientfel. Kunde inte genomföra processen på grund av en ofullständig data.",
         403: "403 \"Forbidden\" - Klientfel. Kunde inte genomföra processen på grund av säkerhetsproblem.",
         404: "404 \"Relation\" - Klientfel. Kunde inte genomföra processen. Hittar inte det du letar efter.",
-        409: "409 \"Conflict\" - Klientfel. Kunde inte genomföra processen. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort.",
+        409: "409 \"Conflict\" - Klientfel. Kunde inte genomföra processen. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort."
     }
 }
 
@@ -74,14 +85,16 @@ export const LABELS_AND_HEADINGS = {
     ABORT: "Avbryt",
     ADD: "Lägg till",
     ADD_ISSUES: "Lägg till publikationer",
-    ADD_ISSUES_FOR: "Lägg till publikationer för",
-    ADD_ISSUE: "Lägg till ny publikation",
+    ADD_ISSUE_FOR: "Lägg till publikation för",
+    ADD_ISSUE: "Lägg till enstaka ny publikation",
     ADD_PUBLISHER: "Lägg till nytt förlag",
     ADD_TITLE: "Lägg till ny titel",
     ADDED: "Inlagd",
     ADMIN: "Admin",
+    ALL_ISSUES: "Alla publikationer",
     ALL_PUBLISHERS: "Alla förlag",
     ALL_TITLES: "Alla titlar",
+    AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     BACK: "Tillbaka",
     BREADCRUMB: "Brödsmula",
     CHOOSE: "--- Välj ---",
@@ -93,6 +106,8 @@ export const LABELS_AND_HEADINGS = {
     CREATE_ACCOUNT_CTA: "Registrera dig nu!",
     DASHBOARD: "Kontrollpanel",
     DELETE: "Ta bort",
+    DELETING: "Tar bort",
+    DELETE_ALL_ISSUES_FOR: "Ta bort alla publikationer för",
     DELETE_IMAGE: "Ta bort bild",
     DESCRIPTION: "Beskrivning",
     DESCRIPTION_DB: "Beskrivning (description)",
@@ -104,6 +119,8 @@ export const LABELS_AND_HEADINGS = {
     FIRST_NAME: "Förnamn",
     FORMAT: "Format",
     FORMAT_DB: "Format (format)",
+    GENERATE_ISSUES: "Lägg till publikationer",
+    GENERATING_ISSUES: "Lägger till publikationer",
     HOME: "Hem",
     ID: "Id",
     IMAGE: "Bild",
@@ -144,7 +161,7 @@ export const LABELS_AND_HEADINGS = {
     TITLES: "Titlar",
     TITLE_DB: "Titel (title)",
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
-    TOTAL_ISSUES_DB: "Totalt antal (total_issues)",
+    TOTAL_ISSUES_DB: "Totalt antal publikationer (total_issues)",
     UPDATE: "Uppdatera",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
@@ -158,6 +175,8 @@ export const TEXTS = {
     ADMIN_LEAD: "Här kan du som är Admin lägga in och redigera data i databasen.",
     ADMIN_INFO: "För frågor och instruktioner - maila Super-admin.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
+    AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på antal år och totala antalet publikationer.",
+    DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet",
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar",

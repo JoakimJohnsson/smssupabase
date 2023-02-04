@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export const Logger = ({log, key, stringify}) => {
+export const Logger = ({log, stringify}) => {
     if (stringify) {
         return (
             <div className={"p-2 bg-light text-black-50 mb-2"}>
@@ -9,6 +9,6 @@ export const Logger = ({log, key, stringify}) => {
             </div>
         )
     } else {
-        console.log("LOG " + key + ": ", log);
+        console.log("LOG ", log);
     }
 }

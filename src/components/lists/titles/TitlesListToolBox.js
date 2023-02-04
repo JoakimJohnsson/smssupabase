@@ -13,19 +13,19 @@ export const TitlesListToolBox = ({title, setTitlesData, titlesData, showAdminIn
     const {setInformationMessage} = useAppContext();
 
     return showAdminInfo ? (
-        <div className={"ms-2 d-inline-block"}>
-            <Link to={ROUTES.ADMIN.TITLES + title.id + "?edit=true"} className={"btn text-primary sms-icon-btn"} title={editText}>
-                <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
-                <span className={"visually-hidden"}>{editText}</span>
-            </Link>
-            <button
-                className={"btn text-danger sms-icon-btn"}
-                aria-label={deleteText}
-                onClick={() => handleDelete(TABLES.TITLES, title.id, title.name, setTitlesData, titlesData, title.image, BUCKETS.TITLE_IMAGES, setInformationMessage)}>
-                <XCircleIcon className={"sms-icon--text-lg m-0"}/>
-            </button>
-        </div>
-    )
+            <div className={"ms-2 d-inline-block"}>
+                <Link to={ROUTES.ADMIN.TITLES + title.id + "?edit=true"} className={"btn text-primary sms-icon-btn"} title={editText}>
+                    <PencilAltIcon className={"sms-icon--text-lg m-0"}/>
+                    <span className={"visually-hidden"}>{editText}</span>
+                </Link>
+                <button
+                    className={"btn text-danger sms-icon-btn"}
+                    aria-label={deleteText}
+                    onClick={() => handleDelete(TABLES.TITLES, title.id, title.name, setTitlesData, titlesData, title.image_filename, BUCKETS.TITLE_IMAGES, setInformationMessage)}>
+                    <XCircleIcon className={"sms-icon--text-lg m-0"}/>
+                </button>
+            </div>
+        )
         :
         (
             <span className={"ms-2 bg-dog p-2 rounded-3 d-inline-block"}>User tools here</span>

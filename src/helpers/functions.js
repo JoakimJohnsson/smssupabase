@@ -74,5 +74,21 @@ export const getObjectNameById = (data, myId) => {
     return obj[0].name;
 }
 
+export const getYearsList = (startYear, endYear) => {
+    let list = [];
+    for (let i = startYear; i <= endYear; i++) {
+        list.push(i);
+    }
+    return list;
+}
+
+export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
+    if (startYear < endYear) {
+        return Math.floor(totalIssues / (endYear - startYear + 1));
+    } else {
+        return 1;
+    }
+}
+
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");

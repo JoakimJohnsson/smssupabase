@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {MESSAGES, TABLES} from "../helpers/constants";
+import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
 import {generateUniqueHashedFilename} from "../helpers/functions";
 
 // PROFILES FUNCTIONS
@@ -140,6 +140,51 @@ export const updateIssueData = async (id, data, setInformationMessage) => {
     }
 }
 
+export const generateIssuesForTitle = async (titleData, setInformationMessage) => {
+    if (!window.confirm(MESSAGES.CONFIRM.GENERATE_ISSUES + " " + MESSAGES.CONFIRM.GENERATE + titleData.issuesPerYear + MESSAGES.CONFIRM.ISSUES_PER_YEAR)) {
+        setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
+        return false;
+    }
+    try {
+        titleData.years.map(async (year) => {
+            for (let i = 0; i < titleData.issuesPerYear; i++) {
+                try {
+                    await supabase
+                        .from(TABLES.ISSUES)
+                        .insert([{
+                            title_id: titleData.titleId,
+                            year: year,
+                            number: i + 1,
+                            is_marvelklubben: false,
+                            marvelklubben_number: 0,
+                        }])
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        })
+        setInformationMessage({show: true, status: 201, error: null});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const deleteAllIssues = async (issuesData, setIssuesData, setInformationMessage) => {
+    if (!window.confirm(MESSAGES.CONFIRM.DELETE_ISSUES)) {
+        setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
+        return false;
+    }
+    try {
+        issuesData.map(async (issue, index) => {
+            await handleMultipleDeleteNoConfirm(TABLES.ISSUES, issue.id, issue.number, setIssuesData, issuesData,
+                issue.image_filename, BUCKETS.ISSUE_IMAGES, setInformationMessage);
+        })
+        setInformationMessage({show: true, status: 2, error: MESSAGES.SUCCESS.VALIDATION_DELETE});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 // GENERIC FUNCTIONS
 export const getRowsByTable = async (table, setData) => {
@@ -209,10 +254,7 @@ export const getNameByTableAndId = async (table, id, setData) => {
     }
 }
 
-export const deleteRowsByTableAndId = async (table, id, name, setData, initialData, setInformationMessage) => {
-    if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
-        return false;
-    }
+export const deleteRowsByTableAndId = async (table, id, setData, initialData, setInformationMessage, doConfirm) => {
     try {
         let {error, status} = await supabase
             .from(table)
@@ -221,7 +263,9 @@ export const deleteRowsByTableAndId = async (table, id, name, setData, initialDa
         if (error && status !== 406) {
             setInformationMessage({show: true, status: status, error: error});
         } else {
-            setInformationMessage({show: true, status: status, error: error});
+            if (doConfirm) {
+                setInformationMessage({show: true, status: status, error: error});
+            }
             setData(initialData.filter((x) => x.id !== id))
         }
     } catch (error) {
@@ -336,18 +380,36 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
     }
 }
 
-
 // HANDLER FUNCTIONS
-export const handleDelete = async (table, id, name, setData, initialData, image, bucket, setInformationMessage) => {
+export const handleDelete = async (table, id, name, setData, initialData, image_filename, bucket, setInformationMessage) => {
+    if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
+        return false;
+    }
     try {
-        deleteRowsByTableAndId(table, id, name, setData, initialData, setInformationMessage)
+        deleteRowsByTableAndId(table, id, setData, initialData, setInformationMessage, true)
             .then(() => {
-                deleteImageFromBucketSimple(image, bucket)
+                if (image_filename && image_filename !== "") {
+                    deleteImageFromBucketSimple(image_filename, bucket)
+                }
             });
     } catch (error) {
         console.error(error);
     }
 }
+
+export const handleMultipleDeleteNoConfirm = async (table, id, name, setData, initialData, image_filename, bucket, setInformationMessage) => {
+    try {
+        deleteRowsByTableAndId(table, id, setData, initialData, setInformationMessage, false)
+            .then(() => {
+                if (image_filename && image_filename !== "") {
+                    deleteImageFromBucketSimple(image_filename, bucket)
+                }
+            });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 export const handleChange = (obj, setObj, name, value) => {
     setObj({...obj, [name]: value});

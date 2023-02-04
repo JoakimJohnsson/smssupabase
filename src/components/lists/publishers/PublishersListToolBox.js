@@ -21,7 +21,7 @@ export const PublishersListToolBox = ({publisher, setPublishersData, publishersD
                 <button
                     className={"btn text-danger sms-icon-btn"}
                     aria-label={deleteText}
-                    onClick={() => handleDelete(TABLES.PUBLISHERS, publisher.id, publisher.name, setPublishersData, publishersData, publisher.image, BUCKETS.PUBLISHER_IMAGES, setInformationMessage)}>
+                    onClick={() => handleDelete(TABLES.PUBLISHERS, publisher.id, publisher.name, setPublishersData, publishersData, publisher.image_filename, BUCKETS.PUBLISHER_IMAGES, setInformationMessage)}>
                     <XCircleIcon className={"sms-icon--text-lg m-0"}/>
                 </button>
             </div>
