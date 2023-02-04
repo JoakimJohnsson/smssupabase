@@ -20,7 +20,9 @@ export const MESSAGES = {
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
         FROM: " från ",
-        GENERATE_ISSUES: "Vill du verkligen automatgenerera publikationer för den här titeln?"
+        GENERATE_ISSUES: "Vill du verkligen lägga till publikationer för den här titeln?",
+        GENERATE: "Du kommer automatiskt lägga till ",
+        ISSUES_PER_YEAR: " publikationer per år.",
     },
     EMPTY: {
         show: false,
@@ -89,7 +91,7 @@ export const LABELS_AND_HEADINGS = {
     ALL_ISSUES: "Alla publikationer",
     ALL_PUBLISHERS: "Alla förlag",
     ALL_TITLES: "Alla titlar",
-    AUTO_GENERATE_ISSUES_FOR: "Autogenerera publikationer för",
+    AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     BACK: "Tillbaka",
     BREADCRUMB: "Brödsmula",
     CHOOSE: "--- Välj ---",
@@ -114,8 +116,8 @@ export const LABELS_AND_HEADINGS = {
     FIRST_NAME: "Förnamn",
     FORMAT: "Format",
     FORMAT_DB: "Format (format)",
-    GENERATE_ISSUES: "Generera publikationer",
-    GENERATING_ISSUES: "Genererar publikationer",
+    GENERATE_ISSUES: "Lägg till publikationer",
+    GENERATING_ISSUES: "Lägger till publikationer",
     HOME: "Hem",
     ID: "Id",
     IMAGE: "Bild",

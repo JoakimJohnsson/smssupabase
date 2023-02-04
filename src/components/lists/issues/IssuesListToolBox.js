@@ -21,7 +21,7 @@ export const IssuesListToolBox = ({issue, setIssuesData, issuesData, showAdminIn
                 <button
                     className={"btn text-danger sms-icon-btn"}
                     aria-label={deleteText}
-                    onClick={() => handleDelete(TABLES.ISSUES, issue.id, issue.number, setIssuesData, issuesData, issue.image, BUCKETS.ISSUE_IMAGES, setInformationMessage)}>
+                    onClick={() => handleDelete(TABLES.ISSUES, issue.id, issue.number, setIssuesData, issuesData, issue.image_filename, BUCKETS.ISSUE_IMAGES, setInformationMessage)}>
                     <XCircleIcon className={"sms-icon--text-lg m-0"}/>
                 </button>
             </div>

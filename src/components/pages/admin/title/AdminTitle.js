@@ -133,7 +133,7 @@ export const AdminTitle = () => {
                     <div className={"sms-form mb-4"}>
                         <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                         {
-                            issuesData && issuesData.length ?
+                            issuesData && issuesData.length > 0 ?
                                 <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true} title={title}/>
                                 :
                                 <NoDataAvailable/>
@@ -218,7 +218,7 @@ export const AdminTitle = () => {
                         </div>
                         <h2>{LABELS_AND_HEADINGS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
                         <p>{TEXTS.DELETE_ALL_ISSUES_INFO}</p>
-                        <button className={"btn btn-danger"} onClick={() => handleDeleteIssues()}>
+                        <button className={"btn btn-danger"} disabled={!(issuesData && issuesData.length > 0)} onClick={() => handleDeleteIssues()}>
                             {
                                 loadingDI ?
                                     <>

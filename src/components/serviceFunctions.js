@@ -141,7 +141,7 @@ export const updateIssueData = async (id, data, setInformationMessage) => {
 }
 
 export const generateIssuesForTitle = async (titleData, setInformationMessage) => {
-    if (!window.confirm(MESSAGES.CONFIRM.GENERATE_ISSUES)) {
+    if (!window.confirm(MESSAGES.CONFIRM.GENERATE_ISSUES + " " + MESSAGES.CONFIRM.GENERATE + titleData.issuesPerYear + MESSAGES.CONFIRM.ISSUES_PER_YEAR)) {
         setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
         return false;
     }
@@ -364,11 +364,16 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
 
 
 // HANDLER FUNCTIONS
-export const handleDelete = async (table, id, name, setData, initialData, image, bucket, setInformationMessage) => {
+export const handleDelete = async (table, id, name, setData, initialData, image_filename, bucket, setInformationMessage) => {
+    if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
+        return false;
+    }
     try {
         deleteRowsByTableAndId(table, id, name, setData, initialData, setInformationMessage)
             .then(() => {
-                deleteImageFromBucketSimple(image, bucket)
+                if (image_filename && image_filename !== "") {
+                    deleteImageFromBucketSimple(image_filename, bucket)
+                }
             });
     } catch (error) {
         console.error(error);
