@@ -16,6 +16,7 @@ import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
+import {TrashIcon} from "@heroicons/react/solid";
 
 
 export const AdminTitle = () => {
@@ -25,6 +26,7 @@ export const AdminTitle = () => {
     const [issuesData, setIssuesData] = useState({});
     const [loading, setLoading] = useState(true);
     const [loadingGI, setLoadingGI] = useState(false);
+    const [loadingDI, setLoadingDI] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -39,7 +41,7 @@ export const AdminTitle = () => {
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.ISSUES, "title_id", id ,setIssuesData).then(() => setLoading(false));
+            getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.ISSUES, "title_id", id, setIssuesData).then(() => setLoading(false));
         });
     }, [id]);
 
@@ -81,14 +83,21 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingGI(false);
                     fetchTitleAndIssuesData();
-                }, 1000)
+                }, 1000);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_UPLOAD_MISSING_INFO});
             setTimeout(() => {
                 setLoadingGI(false);
-            }, 1000)
+            }, 1000);
         }
+    }
+
+    const handleDeleteIssues = () => {
+        setLoadingDI(true);
+        setTimeout(() => {
+            setLoadingDI(false);
+        }, 1000);
     }
 
     return title && loading ? (<Spinner/>) : (
@@ -127,80 +136,98 @@ export const AdminTitle = () => {
                             issuesData && issuesData.length ?
                                 <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true} title={title}/>
                                 :
-                                <NoDataAvailable />
+                                <NoDataAvailable/>
                         }
                     </div>
                 </div>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form pb-5"}>
                         <div className={"mb-4"}>
-                        <h2>{LABELS_AND_HEADINGS.ADD_ISSUE_FOR} {title.name}</h2>
-                        <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
-                        <input
-                            id="year"
-                            name="year"
-                            className={CLASSES.FORM_INPUT_DEFAULT}
-                            type="number"
-                            value={year || 1975}
-                            onChange={(e) => handleInput(e, setYear)}
-                        />
-                        <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
-                        <input
-                            id="number"
-                            name="number"
-                            className={CLASSES.FORM_INPUT_DEFAULT}
-                            type="number"
-                            value={number || 1}
-                            max={999}
-                            min={1}
-                            onChange={(e) => handleInput(e, setNumber)}
-                        />
-                        <div>
+                            <h2>{LABELS_AND_HEADINGS.ADD_ISSUE_FOR} {title.name}</h2>
+                            <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
                             <input
-                                id={"marvelklubben"}
-                                name={"is_marvelklubben"}
-                                className={"form-check-input me-2"}
-                                type="checkbox"
-                                value={is_marvelklubben || false}
-                                onChange={(e) => handleInput(e, setIs_marvelklubben)}
+                                id="year"
+                                name="year"
+                                className={CLASSES.FORM_INPUT_DEFAULT}
+                                type="number"
+                                value={year || 1975}
+                                onChange={(e) => handleInput(e, setYear)}
                             />
-                            <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                            <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
+                            <input
+                                id="number"
+                                name="number"
+                                className={CLASSES.FORM_INPUT_DEFAULT}
+                                type="number"
+                                value={number || 1}
+                                max={999}
+                                min={1}
+                                onChange={(e) => handleInput(e, setNumber)}
+                            />
+                            <div>
+                                <input
+                                    id={"marvelklubben"}
+                                    name={"is_marvelklubben"}
+                                    className={"form-check-input me-2"}
+                                    type="checkbox"
+                                    value={is_marvelklubben || false}
+                                    onChange={(e) => handleInput(e, setIs_marvelklubben)}
+                                />
+                                <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                            </div>
+                            <label className={"form-label"} htmlFor="marvelklubbennumber">{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER_DB}</label>
+                            <input
+                                id={"marvelklubbennumber"}
+                                name={"marvelklubben_number"}
+                                className={CLASSES.FORM_INPUT_DEFAULT}
+                                type="number"
+                                value={marvelklubben_number || 0}
+                                max={999}
+                                min={0}
+                                onChange={(e) => handleInput(e, setMarvelklubben_number)}
+                            />
+                            <button className={"btn btn-primary"}
+                                    onClick={() => addIssueData({
+                                        title_id: title.id,
+                                        year: year,
+                                        number: number,
+                                        is_marvelklubben: is_marvelklubben,
+                                        marvelklubben_number: marvelklubben_number,
+                                    }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
+                                    disabled={!year || !number}>
+                                {LABELS_AND_HEADINGS.ADD}
+                            </button>
+                            <button className={"btn btn-outline-secondary"}
+                                    onClick={resetAddIssueForm}>
+                                {LABELS_AND_HEADINGS.RESET_FORM}
+                            </button>
                         </div>
-                        <label className={"form-label"} htmlFor="marvelklubbennumber">{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER_DB}</label>
-                        <input
-                            id={"marvelklubbennumber"}
-                            name={"marvelklubben_number"}
-                            className={CLASSES.FORM_INPUT_DEFAULT}
-                            type="number"
-                            value={marvelklubben_number || 0}
-                            max={999}
-                            min={0}
-                            onChange={(e) => handleInput(e, setMarvelklubben_number)}
-                        />
-                        <button className={"btn btn-primary"}
-                                onClick={() => addIssueData({
-                                    title_id: title.id,
-                                    year: year,
-                                    number: number,
-                                    is_marvelklubben: is_marvelklubben,
-                                    marvelklubben_number: marvelklubben_number,
-                                }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
-                                disabled={!year || !number}>
-                            {LABELS_AND_HEADINGS.ADD}
-                        </button>
-                        <button className={"btn btn-outline-secondary"}
-                                onClick={resetAddIssueForm}>
-                            {LABELS_AND_HEADINGS.RESET_FORM}
-                        </button>
-                    </div>
-                        <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
-                        <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
-                        <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>
+                        <div className={"mb-4"}>
+                            <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
+                            <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
+                            <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>
+                                {
+                                    loadingGI ?
+                                        <>
+                                            <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}
+                                        </>
+                                        :
+                                        LABELS_AND_HEADINGS.GENERATE_ISSUES
+                                }
+                            </button>
+                        </div>
+                        <h2>{LABELS_AND_HEADINGS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
+                        <p>{TEXTS.DELETE_ALL_ISSUES_INFO}</p>
+                        <button className={"btn btn-danger"} onClick={() => handleDeleteIssues()}>
                             {
-                                loadingGI ?
-                                    (<><Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}</>)
+                                loadingDI ?
+                                    <>
+                                        <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.DELETING}
+                                    </>
                                     :
-                                    (LABELS_AND_HEADINGS.GENERATE_ISSUES)
+                                    <>
+                                        <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE}
+                                    </>
                             }
                         </button>
                     </div>
