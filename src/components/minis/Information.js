@@ -5,7 +5,8 @@ import {XIcon, InformationCircleIcon, HeartIcon, ExclamationCircleIcon, ShieldEx
 
 export const Information = ({message}) => {
     const [timeStamp, setTimeStamp] = useState("");
-    const statusClass = message.status ? message.status.toString().charAt(0) : 1;
+    const [messageText, setMessageText] = useState("");
+    const statusClass = message.status ? message.status.toString().charAt(0) : 4;
     const alertVariants = {
         1: {
             variant: "info",
@@ -35,6 +36,13 @@ export const Information = ({message}) => {
 
     useEffect(() => {
         setTimeStamp(new Date().toLocaleTimeString())
+        if (message.status && !message.error) {
+            setMessageText(MESSAGES.CODES[message.status]);
+        } else if (message.error) {
+            setMessageText(message.error.toString());
+        } else {
+            setMessageText(MESSAGES.ERROR.GENERAL_ERROR);
+        }
     }, [message]);
 
     return message && message.show && (
@@ -45,7 +53,7 @@ export const Information = ({message}) => {
             </div>
             <div>
                 <time className={"small d-block mb-1"}>{timeStamp}</time>
-                <p className={"mb-0"}>{MESSAGES.CODES[message.status]}</p>
+                <p className={"mb-0"}>{messageText}</p>
             </div>
             </div>
             <button type="button" className="position-absolute top-0 end-0 p-2 btn sms-icon-btn text-black-50" data-bs-dismiss="alert"

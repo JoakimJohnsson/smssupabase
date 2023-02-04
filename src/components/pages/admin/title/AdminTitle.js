@@ -8,7 +8,7 @@ import {
     getRowsByTableForeignKeyColumnAndForeignKeyId,
     handleInput
 } from "../../../serviceFunctions";
-import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
+import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
@@ -24,6 +24,7 @@ export const AdminTitle = () => {
     const [titleData, setTitleData] = useState({});
     const [issuesData, setIssuesData] = useState({});
     const [loading, setLoading] = useState(true);
+    const [loadingGI, setLoadingGI] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -66,6 +67,18 @@ export const AdminTitle = () => {
         setNumber(1);
         setIs_marvelklubben(false);
         setMarvelklubben_number(0);
+    }
+
+    const handleGenerateIssues = () => {
+        setLoadingGI(true);
+        if (!titleData) {
+            generateIssuesForTitle(titleData).then(() => {
+                setLoadingGI(false);
+            })
+        } else {
+            setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_UPLOAD_MISSING_INFO});
+            setLoadingGI(false);
+        }
     }
 
     return title && loading ? (<Spinner/>) : (
@@ -172,9 +185,13 @@ export const AdminTitle = () => {
                     </div>
                         <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
                         <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
-                        <button className={"btn btn-primary"}
-                                onClick={() => generateIssuesForTitle(titleData)}>
-                            {LABELS_AND_HEADINGS.GENERATE_ISSUES}
+                        <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>
+                            {
+                                loadingGI ?
+                                    (<><Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}</>)
+                                    :
+                                    (LABELS_AND_HEADINGS.GENERATE_ISSUES)
+                            }
                         </button>
                     </div>
 

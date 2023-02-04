@@ -1,12 +1,14 @@
 export const MESSAGES = {
     ERROR: {
-        VALIDATION_EMAIL: "Ange en korrekt e-postadress",
-        VALIDATION_EMAIL_EXISTS: "Försök med en annan e-postadress",
-        VALIDATION_PASSWORD: "Ange ett starkare lösenord - minst 10 tecken",
-        VALIDATION_SIGNUP_FORM: "Något gick fel vid registrering",
-        VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning",
-        VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning",
-        VALIDATION_UPLOAD: "Något gick fel vid uppladdning"
+        VALIDATION_EMAIL: "Ange en korrekt e-postadress.",
+        VALIDATION_EMAIL_EXISTS: "Försök med en annan e-postadress.",
+        VALIDATION_PASSWORD: "Ange ett starkare lösenord - minst 10 tecken.",
+        VALIDATION_SIGNUP_FORM: "Något gick fel vid registrering.",
+        VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning.",
+        VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning.",
+        VALIDATION_UPLOAD: "Något gick fel vid uppladdning.",
+        VALIDATION_UPLOAD_MISSING_INFO: "Något gick fel vid uppladdning. Information saknades.",
+        GENERAL_ERROR: "Ett mindre allvarligt fel har inträffat."
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
@@ -28,7 +30,7 @@ export const MESSAGES = {
         400: "400 \"Bad request\" - Klientfel. Kunde inte genomföra processen på grund av en ofullständig data.",
         403: "403 \"Forbidden\" - Klientfel. Kunde inte genomföra processen på grund av säkerhetsproblem.",
         404: "404 \"Relation\" - Klientfel. Kunde inte genomföra processen. Hittar inte det du letar efter.",
-        409: "409 \"Conflict\" - Klientfel. Kunde inte genomföra processen. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort.",
+        409: "409 \"Conflict\" - Klientfel. Kunde inte genomföra processen. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort."
     }
 }
 
@@ -107,6 +109,7 @@ export const LABELS_AND_HEADINGS = {
     FORMAT: "Format",
     FORMAT_DB: "Format (format)",
     GENERATE_ISSUES: "Generera publikationer",
+    GENERATING_ISSUES: "Genererar publikationer",
     HOME: "Hem",
     ID: "Id",
     IMAGE: "Bild",
