@@ -36,7 +36,7 @@ export const Information = ({message}) => {
 
     useEffect(() => {
         setTimeStamp(new Date().toLocaleTimeString())
-        if (message.status && !message.error) {
+        if (message.status && typeof message.error !== "string") {
             setMessageText(MESSAGES.CODES[message.status]);
         } else if (message.error) {
             setMessageText(message.error.toString());
