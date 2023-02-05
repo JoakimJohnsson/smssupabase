@@ -9,6 +9,7 @@ import {getProfile} from "../serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {MailIcon} from "@heroicons/react/solid";
 
+
 const Settings = () => {
 
     const [loading, setLoading] = useState(true);
