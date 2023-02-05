@@ -4,7 +4,7 @@ import {
     DocumentDuplicateIcon,
     DocumentIcon,
     HomeIcon,
-    LibraryIcon,
+    LibraryIcon, PhotographIcon,
     PresentationChartLineIcon,
     ShieldExclamationIcon
 } from "@heroicons/react/solid";
@@ -55,5 +55,12 @@ export const IssuesIcon = ({textVariant}) => {
     const className = textVariant ? "sms-icon--text-" + textVariant : "";
     return (
         <DocumentIcon className={className}/>
+    )
+}
+
+export const ImageIcon = ({textVariant}) => {
+    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+    return (
+        <PhotographIcon className={className}/>
     )
 }
