@@ -96,6 +96,7 @@ export const LABELS_AND_HEADINGS = {
     ALL_TITLES: "Alla titlar",
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     BACK: "Tillbaka",
+    BACK_TO: "Tillbaka till",
     BREADCRUMB: "Brödsmula",
     CHOOSE: "--- Välj ---",
     CLOSE: "Stäng",
