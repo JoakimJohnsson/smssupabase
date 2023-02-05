@@ -1,6 +1,7 @@
 import React from "react";
 import {ArrowLeftIcon} from "@heroicons/react/solid";
 
+
 export const ArrowLeftButton = ({customClass, onClick, label}) => {
 
     const className = "btn btn-outline-primary " + customClass;
