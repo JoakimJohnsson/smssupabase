@@ -23,7 +23,8 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
         server: ${{ secrets.FTP_HOST_UNOEURO }}
-        server-dir: svenskamarvelsamlare.se//
+        server-dir: svenskamarvelsamlare.se/
+        local-dir: build/
         username: ${{ secrets.FTP_HOST_UNOEURO_USERNAME }}
         password: ${{ secrets.FTP_HOST_UNOEURO_PASSWORD }}
         port: 21
