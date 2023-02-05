@@ -108,11 +108,9 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                             <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
                                 {LABELS_AND_HEADINGS.EDIT}
                             </button>
+                            <ArrowLeftButton onClick={() => navigate(`/admin/titles/${issue.title_id}`)} label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>
                         </>
                 }
-                <div>
-                    <ArrowLeftButton onClick={() => navigate(`/admin/titles/${issue.title_id}`)} label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>
-                </div>
             </div>
         </div>
     )
