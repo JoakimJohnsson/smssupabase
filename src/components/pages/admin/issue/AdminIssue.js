@@ -45,7 +45,7 @@ export const AdminIssue = () => {
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
-                <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue}/>
+                <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={title}/>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form"}>
                         <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>

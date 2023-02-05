@@ -15,8 +15,12 @@ export const Admin = () => {
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADMIN}/>
                     <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
                     <p>{TEXTS.ADMIN_INFO}</p>
-                    <p><MailIcon className={"sms-icon--text-md"}/> <a href={"mailto: admin@svenskamarvelsamlare.se"}>admin@svenskamarvelsamlare.se</a></p>
-
+                    <p>
+                        <MailIcon className={"sms-icon--text-md me-2"}/>
+                        <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                            admin@svenskamarvelsamlare.se
+                        </a>
+                    </p>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

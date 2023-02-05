@@ -2,16 +2,18 @@ import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import {getRowsByTable, handleChange, updateIssueData} from "../../../serviceFunctions";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
+import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 
 
-export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue}) => {
+export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, title}) => {
 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
     const [titlesData, setTitlesData] = useState(null);
     const {setInformationMessage} = useAppContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => console.info("Fetched titles data"));
@@ -106,6 +108,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue}) => 
                             <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
                                 {LABELS_AND_HEADINGS.EDIT}
                             </button>
+                            <ArrowLeftButton onClick={() => navigate(`/admin/titles/${issue.title_id}`)} label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>
                         </>
                 }
             </div>

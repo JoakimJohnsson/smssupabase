@@ -7,6 +7,7 @@ import {Spinner} from "../minis/Spinner";
 import {prepareUrl} from "../../helpers/functions";
 import {getProfile} from "../serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
+import {MailIcon} from "@heroicons/react/solid";
 
 const Settings = () => {
 
@@ -71,7 +72,13 @@ const Settings = () => {
                 <div className={"col-12 col-lg-8"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.SETTINGS}/>
                     <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
-                    <p>{TEXTS.SETTINGS_INFO} <span><a href={"mailto: admin@svenskamarvelsamlare.se"}>admin@svenskamarvelsamlare.se</a></span>.</p>
+                    <p>{TEXTS.SETTINGS_INFO}</p>
+                    <p>
+                        <MailIcon className={"sms-icon--text-md me-2"}/>
+                        <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                            admin@svenskamarvelsamlare.se
+                        </a>
+                    </p>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

@@ -96,6 +96,7 @@ export const LABELS_AND_HEADINGS = {
     ALL_TITLES: "Alla titlar",
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     BACK: "Tillbaka",
+    BACK_TO: "Tillbaka till",
     BREADCRUMB: "Brödsmula",
     CHOOSE: "--- Välj ---",
     CLOSE: "Stäng",
@@ -173,7 +174,7 @@ export const LABELS_AND_HEADINGS = {
 
 export const TEXTS = {
     ADMIN_LEAD: "Här kan du som är Admin lägga in och redigera data i databasen.",
-    ADMIN_INFO: "För frågor och instruktioner - maila Super-admin.",
+    ADMIN_INFO: "För frågor och instruktioner - maila Super-Admin.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på antal år och totala antalet publikationer.",
     DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
@@ -181,7 +182,7 @@ export const TEXTS = {
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet",
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.",
-    SETTINGS_INFO: "För frågor - kontakta:",
+    SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen."

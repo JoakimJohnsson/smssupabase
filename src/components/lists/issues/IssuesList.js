@@ -29,7 +29,7 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) =>
                                     <ul className={"sms-list--with-tools mb-0"}>
                                         {
                                             year.length ?
-                                                (year.map((issue, index) =>
+                                                (year.sort((a, b) => a.number - b.number).map((issue, index) =>
                                                     <IssueListItem
                                                         key={issue.id}
                                                         index={index}

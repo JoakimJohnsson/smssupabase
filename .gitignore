@@ -26,3 +26,5 @@ yarn-error.log*
 .idea
 .idea/sonarlint/issuestore/index.pb
 .idea/sonarlint
+
+/public/cover-images
