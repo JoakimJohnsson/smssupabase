@@ -11,22 +11,6 @@ jobs:
         - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
         - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
         - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-
-  create-env-file:
-    name: 🐬 Create env files
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🏭 Generate .env file
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          envkey_REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          directory: ${{ github.repository }}
-          file_name: .env
-          fail_on_empty: false
-      - name: 💊 List files after creation
-        run: |
-          ls -a
   deployment:
       name: 🎉 Deploy
       runs-on: ubuntu-latest
@@ -40,6 +24,9 @@ jobs:
           with:
             node-version: '16'
         - name: 🔨 Build Project
+          env:
+            REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+            REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           run: |
             npm install
             npm run build
