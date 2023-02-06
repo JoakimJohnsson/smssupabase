@@ -48,4 +48,5 @@ jobs:
             username: ${{ secrets.FTP_HOST_UNOEURO_USERNAME }}
             password: ${{ secrets.FTP_HOST_UNOEURO_PASSWORD }}
             port: 21
-            dry-run: false
+            dangerous-clean-slate: true
+            dry-run: true
