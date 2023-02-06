@@ -14,6 +14,7 @@ jobs:
 
   create-env-file:
     name: 🐬 Create .env file
+    runs-on: ubuntu-latest
     steps:
       - run: |
           touch .env
