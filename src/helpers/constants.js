@@ -167,7 +167,7 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     WEBSITE: "Webbplats",
-    WELCOME: "Välkommen till Svenska Marvelsamlares coola sida!",
+    WELCOME: "Välkommen till Svenska Marvelsamlare!",
     YEAR: "År",
     YEAR_DB: "År (year)"
 }
