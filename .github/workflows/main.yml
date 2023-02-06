@@ -4,7 +4,7 @@ on:
 name: 🚀 Deploy SMS website on push to main branch
 jobs:
   diagnostics:
-    - name: 🏥 Primary diagnostics
+    - name: 🚀 Primary diagnostics
       runs-on: ubuntu-latest
       steps:
         - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
