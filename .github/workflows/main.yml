@@ -13,10 +13,10 @@ jobs:
         - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
   create-env-file:
-    name: 🐬 Create env file
+    name: 🐬 Create env files
     runs-on: ubuntu-latest
     steps:
-      - name: 🏭 Generate file
+      - name: 🏭 Generate .env file
         uses: SpicyPizza/create-envfile@v1.3
         with:
           envkey_REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
@@ -24,7 +24,18 @@ jobs:
           directory: ./
           file_name: .env
           fail_on_empty: false
-      - name: 💊 List files
+      - name: 💊 List files after creation
+        run: |
+          ls -a
+      - name: 🏭 Generate .env.lccal file
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          envkey_REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          directory: ./
+          file_name: .env.local
+          fail_on_empty: false
+      - name: 💊 List files again
         run: |
           ls -a
   deployment:
@@ -53,4 +64,4 @@ jobs:
             password: ${{ secrets.FTP_HOST_UNOEURO_PASSWORD }}
             port: 21
             dangerous-clean-slate: true
-            dry-run: true
+            dry-run: false
