@@ -23,17 +23,6 @@ jobs:
           envkey_REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           file_name: .env
           fail_on_empty: false
-  create-env-local-file:
-    name: 🐬 Create local env file
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🏭 Generate file
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          envkey_REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          file_name: .env.local
-          fail_on_empty: false
   deployment:
       name: 🎉 Deploy
       runs-on: ubuntu-latest
