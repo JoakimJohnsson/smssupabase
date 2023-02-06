@@ -17,8 +17,8 @@ jobs:
     steps:
       - run: |
           touch .env
-          echo SUPABASE_URL=${{ secrets.SUPABASE_URL }}
-          echo SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+          echo REACT_APP_SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+          echo REACT_APP_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
           cat .env
 
   deployment:
