@@ -1,6 +1,7 @@
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 name: 🚀 Deploy SMS website on push to main branch
 jobs:
   diagnostics:
@@ -10,7 +11,16 @@ jobs:
         - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
         - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
         - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-  web-deploy:
+
+  create-env-file:
+    name: 🐬 Create .env file
+    run: |
+      touch .env
+      echo SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+      echo SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+      cat .env
+
+  deployment:
       name: 🎉 Deploy
       runs-on: ubuntu-latest
       steps:
