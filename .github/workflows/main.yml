@@ -21,7 +21,6 @@ jobs:
         with:
           envkey_REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           envkey_REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          directory: ./
           file_name: .env
           fail_on_empty: false
   deployment:
