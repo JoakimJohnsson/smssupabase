@@ -21,21 +21,10 @@ jobs:
         with:
           envkey_REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           envkey_REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          directory: ./
+          directory: ${{ github.repository }}
           file_name: .env
           fail_on_empty: false
       - name: 💊 List files after creation
-        run: |
-          ls -a
-      - name: 🏭 Generate .env.lccal file
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          envkey_REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          directory: ./
-          file_name: .env.local
-          fail_on_empty: false
-      - name: 💊 List files again
         run: |
           ls -a
   deployment:
