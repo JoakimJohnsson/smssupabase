@@ -14,11 +14,12 @@ jobs:
 
   create-env-file:
     name: 🐬 Create .env file
-    run: |
-      touch .env
-      echo SUPABASE_URL=${{ secrets.SUPABASE_URL }}
-      echo SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
-      cat .env
+    steps:
+      - run: |
+          touch .env
+          echo SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+          echo SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+          cat .env
 
   deployment:
       name: 🎉 Deploy
