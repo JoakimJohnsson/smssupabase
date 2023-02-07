@@ -3,6 +3,10 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {HeroHeader} from "../header/HeroHeader";
 import {Signup} from "../signup/Signup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAxeBattle } from "@fortawesome/pro-duotone-svg-icons";
+import { faGrate } from "@fortawesome/pro-regular-svg-icons";
+import { faBadgePercent } from "@fortawesome/pro-solid-svg-icons";
 
 export const Home = () => {
 
@@ -13,6 +17,9 @@ export const Home = () => {
                     <div className={"col row-padding--main"}>
                         <p>Home</p>
                         <p>Länkar till min dashboard o.s.v.</p>
+                        <FontAwesomeIcon className={"d-block p-3"} icon={faAxeBattle} size={"3x"}/>
+                        <FontAwesomeIcon className={"d-block p-3"} icon={faGrate} size={"3x"}/>
+                        <FontAwesomeIcon className={"d-block p-3"} icon={faBadgePercent} size={"3x"}/>
                     </div>
                 </div>
             </main>
