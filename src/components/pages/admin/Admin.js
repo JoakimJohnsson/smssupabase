@@ -3,7 +3,8 @@ import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants";
 import {TitlesCard} from "../../dashboard/dashboardCards/admin/TitlesCard";
 import {PublishersCard} from "../../dashboard/dashboardCards/admin/PublishersCard";
 import {HeadingWithBreadCrumbs} from "../../headings";
-import {MailIcon} from "@heroicons/react/solid";
+import {Icon} from "../../icons";
+import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 
 
 export const Admin = () => {
@@ -16,7 +17,7 @@ export const Admin = () => {
                     <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
                     <p>{TEXTS.ADMIN_INFO}</p>
                     <p>
-                        <MailIcon className={"sms-icon--text-md me-2"}/>
+                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
                         <a href={"mailto: admin@svenskamarvelsamlare.se"}>
                             admin@svenskamarvelsamlare.se
                         </a>

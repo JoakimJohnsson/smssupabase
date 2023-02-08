@@ -7,7 +7,8 @@ import {Spinner} from "../minis/Spinner";
 import {prepareUrl} from "../../helpers/functions";
 import {getProfile} from "../serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {MailIcon} from "@heroicons/react/solid";
+import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
+import {Icon} from "../icons";
 
 
 const Settings = () => {
@@ -75,7 +76,7 @@ const Settings = () => {
                     <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                     <p>{TEXTS.SETTINGS_INFO}</p>
                     <p>
-                        <MailIcon className={"sms-icon--text-md me-2"}/>
+                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
                         <a href={"mailto: admin@svenskamarvelsamlare.se"}>
                             admin@svenskamarvelsamlare.se
                         </a>
