@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {MESSAGES} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
-import {XIcon, InformationCircleIcon, HeartIcon, ExclamationCircleIcon, ShieldExclamationIcon} from "@heroicons/react/solid";
+import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation, faTimes} from "@fortawesome/pro-regular-svg-icons";
+import {Icon} from "../icons";
 
 export const Information = ({message}) => {
     const [timeStamp, setTimeStamp] = useState("");
@@ -10,23 +11,23 @@ export const Information = ({message}) => {
     const alertVariants = {
         1: {
             variant: "info",
-            icon: <InformationCircleIcon className={"sms-icon--medium me-3"}/>
+            icon: <Icon icon={faCircleInfo} className={"fa-xl me-3"}/>
         },
         2: {
             variant: "success",
-            icon: <HeartIcon className={"sms-icon--medium me-3"}/>
+            icon: <Icon icon={faHeart} className={"fa-xl me-3"}/>
         },
         3: {
             variant: "warning",
-            icon: <ExclamationCircleIcon className={"sms-icon--medium me-3"}/>
+            icon: <Icon icon={faSealExclamation} className={"fa-xl me-3"}/>
         },
         4: {
             variant: "danger",
-            icon: <ShieldExclamationIcon className={"sms-icon--medium me-3"}/>
+            icon: <Icon icon={faShieldExclamation} className={"fa-xl me-3"}/>
         },
         5: {
             variant: "danger",
-            icon: <ShieldExclamationIcon className={"sms-icon--medium me-3"}/>
+            icon: <Icon icon={faShieldExclamation} className={"fa-xl me-3"}/>
         }
     }
     const alertVariant = alertVariants[statusClass].variant;
@@ -59,7 +60,7 @@ export const Information = ({message}) => {
             <button type="button" className="position-absolute top-0 end-0 p-2 btn sms-icon-btn text-black-50" data-bs-dismiss="alert"
                     aria-label="Stäng"
                     onClick={() => setInformationMessage(MESSAGES.EMPTY)}>
-                <XIcon className={"sms-icon--hovering"}/>
+                <Icon icon={faTimes} className={"fa-lg sms-icon--hovering"}/>
             </button>
         </div>
     )
