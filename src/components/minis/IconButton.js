@@ -1,5 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Icon} from "../icons";
 
 export const IconButton = ({customClass, variant, onClick, label, icon}) => {
 
@@ -8,7 +8,7 @@ export const IconButton = ({customClass, variant, onClick, label, icon}) => {
 
     return (
         <button onClick={onClick} className={className} aria-label={label}>
-            <FontAwesomeIcon className={"me-2"} icon={icon}/><span>{label}</span>
+            <Icon icon={icon} className={"me-2"}/><span>{label}</span>
         </button>
     )
 }
