@@ -3,7 +3,7 @@ $standard-opacity: .85;
 $information-message-box-shadow: 0 0 80px 20px #000;
 
 // Colors
-$primary: #2ba5d9;
+$primary: #41bee0;
 $secondary: #c4a82b;
 $success: #7ff268;
 $info: #f3f00f;
@@ -17,22 +17,22 @@ $black--lightest: #999;
 
 // Custom colors
 $primary--darker: scale-color($primary, $lightness: -90%);
-$primary--muted: #2d3749;
-$secondary--darker: #442359;
-$secondary--muted: #363349;
-$success--darker: #1b4214;
-$success--muted: #2c3a3a;
-$info--darker: #4d4c08;
-$info--muted: #383a31;
-$warning--darker: #442f08;
-$danger--darker: #4f1111;
+$primary--dark: scale-color($primary, $lightness: -70%);
+$secondary--darker: scale-color($secondary, $lightness: -90%);
+$secondary--dark: scale-color($secondary, $lightness: -70%);
+$success--darker: scale-color($success, $lightness: -90%);
+$success--dark: scale-color($success, $lightness: -70%);
+$info--darker: scale-color($info, $lightness: -90%);
+$info--dark: scale-color($info, $lightness: -70%);
+$warning--darker: scale-color($warning, $lightness: -90%);
+$danger--darker: scale-color($danger, $lightness: -90%);
 
-$primary--lighter: #beecfa;
-$secondary--lighter: #e9d1f8;
-$success--lighter: #ddf3d8;
-$info--lighter: #f6f594;
-$warning--lighter: #f9d590;
-$danger--lighter: #f7e7e7;
+$primary--lighter: scale-color($primary, $lightness: 50%);
+$secondary--lighter: scale-color($secondary, $lightness: 50%);
+$success--lighter: scale-color($success, $lightness: 50%);
+$info--lighter: scale-color($info, $lightness: 50%);
+$warning--lighter: scale-color($warning, $lightness: 50%);
+$danger--lighter: scale-color($danger, $lightness: 50%);
 
 $color-bg-whale: scale-color($primary--darker, $lightness: -60%, $saturation: -80%);
 $color-bg-whale--lighter: scale-color($color-bg-whale, $lightness: 7%);
@@ -101,6 +101,6 @@ $border-radius--lg: 16px;
 // List group
 $list-group-bg: transparent;
 $list-group-color: $body-color;
-$list-group-border-color: $primary--muted;
+$list-group-border-color: $primary--dark;
 
 
