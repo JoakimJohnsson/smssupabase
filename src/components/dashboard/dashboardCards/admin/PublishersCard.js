@@ -32,7 +32,7 @@ export const PublishersCard = () => {
                         <NoDataAvailable />
                 }
                 <PlusButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)} label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
-                <Link className={"btn btn-outline-secondary"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
+                <Link className={"btn btn-outline-primary"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
             </div>
         </div>
     )
