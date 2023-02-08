@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import {MenuIcon, XIcon} from "@heroicons/react/solid";
 import shieldWhite from "../../assets/images/shield__white.svg";
 import {SignOutButton} from "../minis/SignOutButton";
 import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
 import {LiNavItem} from "../lists/LiNavItem";
 import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
-import {AdminIcon, DashboardIcon, SettingsIcon, StartIcon, TitlesIcon} from "../icons";
+import {AdminIcon, DashboardIcon, Icon, SettingsIcon, StartIcon, TitlesIcon} from "../icons";
+import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 
 export const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,10 +29,10 @@ export const AuthorizedNavigation = () => {
                         <span className={"d-inline d-sm-none"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE_SHORT}</span>
                     </div>
                 </Link>
-                <button className={isOpen ? "btn sms-icon-btn d-block d-lg-none text-danger" : "btn sms-icon-btn d-block d-lg-none text-primary"}
+                <button className={isOpen ? "btn sms-icon-btn d-block d-lg-none text-danger px-2" : "btn sms-icon-btn d-block d-lg-none text-primary px-2"}
                         onClick={handleClick}>
                     <span className={"visually-hidden"}>menu</span>
-                    {isOpen ? <XIcon className={"sms-icon--hovering"}/> : <MenuIcon className={"sms-icon--hovering"}/>}
+                    {isOpen ? <Icon icon={faTimes} className={"fa-2xl sms-icon--hovering"}/> : <Icon icon={faBars} className={"fa-2xl sms-icon--hovering"}/>}
                 </button>
                 <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
 
