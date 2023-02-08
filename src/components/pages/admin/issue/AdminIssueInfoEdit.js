@@ -4,7 +4,8 @@ import {isTrue, printOptions} from "../../../../helpers/functions";
 import {getRowsByTable, handleChange, updateIssueData} from "../../../serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, title}) => {
@@ -108,7 +109,8 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                             <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
                                 {LABELS_AND_HEADINGS.EDIT}
                             </button>
-                            <ArrowLeftButton onClick={() => navigate(`/admin/titles/${issue.title_id}`)} label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>
+                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
+                                        label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>
                         </>
                 }
             </div>

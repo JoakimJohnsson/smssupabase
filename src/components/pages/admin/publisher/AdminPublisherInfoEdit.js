@@ -2,10 +2,11 @@ import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {handleChange, updatePublisherData} from "../../../serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, setNewPublisher}) => {
@@ -77,7 +78,8 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                             <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
                                 {LABELS_AND_HEADINGS.EDIT}
                             </button>
-                            <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)} label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)}
+                                        label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
                         </>
                 }
             </div>
