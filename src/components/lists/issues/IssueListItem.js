@@ -1,7 +1,8 @@
 import React from "react";
 import {ImageIcon, IssuesIcon} from "../../icons";
 import {IssueLink} from "./IssueLink";
-import {IssuesListToolBox} from "./IssuesListToolBox";
+import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
+import {ListToolBox} from "../ListToolBox";
 
 
 export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssuesData}) => {
@@ -20,11 +21,15 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
                 </div>
                 <div className={"sms-list-col--tools"}>
                     {
-                        <IssuesListToolBox
-                            issue={issue}
-                            issuesData={issuesData}
-                            setIssuesData={setIssuesData}
+                        <ListToolBox
+                            item={issue}
+                            name={issue.number}
+                            data={issuesData}
+                            setData={setIssuesData}
                             showAdminInfo={showAdminInfo}
+                            route={ROUTES.ADMIN.ISSUES}
+                            table={TABLES.ISSUES}
+                            imageBucket={BUCKETS.ISSUE_IMAGES}
                         />
                     }
                 </div>

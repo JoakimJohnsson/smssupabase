@@ -138,7 +138,10 @@
       @extend .col-8, .d-flex, .flex-column, .justify-content-center;
     }
     .sms-list-col--tools {
-      @extend .col-4, .text-end;
+      @extend .col-4;
+      display: flex;
+      align-items: center;
+      justify-content: end;
     }
 }
 

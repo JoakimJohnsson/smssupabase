@@ -3,7 +3,7 @@ import {Icon} from "../icons";
 
 export const IconButton = ({customClass, variant, onClick, label, icon}) => {
 
-    const defaultClass = `btn btn-${variant} d-flex align-items-center`;
+    const defaultClass = `btn btn-${variant} d-inline-flex align-items-center`;
     const className = customClass ? defaultClass + " " + customClass : defaultClass;
 
     return (

@@ -2,9 +2,10 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {TextSpacer} from "../../minis/TextSpacer";
 import {FriendlyDate} from "../../minis/FriendlyDate";
-import {TitlesListToolBox} from "./TitlesListToolBox";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {TitlesIcon} from "../../icons";
+import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
+import {ListToolBox} from "../ListToolBox";
 
 
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
@@ -31,11 +32,15 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                     </div>
                                     <div className={"sms-list-col--tools"}>
                                         {
-                                            <TitlesListToolBox
-                                                title={t}
-                                                titlesData={titlesData}
-                                                setTitlesData={setTitlesData}
+                                            <ListToolBox
+                                                item={t}
+                                                name={t.name}
+                                                data={titlesData}
+                                                setData={setTitlesData}
                                                 showAdminInfo={showAdminInfo}
+                                                route={ROUTES.ADMIN.TITLES}
+                                                table={TABLES.TITLES}
+                                                imageBucket={BUCKETS.TITLE_IMAGES}
                                             />
                                         }
                                     </div>
