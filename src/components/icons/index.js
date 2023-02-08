@@ -1,27 +1,26 @@
 import React from "react";
 import {
-    DocumentDuplicateIcon,
     DocumentIcon,
     LibraryIcon, PhotographIcon
 } from "@heroicons/react/solid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faShieldCat, faHouse, faChartLine, faGear} from "@fortawesome/pro-regular-svg-icons";
+import {faShieldCat, faHouse, faChartLine, faGear, faFiles} from "@fortawesome/pro-regular-svg-icons";
 
-export const Icon = ({icon, size}) => {
+export const Icon = ({icon, size, className}) => {
     return (
-        <FontAwesomeIcon icon={icon} size={size}/>
+        <FontAwesomeIcon icon={icon} size={size} className={className}/>
     )
 }
 
-export const AdminIcon = ({size}) => {
+export const AdminIcon = ({size, className}) => {
     return (
-        <Icon icon={faShieldCat} size={size}/>
+        <Icon icon={faShieldCat} size={size} className={className}/>
     )
 }
 
-export const DashboardIcon = ({size}) => {
+export const DashboardIcon = ({size, className}) => {
     return (
-        <Icon icon={faChartLine} size={size}/>
+        <Icon icon={faChartLine} size={size} className={className}/>
     )
 }
 
@@ -32,22 +31,21 @@ export const PublishersIcon = ({textVariant}) => {
     )
 }
 
-export const SettingsIcon = ({size}) => {
+export const SettingsIcon = ({size, className}) => {
     return (
-        <Icon icon={faGear} size={size}/>
+        <Icon icon={faGear} size={size} className={className}/>
     )
 }
 
-export const StartIcon = ({size}) => {
+export const StartIcon = ({size, className}) => {
     return (
-        <Icon icon={faHouse} size={size}/>
+        <Icon icon={faHouse} size={size} className={className}/>
     )
 }
 
-export const TitlesIcon = ({textVariant}) => {
-    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+export const TitlesIcon = ({size, className}) => {
     return (
-        <DocumentDuplicateIcon className={className}/>
+        <Icon icon={faFiles} size={size} className={className}/>
     )
 }
 

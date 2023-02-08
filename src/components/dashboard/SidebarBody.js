@@ -15,7 +15,7 @@ export const SidebarBody = ({handleClick}) => {
                     <SidebarNavLink route={ROUTES.DASHBOARD.OVERVIEW} handleClick={handleClick} text={PANES.OVERVIEW.NAME} variant={"primary"}
                                     icon={<PresentationChartBarIcon className={"sms-icon--text-md"}/>}/>
                     <SidebarNavLink route={ROUTES.DASHBOARD.TITLES} handleClick={handleClick} text={PANES.TITLES.NAME} variant={"primary"}
-                                    icon={<TitlesIcon textVariant={"md"}/>}/>
+                                    icon={<TitlesIcon size={"2x"}/>}/>
                 </div>
                 <div>
                     <p className={"sidebar-label"}>{LABELS_AND_HEADINGS.COMMUNITY}</p>

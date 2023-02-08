@@ -40,7 +40,7 @@ export const AuthorizedNavigation = () => {
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
                         <LiNavItem route={ROUTES.DEFAULT} icon={<StartIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<DashboardIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
-                        <LiNavItem route={ROUTES.TITLES} icon={<TitlesIcon/>} text={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                        <LiNavItem route={ROUTES.TITLES} icon={<TitlesIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.SETTINGS} icon={<SettingsIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
                             <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}/>
@@ -55,6 +55,8 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<StartIcon size={"1x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<DashboardIcon size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<SettingsIcon size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.SETTINGS} onClick={handleClick} icon={<SettingsIcon size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&

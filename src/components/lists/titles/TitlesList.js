@@ -18,7 +18,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
                                         <div>
-                                            <TitlesIcon textVariant={"md"}/>
+                                            <TitlesIcon size={"x1"} className={"me-2"}/>
                                             <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={"me-3"}>
                                                 {t.name}
                                             </Link>
