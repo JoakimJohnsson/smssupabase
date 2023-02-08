@@ -212,23 +212,11 @@ export const AdminTitle = () => {
                                 {LABELS_AND_HEADINGS.RESET_FORM}
                             </button>
                         </div>
-                        <div className={"mb-4"}>
-                            <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
-                            <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
-                            <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>
-                                {
-                                    loadingGI ?
-                                        <>
-                                            <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}
-                                        </>
-                                        :
-                                        LABELS_AND_HEADINGS.GENERATE_ISSUES
-                                }
-                            </button>
-                        </div>
+
                         <h2>{LABELS_AND_HEADINGS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
                         <p>{TEXTS.DELETE_ALL_ISSUES_INFO}</p>
-                        <button className={"btn btn-danger"} disabled={!(issuesData && issuesData.length > 0)} onClick={() => handleDeleteIssues(issuesData)}>
+                        <button className={"btn btn-danger"} disabled={!(issuesData && issuesData.length > 0)}
+                                onClick={() => handleDeleteIssues(issuesData)}>
                             {
                                 loadingDI ?
                                     <>
@@ -238,6 +226,22 @@ export const AdminTitle = () => {
                                     <>
                                         <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE}
                                     </>
+                            }
+                        </button>
+                    </div>
+                </div>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-form"}>
+                        <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
+                        <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
+                        <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>
+                            {
+                                loadingGI ?
+                                    <>
+                                        <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}
+                                    </>
+                                    :
+                                    LABELS_AND_HEADINGS.GENERATE_ISSUES
                             }
                         </button>
                     </div>
