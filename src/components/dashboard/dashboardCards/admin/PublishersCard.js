@@ -4,7 +4,8 @@ import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {PublishersList} from "../../../lists/publishers/PublishersList";
-import {PlusButton} from "../../../minis/PlusButton";
+import {IconButton} from "../../../minis/IconButton";
+import {faPlus} from "@fortawesome/pro-regular-svg-icons";
 
 
 export const PublishersCard = () => {
@@ -29,10 +30,11 @@ export const PublishersCard = () => {
                             <PublishersList publishersData={limitedPublishersData} setPublishersData={setLimitedPublishersData} showAdminInfo={true}/>
                         </>
                         :
-                        <NoDataAvailable />
+                        <NoDataAvailable/>
                 }
-                <PlusButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)} label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
-                <Link className={"btn btn-outline-secondary"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
+                <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
+                            label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                <Link className={"btn btn-outline-primary"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
             </div>
         </div>
     )

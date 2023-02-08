@@ -2,6 +2,7 @@
 @import "variables";
 @import "./bootstrap/scss/variables";
 
+// links
 .nav-link {
   cursor: pointer;
   background-color: transparent;
@@ -59,7 +60,7 @@
 
 // Dashboard
 .sms-dashboard-col {
-  @extend .col-12, .col-lg-6;
+  @extend .col-12, .col-xl-6;
   margin-bottom: 3rem;
 }
 
@@ -137,7 +138,10 @@
       @extend .col-8, .d-flex, .flex-column, .justify-content-center;
     }
     .sms-list-col--tools {
-      @extend .col-4, .text-end;
+      @extend .col-4;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     }
 }
 

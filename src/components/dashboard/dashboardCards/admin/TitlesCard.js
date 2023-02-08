@@ -4,7 +4,8 @@ import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
 import {TitlesList} from "../../../lists/titles/TitlesList";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {PlusButton} from "../../../minis/PlusButton";
+import {IconButton} from "../../../minis/IconButton";
+import {faPlus} from "@fortawesome/pro-regular-svg-icons";
 
 
 export const TitlesCard = () => {
@@ -31,8 +32,8 @@ export const TitlesCard = () => {
                         :
                         <NoDataAvailable />
                 }
-                <PlusButton onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
-                <Link className={"btn btn-outline-secondary"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
+                <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                <Link className={"btn btn-outline-primary"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
             </div>
         </div>
     )

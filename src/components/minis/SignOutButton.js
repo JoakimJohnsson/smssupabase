@@ -1,13 +1,15 @@
 import {useNavigate} from "react-router-dom";
 import React from "react";
 import {useAppContext} from "../../context/AppContext";
-import {LogoutIcon} from "@heroicons/react/solid";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {faRightFromBracket} from "@fortawesome/pro-regular-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export const SignOutButton = () => {
+export const SignOutButton = ({mobile}) => {
 
     const {signOut} = useAppContext();
     const navigate = useNavigate();
+    const size = mobile ? "1x" : "2x";
 
     async function handleSignOut() {
         await signOut()
@@ -16,7 +18,7 @@ export const SignOutButton = () => {
 
     return (
         <button onClick={handleSignOut} className="nav-link border-0" aria-label={LABELS_AND_HEADINGS.SIGN_OUT}>
-            <LogoutIcon className="sms-icon--link"/><span className={"sms-nav-link--text d-lg-none d-xl-inline"}>{LABELS_AND_HEADINGS.SIGN_OUT}</span>
+            <FontAwesomeIcon icon={faRightFromBracket} size={size}/><span className={"sms-nav-link--text d-lg-none d-xl-inline"}>{LABELS_AND_HEADINGS.SIGN_OUT}</span>
         </button>
     )
 }

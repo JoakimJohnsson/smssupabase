@@ -16,7 +16,8 @@ import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
-import {TrashIcon} from "@heroicons/react/solid";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleNotch, faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 
 
 export const AdminTitle = () => {
@@ -212,32 +213,36 @@ export const AdminTitle = () => {
                                 {LABELS_AND_HEADINGS.RESET_FORM}
                             </button>
                         </div>
-                        <div className={"mb-4"}>
-                            <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
-                            <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
-                            <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>
-                                {
-                                    loadingGI ?
-                                        <>
-                                            <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}
-                                        </>
-                                        :
-                                        LABELS_AND_HEADINGS.GENERATE_ISSUES
-                                }
-                            </button>
-                        </div>
+
                         <h2>{LABELS_AND_HEADINGS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
                         <p>{TEXTS.DELETE_ALL_ISSUES_INFO}</p>
-                        <button className={"btn btn-danger"} disabled={!(issuesData && issuesData.length > 0)} onClick={() => handleDeleteIssues(issuesData)}>
+                        <button className={"btn btn-danger d-flex align-items-center"} disabled={!(issuesData && issuesData.length > 0)}
+                                onClick={() => handleDeleteIssues(issuesData)}>
                             {
                                 loadingDI ?
                                     <>
-                                        <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.DELETING}
+                                        <FontAwesomeIcon className={"me-2 fa-spin"} icon={faCircleNotch}/>{LABELS_AND_HEADINGS.DELETING}
                                     </>
                                     :
                                     <>
-                                        <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE}
+                                        <FontAwesomeIcon className={"me-2"} icon={faTrashCan}/>{LABELS_AND_HEADINGS.DELETE}
                                     </>
+                            }
+                        </button>
+                    </div>
+                </div>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-form"}>
+                        <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
+                        <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
+                        <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>
+                            {
+                                loadingGI ?
+                                    <>
+                                        <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}
+                                    </>
+                                    :
+                                    LABELS_AND_HEADINGS.GENERATE_ISSUES
                             }
                         </button>
                     </div>

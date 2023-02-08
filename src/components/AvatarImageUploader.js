@@ -2,7 +2,8 @@ import React from "react";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
 import {Spinner} from "./minis/Spinner";
 import {NoDataAvailable} from "./minis/NoDataAvailable";
-import {TrashIcon} from "@heroicons/react/solid";
+import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "./minis/IconButton";
 
 
 export const AvatarImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, deleteImage}) => {
@@ -19,9 +20,7 @@ export const AvatarImageUploader = ({imageUrl, imageFilename, uploading, uploadI
                                 className="w-100 mb-3"
                             />
                             <p>{imageFilename}</p>
-                            <button className={"btn btn-danger"} onClick={deleteImage}>
-                                <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
-                            </button>
+                            <IconButton variant={"danger"} icon={faTrashCan} onClick={deleteImage} label={LABELS_AND_HEADINGS.DELETE_IMAGE}/>
                         </>
                         :
                         <>

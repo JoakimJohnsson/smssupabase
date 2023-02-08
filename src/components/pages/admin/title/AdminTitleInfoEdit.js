@@ -2,10 +2,11 @@ import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {getRowsByTable, handleChange, updateTitleData} from "../../../serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => {
@@ -127,7 +128,8 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                             <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
                                 {LABELS_AND_HEADINGS.EDIT}
                             </button>
-                            <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.TITLES)} label={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.TITLES)}
+                                        label={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         </>
                 }
             </div>

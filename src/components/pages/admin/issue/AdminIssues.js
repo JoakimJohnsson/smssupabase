@@ -4,9 +4,10 @@ import {getRowsByTable} from "../../../serviceFunctions";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminIssues = () => {
@@ -30,8 +31,8 @@ export const AdminIssues = () => {
                                 :
                                 <NoDataAvailable/>
                         }
-
-                        <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                    label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
             </div>

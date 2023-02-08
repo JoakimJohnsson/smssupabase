@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
 import {getRowsByTable} from "../../../serviceFunctions";
 import {PublishersList} from "../../../lists/publishers/PublishersList";
-import {PlusButton} from "../../../minis/PlusButton";
+import {IconButton} from "../../../minis/IconButton";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
+import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 
 
 export const AdminPublishers = () => {
@@ -26,8 +26,10 @@ export const AdminPublishers = () => {
                         <Breadcrumbs/>
                         {publishersData &&
                             <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}/>}
-                        <PlusButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)} label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
-                        <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
+                        <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
+                                    label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                    label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
             </div>

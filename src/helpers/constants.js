@@ -85,7 +85,7 @@ export const LABELS_AND_HEADINGS = {
     ABORT: "Avbryt",
     ADD: "Lägg till",
     ADD_ISSUES: "Lägg till publikationer",
-    ADD_ISSUE_FOR: "Lägg till publikation för",
+    ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADD_ISSUE: "Lägg till enstaka ny publikation",
     ADD_PUBLISHER: "Lägg till nytt förlag",
     ADD_TITLE: "Lägg till ny titel",

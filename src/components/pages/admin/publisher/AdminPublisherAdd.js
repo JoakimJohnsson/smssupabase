@@ -5,9 +5,10 @@ import {handleBacking, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminPublisherAdd = () => {
@@ -88,7 +89,8 @@ export const AdminPublisherAdd = () => {
                                 onClick={resetAddPublisherForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
-                        <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                    label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
             </div>

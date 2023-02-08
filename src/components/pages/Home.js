@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {HeroHeader} from "../header/HeroHeader";
 import {Signup} from "../signup/Signup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAxeBattle } from "@fortawesome/pro-duotone-svg-icons";
 import { faGrate } from "@fortawesome/pro-regular-svg-icons";
 import { faBadgePercent } from "@fortawesome/pro-solid-svg-icons";

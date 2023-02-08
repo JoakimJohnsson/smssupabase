@@ -2,9 +2,11 @@ import React from "react";
 import {useAppContext} from "../context/AppContext";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
 
+
 const Footer = () => {
 
     const {user} = useAppContext();
+    const package_json = require('../../package.json');
 
     return !user &&
         <footer className={"p-5 border-top bg-whale"}>
@@ -19,7 +21,7 @@ const Footer = () => {
                     </div>
                     <div className={"col-12 col-md-6 px-4 py-2 d-flex align-items-end"}>
                         <p className={"fs-smallest text-end m-0 w-100"}>
-                            © 2021-2022 {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
+                            v. {package_json.version} © 2021-2022 | {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                         </p>
                     </div>
                 </div>
