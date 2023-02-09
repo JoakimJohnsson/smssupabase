@@ -6,6 +6,7 @@ import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "./serv
 import {IconButton} from "./minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {useAppContext} from "../context/AppContext";
+import {ImageIcon} from "./icons";
 
 
 export const ImageUploader = ({
@@ -67,11 +68,18 @@ export const ImageUploader = ({
                         :
                         <>
                             <NoDataAvailable/>
-                            <label className="btn btn-primary" htmlFor="single">
+                            <label className="btn btn-primary align-items-center" htmlFor="single">
                                 {uploading ?
-                                    <Spinner small={true} color={"text-black"}/>
+                                    <>
+                                        <Spinner small={true} color={"text-black"}/>
+                                        {LABELS_AND_HEADINGS.UPLOADING_IMAGE}
+                                    </>
                                     :
-                                    LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                    <>
+                                        <ImageIcon size={"1x"} className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                    </>
+                                }
                             </label>
                         </>
                 }

@@ -4,6 +4,7 @@ import {Spinner} from "./minis/Spinner";
 import {NoDataAvailable} from "./minis/NoDataAvailable";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "./minis/IconButton";
+import {ImageIcon} from "./icons";
 
 
 export const AvatarImageUploader = ({imageUrl, imageFilename, uploading, uploadImage, deleteImage}) => {
@@ -26,10 +27,18 @@ export const AvatarImageUploader = ({imageUrl, imageFilename, uploading, uploadI
                         <>
                             <NoDataAvailable/>
                             <label className="btn btn-primary" htmlFor="single">
-                                {uploading ?
-                                    <Spinner small={true} color={"text-black"}/>
-                                    :
-                                    LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                {
+                                    uploading ?
+                                        <>
+                                            <Spinner small={true} color={"text-black"}/>
+                                            {LABELS_AND_HEADINGS.UPLOADING_IMAGE}
+                                        </>
+                                        :
+                                        <>
+                                            <ImageIcon size={"1x"} className={"me-2"}/>
+                                            {LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                        </>
+                                }
                             </label>
                         </>
                 }

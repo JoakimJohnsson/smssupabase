@@ -20,6 +20,24 @@ export const DashboardIcon = ({size, className}) => {
     )
 }
 
+export const ImageIcon = ({size, className}) => {
+    return (
+        <Icon icon={faFileImage} size={size} className={className}/>
+    )
+}
+
+export const IssuesIcon = ({size, className}) => {
+    return (
+        <Icon icon={faFiles} size={size} className={className}/>
+    )
+}
+
+export const IssueIcon = ({size, className}) => {
+    return (
+        <Icon icon={faFile} size={size} className={className}/>
+    )
+}
+
 export const PublishersIcon = ({size, className}) => {
     return (
         <Icon icon={faBuildingColumns} size={size} className={className}/>
@@ -44,14 +62,8 @@ export const TitlesIcon = ({size, className}) => {
     )
 }
 
-export const IssuesIcon = ({size, className}) => {
+export const TitleIcon = ({size, className}) => {
     return (
         <Icon icon={faFile} size={size} className={className}/>
-    )
-}
-
-export const ImageIcon = ({size, className}) => {
-    return (
-        <Icon icon={faFileImage} size={size} className={className}/>
     )
 }

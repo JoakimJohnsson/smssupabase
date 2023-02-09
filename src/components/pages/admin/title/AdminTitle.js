@@ -17,7 +17,8 @@ import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCircleNotch, faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {IssueIcon, IssuesIcon} from "../../../icons";
 
 
 export const AdminTitle = () => {
@@ -207,6 +208,7 @@ export const AdminTitle = () => {
                                         marvelklubben_number: marvelklubben_number,
                                     }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
                                     disabled={!year || !number}>
+                                <IssueIcon className={"me-2"}/>
                                 {LABELS_AND_HEADINGS.ADD}
                             </button>
                             <button className={"btn btn-outline-secondary"}
@@ -225,11 +227,13 @@ export const AdminTitle = () => {
                             {
                                 loadingDI ?
                                     <>
-                                        <FontAwesomeIcon className={"me-2 fa-spin"} icon={faCircleNotch}/>{LABELS_AND_HEADINGS.DELETING}
+                                        <Spinner small={true} className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.DELETING}
                                     </>
                                     :
                                     <>
-                                        <FontAwesomeIcon className={"me-2"} icon={faTrashCan}/>{LABELS_AND_HEADINGS.DELETE}
+                                        <FontAwesomeIcon className={"me-2"} icon={faTrashCan}/>
+                                        {LABELS_AND_HEADINGS.DELETE}
                                     </>
                             }
                         </button>
@@ -243,10 +247,15 @@ export const AdminTitle = () => {
                             {
                                 loadingGI ?
                                     <>
-                                        <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}
+                                        <Spinner small={true} className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.GENERATING_ISSUES}
                                     </>
                                     :
-                                    LABELS_AND_HEADINGS.GENERATE_ISSUES
+                                    <>
+                                        <IssuesIcon className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.GENERATE_ISSUES}
+                                    </>
+
                             }
                         </button>
                     </div>

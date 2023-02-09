@@ -5,6 +5,7 @@
 .btn {
   border-radius: $border-radius--sm;
   display: inline-flex;
+  align-items: center;
   &.btn-cta {
     min-width: 50%;
     padding: .8rem 2rem;

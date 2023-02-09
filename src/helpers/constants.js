@@ -166,6 +166,7 @@ export const LABELS_AND_HEADINGS = {
     UPDATE: "Uppdatera",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
+    UPLOADING_IMAGE: "Laddar upp en bild",
     WEBSITE: "Webbplats",
     WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
     WIKI_URL: "Länk till Seriewikin",
