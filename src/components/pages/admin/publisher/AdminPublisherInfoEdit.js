@@ -29,7 +29,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-form"}>
-                <h2>Redigera information</h2>
+                <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
                 <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                 <input
                     id={"name"}
@@ -47,6 +47,15 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
                     value={newPublisher.description || ""}
+                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
+                />
+                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                <input
+                    id={"wikiurl"}
+                    name={"wiki_url"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
+                    value={newPublisher.wiki_url || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                 />
                 <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>

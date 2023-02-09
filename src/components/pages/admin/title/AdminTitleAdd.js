@@ -16,6 +16,7 @@ export const AdminTitleAdd = () => {
     const [
         name, setName,
         description, setDescription,
+        wiki_url, setWiki_url,
         formInputClass, setFormInputClass,
     ] = useCommonFormStates();
 
@@ -36,6 +37,7 @@ export const AdminTitleAdd = () => {
     const resetAddTitleForm = async () => {
         setName("");
         setDescription("");
+        setWiki_url("");
         setStart_year(1975);
         setEnd_year(1975);
         setTotal_issues(12);
@@ -43,14 +45,14 @@ export const AdminTitleAdd = () => {
     }
 
     useEffect(() => {
-        if (format_id && publisher_id && start_year && end_year && total_issues && name !== "" && description !== "") {
+        if (format_id && publisher_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
-        } else if (format_id || publisher_id || start_year || end_year || total_issues || name !== "" || description !== "") {
+        } else if (format_id || publisher_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
         } else {
             setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         }
-    }, [format_id, publisher_id, name, description, start_year, end_year, total_issues, setFormInputClass])
+    }, [format_id, publisher_id, name, description, wiki_url, start_year, end_year, total_issues, setFormInputClass])
 
 
     return (
@@ -80,6 +82,15 @@ export const AdminTitleAdd = () => {
                             type={"text"}
                             value={description || ""}
                             onChange={(e) => handleInput(e, setDescription)}
+                        />
+                        <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                        <input
+                            id="wikiurl"
+                            name="wiki_url"
+                            className={formInputClass}
+                            type="text"
+                            value={wiki_url || ""}
+                            onChange={(e) => handleInput(e, setWiki_url)}
                         />
                         <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                         <input
@@ -137,13 +148,14 @@ export const AdminTitleAdd = () => {
                                 onClick={() => addTitleData({
                                     name: name,
                                     description: description,
+                                    wiki_url: wiki_url,
                                     start_year: start_year,
                                     end_year: end_year,
                                     publisher_id: publisher_id,
                                     format_id: format_id,
                                     total_issues: total_issues,
                                 }, setInformationMessage).then(() => resetAddTitleForm())}
-                                disabled={!start_year || !end_year || !total_issues || name === "" || description === ""}>
+                                disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-outline-secondary"}

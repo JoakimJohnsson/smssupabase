@@ -113,7 +113,7 @@ export const LABELS_AND_HEADINGS = {
     DESCRIPTION: "Beskrivning",
     DESCRIPTION_DB: "Beskrivning (description)",
     EDIT: "Redigera",
-    EDIT_PUBLISHER: "Redigera förlag",
+    EDIT_INFORMATION: "Redigera information",
     EMAIL: "E-postadress",
     END_YEAR: "Slutår",
     END_YEAR_DB: "Slutår (end_year)",
@@ -168,6 +168,8 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_IMAGE: "Ladda upp en bild",
     WEBSITE: "Webbplats",
     WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
+    WIKI_URL: "Länk till Seriewikin",
+    WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
     YEAR: "År",
     YEAR_DB: "År (year)"
 }
