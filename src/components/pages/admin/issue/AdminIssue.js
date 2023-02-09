@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Spinner} from "../../../minis/Spinner";
 import {getRowByTableAndId} from "../../../serviceFunctions";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
@@ -40,8 +40,10 @@ export const AdminIssue = () => {
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
+                <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={title.name + " #" + issue.number + " / " + issue.year} doIgnoreName={true}/>
+                    <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
+                    <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

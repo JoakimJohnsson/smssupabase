@@ -177,8 +177,12 @@ export const LABELS_AND_HEADINGS = {
 export const TEXTS = {
     ADMIN_LEAD: "Här kan du som är Admin lägga in och redigera data i databasen.",
     ADMIN_INFO: "För frågor och instruktioner - maila Super-Admin.",
+    ADMIN_ISSUE_LEAD: "Här kan du redigera information om publikationen och lägga till en bild (framsida).",
+    ADMIN_ISSUE_TEXT: "Hämta ner bild från titelns cover gallery på Grand Comics Database (large). Ladda sedan upp den. Här kan du även ange om publikationen ingår i Marvelklubben eller inte, samt ange numrering.",
+    ADMIN_PUBLISHER_LEAD: "Här kan du redigera information om förlaget och lägga till en bild (logotyp).",
+    ADMIN_TITLE_LEAD: "Här kan du redigera information om titeln. Du kan lägga till en bild (logotyp), samt även publikationer. Publikationer kan läggas till en och en, eller i bulk.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
-    AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på antal år och totala antalet publikationer.",
+    AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer.",
     DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet",

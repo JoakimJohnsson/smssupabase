@@ -8,28 +8,31 @@ export const Information = ({message}) => {
     const [timeStamp, setTimeStamp] = useState("");
     const [messageText, setMessageText] = useState("");
     const statusClass = message.status ? message.status.toString().charAt(0) : 4;
+    const className = "fa-2xl me-3";
+
     const alertVariants = {
         1: {
             variant: "info",
-            icon: <Icon icon={faCircleInfo} className={"fa-xl me-3"}/>
+            icon: <Icon icon={faCircleInfo} className={className}/>
         },
         2: {
             variant: "success",
-            icon: <Icon icon={faHeart} className={"fa-xl me-3"}/>
+            icon: <Icon icon={faHeart} className={className}/>
         },
         3: {
             variant: "warning",
-            icon: <Icon icon={faSealExclamation} className={"fa-xl me-3"}/>
+            icon: <Icon icon={faSealExclamation} className={className}/>
         },
         4: {
             variant: "danger",
-            icon: <Icon icon={faShieldExclamation} className={"fa-xl me-3"}/>
+            icon: <Icon icon={faShieldExclamation} className={className}/>
         },
         5: {
             variant: "danger",
-            icon: <Icon icon={faShieldExclamation} className={"fa-xl me-3"}/>
+            icon: <Icon icon={faShieldExclamation} className={className}/>
         }
     }
+
     const alertVariant = alertVariants[statusClass].variant;
     const alertIcon = alertVariants[statusClass].icon;
     const {setInformationMessage} = useAppContext();

@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Spinner} from "../../../minis/Spinner";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
@@ -35,8 +35,9 @@ export const AdminPublisher = () => {
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
+                <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={publisher.name}/>
+                    <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

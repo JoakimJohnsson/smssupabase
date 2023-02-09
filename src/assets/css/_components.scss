@@ -123,6 +123,12 @@
   }
 }
 
+// PAGE
+
+.sms-page-col {
+  @extend .col-12, .col-lg-8, .col-xl-6;
+}
+
 .breadcrumb-item {
   .animate {
     opacity: 1;
