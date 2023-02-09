@@ -5,6 +5,7 @@ import {NoDataAvailable} from "./minis/NoDataAvailable";
 import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "./serviceFunctions";
 import {IconButton} from "./minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {useAppContext} from "../context/AppContext";
 
 
 export const ImageUploader = ({
@@ -21,14 +22,18 @@ export const ImageUploader = ({
                                   update
                               }) => {
 
+    const {setInformationMessage} = useAppContext();
+
     const handleDeleteImage = async () => {
         try {
             await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
                 .then(() => {
                     updateImageDataOnTable(tableName, id, "", "");
+                    setInformationMessage({show: true, status: 204, error: null});
                     update();
                 });
         } catch (error) {
+            setInformationMessage({show: true, status: 4, error: null});
             console.error(error);
         }
     }
@@ -37,8 +42,10 @@ export const ImageUploader = ({
         try {
             await uploadImage(e, tableName, id, setUploading, bucketName, fileType,
                 imageUrl, setImageFilename, setImageUrl);
+            setInformationMessage({show: true, status: 201, error: null});
             update();
         } catch (error) {
+            setInformationMessage({show: true, status: 4, error: null});
             console.error(error);
         }
     }

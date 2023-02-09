@@ -8,7 +8,7 @@ import {AvatarImageUploader} from "./AvatarImageUploader";
 
 export const Avatar = ({onUpload}) => {
     const [uploading, setUploading] = useState(false);
-    const {avatarImageUrl, setAvatarImageUrl, avatarImageFilename, setAvatarImageFilename} = useAppContext();
+    const {avatarImageUrl, setAvatarImageUrl, avatarImageFilename, setAvatarImageFilename, setInformationMessage} = useAppContext();
 
     const uploadAvatarImage = async (event) => {
         await deleteAvatarImage();
@@ -29,11 +29,13 @@ export const Avatar = ({onUpload}) => {
                 .storage
                 .from(BUCKETS.AVATAR_IMAGES)
                 .getPublicUrl(fileName).data.publicUrl)
+            setInformationMessage({show: true, status: 201, error: null});
             if (uploadError) {
                 console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
             }
             onUpload(filePath);
         } catch (error) {
+            setInformationMessage({show: true, status: 4, error: null});
             console.error(error.message);
         } finally {
             setUploading(false);
@@ -53,7 +55,9 @@ export const Avatar = ({onUpload}) => {
                     .match({avatar_image_filename: avatarImageFilename})
                 setAvatarImageUrl(null);
                 setAvatarImageFilename(null);
+                setInformationMessage({show: true, status: 204, error: null});
                 if (deleteError || error) {
+                    setInformationMessage({show: true, status: 4, error: null});
                     console.error(MESSAGES.ERROR.VALIDATION_UPLOAD);
                 }
             } catch (error) {

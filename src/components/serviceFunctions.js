@@ -323,7 +323,6 @@ export const uploadImage = async (e, tableName, id, setUploading, bucketName, fi
                     .from(bucketName)
                     .getPublicUrl(newFileName).data.publicUrl);
             }
-
             if (uploadError) {
                 console.error(uploadError);
             }
