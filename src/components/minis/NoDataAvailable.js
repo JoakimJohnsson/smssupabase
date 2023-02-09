@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {faFaceSadTear} from "@fortawesome/pro-regular-svg-icons";
+import {faFaceSadTear} from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
 
 
