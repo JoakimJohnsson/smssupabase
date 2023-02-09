@@ -7,8 +7,9 @@ import {Signup} from "../signup/Signup";
 
 export const Home = () => {
 
-    const {loggedIn} = useAppContext();
-    return loggedIn ? (
+    const {user} = useAppContext();
+
+    return user && user.id ? (
             <main className={"container-fluid main-container dashboard"}>
                 <div className={"row"}>
                     <div className={"col row-padding--main"}>
