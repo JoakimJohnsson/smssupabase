@@ -1,22 +1,26 @@
 import React from "react";
-import {useAppContext} from "../context/AppContext";
-import {LABELS_AND_HEADINGS} from "../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
 
 
 const Footer = () => {
 
-    const {user} = useAppContext();
     const package_json = require('../../package.json');
 
-    return !user &&
+    return (
         <footer className={"p-5 border-top bg-whale"}>
             <div className={"container"}>
                 <div className={"row"}>
                     <div className={"col-12 col-md-6 px-4 py-2 border-md-end"}>
                         <p className={"fs-smaller"}>
-                            Denna applikation kan innehålla bilder och information vars copyright ägs
-                            av <a href="https://www.marvel.com">MARVEL Entertainment</a> och används i
-                            enlighet med Fair use doctrin of the United States.
+                            <span className={"me-2"}>{TEXTS.FOOTER_INFO_TEXT_1}</span>
+                            <a className={"me-2"} href="https://www.marvel.com" rel="noreferrer" target={"_blank"}>MARVEL Entertainment</a>
+                            <span className={"me-2"}>{TEXTS.FOOTER_INFO_TEXT_2}</span>
+                        </p>
+                        <p className={"fs-smaller"}>
+                            <span className={"me-2"}>{TEXTS.FOOTER_INFO_TEXT_3}</span>
+                            <a className={"me-2"} href="https://www.comics.org" rel="noreferrer" target={"_blank"}>Grand comics database</a>
+                            <span className={"me-2"}>&</span>
+                            <a href="https://seriewikin.serieframjandet.se" rel="noreferrer" target={"_blank"}>Seriewikin</a>.
                         </p>
                     </div>
                     <div className={"col-12 col-md-6 px-4 py-2 d-flex align-items-end"}>
@@ -27,7 +31,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-
+    )
 };
 
 export default Footer;

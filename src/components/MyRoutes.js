@@ -24,39 +24,39 @@ import {AdminIssues} from "./pages/admin/issue/AdminIssues";
 
 export const MyRoutes = () => {
 
-    const {session, role} = useAppContext();
+    const {user, role} = useAppContext();
 
     return (
         <Routes>
             <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
             <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
             {/* USER */}
-            <Route path={ROUTES.DASHBOARD.ROOT} element={session ? <Dashboard/> : <Navigate replace to={ROUTES.DEFAULT}/>}>
-                <Route index element={session ? <Navigate replace to={ROUTES.DASHBOARD.OVERVIEW}/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                <Route path={ROUTES.DASHBOARD.OVERVIEW} element={session ? <OverviewPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                <Route path={ROUTES.DASHBOARD.TITLES} element={session ? <TitlesPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.DASHBOARD.ROOT} element={user && user.id ? <Dashboard/> : <Navigate replace to={ROUTES.DEFAULT}/>}>
+                <Route index element={user && user.id ? <Navigate replace to={ROUTES.DASHBOARD.OVERVIEW}/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.DASHBOARD.OVERVIEW} element={user && user.id ? <OverviewPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.DASHBOARD.TITLES} element={user && user.id ? <TitlesPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.DASHBOARD.OTHER_COLLECTIONS}
-                       element={session ? <OtherCollectionsPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                       element={user && user.id ? <OtherCollectionsPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={"*"} element={<p>No match!</p>}/>
             </Route>
-            <Route path={ROUTES.SETTINGS} element={session ? <Settings/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-            <Route path={ROUTES.TITLE} element={session ? <Title/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-            <Route path={ROUTES.TITLES} element={session ? <Titles/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.SETTINGS} element={user && user.id ? <Settings/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.TITLE} element={user && user.id ? <Title/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.TITLES} element={user && user.id ? <Titles/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
             {/* ADMIN */}
-            <Route path={ROUTES.ADMIN.ROOT} element={(session && role === 1) ? <Admin/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.ADMIN.ROOT} element={(user && user.id && role === 1) ? <Admin/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
             {/* Publisher */}
             <Route path={ROUTES.ADMIN.PUBLISHER_ID}
-                   element={(session && role === 1) ? <AdminPublisher/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-            <Route path={ROUTES.ADMIN.PUBLISHERS} element={(session && role === 1) ? <AdminPublishers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                   element={(user && user.id && role === 1) ? <AdminPublisher/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.ADMIN.PUBLISHERS} element={(user && user.id && role === 1) ? <AdminPublishers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
             <Route path={ROUTES.ADMIN.PUBLISHER_ADD}
-                   element={(session && role === 1) ? <AdminPublisherAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                   element={(user && user.id && role === 1) ? <AdminPublisherAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
             {/* Title */}
-            <Route path={ROUTES.ADMIN.TITLE_ID} element={(session && role === 1) ? <AdminTitle/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-            <Route path={ROUTES.ADMIN.TITLES} element={(session && role === 1) ? <AdminTitles/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-            <Route path={ROUTES.ADMIN.TITLE_ADD} element={(session && role === 1) ? <AdminTitleAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.ADMIN.TITLE_ID} element={(user && user.id && role === 1) ? <AdminTitle/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.ADMIN.TITLES} element={(user && user.id && role === 1) ? <AdminTitles/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.ADMIN.TITLE_ADD} element={(user && user.id && role === 1) ? <AdminTitleAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
             {/* Issue */}
-            <Route path={ROUTES.ADMIN.ISSUE_ID} element={(session && role === 1) ? <AdminIssue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-            <Route path={ROUTES.ADMIN.ISSUES} element={(session && role === 1) ? <AdminIssues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.ADMIN.ISSUE_ID} element={(user && user.id && role === 1) ? <AdminIssue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+            <Route path={ROUTES.ADMIN.ISSUES} element={(user && user.id && role === 1) ? <AdminIssues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
             {/* Catch all */}
             <Route path={"*"} element={<p>No match!</p>}/>
         </Routes>

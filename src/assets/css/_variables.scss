@@ -45,7 +45,6 @@ $color-bg-horse--trans: rgba(35, 37, 54, .8);
 $color-bg-dog--trans: rgba(39, 41, 59, .8);
 
 // BOOTSTRAP OVERRIDES
-
 $btn-close-opacity: 1;
 $btn-close-hover-opacity: $standard-opacity;
 $btn-close-focus-opacity: $standard-opacity;
@@ -74,6 +73,7 @@ $btn-disabled-opacity: 0.45;
 $sms-header-min-height: 60px;
 $sms-header-min-height--lg: 65px;
 $breadcrumb-active-color: $primary--lighter;
+$main-content-min-height: calc(100vh - 250px);
 
 // Form and input
 $input-placeholder-color: $black--lighter;
