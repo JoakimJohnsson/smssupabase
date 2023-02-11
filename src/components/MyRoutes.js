@@ -21,6 +21,10 @@ import {AdminTitleAdd} from "./pages/admin/title/AdminTitleAdd";
 import {AdminIssue} from "./pages/admin/issue/AdminIssue";
 import {AdminIssues} from "./pages/admin/issue/AdminIssues";
 import {supabase} from "../supabase/supabaseClient";
+import {Issue} from "./pages/Issue";
+import {Issues} from "./pages/Issues";
+import {Publisher} from "./pages/Publisher";
+import {Publishers} from "./pages/Publishers";
 
 
 export const MyRoutes = () => {
@@ -53,8 +57,12 @@ export const MyRoutes = () => {
                     <Route path={"*"} element={<p>No match!</p>}/>
                 </Route>
                 <Route path={ROUTES.SETTINGS} element={user && user.id ? <Settings/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                <Route path={ROUTES.TITLE} element={user && user.id ? <Title/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.TITLE_ID} element={user && user.id ? <Title/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.TITLES} element={user && user.id ? <Titles/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.ISSUE_ID} element={user && user.id ? <Issue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.ISSUES} element={user && user.id ? <Issues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.PUBLISHER_ID} element={user && user.id ? <Publisher/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.PUBLISHERS} element={user && user.id ? <Publishers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* ADMIN */}
                 <Route path={ROUTES.ADMIN.ROOT} element={(user && user.id && role === 1) ? <Admin/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Publisher */}

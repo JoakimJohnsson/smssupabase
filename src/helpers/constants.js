@@ -58,7 +58,11 @@ export const ROUTES = {
     SUCCESS: "/success",
     SETTINGS: "/settings",
     TITLES: "/titles",
-    TITLE: "/titles/:id",
+    TITLE_ID: "/titles/:id",
+    ISSUES: "/issues",
+    ISSUE_ID: "/issues/:id",
+    PUBLISHERS: "/publishers",
+    PUBLISHER_ID: "/publishers/:id",
     DASHBOARD: {
         ROOT: "dashboard",
         OVERVIEW: "overview",
