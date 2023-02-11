@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Link, NavLink} from "react-router-dom";
-import shieldWhite from "../../assets/images/shield__white.svg";
 import {SignOutButton} from "../minis/SignOutButton";
 import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
@@ -10,7 +9,7 @@ import {Icon} from "../icons";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
     AdminIconDuoTone,
-    DashboardIconDuoTone, IssueIconDuoTone, IssuesIconDuoTone,
+    DashboardIconDuoTone, IssueIconDuoTone, IssuesIconDuoTone, LogoIconDuoTone,
     PublishersIconDuoTone,
     SettingsIconDuoTone,
     StartIconDuoTone,
@@ -33,7 +32,10 @@ export const AuthorizedNavigation = () => {
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid px-3 pt-1">
                 <Link to={ROUTES.DEFAULT} className={"hocus-standard h-100 d-flex align-items-center"}>
-                    <img className={"sms-logo-shield me-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                    {/* desktop icon */}
+                    <LogoIconDuoTone size={"3x"} className={"mx-3 fa-swap-opacity text-secondary d-none d-sm-flex"}/>
+                    {/* mobile icon */}
+                    <LogoIconDuoTone size={"2x"} className={"mx-2 fa-swap-opacity text-secondary d-flex d-sm-none"}/>
                     <div className={"sms-logo-text"}>
                         <span className={"d-none d-sm-inline"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}</span>
                         <span className={"d-inline d-sm-none"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE_SHORT}</span>

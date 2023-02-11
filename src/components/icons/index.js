@@ -1,6 +1,16 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faShieldCat, faHouse, faFile, faChartLine, faGears, faFiles, faBuildingColumns, faFileImage} from "@fortawesome/pro-regular-svg-icons";
+import {
+    faShieldCat,
+    faHouse,
+    faFile,
+    faChartLine,
+    faGears,
+    faFiles,
+    faBuildingColumns,
+    faFileImage,
+    faComet
+} from "@fortawesome/pro-regular-svg-icons";
 import {faListTimeline} from "@fortawesome/pro-duotone-svg-icons";
 
 export const Icon = ({icon, size, className}) => {
@@ -42,6 +52,12 @@ export const IssuesIcon = ({size, className}) => {
 export const IssueIcon = ({size, className}) => {
     return (
         <Icon icon={faFile} size={size} className={className}/>
+    )
+}
+
+export const LogoIcon = ({size, className}) => {
+    return (
+        <Icon icon={faComet} size={size} className={className}/>
     )
 }
 

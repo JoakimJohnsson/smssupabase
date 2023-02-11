@@ -14,6 +14,7 @@ export const AdminTitles = () => {
 
     const [titlesData, setTitlesData] = useState(null);
     const navigate = useNavigate();
+
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();
     }, [])

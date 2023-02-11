@@ -189,7 +189,6 @@ export const deleteAllIssues = async (issuesData, setIssuesData, setInformationM
     }
 }
 
-
 // GENERIC FUNCTIONS
 export const getRowsByTable = async (table, setData) => {
     try {
@@ -200,7 +199,7 @@ export const getRowsByTable = async (table, setData) => {
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);

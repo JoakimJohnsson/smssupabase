@@ -9,6 +9,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 export const Publishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
+
     useEffect(() => {
         getRowsByTable("publishers", setPublishersData).then();
     }, [])
