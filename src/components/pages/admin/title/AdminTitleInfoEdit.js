@@ -53,6 +53,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     type={"text"}
                     value={newTitle.description || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
+                    disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
                 <input
@@ -62,6 +63,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     type={"text"}
                     value={newTitle.wiki_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
+                    disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                 <input
@@ -69,7 +71,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     name={"start_year"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
-                    value={newTitle.start_year || 1975}
+                    value={newTitle.start_year || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
@@ -79,7 +81,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     name={"end_year"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
-                    value={newTitle.end_year || 1975}
+                    value={newTitle.end_year || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />

@@ -5,6 +5,7 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {ImageIcon, PublishersIcon} from "../../icons";
 import {ListToolBox} from "../ListToolBox";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
+import {sortByName} from "../../../helpers/functions";
 
 
 export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {
@@ -13,7 +14,7 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
         <ul className={"sms-list--with-tools mb-4"}>
             {
                 publishersData.length ?
-                    (publishersData.map((p, index) =>
+                    (publishersData.sort((a, b) => sortByName(a, b)).map((p, index) =>
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
@@ -21,7 +22,7 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                                             <PublishersIcon size={"1x"} className={"me-2"}/>
                                             {
                                                 p && p.image_filename && p.image_url &&
-                                                <ImageIcon size={"1x"} className={"me-2"}/>
+                                                <ImageIcon size={"1x"} className={"me-2 text-success"}/>
                                             }
                                             <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-3"}>
                                                 {p.name}

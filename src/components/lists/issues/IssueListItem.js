@@ -14,7 +14,7 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
                         <IssueIcon size={"1x"} className={"me-2"}/>
                         {
                             issue && issue.image_filename && issue.image_url &&
-                            <ImageIcon size={"1x"} className={"me-2"}/>
+                            <ImageIcon size={"1x"} className={"me-2 text-success"}/>
                         }
                         <IssueLink showAdminInfo={showAdminInfo} issue={issue} title={title}/>
                     </div>

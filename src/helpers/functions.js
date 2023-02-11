@@ -98,5 +98,15 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
     }
 }
 
+export const sortByName = (a, b) => {
+    if (a.name < b.name) {
+        return -1;
+    }
+    if (a.name > b.name) {
+        return 1;
+    }
+    return 0;
+}
+
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");

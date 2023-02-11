@@ -163,7 +163,7 @@ export const AdminTitle = () => {
                                 name="year"
                                 className={CLASSES.FORM_INPUT_DEFAULT}
                                 type="number"
-                                value={year || 1975}
+                                value={year || ""}
                                 onChange={(e) => handleInput(e, setYear)}
                             />
                             <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
@@ -172,7 +172,7 @@ export const AdminTitle = () => {
                                 name="number"
                                 className={CLASSES.FORM_INPUT_DEFAULT}
                                 type="number"
-                                value={number || 1}
+                                value={number || ""}
                                 max={999}
                                 min={1}
                                 onChange={(e) => handleInput(e, setNumber)}
