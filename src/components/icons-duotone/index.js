@@ -1,5 +1,5 @@
 import React from "react";
-import {faShieldCat, faHouse, faFile, faChartLine, faGears, faFiles, faBuildingColumns, faFileImage} from "@fortawesome/pro-duotone-svg-icons";
+import {faShieldCat, faHouse, faFile, faChartLine, faGears, faFiles, faBuildingColumns, faFileImage, faListTimeline} from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
 
 export const AdminIconDuoTone = ({size, className}) => {
@@ -11,6 +11,12 @@ export const AdminIconDuoTone = ({size, className}) => {
 export const DashboardIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faChartLine} size={size} className={className}/>
+    )
+}
+
+export const DataIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faListTimeline} size={size} className={className}/>
     )
 }
 

@@ -47,10 +47,12 @@
       &:hover, &:focus {
         color: $primary--lighter;
       }
-      @include media-breakpoint-up(lg) {
-        border-left: 1px solid $border-color;
-        &.active {
-          border-left: 1px solid;
+      &:not(.nav-link--dropdown) {
+        @include media-breakpoint-up(lg) {
+          border-left: 1px solid $border-color;
+          &.active {
+            border-left: 1px solid;
+          }
         }
       }
       // Icons

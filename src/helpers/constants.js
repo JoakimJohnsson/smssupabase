@@ -105,6 +105,7 @@ export const LABELS_AND_HEADINGS = {
     CHOOSE: "--- Välj ---",
     CLOSE: "Stäng",
     COMMUNITY: "Socialt",
+    CONTENT: "Innehåll",
     COUNTRY: "Land",
     COUNTRY_DB: "Land (country)",
     CREATE_ACCOUNT: "Registrera dig",

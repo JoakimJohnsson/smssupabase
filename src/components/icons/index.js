@@ -1,6 +1,7 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShieldCat, faHouse, faFile, faChartLine, faGears, faFiles, faBuildingColumns, faFileImage} from "@fortawesome/pro-regular-svg-icons";
+import {faListTimeline} from "@fortawesome/pro-duotone-svg-icons";
 
 export const Icon = ({icon, size, className}) => {
     return (
@@ -17,6 +18,12 @@ export const AdminIcon = ({size, className}) => {
 export const DashboardIcon = ({size, className}) => {
     return (
         <Icon icon={faChartLine} size={size} className={className}/>
+    )
+}
+
+export const DataIcon = ({size, className}) => {
+    return (
+        <Icon icon={faListTimeline} size={size} className={className}/>
     )
 }
 

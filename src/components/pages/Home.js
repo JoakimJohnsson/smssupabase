@@ -3,6 +3,7 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {HeroHeader} from "../header/HeroHeader";
 import {Signup} from "../signup/Signup";
+import {HeadingWithBreadCrumbs} from "../headings";
 
 
 export const Home = () => {
@@ -13,8 +14,7 @@ export const Home = () => {
             <main className={"container-fluid main-container dashboard"}>
                 <div className={"row"}>
                     <div className={"col row-padding--main"}>
-                        <p>Home</p>
-                        <p>Länkar till min dashboard o.s.v.</p>
+                        <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.WELCOME}/>
                     </div>
                 </div>
             </main>
