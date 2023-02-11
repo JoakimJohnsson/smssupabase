@@ -11,7 +11,7 @@ export const Publishers = () => {
     const [publishersData, setPublishersData] = useState(null);
 
     useEffect(() => {
-        const {data} = getRowsByTable("publishers").then(() => setPublishersData(data));
+        getRowsByTable("publishers", setPublishersData).then();
     }, [])
 
     return (

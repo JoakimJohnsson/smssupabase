@@ -16,7 +16,7 @@ export const AdminIssues = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const {data} = getRowsByTable(TABLES.ISSUES).then(() => setIssuesData(data));
+        getRowsByTable(TABLES.ISSUES, setIssuesData).then();
     }, [])
 
     return (

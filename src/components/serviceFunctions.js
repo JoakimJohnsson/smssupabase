@@ -189,9 +189,8 @@ export const deleteAllIssues = async (issuesData, setIssuesData, setInformationM
     }
 }
 
-
 // GENERIC FUNCTIONS
-export const getRowsByTable = async (table) => {
+export const getRowsByTable = async (table, setData) => {
     try {
         let {data, error, status} = await supabase
             .from(table)
@@ -200,7 +199,7 @@ export const getRowsByTable = async (table) => {
             console.error(error);
         }
         if (data) {
-            return data;
+            setData(data);
         }
     } catch (error) {
         console.error(error);

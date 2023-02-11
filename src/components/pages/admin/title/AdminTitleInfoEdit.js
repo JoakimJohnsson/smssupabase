@@ -18,7 +18,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     const {setInformationMessage} = useAppContext();
 
     useEffect(() => {
-        const {data} = getRowsByTable(TABLES.PUBLISHERS).then(() => setPublishersData(data));
+        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
     }, [])
 
     const handleSubmit = () => {
