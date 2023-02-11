@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "../Login";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
-import shieldWhite from "../../assets/images/shield__white.svg";
+import {LogoIconDuoTone} from "../icons-duotone";
 
 export const HeroHeader = () => {
     return (
@@ -11,7 +11,7 @@ export const HeroHeader = () => {
                     <div className={"col-12 col-xl-6 p-5 bg-whale d-flex align-items-center flex-column justify-content-center"}>
                         <div className={"col-12 col-lg-8 d-flex flex-column mb-5"}>
                             <div className={"d-flex flex-column align-items-center py-5"}>
-                                <img className={"sms-logo-shield mb-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
+                                <LogoIconDuoTone size={"4x"} className={"me-2 fa-swap-opacity text-secondary d-none d-sm-flex mb-2"}/>
                                 <p className={"sms-logo-text"}>
                                     {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                                 </p>

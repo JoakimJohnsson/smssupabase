@@ -60,7 +60,7 @@ export const ImageUploader = ({
                             <img
                                 src={imageUrl}
                                 alt={imageFilename}
-                                className="w-100 mb-3"
+                                className="w-100 mb-3 bg-light"
                             />
                             <p>{imageFilename}</p>
                             <IconButton variant={"danger"} icon={faTrashCan} onClick={handleDeleteImage} label={LABELS_AND_HEADINGS.DELETE_IMAGE}/>

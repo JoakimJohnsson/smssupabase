@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {FriendlyDate} from "../../minis/FriendlyDate";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {PublishersIcon} from "../../icons";
+import {ImageIcon, PublishersIcon} from "../../icons";
 import {ListToolBox} from "../ListToolBox";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 
@@ -19,6 +19,10 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                                     <div className={"sms-list-col--main"}>
                                         <div>
                                             <PublishersIcon size={"1x"} className={"me-2"}/>
+                                            {
+                                                p && p.image_filename && p.image_url &&
+                                                <ImageIcon size={"1x"} className={"me-2"}/>
+                                            }
                                             <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-3"}>
                                                 {p.name}
                                             </Link>
