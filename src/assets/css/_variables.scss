@@ -45,13 +45,15 @@ $color-bg-horse--trans: rgba(35, 37, 54, .8);
 $color-bg-dog--trans: rgba(39, 41, 59, .8);
 
 // BOOTSTRAP OVERRIDES
-
 $btn-close-opacity: 1;
 $btn-close-hover-opacity: $standard-opacity;
 $btn-close-focus-opacity: $standard-opacity;
 $btn-close-width: 1.3rem;
 $btn-close-color: $danger;
 $btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z' /></svg>") !default;
+$dropdown-bg: $color-bg-elephant;
+$dropdown-link-hover-bg: $color-bg-horse;
+$dropdown-link-active-bg: $color-bg-horse;
 
 // Typography
 $font-size-base: 1rem;
@@ -74,6 +76,7 @@ $btn-disabled-opacity: 0.45;
 $sms-header-min-height: 60px;
 $sms-header-min-height--lg: 65px;
 $breadcrumb-active-color: $primary--lighter;
+$main-content-min-height: calc(100vh - 250px);
 
 // Form and input
 $input-placeholder-color: $black--lighter;

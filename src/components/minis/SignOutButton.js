@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import React from "react";
 import {useAppContext} from "../../context/AppContext";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {faRightFromBracket} from "@fortawesome/pro-regular-svg-icons";
+import {faRightFromBracket} from "@fortawesome/pro-duotone-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const SignOutButton = ({mobile}) => {

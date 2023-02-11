@@ -1,26 +1,26 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {Spinner} from "../minis/Spinner";
-import {TitlesList} from "../lists/titles/TitlesList";
 import {getRowsByTable} from "../serviceFunctions";
+import {IssuesList} from "../lists/issues/IssuesList";
 import {HeadingWithBreadCrumbs} from "../headings";
 
 
-export const Titles = () => {
+export const Issues = () => {
 
-    const [titlesData, setTitlesData] = useState(null);
+    const [issuesData, setIssuesData] = useState(null);
     useEffect(() => {
-        getRowsByTable("titles", setTitlesData).then();
+        getRowsByTable("issues", setIssuesData).then();
     }, [])
 
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 row-padding--main"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
                     {
-                        titlesData ?
-                            <TitlesList titlesData={titlesData} showAdminInfo={false}/>
+                        issuesData ?
+                            <IssuesList issuesData={issuesData} showAdminInfo={false}/>
                             :
                             <Spinner/>
                     }

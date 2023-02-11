@@ -2,13 +2,13 @@ import React from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 
 
-export const Title = () => {
+export const Issue = () => {
 
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 row-padding--main"}>
-                    <HeadingWithBreadCrumbs text={"A title"}/>
+                    <HeadingWithBreadCrumbs text={"An issue"}/>
                 </div>
             </div>
         </main>

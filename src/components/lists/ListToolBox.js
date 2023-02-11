@@ -4,7 +4,7 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {handleDelete} from "../serviceFunctions";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
-import {faPenCircle, faCircleXmark} from "@fortawesome/pro-regular-svg-icons";
+import {faPenCircle, faCircleXmark} from "@fortawesome/pro-duotone-svg-icons";
 
 
 export const ListToolBox = ({item, name, data, setData, showAdminInfo, route, table, imageBucket}) => {

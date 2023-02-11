@@ -20,11 +20,11 @@ const Settings = () => {
     const [avatar_image_filename, setAvatarImageFilename] = useState(null);
 
     // Get current user and signOut function from context
-    const {user, session, setUserUrl} = useAppContext();
+    const {user, setUserUrl} = useAppContext();
 
     useEffect(() => {
         getProfile(setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, user.id).then(() => "Do something")
-    }, [user.id, session, avatar_image_filename, setUserUrl])
+    }, [user.id, avatar_image_filename, setUserUrl])
 
     // Updates profiles table in db
     async function updateProfileData({firstname, lastname, website, avatar_image_filename}) {

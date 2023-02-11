@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {TextSpacer} from "../../minis/TextSpacer";
 import {FriendlyDate} from "../../minis/FriendlyDate";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {TitlesIcon} from "../../icons";
+import {TitleIcon} from "../../icons";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
 
@@ -19,7 +19,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
                                         <div>
-                                            <TitlesIcon size={"x1"} className={"me-2"}/>
+                                            <TitleIcon size={"1x"} className={"me-2"}/>
                                             <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={"me-3"}>
                                                 {t.name}
                                             </Link>

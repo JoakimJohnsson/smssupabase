@@ -5,6 +5,8 @@ import {NoDataAvailable} from "./minis/NoDataAvailable";
 import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "./serviceFunctions";
 import {IconButton} from "./minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {useAppContext} from "../context/AppContext";
+import {ImageIcon} from "./icons";
 
 
 export const ImageUploader = ({
@@ -21,14 +23,18 @@ export const ImageUploader = ({
                                   update
                               }) => {
 
+    const {setInformationMessage} = useAppContext();
+
     const handleDeleteImage = async () => {
         try {
             await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
                 .then(() => {
                     updateImageDataOnTable(tableName, id, "", "");
+                    setInformationMessage({show: true, status: 204, error: null});
                     update();
                 });
         } catch (error) {
+            setInformationMessage({show: true, status: 4, error: null});
             console.error(error);
         }
     }
@@ -37,8 +43,10 @@ export const ImageUploader = ({
         try {
             await uploadImage(e, tableName, id, setUploading, bucketName, fileType,
                 imageUrl, setImageFilename, setImageUrl);
+            setInformationMessage({show: true, status: 201, error: null});
             update();
         } catch (error) {
+            setInformationMessage({show: true, status: 4, error: null});
             console.error(error);
         }
     }
@@ -60,11 +68,18 @@ export const ImageUploader = ({
                         :
                         <>
                             <NoDataAvailable/>
-                            <label className="btn btn-primary" htmlFor="single">
+                            <label className="btn btn-primary align-items-center" htmlFor="single">
                                 {uploading ?
-                                    <Spinner small={true} color={"text-black"}/>
+                                    <>
+                                        <Spinner small={true} color={"text-black"}/>
+                                        {LABELS_AND_HEADINGS.UPLOADING_IMAGE}
+                                    </>
                                     :
-                                    LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                    <>
+                                        <ImageIcon size={"1x"} className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                    </>
+                                }
                             </label>
                         </>
                 }

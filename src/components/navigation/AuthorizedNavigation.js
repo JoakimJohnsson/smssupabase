@@ -1,13 +1,23 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import shieldWhite from "../../assets/images/shield__white.svg";
 import {SignOutButton} from "../minis/SignOutButton";
 import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
 import {LiNavItem} from "../lists/LiNavItem";
 import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
-import {AdminIcon, DashboardIcon, Icon, SettingsIcon, StartIcon, TitlesIcon} from "../icons";
+import {Icon} from "../icons";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
+import {
+    AdminIconDuoTone,
+    DashboardIconDuoTone, IssueIconDuoTone, IssuesIconDuoTone,
+    PublishersIconDuoTone,
+    SettingsIconDuoTone,
+    StartIconDuoTone,
+    TitlesIconDuoTone
+} from "../icons-duotone";
+import {NavDropdown} from "react-bootstrap";
+import {NavDropdownTitle} from "../minis/NavDropdownTitle";
 
 export const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,12 +48,28 @@ export const AuthorizedNavigation = () => {
 
                     {/* desktop ul (no click handler) */}
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem route={ROUTES.DEFAULT} icon={<StartIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<DashboardIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
-                        <LiNavItem route={ROUTES.TITLES} icon={<TitlesIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                        <LiNavItem route={ROUTES.SETTINGS} icon={<SettingsIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
+                        <LiNavItem route={ROUTES.DEFAULT} icon={<StartIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<DashboardIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <NavDropdown title={<NavDropdownTitle/>} id="basic-nav-dropdown">
+                            <NavDropdown.Item>
+                                <NavLink exact={true} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
+                                    <TitlesIconDuoTone className={"me-2"}/><span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_TITLES}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item>
+                                <NavLink exact={true} to={ROUTES.PUBLISHERS} className={"nav-link nav-link--dropdown"}>
+                                    <PublishersIconDuoTone className={"me-2"}/><span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item>
+                                <NavLink exact={true} to={ROUTES.ISSUES} className={"nav-link nav-link--dropdown"}>
+                                    <IssueIconDuoTone className={"me-2"}/><span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                        <LiNavItem route={ROUTES.SETTINGS} icon={<SettingsIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIcon size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}/>
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className="nav-item">
                             {avatarImageUrl ? <NavbarProfileInformation/> : false}
@@ -52,15 +78,19 @@ export const AuthorizedNavigation = () => {
                     </ul>
                     {/* mobile ul */}
                     <ul className="d-lg-none navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<StartIcon size={"1x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<DashboardIcon size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<StartIconDuoTone size={"1x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<DashboardIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
-                        <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<SettingsIcon size={"1x"}/>}
+                        <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<TitlesIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                        <LiNavItem route={ROUTES.SETTINGS} onClick={handleClick} icon={<SettingsIcon size={"1x"}/>}
+                        <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<PublishersIconDuoTone size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                        <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<IssuesIconDuoTone size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
+                        <LiNavItem route={ROUTES.SETTINGS} onClick={handleClick} icon={<SettingsIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {role === 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIcon size={"1x"}/>}
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIconDuoTone size={"1x"}/>}
                                        text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className="nav-item">

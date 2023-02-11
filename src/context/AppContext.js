@@ -9,7 +9,6 @@ export function AppContextProvider({children}) {
 
     // Global states
     const [user, setUser] = useState({});
-    const [loggedIn, setLoggedIn] = useState(null);
     const [avatarImageUrl, setAvatarImageUrl] = useState("");
     const [avatarImageFilename, setAvatarImageFilename] = useState("");
     const [userUrl, setUserUrl] = useState("");
@@ -25,7 +24,7 @@ export function AppContextProvider({children}) {
     }, [])
 
     useEffect(() => {
-        if (user && user.id) {
+        if (user) {
             // Check if user has admin privileges and set role.
             const mySub = supabase
                 .channel('public:profiles')
@@ -33,12 +32,7 @@ export function AppContextProvider({children}) {
                     updateProfile(user).then(() => console.log("Profile updated"))
                 })
                 .subscribe()
-            updateProfile(user).then(() => {
-                supabase.removeChannel(mySub);
-                setLoggedIn(true);
-            });
-        } else {
-            setLoggedIn(false);
+            updateProfile(user).then(() => supabase.removeChannel(mySub));
         }
         setLoading(false)
     }, [user])
@@ -46,7 +40,7 @@ export function AppContextProvider({children}) {
     useEffect(() => {
         // Listen for changes on auth state. Log in/out etc.
         supabase.auth.onAuthStateChange((event, session) => {
-                setUser(session?.user ?? null)
+                setUser(session?.user ?? {})
                 setLoading(false)
             }
         )
@@ -69,7 +63,6 @@ export function AppContextProvider({children}) {
         signIn: (data) => supabase.auth.signInWithPassword(data),
         signOut: () => supabase.auth.signOut(),
         user,
-        loggedIn,
         avatarImageUrl,
         setAvatarImageUrl,
         avatarImageFilename,

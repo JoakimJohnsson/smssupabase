@@ -1,5 +1,5 @@
 import React from "react";
-import {ImageIcon, IssuesIcon} from "../../icons";
+import {ImageIcon, IssueIcon} from "../../icons";
 import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
@@ -11,7 +11,7 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
             <div className={"row"}>
                 <div className={"sms-list-col--main"}>
                     <div>
-                        <IssuesIcon size={"1x"} className={"me-2"}/>
+                        <IssueIcon size={"1x"} className={"me-2"}/>
                         {
                             issue && issue.image_filename && issue.image_url &&
                             <ImageIcon size={"1x"} className={"me-2"}/>

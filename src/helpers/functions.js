@@ -19,6 +19,14 @@ export const prepareUrl = (url) => {
     }
 }
 
+export const getCalculatedYear = (startYear, endYear) => {
+    if (startYear === endYear) {
+        return startYear;
+    } else {
+        return startYear + " - " + endYear;
+    }
+}
+
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
     if (success) {
         setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);

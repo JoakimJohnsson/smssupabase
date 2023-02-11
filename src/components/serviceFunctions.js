@@ -38,6 +38,7 @@ export const addTitleData = async (data, setInformationMessage) => {
             .insert([{
                 name: data.name,
                 description: data.description,
+                wiki_url: data.wiki_url,
                 start_year: data.start_year,
                 end_year: data.end_year,
                 publisher_id: data.publisher_id,
@@ -57,6 +58,7 @@ export const updateTitleData = async (id, data, setInformationMessage) => {
             .update([{
                 name: data.name,
                 description: data.description,
+                wiki_url: data.wiki_url,
                 start_year: data.start_year,
                 end_year: data.end_year,
                 publisher_id: data.publisher_id,
@@ -79,6 +81,7 @@ export const addPublisherData = async (data, setInformationMessage) => {
             .insert([{
                 name: data.name,
                 description: data.description,
+                wiki_url: data.wiki_url,
                 country_id: data.country_id
             }])
         setInformationMessage({show: true, status: status, error: error});
@@ -94,6 +97,7 @@ export const updatePublisherData = async (id, data, setInformationMessage) => {
             .update([{
                 name: data.name,
                 description: data.description,
+                wiki_url: data.wiki_url,
                 country_id: data.country_id
             }])
             .eq("id", id)
@@ -319,7 +323,6 @@ export const uploadImage = async (e, tableName, id, setUploading, bucketName, fi
                     .from(bucketName)
                     .getPublicUrl(newFileName).data.publicUrl);
             }
-
             if (uploadError) {
                 console.error(uploadError);
             }

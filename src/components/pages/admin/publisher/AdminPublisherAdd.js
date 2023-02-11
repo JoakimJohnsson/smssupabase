@@ -16,6 +16,7 @@ export const AdminPublisherAdd = () => {
     const [
         name, setName,
         description, setDescription,
+        wiki_url, setWiki_url,
         formInputClass, setFormInputClass
     ] = useCommonFormStates();
 
@@ -26,18 +27,19 @@ export const AdminPublisherAdd = () => {
     const resetAddPublisherForm = async () => {
         setName("");
         setDescription("");
+        setWiki_url("");
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
     }
 
     useEffect(() => {
-        if (country_id && name !== "" && description !== "") {
+        if (country_id && name !== "" && description !== "" && wiki_url !== !"") {
             setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
-        } else if (country_id || name !== "" || description !== "") {
+        } else if (country_id || name !== "" || description !== "" || wiki_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
         } else {
             setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         }
-    }, [name, description, country_id, setFormInputClass])
+    }, [name, description, country_id, setFormInputClass, wiki_url])
 
     return (
         <main className={"container-fluid main-container"}>
@@ -52,6 +54,7 @@ export const AdminPublisherAdd = () => {
                         <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                         <input
                             id="name"
+                            name="name"
                             className={formInputClass}
                             type="text"
                             value={name || ""}
@@ -60,16 +63,27 @@ export const AdminPublisherAdd = () => {
                         <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                         <input
                             id="description"
+                            name="description"
                             className={formInputClass}
                             type="text"
                             value={description || ""}
                             onChange={(e) => handleInput(e, setDescription)}
+                        />
+                        <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                        <input
+                            id="wikiurl"
+                            name="wiki_url"
+                            className={formInputClass}
+                            type="text"
+                            value={wiki_url || ""}
+                            onChange={(e) => handleInput(e, setWiki_url)}
                         />
                         <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                         {
                             countryData &&
                             <select
                                 id="country"
+                                name="country"
                                 className={formInputClass}
                                 onChange={(e) => setCountry_id(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
@@ -80,9 +94,10 @@ export const AdminPublisherAdd = () => {
                                 onClick={() => addPublisherData({
                                     name: name,
                                     description: description,
+                                    wiki_url: wiki_url,
                                     country_id: country_id
                                 }, setInformationMessage).then(() => resetAddPublisherForm())}
-                                disabled={!country_id || name === "" || description === ""}>
+                                disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-outline-secondary"}

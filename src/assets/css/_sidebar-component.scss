@@ -2,7 +2,7 @@
 @import "variables";
 
 .dashboard-sidebar {
-  height: 100vh;
+  min-height: $main-content-min-height;
   width: 100px;
   @include media-breakpoint-up(sm) {
     width: 250px;

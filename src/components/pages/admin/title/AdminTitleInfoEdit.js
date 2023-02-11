@@ -34,7 +34,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-form"}>
-                <h2>Redigera information</h2>
+                <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
                 <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                 <input
                     id={"name"}
@@ -52,6 +52,15 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
                     value={newTitle.description || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
+                />
+                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                <input
+                    id={"wikiurl"}
+                    name={"wiki_url"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
+                    value={newTitle.wiki_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                 />
                 <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>

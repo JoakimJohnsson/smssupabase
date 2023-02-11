@@ -15,9 +15,10 @@ import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
+import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCircleNotch, faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {IssueIcon, IssuesIcon} from "../../../icons";
 
 
 export const AdminTitle = () => {
@@ -114,8 +115,9 @@ export const AdminTitle = () => {
     return title && loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
-                    <HeadingWithBreadCrumbs text={title.name + " " + title.start_year + " - " + title.end_year}/>
+                <div className={"sms-page-col"}>
+                    <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
+                    <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
@@ -206,6 +208,7 @@ export const AdminTitle = () => {
                                         marvelklubben_number: marvelklubben_number,
                                     }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
                                     disabled={!year || !number}>
+                                <IssueIcon className={"me-2"}/>
                                 {LABELS_AND_HEADINGS.ADD}
                             </button>
                             <button className={"btn btn-outline-secondary"}
@@ -213,7 +216,10 @@ export const AdminTitle = () => {
                                 {LABELS_AND_HEADINGS.RESET_FORM}
                             </button>
                         </div>
-
+                    </div>
+                </div>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-form"}>
                         <h2>{LABELS_AND_HEADINGS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
                         <p>{TEXTS.DELETE_ALL_ISSUES_INFO}</p>
                         <button className={"btn btn-danger d-flex align-items-center"} disabled={!(issuesData && issuesData.length > 0)}
@@ -221,11 +227,13 @@ export const AdminTitle = () => {
                             {
                                 loadingDI ?
                                     <>
-                                        <FontAwesomeIcon className={"me-2 fa-spin"} icon={faCircleNotch}/>{LABELS_AND_HEADINGS.DELETING}
+                                        <Spinner small={true} className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.DELETING}
                                     </>
                                     :
                                     <>
-                                        <FontAwesomeIcon className={"me-2"} icon={faTrashCan}/>{LABELS_AND_HEADINGS.DELETE}
+                                        <FontAwesomeIcon className={"me-2"} icon={faTrashCan}/>
+                                        {LABELS_AND_HEADINGS.DELETE}
                                     </>
                             }
                         </button>
@@ -239,10 +247,15 @@ export const AdminTitle = () => {
                             {
                                 loadingGI ?
                                     <>
-                                        <Spinner small={true} className={"me-2"}/> {LABELS_AND_HEADINGS.GENERATING_ISSUES}
+                                        <Spinner small={true} className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.GENERATING_ISSUES}
                                     </>
                                     :
-                                    LABELS_AND_HEADINGS.GENERATE_ISSUES
+                                    <>
+                                        <IssuesIcon className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.GENERATE_ISSUES}
+                                    </>
+
                             }
                         </button>
                     </div>

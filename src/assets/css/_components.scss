@@ -42,8 +42,7 @@
 
 // Content
 .main-container {
-  // header - 90px - footer 170px;
-  min-height: calc(100vh - 260px);
+  min-height:$main-content-min-height;
   h1, .h1 {
     margin-bottom: 3rem;
     @include media-breakpoint-up(sm) {
@@ -121,6 +120,12 @@
   to {
     opacity: 1;
   }
+}
+
+// PAGE
+
+.sms-page-col {
+  @extend .col-12, .col-lg-8, .col-xl-6;
 }
 
 .breadcrumb-item {
