@@ -17,7 +17,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     const navigate = useNavigate();
 
     useEffect(() => {
-        getRowsByTable(TABLES.TITLES, setTitlesData).then(() => console.info("Fetched titles data"));
+        const {data} = getRowsByTable(TABLES.TITLES).then(() => setTitlesData(data));
     }, [])
 
     const handleSubmit = () => {

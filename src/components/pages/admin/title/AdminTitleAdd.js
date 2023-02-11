@@ -31,7 +31,7 @@ export const AdminTitleAdd = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
+        const {data} = getRowsByTable(TABLES.PUBLISHERS).then(() => setPublishersData(data));
     }, [])
 
     const resetAddTitleForm = async () => {

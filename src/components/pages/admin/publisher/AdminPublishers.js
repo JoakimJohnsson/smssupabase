@@ -13,8 +13,9 @@ export const AdminPublishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
     const navigate = useNavigate();
+
     useEffect(() => {
-        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
+        const {data} = getRowsByTable(TABLES.PUBLISHERS).then(() => setPublishersData(data));
     }, [])
 
     return (

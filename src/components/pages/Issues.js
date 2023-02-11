@@ -9,8 +9,9 @@ import {HeadingWithBreadCrumbs} from "../headings";
 export const Issues = () => {
 
     const [issuesData, setIssuesData] = useState(null);
+
     useEffect(() => {
-        getRowsByTable("issues", setIssuesData).then();
+        const {data} = getRowsByTable("issues").then(() => setIssuesData(data));
     }, [])
 
     return (
