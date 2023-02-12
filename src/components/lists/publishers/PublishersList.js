@@ -37,6 +37,7 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                                             <ListToolBox
                                                 item={p}
                                                 name={p.name}
+                                                displayName={p.name}
                                                 data={publishersData}
                                                 setData={setPublishersData}
                                                 showAdminInfo={showAdminInfo}

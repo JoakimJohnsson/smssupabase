@@ -37,6 +37,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                             <ListToolBox
                                                 item={t}
                                                 name={t.name}
+                                                displayName={t.name + " " + t.start_year + "."}
                                                 data={titlesData}
                                                 setData={setTitlesData}
                                                 showAdminInfo={showAdminInfo}

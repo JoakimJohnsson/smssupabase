@@ -1,16 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {handleDelete} from "../serviceFunctions";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
-import {faPenCircle, faCircleXmark} from "@fortawesome/pro-duotone-svg-icons";
+import {faPenCircle, faCircleXmark, faBadgeCheck} from "@fortawesome/pro-duotone-svg-icons";
 
 
-export const ListToolBox = ({item, name, data, setData, showAdminInfo, route, table, imageBucket, isTitle, isIssue}) => {
+export const ListToolBox = ({item, name, displayName, data, setData, showAdminInfo, route, table, imageBucket, isTitle, isIssue}) => {
 
-    const editText = LABELS_AND_HEADINGS.EDIT + " " + name;
-    const deleteText = LABELS_AND_HEADINGS.DELETE + " " + name;
+    const [collectingTitle, setCollectingTitle] = useState(false);
+    const [collectingIssue, setCollectingIssue] = useState(false);
+    const editText = LABELS_AND_HEADINGS.EDIT + " " + displayName;
+    const deleteText = LABELS_AND_HEADINGS.DELETE + " " + displayName;
+    const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
+    const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
+    const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
+    const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
+    const collectTitleBtnClassName = collectingTitle ? "btn text-success sms-icon-btn" : "btn text-light sms-icon-btn";
+    const collectIssueBtnClassName = collectingIssue ? "btn text-success sms-icon-btn" : "btn text-light sms-icon-btn";
     const {setInformationMessage} = useAppContext();
 
     return showAdminInfo ? (
@@ -30,9 +38,23 @@ export const ListToolBox = ({item, name, data, setData, showAdminInfo, route, ta
         :
         isTitle || isIssue ?
             isTitle ?
-                (<p>is title</p>)
+                <div className={"d-inline-block text-end"}>
+                    <button
+                        className={collectTitleBtnClassName}
+                        aria-label={collectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                        onClick={() => setCollectingTitle(!collectingTitle)}>
+                        <Icon icon={faBadgeCheck} className={"fa-xl"}/>
+                    </button>
+                </div>
                 :
-                (<p>is title</p>)
+                <div className={"d-inline-block text-end"}>
+                    <button
+                        className={collectIssueBtnClassName}
+                        aria-label={collectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                        onClick={() => setCollectingIssue(!collectingIssue)}>
+                        <Icon icon={faBadgeCheck} className={"fa-xl"}/>
+                    </button>
+                </div>
             :
             <></>
 }
