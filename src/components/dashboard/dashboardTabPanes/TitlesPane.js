@@ -6,7 +6,7 @@ export const TitlesPane = () => {
         <div>
             <h1>{PANES.TITLES.NAME}</h1>
             <p className="lead mb-5">
-                Mina coola titlar.
+                {PANES.TITLES.NAME}
             </p>
         </div>
     )

@@ -6,7 +6,7 @@ export const OtherCollectionsPane = () => {
         <div>
             <h1>{PANES.OTHER_COLLECTIONS.NAME}</h1>
             <p className="lead mb-5">
-                Andras fräna samlingar
+                {PANES.OTHER_COLLECTIONS.NAME}
             </p>
         </div>
     )

@@ -24,9 +24,7 @@ export const PublishersCard = () => {
                 {
                     limitedPublishersData ?
                         <>
-                            <p>
-                                {TEXTS.SHOWING_LATEST_PUBLISHERS}
-                            </p>
+                            <p>{TEXTS.SHOWING_LATEST_PUBLISHERS}</p>
                             <PublishersList publishersData={limitedPublishersData} setPublishersData={setLimitedPublishersData} showAdminInfo={true}/>
                         </>
                         :

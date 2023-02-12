@@ -100,7 +100,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                             <button onClick={handleSubmit} className={"btn btn-primary"}>
                                 {LABELS_AND_HEADINGS.SAVE}
                             </button>
-                            <button className={"btn btn-outline-secondary"} onClick={handleAbort}>
+                            <button className={"btn btn-secondary"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>
                         </>

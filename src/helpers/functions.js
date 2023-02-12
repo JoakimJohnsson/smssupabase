@@ -27,6 +27,10 @@ export const getCalculatedYear = (startYear, endYear) => {
     }
 }
 
+export const getFormatName = (formatData, id) => {
+    return formatData.find(f => f.id === id).name;
+}
+
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
     if (success) {
         setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);
@@ -96,6 +100,20 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
     } else {
         return 1;
     }
+}
+
+export const hasImage = (item) => {
+    return item && item.image_filename && item.image_url;
+}
+
+export const sortByName = (a, b) => {
+    if (a.name < b.name) {
+        return -1;
+    }
+    if (a.name > b.name) {
+        return 1;
+    }
+    return 0;
 }
 
 // Helper function for converting string value "true" to boolean value.

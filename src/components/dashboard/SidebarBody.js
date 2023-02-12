@@ -10,7 +10,7 @@ import {TitlesIconDuoTone} from "../icons-duotone";
 export const SidebarBody = ({handleClick}) => {
     return (
         <>
-            <Nav className={"w-100 d-block pt-3 pt-md-5"}>
+            <Nav className={"w-100 d-block pt-3 pt-sm-5"}>
                 <div className={"mb-4"}>
                     <p className={"sidebar-label"}>{LABELS_AND_HEADINGS.MY_COLLECTION}</p>
                     <SidebarNavLink route={ROUTES.DASHBOARD.OVERVIEW} handleClick={handleClick} text={PANES.OVERVIEW.NAME} variant={"primary"}

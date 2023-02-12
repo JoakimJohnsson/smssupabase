@@ -158,7 +158,7 @@ export const AdminTitleAdd = () => {
                                 disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
-                        <button className={"btn btn-outline-secondary"}
+                        <button className={"btn btn-secondary"}
                                 onClick={resetAddTitleForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>

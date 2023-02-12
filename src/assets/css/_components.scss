@@ -125,7 +125,7 @@
 // PAGE
 
 .sms-page-col {
-  @extend .col-12, .col-lg-8, .col-xl-6;
+  @extend .col-12, .col-lg-8;
 }
 
 .breadcrumb-item {
@@ -157,16 +157,6 @@
     border: none;
     &:not(:last-child) {
       border-bottom: $border--default;
-    }
-    &:first-of-type {
-      .accordion-button {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
-    }
-    &:last-of-type .accordion-button.collapsed {
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
     }
   }
   .accordion-body {

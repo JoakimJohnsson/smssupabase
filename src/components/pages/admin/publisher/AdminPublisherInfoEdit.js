@@ -48,6 +48,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     type={"text"}
                     value={newPublisher.description || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
+                    disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
                 <input
@@ -57,6 +58,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     type={"text"}
                     value={newPublisher.wiki_url || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
+                    disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                 {
@@ -78,7 +80,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                             <button onClick={handleSubmit} className={"btn btn-primary"}>
                                 {LABELS_AND_HEADINGS.SAVE}
                             </button>
-                            <button className={"btn btn-outline-secondary"} onClick={handleAbort}>
+                            <button className={"btn btn-secondary"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>
                         </>
