@@ -7,7 +7,7 @@ import {Icon} from "../icons";
 import {faPenCircle, faCircleXmark} from "@fortawesome/pro-duotone-svg-icons";
 
 
-export const ListToolBox = ({item, name, data, setData, showAdminInfo, route, table, imageBucket}) => {
+export const ListToolBox = ({item, name, data, setData, showAdminInfo, route, table, imageBucket, isTitle, isIssue}) => {
 
     const editText = LABELS_AND_HEADINGS.EDIT + " " + name;
     const deleteText = LABELS_AND_HEADINGS.DELETE + " " + name;
@@ -28,7 +28,11 @@ export const ListToolBox = ({item, name, data, setData, showAdminInfo, route, ta
             </div>
         )
         :
-        (
+        isTitle || isIssue ?
+            isTitle ?
+                (<p>is title</p>)
+                :
+                (<p>is title</p>)
+            :
             <></>
-        )
 }

@@ -31,6 +31,7 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
                             route={ROUTES.ADMIN.ISSUES}
                             table={TABLES.ISSUES}
                             imageBucket={BUCKETS.ISSUE_IMAGES}
+                            isIssue
                         />
                     }
                 </div>

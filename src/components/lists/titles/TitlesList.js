@@ -43,6 +43,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                                 route={ROUTES.ADMIN.TITLES}
                                                 table={TABLES.TITLES}
                                                 imageBucket={BUCKETS.TITLE_IMAGES}
+                                                isTitle
                                             />
                                         }
                                     </div>
