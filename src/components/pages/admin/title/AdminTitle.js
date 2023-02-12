@@ -211,7 +211,7 @@ export const AdminTitle = () => {
                                 <IssueIcon className={"me-2"}/>
                                 {LABELS_AND_HEADINGS.ADD}
                             </button>
-                            <button className={"btn btn-outline-secondary"}
+                            <button className={"btn btn-secondary"}
                                     onClick={resetAddIssueForm}>
                                 {LABELS_AND_HEADINGS.RESET_FORM}
                             </button>

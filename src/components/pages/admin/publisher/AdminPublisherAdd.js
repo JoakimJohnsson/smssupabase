@@ -100,7 +100,7 @@ export const AdminPublisherAdd = () => {
                                 disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
-                        <button className={"btn btn-outline-secondary"}
+                        <button className={"btn btn-secondary"}
                                 onClick={resetAddPublisherForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
