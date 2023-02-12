@@ -76,8 +76,8 @@ const Settings = () => {
                     <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                     <p>{TEXTS.SETTINGS_INFO}</p>
                     <p>
-                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
                         <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                            <Icon icon={faMailboxFlagUp} className={"me-2"}/>
                             admin@svenskamarvelsamlare.se
                         </a>
                     </p>

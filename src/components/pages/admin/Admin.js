@@ -17,8 +17,8 @@ export const Admin = () => {
                     <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
                     <p>{TEXTS.ADMIN_INFO}</p>
                     <p>
-                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
                         <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                            <Icon icon={faMailboxFlagUp} className={"me-2"}/>
                             admin@svenskamarvelsamlare.se
                         </a>
                     </p>

@@ -54,17 +54,17 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<DashboardIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <NavDropdown title={<NavDropdownTitle/>} id="basic-nav-dropdown">
                             <NavDropdown.Item>
-                                <NavLink exact={true} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
+                                <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
                                     <TitlesIconDuoTone className={"me-2"}/><span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_TITLES}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item>
-                                <NavLink exact={true} to={ROUTES.PUBLISHERS} className={"nav-link nav-link--dropdown"}>
+                                <NavLink exact={"true"} to={ROUTES.PUBLISHERS} className={"nav-link nav-link--dropdown"}>
                                     <PublishersIconDuoTone className={"me-2"}/><span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item>
-                                <NavLink exact={true} to={ROUTES.ISSUES} className={"nav-link nav-link--dropdown"}>
+                                <NavLink exact={"true"} to={ROUTES.ISSUES} className={"nav-link nav-link--dropdown"}>
                                     <IssueIconDuoTone className={"me-2"}/><span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</span>
                                 </NavLink>
                             </NavDropdown.Item>

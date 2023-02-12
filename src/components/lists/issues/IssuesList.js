@@ -19,7 +19,7 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) =>
     }
 
     return issuesData && issuesData.length && groupedIssuesData.length && (
-        <Accordion className={"sms-list--accordion mb-4"} defaultActiveKey={"0"} flush>
+        <Accordion className={"sms-list--accordion mb-4"} flush>
             {
                 groupedIssuesData.length ?
                     (groupedIssuesData.map((year, index) =>
