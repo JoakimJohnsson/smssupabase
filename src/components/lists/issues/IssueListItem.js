@@ -3,6 +3,7 @@ import {ImageIcon, IssueIcon} from "../../icons";
 import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
+import {hasImage} from "../../../helpers/functions";
 
 
 export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssuesData}) => {
@@ -13,7 +14,7 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
                     <div>
                         <IssueIcon size={"1x"} className={"me-2"}/>
                         {
-                            issue && issue.image_filename && issue.image_url &&
+                            hasImage(issue) &&
                             <ImageIcon size={"1x"} className={"me-2 text-success"}/>
                         }
                         <IssueLink showAdminInfo={showAdminInfo} issue={issue} title={title}/>

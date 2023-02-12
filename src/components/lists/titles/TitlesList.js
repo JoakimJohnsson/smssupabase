@@ -1,12 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {TextSpacer} from "../../minis/TextSpacer";
 import {FriendlyDate} from "../../minis/FriendlyDate";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {ImageIcon, TitleIcon} from "../../icons";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
-import {sortByName} from "../../../helpers/functions";
+import {hasImage, sortByName} from "../../../helpers/functions";
 
 
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
@@ -20,20 +19,16 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
                                         <div>
-
                                             <TitleIcon size={"1x"} className={"me-2"}/>
                                             {
-                                                t && t.image_filename && t.image_url &&
+                                                hasImage(t) &&
                                                 <ImageIcon size={"1x"} className={"me-2 text-success"}/>
                                             }
-
                                             <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={"me-3"}>
-                                                {t.name}
+                                                {t.name} {t.start_year}
                                             </Link>
                                         </div>
                                         <div>
-                                            {t.start_year}
-                                            <TextSpacer character={"|"} margin={"mx-2"}/>
                                             Inlagd: <FriendlyDate dateString={t.created_at}/>
                                         </div>
                                     </div>

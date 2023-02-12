@@ -98,6 +98,10 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
     }
 }
 
+export const hasImage = (item) => {
+    return item && item.image_filename && item.image_url;
+}
+
 export const sortByName = (a, b) => {
     if (a.name < b.name) {
         return -1;

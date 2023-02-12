@@ -24,9 +24,7 @@ export const TitlesCard = () => {
                 {
                     limitedTitlesData ?
                         <>
-                            <p>
-                                {TEXTS.SHOWING_LATEST_TITLES}
-                            </p>
+                            <p>{TEXTS.SHOWING_LATEST_TITLES}</p>
                             <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showAdminInfo={true}/>
                         </>
                         :

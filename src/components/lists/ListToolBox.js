@@ -14,7 +14,7 @@ export const ListToolBox = ({item, name, data, setData, showAdminInfo, route, ta
     const {setInformationMessage} = useAppContext();
 
     return showAdminInfo ? (
-            <div className={"ms-2 d-inline-block"}>
+            <div className={"d-inline-block text-end"}>
                 <Link to={route + item.id + "?edit=true"} className={"btn text-primary sms-icon-btn"} title={editText}>
                     <Icon icon={faPenCircle} className={"fa-xl"}/>
                     <span className={"visually-hidden"}>{editText}</span>
@@ -29,6 +29,6 @@ export const ListToolBox = ({item, name, data, setData, showAdminInfo, route, ta
         )
         :
         (
-            <span className={"ms-2 bg-dog p-2 rounded-3 d-inline-block"}>User tools here</span>
+            <></>
         )
 }
