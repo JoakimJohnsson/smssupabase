@@ -108,11 +108,8 @@ img {
 // Spacing
 
 .sidebar-x-padding {
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(lg) {
     padding-left: 2rem;
     padding-right: 1rem;
-  }
-  @include media-breakpoint-only(md) {
-    padding: .5rem;
   }
 }
