@@ -13,7 +13,6 @@ export function AppContextProvider({children}) {
     const [avatarImageFilename, setAvatarImageFilename] = useState("");
     const [userUrl, setUserUrl] = useState("");
     const [role, setRole] = useState(0);
-    const [loading, setLoading] = useState(true);
     const [informationMessage, _setInformationMessage] = useState(MESSAGES.EMPTY);
 
     useEffect(() => {
@@ -34,14 +33,12 @@ export function AppContextProvider({children}) {
                 .subscribe()
             updateProfile(user).then(() => supabase.removeChannel(mySub));
         }
-        setLoading(false)
     }, [user])
 
     useEffect(() => {
         // Listen for changes on auth state. Log in/out etc.
         supabase.auth.onAuthStateChange((event, session) => {
                 setUser(session?.user ?? {})
-                setLoading(false)
             }
         )
     }, [])
@@ -83,7 +80,6 @@ export function AppContextProvider({children}) {
         setUserUrl("");
         try {
             if (user && user.id) {
-                setLoading(true);
                 let {data, error, status} = await supabase
                     .from(TABLES.PROFILES)
                     .select(`firstname, lastname, role, website, avatar_image_filename`)
@@ -111,14 +107,12 @@ export function AppContextProvider({children}) {
             }
         } catch (error) {
             console.error(error.message)
-        } finally {
-            setLoading(false)
         }
     }
 
     return (
         <AppContext.Provider value={value}>
-            {!loading && children}
+            {children}
         </AppContext.Provider>
     )
 }

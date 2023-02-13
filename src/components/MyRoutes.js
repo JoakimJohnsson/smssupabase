@@ -89,6 +89,8 @@ export const MyRoutes = () => {
             <Routes>
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
+                {/* Catch all */}
+                <Route path={"*"} element={<p>No match!</p>}/>
             </Routes>
         )
 }
