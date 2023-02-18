@@ -42,7 +42,7 @@ export const MyRoutes = () => {
         setInitRoutes(true);
     }, [user, setUser])
 
-    return initRoutes && role ? (
+    return initRoutes && (
             <Routes>
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
@@ -82,13 +82,6 @@ export const MyRoutes = () => {
                 <Route path={ROUTES.ADMIN.ISSUES} element={(user && user.id && role === 1) ? <AdminIssues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Catch all */}
                 <Route path={"*"} element={<p>No match!</p>}/>
-            </Routes>
-        )
-        :
-        (
-            <Routes>
-                <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
-                <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
             </Routes>
         )
 }
