@@ -3,6 +3,7 @@ import {supabase} from '../supabase/supabaseClient';
 import {prepareUrl} from '../helpers/functions';
 import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
 
+
 const AppContext = React.createContext();
 
 export function AppContextProvider({children}) {
@@ -12,7 +13,7 @@ export function AppContextProvider({children}) {
     const [avatarImageUrl, setAvatarImageUrl] = useState("");
     const [avatarImageFilename, setAvatarImageFilename] = useState("");
     const [userUrl, setUserUrl] = useState("");
-    const [role, setRole] = useState(0);
+    const [role, setRole] = useState(null);
     const [informationMessage, _setInformationMessage] = useState(MESSAGES.EMPTY);
 
     useEffect(() => {
@@ -23,7 +24,7 @@ export function AppContextProvider({children}) {
     }, [])
 
     useEffect(() => {
-        if (user) {
+        if (user && !role) {
             // Check if user has admin privileges and set role.
             const mySub = supabase
                 .channel('public:profiles')
@@ -33,7 +34,7 @@ export function AppContextProvider({children}) {
                 .subscribe()
             updateProfile(user).then(() => supabase.removeChannel(mySub));
         }
-    }, [user])
+    }, [user, role])
 
     useEffect(() => {
         // Listen for changes on auth state. Log in/out etc.
@@ -60,6 +61,8 @@ export function AppContextProvider({children}) {
         signIn: (data) => supabase.auth.signInWithPassword(data),
         signOut: () => supabase.auth.signOut(),
         user,
+        setUser,
+        setRole,
         avatarImageUrl,
         setAvatarImageUrl,
         avatarImageFilename,
