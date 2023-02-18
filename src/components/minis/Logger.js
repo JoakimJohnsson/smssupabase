@@ -10,5 +10,6 @@ export const Logger = ({log, stringify}) => {
         )
     } else {
         console.log("LOG ", log);
+        return (<></>);
     }
 }
