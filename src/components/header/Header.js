@@ -6,9 +6,9 @@ import {Information} from "../minis/Information";
 
 export const Header = () => {
 
-    const {user, informationMessage} = useAppContext();
+    const {informationMessage, user, profile} = useAppContext();
 
-    return user && user.id && (
+    return user && profile && (
         <header className={"sms-header"}>
             <AuthorizedNavigation/>
             <Information message={informationMessage}/>

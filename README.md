@@ -11,17 +11,23 @@ Be aware! There is no dev DB.
 
 ## Deployment
 
-On push to main - project will automatically be built and deployed to www.svenskamarvelsamlare.se.
+On push to main (merging release<x.x.x> into main) - project will automatically be built and deployed to www.svenskamarvelsamlare.se.
+
+### Action script
 
 Edit .github/workflows/main.yml to make changes in the GitHub Action script.
 
-Please run `npm version <major> <minor> <patch>` before to update version information.
+### Versioning
+Before merging develop to release-<x.x.x> - Please run `npm version <major> <minor> <patch>` to update version information.
 
 ### Workflow
 https://github.com/JoakimJohnsson/smssupabase/issues
 * When an issue is complete - push changes to develop (directly or via pull request), or other feature branch. 
   * If on a feature branch - make a pull request to develop first.
-* Admin will merge pull requests and decide when to make a "release" pull request to main branch.
+* When develop is ready for deploy - Admin will merge into a release branch (release-x.x.x).
+* A pull request is made from the release branch.
+* Admin will review and merge.
+* The action script will run tests and deploy to www.svenskamarvelsamlare.se.
 
 ## Available Scripts
 

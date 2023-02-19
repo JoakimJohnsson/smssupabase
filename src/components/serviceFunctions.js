@@ -3,29 +3,19 @@ import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
 import {generateUniqueHashedFilename} from "../helpers/functions";
 
 // PROFILES FUNCTIONS
-export const getProfile = async (setLoading, setFirstname, setLastname, setWebsite, setAvatarImageFilename, id) => {
+export const updateProfileData = async (id, data, setInformationMessage) => {
     try {
-        if (id) {
-            setLoading(true);
-            let {data, error, status} = await supabase
-                .from(TABLES.PROFILES)
-                .select("firstname, lastname, website, avatar_image_filename")
-                .eq("id", id)
-                .single();
-            if (error && status !== 406) {
-                console.error(error);
-            }
-            if (data) {
-                setFirstname(data.firstname);
-                setLastname(data.lastname);
-                setWebsite(data.website);
-                setAvatarImageFilename(data.avatar_image_filename);
-            }
-        }
+        let {error, status} = await supabase
+            .from(TABLES.PROFILES)
+            .update([{
+                website: data.website,
+                firstname: data.firstname,
+                lastname: data.lastname
+            }])
+            .eq("id", id)
+        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
-    } finally {
-        setLoading(false)
     }
 }
 

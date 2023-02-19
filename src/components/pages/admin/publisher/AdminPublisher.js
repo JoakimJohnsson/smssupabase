@@ -26,7 +26,7 @@ export const AdminPublisher = () => {
         fetchPublisherData();
         setImageFilename(publisher.image_filename);
         setImageUrl(publisher.image_url);
-    }, [id, fetchPublisherData, setImageFilename, setImageUrl, imageFilename, imageUrl, publisher.image_filename, publisher.image_url])
+    }, [id, fetchPublisherData, setImageFilename, setImageUrl, imageFilename, imageUrl, publisher.image_filename, publisher.image_url]);
 
     useEffect(() => {
         setNewPublisher({...publisher});
