@@ -24,6 +24,8 @@
     }
   }
   &:not(.sms-icon-btn) {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
     min-width: 200px;
     justify-content: center;
   }

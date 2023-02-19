@@ -1,6 +1,7 @@
 import React from "react";
 import {
     faShieldCat,
+    faShieldXmark,
     faHouse,
     faFile,
     faChartLine,
@@ -13,6 +14,8 @@ import {
     faArrowDownToArc,
     faArrowRightFromArc,
     faHeartCirclePlus,
+    faUser,
+    faUsers,
     faKey
 } from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
@@ -20,6 +23,12 @@ import {Icon} from "../icons";
 export const AdminIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faShieldCat} size={size} className={className}/>
+    )
+}
+
+export const NotAdminIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faShieldXmark} size={size} className={className}/>
     )
 }
 
@@ -109,5 +118,17 @@ export const TitlesIconDuoTone = ({size, className}) => {
 export const TitleIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faFile} size={size} className={className}/>
+    )
+}
+
+export const UsersIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faUsers} size={size} className={className}/>
+    )
+}
+
+export const UserIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faUser} size={size} className={className}/>
     )
 }

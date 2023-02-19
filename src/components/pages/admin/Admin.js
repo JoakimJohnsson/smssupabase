@@ -5,6 +5,7 @@ import {PublishersCard} from "../../dashboard/dashboardCards/admin/PublishersCar
 import {HeadingWithBreadCrumbs} from "../../headings";
 import {Icon} from "../../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
+import {UsersCard} from "../../dashboard/dashboardCards/admin/UsersCard";
 
 
 export const Admin = () => {
@@ -27,6 +28,7 @@ export const Admin = () => {
             <div className={"row row-padding--secondary"}>
                 <TitlesCard/>
                 <PublishersCard/>
+                <UsersCard/>
             </div>
         </main>
     )

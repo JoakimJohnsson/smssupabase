@@ -20,7 +20,7 @@ export const HeroHeader = () => {
                             <a href={"#login-section"} className={"btn btn-primary btn-cta d-block d-md-inline-block mb-4 me-0 me-md-3"}>
                                 <LoginIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.LOG_IN_CTA}
                             </a>
-                            <a href={"#create-account-section"} className={"btn btn-primary btn-cta d-block d-md-inline-block mb-4"}>
+                            <a href={"#create-account-section"} className={"btn btn-primary btn-cta d-block d-md-inline-block mb-4 me-0"}>
                                 <RegisterIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
                             </a>
                         </div>

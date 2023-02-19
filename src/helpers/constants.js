@@ -179,6 +179,7 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
+    USERS: "Användare",
     WEBSITE: "Webbplats",
     WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
     WIKI_URL: "Länk till Seriewikin",
@@ -207,7 +208,8 @@ export const TEXTS = {
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
-    SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen."
+    SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
+    SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen."
 }
 
 export const FILETYPES = {
