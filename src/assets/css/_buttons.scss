@@ -22,6 +22,10 @@
     @include media-breakpoint-up(sm) {
       padding: 1rem 3rem;
     }
+    .btn-cta--icon {
+      @extend .me-3;
+      font-size: 1.5rem;
+    }
   }
   &:not(.sms-icon-btn) {
     @extend .mb-3, .me-3;

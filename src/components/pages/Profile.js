@@ -7,6 +7,7 @@ import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
+import {KeyIconDuoTone} from "../icons-duotone";
 
 
 const Profile = () => {
@@ -83,6 +84,8 @@ const Profile = () => {
                         <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
                         <button className={"btn btn-primary btn-cta"}
                                 onClick={() => requestPasswordResetForEmail(user.email)}>
+                            <KeyIconDuoTone className={"btn-cta--icon"}/>
+                            {LABELS_AND_HEADINGS.RESET_PASSWORD}
                         </button>
                     </div>
                 </div>

@@ -9,7 +9,8 @@ import {
     faBuildingColumns,
     faFileImage,
     faListTimeline,
-    faComet
+    faComet,
+    faKey
 } from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
 
@@ -46,6 +47,11 @@ export const IssuesIconDuoTone = ({size, className}) => {
 export const IssueIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faFile} size={size} className={className}/>
+    )
+}
+export const KeyIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faKey} size={size} className={className}/>
     )
 }
 
