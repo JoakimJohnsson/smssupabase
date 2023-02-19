@@ -29,6 +29,22 @@ export const getProfile = async (setLoading, setFirstname, setLastname, setWebsi
     }
 }
 
+export const updateProfileData = async (id, data, setInformationMessage) => {
+    try {
+        let {error, status} = await supabase
+            .from(TABLES.PROFILES)
+            .update([{
+                website: data.website,
+                firstname: data.firstname,
+                lastname: data.lastname
+            }])
+            .eq("id", id)
+        setInformationMessage({show: true, status: status, error: error});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 // TITLES FUNCTIONS
 export const addTitleData = async (data, setInformationMessage) => {

@@ -56,7 +56,7 @@ export const CLASSES = {
 export const ROUTES = {
     DEFAULT: "/",
     SUCCESS: "/success",
-    SETTINGS: "/settings",
+    PROFILE: "/profile",
     TITLES: "/titles",
     TITLE_ID: "/titles/:id",
     ISSUES: "/issues",
