@@ -21,7 +21,7 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                                         <div>
                                             <PublishersIcon size={"1x"} className={"me-2"}/>
                                             {
-                                                hasImage(p) &&
+                                                hasImage(p) && showAdminInfo &&
                                                 <ImageIcon size={"1x"} className={"me-2 text-success"}/>
                                             }
                                             <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-3"}>
