@@ -10,6 +10,9 @@ import {
     faFileImage,
     faListTimeline,
     faComet,
+    faArrowDownToArc,
+    faArrowRightFromArc,
+    faHeartCirclePlus,
     faKey
 } from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
@@ -61,9 +64,27 @@ export const LogoIconDuoTone = ({size, className}) => {
     )
 }
 
+export const LoginIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faArrowDownToArc} size={size} className={className}/>
+    )
+}
+
+export const LogoutIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faArrowRightFromArc} size={size} className={className}/>
+    )
+}
+
 export const PublishersIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faBuildingColumns} size={size} className={className}/>
+    )
+}
+
+export const RegisterIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faHeartCirclePlus} size={size} className={className}/>
     )
 }
 

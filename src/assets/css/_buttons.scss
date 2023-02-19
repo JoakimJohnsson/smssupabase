@@ -15,10 +15,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    .sms-icon {
-      width: 2rem;
-      @extend .me-2;
-    }
     @include media-breakpoint-up(sm) {
       padding: 1rem 3rem;
     }
@@ -28,7 +24,6 @@
     }
   }
   &:not(.sms-icon-btn) {
-    @extend .mb-3, .me-3;
     min-width: 200px;
     justify-content: center;
   }

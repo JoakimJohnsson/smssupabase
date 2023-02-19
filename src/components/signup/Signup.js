@@ -5,6 +5,7 @@ import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
 import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
+import {RegisterIcon} from "../icons";
 
 export const Signup = () => {
     // Success and error variants of form-input is available
@@ -84,7 +85,7 @@ export const Signup = () => {
                        required/>
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
                 <button type="submit" className={"btn btn-primary"} disabled>
-                    {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
+                    <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
             </form>

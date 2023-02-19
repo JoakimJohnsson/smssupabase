@@ -10,6 +10,9 @@ import {
     faBuildingColumns,
     faFileImage,
     faComet,
+    faArrowDownToArc,
+    faArrowRightFromArc,
+    faHeartCirclePlus,
     faKey
 } from "@fortawesome/pro-regular-svg-icons";
 import {faListTimeline} from "@fortawesome/pro-duotone-svg-icons";
@@ -62,6 +65,18 @@ export const KeyIcon = ({size, className}) => {
     )
 }
 
+export const LoginIcon = ({size, className}) => {
+    return (
+        <Icon icon={faArrowDownToArc} size={size} className={className}/>
+    )
+}
+
+export const LogoutIcon = ({size, className}) => {
+    return (
+        <Icon icon={faArrowRightFromArc} size={size} className={className}/>
+    )
+}
+
 export const LogoIcon = ({size, className}) => {
     return (
         <Icon icon={faComet} size={size} className={className}/>
@@ -71,6 +86,12 @@ export const LogoIcon = ({size, className}) => {
 export const PublishersIcon = ({size, className}) => {
     return (
         <Icon icon={faBuildingColumns} size={size} className={className}/>
+    )
+}
+
+export const RegisterIcon = ({size, className}) => {
+    return (
+        <Icon icon={faHeartCirclePlus} size={size} className={className}/>
     )
 }
 
