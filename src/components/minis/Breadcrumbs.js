@@ -24,7 +24,7 @@ export const Breadcrumbs = ({doIgnoreName}) => {
                 return LABELS_AND_HEADINGS.HOME;
             case "admin":
                 return LABELS_AND_HEADINGS.ADMIN;
-            case "settings":
+            case "profile":
                 return LABELS_AND_HEADINGS.SETTINGS;
             case "titles":
                 return LABELS_AND_HEADINGS.ALL_TITLES;
