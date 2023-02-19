@@ -7,14 +7,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const SignOutButton = ({mobile}) => {
 
-    const {signOut, setUser, setRole} = useAppContext();
+    const {signOut, setProfile, setUser} = useAppContext();
     const navigate = useNavigate();
     const size = mobile ? "1x" : "2x";
 
     async function handleSignOut() {
         await signOut().then(() => {
+            setProfile(null);
             setUser(null);
-            setRole(null);
         })
         navigate("/");
     }
