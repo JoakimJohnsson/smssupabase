@@ -31,7 +31,10 @@ https://github.com/JoakimJohnsson/smssupabase/issues
 
 * When an issue is complete - push changes to develop (directly or via pull request), or other feature branch.
     * If on a feature branch - make a pull request to develop first.
-* When develop is ready for deploy - Admin will merge into a release branch (release-x.x.x).
+* When develop is ready for deploy - Admin will: 
+  * Change version.
+  * Merge into a release branch (release-x.x.x).
+  * Git tags.
 * A pull request is made from the release branch.
 * Admin will review and merge.
 * The action script will run tests and deploy to www.svenskamarvelsamlare.se.
