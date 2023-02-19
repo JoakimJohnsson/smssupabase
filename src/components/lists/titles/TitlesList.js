@@ -21,7 +21,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                         <div>
                                             <TitleIcon size={"1x"} className={"me-2"}/>
                                             {
-                                                hasImage(t) &&
+                                                hasImage(t) && showAdminInfo &&
                                                 <ImageIcon size={"1x"} className={"me-2 text-success"}/>
                                             }
                                             <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={"me-3"}>

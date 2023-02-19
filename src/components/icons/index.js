@@ -2,6 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faShieldCat,
+    faShieldXmark,
     faHouse,
     faFile,
     faChartLine,
@@ -9,7 +10,13 @@ import {
     faFiles,
     faBuildingColumns,
     faFileImage,
-    faComet
+    faComet,
+    faArrowDownToArc,
+    faArrowRightFromArc,
+    faHeartCirclePlus,
+    faUser,
+    faUsers,
+    faKey
 } from "@fortawesome/pro-regular-svg-icons";
 import {faListTimeline} from "@fortawesome/pro-duotone-svg-icons";
 
@@ -22,6 +29,12 @@ export const Icon = ({icon, size, className}) => {
 export const AdminIcon = ({size, className}) => {
     return (
         <Icon icon={faShieldCat} size={size} className={className}/>
+    )
+}
+
+export const NotAdminIcon = ({size, className}) => {
+    return (
+        <Icon icon={faShieldXmark} size={size} className={className}/>
     )
 }
 
@@ -55,6 +68,24 @@ export const IssueIcon = ({size, className}) => {
     )
 }
 
+export const KeyIcon = ({size, className}) => {
+    return (
+        <Icon icon={faKey} size={size} className={className}/>
+    )
+}
+
+export const LoginIcon = ({size, className}) => {
+    return (
+        <Icon icon={faArrowDownToArc} size={size} className={className}/>
+    )
+}
+
+export const LogoutIcon = ({size, className}) => {
+    return (
+        <Icon icon={faArrowRightFromArc} size={size} className={className}/>
+    )
+}
+
 export const LogoIcon = ({size, className}) => {
     return (
         <Icon icon={faComet} size={size} className={className}/>
@@ -64,6 +95,12 @@ export const LogoIcon = ({size, className}) => {
 export const PublishersIcon = ({size, className}) => {
     return (
         <Icon icon={faBuildingColumns} size={size} className={className}/>
+    )
+}
+
+export const RegisterIcon = ({size, className}) => {
+    return (
+        <Icon icon={faHeartCirclePlus} size={size} className={className}/>
     )
 }
 
@@ -88,5 +125,17 @@ export const TitlesIcon = ({size, className}) => {
 export const TitleIcon = ({size, className}) => {
     return (
         <Icon icon={faFile} size={size} className={className}/>
+    )
+}
+
+export const UsersIcon = ({size, className}) => {
+    return (
+        <Icon icon={faUsers} size={size} className={className}/>
+    )
+}
+
+export const UserIcon = ({size, className}) => {
+    return (
+        <Icon icon={faUser} size={size} className={className}/>
     )
 }

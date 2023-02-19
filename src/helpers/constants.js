@@ -143,6 +143,7 @@ export const LABELS_AND_HEADINGS = {
     LAST_NAME: "Efternamn",
     LOADING: "Laddar",
     LOG_IN: "Logga in",
+    LOG_IN_CTA: "Logga in!",
     MARVELKLUBBEN_NUMBER: "Marvelklubben nummer",
     MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",
     MENU: "Meny",
@@ -178,6 +179,7 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
+    USERS: "Användare",
     WEBSITE: "Webbplats",
     WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
     WIKI_URL: "Länk till Seriewikin",
@@ -199,14 +201,15 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_1: "Denna applikation innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från",
-    MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling",
-    NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet",
-    ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar",
+    MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
+    NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet.",
+    ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar.",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt återställa eller ändra ditt lösenord.",
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
-    SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen."
+    SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
+    SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen."
 }
 
 export const FILETYPES = {
