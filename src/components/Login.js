@@ -35,7 +35,7 @@ const Login = () => {
 
     return (
 
-        <form onSubmit={handleSubmit} className={"sms-form mb-3"}>
+        <form onSubmit={handleSubmit} className={"sms-form mb-5 mb-sm-3"}>
             <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
             <input id="input-email"
                    type="email"
@@ -55,8 +55,6 @@ const Login = () => {
             <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary" : "btn btn-primary disabled"}>
                 <LoginIcon className={"me-2"}/>{LABELS_AND_HEADINGS.LOG_IN}
             </button>
-
-
             {showFormError && <p className={"alert alert-danger mt-3"} role={"alert"}>{formErrorMessage}</p>}
         </form>
 
