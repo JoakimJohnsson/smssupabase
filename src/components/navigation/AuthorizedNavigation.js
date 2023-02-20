@@ -9,7 +9,7 @@ import {Icon} from "../icons";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
     AdminIconDuoTone,
-    DashboardIconDuoTone, IssueIconDuoTone, IssuesIconDuoTone, LogoIconDuoTone,
+    DashboardIconDuoTone, IssueIconDuoTone, LogoIconDuoTone,
     PublishersIconDuoTone,
     SettingsIconDuoTone,
     StartIconDuoTone,
@@ -93,7 +93,7 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<PublishersIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
-                        <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<IssuesIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<IssueIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
                         <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<SettingsIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>

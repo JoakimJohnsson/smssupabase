@@ -5,6 +5,7 @@ import {
     faShieldXmark,
     faHouse,
     faFile,
+    faFileLines,
     faChartLine,
     faGears,
     faFiles,
@@ -56,15 +57,9 @@ export const ImageIcon = ({size, className}) => {
     )
 }
 
-export const IssuesIcon = ({size, className}) => {
-    return (
-        <Icon icon={faFiles} size={size} className={className}/>
-    )
-}
-
 export const IssueIcon = ({size, className}) => {
     return (
-        <Icon icon={faFile} size={size} className={className}/>
+        <Icon icon={faFileLines} size={size} className={className}/>
     )
 }
 
