@@ -60,7 +60,7 @@
 // Dashboard
 .sms-dashboard-col {
   @extend .col-12, .col-xl-6;
-  margin-bottom: 3rem;
+  margin-bottom: $grid-gutter-width;
 }
 
 .sms-form {
