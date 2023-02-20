@@ -13,7 +13,7 @@ export const Admin = () => {
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12 col-lg-8"}>
+                <div className={"row-padding--main"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADMIN}/>
                     <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
                     <p>{TEXTS.ADMIN_INFO}</p>

@@ -22,19 +22,17 @@ export const AdminIssues = () => {
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
-                    <div className={"sms-dashboard-col"}>
-                        <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</h1>
-                        <Breadcrumbs/>
-                        {
-                            issuesData && issuesData.length > 0 ?
-                                <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/>
-                                :
-                                <NoDataAvailable/>
-                        }
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
-                    </div>
+                <div className={"sms-page-col"}>
+                    <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</h1>
+                    <Breadcrumbs/>
+                    {
+                        issuesData && issuesData.length > 0 ?
+                            <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/>
+                            :
+                            <NoDataAvailable/>
+                    }
+                    <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                label={LABELS_AND_HEADINGS.BACK}/>
                 </div>
             </div>
         </main>

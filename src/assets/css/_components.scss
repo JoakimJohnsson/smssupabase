@@ -122,6 +122,10 @@
   }
 }
 
+.sms-page-col {
+  @extend .col-12, .col-lg-8;
+}
+
 // Breadcrumb
 .breadcrumb-item {
   .animate {

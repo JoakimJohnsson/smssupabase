@@ -8,12 +8,14 @@ import {Icon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {KeyIconDuoTone} from "../icons-duotone";
+import {Spinner} from "../minis/Spinner";
 
 
 const Profile = () => {
 
     const [newProfile, setNewProfile] = useState({});
     const [uploading, setUploading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const {profile, setProfile, user, fetchProfileData} = useAppContext();
@@ -22,6 +24,7 @@ const Profile = () => {
         fetchProfileData(profile.id);
         setImageFilename(profile.image_filename);
         setImageUrl(profile.image_url);
+        setLoading(false);
     }, [setImageFilename, setImageUrl, imageFilename, imageUrl, profile.image_filename, profile.image_url, fetchProfileData, profile.id]);
 
     useEffect(() => {
@@ -45,51 +48,59 @@ const Profile = () => {
 
     return (
         <main className={"container-fluid main-container"}>
-            <div className={"row row-padding--main"}>
-                <div className={"col-12 col-lg-8"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.SETTINGS}/>
-                    <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
-                    <p>{TEXTS.SETTINGS_INFO}</p>
-                    <p>
-                        <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                            <Icon icon={faMailboxFlagUp} className={"me-2"}/>
-                            admin@svenskamarvelsamlare.se
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <div className={"row row-padding--secondary"}>
-                <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile} setNewProfile={setNewProfile}/>
-                <div className={"sms-dashboard-col"}>
-                    <div className={"sms-form"}>
-                        <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
-                        <ImageUploader
-                            imageUrl={imageUrl}
-                            setImageUrl={setImageUrl}
-                            imageFilename={imageFilename}
-                            setImageFilename={setImageFilename}
-                            uploading={uploading}
-                            setUploading={setUploading}
-                            bucketName={BUCKETS.AVATAR_IMAGES}
-                            tableName={TABLES.PROFILES}
-                            fileType={FILETYPES.AVATAR_IMAGE}
-                            id={profile.id}
-                            update={() => fetchProfileData(profile.id)}
-                        />
-                    </div>
-                </div>
-                <div className={"sms-dashboard-col"}>
-                    <div className={"sms-form"}>
-                        <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
-                        <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
-                        <button className={"btn btn-primary btn-cta"}
-                                onClick={() => requestPasswordResetForEmail(user.email)}>
-                            <KeyIconDuoTone className={"btn-cta--icon"}/>
-                            {LABELS_AND_HEADINGS.RESET_PASSWORD}
-                        </button>
-                    </div>
-                </div>
-            </div>
+            {
+                loading ?
+                    <Spinner size={"4x"}/>
+                    :
+                    <>
+
+                        <div className={"row row-padding--main"}>
+                            <div className={"sms-page-col"}>
+                                <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.SETTINGS}/>
+                                <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
+                                <p>{TEXTS.SETTINGS_INFO}</p>
+                                <p>
+                                    <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
+                                        admin@svenskamarvelsamlare.se
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div className={"row row-padding--secondary"}>
+                            <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile} setNewProfile={setNewProfile}/>
+                            <div className={"sms-dashboard-col"}>
+                                <div className={"sms-form"}>
+                                    <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
+                                    <ImageUploader
+                                        imageUrl={imageUrl}
+                                        setImageUrl={setImageUrl}
+                                        imageFilename={imageFilename}
+                                        setImageFilename={setImageFilename}
+                                        uploading={uploading}
+                                        setUploading={setUploading}
+                                        bucketName={BUCKETS.AVATAR_IMAGES}
+                                        tableName={TABLES.PROFILES}
+                                        fileType={FILETYPES.AVATAR_IMAGE}
+                                        id={profile.id}
+                                        update={() => fetchProfileData(profile.id)}
+                                    />
+                                </div>
+                            </div>
+                            <div className={"sms-dashboard-col"}>
+                                <div className={"sms-form"}>
+                                    <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
+                                    <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
+                                    <button className={"btn btn-primary btn-cta"}
+                                            onClick={() => requestPasswordResetForEmail(user.email)}>
+                                        <KeyIconDuoTone className={"btn-cta--icon"}/>
+                                        {LABELS_AND_HEADINGS.RESET_PASSWORD}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+            }
         </main>
     )
 }

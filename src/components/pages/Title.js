@@ -32,10 +32,11 @@ export const Title = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 {
-                    loading ? <Spinner size={"4x"}/> :
-
+                    loading ?
+                        <Spinner size={"4x"}/>
+                        :
                         <>
-                            <div className={"col-12"}>
+                            <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3"}>
@@ -62,7 +63,6 @@ export const Title = () => {
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue/>
                             </div>
                         </>
-
                 }
             </div>
         </main>

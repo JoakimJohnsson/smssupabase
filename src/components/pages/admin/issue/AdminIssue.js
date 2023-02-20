@@ -40,7 +40,7 @@ export const AdminIssue = () => {
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
+                <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={title.name + " #" + issue.number + " / " + issue.year} doIgnoreName={true}/>
                     <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                     <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>

@@ -8,22 +8,23 @@ import {HeadingWithBreadCrumbs} from "../headings";
 
 export const Publishers = () => {
 
+    const [loading, setLoading] = useState(true);
     const [publishersData, setPublishersData] = useState(null);
 
     useEffect(() => {
-        getRowsByTable("publishers", setPublishersData).then();
+        getRowsByTable("publishers", setPublishersData).then(() => setLoading(false));
     }, [])
 
     return (
         <main className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12 row-padding--main"}>
+            <div className={"row row-padding--main"}>
+                <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
                     {
-                        publishersData ?
-                            <PublishersList publishersData={publishersData} showAdminInfo={false}/>
+                        loading ?
+                            <Spinner size={"4x"}/>
                             :
-                            <Spinner/>
+                            <PublishersList publishersData={publishersData} showAdminInfo={false}/>
                     }
                 </div>
             </div>

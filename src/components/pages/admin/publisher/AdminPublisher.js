@@ -35,7 +35,7 @@ export const AdminPublisher = () => {
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
+                <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={publisher.name}/>
                     <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
                 </div>
