@@ -31,10 +31,10 @@ export const Title = () => {
     return loading ? (<Spinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
+                <div className={"col-12"}>
                     <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                 </div>
-                <div className={"col-12 col-md-6"}>
+                <div className={"col-12 col-lg-5 col-xl-3"}>
                     {
                         title.image_url && title.image_filename &&
                         <img
@@ -43,7 +43,7 @@ export const Title = () => {
                             className="w-100 mb-3 bg-light"
                         />
                     }
-                    <p className={"lead"}>{title.description}</p>
+                    <p>{title.description}</p>
                     <p>
                         <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
                             Seriewikin för {title.name}
@@ -52,7 +52,7 @@ export const Title = () => {
                     </p>
                     <p>Formatet är {getFormatName(formatData, title.format_id)}.</p>
                 </div>
-                <div className={"col-12 col-md-6"}>
+                <div className={"col-12 col-lg-7 col-xl-6 sms-form"}>
                     <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                     <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue/>
                 </div>
