@@ -21,7 +21,7 @@ export const MESSAGES = {
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
-        FROM: " från ",
+        FROM: " från tabellen ",
         DELETE_ISSUES: "Vill du verkligen ta bort alla publikationer för den här titeln?",
         GENERATE_ISSUES: "Vill du verkligen lägga till publikationer för den här titeln?",
         GENERATE: "Du kommer automatiskt lägga till ",
