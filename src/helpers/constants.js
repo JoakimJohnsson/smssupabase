@@ -46,11 +46,7 @@ export const CLASSES = {
     FORM_INPUT_DEFAULT: "form-control mb-3",
     FORM_INPUT_DISABLED: "form-control opacity-50 mb-3",
     FORM_INPUT_SUCCESS: "form-control success mb-3",
-    FORM_INPUT_ERROR: "form-control danger mb-3",
-    SPINNER: "spinner-border m-2",
-    SPINNER_SMALL: "spinner-border spinner-border-sm m-1",
-    SPINNER_GROW: "spinner-grow m-2",
-    SPINNER_GROW_SMALL: "spinner-grow spinner-grow-sm m-1",
+    FORM_INPUT_ERROR: "form-control danger mb-3"
 }
 
 export const ROUTES = {

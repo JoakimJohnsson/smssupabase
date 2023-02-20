@@ -1,18 +1,17 @@
 import React from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {faSpinner} from "@fortawesome/pro-regular-svg-icons";
+import {Icon} from "../icons";
 
-export const Spinner = ({small, color, className}) => {
-    let spinnerClass = small ? CLASSES.SPINNER_SMALL : CLASSES.SPINNER;
+export const Spinner = ({size, color, className}) => {
+    let spinnerClass = "";
     if (className) {
-        spinnerClass += " " + className;
+        spinnerClass += className + " ";
     }
     if (color) {
-        spinnerClass += " " + color;
+        spinnerClass += color;
     }
 
     return (
-        <div className={spinnerClass} role="status">
-            <span className="visually-hidden">{LABELS_AND_HEADINGS.LOADING}</span>
-        </div>
+        <Icon icon={faSpinner} size={size} className={spinnerClass} spin/>
     )
 }

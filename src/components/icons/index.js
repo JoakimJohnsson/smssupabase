@@ -21,9 +21,9 @@ import {
 } from "@fortawesome/pro-regular-svg-icons";
 import {faListTimeline} from "@fortawesome/pro-duotone-svg-icons";
 
-export const Icon = ({icon, size, className}) => {
+export const Icon = ({icon, size, className, spin = false}) => {
     return (
-        <FontAwesomeIcon icon={icon} size={size} className={className}/>
+        <FontAwesomeIcon icon={icon} size={size} className={className} spin={spin}/>
     )
 }
 

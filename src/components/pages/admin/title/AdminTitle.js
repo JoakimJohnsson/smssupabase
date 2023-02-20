@@ -227,7 +227,7 @@ export const AdminTitle = () => {
                             {
                                 loadingDI ?
                                     <>
-                                        <Spinner small={true} className={"me-2"}/>
+                                        <Spinner size={"1x"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.DELETING}
                                     </>
                                     :
@@ -247,7 +247,7 @@ export const AdminTitle = () => {
                             {
                                 loadingGI ?
                                     <>
-                                        <Spinner small={true} className={"me-2"}/>
+                                        <Spinner size={"1x"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.GENERATING_ISSUES}
                                     </>
                                     :

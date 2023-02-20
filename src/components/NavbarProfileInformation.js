@@ -18,5 +18,5 @@ export const NavbarProfileInformation = () => {
             </div>
         )
         :
-        <Spinner small={true} color={"text-primary"}/>
+        <Spinner size={"2x"} color={"text-primary"}/>
 }

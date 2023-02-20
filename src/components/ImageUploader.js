@@ -71,7 +71,7 @@ export const ImageUploader = ({
                             <label className="btn btn-primary align-items-center" htmlFor="single">
                                 {uploading ?
                                     <>
-                                        <Spinner small={true} color={"text-black"}/>
+                                        <Spinner size={"1x"} color={"text-black"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.UPLOADING_IMAGE}
                                     </>
                                     :
