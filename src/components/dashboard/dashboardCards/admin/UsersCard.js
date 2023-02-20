@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {UsersList} from "../../../lists/users/UsersList";
+import {Link} from "react-router-dom";
 
 
 export const UsersCard = () => {
@@ -26,6 +27,7 @@ export const UsersCard = () => {
                         :
                         <NoDataAvailable/>
                 }
+                <Link className={"btn btn-outline-primary"} to={ROUTES.ADMIN.USERS}>{LABELS_AND_HEADINGS.SEE_ALL_USERS}</Link>
             </div>
         </div>
     )

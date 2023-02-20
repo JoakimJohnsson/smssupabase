@@ -81,7 +81,8 @@ export const ROUTES = {
         TITLES: "/admin/titles/",
         TITLE_ID: "/admin/titles/:id",
         TITLE_ADD: "/admin/titles/add/",
-        TITLE_EDIT_ID: "/admin/titles/:id/edit"
+        TITLE_EDIT_ID: "/admin/titles/:id/edit",
+        USERS: "/admin/users/",
     }
 }
 
@@ -98,6 +99,7 @@ export const LABELS_AND_HEADINGS = {
     ALL_ISSUES: "Alla publikationer",
     ALL_PUBLISHERS: "Alla förlag",
     ALL_TITLES: "Alla titlar",
+    ALL_USERS: "Alla användare",
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     BACK: "Tillbaka",
     BACK_TO: "Tillbaka till",
@@ -164,6 +166,7 @@ export const LABELS_AND_HEADINGS = {
     SAVE: "Spara",
     SEE_ALL_PUBLISHERS: "Se alla förlag",
     SEE_ALL_TITLES: "Se alla titlar",
+    SEE_ALL_USERS: "Se alla användare",
     SETTINGS: "Inställningar",
     SIGN_OUT: "Logga ut",
     START: "Översikt",
