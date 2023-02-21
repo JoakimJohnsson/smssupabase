@@ -75,7 +75,7 @@ export const AuthorizedNavigation = () => {
                             </NavDropdown.Item>
                         </NavDropdown>
                         <LiNavItem route={ROUTES.PROFILE} icon={<SettingsIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
-                        {profile.role === 1 &&
+                        {profile.role >= 1 &&
                             <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className="nav-item">
@@ -97,7 +97,7 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
                         <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<SettingsIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
-                        {profile.role === 1 &&
+                        {profile.role >= 1 &&
                             <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIconDuoTone size={"1x"}/>}
                                        text={LABELS_AND_HEADINGS.ADMIN}/>
                         }

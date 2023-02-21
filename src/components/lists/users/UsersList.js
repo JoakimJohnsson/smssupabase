@@ -28,6 +28,7 @@ export const UsersList = ({usersData, setUsersData, limited = false}) => {
             {
                 usersData.length ?
                     (usersData.map((u, index) =>
+                            u.role !== 2 &&
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>

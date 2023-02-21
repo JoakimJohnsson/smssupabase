@@ -6,9 +6,12 @@ import {HeadingWithBreadCrumbs} from "../../headings";
 import {Icon} from "../../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {UsersCard} from "../../dashboard/dashboardCards/admin/UsersCard";
+import {useAppContext} from "../../../context/AppContext";
 
 
 export const Admin = () => {
+
+    const {profile} = useAppContext();
 
     return (
         <main className={"container-fluid main-container"}>
@@ -28,7 +31,10 @@ export const Admin = () => {
             <div className={"row row-padding--secondary"}>
                 <TitlesCard/>
                 <PublishersCard/>
-                <UsersCard/>
+                {
+                    profile && profile.role && profile.role === 2 &&
+                    <UsersCard/>
+                }
             </div>
         </main>
     )

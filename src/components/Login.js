@@ -35,7 +35,7 @@ const Login = () => {
 
     return (
 
-        <form onSubmit={handleSubmit} className={"sms-form mb-5 mb-sm-3"}>
+        <form onSubmit={handleSubmit} className={"sms-form mb-5"}>
             <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
             <input id="input-email"
                    type="email"
