@@ -30,34 +30,34 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
         <div className={"sms-dashboard-col"}>
             <div className={"sms-form"}>
                 <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
-                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                <label className={"form-label"} htmlFor="fileName">{LABELS_AND_HEADINGS.NAME_DB}</label>
                 <input
-                    id={"name"}
-                    name={"name"}
+                    id={"fileName"}
+                    fileName={"fileName"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
-                    value={newPublisher.name}
-                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
+                    value={newPublisher.fileName}
+                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.fileName, e.target.value)}
                     disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                 <input
                     id={"description"}
-                    name={"description"}
+                    fileName={"description"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
                     value={newPublisher.description || ""}
-                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
+                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.fileName, e.target.value)}
                     disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
                 <input
                     id={"wikiurl"}
-                    name={"wiki_url"}
+                    fileName={"wiki_url"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
                     value={newPublisher.wiki_url || ""}
-                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
+                    onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.fileName, e.target.value)}
                     disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
@@ -65,11 +65,11 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     countryData &&
                     <select
                         id={"country"}
-                        name={"country_id"}
+                        fileName={"country_id"}
                         className={"form-select mb-3"}
                         value={newPublisher.country_id}
                         disabled={!edit}
-                        onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}>
+                        onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.fileName, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(countryData)}
                     </select>

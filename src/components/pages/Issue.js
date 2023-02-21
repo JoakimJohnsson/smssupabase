@@ -5,6 +5,7 @@ import {getRowByTableAndId} from "../serviceFunctions";
 import {TABLES} from "../../helpers/constants";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {getIssueName} from "../../helpers/functions";
+import {ImageViewer} from "./pagecomponents/ImageViewer";
 
 
 export const Issue = () => {
@@ -31,9 +32,14 @@ export const Issue = () => {
                     loading ?
                         <CustomSpinner size={"4x"}/>
                         :
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} bcName={getIssueName(title, issue)}/>
-                </div>
+                        <>
+                            <div className={"sms-page-col"}>
+                                <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} bcName={getIssueName(title, issue)}/>
+                            </div>
+                            <div className={"col-12 col-lg-5 col-xl-3"}>
+                                <ImageViewer url={issue.image_url} fileName={issue.image_filename}/>
+                            </div>
+                        </>
                 }
             </div>
         </main>

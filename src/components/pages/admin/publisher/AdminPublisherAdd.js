@@ -14,7 +14,7 @@ import {IconButton} from "../../../minis/IconButton";
 export const AdminPublisherAdd = () => {
 
     const [
-        name, setName,
+        fileName, setName,
         description, setDescription,
         wiki_url, setWiki_url,
         formInputClass, setFormInputClass
@@ -32,14 +32,14 @@ export const AdminPublisherAdd = () => {
     }
 
     useEffect(() => {
-        if (country_id && name !== "" && description !== "" && wiki_url !== !"") {
+        if (country_id && fileName !== "" && description !== "" && wiki_url !== !"") {
             setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
-        } else if (country_id || name !== "" || description !== "" || wiki_url !== "") {
+        } else if (country_id || fileName !== "" || description !== "" || wiki_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
         } else {
             setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         }
-    }, [name, description, country_id, setFormInputClass, wiki_url])
+    }, [fileName, description, country_id, setFormInputClass, wiki_url])
 
     return (
         <main className={"container-fluid main-container"}>
@@ -51,19 +51,19 @@ export const AdminPublisherAdd = () => {
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form"}>
-                        <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                        <label className={"form-label"} htmlFor="fileName">{LABELS_AND_HEADINGS.NAME_DB}</label>
                         <input
-                            id="name"
-                            name="name"
+                            id="fileName"
+                            fileName="fileName"
                             className={formInputClass}
                             type="text"
-                            value={name || ""}
+                            value={fileName || ""}
                             onChange={(e) => handleInput(e, setName)}
                         />
                         <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                         <input
                             id="description"
-                            name="description"
+                            fileName="description"
                             className={formInputClass}
                             type="text"
                             value={description || ""}
@@ -72,7 +72,7 @@ export const AdminPublisherAdd = () => {
                         <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
                         <input
                             id="wikiurl"
-                            name="wiki_url"
+                            fileName="wiki_url"
                             className={formInputClass}
                             type="text"
                             value={wiki_url || ""}
@@ -83,7 +83,7 @@ export const AdminPublisherAdd = () => {
                             countryData &&
                             <select
                                 id="country"
-                                name="country"
+                                fileName="country"
                                 className={formInputClass}
                                 onChange={(e) => setCountry_id(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
@@ -92,12 +92,12 @@ export const AdminPublisherAdd = () => {
                         }
                         <button className={"btn btn-primary"}
                                 onClick={() => addPublisherData({
-                                    name: name,
+                                    fileName: fileName,
                                     description: description,
                                     wiki_url: wiki_url,
                                     country_id: country_id
                                 }, setInformationMessage).then(() => resetAddPublisherForm())}
-                                disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
+                                disabled={!country_id || fileName === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-secondary"}

@@ -9,6 +9,7 @@ import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {getCalculatedYear, getFormatName} from "../../helpers/functions";
 import formatData from "../../helpers/valueLists/formats.json";
 import {CustomSpinner} from "../minis/CustomSpinner";
+import {ImageViewer} from "./pagecomponents/ImageViewer";
 
 
 export const Title = () => {
@@ -40,14 +41,7 @@ export const Title = () => {
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3"}>
-                                {
-                                    title.image_url && title.image_filename &&
-                                    <img
-                                        src={title.image_url}
-                                        alt={title.image_filename}
-                                        className="w-100 mb-3 bg-light"
-                                    />
-                                }
+                                <ImageViewer url={title.image_url} fileName={title.image_filename}/>
                                 <p>{title.description}</p>
                                 <p>
                                     <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
