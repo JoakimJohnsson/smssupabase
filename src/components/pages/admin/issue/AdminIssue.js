@@ -6,6 +6,7 @@ import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../.
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
+import {getIssueName} from "../../../../helpers/functions";
 
 
 export const AdminIssue = () => {
@@ -41,7 +42,7 @@ export const AdminIssue = () => {
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={title.name + " #" + issue.number + " / " + issue.year} doIgnoreName={true}/>
+                    <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} name={getIssueName(title, issue)}/>
                     <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                     <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
                 </div>

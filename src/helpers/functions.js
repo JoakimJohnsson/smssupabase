@@ -109,6 +109,9 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
         return 1;
     }
 }
+export const getIssueName = (title, issue) => {
+    return title.name + " #" + issue.number + " / " + issue.year;
+}
 
 export const hasImage = (item) => {
     return item && item.image_filename && item.image_url;
