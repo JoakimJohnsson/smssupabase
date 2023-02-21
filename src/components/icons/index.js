@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faShieldCat,
-    faShieldXmark,
+    faShield,
     faHouse,
     faFile,
     faFileLines,
@@ -35,7 +35,7 @@ export const AdminIcon = ({size, className}) => {
 
 export const NotAdminIcon = ({size, className}) => {
     return (
-        <Icon icon={faShieldXmark} size={size} className={className}/>
+        <Icon icon={faShield} size={size} className={className}/>
     )
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import {
     faShieldCat,
-    faShieldXmark,
+    faShield,
     faHouse,
     faFile,
     faFileLines,
@@ -29,7 +29,7 @@ export const AdminIconDuoTone = ({size, className}) => {
 
 export const NotAdminIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faShieldXmark} size={size} className={className}/>
+        <Icon icon={faShield} size={size} className={className}/>
     )
 }
 
