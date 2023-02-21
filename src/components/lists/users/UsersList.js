@@ -1,18 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {UserIcon} from "../../icons";
-import {AdminIconDuoTone, NotAdminIconDuoTone} from "../../icons-duotone";
 import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn, updateProfileRole} from "../../serviceFunctions";
-import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
+import {TABLES} from "../../../helpers/constants";
 import {useAppContext} from "../../../context/AppContext";
-import {CustomSpinner} from "../../minis/CustomSpinner";
+import {RemoveAdminButton} from "./RemoveAdminButton";
+import {AddAdminButton} from "./AddAdminButton";
 
 
 export const UsersList = ({usersData, setUsersData, limited = false}) => {
 
     const {setInformationMessage} = useAppContext();
-    const [loadingAdd, setLoadingAdd] = useState(false);
-    const [loadingRemove, setLoadingRemove] = useState(false);
 
     const handleChangeAdmin = (id, value, doSetLoading) => {
         doSetLoading(true);
@@ -42,35 +40,15 @@ export const UsersList = ({usersData, setUsersData, limited = false}) => {
                                         <div className={"d-inline-block text-end"}>
                                             {
                                                 u.role === 1 ?
-                                                    <button
-                                                        className={"btn text-success sms-icon-btn"}
-                                                        aria-label={LABELS_AND_HEADINGS.REMOVE_ADMIN_1 + u.firstname + LABELS_AND_HEADINGS.REMOVE_ADMIN_2}
-                                                        onClick={() => handleChangeAdmin(u.id, 0, setLoadingRemove)}>
-                                                        {
-                                                            loadingRemove ?
-                                                                <CustomSpinner className={"fa-xl"}/>
-                                                                :
-                                                                <AdminIconDuoTone className={"fa-xl"}/>
-                                                        }
-
-                                                    </button>
+                                                    <RemoveAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
                                                     :
-                                                    <button
-                                                        className={"btn text-danger sms-icon-btn"}
-                                                        aria-label={LABELS_AND_HEADINGS.ADD_ADMIN_1 + u.firstname + LABELS_AND_HEADINGS.ADD_ADMIN_2}
-                                                        onClick={() => handleChangeAdmin(u.id, 1, setLoadingAdd)}>
-                                                        {
-                                                            loadingAdd ?
-                                                                <CustomSpinner className={"fa-xl"}/>
-                                                                :
-                                                                <NotAdminIconDuoTone className={"fa-xl"}/>
-                                                        }
-                                                    </button>
+                                                    <AddAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
                                             }
                                         </div>
                                     </div>
                                 </div>
-                            </li>)
+                            </li>
+                        )
                     )
                     :
                     (<NoDataAvailable/>)
