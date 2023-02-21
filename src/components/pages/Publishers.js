@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {Spinner} from "../minis/Spinner";
+import {CustomSpinner} from "../minis/CustomSpinner";
 import {getRowsByTable} from "../serviceFunctions";
 import {PublishersList} from "../lists/publishers/PublishersList";
 import {HeadingWithBreadCrumbs} from "../headings";
@@ -22,7 +22,7 @@ export const Publishers = () => {
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
                     {
                         loading ?
-                            <Spinner size={"4x"}/>
+                            <CustomSpinner size={"4x"}/>
                             :
                             <PublishersList publishersData={publishersData} showAdminInfo={false}/>
                     }

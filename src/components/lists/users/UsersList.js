@@ -1,10 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {UserIcon} from "../../icons";
 import {AdminIconDuoTone, NotAdminIconDuoTone} from "../../icons-duotone";
+import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn, updateProfileRole} from "../../serviceFunctions";
+import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
+import {useAppContext} from "../../../context/AppContext";
+import {CustomSpinner} from "../../minis/CustomSpinner";
 
 
-export const UsersList = ({usersData}) => {
+export const UsersList = ({usersData, setUsersData, limited = false}) => {
+
+    const {setInformationMessage} = useAppContext();
+    const [loadingAdd, setLoadingAdd] = useState(false);
+    const [loadingRemove, setLoadingRemove] = useState(false);
+
+    const handleChangeAdmin = (id, value, doSetLoading) => {
+        doSetLoading(true);
+        updateProfileRole(id, value, setInformationMessage).then(() => {
+            if (limited) {
+                getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setUsersData, 5, false).then(() => doSetLoading(false));
+            } else {
+                getRowsByTable(TABLES.PROFILES, setUsersData).then(() => doSetLoading(false));
+            }
+        });
+    }
 
     return usersData && (
         <ul className={"sms-list--with-tools mb-4"}>
@@ -23,9 +42,30 @@ export const UsersList = ({usersData}) => {
                                         <div className={"d-inline-block text-end"}>
                                             {
                                                 u.role === 1 ?
-                                                    <AdminIconDuoTone className={"fa-xl text-success"}/>
+                                                    <button
+                                                        className={"btn text-success sms-icon-btn"}
+                                                        aria-label={LABELS_AND_HEADINGS.REMOVE_ADMIN_1 + u.firstname + LABELS_AND_HEADINGS.REMOVE_ADMIN_2}
+                                                        onClick={() => handleChangeAdmin(u.id, 0, setLoadingRemove)}>
+                                                        {
+                                                            loadingRemove ?
+                                                                <CustomSpinner className={"fa-xl"}/>
+                                                                :
+                                                                <AdminIconDuoTone className={"fa-xl"}/>
+                                                        }
+
+                                                    </button>
                                                     :
-                                                    <NotAdminIconDuoTone className={"fa-xl text-danger"}/>
+                                                    <button
+                                                        className={"btn text-danger sms-icon-btn"}
+                                                        aria-label={LABELS_AND_HEADINGS.ADD_ADMIN_1 + u.firstname + LABELS_AND_HEADINGS.ADD_ADMIN_2}
+                                                        onClick={() => handleChangeAdmin(u.id, 1, setLoadingAdd)}>
+                                                        {
+                                                            loadingAdd ?
+                                                                <CustomSpinner className={"fa-xl"}/>
+                                                                :
+                                                                <NotAdminIconDuoTone className={"fa-xl"}/>
+                                                        }
+                                                    </button>
                                             }
                                         </div>
                                     </div>

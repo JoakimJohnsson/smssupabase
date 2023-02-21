@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Spinner} from "../../../minis/Spinner";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle,
@@ -112,7 +112,7 @@ export const AdminTitle = () => {
         }
     }
 
-    return title && loading ? (<Spinner/>) : (
+    return title && loading ? (<CustomSpinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
@@ -227,7 +227,7 @@ export const AdminTitle = () => {
                             {
                                 loadingDI ?
                                     <>
-                                        <Spinner size={"1x"} className={"me-2"}/>
+                                        <CustomSpinner size={"1x"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.DELETING}
                                     </>
                                     :
@@ -247,7 +247,7 @@ export const AdminTitle = () => {
                             {
                                 loadingGI ?
                                     <>
-                                        <Spinner size={"1x"} className={"me-2"}/>
+                                        <CustomSpinner size={"1x"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.GENERATING_ISSUES}
                                     </>
                                     :

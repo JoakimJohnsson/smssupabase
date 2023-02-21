@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Spinner} from "../../../minis/Spinner";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
 import {TitlesList} from "../../../lists/titles/TitlesList";
 import {getRowsByTable} from "../../../serviceFunctions";
@@ -26,7 +26,7 @@ export const AdminTitles = () => {
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                         <Breadcrumbs/>
-                        {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <Spinner/>}
+                        {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <CustomSpinner/>}
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
                                     label={LABELS_AND_HEADINGS.ADD_TITLE}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}

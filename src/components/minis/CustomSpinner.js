@@ -2,7 +2,7 @@ import React from "react";
 import {faSpinner} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
 
-export const Spinner = ({size, color, className}) => {
+export const CustomSpinner = ({size, color, className}) => {
     let spinnerClass = "";
     if (className) {
         spinnerClass += className + " ";

@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Spinner} from "../../../minis/Spinner";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {getRowByTableAndId} from "../../../serviceFunctions";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -38,7 +38,7 @@ export const AdminIssue = () => {
         setNewIssue({...issue});
     }, [issue])
 
-    return loading ? (<Spinner/>) : (
+    return loading ? (<CustomSpinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>

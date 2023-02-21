@@ -11,7 +11,7 @@ export const UsersCard = () => {
     const [limitedUsersData, setLimitedUsersData] = useState(null);
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setLimitedUsersData, 5, false).then()
+        getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setLimitedUsersData, 5, false).then();
     }, [])
 
     return (
@@ -22,7 +22,7 @@ export const UsersCard = () => {
                     limitedUsersData ?
                         <>
                             <p>{TEXTS.SHOWING_LATEST_USERS}</p>
-                            <UsersList usersData={limitedUsersData}/>
+                            <UsersList usersData={limitedUsersData} setUsersData={setLimitedUsersData} limited/>
                         </>
                         :
                         <NoDataAvailable/>

@@ -8,7 +8,7 @@ import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {getCalculatedYear, getFormatName} from "../../helpers/functions";
 import formatData from "../../helpers/valueLists/formats.json";
-import {Spinner} from "../minis/Spinner";
+import {CustomSpinner} from "../minis/CustomSpinner";
 
 
 export const Title = () => {
@@ -33,7 +33,7 @@ export const Title = () => {
             <div className={"row row-padding--main"}>
                 {
                     loading ?
-                        <Spinner size={"4x"}/>
+                        <CustomSpinner size={"4x"}/>
                         :
                         <>
                             <div className={"sms-page-col"}>

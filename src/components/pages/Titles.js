@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {Spinner} from "../minis/Spinner";
+import {CustomSpinner} from "../minis/CustomSpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
 import {getRowsByTable} from "../serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
@@ -22,7 +22,7 @@ export const Titles = () => {
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                     {
                         loading ?
-                            <Spinner size={"4x"}/>
+                            <CustomSpinner size={"4x"}/>
                             :
                             <TitlesList titlesData={titlesData} showAdminInfo={false}/>
                     }

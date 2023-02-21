@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
-import {Spinner} from "./minis/Spinner";
+import {CustomSpinner} from "./minis/CustomSpinner";
 import {NoDataAvailable} from "./minis/NoDataAvailable";
 import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "./serviceFunctions";
 import {IconButton} from "./minis/IconButton";
@@ -71,7 +71,7 @@ export const ImageUploader = ({
                             <label className="btn btn-primary align-items-center" htmlFor="single">
                                 {uploading ?
                                     <>
-                                        <Spinner size={"1x"} color={"text-black"} className={"me-2"}/>
+                                        <CustomSpinner size={"1x"} color={"text-black"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.UPLOADING_IMAGE}
                                     </>
                                     :

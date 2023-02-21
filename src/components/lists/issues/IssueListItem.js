@@ -5,7 +5,7 @@ import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
 import {hasImage} from "../../../helpers/functions";
 import {getNameByTableAndId} from "../../serviceFunctions";
-import {Spinner} from "../../minis/Spinner";
+import {CustomSpinner} from "../../minis/CustomSpinner";
 
 
 export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssuesData}) => {
@@ -26,7 +26,7 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
         }
     }, [title, fetchTitleName])
 
-    return loading ? (<Spinner/>) : (
+    return loading ? (<CustomSpinner/>) : (
         <li className={"list-group-item px-0"}>
             <div className={"row"}>
                 <div className={"sms-list-col--main"}>

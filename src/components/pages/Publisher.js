@@ -3,7 +3,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {getRowByTableAndId} from "../serviceFunctions";
 import {TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
-import {Spinner} from "../minis/Spinner";
+import {CustomSpinner} from "../minis/CustomSpinner";
 
 
 export const Publisher = () => {
@@ -25,7 +25,7 @@ export const Publisher = () => {
             <div className={"row row-padding--main"}>
                 {
                     loading ?
-                        <Spinner size={"4x"}/>
+                        <CustomSpinner size={"4x"}/>
                         :
                         <div className={"sms-page-col"}>
                             <HeadingWithBreadCrumbs text={publisher.name}/>

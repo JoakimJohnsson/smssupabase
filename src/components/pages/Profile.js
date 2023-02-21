@@ -8,7 +8,7 @@ import {Icon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {KeyIconDuoTone} from "../icons-duotone";
-import {Spinner} from "../minis/Spinner";
+import {CustomSpinner} from "../minis/CustomSpinner";
 
 
 const Profile = () => {
@@ -50,7 +50,7 @@ const Profile = () => {
         <main className={"container-fluid main-container"}>
             {
                 loading ?
-                    <Spinner size={"4x"}/>
+                    <CustomSpinner size={"4x"}/>
                     :
                     <>
 
