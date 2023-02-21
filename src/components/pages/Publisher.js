@@ -1,10 +1,14 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {getRowByTableAndId} from "../serviceFunctions";
-import {TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
+import countryData from "../../helpers/valueLists/countries.json";
+import {getObjectNameById} from "../../helpers/functions";
+import {Icon} from "../icons";
+import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 
 
 export const Publisher = () => {
@@ -34,6 +38,26 @@ export const Publisher = () => {
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3"}>
                                 <ImageViewer url={publisher.image_url} fileName={publisher.image_filename}/>
+                            </div>
+                            <div className={"col-12 col-lg-7 col-xl-6 sms-form"}>
+                                <h2>{LABELS_AND_HEADINGS.INFORMATION_ABOUT} {publisher.name}</h2>
+                                {
+                                    countryData &&
+                                    <p>Land: {getObjectNameById(countryData, publisher.country_id)}</p>
+                                }
+                                {
+                                    publisher.description &&
+                                    <p>{publisher.description}</p>
+                                }
+                                {
+                                    publisher.wiki_url &&
+                                    <p>
+                                        <a href={publisher.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                            {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {publisher.name}
+                                            <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                        </a>
+                                    </p>
+                                }
                             </div>
                         </>
                 }

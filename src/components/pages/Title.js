@@ -42,13 +42,19 @@ export const Title = () => {
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3"}>
                                 <ImageViewer url={title.image_url} fileName={title.image_filename}/>
-                                <p>{title.description}</p>
-                                <p>
-                                    <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                        Seriewikin för {title.name}
-                                        <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                    </a>
-                                </p>
+                                {
+                                    title.description &&
+                                    <p>{title.description}</p>
+                                }
+                                {
+                                    title.wiki_url &&
+                                    <p>
+                                        <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                            {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {title.name}
+                                            <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                        </a>
+                                    </p>
+                                }
                                 <p>Formatet är {getFormatName(formatData, title.format_id)}.</p>
                                 <p>Totalt gavs det ut {title.total_issues} publikationer.</p>
                             </div>
