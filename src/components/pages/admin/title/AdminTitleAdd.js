@@ -14,7 +14,7 @@ import {IconButton} from "../../../minis/IconButton";
 export const AdminTitleAdd = () => {
 
     const [
-        fileName, setName,
+        name, setName,
         description, setDescription,
         wiki_url, setWiki_url,
         formInputClass, setFormInputClass,
@@ -45,14 +45,14 @@ export const AdminTitleAdd = () => {
     }
 
     useEffect(() => {
-        if (format_id && publisher_id && start_year && end_year && total_issues && fileName !== "" && description !== "" && wiki_url !== "") {
+        if (format_id && publisher_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
-        } else if (format_id || publisher_id || start_year || end_year || total_issues || fileName !== "" || description !== "" || wiki_url !== "") {
+        } else if (format_id || publisher_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
         } else {
             setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         }
-    }, [format_id, publisher_id, fileName, description, wiki_url, start_year, end_year, total_issues, setFormInputClass])
+    }, [format_id, publisher_id, name, description, wiki_url, start_year, end_year, total_issues, setFormInputClass])
 
 
     return (
@@ -65,19 +65,19 @@ export const AdminTitleAdd = () => {
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-form"}>
-                        <label className={"form-label"} htmlFor="fileName">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                        <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                         <input
-                            id={"fileName"}
-                            fileName={"fileName"}
+                            id={"name"}
+                            name={"name"}
                             className={formInputClass}
                             type={"text"}
-                            value={fileName || ""}
+                            value={name || ""}
                             onChange={(e) => handleInput(e, setName)}
                         />
                         <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                         <input
                             id={"description"}
-                            fileName={"description"}
+                            name={"description"}
                             className={formInputClass}
                             type={"text"}
                             value={description || ""}
@@ -86,7 +86,7 @@ export const AdminTitleAdd = () => {
                         <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
                         <input
                             id="wikiurl"
-                            fileName="wiki_url"
+                            name="wiki_url"
                             className={formInputClass}
                             type="text"
                             value={wiki_url || ""}
@@ -95,7 +95,7 @@ export const AdminTitleAdd = () => {
                         <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                         <input
                             id="startyear"
-                            fileName={"start_year"}
+                            name={"start_year"}
                             className={formInputClass}
                             type="number"
                             value={start_year || 1975}
@@ -104,7 +104,7 @@ export const AdminTitleAdd = () => {
                         <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                         <input
                             id="endyear"
-                            fileName={"end_year"}
+                            name={"end_year"}
                             className={formInputClass}
                             type="number"
                             value={end_year || 1977}
@@ -115,7 +115,7 @@ export const AdminTitleAdd = () => {
                             publishersData &&
                             <select
                                 id="publisher"
-                                fileName={"publisher_id"}
+                                name={"publisher_id"}
                                 className={formInputClass}
                                 onChange={(e) => handleInput(e, setPublisher_id)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
@@ -127,7 +127,7 @@ export const AdminTitleAdd = () => {
                             formatData &&
                             <select
                                 id="format"
-                                fileName={"format_id"}
+                                name={"format_id"}
                                 className={formInputClass}
                                 onChange={(e) => handleInput(e, setFormat_id)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
@@ -137,7 +137,7 @@ export const AdminTitleAdd = () => {
                         <label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>
                         <input
                             id="totalissues"
-                            fileName={"total_issues"}
+                            name={"total_issues"}
                             className={formInputClass}
                             type="number"
                             min="1"
@@ -146,7 +146,7 @@ export const AdminTitleAdd = () => {
                         />
                         <button className={"btn btn-primary"}
                                 onClick={() => addTitleData({
-                                    fileName: fileName,
+                                    name: name,
                                     description: description,
                                     wiki_url: wiki_url,
                                     start_year: start_year,
@@ -155,7 +155,7 @@ export const AdminTitleAdd = () => {
                                     format_id: format_id,
                                     total_issues: total_issues,
                                 }, setInformationMessage).then(() => resetAddTitleForm())}
-                                disabled={!start_year || !end_year || !total_issues || fileName === "" || description === "" || wiki_url === ""}>
+                                disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-secondary"}
