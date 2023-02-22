@@ -1,6 +1,6 @@
 import React from "react";
 import {useAppContext} from "../context/AppContext";
-import {Spinner} from "./minis/Spinner";
+import {CustomSpinner} from "./minis/CustomSpinner";
 import {prepareUrl} from "../helpers/functions";
 
 
@@ -18,5 +18,5 @@ export const NavbarProfileInformation = () => {
             </div>
         )
         :
-        <Spinner small={true} color={"text-primary"}/>
+        <CustomSpinner size={"2x"} color={"text-primary"}/>
 }

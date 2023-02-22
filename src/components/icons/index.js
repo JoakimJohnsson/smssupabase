@@ -2,9 +2,10 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faShieldCat,
-    faShieldXmark,
+    faShield,
     faHouse,
     faFile,
+    faFileLines,
     faChartLine,
     faGears,
     faFiles,
@@ -20,9 +21,9 @@ import {
 } from "@fortawesome/pro-regular-svg-icons";
 import {faListTimeline} from "@fortawesome/pro-duotone-svg-icons";
 
-export const Icon = ({icon, size, className}) => {
+export const Icon = ({icon, size, className, spin = false}) => {
     return (
-        <FontAwesomeIcon icon={icon} size={size} className={className}/>
+        <FontAwesomeIcon icon={icon} size={size} className={className} spin={spin}/>
     )
 }
 
@@ -34,7 +35,7 @@ export const AdminIcon = ({size, className}) => {
 
 export const NotAdminIcon = ({size, className}) => {
     return (
-        <Icon icon={faShieldXmark} size={size} className={className}/>
+        <Icon icon={faShield} size={size} className={className}/>
     )
 }
 
@@ -56,15 +57,9 @@ export const ImageIcon = ({size, className}) => {
     )
 }
 
-export const IssuesIcon = ({size, className}) => {
-    return (
-        <Icon icon={faFiles} size={size} className={className}/>
-    )
-}
-
 export const IssueIcon = ({size, className}) => {
     return (
-        <Icon icon={faFile} size={size} className={className}/>
+        <Icon icon={faFileLines} size={size} className={className}/>
     )
 }
 

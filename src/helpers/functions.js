@@ -94,12 +94,23 @@ export const getYearsList = (startYear, endYear) => {
     return list;
 }
 
+export const getIndexList = (length) => {
+    let list = [];
+    for (let i = 0; i <= length; i++) {
+        list.push(i.toString());
+    }
+    return list;
+}
+
 export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
     if (startYear < endYear) {
         return Math.floor(totalIssues / (endYear - startYear + 1));
     } else {
         return 1;
     }
+}
+export const getIssueName = (title, issue) => {
+    return title.name + " #" + issue.number + " / " + issue.year;
 }
 
 export const hasImage = (item) => {

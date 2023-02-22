@@ -1,16 +1,34 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {UserIcon} from "../../icons";
-import {AdminIconDuoTone, NotAdminIconDuoTone} from "../../icons-duotone";
+import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn, updateProfileRole} from "../../serviceFunctions";
+import {TABLES} from "../../../helpers/constants";
+import {useAppContext} from "../../../context/AppContext";
+import {RemoveAdminButton} from "./RemoveAdminButton";
+import {AddAdminButton} from "./AddAdminButton";
 
 
-export const UsersList = ({usersData}) => {
+export const UsersList = ({usersData, setUsersData, limited = false}) => {
+
+    const {setInformationMessage} = useAppContext();
+
+    const handleChangeAdmin = (id, value, doSetLoading) => {
+        doSetLoading(true);
+        updateProfileRole(id, value, setInformationMessage).then(() => {
+            if (limited) {
+                getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setUsersData, 5, false).then(() => doSetLoading(false));
+            } else {
+                getRowsByTable(TABLES.PROFILES, setUsersData).then(() => doSetLoading(false));
+            }
+        });
+    }
 
     return usersData && (
         <ul className={"sms-list--with-tools mb-4"}>
             {
                 usersData.length ?
                     (usersData.map((u, index) =>
+                            u.role !== 2 &&
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
@@ -23,14 +41,15 @@ export const UsersList = ({usersData}) => {
                                         <div className={"d-inline-block text-end"}>
                                             {
                                                 u.role === 1 ?
-                                                    <AdminIconDuoTone className={"fa-xl text-success"}/>
+                                                    <RemoveAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
                                                     :
-                                                    <NotAdminIconDuoTone className={"fa-xl text-danger"}/>
+                                                    <AddAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
                                             }
                                         </div>
                                     </div>
                                 </div>
-                            </li>)
+                            </li>
+                        )
                     )
                     :
                     (<NoDataAvailable/>)

@@ -60,7 +60,7 @@
 // Dashboard
 .sms-dashboard-col {
   @extend .col-12, .col-xl-6;
-  margin-bottom: 3rem;
+  margin-bottom: $grid-gutter-width;
 }
 
 .sms-form {
@@ -122,12 +122,15 @@
   }
 }
 
-// PAGE
-
 .sms-page-col {
+  @extend .col-12;
+}
+
+.sms-page-col--full {
   @extend .col-12, .col-lg-8;
 }
 
+// Breadcrumb
 .breadcrumb-item {
   .animate {
     opacity: 1;

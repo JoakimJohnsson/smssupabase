@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Spinner} from "../../../minis/Spinner";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle,
@@ -18,7 +18,7 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
-import {IssueIcon, IssuesIcon} from "../../../icons";
+import {IssueIcon} from "../../../icons";
 
 
 export const AdminTitle = () => {
@@ -112,10 +112,10 @@ export const AdminTitle = () => {
         }
     }
 
-    return title && loading ? (<Spinner/>) : (
+    return title && loading ? (<CustomSpinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
+                <div className={"col-12"}>
                     <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                     <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
                 </div>
@@ -227,7 +227,7 @@ export const AdminTitle = () => {
                             {
                                 loadingDI ?
                                     <>
-                                        <Spinner small={true} className={"me-2"}/>
+                                        <CustomSpinner size={"1x"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.DELETING}
                                     </>
                                     :
@@ -247,12 +247,12 @@ export const AdminTitle = () => {
                             {
                                 loadingGI ?
                                     <>
-                                        <Spinner small={true} className={"me-2"}/>
+                                        <CustomSpinner size={"1x"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.GENERATING_ISSUES}
                                     </>
                                     :
                                     <>
-                                        <IssuesIcon className={"me-2"}/>
+                                        <IssueIcon className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.GENERATE_ISSUES}
                                     </>
 

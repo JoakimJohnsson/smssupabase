@@ -19,6 +19,24 @@ export const updateProfileData = async (id, data, setInformationMessage) => {
     }
 }
 
+export const updateProfileRole = async (id, value, setInformationMessage) => {
+    if (!window.confirm(MESSAGES.CONFIRM.CHANGE_ROLE)) {
+        setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
+        return false;
+    }
+    try {
+        let {error, status} = await supabase
+            .from(TABLES.PROFILES)
+            .update([{
+                role: value
+            }])
+            .eq("id", id)
+        setInformationMessage({show: true, status: status, error: error});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 // TITLES FUNCTIONS
 export const addTitleData = async (data, setInformationMessage) => {

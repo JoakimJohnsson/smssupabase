@@ -44,7 +44,7 @@ export const AdminPublisherAdd = () => {
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
+                <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                 </div>
             </div>

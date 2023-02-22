@@ -25,6 +25,7 @@ import {Issue} from "./pages/Issue";
 import {Issues} from "./pages/Issues";
 import {Publisher} from "./pages/Publisher";
 import {Publishers} from "./pages/Publishers";
+import {AdminUsers} from "./pages/admin/users/AdminUsers";
 
 
 export const MyRoutes = () => {
@@ -64,22 +65,24 @@ export const MyRoutes = () => {
                 <Route path={ROUTES.PUBLISHER_ID} element={user && user.id ? <Publisher/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.PUBLISHERS} element={user && user.id ? <Publishers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* ADMIN */}
-                <Route path={ROUTES.ADMIN.ROOT} element={(user && user.id && profile.role === 1) ? <Admin/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.ADMIN.ROOT} element={(user && user.id && profile.role >= 1) ? <Admin/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Publisher */}
                 <Route path={ROUTES.ADMIN.PUBLISHER_ID}
-                       element={(user && user.id && profile.role === 1) ? <AdminPublisher/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                       element={(user && user.id && profile.role >= 1) ? <AdminPublisher/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.ADMIN.PUBLISHERS}
-                       element={(user && user.id && profile.role === 1) ? <AdminPublishers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                       element={(user && user.id && profile.role >= 1) ? <AdminPublishers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.ADMIN.PUBLISHER_ADD}
-                       element={(user && user.id && profile.role === 1) ? <AdminPublisherAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                       element={(user && user.id && profile.role >= 1) ? <AdminPublisherAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Title */}
-                <Route path={ROUTES.ADMIN.TITLE_ID} element={(user && user.id && profile.role === 1) ? <AdminTitle/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                <Route path={ROUTES.ADMIN.TITLES} element={(user && user.id && profile.role === 1) ? <AdminTitles/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.ADMIN.TITLE_ID} element={(user && user.id && profile.role >= 1) ? <AdminTitle/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.ADMIN.TITLES} element={(user && user.id && profile.role >= 1) ? <AdminTitles/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.ADMIN.TITLE_ADD}
-                       element={(user && user.id && profile.role === 1) ? <AdminTitleAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                       element={(user && user.id && profile.role >= 1) ? <AdminTitleAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Issue */}
-                <Route path={ROUTES.ADMIN.ISSUE_ID} element={(user && user.id && profile.role === 1) ? <AdminIssue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                <Route path={ROUTES.ADMIN.ISSUES} element={(user && user.id && profile.role === 1) ? <AdminIssues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.ADMIN.ISSUE_ID} element={(user && user.id && profile.role >= 1) ? <AdminIssue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.ADMIN.ISSUES} element={(user && user.id && profile.role >= 1) ? <AdminIssues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                {/* USers */}
+                <Route path={ROUTES.ADMIN.USERS} element={(user && user.id && profile.role >= 1) ? <AdminUsers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Catch all */}
                 <Route path={"*"} element={<p>No match!</p>}/>
             </Routes>

@@ -5,7 +5,7 @@ import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {getNameByTableAndId} from "../serviceFunctions";
 
 
-export const Breadcrumbs = ({doIgnoreName}) => {
+export const Breadcrumbs = ({doIgnoreName, bcName}) => {
 
     const {id} = useParams();
     const [fetchedName, setFetchedName] = useState("");
@@ -55,7 +55,7 @@ export const Breadcrumbs = ({doIgnoreName}) => {
 
     const printBreadCrumbLinkItems = (index, breadcrumb, match) => {
         let breadcrumbName = breadcrumb.props.children.toString().toLowerCase();
-        let name = doIgnoreName && index === size ? breadcrumbName.substring(0,5) + "..." : getNameFromBreadcrumbName(breadcrumbName, breadcrumb);
+        let name = doIgnoreName && bcName !== "" && index === size ? bcName : getNameFromBreadcrumbName(breadcrumbName, breadcrumb);
         if (name) {
             if (index === size) {
                 return (
