@@ -36,10 +36,10 @@ export const Publisher = () => {
                             <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs text={publisher.name}/>
                             </div>
-                            <div className={"col-12 col-lg-5 col-xl-3"}>
+                            <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
                                 <ImageViewer url={publisher.image_url} fileName={publisher.image_filename}/>
                             </div>
-                            <div className={"col-12 col-lg-7 col-xl-6 sms-form"}>
+                            <div className={"col-12 col-md-8 col-lg-7 col-xl-6"}>
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION_ABOUT} {publisher.name}</h2>
                                 {
                                     countryData &&

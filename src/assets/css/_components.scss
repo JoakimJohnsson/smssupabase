@@ -126,6 +126,10 @@
   @extend .col-12;
 }
 
+.sms-page-col--full {
+  @extend .col-12, .col-lg-8;
+}
+
 // Breadcrumb
 .breadcrumb-item {
   .animate {
