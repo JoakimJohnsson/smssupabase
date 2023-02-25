@@ -12,6 +12,10 @@ import {
     faBuildingColumns,
     faFileImage,
     faComet,
+    faListTimeline,
+    faRectangleHistoryCirclePlus,
+    faClipboardListCheck,
+    faMagnifyingGlassDollar,
     faArrowDownToArc,
     faArrowRightFromArc,
     faHeartCirclePlus,
@@ -19,7 +23,7 @@ import {
     faUsers,
     faKey
 } from "@fortawesome/pro-regular-svg-icons";
-import {faListTimeline} from "@fortawesome/pro-duotone-svg-icons";
+
 
 export const Icon = ({icon, size, className, spin = false}) => {
     return (
@@ -36,6 +40,24 @@ export const AdminIcon = ({size, className}) => {
 export const NotAdminIcon = ({size, className}) => {
     return (
         <Icon icon={faShield} size={size} className={className}/>
+    )
+}
+
+export const CollectionPlusIcon = ({size, className}) => {
+    return (
+        <Icon icon={faRectangleHistoryCirclePlus} size={size} className={className}/>
+    )
+}
+
+export const CollectionCheckIcon = ({size, className}) => {
+    return (
+        <Icon icon={faClipboardListCheck} size={size} className={className}/>
+    )
+}
+
+export const CollectionSearchIcon = ({size, className}) => {
+    return (
+        <Icon icon={faMagnifyingGlassDollar} size={size} className={className}/>
     )
 }
 

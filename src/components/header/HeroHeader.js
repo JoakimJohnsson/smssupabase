@@ -1,6 +1,13 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
-import {LoginIconDuoTone, LogoIconDuoTone, RegisterIconDuoTone} from "../icons-duotone";
+import {
+    CollectionCheckIconDuoTone,
+    CollectionPlusIconDuoTone,
+    CollectionSearchIconDuoTone,
+    LoginIconDuoTone,
+    LogoIconDuoTone,
+    RegisterIconDuoTone
+} from "../icons-duotone";
 
 export const HeroHeader = () => {
     return (
@@ -10,11 +17,8 @@ export const HeroHeader = () => {
 
                     <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
                         <LogoIconDuoTone size={"4x"} className={"me-2 fa-swap-opacity text-secondary mb-2"}/>
-                        <p className={"sms-logo-text mb-5"}>
+                        <h1 className={"sms-logo-text mb-5"}>
                             {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
-                        </p>
-                        <h1 className={"text-primary mb-5"}>
-                            {LABELS_AND_HEADINGS.WELCOME}
                         </h1>
                         <div className={"mb-5"}>
                             <a href={"#login-section"} className={"btn btn-primary btn-cta d-block d-md-inline-block mb-4 me-0 me-md-3"}>
@@ -24,10 +28,13 @@ export const HeroHeader = () => {
                                 <RegisterIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
                             </a>
                         </div>
-                        <p className={"lead mb-4"}>{TEXTS.DO_YOU_COLLECT}</p>
-                            <p>{TEXTS.MANAGE_YOUR_COLLECTION}</p>
-                            <p>{TEXTS.NEW_TITLES}</p>
-                            <p>{TEXTS.ALWAYS_AVAILABLE}</p>
+                        <p className={"lead mb-5"}>{TEXTS.DO_YOU_COLLECT}</p>
+                        <CollectionCheckIconDuoTone size={"2x"} className={"text-secondary mb-3 fa-swap-opacity"}/>
+                        <p>{TEXTS.MANAGE_YOUR_COLLECTION}</p>
+                        <CollectionPlusIconDuoTone size={"2x"} className={"text-secondary mb-3 fa-swap-opacity"}/>
+                        <p>{TEXTS.NEW_TITLES}</p>
+                        <CollectionSearchIconDuoTone size={"2x"} className={"text-secondary mb-3 fa-swap-opacity"}/>
+                        <p>{TEXTS.ALWAYS_AVAILABLE}</p>
                     </div>
                 </div>
             </div>

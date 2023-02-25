@@ -15,11 +15,15 @@ import {
     faArrowDownToArc,
     faArrowRightFromArc,
     faHeartCirclePlus,
+    faRectangleHistoryCirclePlus,
+    faClipboardListCheck,
+    faMagnifyingGlassDollar,
     faUser,
     faUsers,
     faKey
 } from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
+
 
 export const AdminIconDuoTone = ({size, className}) => {
     return (
@@ -36,6 +40,24 @@ export const NotAdminIconDuoTone = ({size, className}) => {
 export const DashboardIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faChartLine} size={size} className={className}/>
+    )
+}
+
+export const CollectionPlusIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faRectangleHistoryCirclePlus} size={size} className={className}/>
+    )
+}
+
+export const CollectionCheckIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faClipboardListCheck} size={size} className={className}/>
+    )
+}
+
+export const CollectionSearchIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faMagnifyingGlassDollar} size={size} className={className}/>
     )
 }
 

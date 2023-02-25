@@ -52,7 +52,7 @@ export const AuthorizedNavigation = () => {
 
                     {/* desktop ul (no click handler) */}
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem route={ROUTES.DEFAULT} icon={<StartIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
+                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<StartIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<DashboardIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
