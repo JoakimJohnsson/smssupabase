@@ -65,6 +65,18 @@ $accordion-border-color: $primary--lighter;
 
 $grid-gutter-width: 4rem;
 
+$theme-colors: (
+        "primary":    $primary,
+        "secondary":  $secondary,
+        "tertiary":   $tertiary,
+        "success":    $success,
+        "info":       $info,
+        "warning":    $warning,
+        "danger":     $danger,
+        "light":      $white--darker,
+        "dark":       $black
+);
+
 // Typography
 $font-size-base: 1rem;
 $h1-font-size: $font-size-base * 1.75;
