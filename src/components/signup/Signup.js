@@ -6,7 +6,7 @@ import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
 import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
 import {RegisterIcon} from "../icons";
-import {LoginIconDuoTone, RegisterIconDuoTone} from "../icons-duotone";
+import {RegisterIconDuoTone} from "../icons-duotone";
 
 export const Signup = () => {
     // Success and error variants of form-input is available
