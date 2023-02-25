@@ -17,9 +17,11 @@ export const Issue = () => {
 
     const fetchIssueAndTitleData = useCallback(() => {
         getRowByTableAndId(TABLES.ISSUES, setIssue, id).then(() => {
-            getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => setLoading(false))
+            if (issue.title_id) {
+                getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => setLoading(false))
+            }
         });
-    }, [issue, id])
+    }, [issue.title_id, id])
 
     useEffect(() => {
         fetchIssueAndTitleData();
