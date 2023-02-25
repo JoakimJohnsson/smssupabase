@@ -45,7 +45,7 @@ export const Issue = () => {
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION_ABOUT} {getIssueName(title, issue)}</h2>
                                 <p>{LABELS_AND_HEADINGS.PUBLISHERS}: </p>
                                 {
-                                    issue.is_marvelklubben &&
+                                    issue.is_marvelklubben === 1 &&
                                     <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
                                 }
                             </div>

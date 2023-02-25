@@ -30,6 +30,14 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
         setSearchParams({edit: false});
     }
 
+    const handleCheckboxChange= (value) => {
+        if (value === 1) {
+            setNewIssue({...newIssue, "is_marvelklubben": 0})
+        } else {
+            setNewIssue({...newIssue, "is_marvelklubben": 1})
+        }
+    }
+
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-form"}>
@@ -77,7 +85,8 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         className={"form-check-input me-2"}
                         type="checkbox"
                         value={newIssue.is_marvelklubben}
-                        onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
+                        checked={newIssue.is_marvelklubben === 1}
+                        onChange={() => handleCheckboxChange(newIssue.is_marvelklubben)}
                         disabled={!edit}
                     />
                     <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
