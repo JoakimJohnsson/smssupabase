@@ -6,6 +6,7 @@ import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
 import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
 import {RegisterIcon} from "../icons";
+import {RegisterIconDuoTone} from "../icons-duotone";
 
 export const Signup = () => {
     // Success and error variants of form-input is available
@@ -65,7 +66,11 @@ export const Signup = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={"sms-form"}>
+            <form onSubmit={handleSubmit} className={"sms-form"} id={"create-account-section"}>
+                <div className={"text-center mb-4 mb-sm-5"}>
+                    <RegisterIconDuoTone size={"2x"} className={"text-primary mb-3"}/>
+                    <h2>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</h2>
+                </div>
                 <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
                 <input id="input-email"
                        type="email"

@@ -22,11 +22,13 @@ export const Title = () => {
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher_id).then(() => {
-                getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.ISSUES, "title_id", id, setIssuesData).then(() => setLoading(false));
-            })
+            if (title.publisher_id) {
+                getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher_id).then(() => {
+                    getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.ISSUES, "title_id", id, setIssuesData).then(() => setLoading(false));
+                })
+            }
         });
-    }, [id, title]);
+    }, [id, title.publisher_id]);
 
     useEffect(() => {
         fetchTitleAndIssuesData();

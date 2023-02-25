@@ -17,9 +17,11 @@ export const Issue = () => {
 
     const fetchIssueAndTitleData = useCallback(() => {
         getRowByTableAndId(TABLES.ISSUES, setIssue, id).then(() => {
-            getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => setLoading(false))
+            if (issue.title_id) {
+                getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => setLoading(false))
+            }
         });
-    }, [issue, id])
+    }, [issue.title_id, id])
 
     useEffect(() => {
         fetchIssueAndTitleData();
@@ -43,7 +45,7 @@ export const Issue = () => {
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION_ABOUT} {getIssueName(title, issue)}</h2>
                                 <p>{LABELS_AND_HEADINGS.PUBLISHERS}: </p>
                                 {
-                                    issue.is_marvelklubben &&
+                                    issue.is_marvelklubben === 1 &&
                                     <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
                                 }
                             </div>

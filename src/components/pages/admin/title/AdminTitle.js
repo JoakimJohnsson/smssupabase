@@ -35,7 +35,7 @@ export const AdminTitle = () => {
     const {id} = useParams();
     const [year, setYear] = useState(1975);
     const [number, setNumber] = useState(1);
-    const [is_marvelklubben, setIs_marvelklubben] = useState(false);
+    const [is_marvelklubben, setIs_marvelklubben] = useState(0);
     const [marvelklubben_number, setMarvelklubben_number] = useState(0);
     const [newTitle, setNewTitle] = useState({});
     const {setInformationMessage} = useAppContext();
@@ -70,7 +70,7 @@ export const AdminTitle = () => {
 
     const resetAddIssueForm = async () => {
         setNumber(1);
-        setIs_marvelklubben(false);
+        setIs_marvelklubben(0);
         setMarvelklubben_number(0);
     }
 
@@ -109,6 +109,14 @@ export const AdminTitle = () => {
             setTimeout(() => {
                 setLoadingDI(false);
             }, 1000);
+        }
+    }
+
+    const handleCheckboxInput = (value) => {
+        if (value === 1) {
+            setIs_marvelklubben(0)
+        } else {
+            setIs_marvelklubben(1)
         }
     }
 
@@ -183,8 +191,9 @@ export const AdminTitle = () => {
                                     name={"is_marvelklubben"}
                                     className={"form-check-input me-2"}
                                     type="checkbox"
-                                    value={is_marvelklubben || false}
-                                    onChange={(e) => handleInput(e, setIs_marvelklubben)}
+                                    value={is_marvelklubben || 0}
+                                    checked={is_marvelklubben === 1}
+                                    onChange={() => handleCheckboxInput(is_marvelklubben)}
                                 />
                                 <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
                             </div>

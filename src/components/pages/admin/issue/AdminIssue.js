@@ -22,11 +22,11 @@ export const AdminIssue = () => {
 
     const fetchIssueAndTitleData = useCallback(() => {
         getRowByTableAndId(TABLES.ISSUES, setIssue, id).then(() => {
-            if (issue && issue.title_id) {
+            if (issue.title_id) {
                 getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => setLoading(false));
             }
         });
-    }, [id, issue]);
+    }, [id, issue.title_id]);
 
     useEffect(() => {
         fetchIssueAndTitleData();

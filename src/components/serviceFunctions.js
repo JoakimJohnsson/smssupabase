@@ -167,7 +167,7 @@ export const generateIssuesForTitle = async (titleData, setInformationMessage) =
                             title_id: titleData.titleId,
                             year: year,
                             number: i + 1,
-                            is_marvelklubben: false,
+                            is_marvelklubben: 0,
                             marvelklubben_number: 0,
                         }])
                 } catch (error) {
