@@ -71,8 +71,8 @@ export const Signup = () => {
                     <RegisterIconDuoTone size={"2x"} className={"text-primary mb-3"}/>
                     <h2>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</h2>
                 </div>
-                <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
-                <input id="input-email"
+                <label className={"form-label"} htmlFor="input-signup-email">{LABELS_AND_HEADINGS.EMAIL}</label>
+                <input id="input-signup-email"
                        type="email"
                        ref={emailRef}
                        onSubmit={(e) => handleEmailValidation(e)}
@@ -80,8 +80,8 @@ export const Signup = () => {
                        placeholder={"name@myplace.se"}
                        required/>
                 <ValidationMessage success={emailValidated} message={emailValidationMessage}/>
-                <label className={"form-label d-flex"} htmlFor="input-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
-                <input id="input-password"
+                <label className={"form-label d-flex"} htmlFor="input-signup-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
+                <input id="input-signup-password"
                        type="password"
                        ref={passwordRef}
                        onChange={(e) => handlePasswordValidation(e)}
