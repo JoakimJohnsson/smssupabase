@@ -18,6 +18,7 @@ import {
     faRectangleHistoryCirclePlus,
     faClipboardListCheck,
     faMagnifyingGlassDollar,
+    faCalendarHeart,
     faUser,
     faUsers,
     faKey
@@ -40,6 +41,12 @@ export const NotAdminIconDuoTone = ({size, className}) => {
 export const DashboardIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faChartLine} size={size} className={className}/>
+    )
+}
+
+export const DateIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faCalendarHeart} size={size} className={className}/>
     )
 }
 
