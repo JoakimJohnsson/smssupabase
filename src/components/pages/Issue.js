@@ -66,8 +66,6 @@ export const Issue = () => {
                                     issue.is_marvelklubben === 1 &&
                                     <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
                                 }
-                                <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
-                                {issue.grade}
                             </div>
                         </>
                 }
