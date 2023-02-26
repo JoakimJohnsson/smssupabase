@@ -7,6 +7,7 @@ import {Icon} from "../../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {UsersCard} from "../../dashboard/dashboardCards/admin/UsersCard";
 import {useAppContext} from "../../../context/AppContext";
+import {UtilsCard} from "../../dashboard/dashboardCards/admin/UtilsCard";
 
 
 export const Admin = () => {
@@ -35,6 +36,7 @@ export const Admin = () => {
                     profile && profile.role && profile.role === 2 &&
                     <UsersCard/>
                 }
+                <UtilsCard/>
             </div>
         </main>
     )

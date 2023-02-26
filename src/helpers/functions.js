@@ -129,3 +129,7 @@ export const sortByName = (a, b) => {
 
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");
+
+export const getCurrentDate = () => {
+    return (new Date()).toISOString();
+}

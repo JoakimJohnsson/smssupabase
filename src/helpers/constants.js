@@ -182,10 +182,12 @@ export const LABELS_AND_HEADINGS = {
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     TOTAL_ISSUES_DB: "Totalt antal publikationer (total_issues)",
     UPDATE: "Uppdatera",
+    RELEASE_DATE: "Releasedatum",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
+    UTILS: "Knappar och reglage",
     WEBSITE: "Webbplats",
     WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
     WIKI_URL: "Länk till Seriewikin",
@@ -215,7 +217,8 @@ export const TEXTS = {
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
-    SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen."
+    SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen.",
+    UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
 }
 
 export const FILETYPES = {
@@ -241,6 +244,7 @@ export const TABLES = {
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
     TITLES: "titles",
+    UTILS: "utils"
 }
 
 export const PANES = {

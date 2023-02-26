@@ -1,6 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
 import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
-import {generateUniqueHashedFilename} from "../helpers/functions";
+import {generateUniqueHashedFilename, getCurrentDate} from "../helpers/functions";
 
 // PROFILES FUNCTIONS
 export const updateProfileData = async (id, data, setInformationMessage) => {
@@ -390,6 +390,21 @@ export const deleteImageFromBucketSimple = async (fileName, bucketName) => {
     }
 }
 
+// UTILS FUNCTIONS
+export const updateReleaseDate = async (setInformationMessage) => {
+    try {
+        let {error, status} = await supabase
+            .from(TABLES.UTILS)
+            .update([{
+                release_date: getCurrentDate(),
+            }])
+            .eq("id", 1)
+        setInformationMessage({show: true, status: status, error: error});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 // HANDLER FUNCTIONS
 export const handleDelete = async (table, id, name, setData, initialData, image_filename, bucket, setInformationMessage) => {
     if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
@@ -419,7 +434,6 @@ export const handleMultipleDeleteNoConfirm = async (table, id, name, setData, in
         console.error(error);
     }
 }
-
 
 export const handleChange = (obj, setObj, name, value) => {
     setObj({...obj, [name]: value});
