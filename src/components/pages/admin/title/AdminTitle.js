@@ -203,7 +203,7 @@ export const AdminTitle = () => {
                                                 checked={is_double === 1}
                                                 onChange={() => handleCheckboxInput(is_double, setIs_double)}
                                             />
-                                            <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                                            <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_DOUBLE_DB}</label>
                                         </div>
                                         <div>
                                             <input
