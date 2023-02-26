@@ -11,7 +11,7 @@ import {
 
 export const HeroHeader = () => {
     return (
-        <div className={"sms-hero-header mb-5"}>
+        <header className={"sms-hero-header mb-5"}>
             <div className={"container-fluid"}>
                 <div className={"row"}>
 
@@ -38,6 +38,6 @@ export const HeroHeader = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     )
 };

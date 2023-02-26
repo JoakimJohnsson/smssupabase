@@ -32,36 +32,45 @@ export const AdminPublisher = () => {
         setNewPublisher({...publisher});
     }, [publisher])
 
-    return loading ? (<CustomSpinner/>) : (
+    return (
         <main className={"container-fluid main-container"}>
-            <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={publisher.name}/>
-                    <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
-                </div>
-            </div>
-            <div className={"row row-padding--secondary"}>
-                <AdminPublisherInfoEdit publisher={publisher} setPublisher={setPublisher} newPublisher={newPublisher}
-                                        setNewPublisher={setNewPublisher}/>
-                <div className={"sms-dashboard-col"}>
-                    <div className={"sms-form"}>
-                        <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
-                        <ImageUploader
-                            imageUrl={imageUrl}
-                            setImageUrl={setImageUrl}
-                            imageFilename={imageFilename}
-                            setImageFilename={setImageFilename}
-                            uploading={uploading}
-                            setUploading={setUploading}
-                            bucketName={BUCKETS.PUBLISHER_IMAGES}
-                            tableName={TABLES.PUBLISHERS}
-                            fileType={FILETYPES.PUBLISHER_IMAGE}
-                            id={publisher.id}
-                            update={fetchPublisherData}
-                        />
+            {
+                loading ?
+                    <div className={"row row-padding--main"}>
+                        <CustomSpinner size={"4x"}/>
                     </div>
-                </div>
-            </div>
+                    :
+                    <>
+                        <div className={"row row-padding--main"}>
+                            <div className={"sms-page-col--full"}>
+                                <HeadingWithBreadCrumbs text={publisher.name}/>
+                                <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
+                            </div>
+                        </div>
+                        <div className={"row row-padding--secondary"}>
+                            <AdminPublisherInfoEdit publisher={publisher} setPublisher={setPublisher} newPublisher={newPublisher}
+                                                    setNewPublisher={setNewPublisher}/>
+                            <div className={"sms-dashboard-col"}>
+                                <div className={"sms-form"}>
+                                    <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
+                                    <ImageUploader
+                                        imageUrl={imageUrl}
+                                        setImageUrl={setImageUrl}
+                                        imageFilename={imageFilename}
+                                        setImageFilename={setImageFilename}
+                                        uploading={uploading}
+                                        setUploading={setUploading}
+                                        bucketName={BUCKETS.PUBLISHER_IMAGES}
+                                        tableName={TABLES.PUBLISHERS}
+                                        fileType={FILETYPES.PUBLISHER_IMAGE}
+                                        id={publisher.id}
+                                        update={fetchPublisherData}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </>
+            }
         </main>
     )
 }

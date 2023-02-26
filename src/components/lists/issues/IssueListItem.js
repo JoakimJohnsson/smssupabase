@@ -3,28 +3,30 @@ import {ImageIcon, IssueIcon} from "../../icons";
 import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
-import {hasImage} from "../../../helpers/functions";
-import {getNameByTableAndId} from "../../serviceFunctions";
+import {getIssueName, hasImage} from "../../../helpers/functions";
+import {getRowByTableAndId} from "../../serviceFunctions";
 import {CustomSpinner} from "../../minis/CustomSpinner";
 
 
-export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssuesData}) => {
+export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData}) => {
 
-    const [titleName, setTitleName] = useState("");
+    const [title, setTitle] = useState({});
+    const [issueName, setIssueName] = useState("");
     const [loading, setLoading] = useState(true);
 
-    const fetchTitleName = useCallback(() => {
-        getNameByTableAndId(TABLES.TITLES, issue.title_id, setTitleName).then(() => setLoading(false));
-    }, [issue]);
+    const fetchTitle = useCallback(() => {
+        if (issue.title_id) {
+            getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => setLoading(false));
+        }
+    }, [issue.title_id]);
 
     useEffect(() => {
-        if (!title) {
-            fetchTitleName();
-        } else {
-            setTitleName(title.name)
-            setLoading(false);
-        }
-    }, [title, fetchTitleName])
+            fetchTitle();
+            if (title) {
+                setIssueName(getIssueName(title, issue))
+                setLoading(false);
+            }
+    }, [title, issue, fetchTitle])
 
     return loading ? (<CustomSpinner/>) : (
         <li className={"list-group-item px-0"}>
@@ -36,7 +38,7 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
                             hasImage(issue) && showAdminInfo &&
                             <ImageIcon size={"1x"} className={"me-2 text-success"}/>
                         }
-                        <IssueLink showAdminInfo={showAdminInfo} issue={issue} titleName={titleName}/>
+                        <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={issueName}/>
                     </div>
                 </div>
                 <div className={"sms-list-col--tools"}>
@@ -44,7 +46,7 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
                         <ListToolBox
                             item={issue}
                             name={issue.number}
-                            displayName={titleName + " " + issue.number + " " + issue.year}
+                            displayName={issueName}
                             data={issuesData}
                             setData={setIssuesData}
                             showAdminInfo={showAdminInfo}

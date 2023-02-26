@@ -115,8 +115,8 @@ export const LABELS_AND_HEADINGS = {
     COLLECT_ISSUE_STOP_2: "från samlingen.",
     COMMUNITY: "Socialt",
     CONTENT: "Innehåll",
-    COUNTRY: "Land",
-    COUNTRY_DB: "Land (country)",
+    COUNTRY: "Utgivningsland",
+    COUNTRY_DB: "Utgivningsland (country)",
     CREATE_ACCOUNT: "Registrera dig",
     CREATE_ACCOUNT_CTA: "Registrera dig",
     DASHBOARD: "Kontrollpanel",
@@ -136,13 +136,16 @@ export const LABELS_AND_HEADINGS = {
     FORMAT_DB: "Format (format)",
     GENERATE_ISSUES: "Lägg till publikationer",
     GENERATING_ISSUES: "Lägger till publikationer",
+    GRADE: "Skickgradering",
     HOME: "Hem",
     ID: "Id",
     IMAGE: "Bild",
     INFORMATION: "Information",
     INFORMATION_ABOUT: "Information om",
     IS_MARVELKLUBBEN: "Ingår i marvelklubben",
+    IS_DOUBLE: "Dubbelnummer",
     IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
+    IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUES: "Publikationer",
     LAST_NAME: "Efternamn",
     LOADING: "Laddar",
@@ -177,15 +180,18 @@ export const LABELS_AND_HEADINGS = {
     START_YEAR_DB: "Startår (start_year)",
     SVENSKA_MARVELSAMLARE: "Svenska marvelsamlare",
     SVENSKA_MARVELSAMLARE_SHORT: "SMS",
+    TITLE: "Titel",
     TITLES: "Titlar",
     TITLE_DB: "Titel (title)",
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     TOTAL_ISSUES_DB: "Totalt antal publikationer (total_issues)",
     UPDATE: "Uppdatera",
+    RELEASE_DATE: "Releasedatum",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
+    UTILS: "Verktyg, knappar och reglage",
     WEBSITE: "Webbplats",
     WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
     WIKI_URL: "Länk till Seriewikin",
@@ -196,7 +202,7 @@ export const LABELS_AND_HEADINGS = {
 
 export const TEXTS = {
     ADMIN_LEAD: "Här kan du som är Admin lägga in och redigera data i databasen.",
-    ADMIN_INFO: "För frågor och instruktioner - maila Super-Admin.",
+    ADMIN_INFO: "När all annan info är klar - Ladda upp bilden. Så blir det lätt att få översikt över vilka objekt som behöver mer content. För frågor och instruktioner - maila Super-Admin.",
     ADMIN_ISSUE_LEAD: "Här kan du redigera information om publikationen och lägga till en bild (framsida).",
     ADMIN_ISSUE_TEXT: "Hämta ner bild från titelns cover gallery på Grand Comics Database (large). Ladda sedan upp den. Här kan du även ange om publikationen ingår i Marvelklubben eller inte, samt ange numrering.",
     ADMIN_PUBLISHER_LEAD: "Här kan du redigera information om förlaget och lägga till en bild (logotyp).",
@@ -215,7 +221,9 @@ export const TEXTS = {
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
-    SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen."
+    SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen.",
+    UTILS: "Speciella funktioner för förbättrade användarupplevelser.",
+    UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
 }
 
 export const FILETYPES = {
@@ -241,6 +249,7 @@ export const TABLES = {
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
     TITLES: "titles",
+    UTILS: "utils"
 }
 
 export const PANES = {

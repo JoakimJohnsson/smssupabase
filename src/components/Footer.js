@@ -1,10 +1,20 @@
-import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
+import React, {useState, useCallback, useEffect} from "react";
+import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../helpers/constants";
+import {getRowByTableAndId} from "./serviceFunctions";
 
 
 const Footer = () => {
 
     const package_json = require('../../package.json');
+    const [utilsData, setUtilsData] = useState({})
+
+    const fetchUtilsData = useCallback(() => {
+        getRowByTableAndId(TABLES.UTILS, setUtilsData, 1).then();
+    }, [])
+
+    useEffect(() => {
+        fetchUtilsData();
+    }, [fetchUtilsData])
 
     return (
         <footer className={"p-3 p-sm-5 border-top bg-whale"}>
@@ -25,7 +35,7 @@ const Footer = () => {
                     </div>
                     <div className={"col-12 col-md-6 py-2 d-flex align-items-end"}>
                         <p className={"fs-smallest text-end m-0 w-100"}>
-                            © 2021-2022 | {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE} | v{package_json.version}
+                            © 2021-2022 | {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE} | v{package_json.version} {utilsData ? " | " + utilsData.release_date : ""}
                         </p>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ import {
     faArrowDownToArc,
     faArrowRightFromArc,
     faHeartCirclePlus,
+    faCalendarHeart,
     faUser,
     faUsers,
     faKey
@@ -40,6 +41,12 @@ export const AdminIcon = ({size, className}) => {
 export const NotAdminIcon = ({size, className}) => {
     return (
         <Icon icon={faShield} size={size} className={className}/>
+    )
+}
+
+export const DateIcon = ({size, className}) => {
+    return (
+        <Icon icon={faCalendarHeart} size={size} className={className}/>
     )
 }
 
@@ -115,6 +122,8 @@ export const PublishersIcon = ({size, className}) => {
     )
 }
 
+export const publishersIcon = faBuildingColumns;
+
 export const RegisterIcon = ({size, className}) => {
     return (
         <Icon icon={faHeartCirclePlus} size={size} className={className}/>
@@ -139,11 +148,15 @@ export const TitlesIcon = ({size, className}) => {
     )
 }
 
+export const titlesIcon = faFiles;
+
 export const TitleIcon = ({size, className}) => {
     return (
         <Icon icon={faFile} size={size} className={className}/>
     )
 }
+
+export const titleIcon = faFile;
 
 export const UsersIcon = ({size, className}) => {
     return (

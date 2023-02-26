@@ -4,11 +4,12 @@ $information-message-box-shadow: 0 0 80px 20px #000;
 
 // Colors
 $primary: #41bee0;
-$secondary: #c4a82b;
-$success: #7ff268;
-$info: #f3f00f;
-$warning: #fbbd4a;
-$danger: #fa5a5a;
+$secondary: #ffcc33;
+$tertiary: #ddbbff;
+$success: #33cc99;
+$info: #ff7700;
+$warning: #d461a7;
+$danger: #dd4444;
 $white: #fff;
 $white--darker: #c0c7cf;
 $black: #000;
@@ -64,6 +65,18 @@ $accordion-border-color: $primary--lighter;
 
 $grid-gutter-width: 4rem;
 
+$theme-colors: (
+        "primary":    $primary,
+        "secondary":  $secondary,
+        "tertiary":   $tertiary,
+        "success":    $success,
+        "info":       $info,
+        "warning":    $warning,
+        "danger":     $danger,
+        "light":      $white,
+        "dark":       $black
+);
+
 // Typography
 $font-size-base: 1rem;
 $h1-font-size: $font-size-base * 1.75;
@@ -76,8 +89,8 @@ $h6-font-size: $font-size-base;
 // Global
 $body-bg: $color-bg-elephant;
 $body-color: $white;
-$font-family-sans-serif: "Roboto", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$headings-font-weight: 500;
+$font-family-sans-serif: "Nunito Sans", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$headings-font-weight: 700;
 $font-weight-normal: 400;
 $font-weight-bold: 600;
 $text-muted: $white--darker;

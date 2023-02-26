@@ -110,7 +110,11 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
     }
 }
 export const getIssueName = (title, issue) => {
-    return title.name + " #" + issue.number + " / " + issue.year;
+    let number = issue.number;
+    if (issue.is_double === 1) {
+        number = number + "-" + (number + 1)
+    }
+    return title.name + " #" + number + " / " + issue.year;
 }
 
 export const hasImage = (item) => {
@@ -129,3 +133,7 @@ export const sortByName = (a, b) => {
 
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");
+
+export const getCurrentDate = () => {
+    return (new Date()).toISOString();
+}
