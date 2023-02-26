@@ -50,7 +50,9 @@ const Profile = () => {
         <main className={"container-fluid main-container"}>
             {
                 loading ?
-                    <CustomSpinner size={"4x"}/>
+                    <div className={"row row-padding--main"}>
+                        <CustomSpinner size={"4x"}/>
+                    </div>
                     :
                     <>
 
