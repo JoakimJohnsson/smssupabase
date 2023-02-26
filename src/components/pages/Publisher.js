@@ -43,7 +43,7 @@ export const Publisher = () => {
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION_ABOUT} {publisher.name}</h2>
                                 {
                                     countryData &&
-                                    <p>Land: {getObjectNameById(countryData, publisher.country_id)}</p>
+                                    <p>{LABELS_AND_HEADINGS.COUNTRY} {getObjectNameById(countryData, publisher.country_id)}</p>
                                 }
                                 {
                                     publisher.description &&

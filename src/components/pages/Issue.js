@@ -4,8 +4,9 @@ import {Link, useParams} from "react-router-dom";
 import {getRowByTableAndId} from "../serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {CustomSpinner} from "../minis/CustomSpinner";
-import {getIssueName} from "../../helpers/functions";
+import {getIssueName, getObjectNameById} from "../../helpers/functions";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
+import countryData from "../../helpers/valueLists/countries.json";
 
 
 export const Issue = () => {
@@ -60,12 +61,16 @@ export const Issue = () => {
                                     </div>
                                 </div>
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
-                                <p>{title.description}</p>
-                                <p>{publisher.description}</p>
+                                {
+                                    countryData &&
+                                    <p>{LABELS_AND_HEADINGS.COUNTRY}: {getObjectNameById(countryData, publisher.country_id)}</p>
+                                }
                                 {
                                     issue.is_marvelklubben === 1 &&
                                     <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
                                 }
+                                <p>{title.description}</p>
+                                <p>{publisher.description}</p>
                             </div>
                         </>
                 }
