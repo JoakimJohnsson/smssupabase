@@ -139,11 +139,15 @@ export const TitlesIconDuoTone = ({size, className}) => {
     )
 }
 
+export const titlesIconDuoTone = faFiles;
+
 export const TitleIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faFile} size={size} className={className}/>
     )
 }
+
+export const titleIconDuoTone = faFile;
 
 export const UsersIconDuoTone = ({size, className}) => {
     return (

@@ -146,11 +146,15 @@ export const TitlesIcon = ({size, className}) => {
     )
 }
 
+export const titlesIcon = faFiles;
+
 export const TitleIcon = ({size, className}) => {
     return (
         <Icon icon={faFile} size={size} className={className}/>
     )
 }
+
+export const titleIcon = faFile;
 
 export const UsersIcon = ({size, className}) => {
     return (

@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {getRowByTableAndId} from "../../../serviceFunctions";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
@@ -7,6 +7,9 @@ import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName} from "../../../../helpers/functions";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
+import {titleIcon} from "../../../icons";
 
 
 export const AdminIssue = () => {
@@ -19,6 +22,7 @@ export const AdminIssue = () => {
     const [imageUrl, setImageUrl] = useState("");
     const {id} = useParams();
     const [newIssue, setNewIssue] = useState({});
+    const navigate = useNavigate();
 
     const fetchIssueAndTitleData = useCallback(() => {
         getRowByTableAndId(TABLES.ISSUES, setIssue, id).then(() => {
@@ -45,6 +49,8 @@ export const AdminIssue = () => {
                     <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} name={getIssueName(title, issue)}/>
                     <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                     <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
+                    <IconButton variant={"primary"} icon={titleIcon} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
+                                label={title.name}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
