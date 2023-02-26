@@ -7,15 +7,15 @@ import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName} from "../../../../helpers/functions";
-import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
-import {titleIcon} from "../../../icons";
+import {publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
 
 
 export const AdminIssue = () => {
 
     const [issue, setIssue] = useState({});
     const [title, setTitle] = useState({});
+    const [publisher, setPublisher] = useState({});
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
     const [imageFilename, setImageFilename] = useState("");
@@ -27,10 +27,14 @@ export const AdminIssue = () => {
     const fetchIssueAndTitleData = useCallback(() => {
         getRowByTableAndId(TABLES.ISSUES, setIssue, id).then(() => {
             if (issue.title_id) {
-                getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => setLoading(false));
+                getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => {
+                    if (title.publisher_id) {
+                        getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher_id).then(() => setLoading(false))
+                    }
+                });
             }
         });
-    }, [id, issue.title_id]);
+    }, [id, issue.title_id, title.publisher_id]);
 
     useEffect(() => {
         fetchIssueAndTitleData();
@@ -49,8 +53,10 @@ export const AdminIssue = () => {
                     <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} name={getIssueName(title, issue)}/>
                     <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                     <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
-                    <IconButton variant={"primary"} icon={titleIcon} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
+                    <IconButton variant={"primary"} icon={titleIconDuoTone} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
                                 label={title.name}/>
+                    <IconButton variant={"primary"} icon={publishersIconDuoTone} onClick={() => navigate(`/admin/publishers/${title.publisher_id}`)}
+                                label={publisher.name}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

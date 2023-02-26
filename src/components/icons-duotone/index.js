@@ -115,6 +115,8 @@ export const PublishersIconDuoTone = ({size, className}) => {
     )
 }
 
+export const publishersIconDuoTone = faBuildingColumns;
+
 export const RegisterIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faHeartCirclePlus} size={size} className={className}/>

@@ -122,6 +122,8 @@ export const PublishersIcon = ({size, className}) => {
     )
 }
 
+export const publishersIcon = faBuildingColumns;
+
 export const RegisterIcon = ({size, className}) => {
     return (
         <Icon icon={faHeartCirclePlus} size={size} className={className}/>
