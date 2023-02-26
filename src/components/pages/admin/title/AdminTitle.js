@@ -36,6 +36,7 @@ export const AdminTitle = () => {
     const [year, setYear] = useState(1975);
     const [number, setNumber] = useState(1);
     const [is_marvelklubben, setIs_marvelklubben] = useState(0);
+    const [is_double, setIs_double] = useState(0);
     const [marvelklubben_number, setMarvelklubben_number] = useState(0);
     const [newTitle, setNewTitle] = useState({});
     const {setInformationMessage} = useAppContext();
@@ -112,11 +113,11 @@ export const AdminTitle = () => {
         }
     }
 
-    const handleCheckboxInput = (value) => {
+    const handleCheckboxInput = (value, setData) => {
         if (value === 1) {
-            setIs_marvelklubben(0)
+            setData(0)
         } else {
-            setIs_marvelklubben(1)
+            setData(1)
         }
     }
 
@@ -187,13 +188,25 @@ export const AdminTitle = () => {
                             />
                             <div>
                                 <input
+                                    id={"double"}
+                                    name={"is_double"}
+                                    className={"form-check-input me-2"}
+                                    type="checkbox"
+                                    value={is_double || 0}
+                                    checked={is_double === 1}
+                                    onChange={() => handleCheckboxInput(is_double, setIs_double)}
+                                />
+                                <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                            </div>
+                            <div>
+                                <input
                                     id={"marvelklubben"}
                                     name={"is_marvelklubben"}
                                     className={"form-check-input me-2"}
                                     type="checkbox"
                                     value={is_marvelklubben || 0}
                                     checked={is_marvelklubben === 1}
-                                    onChange={() => handleCheckboxInput(is_marvelklubben)}
+                                    onChange={() => handleCheckboxInput(is_marvelklubben, setIs_marvelklubben)}
                                 />
                                 <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
                             </div>
@@ -215,6 +228,7 @@ export const AdminTitle = () => {
                                         number: number,
                                         is_marvelklubben: is_marvelklubben,
                                         marvelklubben_number: marvelklubben_number,
+                                        is_double: is_double
                                     }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
                                     disabled={!year || !number}>
                                 <IssueIcon className={"me-2"}/>

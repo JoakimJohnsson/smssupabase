@@ -39,7 +39,6 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) =>
                                                     index={index}
                                                     showAdminInfo={showAdminInfo}
                                                     issue={issue}
-                                                    title={title}
                                                     setIssuesData={setIssuesData}
                                                     issuesData={issuesData}
                                                 />))

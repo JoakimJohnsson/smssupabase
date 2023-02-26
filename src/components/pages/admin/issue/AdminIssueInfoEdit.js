@@ -30,11 +30,19 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
         setSearchParams({edit: false});
     }
 
-    const handleCheckboxChange= (value) => {
+    const handleMKCheckboxChange = (value) => {
         if (value === 1) {
             setNewIssue({...newIssue, "is_marvelklubben": 0})
         } else {
             setNewIssue({...newIssue, "is_marvelklubben": 1})
+        }
+    }
+
+    const handleDoubleCheckboxChange = (value) => {
+        if (value === 1) {
+            setNewIssue({...newIssue, "is_double": 0})
+        } else {
+            setNewIssue({...newIssue, "is_double": 1})
         }
     }
 
@@ -80,13 +88,26 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                 />
                 <div>
                     <input
+                        id={"double"}
+                        name={"is_double"}
+                        className={"form-check-input me-2"}
+                        type="checkbox"
+                        value={newIssue.is_double}
+                        checked={newIssue.is_double === 1}
+                        onChange={() => handleDoubleCheckboxChange(newIssue.is_double)}
+                        disabled={!edit}
+                    />
+                    <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_DOUBLE_DB}</label>
+                </div>
+                <div>
+                    <input
                         id={"marvelklubben"}
                         name={"is_marvelklubben"}
                         className={"form-check-input me-2"}
                         type="checkbox"
                         value={newIssue.is_marvelklubben}
                         checked={newIssue.is_marvelklubben === 1}
-                        onChange={() => handleCheckboxChange(newIssue.is_marvelklubben)}
+                        onChange={() => handleMKCheckboxChange(newIssue.is_marvelklubben)}
                         disabled={!edit}
                     />
                     <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>

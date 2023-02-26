@@ -142,6 +142,7 @@ export const updateIssueData = async (id, data, setInformationMessage) => {
                 title_id: data.title_id,
                 year: data.year,
                 number: data.number,
+                is_double: data.is_double,
                 is_marvelklubben: data.is_marvelklubben,
                 marvelklubben_number: data.marvelklubben_number,
             }])
