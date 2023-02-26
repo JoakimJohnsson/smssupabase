@@ -9,6 +9,7 @@ export const UtilsCard = () => {
         <div className={"sms-dashboard-col"}>
             <div className={"dashboard-card"}>
                 <h2>{LABELS_AND_HEADINGS.UTILS}</h2>
+                <p>{TEXTS.UTILS}</p>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_DATE}</h3>
                 <p>{TEXTS.UTILS_UPDATE_RELEASE_DATE}</p>
                 <UpdateReleaseDateButton />

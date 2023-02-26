@@ -187,7 +187,7 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
-    UTILS: "Knappar och reglage",
+    UTILS: "Verktyg, knappar och reglage",
     WEBSITE: "Webbplats",
     WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
     WIKI_URL: "Länk till Seriewikin",
@@ -218,6 +218,7 @@ export const TEXTS = {
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
     SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen.",
+    UTILS: "Speciella funktioner för förbättrade användarupplevelser.",
     UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
 }
 
