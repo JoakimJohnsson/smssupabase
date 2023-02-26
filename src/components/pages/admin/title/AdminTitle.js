@@ -123,7 +123,7 @@ export const AdminTitle = () => {
     return title && loading ? (<CustomSpinner/>) : (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
+                <div className={"sms-page-col--full"}>
                     <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                     <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
                 </div>

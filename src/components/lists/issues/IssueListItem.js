@@ -14,8 +14,10 @@ export const IssueListItem = ({showAdminInfo, issue, title, issuesData, setIssue
     const [loading, setLoading] = useState(true);
 
     const fetchTitleName = useCallback(() => {
-        getNameByTableAndId(TABLES.TITLES, issue.title_id, setTitleName).then(() => setLoading(false));
-    }, [issue]);
+        if (issue.title_id) {
+            getNameByTableAndId(TABLES.TITLES, issue.title_id, setTitleName).then(() => setLoading(false));
+        }
+    }, [issue.title_id]);
 
     useEffect(() => {
         if (!title) {

@@ -198,7 +198,7 @@ export const LABELS_AND_HEADINGS = {
 
 export const TEXTS = {
     ADMIN_LEAD: "Här kan du som är Admin lägga in och redigera data i databasen.",
-    ADMIN_INFO: "För frågor och instruktioner - maila Super-Admin.",
+    ADMIN_INFO: "När all annan info är klar - Ladda upp bilden. Så blir det lätt att få översikt över vilka objekt som behöver mer content. För frågor och instruktioner - maila Super-Admin.",
     ADMIN_ISSUE_LEAD: "Här kan du redigera information om publikationen och lägga till en bild (framsida).",
     ADMIN_ISSUE_TEXT: "Hämta ner bild från titelns cover gallery på Grand Comics Database (large). Ladda sedan upp den. Här kan du även ange om publikationen ingår i Marvelklubben eller inte, samt ange numrering.",
     ADMIN_PUBLISHER_LEAD: "Här kan du redigera information om förlaget och lägga till en bild (logotyp).",
