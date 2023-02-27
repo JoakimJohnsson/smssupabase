@@ -3,7 +3,7 @@ import {TABLES} from "../constants";
 import {getRowByTableAndId} from "../../components/serviceFunctions";
 
 
-export const useIssueData = (id, doUseFetch = false) => {
+export const useIssueData = (id, withFetchAndSetIssue = false) => {
 
     const [issue, setIssue] = useState({});
     const [title, setTitle] = useState({});
@@ -26,7 +26,7 @@ export const useIssueData = (id, doUseFetch = false) => {
         fetchData();
     }, [fetchData])
 
-    if (doUseFetch) {
+    if (withFetchAndSetIssue) {
         return [
             issue,
             setIssue,
