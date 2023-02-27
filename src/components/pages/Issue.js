@@ -1,37 +1,24 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useParams} from "react-router-dom";
-import {getRowByTableAndId} from "../serviceFunctions";
-import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {getIssueName, getObjectNameById} from "../../helpers/functions";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
 import countryData from "../../helpers/valueLists/countries.json";
+import {useIssueData} from "../../helpers/customHooks/useIssueData";
 
 
 export const Issue = () => {
 
-    const [issue, setIssue] = useState({});
-    const [title, setTitle] = useState({});
-    const [publisher, setPublisher] = useState({});
-    const [loading, setLoading] = useState(true);
     const {id} = useParams();
 
-    const fetchData = useCallback(() => {
-        getRowByTableAndId(TABLES.ISSUES, setIssue, id).then(() => {
-            if (issue.title_id) {
-                getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => {
-                    if (title.publisher_id) {
-                        getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher_id).then(() => setLoading(false))
-                    }
-                });
-            }
-        });
-    }, [id, issue.title_id, title.publisher_id]);
-
-    useEffect(() => {
-        fetchData();
-    }, [fetchData])
+    const [
+        issue,
+        title,
+        publisher,
+        loading
+    ] = useIssueData(id);
 
     return (
         <main className={"container-fluid main-container"}>

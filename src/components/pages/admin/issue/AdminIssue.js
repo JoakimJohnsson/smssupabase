@@ -1,7 +1,6 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {getRowByTableAndId} from "../../../serviceFunctions";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
@@ -9,14 +8,11 @@ import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName} from "../../../../helpers/functions";
 import {IconButton} from "../../../minis/IconButton";
 import {publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
+import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 
 
 export const AdminIssue = () => {
 
-    const [issue, setIssue] = useState({});
-    const [title, setTitle] = useState({});
-    const [publisher, setPublisher] = useState({});
-    const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -24,23 +20,19 @@ export const AdminIssue = () => {
     const [newIssue, setNewIssue] = useState({});
     const navigate = useNavigate();
 
-    const fetchIssueAndTitleData = useCallback(() => {
-        getRowByTableAndId(TABLES.ISSUES, setIssue, id).then(() => {
-            if (issue.title_id) {
-                getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => {
-                    if (title.publisher_id) {
-                        getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher_id).then(() => setLoading(false))
-                    }
-                });
-            }
-        });
-    }, [id, issue.title_id, title.publisher_id]);
+    const [
+        issue,
+        setIssue,
+        title,
+        publisher,
+        loading,
+        fetchData
+    ] = useIssueData(id, true);
 
     useEffect(() => {
-        fetchIssueAndTitleData();
         setImageFilename(issue.image_filename);
         setImageUrl(issue.image_url);
-    }, [id, fetchIssueAndTitleData, setImageFilename, setImageUrl, imageFilename, imageUrl, issue.image_filename, issue.image_url])
+    }, [id, setImageFilename, setImageUrl, imageFilename, imageUrl, issue.image_filename, issue.image_url])
 
     useEffect(() => {
         setNewIssue({...issue});
@@ -83,7 +75,7 @@ export const AdminIssue = () => {
                                         tableName={TABLES.ISSUES}
                                         fileType={FILETYPES.ISSUE_IMAGE}
                                         id={issue.id}
-                                        update={fetchIssueAndTitleData}
+                                        update={fetchData}
                                     />
                                 </div>
                             </div>
