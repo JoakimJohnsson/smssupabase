@@ -11,22 +11,17 @@ import {CustomSpinner} from "../../minis/CustomSpinner";
 export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData}) => {
 
     const [title, setTitle] = useState({});
-    const [issueName, setIssueName] = useState("");
     const [loading, setLoading] = useState(true);
 
     const fetchTitle = useCallback(() => {
-        if (issue.title_id) {
-            getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => setLoading(false));
-        }
+            getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => {
+                setLoading(false)
+            });
     }, [issue.title_id]);
 
     useEffect(() => {
             fetchTitle();
-            if (title) {
-                setIssueName(getIssueName(title, issue))
-                setLoading(false);
-            }
-    }, [title, issue, fetchTitle])
+    }, [fetchTitle])
 
     return loading ? (<CustomSpinner/>) : (
         <li className={"list-group-item px-0"}>
@@ -38,7 +33,7 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData})
                             hasImage(issue) && showAdminInfo &&
                             <ImageIcon size={"1x"} className={"me-2 text-success"}/>
                         }
-                        <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={issueName}/>
+                        <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={getIssueName(title, issue)}/>
                     </div>
                 </div>
                 <div className={"sms-list-col--tools"}>
@@ -46,7 +41,7 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData})
                         <ListToolBox
                             item={issue}
                             name={issue.number}
-                            displayName={issueName}
+                            displayName={getIssueName(title, issue)}
                             data={issuesData}
                             setData={setIssuesData}
                             showAdminInfo={showAdminInfo}
