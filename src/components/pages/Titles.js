@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
-import {getRowsByTable} from "../serviceFunctions";
+import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
 
 

@@ -1,6 +1,6 @@
-import {supabase} from "../supabase/supabaseClient";
-import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
-import {generateUniqueHashedFilename, getCurrentDate} from "../helpers/functions";
+import {supabase} from "../../../supabase/supabaseClient";
+import {BUCKETS, MESSAGES, TABLES} from "../../constants";
+import {generateUniqueHashedFilename, getCurrentDate} from "../functions";
 
 // PROFILES FUNCTIONS
 export const updateProfileData = async (id, data, setInformationMessage) => {
@@ -36,50 +36,6 @@ export const updateProfileRole = async (id, value, setInformationMessage) => {
         console.error(error);
     }
 }
-
-
-// TITLES FUNCTIONS
-export const addTitleData = async (data, setInformationMessage) => {
-    try {
-        let {error, status} = await supabase
-            .from(TABLES.TITLES)
-            .insert([{
-                name: data.name,
-                description: data.description,
-                wiki_url: data.wiki_url,
-                start_year: data.start_year,
-                end_year: data.end_year,
-                publisher_id: data.publisher_id,
-                format_id: data.format_id,
-                total_issues: data.total_issues
-            }])
-        setInformationMessage({show: true, status: status, error: error});
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-export const updateTitleData = async (id, data, setInformationMessage) => {
-    try {
-        let {error, status} = await supabase
-            .from(TABLES.TITLES)
-            .update([{
-                name: data.name,
-                description: data.description,
-                wiki_url: data.wiki_url,
-                start_year: data.start_year,
-                end_year: data.end_year,
-                publisher_id: data.publisher_id,
-                format_id: data.format_id,
-                total_issues: data.total_issues
-            }])
-            .eq("id", id)
-        setInformationMessage({show: true, status: status, error: error});
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 
 // PUBLISHERS FUNCTIONS
 export const addPublisherData = async (data, setInformationMessage) => {
@@ -188,7 +144,7 @@ export const deleteAllIssues = async (issuesData, setIssuesData, setInformationM
         return false;
     }
     try {
-        issuesData.map(async (issue, index) => {
+        issuesData.map(async (issue) => {
             await handleMultipleDeleteNoConfirm(TABLES.ISSUES, issue.id, issue.number, setIssuesData, issuesData,
                 issue.image_filename, BUCKETS.ISSUE_IMAGES, setInformationMessage);
         })
@@ -342,7 +298,7 @@ export const uploadImage = async (e, tableName, id, setUploading, bucketName, fi
     }
 }
 
-export const deleteImageFromBucket = async (fileName, setUploading, bucketName, setImageUrl, setImageFilename, table) => {
+export const deleteImageFromBucket = async (fileName, setUploading, bucketName, setImageUrl, setImageFilename) => {
     if (fileName) {
         try {
             setUploading(true);

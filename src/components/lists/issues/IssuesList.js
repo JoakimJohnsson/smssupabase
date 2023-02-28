@@ -5,10 +5,10 @@ import {Accordion} from "react-bootstrap";
 import AccordionItem from "react-bootstrap/AccordionItem";
 import AccordionHeader from "react-bootstrap/AccordionHeader";
 import AccordionBody from "react-bootstrap/AccordionBody";
-import {getIndexList} from "../../../helpers/functions";
+import {getIndexList} from "../../../helpers/functions/functions";
 
 
-export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, title}) => {
+export const IssuesList = ({issuesData, setIssuesData, showAdminInfo}) => {
 
     let groupedIssuesData = [];
     let groupedIssuesDataIndexes = [];

@@ -1,6 +1,6 @@
 import React, {useState, useCallback, useEffect} from "react";
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../helpers/constants";
-import {getRowByTableAndId} from "./serviceFunctions";
+import {getRowByTableAndId} from "../helpers/functions/serviceFunctions/serviceFunctions";
 
 
 const Footer = () => {

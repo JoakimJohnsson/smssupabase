@@ -1,6 +1,6 @@
 import {useState, useCallback, useEffect} from "react";
 import {TABLES} from "../constants";
-import {getRowByTableAndId} from "../../components/serviceFunctions";
+import {getRowByTableAndId} from "../functions/serviceFunctions/serviceFunctions";
 
 
 export const useIssueData = (id, withFetchAndSetIssue = false) => {

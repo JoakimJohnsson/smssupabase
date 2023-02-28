@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {isTrue, printOptions} from "../../../../helpers/functions";
-import {getRowsByTable, handleChange, updateIssueData} from "../../../serviceFunctions";
+import {isTrue, printOptions} from "../../../../helpers/functions/functions";
+import {getRowsByTable, handleChange, updateIssueData} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";

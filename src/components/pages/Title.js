@@ -1,12 +1,12 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useParams} from "react-router-dom";
-import {getRowByTableAndId, getRowsByTableForeignKeyColumnAndForeignKeyId} from "../serviceFunctions";
+import {getRowByTableAndId, getRowsByTableForeignKeyColumnAndForeignKeyId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {getCalculatedYear, getFormatName} from "../../helpers/functions";
+import {getCalculatedYear, getFormatName} from "../../helpers/functions/functions";
 import formatData from "../../helpers/valueLists/formats.json";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewer} from "./pagecomponents/ImageViewer";

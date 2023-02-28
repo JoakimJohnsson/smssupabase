@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {getRowsByTable} from "../../../serviceFunctions";
+import {getRowsByTable} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
-import {handleBacking} from "../../../../helpers/functions";
+import {handleBacking} from "../../../../helpers/functions/functions";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";

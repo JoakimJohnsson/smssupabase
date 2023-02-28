@@ -3,8 +3,8 @@ import {ImageIcon, IssueIcon} from "../../icons";
 import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
-import {getIssueName, hasImage} from "../../../helpers/functions";
-import {getRowByTableAndId} from "../../serviceFunctions";
+import {getIssueName, hasImage} from "../../../helpers/functions/functions";
+import {getRowByTableAndId} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {CustomSpinner} from "../../minis/CustomSpinner";
 
 

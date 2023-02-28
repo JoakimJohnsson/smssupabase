@@ -5,7 +5,7 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {ImageIcon, TitleIcon} from "../../icons";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
-import {hasImage, sortByName} from "../../../helpers/functions";
+import {hasImage, sortByName} from "../../../helpers/functions/functions";
 
 
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {

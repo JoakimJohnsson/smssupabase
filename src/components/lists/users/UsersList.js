@@ -1,7 +1,7 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {UserIcon} from "../../icons";
-import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn, updateProfileRole} from "../../serviceFunctions";
+import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn, updateProfileRole} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {TABLES} from "../../../helpers/constants";
 import {useAppContext} from "../../../context/AppContext";
 import {RemoveAdminButton} from "./RemoveAdminButton";

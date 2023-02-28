@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {addTitleData, getRowsByTable, handleInput} from "../../../serviceFunctions";
-import {handleBacking, printOptions} from "../../../../helpers/functions";
+import {addTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {getRowsByTable, handleInput} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleBacking, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {HeadingWithBreadCrumbs} from "../../../headings";

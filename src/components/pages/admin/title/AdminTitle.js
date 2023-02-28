@@ -7,7 +7,7 @@ import {
     getRowByTableAndId,
     getRowsByTableForeignKeyColumnAndForeignKeyId,
     handleInput
-} from "../../../serviceFunctions";
+} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
@@ -15,7 +15,7 @@ import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
+import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";
@@ -163,7 +163,7 @@ export const AdminTitle = () => {
                                     <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                     {
                                         issuesData && issuesData.length > 0 ?
-                                            <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true} title={title}/>
+                                            <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/>
                                             :
                                             <NoDataAvailable/>
                                     }

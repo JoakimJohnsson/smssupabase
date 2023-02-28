@@ -1,7 +1,7 @@
 import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
-import {isTrue} from "../../helpers/functions";
-import {handleChange, updateProfileData} from "../serviceFunctions";
+import {isTrue} from "../../helpers/functions/functions";
+import {handleChange, updateProfileData} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";

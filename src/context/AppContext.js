@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {MESSAGES, TABLES} from "../helpers/constants";
-import {getRowByTableAndId} from "../components/serviceFunctions";
+import {getRowByTableAndId} from "../helpers/functions/serviceFunctions/serviceFunctions";
 
 
 const AppContext = React.createContext();

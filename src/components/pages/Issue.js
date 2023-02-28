@@ -3,7 +3,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {CustomSpinner} from "../minis/CustomSpinner";
-import {getIssueName, getObjectNameById} from "../../helpers/functions";
+import {getIssueName, getObjectNameById} from "../../helpers/functions/functions";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
