@@ -1,12 +1,14 @@
 import React, {useState, useCallback, useEffect} from "react";
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../helpers/constants";
 import {getRowByTableAndId} from "../helpers/functions/serviceFunctions/serviceFunctions";
+import {useAppContext} from "../context/AppContext";
 
 
 const Footer = () => {
 
     const package_json = require('../../package.json');
     const [utilsData, setUtilsData] = useState({})
+    const {user} = useAppContext();
 
     const fetchUtilsData = useCallback(() => {
         getRowByTableAndId(TABLES.UTILS, setUtilsData, 1).then();
@@ -16,7 +18,7 @@ const Footer = () => {
         fetchUtilsData();
     }, [fetchUtilsData])
 
-    return (
+    return !user && (
         <footer className={"p-3 p-sm-5 border-top bg-whale"}>
             <div className={"container"}>
                 <div className={"row row-padding--secondary"}>

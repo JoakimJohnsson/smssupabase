@@ -39,8 +39,8 @@ export function AppContextProvider({children}) {
     useEffect(() => {
         // Listen for changes on auth state. Log in/out etc.
         supabase.auth.onAuthStateChange((event, session) => {
+                setUser(session?.user ?? null);
                 if (session && session.user) {
-                    setUser(session.user);
                     fetchProfileData(session.user.id);
                 }
             }
