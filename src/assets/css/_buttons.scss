@@ -23,10 +23,10 @@
       font-size: 1.5rem;
     }
   }
-  &:not(.sms-icon-btn) {
+  &:not(.sms-icon-btn),
+  &:not(.sms-tool-btn) {
     margin-bottom: 1rem;
     margin-right: 1rem;
-    min-width: 200px;
     justify-content: center;
   }
 }
@@ -40,3 +40,18 @@
     border: 1px solid;
   }
 }
+
+.sms-tool-btn {
+  @extend .m-0, .p-1;
+  border: 1px solid;
+  &:nth-child(2) {
+    margin-left: .35rem !important;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: .9;
+    border: 1px solid $border-color;
+  }
+}
+

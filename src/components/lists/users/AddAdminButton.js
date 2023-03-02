@@ -10,7 +10,7 @@ export const AddAdminButton = ({user, handleChangeAdmin}) => {
 
     return (
         <button
-            className={"btn text-danger sms-icon-btn"}
+            className={"btn text-danger sms-tool-btn"}
             aria-label={LABELS_AND_HEADINGS.ADD_ADMIN_1 + user.firstname + LABELS_AND_HEADINGS.ADD_ADMIN_2}
             onClick={() => handleChangeAdmin(user.id, 1, setLoading)}>
             {

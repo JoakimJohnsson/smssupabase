@@ -146,13 +146,28 @@
 .sms-list--with-tools {
   @extend .list-group, .list-group-flush, .small, .list-unstyled;
   .sms-list-col--main {
-    @extend .col-8, .d-flex, .flex-column, .justify-content-center;
+    @extend .col-12, .d-flex, .flex-column, .justify-content-center;
   }
   .sms-list-col--tools {
-    @extend .col-4;
+    @extend .col-12;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    padding-top: .3rem;
+  }
+  @media (min-width: 605px)  {
+    .sms-list-col--main {
+      // .col-8
+      flex: 0 0 auto;
+      width: 66.66666667%;
+    }
+    .sms-list-col--tools {
+      // .col-4
+      flex: 0 0 auto;
+      width: 33.33333333%;
+      justify-content: flex-end;
+      padding-top: 0;
+    }
   }
 }
 

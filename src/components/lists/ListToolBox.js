@@ -19,18 +19,18 @@ export const ListToolBox = ({item, name, displayName, data, setData, showAdminIn
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
     const collectIssueIcon = collectingIssue ? faBadgeCheck : faBadge;
-    const collectTitleBtnClassName = collectingTitle ? "btn text-success sms-icon-btn" : "btn text-light sms-icon-btn";
-    const collectIssueBtnClassName = collectingIssue ? "btn text-success sms-icon-btn" : "btn text-light sms-icon-btn";
+    const collectTitleBtnClassName = collectingTitle ? "btn text-success sms-tool-btn" : "btn text-light sms-tool-btn";
+    const collectIssueBtnClassName = collectingIssue ? "btn text-success sms-tool-btn" : "btn text-light sms-tool-btn";
     const {setInformationMessage} = useAppContext();
 
     return showAdminInfo ? (
             <div className={"d-inline-block text-end"}>
-                <Link to={route + item.id + "?edit=true"} className={"btn text-primary sms-icon-btn"} title={editText}>
+                <Link to={route + item.id + "?edit=true"} className={"btn text-primary sms-tool-btn"} title={editText}>
                     <Icon icon={faPenCircle} className={"fa-xl"}/>
                     <span className={"visually-hidden"}>{editText}</span>
                 </Link>
                 <button
-                    className={"btn text-danger sms-icon-btn"}
+                    className={"btn text-danger sms-tool-btn"}
                     aria-label={deleteText}
                     onClick={() => handleDelete(table, item.id, name, setData, data, item.image_filename, imageBucket, setInformationMessage)}>
                     <Icon icon={faCircleXmark} className={"fa-xl"}/>
