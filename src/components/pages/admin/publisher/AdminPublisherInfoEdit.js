@@ -37,7 +37,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     name={"name"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
-                    value={newPublisher.name}
+                    value={newPublisher.name || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit}
                 />

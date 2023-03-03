@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {UserIcon} from "../../icons";
 import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
@@ -12,16 +12,24 @@ import {AddAdminButton} from "./AddAdminButton";
 export const UsersList = ({usersData, setUsersData, limited = false}) => {
 
     const {setInformationMessage} = useAppContext();
+    const [confirmed, setConfirmed] = useState(false);
 
     const handleChangeAdmin = (id, value, doSetLoading) => {
         doSetLoading(true);
-        updateProfileRole(id, value, setInformationMessage).then(() => {
-            if (limited) {
-                getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setUsersData, 5, false).then(() => doSetLoading(false));
+        updateProfileRole(id, value, setInformationMessage, setConfirmed).then(() => {
+            // Only do this if update was confirmed
+            if (confirmed) {
+                if (limited) {
+                    getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setUsersData, 5, false).then(() => doSetLoading(false));
+                } else {
+                    getRowsByTable(TABLES.PROFILES, setUsersData).then(() => doSetLoading(false));
+                }
             } else {
-                getRowsByTable(TABLES.PROFILES, setUsersData).then(() => doSetLoading(false));
+                // Update was not confirmed
+                doSetLoading(false);
             }
         });
+
     }
 
     return usersData && (

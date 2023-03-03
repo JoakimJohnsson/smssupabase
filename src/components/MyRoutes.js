@@ -31,6 +31,7 @@ export const MyRoutes = () => {
 
     const {user, profile} = useAppContext();
 
+
     return user && profile ? (
             <Routes>
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
@@ -69,7 +70,7 @@ export const MyRoutes = () => {
                 {/* Issue */}
                 <Route path={ROUTES.ADMIN.ISSUE_ID} element={(user && user.id && profile.role >= 1) ? <AdminIssue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.ADMIN.ISSUES} element={(user && user.id && profile.role >= 1) ? <AdminIssues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                {/* USers */}
+                {/* Users */}
                 <Route path={ROUTES.ADMIN.USERS} element={(user && user.id && profile.role >= 1) ? <AdminUsers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Catch all */}
                 <Route path={"*"} element={<p>No match!</p>}/>
@@ -81,7 +82,7 @@ export const MyRoutes = () => {
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
                 {/* Catch all */}
-                <Route path={"*"} element={<p>No match!</p>}/>
+                <Route path={"*"} element={<></>}/>
             </Routes>
         )
 }

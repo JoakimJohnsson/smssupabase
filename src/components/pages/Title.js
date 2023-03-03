@@ -21,7 +21,6 @@ export const Title = () => {
     const {id} = useParams();
 
     const fetchTitleAndIssuesData = useCallback(() => {
-        console.log("asdffdfdsa");
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
             if (title.publisher_id) {
                 getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher_id).then(() => {

@@ -17,10 +17,12 @@ export const updateProfileData = async (id, data, setInformationMessage) => {
     }
 }
 
-export const updateProfileRole = async (id, value, setInformationMessage) => {
+export const updateProfileRole = async (id, value, setInformationMessage, setConfirmed) => {
     if (!window.confirm(MESSAGES.CONFIRM.CHANGE_ROLE)) {
         setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
         return false;
+    } else {
+        setConfirmed(true);
     }
     try {
         let {error, status} = await supabase

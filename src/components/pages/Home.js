@@ -3,6 +3,7 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {HomePublic} from "./HomePublic";
+import Footer from "../Footer";
 
 
 export const Home = () => {
@@ -19,5 +20,9 @@ export const Home = () => {
             </main>
         )
         :
-        <HomePublic/>
+        <>
+            <HomePublic/>
+            <Footer/>
+        </>
+
 }
