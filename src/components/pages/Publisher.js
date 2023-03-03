@@ -1,14 +1,14 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {getRowByTableAndId} from "../serviceFunctions";
+import {getRowByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
-import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
 import countryData from "../../helpers/valueLists/countries.json";
-import {getObjectNameById} from "../../helpers/functions";
+import {getObjectNameById} from "../../helpers/functions/functions";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
 
 
 export const Publisher = () => {
@@ -30,7 +30,7 @@ export const Publisher = () => {
             <div className={"row row-padding--main"}>
                 {
                     loading ?
-                        <CustomSpinner size={"4x"}/>
+                        <OverlaySpinner/>
                         :
                         <>
                             <div className={"sms-page-col"}>

@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
 import {TitlesList} from "../../../lists/titles/TitlesList";
-import {getRowsByTable} from "../../../serviceFunctions";
+import {getRowsByTable} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
-import {handleBacking} from "../../../../helpers/functions";
+import {handleBacking} from "../../../../helpers/functions/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 
 

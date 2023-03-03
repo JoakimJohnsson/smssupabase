@@ -1,5 +1,5 @@
-import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, MESSAGES} from "./constants";
+import {supabase} from "../../supabase/supabaseClient";
+import {CLASSES, MESSAGES} from "../constants";
 import React from "react";
 
 export async function checkIfEmailExists(emailReference, setEmailExists) {

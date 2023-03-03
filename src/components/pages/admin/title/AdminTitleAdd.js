@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {addTitleData, getRowsByTable, handleInput} from "../../../serviceFunctions";
-import {handleBacking, printOptions} from "../../../../helpers/functions";
+import {addTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {getRowsByTable, handleInput} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleBacking, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -98,7 +99,7 @@ export const AdminTitleAdd = () => {
                             name={"start_year"}
                             className={formInputClass}
                             type="number"
-                            value={start_year || 1975}
+                            value={start_year || ""}
                             onChange={(e) => handleInput(e, setStart_year)}
                         />
                         <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
@@ -107,7 +108,7 @@ export const AdminTitleAdd = () => {
                             name={"end_year"}
                             className={formInputClass}
                             type="number"
-                            value={end_year || 1977}
+                            value={end_year || ""}
                             onChange={(e) => handleInput(e, setEnd_year)}
                         />
                         <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
@@ -141,7 +142,7 @@ export const AdminTitleAdd = () => {
                             className={formInputClass}
                             type="number"
                             min="1"
-                            value={total_issues || 12}
+                            value={total_issues || ""}
                             onChange={(e) => handleInput(e, setTotal_issues)}
                         />
                         <button className={"btn btn-primary"}

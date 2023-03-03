@@ -4,7 +4,7 @@ import {useAppContext} from "../../context/AppContext";
 import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
-import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
+import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions/functions";
 import {RegisterIcon} from "../icons";
 import {RegisterIconDuoTone} from "../icons-duotone";
 

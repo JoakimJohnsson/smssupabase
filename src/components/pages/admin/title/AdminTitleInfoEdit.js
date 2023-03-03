@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
-import {isTrue, printOptions} from "../../../../helpers/functions";
+import {isTrue, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
-import {getRowsByTable, handleChange, updateTitleData} from "../../../serviceFunctions";
+import {updateTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {getRowsByTable, handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";

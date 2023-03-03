@@ -1,7 +1,7 @@
 import React from "react";
 import {useAppContext} from "../context/AppContext";
 import {CustomSpinner} from "./minis/CustomSpinner";
-import {prepareUrl} from "../helpers/functions";
+import {prepareUrl} from "../helpers/functions/functions";
 
 
 export const NavbarProfileInformation = () => {

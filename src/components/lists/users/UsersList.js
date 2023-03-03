@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {UserIcon} from "../../icons";
-import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn, updateProfileRole} from "../../serviceFunctions";
+import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {updateProfileRole} from "../../../helpers/functions/serviceFunctions/profileFunctions";
 import {TABLES} from "../../../helpers/constants";
 import {useAppContext} from "../../../context/AppContext";
 import {RemoveAdminButton} from "./RemoveAdminButton";
@@ -11,16 +12,24 @@ import {AddAdminButton} from "./AddAdminButton";
 export const UsersList = ({usersData, setUsersData, limited = false}) => {
 
     const {setInformationMessage} = useAppContext();
+    const [confirmed, setConfirmed] = useState(false);
 
     const handleChangeAdmin = (id, value, doSetLoading) => {
         doSetLoading(true);
-        updateProfileRole(id, value, setInformationMessage).then(() => {
-            if (limited) {
-                getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setUsersData, 5, false).then(() => doSetLoading(false));
+        updateProfileRole(id, value, setInformationMessage, setConfirmed).then(() => {
+            // Only do this if update was confirmed
+            if (confirmed) {
+                if (limited) {
+                    getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setUsersData, 5, false).then(() => doSetLoading(false));
+                } else {
+                    getRowsByTable(TABLES.PROFILES, setUsersData).then(() => doSetLoading(false));
+                }
             } else {
-                getRowsByTable(TABLES.PROFILES, setUsersData).then(() => doSetLoading(false));
+                // Update was not confirmed
+                doSetLoading(false);
             }
         });
+
     }
 
     return usersData && (
@@ -28,6 +37,7 @@ export const UsersList = ({usersData, setUsersData, limited = false}) => {
             {
                 usersData.length ?
                     (usersData.map((u, index) =>
+                            // Super admins does not have to be in this list
                             u.role !== 2 &&
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>

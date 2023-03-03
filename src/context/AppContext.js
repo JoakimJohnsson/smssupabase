@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {MESSAGES, TABLES} from "../helpers/constants";
-import {getRowByTableAndId} from "../components/serviceFunctions";
+import {getRowByTableAndId} from "../helpers/functions/serviceFunctions/serviceFunctions";
 
 
 const AppContext = React.createContext();
@@ -39,8 +39,8 @@ export function AppContextProvider({children}) {
     useEffect(() => {
         // Listen for changes on auth state. Log in/out etc.
         supabase.auth.onAuthStateChange((event, session) => {
+                setUser(session?.user ?? null);
                 if (session && session.user) {
-                    setUser(session.user);
                     fetchProfileData(session.user.id);
                 }
             }

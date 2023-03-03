@@ -1,5 +1,5 @@
 import {Navigate, Route, Routes} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import SignupSuccess from "./pages/SignUpSuccess";
 import {ROUTES} from "../helpers/constants";
 import {Home} from "./pages/Home";
@@ -20,7 +20,6 @@ import {AdminTitles} from "./pages/admin/title/AdminTitles";
 import {AdminTitleAdd} from "./pages/admin/title/AdminTitleAdd";
 import {AdminIssue} from "./pages/admin/issue/AdminIssue";
 import {AdminIssues} from "./pages/admin/issue/AdminIssues";
-import {supabase} from "../supabase/supabaseClient";
 import {Issue} from "./pages/Issue";
 import {Issues} from "./pages/Issues";
 import {Publisher} from "./pages/Publisher";
@@ -30,20 +29,10 @@ import {AdminUsers} from "./pages/admin/users/AdminUsers";
 
 export const MyRoutes = () => {
 
-    const [initRoutes, setInitRoutes] = useState(false);
-    const {user, setUser, profile} = useAppContext();
+    const {user, profile} = useAppContext();
 
-    useEffect(() => {
-        if (!user) {
-            // Check active session and sets the user
-            supabase.auth.getSession().then(({data: {session}}) => {
-                setUser(session?.user ?? {})
-            })
-        }
-        setInitRoutes(true);
-    }, [user, setUser])
 
-    return initRoutes && user && profile ? (
+    return user && profile ? (
             <Routes>
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
@@ -81,7 +70,7 @@ export const MyRoutes = () => {
                 {/* Issue */}
                 <Route path={ROUTES.ADMIN.ISSUE_ID} element={(user && user.id && profile.role >= 1) ? <AdminIssue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.ADMIN.ISSUES} element={(user && user.id && profile.role >= 1) ? <AdminIssues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                {/* USers */}
+                {/* Users */}
                 <Route path={ROUTES.ADMIN.USERS} element={(user && user.id && profile.role >= 1) ? <AdminUsers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Catch all */}
                 <Route path={"*"} element={<p>No match!</p>}/>
@@ -93,7 +82,7 @@ export const MyRoutes = () => {
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
                 {/* Catch all */}
-                <Route path={"*"} element={<p>No match!</p>}/>
+                <Route path={"*"} element={<></>}/>
             </Routes>
         )
 }

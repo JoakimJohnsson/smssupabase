@@ -1,8 +1,9 @@
 import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
-import {isTrue, printOptions} from "../../../../helpers/functions";
+import {isTrue, printOptions} from "../../../../helpers/functions/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
-import {handleChange, updatePublisherData} from "../../../serviceFunctions";
+import {updatePublisherData} from "../../../../helpers/functions/serviceFunctions/publisherFunctions";
+import {handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
@@ -36,7 +37,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     name={"name"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
-                    value={newPublisher.name}
+                    value={newPublisher.name || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit}
                 />

@@ -2,12 +2,14 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
-    addIssueData, deleteAllIssues,
-    generateIssuesForTitle,
     getRowByTableAndId,
     getRowsByTableForeignKeyColumnAndForeignKeyId,
     handleInput
-} from "../../../serviceFunctions";
+} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {
+    addIssueData, deleteAllIssues,
+    generateIssuesForTitle
+} from "../../../../helpers/functions/serviceFunctions/issueFunctions";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
@@ -15,10 +17,11 @@ import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions";
+import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const AdminTitle = () => {
@@ -126,7 +129,7 @@ export const AdminTitle = () => {
             {
                 title && loading ?
                     <div className={"row row-padding--main"}>
-                        <CustomSpinner size={"4x"}/>
+                        <OverlaySpinner/>
                     </div>
                     :
                     <>
@@ -163,7 +166,7 @@ export const AdminTitle = () => {
                                     <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                     {
                                         issuesData && issuesData.length > 0 ?
-                                            <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true} title={title}/>
+                                            <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/>
                                             :
                                             <NoDataAvailable/>
                                     }
@@ -203,7 +206,7 @@ export const AdminTitle = () => {
                                                 checked={is_double === 1}
                                                 onChange={() => handleCheckboxInput(is_double, setIs_double)}
                                             />
-                                            <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                                            <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_DOUBLE_DB}</label>
                                         </div>
                                         <div>
                                             <input
@@ -224,7 +227,7 @@ export const AdminTitle = () => {
                                             name={"marvelklubben_number"}
                                             className={CLASSES.FORM_INPUT_DEFAULT}
                                             type="number"
-                                            value={marvelklubben_number || 0}
+                                            value={marvelklubben_number || ""}
                                             max={999}
                                             min={0}
                                             onChange={(e) => handleInput(e, setMarvelklubben_number)}

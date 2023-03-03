@@ -5,7 +5,7 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {ImageIcon, PublishersIcon} from "../../icons";
 import {ListToolBox} from "../ListToolBox";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
-import {hasImage, sortByName} from "../../../helpers/functions";
+import {hasImage, sortByName} from "../../../helpers/functions/functions";
 
 
 export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {

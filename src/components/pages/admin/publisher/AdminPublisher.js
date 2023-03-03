@@ -1,11 +1,11 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {getRowByTableAndId} from "../../../serviceFunctions";
+import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const AdminPublisher = () => {
@@ -37,7 +37,7 @@ export const AdminPublisher = () => {
             {
                 loading ?
                     <div className={"row row-padding--main"}>
-                        <CustomSpinner size={"4x"}/>
+                        <OverlaySpinner/>
                     </div>
                     :
                     <>

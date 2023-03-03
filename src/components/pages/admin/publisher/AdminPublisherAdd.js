@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
-import {addPublisherData, handleInput} from "../../../serviceFunctions";
-import {handleBacking, printOptions} from "../../../../helpers/functions";
+import {addPublisherData} from "../../../../helpers/functions/serviceFunctions/publisherFunctions";
+import {handleInput} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleBacking, printOptions} from "../../../../helpers/functions/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
 import {HeadingWithBreadCrumbs} from "../../../headings";
