@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
@@ -9,6 +8,7 @@ import {getIssueName} from "../../../../helpers/functions/functions";
 import {IconButton} from "../../../minis/IconButton";
 import {publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const AdminIssue = () => {
@@ -43,7 +43,7 @@ export const AdminIssue = () => {
             {
                 loading ?
                     <div className={"row row-padding--main"}>
-                        <CustomSpinner size={"4x"}/>
+                        <OverlaySpinner/>
                     </div>
                     :
                     <>

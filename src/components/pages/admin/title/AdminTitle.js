@@ -21,6 +21,7 @@ import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../hel
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const AdminTitle = () => {
@@ -128,7 +129,7 @@ export const AdminTitle = () => {
             {
                 title && loading ?
                     <div className={"row row-padding--main"}>
-                        <CustomSpinner size={"4x"}/>
+                        <OverlaySpinner/>
                     </div>
                     :
                     <>

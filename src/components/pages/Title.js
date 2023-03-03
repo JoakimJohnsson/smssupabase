@@ -8,8 +8,8 @@ import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {getCalculatedYear, getFormatName} from "../../helpers/functions/functions";
 import formatData from "../../helpers/valueLists/formats.json";
-import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
 
 
 export const Title = () => {
@@ -39,7 +39,7 @@ export const Title = () => {
             <div className={"row row-padding--main"}>
                 {
                     loading ?
-                        <CustomSpinner size={"4x"}/>
+                        <OverlaySpinner/>
                         :
                         <>
                             <div className={"sms-page-col"}>

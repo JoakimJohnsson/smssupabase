@@ -8,7 +8,7 @@ import {Icon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {KeyIconDuoTone} from "../icons-duotone";
-import {CustomSpinner} from "../minis/CustomSpinner";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
 
 
 const Profile = () => {
@@ -51,7 +51,7 @@ const Profile = () => {
             {
                 loading ?
                     <div className={"row row-padding--main"}>
-                        <CustomSpinner size={"4x"}/>
+                        <OverlaySpinner/>
                     </div>
                     :
                     <>

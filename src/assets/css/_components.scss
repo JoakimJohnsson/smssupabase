@@ -188,3 +188,19 @@
     background-color: transparent;
   }
 }
+
+// Overlay spinner
+.overlay-spinner-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-bg-dog--trans;
+  z-index: 90000;
+  .overlay-spinner {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+  }
+}
