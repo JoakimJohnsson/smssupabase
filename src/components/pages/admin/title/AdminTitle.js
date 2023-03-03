@@ -226,7 +226,7 @@ export const AdminTitle = () => {
                                             name={"marvelklubben_number"}
                                             className={CLASSES.FORM_INPUT_DEFAULT}
                                             type="number"
-                                            value={marvelklubben_number || 0}
+                                            value={marvelklubben_number || ""}
                                             max={999}
                                             min={0}
                                             onChange={(e) => handleInput(e, setMarvelklubben_number)}
