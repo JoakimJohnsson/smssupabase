@@ -37,6 +37,7 @@ export const UsersList = ({usersData, setUsersData, limited = false}) => {
             {
                 usersData.length ?
                     (usersData.map((u, index) =>
+                            // Super admins does not have to be in this list
                             u.role !== 2 &&
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>

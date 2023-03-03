@@ -5,6 +5,7 @@ import {handleDelete} from "../../helpers/functions/serviceFunctions/serviceFunc
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faPenCircle, faCircleXmark, faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 
 export const ListToolBox = ({item, name, displayName, data, setData, showAdminInfo, route, table, imageBucket, isTitle, isIssue}) => {
@@ -25,16 +26,37 @@ export const ListToolBox = ({item, name, displayName, data, setData, showAdminIn
 
     return showAdminInfo ? (
             <div className={"d-inline-block text-end"}>
-                <Link to={route + item.id + "?edit=true"} className={"btn text-primary sms-tool-btn"} title={editText}>
-                    <Icon icon={faPenCircle} className={"fa-xl"}/>
-                    <span className={"visually-hidden"}>{editText}</span>
-                </Link>
-                <button
-                    className={"btn text-danger sms-tool-btn"}
-                    aria-label={deleteText}
-                    onClick={() => handleDelete(table, item.id, name, setData, data, item.image_filename, imageBucket, setInformationMessage)}>
-                    <Icon icon={faCircleXmark} className={"fa-xl"}/>
-                </button>
+                <OverlayTrigger
+                    key={"edit-tooltip"}
+                    placement={"top"}
+                    overlay={
+                        <Tooltip id={"edit-tooltip"}>
+                            {editText}
+                        </Tooltip>
+                    }
+                >
+                    <Link to={route + item.id + "?edit=true"} className={"btn text-primary sms-tool-btn"} title={editText}>
+                        <Icon icon={faPenCircle} className={"fa-xl"}/>
+                        <span className={"visually-hidden"}>{editText}</span>
+                    </Link>
+                </OverlayTrigger>
+
+                <OverlayTrigger
+                    key={"delete-tooltip"}
+                    placement={"top"}
+                    overlay={
+                        <Tooltip id={"delete-tooltip"}>
+                            {deleteText}
+                        </Tooltip>
+                    }
+                >
+                    <button
+                        className={"btn text-danger sms-tool-btn"}
+                        aria-label={deleteText}
+                        onClick={() => handleDelete(table, item.id, name, setData, data, item.image_filename, imageBucket, setInformationMessage)}>
+                        <Icon icon={faCircleXmark} className={"fa-xl"}/>
+                    </button>
+                </OverlayTrigger>
             </div>
         )
         :
