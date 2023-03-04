@@ -61,24 +61,44 @@ export const ListToolBox = ({item, name, displayName, data, setData, showAdminIn
         )
         :
         isTitle || isIssue ?
-            isTitle ?
-                <div className={"d-inline-block text-end"}>
-                    <button
-                        className={collectTitleBtnClassName}
-                        aria-label={collectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                        onClick={() => setCollectingTitle(!collectingTitle)}>
-                        <Icon icon={collectTitleIcon} className={"fa-xl"}/>
-                    </button>
-                </div>
-                :
-                <div className={"d-inline-block text-end"}>
-                    <button
-                        className={collectIssueBtnClassName}
-                        aria-label={collectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                        onClick={() => setCollectingIssue(!collectingIssue)}>
-                        <Icon icon={collectIssueIcon} className={"fa-xl"}/>
-                    </button>
-                </div>
+            <div className={"d-inline-block text-end"}>
+                {
+                    isTitle ?
+                        <OverlayTrigger
+                            key={"collect-title-tooltip"}
+                            placement={"top"}
+                            overlay={
+                                <Tooltip id={"collect-title-tooltip"}>
+                                    {collectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                                </Tooltip>
+                            }
+                        >
+                            <button
+                                className={collectTitleBtnClassName}
+                                aria-label={collectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                                onClick={() => setCollectingTitle(!collectingTitle)}>
+                                <Icon icon={collectTitleIcon} className={"fa-xl"}/>
+                            </button>
+                        </OverlayTrigger>
+                        :
+                        <OverlayTrigger
+                            key={"collect-issue-tooltip"}
+                            placement={"top"}
+                            overlay={
+                                <Tooltip id={"collect-issue-tooltip"}>
+                                    {collectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                                </Tooltip>
+                            }
+                        >
+                            <button
+                                className={collectIssueBtnClassName}
+                                aria-label={collectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                                onClick={() => setCollectingIssue(!collectingIssue)}>
+                                <Icon icon={collectIssueIcon} className={"fa-xl"}/>
+                            </button>
+                        </OverlayTrigger>
+                }
+            </div>
             :
             <></>
 }
