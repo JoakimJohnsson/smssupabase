@@ -62,7 +62,7 @@ export const AdminIssue = () => {
                         <div className={"row row-padding--secondary"}>
                             <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={title}/>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
                                     <ImageUploader
                                         imageUrl={imageUrl}

@@ -142,7 +142,7 @@ export const AdminTitle = () => {
                         <div className={"row row-padding--secondary"}>
                             <AdminTitleInfoEdit title={title} setTitle={setTitle} newTitle={newTitle} setNewTitle={setNewTitle}/>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
                                     <ImageUploader
                                         imageUrl={imageUrl}
@@ -162,7 +162,7 @@ export const AdminTitle = () => {
                         </div>
                         <div className={"row row-padding--secondary"}>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form mb-4"}>
+                                <div className={"sms-section--light mb-4"}>
                                     <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                     {
                                         issuesData && issuesData.length > 0 ?
@@ -173,7 +173,7 @@ export const AdminTitle = () => {
                                 </div>
                             </div>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form pb-5"}>
+                                <div className={"sms-section--light pb-5"}>
                                     <div className={"mb-4"}>
                                         <h2>{LABELS_AND_HEADINGS.ADD_ISSUE_FOR} {title.name}</h2>
                                         <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
@@ -253,7 +253,7 @@ export const AdminTitle = () => {
                                 </div>
                             </div>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
                                     <p>{TEXTS.DELETE_ALL_ISSUES_INFO}</p>
                                     <button className={"btn btn-danger d-flex align-items-center"} disabled={!(issuesData && issuesData.length > 0)}
@@ -274,7 +274,7 @@ export const AdminTitle = () => {
                                 </div>
                             </div>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
                                     <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
                                     <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>

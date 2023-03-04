@@ -28,7 +28,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
 
     return (
         <div className={"sms-dashboard-col"}>
-            <div className={"sms-form"}>
+            <div className={"sms-section--light"}>
                 <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
                 <label className={"form-label"} htmlFor="firstname">{LABELS_AND_HEADINGS.FIRST_NAME}</label>
                 <input

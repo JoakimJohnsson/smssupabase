@@ -23,7 +23,9 @@ export const Issues = () => {
                         loading ?
                             <OverlaySpinner/>
                             :
-                            <IssuesList issuesData={issuesData} showAdminInfo={false}/>
+                            <div className={"sms-section--light"}>
+                                <IssuesList issuesData={issuesData} showAdminInfo={false}/>
+                            </div>
                     }
                 </div>
             </div>

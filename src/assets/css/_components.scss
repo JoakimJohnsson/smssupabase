@@ -63,8 +63,9 @@
   margin-bottom: $grid-gutter-width;
 }
 
-.sms-form {
-  @extend .p-0, .p-sm-5, .h-100;
+.sms-section--light {
+  @extend .p-0, .p-sm-4, .p-md-5, .h-100;
+
   border-radius: $border-radius--lg;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
@@ -92,27 +93,6 @@
   .form-label {
     color: $white--darker;
     font-weight: 300;
-  }
-}
-
-.dashboard-card {
-  @extend .p-3, .p-sm-4, .h-100;
-  background-color: $color-bg-horse;
-  border-radius: $border-radius--lg;
-  border: $border--default;
-  p {
-    font-size: .875rem;
-  }
-  h2 {
-    text-transform: uppercase;
-    font-size: 1.2rem;
-  }
-  h3 {
-    font-size: 1.1rem;
-  }
-  .list-group-item {
-    color: $white--darker;
-    padding: .5rem 0;
   }
 }
 
@@ -152,10 +132,9 @@
     @extend .col-12;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding-top: .3rem;
+    padding-top: .4rem;
   }
-  @media (min-width: 605px)  {
+  @media (min-width: 490px)  {
     .sms-list-col--main {
       // .col-8
       flex: 0 0 auto;

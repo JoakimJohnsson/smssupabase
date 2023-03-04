@@ -7,7 +7,7 @@ export const UtilsCard = () => {
 
     return (
         <div className={"sms-dashboard-col"}>
-            <div className={"dashboard-card"}>
+            <div className={"sms-section--light"}>
                 <h2>{LABELS_AND_HEADINGS.UTILS}</h2>
                 <p>{TEXTS.UTILS}</p>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_DATE}</h3>

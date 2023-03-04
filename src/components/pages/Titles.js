@@ -24,7 +24,9 @@ export const Titles = () => {
                         loading ?
                             <OverlaySpinner/>
                             :
-                            <TitlesList titlesData={titlesData} showAdminInfo={false}/>
+                            <div className={"sms-section--light"}>
+                                <TitlesList titlesData={titlesData} showAdminInfo={false}/>
+                            </div>
                     }
                 </div>
             </div>

@@ -19,7 +19,7 @@ export const TitlesCard = () => {
 
     return (
         <div className={"sms-dashboard-col"}>
-            <div className={"dashboard-card"}>
+            <div className={"sms-section--light"}>
                 <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                 {
                     limitedTitlesData ?

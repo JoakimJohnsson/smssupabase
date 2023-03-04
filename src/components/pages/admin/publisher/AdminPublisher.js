@@ -59,7 +59,7 @@ export const AdminPublisher = () => {
                             <AdminPublisherInfoEdit publisher={publisher} setPublisher={setPublisher} newPublisher={newPublisher}
                                                     setNewPublisher={setNewPublisher}/>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
                                     <ImageUploader
                                         imageUrl={imageUrl}
@@ -77,7 +77,7 @@ export const AdminPublisher = () => {
                                 </div>
                             </div>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                                     {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={false}/> :
                                         <CustomSpinner/>}

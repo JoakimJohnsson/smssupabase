@@ -66,7 +66,7 @@ export const Publisher = () => {
                                 }
                             </div>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                                     {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={false}/> :
                                         <CustomSpinner/>}
