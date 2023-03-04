@@ -65,7 +65,7 @@ export const Publisher = () => {
                                     </p>
                                 }
                             </div>
-                            <div className={"sms-page-col--full"}>
+                            <div className={"sms-dashboard-col"}>
                                 <div className={"sms-form"}>
                                     <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                                     {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={false}/> :
