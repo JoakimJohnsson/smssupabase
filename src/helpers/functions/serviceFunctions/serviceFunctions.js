@@ -108,10 +108,7 @@ export const getRowsByTableWithLimitAndOrderByColumn = async (table, column, set
 }
 
 
-// IMAGE FUNCTIONS
-
-
-// HANDLER FUNCTIONS
+// HANDLERS
 export const handleDelete = async (table, id, name, setData, initialData, image_filename, bucket, setInformationMessage) => {
     if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
         return false;

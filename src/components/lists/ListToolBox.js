@@ -6,6 +6,7 @@ import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faPenCircle, faCircleXmark, faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
+import {addTitleToCollection, removeTitleFromCollection} from "../../helpers/functions/serviceFunctions/collectFunctions";
 
 
 export const ListToolBox = ({item, name, displayName, data, setData, showAdminInfo, route, table, imageBucket, isTitle, isIssue}) => {
@@ -22,7 +23,15 @@ export const ListToolBox = ({item, name, displayName, data, setData, showAdminIn
     const collectIssueIcon = collectingIssue ? faBadgeCheck : faBadge;
     const collectTitleBtnClassName = collectingTitle ? "btn text-success sms-tool-btn" : "btn text-light sms-tool-btn";
     const collectIssueBtnClassName = collectingIssue ? "btn text-success sms-tool-btn" : "btn text-light sms-tool-btn";
-    const {setInformationMessage} = useAppContext();
+    const {setInformationMessage, user} = useAppContext();
+
+    const handleCollectingTitle = () => {
+        if (collectingTitle) {
+            removeTitleFromCollection(user.id, item.id, displayName, setInformationMessage).then(() => setCollectingTitle(false))
+        } else {
+            addTitleToCollection(user.id, item.id, setInformationMessage).then(() => setCollectingTitle(true));
+        }
+    }
 
     return showAdminInfo ? (
             <div className={"d-inline-block text-end"}>
@@ -76,7 +85,7 @@ export const ListToolBox = ({item, name, displayName, data, setData, showAdminIn
                             <button
                                 className={collectTitleBtnClassName}
                                 aria-label={collectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                                onClick={() => setCollectingTitle(!collectingTitle)}>
+                                onClick={handleCollectingTitle}>
                                 <Icon icon={collectTitleIcon} className={"fa-xl"}/>
                             </button>
                         </OverlayTrigger>
