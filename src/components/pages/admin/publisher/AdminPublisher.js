@@ -1,32 +1,40 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
+import {useNavigate, useParams} from "react-router-dom";
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowByTableAndId, getRowsByTableForeignKeyColumnAndForeignKeyId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {TitlesList} from "../../../lists/titles/TitlesList";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
+import {faPlus} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminPublisher = () => {
 
     const [publisher, setPublisher] = useState({});
+    const [titlesData, setTitlesData] = useState({});
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const {id} = useParams();
     const [newPublisher, setNewPublisher] = useState({});
+    const navigate = useNavigate();
 
-    const fetchPublisherData = useCallback(() => {
-        getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, id).then(() => setLoading(false));
-    }, [id]);
+    const fetchPublisherAndTitlesData = useCallback(() => {
+        getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, id).then(() => {
+            getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.TITLES, "publisher_id", id, setTitlesData).then(() => setLoading(false));
+        });
+    }, [id])
 
     useEffect(() => {
-        fetchPublisherData();
+        fetchPublisherAndTitlesData();
         setImageFilename(publisher.image_filename);
         setImageUrl(publisher.image_url);
-    }, [id, fetchPublisherData, setImageFilename, setImageUrl, imageFilename, imageUrl, publisher.image_filename, publisher.image_url]);
+    }, [id, fetchPublisherAndTitlesData, setImageFilename, setImageUrl, imageFilename, imageUrl, publisher.image_filename, publisher.image_url]);
 
     useEffect(() => {
         setNewPublisher({...publisher});
@@ -51,7 +59,7 @@ export const AdminPublisher = () => {
                             <AdminPublisherInfoEdit publisher={publisher} setPublisher={setPublisher} newPublisher={newPublisher}
                                                     setNewPublisher={setNewPublisher}/>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
                                     <ImageUploader
                                         imageUrl={imageUrl}
@@ -64,8 +72,17 @@ export const AdminPublisher = () => {
                                         tableName={TABLES.PUBLISHERS}
                                         fileType={FILETYPES.PUBLISHER_IMAGE}
                                         id={publisher.id}
-                                        update={fetchPublisherData}
+                                        update={fetchPublisherAndTitlesData}
                                     />
+                                </div>
+                            </div>
+                            <div className={"sms-dashboard-col"}>
+                                <div className={"sms-section--light"}>
+                                    <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
+                                    {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={false}/> :
+                                        <CustomSpinner/>}
+                                    <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
+                                                label={LABELS_AND_HEADINGS.ADD_TITLE}/>
                                 </div>
                             </div>
                         </div>

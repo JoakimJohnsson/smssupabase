@@ -72,7 +72,7 @@ const Profile = () => {
                         <div className={"row row-padding--secondary"}>
                             <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile} setNewProfile={setNewProfile}/>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
                                     <ImageUploader
                                         imageUrl={imageUrl}
@@ -90,7 +90,7 @@ const Profile = () => {
                                 </div>
                             </div>
                             <div className={"sms-dashboard-col"}>
-                                <div className={"sms-form"}>
+                                <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
                                     <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
                                     <button className={"btn btn-primary btn-cta"}

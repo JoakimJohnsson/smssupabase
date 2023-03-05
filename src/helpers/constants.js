@@ -21,6 +21,8 @@ export const MESSAGES = {
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
+        REMOVE_1: "Vill du verkligen ta bort ",
+        REMOVE_2: " från samlingen?",
         FROM: " från tabellen ",
         DELETE_ISSUES: "Vill du verkligen ta bort alla publikationer för den här titeln?",
         GENERATE_ISSUES: "Vill du verkligen lägga till publikationer för den här titeln?",
@@ -249,6 +251,7 @@ export const TABLES = {
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
     TITLES: "titles",
+    USERS_TITLES: "users_titles",
     UTILS: "utils"
 }
 

@@ -16,7 +16,7 @@ export const UsersCard = () => {
 
     return (
         <div className={"sms-dashboard-col"}>
-            <div className={"dashboard-card"}>
+            <div className={"sms-section--light"}>
                 <h2>{LABELS_AND_HEADINGS.USERS}</h2>
                 {
                     limitedUsersData ?

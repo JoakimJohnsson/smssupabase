@@ -51,7 +51,7 @@ export const AdminPublisherAdd = () => {
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
-                    <div className={"sms-form"}>
+                    <div className={"sms-section--light"}>
                         <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                         <input
                             id="name"

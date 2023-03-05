@@ -24,7 +24,9 @@ export const Publishers = () => {
                         loading ?
                             <OverlaySpinner/>
                             :
-                            <PublishersList publishersData={publishersData} showAdminInfo={false}/>
+                            <div className={"sms-section--light"}>
+                                <PublishersList publishersData={publishersData} showAdminInfo={false}/>
+                            </div>
                     }
                 </div>
             </div>
