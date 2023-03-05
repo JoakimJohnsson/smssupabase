@@ -101,7 +101,7 @@ export const AdminPublisherAdd = () => {
                                 disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
-                        <button className={"btn btn-secondary"}
+                        <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddPublisherForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>

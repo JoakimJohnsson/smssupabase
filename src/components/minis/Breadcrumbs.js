@@ -2,13 +2,14 @@ import React, {useState} from "react";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 import {Link, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
-import {getNameByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getNameByTableAndId, getStartYearByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 
 export const Breadcrumbs = ({doIgnoreName, bcName}) => {
 
     const {id} = useParams();
     const [fetchedName, setFetchedName] = useState("");
+    const [fetchedStartYear, setFetchedStartYear] = useState("");
     let previousCrumb = "";
     const breadcrumbs = useBreadcrumbs();
     const size = breadcrumbs ? breadcrumbs.length - 1 : 0;
@@ -45,8 +46,11 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
         if (id && breadcrumbName.length > 30) {
             getNameByTableAndId(previousCrumb, id, setFetchedName).then();
             if ((fetchedName !== "") && (previousCrumb === TABLES.TITLES || previousCrumb === TABLES.PUBLISHERS)) {
+                if (previousCrumb === TABLES.TITLES) {
+                    getStartYearByTableAndId(previousCrumb, id, setFetchedStartYear).then();
+                }
                 updatePreviousCrumb(breadcrumb);
-                return <span className={"animate"}>{fetchedName || ""}</span>;
+                return <span className={"animate"}>{fetchedName + " " + fetchedStartYear || ""}</span>;
             }
         } else {
             return getTranslatedBreadcrumbName(breadcrumbName, breadcrumb);

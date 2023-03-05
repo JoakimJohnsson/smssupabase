@@ -25,12 +25,14 @@ export const AdminPublishers = () => {
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
-                        {publishersData &&
-                            <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}/>}
-                        <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
-                                    label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                        <div className={"sms-section--light"}>
+                            {publishersData &&
+                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}/>}
+                            <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
+                                        label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                        label={LABELS_AND_HEADINGS.BACK}/>
+                        </div>
                     </div>
                 </div>
             </div>

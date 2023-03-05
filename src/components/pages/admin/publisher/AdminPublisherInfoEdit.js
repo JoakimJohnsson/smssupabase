@@ -81,7 +81,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                             <button onClick={handleSubmit} className={"btn btn-primary sms-btn"}>
                                 {LABELS_AND_HEADINGS.SAVE}
                             </button>
-                            <button className={"btn btn-secondary"} onClick={handleAbort}>
+                            <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>
                         </>

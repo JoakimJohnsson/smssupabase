@@ -26,14 +26,16 @@ export const AdminUsers = () => {
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_USERS}</h1>
                         <Breadcrumbs/>
-                        {
-                            usersData && usersData.length > 0 ?
-                                <UsersList usersData={usersData}/>
-                                :
-                                <NoDataAvailable/>
-                        }
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                        <div className={"sms-section--light"}>
+                            {
+                                usersData && usersData.length > 0 ?
+                                    <UsersList usersData={usersData}/>
+                                    :
+                                    <NoDataAvailable/>
+                            }
+                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                        label={LABELS_AND_HEADINGS.BACK}/>
+                        </div>
                     </div>
                 </div>
             </div>
