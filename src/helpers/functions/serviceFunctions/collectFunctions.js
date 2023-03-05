@@ -1,6 +1,24 @@
 import {supabase} from "../../../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../../constants";
 
+// TITLE
+export const isCollectingTitle = async (userId, titleId, setCollectingTitle) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.USERS_TITLES)
+            .select()
+            .match({user_id: userId, title_id: titleId})
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data && data.length > 0) {
+            setCollectingTitle(true)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const addTitleToCollection = async (userId, titleId, setInformationMessage) => {
     try {
         let {error, status} = await supabase
