@@ -57,7 +57,7 @@ const Login = () => {
                    className={passwordValidated ? "form-control success mb-3" : CLASSES.FORM_INPUT_DEFAULT}
                    placeholder={"********"}
                    required/>
-            <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary" : "btn btn-primary disabled"}>
+            <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary sms-btn" : "btn btn-primary sms-btn disabled"}>
                 <LoginIcon className={"me-2"}/>{LABELS_AND_HEADINGS.LOG_IN}
             </button>
             {showFormError && <p className={"alert alert-danger mt-3"} role={"alert"}>{formErrorMessage}</p>}

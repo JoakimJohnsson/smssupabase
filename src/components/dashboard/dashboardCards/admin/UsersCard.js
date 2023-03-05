@@ -27,7 +27,7 @@ export const UsersCard = () => {
                         :
                         <NoDataAvailable/>
                 }
-                <Link className={"btn btn-outline-primary"} to={ROUTES.ADMIN.USERS}>{LABELS_AND_HEADINGS.SEE_ALL_USERS}</Link>
+                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.USERS}>{LABELS_AND_HEADINGS.SEE_ALL_USERS}</Link>
             </div>
         </div>
     )

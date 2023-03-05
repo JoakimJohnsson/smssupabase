@@ -145,7 +145,7 @@ export const AdminTitleAdd = () => {
                             value={total_issues || ""}
                             onChange={(e) => handleInput(e, setTotal_issues)}
                         />
-                        <button className={"btn btn-primary"}
+                        <button className={"btn btn-primary sms-btn"}
                                 onClick={() => addTitleData({
                                     name: name,
                                     description: description,
@@ -159,7 +159,7 @@ export const AdminTitleAdd = () => {
                                 disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
-                        <button className={"btn btn-secondary"}
+                        <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddTitleForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>

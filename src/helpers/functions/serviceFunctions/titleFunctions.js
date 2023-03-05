@@ -41,3 +41,22 @@ export const updateTitleData = async (id, data, setInformationMessage) => {
         console.error(error);
     }
 }
+
+export const getTitlesForUser = async (userId, setTitlesData) => {
+    try {
+        let {data, error, status} = await supabase
+            .from("users")
+            .select(`
+            id,
+            titles (*)
+            `).eq("id", userId)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data && data[0] && data[0].titles) {
+            setTitlesData(data[0].titles)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}

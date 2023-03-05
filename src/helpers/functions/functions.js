@@ -114,7 +114,7 @@ export const getIssueName = (title, issue) => {
     if (issue.is_double === 1) {
         number = number + "-" + (number + 1)
     }
-    return title.name + " #" + number + " / " + issue.year;
+    return title.name + " #" + number + " - " + issue.year;
 }
 
 export const hasImage = (item) => {

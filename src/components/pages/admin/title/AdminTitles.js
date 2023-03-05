@@ -26,11 +26,13 @@ export const AdminTitles = () => {
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                         <Breadcrumbs/>
+                        <div className={"sms-section--light"}>
                         {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <CustomSpinner/>}
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
                                     label={LABELS_AND_HEADINGS.ADD_TITLE}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS_AND_HEADINGS.BACK}/>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@ export const TitleTool = ({item, displayName}) => {
 
     const handleCollectingTitle = () => {
         if (collectingTitle) {
-            removeTitleFromCollection(user.id, item.id, displayName, setInformationMessage).then(() => setCollectingTitle(false))
+            removeTitleFromCollection(user.id, item.id, displayName, setInformationMessage, setCollectingTitle).then();
         } else {
             addTitleToCollection(user.id, item.id, setInformationMessage).then(() => setCollectingTitle(true));
         }

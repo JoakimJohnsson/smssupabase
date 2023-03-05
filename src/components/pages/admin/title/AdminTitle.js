@@ -232,7 +232,7 @@ export const AdminTitle = () => {
                                             min={0}
                                             onChange={(e) => handleInput(e, setMarvelklubben_number)}
                                         />
-                                        <button className={"btn btn-primary"}
+                                        <button className={"btn btn-primary sms-btn"}
                                                 onClick={() => addIssueData({
                                                     title_id: title.id,
                                                     year: year,
@@ -245,7 +245,7 @@ export const AdminTitle = () => {
                                             <IssueIcon className={"me-2"}/>
                                             {LABELS_AND_HEADINGS.ADD}
                                         </button>
-                                        <button className={"btn btn-secondary"}
+                                        <button className={"btn btn-secondary sms-btn"}
                                                 onClick={resetAddIssueForm}>
                                             {LABELS_AND_HEADINGS.RESET_FORM}
                                         </button>
@@ -277,7 +277,7 @@ export const AdminTitle = () => {
                                 <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
                                     <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
-                                    <button className={"btn btn-primary"} onClick={() => handleGenerateIssues()}>
+                                    <button className={"btn btn-primary sms-btn"} onClick={() => handleGenerateIssues()}>
                                         {
                                             loadingGI ?
                                                 <>

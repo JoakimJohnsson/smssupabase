@@ -91,7 +91,7 @@ export const AdminPublisherAdd = () => {
                                 {printOptions(countryData)}
                             </select>
                         }
-                        <button className={"btn btn-primary"}
+                        <button className={"btn btn-primary sms-btn"}
                                 onClick={() => addPublisherData({
                                     name: name,
                                     description: description,
@@ -101,7 +101,7 @@ export const AdminPublisherAdd = () => {
                                 disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
-                        <button className={"btn btn-secondary"}
+                        <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddPublisherForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>

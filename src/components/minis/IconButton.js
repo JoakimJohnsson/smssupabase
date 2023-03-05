@@ -3,7 +3,7 @@ import {Icon} from "../icons";
 
 export const IconButton = ({customClass, variant, onClick, label, icon}) => {
 
-    const defaultClass = `btn btn-${variant}`;
+    const defaultClass = `btn btn-${variant} sms-btn`;
     const className = customClass ? defaultClass + " " + customClass : defaultClass;
 
     return (

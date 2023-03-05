@@ -53,7 +53,7 @@ export const AdminIssue = () => {
                                 <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                                 <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
                                 <IconButton variant={"primary"} icon={titleIconDuoTone} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
-                                            label={title.name}/>
+                                            label={title.name + " " + title.start_year}/>
                                 <IconButton variant={"primary"} icon={publishersIconDuoTone}
                                             onClick={() => navigate(`/admin/publishers/${title.publisher_id}`)}
                                             label={publisher.name}/>

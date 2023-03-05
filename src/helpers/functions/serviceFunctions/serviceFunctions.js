@@ -69,6 +69,22 @@ export const getNameByTableAndId = async (table, id, setData) => {
         console.error(error);
     }
 }
+export const getStartYearByTableAndId = async (table, id, setData) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(table)
+            .select("start_year")
+            .eq("id", id)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data && data[0].start_year) {
+            setData(data[0].start_year);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 export const deleteRowsByTableAndId = async (table, id, setData, initialData, setInformationMessage, doConfirm) => {
     try {
