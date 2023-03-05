@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {PANES} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS, PANES} from "../../../helpers/constants";
 import {TitlesList} from "../../lists/titles/TitlesList";
 import {useAppContext} from "../../../context/AppContext";
 import {getTitlesForUser} from "../../../helpers/functions/serviceFunctions/titleFunctions";
@@ -18,15 +18,13 @@ export const TitlesPane = () => {
 
     return (
         <>
-            <h1>{PANES.TITLES.NAME}</h1>
-            <p className="lead mb-5">
-                {PANES.TITLES.NAME}
-            </p>
+            <h1 className={"mb-5"}>{PANES.TITLES.NAME}</h1>
             {
                 loading ?
                     <CustomSpinner size={"4x"}/>
                     :
                     <div className={"sms-section--light"}>
+                        <h2>{LABELS_AND_HEADINGS.COLLECTING_TITLES}</h2>
                         <TitlesList titlesData={titlesData} showAdminInfo={false}/>
                     </div>
             }
