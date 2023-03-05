@@ -68,7 +68,7 @@ export const ImageUploader = ({
                         :
                         <>
                             <NoDataAvailable/>
-                            <label className="btn btn-primary align-items-center" htmlFor="single">
+                            <label className="btn btn-primary sms-btn align-items-center" htmlFor="single">
                                 {uploading ?
                                     <>
                                         <CustomSpinner size={"1x"} color={"text-black"} className={"me-2"}/>

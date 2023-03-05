@@ -145,7 +145,7 @@ export const AdminTitleAdd = () => {
                             value={total_issues || ""}
                             onChange={(e) => handleInput(e, setTotal_issues)}
                         />
-                        <button className={"btn btn-primary"}
+                        <button className={"btn btn-primary sms-btn"}
                                 onClick={() => addTitleData({
                                     name: name,
                                     description: description,

@@ -187,3 +187,10 @@
     margin-left: -32px;
   }
 }
+
+// Tooltip
+.tooltip {
+  @media (hover: none) {
+    visibility: hidden !important;
+  }
+}

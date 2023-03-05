@@ -91,7 +91,7 @@ export const AdminPublisherAdd = () => {
                                 {printOptions(countryData)}
                             </select>
                         }
-                        <button className={"btn btn-primary"}
+                        <button className={"btn btn-primary sms-btn"}
                                 onClick={() => addPublisherData({
                                     name: name,
                                     description: description,

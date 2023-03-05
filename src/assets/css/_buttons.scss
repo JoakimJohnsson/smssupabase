@@ -23,8 +23,7 @@
       font-size: 1.5rem;
     }
   }
-  &:not(.sms-icon-btn),
-  &:not(.sms-tool-btn) {
+  &.sms-btn {
     margin-bottom: 1rem;
     margin-right: 1rem;
     justify-content: center;
