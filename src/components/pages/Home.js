@@ -45,7 +45,13 @@ export const Home = () => {
                                 <h2>Senaste releasen</h2>
                                 {utilsData && <p>v{package_json.version} | {utilsData.release_date}</p>}
                                 <ul className={"list-group list-group-flush"}>
-                                    <li className={"list-group-item px-0"}>Småfixar och förbättringar</li>
+                                    <li className={"list-group-item px-0"}>Lista titlar utgivna av förlaget på dess sida.</li>
+                                    <li className={"list-group-item px-0"}>Visa tooltip på knappar för att lägga till titel eller publikation till samlingen.</li>
+                                    <li className={"list-group-item px-0"}>Förbättrad responsivitet på verktygsknappar i listor.</li>
+                                    <li className={"list-group-item px-0"}>Snyggare och rakare laddsnurra.</li>
+                                    <li className={"list-group-item px-0"}>Användare kan nu lägga till titlar till samlingen.</li>
+                                    <li className={"list-group-item px-0"}>Visa information om releaser och kommande förbättringar på startsidan.</li>
+                                    <li className={"list-group-item px-0"}>Småfixar och andra förbättringar.</li>
                                 </ul>
                             </div>
                         </div>
@@ -53,7 +59,7 @@ export const Home = () => {
                             <div className={"sms-section--light"}>
                                 <h2>Kommande release</h2>
                                 <ul className={"list-group list-group-flush"}>
-                                    <li className={"list-group-item px-0"}>Småfixar och förbättringar</li>
+                                    <li className={"list-group-item px-0"}>Småfixar och förbättringar.</li>
                                 </ul>
                             </div>
                         </div>
