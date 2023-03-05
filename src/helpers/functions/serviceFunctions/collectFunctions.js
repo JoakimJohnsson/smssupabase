@@ -19,21 +19,20 @@ export const isCollectingTitle = async (userId, titleId, setCollectingTitle) => 
     }
 }
 
-export const addTitleToCollection = async (userId, titleId, setInformationMessage) => {
+export const addTitleToCollection = async (userId, titleId, setInformationMessage, setCollectingTitle) => {
     try {
-        let {error, status} = await supabase
+        await supabase
             .from(TABLES.USERS_TITLES)
             .insert([{
                 user_id: userId,
                 title_id: titleId,
             }])
-        setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
         console.error(error);
     }
 }
 
-export const removeTitleFromCollection = async (userId, titleId, displayName, setInformationMessage) => {
+export const removeTitleFromCollection = async (userId, titleId, displayName, setInformationMessage, setCollectingTitle) => {
     if (!window.confirm(MESSAGES.CONFIRM.REMOVE_1 + displayName + MESSAGES.CONFIRM.REMOVE_2)) {
         return false;
     }
@@ -45,7 +44,7 @@ export const removeTitleFromCollection = async (userId, titleId, displayName, se
         if (error && status !== 406) {
             setInformationMessage({show: true, status: status, error: error});
         } else {
-            setInformationMessage({show: true, status: status, error: error});
+            setCollectingTitle(false);
         }
     } catch (error) {
         console.error(error);
