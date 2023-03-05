@@ -69,7 +69,7 @@
 
 .sms-section--light {
   @extend .p-0, .p-sm-4, .p-md-5;
-  border-radius: $border-radius--lg;
+  border-radius: $border-radius--sm;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
     background-color: $color-bg-horse;
