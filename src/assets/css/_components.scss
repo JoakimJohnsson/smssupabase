@@ -61,11 +61,14 @@
 .sms-dashboard-col {
   @extend .col-12, .col-xl-6;
   margin-bottom: $grid-gutter-width;
+
+  .sms-section--light {
+    height: 100%;
+  }
 }
 
 .sms-section--light {
-  @extend .p-0, .p-sm-4, .p-md-5, .h-100;
-
+  @extend .p-0, .p-sm-4, .p-md-5;
   border-radius: $border-radius--lg;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
