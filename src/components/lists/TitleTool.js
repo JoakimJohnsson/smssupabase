@@ -2,7 +2,8 @@ import React, {useState, useEffect} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
-import {faBadgeCheck, faBadge, faPlus, faMinus} from "@fortawesome/pro-duotone-svg-icons";
+import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
+import {faPlus, faMinus} from "@fortawesome/pro-regular-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {addTitleToCollection, isCollectingTitle, removeTitleFromCollection} from "../../helpers/functions/serviceFunctions/collectFunctions";
 
