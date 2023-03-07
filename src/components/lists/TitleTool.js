@@ -36,9 +36,9 @@ export const TitleTool = ({item, displayName, isCard = false}) => {
                 onClick={handleCollectingTitle}>
                 {
                     collectingTitle ?
-                        <Icon icon={faMinus} size={"2x"}/>
+                        <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
                         :
-                        <Icon icon={faPlus} size={"2x"}/>
+                        <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
                 }
             </button>
         )
