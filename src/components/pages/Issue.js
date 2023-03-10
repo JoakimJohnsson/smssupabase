@@ -7,6 +7,8 @@ import {ImageViewer} from "./pagecomponents/ImageViewer";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
+import {Icon} from "../icons";
+import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 
 
 export const Issue = () => {
@@ -35,13 +37,15 @@ export const Issue = () => {
                                 <ImageViewer url={issue.image_url} fileName={issue.image_filename}/>
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
-                                <div className={"row"}>
+                                <div className={"row mb-4"}>
                                     <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
+                                        <p className={"text-label mb-1"}>{LABELS_AND_HEADINGS.PUBLISHERS}</p>
                                         <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
                                             <ImageViewer url={publisher.image_url} fileName={publisher.image_filename}/>
                                         </Link>
                                     </div>
                                     <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
+                                        <p className={"text-label mb-1"}>{LABELS_AND_HEADINGS.TITLE}</p>
                                         <Link to={`/titles/${title.id}`} title={title.name}>
                                             <ImageViewer url={title.image_url} fileName={title.image_filename}/>
                                         </Link>
@@ -51,6 +55,15 @@ export const Issue = () => {
                                 {
                                     countryData &&
                                     <p>{LABELS_AND_HEADINGS.COUNTRY}: {getObjectNameById(countryData, publisher.country_id)}</p>
+                                }
+                                {
+                                    title.wiki_url &&
+                                    <p>
+                                        <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                            {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {title.name}
+                                            <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                        </a>
+                                    </p>
                                 }
                                 {
                                     issue.is_marvelklubben === 1 &&
