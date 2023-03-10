@@ -1,5 +1,6 @@
 import {supabase} from "../../../supabase/supabaseClient";
-import {MESSAGES, TABLES} from "../../constants";
+import {TABLES} from "../../constants";
+
 
 // TITLE
 export const checkIfIsCollectingTitle = async (userId, titleId, setCollectingTitle) => {
@@ -32,10 +33,7 @@ export const addTitleToCollection = async (userId, titleId, setInformationMessag
     }
 }
 
-export const removeTitleFromCollection = async (userId, titleId, displayName, setInformationMessage, setCollectingTitle) => {
-    if (!window.confirm(MESSAGES.CONFIRM.REMOVE_1 + displayName + MESSAGES.CONFIRM.REMOVE_2)) {
-        return false;
-    }
+export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setCollectingTitle) => {
     try {
         let {error, status} = await supabase
             .from(TABLES.USERS_TITLES)

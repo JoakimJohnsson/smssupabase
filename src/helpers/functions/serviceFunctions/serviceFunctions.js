@@ -1,6 +1,7 @@
 import {supabase} from "../../../supabase/supabaseClient";
 import {MESSAGES} from "../../constants";
 import {deleteImageFromBucketSimple} from "./imageFunctions";
+import {addTitleToCollection, removeTitleFromCollection} from "./collectFunctions";
 
 // GENERIC FUNCTIONS
 export const getRowsByTable = async (table, setData) => {
@@ -151,6 +152,14 @@ export const handleMultipleDeleteNoConfirm = async (table, id, name, setData, in
             });
     } catch (error) {
         console.error(error);
+    }
+}
+
+export const handleCollectingTitle = (userId, titleId, setInformationMessage, isCollectingTitle, setIsCollectingTitle) => {
+    if (isCollectingTitle) {
+        removeTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle).then();
+    } else {
+        addTitleToCollection(userId, titleId, setInformationMessage).then(() => setIsCollectingTitle(true));
     }
 }
 

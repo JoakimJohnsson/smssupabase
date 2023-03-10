@@ -1,24 +1,35 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useParams} from "react-router-dom";
-import {getRowByTableAndId, getRowsByTableForeignKeyColumnAndForeignKeyId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {
+    getRowByTableAndId,
+    getRowsByTableForeignKeyColumnAndForeignKeyId,
+    handleCollectingTitle
+} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {Icon} from "../icons";
-import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
+import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {getCalculatedYear, getFormatName} from "../../helpers/functions/functions";
 import formatData from "../../helpers/valueLists/formats.json";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
+import {useAppContext} from "../../context/AppContext";
+import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 
 
 export const Title = () => {
 
+    const {setInformationMessage, user} = useAppContext();
     const [title, setTitle] = useState({});
     const [issuesData, setIssuesData] = useState({});
     const [publisher, setPublisher] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
+    const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, id);
+    const displayName = title.name + " " + title.start_year;
+    const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
+    const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
@@ -47,6 +58,17 @@ export const Title = () => {
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
                                 <ImageViewer url={title.image_url} fileName={title.image_filename}/>
+                                <button
+                                    aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                                    className={`btn ${isCollectingTitle ? "btn-success" : "btn-danger"} p-2 rounded-0 w-100 justify-content-center mb-4`}
+                                    onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
+                                    {
+                                        isCollectingTitle ?
+                                            <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                            :
+                                            <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                    }
+                                </button>
                                 {
                                     title.description &&
                                     <>
