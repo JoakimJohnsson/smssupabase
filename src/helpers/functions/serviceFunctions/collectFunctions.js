@@ -2,7 +2,7 @@ import {supabase} from "../../../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../../constants";
 
 // TITLE
-export const isCollectingTitle = async (userId, titleId, setCollectingTitle) => {
+export const checkIfIsCollectingTitle = async (userId, titleId, setCollectingTitle) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.USERS_TITLES)

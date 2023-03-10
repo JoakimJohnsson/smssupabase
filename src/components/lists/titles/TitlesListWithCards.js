@@ -23,7 +23,7 @@ export const TitlesListWithCards = ({titlesData}) => {
                                         />
                                     </Link>
                                 </div>
-                                <TitleTool item={t} displayName={t.name + " " + t.start_year} isCard/>
+                                <TitleTool title={t} displayName={t.name + " " + t.start_year} isCard/>
                             </li>)
                     )
                     :
