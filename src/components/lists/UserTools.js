@@ -9,7 +9,7 @@ export const UserTools = ({item, displayName, isTitle}) => {
         <div className={"d-inline-block text-end"}>
             {
                 isTitle ?
-                    <TitleTool item={item} displayName={displayName}/>
+                    <TitleTool title={item} displayName={displayName}/>
                     :
                     <IssueTool displayName={displayName}/>
             }

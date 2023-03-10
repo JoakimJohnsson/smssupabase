@@ -1,49 +1,53 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
+import {faPlus, faMinus} from "@fortawesome/pro-regular-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
-import {addTitleToCollection, isCollectingTitle, removeTitleFromCollection} from "../../helpers/functions/serviceFunctions/collectFunctions";
+import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
+import {handleCollectingTitle} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 
-export const TitleTool = ({item, displayName}) => {
+export const TitleTool = ({title, displayName, isCard = false}) => {
 
-    const [collectingTitle, setCollectingTitle] = useState(false);
+    const {setInformationMessage, user} = useAppContext();
+    const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, title.id);
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
-    const collectTitleIcon = collectingTitle ? faBadgeCheck : faBadge;
-    const collectTitleBtnClassName = collectingTitle ? "btn text-success sms-tool-btn" : "btn text-light sms-tool-btn";
-    const {setInformationMessage, user} = useAppContext();
+    const collectTitleIcon = isCollectingTitle ? faBadgeCheck : faBadge;
+    const collectTitleBtnClassName = isCollectingTitle ? "btn text-success sms-tool-btn" : "btn text-light sms-tool-btn";
 
-    useEffect(() => {
-        isCollectingTitle(user.id, item.id, setCollectingTitle).then();
-    }, [user.id, item.id])
-
-    const handleCollectingTitle = () => {
-        if (collectingTitle) {
-            removeTitleFromCollection(user.id, item.id, displayName, setInformationMessage, setCollectingTitle).then();
-        } else {
-            addTitleToCollection(user.id, item.id, setInformationMessage).then(() => setCollectingTitle(true));
-        }
-    }
-
-    return (
-        <OverlayTrigger
-            key={"collect-title-tooltip"}
-            placement={"top"}
-            overlay={
-                <Tooltip id={"collect-title-tooltip"}>
-                    {collectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                </Tooltip>
-            }
-        >
+    return isCard ? (
             <button
-                className={collectTitleBtnClassName}
-                aria-label={collectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                onClick={handleCollectingTitle}>
-                <Icon icon={collectTitleIcon} className={"fa-xl"}/>
+                aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                className={`btn ${isCollectingTitle ? "btn-success" : "btn-danger"} p-2 rounded-0 w-100 justify-content-center`}
+                onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
+                {
+                    isCollectingTitle ?
+                        <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                        :
+                        <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                }
             </button>
-        </OverlayTrigger>
-    )
+        )
+        :
+        (
+            <OverlayTrigger
+                key={"collect-title-tooltip"}
+                placement={"top"}
+                overlay={
+                    <Tooltip id={"collect-title-tooltip"}>
+                        {isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                    </Tooltip>
+                }
+            >
+                <button
+                    className={collectTitleBtnClassName}
+                    aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                    onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
+                    <Icon icon={collectTitleIcon} className={"fa-xl"}/>
+                </button>
+            </OverlayTrigger>
+        )
 }

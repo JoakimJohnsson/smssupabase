@@ -4,12 +4,12 @@ $information-message-box-shadow: 0 0 80px 20px #000;
 
 // Colors
 $primary: #41bee0;
-$secondary: #ffcc33;
+$secondary: #ded54c;
 $tertiary: #ddbbff;
 $success: #33cc99;
-$info: #ff7700;
-$warning: #d461a7;
-$danger: #dd4444;
+$info: #e3af9b;
+$warning: #f797d2;
+$danger: #de4c4c;
 $white: #fff;
 $white--darker: #c0c7cf;
 $black: #000;
@@ -55,7 +55,7 @@ $btn-close-focus-opacity: $standard-opacity;
 $btn-close-width: 1.3rem;
 $btn-close-color: $danger;
 $btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z' /></svg>") !default;
-$dropdown-bg: $color-bg-elephant;
+$dropdown-bg: $color-bg-whale;
 $dropdown-link-hover-bg: $color-bg-horse;
 $dropdown-link-active-bg: $color-bg-horse;
 // Icon svg from Fontawesome.
@@ -64,6 +64,7 @@ $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3
 $accordion-border-color: $primary--lighter;
 $tooltip-color: $black;
 $tooltip-bg: $info;
+$headings-margin-bottom: 1rem;
 
 $grid-gutter-width: 4rem;
 
@@ -111,7 +112,7 @@ $input-group-addon-bg: $primary;
 $form-text-color: $white--darker;
 $input-border-width: 0;
 
-$enable-shadows: true;
+$enable-shadows: false;
 $enable-gradients: false;
 
 // Borders

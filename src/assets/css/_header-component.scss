@@ -22,6 +22,11 @@
     @include media-breakpoint-up(lg) {
       border-top: none;
     }
+    .dropdown-menu {
+      font-size: .875rem;
+      border-radius: 0;
+      border: none;
+    }
   }
   .nav-item {
     display: flex;
