@@ -1,19 +1,16 @@
 import React from "react";
-import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {isTrue} from "../../helpers/functions/functions";
 import {updateProfileData} from "../../helpers/functions/serviceFunctions/profileFunctions";
 import {handleChange} from "../../helpers/functions/serviceFunctions/serviceFunctions";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
-import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
-import {IconButton} from "../minis/IconButton";
 
 
 export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}) => {
 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
-    const navigate = useNavigate();
     const {setInformationMessage} = useAppContext();
 
     const handleSubmit = () => {
@@ -75,8 +72,6 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                             <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary sms-btn"}>
                                 {LABELS_AND_HEADINGS.EDIT}
                             </button>
-                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)}
-                                        label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
                         </>
                 }
             </div>
