@@ -33,11 +33,11 @@ export const GradeBadge = ({grade}) => {
     }
 
     return (
-        <div className={"fa-2x mb-2"}>
-            <span className={"fa-layers fa-fw"}>
+        <div className={"fa-2x mb-2 me-2"}>
+            <div className={"fa-layers fa-fw"}>
                 <Icon icon={faCertificate} className={gradeVariants[grade].color}/>
                 <span className={"fa-layers-text text-black fs-small"}>{gradeVariants[grade].text}</span>
-            </span>
+            </div>
         </div>
     )
 }
