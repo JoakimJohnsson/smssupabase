@@ -27,8 +27,11 @@ export const getCalculatedYear = (startYear, endYear) => {
     }
 }
 
-export const getFormatName = (formatData, id) => {
-    return formatData.find(f => f.id === id).name;
+export const getDataName = (data, id) => {
+    return data.find(f => f.id === id).name;
+}
+export const getDataShade = (data, id) => {
+    return data.find(f => f.id === id).shade;
 }
 
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
