@@ -5,28 +5,28 @@ import {faCertificate} from "@fortawesome/pro-solid-svg-icons";
 export const GradeBadge = ({grade}) => {
 
     const gradeVariants = {
-        1: {
-            variant: "1",
+        0: {
+            variant: "0",
             text: "G",
             color: "text-grade-200"
         },
-        2: {
-            variant: "2",
+        1: {
+            variant: "1",
             text: "VG",
             color: "text-grade-400"
         },
-        3: {
-            variant: "3",
+        2: {
+            variant: "2",
             text: "FN",
             color: "text-grade-600"
         },
-        4: {
-            variant: "4",
+        3: {
+            variant: "3",
             text: "VF",
             color: "text-grade-800"
         },
-        5: {
-            variant: "5",
+        4: {
+            variant: "4",
             text: "NM",
             color: "text-grade"
         }

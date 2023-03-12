@@ -40,7 +40,6 @@ export const Issue = () => {
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-5"}>
                                 <ImageViewer url={issue.image_url} fileName={issue.image_filename}/>
-                                <Grade issue={issue} grade={grade} setGrade={setGrade}/>
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
                                 <div className={"row mb-4"}>
@@ -62,28 +61,31 @@ export const Issue = () => {
                                 </div>
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                                 <div className={"d-flex align-items-center"}>
-                                    <GradeBadge grade={4}/>
+                                    <GradeBadge grade={grade}/>
                                     <FormatBadge formatId={title.format_id}/>
                                     {
                                         countryData &&
                                         <CountryBadge countryId={publisher.country_id}/>
                                     }
                                 </div>
-                                {
-                                    issue.is_marvelklubben === 1 &&
-                                    <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
-                                }
-                                <p>{title.description}</p>
-                                <p>{publisher.description}</p>
-                                {
-                                    title.wiki_url &&
-                                    <p>
-                                        <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                            {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {title.name}
-                                            <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                        </a>
-                                    </p>
-                                }
+                                <div className={"mb-4"}>
+                                    {
+                                        issue.is_marvelklubben === 1 &&
+                                        <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
+                                    }
+                                    <p>{title.description}</p>
+                                    <p>{publisher.description}</p>
+                                    {
+                                        title.wiki_url &&
+                                        <p>
+                                            <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                                {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {title.name}
+                                                <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                            </a>
+                                        </p>
+                                    }
+                                </div>
+                                <Grade issue={issue} grade={grade} setGrade={setGrade}/>
                             </div>
                         </>
                 }
