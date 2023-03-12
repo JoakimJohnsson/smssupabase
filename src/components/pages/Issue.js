@@ -9,6 +9,7 @@ import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
+import {Grade} from "../grade/Grade";
 
 
 export const Issue = () => {
@@ -49,6 +50,9 @@ export const Issue = () => {
                                         <Link to={`/titles/${title.id}`} title={title.name}>
                                             <ImageViewer url={title.image_url} fileName={title.image_filename}/>
                                         </Link>
+                                    </div>
+                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
+                                        <Grade issue={issue}/>
                                     </div>
                                 </div>
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>

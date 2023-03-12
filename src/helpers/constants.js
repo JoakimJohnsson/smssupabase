@@ -130,6 +130,7 @@ export const LABELS_AND_HEADINGS = {
     DESCRIPTION: "Beskrivning",
     DESCRIPTION_DB: "Beskrivning (description)",
     EDIT: "Redigera",
+    EDIT_GRADE: "Ändra skick",
     EDIT_INFORMATION: "Redigera information",
     EMAIL: "E-postadress",
     END_YEAR: "Slutår",
