@@ -66,6 +66,21 @@
 .text-grade-800 {
   color: scale-color($grade, $lightness: 20%);
 }
+.text-format-0 {
+  color: $format;
+}
+.text-format-200 {
+  color: scale-color($format, $lightness: 80%);
+}
+.text-format-400 {
+  color: scale-color($format, $lightness: 60%);
+}
+.text-format-600 {
+  color: scale-color($format, $lightness: 40%);
+}
+.text-format-800 {
+  color: scale-color($format, $lightness: 20%);
+}
 
 // Font size
 .fs-large {
