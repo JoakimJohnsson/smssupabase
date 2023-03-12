@@ -38,7 +38,7 @@ export const Issue = () => {
                             <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} bcName={getIssueName(title, issue)}/>
                             </div>
-                            <div className={"col-12 col-md-4 col-xl-3 mb-5"}>
+                            <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
                                 <ImageViewer url={issue.image_url} fileName={issue.image_filename}/>
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
@@ -68,18 +68,15 @@ export const Issue = () => {
                                     }
                                 </div>
                                 <div className={"row mb-4"}>
-                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
+                                    <div className={"col-12 col-md-6 mb-4 mb-md-0"}>
                                         <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
                                             <ImageViewer url={publisher.image_url} fileName={publisher.image_filename}/>
                                         </Link>
                                     </div>
-                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
+                                    <div className={"col-12 col-md-6 mb-4 mb-md-0"}>
                                         <Link to={`/titles/${title.id}`} title={title.name}>
                                             <ImageViewer url={title.image_url} fileName={title.image_filename}/>
                                         </Link>
-                                    </div>
-                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
-
                                     </div>
                                 </div>
                                 <Grade issue={issue} grade={grade} setGrade={setGrade}/>
