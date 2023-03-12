@@ -207,3 +207,9 @@
     visibility: hidden !important;
   }
 }
+
+// Tag-badge
+.tag-badge {
+  @extend .badge, .rounded-pill, .py-2, .px-3, .me-2, .mb-2;
+
+}

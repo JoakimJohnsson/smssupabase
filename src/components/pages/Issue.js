@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {getIssueName, getObjectNameById} from "../../helpers/functions/functions";
+import {getIssueName} from "../../helpers/functions/functions";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
@@ -10,11 +10,15 @@ import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {Grade} from "../grade/Grade";
+import {FormatBadge} from "../minis/FormatBadge";
+import {CountryBadge} from "../minis/CountryBadge";
+import {GradeBadge} from "../grade/GradeBadge";
 
 
 export const Issue = () => {
 
     const {id} = useParams();
+    const [grade, setGrade] = useState(3);
 
     const [
         issue,
@@ -36,6 +40,7 @@ export const Issue = () => {
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-5"}>
                                 <ImageViewer url={issue.image_url} fileName={issue.image_filename}/>
+                                <Grade issue={issue} grade={grade} setGrade={setGrade}/>
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
                                 <div className={"row mb-4"}>
@@ -52,14 +57,24 @@ export const Issue = () => {
                                         </Link>
                                     </div>
                                     <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
-                                        <Grade issue={issue}/>
+
                                     </div>
                                 </div>
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
+                                <div className={"d-flex align-items-center"}>
+                                    <GradeBadge grade={4}/>
+                                    <FormatBadge formatId={title.format_id}/>
+                                    {
+                                        countryData &&
+                                        <CountryBadge countryId={publisher.country_id}/>
+                                    }
+                                </div>
                                 {
-                                    countryData &&
-                                    <p>{LABELS_AND_HEADINGS.COUNTRY}: {getObjectNameById(countryData, publisher.country_id)}</p>
+                                    issue.is_marvelklubben === 1 &&
+                                    <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
                                 }
+                                <p>{title.description}</p>
+                                <p>{publisher.description}</p>
                                 {
                                     title.wiki_url &&
                                     <p>
@@ -69,12 +84,6 @@ export const Issue = () => {
                                         </a>
                                     </p>
                                 }
-                                {
-                                    issue.is_marvelklubben === 1 &&
-                                    <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
-                                }
-                                <p>{title.description}</p>
-                                <p>{publisher.description}</p>
                             </div>
                         </>
                 }

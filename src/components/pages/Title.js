@@ -10,7 +10,7 @@ import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {getCalculatedYear, getFormatName} from "../../helpers/functions/functions";
+import {getCalculatedYear, getDataName} from "../../helpers/functions/functions";
 import formatData from "../../helpers/valueLists/formats.json";
 import {ImageViewer} from "./pagecomponents/ImageViewer";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -73,7 +73,7 @@ export const Title = () => {
                                     title.description &&
                                     <>
                                         <p>{title.description}</p>
-                                        <p>Formatet är {getFormatName(formatData, title.format_id)}.</p>
+                                        <p>Formatet är {getDataName(formatData, title.format_id)}.</p>
                                         <p>Totalt gavs det ut {title.total_issues} publikationer.</p>
                                     </>
                                 }
