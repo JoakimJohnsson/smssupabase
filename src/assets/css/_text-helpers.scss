@@ -54,6 +54,19 @@
   color: $black--lighter !important;
 }
 
+.text-grade-200 {
+  color: scale-color($grade, $lightness: 80%);
+}
+.text-grade-400 {
+  color: scale-color($grade, $lightness: 60%);
+}
+.text-grade-600 {
+  color: scale-color($grade, $lightness: 40%);
+}
+.text-grade-800 {
+  color: scale-color($grade, $lightness: 20%);
+}
+
 // Font size
 .fs-large {
   font-size: 1.125rem;

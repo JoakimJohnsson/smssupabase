@@ -10,6 +10,7 @@ $success: #33cc99;
 $info: #e3af9b;
 $warning: #f797d2;
 $danger: #de4c4c;
+$grade: #ffd700;
 $white: #fff;
 $white--darker: #c0c7cf;
 $black: #000;
@@ -77,7 +78,8 @@ $theme-colors: (
         "warning":    $warning,
         "danger":     $danger,
         "light":      $white,
-        "dark":       $black
+        "dark":       $black,
+        "grade":      $grade
 );
 
 // Typography
