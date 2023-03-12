@@ -42,24 +42,6 @@ export const Issue = () => {
                                 <ImageViewer url={issue.image_url} fileName={issue.image_filename}/>
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
-                                <div className={"row mb-4"}>
-                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
-                                        <p className={"text-label mb-1"}>{LABELS_AND_HEADINGS.PUBLISHERS}</p>
-                                        <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
-                                            <ImageViewer url={publisher.image_url} fileName={publisher.image_filename}/>
-                                        </Link>
-                                    </div>
-                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
-                                        <p className={"text-label mb-1"}>{LABELS_AND_HEADINGS.TITLE}</p>
-                                        <Link to={`/titles/${title.id}`} title={title.name}>
-                                            <ImageViewer url={title.image_url} fileName={title.image_filename}/>
-                                        </Link>
-                                    </div>
-                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
-
-                                    </div>
-                                </div>
-                                <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                                 <div className={"d-flex align-items-center"}>
                                     <GradeBadge grade={grade}/>
                                     <FormatBadge formatId={title.format_id}/>
@@ -84,6 +66,21 @@ export const Issue = () => {
                                             </a>
                                         </p>
                                     }
+                                </div>
+                                <div className={"row mb-4"}>
+                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
+                                        <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
+                                            <ImageViewer url={publisher.image_url} fileName={publisher.image_filename}/>
+                                        </Link>
+                                    </div>
+                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
+                                        <Link to={`/titles/${title.id}`} title={title.name}>
+                                            <ImageViewer url={title.image_url} fileName={title.image_filename}/>
+                                        </Link>
+                                    </div>
+                                    <div className={"col-12 col-md-6 mb-5 mb-md-0"}>
+
+                                    </div>
                                 </div>
                                 <Grade issue={issue} grade={grade} setGrade={setGrade}/>
                             </div>
