@@ -13,16 +13,17 @@ export const TitlesListWithCards = ({titlesData}) => {
                 titlesData.length ?
                     (titlesData.sort((a, b) => sortByName(a, b)).map((t, index) =>
                             <li key={index} className={"title-card"}>
-                                <span className={"px-1 d-inline-block small bg-secondary text-black"}>{t.start_year}</span>
-                                <div className={"image-container"}>
-                                    <Link to={`/titles/${t.id}`} className={"hocus-standard"} title={t.name + " " + t.start_year}>
+                                <Link to={`/titles/${t.id}`} className={"hocus-standard"} title={t.name + " " + t.start_year}>
+                                    <div className={"text-label"}>{t.name}</div>
+                                    <div className={"text-label mb-2"}>{t.start_year}</div>
+                                    <div className={"image-container"}>
                                         <img
                                             src={t.image_url}
                                             alt={t.image_filename}
                                             className="w-100"
                                         />
-                                    </Link>
-                                </div>
+                                    </div>
+                                </Link>
                                 <TitleTool title={t} displayName={t.name + " " + t.start_year} isCard/>
                             </li>)
                     )
