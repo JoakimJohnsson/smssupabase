@@ -2,7 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {FriendlyDate} from "../../minis/FriendlyDate";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {ImageIcon, PublishersIcon} from "../../icons";
 import {ListToolBox} from "../ListToolBox";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {hasImage, sortByName} from "../../../helpers/functions/functions";
@@ -18,19 +17,21 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
-                                        <div>
-                                            <PublishersIcon size={"1x"} className={"me-2"}/>
+                                        <div className={"d-flex align-items-center"}>
                                             {
-                                                hasImage(p) && showAdminInfo &&
-                                                <ImageIcon size={"1x"} className={"me-2 text-success"}/>
+                                                hasImage(p) &&
+                                                <img src={p.image_url} className={"list-image me-2"} alt={p.name}/>
                                             }
-                                            <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-3"}>
-                                                {p.name}
-                                            </Link>
+                                            <div>
+                                                <Link to={showAdminInfo ? `/admin/publishers/${p.id}` : `/publishers/${p.id}`} className={"me-3"}>
+                                                    {p.name}
+                                                </Link>
+                                                <div>
+                                                    Inlagd: <FriendlyDate dateString={p.created_at}/>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            Inlagd: <FriendlyDate dateString={p.created_at}/>
-                                        </div>
+
                                     </div>
                                     <div className={"sms-list-col--tools"}>
                                         {

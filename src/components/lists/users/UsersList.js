@@ -7,6 +7,7 @@ import {TABLES} from "../../../helpers/constants";
 import {useAppContext} from "../../../context/AppContext";
 import {RemoveAdminButton} from "./RemoveAdminButton";
 import {AddAdminButton} from "./AddAdminButton";
+import {hasImage} from "../../../helpers/functions/functions";
 
 
 export const UsersList = ({usersData, setUsersData, limited = false}) => {
@@ -42,8 +43,11 @@ export const UsersList = ({usersData, setUsersData, limited = false}) => {
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
-                                        <div>
-                                            <UserIcon size={"1x"} className={"me-2"}/>
+                                        <div className={"d-flex align-items-center"}>
+                                            {
+                                                hasImage(u) &&
+                                                <img src={u.image_url} className={"list-image me-2"} alt={u.firstname}/>
+                                            }
                                             {u.firstname} {u.lastname}
                                         </div>
                                     </div>
