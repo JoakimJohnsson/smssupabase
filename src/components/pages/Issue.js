@@ -13,6 +13,7 @@ import {Grade} from "../grade/Grade";
 import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
+import {MarvelClubBadge} from "../grade/MarvelClubBadge";
 
 
 export const Issue = () => {
@@ -42,8 +43,12 @@ export const Issue = () => {
                                 <ImageViewer url={issue.image_url} fileName={issue.image_filename}/>
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
-                                <div className={"d-flex align-items-center"}>
+                                <div className={"d-flex align-items-center flex-wrap mb-2"}>
                                     <GradeBadge grade={grade}/>
+                                    {
+                                        issue.is_marvelklubben === 1 &&
+                                        <MarvelClubBadge number={issue.marvelklubben_number}/>
+                                    }
                                     <FormatBadge formatId={title.format_id}/>
                                     {
                                         countryData &&
@@ -51,10 +56,7 @@ export const Issue = () => {
                                     }
                                 </div>
                                 <div className={"mb-4"}>
-                                    {
-                                        issue.is_marvelklubben === 1 &&
-                                        <p>{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER}: {issue.marvelklubben_number}</p>
-                                    }
+
                                     <p>{title.description}</p>
                                     <p>{publisher.description}</p>
                                     {

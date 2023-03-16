@@ -211,7 +211,9 @@
 
 // Tag-badge
 .tag-badge {
-  @extend .badge, .rounded-pill, .py-2, .px-3, .me-2, .mb-2;
+  @extend .badge, .rounded-pill, .py-2, .mx-1, .mb-2, .d-inline-block;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 // Images

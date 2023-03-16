@@ -81,6 +81,21 @@
 .text-format-800 {
   color: scale-color($format, $lightness: 20%);
 }
+.text-marvelklubben-0 {
+  color: $marvelklubben;
+}
+.text-marvelklubben-200 {
+  color: scale-color($marvelklubben, $lightness: 80%);
+}
+.text-marvelklubben-400 {
+  color: scale-color($marvelklubben, $lightness: 60%);
+}
+.text-marvelklubben-600 {
+  color: scale-color($marvelklubben, $lightness: 40%);
+}
+.text-marvelklubben-800 {
+  color: scale-color($marvelklubben, $lightness: 20%);
+}
 
 // Font size
 .fs-large {
