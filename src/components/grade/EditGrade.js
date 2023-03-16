@@ -5,7 +5,7 @@ import {faCertificate} from "@fortawesome/pro-solid-svg-icons";
 
 export const EditGrade = ({grade, setGrade, issue}) => {
 
-    const [checked, setChecked] = useState(false);
+    // const [checked, setChecked] = useState(false);
     const [radioValue, setRadioValue] = useState(null);
 
     // TODO - function to change grade
@@ -21,10 +21,6 @@ export const EditGrade = ({grade, setGrade, issue}) => {
     useEffect(() => {
         setRadioValue(grade);
     }, [grade])
-
-    console.log("gra", grade);
-    console.log("rval", radioValue);
-    console.log("gra", grade);
 
     return (
         <div className={"w-100"}>
