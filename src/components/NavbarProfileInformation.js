@@ -11,9 +11,9 @@ export const NavbarProfileInformation = () => {
     return profile ? (
             <div className="nav-link pe-0 d-none d-lg-flex">
                 {profile.website ?
-                    <a href={prepareUrl(profile.website)}><img src={profile.image_url} className={"avatar-image"} alt={"avatar"}/></a>
+                    <a href={prepareUrl(profile.website)}><img src={profile.image_url} className={"list-image"} alt={"avatar"}/></a>
                     :
-                    <img src={profile.image_url} className={"avatar-image"} alt={"avatar"}/>
+                    <img src={profile.image_url} className={"list-image"} alt={"avatar"}/>
                 }
             </div>
         )

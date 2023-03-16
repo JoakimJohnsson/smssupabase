@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {UserIcon} from "../../icons";
 import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {updateProfileRole} from "../../../helpers/functions/serviceFunctions/profileFunctions";
 import {TABLES} from "../../../helpers/constants";

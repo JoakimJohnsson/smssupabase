@@ -130,14 +130,6 @@
   @extend .list-group, .list-group-flush, .small, .list-unstyled;
   .sms-list-col--main {
     @extend .col-12, .d-flex, .flex-column, .justify-content-center;
-    .list-image {
-      width: 25px;
-      height: 25px;
-      object-fit: cover;
-      border-radius: 25px;
-      background-color: $light;
-      border: 1px solid;
-    }
   }
   .sms-list-col--tools {
     @extend .col-12;
@@ -220,5 +212,14 @@
 // Tag-badge
 .tag-badge {
   @extend .badge, .rounded-pill, .py-2, .px-3, .me-2, .mb-2;
+}
 
+// Images
+.list-image {
+  width: 30px;
+  height: 25px;
+  object-fit: cover;
+  border-radius: 0;
+  background-color: $light;
+  border: 1px solid;
 }
