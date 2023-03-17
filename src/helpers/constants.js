@@ -172,6 +172,8 @@ export const LABELS_AND_HEADINGS = {
     PROFILE_IMAGE: "Profilbild",
     PUBLISHERS: "Förlag",
     PUBLISHER_DB: "Förlag (publisher)",
+    RELEASE_LATEST: "Senaste releasen",
+    RELEASE_PREVIOUS: "Föregående releaser",
     RESET_FORM: "Rensa formulär",
     RESET_PASSWORD: "Ändra lösenord",
     SAVE: "Spara",
