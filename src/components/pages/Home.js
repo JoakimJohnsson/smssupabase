@@ -56,7 +56,7 @@ export const Home = () => {
                     </div>
                     <div className={"sms-dashboard-col"}>
                         <div className={"sms-section--light"}>
-                            <h2>{LABELS_AND_HEADINGS.RELEASE_LATEST}</h2>
+                            <h2>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h2>
                             <ul className={"list-group list-group-flush"}>
                                 <li className={"list-group-item px-0"}>Lista titlar utgivna av förlaget på dess sida.</li>
                                 <li className={"list-group-item px-0"}>Visa tooltip på knappar för att lägga till titel eller publikation till
