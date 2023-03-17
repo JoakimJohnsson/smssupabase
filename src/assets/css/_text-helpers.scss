@@ -54,6 +54,49 @@
   color: $black--lighter !important;
 }
 
+.text-grade-200 {
+  color: scale-color($grade, $lightness: 80%);
+}
+.text-grade-400 {
+  color: scale-color($grade, $lightness: 60%);
+}
+.text-grade-600 {
+  color: scale-color($grade, $lightness: 40%);
+}
+.text-grade-800 {
+  color: scale-color($grade, $lightness: 20%);
+}
+.text-format-0 {
+  color: $format;
+}
+.text-format-200 {
+  color: scale-color($format, $lightness: 80%);
+}
+.text-format-400 {
+  color: scale-color($format, $lightness: 60%);
+}
+.text-format-600 {
+  color: scale-color($format, $lightness: 40%);
+}
+.text-format-800 {
+  color: scale-color($format, $lightness: 20%);
+}
+.text-marvelklubben-0 {
+  color: $marvelklubben;
+}
+.text-marvelklubben-200 {
+  color: scale-color($marvelklubben, $lightness: 80%);
+}
+.text-marvelklubben-400 {
+  color: scale-color($marvelklubben, $lightness: 60%);
+}
+.text-marvelklubben-600 {
+  color: scale-color($marvelklubben, $lightness: 40%);
+}
+.text-marvelklubben-800 {
+  color: scale-color($marvelklubben, $lightness: 20%);
+}
+
 // Font size
 .fs-large {
   font-size: 1.125rem;
@@ -82,6 +125,7 @@
 
 // Variants
 .text-label {
+  @extend .lh-sm;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 1rem;

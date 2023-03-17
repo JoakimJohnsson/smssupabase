@@ -76,3 +76,51 @@
 .bg-danger--darker {
   background-color: $danger--lighter !important;
 }
+
+.bg-format-0 {
+  background-color: $format;
+}
+.bg-format-200 {
+  background-color: scale-color($format, $lightness: 80%);
+}
+.bg-format-400 {
+  background-color: scale-color($format, $lightness: 60%);
+}
+.bg-format-600 {
+  background-color: scale-color($format, $lightness: 40%);
+}
+.bg-format-800 {
+  background-color: scale-color($format, $lightness: 20%);
+}
+
+.bg-country-0 {
+  background-color: $country;
+}
+.bg-country-200 {
+  background-color: scale-color($country, $lightness: 80%);
+}
+.bg-country-400 {
+  background-color: scale-color($country, $lightness: 60%);
+}
+.bg-country-600 {
+  background-color: scale-color($country, $lightness: 40%);
+}
+.bg-country-800 {
+  background-color: scale-color($country, $lightness: 20%);
+}
+
+.bg-grade-0 {
+  background-color: $grade;
+}
+.bg-grade-200 {
+  background-color: scale-color($grade, $lightness: 80%);
+}
+.bg-grade-400 {
+  background-color: scale-color($grade, $lightness: 60%);
+}
+.bg-grade-600 {
+  background-color: scale-color($grade, $lightness: 40%);
+}
+.bg-grade-800 {
+  background-color: scale-color($grade, $lightness: 20%);
+}

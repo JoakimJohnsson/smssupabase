@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {ImageIcon, IssueIcon} from "../../icons";
 import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
@@ -27,11 +26,10 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData})
         <li className={"list-group-item px-0"}>
             <div className={"row"}>
                 <div className={"sms-list-col--main"}>
-                    <div>
-                        <IssueIcon size={"1x"} className={"me-2"}/>
+                    <div className={"d-flex align-items-center"}>
                         {
-                            hasImage(issue) && showAdminInfo &&
-                            <ImageIcon size={"1x"} className={"me-2 text-success"}/>
+                            hasImage(issue) &&
+                            <img src={issue.image_url} className={"list-image me-2"} alt={issue.name}/>
                         }
                         <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={getIssueName(title, issue)}/>
                     </div>
