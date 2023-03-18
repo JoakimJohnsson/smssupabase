@@ -3,7 +3,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {getIssueName} from "../../helpers/functions/functions";
-import {ImageViewer} from "./pagecomponents/ImageViewer";
+import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -17,6 +17,7 @@ import {MarvelClubBadge} from "../grade/MarvelClubBadge";
 import {getIssueIdByTitleAndNumber} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {faArrowLeftLong, faArrowRightLong} from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
+import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
 
 
 export const Issue = () => {
@@ -63,7 +64,7 @@ export const Issue = () => {
                                 <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} bcName={getIssueName(title, issue)}/>
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
-                                <ImageViewer url={issue.image_url} fileName={issue.image_filename}/>
+                                <ImageViewerCover url={issue.image_url} fileName={issue.image_filename}/>
                                 {
                                     loadingButtons ?
                                         <CustomSpinner/>
@@ -116,12 +117,12 @@ export const Issue = () => {
                                 <div className={"row mb-4"}>
                                     <div className={"col-12 col-md-6 mb-4 mb-md-0"}>
                                         <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
-                                            <ImageViewer url={publisher.image_url} fileName={publisher.image_filename}/>
+                                            <ImageViewerLogo url={publisher.image_url} fileName={publisher.image_filename}/>
                                         </Link>
                                     </div>
                                     <div className={"col-12 col-md-6 mb-4 mb-md-0"}>
                                         <Link to={`/titles/${title.id}`} title={title.name}>
-                                            <ImageViewer url={title.image_url} fileName={title.image_filename}/>
+                                            <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
                                         </Link>
                                     </div>
                                 </div>

@@ -225,3 +225,18 @@
   background-color: $light;
   border: 1px solid;
 }
+
+.cover-image--wrapper {
+  @extend .mb-3, .bg-light;
+  width: 100%;
+  aspect-ratio: 3.3/5;
+  overflow: hidden;
+  border-radius: $border-radius--xl;
+}
+
+.cover-image {
+  width: 105%;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: -4px -4px;
+}

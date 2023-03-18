@@ -3,7 +3,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {getRowByTableAndId, getRowsByTableForeignKeyColumnAndForeignKeyId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
-import {ImageViewer} from "./pagecomponents/ImageViewer";
+import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import countryData from "../../helpers/valueLists/countries.json";
 import {getObjectNameById} from "../../helpers/functions/functions";
 import {Icon} from "../icons";
@@ -43,7 +43,7 @@ export const Publisher = () => {
                                 <HeadingWithBreadCrumbs text={publisher.name}/>
                             </div>
                             <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
-                                <ImageViewer url={publisher.image_url} fileName={publisher.image_filename}/>
+                                <ImageViewerLogo url={publisher.image_url} fileName={publisher.image_filename}/>
                             </div>
                             <div className={"col-12 col-md-8 col-lg-7 col-xl-6 mb-4"}>
                                 <h2>{LABELS_AND_HEADINGS.INFORMATION_ABOUT} {publisher.name}</h2>
