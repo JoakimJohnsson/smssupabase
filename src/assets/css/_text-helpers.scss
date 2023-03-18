@@ -54,6 +54,9 @@
   color: $black--lighter !important;
 }
 
+.text-grade-0 {
+  color: $grade;
+}
 .text-grade-200 {
   color: scale-color($grade, $lightness: 80%);
 }

@@ -19,7 +19,6 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
     }
 
     const getTranslatedBreadcrumbName = (breadcrumbName, breadcrumb) => {
-        console.log("brea", breadcrumbName);
         updatePreviousCrumb(breadcrumb);
         switch (breadcrumbName) {
             case "home":
