@@ -2,7 +2,7 @@ import React from "react";
 import {Icon} from "../icons";
 import {faBadge} from "@fortawesome/pro-regular-svg-icons";
 
-export const MarvelClubBadge = ({number}) => {
+export const MarvelKlubbenBadge = ({number}) => {
 
     return (
         <div className={"mb-2 d-inline-block"}>

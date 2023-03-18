@@ -22,6 +22,7 @@ import {
     faCalendarHeart,
     faUser,
     faUsers,
+    faBadge,
     faKey
 } from "@fortawesome/pro-regular-svg-icons";
 
@@ -113,6 +114,11 @@ export const LogoutIcon = ({size, className}) => {
 export const LogoIcon = ({size, className}) => {
     return (
         <Icon icon={faComet} size={size} className={className}/>
+    )
+}
+export const MarvelKlubbenIcon = ({size, className}) => {
+    return (
+        <Icon icon={faBadge} size={size} className={className}/>
     )
 }
 

@@ -19,6 +19,7 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
     }
 
     const getTranslatedBreadcrumbName = (breadcrumbName, breadcrumb) => {
+        console.log("brea", breadcrumbName);
         updatePreviousCrumb(breadcrumb);
         switch (breadcrumbName) {
             case "home":
@@ -29,6 +30,8 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
                 return LABELS_AND_HEADINGS.SETTINGS;
             case "titles":
                 return LABELS_AND_HEADINGS.ALL_TITLES;
+            case "marvel club":
+                return LABELS_AND_HEADINGS.MARVELKLUBBEN;
             case "publishers":
                 return LABELS_AND_HEADINGS.ALL_PUBLISHERS;
             case "edit":

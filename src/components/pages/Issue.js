@@ -13,7 +13,7 @@ import {Grade} from "../grade/Grade";
 import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
-import {MarvelClubBadge} from "../grade/MarvelClubBadge";
+import {MarvelKlubbenBadge} from "../grade/MarvelKlubbenBadge";
 import {getIssueIdByTitleAndNumber} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {faArrowLeftLong, faArrowRightLong} from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
@@ -92,7 +92,7 @@ export const Issue = () => {
                                     <GradeBadge grade={grade}/>
                                     {
                                         issue.is_marvelklubben === 1 &&
-                                        <MarvelClubBadge number={issue.marvelklubben_number}/>
+                                        <MarvelKlubbenBadge number={issue.marvelklubben_number}/>
                                     }
                                     <FormatBadge formatId={title.format_id}/>
                                     {

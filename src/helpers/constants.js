@@ -61,6 +61,7 @@ export const ROUTES = {
     ISSUES: "/issues",
     ISSUE_ID: "/issues/:id",
     PUBLISHERS: "/publishers",
+    MARVELKLUBBEN: "/marvel-club",
     PUBLISHER_ID: "/publishers/:id",
     DASHBOARD: {
         ROOT: "dashboard",
@@ -155,6 +156,7 @@ export const LABELS_AND_HEADINGS = {
     LOADING: "Laddar",
     LOG_IN: "Logga in",
     LOG_IN_CTA: "Logga in",
+    MARVELKLUBBEN: "Marvelklubben",
     MARVELKLUBBEN_NUMBER: "Marvelklubben nummer",
     MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",
     MENU: "Meny",
