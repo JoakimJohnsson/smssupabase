@@ -8,7 +8,7 @@ import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {Icon} from "../icons";
-import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
+import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {Grade} from "../grade/Grade";
 import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
@@ -18,16 +18,25 @@ import {getIssueIdByTitleAndNumber} from "../../helpers/functions/serviceFunctio
 import {faArrowLeftLong, faArrowRightLong} from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
+import {useAppContext} from "../../context/AppContext";
+import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIssue";
+import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 
 export const Issue = () => {
 
     const {id} = useParams();
+    const {setInformationMessage, user} = useAppContext();
     const [grade, setGrade] = useState(3);
     const [prevIssueId, setPrevIssueId] = useState(null);
+    const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
     const [loadingButtons, setLoadingButtons] = useState(true);
     const navigate = useNavigate();
+    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, id);
+
+    const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
+    const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
 
     const [
         issue,
@@ -49,8 +58,11 @@ export const Issue = () => {
     }, [issue]);
 
     useEffect(() => {
+        setDisplayName(getIssueName(title, issue));
         fetchIssueIds()
-    }, [fetchIssueIds])
+    }, [fetchIssueIds, title, issue])
+
+    console.log("isc", isCollectingIssue);
 
     return (
         <main className={"container-fluid main-container"}>
@@ -64,6 +76,17 @@ export const Issue = () => {
                                 <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} bcName={getIssueName(title, issue)}/>
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
+                                <button
+                                    aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                                    className={`btn ${isCollectingIssue ? "btn-success" : "btn-danger"} p-2 rounded-0 w-100 justify-content-center mb-4`}
+                                    onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                                    {
+                                        isCollectingIssue ?
+                                            <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                            :
+                                            <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                    }
+                                </button>
                                 <ImageViewerCover url={issue.image_url} fileName={issue.image_filename}/>
                                 {
                                     loadingButtons ?
