@@ -22,13 +22,14 @@ import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIssue";
 import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
+import {getGradeByUserIdAndIssueId} from "../../helpers/functions/serviceFunctions/collectFunctions";
 
 
 export const Issue = () => {
 
     const {id} = useParams();
     const {setInformationMessage, user} = useAppContext();
-    const [grade, setGrade] = useState(3);
+    const [grade, setGrade] = useState(1);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
@@ -60,10 +61,15 @@ export const Issue = () => {
         }
     }, [issue]);
 
+    const fetchGrade = useCallback(() => {
+        getGradeByUserIdAndIssueId(user.id, id, setGrade).then();
+    }, [id, user.id])
+
     useEffect(() => {
         setDisplayName(getIssueName(title, issue));
-        fetchIssueIds()
-    }, [fetchIssueIds, title, issue])
+        fetchIssueIds();
+        fetchGrade();
+    }, [fetchIssueIds, fetchGrade, title, issue])
 
     return (
         <main className={"container-fluid main-container"}>
@@ -145,13 +151,13 @@ export const Issue = () => {
                                 </div>
                                 <div className={"row mb-4"}>
                                     <div className={"col-12 col-md-6 mb-4 mb-md-0"}>
-                                        <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
-                                            <ImageViewerLogo url={publisher.image_url} fileName={publisher.image_filename}/>
+                                        <Link to={`/titles/${title.id}`} title={title.name}>
+                                            <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
                                         </Link>
                                     </div>
                                     <div className={"col-12 col-md-6 mb-4 mb-md-0"}>
-                                        <Link to={`/titles/${title.id}`} title={title.name}>
-                                            <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
+                                        <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
+                                            <ImageViewerLogo url={publisher.image_url} fileName={publisher.image_filename}/>
                                         </Link>
                                     </div>
                                 </div>
