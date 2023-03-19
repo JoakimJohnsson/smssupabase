@@ -134,7 +134,6 @@ export const getAllIssueIdsForTitle = async (titleId) => {
         }
         if (data) {
             data.forEach(data => issueIds.push(data.id))
-            console.log("issueidsefter", issueIds);
             return issueIds;
         }
     } catch (error) {
