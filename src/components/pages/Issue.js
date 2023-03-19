@@ -62,8 +62,6 @@ export const Issue = () => {
         fetchIssueIds()
     }, [fetchIssueIds, title, issue])
 
-    console.log("isc", isCollectingIssue);
-
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
