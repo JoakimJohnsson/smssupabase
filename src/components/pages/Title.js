@@ -97,7 +97,7 @@ export const Title = () => {
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-6"}>
                                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
-                                <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue/>
+                                <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue showCollectingButtons={isCollectingTitle}/>
                             </div>
                         </>
                 }

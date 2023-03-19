@@ -7,7 +7,7 @@ import {getRowByTableAndId} from "../../../helpers/functions/serviceFunctions/se
 import {CustomSpinner} from "../../minis/CustomSpinner";
 
 
-export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData}) => {
+export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, showCollectingButtons}) => {
 
     const [title, setTitle] = useState({});
     const [loading, setLoading] = useState(true);
@@ -34,22 +34,25 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData})
                         <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={getIssueName(title, issue)}/>
                     </div>
                 </div>
-                <div className={"sms-list-col--tools"}>
-                    {
-                        <ListToolBox
-                            item={issue}
-                            name={issue.number}
-                            displayName={getIssueName(title, issue)}
-                            data={issuesData}
-                            setData={setIssuesData}
-                            showAdminInfo={showAdminInfo}
-                            route={ROUTES.ADMIN.ISSUES}
-                            table={TABLES.ISSUES}
-                            imageBucket={BUCKETS.ISSUE_IMAGES}
-                            isIssue
-                        />
-                    }
-                </div>
+                {
+                    showCollectingButtons &&
+                    <div className={"sms-list-col--tools"}>
+                        {
+                            <ListToolBox
+                                item={issue}
+                                name={issue.number}
+                                displayName={getIssueName(title, issue)}
+                                data={issuesData}
+                                setData={setIssuesData}
+                                showAdminInfo={showAdminInfo}
+                                route={ROUTES.ADMIN.ISSUES}
+                                table={TABLES.ISSUES}
+                                imageBucket={BUCKETS.ISSUE_IMAGES}
+                                isIssue
+                            />
+                        }
+                    </div>
+                }
             </div>
         </li>
     )

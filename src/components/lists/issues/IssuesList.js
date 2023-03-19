@@ -8,7 +8,7 @@ import AccordionBody from "react-bootstrap/AccordionBody";
 import {getIndexList} from "../../../helpers/functions/functions";
 
 
-export const IssuesList = ({issuesData, setIssuesData, showAdminInfo}) => {
+export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollectingButtons}) => {
 
     let groupedIssuesData = [];
     let groupedIssuesDataIndexes = [];
@@ -41,6 +41,7 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo}) => {
                                                     issue={issue}
                                                     setIssuesData={setIssuesData}
                                                     issuesData={issuesData}
+                                                    showCollectingButtons={showCollectingButtons}
                                                 />))
                                             :
                                             (<NoDataAvailable/>)
