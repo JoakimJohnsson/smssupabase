@@ -53,6 +53,8 @@ export const Home = () => {
                         <div className={"sms-section--light"}>
                             <h2>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h2>
                             <ul className={"list-group list-group-flush"}>
+                                <li className={"list-group-item px-0"}>Användare kan samla på publikationer.</li>
+                                <li className={"list-group-item px-0"}>Användare kan ange skick på de publikationer de samlar på.</li>
                                 <li className={"list-group-item px-0"}>Lista titlar utgivna av förlaget på dess sida.</li>
                                 <li className={"list-group-item px-0"}>Visa tooltip på knappar för att lägga till titel eller publikation till
                                     samlingen.
