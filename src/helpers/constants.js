@@ -260,6 +260,8 @@ export const TABLES = {
     PUBLISHERS: "publishers",
     TITLES: "titles",
     USERS_TITLES: "users_titles",
+    USERS_ISSUES: "users_issues",
+    GRADES: "grades",
     UTILS: "utils"
 }
 
