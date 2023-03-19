@@ -45,6 +45,8 @@ export const Issue = () => {
         loading
     ] = useIssueData(id);
 
+    const [isCollectingTitle] = useIsCollectingIssue(user.id, issue.title_id);
+
     const fetchIssueIds = useCallback(() => {
         if (issue.number && issue.title_id && issue.year) {
             let prevNumber = issue.number - 1;
@@ -74,17 +76,20 @@ export const Issue = () => {
                                 <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} bcName={getIssueName(title, issue)}/>
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
-                                <button
-                                    aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                                    className={`btn ${isCollectingIssue ? "btn-success" : "btn-danger"} p-2 rounded-0 w-100 justify-content-center mb-4`}
-                                    onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
-                                    {
-                                        isCollectingIssue ?
-                                            <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
-                                            :
-                                            <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
-                                    }
-                                </button>
+                                {
+                                    isCollectingTitle &&
+                                    <button
+                                        aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                                        className={`btn ${isCollectingIssue ? "btn-success" : "btn-danger"} p-2 rounded-0 w-100 justify-content-center mb-4`}
+                                        onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                                        {
+                                            isCollectingIssue ?
+                                                <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                                :
+                                                <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                        }
+                                    </button>
+                                }
                                 <ImageViewerCover url={issue.image_url} fileName={issue.image_filename}/>
                                 {
                                     loadingButtons ?

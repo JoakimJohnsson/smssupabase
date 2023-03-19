@@ -9,7 +9,9 @@ export const useIsCollectingIssue = (userId, issueId) => {
     useEffect(() => {
         // Reset value before checking
         setIsCollectingIssue(false);
-        checkIfIsCollectingIssue(userId, issueId, setIsCollectingIssue).then();
+        if (userId && issueId) {
+            checkIfIsCollectingIssue(userId, issueId, setIsCollectingIssue).then();
+        }
     }, [userId, issueId])
 
         return [

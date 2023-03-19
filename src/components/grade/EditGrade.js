@@ -28,7 +28,7 @@ export const EditGrade = ({grade, setGrade, issue}) => {
                 {radios.map((radio, index) => {
                     const checked = radioValue.toString() === radio.value.toString();
                     return (
-                        <>
+                        <div key={index + radio.value}>
                             <input
                                 className="btn-check"
                                 name="radio"
@@ -47,7 +47,7 @@ export const EditGrade = ({grade, setGrade, issue}) => {
                                     </div>
                                 </div>
                             </label>
-                        </>
+                        </div>
                     )
                 })}
             </ButtonGroup>
