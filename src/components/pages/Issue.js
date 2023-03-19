@@ -21,6 +21,7 @@ import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIssue";
 import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 
 
 export const Issue = () => {
@@ -45,7 +46,7 @@ export const Issue = () => {
         loading
     ] = useIssueData(id);
 
-    const [isCollectingTitle] = useIsCollectingIssue(user.id, issue.title_id);
+    const [isCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
 
     const fetchIssueIds = useCallback(() => {
         if (issue.number && issue.title_id && issue.year) {
@@ -115,7 +116,10 @@ export const Issue = () => {
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
                                 <div className={"d-flex align-items-center flex-wrap mb-2"}>
-                                    <GradeBadge grade={grade}/>
+                                    {
+                                        isCollectingIssue &&
+                                        <GradeBadge grade={grade}/>
+                                    }
                                     {
                                         issue.is_marvelklubben === 1 &&
                                         <MarvelKlubbenBadge number={issue.marvelklubben_number}/>
@@ -127,7 +131,6 @@ export const Issue = () => {
                                     }
                                 </div>
                                 <div className={"mb-4"}>
-
                                     <p>{title.description}</p>
                                     <p>{publisher.description}</p>
                                     {
@@ -152,7 +155,10 @@ export const Issue = () => {
                                         </Link>
                                     </div>
                                 </div>
-                                <Grade issue={issue} grade={grade} setGrade={setGrade}/>
+                                {
+                                    isCollectingIssue &&
+                                    <Grade issue={issue} grade={grade} setGrade={setGrade}/>
+                                }
                             </div>
                         </>
                 }
