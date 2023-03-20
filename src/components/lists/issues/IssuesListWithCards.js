@@ -1,6 +1,7 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {sortByName} from "../../../helpers/functions/functions";
+import {IssueCard} from "./IssueCard";
 
 
 export const IssuesListWithCards = ({issuesData}) => {
@@ -10,9 +11,8 @@ export const IssuesListWithCards = ({issuesData}) => {
             {
                 issuesData.length ?
                     (issuesData.sort((a, b) => sortByName(a, b)).map((issue, index) =>
-                            <li key={index} className={"title-card"}>
-                                <p>#{issue.number} {issue.year}</p>
-                            </li>)
+                            <IssueCard key={index} issueId={issue.id}/>
+                        )
                     )
                     :
                     (<NoDataAvailable/>)
