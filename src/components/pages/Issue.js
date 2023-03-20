@@ -107,13 +107,13 @@ export const Issue = () => {
                                                 <button
                                                     onClick={() => navigate(`/issues/${prevIssueId}`)}
                                                     disabled={!prevIssueId}
-                                                    className={"btn btn-sm btn-outline-primary me-3"} aria-label={LABELS_AND_HEADINGS.PREVIOUS}>
+                                                    className={"btn btn-sm btn-outline-secondary me-3"} aria-label={LABELS_AND_HEADINGS.PREVIOUS}>
                                                     <Icon icon={faArrowLeftLong} className={"fa-2x"}/>
                                                 </button>
                                                 <button
                                                     onClick={() => navigate(`/issues/${nextIssueId}`)}
                                                     disabled={!nextIssueId}
-                                                    className={"btn btn-sm btn-outline-primary "} aria-label={LABELS_AND_HEADINGS.NEXT}>
+                                                    className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS_AND_HEADINGS.NEXT}>
                                                     <Icon icon={faArrowRightLong} className={"fa-2x"}/>
                                                 </button>
                                             </div>
