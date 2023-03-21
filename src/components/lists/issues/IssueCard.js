@@ -8,6 +8,8 @@ import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {getIssueName} from "../../../helpers/functions/functions";
+import {MarvelKlubbenBadge} from "../../grade/MarvelKlubbenBadge";
+import {Link} from "react-router-dom";
 
 
 export const IssueCard = ({issueId}) => {
@@ -30,23 +32,43 @@ export const IssueCard = ({issueId}) => {
 
     return issue && title && (
         <li className={"issue-card"}>
-            <p>{title.name}</p>
-            <p> #{issue.number} {issue.year}</p>
+
+            <Link to={`/issues/${issue.id}`} title={displayName}>
+                <div className={"cover-image--wrapper"}>
+                    <img
+                        src={issue.image_url}
+                        alt={displayName}
+                        className="cover-image"
+                    />
+                </div>
+            </Link>
+            <div className={"d-flex align-items-center mb-2"}>
+                <MarvelKlubbenBadge number={issue.marvelklubben_number}/>
+                {
+                    isCollectingTitle &&
+                    <button
+                        aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                        className={`btn btn-sm ${isCollectingIssue ? "btn-success" : "btn-danger"} justify-content-center`}
+                        onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                        {
+                            isCollectingIssue ?
+                                <><Icon icon={faMinus} size={"2x"}/></>
+                                :
+                                <><Icon icon={faPlus} size={"2x"}/></>
+                        }
+                    </button>
+                }
+            </div>
             {
-                isCollectingTitle &&
-                <button
-                    aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                    className={`btn ${isCollectingIssue ? "btn-success" : "btn-danger"} p-2 rounded-0 w-100 justify-content-center mb-4`}
-                    onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
-                    {
-                        isCollectingIssue ?
-                            <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
-                            :
-                            <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
-                    }
-                </button>
+                !isCollectingTitle &&
+                <Link to={`/titles/${title.id}`} title={title.name} className={"d-flex justify-content-center"}>
+                    <img
+                        src={title.image_url}
+                        alt={title.name}
+                        className="w-50 bg-light"
+                    />
+                </Link>
             }
         </li>
-
     )
 }
