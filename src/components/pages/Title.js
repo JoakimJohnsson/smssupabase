@@ -12,7 +12,7 @@ import {Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {getCalculatedYear, getDataName} from "../../helpers/functions/functions";
 import formatData from "../../helpers/valueLists/formats.json";
-import {ImageViewer} from "./pagecomponents/ImageViewer";
+import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
@@ -57,7 +57,6 @@ export const Title = () => {
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
-                                <ImageViewer url={title.image_url} fileName={title.image_filename}/>
                                 <button
                                     aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
                                     className={`btn ${isCollectingTitle ? "btn-success" : "btn-danger"} p-2 rounded-0 w-100 justify-content-center mb-4`}
@@ -69,6 +68,7 @@ export const Title = () => {
                                             <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
                                     }
                                 </button>
+                                <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
                                 {
                                     title.description &&
                                     <>
@@ -97,7 +97,7 @@ export const Title = () => {
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-6"}>
                                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
-                                <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue/>
+                                <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue showCollectingButtons={isCollectingTitle}/>
                             </div>
                         </>
                 }

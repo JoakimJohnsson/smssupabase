@@ -5,7 +5,7 @@ import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
 import {LiNavItem} from "../lists/LiNavItem";
 import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
-import {Icon} from "../icons";
+import {Icon, MarvelKlubbenIcon} from "../icons";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
     AdminIconDuoTone,
@@ -17,6 +17,7 @@ import {
 } from "../icons-duotone";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
+
 
 export const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -71,6 +72,12 @@ export const AuthorizedNavigation = () => {
                                 <NavLink exact={"true"} to={ROUTES.ISSUES} className={"nav-link nav-link--dropdown"}>
                                     <IssueIconDuoTone className={"me-2"}/><span
                                     className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.MARVELKLUBBEN} className={"nav-link nav-link--dropdown"}>
+                                    <MarvelKlubbenIcon className={"me-2"}/><span
+                                    className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.MARVELKLUBBEN}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>

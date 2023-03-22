@@ -1,50 +1,59 @@
 import React, {useEffect, useState} from "react";
-import {ButtonGroup, ToggleButton} from "react-bootstrap";
+import {ButtonGroup} from "react-bootstrap";
 import {Icon} from "../icons";
 import {faCertificate} from "@fortawesome/pro-solid-svg-icons";
+import {editGrade} from "../../helpers/functions/serviceFunctions/collectFunctions";
+import {useAppContext} from "../../context/AppContext";
 
 export const EditGrade = ({grade, setGrade, issue}) => {
 
-    // const [checked, setChecked] = useState(false);
     const [radioValue, setRadioValue] = useState(null);
-
-    // TODO - function to change grade
+    const {user} = useAppContext();
 
     const radios = [
-        {name: 'G', value: 0},
-        {name: 'VG', value: 1},
-        {name: 'FN', value: 2},
-        {name: 'VF', value: 3},
-        {name: 'NM', value: 4},
+        {name: 'G', value: 1},
+        {name: 'VG', value: 2},
+        {name: 'FN', value: 3},
+        {name: 'VF', value: 4},
+        {name: 'NM', value: 5},
     ];
 
     useEffect(() => {
         setRadioValue(grade);
     }, [grade])
 
-    return (
+    const handleEditGrade = (e) => {
+        editGrade(user.id, issue.id, e.target.value).then(() => setGrade(e.target.value))
+    }
+
+    return radioValue && (
         <div className={"w-100"}>
             <ButtonGroup className={"mb-2"}>
-                {radios.map((radio, index) => (
-                    <ToggleButton
-                        key={index}
-                        className={"p-0 border-0 rounded-0"}
-                        variant={"outline-grade"}
-                        id={`radio-${index}`}
-                        type="radio"
-                        name="radio"
-                        value={radio.value}
-                        checked={radioValue === radio.value}
-                        onChange={(e) => setRadioValue(e.currentTarget.value)}
-                    >
-                        <div className={"fa-2x"}>
-                            <div className={"fa-layers fa-fw"}>
-                                <Icon icon={faCertificate} className={"text-grade-200"}/>
-                                <span className={"fa-layers-text text-black fs-small"}>{radio.name}</span>
-                            </div>
+                {radios.map((radio, index) => {
+                    const checked = radioValue.toString() === radio.value.toString();
+                    return (
+                        <div key={index + radio.value}>
+                            <input
+                                className="btn-check"
+                                name="radio"
+                                type="radio"
+                                autoComplete="off"
+                                id={`radio-${index + 1}`}
+                                value={radio.value}
+                                checked={checked}
+                                onChange={(e) => handleEditGrade(e)}
+                            />
+                            <label tabIndex="0" htmlFor={`radio-${index + 1}`} className={`p-0 rounded-0 sms-grade-btn ${checked ? "active" : ""}`}>
+                                <div className={"fa-2x"}>
+                                    <div className={"fa-layers fa-fw"}>
+                                        <Icon icon={faCertificate} className={checked ? "text-grade-0" : "text-grade-200"}/>
+                                        <span className={"fa-layers-text text-black fs-small"}>{radio.name}</span>
+                                    </div>
+                                </div>
+                            </label>
                         </div>
-                    </ToggleButton>
-                ))}
+                    )
+                })}
             </ButtonGroup>
         </div>
     )

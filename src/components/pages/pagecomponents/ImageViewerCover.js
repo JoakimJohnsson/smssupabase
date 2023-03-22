@@ -2,14 +2,16 @@ import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 
 
-export const ImageViewer = ({url, fileName}) => {
+export const ImageViewerCover = ({url, fileName}) => {
 
     return url && fileName ? (
+        <div className={"cover-image--wrapper"}>
             <img
                 src={url}
                 alt={fileName}
-                className="w-100 mb-3 bg-light"
+                className="cover-image"
             />
+        </div>
         )
         :
         (<NoDataAvailable/>)

@@ -11,7 +11,7 @@ export const UserTools = ({item, displayName, isTitle}) => {
                 isTitle ?
                     <TitleTool title={item} displayName={displayName}/>
                     :
-                    <IssueTool displayName={displayName}/>
+                    <IssueTool issue={item} displayName={displayName}/>
             }
         </div>
     )

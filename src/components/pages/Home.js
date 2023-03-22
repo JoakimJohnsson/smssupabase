@@ -45,12 +45,12 @@ export const Home = () => {
                             <h2>{LABELS_AND_HEADINGS.RELEASE_LATEST}</h2>
                             {utilsData && <p>v{package_json.version} | {utilsData.release_date}</p>}
                             <ul className={"list-group list-group-flush"}>
-                                <li className={"list-group-item px-0"}>Förberett funktionalitet för skickgradering (WIP).</li>
-                                <li className={"list-group-item px-0"}>Badges för skickgradering, marvelklubben, format och land.</li>
-                                <li className={"list-group-item px-0"}>Nya färger för olika badges.</li>
-                                <li className={"list-group-item px-0"}>Nytt titelkort.</li>
-                                <li className={"list-group-item px-0"}>Visa bild i listor istället för ikoner.</li>
-                                <li className={"list-group-item px-0"}>Möjlighet att bläddra till nästa / föregående publikation.</li>
+                                <li className={"list-group-item px-0"}>Blandade småfixar och förbättringsr.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad visning av omslagsbild - hanterar olika storlek på originalbild.</li>
+                                <li className={"list-group-item px-0"}>Användare kan samla på publikationer.</li>
+                                <li className={"list-group-item px-0"}>Användare kan ange skick på de publikationer de samlar på.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad visning och funktion av skickgradering.</li>
+                                <li className={"list-group-item px-0"}>Speciell sida och listning för tidningar som hör till Marvelklubben.</li>
                             </ul>
                         </div>
                     </div>
@@ -62,6 +62,12 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Visa tooltip på knappar för att lägga till titel eller publikation till
                                     samlingen.
                                 </li>
+                                <li className={"list-group-item px-0"}>Förberett funktionalitet för skickgradering (WIP).</li>
+                                <li className={"list-group-item px-0"}>Badges för skickgradering, marvelklubben, format och land.</li>
+                                <li className={"list-group-item px-0"}>Nya färger för olika badges.</li>
+                                <li className={"list-group-item px-0"}>Nytt titelkort.</li>
+                                <li className={"list-group-item px-0"}>Visa bild i listor istället för ikoner.</li>
+                                <li className={"list-group-item px-0"}>Möjlighet att bläddra till nästa / föregående publikation.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad responsivitet på verktygsknappar i listor.</li>
                                 <li className={"list-group-item px-0"}>Snyggare och rakare laddsnurra.</li>
                                 <li className={"list-group-item px-0"}>Användare kan nu lägga till titlar till samlingen.</li>

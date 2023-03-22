@@ -54,3 +54,14 @@
   }
 }
 
+.sms-grade-btn {
+  @extend .btn;
+  &:hover,
+  &:active,
+  &:focus,
+  &.active {
+    opacity: .9;
+    border-bottom: 1px solid $grade;
+  }
+}
+

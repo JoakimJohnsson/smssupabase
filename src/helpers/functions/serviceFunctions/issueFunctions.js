@@ -102,3 +102,21 @@ export const getIssueIdByTitleAndNumber = async (number, titleId, year, setIssue
         console.error(error);
     }
 }
+
+export const getAllMarvelklubbenIssues = async (setData) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*")
+            .eq("is_marvelklubben", 1)
+            .order("marvelklubben_number", {ascending: true})
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}

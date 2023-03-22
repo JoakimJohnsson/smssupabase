@@ -1,7 +1,7 @@
 import {supabase} from "../../../supabase/supabaseClient";
 import {MESSAGES} from "../../constants";
 import {deleteImageFromBucketSimple} from "./imageFunctions";
-import {addTitleToCollection, removeTitleFromCollection} from "./collectFunctions";
+import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectFunctions";
 
 // GENERIC FUNCTIONS
 export const getRowsByTable = async (table, setData) => {
@@ -70,6 +70,7 @@ export const getNameByTableAndId = async (table, id, setData) => {
         console.error(error);
     }
 }
+
 export const getStartYearByTableAndId = async (table, id, setData) => {
     try {
         let {data, error, status} = await supabase
@@ -157,9 +158,20 @@ export const handleMultipleDeleteNoConfirm = async (table, id, name, setData, in
 
 export const handleCollectingTitle = (userId, titleId, setInformationMessage, isCollectingTitle, setIsCollectingTitle) => {
     if (isCollectingTitle) {
-        removeTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle).then();
+        removeTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle).then(() => {
+        });
+
     } else {
-        addTitleToCollection(userId, titleId, setInformationMessage).then(() => setIsCollectingTitle(true));
+        addTitleToCollection(userId, titleId).then(() => setIsCollectingTitle(true));
+    }
+}
+
+export const handleCollectingIssue = (userId, issueId, setInformationMessage, isCollectingIssue, setIsCollectingIssue) => {
+    if (isCollectingIssue) {
+        removeIssueFromCollection(userId, issueId, setInformationMessage, setIsCollectingIssue).then(() => {
+        });
+    } else {
+        addIssueToCollection(userId, issueId).then(() => setIsCollectingIssue(true));
     }
 }
 
