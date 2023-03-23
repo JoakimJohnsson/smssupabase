@@ -34,8 +34,7 @@ const Profile = () => {
     // Trigger a reset of password
     async function requestPasswordResetForEmail(email) {
         try {
-            const {error} = await supabase.auth.api
-                .resetPasswordForEmail(email)
+            const {error} = await supabase.auth.resetPasswordForEmail(email, {redirectTo: "http://svenskamarvelsamlare.se"})
             if (error) {
                 console.error(error);
             }
