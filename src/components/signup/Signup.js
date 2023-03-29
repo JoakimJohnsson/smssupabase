@@ -66,7 +66,7 @@ export const Signup = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={"sms-section--light"} id={"create-account-section"}>
+            <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"create-account-section"}>
                 <div className={"text-center mb-4 mb-sm-5"}>
                     <RegisterIconDuoTone size={"2x"} className={"text-primary mb-3"}/>
                     <h2>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</h2>
