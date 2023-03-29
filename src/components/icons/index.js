@@ -21,6 +21,7 @@ import {
     faHeartCirclePlus,
     faCalendarHeart,
     faUser,
+    faSend,
     faUsers,
     faBadge,
     faKey
@@ -133,6 +134,12 @@ export const publishersIcon = faBuildingColumns;
 export const RegisterIcon = ({size, className}) => {
     return (
         <Icon icon={faHeartCirclePlus} size={size} className={className}/>
+    )
+}
+
+export const SendIcon = ({size, className}) => {
+    return (
+        <Icon icon={faSend} size={size} className={className}/>
     )
 }
 
