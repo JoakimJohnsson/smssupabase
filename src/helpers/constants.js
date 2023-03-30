@@ -19,7 +19,7 @@ export const MESSAGES = {
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
         VALIDATION_PASSWORD: "Det där är ett starkt lösenord!",
-        VALIDATION_PASSWORD_REQUEST_FORM: "Allt gick bra.",
+        VALIDATION_PASSWORD_REQUEST_FORM: "Information har skickats till den angivna e-postadressen.",
         VALIDATION_DELETE: "Lyckades radera informationen från databasen"
     },
     CONFIRM: {
