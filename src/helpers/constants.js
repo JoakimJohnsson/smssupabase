@@ -4,6 +4,8 @@ export const MESSAGES = {
         VALIDATION_EMAIL_EXISTS: "Försök med en annan e-postadress.",
         VALIDATION_PASSWORD: "Ange ett starkare lösenord - minst 10 tecken.",
         VALIDATION_SIGNUP_FORM: "Något gick fel vid registrering.",
+        VALIDATION_PASSWORD_REQUEST_FORM: "Något gick fel.",
+        VALIDATION_PASSWORD_REQUEST_FORM_NOTFOUND: "Hittade ingen användare med den e-postadressen.",
         VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning.",
         VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning.",
         VALIDATION_UPLOAD: "Något gick fel vid uppladdning.",
@@ -17,6 +19,7 @@ export const MESSAGES = {
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
         VALIDATION_PASSWORD: "Det där är ett starkt lösenord!",
+        VALIDATION_PASSWORD_REQUEST_FORM: "Allt gick bra.",
         VALIDATION_DELETE: "Lyckades radera informationen från databasen"
     },
     CONFIRM: {
@@ -135,7 +138,7 @@ export const LABELS_AND_HEADINGS = {
     EDIT_GRADE: "Ändra skick",
     EDIT_INFORMATION: "Redigera information",
     EMAIL: "E-postadress",
-    EMAIL_SEND: "Skicka din e-postadress så ordnar vi ett nytt lösenord",
+    EMAIL_SEND: "Ange din e-postadress",
     CHANGE_PASSWORD: "Ändra lösenord",
     END_YEAR: "Slutår",
     END_YEAR_DB: "Slutår (end_year)",
@@ -227,6 +230,7 @@ export const TEXTS = {
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer.",
     DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
+    EMAIL_SEND_INFO: "Vi skickar information om återställning av lösenord till den angivna adressen.",
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från",

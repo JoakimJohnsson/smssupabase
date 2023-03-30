@@ -1,13 +1,11 @@
 import {useAppContext} from "../../context/AppContext";
 import React, {useEffect, useState} from "react";
-import {supabase} from "../../supabase/supabaseClient";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
-import {KeyIconDuoTone} from "../icons-duotone";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 
 
@@ -18,7 +16,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
-    const {profile, setProfile, user, fetchProfileData} = useAppContext();
+    const {profile, setProfile, fetchProfileData} = useAppContext();
 
     useEffect(() => {
         fetchProfileData(profile.id);
@@ -30,20 +28,6 @@ const Profile = () => {
     useEffect(() => {
         setNewProfile({...profile});
     }, [profile])
-
-    // Trigger a reset of password
-    async function requestPasswordResetForEmail(email) {
-        try {
-            const {error} = await supabase.auth.resetPasswordForEmail(email, {redirectTo: "http://svenskamarvelsamlare.se"})
-            if (error) {
-                console.error(error);
-            }
-        } catch (error) {
-            console.error(error.message)
-        } finally {
-            console.info("Reset password request sent for email: ", email);
-        }
-    }
 
     return (
         <main className={"container-fluid main-container"}>
@@ -90,13 +74,8 @@ const Profile = () => {
                             </div>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
-                                    <h2>{LABELS_AND_HEADINGS.PASSWORD}</h2>
-                                    <p>{TEXTS.SETTINGS_RESET_PASSWORD}</p>
-                                    <button className={"btn btn-primary btn-cta"}
-                                            onClick={() => requestPasswordResetForEmail(user.email)}>
-                                        <KeyIconDuoTone className={"btn-cta--icon"}/>
-                                        {LABELS_AND_HEADINGS.RESET_PASSWORD}
-                                    </button>
+                                    <h2>{LABELS_AND_HEADINGS.SETTINGS_CREDENTIALS}</h2>
+                                    <p>{TEXTS.SETTINGS_CREDENTIALS}</p>
                                 </div>
                             </div>
                         </div>
