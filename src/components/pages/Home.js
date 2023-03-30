@@ -47,7 +47,6 @@ export const Home = () => {
                             <ul className={"list-group list-group-flush"}>
                                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                                 <li className={"list-group-item px-0"}>Glömt lösenord? - Funktion för att återställa lösenord.</li>
-                                <li className={"list-group-item px-0"}>Förbättrad funktion för att redigera e-postadress.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad funktion för registrering.</li>
                                 <li className={"list-group-item px-0"}>Förbättrat utseende och funktion på publikationskort i lista.</li>
                             </ul>
