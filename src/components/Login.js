@@ -35,7 +35,6 @@ const Login = () => {
     }
 
     return (
-
         <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"login-section"}>
             <div className={"text-center mb-4 mb-sm-5"}>
                 <LoginIconDuoTone size={"2x"} className={"text-primary mb-3"}/>
@@ -57,12 +56,14 @@ const Login = () => {
                    className={passwordValidated ? "form-control success mb-3" : CLASSES.FORM_INPUT_DEFAULT}
                    placeholder={"********"}
                    required/>
+            <div className={"text-center mb-2"}>
+                <a href={"#forgot-password-section"}>{LABELS_AND_HEADINGS.FORGOT_PASSWORD}</a>
+            </div>
             <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary sms-btn" : "btn btn-primary sms-btn disabled"}>
                 <LoginIcon className={"me-2"}/>{LABELS_AND_HEADINGS.LOG_IN}
             </button>
             {showFormError && <p className={"alert alert-danger mt-3"} role={"alert"}>{formErrorMessage}</p>}
         </form>
-
     )
 }
 

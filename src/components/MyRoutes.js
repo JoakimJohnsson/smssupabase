@@ -26,6 +26,7 @@ import {Publisher} from "./pages/Publisher";
 import {Publishers} from "./pages/Publishers";
 import {AdminUsers} from "./pages/admin/users/AdminUsers";
 import {Marvelklubben} from "./pages/Marvelklubben";
+import ChangePassword from "./pages/ChangePassword";
 
 
 export const MyRoutes = () => {
@@ -37,6 +38,7 @@ export const MyRoutes = () => {
             <Routes>
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
+                <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
                 {/* USER */}
                 <Route path={ROUTES.DASHBOARD.ROOT} element={user && user.id ? <Dashboard/> : <Navigate replace to={ROUTES.DEFAULT}/>}>
                     <Route index
@@ -83,6 +85,7 @@ export const MyRoutes = () => {
             <Routes>
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
+                <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
                 {/* Catch all */}
                 <Route path={"*"} element={<></>}/>
             </Routes>

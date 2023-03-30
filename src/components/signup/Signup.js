@@ -4,7 +4,7 @@ import {useAppContext} from "../../context/AppContext";
 import {MESSAGES, CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
-import {checkIfEmailExists, handleEmailInput, handlePasswordInput} from "../../helpers/functions/functions";
+import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../helpers/functions/functions";
 import {RegisterIcon} from "../icons";
 import {RegisterIconDuoTone} from "../icons-duotone";
 
@@ -19,7 +19,6 @@ export const Signup = () => {
     const [passwordValidationMessage, setPasswordValidationMessage] = useState("");
     const [emailValidated, setEmailValidated] = useState(false);
     const [passwordValidated, setPasswordValidated] = useState(false);
-    const [emailExists, setEmailExists] = useState(false);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -32,7 +31,7 @@ export const Signup = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        await checkIfEmailExists(email, setEmailExists);
+        const emailExists = await doesEmailExist(email);
 
         // Never sign up if user tries to sign up with an email that already exists
         if (emailExists === true) {
@@ -66,7 +65,7 @@ export const Signup = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className={"sms-section--light"} id={"create-account-section"}>
+            <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"create-account-section"}>
                 <div className={"text-center mb-4 mb-sm-5"}>
                     <RegisterIconDuoTone size={"2x"} className={"text-primary mb-3"}/>
                     <h2>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</h2>
@@ -89,7 +88,7 @@ export const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type="submit" className={"btn btn-primary sms-btn"} disabled>
+                <button type="submit" className={"btn btn-primary sms-btn"}>
                     <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}

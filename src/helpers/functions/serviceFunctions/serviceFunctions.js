@@ -2,6 +2,7 @@ import {supabase} from "../../../supabase/supabaseClient";
 import {MESSAGES} from "../../constants";
 import {deleteImageFromBucketSimple} from "./imageFunctions";
 import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectFunctions";
+import {doesEmailExist} from "../functions";
 
 // GENERIC FUNCTIONS
 export const getRowsByTable = async (table, setData) => {
@@ -172,6 +173,27 @@ export const handleCollectingIssue = (userId, issueId, setInformationMessage, is
         });
     } else {
         addIssueToCollection(userId, issueId).then(() => setIsCollectingIssue(true));
+    }
+}
+
+// Trigger a reset of password
+export const requestPasswordResetForEmail = async (email, setMessage, e) => {
+    e.preventDefault();
+    const emailExists = await doesEmailExist(email);
+    if (emailExists) {
+        try {
+            await supabase.auth.resetPasswordForEmail(email, {
+                redirectTo: "http://svenskamarvelsamlare.se/change-password",
+            })
+        } catch (error) {
+            console.error(error.message)
+            setMessage({show: true, message: MESSAGES.ERROR.VALIDATION_PASSWORD_REQUEST_FORM, isError: true})
+        } finally {
+            setMessage({show: true, message: MESSAGES.SUCCESS.VALIDATION_PASSWORD_REQUEST_FORM, isError: false})
+            console.info("Reset password request sent for email: ", email);
+        }
+    } else {
+        setMessage({show: true, message: MESSAGES.ERROR.VALIDATION_PASSWORD_REQUEST_FORM_NOTFOUND, isError: true})
     }
 }
 

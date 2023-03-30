@@ -34,7 +34,7 @@ https://github.com/JoakimJohnsson/smssupabase/issues
 * When develop is ready for deploy - Admin will: 
   * Change version.
   * Merge into a release branch (release-x.x.x).
-  * Git tags.
+  * Git tags (`git push --tags`).
 * A pull request is made from the release branch.
 * Admin will review and merge.
 * The action script will run tests and deploy to www.svenskamarvelsamlare.se.

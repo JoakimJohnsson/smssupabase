@@ -2,13 +2,9 @@ import {supabase} from "../../supabase/supabaseClient";
 import {CLASSES, MESSAGES} from "../constants";
 import React from "react";
 
-export async function checkIfEmailExists(emailReference, setEmailExists) {
+export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
-    if (email.length > 0) {
-        setEmailExists(true);
-    } else {
-        setEmailExists(false);
-    }
+    return email.length > 0;
 }
 
 export const prepareUrl = (url) => {

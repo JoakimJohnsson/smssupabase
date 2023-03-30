@@ -6,6 +6,7 @@ import {
     faFile,
     faFileLines,
     faChartLine,
+    faCommentsQuestion,
     faGears,
     faFiles,
     faBuildingColumns,
@@ -85,6 +86,13 @@ export const IssueIconDuoTone = ({size, className}) => {
         <Icon icon={faFileLines} size={size} className={className}/>
     )
 }
+
+export const QuestionIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faCommentsQuestion} size={size} className={className}/>
+    )
+}
+
 export const KeyIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faKey} size={size} className={className}/>
