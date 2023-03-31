@@ -37,7 +37,7 @@ const Login = () => {
     return (
         <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"login-section"}>
             <div className={"text-center mb-4 mb-sm-5"}>
-                <LoginIconDuoTone size={"2x"} className={"text-primary mb-3"}/>
+                <LoginIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
                 <h2>{LABELS_AND_HEADINGS.LOG_IN}</h2>
             </div>
             <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>

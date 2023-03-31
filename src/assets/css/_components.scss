@@ -243,3 +243,8 @@
     object-position: -4px -4px;
   }
 }
+
+// Icons
+.fa-icon--cta {
+  @extend .mb-3, .text-secondary;
+}
