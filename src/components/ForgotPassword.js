@@ -23,8 +23,8 @@ const ForgotPassword = () => {
                    className={"form-control"}
                    placeholder={"name@myplace.se"}
                    required/>
-            <div className={"form-text mb-3"}>{TEXTS.EMAIL_SEND_INFO}</div>
-            <button type="submit" className={"btn btn-primary sms-btn"}>
+            <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_SEND_INFO}</div>
+            <button type="submit" className={"btn btn-primary sms-btn"} disabled={email === ""}>
                 <SendIcon className={"me-2"}/>{LABELS_AND_HEADINGS.SEND}
             </button>
             {message.show && <p className={`alert ${message.isError ? "alert-danger" : "alert-success"} mt-3`} role={"alert"}>{message.message}</p>}

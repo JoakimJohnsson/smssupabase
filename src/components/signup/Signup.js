@@ -17,6 +17,7 @@ export const Signup = () => {
     const [formErrorMessage, setFormErrorMessage] = useState("");
     const [emailValidationMessage, setEmailValidationMessage] = useState("");
     const [passwordValidationMessage, setPasswordValidationMessage] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState("");
     const [emailValidated, setEmailValidated] = useState(false);
     const [passwordValidated, setPasswordValidated] = useState(false);
 
@@ -36,6 +37,9 @@ export const Signup = () => {
         // Never sign up if user tries to sign up with an email that already exists
         if (emailExists === true) {
             setFormErrorMessage(MESSAGES.ERROR.VALIDATION_EMAIL_EXISTS);
+            setShowFormError(true);
+        } else if (password !== passwordConfirm) {
+            setFormErrorMessage(MESSAGES.ERROR.VALIDATION_PASSWORD_CONFIRM);
             setShowFormError(true);
         } else {
             const {error} = await signUp({email, password});
@@ -87,8 +91,15 @@ export const Signup = () => {
                        className={passwordInputClass}
                        placeholder={"********"}
                        required/>
+                <label className={"form-label d-flex"} htmlFor="input-signup-password-confirm">{LABELS_AND_HEADINGS.PASSWORD_CONFIRM}</label>
+                <input id="input-signup-password-confirm"
+                       type="password"
+                       onChange={(e) => setPasswordConfirm(e.target.value)}
+                       className={passwordInputClass}
+                       placeholder={"********"}
+                       required/>
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type="submit" className={"btn btn-primary sms-btn"}>
+                <button type="submit" className={"btn btn-primary sms-btn"} disabled={!passwordValidated || passwordRef.current.value !== passwordConfirm}>
                     <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
