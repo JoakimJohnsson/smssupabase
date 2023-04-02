@@ -47,6 +47,7 @@ export const Home = () => {
                             <ul className={"list-group list-group-flush"}>
                                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                                 <li className={"list-group-item px-0"}>Länk till marvelklubben sida även i mobilläge.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad funktion för byte av e-postadress och lösenord.</li>
                             </ul>
                         </div>
                     </div>
