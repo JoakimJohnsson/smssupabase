@@ -6,6 +6,7 @@ export const MESSAGES = {
         VALIDATION_PASSWORD: "Ange ett starkare lösenord - minst 10 tecken.",
         VALIDATION_SIGNUP_FORM: "Något gick fel vid registrering.",
         VALIDATION_PASSWORD_REQUEST_FORM: "Något gick fel.",
+        VALIDATION_EMAIL_REQUEST_FORM: "Något gick fel.",
         VALIDATION_PASSWORD_REQUEST_FORM_NOTFOUND: "Hittade ingen användare med den e-postadressen.",
         VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning.",
         VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning.",
@@ -20,7 +21,8 @@ export const MESSAGES = {
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
         VALIDATION_PASSWORD: "Det där är ett starkt lösenord!",
-        VALIDATION_PASSWORD_REQUEST_FORM: "Information har skickats till den angivna e-postadressen.",
+        VALIDATION_PASSWORD_REQUEST_FORM: "Lösenordet har ändrats.",
+        VALIDATION_EMAIL_REQUEST_FORM: "Information har skickats till den angivna e-postadressen.",
         VALIDATION_DELETE: "Lyckades radera informationen från databasen"
     },
     CONFIRM: {

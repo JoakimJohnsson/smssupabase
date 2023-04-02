@@ -22,7 +22,7 @@ const Profile = () => {
     const [pwMessage, setPwMessage] = useState({show: false, text: "", isError: false});
     const [newEmail, setNewEmail] = useState("");
     const [confirmNewEmail, setConfirmNewEmail] = useState("");
-    const [currentPassword, setCurrentPassword] = useState("");
+    const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
 
     useEffect(() => {
@@ -40,10 +40,10 @@ const Profile = () => {
         try {
             await supabase.auth.updateUser({email: newEmail}).then(async () => {
                 fetchProfileData(profile.id);
-                setMessage({show: true, text: MESSAGES.SUCCESS.VALIDATION_PASSWORD_REQUEST_FORM, isError: false});
+                setMessage({show: true, text: MESSAGES.SUCCESS.VALIDATION_EMAIL_REQUEST_FORM, isError: false});
             });
         } catch (error) {
-            setMessage({show: true, text: MESSAGES.ERROR.VALIDATION_PASSWORD_REQUEST_FORM, isError: true})
+            setMessage({show: true, text: MESSAGES.ERROR.VALIDATION_EMAIL_REQUEST_FORM, isError: true})
             console.error(error);
         }
     }
@@ -132,7 +132,7 @@ const Profile = () => {
                                         <label className={"form-label d-flex"} htmlFor="input-current-password">{LABELS_AND_HEADINGS.NEW_PASSWORD}</label>
                                         <input id="input-current-password"
                                                type="password"
-                                               onChange={(e) => setCurrentPassword(e.target.value)}
+                                               onChange={(e) => setNewPassword(e.target.value)}
                                                className={"form-control mb-3"}
                                                placeholder={"********"}
                                                required/>
@@ -140,13 +140,13 @@ const Profile = () => {
                                                htmlFor="input-new-password">{LABELS_AND_HEADINGS.PASSWORD_CONFIRM}</label>
                                         <input id="input-new-password"
                                                type="password"
-                                               onChange={(e) => setNewPassword(e.target.value)}
+                                               onChange={(e) => setConfirmNewPassword(e.target.value)}
                                                className={"form-control"}
                                                placeholder={"********"}
                                                required/>
                                         <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_SEND_INFO}</div>
                                         <button className={"btn btn-primary sms-btn"} onClick={() => handleChangePassword()}
-                                                disabled={!currentPassword || !newPassword}>
+                                                disabled={confirmNewPassword === "" || newPassword !== confirmNewPassword}>
                                             <SendIcon className={"me-2"}/>{LABELS_AND_HEADINGS.SEND}
                                         </button>
                                         {pwMessage.show && <p className={`alert ${pwMessage.isError ? "alert-danger" : "alert-success"} mt-3`}
