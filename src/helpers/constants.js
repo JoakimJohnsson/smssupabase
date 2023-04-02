@@ -139,6 +139,8 @@ export const LABELS_AND_HEADINGS = {
     EDIT_GRADE: "Ändra skick",
     EDIT_INFORMATION: "Redigera information",
     EMAIL: "E-postadress",
+    NEW_EMAIL: "Ny e-postadress",
+    CONFIRM_NEW_EMAIL: "Bekräfta ny e-postadress",
     EMAIL_SEND: "Ange din e-postadress",
     CHANGE_PASSWORD: "Ändra lösenord",
     END_YEAR: "Slutår",
@@ -178,6 +180,7 @@ export const LABELS_AND_HEADINGS = {
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     OPEN: "Öppna",
     PASSWORD: "Lösenord",
+    NEW_PASSWORD: "Nytt lösenord",
     PASSWORD_CONFIRM: "Bekräfta lösenord",
     PREVIOUS: "Tidigare",
     PROFILE_IMAGE: "Profilbild",
@@ -278,7 +281,8 @@ export const TABLES = {
     USERS_TITLES: "users_titles",
     USERS_ISSUES: "users_issues",
     GRADES: "grades",
-    UTILS: "utils"
+    UTILS: "utils",
+    USERS: "users"
 }
 
 export const PANES = {
