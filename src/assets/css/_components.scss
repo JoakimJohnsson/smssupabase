@@ -93,6 +93,9 @@
   h2 {
     @extend .border-bottom, .pb-3, .mb-4, .h4;
   }
+  h3 {
+    @extend .h5;
+  }
   .form-label {
     color: $white--darker;
     font-weight: 300;
@@ -242,4 +245,9 @@
     object-fit: cover;
     object-position: -4px -4px;
   }
+}
+
+// Icons
+.fa-icon--cta {
+  @extend .mb-3, .text-secondary;
 }

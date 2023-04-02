@@ -102,6 +102,8 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
                         <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<IssueIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
+                        <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<MarvelKlubbenIcon size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
                         <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<SettingsIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {profile.role >= 1 &&

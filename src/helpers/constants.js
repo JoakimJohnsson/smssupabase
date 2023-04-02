@@ -2,9 +2,11 @@ export const MESSAGES = {
     ERROR: {
         VALIDATION_EMAIL: "Ange en korrekt e-postadress.",
         VALIDATION_EMAIL_EXISTS: "Försök med en annan e-postadress.",
+        VALIDATION_PASSWORD_CONFIRM: "Lösenordet matchar inte.",
         VALIDATION_PASSWORD: "Ange ett starkare lösenord - minst 10 tecken.",
         VALIDATION_SIGNUP_FORM: "Något gick fel vid registrering.",
         VALIDATION_PASSWORD_REQUEST_FORM: "Något gick fel.",
+        VALIDATION_EMAIL_REQUEST_FORM: "Något gick fel.",
         VALIDATION_PASSWORD_REQUEST_FORM_NOTFOUND: "Hittade ingen användare med den e-postadressen.",
         VALIDATION_LOGIN_FORM: "Något gick fel vid inloggning.",
         VALIDATION_UPLOAD_IMAGE: "Du måste välja en bild för uppladdning.",
@@ -19,7 +21,8 @@ export const MESSAGES = {
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
         VALIDATION_PASSWORD: "Det där är ett starkt lösenord!",
-        VALIDATION_PASSWORD_REQUEST_FORM: "Information har skickats till den angivna e-postadressen.",
+        VALIDATION_PASSWORD_REQUEST_FORM: "Lösenordet har ändrats.",
+        VALIDATION_EMAIL_REQUEST_FORM: "Information har skickats till den angivna e-postadressen.",
         VALIDATION_DELETE: "Lyckades radera informationen från databasen"
     },
     CONFIRM: {
@@ -138,6 +141,8 @@ export const LABELS_AND_HEADINGS = {
     EDIT_GRADE: "Ändra skick",
     EDIT_INFORMATION: "Redigera information",
     EMAIL: "E-postadress",
+    NEW_EMAIL: "Ny e-postadress",
+    CONFIRM_NEW_EMAIL: "Bekräfta ny e-postadress",
     EMAIL_SEND: "Ange din e-postadress",
     CHANGE_PASSWORD: "Ändra lösenord",
     END_YEAR: "Slutår",
@@ -177,6 +182,8 @@ export const LABELS_AND_HEADINGS = {
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     OPEN: "Öppna",
     PASSWORD: "Lösenord",
+    NEW_PASSWORD: "Nytt lösenord",
+    PASSWORD_CONFIRM: "Bekräfta lösenord",
     PREVIOUS: "Tidigare",
     PROFILE_IMAGE: "Profilbild",
     PUBLISHERS: "Förlag",
@@ -230,7 +237,8 @@ export const TEXTS = {
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer.",
     DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
-    EMAIL_SEND_INFO: "Vi skickar information om återställning av lösenord till den angivna adressen.",
+    CHANGE_PASSWORD_SEND_INFO: "Vi skickar information för att bekräfta återställning av lösenord.",
+    CHANGE_EMAIL_SEND_INFO: "Vi skickar information för att bekräfta ändring av e-postadress.",
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från",
@@ -239,7 +247,7 @@ export const TEXTS = {
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar.",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt ändra dina inloggningsuppgifter.",
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
-    SETTINGS_CREDENTIALS: "Ändra din e-postadress (användarnamn) här. För att ändra lösenord kan du logga ut och klicka på \"Glömt lösenordet?\" under inloggningen.",
+    SETTINGS_CREDENTIALS: "Ändra din e-postadress (användarnamn) eller lösenord här.",
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
@@ -275,7 +283,8 @@ export const TABLES = {
     USERS_TITLES: "users_titles",
     USERS_ISSUES: "users_issues",
     GRADES: "grades",
-    UTILS: "utils"
+    UTILS: "utils",
+    USERS: "users"
 }
 
 export const PANES = {

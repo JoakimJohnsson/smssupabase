@@ -10,10 +10,10 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState("");
 
     return (
-        <form onSubmit={(e) => requestPasswordResetForEmail(email, setMessage, e)} className={"sms-section--light mb-5"}
+        <form onSubmit={(e) => requestPasswordResetForEmail(email, setMessage, e)} className={"sms-section--light"}
               id={"forgot-password-section"}>
             <div className={"text-center mb-4 mb-sm-5"}>
-                <QuestionIconDuoTone size={"2x"} className={"text-primary mb-3"}/>
+                <QuestionIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
                 <h2>{LABELS_AND_HEADINGS.FORGOT_PASSWORD}</h2>
             </div>
             <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL_SEND}</label>
@@ -23,8 +23,8 @@ const ForgotPassword = () => {
                    className={"form-control"}
                    placeholder={"name@myplace.se"}
                    required/>
-            <div className={"form-text mb-3"}>{TEXTS.EMAIL_SEND_INFO}</div>
-            <button type="submit" className={"btn btn-primary sms-btn"}>
+            <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_SEND_INFO}</div>
+            <button type="submit" className={"btn btn-primary sms-btn"} disabled={email === ""}>
                 <SendIcon className={"me-2"}/>{LABELS_AND_HEADINGS.SEND}
             </button>
             {message.show && <p className={`alert ${message.isError ? "alert-danger" : "alert-success"} mt-3`} role={"alert"}>{message.message}</p>}
