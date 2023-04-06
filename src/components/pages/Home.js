@@ -66,8 +66,6 @@ export const Home = () => {
                         </div>
                     </div>
                 </div>
-
-
             </main>
         )
         :
@@ -75,5 +73,4 @@ export const Home = () => {
             <HomePublic/>
             <Footer/>
         </>
-
 }
