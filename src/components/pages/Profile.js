@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
-import {Icon, SendIcon} from "../icons";
+import {Icon, KeyIcon, SendIcon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -145,9 +145,9 @@ const Profile = () => {
                                                placeholder={"********"}
                                                required/>
                                         <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_SEND_INFO}</div>
-                                        <button className={"btn btn-primary sms-btn"} onClick={() => handleChangePassword()}
+                                        <button className={"btn btn-danger sms-btn"} onClick={() => handleChangePassword()}
                                                 disabled={confirmNewPassword === "" || newPassword !== confirmNewPassword}>
-                                            <SendIcon className={"me-2"}/>{LABELS_AND_HEADINGS.SEND}
+                                            <KeyIcon className={"me-2"}/>{LABELS_AND_HEADINGS.RESET_PASSWORD}
                                         </button>
                                         {pwMessage.show && <p className={`alert ${pwMessage.isError ? "alert-danger" : "alert-success"} mt-3`}
                                                               role={"alert"}>{pwMessage.text}</p>}

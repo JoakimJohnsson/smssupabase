@@ -47,6 +47,7 @@ export const Home = () => {
                             <ul className={"list-group list-group-flush"}>
                                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                                 <li className={"list-group-item px-0"}>Titel - Badge för förlag visas. Förbättrad text om antal publikationer.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid byte av lösenord.</li>
                             </ul>
                         </div>
                     </div>
