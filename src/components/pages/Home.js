@@ -48,6 +48,8 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                                 <li className={"list-group-item px-0"}>Titel - Badge för förlag visas. Förbättrad text om antal publikationer.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid byte av lösenord.</li>
+                                <li className={"list-group-item px-0"}>Uppdaterad layout av publikationskort.</li>
+                                <li className={"list-group-item px-0"}>Ändring av grid för publikationskort - visar nu oftast minst två i bredd.</li>
                             </ul>
                         </div>
                     </div>

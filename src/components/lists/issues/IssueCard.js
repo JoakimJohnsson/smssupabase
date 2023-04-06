@@ -8,7 +8,6 @@ import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {getIssueName} from "../../../helpers/functions/functions";
-import {MarvelKlubbenBadge} from "../../grade/MarvelKlubbenBadge";
 import {Link} from "react-router-dom";
 
 
@@ -34,16 +33,16 @@ export const IssueCard = ({issueId}) => {
         <li className={"issue-card"}>
 
             <Link to={`/issues/${issue.id}`} title={displayName}>
-                <div className={"cover-image--wrapper"}>
+                <div className={"cover-image--wrapper position-relative"}>
                     <img
                         src={issue.image_url}
                         alt={displayName}
                         className="cover-image"
                     />
+                    <div className={"issue-card--marvelklubben"}>{issue.marvelklubben_number}</div>
                 </div>
             </Link>
             <div className={"d-flex align-items-center mb-2"}>
-                <MarvelKlubbenBadge number={issue.marvelklubben_number}/>
                 {
                     isCollectingTitle &&
                     <button
