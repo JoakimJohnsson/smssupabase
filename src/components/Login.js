@@ -56,7 +56,7 @@ const Login = () => {
                    className={passwordValidated ? "form-control success mb-3" : CLASSES.FORM_INPUT_DEFAULT}
                    placeholder={"********"}
                    required/>
-            <div className={"text-center mb-2"}>
+            <div className={"text-center mb-3"}>
                 <a href={"#forgot-password-section"}>{LABELS_AND_HEADINGS.FORGOT_PASSWORD}</a>
             </div>
             <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary sms-btn" : "btn btn-primary sms-btn disabled"}>

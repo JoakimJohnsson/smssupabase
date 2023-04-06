@@ -1,21 +1,24 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {
     getRowByTableAndId,
     getRowsByTableForeignKeyColumnAndForeignKeyId,
     handleCollectingTitle
 } from "../../helpers/functions/serviceFunctions/serviceFunctions";
-import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {getCalculatedYear, getDataName} from "../../helpers/functions/functions";
-import formatData from "../../helpers/valueLists/formats.json";
+import {getCalculatedYear} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
+import {FormatBadge} from "../minis/FormatBadge";
+import countryData from "../../helpers/valueLists/countries.json";
+import {CountryBadge} from "../minis/CountryBadge";
+import {PublisherBadge} from "../minis/PublisherBadge";
 
 
 export const Title = () => {
@@ -69,12 +72,24 @@ export const Title = () => {
                                     }
                                 </button>
                                 <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
+                                <div className={"mb-2"}>
+                                    <FormatBadge formatId={title.format_id}/>
+                                    {
+                                        countryData &&
+                                        <CountryBadge countryId={publisher.country_id}/>
+                                    }
+                                    <PublisherBadge publisher={publisher}/>
+                                </div>
                                 {
                                     title.description &&
                                     <>
                                         <p>{title.description}</p>
-                                        <p>Formatet är {getDataName(formatData, title.format_id)}.</p>
-                                        <p>Totalt gavs det ut {title.total_issues} publikationer.</p>
+                                        <p>
+                                            <span className={"me-2"}>{TEXTS.TOTAL_PUBLISHED}</span>
+                                            {title.total_issues}
+                                            <span
+                                                className={"ms-2"}>{title.total_issues > 1 ? TEXTS.TOTAL_PUBLISHED_PUBLICATIONS : TEXTS.TOTAL_PUBLISHED_PUBLICATION}</span>
+                                        </p>
                                     </>
                                 }
                                 {
@@ -84,14 +99,6 @@ export const Title = () => {
                                             {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {title.name}
                                             <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                         </a>
-                                    </p>
-                                }
-                                {
-                                    publisher &&
-                                    <p>
-                                        <Link to={ROUTES.PUBLISHERS + "/" + publisher.id} className={""} title={publisher.name}>
-                                            {publisher.name}
-                                        </Link>
                                     </p>
                                 }
                             </div>

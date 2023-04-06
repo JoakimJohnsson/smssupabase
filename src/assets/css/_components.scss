@@ -59,7 +59,7 @@
 
 // Dashboard
 .sms-dashboard-col {
-  @extend .col-12, .col-xl-6;
+  @extend .col-12, .col-xl-6, .col-x-padding--xs-only;
   margin-bottom: $grid-gutter-width;
 
   .sms-section--light {
@@ -112,11 +112,11 @@
 }
 
 .sms-page-col {
-  @extend .col-12;
+  @extend .col-12, .col-x-padding--xs-only;
 }
 
 .sms-page-col--full {
-  @extend .col-12, .col-lg-8;
+  @extend .col-12, .col-lg-8, .col-x-padding--xs-only;
 }
 
 // Breadcrumb
@@ -217,7 +217,7 @@
 
 // Tag-badge
 .tag-badge {
-  @extend .badge, .rounded-pill, .py-2, .mx-1, .d-inline-block;
+  @extend .badge, .rounded-pill, .py-2, .mx-1, .mb-2, .d-inline-block;
   padding-right: 1rem;
   padding-left: 1rem;
 }
@@ -235,9 +235,8 @@
 .cover-image--wrapper {
   @extend .mb-3, .bg-light;
   width: 100%;
-  aspect-ratio: 3.4/5;
+  aspect-ratio: 3.6/5;
   overflow: hidden;
-  border-radius: $border-radius--xl;
   border: $border--secondary-md;
   .cover-image {
     width: 105%;

@@ -238,6 +238,7 @@ export const TEXTS = {
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer.",
     DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
     CHANGE_PASSWORD_SEND_INFO: "Vi skickar information för att bekräfta återställning av lösenord.",
+    CHANGE_PASSWORD_INFO: "OBS! Lösenordet ändras direkt - vi skickar ingen information för att bekräfta återställning av lösenord.",
     CHANGE_EMAIL_SEND_INFO: "Vi skickar information för att bekräfta ändring av e-postadress.",
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
@@ -253,6 +254,9 @@ export const TEXTS = {
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
     SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen.",
+    TOTAL_PUBLISHED: "Totalt gavs det ut",
+    TOTAL_PUBLISHED_PUBLICATION: "publikation.",
+    TOTAL_PUBLISHED_PUBLICATIONS: "publikationer.",
     UTILS: "Speciella funktioner för förbättrade användarupplevelser.",
     UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
 }

@@ -7,7 +7,7 @@ import {useAppContext} from "../context/AppContext";
 const Footer = () => {
 
     const package_json = require('../../package.json');
-    const [utilsData, setUtilsData] = useState({})
+    const [utilsData, setUtilsData] = useState(null)
     const {user} = useAppContext();
 
     const fetchUtilsData = useCallback(() => {
@@ -37,7 +37,8 @@ const Footer = () => {
                     </div>
                     <div className={"col-12 col-md-6 py-2 d-flex align-items-end"}>
                         <p className={"fs-smallest text-end m-0 w-100"}>
-                            © 2021-2022 | {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE} | v{package_json.version} {utilsData && " | " + utilsData.release_date}
+                            <span>© 2023 {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE} | </span>
+                            <span className={"text-nowrap"}>v{package_json.version} {utilsData && " | " + utilsData.release_date}</span>
                         </p>
                     </div>
                 </div>
