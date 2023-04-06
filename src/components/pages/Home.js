@@ -46,8 +46,7 @@ export const Home = () => {
                             {utilsData && <p>v{package_json.version} | {utilsData.release_date}</p>}
                             <ul className={"list-group list-group-flush"}>
                                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                                <li className={"list-group-item px-0"}>Länk till marvelklubben sida även i mobilläge.</li>
-                                <li className={"list-group-item px-0"}>Förbättrad funktion för byte av e-postadress och lösenord.</li>
+                                <li className={"list-group-item px-0"}>Titel - Badge för förlag visas. Förbättrad text om antal publikationer.</li>
                             </ul>
                         </div>
                     </div>
@@ -55,6 +54,8 @@ export const Home = () => {
                         <div className={"sms-section--light"}>
                             <h2>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h2>
                             <ul className={"list-group list-group-flush"}>
+                                <li className={"list-group-item px-0"}>Länk till marvelklubben sida även i mobilläge.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad funktion för byte av e-postadress och lösenord.</li>
                                 <li className={"list-group-item px-0"}>Glömt lösenord? - Funktion för att återställa lösenord.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad funktion för registrering.</li>
                                 <li className={"list-group-item px-0"}>Förbättrat utseende och funktion på publikationskort i lista.</li>

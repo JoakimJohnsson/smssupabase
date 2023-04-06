@@ -253,6 +253,9 @@ export const TEXTS = {
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
     SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen.",
+    TOTAL_PUBLISHED: "Totalt gavs det ut",
+    TOTAL_PUBLISHED_PUBLICATION: "publikation.",
+    TOTAL_PUBLISHED_PUBLICATIONS: "publikationer.",
     UTILS: "Speciella funktioner för förbättrade användarupplevelser.",
     UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
 }

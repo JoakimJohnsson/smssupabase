@@ -124,3 +124,19 @@
 .bg-grade-800 {
   background-color: scale-color($grade, $lightness: 20%);
 }
+
+.bg-publisher-0 {
+  background-color: $publisher;
+}
+.bg-publisher-200 {
+  background-color: scale-color($publisher, $lightness: -50%);
+}
+.bg-publisher-400 {
+  background-color: scale-color($publisher, $lightness: -40%);
+}
+.bg-publisher-600 {
+  background-color: scale-color($publisher, $lightness: -30%);
+}
+.bg-publisher-800 {
+  background-color: scale-color($publisher, $lightness: -20%);
+}

@@ -29,7 +29,7 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, 
                     <div className={"d-flex align-items-center"}>
                         {
                             hasImage(issue) &&
-                            <img src={issue.image_url} className={"list-image me-2"} alt={issue.name}/>
+                            <img src={issue.image_url} className={"list-image me-2"} alt={""}/>
                         }
                         <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={getIssueName(title, issue)}/>
                     </div>
