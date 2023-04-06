@@ -144,7 +144,7 @@ const Profile = () => {
                                                className={"form-control"}
                                                placeholder={"********"}
                                                required/>
-                                        <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_SEND_INFO}</div>
+                                        <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_INFO}</div>
                                         <button className={"btn btn-danger sms-btn"} onClick={() => handleChangePassword()}
                                                 disabled={confirmNewPassword === "" || newPassword !== confirmNewPassword}>
                                             <KeyIcon className={"me-2"}/>{LABELS_AND_HEADINGS.RESET_PASSWORD}
