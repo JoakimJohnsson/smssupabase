@@ -35,7 +35,7 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, 
                     </div>
                 </div>
                 {
-                    showCollectingButtons &&
+                    (showCollectingButtons || showAdminInfo) &&
                     <div className={"sms-list-col--tools"}>
                         {
                             <ListToolBox
