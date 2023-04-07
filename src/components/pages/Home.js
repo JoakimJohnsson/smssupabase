@@ -50,6 +50,7 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid byte av lösenord.</li>
                                 <li className={"list-group-item px-0"}>Uppdaterad layout av publikationskort.</li>
                                 <li className={"list-group-item px-0"}>Ändring av grid för publikationskort - visar nu oftast minst två i bredd.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad användarupplevelse för att lägga till och ta bort titlar och publikationer från samlingen.</li>
                             </ul>
                         </div>
                     </div>

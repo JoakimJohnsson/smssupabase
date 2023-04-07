@@ -42,31 +42,29 @@ export const IssueCard = ({issueId}) => {
                     <div className={"issue-card--marvelklubben"}>{issue.marvelklubben_number}</div>
                 </div>
             </Link>
-            <div className={"d-flex align-items-center mb-2"}>
-                {
-                    isCollectingTitle &&
-                    <button
-                        aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                        className={`btn btn-sm ${isCollectingIssue ? "btn-success" : "btn-danger"} justify-content-center`}
-                        onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
-                        {
-                            isCollectingIssue ?
-                                <><Icon icon={faMinus} size={"2x"}/></>
-                                :
-                                <><Icon icon={faPlus} size={"2x"}/></>
-                        }
-                    </button>
-                }
-            </div>
             {
-                !isCollectingTitle &&
-                <Link to={`/titles/${title.id}`} title={title.name} className={"d-flex justify-content-center"}>
-                    <img
-                        src={title.image_url}
-                        alt={title.name}
-                        className="w-50 bg-light"
-                    />
-                </Link>
+                isCollectingTitle ?
+                    <div className={"d-flex align-items-center"}>
+                        <button
+                            aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                            className={`btn btn-sm ${isCollectingIssue ? "btn-danger" : "btn-success"} justify-content-center w-100 rounded-0`}
+                            onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                            {
+                                isCollectingIssue ?
+                                    <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                    :
+                                    <><Icon icon={faPlus} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                            }
+                        </button>
+                    </div>
+                    :
+                    <Link to={`/titles/${title.id}`} title={title.name} className={"d-flex align-items-center justify-content-center"}>
+                        <img
+                            src={title.image_url}
+                            alt={title.name}
+                            className="w-100 bg-light"
+                        />
+                    </Link>
             }
         </li>
     )

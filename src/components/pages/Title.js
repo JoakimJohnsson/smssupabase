@@ -62,7 +62,7 @@ export const Title = () => {
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
                                 <button
                                     aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                                    className={`btn ${isCollectingTitle ? "btn-success" : "btn-danger"} p-2 rounded-0 w-100 justify-content-center mb-4`}
+                                    className={`btn ${isCollectingTitle ? "btn-danger" : "btn-success"} p-2 rounded-0 w-100 justify-content-center mb-4`}
                                     onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
                                     {
                                         isCollectingTitle ?
