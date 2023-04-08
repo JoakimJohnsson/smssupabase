@@ -110,10 +110,14 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
 }
 export const getIssueName = (title, issue) => {
     let number = issue.number;
+    let variantSuffix = "";
+    if (issue.is_variant === 1) {
+        variantSuffix = issue.variant_suffix;
+    }
     if (issue.is_double === 1) {
         number = number + "-" + (number + 1)
     }
-    return title.name + " #" + number + " - " + issue.year;
+    return title.name + " #" + number + variantSuffix +" - " + issue.year;
 }
 
 export const hasImage = (item) => {
