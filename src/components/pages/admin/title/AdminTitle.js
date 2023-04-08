@@ -264,7 +264,9 @@ export const AdminTitle = () => {
                                                     number: number,
                                                     is_marvelklubben: is_marvelklubben,
                                                     marvelklubben_number: marvelklubben_number,
-                                                    is_double: is_double
+                                                    is_double: is_double,
+                                                    is_variant: is_variant,
+                                                    variant_suffix: variant_suffix,
                                                 }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
                                                 disabled={!year || !number}>
                                             <IssueIcon className={"me-2"}/>
