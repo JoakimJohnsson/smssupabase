@@ -47,6 +47,14 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
         }
     }
 
+    const handleVariantCheckboxChange = (value) => {
+        if (value === 1) {
+            setNewIssue({...newIssue, "is_variant": 0})
+        } else {
+            setNewIssue({...newIssue, "is_variant": 1})
+        }
+    }
+
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
@@ -122,6 +130,29 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     max={999}
                     min={0}
                     value={newIssue.marvelklubben_number}
+                    onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
+                    disabled={!edit}
+                />
+                <div>
+                    <input
+                        id={"variant"}
+                        name={"is_variant"}
+                        className={"form-check-input me-2"}
+                        type="checkbox"
+                        value={newIssue.is_variant}
+                        checked={newIssue.is_variant === 1}
+                        onChange={() => handleVariantCheckboxChange(newIssue.is_variant)}
+                        disabled={!edit}
+                    />
+                    <label className={"form-label"} htmlFor="variant">{LABELS_AND_HEADINGS.IS_VARIANT_DB}</label>
+                </div>
+                <label className={"form-label"} htmlFor="variantsuffix">{LABELS_AND_HEADINGS.VARIANT_SUFFIX_DB}</label>
+                <input
+                    id={"variantsuffix"}
+                    name={"variant_suffix"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type="text"
+                    value={newIssue.variant_suffix}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit}
                 />

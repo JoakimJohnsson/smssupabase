@@ -39,8 +39,10 @@ export const AdminTitle = () => {
     const [year, setYear] = useState(1975);
     const [number, setNumber] = useState(1);
     const [is_marvelklubben, setIs_marvelklubben] = useState(0);
+    const [is_variant, setIs_variant] = useState(0);
     const [is_double, setIs_double] = useState(0);
     const [marvelklubben_number, setMarvelklubben_number] = useState(0);
+    const [variant_suffix, setVariant_suffix] = useState("a");
     const [newTitle, setNewTitle] = useState({});
     const {setInformationMessage} = useAppContext();
 
@@ -75,7 +77,9 @@ export const AdminTitle = () => {
     const resetAddIssueForm = async () => {
         setNumber(1);
         setIs_marvelklubben(0);
+        setIs_variant(0);
         setMarvelklubben_number(0);
+        setVariant_suffix("a");
     }
 
     const validateTitleData = (titleData) => {
@@ -231,6 +235,27 @@ export const AdminTitle = () => {
                                             max={999}
                                             min={0}
                                             onChange={(e) => handleInput(e, setMarvelklubben_number)}
+                                        />
+                                        <div>
+                                            <input
+                                                id={"variant"}
+                                                name={"is_variant"}
+                                                className={"form-check-input me-2"}
+                                                type="checkbox"
+                                                value={is_variant || 0}
+                                                checked={is_variant === 1}
+                                                onChange={() => handleCheckboxInput(is_variant, setIs_variant)}
+                                            />
+                                            <label className={"form-label"} htmlFor="variant">{LABELS_AND_HEADINGS.IS_VARIANT_DB}</label>
+                                        </div>
+                                        <label className={"form-label"} htmlFor="variantsuffix">{LABELS_AND_HEADINGS.VARIANT_SUFFIX_DB}</label>
+                                        <input
+                                            id={"variantsuffix"}
+                                            name={"variant_suffix"}
+                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            type="text"
+                                            value={variant_suffix || ""}
+                                            onChange={(e) => handleInput(e, setVariant_suffix)}
                                         />
                                         <button className={"btn btn-primary sms-btn"}
                                                 onClick={() => addIssueData({
