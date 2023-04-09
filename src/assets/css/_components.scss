@@ -203,6 +203,16 @@
         align-items: center;
         justify-content: center;
       }
+      .issue-card--label {
+        @extend .h6, .py-1, .px-2;
+        position: absolute;
+        width: 100%;
+        bottom: -18px;
+        background-color: $color-bg-elephant--trans;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }

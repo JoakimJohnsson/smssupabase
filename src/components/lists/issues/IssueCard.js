@@ -40,6 +40,7 @@ export const IssueCard = ({issueId}) => {
                         className="cover-image"
                     />
                     <div className={"issue-card--marvelklubben"}>{issue.marvelklubben_number}</div>
+                    <div className={"issue-card--label"}><p className={"text-label mb-0 py-1"}>{displayName}</p></div>
                 </div>
             </Link>
             {
