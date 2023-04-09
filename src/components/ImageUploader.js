@@ -52,6 +52,7 @@ export const ImageUploader = ({
     return (
         <>
             <div className={"mb-3"}>
+                <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
                 {
                     imageUrl ?
                         <>
