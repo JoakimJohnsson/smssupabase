@@ -16,7 +16,7 @@ export const TitlesListWithCards = ({titlesData}) => {
                                 <Link to={`/titles/${t.id}`} className={"hocus-standard"} title={t.name + " " + t.start_year}>
                                     <div className={"text-label"}>{t.name}</div>
                                     <div className={"text-label mb-2"}>{t.start_year}</div>
-                                    <div className={"image-container"}>
+                                    <div className={"image-container mb-2"}>
                                         <img
                                             src={t.image_url}
                                             alt={t.image_filename}
