@@ -4,7 +4,6 @@ import {isTrue, printOptions} from "../../../../helpers/functions/functions";
 import {getRowsByTable, handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {updateIssueData} from "../../../../helpers/functions/serviceFunctions/issueFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 
@@ -14,7 +13,6 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
     const [titlesData, setTitlesData] = useState(null);
-    const {setInformationMessage} = useAppContext();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,7 +20,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     }, [])
 
     const handleSubmit = () => {
-        updateIssueData(issue.id, newIssue, setInformationMessage).then(() => setSearchParams({edit: false}));
+        updateIssueData(issue.id, newIssue).then(() => setSearchParams({edit: false}));
         setIssue({...newIssue});
     }
 

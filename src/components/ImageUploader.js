@@ -30,7 +30,6 @@ export const ImageUploader = ({
             await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
                 .then(() => {
                     updateImageDataOnTable(tableName, id, "", "");
-                    setInformationMessage({show: true, status: 204, error: null});
                     update();
                 });
         } catch (error) {
@@ -43,7 +42,6 @@ export const ImageUploader = ({
         try {
             await uploadImage(e, tableName, id, setUploading, bucketName, fileType,
                 imageUrl, setImageFilename, setImageUrl);
-            setInformationMessage({show: true, status: 201, error: null});
             update();
         } catch (error) {
             setInformationMessage({show: true, status: 4, error: null});

@@ -5,7 +5,6 @@ import countryData from "../../../../helpers/valueLists/countries.json";
 import {updatePublisherData} from "../../../../helpers/functions/serviceFunctions/publisherFunctions";
 import {handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 
@@ -15,10 +14,9 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
     const navigate = useNavigate();
-    const {setInformationMessage} = useAppContext();
 
     const handleSubmit = () => {
-        updatePublisherData(publisher.id, newPublisher, setInformationMessage).then(() => setSearchParams({edit: false}));
+        updatePublisherData(publisher.id, newPublisher).then(() => setSearchParams({edit: false}));
         setPublisher({...newPublisher});
     }
 

@@ -52,6 +52,7 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Ändring av grid för publikationskort - visar nu oftast minst två i bredd.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad användarupplevelse för att lägga till och ta bort titlar och publikationer från samlingen.</li>
                                 <li className={"list-group-item px-0"}>Funktionalitet för att hantera varianter av publikationer.</li>
+                                <li className={"list-group-item px-0"}>Ta bort onödiga bekräftelse meddelanden.</li>
                             </ul>
                         </div>
                     </div>

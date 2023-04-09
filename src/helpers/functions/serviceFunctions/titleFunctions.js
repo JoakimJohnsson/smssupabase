@@ -21,9 +21,9 @@ export const addTitleData = async (data, setInformationMessage) => {
     }
 }
 
-export const updateTitleData = async (id, data, setInformationMessage) => {
+export const updateTitleData = async (id, data) => {
     try {
-        let {error, status} = await supabase
+        await supabase
             .from(TABLES.TITLES)
             .update([{
                 name: data.name,
@@ -35,8 +35,7 @@ export const updateTitleData = async (id, data, setInformationMessage) => {
                 format_id: data.format_id,
                 total_issues: data.total_issues
             }])
-            .eq("id", id)
-        setInformationMessage({show: true, status: status, error: error});
+            .eq("id", id);
     } catch (error) {
         console.error(error);
     }
