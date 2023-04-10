@@ -53,6 +53,7 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Förbättrad användarupplevelse för att lägga till och ta bort titlar och publikationer från samlingen.</li>
                                 <li className={"list-group-item px-0"}>Funktionalitet för att hantera varianter av publikationer.</li>
                                 <li className={"list-group-item px-0"}>Ta bort onödiga bekräftelse meddelanden.</li>
+                                <li className={"list-group-item px-0"}>Tooltip och förbättrad tillgänglighet på skickgradering.</li>
                             </ul>
                         </div>
                     </div>
