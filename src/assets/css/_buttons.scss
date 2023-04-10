@@ -3,6 +3,7 @@
 
 // Buttons
 .btn {
+  @extend .lh-sm;
   border-radius: $border-radius--sm;
   display: inline-flex;
   align-items: center;

@@ -102,6 +102,12 @@
   }
 }
 
+select.form-control,
+input[type="checkbox"],
+input[type="checkbox"] + label {
+  cursor: pointer;
+}
+
 @keyframes breadcrumb-item-animation {
   from {
     opacity: 0;
@@ -193,11 +199,12 @@
         width: 12.5%;
       }
       .issue-card--marvelklubben {
-        @extend .h6, .py-1, .px-2;
+        @extend .h5, .py-1, .px-2;
+        border-radius: $border-radius--lg;
         color: $black;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: .5rem;
+        right: .5rem;
         background-color: $marvelklubben;
         display: flex;
         align-items: center;

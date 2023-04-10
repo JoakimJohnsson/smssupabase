@@ -66,9 +66,9 @@ export const Title = () => {
                                     onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
                                     {
                                         isCollectingTitle ?
-                                            <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                            <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
                                             :
-                                            <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                            <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
                                     }
                                 </button>
                                 <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>

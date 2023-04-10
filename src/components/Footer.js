@@ -30,7 +30,8 @@ const Footer = () => {
                         </p>
                         <p className={"fs-smaller"}>
                             <span className={"me-2"}>{TEXTS.FOOTER_INFO_TEXT_3}</span>
-                            <a className={"me-2"} href="https://www.comics.org" rel="noreferrer" target={"_blank"}>Grand comics database</a>
+                            <a href="https://www.comics.org" rel="noreferrer" target={"_blank"}>Grand comics database</a>,
+                            <a className={"mx-2"} href="https://sv.wikipedia.org" rel="noreferrer" target={"_blank"}>Wikipedia</a>
                             <span className={"me-2"}>&</span>
                             <a href="https://seriewikin.serieframjandet.se" rel="noreferrer" target={"_blank"}>Seriewikin</a>.
                         </p>
