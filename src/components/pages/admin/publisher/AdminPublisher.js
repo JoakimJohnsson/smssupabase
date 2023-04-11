@@ -60,7 +60,6 @@ export const AdminPublisher = () => {
                                                     setNewPublisher={setNewPublisher}/>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
-                                    <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
                                     <ImageUploader
                                         imageUrl={imageUrl}
                                         setImageUrl={setImageUrl}

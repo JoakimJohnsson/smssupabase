@@ -17,9 +17,9 @@ export const addPublisherData = async (data, setInformationMessage) => {
     }
 }
 
-export const updatePublisherData = async (id, data, setInformationMessage) => {
+export const updatePublisherData = async (id, data) => {
     try {
-        let {error, status} = await supabase
+        await supabase
             .from(TABLES.PUBLISHERS)
             .update([{
                 name: data.name,
@@ -27,8 +27,7 @@ export const updatePublisherData = async (id, data, setInformationMessage) => {
                 wiki_url: data.wiki_url,
                 country_id: data.country_id
             }])
-            .eq("id", id)
-        setInformationMessage({show: true, status: status, error: error});
+            .eq("id", id);
     } catch (error) {
         console.error(error);
     }

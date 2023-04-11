@@ -48,6 +48,14 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                                 <li className={"list-group-item px-0"}>Titel - Badge för förlag visas. Förbättrad text om antal publikationer.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid byte av lösenord.</li>
+                                <li className={"list-group-item px-0"}>Uppdaterad layout av publikationskort.</li>
+                                <li className={"list-group-item px-0"}>Ändring av grid för publikationskort - visar nu oftast minst två i bredd.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad användarupplevelse för att lägga till och ta bort titlar och publikationer från samlingen.</li>
+                                <li className={"list-group-item px-0"}>Funktionalitet för att hantera varianter av publikationer.</li>
+                                <li className={"list-group-item px-0"}>Ta bort onödiga bekräftelse meddelanden.</li>
+                                <li className={"list-group-item px-0"}>Tooltip och förbättrad tillgänglighet på skickgradering.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad visning av Taggar.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad alternativ text på bilder.</li>
                             </ul>
                         </div>
                     </div>

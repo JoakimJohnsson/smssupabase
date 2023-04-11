@@ -12,6 +12,8 @@ export const addIssueData = async (data, setInformationMessage) => {
                 number: data.number,
                 is_marvelklubben: data.is_marvelklubben,
                 marvelklubben_number: data.marvelklubben_number,
+                is_variant: data.is_variant,
+                variant_suffix: data.variant_suffix,
             }])
         setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
@@ -19,9 +21,9 @@ export const addIssueData = async (data, setInformationMessage) => {
     }
 }
 
-export const updateIssueData = async (id, data, setInformationMessage) => {
+export const updateIssueData = async (id, data) => {
     try {
-        let {error, status} = await supabase
+        await supabase
             .from(TABLES.ISSUES)
             .update([{
                 title_id: data.title_id,
@@ -30,9 +32,10 @@ export const updateIssueData = async (id, data, setInformationMessage) => {
                 is_double: data.is_double,
                 is_marvelklubben: data.is_marvelklubben,
                 marvelklubben_number: data.marvelklubben_number,
+                is_variant: data.is_variant,
+                variant_suffix: data.variant_suffix,
             }])
-            .eq("id", id)
-        setInformationMessage({show: true, status: status, error: error});
+            .eq("id", id);
     } catch (error) {
         console.error(error);
     }

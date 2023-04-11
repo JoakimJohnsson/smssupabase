@@ -24,14 +24,16 @@ const Footer = () => {
                 <div className={"row row-padding--secondary"}>
                     <div className={"col-12 col-md-6 py-2 border-md-end"}>
                         <p className={"fs-smaller"}>
-                            <span className={"me-2"}>{TEXTS.FOOTER_INFO_TEXT_1}</span>
-                            <a className={"me-2"} href="https://www.marvel.com" rel="noreferrer" target={"_blank"}>MARVEL Entertainment</a>
-                            <span className={"me-2"}>{TEXTS.FOOTER_INFO_TEXT_2}</span>
+                            <span className={"me-1"}>{TEXTS.FOOTER_INFO_TEXT_1}</span>
+                            <a className={"me-1"} href="https://www.marvel.com" rel="noreferrer" target={"_blank"}>MARVEL Entertainment</a>
+                            <span className={"me-1"}>{TEXTS.FOOTER_INFO_TEXT_2}</span>
                         </p>
                         <p className={"fs-smaller"}>
-                            <span className={"me-2"}>{TEXTS.FOOTER_INFO_TEXT_3}</span>
-                            <a className={"me-2"} href="https://www.comics.org" rel="noreferrer" target={"_blank"}>Grand comics database</a>
-                            <span className={"me-2"}>&</span>
+                            <span className={"me-1"}>{TEXTS.FOOTER_INFO_TEXT_3}</span>
+                            <a href="https://www.comics.org" rel="noreferrer" target={"_blank"}>Grand comics database</a>,
+                            <a className={"ms-1"} href="https://seriekatalogen.se" rel="noreferrer" target={"_blank"}>Seriekatalogen</a>,
+                            <a className={"mx-1"} href="https://sv.wikipedia.org" rel="noreferrer" target={"_blank"}>Wikipedia</a>
+                            <span className={"me-1"}>&</span>
                             <a href="https://seriewikin.serieframjandet.se" rel="noreferrer" target={"_blank"}>Seriewikin</a>.
                         </p>
                     </div>

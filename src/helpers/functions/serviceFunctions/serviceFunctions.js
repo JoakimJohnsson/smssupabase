@@ -133,7 +133,7 @@ export const handleDelete = async (table, id, name, setData, initialData, image_
         return false;
     }
     try {
-        deleteRowsByTableAndId(table, id, setData, initialData, setInformationMessage, true)
+        deleteRowsByTableAndId(table, id, setData, initialData, setInformationMessage, false)
             .then(() => {
                 if (image_filename && image_filename !== "") {
                     deleteImageFromBucketSimple(image_filename, bucket)

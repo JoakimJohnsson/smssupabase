@@ -5,7 +5,6 @@ import formatData from "../../../../helpers/valueLists/formats.json";
 import {updateTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
 import {getRowsByTable, handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 
@@ -16,14 +15,13 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     const edit = isTrue(searchParams.get("edit"));
     const navigate = useNavigate();
     const [publishersData, setPublishersData] = useState(null);
-    const {setInformationMessage} = useAppContext();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
     }, [])
 
     const handleSubmit = () => {
-        updateTitleData(title.id, newTitle, setInformationMessage).then(() => setSearchParams({edit: false}));
+        updateTitleData(title.id, newTitle).then(() => setSearchParams({edit: false}));
         setTitle({...newTitle});
     }
 

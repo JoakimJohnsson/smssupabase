@@ -102,6 +102,12 @@
   }
 }
 
+select.form-control,
+input[type="checkbox"],
+input[type="checkbox"] + label {
+  cursor: pointer;
+}
+
 @keyframes breadcrumb-item-animation {
   from {
     opacity: 0;
@@ -140,7 +146,7 @@
     align-items: center;
     padding-top: .4rem;
   }
-  @media (min-width: 490px)  {
+  @media (min-width: 490px) {
     .sms-list-col--main {
       // .col-8
       flex: 0 0 auto;
@@ -168,7 +174,52 @@
       }
     }
     &.issue-card {
-      @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .col-xl-2, .mb-4;
+      @extend .col-12, .mb-4;
+      a {
+        @extend .hocus-standard;
+      }
+      @media (min-width: 320px) {
+        // .col-6
+        flex: 0 0 auto;
+        width: 50%;
+      }
+      @media (min-width: 576px) {
+        // .col-4
+        flex: 0 0 auto;
+        width: 33.33333333%;
+      }
+      @media (min-width: 900px) {
+        // .col-3
+        flex: 0 0 auto;
+        width: 25%;
+      }
+      @media (min-width: 1200px) {
+        // .col-1
+        flex: 0 0 auto;
+        width: 12.5%;
+      }
+      .issue-card--marvelklubben {
+        @extend .h5, .py-1, .px-2;
+        border-radius: $border-radius--lg;
+        color: $black;
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        background-color: $marvelklubben;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .issue-card--label {
+        @extend .h6, .py-1, .px-2;
+        position: absolute;
+        width: 100%;
+        bottom: -18px;
+        background-color: $color-bg-elephant--trans;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }
@@ -233,11 +284,11 @@
 }
 
 .cover-image--wrapper {
-  @extend .mb-3, .bg-light;
+  @extend .mb-2, .bg-light;
   width: 100%;
   aspect-ratio: 3.6/5;
   overflow: hidden;
-  border: $border--secondary-md;
+  border: $border--primary;
   .cover-image {
     width: 105%;
     border-radius: 0;
