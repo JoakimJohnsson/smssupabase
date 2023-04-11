@@ -110,7 +110,7 @@ export const getAllMarvelklubbenIssues = async (setData) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
-            .select("*")
+            .select("*, titles (*)")
             .eq("is_marvelklubben", 1)
             .order("marvelklubben_number", {ascending: true})
         if (error && status !== 406) {
