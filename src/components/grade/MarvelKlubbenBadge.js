@@ -1,15 +1,10 @@
 import React from "react";
-import {Icon} from "../icons";
-import {faBadge} from "@fortawesome/pro-regular-svg-icons";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+
 
 export const MarvelKlubbenBadge = ({number}) => {
 
     return (
-        <div className={"d-inline-block"}>
-            <div className={"fa-layers fa-fw fa-3x"}>
-                <Icon icon={faBadge} className={"text-marvelklubben-0"}/>
-                <span className={"fa-layers-text fs-smaller"}>{number}</span>
-            </div>
-        </div>
+        <span className={`tag-badge text-black bg-marvelklubben-0`}>{LABELS_AND_HEADINGS.MARVELKLUBBEN + " " + number}</span>
     )
 }

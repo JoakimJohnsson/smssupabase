@@ -54,6 +54,8 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Funktionalitet för att hantera varianter av publikationer.</li>
                                 <li className={"list-group-item px-0"}>Ta bort onödiga bekräftelse meddelanden.</li>
                                 <li className={"list-group-item px-0"}>Tooltip och förbättrad tillgänglighet på skickgradering.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad visning av Taggar.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad alternativ text på bilder.</li>
                             </ul>
                         </div>
                     </div>

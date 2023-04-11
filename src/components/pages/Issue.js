@@ -97,7 +97,7 @@ export const Issue = () => {
                                         }
                                     </button>
                                 }
-                                <ImageViewerCover url={issue.image_url} fileName={issue.image_filename}/>
+                                <ImageViewerCover url={issue.image_url} displayName={displayName}/>
                                 {
                                     loadingButtons ?
                                         <CustomSpinner/>
@@ -121,7 +121,7 @@ export const Issue = () => {
                                 }
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
-                                <div className={"d-flex align-items-center flex-wrap mb-2"}>
+                                <div className={"d-flex align-items-center justify-content-center justify-content-md-start flex-wrap mb-3"}>
                                     {
                                         isCollectingIssue &&
                                         <GradeBadge grade={grade}/>
@@ -137,7 +137,19 @@ export const Issue = () => {
                                     }
                                 </div>
                                 <div className={"mb-4"}>
+                                    <h2>{title.name}</h2>
+                                    <div className={"col-12 col-sm-6 col-md-4 mb-4 mb-md-0"}>
+                                        <Link to={`/titles/${title.id}`} title={title.name}>
+                                            <ImageViewerLogo url={title.image_url} fileName={title.name} linked/>
+                                        </Link>
+                                    </div>
                                     <p>{title.description}</p>
+                                    <h2>{publisher.name}</h2>
+                                    <div className={"col-12 col-sm-6 col-md-4 mb-4 mb-md-0"}>
+                                        <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
+                                            <ImageViewerLogo url={publisher.image_url} fileName={publisher.name} linked/>
+                                        </Link>
+                                    </div>
                                     <p>{publisher.description}</p>
                                     {
                                         title.wiki_url &&
@@ -148,18 +160,6 @@ export const Issue = () => {
                                             </a>
                                         </p>
                                     }
-                                </div>
-                                <div className={"row mb-4"}>
-                                    <div className={"col-12 col-md-6 mb-4 mb-md-0"}>
-                                        <Link to={`/titles/${title.id}`} title={title.name}>
-                                            <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
-                                        </Link>
-                                    </div>
-                                    <div className={"col-12 col-md-6 mb-4 mb-md-0"}>
-                                        <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
-                                            <ImageViewerLogo url={publisher.image_url} fileName={publisher.image_filename}/>
-                                        </Link>
-                                    </div>
                                 </div>
                                 {
                                     isCollectingIssue &&
