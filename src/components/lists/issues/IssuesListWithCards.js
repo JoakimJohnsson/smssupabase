@@ -11,7 +11,7 @@ export const IssuesListWithCards = ({issuesData}) => {
             {
                 issuesData.length ?
                     (issuesData.sort((a, b) => sortByName(a, b)).map((issue, index) =>
-                            <IssueCard key={index} issueId={issue.id}/>
+                            <IssueCard key={index} issue={issue}/>
                         )
                     )
                     :

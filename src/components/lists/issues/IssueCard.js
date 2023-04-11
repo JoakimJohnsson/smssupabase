@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {useIssueData} from "../../../helpers/customHooks/useIssueData";
 import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
 import {useIsCollectingTitle} from "../../../helpers/customHooks/useIsCollectingTitle";
@@ -11,14 +10,10 @@ import {getIssueName} from "../../../helpers/functions/functions";
 import {Link} from "react-router-dom";
 
 
-export const IssueCard = ({issueId}) => {
+export const IssueCard = ({issue}) => {
 
-    const [
-        issue,
-        title
-    ] = useIssueData(issueId);
     const {setInformationMessage, user} = useAppContext();
-    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issueId);
+    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
     const [isCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
     const [displayName, setDisplayName] = useState("");
 
@@ -26,10 +21,10 @@ export const IssueCard = ({issueId}) => {
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
 
     useEffect(() => {
-        setDisplayName(getIssueName(title, issue));
-    }, [title, issue])
+        setDisplayName(getIssueName(issue.titles, issue));
+    }, [issue.titles, issue])
 
-    return issue && title && (
+    return issue && issue.titles && (
         <li className={"issue-card"}>
 
             <Link to={`/issues/${issue.id}`} title={displayName}>
@@ -59,10 +54,10 @@ export const IssueCard = ({issueId}) => {
                         </button>
                     </div>
                     :
-                    <Link to={`/titles/${title.id}`} title={title.name} className={"d-flex align-items-center justify-content-center"}>
+                    <Link to={`/titles/${issue.titles.id}`} title={issue.titles.name} className={"d-flex align-items-center justify-content-center"}>
                         <img
-                            src={title.image_url}
-                            alt={title.name}
+                            src={issue.titles.image_url}
+                            alt={issue.titles.name}
                             className="w-100 bg-light"
                         />
                     </Link>
