@@ -46,6 +46,15 @@ export const Home = () => {
                             {utilsData && <p>v{package_json.version} | {utilsData.release_date}</p>}
                             <ul className={"list-group list-group-flush"}>
                                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                                <li className={"list-group-item px-0"}>Uppdaterade paket.</li>
+                                <li className={"list-group-item px-0"}>Funktionalitet för sök / filtrering.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className={"sms-dashboard-col"}>
+                        <div className={"sms-section--light"}>
+                            <h2>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h2>
+                            <ul className={"list-group list-group-flush"}>
                                 <li className={"list-group-item px-0"}>Titel - Badge för förlag visas. Förbättrad text om antal publikationer.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid byte av lösenord.</li>
                                 <li className={"list-group-item px-0"}>Uppdaterad layout av publikationskort.</li>
@@ -56,21 +65,6 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Tooltip och förbättrad tillgänglighet på skickgradering.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad visning av Taggar.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad alternativ text på bilder.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className={"sms-dashboard-col"}>
-                        <div className={"sms-section--light"}>
-                            <h2>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h2>
-                            <ul className={"list-group list-group-flush"}>
-                                <li className={"list-group-item px-0"}>Länk till marvelklubben sida även i mobilläge.</li>
-                                <li className={"list-group-item px-0"}>Förbättrad funktion för byte av e-postadress och lösenord.</li>
-                                <li className={"list-group-item px-0"}>Glömt lösenord? - Funktion för att återställa lösenord.</li>
-                                <li className={"list-group-item px-0"}>Förbättrad funktion för registrering.</li>
-                                <li className={"list-group-item px-0"}>Förbättrat utseende och funktion på publikationskort i lista.</li>
-                                <li className={"list-group-item px-0"}>Förbättrad visning av omslagsbild - hanterar olika storlek på originalbild.</li>
-                                <li className={"list-group-item px-0"}>Användare kan samla på publikationer.</li>
-                                <li className={"list-group-item px-0"}>Användare kan ange skick på de publikationer de samlar på.</li>
                             </ul>
                         </div>
                     </div>

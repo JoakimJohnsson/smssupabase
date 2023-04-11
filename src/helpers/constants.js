@@ -249,7 +249,7 @@ export const TEXTS = {
     CHANGE_EMAIL_SEND_INFO: "Vi skickar information för att bekräfta ändring av e-postadress.",
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
-    FOOTER_INFO_TEXT_3: "Information har också hämtats från källor som",
+    FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
     GRADE_TEXT_2: "Mer information om skickgradering hittar du hos",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
