@@ -147,6 +147,8 @@ export const LABELS_AND_HEADINGS = {
     CHANGE_PASSWORD: "Ändra lösenord",
     END_YEAR: "Slutår",
     END_YEAR_DB: "Slutår (end_year)",
+    FILTER: "Filter",
+    DO_FILTER: "Filtrera",
     FIRST_NAME: "Förnamn",
     FORMAT: "Format",
     FORMAT_DB: "Format (format)",
