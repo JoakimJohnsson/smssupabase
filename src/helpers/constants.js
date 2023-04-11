@@ -148,6 +148,7 @@ export const LABELS_AND_HEADINGS = {
     END_YEAR: "Slutår",
     END_YEAR_DB: "Slutår (end_year)",
     FILTER: "Filter",
+    FILTER_TITLE_OR_YEAR: "Filtrera på titel eller årtal",
     DO_FILTER: "Filtrera",
     FIRST_NAME: "Förnamn",
     FORMAT: "Format",
