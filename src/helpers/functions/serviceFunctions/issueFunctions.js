@@ -58,6 +58,8 @@ export const generateIssuesForTitle = async (titleData, setInformationMessage) =
                             number: i + 1,
                             is_marvelklubben: 0,
                             marvelklubben_number: 0,
+                            is_variant: 0,
+                            variant_suffix: "a",
                         }])
                 } catch (error) {
                     console.error(error);
