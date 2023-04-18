@@ -3,13 +3,17 @@ import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../helpers/functions/serviceFunctions/issueFunctions";
-import {IssuesListWithCards} from "../lists/issues/IssuesListWithCards";
+import {IssueCard} from "../lists/issues/IssueCard";
+import {useSearchParams} from "react-router-dom";
+import FilterForm from "../search-filter/FilterForm";
 
 
 export const Marvelklubben = () => {
 
     const [loading, setLoading] = useState(true);
     const [marvelKlubbenData, setMarvelKlubbenData] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams({filter: ""});
+    const filter = searchParams.get("filter");
 
     useEffect(() => {
         getAllMarvelklubbenIssues(setMarvelKlubbenData).then(() => setLoading(false));
@@ -22,16 +26,30 @@ export const Marvelklubben = () => {
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
                     <p className={"lead"}>{TEXTS.MARVELKLUBBEN_LEAD}</p>
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
-                    <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer" target={"_blank"}>Wikipedia</a>.</p>
+                    <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"
+                                                       target={"_blank"}>Wikipedia</a>.</p>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
+                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}/>
                     {
                         loading ?
                             <OverlaySpinner/>
                             :
-                            <IssuesListWithCards issuesData={marvelKlubbenData}/>
+                            <ul className={"sms-list--with-cards"}>
+                                {
+                                    marvelKlubbenData
+                                        .filter(issue => issue.titles.name.toLowerCase()
+                                                .includes(filter.toLowerCase()) ||
+                                            issue.year.toString().toLowerCase()
+                                                .includes(filter.toLowerCase()) ||
+                                            filter === "")
+                                        .map(issue =>
+                                            <IssueCard key={issue.id} issue={issue}/>
+                                        )
+                                }
+                            </ul>
                     }
                 </div>
             </div>
