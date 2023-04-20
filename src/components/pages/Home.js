@@ -48,6 +48,7 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                                 <li className={"list-group-item px-0"}>Uppdaterade paket.</li>
                                 <li className={"list-group-item px-0"}>Funktionalitet för sök / filtrering.</li>
+                                <li className={"list-group-item px-0"}>Förbättrad layout för förlagssida.</li>
                             </ul>
                         </div>
                     </div>
