@@ -20,8 +20,12 @@
       padding: 1rem 3rem;
     }
     .btn-cta--icon {
-      @extend .me-3;
+      @extend .me-0, .me-sm-3, .align-self-center;
       font-size: 1.5rem;
+      width: 100%;
+      @include media-breakpoint-up(sm) {
+        width: auto;
+      }
     }
   }
   &.sms-btn {

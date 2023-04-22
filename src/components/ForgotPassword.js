@@ -10,7 +10,7 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState("");
 
     return (
-        <form onSubmit={(e) => requestPasswordResetForEmail(email, setMessage, e)} className={"sms-section--light"}
+        <form onSubmit={(e) => requestPasswordResetForEmail(email, setMessage, e)} className={"sms-section--light mb-5"}
               id={"forgot-password-section"}>
             <div className={"text-center mb-4 mb-sm-5"}>
                 <QuestionIconDuoTone size={"2x"} className={"fa-icon--cta"}/>

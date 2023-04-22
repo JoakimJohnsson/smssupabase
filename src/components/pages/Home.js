@@ -49,6 +49,7 @@ export const Home = () => {
                                 <li className={"list-group-item px-0"}>Uppdaterade paket.</li>
                                 <li className={"list-group-item px-0"}>Funktionalitet för sök / filtrering.</li>
                                 <li className={"list-group-item px-0"}>Förbättrad layout för förlagssida.</li>
+                                <li className={"list-group-item px-0"}>En Demo sektion på landningssidan..</li>
                             </ul>
                         </div>
                     </div>

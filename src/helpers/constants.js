@@ -137,6 +137,7 @@ export const LABELS_AND_HEADINGS = {
     DELETE_IMAGE: "Ta bort bild",
     DESCRIPTION: "Beskrivning",
     DESCRIPTION_DB: "Beskrivning (description)",
+    DEMO: "Demo",
     DISABLED: "Inaktiverad",
     EDIT: "Redigera",
     EDIT_GRADE: "Ändra skick",
