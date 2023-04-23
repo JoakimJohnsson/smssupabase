@@ -55,6 +55,22 @@ export const getRowByTableAndId = async (table, setData, id) => {
     }
 }
 
+export const getCountByTable = async (table, setData) => {
+    try {
+        let {count, error} = await supabase
+            .from(table)
+            .select('*', {count: 'exact', head: true})
+        if (error) {
+            console.error(error);
+        }
+        if (count) {
+            setData(count.count);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const getNameByTableAndId = async (table, id, setData) => {
     try {
         let {data, error, status} = await supabase
