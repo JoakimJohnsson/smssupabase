@@ -21,7 +21,9 @@ export const IssueCard = ({issue}) => {
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
 
     useEffect(() => {
-        setDisplayName(getIssueName(issue.titles, issue));
+        if (issue.titles) {
+            setDisplayName(getIssueName(issue.titles, issue));
+        }
     }, [issue.titles, issue])
 
     return issue && issue.titles && (

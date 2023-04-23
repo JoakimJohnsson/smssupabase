@@ -224,7 +224,7 @@ input[type="checkbox"] + label {
         @extend .h6, .py-1, .px-2;
         position: absolute;
         width: 100%;
-        bottom: -1rem;
+        bottom: -8px;
         background-color: $color-bg-elephant--trans;
         display: flex;
         align-items: center;
