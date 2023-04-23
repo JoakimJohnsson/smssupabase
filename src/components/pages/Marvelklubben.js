@@ -42,6 +42,8 @@ export const Marvelklubben = () => {
                                     marvelKlubbenData
                                         .filter(issue => issue.titles.name.toLowerCase()
                                                 .includes(filter.toLowerCase()) ||
+                                            issue.marvelklubben_number.toString().toLowerCase()
+                                                .includes(filter.toLowerCase()) ||
                                             issue.year.toString().toLowerCase()
                                                 .includes(filter.toLowerCase()) ||
                                             filter === "")
