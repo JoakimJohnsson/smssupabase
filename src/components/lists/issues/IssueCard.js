@@ -28,7 +28,6 @@ export const IssueCard = ({issue}) => {
 
     return issue && issue.titles && (
         <li className={"issue-card"}>
-
             <Link to={`/issues/${issue.id}`} title={displayName}>
                 <div className={"cover-image--wrapper position-relative"}>
                     <img
@@ -36,33 +35,28 @@ export const IssueCard = ({issue}) => {
                         alt={displayName}
                         className="cover-image"
                     />
-                    <div className={"issue-card--marvelklubben"}>{issue.marvelklubben_number}</div>
+                    {
+                        issue.marvelklubben_number > 0 &&
+                        <div className={"issue-card--marvelklubben"}>{issue.marvelklubben_number}</div>
+                    }
                     <div className={"issue-card--label"}><p className={"text-label mb-0 py-1"}>{displayName}</p></div>
                 </div>
             </Link>
             {
-                isCollectingTitle ?
-                    <div className={"d-flex align-items-center"}>
-                        <button
-                            aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                            className={`btn btn-sm ${isCollectingIssue ? "btn-danger" : "btn-success"} justify-content-center w-100 rounded-0`}
-                            onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
-                            {
-                                isCollectingIssue ?
-                                    <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
-                                    :
-                                    <><Icon icon={faPlus} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
-                            }
-                        </button>
-                    </div>
-                    :
-                    <Link to={`/titles/${issue.titles.id}`} title={issue.titles.name} className={"d-flex align-items-center justify-content-center"}>
-                        <img
-                            src={issue.titles.image_url}
-                            alt={issue.titles.name}
-                            className="w-100 bg-light"
-                        />
-                    </Link>
+                isCollectingTitle &&
+                <div className={"d-flex align-items-center"}>
+                    <button
+                        aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                        className={`btn btn-sm ${isCollectingIssue ? "btn-danger" : "btn-success"} justify-content-center w-100 rounded-0`}
+                        onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                        {
+                            isCollectingIssue ?
+                                <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                :
+                                <><Icon icon={faPlus} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                        }
+                    </button>
+                </div>
             }
         </li>
     )

@@ -6,7 +6,7 @@ import {clearInput} from "./filterFunctions";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 
-const FilterForm = ({filter, searchParams, setSearchParams}) => {
+const FilterForm = ({filter, searchParams, setSearchParams, placeholder}) => {
 
     return (
         <div className={"form-group sms-section--light mb-4"}>
@@ -18,9 +18,9 @@ const FilterForm = ({filter, searchParams, setSearchParams}) => {
                            name="filter"
                            type="text"
                            className="form-control border-bottom-0"
-                           placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}
+                           placeholder={placeholder}
                            value={filter}
-                           onChange={e => setSearchParams({filter: e.target.value, sort: searchParams.get("sort")})}
+                           onChange={e => setSearchParams({filter: e.target.value})}
                     />
                     {
                         filter !== "" &&

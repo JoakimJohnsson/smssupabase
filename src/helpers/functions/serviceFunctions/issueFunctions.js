@@ -125,3 +125,19 @@ export const getAllMarvelklubbenIssues = async (setData) => {
         console.error(error);
     }
 }
+
+export const getAllIssues = async (setData) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*, titles (*)")
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}

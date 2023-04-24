@@ -32,7 +32,8 @@ export const Marvelklubben = () => {
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
-                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}/>
+                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                                placeholder={LABELS_AND_HEADINGS.FILTER_NUMBER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>
