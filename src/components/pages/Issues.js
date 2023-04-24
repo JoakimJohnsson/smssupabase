@@ -5,7 +5,7 @@ import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSearchParams} from "react-router-dom";
 import FilterForm from "../search-filter/FilterForm";
 import {IssueCard} from "../lists/issues/IssueCard";
-import {getAllIssues} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {getAllIssuesWithTitlesAndPublishers} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {sortByName} from "../../helpers/functions/functions";
 
 
@@ -18,7 +18,7 @@ export const Issues = () => {
 
 
     useEffect(() => {
-        getAllIssues(setIssuesData).then(() => setLoading(false));
+        getAllIssuesWithTitlesAndPublishers(setIssuesData).then(() => setLoading(false));
     }, [])
 
     return (
@@ -31,8 +31,7 @@ export const Issues = () => {
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
                     <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
-
+                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -41,6 +40,8 @@ export const Issues = () => {
                                 {
                                     issuesData
                                         .filter(issue => issue.titles.name.toLowerCase()
+                                                .includes(filter.toLowerCase()) ||
+                                            issue.titles.publishers.name.toLowerCase()
                                                 .includes(filter.toLowerCase()) ||
                                             issue.year.toString().toLowerCase()
                                                 .includes(filter.toLowerCase()) ||

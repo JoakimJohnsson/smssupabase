@@ -126,11 +126,11 @@ export const getAllMarvelklubbenIssues = async (setData) => {
     }
 }
 
-export const getAllIssues = async (setData) => {
+export const getAllIssuesWithTitlesAndPublishers = async (setData) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
-            .select("*, titles (*)")
+            .select("*, titles (*, publishers (*))")
         if (error && status !== 406) {
             console.error(error);
         }
