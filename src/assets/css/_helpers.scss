@@ -28,10 +28,6 @@ input {
   filter: none;
 }
 
-img {
-  border-radius: $border-radius--md;
-}
-
 // Borders
 .border-sm-none {
   @include media-breakpoint-up(sm) {

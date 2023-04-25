@@ -169,6 +169,17 @@ input[type="checkbox"] + label {
       .image-container {
         background-color: $white;
       }
+      .title-card--year {
+        @extend .h6, .py-1, .px-2;
+        color: $black;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $secondary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
     &.issue-card {
       @extend .col-12, .mb-4;
@@ -275,7 +286,8 @@ input[type="checkbox"] + label {
 
 // Tag-badge
 .tag-badge {
-  @extend .badge, .rounded-pill, .py-2, .mx-1, .mb-2, .d-inline-block;
+  @extend .badge, .py-2, .mb-2, .d-inline-block;
+  margin-right: .5rem;
   padding-right: 1rem;
   padding-left: 1rem;
 }
@@ -291,7 +303,7 @@ input[type="checkbox"] + label {
 }
 
 .cover-image--wrapper {
-  @extend .mb-2, .bg-light;
+  @extend .mb-3, .bg-light;
   width: 100%;
   aspect-ratio: 3.6/5;
   overflow: hidden;

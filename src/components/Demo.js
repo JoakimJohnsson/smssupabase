@@ -26,6 +26,11 @@ const Demo = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Lagt till sök/filtrering på titlar och förlag.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Lagt till sök/filtrering på titlar och förlag.</li>
                     <li className={"list-group-item px-0"}>Uppdaterade paket.</li>
                     <li className={"list-group-item px-0"}>Funktionalitet för sök / filtrering.</li>
                     <li className={"list-group-item px-0"}>Förbättrad layout för förlagssida.</li>
