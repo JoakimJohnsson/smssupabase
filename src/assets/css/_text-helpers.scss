@@ -1,6 +1,13 @@
 @import "variables";
 // Text & Typography
 
+html {
+  font-size: 80%;
+  @include media-breakpoint-up(sm) {
+    font-size: 100%;
+  }
+}
+
 // Text color
 .text-primary--lighter {
   color: $primary--lighter !important;

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {useIssueData} from "../../../helpers/customHooks/useIssueData";
 import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
 import {useIsCollectingTitle} from "../../../helpers/customHooks/useIsCollectingTitle";
@@ -11,14 +10,10 @@ import {getIssueName} from "../../../helpers/functions/functions";
 import {Link} from "react-router-dom";
 
 
-export const IssueCard = ({issueId}) => {
+export const IssueCard = ({issue}) => {
 
-    const [
-        issue,
-        title
-    ] = useIssueData(issueId);
     const {setInformationMessage, user} = useAppContext();
-    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issueId);
+    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
     const [isCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
     const [displayName, setDisplayName] = useState("");
 
@@ -26,12 +21,13 @@ export const IssueCard = ({issueId}) => {
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
 
     useEffect(() => {
-        setDisplayName(getIssueName(title, issue));
-    }, [title, issue])
+        if (issue.titles) {
+            setDisplayName(getIssueName(issue.titles, issue));
+        }
+    }, [issue.titles, issue])
 
-    return issue && title && (
+    return issue && issue.titles && (
         <li className={"issue-card"}>
-
             <Link to={`/issues/${issue.id}`} title={displayName}>
                 <div className={"cover-image--wrapper position-relative"}>
                     <img
@@ -39,33 +35,28 @@ export const IssueCard = ({issueId}) => {
                         alt={displayName}
                         className="cover-image"
                     />
-                    <div className={"issue-card--marvelklubben"}>{issue.marvelklubben_number}</div>
+                    {
+                        issue.marvelklubben_number > 0 &&
+                        <div className={"issue-card--marvelklubben"}>{issue.marvelklubben_number}</div>
+                    }
                     <div className={"issue-card--label"}><p className={"text-label mb-0 py-1"}>{displayName}</p></div>
                 </div>
             </Link>
             {
-                isCollectingTitle ?
-                    <div className={"d-flex align-items-center"}>
-                        <button
-                            aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                            className={`btn btn-sm ${isCollectingIssue ? "btn-danger" : "btn-success"} justify-content-center w-100 rounded-0`}
-                            onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
-                            {
-                                isCollectingIssue ?
-                                    <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
-                                    :
-                                    <><Icon icon={faPlus} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
-                            }
-                        </button>
-                    </div>
-                    :
-                    <Link to={`/titles/${title.id}`} title={title.name} className={"d-flex align-items-center justify-content-center"}>
-                        <img
-                            src={title.image_url}
-                            alt={title.name}
-                            className="w-100 bg-light"
-                        />
-                    </Link>
+                isCollectingTitle &&
+                <div className={"d-flex align-items-center"}>
+                    <button
+                        aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                        className={`btn btn-sm ${isCollectingIssue ? "btn-danger" : "btn-success"} justify-content-center w-100 rounded-0`}
+                        onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                        {
+                            isCollectingIssue ?
+                                <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                :
+                                <><Icon icon={faPlus} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                        }
+                    </button>
+                </div>
             }
         </li>
     )

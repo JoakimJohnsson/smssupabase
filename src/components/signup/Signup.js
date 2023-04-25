@@ -99,8 +99,11 @@ export const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-                <button type="submit" className={"btn btn-primary sms-btn"} disabled={!passwordValidated || passwordRef.current.value !== passwordConfirm}>
+              {/*  <button type="submit" className={"btn btn-primary sms-btn"} disabled={!passwordValidated || passwordRef.current.value !== passwordConfirm}>
                     <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
+                </button>*/}
+                <button className={"btn btn-danger sms-btn"} disabled={true}>
+                    <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.DISABLED}
                 </button>
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
             </form>

@@ -91,10 +91,7 @@
     }
   }
   h2 {
-    @extend .border-bottom, .pb-3, .mb-4, .h4;
-  }
-  h3 {
-    @extend .h5;
+    @extend .border-bottom, .pb-3, .mb-4;
   }
   .form-label {
     color: $white--darker;
@@ -178,22 +175,32 @@ input[type="checkbox"] + label {
       a {
         @extend .hocus-standard;
       }
-      @media (min-width: 320px) {
+      @media (min-width: 300px) {
         // .col-6
         flex: 0 0 auto;
         width: 50%;
       }
-      @media (min-width: 576px) {
+      @media (min-width: 450px) {
         // .col-4
         flex: 0 0 auto;
         width: 33.33333333%;
       }
-      @media (min-width: 900px) {
+      @media (min-width: 700px) {
         // .col-3
         flex: 0 0 auto;
         width: 25%;
       }
+      @media (min-width: 900px) {
+        // .col-3
+        flex: 0 0 auto;
+        width: 20%;
+      }
       @media (min-width: 1200px) {
+        // .col-1
+        flex: 0 0 auto;
+        width: 16.66666666%;
+      }
+      @media (min-width: 1400px) {
         // .col-1
         flex: 0 0 auto;
         width: 12.5%;
@@ -214,7 +221,7 @@ input[type="checkbox"] + label {
         @extend .h6, .py-1, .px-2;
         position: absolute;
         width: 100%;
-        bottom: -18px;
+        bottom: -8px;
         background-color: $color-bg-elephant--trans;
         display: flex;
         align-items: center;
@@ -295,6 +302,12 @@ input[type="checkbox"] + label {
     object-fit: cover;
     object-position: -4px -4px;
   }
+}
+
+.article-image {
+  @extend .mb-4, .bg-light;
+  width: 100%;
+  border: $border--default;
 }
 
 // Icons

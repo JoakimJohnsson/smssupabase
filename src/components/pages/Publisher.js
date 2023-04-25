@@ -5,12 +5,12 @@ import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import countryData from "../../helpers/valueLists/countries.json";
-import {getObjectNameById} from "../../helpers/functions/functions";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
 import {CustomSpinner} from "../minis/CustomSpinner";
+import {CountryBadge} from "../minis/CountryBadge";
 
 
 export const Publisher = () => {
@@ -44,13 +44,12 @@ export const Publisher = () => {
                             </div>
                             <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
                                 <ImageViewerLogo url={publisher.image_url} fileName={publisher.image_filename}/>
-                            </div>
-                            <div className={"col-12 col-md-8 col-lg-7 col-xl-6 mb-4"}>
-                                <h2>{LABELS_AND_HEADINGS.INFORMATION_ABOUT} {publisher.name}</h2>
-                                {
-                                    countryData &&
-                                    <p>{LABELS_AND_HEADINGS.COUNTRY} {getObjectNameById(countryData, publisher.country_id)}</p>
-                                }
+                                <div className={"mb-2"}>
+                                    {
+                                        countryData &&
+                                        <CountryBadge countryId={publisher.country_id}/>
+                                    }
+                                </div>
                                 {
                                     publisher.description &&
                                     <p>{publisher.description}</p>
@@ -65,12 +64,11 @@ export const Publisher = () => {
                                     </p>
                                 }
                             </div>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light"}>
-                                    <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
-                                    {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={false}/> :
-                                        <CustomSpinner/>}
-                                </div>
+                            <div className={"col-12 col-md-8 col-lg-7 col-xl-6 mb-4"}>
+                                <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
+
+                                {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={false}/> :
+                                    <CustomSpinner/>}
                             </div>
                         </>
                 }

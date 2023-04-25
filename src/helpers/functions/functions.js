@@ -104,6 +104,8 @@ export const getIndexList = (length) => {
 export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
     if (startYear < endYear) {
         return Math.floor(totalIssues / (endYear - startYear + 1));
+    } else if (startYear === endYear) {
+        return totalIssues;
     } else {
         return 1;
     }

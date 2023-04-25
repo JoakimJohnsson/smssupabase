@@ -9,6 +9,7 @@ import {
     faCommentsQuestion,
     faGears,
     faFiles,
+    faFaceExplode,
     faBuildingColumns,
     faFileImage,
     faListTimeline,
@@ -48,6 +49,12 @@ export const DashboardIconDuoTone = ({size, className}) => {
 export const DateIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faCalendarHeart} size={size} className={className}/>
+    )
+}
+
+export const DemoIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faFaceExplode} size={size} className={className}/>
     )
 }
 

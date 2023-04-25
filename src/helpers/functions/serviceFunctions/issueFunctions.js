@@ -58,6 +58,8 @@ export const generateIssuesForTitle = async (titleData, setInformationMessage) =
                             number: i + 1,
                             is_marvelklubben: 0,
                             marvelklubben_number: 0,
+                            is_variant: 0,
+                            variant_suffix: "a",
                         }])
                 } catch (error) {
                     console.error(error);
@@ -110,9 +112,25 @@ export const getAllMarvelklubbenIssues = async (setData) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
-            .select("*")
+            .select("*, titles (*)")
             .eq("is_marvelklubben", 1)
             .order("marvelklubben_number", {ascending: true})
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getAllIssuesWithTitlesAndPublishers = async (setData) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*, titles (*, publishers (*))")
         if (error && status !== 406) {
             console.error(error);
         }
