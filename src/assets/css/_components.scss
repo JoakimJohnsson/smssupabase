@@ -91,10 +91,7 @@
     }
   }
   h2 {
-    @extend .border-bottom, .pb-3, .mb-4, .h4;
-  }
-  h3 {
-    @extend .h5;
+    @extend .border-bottom, .pb-3, .mb-4;
   }
   .form-label {
     color: $white--darker;
@@ -305,6 +302,12 @@ input[type="checkbox"] + label {
     object-fit: cover;
     object-position: -4px -4px;
   }
+}
+
+.article-image {
+  @extend .mb-4, .bg-light;
+  width: 100%;
+  border: $border--default;
 }
 
 // Icons
