@@ -7,14 +7,14 @@ import FilterForm from "../search-filter/FilterForm";
 import {IssueCard} from "../lists/issues/IssueCard";
 import {getAllIssuesWithTitlesAndPublishers} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {sortByName} from "../../helpers/functions/functions";
+import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 
 
 export const Issues = () => {
 
     const [loading, setLoading] = useState(true);
     const [issuesData, setIssuesData] = useState(null);
-    const [searchParams, setSearchParams] = useSearchParams({filter: ""});
-    const filter = searchParams.get("filter");
+    const [searchParams, setSearchParams, filter] = useSearchFilter();
 
 
     useEffect(() => {

@@ -2,19 +2,19 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {Link, useSearchParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import FilterForm from "../search-filter/FilterForm";
 import {sortByName} from "../../helpers/functions/functions";
 import {TitleTool} from "../lists/TitleTool";
 import {getAllTitlesWithPublishers} from "../../helpers/functions/serviceFunctions/titleFunctions";
+import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 
 
 export const Titles = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [searchParams, setSearchParams] = useSearchParams({filter: ""});
-    const filter = searchParams.get("filter");
+    const [searchParams, setSearchParams, filter] = useSearchFilter();
 
     useEffect(() => {
         getAllTitlesWithPublishers(setTitlesData).then(() => setLoading(false));

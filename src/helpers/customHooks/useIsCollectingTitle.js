@@ -12,8 +12,8 @@ export const useIsCollectingTitle = (userId, titleId) => {
         }
     }, [userId, titleId])
 
-        return [
-            isCollectingTitle,
-            setIsCollectingTitle
-        ];
+    return [
+        isCollectingTitle,
+        setIsCollectingTitle
+    ];
 }
