@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
-import {PublishersList} from "../lists/publishers/PublishersList";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
+import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
+import FilterForm from "../search-filter/FilterForm";
+import {sortByName} from "../../helpers/functions/functions";
+import {Link} from "react-router-dom";
 
 
 export const Publishers = () => {
 
     const [loading, setLoading] = useState(true);
     const [publishersData, setPublishersData] = useState(null);
+    const [searchParams, setSearchParams, filter] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable("publishers", setPublishersData).then(() => setLoading(false));
@@ -18,15 +22,43 @@ export const Publishers = () => {
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"sms-page-col--full"}>
+                <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                </div>
+            </div>
+            <div className={"row row-padding--secondary"}>
+                <div className={"sms-page-col"}>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>
                             :
-                            <div className={"sms-section--light"}>
-                                <PublishersList publishersData={publishersData} showAdminInfo={false}/>
-                            </div>
+                            <ul className={"sms-list--with-cards"}>
+                                {
+                                    publishersData
+                                        .filter(publisher => publisher.name.toLowerCase()
+                                                .includes(filter.toLowerCase()) ||
+                                            filter === ""
+                                        )
+                                        .sort((a, b) => sortByName(a, b))
+                                        .map((publisher) =>
+                                            <li key={publisher.id} className={"title-card"}>
+                                                <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
+                                                      title={publisher.name}>
+                                                    <div className={"image-container mb-2 position-relative"}>
+                                                        <img
+                                                            src={publisher.image_url}
+                                                            alt={publisher.name}
+                                                            className="w-100"
+                                                        />
+                                                    </div>
+                                                </Link>
+                                            </li>
+                                        )
+                                }
+                            </ul>
                     }
                 </div>
             </div>

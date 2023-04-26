@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {useSearchParams} from "react-router-dom";
 import FilterForm from "../search-filter/FilterForm";
 import {IssueCard} from "../lists/issues/IssueCard";
 import {getAllIssuesWithTitlesAndPublishers} from "../../helpers/functions/serviceFunctions/issueFunctions";
