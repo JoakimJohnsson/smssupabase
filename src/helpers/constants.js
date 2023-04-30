@@ -191,6 +191,7 @@ export const LABELS_AND_HEADINGS = {
     MENU: "Meny",
     MISCELLANEOUS: "Övrigt",
     MY_COLLECTION: "Min samling",
+    MY_USER_PAGE: "Min sida",
     NAME: "Namn",
     NAME_DB: "Namn (name)",
     NEXT: "Nästa",

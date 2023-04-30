@@ -1,7 +1,9 @@
 import React from "react";
 import {useAppContext} from "../context/AppContext";
 import {CustomSpinner} from "./minis/CustomSpinner";
-import {prepareUrl} from "../helpers/functions/functions";
+import {getUserName} from "../helpers/functions/functions";
+import {Link} from "react-router-dom";
+import marvel from "../assets/images/publishers/marvel.gif";
 
 
 export const NavbarProfileInformation = () => {
@@ -10,11 +12,10 @@ export const NavbarProfileInformation = () => {
 
     return profile ? (
             <div className="nav-link pe-0 d-none d-lg-flex">
-                {profile.website ?
-                    <a href={prepareUrl(profile.website)}><img src={profile.image_url} className={"list-image"} alt={"avatar"}/></a>
-                    :
-                    <img src={profile.image_url} className={"list-image"} alt={"avatar"}/>
-                }
+                <Link to={`/users/${profile.id}`} className={"hocus-standard"}
+                      title={getUserName(profile)}>
+                    <img src={profile.image_url ? profile.image_url : marvel} className={"list-image"} alt={"avatar"}/>
+                </Link>
             </div>
         )
         :

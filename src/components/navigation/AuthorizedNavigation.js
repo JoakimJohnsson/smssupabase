@@ -92,7 +92,7 @@ export const AuthorizedNavigation = () => {
                             <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className="nav-item">
-                            {profile.image_url ? <NavbarProfileInformation/> : false}
+                            <NavbarProfileInformation/>
                             <SignOutButton/>
                         </li>
                     </ul>
@@ -119,7 +119,7 @@ export const AuthorizedNavigation = () => {
                                        text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className="nav-item">
-                            {profile.image_url ? <NavbarProfileInformation/> : false}
+                            <NavbarProfileInformation/>
                             <SignOutButton mobile/>
                         </li>
                     </ul>
