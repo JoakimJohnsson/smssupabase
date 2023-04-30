@@ -28,6 +28,8 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Lagt till sök/filtrering på titlar och förlag.</li>
                     <li className={"list-group-item px-0"}>Informera om cookies och användarinformation vid registrering.</li>
+                    <li className={"list-group-item px-0"}>Profilsida.</li>
+                    <li className={"list-group-item px-0"}>Information om status på uppladdning av titlar och publikationer på startsidan.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
