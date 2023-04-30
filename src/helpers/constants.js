@@ -131,6 +131,7 @@ export const LABELS_AND_HEADINGS = {
     COUNTRY_DB: "Utgivningsland (country)",
     CREATE_ACCOUNT: "Registrera dig",
     CREATE_ACCOUNT_CTA: "Registrera dig",
+    CREATED_AT: "Inlagd",
     DASHBOARD: "Kontrollpanel",
     DELETE: "Ta bort",
     DELETING: "Tar bort",

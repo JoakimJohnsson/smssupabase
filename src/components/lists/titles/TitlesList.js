@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {FriendlyDate} from "../../minis/FriendlyDate";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
 import {hasImage, sortByName} from "../../../helpers/functions/functions";
+import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 
 export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
@@ -26,9 +26,9 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
                                                 <Link to={showAdminInfo ? `/admin/titles/${t.id}` : `/titles/${t.id}`} className={"me-3"}>
                                                     {t.name} {t.start_year}
                                                 </Link>
-                                                <div>
-                                                    Inlagd: <FriendlyDate dateString={t.created_at}/>
-                                                </div>
+                                                {
+                                                    showAdminInfo ?? <ListItemPublishedInfo dateString={t.created_at}/>
+                                                }
                                             </div>
                                         </div>
                                     </div>
