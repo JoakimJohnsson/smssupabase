@@ -143,16 +143,16 @@ input[type="checkbox"] + label {
     align-items: center;
     padding-top: .4rem;
   }
-  @media (min-width: 490px) {
+  @media (min-width: 320px) {
     .sms-list-col--main {
-      // .col-8
+      // approx .col-9
       flex: 0 0 auto;
-      width: 66.66666667%;
+      width: 73%;
     }
     .sms-list-col--tools {
-      // .col-4
+      // approx .col-3
       flex: 0 0 auto;
-      width: 33.33333333%;
+      width: 27%;
       justify-content: flex-end;
       padding-top: 0;
     }
