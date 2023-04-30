@@ -13,7 +13,7 @@ import {
     PublishersIconDuoTone,
     SettingsIconDuoTone,
     StartIconDuoTone,
-    TitlesIconDuoTone
+    TitlesIconDuoTone, UsersIconDuoTone
 } from "../icons-duotone";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
@@ -63,12 +63,6 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
-                                <NavLink exact={"true"} to={ROUTES.PUBLISHERS} className={"nav-link nav-link--dropdown"}>
-                                    <PublishersIconDuoTone className={"me-2"}/><span
-                                    className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</span>
-                                </NavLink>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.ISSUES} className={"nav-link nav-link--dropdown"}>
                                     <IssueIconDuoTone className={"me-2"}/><span
                                     className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</span>
@@ -78,6 +72,18 @@ export const AuthorizedNavigation = () => {
                                 <NavLink exact={"true"} to={ROUTES.MARVELKLUBBEN} className={"nav-link nav-link--dropdown"}>
                                     <MarvelKlubbenIcon className={"me-2"}/><span
                                     className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.MARVELKLUBBEN}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.PUBLISHERS} className={"nav-link nav-link--dropdown"}>
+                                    <PublishersIconDuoTone className={"me-2"}/><span
+                                    className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.USERS} className={"nav-link nav-link--dropdown"}>
+                                    <UsersIconDuoTone className={"me-2"}/><span
+                                    className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_USERS}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
@@ -98,12 +104,14 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<TitlesIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                        <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<PublishersIconDuoTone size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
                         <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<IssueIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
                         <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<MarvelKlubbenIcon size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
+                        <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<PublishersIconDuoTone size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                        <LiNavItem route={ROUTES.USERS} onClick={handleClick} icon={<UsersIconDuoTone size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.ALL_USERS}/>
                         <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<SettingsIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {profile.role >= 1 &&

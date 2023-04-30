@@ -119,7 +119,18 @@ export const getIssueName = (title, issue) => {
     if (issue.is_double === 1) {
         number = number + "-" + (number + 1)
     }
-    return title.name + " #" + number + variantSuffix +" - " + issue.year;
+    return title.name + " #" + number + variantSuffix + " - " + issue.year;
+}
+
+export const getUserName = (user) => {
+    let firstNameLength = Math.floor(Math.random() * 5) + 3;
+    let lastNameLength = Math.floor(Math.random() * 7) + 3;
+    let generatedDisplayName = user.id.substring(0, firstNameLength) + " " + user.id.substring(user.id.length - lastNameLength, user.id.length)
+    if (user.firstname && user.lastname) {
+        return user.firstname + " " + user.lastname
+    } else {
+        return generatedDisplayName;
+    }
 }
 
 export const hasImage = (item) => {

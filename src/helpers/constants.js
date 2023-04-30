@@ -70,6 +70,8 @@ export const ROUTES = {
     PUBLISHERS: "/publishers",
     MARVELKLUBBEN: "/marvelklubben",
     PUBLISHER_ID: "/publishers/:id",
+    USERS: "/users",
+    USER_ID: "/users/:id",
     DASHBOARD: {
         ROOT: "dashboard",
         OVERVIEW: "overview",

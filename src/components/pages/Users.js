@@ -5,8 +5,9 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 import FilterForm from "../search-filter/FilterForm";
-import {sortByName} from "../../helpers/functions/functions";
 import {Link} from "react-router-dom";
+import {getUserName} from "../../helpers/functions/functions";
+import marvel from "../../assets/images/publishers/marvel.gif";
 
 
 export const Users = () => {
@@ -37,22 +38,29 @@ export const Users = () => {
                             <ul className={"sms-list--with-cards"}>
                                 {
                                     usersData
-                                        .filter(user => user.firstname.toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
-                                            user.lastname.toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
+                                        .filter(user => user.firstname?.toLowerCase().includes(filter.toLowerCase()) ||
+                                            user.lastname?.toLowerCase().includes(filter.toLowerCase()) ||
                                             filter === ""
                                         )
                                         .map((user) =>
                                             <li key={user.id} className={"title-card"}>
                                                 <Link to={`/users/${user.id}`} className={"hocus-standard"}
-                                                      title={user.firstname + " " + user.lastname}>
+                                                      title={getUserName(user)}>
                                                     <div className={"image-container mb-2 position-relative"}>
-                                                        <img
-                                                            src={user.image_url}
-                                                            alt={user.firstname + " " + user.lastname}
-                                                            className="w-100"
-                                                        />
+                                                        {
+                                                            user.image_url ?
+                                                                <img
+                                                                    src={user.image_url}
+                                                                    alt={getUserName(user)}
+                                                                    className="w-100"
+                                                                />
+                                                                :
+                                                                <img
+                                                                    src={marvel}
+                                                                    alt={getUserName(user)}
+                                                                    className="w-100"
+                                                                />
+                                                        }
                                                     </div>
                                                 </Link>
                                             </li>

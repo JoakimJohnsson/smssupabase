@@ -33,6 +33,8 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
                 return LABELS_AND_HEADINGS.MARVELKLUBBEN;
             case "publishers":
                 return LABELS_AND_HEADINGS.ALL_PUBLISHERS;
+            case "users":
+                return LABELS_AND_HEADINGS.ALL_USERS;
             case "edit":
                 return LABELS_AND_HEADINGS.EDIT;
             case "issues":
@@ -45,7 +47,7 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
     }
 
     const getNameFromBreadcrumbName = (breadcrumbName, breadcrumb) => {
-        if (id && breadcrumbName.length > 30) {
+        if (id && breadcrumbName.length > 30 && previousCrumb !== "users") {
             getNameByTableAndId(previousCrumb, id, setFetchedName).then();
             if ((fetchedName !== "") && (previousCrumb === TABLES.TITLES || previousCrumb === TABLES.PUBLISHERS)) {
                 if (previousCrumb === TABLES.TITLES) {

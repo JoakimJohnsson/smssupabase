@@ -27,6 +27,8 @@ import {Publishers} from "./pages/Publishers";
 import {AdminUsers} from "./pages/admin/users/AdminUsers";
 import {Marvelklubben} from "./pages/Marvelklubben";
 import ChangePassword from "./pages/ChangePassword";
+import {User} from "./pages/User";
+import {Users} from "./pages/Users";
 
 
 export const MyRoutes = () => {
@@ -56,6 +58,8 @@ export const MyRoutes = () => {
                 <Route path={ROUTES.ISSUES} element={user && user.id ? <Issues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.PUBLISHER_ID} element={user && user.id ? <Publisher/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.PUBLISHERS} element={user && user.id ? <Publishers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.USER_ID} element={user && user.id ? <User/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.USERS} element={user && user.id ? <Users/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.MARVELKLUBBEN} element={user && user.id ? <Marvelklubben/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* ADMIN */}
                 <Route path={ROUTES.ADMIN.ROOT} element={(user && user.id && profile.role >= 1) ? <Admin/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
