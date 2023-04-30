@@ -9,47 +9,48 @@ import {sortByName} from "../../helpers/functions/functions";
 import {Link} from "react-router-dom";
 
 
-export const Publishers = () => {
+export const Users = () => {
 
     const [loading, setLoading] = useState(true);
-    const [publishersData, setPublishersData] = useState(null);
+    const [usersData, setUsersData] = useState(null);
     const [searchParams, setSearchParams, filter] = useSearchFilter();
 
     useEffect(() => {
-        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then(() => setLoading(false));
+        getRowsByTable(TABLES.PROFILES, setUsersData).then(() => setLoading(false));
     }, [])
 
     return (
         <main className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_USERS}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
                     <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_OR_YEAR}/>
+                                placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     {
                         loading ?
                             <OverlaySpinner/>
                             :
                             <ul className={"sms-list--with-cards"}>
                                 {
-                                    publishersData
-                                        .filter(publisher => publisher.name.toLowerCase()
+                                    usersData
+                                        .filter(user => user.firstname.toLowerCase()
+                                                .includes(filter.toLowerCase()) ||
+                                            user.lastname.toLowerCase()
                                                 .includes(filter.toLowerCase()) ||
                                             filter === ""
                                         )
-                                        .sort((a, b) => sortByName(a, b))
-                                        .map((publisher) =>
-                                            <li key={publisher.id} className={"title-card"}>
-                                                <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
-                                                      title={publisher.name}>
+                                        .map((user) =>
+                                            <li key={user.id} className={"title-card"}>
+                                                <Link to={`/users/${user.id}`} className={"hocus-standard"}
+                                                      title={user.firstname + " " + user.lastname}>
                                                     <div className={"image-container mb-2 position-relative"}>
                                                         <img
-                                                            src={publisher.image_url}
-                                                            alt={publisher.name}
+                                                            src={user.image_url}
+                                                            alt={user.firstname + " " + user.lastname}
                                                             className="w-100"
                                                         />
                                                     </div>
