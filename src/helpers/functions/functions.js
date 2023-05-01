@@ -135,9 +135,7 @@ export const getUserName = (user) => {
 }
 
 export const getAnonDisplayName = (user) => {
-    let firstNameLength = Math.floor(Math.random() * 5) + 3;
-    let lastNameLength = Math.floor(Math.random() * 7) + 3;
-    return user.id.substring(0, firstNameLength) + " " + user.id.substring(user.id.length - lastNameLength, user.id.length);
+    return user.id.substring(0, 5) + " " + user.id.substring(user.id.length - 7, user.id.length);
 }
 
 export const hasImage = (item) => {
