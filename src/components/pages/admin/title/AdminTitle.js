@@ -17,7 +17,7 @@ import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions/functions";
+import {getCalculatedYear, getIssuesPerYear, getYearsList, handleCheckboxInput} from "../../../../helpers/functions/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";
@@ -117,14 +117,6 @@ export const AdminTitle = () => {
             setTimeout(() => {
                 setLoadingDI(false);
             }, 1000);
-        }
-    }
-
-    const handleCheckboxInput = (value, setData) => {
-        if (value === 1) {
-            setData(0)
-        } else {
-            setData(1)
         }
     }
 

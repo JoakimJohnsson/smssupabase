@@ -153,3 +153,11 @@ export const isTrue = (string) => (string === "true");
 export const getCurrentDate = () => {
     return (new Date()).toISOString();
 }
+
+export const handleCheckboxInput = (value, setData) => {
+    if (value === 1) {
+        setData(0)
+    } else {
+        setData(1)
+    }
+}
