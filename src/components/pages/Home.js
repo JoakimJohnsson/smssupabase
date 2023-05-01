@@ -13,21 +13,28 @@ export const Home = () => {
 
     const {user, profile} = useAppContext();
     const [showAlert, setShowAlert] = useState(false);
+    const [alertText, setAlertText] = useState("");
 
     useEffect(() => {
-        if(!profile.firstname || !profile.lastname || !profile.image_filename) {
-            setShowAlert(true);
+        if(profile) {
+            if(!profile.firstname || !profile.lastname || !profile.image_filename) {
+                setShowAlert(true);
+                setAlertText(TEXTS.ALERT_HOME_NAME_INFO);
+            } else if (!profile.is_public) {
+                setShowAlert(true);
+                setAlertText(TEXTS.ALERT_HOME_IS_PUBLIC_INFO);
+            }
         }
     }, [profile])
 
     return user && user.id ? (
             <main className={"container-fluid main-container dashboard"}>
                 <div className={"row row-padding--main"}>
-                    <div className={"sms-page-col"}>
+                    <div className={"sms-page-col--full"}>
                         <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.WELCOME}/>
                         {
                             showAlert &&
-                            <InformationAlert variant={"info"} text={TEXTS.ALERT_HOME_NAME_INFO}/>
+                            <InformationAlert variant={"info"} text={alertText}/>
                         }
                         <p className={"lead"}>Sidan är för tillfället under utveckling och genomgår nu olika stadier av utveckling, test och
                             kravställning.</p>

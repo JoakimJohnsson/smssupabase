@@ -8,7 +8,8 @@ export const updateProfileData = async (id, data) => {
             .update([{
                 website: data.website,
                 firstname: data.firstname,
-                lastname: data.lastname
+                lastname: data.lastname,
+                is_public: data.is_public
             }])
             .eq("id", id);
     } catch (error) {
