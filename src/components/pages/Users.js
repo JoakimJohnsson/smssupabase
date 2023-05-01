@@ -43,6 +43,8 @@ export const Users = () => {
                                             filter === ""
                                         )
                                         .map((user) =>
+                                            // Only show public users here
+                                            user.is_public === 1 &&
                                             <li key={user.id} className={"title-card"}>
                                                 <Link to={`/users/${user.id}`} className={"hocus-standard"}
                                                       title={getUserName(user)}>

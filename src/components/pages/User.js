@@ -5,8 +5,9 @@ import {TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {getUserName} from "../../helpers/functions/functions";
+import {getAnonDisplayName, getUserName} from "../../helpers/functions/functions";
 import marvel from "../../assets/images/publishers/marvel.gif";
+import {NoDataAvailable} from "../minis/NoDataAvailable";
 
 
 export const User = () => {
@@ -40,20 +41,32 @@ export const User = () => {
                         :
                         <>
                             <div className={"sms-page-col"}>
-                                <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>
-                            </div>
-                            <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
                                 {
-                                    user.image_url ?
-                                        <ImageViewerLogo url={user.image_url} fileName={user.image_filename}/>
+                                    user.is_public ?
+                                        <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>
                                         :
-                                        <img
-                                            src={marvel}
-                                            alt={userName}
-                                            className="w-100"
-                                        />
+                                        <HeadingWithBreadCrumbs text={getAnonDisplayName(user)} doIgnoreName={true} bcName={getAnonDisplayName(user)}/>
                                 }
+
                             </div>
+                            {
+                                user.is_public ?
+                                    <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
+                                        {
+                                            user.image_url ?
+                                                <ImageViewerLogo url={user.image_url} fileName={user.image_filename}/>
+                                                :
+                                                <img
+                                                    src={marvel}
+                                                    alt={userName}
+                                                    className="w-100"
+                                                />
+                                        }
+                                    </div>
+                                    :
+                                    <NoDataAvailable isUser/>
+                            }
+
                         </>
                 }
             </div>

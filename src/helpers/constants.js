@@ -203,6 +203,7 @@ export const LABELS_AND_HEADINGS = {
     NUMBER: "Nummer",
     NUMBER_DB: "Nummer (number)",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
+    NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
     OPEN: "Öppna",
     PASSWORD: "Lösenord",
     NEW_PASSWORD: "Nytt lösenord",

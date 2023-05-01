@@ -123,14 +123,21 @@ export const getIssueName = (title, issue) => {
 }
 
 export const getUserName = (user) => {
-    let firstNameLength = Math.floor(Math.random() * 5) + 3;
-    let lastNameLength = Math.floor(Math.random() * 7) + 3;
-    let generatedDisplayName = user.id.substring(0, firstNameLength) + " " + user.id.substring(user.id.length - lastNameLength, user.id.length)
     if (user.firstname && user.lastname) {
         return user.firstname + " " + user.lastname
+    } else if (user.firstname) {
+        return user.firstname
+    } else if (user.lastname) {
+        return user.lastname
     } else {
-        return generatedDisplayName;
+        return getAnonDisplayName(user);
     }
+}
+
+export const getAnonDisplayName = (user) => {
+    let firstNameLength = Math.floor(Math.random() * 5) + 3;
+    let lastNameLength = Math.floor(Math.random() * 7) + 3;
+    return user.id.substring(0, firstNameLength) + " " + user.id.substring(user.id.length - lastNameLength, user.id.length);
 }
 
 export const hasImage = (item) => {
