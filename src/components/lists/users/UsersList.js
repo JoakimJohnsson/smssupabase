@@ -2,11 +2,12 @@ import React, {useState} from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {updateProfileRole} from "../../../helpers/functions/serviceFunctions/profileFunctions";
-import {TABLES} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES} from "../../../helpers/constants";
 import {useAppContext} from "../../../context/AppContext";
 import {RemoveAdminButton} from "./RemoveAdminButton";
 import {AddAdminButton} from "./AddAdminButton";
-import {hasImage} from "../../../helpers/functions/functions";
+import {getUserName, hasImage} from "../../../helpers/functions/functions";
+import {Link} from "react-router-dom";
 
 
 export const UsersList = ({usersData, setUsersData, limited = false}) => {
@@ -45,9 +46,20 @@ export const UsersList = ({usersData, setUsersData, limited = false}) => {
                                         <div className={"d-flex align-items-center"}>
                                             {
                                                 hasImage(u) &&
-                                                <img src={u.image_url} className={"list-image me-2"} alt={u.firstname}/>
+                                                <img src={u.image_url} className={"list-image me-2"} alt={LABELS_AND_HEADINGS.PROFILE_IMAGE + " " + u.firstname || getUserName(u)}/>
                                             }
-                                            {u.firstname} {u.lastname}
+                                            {
+                                                <Link to={`/users/${u.id}`}
+                                                      title={getUserName(u)}>
+                                                    {
+                                                        u.firstname && u.lastname
+                                                            ?
+                                                            u.firstname + " " + u.lastname
+                                                            :
+                                                            getUserName(u)
+                                                    }
+                                                </Link>
+                                            }
                                         </div>
                                     </div>
                                     <div className={"sms-list-col--tools"}>

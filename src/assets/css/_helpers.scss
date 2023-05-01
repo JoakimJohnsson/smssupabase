@@ -12,6 +12,14 @@
   }
 }
 
+a {
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+
 input:autofill {
   background: #fff;
 }
