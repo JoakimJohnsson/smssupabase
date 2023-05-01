@@ -1,3 +1,7 @@
+import React from "react";
+import {Icon} from "../components/icons";
+import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation} from "@fortawesome/pro-regular-svg-icons";
+
 export const MESSAGES = {
     ERROR: {
         VALIDATION_EMAIL: "Ange en korrekt e-postadress.",
@@ -261,6 +265,7 @@ export const TEXTS = {
     ADMIN_ISSUE_TEXT: "Hämta ner bild från titelns cover gallery på Grand Comics Database (large). Ladda sedan upp den. Här kan du även ange om publikationen ingår i Marvelklubben eller inte, samt ange numrering.",
     ADMIN_PUBLISHER_LEAD: "Här kan du redigera information om förlaget och lägga till en bild (logotyp).",
     ADMIN_TITLE_LEAD: "Här kan du redigera information om titeln. Du kan lägga till en bild (logotyp), samt även publikationer. Publikationer kan läggas till en och en, eller i bulk.",
+    ALERT_HOME_NAME_INFO: "Under inställningar kan du redigera din personliga information och lägga in en profilbild.",
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar.",
     CONSENT: "Svenska Marvelsamlare är måna om att skydda dina personliga uppgifter. När du loggar in, eller registrerar dig, bekräftar och godkänner du att vi endast använder denna information, och eventuella cookies, för att administrera ditt konto och tillhandahålla de tjänster du förväntar dig av oss.",
     DEMO_TEXT_1: "Här visar vi exempel på senast tillagd funktionalitet, saker som är på gång och saker som vi funderar på att implementera i framtiden.",
@@ -340,4 +345,34 @@ export const PANES = {
     OTHER_COLLECTIONS: {
         NAME: "Andra samlingar"
     }
+}
+
+export const ALERT_VARIANTS = {
+    1: {
+        variant: "info",
+        icon: <Icon icon={faCircleInfo} className={"fa-2xl me-3"}/>
+    },
+    2: {
+        variant: "success",
+        icon: <Icon icon={faHeart} className={"fa-2xl me-3"}/>
+    },
+    3: {
+        variant: "warning",
+        icon: <Icon icon={faSealExclamation} className={"fa-2xl me-3"}/>
+    },
+    4: {
+        variant: "danger",
+        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+    },
+    5: {
+        variant: "danger",
+        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+    }
+}
+
+export const VARIANT_MAPPER = {
+    info: 1,
+    success: 2,
+    warning: 3,
+    danger: 4
 }

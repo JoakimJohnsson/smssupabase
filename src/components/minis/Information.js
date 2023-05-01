@@ -1,40 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {MESSAGES} from "../../helpers/constants";
+import {ALERT_VARIANTS, MESSAGES} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
-import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation, faTimes} from "@fortawesome/pro-regular-svg-icons";
+import {faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
+
 
 export const Information = ({message}) => {
     const [timeStamp, setTimeStamp] = useState("");
     const [messageText, setMessageText] = useState("");
     const statusClass = message.status ? message.status.toString().charAt(0) : 4;
-    const className = "fa-2xl me-3";
-
-    const alertVariants = {
-        1: {
-            variant: "info",
-            icon: <Icon icon={faCircleInfo} className={className}/>
-        },
-        2: {
-            variant: "success",
-            icon: <Icon icon={faHeart} className={className}/>
-        },
-        3: {
-            variant: "warning",
-            icon: <Icon icon={faSealExclamation} className={className}/>
-        },
-        4: {
-            variant: "danger",
-            icon: <Icon icon={faShieldExclamation} className={className}/>
-        },
-        5: {
-            variant: "danger",
-            icon: <Icon icon={faShieldExclamation} className={className}/>
-        }
-    }
-
-    const alertVariant = alertVariants[statusClass].variant;
-    const alertIcon = alertVariants[statusClass].icon;
+    const alertVariant = ALERT_VARIANTS[statusClass].variant;
+    const alertIcon = ALERT_VARIANTS[statusClass].icon;
     const {setInformationMessage} = useAppContext();
     const doShow = message && message.show ? "show" : "";
 
