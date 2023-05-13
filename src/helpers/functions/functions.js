@@ -119,7 +119,9 @@ export const getIssueName = (issue) => {
     if (issue.is_double === 1) {
         number = number + "-" + (number + 1)
     }
-    return issue.titles.name + " #" + number + variantSuffix + " - " + issue.year;
+    if (issue && issue.titles) {
+        return issue.titles.name + " #" + number + variantSuffix + " - " + issue.year;
+    }
 }
 
 export const getUserName = (user) => {

@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {getRowByTableAndId, getRowsByTableForeignKeyColumnAndForeignKeyId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
@@ -8,27 +7,29 @@ import countryData from "../../helpers/valueLists/countries.json";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {TitlesList} from "../lists/titles/TitlesList";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {CountryBadge} from "../minis/CountryBadge";
+import {IssuesList} from "../lists/issues/IssuesList";
+import {getRowByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getIssuesWithTitleAndPublisherByPublisherId} from "../../helpers/functions/serviceFunctions/issueFunctions";
 
 
 export const Publisher = () => {
 
     const [publisher, setPublisher] = useState({});
-    const [titlesData, setTitlesData] = useState({});
+    const [issuesData, setIssuesData] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
 
-    const fetchPublisherAndTitlesData = useCallback(() => {
+    const fetchPublisherAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, id).then(() => {
-            getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.TITLES, "publisher_id", id, setTitlesData).then(() => setLoading(false));
+            getIssuesWithTitleAndPublisherByPublisherId(setIssuesData, id).then(() => setLoading(false));
         });
     }, [id])
 
     useEffect(() => {
-        fetchPublisherAndTitlesData();
-    }, [fetchPublisherAndTitlesData])
+        fetchPublisherAndIssuesData();
+    }, [fetchPublisherAndIssuesData])
 
 
     return (
@@ -65,9 +66,8 @@ export const Publisher = () => {
                                 }
                             </div>
                             <div className={"col-12 col-md-8 col-lg-7 col-xl-6 mb-4"}>
-                                <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
-
-                                {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={false}/> :
+                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                {issuesData ? <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue showCollectingButtons={false}/> :
                                     <CustomSpinner/>}
                             </div>
                         </>

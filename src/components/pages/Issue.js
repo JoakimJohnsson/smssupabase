@@ -65,9 +65,11 @@ export const Issue = () => {
     }, [id, user.id])
 
     useEffect(() => {
-        setDisplayName(getIssueName(issue));
-        fetchIssueIds();
-        fetchGrade();
+        if (issue) {
+            setDisplayName(getIssueName(issue));
+            fetchIssueIds();
+            fetchGrade();
+        }
     }, [fetchIssueIds, fetchGrade, issue])
 
     return (

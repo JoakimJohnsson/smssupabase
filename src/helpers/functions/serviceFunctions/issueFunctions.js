@@ -161,3 +161,19 @@ export const getIssuesWithTitleAndPublisherByTitleId = async (setData, id) => {
         console.error(error);
     }
 }
+export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, id) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*, publishers (*), titles (*)")
+            .eq("publisher_id", id)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
