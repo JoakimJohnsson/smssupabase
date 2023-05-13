@@ -8,6 +8,7 @@ export const addIssueData = async (data, setInformationMessage) => {
             .from(TABLES.ISSUES)
             .insert([{
                 title_id: data.title_id,
+                publisher_id: data.publisher_id,
                 year: data.year,
                 number: data.number,
                 is_marvelklubben: data.is_marvelklubben,
@@ -41,7 +42,7 @@ export const updateIssueData = async (id, data) => {
     }
 }
 
-export const generateIssuesForTitle = async (titleData, setInformationMessage) => {
+export const generateIssuesForTitle = async (titleData, setInformationMessage, publisher_id) => {
     if (!window.confirm(MESSAGES.CONFIRM.GENERATE_ISSUES + " " + MESSAGES.CONFIRM.GENERATE + titleData.issuesPerYear + MESSAGES.CONFIRM.ISSUES_PER_YEAR)) {
         setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
         return false;
@@ -54,6 +55,7 @@ export const generateIssuesForTitle = async (titleData, setInformationMessage) =
                         .from(TABLES.ISSUES)
                         .insert([{
                             title_id: titleData.titleId,
+                            publisher_id: publisher_id,
                             year: year,
                             number: i + 1,
                             is_marvelklubben: 0,
