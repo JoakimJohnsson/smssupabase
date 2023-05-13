@@ -37,22 +37,6 @@ export const getRowsByTableForeignKeyColumnAndForeignKeyId = async (table, keyCo
         console.error(error);
     }
 }
-export const getIssuesDataWithTitleAndPublisherDataByTitleId = async (setData, id) => {
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.ISSUES)
-            .select("*, publishers (*), titles (*)")
-            .eq("title_id", id)
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data) {
-            setData(data)
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
 
 export const getRowByTableAndId = async (table, setData, id) => {
     try {

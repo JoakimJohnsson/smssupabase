@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useParams} from "react-router-dom";
 import {
-    getIssuesDataWithTitleAndPublisherDataByTitleId,
     getRowByTableAndId,
     handleCollectingTitle
 } from "../../helpers/functions/serviceFunctions/serviceFunctions";
@@ -15,6 +14,7 @@ import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
+import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/serviceFunctions/issueFunctions";
 
 
 export const Title = () => {
@@ -31,7 +31,7 @@ export const Title = () => {
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getIssuesDataWithTitleAndPublisherDataByTitleId(setIssuesData, id).then(() => setLoading(false));
+            getIssuesWithTitleAndPublisherByTitleId(setIssuesData, id).then(() => setLoading(false));
         });
     }, [id]);
 

@@ -2,13 +2,12 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
-    getIssuesDataWithTitleAndPublisherDataByTitleId,
     getRowByTableAndId, getRowsByTable,
     handleInput
 } from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {
     addIssueData, deleteAllIssues,
-    generateIssuesForTitle
+    generateIssuesForTitle, getIssuesWithTitleAndPublisherByTitleId
 } from "../../../../helpers/functions/serviceFunctions/issueFunctions";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -61,7 +60,7 @@ export const AdminTitle = () => {
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getIssuesDataWithTitleAndPublisherDataByTitleId(setIssuesData, id).then(() => setLoading(false));
+            getIssuesWithTitleAndPublisherByTitleId(setIssuesData, id).then(() => setLoading(false));
         });
     }, [id]);
 

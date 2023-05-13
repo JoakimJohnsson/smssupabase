@@ -4,7 +4,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterForm from "../search-filter/FilterForm";
 import {IssueCard} from "../lists/issues/IssueCard";
-import {getAllIssuesWithTitlesAndPublishers} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {getAllIssuesWithTitleAndPublisher} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {sortByName} from "../../helpers/functions/functions";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 
@@ -17,7 +17,7 @@ export const Issues = () => {
 
 
     useEffect(() => {
-        getAllIssuesWithTitlesAndPublishers(setIssuesData).then(() => setLoading(false));
+        getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
     }, [])
 
     return (
