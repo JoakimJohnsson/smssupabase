@@ -11,7 +11,6 @@ export const addTitleData = async (data, setInformationMessage) => {
                 wiki_url: data.wiki_url,
                 start_year: data.start_year,
                 end_year: data.end_year,
-                publisher_id: data.publisher_id,
                 format_id: data.format_id,
                 total_issues: data.total_issues
             }])

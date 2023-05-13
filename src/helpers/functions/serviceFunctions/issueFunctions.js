@@ -28,6 +28,7 @@ export const updateIssueData = async (id, data) => {
             .from(TABLES.ISSUES)
             .update([{
                 title_id: data.title_id,
+                publisher_id: data.publisher_id,
                 year: data.year,
                 number: data.number,
                 is_double: data.is_double,

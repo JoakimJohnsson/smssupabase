@@ -2,8 +2,8 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
+    getIssuesDataWithTitleAndPublisherDataByTitleId,
     getRowByTableAndId, getRowsByTable,
-    getRowsByTableForeignKeyColumnAndForeignKeyId,
     handleInput
 } from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {
@@ -61,7 +61,7 @@ export const AdminTitle = () => {
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.ISSUES, "title_id", id, setIssuesData).then(() => setLoading(false));
+            getIssuesDataWithTitleAndPublisherDataByTitleId(setIssuesData, id).then(() => setLoading(false));
         });
     }, [id]);
 

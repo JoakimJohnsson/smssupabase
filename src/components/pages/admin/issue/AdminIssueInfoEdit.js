@@ -14,6 +14,11 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     const edit = isTrue(searchParams.get("edit"));
     const [titlesData, setTitlesData] = useState(null);
     const navigate = useNavigate();
+    const [publishersData, setPublishersData] = useState(null);
+
+    useEffect(() => {
+        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
+    }, [])
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();
@@ -69,6 +74,20 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(titlesData)}
+                    </select>
+                }
+                <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
+                {
+                    publishersData &&
+                    <select
+                        id={"publisher"}
+                        name={"publisher_id"}
+                        className={"form-select mb-3"}
+                        value={newIssue.publisher_id || ""}
+                        disabled={!edit}
+                        onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
+                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        {printOptions(publishersData)}
                     </select>
                 }
                 <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
