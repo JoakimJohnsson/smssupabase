@@ -21,10 +21,10 @@ export const IssueCard = ({issue}) => {
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
 
     useEffect(() => {
-        if (issue.titles) {
-            setDisplayName(getIssueName(issue.titles, issue));
+        if (issue) {
+            setDisplayName(getIssueName(issue));
         }
-    }, [issue.titles, issue])
+    }, [issue])
 
     return issue && issue.titles && (
         <li className={"issue-card"}>

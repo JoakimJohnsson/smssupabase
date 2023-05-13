@@ -23,8 +23,6 @@ export const AdminIssue = () => {
     const [
         issue,
         setIssue,
-        title,
-        publisher,
         loading,
         fetchData
     ] = useIssueData(id, true);
@@ -49,18 +47,19 @@ export const AdminIssue = () => {
                     <>
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
-                                <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} name={getIssueName(title, issue)}/>
+                                <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
+                                                        name={getIssueName(issue)}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                                 <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
                                 <IconButton variant={"primary"} icon={titleIconDuoTone} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
-                                            label={title.name + " " + title.start_year}/>
+                                            label={issue.titles.name + " " + issue.titles.start_year}/>
                                 <IconButton variant={"primary"} icon={publishersIconDuoTone}
-                                            onClick={() => navigate(`/admin/publishers/${title.publisher_id}`)}
-                                            label={publisher.name}/>
+                                            onClick={() => navigate(`/admin/publishers/${issue.publisher_id}`)}
+                                            label={issue.publishers.name}/>
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
-                            <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={title}/>
+                            <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={issue.titles}/>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
                                     <ImageUploader

@@ -281,7 +281,7 @@ export const TEXTS = {
     DEMO_TEXT_7: "På förlagets sida ser du alla dess titlar.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer. Välj förlag ovanför.",
-    AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER: "Du har valt ",
+    AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER: "Du har valt förlaget ",
     DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
     CHANGE_PASSWORD_SEND_INFO: "Vi skickar information för att bekräfta återställning av lösenord.",
     CHANGE_PASSWORD_INFO: "OBS! Lösenordet ändras direkt - vi skickar ingen information för att bekräfta återställning av lösenord.",

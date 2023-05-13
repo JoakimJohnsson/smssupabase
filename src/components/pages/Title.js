@@ -2,8 +2,8 @@ import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useParams} from "react-router-dom";
 import {
+    getIssuesDataWithTitleAndPublisherDataByTitleId,
     getRowByTableAndId,
-    getRowsByTableForeignKeyColumnAndForeignKeyId,
     handleCollectingTitle
 } from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
@@ -38,7 +38,7 @@ export const Title = () => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
             if (title.publisher_id) {
                 getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher_id).then(() => {
-                    getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.ISSUES, "title_id", id, setIssuesData).then(() => setLoading(false));
+                    getIssuesDataWithTitleAndPublisherDataByTitleId(setIssuesData, id).then(() => setLoading(false));
                 })
             }
         });

@@ -43,8 +43,6 @@ export const Issue = () => {
 
     const [
         issue,
-        title,
-        publisher,
         loading
     ] = useIssueData(id);
 
@@ -67,10 +65,10 @@ export const Issue = () => {
     }, [id, user.id])
 
     useEffect(() => {
-        setDisplayName(getIssueName(title, issue));
+        setDisplayName(getIssueName(issue));
         fetchIssueIds();
         fetchGrade();
-    }, [fetchIssueIds, fetchGrade, title, issue])
+    }, [fetchIssueIds, fetchGrade, issue])
 
     return (
         <main className={"container-fluid main-container"}>
@@ -81,9 +79,10 @@ export const Issue = () => {
                         :
                         <>
                             <div className={"sms-page-col"}>
-                                <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} bcName={getIssueName(title, issue)}/>
+                                <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true} bcName={getIssueName(issue)}/>
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
+
                                 <ImageViewerCover url={issue.image_url} displayName={displayName}/>
                                 {
                                     isCollectingTitle &&
@@ -127,28 +126,28 @@ export const Issue = () => {
                                         isCollectingIssue &&
                                         <GradeBadge grade={grade}/>
                                     }
-                                    <TitleBadge title={title}/>
-                                    <PublisherBadge publisher={publisher}/>
+                                    <TitleBadge title={issue.titles}/>
+                                    <PublisherBadge publisher={issue.publishers}/>
                                     {
                                         issue.is_marvelklubben === 1 &&
                                         <MarvelKlubbenBadge number={issue.marvelklubben_number}/>
                                     }
-                                    <FormatBadge formatId={title.format_id}/>
+                                    <FormatBadge formatId={issue.titles.format_id}/>
                                     {
                                         countryData &&
-                                        <CountryBadge countryId={publisher.country_id}/>
+                                        <CountryBadge countryId={issue.publishers.country_id}/>
                                     }
                                 </div>
                                 <div className={"mb-4"}>
-                                    <h2>{title.name}</h2>
-                                    <p>{title.description}</p>
-                                    <h2>{publisher.name}</h2>
-                                    <p>{publisher.description}</p>
+                                    <h2>{issue.titles.name}</h2>
+                                    <p>{issue.titles.description}</p>
+                                    <h2>{issue.publishers.name}</h2>
+                                    <p>{issue.publishers.description}</p>
                                     {
-                                        title.wiki_url &&
+                                        issue.titles.wiki_url &&
                                         <p>
-                                            <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                                {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {title.name}
+                                            <a href={issue.titles.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                                {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue.titles.name}
                                                 <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                             </a>
                                         </p>
