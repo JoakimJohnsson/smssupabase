@@ -110,7 +110,7 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
         return 1;
     }
 }
-export const getIssueName = (title, issue) => {
+export const getIssueName = (issue) => {
     let number = issue.number;
     let variantSuffix = "";
     if (issue.is_variant === 1) {
@@ -119,7 +119,25 @@ export const getIssueName = (title, issue) => {
     if (issue.is_double === 1) {
         number = number + "-" + (number + 1)
     }
-    return title.name + " #" + number + variantSuffix +" - " + issue.year;
+    if (issue && issue.titles) {
+        return issue.titles.name + " #" + number + variantSuffix + " - " + issue.year;
+    }
+}
+
+export const getUserName = (user) => {
+    if (user.firstname && user.lastname) {
+        return user.firstname + " " + user.lastname
+    } else if (user.firstname) {
+        return user.firstname
+    } else if (user.lastname) {
+        return user.lastname
+    } else {
+        return getAnonDisplayName(user);
+    }
+}
+
+export const getAnonDisplayName = (user) => {
+    return user.id.substring(0, 5) + " " + user.id.substring(user.id.length - 7, user.id.length);
 }
 
 export const hasImage = (item) => {

@@ -1,3 +1,7 @@
+import React from "react";
+import {Icon} from "../components/icons";
+import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation} from "@fortawesome/pro-regular-svg-icons";
+
 export const MESSAGES = {
     ERROR: {
         VALIDATION_EMAIL: "Ange en korrekt e-postadress.",
@@ -70,6 +74,8 @@ export const ROUTES = {
     PUBLISHERS: "/publishers",
     MARVELKLUBBEN: "/marvelklubben",
     PUBLISHER_ID: "/publishers/:id",
+    USERS: "/users",
+    USER_ID: "/users/:id",
     DASHBOARD: {
         ROOT: "dashboard",
         OVERVIEW: "overview",
@@ -131,6 +137,7 @@ export const LABELS_AND_HEADINGS = {
     COUNTRY_DB: "Utgivningsland (country)",
     CREATE_ACCOUNT: "Registrera dig",
     CREATE_ACCOUNT_CTA: "Registrera dig",
+    CREATED_AT: "Inlagd",
     DASHBOARD: "Kontrollpanel",
     DELETE: "Ta bort",
     DELETING: "Tar bort",
@@ -153,6 +160,7 @@ export const LABELS_AND_HEADINGS = {
     FILTER: "Filter",
     FILTER_NUMBER_TITLE_OR_YEAR: "Filtrera på nummer, titel eller årtal",
     FILTER_TITLE_PUBLISHER_OR_YEAR: "Filtrera på titel, förlag eller årtal",
+    FILTER_NAME: "Filtrera på namn",
     DO_FILTER: "Filtrera",
     FIRST_NAME: "Förnamn",
     FORMAT: "Format",
@@ -168,6 +176,7 @@ export const LABELS_AND_HEADINGS = {
     INFORMATION: "Information",
     INFORMATION_ABOUT: "Information om",
     IS_MARVELKLUBBEN: "Ingår i marvelklubben",
+    IS_PUBLIC: "Gör profilsidan publik",
     IS_DOUBLE: "Dubbelnummer",
     IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
     VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
@@ -187,12 +196,14 @@ export const LABELS_AND_HEADINGS = {
     MENU: "Meny",
     MISCELLANEOUS: "Övrigt",
     MY_COLLECTION: "Min samling",
+    MY_USER_PAGE: "Min sida",
     NAME: "Namn",
     NAME_DB: "Namn (name)",
     NEXT: "Nästa",
     NUMBER: "Nummer",
     NUMBER_DB: "Nummer (number)",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
+    NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
     OPEN: "Öppna",
     PASSWORD: "Lösenord",
     NEW_PASSWORD: "Nytt lösenord",
@@ -201,6 +212,7 @@ export const LABELS_AND_HEADINGS = {
     PROFILE_IMAGE: "Profilbild",
     PUBLISHERS: "Förlag",
     PUBLISHER_DB: "Förlag (publisher)",
+    CHOOSE_PUBLISHER_FOR_ISSUE: "Välj förlag för dina publikationer",
     RELEASE_LATEST: "Senaste releasen",
     RELEASE_PREVIOUS: "Föregående releaser",
     RELEASE_FUTURE: "Kommande funktionalitet",
@@ -226,7 +238,7 @@ export const LABELS_AND_HEADINGS = {
     START: "Översikt",
     START_YEAR: "Startår",
     START_YEAR_DB: "Startår (start_year)",
-    SVENSKA_MARVELSAMLARE: "Svenska marvelsamlare",
+    SVENSKA_MARVELSAMLARE: "Svenska Marvelsamlare",
     SVENSKA_MARVELSAMLARE_SHORT: "SMS",
     TITLE: "Titel",
     TITLES: "Titlar",
@@ -256,7 +268,10 @@ export const TEXTS = {
     ADMIN_ISSUE_TEXT: "Hämta ner bild från titelns cover gallery på Grand Comics Database (large). Ladda sedan upp den. Här kan du även ange om publikationen ingår i Marvelklubben eller inte, samt ange numrering.",
     ADMIN_PUBLISHER_LEAD: "Här kan du redigera information om förlaget och lägga till en bild (logotyp).",
     ADMIN_TITLE_LEAD: "Här kan du redigera information om titeln. Du kan lägga till en bild (logotyp), samt även publikationer. Publikationer kan läggas till en och en, eller i bulk.",
+    ALERT_HOME_NAME_INFO: "Under inställningar kan du redigera din personliga information och lägga in en profilbild. Här väljer du också om din personliga profilsida ska vara publik.",
+    ALERT_HOME_IS_PUBLIC_INFO: "Under inställningar kan du ställa in om din personliga profilsida ska vara publik.",
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar.",
+    CONSENT: "Svenska Marvelsamlare är måna om att skydda dina personliga uppgifter. När du loggar in, eller registrerar dig, bekräftar och godkänner du att vi endast använder denna information, och eventuella cookies, för att administrera ditt konto och tillhandahålla de tjänster du förväntar dig av oss.",
     DEMO_TEXT_1: "Här visar vi exempel på senast tillagd funktionalitet, saker som är på gång och saker som vi funderar på att implementera i framtiden.",
     DEMO_TEXT_2: "Sök / filtrera bland publikationerna. Fler titlar läggs till löpande. För komplettisten kommer vi även lägga in mer obskyra publikationer där marvelfigurer figurerar som hastigast.",
     DEMO_TEXT_3: "Välj titlar att börja samla på.",
@@ -265,7 +280,8 @@ export const TEXTS = {
     DEMO_TEXT_6: "Få översikt över din samling via kontrollpanelen.",
     DEMO_TEXT_7: "På förlagets sida ser du alla dess titlar.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
-    AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer.",
+    AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer. Välj förlag ovanför.",
+    AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER: "Du har valt förlaget ",
     DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
     CHANGE_PASSWORD_SEND_INFO: "Vi skickar information för att bekräfta återställning av lösenord.",
     CHANGE_PASSWORD_INFO: "OBS! Lösenordet ändras direkt - vi skickar ingen information för att bekräfta återställning av lösenord.",
@@ -334,4 +350,34 @@ export const PANES = {
     OTHER_COLLECTIONS: {
         NAME: "Andra samlingar"
     }
+}
+
+export const ALERT_VARIANTS = {
+    1: {
+        variant: "info",
+        icon: <Icon icon={faCircleInfo} className={"fa-2xl me-3"}/>
+    },
+    2: {
+        variant: "success",
+        icon: <Icon icon={faHeart} className={"fa-2xl me-3"}/>
+    },
+    3: {
+        variant: "warning",
+        icon: <Icon icon={faSealExclamation} className={"fa-2xl me-3"}/>
+    },
+    4: {
+        variant: "danger",
+        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+    },
+    5: {
+        variant: "danger",
+        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+    }
+}
+
+export const VARIANT_MAPPER = {
+    info: 1,
+    success: 2,
+    warning: 3,
+    danger: 4
 }

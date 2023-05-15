@@ -1,5 +1,5 @@
 import {supabase} from "../../../supabase/supabaseClient";
-import {MESSAGES} from "../../constants";
+import {MESSAGES, TABLES} from "../../constants";
 import {deleteImageFromBucketSimple} from "./imageFunctions";
 import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectFunctions";
 import {doesEmailExist} from "../functions";
@@ -43,6 +43,23 @@ export const getRowByTableAndId = async (table, setData, id) => {
         let {data, error, status} = await supabase
             .from(table)
             .select("*")
+            .eq("id", id)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data[0]);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getIssueDataWithPublisherAndTitle = async (setData, id) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*, publishers (*), titles (*)")
             .eq("id", id)
         if (error && status !== 406) {
             console.error(error);

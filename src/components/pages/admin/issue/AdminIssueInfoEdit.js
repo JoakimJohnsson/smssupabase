@@ -14,6 +14,11 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     const edit = isTrue(searchParams.get("edit"));
     const [titlesData, setTitlesData] = useState(null);
     const navigate = useNavigate();
+    const [publishersData, setPublishersData] = useState(null);
+
+    useEffect(() => {
+        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
+    }, [])
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();
@@ -71,13 +76,27 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         {printOptions(titlesData)}
                     </select>
                 }
+                <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
+                {
+                    publishersData &&
+                    <select
+                        id={"publisher"}
+                        name={"publisher_id"}
+                        className={"form-select mb-3"}
+                        value={newIssue.publisher_id}
+                        disabled={!edit}
+                        onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
+                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        {printOptions(publishersData)}
+                    </select>
+                }
                 <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
                 <input
                     id={"year"}
                     name={"year"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
-                    value={newIssue.year}
+                    value={newIssue.year || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
@@ -89,7 +108,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     type="number"
                     max={999}
                     min={1}
-                    value={newIssue.number}
+                    value={newIssue.number || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
@@ -112,7 +131,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         name={"is_marvelklubben"}
                         className={"form-check-input me-2"}
                         type="checkbox"
-                        value={newIssue.is_marvelklubben}
+                        value={newIssue.is_marvelklubben || ""}
                         checked={newIssue.is_marvelklubben === 1}
                         onChange={() => handleMKCheckboxChange(newIssue.is_marvelklubben)}
                         disabled={!edit}
@@ -127,7 +146,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     type="number"
                     max={999}
                     min={0}
-                    value={newIssue.marvelklubben_number}
+                    value={newIssue.marvelklubben_number || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
@@ -150,7 +169,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     name={"variant_suffix"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type="text"
-                    value={newIssue.variant_suffix}
+                    value={newIssue.variant_suffix || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit}
                 />

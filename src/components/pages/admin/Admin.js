@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../helpers/constants";
 import {TitlesCard} from "../../dashboard/dashboardCards/admin/TitlesCard";
 import {PublishersCard} from "../../dashboard/dashboardCards/admin/PublishersCard";
 import {HeadingWithBreadCrumbs} from "../../headings";
@@ -8,6 +8,7 @@ import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {UsersCard} from "../../dashboard/dashboardCards/admin/UsersCard";
 import {useAppContext} from "../../../context/AppContext";
 import {UtilsCard} from "../../dashboard/dashboardCards/admin/UtilsCard";
+import {Link} from "react-router-dom";
 
 
 export const Admin = () => {
@@ -27,6 +28,9 @@ export const Admin = () => {
                             admin@svenskamarvelsamlare.se
                         </a>
                     </p>
+                    <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.ALL_TITLES}</Link>
+                    <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</Link>
+                    <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.USERS}>{LABELS_AND_HEADINGS.ALL_USERS}</Link>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

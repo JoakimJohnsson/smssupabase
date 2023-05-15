@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {LinkIcon} from "../icons";
 
 
-export const PublisherBadge = ({publisher}) => {
+export const TitleBadge = ({title}) => {
 
     const variants = [0, 200, 400, 600, 800];
     const [randomVariant, setRandomVariant] = useState(null);
@@ -11,9 +11,9 @@ export const PublisherBadge = ({publisher}) => {
     useEffect(() => {
         const rand = Math.floor(Math.random() * variants.length);
         setRandomVariant(rand)
-    }, [variants.length, publisher])
+    }, [variants.length, title])
 
-    return publisher && (
-        <Link className={"hocus-standard"} to={`/publishers/${publisher.id}`} title={publisher.name}><span className={`tag-badge bg-publisher-${variants[randomVariant]}`}><LinkIcon/> {publisher.name}</span></Link>
+    return title && (
+        <Link to={`/titles/${title.id}`} title={title.name}><span className={`tag-badge text-black bg-title-${variants[randomVariant]}`}><LinkIcon/> {title.name}</span></Link>
     )
 }

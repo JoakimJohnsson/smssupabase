@@ -1,28 +1,13 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React from "react";
 import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
 import {getIssueName, hasImage} from "../../../helpers/functions/functions";
-import {getRowByTableAndId} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
-import {CustomSpinner} from "../../minis/CustomSpinner";
 
 
 export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, showCollectingButtons}) => {
 
-    const [title, setTitle] = useState({});
-    const [loading, setLoading] = useState(true);
-
-    const fetchTitle = useCallback(() => {
-            getRowByTableAndId(TABLES.TITLES, setTitle, issue.title_id).then(() => {
-                setLoading(false)
-            });
-    }, [issue.title_id]);
-
-    useEffect(() => {
-            fetchTitle();
-    }, [fetchTitle])
-
-    return loading ? (<CustomSpinner/>) : (
+    return (
         <li className={"list-group-item px-0"}>
             <div className={"row"}>
                 <div className={"sms-list-col--main"}>
@@ -31,7 +16,7 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, 
                             hasImage(issue) &&
                             <img src={issue.image_url} className={"list-image me-2"} alt={""}/>
                         }
-                        <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={getIssueName(title, issue)}/>
+                        <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={getIssueName(issue)}/>
                     </div>
                 </div>
                 {
@@ -41,7 +26,7 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, 
                             <ListToolBox
                                 item={issue}
                                 name={issue.number}
-                                displayName={getIssueName(title, issue)}
+                                displayName={getIssueName(issue)}
                                 data={issuesData}
                                 setData={setIssuesData}
                                 showAdminInfo={showAdminInfo}

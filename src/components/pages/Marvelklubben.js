@@ -4,16 +4,15 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {IssueCard} from "../lists/issues/IssueCard";
-import {useSearchParams} from "react-router-dom";
 import FilterForm from "../search-filter/FilterForm";
+import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 
 
 export const Marvelklubben = () => {
 
     const [loading, setLoading] = useState(true);
     const [marvelKlubbenData, setMarvelKlubbenData] = useState(null);
-    const [searchParams, setSearchParams] = useSearchParams({filter: ""});
-    const filter = searchParams.get("filter");
+    const [searchParams, setSearchParams, filter] = useSearchFilter();
 
     useEffect(() => {
         getAllMarvelklubbenIssues(setMarvelKlubbenData).then(() => setLoading(false));

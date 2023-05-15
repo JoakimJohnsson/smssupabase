@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
 import {addTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
-import {getRowsByTable, handleInput} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleInput} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
@@ -26,14 +26,8 @@ export const AdminTitleAdd = () => {
     const [end_year, setEnd_year] = useState(1975);
     const [format_id, setFormat_id] = useState("");
     const [total_issues, setTotal_issues] = useState(12);
-    const [publishersData, setPublishersData] = useState(null);
-    const [publisher_id, setPublisher_id] = useState("");
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
-    }, [])
 
     const resetAddTitleForm = async () => {
         setName("");
@@ -46,14 +40,14 @@ export const AdminTitleAdd = () => {
     }
 
     useEffect(() => {
-        if (format_id && publisher_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "") {
+        if (format_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
-        } else if (format_id || publisher_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "") {
+        } else if (format_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
         } else {
             setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         }
-    }, [format_id, publisher_id, name, description, wiki_url, start_year, end_year, total_issues, setFormInputClass])
+    }, [format_id, name, description, wiki_url, start_year, end_year, total_issues, setFormInputClass])
 
 
     return (
@@ -111,18 +105,6 @@ export const AdminTitleAdd = () => {
                             value={end_year || ""}
                             onChange={(e) => handleInput(e, setEnd_year)}
                         />
-                        <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
-                        {
-                            publishersData &&
-                            <select
-                                id="publisher"
-                                name={"publisher_id"}
-                                className={formInputClass}
-                                onChange={(e) => handleInput(e, setPublisher_id)}>
-                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                                {printOptions(publishersData)}
-                            </select>
-                        }
                         <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                         {
                             formatData &&
@@ -152,7 +134,6 @@ export const AdminTitleAdd = () => {
                                     wiki_url: wiki_url,
                                     start_year: start_year,
                                     end_year: end_year,
-                                    publisher_id: publisher_id,
                                     format_id: format_id,
                                     total_issues: total_issues,
                                 }, setInformationMessage).then(() => resetAddTitleForm())}

@@ -12,6 +12,14 @@
   }
 }
 
+a {
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+
 input:autofill {
   background: #fff;
 }
@@ -26,10 +34,6 @@ footer {
 
 input {
   filter: none;
-}
-
-img {
-  border-radius: $border-radius--md;
 }
 
 // Borders

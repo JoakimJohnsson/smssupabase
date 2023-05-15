@@ -1,9 +1,8 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {getIssueName} from "../../helpers/functions/functions";
-import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -23,6 +22,8 @@ import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIss
 import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {getGradeByUserIdAndIssueId} from "../../helpers/functions/serviceFunctions/collectFunctions";
+import {TitleBadge} from "../minis/TitleBadge";
+import {PublisherBadge} from "../minis/PublisherBadge";
 
 
 export const Issue = () => {
@@ -42,8 +43,6 @@ export const Issue = () => {
 
     const [
         issue,
-        title,
-        publisher,
         loading
     ] = useIssueData(id);
 
@@ -66,10 +65,12 @@ export const Issue = () => {
     }, [id, user.id])
 
     useEffect(() => {
-        setDisplayName(getIssueName(title, issue));
-        fetchIssueIds();
-        fetchGrade();
-    }, [fetchIssueIds, fetchGrade, title, issue])
+        if (issue) {
+            setDisplayName(getIssueName(issue));
+            fetchIssueIds();
+            fetchGrade();
+        }
+    }, [fetchIssueIds, fetchGrade, issue])
 
     return (
         <main className={"container-fluid main-container"}>
@@ -80,9 +81,11 @@ export const Issue = () => {
                         :
                         <>
                             <div className={"sms-page-col"}>
-                                <HeadingWithBreadCrumbs text={getIssueName(title, issue)} doIgnoreName={true} bcName={getIssueName(title, issue)}/>
+                                <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true} bcName={getIssueName(issue)}/>
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
+
+                                <ImageViewerCover url={issue.image_url} displayName={displayName}/>
                                 {
                                     isCollectingTitle &&
                                     <button
@@ -97,7 +100,6 @@ export const Issue = () => {
                                         }
                                     </button>
                                 }
-                                <ImageViewerCover url={issue.image_url} displayName={displayName}/>
                                 {
                                     loadingButtons ?
                                         <CustomSpinner/>
@@ -121,41 +123,33 @@ export const Issue = () => {
                                 }
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
-                                <div className={"d-flex align-items-center justify-content-center justify-content-md-start flex-wrap mb-3"}>
+                                <div className={"d-flex align-items-center flex-wrap mb-3"}>
                                     {
                                         isCollectingIssue &&
                                         <GradeBadge grade={grade}/>
                                     }
+                                    <TitleBadge title={issue.titles}/>
+                                    <PublisherBadge publisher={issue.publishers}/>
                                     {
                                         issue.is_marvelklubben === 1 &&
                                         <MarvelKlubbenBadge number={issue.marvelklubben_number}/>
                                     }
-                                    <FormatBadge formatId={title.format_id}/>
+                                    <FormatBadge formatId={issue.titles.format_id}/>
                                     {
                                         countryData &&
-                                        <CountryBadge countryId={publisher.country_id}/>
+                                        <CountryBadge countryId={issue.publishers.country_id}/>
                                     }
                                 </div>
                                 <div className={"mb-4"}>
-                                    <h2>{title.name}</h2>
-                                    <div className={"col-12 col-sm-6 col-md-4 mb-4 mb-md-0"}>
-                                        <Link to={`/titles/${title.id}`} title={title.name}>
-                                            <ImageViewerLogo url={title.image_url} fileName={title.name} linked/>
-                                        </Link>
-                                    </div>
-                                    <p>{title.description}</p>
-                                    <h2>{publisher.name}</h2>
-                                    <div className={"col-12 col-sm-6 col-md-4 mb-4 mb-md-0"}>
-                                        <Link to={`/publishers/${publisher.id}`} title={publisher.name}>
-                                            <ImageViewerLogo url={publisher.image_url} fileName={publisher.name} linked/>
-                                        </Link>
-                                    </div>
-                                    <p>{publisher.description}</p>
+                                    <h2>{issue.titles.name}</h2>
+                                    <p>{issue.titles.description}</p>
+                                    <h2>{issue.publishers.name}</h2>
+                                    <p>{issue.publishers.description}</p>
                                     {
-                                        title.wiki_url &&
+                                        issue.titles.wiki_url &&
                                         <p>
-                                            <a href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                                {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {title.name}
+                                            <a href={issue.titles.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                                {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue.titles.name}
                                                 <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                             </a>
                                         </p>

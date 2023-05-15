@@ -13,6 +13,7 @@ import {
     faFileImage,
     faComet,
     faListTimeline,
+    faLink,
     faRectangleHistoryCirclePlus,
     faClipboardListCheck,
     faMagnifyingGlassDollar,
@@ -97,6 +98,12 @@ export const IssueIcon = ({size, className}) => {
 export const KeyIcon = ({size, className}) => {
     return (
         <Icon icon={faKey} size={size} className={className}/>
+    )
+}
+
+export const LinkIcon = ({size, className}) => {
+    return (
+        <Icon icon={faLink} size={size} className={className}/>
     )
 }
 

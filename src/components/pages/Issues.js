@@ -2,23 +2,22 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {useSearchParams} from "react-router-dom";
 import FilterForm from "../search-filter/FilterForm";
 import {IssueCard} from "../lists/issues/IssueCard";
-import {getAllIssuesWithTitlesAndPublishers} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {getAllIssuesWithTitleAndPublisher} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {sortByName} from "../../helpers/functions/functions";
+import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 
 
 export const Issues = () => {
 
     const [loading, setLoading] = useState(true);
     const [issuesData, setIssuesData] = useState(null);
-    const [searchParams, setSearchParams] = useSearchParams({filter: ""});
-    const filter = searchParams.get("filter");
+    const [searchParams, setSearchParams, filter] = useSearchFilter();
 
 
     useEffect(() => {
-        getAllIssuesWithTitlesAndPublishers(setIssuesData).then(() => setLoading(false));
+        getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
     }, [])
 
     return (

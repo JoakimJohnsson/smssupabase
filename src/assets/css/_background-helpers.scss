@@ -141,6 +141,22 @@
   background-color: scale-color($publisher, $lightness: -20%);
 }
 
+.bg-title-0 {
+  background-color: $title;
+}
+.bg-title-200 {
+  background-color: scale-color($title, $lightness: -50%);
+}
+.bg-title-400 {
+  background-color: scale-color($title, $lightness: -40%);
+}
+.bg-title-600 {
+  background-color: scale-color($title, $lightness: -30%);
+}
+.bg-title-800 {
+  background-color: scale-color($title, $lightness: -20%);
+}
+
 .bg-marvelklubben-0 {
   background-color: $marvelklubben;
 }
