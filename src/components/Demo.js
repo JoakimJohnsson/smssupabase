@@ -26,13 +26,13 @@ const Demo = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                    <li className={"list-group-item px-0"}>Lagt till sök/filtrering på titlar och förlag.</li>
-                    <li className={"list-group-item px-0"}>Informera om cookies och användarinformation vid registrering.</li>
-                    <li className={"list-group-item px-0"}>Profilsida och sida som listar alla publika användare.</li>
-                    <li className={"list-group-item px-0"}>Information om status på uppladdning av titlar och publikationer på startsidan.</li>
+                    <li className={"list-group-item px-0"}>Stor omarbetning - Flyttade för lag från titel till publikation.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Informera om cookies och användarinformation vid registrering.</li>
+                    <li className={"list-group-item px-0"}>Profilsida och sida som listar alla publika användare.</li>
+                    <li className={"list-group-item px-0"}>Information om status på uppladdning av titlar och publikationer på startsidan.</li>
                     <li className={"list-group-item px-0"}>Lagt till sök/filtrering på titlar och förlag.</li>
                     <li className={"list-group-item px-0"}>Uppdaterade paket.</li>
                     <li className={"list-group-item px-0"}>Funktionalitet för sök / filtrering.</li>
