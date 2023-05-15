@@ -3,7 +3,6 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {useParams} from "react-router-dom";
 import {
     getRowByTableAndId,
-    getRowsByTableForeignKeyColumnAndForeignKeyId,
     handleCollectingTitle
 } from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
@@ -15,10 +14,7 @@ import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
-import {FormatBadge} from "../minis/FormatBadge";
-import countryData from "../../helpers/valueLists/countries.json";
-import {CountryBadge} from "../minis/CountryBadge";
-import {PublisherBadge} from "../minis/PublisherBadge";
+import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/serviceFunctions/issueFunctions";
 
 
 export const Title = () => {
@@ -26,7 +22,6 @@ export const Title = () => {
     const {setInformationMessage, user} = useAppContext();
     const [title, setTitle] = useState({});
     const [issuesData, setIssuesData] = useState({});
-    const [publisher, setPublisher] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, id);
@@ -36,13 +31,9 @@ export const Title = () => {
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            if (title.publisher_id) {
-                getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, title.publisher_id).then(() => {
-                    getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.ISSUES, "title_id", id, setIssuesData).then(() => setLoading(false));
-                })
-            }
+            getIssuesWithTitleAndPublisherByTitleId(setIssuesData, id).then(() => setLoading(false));
         });
-    }, [id, title.publisher_id]);
+    }, [id]);
 
     useEffect(() => {
         fetchTitleAndIssuesData();
@@ -66,20 +57,14 @@ export const Title = () => {
                                     onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
                                     {
                                         isCollectingTitle ?
-                                            <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
+                                            <><Icon icon={faMinus} size={"1x"}
+                                                    className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
                                             :
-                                            <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
+                                            <><Icon icon={faPlus} size={"1x"}
+                                                    className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
                                     }
                                 </button>
                                 <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
-                                <div className={"mb-2"}>
-                                    <FormatBadge formatId={title.format_id}/>
-                                    {
-                                        countryData &&
-                                        <CountryBadge countryId={publisher.country_id}/>
-                                    }
-                                    <PublisherBadge publisher={publisher}/>
-                                </div>
                                 {
                                     title.description &&
                                     <>

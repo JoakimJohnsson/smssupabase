@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {Link} from "react-router-dom";
 import FilterForm from "../search-filter/FilterForm";
 import {sortByName} from "../../helpers/functions/functions";
 import {TitleTool} from "../lists/TitleTool";
-import {getAllTitlesWithPublishers} from "../../helpers/functions/serviceFunctions/titleFunctions";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
+import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 
 export const Titles = () => {
@@ -17,7 +17,7 @@ export const Titles = () => {
     const [searchParams, setSearchParams, filter] = useSearchFilter();
 
     useEffect(() => {
-        getAllTitlesWithPublishers(setTitlesData).then(() => setLoading(false));
+        getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
     }, [])
 
     return (

@@ -11,7 +11,6 @@ export const addTitleData = async (data, setInformationMessage) => {
                 wiki_url: data.wiki_url,
                 start_year: data.start_year,
                 end_year: data.end_year,
-                publisher_id: data.publisher_id,
                 format_id: data.format_id,
                 total_issues: data.total_issues
             }])
@@ -54,22 +53,6 @@ export const getTitlesForUser = async (userId, setTitlesData) => {
         }
         if (data && data[0] && data[0].titles) {
             setTitlesData(data[0].titles)
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-export const getAllTitlesWithPublishers = async (setData) => {
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.TITLES)
-            .select("*, publishers (*)")
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data) {
-            setData(data)
         }
     } catch (error) {
         console.error(error);

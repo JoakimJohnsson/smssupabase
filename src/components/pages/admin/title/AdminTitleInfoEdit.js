@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
+import React from "react";
+import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {updateTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
-import {getRowsByTable, handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
@@ -14,11 +14,6 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
     const navigate = useNavigate();
-    const [publishersData, setPublishersData] = useState(null);
-
-    useEffect(() => {
-        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
-    }, [])
 
     const handleSubmit = () => {
         updateTitleData(title.id, newTitle).then(() => setSearchParams({edit: false}));
@@ -84,20 +79,6 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
-                <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
-                {
-                    publishersData &&
-                    <select
-                        id={"publisher"}
-                        name={"publisher_id"}
-                        className={"form-select mb-3"}
-                        value={newTitle.publisher_id || ""}
-                        disabled={!edit}
-                        onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                        {printOptions(publishersData)}
-                    </select>
-                }
                 <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                 {
                     formatData &&

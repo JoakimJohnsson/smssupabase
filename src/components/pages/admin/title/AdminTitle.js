@@ -2,13 +2,12 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
-    getRowByTableAndId,
-    getRowsByTableForeignKeyColumnAndForeignKeyId,
+    getRowByTableAndId, getRowsByTable,
     handleInput
 } from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {
     addIssueData, deleteAllIssues,
-    generateIssuesForTitle
+    generateIssuesForTitle, getIssuesWithTitleAndPublisherByTitleId
 } from "../../../../helpers/functions/serviceFunctions/issueFunctions";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -17,7 +16,7 @@ import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getCalculatedYear, getIssuesPerYear, getYearsList} from "../../../../helpers/functions/functions";
+import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";
@@ -29,6 +28,7 @@ export const AdminTitle = () => {
     const [title, setTitle] = useState({});
     const [titleData, setTitleData] = useState({});
     const [issuesData, setIssuesData] = useState({});
+    const [publishersData, setPublishersData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [loadingGI, setLoadingGI] = useState(false);
     const [loadingDI, setLoadingDI] = useState(false);
@@ -45,11 +45,22 @@ export const AdminTitle = () => {
     const [variant_suffix, setVariant_suffix] = useState("a");
     const [newTitle, setNewTitle] = useState({});
     const {setInformationMessage} = useAppContext();
+    const [publisher_id, setPublisher_id] = useState("");
+    const [chosenPublisherName, setChosenPublisherName] = useState("");
 
+    useEffect(() => {
+        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
+    }, [])
+
+    useEffect(() => {
+        if (publishersData && publisher_id) {
+            setChosenPublisherName(publishersData.find((p) => p.id === publisher_id).name);
+        }
+    }, [publisher_id, publishersData])
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getRowsByTableForeignKeyColumnAndForeignKeyId(TABLES.ISSUES, "title_id", id, setIssuesData).then(() => setLoading(false));
+            getIssuesWithTitleAndPublisherByTitleId(setIssuesData, id).then(() => setLoading(false));
         });
     }, [id]);
 
@@ -88,8 +99,8 @@ export const AdminTitle = () => {
 
     const handleGenerateIssues = () => {
         setLoadingGI(true);
-        if (titleData && validateTitleData(titleData)) {
-            generateIssuesForTitle(titleData, setInformationMessage).then(() => {
+        if (publisher_id && titleData && validateTitleData(titleData)) {
+            generateIssuesForTitle(titleData, setInformationMessage, publisher_id).then(() => {
                 setTimeout(() => {
                     setLoadingGI(false);
                     fetchTitleAndIssuesData();
@@ -178,6 +189,19 @@ export const AdminTitle = () => {
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light pb-5"}>
                                     <div className={"mb-4"}>
+                                        <h2>{LABELS_AND_HEADINGS.CHOOSE_PUBLISHER_FOR_ISSUE}</h2>
+                                        <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
+                                        {
+                                            publishersData &&
+                                            <select
+                                                id="publisher"
+                                                name={"publisher_id"}
+                                                className={CLASSES.FORM_INPUT_DEFAULT + " mb-5"}
+                                                onChange={(e) => handleInput(e, setPublisher_id)}>
+                                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                                {printOptions(publishersData)}
+                                            </select>
+                                        }
                                         <h2>{LABELS_AND_HEADINGS.ADD_ISSUE_FOR} {title.name}</h2>
                                         <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
                                         <input
@@ -259,6 +283,7 @@ export const AdminTitle = () => {
                                         <button className={"btn btn-primary sms-btn"}
                                                 onClick={() => addIssueData({
                                                     title_id: title.id,
+                                                    publisher_id: publisher_id,
                                                     year: year,
                                                     number: number,
                                                     is_marvelklubben: is_marvelklubben,
@@ -303,20 +328,26 @@ export const AdminTitle = () => {
                                 <div className={"sms-section--light"}>
                                     <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
                                     <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
-                                    <button className={"btn btn-primary sms-btn"} onClick={() => handleGenerateIssues()}>
-                                        {
-                                            loadingGI ?
-                                                <>
-                                                    <CustomSpinner size={"1x"} className={"me-2"}/>
-                                                    {LABELS_AND_HEADINGS.GENERATING_ISSUES}
-                                                </>
-                                                :
-                                                <>
-                                                    <IssueIcon className={"me-2"}/>
-                                                    {LABELS_AND_HEADINGS.GENERATE_ISSUES}
-                                                </>
-                                        }
-                                    </button>
+                                    {
+                                        publisher_id &&
+                                        <>
+                                            <p>{TEXTS.AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER + chosenPublisherName}.</p>
+                                            <button className={"btn btn-primary sms-btn"} onClick={() => handleGenerateIssues()}>
+                                                {
+                                                    loadingGI ?
+                                                        <>
+                                                            <CustomSpinner size={"1x"} className={"me-2"}/>
+                                                            {LABELS_AND_HEADINGS.GENERATING_ISSUES}
+                                                        </>
+                                                        :
+                                                        <>
+                                                            <IssueIcon className={"me-2"}/>
+                                                            {LABELS_AND_HEADINGS.GENERATE_ISSUES}
+                                                        </>
+                                                }
+                                            </button>
+                                        </>
+                                    }
                                 </div>
                             </div>
                         </div>
