@@ -145,10 +145,12 @@ export const hasImage = (item) => {
 }
 
 export const sortByName = (a, b) => {
-    if (a.name < b.name) {
+    let aName = sortableName(a.name);
+    let bName = sortableName(b.name);
+    if (aName < bName) {
         return -1;
     }
-    if (a.name > b.name) {
+    if (aName > bName) {
         return 1;
     }
     return 0;
@@ -159,4 +161,8 @@ export const isTrue = (string) => (string === "true");
 
 export const getCurrentDate = () => {
     return (new Date()).toISOString();
+}
+
+export const sortableName = (name) => {
+    return name.trim().replace(":", "").replace("-", "").toLowerCase();
 }
