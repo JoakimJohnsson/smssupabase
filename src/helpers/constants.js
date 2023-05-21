@@ -130,7 +130,6 @@ export const LABELS_AND_HEADINGS = {
     COLLECT_ISSUE_START_2: "i samlingen.",
     COLLECT_ISSUE_STOP: "Ta bort",
     COLLECT_ISSUE_STOP_2: "från samlingen.",
-    COLLECTING_TITLES: "Du samlar på följande titlar.",
     COMMUNITY: "Socialt",
     CONTACT: "Kontakt",
     CONTENT: "Innehåll",

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {LABELS_AND_HEADINGS, PANES} from "../../../helpers/constants";
+import {PANES} from "../../../helpers/constants";
 import {TitlesList} from "../../lists/titles/TitlesList";
 import {useAppContext} from "../../../context/AppContext";
 import {getTitlesForUser} from "../../../helpers/functions/serviceFunctions/titleFunctions";
@@ -24,7 +24,6 @@ export const TitlesPane = () => {
                     <CustomSpinner size={"4x"}/>
                     :
                     <div className={"sms-section--light"}>
-                        <h2>{LABELS_AND_HEADINGS.COLLECTING_TITLES}</h2>
                         <TitlesList titlesData={titlesData} showAdminInfo={false}/>
                     </div>
             }
