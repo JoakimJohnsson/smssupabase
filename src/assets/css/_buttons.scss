@@ -70,3 +70,11 @@
   }
 }
 
+.sms-link-to-top-button {
+  @extend .btn, .btn-primary;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  border-radius: 50%;
+}
+

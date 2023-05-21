@@ -28,7 +28,9 @@ const Demo = () => {
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Förbättrad sortering för titlar.</li>
+                    <li className={"list-group-item px-0"}>Länk för att snabbt gå tillbaka till toppen på sidan.</li>
                     {/*TODO*/}
+                    <li className={"list-group-item px-0"}>Länk för att hoppa direkt till innehåll på sidan.</li>
                     <li className={"list-group-item px-0"}>Visa information om variant på publikation.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h3>
