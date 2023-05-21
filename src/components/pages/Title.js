@@ -51,20 +51,20 @@ export const Title = () => {
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
+                                <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
                                 <button
                                     aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                                    className={`btn ${isCollectingTitle ? "btn-danger" : "btn-success"} p-2 rounded-0 w-100 justify-content-center mb-4`}
+                                    className={`btn ${isCollectingTitle ? "btn-danger" : "btn-success"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
                                     onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
                                     {
                                         isCollectingTitle ?
                                             <><Icon icon={faMinus} size={"1x"}
-                                                    className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
+                                                    className={"mb-1"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
                                             :
                                             <><Icon icon={faPlus} size={"1x"}
-                                                    className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
+                                                    className={"mb-1"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
                                     }
                                 </button>
-                                <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
                                 {
                                     title.description &&
                                     <>
