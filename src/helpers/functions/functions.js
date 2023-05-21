@@ -147,12 +147,19 @@ export const hasImage = (item) => {
 export const sortByName = (a, b) => {
     let aName = sortableName(a.name);
     let bName = sortableName(b.name);
-    if (aName < bName) {
-        return -1;
-    }
-    if (aName > bName) {
-        return 1;
-    }
+    if (aName < bName) return -1;
+    if (aName > bName) return 1;
+    return 0;
+}
+
+
+export const sortByNameAndStartYear = (a, b) => {
+    let aName = sortableName(a.name);
+    let bName = sortableName(b.name);
+    if (aName < bName) return -1;
+    if (aName > bName) return 1;
+    if (a.start_year < b.start_year) return -1;
+    if (a.start_year > b.start_year) return 1;
     return 0;
 }
 

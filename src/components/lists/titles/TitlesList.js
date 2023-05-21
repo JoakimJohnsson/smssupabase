@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
-import {hasImage, sortByName} from "../../../helpers/functions/functions";
+import {hasImage, sortByNameAndStartYear} from "../../../helpers/functions/functions";
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 
@@ -13,7 +13,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo}) => {
         <ul className={"sms-list--with-tools mb-4"}>
             {
                 titlesData.length ?
-                    (titlesData.sort((a, b) => sortByName(a, b)).map((t, index) =>
+                    (titlesData.sort((a, b) => sortByNameAndStartYear(a, b)).map((t, index) =>
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>

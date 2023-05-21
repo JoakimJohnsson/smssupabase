@@ -27,7 +27,7 @@ const Demo = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.8.7 2023-xx-xx</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad sortering när specialtecken ingår i namn.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad sortering för titlar.</li>
                     {/*TODO*/}
                     <li className={"list-group-item px-0"}>Visa information om variant på publikation.</li>
                 </ul>

@@ -4,7 +4,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {Link} from "react-router-dom";
 import FilterForm from "../search-filter/FilterForm";
-import {sortByName} from "../../helpers/functions/functions";
+import {sortByNameAndStartYear} from "../../helpers/functions/functions";
 import {TitleTool} from "../lists/TitleTool";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
@@ -46,7 +46,7 @@ export const Titles = () => {
                                                 .includes(filter.toLowerCase()) ||
                                             filter === ""
                                         )
-                                        .sort((a, b) => sortByName(a, b))
+                                        .sort((a, b) => sortByNameAndStartYear(a, b))
                                         .map((title) =>
                                             <li key={title.id} className={"title-card"}>
                                                 <Link to={`/titles/${title.id}`} className={"hocus-standard"}
