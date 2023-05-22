@@ -75,7 +75,9 @@ export const generateUniqueHashedFilename = (fileExt, fileType) => {
 
 export const printOptions = (data) => {
     return data && (
-        data.map(
+        data
+            .sort((a, b) => sortByName(a, b))
+            .map(
             (item) => <option key={item.id} value={item.id}>{item.name}</option>)
     )
 }
