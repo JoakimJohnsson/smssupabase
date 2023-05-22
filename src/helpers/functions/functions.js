@@ -122,7 +122,11 @@ export const getIssueName = (issue) => {
         number = number + "-" + (number + 1)
     }
     if (issue && issue.titles) {
-        return issue.titles.name + " #" + number + variantSuffix + " - " + issue.year;
+        if (issue.titles.total_issues > 1) {
+            return issue.titles.name + " #" + number + variantSuffix + " - " + issue.year;
+        } else {
+            return issue.titles.name + " - " + issue.year;
+        }
     }
 }
 
