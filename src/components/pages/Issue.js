@@ -50,6 +50,7 @@ export const Issue = () => {
 
     const fetchIssueIds = useCallback(() => {
         if (issue.number && issue.title_id && issue.year) {
+            console.log("issue number", issue.number);
             let prevNumber = issue.number - 1;
             let nextNumber = issue.number + 1;
             let titleId = issue.title_id;
@@ -101,25 +102,31 @@ export const Issue = () => {
                                     </button>
                                 }
                                 {
-                                    loadingButtons ?
-                                        <CustomSpinner/>
-                                        :
-                                        <>
-                                            <div className={"text-center"}>
-                                                <button
-                                                    onClick={() => navigate(`/issues/${prevIssueId}`)}
-                                                    disabled={!prevIssueId}
-                                                    className={"btn btn-sm btn-outline-secondary me-3"} aria-label={LABELS_AND_HEADINGS.PREVIOUS}>
-                                                    <Icon icon={faArrowLeftLong} className={"fa-2x"}/>
-                                                </button>
-                                                <button
-                                                    onClick={() => navigate(`/issues/${nextIssueId}`)}
-                                                    disabled={!nextIssueId}
-                                                    className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS_AND_HEADINGS.NEXT}>
-                                                    <Icon icon={faArrowRightLong} className={"fa-2x"}/>
-                                                </button>
-                                            </div>
-                                        </>
+                                    issue.titles.total_issues > 1 &&
+                                    <>
+                                        {
+                                            loadingButtons ?
+                                                <CustomSpinner/>
+                                                :
+                                                <>
+                                                    <div className={"text-center"}>
+                                                        <button
+                                                            onClick={() => navigate(`/issues/${prevIssueId}`)}
+                                                            disabled={!prevIssueId}
+                                                            className={"btn btn-sm btn-outline-secondary me-3"}
+                                                            aria-label={LABELS_AND_HEADINGS.PREVIOUS}>
+                                                            <Icon icon={faArrowLeftLong} className={"fa-2x"}/>
+                                                        </button>
+                                                        <button
+                                                            onClick={() => navigate(`/issues/${nextIssueId}`)}
+                                                            disabled={!nextIssueId}
+                                                            className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS_AND_HEADINGS.NEXT}>
+                                                            <Icon icon={faArrowRightLong} className={"fa-2x"}/>
+                                                        </button>
+                                                    </div>
+                                                </>
+                                        }
+                                    </>
                                 }
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
