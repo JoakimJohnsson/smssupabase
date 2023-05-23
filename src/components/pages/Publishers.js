@@ -20,7 +20,7 @@ export const Publishers = () => {
     }, [])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>

@@ -74,7 +74,7 @@ export const Issue = () => {
     }, [fetchIssueIds, fetchGrade, issue])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 {
                     loading ?

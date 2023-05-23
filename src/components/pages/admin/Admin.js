@@ -16,7 +16,7 @@ export const Admin = () => {
     const {profile} = useAppContext();
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col--full"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADMIN}/>

@@ -33,7 +33,7 @@ export const AdminPublisher = () => {
     }, [publisher])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             {
                 loading ?
                     <div className={"row row-padding--main"}>

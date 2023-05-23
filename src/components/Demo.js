@@ -29,7 +29,6 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Förbättrad sortering på många ställen.</li>
                     <li className={"list-group-item px-0"}>Länk för att snabbt gå tillbaka till toppen på sidan.</li>
-                    {/*TODO*/}
                     <li className={"list-group-item px-0"}>Länk för att hoppa direkt till innehåll på sidan.</li>
                     <li className={"list-group-item px-0"}>Visa information om variant på publikation.</li>
                 </ul>

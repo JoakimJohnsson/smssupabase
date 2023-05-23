@@ -19,7 +19,7 @@ export const AdminPublishers = () => {
     }, [])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row"}>
                 <div className={"col-12 row-padding--main"}>
                     <div className={"sms-dashboard-col"}>

@@ -40,7 +40,7 @@ export const Title = () => {
     }, [fetchTitleAndIssuesData])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 {
                     loading ?

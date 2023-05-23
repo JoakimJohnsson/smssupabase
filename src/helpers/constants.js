@@ -229,6 +229,7 @@ export const LABELS_AND_HEADINGS = {
     SETTINGS_CREDENTIALS: "Inloggningsuppgifter",
     SIGN_OUT: "Logga ut",
     SIGN_UP_SUCCESS: "Registreringen lyckades!",
+    SKIP_LINK_TEXT: "Gå direkt till innehåll",
     SORT_REVERSE: "Omvänd ordning",
     SORT_CHOSE: "Välj sortering",
     SORT_9_0: "Sortera 9 till 0",

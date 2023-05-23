@@ -20,7 +20,7 @@ export const AdminIssues = () => {
     }, [])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</h1>

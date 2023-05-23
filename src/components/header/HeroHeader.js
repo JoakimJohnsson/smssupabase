@@ -9,10 +9,12 @@ import {
     LogoIconDuoTone,
     RegisterIconDuoTone
 } from "../icons-duotone";
+import {SkipLink} from "../pages/pagecomponents/SkipLink";
 
 export const HeroHeader = () => {
     return (
         <header className={"sms-hero-header mb-5"}>
+            <SkipLink/>
             <div className={"container-fluid"}>
                 <div className={"row"}>
 

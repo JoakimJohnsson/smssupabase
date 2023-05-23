@@ -19,7 +19,7 @@ export const Dashboard = () => {
     const btnClass = isOpen ? "sidebar-btn open" : "sidebar-btn";
 
     return user ? (
-            <main className={"container-fluid main-container dashboard"}>
+            <main id="main-content" className={"container-fluid main-container dashboard"}>
                 <div className={"row"}>
                     <Sidebar isOpen={isOpen} handleClick={handleClick}/>
                     <div className={"p-0 d-block d-sm-none "}>

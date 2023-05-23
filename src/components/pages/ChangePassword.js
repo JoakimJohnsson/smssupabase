@@ -17,7 +17,7 @@ const ChangePassword = () => {
     }, [])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row justify-content-center py-5"}>
                 <div className={"col-12 col-md-6 text-center"}>
                     <h1 className={"text-primary"}>{LABELS_AND_HEADINGS.CHANGE_PASSWORD}</h1>

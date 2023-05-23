@@ -20,7 +20,7 @@ export const AdminUsers = () => {
     }, [])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
                     <div className={"sms-dashboard-col"}>
