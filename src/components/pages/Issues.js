@@ -30,7 +30,7 @@ export const Issues = () => {
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
                     <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_OR_YEAR}/>
+                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -40,7 +40,7 @@ export const Issues = () => {
                                     issuesData
                                         .filter(issue => issue.titles.name.toLowerCase()
                                                 .includes(filter.toLowerCase()) ||
-                                            issue.titles.publishers.name.toLowerCase()
+                                            issue.publishers.name.toLowerCase()
                                                 .includes(filter.toLowerCase()) ||
                                             issue.year.toString().toLowerCase()
                                                 .includes(filter.toLowerCase()) ||

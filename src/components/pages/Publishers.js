@@ -29,7 +29,7 @@ export const Publishers = () => {
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
                     <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_OR_YEAR}/>
+                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>

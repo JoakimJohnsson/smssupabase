@@ -129,6 +129,10 @@ export const Issue = () => {
                                         <GradeBadge grade={grade}/>
                                     }
                                     <TitleBadge title={issue.titles}/>
+                                    {
+                                        !!issue.is_variant &&
+                                        <span className={`tag-badge text-black bg-info`}>Variant</span>
+                                    }
                                     <PublisherBadge publisher={issue.publishers}/>
                                     {
                                         issue.is_marvelklubben === 1 &&
