@@ -10,7 +10,7 @@ import {getUserName, hasImage} from "../../../helpers/functions/functions";
 import {Link} from "react-router-dom";
 
 
-export const UsersList = ({usersData, setUsersData, limited = false}) => {
+export const UsersList = ({usersData, setUsersData, limited = false, filter = ""}) => {
 
     const {setInformationMessage} = useAppContext();
     const [confirmed, setConfirmed] = useState(false);
@@ -37,44 +37,52 @@ export const UsersList = ({usersData, setUsersData, limited = false}) => {
         <ul className={"sms-list--with-tools mb-4"}>
             {
                 usersData.length ?
-                    (usersData.map((u, index) =>
-                            // Super admins does not have to be in this list
-                            u.role !== 2 &&
-                            <li key={index} className={"list-group-item px-0"}>
-                                <div className={"row"}>
-                                    <div className={"sms-list-col--main"}>
-                                        <div className={"d-flex align-items-center"}>
-                                            {
-                                                hasImage(u) &&
-                                                <img src={u.image_url} className={"list-image me-2"} alt={LABELS_AND_HEADINGS.PROFILE_IMAGE + " " + u.firstname || getUserName(u)}/>
-                                            }
-                                            {
-                                                <Link to={`/users/${u.id}`}
-                                                      title={getUserName(u)}>
-                                                    {
-                                                        u.firstname && u.lastname
-                                                            ?
-                                                            u.firstname + " " + u.lastname
-                                                            :
-                                                            getUserName(u)
-                                                    }
-                                                </Link>
-                                            }
+                    (usersData
+                            .filter(user => user.firstname.toLowerCase()
+                                    .includes(filter.toLowerCase()) ||
+                                user.lastname.toLowerCase()
+                                    .includes(filter.toLowerCase()) ||
+                                filter === ""
+                            )
+                            .map((u, index) =>
+                                // Super admins does not have to be in this list
+                                u.role !== 2 &&
+                                <li key={index} className={"list-group-item px-0"}>
+                                    <div className={"row"}>
+                                        <div className={"sms-list-col--main"}>
+                                            <div className={"d-flex align-items-center"}>
+                                                {
+                                                    hasImage(u) &&
+                                                    <img src={u.image_url} className={"list-image me-2"}
+                                                         alt={LABELS_AND_HEADINGS.PROFILE_IMAGE + " " + u.firstname || getUserName(u)}/>
+                                                }
+                                                {
+                                                    <Link to={`/users/${u.id}`}
+                                                          title={getUserName(u)}>
+                                                        {
+                                                            u.firstname && u.lastname
+                                                                ?
+                                                                u.firstname + " " + u.lastname
+                                                                :
+                                                                getUserName(u)
+                                                        }
+                                                    </Link>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div className={"sms-list-col--tools"}>
+                                            <div className={"d-inline-block text-end"}>
+                                                {
+                                                    u.role === 1 ?
+                                                        <RemoveAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
+                                                        :
+                                                        <AddAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className={"sms-list-col--tools"}>
-                                        <div className={"d-inline-block text-end"}>
-                                            {
-                                                u.role === 1 ?
-                                                    <RemoveAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
-                                                    :
-                                                    <AddAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        )
+                                </li>
+                            )
                     )
                     :
                     (<NoDataAvailable/>)

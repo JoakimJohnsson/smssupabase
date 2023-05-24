@@ -7,12 +7,15 @@ import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
+import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
+import FilterForm from "../../../search-filter/FilterForm";
 
 
 export const AdminPublishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
     const navigate = useNavigate();
+    const [searchParams, setSearchParams, filter] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
@@ -25,9 +28,11 @@ export const AdminPublishers = () => {
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
+                        <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                                    placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                         <div className={"sms-section--light"}>
                             {publishersData &&
-                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}/>}
+                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} filter={filter}/>}
                             <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
                                         label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
