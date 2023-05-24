@@ -42,6 +42,8 @@ export const UsersList = ({usersData, setUsersData, limited = false, filter = ""
                                     .includes(filter.toLowerCase()) ||
                                 user.lastname.toLowerCase()
                                     .includes(filter.toLowerCase()) ||
+                                user.id.toLowerCase()
+                                    .includes(filter.toLowerCase()) ||
                                 filter === ""
                             )
                             .map((u, index) =>
