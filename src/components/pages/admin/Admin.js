@@ -1,13 +1,13 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../helpers/constants";
-import {TitlesCard} from "../../dashboard/dashboardCards/admin/TitlesCard";
-import {PublishersCard} from "../../dashboard/dashboardCards/admin/PublishersCard";
+import {TitlesSection} from "../../dashboard/dashboardSections/admin/TitlesSection";
+import {PublishersSection} from "../../dashboard/dashboardSections/admin/PublishersSection";
 import {HeadingWithBreadCrumbs} from "../../headings";
 import {Icon} from "../../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
-import {UsersCard} from "../../dashboard/dashboardCards/admin/UsersCard";
+import {UsersSection} from "../../dashboard/dashboardSections/admin/UsersSection";
 import {useAppContext} from "../../../context/AppContext";
-import {UtilsCard} from "../../dashboard/dashboardCards/admin/UtilsCard";
+import {UtilsSection} from "../../dashboard/dashboardSections/admin/UtilsSection";
 import {Link} from "react-router-dom";
 
 
@@ -35,13 +35,13 @@ export const Admin = () => {
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
-                <TitlesCard/>
-                <PublishersCard/>
+                <TitlesSection/>
+                <PublishersSection/>
                 {
                     profile && profile.role && profile.role === 2 &&
-                    <UsersCard/>
+                    <UsersSection/>
                 }
-                <UtilsCard/>
+                <UtilsSection/>
             </div>
         </main>
     )

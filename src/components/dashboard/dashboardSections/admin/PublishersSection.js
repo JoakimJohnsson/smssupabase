@@ -8,7 +8,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
 
 
-export const PublishersCard = () => {
+export const PublishersSection = () => {
 
     const [limitedPublishersData, setLimitedPublishersData] = useState(null);
     const navigate = useNavigate();

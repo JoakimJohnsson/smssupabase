@@ -23,18 +23,18 @@ const Demo = () => {
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
-                {/*TODO*/}
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.8.7 2023-xx-xx</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.8.7 - 2023-05-27</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Förbättrad sortering på många ställen.</li>
                     <li className={"list-group-item px-0"}>Länk för att snabbt gå tillbaka till toppen på sidan.</li>
                     <li className={"list-group-item px-0"}>Länk för att hoppa direkt till innehåll på sidan.</li>
                     <li className={"list-group-item px-0"}>Visa information om variant på publikation.</li>
+                    <li className={"list-group-item px-0"}>Förbättrat kort för visning av användare i filter / sök.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.6 - 2023-05-15</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Stor omarbetning - Flyttade för lag från titel till publikation.</li>
+                    <li className={"list-group-item px-0"}>Stor omarbetning - Flyttade förlag från titel till publikation.</li>
                     <li className={"list-group-item px-0"}>Informera om cookies och användarinformation vid registrering.</li>
                     <li className={"list-group-item px-0"}>Profilsida och sida som listar alla publika användare.</li>
                     <li className={"list-group-item px-0"}>Information om status på uppladdning av titlar och publikationer på startsidan.</li>
@@ -43,6 +43,11 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Funktionalitet för sök / filtrering.</li>
                     <li className={"list-group-item px-0"}>Förbättrad layout för förlagssida.</li>
                     <li className={"list-group-item px-0"}>En Demo sektion på landningssidan.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Visa statistik och information på startsida och kontrollpanel.</li>
+                    <li className={"list-group-item px-0"}>Adminfunktioner på användares profilsida.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>
@@ -68,10 +73,6 @@ const Demo = () => {
                 <h3>{LABELS_AND_HEADINGS.ISSUES}</h3>
                 <p>{TEXTS.DEMO_TEXT_5}</p>
                 <img className={"article-image mb-5"} src={conan184} alt={LABELS_AND_HEADINGS.ALL_ISSUES}/>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>T.B.A</li>
-                </ul>
             </div>
         </div>
     )

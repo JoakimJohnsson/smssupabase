@@ -8,7 +8,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
 
 
-export const TitlesCard = () => {
+export const TitlesSection = () => {
 
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const navigate = useNavigate();

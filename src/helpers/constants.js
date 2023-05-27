@@ -280,7 +280,7 @@ export const TEXTS = {
     DEMO_TEXT_4: "När du valt att börja samla på en titel kan du lägga till publikationer i samlingen.",
     DEMO_TEXT_5: "På publikationens sida kan du bland annat ange skickgradering för ditt exemplar.",
     DEMO_TEXT_6: "Få översikt över din samling via kontrollpanelen.",
-    DEMO_TEXT_7: "På förlagets sida ser du alla dess titlar.",
+    DEMO_TEXT_7: "På förlagets sida ser du alla dess publikationer.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer. Välj förlag ovanför.",
     AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER: "Du har valt förlaget ",
