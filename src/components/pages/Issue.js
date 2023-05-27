@@ -73,7 +73,7 @@ export const Issue = () => {
     }, [fetchIssueIds, fetchGrade, issue])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 {
                     loading ?
@@ -84,7 +84,6 @@ export const Issue = () => {
                                 <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true} bcName={getIssueName(issue)}/>
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
-
                                 <ImageViewerCover url={issue.image_url} displayName={displayName}/>
                                 {
                                     isCollectingTitle &&
@@ -101,25 +100,31 @@ export const Issue = () => {
                                     </button>
                                 }
                                 {
-                                    loadingButtons ?
-                                        <CustomSpinner/>
-                                        :
-                                        <>
-                                            <div className={"text-center"}>
-                                                <button
-                                                    onClick={() => navigate(`/issues/${prevIssueId}`)}
-                                                    disabled={!prevIssueId}
-                                                    className={"btn btn-sm btn-outline-secondary me-3"} aria-label={LABELS_AND_HEADINGS.PREVIOUS}>
-                                                    <Icon icon={faArrowLeftLong} className={"fa-2x"}/>
-                                                </button>
-                                                <button
-                                                    onClick={() => navigate(`/issues/${nextIssueId}`)}
-                                                    disabled={!nextIssueId}
-                                                    className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS_AND_HEADINGS.NEXT}>
-                                                    <Icon icon={faArrowRightLong} className={"fa-2x"}/>
-                                                </button>
-                                            </div>
-                                        </>
+                                    issue.titles.total_issues > 1 &&
+                                    <>
+                                        {
+                                            loadingButtons ?
+                                                <CustomSpinner/>
+                                                :
+                                                <>
+                                                    <div className={"text-center"}>
+                                                        <button
+                                                            onClick={() => navigate(`/issues/${prevIssueId}`)}
+                                                            disabled={!prevIssueId}
+                                                            className={"btn btn-sm btn-outline-secondary me-3"}
+                                                            aria-label={LABELS_AND_HEADINGS.PREVIOUS}>
+                                                            <Icon icon={faArrowLeftLong} className={"fa-2x"}/>
+                                                        </button>
+                                                        <button
+                                                            onClick={() => navigate(`/issues/${nextIssueId}`)}
+                                                            disabled={!nextIssueId}
+                                                            className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS_AND_HEADINGS.NEXT}>
+                                                            <Icon icon={faArrowRightLong} className={"fa-2x"}/>
+                                                        </button>
+                                                    </div>
+                                                </>
+                                        }
+                                    </>
                                 }
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
@@ -129,6 +134,10 @@ export const Issue = () => {
                                         <GradeBadge grade={grade}/>
                                     }
                                     <TitleBadge title={issue.titles}/>
+                                    {
+                                        !!issue.is_variant &&
+                                        <span className={`tag-badge text-black bg-info`}>Variant</span>
+                                    }
                                     <PublisherBadge publisher={issue.publishers}/>
                                     {
                                         issue.is_marvelklubben === 1 &&

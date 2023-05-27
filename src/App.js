@@ -3,6 +3,7 @@ import {BrowserRouter as Router} from "react-router-dom"
 import {AppContextProvider} from "./context/AppContext"
 import {MyRoutes} from "./components/MyRoutes";
 import {Header} from "./components/header/Header";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 
 export const App = () => {
@@ -12,6 +13,7 @@ export const App = () => {
             <Router>
                 <Header/>
                 <MyRoutes/>
+                <ScrollToTopButton/>
             </Router>
         </AppContextProvider>
     )

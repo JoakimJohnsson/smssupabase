@@ -6,7 +6,7 @@ import {UsersList} from "../../../lists/users/UsersList";
 import {Link} from "react-router-dom";
 
 
-export const UsersCard = () => {
+export const UsersSection = () => {
 
     const [limitedUsersData, setLimitedUsersData] = useState(null);
 

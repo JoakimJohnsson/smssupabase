@@ -43,7 +43,7 @@ export const AdminPublisherAdd = () => {
     }, [name, description, country_id, setFormInputClass, wiki_url])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>

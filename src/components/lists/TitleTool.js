@@ -21,13 +21,13 @@ export const TitleTool = ({title, displayName, isCard = false}) => {
     return isCard ? (
             <button
                 aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                className={`btn ${isCollectingTitle ? "btn-danger" : "btn-success"} btn-sm p-2 rounded-0 w-100 justify-content-center`}
+                className={`btn ${isCollectingTitle ? "btn-danger" : "btn-success"} btn-sm p-2 rounded-0 w-100 flex-column justify-content-center`}
                 onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
                 {
                     isCollectingTitle ?
-                        <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
+                        <><Icon icon={faMinus} size={"1x"} className={"mb-1"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
                         :
-                        <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
+                        <><Icon icon={faPlus} size={"1x"} className={"mb-1"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
                 }
             </button>
         )

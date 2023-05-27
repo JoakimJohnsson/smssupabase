@@ -5,9 +5,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 import FilterForm from "../search-filter/FilterForm";
-import {Link} from "react-router-dom";
-import {getUserName} from "../../helpers/functions/functions";
-import marvel from "../../assets/images/publishers/marvel.gif";
+import {UserCard} from "../lists/users/UserCard";
 
 
 export const Users = () => {
@@ -21,7 +19,7 @@ export const Users = () => {
     }, [])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_USERS}/>
@@ -45,27 +43,7 @@ export const Users = () => {
                                         .map((user) =>
                                             // Only show public users here
                                             user.is_public === 1 &&
-                                            <li key={user.id} className={"title-card"}>
-                                                <Link to={`/users/${user.id}`} className={"hocus-standard"}
-                                                      title={getUserName(user)}>
-                                                    <div className={"image-container mb-2 position-relative"}>
-                                                        {
-                                                            user.image_url ?
-                                                                <img
-                                                                    src={user.image_url}
-                                                                    alt={getUserName(user)}
-                                                                    className="w-100"
-                                                                />
-                                                                :
-                                                                <img
-                                                                    src={marvel}
-                                                                    alt={getUserName(user)}
-                                                                    className="w-100"
-                                                                />
-                                                        }
-                                                    </div>
-                                                </Link>
-                                            </li>
+                                            <UserCard key={user.id} user={user}/>
                                         )
                                 }
                             </ul>

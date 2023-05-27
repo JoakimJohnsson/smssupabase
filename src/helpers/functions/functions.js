@@ -75,7 +75,9 @@ export const generateUniqueHashedFilename = (fileExt, fileType) => {
 
 export const printOptions = (data) => {
     return data && (
-        data.map(
+        data
+            .sort((a, b) => sortByName(a, b))
+            .map(
             (item) => <option key={item.id} value={item.id}>{item.name}</option>)
     )
 }
@@ -120,7 +122,11 @@ export const getIssueName = (issue) => {
         number = number + "-" + (number + 1)
     }
     if (issue && issue.titles) {
-        return issue.titles.name + " #" + number + variantSuffix + " - " + issue.year;
+        if (issue.titles.total_issues > 1) {
+            return issue.titles.name + " #" + number + variantSuffix + " - " + issue.year;
+        } else {
+            return issue.titles.name + " - " + issue.year;
+        }
     }
 }
 
@@ -145,12 +151,21 @@ export const hasImage = (item) => {
 }
 
 export const sortByName = (a, b) => {
-    if (a.name < b.name) {
-        return -1;
-    }
-    if (a.name > b.name) {
-        return 1;
-    }
+    let aName = sortableName(a.name);
+    let bName = sortableName(b.name);
+    if (aName < bName) return -1;
+    if (aName > bName) return 1;
+    return 0;
+}
+
+
+export const sortByNameAndStartYear = (a, b) => {
+    let aName = sortableName(a.name);
+    let bName = sortableName(b.name);
+    if (aName < bName) return -1;
+    if (aName > bName) return 1;
+    if (a.start_year < b.start_year) return -1;
+    if (a.start_year > b.start_year) return 1;
     return 0;
 }
 
@@ -159,4 +174,8 @@ export const isTrue = (string) => (string === "true");
 
 export const getCurrentDate = () => {
     return (new Date()).toISOString();
+}
+
+export const sortableName = (name) => {
+    return name.trim().replace(":", "").replace("-", "").toLowerCase();
 }

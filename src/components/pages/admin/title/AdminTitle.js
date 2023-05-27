@@ -140,7 +140,7 @@ export const AdminTitle = () => {
     }
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             {
                 title && loading ?
                     <div className={"row row-padding--main"}>

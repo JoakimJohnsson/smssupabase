@@ -8,26 +8,31 @@ import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
+import FilterForm from "../../../search-filter/FilterForm";
+import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
 
 
 export const AdminTitles = () => {
 
     const [titlesData, setTitlesData] = useState(null);
     const navigate = useNavigate();
+    const [searchParams, setSearchParams, filter] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();
     }, [])
 
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                         <Breadcrumbs/>
+                        <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                                    placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                         <div className={"sms-section--light"}>
-                        {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true}/> : <CustomSpinner/>}
+                        {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true} filter={filter}/> : <CustomSpinner/>}
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
                                     label={LABELS_AND_HEADINGS.ADD_TITLE}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}

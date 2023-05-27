@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
 import {UpdateReleaseDateButton} from "../../../minis/UpdateReleaseDateButton";
 
 
-export const UtilsCard = () => {
+export const UtilsSection = () => {
 
     return (
         <div className={"sms-dashboard-col"}>

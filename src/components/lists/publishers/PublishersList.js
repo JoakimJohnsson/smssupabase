@@ -7,13 +7,17 @@ import {hasImage, sortByName} from "../../../helpers/functions/functions";
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 
-export const PublishersList = ({publishersData, setPublishersData, showAdminInfo}) => {
+export const PublishersList = ({publishersData, setPublishersData, showAdminInfo, filter = ""}) => {
 
     return publishersData && (
         <ul className={"sms-list--with-tools mb-4"}>
             {
                 publishersData.length ?
-                    (publishersData.sort((a, b) => sortByName(a, b)).map((p, index) =>
+                    (publishersData
+                            .filter(publisher => publisher.name.toLowerCase()
+                                    .includes(filter.toLowerCase()) ||
+                                filter === ""
+                            ).sort((a, b) => sortByName(a, b)).map((p, index) =>
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
                                     <div className={"sms-list-col--main"}>
