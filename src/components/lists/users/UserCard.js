@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import marvel from "../../../assets/images/publishers/marvel.gif";
 
 
 export const UserCard = ({user}) => {
@@ -17,7 +18,7 @@ export const UserCard = ({user}) => {
             <Link to={`/users/${user.id}`} title={displayName}>
                 <div className={"user-image--wrapper position-relative"}>
                     <img
-                        src={user.image_url}
+                        src={user.image_url ? user.image_url : marvel}
                         alt={displayName}
                         className="user-image"
                     />
