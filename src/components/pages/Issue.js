@@ -163,6 +163,15 @@ export const Issue = () => {
                                             </a>
                                         </p>
                                     }
+                                    {
+                                        issue.titles.comics_org_url &&
+                                        <p>
+                                            <a href={issue.titles.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                                {issue.titles.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                                <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                            </a>
+                                        </p>
+                                    }
                                 </div>
                                 {
                                     isCollectingIssue &&

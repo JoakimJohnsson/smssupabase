@@ -206,6 +206,7 @@ export const LABELS_AND_HEADINGS = {
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
     OPEN: "Öppna",
+    ON_COMICS_ORG: "på Comics.org",
     PASSWORD: "Lösenord",
     NEW_PASSWORD: "Nytt lösenord",
     PASSWORD_CONFIRM: "Bekräfta lösenord",
@@ -258,6 +259,8 @@ export const LABELS_AND_HEADINGS = {
     WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
     WIKI_URL: "Länk till Seriewikin",
     WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
+    COMICS_ORG_URL: "Länk till Comics.org",
+    COMICS_ORG_URL_DB: "Länk till Comics.org (comics_org_url)",
     YEAR: "År",
     YEAR_DB: "År (year)"
 }

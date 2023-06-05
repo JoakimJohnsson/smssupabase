@@ -86,6 +86,15 @@ export const Title = () => {
                                         </a>
                                     </p>
                                 }
+                                {
+                                    title.comics_org_url &&
+                                    <p>
+                                        <a href={title.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                            {title.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                            <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                        </a>
+                                    </p>
+                                }
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-6"}>
                                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
