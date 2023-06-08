@@ -34,6 +34,7 @@ export const IssueCard = ({issue}) => {
                         src={issue.image_url}
                         alt={displayName}
                         className="cover-image"
+                        loading={"lazy"}
                     />
                     {
                         issue.marvelklubben_number > 0 &&

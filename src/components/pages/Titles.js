@@ -54,6 +54,7 @@ export const Titles = () => {
                                                             src={title.image_url}
                                                             alt={LABELS_AND_HEADINGS.TITLE + " " + title.name}
                                                             className="w-100"
+                                                            loading={"lazy"}
                                                         />
                                                         {
                                                             <div className={"title-card--year"}>{title.start_year}</div>

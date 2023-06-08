@@ -27,7 +27,8 @@ const Demo = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.8.8 - 2023-xx-xx</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                    <li className={"list-group-item px-0"}>Länk till titel på comics.org</li>
+                    <li className={"list-group-item px-0"}>Länk till titel på comics.org.</li>
+                    <li className={"list-group-item px-0"}>Lazy loading av bilder.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.7 - 2023-05-27</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
