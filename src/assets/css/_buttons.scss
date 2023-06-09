@@ -59,6 +59,17 @@
   }
 }
 
+.sms-function-btn {
+  @extend .m-0, .p-1;
+  border: 1px solid;
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: .9;
+    border: 1px solid $border-color;
+  }
+}
+
 .sms-grade-btn {
   @extend .btn;
   &:hover,

@@ -187,6 +187,8 @@ export const LABELS_AND_HEADINGS = {
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUES: "Publikationer",
     LAST_NAME: "Efternamn",
+    LIST_VIEW_GRID_SHOW: "Visa som grid",
+    LIST_VIEW_LIST_SHOW: "Visa som lista",
     LOADING: "Laddar",
     LOG_IN: "Logga in",
     LOG_IN_CTA: "Logga in",

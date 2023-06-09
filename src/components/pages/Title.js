@@ -9,12 +9,14 @@ import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
+import {faList, faGrid} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {FunctionButton} from "../minis/FunctionButton";
 
 
 export const Title = () => {
@@ -28,6 +30,7 @@ export const Title = () => {
     const displayName = title.name + " " + title.start_year;
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
+    const [listViewGrid, setListViewGrid] = useState(true);
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
@@ -97,7 +100,15 @@ export const Title = () => {
                                 }
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-6"}>
-                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                <h2 className={"mb-3"}>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                {
+                                    listViewGrid ?
+                                        <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
+                                                        label={LABELS_AND_HEADINGS.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
+                                        :
+                                        <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
+                                                        label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
+                                }
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue showCollectingButtons={isCollectingTitle}/>
                             </div>
                         </>

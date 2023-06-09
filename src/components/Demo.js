@@ -29,6 +29,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Länk till titel på comics.org.</li>
                     <li className={"list-group-item px-0"}>Lazy loading av bilder.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att välja list- eller grid-vy för publikationer på titel.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.7 - 2023-05-27</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
