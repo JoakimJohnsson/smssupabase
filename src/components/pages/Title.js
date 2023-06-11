@@ -110,16 +110,17 @@ export const Title = () => {
                             <div className={"col-12 col-lg-7 col-xl-9"}>
                                 <TitleProgress titleProgress={titleProgress}/>
                                 <div className={"mb-4"}>
-                                {
-                                    listViewGrid ?
-                                        <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
-                                                        label={LABELS_AND_HEADINGS.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
-                                        :
-                                        <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
-                                                        label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
-                                }
+                                    {
+                                        listViewGrid ?
+                                            <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
+                                                            label={LABELS_AND_HEADINGS.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
+                                            :
+                                            <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
+                                                            label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
+                                    }
                                 </div>
-                                <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle} listViewGrid={listViewGrid}/>
+                                <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
+                                            listViewGrid={listViewGrid} fetchTitleProgress={fetchTitleProgress}/>
                             </div>
                         </>
                 }

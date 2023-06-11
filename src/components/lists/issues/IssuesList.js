@@ -5,7 +5,7 @@ import {IssuesGrid} from "./IssuesGrid";
 import {IssuesListAccordion} from "./IssuesListAccordion";
 
 
-export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollectingButtons, listViewGrid = false}) => {
+export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollectingButtons, listViewGrid = false, fetchTitleProgress}) => {
 
     let groupedIssuesData = [];
     let groupedIssuesDataIndexes = [];
@@ -23,7 +23,8 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollec
         (
             listViewGrid ?
                 <IssuesGrid groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
-                            showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}/>
+                            showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
+                            fetchTitleProgress={fetchTitleProgress}/>
                 :
                 <IssuesListAccordion groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
                                      showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}/>

@@ -10,7 +10,7 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 
 
-export const IssueGridCard = ({issue, showCollectingButtons}) => {
+export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress}) => {
 
     const {setInformationMessage, user} = useAppContext();
     const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
@@ -18,6 +18,11 @@ export const IssueGridCard = ({issue, showCollectingButtons}) => {
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
+
+    const handleClick = () => {
+        handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)
+        fetchTitleProgress();
+    }
 
     return issue && issue.titles && (
         <li className={"issue-card"}>
@@ -49,7 +54,7 @@ export const IssueGridCard = ({issue, showCollectingButtons}) => {
                         <button
                             aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
                             className={`btn btn-sm ${isCollectingIssue ? "btn-success" : "btn-secondary"} justify-content-center w-100 rounded-0`}
-                            onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                            onClick={() => handleClick()}>
                             {
                                 isCollectingIssue ?
                                     <Icon icon={faMinus} className={"me-2"}/>
