@@ -13,7 +13,8 @@ export const IssuesListAccordion = ({
                                         issuesData,
                                         setIssuesData,
                                         showAdminInfo,
-                                        showCollectingButtons
+                                        showCollectingButtons,
+                                        fetchTitleProgress
                                     }) => {
 
     return (
@@ -36,6 +37,7 @@ export const IssuesListAccordion = ({
                                                     setIssuesData={setIssuesData}
                                                     issuesData={issuesData}
                                                     showCollectingButtons={showCollectingButtons}
+                                                    fetchTitleProgress={fetchTitleProgress}
                                                 />))
                                             :
                                             (<NoDataAvailable/>)

@@ -27,7 +27,8 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollec
                             fetchTitleProgress={fetchTitleProgress}/>
                 :
                 <IssuesListAccordion groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
-                                     showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}/>
+                                     showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
+                                     fetchTitleProgress={fetchTitleProgress}/>
         )
         :
         <NoDataAvailable/>
