@@ -32,7 +32,7 @@ export const Title = () => {
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
     const [listViewGrid, setListViewGrid] = useState(true);
-    const [titleProgress, setTitleProgress] = useState(0);
+    const [titleProgress, setTitleProgress] = useState({});
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
