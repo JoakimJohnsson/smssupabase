@@ -10,13 +10,14 @@ import {IssuesList} from "../lists/issues/IssuesList";
 import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faList, faGrid} from "@fortawesome/pro-duotone-svg-icons";
-import {getCalculatedYear} from "../../helpers/functions/functions";
+import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {FunctionButton} from "../minis/FunctionButton";
+import {TitleProgress} from "./TitleProgress";
 
 
 export const Title = () => {
@@ -31,6 +32,7 @@ export const Title = () => {
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
     const [listViewGrid, setListViewGrid] = useState(true);
+    const [titleProgress, setTitleProgress] = useState(0);
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
@@ -38,9 +40,17 @@ export const Title = () => {
         });
     }, [id]);
 
+    const fetchTitleProgress = useCallback(async () => {
+        setTitleProgress(await getTitleProgressForUser(title, user.id));
+    }, [title, user.id])
+
     useEffect(() => {
         fetchTitleAndIssuesData();
     }, [fetchTitleAndIssuesData])
+
+    useEffect(() => {
+        fetchTitleProgress().then();
+    }, [fetchTitleProgress])
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -98,7 +108,7 @@ export const Title = () => {
                                 }
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-9"}>
-                                <h2 className={"mb-3"}>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                <TitleProgress titleProgress={titleProgress}/>
                                 <div className={"mb-4"}>
                                 {
                                     listViewGrid ?

@@ -1,6 +1,7 @@
 import {supabase} from "../../supabase/supabaseClient";
 import {CLASSES, MESSAGES} from "../constants";
 import React from "react";
+import {getNoCollectedIssues} from "./serviceFunctions/collectFunctions";
 
 export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
@@ -167,6 +168,15 @@ export const sortByNameAndStartYear = (a, b) => {
     if (a.start_year < b.start_year) return -1;
     if (a.start_year > b.start_year) return 1;
     return 0;
+}
+
+export const getTitleProgressForUser = async (title, userId) => {
+    let totalIssues = title.total_issues;
+    let noCollectedIssues = 0;
+    await getNoCollectedIssues(title.id, userId).then((result) => {
+        noCollectedIssues = result;
+    })
+    return Math.round(noCollectedIssues / totalIssues * 100);
 }
 
 // Helper function for converting string value "true" to boolean value.

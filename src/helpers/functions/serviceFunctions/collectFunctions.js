@@ -123,22 +123,50 @@ export const removeIssueFromCollectionSimple = async (userId, issueId) => {
 
 export const getAllIssueIdsForTitle = async (titleId) => {
     let issueIds = [];
-    console.log("iss id", titleId);
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.ISSUES)
-            .select("id")
-            .eq("title_id", titleId)
-        if (error && status !== 406) {
+    if (titleId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("id")
+                .eq("title_id", titleId)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data) {
+                data.forEach(data => issueIds.push(data.id))
+                return issueIds;
+            }
+        } catch (error) {
             console.error(error);
         }
-        if (data) {
-            data.forEach(data => issueIds.push(data.id))
-            return issueIds;
-        }
-    } catch (error) {
-        console.error(error);
     }
+}
+
+export const getNoCollectedIssues = async (titleId, userId) => {
+    let issueIds = [];
+    let noCollectedIssues = 0;
+    await getAllIssueIdsForTitle(titleId).then((result) => {
+        issueIds = result;
+    })
+    if (issueIds && issueIds.length) {
+        for (const issueId of issueIds) {
+            try {
+                let {data, error, status} = await supabase
+                    .from(TABLES.USERS_ISSUES)
+                    .select()
+                    .match({user_id: userId, issue_id: issueId})
+                if (error && status !== 406) {
+                    console.error(error);
+                }
+                if (data && data.length > 0) {
+                    noCollectedIssues += 1;
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+    return noCollectedIssues;
 }
 
 export const addGrade = async (userId, issueId) => {
