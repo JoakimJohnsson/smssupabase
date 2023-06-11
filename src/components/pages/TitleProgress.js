@@ -6,7 +6,7 @@ import {TEXTS} from "../../helpers/constants";
 export const TitleProgress = ({titleProgress}) => {
 
     let collectText100 = TEXTS.COLLECTING_TITLE_100;
-    let collectText = TEXTS.COLLECTING_TITLE_TEXT_1 + " " + titleProgress.progress + " " + TEXTS.COLLECTING_TITLE_TEXT_2;
+    let collectText = TEXTS.COLLECTING_TITLE_TEXT_1 + " " + titleProgress.progress + TEXTS.COLLECTING_TITLE_TEXT_2;
 
     return (
         <div className={"mb-3"}>
