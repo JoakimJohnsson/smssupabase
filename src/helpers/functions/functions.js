@@ -1,7 +1,7 @@
 import {supabase} from "../../supabase/supabaseClient";
 import {CLASSES, MESSAGES} from "../constants";
 import React from "react";
-import {getNoCollectedIssues} from "./serviceFunctions/collectFunctions";
+import {getNoCollectedIssues, getNoCollectedIssues2} from "./serviceFunctions/collectFunctions";
 
 export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)

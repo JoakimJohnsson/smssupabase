@@ -143,30 +143,23 @@ export const getAllIssueIdsForTitle = async (titleId) => {
 }
 
 export const getNoCollectedIssues = async (titleId, userId) => {
-    let issueIds = [];
-    let noCollectedIssues = 0;
-    await getAllIssueIdsForTitle(titleId).then((result) => {
-        issueIds = result;
-    })
-    if (issueIds && issueIds.length) {
-        for (const issueId of issueIds) {
-            try {
-                let {data, error, status} = await supabase
-                    .from(TABLES.USERS_ISSUES)
-                    .select()
-                    .match({user_id: userId, issue_id: issueId})
-                if (error && status !== 406) {
-                    console.error(error);
-                }
-                if (data && data.length > 0) {
-                    noCollectedIssues += 1;
-                }
-            } catch (error) {
+    if (titleId && userId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("id, users!inner (id)")
+                .eq("title_id", titleId)
+                .eq("users.id", userId)
+            if (error && status !== 406) {
                 console.error(error);
             }
+            if (data && data.length > 0) {
+                return data.length
+            }
+        } catch (error) {
+            console.error(error);
         }
     }
-    return noCollectedIssues;
 }
 
 export const addGrade = async (userId, issueId) => {

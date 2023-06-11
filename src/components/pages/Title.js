@@ -41,7 +41,7 @@ export const Title = () => {
     }, [id]);
 
     const fetchTitleProgress = useCallback(async () => {
-        setTitleProgress(await getTitleProgressForUser(title, user.id));
+        setTitleProgress(await getTitleProgressForUser(title, user.id))
     }, [title, user.id])
 
     useEffect(() => {
