@@ -11,7 +11,7 @@ export const IssuesGrid = ({groupedIssuesData, showCollectingButtons}) => {
                 groupedIssuesData.length &&
                 (groupedIssuesData.map((year, index) =>
                         <div key={index}>
-                            <h3 className={"h5"}>{year[0].year}</h3>
+                            <h2 className={"h5"}>{year[0].year}</h2>
                             <ul className={"sms-list--with-cards mb-0"}>
                                 {
                                     year.length ?
