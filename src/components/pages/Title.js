@@ -108,7 +108,10 @@ export const Title = () => {
                                 }
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-9"}>
-                                <TitleProgress titleProgress={titleProgress}/>
+                                {
+                                    isCollectingTitle &&
+                                    <TitleProgress titleProgress={titleProgress}/>
+                                }
                                 <div className={"mb-4"}>
                                     {
                                         listViewGrid ?

@@ -1,7 +1,7 @@
 import {supabase} from "../../supabase/supabaseClient";
 import {CLASSES, MESSAGES} from "../constants";
 import React from "react";
-import {getNoCollectedIssues, getNoCollectedIssues2} from "./serviceFunctions/collectFunctions";
+import {getNoCollectedIssues} from "./serviceFunctions/collectFunctions";
 
 export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
@@ -174,9 +174,13 @@ export const getTitleProgressForUser = async (title, userId) => {
     let totalIssues = title.total_issues;
     let noCollectedIssues = 0;
     await getNoCollectedIssues(title.id, userId).then((result) => {
-        noCollectedIssues = result;
+        noCollectedIssues = result || 0;
     })
-    return Math.round(noCollectedIssues / totalIssues * 100);
+    return {
+        totalIssues: totalIssues,
+        noCollectedIssues: noCollectedIssues,
+        progress: Math.round(noCollectedIssues / totalIssues * 100)
+    };
 }
 
 // Helper function for converting string value "true" to boolean value.
