@@ -89,7 +89,7 @@ export const Issue = () => {
                                     isCollectingTitle &&
                                     <button
                                         aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                                        className={`btn ${isCollectingIssue ? "btn-danger" : "btn-success"} p-2 rounded-0 w-100 justify-content-center mb-4`}
+                                        className={`btn ${isCollectingIssue ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 justify-content-center mb-4`}
                                         onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
                                         {
                                             isCollectingIssue ?

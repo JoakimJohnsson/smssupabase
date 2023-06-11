@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
@@ -8,7 +8,7 @@ import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTit
 import {handleCollectingTitle} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 
-export const TitleTool = ({title, displayName, isCard = false}) => {
+export const TitleTool = ({title, displayName, isCard = false, setUserCollectsTitle = false}) => {
 
     const {setInformationMessage, user} = useAppContext();
     const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, title.id);
@@ -16,6 +16,12 @@ export const TitleTool = ({title, displayName, isCard = false}) => {
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
     const collectTitleIcon = isCollectingTitle ? faBadgeCheck : faBadge;
     const collectTitleBtnClassName = isCollectingTitle ? "btn text-success sms-tool-btn" : "btn text-light sms-tool-btn";
+
+    useEffect(() => {
+        if (setUserCollectsTitle) {
+            setUserCollectsTitle(isCollectingTitle)
+        }
+    }, [isCollectingTitle, setUserCollectsTitle])
 
     return isCard ? (
             <button
