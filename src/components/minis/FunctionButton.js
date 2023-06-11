@@ -1,27 +1,15 @@
 import React from "react";
 import {Icon} from "../icons";
-import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 
-export const FunctionButton = ({customClass, variant, onClick, label, icon, id}) => {
+export const FunctionButton = ({customClass, variant, onClick, label, icon}) => {
 
-    const defaultClass = `btn btn-${variant} sms-function-btn ms-0`;
+    const defaultClass = `btn btn-outline-${variant} border-0 sms-function-btn ms-0`;
     const className = customClass ? defaultClass + " " + customClass : defaultClass;
 
     return (
-        <OverlayTrigger
-            key={id}
-            placement={"top"}
-            overlay={
-                <Tooltip id={id}>
-                    {label}
-                </Tooltip>
-            }
-        >
-            <button onClick={onClick} className={className} aria-label={label}>
-                <Icon icon={icon} className={"fa-xl fa-fw"}/>
-            </button>
-        </OverlayTrigger>
-
+        <button onClick={onClick} className={className}>
+            <Icon icon={icon} className={"fa-xl fa-fw"}/> <span className={"mx-3"}>{label}</span>
+        </button>
     )
 }

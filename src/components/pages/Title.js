@@ -8,7 +8,7 @@ import {
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {Icon} from "../icons";
-import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
+import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faList, faGrid} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
@@ -57,15 +57,13 @@ export const Title = () => {
                                 <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
                                 <button
                                     aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                                    className={`btn ${isCollectingTitle ? "btn-danger" : "btn-success"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
+                                    className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
                                     onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
                                     {
                                         isCollectingTitle ?
-                                            <><Icon icon={faMinus} size={"1x"}
-                                                    className={"mb-1"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
+                                            <>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
                                             :
-                                            <><Icon icon={faPlus} size={"1x"}
-                                                    className={"mb-1"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
+                                            <>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
                                     }
                                 </button>
                                 {
@@ -99,8 +97,9 @@ export const Title = () => {
                                     </p>
                                 }
                             </div>
-                            <div className={"col-12 col-lg-7 col-xl-6"}>
+                            <div className={"col-12 col-lg-7 col-xl-9"}>
                                 <h2 className={"mb-3"}>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                <div className={"mb-4"}>
                                 {
                                     listViewGrid ?
                                         <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
@@ -109,7 +108,8 @@ export const Title = () => {
                                         <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
                                                         label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
                                 }
-                                <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue showCollectingButtons={isCollectingTitle}/>
+                                </div>
+                                <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle} listViewGrid={listViewGrid}/>
                             </div>
                         </>
                 }

@@ -67,7 +67,7 @@ export const Publisher = () => {
                             </div>
                             <div className={"col-12 col-md-8 col-lg-7 col-xl-6 mb-4"}>
                                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
-                                {issuesData ? <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue showCollectingButtons={false}/> :
+                                {issuesData ? <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={false}/> :
                                     <CustomSpinner/>}
                             </div>
                         </>
