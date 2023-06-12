@@ -19,7 +19,9 @@ export const IssueTool = ({issue, displayName, fetchTitleProgress}) => {
 
     const handleOnClick = () => {
         handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);
-        fetchTitleProgress();
+        setTimeout(() => {
+            fetchTitleProgress();
+        }, 200);
     }
 
     return (

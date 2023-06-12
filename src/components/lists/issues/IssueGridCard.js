@@ -19,9 +19,11 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress}
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
 
-    const handleClick = () => {
-        handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)
-        fetchTitleProgress();
+    const handleClick = async () => {
+        handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);
+        setTimeout(() => {
+            fetchTitleProgress();
+        }, 200);
     }
 
     return issue && issue.titles && (

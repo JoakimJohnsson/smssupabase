@@ -49,7 +49,7 @@ export const Title = () => {
     }, [fetchTitleAndIssuesData])
 
     useEffect(() => {
-        fetchTitleProgress().then();
+        fetchTitleProgress().then(() => console.log("Fetched progress"));
     }, [fetchTitleProgress])
 
     return (
