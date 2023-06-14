@@ -10,7 +10,7 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 
 
-export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress}) => {
+export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false}) => {
 
     const {setInformationMessage, user} = useAppContext();
     const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
@@ -21,9 +21,11 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress}
 
     const handleClick = async () => {
         handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);
-        setTimeout(() => {
-            fetchTitleProgress();
-        }, 200);
+        if (fetchTitleProgress) {
+            setTimeout(() => {
+                fetchTitleProgress();
+            }, 200);
+        }
     }
 
     return issue && issue.titles && (

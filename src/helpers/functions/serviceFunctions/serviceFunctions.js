@@ -81,7 +81,7 @@ export const getCountByTable = async (table, setData) => {
             console.error(error);
         }
         if (count) {
-            setData(count.count);
+            setData(count);
         }
     } catch (error) {
         console.error(error);

@@ -20,7 +20,7 @@ export const TitleProgress = ({titleProgress}) => {
                         titleProgress.progress === 100 ?
                             <ProgressBar striped variant="success" now={titleProgress.progress}/>
                             :
-                            <ProgressBar striped now={titleProgress.progress} label={collectTextParts}/>
+                            <ProgressBar striped now={titleProgress.progress} label={titleProgress.progress > 10 ? collectTextParts : ""}/>
 
                     }
                 </>

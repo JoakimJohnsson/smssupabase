@@ -8,7 +8,7 @@ import {useAppContext} from "../../context/AppContext";
 import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 
-export const IssueTool = ({issue, displayName, fetchTitleProgress}) => {
+export const IssueTool = ({issue, displayName, fetchTitleProgress = false}) => {
 
     const {setInformationMessage, user} = useAppContext();
     const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id)
@@ -19,9 +19,11 @@ export const IssueTool = ({issue, displayName, fetchTitleProgress}) => {
 
     const handleOnClick = () => {
         handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);
-        setTimeout(() => {
-            fetchTitleProgress();
-        }, 200);
+        if (fetchTitleProgress) {
+            setTimeout(() => {
+                fetchTitleProgress();
+            }, 200);
+        }
     }
 
     return (
