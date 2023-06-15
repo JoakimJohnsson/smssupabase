@@ -2,12 +2,11 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {Link} from "react-router-dom";
 import FilterForm from "../search-filter/FilterForm";
 import {sortByNameAndStartYear} from "../../helpers/functions/functions";
-import {TitleTool} from "../lists/TitleTool";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {TitlesListItem} from "./TitlesListItem";
 
 
 export const Titles = () => {
@@ -46,22 +45,7 @@ export const Titles = () => {
                                         )
                                         .sort((a, b) => sortByNameAndStartYear(a, b))
                                         .map((title) =>
-                                            <li key={title.id} className={"title-card"}>
-                                                <Link to={`/titles/${title.id}`} className={"hocus-standard"}
-                                                      title={title.name + " " + title.start_year}>
-                                                    <div className={"image-container mb-2 position-relative"}>
-                                                        <img
-                                                            src={title.image_url}
-                                                            alt={LABELS_AND_HEADINGS.TITLE + " " + title.name}
-                                                            className="w-100"
-                                                        />
-                                                        {
-                                                            <div className={"title-card--year"}>{title.start_year}</div>
-                                                        }
-                                                    </div>
-                                                </Link>
-                                                <TitleTool title={title} displayName={title.name + " " + title.start_year} isCard/>
-                                            </li>
+                                            <TitlesListItem key={title.id} title={title}/>
                                         )
                                 }
                             </ul>

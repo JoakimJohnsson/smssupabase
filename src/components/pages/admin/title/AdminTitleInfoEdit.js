@@ -49,13 +49,23 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
-                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
                 <input
                     id={"wikiurl"}
                     name={"wiki_url"}
                     className={CLASSES.FORM_INPUT_DEFAULT}
                     type={"text"}
                     value={newTitle.wiki_url || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
+                    disabled={!edit}
+                />
+                <label className={"form-label"} htmlFor="comicsorgurl">{LABELS_AND_HEADINGS.COMICS_ORG_URL_DB}</label>
+                <input
+                    id={"comicsorgurl"}
+                    name={"comics_org_url"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
+                    value={newTitle.comics_org_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />

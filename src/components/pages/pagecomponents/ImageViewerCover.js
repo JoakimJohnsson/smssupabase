@@ -10,6 +10,7 @@ export const ImageViewerCover = ({url, displayName}) => {
                 src={url}
                 alt={displayName}
                 className="cover-image"
+                loading={"lazy"}
             />
         </div>
         )

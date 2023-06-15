@@ -23,26 +23,22 @@ const Demo = () => {
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.8.7 - 2023-05-27</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.8.8 - 2023-06-15</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Länk till titel på comics.org.</li>
+                    <li className={"list-group-item px-0"}>Lazy loading av bilder.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att välja list- eller grid-vy för publikationer på titel.</li>
+                    <li className={"list-group-item px-0"}>Förbättrat utseende och funktion för att lägga till och ta bort publikationer och titlar från samlingen.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att börja samla på en titel från publikations sidan.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.7 - 2023-05-27</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Förbättrad sortering på många ställen.</li>
                     <li className={"list-group-item px-0"}>Länk för att snabbt gå tillbaka till toppen på sidan.</li>
                     <li className={"list-group-item px-0"}>Länk för att hoppa direkt till innehåll på sidan.</li>
                     <li className={"list-group-item px-0"}>Visa information om variant på publikation.</li>
                     <li className={"list-group-item px-0"}>Förbättrat kort för visning av användare i filter / sök.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.6 - 2023-05-15</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Stor omarbetning - Flyttade förlag från titel till publikation.</li>
-                    <li className={"list-group-item px-0"}>Informera om cookies och användarinformation vid registrering.</li>
-                    <li className={"list-group-item px-0"}>Profilsida och sida som listar alla publika användare.</li>
-                    <li className={"list-group-item px-0"}>Information om status på uppladdning av titlar och publikationer på startsidan.</li>
-                    <li className={"list-group-item px-0"}>Lagt till sök/filtrering på titlar och förlag.</li>
-                    <li className={"list-group-item px-0"}>Uppdaterade paket.</li>
-                    <li className={"list-group-item px-0"}>Funktionalitet för sök / filtrering.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad layout för förlagssida.</li>
-                    <li className={"list-group-item px-0"}>En Demo sektion på landningssidan.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

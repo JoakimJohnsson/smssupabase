@@ -8,13 +8,16 @@ import {
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {Icon} from "../icons";
-import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {getCalculatedYear} from "../../helpers/functions/functions";
+import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
+import {faList, faGrid} from "@fortawesome/pro-duotone-svg-icons";
+import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {FunctionButton} from "../minis/FunctionButton";
+import {TitleProgress} from "./TitleProgress";
 
 
 export const Title = () => {
@@ -28,6 +31,8 @@ export const Title = () => {
     const displayName = title.name + " " + title.start_year;
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
+    const [listViewGrid, setListViewGrid] = useState(true);
+    const [titleProgress, setTitleProgress] = useState({});
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
@@ -35,9 +40,17 @@ export const Title = () => {
         });
     }, [id]);
 
+    const fetchTitleProgress = useCallback(async () => {
+        setTitleProgress(await getTitleProgressForUser(title, user.id))
+    }, [title, user.id])
+
     useEffect(() => {
         fetchTitleAndIssuesData();
     }, [fetchTitleAndIssuesData])
+
+    useEffect(() => {
+        fetchTitleProgress().then(() => console.log("Fetched progress"));
+    }, [fetchTitleProgress])
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -54,15 +67,13 @@ export const Title = () => {
                                 <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
                                 <button
                                     aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                                    className={`btn ${isCollectingTitle ? "btn-danger" : "btn-success"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
+                                    className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
                                     onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
                                     {
                                         isCollectingTitle ?
-                                            <><Icon icon={faMinus} size={"1x"}
-                                                    className={"mb-1"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
+                                            <>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
                                             :
-                                            <><Icon icon={faPlus} size={"1x"}
-                                                    className={"mb-1"}/>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
+                                            <>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
                                     }
                                 </button>
                                 {
@@ -86,10 +97,33 @@ export const Title = () => {
                                         </a>
                                     </p>
                                 }
+                                {
+                                    title.comics_org_url &&
+                                    <p>
+                                        <a href={title.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                            {title.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                            <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                        </a>
+                                    </p>
+                                }
                             </div>
-                            <div className={"col-12 col-lg-7 col-xl-6"}>
-                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
-                                <IssuesList issuesData={issuesData} showAdminInfo={false} isIssue showCollectingButtons={isCollectingTitle}/>
+                            <div className={"col-12 col-lg-7 col-xl-9"}>
+                                {
+                                    isCollectingTitle &&
+                                    <TitleProgress titleProgress={titleProgress}/>
+                                }
+                                <div className={"mb-4"}>
+                                    {
+                                        listViewGrid ?
+                                            <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
+                                                            label={LABELS_AND_HEADINGS.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
+                                            :
+                                            <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
+                                                            label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
+                                    }
+                                </div>
+                                <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
+                                            listViewGrid={listViewGrid} fetchTitleProgress={fetchTitleProgress}/>
                             </div>
                         </>
                 }

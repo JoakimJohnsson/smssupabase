@@ -25,6 +25,7 @@ export const AdminTitleAdd = () => {
     const [start_year, setStart_year] = useState(1975);
     const [end_year, setEnd_year] = useState(1975);
     const [format_id, setFormat_id] = useState("");
+    const [comics_org_url, setComics_org_url] = useState("");
     const [total_issues, setTotal_issues] = useState(12);
 
     const navigate = useNavigate();
@@ -40,14 +41,14 @@ export const AdminTitleAdd = () => {
     }
 
     useEffect(() => {
-        if (format_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "") {
+        if (format_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "" && comics_org_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
-        } else if (format_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "") {
+        } else if (format_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "" || comics_org_url !== "") {
             setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
         } else {
             setFormInputClass(CLASSES.FORM_INPUT_ERROR);
         }
-    }, [format_id, name, description, wiki_url, start_year, end_year, total_issues, setFormInputClass])
+    }, [format_id, name, description, wiki_url, comics_org_url, start_year, end_year, total_issues, setFormInputClass])
 
 
     return (
@@ -86,6 +87,15 @@ export const AdminTitleAdd = () => {
                             type="text"
                             value={wiki_url || ""}
                             onChange={(e) => handleInput(e, setWiki_url)}
+                        />
+                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS_AND_HEADINGS.COMICS_ORG_URL_DB}</label>
+                        <input
+                            id="comicsorgurl"
+                            name="comics_orgurl"
+                            className={formInputClass}
+                            type="text"
+                            value={comics_org_url || ""}
+                            onChange={(e) => handleInput(e, setComics_org_url)}
                         />
                         <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                         <input
@@ -132,12 +142,13 @@ export const AdminTitleAdd = () => {
                                     name: name,
                                     description: description,
                                     wiki_url: wiki_url,
+                                    comics_org_url: comics_org_url,
                                     start_year: start_year,
                                     end_year: end_year,
                                     format_id: format_id,
                                     total_issues: total_issues,
                                 }, setInformationMessage).then(() => resetAddTitleForm())}
-                                disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === ""}>
+                                disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === "" || comics_org_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
                         <button className={"btn btn-secondary sms-btn"}

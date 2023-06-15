@@ -175,7 +175,6 @@ input[type="checkbox"] + label {
         position: absolute;
         top: 0;
         right: 0;
-        background-color: $secondary;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -234,6 +233,16 @@ input[type="checkbox"] + label {
         width: 100%;
         bottom: -8px;
         background-color: $color-bg-elephant--trans;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .issue-card--number {
+        @extend .h6, .py-1, .px-2;
+        color: $black;
+        position: absolute;
+        top: 0;
+        right: 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -320,7 +329,7 @@ input[type="checkbox"] + label {
 }
 
 .cover-image--wrapper {
-  @extend .mb-3, .bg-light;
+  @extend .mb-2, .bg-light;
   width: 100%;
   aspect-ratio: 3.6/5;
   overflow: hidden;

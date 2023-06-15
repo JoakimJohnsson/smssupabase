@@ -1,24 +1,32 @@
 import React from "react";
 import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
-import {useIsCollectingTitle} from "../../../helpers/customHooks/useIsCollectingTitle";
 import {handleCollectingIssue} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {Link} from "react-router-dom";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 
 
-export const IssueCard = ({issue}) => {
+export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false}) => {
 
     const {setInformationMessage, user} = useAppContext();
     const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
-    const [isCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
     const [displayName] = useIssueDisplayName(issue);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
+
+    const handleClick = async () => {
+        handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);
+        if (fetchTitleProgress) {
+            setTimeout(() => {
+                fetchTitleProgress();
+            }, 200);
+        }
+    }
 
     return issue && issue.titles && (
         <li className={"issue-card"}>
@@ -31,26 +39,34 @@ export const IssueCard = ({issue}) => {
                         loading={"lazy"}
                     />
                     {
-                        issue.marvelklubben_number > 0 &&
-                        <div className={"issue-card--marvelklubben"}>{issue.marvelklubben_number}</div>
+                        <div className={`issue-card--number ${isCollectingIssue ? "bg-success" : "bg-secondary"}`}>{issue.number}</div>
                     }
-                    <div className={"issue-card--label"}><p className={"text-label mb-0 py-1"}>{displayName}</p></div>
                 </div>
             </Link>
             {
-                isCollectingTitle &&
+                showCollectingButtons &&
                 <div className={"d-flex align-items-center"}>
-                    <button
-                        aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                        className={`btn btn-sm ${isCollectingIssue ? "btn-success" : "btn-secondary"} justify-content-center w-100 rounded-0`}
-                        onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
-                        {
-                            isCollectingIssue ?
-                                <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
-                                :
-                                <><Icon icon={faPlus} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                    <OverlayTrigger
+                        key={"collect-issue-tooltip"}
+                        placement={"top"}
+                        overlay={
+                            <Tooltip id={"collect-issue-tooltip"}>
+                                {isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                            </Tooltip>
                         }
-                    </button>
+                    >
+                        <button
+                            aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                            className={`btn btn-sm ${isCollectingIssue ? "btn-success" : "btn-secondary"} justify-content-center w-100 rounded-0`}
+                            onClick={() => handleClick()}>
+                            {
+                                isCollectingIssue ?
+                                    <Icon icon={faMinus} className={"me-2"}/>
+                                    :
+                                    <Icon icon={faPlus} className={"me-2"}/>
+                            }
+                        </button>
+                    </OverlayTrigger>
                 </div>
             }
         </li>

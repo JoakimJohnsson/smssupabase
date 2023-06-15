@@ -19,7 +19,7 @@ import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIssue";
-import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleCollectingIssue, handleCollectingTitle} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {getGradeByUserIdAndIssueId} from "../../helpers/functions/serviceFunctions/collectFunctions";
 import {TitleBadge} from "../minis/TitleBadge";
@@ -46,7 +46,7 @@ export const Issue = () => {
         loading
     ] = useIssueData(id);
 
-    const [isCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
+    const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
 
     const fetchIssueIds = useCallback(() => {
         if (issue.number && issue.title_id && issue.year) {
@@ -86,18 +86,25 @@ export const Issue = () => {
                             <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
                                 <ImageViewerCover url={issue.image_url} displayName={displayName}/>
                                 {
-                                    isCollectingTitle &&
-                                    <button
-                                        aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                                        className={`btn ${isCollectingIssue ? "btn-danger" : "btn-success"} p-2 rounded-0 w-100 justify-content-center mb-4`}
-                                        onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
-                                        {
-                                            isCollectingIssue ?
-                                                <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
-                                                :
-                                                <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
-                                        }
-                                    </button>
+                                    isCollectingTitle ?
+                                        <button
+                                            aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
+                                            className={`btn ${isCollectingIssue ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 justify-content-center mb-4`}
+                                            onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                                            {
+                                                isCollectingIssue ?
+                                                    <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                                    :
+                                                    <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                            }
+                                        </button>
+                                        :
+                                        <button
+                                            aria-label={LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue.titles.name}
+                                            className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
+                                            onClick={() => handleCollectingTitle(user.id, issue.titles.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
+                                            {LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue.titles.name}
+                                        </button>
                                 }
                                 {
                                     issue.titles.total_issues > 1 &&
@@ -159,6 +166,15 @@ export const Issue = () => {
                                         <p>
                                             <a href={issue.titles.wiki_url} target={"_blank"} rel={"noreferrer"}>
                                                 {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue.titles.name}
+                                                <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                            </a>
+                                        </p>
+                                    }
+                                    {
+                                        issue.titles.comics_org_url &&
+                                        <p>
+                                            <a href={issue.titles.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                                {issue.titles.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
                                                 <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                             </a>
                                         </p>

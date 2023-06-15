@@ -51,6 +51,7 @@ export const Publishers = () => {
                                                             src={publisher.image_url}
                                                             alt={publisher.name}
                                                             className="w-100"
+                                                            loading={"lazy"}
                                                         />
                                                     </div>
                                                 </Link>

@@ -144,6 +144,23 @@ export const getAllIssuesWithTitleAndPublisher = async (setData) => {
         console.error(error);
     }
 }
+export const getAllIssuesWithTitleAndPublisherWithLimit = async (setData, limit, ascending) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*, publishers (*), titles (*)")
+            .limit(limit)
+            .order("created_at", {ascending})
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 export const getIssuesWithTitleAndPublisherByTitleId = async (setData, id) => {
     try {

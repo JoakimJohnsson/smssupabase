@@ -1,14 +1,11 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {IssueListItem} from "./IssueListItem";
-import {Accordion} from "react-bootstrap";
-import AccordionItem from "react-bootstrap/AccordionItem";
-import AccordionHeader from "react-bootstrap/AccordionHeader";
-import AccordionBody from "react-bootstrap/AccordionBody";
 import {getIndexList} from "../../../helpers/functions/functions";
+import {IssuesGrid} from "./IssuesGrid";
+import {IssuesListAccordion} from "./IssuesListAccordion";
 
 
-export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollectingButtons}) => {
+export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollectingButtons, listViewGrid = false, fetchTitleProgress}) => {
 
     let groupedIssuesData = [];
     let groupedIssuesDataIndexes = [];
@@ -22,35 +19,17 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollec
         groupedIssuesDataIndexes = getIndexList(groupedIssuesData.length)
     }
 
-    return issuesData && issuesData.length && groupedIssuesData.length && (
-        <Accordion className={"sms-list--accordion mb-4"} flush defaultActiveKey={issuesData.length < 14 ? groupedIssuesDataIndexes : "0"}>
-            {
-                groupedIssuesData.length &&
-                (groupedIssuesData.map((year, index) =>
-                        <AccordionItem eventKey={index.toString()} key={index}>
-                            <AccordionHeader as={"h3"} className={"pb-0 mb-0"}>{year[0].year}</AccordionHeader>
-                            <AccordionBody>
-                                <ul className={"sms-list--with-tools mb-0"}>
-                                    {
-                                        year.length ?
-                                            (year.sort((a, b) => a.number - b.number).map((issue, index) =>
-                                                <IssueListItem
-                                                    key={issue.id}
-                                                    index={index}
-                                                    showAdminInfo={showAdminInfo}
-                                                    issue={issue}
-                                                    setIssuesData={setIssuesData}
-                                                    issuesData={issuesData}
-                                                    showCollectingButtons={showCollectingButtons}
-                                                />))
-                                            :
-                                            (<NoDataAvailable/>)
-                                    }
-                                </ul>
-                            </AccordionBody>
-                        </AccordionItem>)
-                )
-            }
-        </Accordion>
-    )
+    return issuesData && issuesData.length && groupedIssuesData.length ?
+        (
+            listViewGrid ?
+                <IssuesGrid groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
+                            showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
+                            fetchTitleProgress={fetchTitleProgress}/>
+                :
+                <IssuesListAccordion groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
+                                     showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
+                                     fetchTitleProgress={fetchTitleProgress}/>
+        )
+        :
+        <NoDataAvailable/>
 }

@@ -5,7 +5,7 @@ import {ListToolBox} from "../ListToolBox";
 import {getIssueName, hasImage} from "../../../helpers/functions/functions";
 
 
-export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, showCollectingButtons}) => {
+export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, showCollectingButtons, fetchTitleProgress}) => {
 
     return (
         <li className={"list-group-item px-0"}>
@@ -33,6 +33,7 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, 
                                 route={ROUTES.ADMIN.ISSUES}
                                 table={TABLES.ISSUES}
                                 imageBucket={BUCKETS.ISSUE_IMAGES}
+                                fetchTitleProgress={fetchTitleProgress}
                                 isIssue
                             />
                         }

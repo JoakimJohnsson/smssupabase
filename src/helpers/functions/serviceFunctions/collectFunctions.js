@@ -123,21 +123,42 @@ export const removeIssueFromCollectionSimple = async (userId, issueId) => {
 
 export const getAllIssueIdsForTitle = async (titleId) => {
     let issueIds = [];
-    console.log("iss id", titleId);
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.ISSUES)
-            .select("id")
-            .eq("title_id", titleId)
-        if (error && status !== 406) {
+    if (titleId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("id")
+                .eq("title_id", titleId)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data) {
+                data.forEach(data => issueIds.push(data.id))
+                return issueIds;
+            }
+        } catch (error) {
             console.error(error);
         }
-        if (data) {
-            data.forEach(data => issueIds.push(data.id))
-            return issueIds;
+    }
+}
+
+export const getNoCollectedIssues = async (titleId, userId) => {
+    if (titleId && userId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("id, users!inner (id)")
+                .eq("title_id", titleId)
+                .eq("users.id", userId)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data && data.length > 0) {
+                return data.length
+            }
+        } catch (error) {
+            console.error(error);
         }
-    } catch (error) {
-        console.error(error);
     }
 }
 
