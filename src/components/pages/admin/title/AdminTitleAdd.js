@@ -34,6 +34,7 @@ export const AdminTitleAdd = () => {
         setName("");
         setDescription("");
         setWiki_url("");
+        setComics_org_url("");
         setStart_year(1975);
         setEnd_year(1975);
         setTotal_issues(12);
