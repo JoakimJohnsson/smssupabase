@@ -18,6 +18,7 @@ import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTit
 import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
+import {FormatBadge} from "../minis/FormatBadge";
 
 
 export const Title = () => {
@@ -76,6 +77,7 @@ export const Title = () => {
                                             <>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
                                     }
                                 </button>
+                                <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
                                 {
                                     title.description &&
                                     <>

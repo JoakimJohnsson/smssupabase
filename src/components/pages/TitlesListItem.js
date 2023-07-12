@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {Link} from "react-router-dom";
 import {TitleTool} from "../lists/TitleTool";
+import formatData from "../../helpers/valueLists/formats.json";
+import {getDataName} from "../../helpers/functions/functions";
 
 
 export const TitlesListItem = ({title}) => {
@@ -20,7 +22,7 @@ export const TitlesListItem = ({title}) => {
                         loading={"lazy"}
                     />
                     {
-                        <div className={`title-card--year ${userCollectsTitle ? "bg-success" : "bg-secondary"}`}>{title.start_year}</div>
+                        <div className={`title-card--year ${userCollectsTitle ? "bg-success" : "bg-secondary"}`}>{getDataName(formatData, title.format_id)} / {title.start_year}</div>
                     }
                 </div>
             </Link>
