@@ -73,7 +73,7 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className={"row row-padding--secondary"}>
-                    <div className={"col-12 col-xl-6 mb-4 col-x-padding--xs-only"}>
+                    <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>Titlar</h2>
                         <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <CustomSpinner/> : totalTitles}
                         </p>
@@ -87,10 +87,10 @@ export const Home = () => {
                                 <NoDataAvailable/>
                         }
                     </div>
-                    <div className={"col-12 col-xl-6 mb-4 col-x-padding--xs-only"}>
+                    <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>Publikationer</h2>
                         <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ? <CustomSpinner/> : totalIssues}</p>
-                        <h3>{TEXTS.LATEST_ISSUES}</h3>
+                        <h3 className={"mb-3"}>{TEXTS.LATEST_ISSUES}</h3>
                         {
                             limitedIssuesData ?
                                 <>

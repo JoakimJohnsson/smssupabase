@@ -329,24 +329,26 @@ export const AdminTitle = () => {
                                     <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
                                     <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
                                     {
-                                        publisher_id &&
-                                        <>
-                                            <p>{TEXTS.AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER + chosenPublisherName}.</p>
-                                            <button className={"btn btn-primary sms-btn"} onClick={() => handleGenerateIssues()}>
-                                                {
-                                                    loadingGI ?
-                                                        <>
-                                                            <CustomSpinner size={"1x"} className={"me-2"}/>
-                                                            {LABELS_AND_HEADINGS.GENERATING_ISSUES}
-                                                        </>
-                                                        :
-                                                        <>
-                                                            <IssueIcon className={"me-2"}/>
-                                                            {LABELS_AND_HEADINGS.GENERATE_ISSUES}
-                                                        </>
-                                                }
-                                            </button>
-                                        </>
+                                        publisher_id ?
+                                            <>
+                                                <p className={"alert alert-success"}>{TEXTS.AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER + chosenPublisherName}.</p>
+                                                <button className={"btn btn-primary sms-btn"} onClick={() => handleGenerateIssues()}>
+                                                    {
+                                                        loadingGI ?
+                                                            <>
+                                                                <CustomSpinner size={"1x"} className={"me-2"}/>
+                                                                {LABELS_AND_HEADINGS.GENERATING_ISSUES}
+                                                            </>
+                                                            :
+                                                            <>
+                                                                <IssueIcon className={"me-2"}/>
+                                                                {LABELS_AND_HEADINGS.GENERATE_ISSUES}
+                                                            </>
+                                                    }
+                                                </button>
+                                            </>
+                                            :
+                                            <p className={"alert alert-info"}>{TEXTS.AUTO_GENERATE_ISSUES_NO_CHOICE}</p>
                                     }
                                 </div>
                             </div>

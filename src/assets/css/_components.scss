@@ -331,7 +331,7 @@ input[type="checkbox"] + label {
 .cover-image--wrapper {
   @extend .mb-2, .bg-light;
   width: 100%;
-  aspect-ratio: 3.6/5;
+  aspect-ratio: 3.8/5;
   overflow: hidden;
   border: $border--primary;
   .cover-image {
