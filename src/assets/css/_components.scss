@@ -170,9 +170,8 @@ input[type="checkbox"] + label {
         background-color: $white;
       }
       .title-card--year {
-        @extend .h6, .py-1, .px-2;
+        @extend .h6, .py-1, .px-2, .mb-0;
         color: $black;
-        position: absolute;
         top: 0;
         right: 0;
         display: flex;
