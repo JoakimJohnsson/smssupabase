@@ -28,6 +28,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Visa format på titelkort.</li>
                     <li className={"list-group-item px-0"}>Visa senast inlagda information på startsidan.</li>
+                    <li className={"list-group-item px-0"}>Visa hur många titlar som återstår att lägga in i databasen.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.8 - 2023-06-15</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

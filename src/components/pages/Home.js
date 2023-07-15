@@ -13,6 +13,7 @@ import {TitlesList} from "../lists/titles/TitlesList";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
+import {ProgressBar} from "react-bootstrap";
 
 
 export const Home = () => {
@@ -22,6 +23,7 @@ export const Home = () => {
     const [alertText, setAlertText] = useState("");
     const [totalTitles, setTotalTitles] = useState(0);
     const [totalIssues, setTotalIssues] = useState(0);
+    const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(true);
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
@@ -52,6 +54,15 @@ export const Home = () => {
         });
     }, [fetchData]);
 
+
+    useEffect(() => {
+        console.log("totalTitles: ", totalTitles);
+        console.log("countinh: ", Math.round(104 / 147 * 100));
+        if (totalTitles && totalTitles > 0) {
+            setProgress(Math.round(totalTitles / 147 * 100))
+        }
+    }, [totalTitles]);
+
     return user && user.id ? (
             <main id="main-content" className={"container-fluid main-container dashboard"}>
                 <div className={"row row-padding--main"}>
@@ -75,8 +86,26 @@ export const Home = () => {
                 <div className={"row row-padding--secondary"}>
                     <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>Titlar</h2>
-                        <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <CustomSpinner/> : totalTitles}
-                        </p>
+                        <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <CustomSpinner/> : totalTitles}</p>
+
+                        <div className={"mb-4"}>
+                            {
+                                <>
+                                    <p>
+                                        {TEXTS.ADDING_TITLE_TEXT_1 + " " + progress + TEXTS.ADDING_TITLE_TEXT_2}
+                                    </p>
+
+                                    {
+                                        progress === 100 ?
+                                            <ProgressBar striped variant="success" now={progress}/>
+                                            :
+                                            <ProgressBar striped now={progress} label={progress > 10 ? totalTitles + " / 147" : ""}/>
+
+                                    }
+                                </>
+                            }
+                        </div>
+
                         <h3>{TEXTS.LATEST_TITLES}</h3>
                         {
                             limitedTitlesData ?
