@@ -85,7 +85,8 @@ export const Home = () => {
                 <div className={"row row-padding--secondary"}>
                     <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>Titlar</h2>
-                        <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <CustomSpinner/> : totalTitles}</p>
+                        <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <CustomSpinner/> : totalTitles}
+                        </p>
 
                         <div className={"mb-4"}>
                             {
@@ -93,13 +94,11 @@ export const Home = () => {
                                     <p>
                                         {TEXTS.ADDING_TITLE_TEXT_1 + " " + progress + TEXTS.ADDING_TITLE_TEXT_2}
                                     </p>
-
                                     {
                                         progress === 100 ?
                                             <ProgressBar striped variant="success" now={progress}/>
                                             :
                                             <ProgressBar striped now={progress} label={progress > 10 ? totalTitles + " / " + TOTAL_TITLES_COUNT : ""}/>
-
                                     }
                                 </>
                             }
