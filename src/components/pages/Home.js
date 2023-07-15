@@ -27,6 +27,7 @@ export const Home = () => {
     const [loading, setLoading] = useState(true);
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
+    const TOTAL_TITLES_COUNT = 148;
 
     useEffect(() => {
         if (profile) {
@@ -56,10 +57,8 @@ export const Home = () => {
 
 
     useEffect(() => {
-        console.log("totalTitles: ", totalTitles);
-        console.log("countinh: ", Math.round(104 / 147 * 100));
         if (totalTitles && totalTitles > 0) {
-            setProgress(Math.round(totalTitles / 147 * 100))
+            setProgress(Math.round(totalTitles / TOTAL_TITLES_COUNT * 100))
         }
     }, [totalTitles]);
 
@@ -99,7 +98,7 @@ export const Home = () => {
                                         progress === 100 ?
                                             <ProgressBar striped variant="success" now={progress}/>
                                             :
-                                            <ProgressBar striped now={progress} label={progress > 10 ? totalTitles + " / 147" : ""}/>
+                                            <ProgressBar striped now={progress} label={progress > 10 ? totalTitles + " / " + TOTAL_TITLES_COUNT : ""}/>
 
                                     }
                                 </>
