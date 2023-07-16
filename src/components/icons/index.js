@@ -14,6 +14,7 @@ import {
     faComet,
     faListTimeline,
     faLink,
+    faMoneyCheckPen,
     faRectangleHistoryCirclePlus,
     faClipboardListCheck,
     faMagnifyingGlassDollar,
@@ -80,6 +81,12 @@ export const DashboardIcon = ({size, className}) => {
 export const DataIcon = ({size, className}) => {
     return (
         <Icon icon={faListTimeline} size={size} className={className}/>
+    )
+}
+
+export const EditIcon = ({size, className}) => {
+    return (
+        <Icon icon={faMoneyCheckPen} size={size} className={className}/>
     )
 }
 

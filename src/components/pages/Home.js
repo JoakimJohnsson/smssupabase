@@ -27,7 +27,7 @@ export const Home = () => {
     const [loading, setLoading] = useState(true);
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
-    const TOTAL_TITLES_COUNT = 148;
+    const TOTAL_TITLES_COUNT = 150;
 
     useEffect(() => {
         if (profile) {

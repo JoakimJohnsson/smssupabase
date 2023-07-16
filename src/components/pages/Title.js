@@ -1,13 +1,13 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {
     getRowByTableAndId,
     handleCollectingTitle
 } from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
-import {Icon} from "../icons";
+import {EditIcon, Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faList, faGrid} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
@@ -23,7 +23,7 @@ import {FormatBadge} from "../minis/FormatBadge";
 
 export const Title = () => {
 
-    const {setInformationMessage, user} = useAppContext();
+    const {setInformationMessage, user, profile} = useAppContext();
     const [title, setTitle] = useState({});
     const [issuesData, setIssuesData] = useState({});
     const [loading, setLoading] = useState(true);
@@ -78,6 +78,10 @@ export const Title = () => {
                                     }
                                 </button>
                                 <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
+                                {
+                                    profile && profile.role >= 1 &&
+                                    <Link to={`/admin/titles/${title.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + title.name}><span className={`tag-badge mb-3 text-black bg-title-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + title.name}</span></Link>
+                                }
                                 {
                                     title.description &&
                                     <>

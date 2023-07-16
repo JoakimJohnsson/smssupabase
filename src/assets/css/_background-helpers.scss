@@ -157,6 +157,22 @@
   background-color: scale-color($title, $lightness: -20%);
 }
 
+.bg-issue-0 {
+  background-color: $issue;
+}
+.bg-issue-200 {
+  background-color: scale-color($issue, $lightness: -50%);
+}
+.bg-issue-400 {
+  background-color: scale-color($issue, $lightness: -40%);
+}
+.bg-issue-600 {
+  background-color: scale-color($issue, $lightness: -30%);
+}
+.bg-issue-800 {
+  background-color: scale-color($issue, $lightness: -20%);
+}
+
 .bg-marvelklubben-0 {
   background-color: $marvelklubben;
 }
