@@ -14,6 +14,7 @@ export const addIssueData = async (data, setInformationMessage) => {
                 is_marvelklubben: data.is_marvelklubben,
                 marvelklubben_number: data.marvelklubben_number,
                 is_variant: data.is_variant,
+                is_double: data.is_double,
                 variant_suffix: data.variant_suffix,
             }])
         setInformationMessage({show: true, status: status, error: error});
