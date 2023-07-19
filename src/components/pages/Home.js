@@ -108,7 +108,7 @@ export const Home = () => {
                         {
                             limitedTitlesData ?
                                 <>
-                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showAdminInfo={false}/>
+                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showAdminInfo={true}/>
                                 </>
                                 :
                                 <NoDataAvailable/>

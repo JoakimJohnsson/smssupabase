@@ -31,7 +31,7 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                                                     {p.name}
                                                 </Link>
                                                 {
-                                                    showAdminInfo ?? <ListItemPublishedInfo dateString={p.created_at}/>
+                                                    showAdminInfo && <ListItemPublishedInfo dateString={p.created_at}/>
                                                 }
                                             </div>
                                         </div>

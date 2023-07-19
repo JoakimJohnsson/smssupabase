@@ -34,7 +34,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo, filter = "
                                                     {t.name} {t.start_year}
                                                 </Link>
                                                 {
-                                                    showAdminInfo ?? <ListItemPublishedInfo dateString={t.created_at}/>
+                                                    showAdminInfo && <ListItemPublishedInfo dateString={t.created_at}/>
                                                 }
                                             </div>
                                         </div>
