@@ -20,7 +20,9 @@ export const MESSAGES = {
         GENERAL_ERROR: "Ett mindre allvarligt fel har inträffat."
     },
     INFO: {
-        ABORTED: "Operationen avbröts!"
+        ABORTED: "Operationen avbröts!",
+        WILL_CLOSE_1: "Meddelandet, om du väljer att läsa det, stängs automatiskt om",
+        WILL_CLOSE_2: "sekunder."
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",

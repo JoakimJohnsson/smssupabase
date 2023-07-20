@@ -32,6 +32,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Länk för redigering på titel, förlag och publikation - Bara synlig för admin.</li>
                     <li className={"list-group-item px-0"}>Bugfix - fält för dubbelnummer lades inte till vid generering av publikation.</li>
                     <li className={"list-group-item px-0"}>Bugfix - inlagd datum visades inte korrekt.</li>
+                    <li className={"list-group-item px-0"}>Informationsmeddelanden stängs automatiskt efter 15 sekunder.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.8 - 2023-06-15</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
