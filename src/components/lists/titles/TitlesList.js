@@ -7,7 +7,7 @@ import {hasImage, sortByNameAndStartYear} from "../../../helpers/functions/funct
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 
-export const TitlesList = ({titlesData, setTitlesData, showAdminInfo, filter = ""}) => {
+export const TitlesList = ({titlesData, setTitlesData, showAdminInfo = false, showCreatedInfo = false, filter = ""}) => {
 
     return titlesData && (
         <ul className={"sms-list--with-tools mb-4"}>
@@ -34,7 +34,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo, filter = "
                                                     {t.name} {t.start_year}
                                                 </Link>
                                                 {
-                                                    showAdminInfo && <ListItemPublishedInfo dateString={t.created_at}/>
+                                                    (showAdminInfo || showCreatedInfo)  && <ListItemPublishedInfo dateString={t.created_at}/>
                                                 }
                                             </div>
                                         </div>
