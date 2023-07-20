@@ -42,7 +42,7 @@ export const Information = ({message}) => {
     }, [message]);
 
     return message && message.show && (
-        <div className={`alert alert-${alertVariant} alert-dismissible fade ${doShow} sms-information-message`} role={"alert"}>
+        <div className={`alert alert-${alertVariant} alert-dismissible fade ${doShow} sms-information-message`} role={"alert"} aria-live="assertive">
             <div className={"d-flex"}>
                 <div>
                     {alertIcon}
