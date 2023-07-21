@@ -314,6 +314,7 @@ input[type="checkbox"] + label {
   @extend .badge, .py-2, .mb-2, .d-inline-block;
   margin-right: .5rem;
   padding-right: 1rem;
+  white-space: normal;
   padding-left: 1rem;
 }
 
