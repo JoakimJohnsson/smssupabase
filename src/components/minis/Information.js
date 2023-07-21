@@ -26,7 +26,7 @@ export const Information = ({message}) => {
         if (message && message.show && !pauseCounter) {
             counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
             if (counter === 0) {
-                closeInformationMessage();
+               closeInformationMessage();
             }
         }
     }, [counter, message, closeInformationMessage, pauseCounter]);
@@ -48,25 +48,27 @@ export const Information = ({message}) => {
                     {alertIcon}
                 </div>
                 <div>
+                    <p className={"mb-2"}>{messageText}</p>
                     {
                         !pauseCounter &&
-                        <p className={"small d-block mb-1"}>{MESSAGES.INFO.WILL_CLOSE_1} <span className={"fs-6"}>{counter}</span> {MESSAGES.INFO.WILL_CLOSE_2}</p>
+                        <p className={"small d-block mb-0"}>{MESSAGES.INFO.WILL_CLOSE_1} <span className={"fs-6"}>{counter}</span> {MESSAGES.INFO.WILL_CLOSE_2}</p>
                     }
-                    <p className={"mb-0"}>{messageText}</p>
                 </div>
             </div>
             <div className={"position-absolute top-0 end-0"}>
                 {
-                    !pauseCounter &&
-                    <button type="button" className="p-1 btn sms-icon-btn text-black-50" aria-label={LABELS_AND_HEADINGS.PAUSE}
+                    !pauseCounter ?
+                    <button type="button" className="p-1 m-0 btn sms-icon-btn text-black-50" aria-label={LABELS_AND_HEADINGS.PAUSE}
                             onClick={() => setPauseCounter(!pauseCounter)}>
                         <Icon icon={faPause} className={"fa-lg sms-icon--hovering"}/>
                     </button>
+                        :
+                        <button type="button" className="p-1 m-0 btn sms-icon-btn text-black-50" aria-label={LABELS_AND_HEADINGS.CLOSE}
+                                onClick={() => closeInformationMessage()}>
+                            <Icon icon={faTimes} className={"fa-lg sms-icon--hovering"}/>
+                        </button>
                 }
-                <button type="button" className="p-1 btn sms-icon-btn text-black-50" aria-label={LABELS_AND_HEADINGS.CLOSE}
-                        onClick={() => closeInformationMessage()}>
-                    <Icon icon={faTimes} className={"fa-lg sms-icon--hovering"}/>
-                </button>
+
             </div>
         </div>
     )
