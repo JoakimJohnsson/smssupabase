@@ -367,7 +367,7 @@ input[type="checkbox"] + label {
   @extend .mb-3, .text-secondary;
 }
 
-/* Skip link */
+// Skip link
 .skip-link {
   background-color: $color-bg-whale;
   text-align: center;
@@ -390,4 +390,9 @@ input[type="checkbox"] + label {
       width: auto
     }
   }
+}
+
+// Alert progress
+.alert .progress {
+  height: .5rem;
 }

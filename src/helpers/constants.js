@@ -21,8 +21,7 @@ export const MESSAGES = {
     },
     INFO: {
         ABORTED: "Operationen avbröts!",
-        WILL_CLOSE_1: "Meddelandet, om du väljer att läsa det, stängs automatiskt om",
-        WILL_CLOSE_2: "sekunder."
+        WILL_CLOSE: "Meddelandet, om du väljer att läsa det, stängs automatiskt om 10 sekunder.",
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
