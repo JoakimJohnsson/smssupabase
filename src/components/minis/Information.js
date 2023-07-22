@@ -27,7 +27,7 @@ export const Information = ({message}) => {
         if (message && message.show && !pauseCounter) {
             counter > 0 && setTimeout(() => setCounter(counter - 1), 100);
             if (counter === 0) {
-                //closeInformationMessage();
+                closeInformationMessage();
             }
         }
     }, [counter, message, closeInformationMessage, pauseCounter]);
