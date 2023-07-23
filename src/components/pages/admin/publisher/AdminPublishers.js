@@ -15,7 +15,7 @@ export const AdminPublishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
     const navigate = useNavigate();
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
@@ -28,11 +28,11 @@ export const AdminPublishers = () => {
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
-                        <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                        <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
                                     placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                         <div className={"sms-section--light"}>
                             {publishersData &&
-                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} filter={filter}/>}
+                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} filterQuery={filterQuery}/>}
                             <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
                                         label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}

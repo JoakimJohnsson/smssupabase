@@ -16,7 +16,7 @@ export const AdminTitles = () => {
 
     const [titlesData, setTitlesData] = useState(null);
     const navigate = useNavigate();
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();
@@ -29,10 +29,10 @@ export const AdminTitles = () => {
                     <div className={"sms-dashboard-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                         <Breadcrumbs/>
-                        <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                        <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
                                     placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                         <div className={"sms-section--light"}>
-                        {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true} filter={filter}/> : <CustomSpinner/>}
+                        {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true} filterQuery={filterQuery}/> : <CustomSpinner/>}
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
                                     label={LABELS_AND_HEADINGS.ADD_TITLE}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}

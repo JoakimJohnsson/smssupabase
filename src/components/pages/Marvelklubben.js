@@ -12,7 +12,7 @@ export const Marvelklubben = () => {
 
     const [loading, setLoading] = useState(true);
     const [marvelKlubbenData, setMarvelKlubbenData] = useState(null);
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
 
     useEffect(() => {
         getAllMarvelklubbenIssues(setMarvelKlubbenData).then(() => setLoading(false));
@@ -31,7 +31,7 @@ export const Marvelklubben = () => {
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
-                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
                                 placeholder={LABELS_AND_HEADINGS.FILTER_NUMBER_TITLE_OR_YEAR}/>
                     {
                         loading ?
@@ -41,12 +41,12 @@ export const Marvelklubben = () => {
                                 {
                                     marvelKlubbenData
                                         .filter(issue => issue.titles.name.toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
+                                                .includes(filterQuery.toLowerCase()) ||
                                             issue.marvelklubben_number.toString().toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
+                                                .includes(filterQuery.toLowerCase()) ||
                                             issue.year.toString().toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
-                                            filter === "")
+                                                .includes(filterQuery.toLowerCase()) ||
+                                            filterQuery === "")
                                         .map(issue =>
                                             <IssueCard key={issue.id} issue={issue}/>
                                         )

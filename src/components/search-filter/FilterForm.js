@@ -6,24 +6,24 @@ import {clearInput} from "./filterFunctions";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 
-const FilterForm = ({filter, searchParams, setSearchParams, placeholder}) => {
+const FilterForm = ({filterQuery, searchParams, setSearchParams, placeholder}) => {
 
     return (
         <div className={"form-group sms-section--light mb-4"}>
             <div className="col-12 col-md-8 col-xl-6 mb-2">
-                <label className={"form-label"} htmlFor="filter">{LABELS_AND_HEADINGS.DO_FILTER}</label>
+                <label className={"form-label"} htmlFor="filterQuery">{LABELS_AND_HEADINGS.DO_FILTER}</label>
                 <div className="input-group">
                     <span className="input-group-text"><FontAwesomeIcon icon={faFilters}/></span>
-                    <input id="filter"
-                           name="filter"
+                    <input id="filterQuery"
+                           name="filterQuery"
                            type="text"
                            className="form-control border-bottom-0"
                            placeholder={placeholder}
-                           value={filter}
-                           onChange={e => setSearchParams({filter: e.target.value})}
+                           value={filterQuery}
+                           onChange={e => setSearchParams({filterQuery: e.target.value})}
                     />
                     {
-                        filter !== "" &&
+                        filterQuery !== "" &&
                         <button className="btn btn-primary" onClick={() => clearInput(setSearchParams, searchParams)}>
                             <FontAwesomeIcon icon={faTimes} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.RESET}

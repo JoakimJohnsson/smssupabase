@@ -12,7 +12,7 @@ export const Users = () => {
 
     const [loading, setLoading] = useState(true);
     const [usersData, setUsersData] = useState(null);
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PROFILES, setUsersData).then(() => setLoading(false));
@@ -27,7 +27,7 @@ export const Users = () => {
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
-                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
                                 placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     {
                         loading ?
@@ -36,9 +36,9 @@ export const Users = () => {
                             <ul className={"sms-list--with-cards"}>
                                 {
                                     usersData
-                                        .filter(user => user.firstname?.toLowerCase().includes(filter.toLowerCase()) ||
-                                            user.lastname?.toLowerCase().includes(filter.toLowerCase()) ||
-                                            filter === ""
+                                        .filter(user => user.firstname?.toLowerCase().includes(filterQuery.toLowerCase()) ||
+                                            user.lastname?.toLowerCase().includes(filterQuery.toLowerCase()) ||
+                                            filterQuery === ""
                                         )
                                         .map((user) =>
                                             // Only show public users here

@@ -13,7 +13,7 @@ export const Titles = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
@@ -28,7 +28,7 @@ export const Titles = () => {
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
-                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
                                 placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
@@ -38,10 +38,10 @@ export const Titles = () => {
                                 {
                                     titlesData
                                         .filter(title => title.name.toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
+                                                .includes(filterQuery.toLowerCase()) ||
                                             title.start_year.toString().toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
-                                            filter === ""
+                                                .includes(filterQuery.toLowerCase()) ||
+                                            filterQuery === ""
                                         )
                                         .sort((a, b) => sortByNameAndStartYear(a, b))
                                         .map((title) =>

@@ -10,7 +10,7 @@ import {getUserName, hasImage} from "../../../helpers/functions/functions";
 import {Link} from "react-router-dom";
 
 
-export const UsersList = ({usersData, setUsersData, limited = false, filter = ""}) => {
+export const UsersList = ({usersData, setUsersData, limited = false, filterQuery = ""}) => {
 
     const {setInformationMessage} = useAppContext();
     const [confirmed, setConfirmed] = useState(false);
@@ -39,12 +39,12 @@ export const UsersList = ({usersData, setUsersData, limited = false, filter = ""
                 usersData.length ?
                     (usersData
                             .filter(user => user.firstname.toLowerCase()
-                                    .includes(filter.toLowerCase()) ||
+                                    .includes(filterQuery.toLowerCase()) ||
                                 user.lastname.toLowerCase()
-                                    .includes(filter.toLowerCase()) ||
+                                    .includes(filterQuery.toLowerCase()) ||
                                 user.id.toLowerCase()
-                                    .includes(filter.toLowerCase()) ||
-                                filter === ""
+                                    .includes(filterQuery.toLowerCase()) ||
+                                filterQuery === ""
                             )
                             .map((u, index) =>
                                 // Super admins does not have to be in this list

@@ -13,7 +13,7 @@ export const Publishers = () => {
 
     const [loading, setLoading] = useState(true);
     const [publishersData, setPublishersData] = useState(null);
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then(() => setLoading(false));
@@ -28,7 +28,7 @@ export const Publishers = () => {
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col"}>
-                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
+                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
                                 placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
@@ -38,8 +38,8 @@ export const Publishers = () => {
                                 {
                                     publishersData
                                         .filter(publisher => publisher.name.toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
-                                            filter === ""
+                                                .includes(filterQuery.toLowerCase()) ||
+                                            filterQuery === ""
                                         )
                                         .sort((a, b) => sortByName(a, b))
                                         .map((publisher) =>
