@@ -193,3 +193,8 @@ export const getCurrentDate = () => {
 export const sortableName = (name) => {
     return name.trim().replace(":", "").replace("-", "").toLowerCase();
 }
+
+// Helper function for removing whitespace from strings - i.e. "My string" --> "mystring" or "my-string" if provided "-" as replacement.
+export const trimAndReplace = (string, replacement = "") => {
+    return string.trim().toLowerCase().replaceAll(" ", replacement);
+}

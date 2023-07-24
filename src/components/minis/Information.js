@@ -17,6 +17,10 @@ export const Information = ({message}) => {
     const {setInformationMessage} = useAppContext();
     const doShow = message && message.show ? "show" : "";
 
+    useEffect(() => {
+        setCounter(INFORMATION_MESSAGE_MAX_AGE);
+    }, [messageText]);
+
     const closeInformationMessage = useCallback(() => {
         setCounter(INFORMATION_MESSAGE_MAX_AGE);
         setInformationMessage(null);
