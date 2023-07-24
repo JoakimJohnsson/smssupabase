@@ -80,7 +80,11 @@ export const Title = () => {
                                 <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
                                 {
                                     profile && profile.role >= 1 &&
-                                    <Link to={`/admin/titles/${title.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + title.name}><span className={`tag-badge mb-3 text-black bg-title-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + title.name}</span></Link>
+                                    <Link to={`/admin/titles/${title.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + title.name}>
+                                        <span className={`tag-badge mb-3 text-black bg-title-400`}>
+                                            <EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + title.name}
+                                        </span>
+                                    </Link>
                                 }
                                 {
                                     title.description &&
@@ -89,8 +93,9 @@ export const Title = () => {
                                         <p>
                                             <span className={"me-2"}>{TEXTS.TOTAL_PUBLISHED}</span>
                                             {title.total_issues}
-                                            <span
-                                                className={"ms-2"}>{title.total_issues > 1 ? TEXTS.TOTAL_PUBLISHED_PUBLICATIONS : TEXTS.TOTAL_PUBLISHED_PUBLICATION}</span>
+                                            <span className={"ms-2"}>
+                                                {title.total_issues > 1 ? TEXTS.TOTAL_PUBLISHED_PUBLICATIONS : TEXTS.TOTAL_PUBLISHED_PUBLICATION}
+                                            </span>
                                         </p>
                                     </>
                                 }
