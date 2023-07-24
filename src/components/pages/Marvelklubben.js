@@ -27,10 +27,6 @@ export const Marvelklubben = () => {
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"
                                                        target={"_blank"}>Wikipedia</a>.</p>
-                </div>
-            </div>
-            <div className={"row row-padding--secondary"}>
-                <div className={"sms-page-col"}>
                     <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
                                 placeholder={LABELS_AND_HEADINGS.FILTER_NUMBER_TITLE_OR_YEAR}/>
                     {
