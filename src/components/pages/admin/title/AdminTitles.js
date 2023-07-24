@@ -25,7 +25,7 @@ export const AdminTitles = () => {
     return (
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
+                <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                     <Breadcrumbs/>
                     <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}

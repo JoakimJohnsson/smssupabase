@@ -23,9 +23,8 @@ export const AdminPublishers = () => {
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12 row-padding--main"}>
-                    <div className={"sms-dashboard-col"}>
+            <div className={"row row-padding--main"}>
+                <div className={"sms-page-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
                         <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
@@ -38,7 +37,7 @@ export const AdminPublishers = () => {
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                         label={LABELS_AND_HEADINGS.BACK}/>
                         </div>
-                    </div>
+
                 </div>
             </div>
         </main>
