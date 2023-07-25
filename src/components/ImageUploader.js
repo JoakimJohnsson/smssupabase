@@ -1,9 +1,12 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
-import {Spinner} from "./minis/Spinner";
+import {CustomSpinner} from "./minis/CustomSpinner";
 import {NoDataAvailable} from "./minis/NoDataAvailable";
-import {TrashIcon} from "@heroicons/react/solid";
-import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "./serviceFunctions";
+import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "../helpers/functions/serviceFunctions/imageFunctions";
+import {IconButton} from "./minis/IconButton";
+import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {useAppContext} from "../context/AppContext";
+import {ImageIcon} from "./icons";
 
 
 export const ImageUploader = ({
@@ -20,6 +23,8 @@ export const ImageUploader = ({
                                   update
                               }) => {
 
+    const {setInformationMessage} = useAppContext();
+
     const handleDeleteImage = async () => {
         try {
             await deleteImageFromBucket(imageFilename, setUploading, bucketName, setImageUrl, setImageFilename)
@@ -28,6 +33,7 @@ export const ImageUploader = ({
                     update();
                 });
         } catch (error) {
+            setInformationMessage({show: true, status: 4, error: null});
             console.error(error);
         }
     }
@@ -38,6 +44,7 @@ export const ImageUploader = ({
                 imageUrl, setImageFilename, setImageUrl);
             update();
         } catch (error) {
+            setInformationMessage({show: true, status: 4, error: null});
             console.error(error);
         }
     }
@@ -45,29 +52,33 @@ export const ImageUploader = ({
     return (
         <>
             <div className={"mb-3"}>
+                <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
                 {
                     imageUrl ?
                         <>
                             <img
                                 src={imageUrl}
                                 alt={imageFilename}
-                                className="w-100 mb-3"
+                                className="w-100 mb-3 bg-light"
                             />
                             <p>{imageFilename}</p>
-
-                            <button className={"btn btn-danger"}
-                                    onClick={handleDeleteImage}>
-                                <TrashIcon className={"sms-icon--text-lg"}/> {LABELS_AND_HEADINGS.DELETE_IMAGE}
-                            </button>
+                            <IconButton variant={"danger"} icon={faTrashCan} onClick={handleDeleteImage} label={LABELS_AND_HEADINGS.DELETE_IMAGE}/>
                         </>
                         :
                         <>
                             <NoDataAvailable/>
-                            <label className="btn btn-primary" htmlFor="single">
+                            <label className="btn btn-primary sms-btn align-items-center" htmlFor="single">
                                 {uploading ?
-                                    <Spinner small={true} color={"text-black"}/>
+                                    <>
+                                        <CustomSpinner size={"1x"} color={"text-black"} className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.UPLOADING_IMAGE}
+                                    </>
                                     :
-                                    LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                    <>
+                                        <ImageIcon size={"1x"} className={"me-2"}/>
+                                        {LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                    </>
+                                }
                             </label>
                         </>
                 }

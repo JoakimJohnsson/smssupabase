@@ -1,34 +1,43 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
-import {getRowsByTable} from "../../../serviceFunctions";
+import {getRowsByTable} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {PublishersList} from "../../../lists/publishers/PublishersList";
-import {PlusButton} from "../../../minis/PlusButton";
+import {IconButton} from "../../../minis/IconButton";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
-import {handleBacking} from "../../../../helpers/functions";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
+import {handleBacking} from "../../../../helpers/functions/functions";
+import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
+import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
+import FilterForm from "../../../search-filter/FilterForm";
 
 
 export const AdminPublishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
     const navigate = useNavigate();
+    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
+
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
     }, [])
 
     return (
-        <main className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12 row-padding--main"}>
-                    <div className={"sms-dashboard-col"}>
+        <main id="main-content" className={"container-fluid main-container"}>
+            <div className={"row row-padding--main"}>
+                <div className={"sms-page-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
-                        {publishersData &&
-                            <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}/>}
-                        <PlusButton onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)} label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
-                        <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
-                    </div>
+                        <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
+                                    placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                        <div className={"sms-section--light"}>
+                            {publishersData &&
+                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} filterQuery={filterQuery}/>}
+                            <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
+                                        label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                        label={LABELS_AND_HEADINGS.BACK}/>
+                        </div>
+
                 </div>
             </div>
         </main>

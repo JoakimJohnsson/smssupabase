@@ -1,55 +1,102 @@
-// Custom colors
-$color-bg-whale: #0e101a;
-$color-bg-whale--lighter: lighten($color-bg-whale, 3%);
-$color-bg-whale--light: lighten($color-bg-whale, 1%);
-$color-bg-elephant: #1d1f2f;
-$color-bg-horse: #232536;
-$color-bg-dog: #27293b;
-$color-bg-elephant--trans: rgba(29, 31, 47, .8);
-$color-bg-horse--trans: rgba(35, 37, 54, .8);
-$color-bg-dog--trans: rgba(39, 41, 59, .8);
-
-$primary--darker: #0e3b48;
-$primary--muted: #2d3749;
-$secondary--darker: #442359;
-$secondary--muted: #363349;
-$success--darker: #1b4214;
-$success--muted: #2c3a3a;
-$info--darker: #4d4c08;
-$info--muted: #383a31;
-$warning--darker: #442f08;
-$danger--darker: #4f1111;
-
-$primary--lighter: #beecfa;
-$secondary--lighter: #e9d1f8;
-$success--lighter: #ddf3d8;
-$info--lighter: #f6f594;
-$warning--lighter: #f9d590;
-$danger--lighter: #f7e7e7;
-
 // Misc
 $standard-opacity: .85;
+$information-message-box-shadow: 0 0 80px 20px #000;
 
-// BOOTSTRAP OVERRIDES
 // Colors
-$primary: #66dafa;
-$secondary: #ddb1f8;
-$success: #7ff268;
-$info: #f3f00f;
-$warning: #fbbd4a;
-$danger: #fa5a5a;
+$primary: #41bee0;
+$secondary: #ded54c;
+$tertiary: #ddbbff;
+$success: #33cc99;
+$info: #e3af9b;
+$warning: #f797d2;
+$danger: #de4c4c;
+$grade: #ffd700;
+$format: #f09f59;
+$country: #7ad145;
+$publisher: #bc29a6;
+$title: #ccff66;
+$issue: #ede798;
+$marvelklubben: #ed1d24;
 $white: #fff;
 $white--darker: #c0c7cf;
+$color-white--darker--trans: rgba(192, 199, 207, .3);
 $black: #000;
 $black--lighter: #444;
 $black--lightest: #999;
 
+// Custom colors
+$amount-less--lg: -80%;
+$amount-less--sm: -60%;
+$amount-more--md: 70%;
+$primary--darker: scale-color($primary, $lightness: $amount-less--lg);
+$primary--dark: scale-color($primary, $lightness: $amount-less--sm);
+$secondary--darker: scale-color($secondary, $lightness: $amount-less--lg);
+$secondary--dark: scale-color($secondary, $lightness: $amount-less--sm);
+$success--darker: scale-color($success, $lightness: $amount-less--lg);
+$success--dark: scale-color($success, $lightness: $amount-less--sm);
+$info--darker: scale-color($info, $lightness: $amount-less--lg);
+$info--dark: scale-color($info, $lightness: $amount-less--sm);
+$warning--darker: scale-color($warning, $lightness: $amount-less--lg);
+$danger--darker: scale-color($danger, $lightness: $amount-less--lg);
+
+$primary--lighter: scale-color($primary, $lightness: $amount-more--md);
+$secondary--lighter: scale-color($secondary, $lightness: $amount-more--md);
+$success--lighter: scale-color($success, $lightness: $amount-more--md);
+$info--lighter: scale-color($info, $lightness: $amount-more--md);
+$warning--lighter: scale-color($warning, $lightness: $amount-more--md);
+$danger--lighter: scale-color($danger, $lightness: $amount-more--md);
+
+$color-bg-whale: scale-color($primary--darker, $lightness: $amount-less--sm, $saturation: $amount-less--lg);
+$color-bg-whale--lighter: scale-color($color-bg-whale, $lightness: 10%);
+$color-bg-whale--light: scale-color($color-bg-whale, $lightness: 5%);
+$color-bg-elephant: scale-color($color-bg-whale, $lightness: 5%);
+$color-bg-horse: scale-color($color-bg-whale, $lightness: 10%);
+$color-bg-dog: scale-color($color-bg-whale, $lightness: 15%);
+$color-bg-elephant--trans: rgba(29, 31, 47, .8);
+$color-bg-horse--trans: rgba(35, 37, 54, .8);
+$color-bg-dog--trans: rgba(39, 41, 59, .8);
+
+// BOOTSTRAP OVERRIDES
 $btn-close-opacity: 1;
 $btn-close-hover-opacity: $standard-opacity;
 $btn-close-focus-opacity: $standard-opacity;
 $btn-close-width: 1.3rem;
 $btn-close-color: $danger;
 $btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z' /></svg>") !default;
+$btn-padding-y-sm: .35rem;
+$dropdown-bg: $color-bg-dog;
+$dropdown-link-hover-bg: $color-bg-horse;
+$dropdown-link-active-bg: $color-bg-horse;
+// Icon svg from Fontawesome.
+$accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='#{$white}'><path d='M199 401c9.4 9.4 24.6 9.4 33.9 0L425 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-175 175L41 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9L199 401z'/></svg>");
+$accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='#{$primary}'><path d='M199 401c9.4 9.4 24.6 9.4 33.9 0L425 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-175 175L41 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9L199 401z'/></svg>");
+$accordion-border-color: $primary--lighter;
+$tooltip-color: $black;
+$tooltip-bg: $info;
+$tooltip-opacity: 1;
+$headings-margin-bottom: .5rem;
+$headings-color: $secondary--lighter;
+$progress-bar-color: $black;
+$progress-bg: $color-white--darker--trans;
+$progress-height: 1.5rem;
+$grid-gutter-width: 2.5rem;
+
+$theme-colors: (
+        "primary":    $primary,
+        "secondary":  $secondary,
+        "tertiary":   $tertiary,
+        "success":    $success,
+        "info":       $info,
+        "warning":    $warning,
+        "danger":     $danger,
+        "light":      $white,
+        "dark":       $black,
+        "format":     $format,
+        "country":    $country,
+        "publisher":  $publisher,
+        "title":      $title,
+        "grade":      $grade
+);
 
 // Typography
 $font-size-base: 1rem;
@@ -63,8 +110,8 @@ $h6-font-size: $font-size-base;
 // Global
 $body-bg: $color-bg-elephant;
 $body-color: $white;
-$font-family-sans-serif: "Roboto", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$headings-font-weight: 500;
+$font-family-sans-serif: "Nunito Sans", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$headings-font-weight: 700;
 $font-weight-normal: 400;
 $font-weight-bold: 600;
 $text-muted: $white--darker;
@@ -72,6 +119,7 @@ $btn-disabled-opacity: 0.45;
 $sms-header-min-height: 60px;
 $sms-header-min-height--lg: 65px;
 $breadcrumb-active-color: $primary--lighter;
+$main-content-min-height: 100vh;
 
 // Form and input
 $input-placeholder-color: $black--lighter;
@@ -82,7 +130,7 @@ $input-group-addon-bg: $primary;
 $form-text-color: $white--darker;
 $input-border-width: 0;
 
-$enable-shadows: true;
+$enable-shadows: false;
 $enable-gradients: false;
 
 // Borders
@@ -90,13 +138,21 @@ $border-color: $black--lighter;
 $border-color--vague: $color-bg-whale--lighter;
 $border-color--strong: $primary;
 $border--default: 1px solid $border-color;
-$border--strong: 1px solid $border-color--strong;
+$border--default-md: 3px solid $border-color;
+$border--primary: 1px solid $primary;
+$border--primary-md: 3px solid $primary;
+$border--secondary: 1px solid $secondary;
+$border--secondary-md: 3px solid $secondary;
 $border--vague: 1px solid $border-color--vague;
+$border--vague-md: 3px solid $border-color--vague;
 $border-radius--sm: 4px;
 $border-radius--md: 8px;
 $border-radius--lg: 16px;
+$border-radius--xl: 26px;
 
 // List group
 $list-group-bg: transparent;
 $list-group-color: $body-color;
-$list-group-border-color: $primary--muted;
+$list-group-border-color: $primary--dark;
+
+

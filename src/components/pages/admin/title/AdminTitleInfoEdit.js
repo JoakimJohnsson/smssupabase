@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TABLES} from "../../../../helpers/constants";
-import {isTrue, printOptions} from "../../../../helpers/functions";
+import React from "react";
+import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
+import {isTrue, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
-import {getRowsByTable, updateTitleData} from "../../../serviceFunctions";
+import {updateTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => {
@@ -12,19 +14,9 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
     const navigate = useNavigate();
-    const [formMessage, setFormMessage] = useState({show: false, error: false, message: ""});
-    const [publishersData, setPublishersData] = useState(null);
-
-    useEffect(() => {
-        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
-    }, [])
-
-    const handleChange = (name, value) => {
-        setNewTitle({...newTitle, [name]: value});
-    }
 
     const handleSubmit = () => {
-        updateTitleData(title.id, newTitle, setFormMessage).then(() => setSearchParams({edit: false}));
+        updateTitleData(title.id, newTitle).then(() => setSearchParams({edit: false}));
         setTitle({...newTitle});
     }
 
@@ -35,52 +27,68 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
 
     return (
         <div className={"sms-dashboard-col"}>
-            <div className={"sms-form"}>
-                <h2>Redigera information</h2>
+            <div className={"sms-section--light"}>
+                <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
                 <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                 <input
                     id={"name"}
                     name={"name"}
-                    className={"form-control mb-3"}
-                    type="text"
-                    value={newTitle.name}
-                    onChange={e => handleChange(e.target.name, e.target.value)}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
+                    value={newTitle.name || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
+                    disabled={!edit}
+                />
+                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                <input
+                    id={"description"}
+                    name={"description"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
+                    value={newTitle.description || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
+                    disabled={!edit}
+                />
+                <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                <input
+                    id={"wikiurl"}
+                    name={"wiki_url"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
+                    value={newTitle.wiki_url || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
+                    disabled={!edit}
+                />
+                <label className={"form-label"} htmlFor="comicsorgurl">{LABELS_AND_HEADINGS.COMICS_ORG_URL_DB}</label>
+                <input
+                    id={"comicsorgurl"}
+                    name={"comics_org_url"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    type={"text"}
+                    value={newTitle.comics_org_url || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                 <input
                     id={"startyear"}
                     name={"start_year"}
-                    className={"form-control mb-3"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
-                    value={newTitle.start_year}
-                    onChange={e => handleChange(e.target.name, e.target.value)}
+                    value={newTitle.start_year || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
                 <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                 <input
                     id={"endyear"}
                     name={"end_year"}
-                    className={"form-control mb-3"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
-                    value={newTitle.end_year}
-                    onChange={e => handleChange(e.target.name, e.target.value)}
+                    value={newTitle.end_year || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
-                <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
-                {
-                    publishersData &&
-                    <select
-                        id={"publisher"}
-                        name={"publisher_id"}
-                        className={"form-select mb-3"}
-                        value={newTitle.publisher_id}
-                        disabled={!edit}
-                        onChange={e => handleChange(e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                        {printOptions(publishersData)}
-                    </select>
-                }
                 <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                 {
                     formatData &&
@@ -90,7 +98,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         className={"form-select mb-3"}
                         value={newTitle.format_id}
                         disabled={!edit}
-                        onChange={e => handleChange(e.target.name, e.target.value)}>
+                        onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(formatData)}
                     </select>
@@ -99,35 +107,31 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"totalissues"}
                     name={"total_issues"}
-                    className={"form-control mb-3"}
+                    className={CLASSES.FORM_INPUT_DEFAULT}
                     type="number"
-                    value={newTitle.total_issues}
-                    onChange={e => handleChange(e.target.name, e.target.value)}
+                    min="1"
+                    value={newTitle.total_issues || ""}
+                    onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit}
                 />
                 {
                     edit ?
                         <>
-                            <button onClick={handleSubmit} className={"btn btn-primary"}>
+                            <button onClick={handleSubmit} className={"btn btn-primary sms-btn"}>
                                 {LABELS_AND_HEADINGS.SAVE}
                             </button>
-                            <button className={"btn btn-outline-secondary"} onClick={handleAbort}>
+                            <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>
                         </>
                         :
                         <>
-                            <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary"}>
+                            <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary sms-btn"}>
                                 {LABELS_AND_HEADINGS.EDIT}
                             </button>
-                            <ArrowLeftButton onClick={() => navigate(ROUTES.ADMIN.TITLES)} label={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.TITLES)}
+                                        label={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         </>
-                }
-                {
-                    formMessage.show &&
-                    <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                        {formMessage.message}
-                    </p>
                 }
             </div>
         </div>

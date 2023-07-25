@@ -1,82 +1,112 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
-import {addPublisherData} from "../../../serviceFunctions";
-import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import {addPublisherData} from "../../../../helpers/functions/serviceFunctions/publisherFunctions";
+import {handleInput} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleBacking, printOptions} from "../../../../helpers/functions/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
-import {AdminH1} from "../../../headings";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 import {useNavigate} from "react-router-dom";
+import {useAppContext} from "../../../../context/AppContext";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminPublisherAdd = () => {
 
     const [
         name, setName,
-        formMessage, setFormMessage,
-        nameValidated, setNameValidated,
+        description, setDescription,
+        wiki_url, setWiki_url,
         formInputClass, setFormInputClass
     ] = useCommonFormStates();
 
+    const {setInformationMessage} = useAppContext();
     const navigate = useNavigate();
-
-    const [countryId, setCountryId] = useState("");
+    const [country_id, setCountry_id] = useState("");
 
     const resetAddPublisherForm = async () => {
         setName("");
-        setNameValidated(false);
+        setDescription("");
+        setWiki_url("");
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
-        hideAndResetMessage(setFormMessage);
     }
 
+    useEffect(() => {
+        if (country_id && name !== "" && description !== "" && wiki_url !== !"") {
+            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        } else if (country_id || name !== "" || description !== "" || wiki_url !== "") {
+            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+        } else {
+            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        }
+    }, [name, description, country_id, setFormInputClass, wiki_url])
+
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
-                    <AdminH1 text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                <div className={"sms-page-col"}>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
-                    <div className={"sms-form"}>
+                    <div className={"sms-section--light"}>
                         <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                         <input
                             id="name"
+                            name="name"
                             className={formInputClass}
                             type="text"
                             value={name || ""}
-                            onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
+                            onChange={(e) => handleInput(e, setName)}
+                        />
+                        <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                        <input
+                            id="description"
+                            name="description"
+                            className={formInputClass}
+                            type="text"
+                            value={description || ""}
+                            onChange={(e) => handleInput(e, setDescription)}
+                        />
+                        <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                        <input
+                            id="wikiurl"
+                            name="wiki_url"
+                            className={formInputClass}
+                            type="text"
+                            value={wiki_url || ""}
+                            onChange={(e) => handleInput(e, setWiki_url)}
                         />
                         <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                         {
                             countryData &&
                             <select
                                 id="country"
-                                className={"form-select mb-3"}
-                                onChange={(e) => setCountryId(e.target.value)}>
+                                name="country"
+                                className={formInputClass}
+                                onChange={(e) => setCountry_id(e.target.value)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(countryData)}
                             </select>
                         }
-                        <button className={"btn btn-primary"}
+                        <button className={"btn btn-primary sms-btn"}
                                 onClick={() => addPublisherData({
                                     name: name,
-                                    countryId: countryId
-                                }, setFormMessage).then(() => resetAddPublisherForm())}
-                                disabled={!nameValidated}>
+                                    description: description,
+                                    wiki_url: wiki_url,
+                                    country_id: country_id
+                                }, setInformationMessage).then(() => resetAddPublisherForm())}
+                                disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
-                        <button className={"btn btn-outline-secondary"}
+                        <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddPublisherForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
-                        <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
-                        {
-                            formMessage.show &&
-                            <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                                {formMessage.message}
-                            </p>
-                        }
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                    label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
             </div>

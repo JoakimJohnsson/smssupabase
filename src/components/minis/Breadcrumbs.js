@@ -2,13 +2,14 @@ import React, {useState} from "react";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 import {Link, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
-import {getNameByTableAndId} from "../serviceFunctions";
+import {getNameByTableAndId, getStartYearByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 
-export const Breadcrumbs = () => {
+export const Breadcrumbs = ({doIgnoreName, bcName}) => {
 
     const {id} = useParams();
     const [fetchedName, setFetchedName] = useState("");
+    const [fetchedStartYear, setFetchedStartYear] = useState("");
     let previousCrumb = "";
     const breadcrumbs = useBreadcrumbs();
     const size = breadcrumbs ? breadcrumbs.length - 1 : 0;
@@ -24,25 +25,36 @@ export const Breadcrumbs = () => {
                 return LABELS_AND_HEADINGS.HOME;
             case "admin":
                 return LABELS_AND_HEADINGS.ADMIN;
-            case "settings":
+            case "profile":
                 return LABELS_AND_HEADINGS.SETTINGS;
             case "titles":
                 return LABELS_AND_HEADINGS.ALL_TITLES;
+            case "marvel club":
+                return LABELS_AND_HEADINGS.MARVELKLUBBEN;
             case "publishers":
                 return LABELS_AND_HEADINGS.ALL_PUBLISHERS;
+            case "users":
+                return LABELS_AND_HEADINGS.ALL_USERS;
             case "edit":
                 return LABELS_AND_HEADINGS.EDIT;
+            case "issues":
+                return LABELS_AND_HEADINGS.ISSUES;
+            case "add":
+                return LABELS_AND_HEADINGS.ADD;
             default:
                 return breadcrumbName;
         }
     }
 
     const getNameFromBreadcrumbName = (breadcrumbName, breadcrumb) => {
-        if (id && breadcrumbName.length > 30) {
+        if (id && breadcrumbName.length > 30 && previousCrumb !== "users") {
             getNameByTableAndId(previousCrumb, id, setFetchedName).then();
             if ((fetchedName !== "") && (previousCrumb === TABLES.TITLES || previousCrumb === TABLES.PUBLISHERS)) {
+                if (previousCrumb === TABLES.TITLES) {
+                    getStartYearByTableAndId(previousCrumb, id, setFetchedStartYear).then();
+                }
                 updatePreviousCrumb(breadcrumb);
-                return <span className={"animate"}>{fetchedName || ""}</span>;
+                return <span className={"animate"}>{fetchedName + " " + fetchedStartYear || ""}</span>;
             }
         } else {
             return getTranslatedBreadcrumbName(breadcrumbName, breadcrumb);
@@ -51,7 +63,7 @@ export const Breadcrumbs = () => {
 
     const printBreadCrumbLinkItems = (index, breadcrumb, match) => {
         let breadcrumbName = breadcrumb.props.children.toString().toLowerCase();
-        let name = getNameFromBreadcrumbName(breadcrumbName, breadcrumb);
+        let name = doIgnoreName && bcName !== "" && index === size ? bcName : getNameFromBreadcrumbName(breadcrumbName, breadcrumb);
         if (name) {
             if (index === size) {
                 return (

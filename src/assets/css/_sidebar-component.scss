@@ -1,14 +1,23 @@
 // Imports
 @import "variables";
 
-.dashboard-sidebar {
-  height: 100vh;
-  width: 100px;
-  @include media-breakpoint-up(sm) {
-    width: 250px;
+.sidebar-btn {
+  position: relative;
+  z-index: 2000;
+  @extend .btn, .btn-sm, .btn-primary, .sms-icon-btn, .rounded-0, .rounded-end, .mb-3, .mt-3, .ms-0, .p-2, .text-start;
+  &.open {
+    @extend .btn-danger;
   }
-  @include media-breakpoint-only(md) {
+}
+
+.dashboard-sidebar {
+  min-height: $main-content-min-height;
+  width: 100px;
+  @include media-breakpoint-up(md) {
     width: 150px;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 250px;
   }
   background-color: $color-bg-whale;
   padding: 0;
@@ -19,33 +28,26 @@
     font-weight: 500;
     font-size: .875rem;
     text-align: center;
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(lg) {
       font-size: 1rem;
       text-align: left;
       padding-left: 2rem;
       padding-right: 1rem;
     }
-    @include media-breakpoint-only(md) {
-      text-align: center;
-      padding: .5rem;
-    }
   }
   .sidebar-navlink-text {
     text-align: center;
     font-size: .775rem;
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(lg) {
       font-size: .885rem;
       text-align: left;
     }
-    @include media-breakpoint-only(md) {
-      text-align: center;
-    }
   }
   .nav-link {
-    background-color: $color-bg-whale--light;
+    background-color: $color-bg-whale;
     @extend .sidebar-x-padding, .fs-small;
     min-height: 80px;
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(lg) {
       min-height: 50px;
     }
     border-bottom: $border--vague;
@@ -53,7 +55,7 @@
       border-top: $border--vague;
     }
     &:hover, &:focus {
-      background-color: $border-color--vague;
+      background-color: $color-bg-whale--light;
     }
     &.primary {
       color: $primary;
@@ -118,11 +120,8 @@
     svg {
       width: 22px;
       margin-right: 0;
-      @include media-breakpoint-up(sm) {
+      @include media-breakpoint-up(lg) {
         margin-right: 1rem;
-      }
-      @include media-breakpoint-only(md) {
-        margin-right: 0;
       }
     }
   }
@@ -130,14 +129,10 @@
 
 .offcanvas {
   background-color: $color-bg-whale;
-  &.offcanvas-start {
-    top: $sms-header-min-height;
-    @include media-breakpoint-up(lg) {
-      top: $sms-header-min-height--lg;
-    }
-  }
   .offcanvas-body {
-    padding: 0;
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 110px;
   }
 }
 .offcanvas-backdrop {

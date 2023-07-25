@@ -8,7 +8,15 @@
   &:hover,
   &:focus,
   &:active {
-    opacity: 90%;
+    opacity: 80%;
+  }
+}
+
+a {
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
   }
 }
 
@@ -26,10 +34,6 @@ footer {
 
 input {
   filter: none;
-}
-
-img {
-  border-radius: $border-radius--md;
 }
 
 // Borders
@@ -106,13 +110,16 @@ img {
 }
 
 // Spacing
-
 .sidebar-x-padding {
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(lg) {
     padding-left: 2rem;
     padding-right: 1rem;
   }
-  @include media-breakpoint-only(md) {
-    padding: .5rem;
+}
+
+.col-x-padding--xs-only {
+  @include media-breakpoint-only(xs) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }

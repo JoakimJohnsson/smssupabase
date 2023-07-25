@@ -1,98 +1,129 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {addTitleData, getRowsByTable} from "../../../serviceFunctions";
-import {handleBacking, handleNameInput, hideAndResetMessage, printOptions} from "../../../../helpers/functions";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {addTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {handleInput} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleBacking, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
-import {AdminH1} from "../../../headings";
-import {ArrowLeftButton} from "../../../minis/ArrowLeftButton";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 import {useNavigate} from "react-router-dom";
+import {useAppContext} from "../../../../context/AppContext";
+import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminTitleAdd = () => {
 
     const [
         name, setName,
-        formMessage, setFormMessage,
-        nameValidated, setNameValidated,
+        description, setDescription,
+        wiki_url, setWiki_url,
         formInputClass, setFormInputClass,
     ] = useCommonFormStates();
 
-    const [startYear, setStartYear] = useState(1975);
-    const [endYear, setEndYear] = useState(1975);
-    const [formatId, setFormatId] = useState("");
-    const [totalIssues, setTotalIssues] = useState(12);
-    const [publishersData, setPublishersData] = useState(null);
-    const [publisherId, setPublisherId] = useState("");
+    const {setInformationMessage} = useAppContext();
+    const [start_year, setStart_year] = useState(1975);
+    const [end_year, setEnd_year] = useState(1975);
+    const [format_id, setFormat_id] = useState("");
+    const [comics_org_url, setComics_org_url] = useState("");
+    const [total_issues, setTotal_issues] = useState(12);
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
-    }, [])
-
     const resetAddTitleForm = async () => {
         setName("");
-        setStartYear(1975);
-        setEndYear(1975);
-        setTotalIssues(12);
-        setNameValidated(false);
+        setDescription("");
+        setWiki_url("");
+        setComics_org_url("");
+        setStart_year(1975);
+        setEnd_year(1975);
+        setTotal_issues(12);
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
-        hideAndResetMessage(setFormMessage);
     }
 
+    useEffect(() => {
+        if (format_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "" && comics_org_url !== "") {
+            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        } else if (format_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "" || comics_org_url !== "") {
+            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+        } else {
+            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        }
+    }, [format_id, name, description, wiki_url, comics_org_url, start_year, end_year, total_issues, setFormInputClass])
+
+
     return (
-        <main className={"container-fluid main-container"}>
+        <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
-                    <AdminH1 text={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_TITLE}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
-                    <div className={"sms-form"}>
+                    <div className={"sms-section--light"}>
                         <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                         <input
-                            id="name"
+                            id={"name"}
+                            name={"name"}
+                            className={formInputClass}
+                            type={"text"}
+                            value={name || ""}
+                            onChange={(e) => handleInput(e, setName)}
+                        />
+                        <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                        <input
+                            id={"description"}
+                            name={"description"}
+                            className={formInputClass}
+                            type={"text"}
+                            value={description || ""}
+                            onChange={(e) => handleInput(e, setDescription)}
+                        />
+                        <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                        <input
+                            id="wikiurl"
+                            name="wiki_url"
                             className={formInputClass}
                             type="text"
-                            value={name || ""}
-                            onChange={e => handleNameInput(e, setName, setFormInputClass, setNameValidated)}
+                            value={wiki_url || ""}
+                            onChange={(e) => handleInput(e, setWiki_url)}
+                        />
+                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS_AND_HEADINGS.COMICS_ORG_URL_DB}</label>
+                        <input
+                            id="comicsorgurl"
+                            name="comics_orgurl"
+                            className={formInputClass}
+                            type="text"
+                            value={comics_org_url || ""}
+                            onChange={(e) => handleInput(e, setComics_org_url)}
                         />
                         <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                         <input
                             id="startyear"
+                            name={"start_year"}
                             className={formInputClass}
                             type="number"
-                            value={startYear || 1975}
-                            onChange={(e) => setStartYear(e.target.value)}
+                            value={start_year || ""}
+                            onChange={(e) => handleInput(e, setStart_year)}
                         />
                         <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                         <input
                             id="endyear"
+                            name={"end_year"}
                             className={formInputClass}
                             type="number"
-                            value={endYear || 1977}
-                            onChange={(e) => setEndYear(e.target.value)}
+                            value={end_year || ""}
+                            onChange={(e) => handleInput(e, setEnd_year)}
                         />
-                        <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHERS_DB}</label>
-                        {
-                            publishersData &&
-                            <select
-                                id="publisher"
-                                className={"form-select mb-3"}
-                                onChange={(e) => setPublisherId(e.target.value)}>
-                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                                {printOptions(publishersData)}
-                            </select>
-                        }
                         <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                         {
                             formatData &&
                             <select
                                 id="format"
-                                className={"form-select mb-3"}
-                                onChange={(e) => setFormatId(e.target.value)}>
+                                name={"format_id"}
+                                className={formInputClass}
+                                onChange={(e) => handleInput(e, setFormat_id)}>
                                 <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                                 {printOptions(formatData)}
                             </select>
@@ -100,39 +131,36 @@ export const AdminTitleAdd = () => {
                         <label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>
                         <input
                             id="totalissues"
+                            name={"total_issues"}
                             className={formInputClass}
                             type="number"
-                            value={totalIssues || 12}
-                            onChange={(e) => setTotalIssues(e.target.value)}
+                            min="1"
+                            value={total_issues || ""}
+                            onChange={(e) => handleInput(e, setTotal_issues)}
                         />
-                        <button className={"btn btn-primary"}
+                        <button className={"btn btn-primary sms-btn"}
                                 onClick={() => addTitleData({
                                     name: name,
-                                    startYear: startYear,
-                                    endYear: endYear,
-                                    publisherId: publisherId,
-                                    formatId: formatId,
-                                    totalIssues: totalIssues,
-                                }, setFormMessage).then(() => resetAddTitleForm())}
-                                disabled={!nameValidated}>
+                                    description: description,
+                                    wiki_url: wiki_url,
+                                    comics_org_url: comics_org_url,
+                                    start_year: start_year,
+                                    end_year: end_year,
+                                    format_id: format_id,
+                                    total_issues: total_issues,
+                                }, setInformationMessage).then(() => resetAddTitleForm())}
+                                disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === "" || comics_org_url === ""}>
                             {LABELS_AND_HEADINGS.ADD}
                         </button>
-                        <button className={"btn btn-outline-secondary"}
+                        <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddTitleForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
-                        <ArrowLeftButton onClick={() => handleBacking(navigate)} label={LABELS_AND_HEADINGS.BACK}/>
-                        {
-                            formMessage.show &&
-                            <p className={formMessage.error ? "alert alert-danger mt-3" : "alert alert-success mt-3"}>
-                                {formMessage.message}
-                            </p>
-                        }
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                    label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
             </div>
-
-
         </main>
     )
 }

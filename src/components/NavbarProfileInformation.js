@@ -1,18 +1,23 @@
 import React from "react";
 import {useAppContext} from "../context/AppContext";
-import {Spinner} from "./minis/Spinner";
+import {CustomSpinner} from "./minis/CustomSpinner";
+import {getUserName} from "../helpers/functions/functions";
+import {Link} from "react-router-dom";
+import marvel from "../assets/images/publishers/marvel.gif";
+
 
 export const NavbarProfileInformation = () => {
-    const {avatarImageUrl, userUrl} = useAppContext();
-    return avatarImageUrl ? (
+
+    const {profile} = useAppContext();
+
+    return profile ? (
             <div className="nav-link pe-0 d-none d-lg-flex">
-                {userUrl ?
-                    <a href={userUrl}><img src={avatarImageUrl} className={"avatar-image"} alt={"avatar"}/></a>
-                    :
-                    <img src={avatarImageUrl} className={"avatar-image"} alt={"avatar"}/>
-                }
+                <Link to={`/users/${profile.id}`} className={"hocus-standard"}
+                      title={getUserName(profile)}>
+                    <img src={profile.image_url ? profile.image_url : marvel} className={"list-image"} alt={"avatar"}/>
+                </Link>
             </div>
         )
         :
-        <Spinner small={true} color={"text-primary"}/>
+        <CustomSpinner size={"2x"} color={"text-primary"}/>
 }

@@ -1,44 +1,198 @@
 import React from "react";
-import {CogIcon, DocumentDuplicateIcon, HomeIcon, LibraryIcon, PresentationChartLineIcon, ShieldExclamationIcon} from "@heroicons/react/solid";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {
+    faShieldCat,
+    faShield,
+    faHouse,
+    faFile,
+    faFileLines,
+    faChartLine,
+    faGears,
+    faFiles,
+    faBuildingColumns,
+    faFileImage,
+    faComet,
+    faListTimeline,
+    faLink,
+    faMoneyCheckPen,
+    faRectangleHistoryCirclePlus,
+    faClipboardListCheck,
+    faMagnifyingGlassDollar,
+    faArrowDownToArc,
+    faArrowRightFromArc,
+    faHeartCirclePlus,
+    faCalendarHeart,
+    faUser,
+    faSend,
+    faUsers,
+    faBadge,
+    faKey
+} from "@fortawesome/pro-regular-svg-icons";
 
-export const AdminIcon = ({textVariant}) => {
-    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+
+export const Icon = ({icon, size, className, spin = false}) => {
     return (
-        <ShieldExclamationIcon className={className}/>
+        <FontAwesomeIcon icon={icon} size={size} className={className} spin={spin}/>
     )
 }
 
-export const DashboardIcon = ({textVariant}) => {
-    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+export const AdminIcon = ({size, className}) => {
     return (
-        <PresentationChartLineIcon className={className}/>
+        <Icon icon={faShieldCat} size={size} className={className}/>
     )
 }
 
-export const PublishersIcon = ({textVariant}) => {
-    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+export const NotAdminIcon = ({size, className}) => {
     return (
-        <LibraryIcon className={className}/>
+        <Icon icon={faShield} size={size} className={className}/>
     )
 }
 
-export const SettingsIcon = ({textVariant}) => {
-    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+export const DateIcon = ({size, className}) => {
     return (
-        <CogIcon className={className}/>
+        <Icon icon={faCalendarHeart} size={size} className={className}/>
     )
 }
 
-export const StartIcon = ({textVariant}) => {
-    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+export const CollectionPlusIcon = ({size, className}) => {
     return (
-        <HomeIcon className={className}/>
+        <Icon icon={faRectangleHistoryCirclePlus} size={size} className={className}/>
     )
 }
 
-export const TitlesIcon = ({textVariant}) => {
-    const className = textVariant ? "sms-icon--text-" + textVariant : "";
+export const CollectionCheckIcon = ({size, className}) => {
     return (
-        <DocumentDuplicateIcon className={className}/>
+        <Icon icon={faClipboardListCheck} size={size} className={className}/>
+    )
+}
+
+export const CollectionSearchIcon = ({size, className}) => {
+    return (
+        <Icon icon={faMagnifyingGlassDollar} size={size} className={className}/>
+    )
+}
+
+export const DashboardIcon = ({size, className}) => {
+    return (
+        <Icon icon={faChartLine} size={size} className={className}/>
+    )
+}
+
+export const DataIcon = ({size, className}) => {
+    return (
+        <Icon icon={faListTimeline} size={size} className={className}/>
+    )
+}
+
+export const EditIcon = ({size, className}) => {
+    return (
+        <Icon icon={faMoneyCheckPen} size={size} className={className}/>
+    )
+}
+
+export const ImageIcon = ({size, className}) => {
+    return (
+        <Icon icon={faFileImage} size={size} className={className}/>
+    )
+}
+
+export const IssueIcon = ({size, className}) => {
+    return (
+        <Icon icon={faFileLines} size={size} className={className}/>
+    )
+}
+
+export const KeyIcon = ({size, className}) => {
+    return (
+        <Icon icon={faKey} size={size} className={className}/>
+    )
+}
+
+export const LinkIcon = ({size, className}) => {
+    return (
+        <Icon icon={faLink} size={size} className={className}/>
+    )
+}
+
+export const LoginIcon = ({size, className}) => {
+    return (
+        <Icon icon={faArrowDownToArc} size={size} className={className}/>
+    )
+}
+
+export const LogoutIcon = ({size, className}) => {
+    return (
+        <Icon icon={faArrowRightFromArc} size={size} className={className}/>
+    )
+}
+
+export const LogoIcon = ({size, className}) => {
+    return (
+        <Icon icon={faComet} size={size} className={className}/>
+    )
+}
+export const MarvelKlubbenIcon = ({size, className}) => {
+    return (
+        <Icon icon={faBadge} size={size} className={className}/>
+    )
+}
+
+export const PublishersIcon = ({size, className}) => {
+    return (
+        <Icon icon={faBuildingColumns} size={size} className={className}/>
+    )
+}
+
+export const publishersIcon = faBuildingColumns;
+
+export const RegisterIcon = ({size, className}) => {
+    return (
+        <Icon icon={faHeartCirclePlus} size={size} className={className}/>
+    )
+}
+
+export const SendIcon = ({size, className}) => {
+    return (
+        <Icon icon={faSend} size={size} className={className}/>
+    )
+}
+
+export const SettingsIcon = ({size, className}) => {
+    return (
+        <Icon icon={faGears} size={size} className={className}/>
+    )
+}
+
+export const StartIcon = ({size, className}) => {
+    return (
+        <Icon icon={faHouse} size={size} className={className}/>
+    )
+}
+
+export const TitlesIcon = ({size, className}) => {
+    return (
+        <Icon icon={faFiles} size={size} className={className}/>
+    )
+}
+
+export const titlesIcon = faFiles;
+
+export const TitleIcon = ({size, className}) => {
+    return (
+        <Icon icon={faFile} size={size} className={className}/>
+    )
+}
+
+export const titleIcon = faFile;
+
+export const UsersIcon = ({size, className}) => {
+    return (
+        <Icon icon={faUsers} size={size} className={className}/>
+    )
+}
+
+export const UserIcon = ({size, className}) => {
+    return (
+        <Icon icon={faUser} size={size} className={className}/>
     )
 }

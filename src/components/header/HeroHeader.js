@@ -1,57 +1,50 @@
 import React from "react";
-import Login from "../Login";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
-import {BadgeCheckIcon, ChevronDoubleDownIcon, ClipboardListIcon, CollectionIcon, UserAddIcon} from "@heroicons/react/solid";
-import shieldWhite from "../../assets/images/shield__white.svg";
+import {
+    CollectionCheckIconDuoTone,
+    CollectionPlusIconDuoTone,
+    CollectionSearchIconDuoTone,
+    DemoIconDuoTone,
+    LoginIconDuoTone,
+    LogoIconDuoTone,
+    RegisterIconDuoTone
+} from "../icons-duotone";
+import {SkipLink} from "../pages/pagecomponents/SkipLink";
 
 export const HeroHeader = () => {
     return (
-        <div className={"sms-hero-header mb-5"}>
-
+        <header className={"sms-hero-header mb-5"}>
+            <SkipLink/>
             <div className={"container-fluid"}>
                 <div className={"row"}>
-                    <div className={"col-12 col-xl-6 p-5 bg-whale d-flex align-items-center flex-column justify-content-center"}>
-                        <div className={"col-12 col-lg-8 d-flex flex-column mb-5"}>
-                            <div className={"d-flex flex-column align-items-center py-5"}>
-                                <img className={"sms-logo-shield mb-2"} src={shieldWhite} alt={"Svenska marvelsamlare logo"}/>
-                                <p className={"sms-logo-text"}>
-                                    {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
-                                </p>
-                            </div>
-                            <div className={"align-self-center mb-4 d-flex align-items-center flex-column"}>
-                                <h2 className={"fs-1 text-primary mb-4"} id={"log-in-section"}>{LABELS_AND_HEADINGS.LOG_IN}</h2>
-                                <ChevronDoubleDownIcon className="sms-icon--large text-info"/>
-                            </div>
-                            <Login/>
-                        </div>
-                        <h3 className={"mb-3 text-primary fs-large"}>Är du inte registrerad?</h3>
-                        <a href={"#create-account-section"} className={"btn btn-secondary btn-cta mb-5"}>
-                            <UserAddIcon className={"sms-icon"}/> {LABELS_AND_HEADINGS.CREATE_ACCOUNT}
-                        </a>
-                    </div>
 
-                    <div className={"col-12 col-xl-6 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
-                        <h1 className={"text-primary"}>
-                            {LABELS_AND_HEADINGS.WELCOME}
+                    <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
+                        <LogoIconDuoTone size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
+                        <h1 className={"sms-logo-text mb-5"}>
+                            {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                         </h1>
+                        <div className={"mb-5"}>
+                            <a href={"#login-section"} className={"btn btn-primary btn-cta d-block mb-4"}>
+                                <LoginIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.LOG_IN_CTA}
+                            </a>
+                            <a href={"#create-account-section"} className={"btn btn-primary btn-cta d-block mb-4"}>
+                                <RegisterIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
+                            </a>
+                            <a href={"#demo-section"} className={"btn btn-secondary btn-cta d-block mb-4"}>
+                                <DemoIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.DEMO}
+                            </a>
+                        </div>
+
                         <p className={"lead mb-5"}>{TEXTS.DO_YOU_COLLECT}</p>
-
-                        <div className={"mb-4"}>
-                            <BadgeCheckIcon className="sms-icon--large mb-2 text-info"/>
-                            <p>{TEXTS.MANAGE_YOUR_COLLECTION}</p>
-                        </div>
-                        <div className={"mb-4"}>
-                            <CollectionIcon className="sms-icon--large mb-2 text-info"/>
-                            <p>{TEXTS.NEW_TITLES}</p>
-                        </div>
-                        <div>
-                            <ClipboardListIcon className="sms-icon--large mb-2 text-info"/>
-                            <p>{TEXTS.ALWAYS_AVAILABLE}</p>
-                        </div>
+                        <CollectionCheckIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <p>{TEXTS.MANAGE_YOUR_COLLECTION}</p>
+                        <CollectionPlusIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <p>{TEXTS.NEW_TITLES}</p>
+                        <CollectionSearchIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <p>{TEXTS.ALWAYS_AVAILABLE}</p>
                     </div>
-
                 </div>
             </div>
-        </div>
+        </header>
     )
 };

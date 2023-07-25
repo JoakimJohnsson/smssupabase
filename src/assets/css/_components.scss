@@ -2,6 +2,7 @@
 @import "variables";
 @import "./bootstrap/scss/variables";
 
+// links
 .nav-link {
   cursor: pointer;
   background-color: transparent;
@@ -26,10 +27,22 @@
   background: center / cover no-repeat url("../images/heroimage.jpg");
 }
 
+.sms-information-message {
+  position: fixed;
+  top: 4vh;
+  left: 0;
+  right: 0;
+  width: 90vw;
+  margin: 0 auto;
+  -moz-box-shadow: $information-message-box-shadow;
+  -webkit-box-shadow: $information-message-box-shadow;
+  box-shadow: $information-message-box-shadow;
+  z-index: 100;
+}
+
 // Content
 .main-container {
-  // header - 90px - footer 170px;
-  min-height: calc(100vh - 260px);
+  min-height: $main-content-min-height;
   h1, .h1 {
     margin-bottom: 3rem;
     @include media-breakpoint-up(sm) {
@@ -37,7 +50,7 @@
     }
   }
   .row-padding--main {
-    @extend .p-3, .p-sm-5;
+    @extend .px-3, .py-5, .p-sm-5;
   }
   .row-padding--secondary {
     @extend .px-3, .px-sm-5;
@@ -46,13 +59,17 @@
 
 // Dashboard
 .sms-dashboard-col {
-  @extend .col-12, .col-lg-6;
-  margin-bottom: 1.5rem;
+  @extend .col-12, .col-xl-6, .col-x-padding--xs-only;
+  margin-bottom: $grid-gutter-width;
+
+  .sms-section--light {
+    height: 100%;
+  }
 }
 
-.sms-form {
-  @extend .p-0, .p-sm-5;
-  border-radius: $border-radius--lg;
+.sms-section--light {
+  @extend .p-0, .p-sm-4, .p-md-5;
+  border-radius: $border-radius--sm;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
     background-color: $color-bg-horse;
@@ -74,7 +91,7 @@
     }
   }
   h2 {
-    @extend .border-bottom, .pb-2, .mb-4, .h4;
+    @extend .border-bottom, .pb-3, .mb-4;
   }
   .form-label {
     color: $white--darker;
@@ -82,22 +99,10 @@
   }
 }
 
-.dashboard-card {
-  @extend .p-3, .p-sm-4, .h-100;
-  background-color: $color-bg-horse;
-  border-radius: $border-radius--lg;
-  border: $border--default;
-  h2 {
-    @extend .text-label;
-  }
-  p {
-    font-size: .875rem;
-  }
-
-  .list-group-item {
-    color: $white--darker;
-    padding: .5rem 0;
-  }
+select.form-control,
+input[type="checkbox"],
+input[type="checkbox"] + label {
+  cursor: pointer;
 }
 
 @keyframes breadcrumb-item-animation {
@@ -109,6 +114,15 @@
   }
 }
 
+.sms-page-col {
+  @extend .col-12, .col-x-padding--xs-only;
+}
+
+.sms-page-col--full {
+  @extend .col-12, .col-lg-8, .col-x-padding--xs-only;
+}
+
+// Breadcrumb
 .breadcrumb-item {
   .animate {
     opacity: 1;
@@ -119,11 +133,266 @@
 
 // List
 .sms-list--with-tools {
-    @extend .list-group, .list-group-flush, .small, .mb-4, .list-unstyled;
+  @extend .list-group, .list-group-flush, .small, .list-unstyled;
+  .sms-list-col--main {
+    @extend .col-12, .d-flex, .flex-column, .justify-content-center;
+  }
+  .sms-list-col--tools {
+    @extend .col-12;
+    display: flex;
+    align-items: center;
+    padding-top: .4rem;
+  }
+  @media (min-width: 320px) {
     .sms-list-col--main {
-      @extend .col-8, .d-flex, .flex-column, .justify-content-center;
+      // approx .col-9
+      flex: 0 0 auto;
+      width: 73%;
     }
     .sms-list-col--tools {
-      @extend .col-4, .text-end;
+      // approx .col-3
+      flex: 0 0 auto;
+      width: 27%;
+      justify-content: flex-end;
+      padding-top: 0;
     }
+  }
+}
+
+.sms-list--with-cards {
+  @extend .row, .list-unstyled;
+
+  li {
+    &.title-card {
+      @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
+      align-self: flex-end;
+      .image-container {
+        background-color: $white;
+      }
+      .title-card--year {
+        @extend .h6, .py-1, .px-2, .mb-0;
+        color: $black;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    &.issue-card {
+      @extend .col-12, .mb-4;
+      a {
+        @extend .hocus-standard;
+      }
+      @media (min-width: 300px) {
+        // .col-6
+        flex: 0 0 auto;
+        width: 50%;
+      }
+      @media (min-width: 450px) {
+        // .col-4
+        flex: 0 0 auto;
+        width: 33.33333333%;
+      }
+      @media (min-width: 700px) {
+        // .col-3
+        flex: 0 0 auto;
+        width: 25%;
+      }
+      @media (min-width: 900px) {
+        // .col-3
+        flex: 0 0 auto;
+        width: 20%;
+      }
+      @media (min-width: 1200px) {
+        // .col-1
+        flex: 0 0 auto;
+        width: 16.66666666%;
+      }
+      @media (min-width: 1400px) {
+        // .col-1
+        flex: 0 0 auto;
+        width: 12.5%;
+      }
+      .issue-card--marvelklubben {
+        @extend .h5, .py-1, .px-2;
+        border-radius: $border-radius--lg;
+        color: $black;
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        background-color: $marvelklubben;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .issue-card--label {
+        @extend .h6, .py-1, .px-2;
+        position: absolute;
+        width: 100%;
+        bottom: -8px;
+        background-color: $color-bg-elephant--trans;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .issue-card--number {
+        @extend .h6, .py-1, .px-2;
+        color: $black;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    &.user-card {
+      @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
+      a {
+        @extend .hocus-standard;
+      }
+      .user-card--label {
+        @extend .h6, .py-1, .px-2;
+        position: absolute;
+        width: 100%;
+        bottom: -8px;
+        background-color: $primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $black;
+      }
+    }
+  }
+}
+
+// Accordion
+.accordion.sms-list--accordion {
+  .accordion-item {
+    background-color: transparent;
+    border: none;
+    &:not(:last-child) {
+      border-bottom: $border--default;
+    }
+  }
+  .accordion-body {
+    padding: 1rem 0;
+  }
+  .accordion-button {
+    padding: 1rem 0;
+    background-color: transparent;
+  }
+}
+
+// Overlay spinner
+.overlay-spinner-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-bg-dog--trans;
+  z-index: 90000;
+  .overlay-spinner {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -32px;
+  }
+}
+
+// Tooltip
+.tooltip {
+  @media (hover: none) {
+    visibility: hidden !important;
+  }
+}
+
+// Tag-badge
+.tag-badge {
+  @extend .badge, .py-2, .mb-2, .d-inline-block;
+  margin-right: .5rem;
+  padding-right: 1rem;
+  white-space: normal;
+  padding-left: 1rem;
+}
+
+// Images
+.list-image {
+  width: 30px;
+  height: 25px;
+  object-fit: cover;
+  border-radius: 0;
+  background-color: $light;
+  border: 1px solid;
+}
+
+.cover-image--wrapper {
+  @extend .mb-2, .bg-light;
+  width: 100%;
+  aspect-ratio: 3.8/5;
+  overflow: hidden;
+  border: $border--primary;
+  .cover-image {
+    width: 105%;
+    border-radius: 0;
+    object-fit: cover;
+    object-position: -4px -4px;
+  }
+}
+
+.user-image--wrapper {
+  @extend .mb-3, .bg-light;
+  width: 100%;
+  aspect-ratio: 3/2.5;
+  overflow: hidden;
+  .user-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+}
+
+.article-image {
+  @extend .mb-4, .bg-light;
+  width: 100%;
+  border: $border--default;
+}
+
+// Icons
+.fa-icon--cta {
+  @extend .mb-3, .text-secondary;
+}
+
+// Skip link
+.skip-link {
+  background-color: $color-bg-whale;
+  text-align: center;
+  a {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    &:active,
+    &:focus {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      width: auto
+    }
+  }
+}
+
+// Progress
+.alert .progress {
+  height: .5rem;
 }

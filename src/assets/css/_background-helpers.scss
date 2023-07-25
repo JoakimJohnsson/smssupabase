@@ -76,3 +76,103 @@
 .bg-danger--darker {
   background-color: $danger--lighter !important;
 }
+
+.bg-format-0 {
+  background-color: $format;
+}
+.bg-format-200 {
+  background-color: scale-color($format, $lightness: 80%);
+}
+.bg-format-400 {
+  background-color: scale-color($format, $lightness: 60%);
+}
+.bg-format-600 {
+  background-color: scale-color($format, $lightness: 40%);
+}
+.bg-format-800 {
+  background-color: scale-color($format, $lightness: 20%);
+}
+
+.bg-country-0 {
+  background-color: $country;
+}
+.bg-country-200 {
+  background-color: scale-color($country, $lightness: 80%);
+}
+.bg-country-400 {
+  background-color: scale-color($country, $lightness: 60%);
+}
+.bg-country-600 {
+  background-color: scale-color($country, $lightness: 40%);
+}
+.bg-country-800 {
+  background-color: scale-color($country, $lightness: 20%);
+}
+
+.bg-grade-0 {
+  background-color: $grade;
+}
+.bg-grade-200 {
+  background-color: scale-color($grade, $lightness: 80%);
+}
+.bg-grade-400 {
+  background-color: scale-color($grade, $lightness: 60%);
+}
+.bg-grade-600 {
+  background-color: scale-color($grade, $lightness: 40%);
+}
+.bg-grade-800 {
+  background-color: scale-color($grade, $lightness: 20%);
+}
+
+.bg-publisher-0 {
+  background-color: $publisher;
+}
+.bg-publisher-200 {
+  background-color: scale-color($publisher, $lightness: -50%);
+}
+.bg-publisher-400 {
+  background-color: scale-color($publisher, $lightness: -40%);
+}
+.bg-publisher-600 {
+  background-color: scale-color($publisher, $lightness: -30%);
+}
+.bg-publisher-800 {
+  background-color: scale-color($publisher, $lightness: -20%);
+}
+
+.bg-title-0 {
+  background-color: $title;
+}
+.bg-title-200 {
+  background-color: scale-color($title, $lightness: -50%);
+}
+.bg-title-400 {
+  background-color: scale-color($title, $lightness: -40%);
+}
+.bg-title-600 {
+  background-color: scale-color($title, $lightness: -30%);
+}
+.bg-title-800 {
+  background-color: scale-color($title, $lightness: -20%);
+}
+
+.bg-issue-0 {
+  background-color: $issue;
+}
+.bg-issue-200 {
+  background-color: scale-color($issue, $lightness: -50%);
+}
+.bg-issue-400 {
+  background-color: scale-color($issue, $lightness: -40%);
+}
+.bg-issue-600 {
+  background-color: scale-color($issue, $lightness: -30%);
+}
+.bg-issue-800 {
+  background-color: scale-color($issue, $lightness: -20%);
+}
+
+.bg-marvelklubben-0 {
+  background-color: $marvelklubben;
+}

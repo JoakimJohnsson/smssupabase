@@ -6,8 +6,8 @@ export const SidebarNavLink = ({route, variant, icon, text, handleClick}) => {
     return (
         <NavLink to={route} className={className + " " + variant} onClick={handleClick}>
             <div
-                className={"d-flex align-items-center justify-content-center justify-content-sm-start justify-content-md-center " +
-                    "justify-content-lg-start  flex-column flex-sm-row flex-md-column flex-lg-row w-100"}>
+                className={"d-flex align-items-center justify-content-center " +
+                    "justify-content-lg-start  flex-column flex-sm-column flex-lg-row w-100"}>
                 {icon}
                 <span className={"sidebar-navlink-text"}>{text}</span>
             </div>

@@ -3,7 +3,10 @@
 
 // Buttons
 .btn {
+  @extend .lh-sm;
   border-radius: $border-radius--sm;
+  display: inline-flex;
+  align-items: center;
   &.btn-cta {
     min-width: 50%;
     padding: .8rem 2rem;
@@ -13,24 +16,76 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    .sms-icon {
-      width: 2rem;
-      @extend .me-2;
-    }
     @include media-breakpoint-up(sm) {
       padding: 1rem 3rem;
     }
+    .btn-cta--icon {
+      @extend .me-0, .me-sm-3, .align-self-center;
+      font-size: 1.5rem;
+      width: 100%;
+      @include media-breakpoint-up(sm) {
+        width: auto;
+      }
+    }
   }
-  &:not(.sms-icon-btn) {
-    @extend .mb-3, .me-3;
+  &.sms-btn {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    justify-content: center;
   }
 }
 
 .sms-icon-btn {
-  @extend .m-1, .p-0;
+  @extend .m-1, .p-1;
   &:hover,
   &:active,
   &:focus {
     opacity: .9;
+    border: 1px solid;
   }
 }
+
+.sms-tool-btn {
+  @extend .m-0, .p-1;
+  border: 1px solid;
+  &:nth-child(2) {
+    margin-left: .35rem !important;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: .9;
+    border: 1px solid $border-color;
+  }
+}
+
+.sms-function-btn {
+  @extend .m-0, .p-1;
+  border: 1px solid;
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: .9;
+    border: 1px solid $border-color;
+  }
+}
+
+.sms-grade-btn {
+  @extend .btn;
+  &:hover,
+  &:active,
+  &:focus,
+  &.active {
+    opacity: .9;
+    border-bottom: 1px solid $grade;
+  }
+}
+
+.sms-link-to-top-button {
+  @extend .btn, .btn-primary;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  border-radius: 50%;
+}
+

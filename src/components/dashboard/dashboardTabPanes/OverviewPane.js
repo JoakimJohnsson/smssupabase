@@ -6,7 +6,7 @@ export const OverviewPane = () => {
         <div>
             <h1>{PANES.OVERVIEW.NAME}</h1>
             <p className="lead mb-5">
-                En cool översikt.
+                {PANES.OVERVIEW.NAME}
             </p>
         </div>
     )

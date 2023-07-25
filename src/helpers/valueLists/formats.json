@@ -2,26 +2,37 @@
   {
     "id": 32545,
     "name": "Serietidning",
-    "nameEn": "Comic"
+    "nameEn": "Comic",
+    "shade": 0
+  },
+  {
+    "id": 33541,
+    "name": "Serietidning Storformat",
+    "nameEn": "Comic large size",
+    "shade": 0
   },
   {
     "id": 23445,
     "name": "Album",
-    "nameEn": "Album"
+    "nameEn": "Album",
+    "shade": 200
   },
   {
     "id": 24543,
     "name": "Pocket",
-    "nameEn": "Pocket"
+    "nameEn": "Pocket",
+    "shade": 400
   },
   {
     "id": 23577,
     "name": "Inbunden",
-    "nameEn": "Hard cover"
+    "nameEn": "Hard cover",
+    "shade": 600
   },
   {
     "id": 26224,
     "name": "Specialtidning",
-    "nameEn": "Special"
+    "nameEn": "Special",
+    "shade": 800
   }
 ]
