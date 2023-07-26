@@ -2,6 +2,7 @@ import React from "react";
 import {Icon} from "../components/icons";
 import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation} from "@fortawesome/pro-regular-svg-icons";
 
+
 export const MESSAGES = {
     ERROR: {
         VALIDATION_EMAIL: "Ange en korrekt e-postadress.",
@@ -140,6 +141,7 @@ export const LABELS_AND_HEADINGS = {
     CREATE_ACCOUNT_CTA: "Registrera dig",
     CREATED_AT: "Inlagd",
     DASHBOARD: "Kontrollpanel",
+    DEFAULT_FORMATS: "Alla format",
     DELETE: "Ta bort",
     DELETING: "Tar bort",
     DELETE_ALL_ISSUES_FOR: "Ta bort alla publikationer för",

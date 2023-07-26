@@ -25,7 +25,7 @@ export const Titles = () => {
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                     <FilterForm filterQuery={filterQuery} filterFormat={filterFormat} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR} useFormat/>
+                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR} useFormatFilter/>
                     {
                         loading ?
                             <OverlaySpinner/>

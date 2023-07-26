@@ -367,6 +367,13 @@ input[type="checkbox"] + label {
   @extend .mb-3, .text-secondary;
 }
 
+// Forms
+.form-check-input,
+.form-check-label {
+  cursor: pointer;
+
+}
+
 // Skip link
 .skip-link {
   background-color: $color-bg-whale;
