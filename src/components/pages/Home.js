@@ -48,12 +48,15 @@ export const Home = () => {
     }, []);
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn(TABLES.TITLES, "created_at", setLimitedTitlesData, 10, false).then(() => {
-            getAllIssuesWithTitleAndPublisherWithLimit(setLimitedIssuesData, 15, false).then(() => {
-                fetchData();
+        console.log("doing it");
+        if (user && user.id) {
+            getRowsByTableWithLimitAndOrderByColumn(TABLES.TITLES, "created_at", setLimitedTitlesData, 10, false).then(() => {
+                getAllIssuesWithTitleAndPublisherWithLimit(setLimitedIssuesData, 15, false).then(() => {
+                    fetchData();
+                });
             });
-        });
-    }, [fetchData]);
+        }
+    }, [fetchData, user]);
 
 
     useEffect(() => {
