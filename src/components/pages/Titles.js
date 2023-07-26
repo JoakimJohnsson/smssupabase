@@ -13,7 +13,7 @@ export const Titles = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
+    const [searchParams, setSearchParams, filterQuery, filterFormat] = useSearchFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
@@ -24,8 +24,8 @@ export const Titles = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterForm filterQuery={filterQuery} filterFormat={filterFormat} searchParams={searchParams} setSearchParams={setSearchParams}
+                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR} useFormat/>
                     {
                         loading ?
                             <OverlaySpinner/>

@@ -6,7 +6,7 @@ import {clearInput} from "./filterFunctions";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 
-const FilterForm = ({filterQuery, searchParams, setSearchParams, placeholder}) => {
+const FilterForm = ({filterQuery, filterFormat , searchParams, setSearchParams, placeholder, useFormat = false}) => {
 
     return (
         <div className={"form-group sms-section--light mb-4"}>
@@ -24,7 +24,7 @@ const FilterForm = ({filterQuery, searchParams, setSearchParams, placeholder}) =
                     />
                     {
                         filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => clearInput(setSearchParams, searchParams)}>
+                        <button className="btn btn-primary" onClick={() => clearInput(setSearchParams, useFormat)}>
                             <FontAwesomeIcon icon={faTimes} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.RESET}
                         </button>

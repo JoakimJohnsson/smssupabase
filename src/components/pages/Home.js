@@ -48,7 +48,6 @@ export const Home = () => {
     }, []);
 
     useEffect(() => {
-        console.log("doing it");
         if (user && user.id) {
             getRowsByTableWithLimitAndOrderByColumn(TABLES.TITLES, "created_at", setLimitedTitlesData, 10, false).then(() => {
                 getAllIssuesWithTitleAndPublisherWithLimit(setLimitedIssuesData, 15, false).then(() => {
