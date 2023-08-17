@@ -6,15 +6,14 @@ import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {IssueCard} from "../lists/issues/IssueCard";
 import {getAllIssuesWithTitleAndPublisher} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {sortByName} from "../../helpers/functions/functions";
-import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
+import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 
 
 export const Issues = () => {
 
     const [loading, setLoading] = useState(true);
     const [issuesData, setIssuesData] = useState(null);
-    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
-
+    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
 
     useEffect(() => {
         getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
@@ -25,8 +24,7 @@ export const Issues = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
-                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                      placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>

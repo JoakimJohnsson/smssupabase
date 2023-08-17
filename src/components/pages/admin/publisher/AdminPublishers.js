@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
+import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 
 
@@ -15,7 +15,7 @@ export const AdminPublishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
     const navigate = useNavigate();
-    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
+    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
@@ -27,8 +27,7 @@ export const AdminPublishers = () => {
                 <div className={"sms-page-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
-                        <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                          placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                        <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                         <div className={"sms-section--light"}>
                             {publishersData &&
                                 <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} filterQuery={filterQuery}/>}

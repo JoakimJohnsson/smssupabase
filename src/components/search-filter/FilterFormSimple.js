@@ -2,12 +2,10 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {clearInput} from "./filterFunctions";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import FormatFilter from "./FormatFilter";
 
 
-const FilterFormSimple = ({filterQuery, filterFormat , searchParams, setSearchParams, placeholder, useFormatFilter = false}) => {
+const FilterFormSimple = ({filterQuery, setSearchParams, placeholder}) => {
 
     return (
         <div className={"form-group sms-section--light mb-4"}>
@@ -25,16 +23,12 @@ const FilterFormSimple = ({filterQuery, filterFormat , searchParams, setSearchPa
                     />
                     {
                         filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => clearInput(setSearchParams, useFormatFilter)}>
+                        <button className="btn btn-primary" onClick={() => setSearchParams({filterQuery: ""})}>
                             <FontAwesomeIcon icon={faTimes} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.RESET}
                         </button>
                     }
                 </div>
-                {
-                    useFormatFilter &&
-                    <FormatFilter />
-                }
             </div>
         </div>
     )

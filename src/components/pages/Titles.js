@@ -4,7 +4,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {sortByNameAndStartYear} from "../../helpers/functions/functions";
-import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
+import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 
@@ -13,7 +13,7 @@ export const Titles = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [searchParams, setSearchParams, filterQuery, filterFormat] = useSearchFilter();
+    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
@@ -24,8 +24,7 @@ export const Titles = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                    <FilterFormSimple filterQuery={filterQuery} filterFormat={filterFormat} searchParams={searchParams} setSearchParams={setSearchParams}
-                                      placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR} useFormatFilter/>
+                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>

@@ -8,14 +8,14 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {UsersList} from "../../../lists/users/UsersList";
-import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
+import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 
 
 export const AdminUsers = () => {
 
     const [usersData, setUsersData] = useState(null);
-    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
+    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,8 +28,7 @@ export const AdminUsers = () => {
                 <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_USERS}</h1>
                     <Breadcrumbs/>
-                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                      placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     <div className={"sms-section--light"}>
                         {
                             usersData && usersData.length > 0 ?

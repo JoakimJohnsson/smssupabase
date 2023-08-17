@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
+import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {UserCard} from "../lists/users/UserCard";
 
@@ -12,7 +12,7 @@ export const Users = () => {
 
     const [loading, setLoading] = useState(true);
     const [usersData, setUsersData] = useState(null);
-    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
+    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PROFILES, setUsersData).then(() => setLoading(false));
@@ -23,8 +23,7 @@ export const Users = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_USERS}/>
-                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                      placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     {
                         loading ?
                             <OverlaySpinner/>

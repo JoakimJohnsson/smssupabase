@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
+import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {sortByName} from "../../helpers/functions/functions";
 import {Link} from "react-router-dom";
@@ -13,7 +13,7 @@ export const Publishers = () => {
 
     const [loading, setLoading] = useState(true);
     const [publishersData, setPublishersData] = useState(null);
-    const [searchParams, setSearchParams, filterQuery] = useSearchFilter();
+    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then(() => setLoading(false));
@@ -24,8 +24,7 @@ export const Publishers = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
-                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                      placeholder={LABELS_AND_HEADINGS.FILTER_PUBLISHER_NAME}/>
+                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_PUBLISHER_NAME}/>
                     {
                         loading ?
                             <OverlaySpinner/>
