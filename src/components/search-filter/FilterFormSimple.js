@@ -6,7 +6,6 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 
 const FilterFormSimple = ({filterQuery, setSearchParams, placeholder}) => {
-
     return (
         <div className={"form-group sms-section--light mb-4"}>
             <div className="col-12 col-xl-8 mb-2">
