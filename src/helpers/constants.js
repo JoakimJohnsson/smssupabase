@@ -226,6 +226,7 @@ export const LABELS_AND_HEADINGS = {
     RELEASE_PREVIOUS: "Föregående releaser",
     RELEASE_FUTURE: "Kommande funktionalitet",
     RESET: "Rensa",
+    RESET_FILTER: "Rensa filter",
     RESET_FORM: "Rensa formulär",
     RESET_PASSWORD: "Ändra lösenord",
     SAVE: "Spara",
