@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import FilterForm from "../../../search-filter/FilterForm";
+import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
 
 
@@ -28,8 +28,8 @@ export const AdminTitles = () => {
                 <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                     <Breadcrumbs/>
-                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
+                                      placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     <div className={"sms-section--light"}>
                         {titlesData ?
                             <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true} filterQuery={filterQuery}/> :

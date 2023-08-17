@@ -7,7 +7,7 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import FormatFilter from "./FormatFilter";
 
 
-const FilterForm = ({filterQuery, filterFormat , searchParams, setSearchParams, placeholder, useFormatFilter = false}) => {
+const FilterFormFormat = ({filterQuery, filterFormat , searchParams, setSearchParams, placeholder, useFormatFilter = false}) => {
 
     return (
         <div className={"form-group sms-section--light mb-4"}>
@@ -39,4 +39,4 @@ const FilterForm = ({filterQuery, filterFormat , searchParams, setSearchParams, 
         </div>
     )
 };
-export default FilterForm;
+export default FilterFormFormat;

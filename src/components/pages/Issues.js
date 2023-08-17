@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import FilterForm from "../search-filter/FilterForm";
+import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {IssueCard} from "../lists/issues/IssueCard";
 import {getAllIssuesWithTitleAndPublisher} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {sortByName} from "../../helpers/functions/functions";
@@ -25,8 +25,8 @@ export const Issues = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
-                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
+                                      placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>

@@ -8,7 +8,7 @@ import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
-import FilterForm from "../../../search-filter/FilterForm";
+import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 
 
 export const AdminPublishers = () => {
@@ -27,8 +27,8 @@ export const AdminPublishers = () => {
                 <div className={"sms-page-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
-                        <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                    placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                        <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
+                                          placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                         <div className={"sms-section--light"}>
                             {publishersData &&
                                 <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} filterQuery={filterQuery}/>}

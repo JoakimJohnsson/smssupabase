@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import FilterForm from "../search-filter/FilterForm";
+import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {sortByNameAndStartYear} from "../../helpers/functions/functions";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
@@ -24,8 +24,8 @@ export const Titles = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                    <FilterForm filterQuery={filterQuery} filterFormat={filterFormat} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR} useFormatFilter/>
+                    <FilterFormSimple filterQuery={filterQuery} filterFormat={filterFormat} searchParams={searchParams} setSearchParams={setSearchParams}
+                                      placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR} useFormatFilter/>
                     {
                         loading ?
                             <OverlaySpinner/>

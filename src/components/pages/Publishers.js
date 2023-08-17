@@ -4,7 +4,7 @@ import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFu
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
-import FilterForm from "../search-filter/FilterForm";
+import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {sortByName} from "../../helpers/functions/functions";
 import {Link} from "react-router-dom";
 
@@ -24,8 +24,8 @@ export const Publishers = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
-                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
+                                      placeholder={LABELS_AND_HEADINGS.FILTER_PUBLISHER_NAME}/>
                     {
                         loading ?
                             <OverlaySpinner/>

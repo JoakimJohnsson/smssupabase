@@ -4,7 +4,7 @@ import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFu
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
-import FilterForm from "../search-filter/FilterForm";
+import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {UserCard} from "../lists/users/UserCard";
 
 
@@ -23,8 +23,8 @@ export const Users = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_USERS}/>
-                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
+                                      placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     {
                         loading ?
                             <OverlaySpinner/>

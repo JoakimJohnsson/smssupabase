@@ -9,7 +9,7 @@ import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {UsersList} from "../../../lists/users/UsersList";
 import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
-import FilterForm from "../../../search-filter/FilterForm";
+import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 
 
 export const AdminUsers = () => {
@@ -28,8 +28,8 @@ export const AdminUsers = () => {
                 <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_USERS}</h1>
                     <Breadcrumbs/>
-                    <FilterForm filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <FilterFormSimple filterQuery={filterQuery} searchParams={searchParams} setSearchParams={setSearchParams}
+                                      placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     <div className={"sms-section--light"}>
                         {
                             usersData && usersData.length > 0 ?
