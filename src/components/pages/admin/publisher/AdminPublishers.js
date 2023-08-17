@@ -15,7 +15,7 @@ export const AdminPublishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
     const navigate = useNavigate();
-    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
@@ -27,10 +27,10 @@ export const AdminPublishers = () => {
                 <div className={"sms-page-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
-                        <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                        <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                         <div className={"sms-section--light"}>
                             {publishersData &&
-                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} filterQuery={filterQuery}/>}
+                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} query={query}/>}
                             <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
                                         label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}

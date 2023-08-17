@@ -15,7 +15,7 @@ import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 export const AdminUsers = () => {
 
     const [usersData, setUsersData] = useState(null);
-    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,11 +28,11 @@ export const AdminUsers = () => {
                 <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_USERS}</h1>
                     <Breadcrumbs/>
-                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     <div className={"sms-section--light"}>
                         {
                             usersData && usersData.length > 0 ?
-                                <UsersList usersData={usersData} filterQuery={filterQuery}/>
+                                <UsersList usersData={usersData} query={query}/>
                                 :
                                 <NoDataAvailable/>
                         }

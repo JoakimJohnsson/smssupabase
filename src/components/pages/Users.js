@@ -12,7 +12,7 @@ export const Users = () => {
 
     const [loading, setLoading] = useState(true);
     const [usersData, setUsersData] = useState(null);
-    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PROFILES, setUsersData).then(() => setLoading(false));
@@ -23,7 +23,7 @@ export const Users = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_USERS}/>
-                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -31,9 +31,9 @@ export const Users = () => {
                             <ul className={"sms-list--with-cards"}>
                                 {
                                     usersData
-                                        .filter(user => user.firstname?.toLowerCase().includes(filterQuery.toLowerCase()) ||
-                                            user.lastname?.toLowerCase().includes(filterQuery.toLowerCase()) ||
-                                            filterQuery === ""
+                                        .filter(user => user.firstname?.toLowerCase().includes(query.toLowerCase()) ||
+                                            user.lastname?.toLowerCase().includes(query.toLowerCase()) ||
+                                            query === ""
                                         )
                                         .map((user) =>
                                             // Only show public users here

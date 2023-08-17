@@ -16,7 +16,7 @@ export const AdminTitles = () => {
 
     const [titlesData, setTitlesData] = useState(null);
     const navigate = useNavigate();
-    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();
@@ -28,10 +28,10 @@ export const AdminTitles = () => {
                 <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
                     <Breadcrumbs/>
-                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     <div className={"sms-section--light"}>
                         {titlesData ?
-                            <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true} filterQuery={filterQuery}/> :
+                            <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true} query={query}/> :
                             <CustomSpinner/>}
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
                                     label={LABELS_AND_HEADINGS.ADD_TITLE}/>

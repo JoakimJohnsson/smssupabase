@@ -13,7 +13,7 @@ export const Publishers = () => {
 
     const [loading, setLoading] = useState(true);
     const [publishersData, setPublishersData] = useState(null);
-    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then(() => setLoading(false));
@@ -24,7 +24,7 @@ export const Publishers = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
-                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_PUBLISHER_NAME}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_PUBLISHER_NAME}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -33,8 +33,8 @@ export const Publishers = () => {
                                 {
                                     publishersData
                                         .filter(publisher => publisher.name.toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
-                                            filterQuery === ""
+                                                .includes(query.toLowerCase()) ||
+                                            query === ""
                                         )
                                         .sort((a, b) => sortByName(a, b))
                                         .map((publisher) =>

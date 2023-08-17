@@ -2,30 +2,29 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {clearInput} from "./filterFunctions";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {DEFAULT_SEARCH_PARAMS_FORMATS, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import FormatFilter from "./FormatFilter";
 
 
-const FilterFormFormat = ({filterQuery, filterFormat , searchParams, setSearchParams, placeholder, useFormatFilter = false}) => {
+const FilterFormFormat = ({query, filterFormat , searchParams, setSearchParams, placeholder, useFormatFilter = false}) => {
 
     return (
         <div className={"form-group sms-section--light mb-4"}>
             <div className="col-12 col-xl-8 mb-2">
-                <label className={"form-label"} htmlFor="filterQuery">{LABELS_AND_HEADINGS.DO_FILTER}</label>
+                <label className={"form-label"} htmlFor="query">{LABELS_AND_HEADINGS.DO_FILTER}</label>
                 <div className="input-group">
                     <span className="input-group-text"><FontAwesomeIcon icon={faFilters}/></span>
-                    <input id="filterQuery"
-                           name="filterQuery"
+                    <input id="query"
+                           name="query"
                            type="text"
                            className="form-control border-bottom-0"
                            placeholder={placeholder}
-                           value={filterQuery}
-                           onChange={e => setSearchParams({filterQuery: e.target.value})}
+                           value={query}
+                           onChange={e => setSearchParams({query: e.target.value})}
                     />
                     {
-                        filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => clearInput(setSearchParams, useFormatFilter)}>
+                        query !== "" &&
+                        <button className="btn btn-primary" onClick={() => setSearchParams(DEFAULT_SEARCH_PARAMS_FORMATS)}>
                             <FontAwesomeIcon icon={faTimes} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.RESET}
                         </button>

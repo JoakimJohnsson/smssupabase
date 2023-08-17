@@ -403,3 +403,13 @@ export const VARIANT_MAPPER = {
     warning: 3,
     danger: 4
 }
+
+export const DEFAULT_SEARCH_PARAMS_FORMATS = {
+    query: "",
+    comic: false,
+    comiclarge: false,
+    album: false,
+    pocket: false,
+    hardcover: false,
+    special: false
+}

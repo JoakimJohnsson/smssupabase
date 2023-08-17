@@ -12,7 +12,7 @@ export const Marvelklubben = () => {
 
     const [loading, setLoading] = useState(true);
     const [marvelKlubbenData, setMarvelKlubbenData] = useState(null);
-    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getAllMarvelklubbenIssues(setMarvelKlubbenData).then(() => setLoading(false));
@@ -27,7 +27,7 @@ export const Marvelklubben = () => {
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"
                                                        target={"_blank"}>Wikipedia</a>.</p>
-                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NUMBER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NUMBER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -36,12 +36,12 @@ export const Marvelklubben = () => {
                                 {
                                     marvelKlubbenData
                                         .filter(issue => issue.titles.name.toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
+                                                .includes(query.toLowerCase()) ||
                                             issue.marvelklubben_number.toString().toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
+                                                .includes(query.toLowerCase()) ||
                                             issue.year.toString().toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
-                                            filterQuery === "")
+                                                .includes(query.toLowerCase()) ||
+                                            query === "")
                                         .map(issue =>
                                             <IssueCard key={issue.id} issue={issue}/>
                                         )

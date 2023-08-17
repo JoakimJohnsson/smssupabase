@@ -7,7 +7,7 @@ import {hasImage, sortByNameAndStartYear} from "../../../helpers/functions/funct
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 
-export const TitlesList = ({titlesData, setTitlesData, showAdminInfo = false, showCreatedInfo = false, filterQuery = ""}) => {
+export const TitlesList = ({titlesData, setTitlesData, showAdminInfo = false, showCreatedInfo = false, query = ""}) => {
 
     return titlesData && (
         <ul className={"sms-list--with-tools mb-4"}>
@@ -15,10 +15,10 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo = false, sh
                 titlesData.length ?
                     (titlesData
                             .filter(title => title.name.toLowerCase()
-                                    .includes(filterQuery.toLowerCase()) ||
+                                    .includes(query.toLowerCase()) ||
                                 title.start_year.toString().toLowerCase()
-                                    .includes(filterQuery.toLowerCase()) ||
-                                filterQuery === ""
+                                    .includes(query.toLowerCase()) ||
+                                query === ""
                             )
                             .sort((a, b) => sortByNameAndStartYear(a, b)).map((t, index) =>
                             <li key={index} className={"list-group-item px-0"}>

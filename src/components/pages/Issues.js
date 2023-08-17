@@ -13,7 +13,7 @@ export const Issues = () => {
 
     const [loading, setLoading] = useState(true);
     const [issuesData, setIssuesData] = useState(null);
-    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
@@ -24,7 +24,7 @@ export const Issues = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
-                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -33,12 +33,12 @@ export const Issues = () => {
                                 {
                                     issuesData
                                         .filter(issue => issue.titles.name.toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
+                                                .includes(query.toLowerCase()) ||
                                             issue.publishers.name.toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
+                                                .includes(query.toLowerCase()) ||
                                             issue.year.toString().toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
-                                            filterQuery === ""
+                                                .includes(query.toLowerCase()) ||
+                                            query === ""
                                         )
                                         .sort((a, b) => sortByName(a.titles, b.titles))
                                         .map(issue =>

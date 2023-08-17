@@ -5,24 +5,24 @@ import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 
-const FilterFormSimple = ({filterQuery, setSearchParams, placeholder}) => {
+const FilterFormSimple = ({query, setSearchParams, placeholder}) => {
     return (
         <div className={"form-group sms-section--light mb-4"}>
             <div className="col-12 col-xl-8 mb-2">
-                <label className={"form-label"} htmlFor="filterQuery">{LABELS_AND_HEADINGS.DO_FILTER}</label>
+                <label className={"form-label"} htmlFor="query">{LABELS_AND_HEADINGS.DO_FILTER}</label>
                 <div className="input-group">
                     <span className="input-group-text"><FontAwesomeIcon icon={faFilters}/></span>
-                    <input id="filterQuery"
-                           name="filterQuery"
+                    <input id="query"
+                           name="query"
                            type="text"
                            className="form-control border-bottom-0"
                            placeholder={placeholder}
-                           value={filterQuery}
-                           onChange={e => setSearchParams({filterQuery: e.target.value})}
+                           value={query}
+                           onChange={e => setSearchParams({query: e.target.value})}
                     />
                     {
-                        filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => setSearchParams({filterQuery: ""})}>
+                        query !== "" &&
+                        <button className="btn btn-primary" onClick={() => setSearchParams({query: ""})}>
                             <FontAwesomeIcon icon={faTimes} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.RESET}
                         </button>

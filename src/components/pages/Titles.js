@@ -13,7 +13,7 @@ export const Titles = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [setSearchParams, filterQuery] = useSimpleQueryFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
@@ -24,7 +24,7 @@ export const Titles = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                    <FilterFormSimple filterQuery={filterQuery} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -33,10 +33,10 @@ export const Titles = () => {
                                 {
                                     titlesData
                                         .filter(title => title.name.toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
+                                                .includes(query.toLowerCase()) ||
                                             title.start_year.toString().toLowerCase()
-                                                .includes(filterQuery.toLowerCase()) ||
-                                            filterQuery === ""
+                                                .includes(query.toLowerCase()) ||
+                                            query === ""
                                         )
                                         .sort((a, b) => sortByNameAndStartYear(a, b))
                                         .map((title) =>
