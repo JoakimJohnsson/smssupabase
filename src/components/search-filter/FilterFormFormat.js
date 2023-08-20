@@ -67,16 +67,13 @@ const FilterFormFormat = ({
                            value={filterQuery}
                            onChange={(e) => setFilterQuery(e.target.value)}
                     />
-                    <button className="btn btn-primary" type={"submit"} aria-label={LABELS_AND_HEADINGS.SEARCH}>
-                        <FontAwesomeIcon icon={faSearch}/>
-                    </button>
                     <button className="btn btn-outline-primary" onClick={() => setFilterQuery("")} aria-label={LABELS_AND_HEADINGS.RESET}>
                         <FontAwesomeIcon icon={faTimes}/>
                     </button>
                 </div>
             </div>
             <div className="col-12 mb-2">
-                <div className={"input-group"}>
+                <div className={"input-group mb-3"}>
                     {/* comic */}
                     <FilterButton id={formatData[0].id} name={formatData[0].name} state={filterComic} setState={setFilterComic}/>
                     {/* comiclarge */}
@@ -91,6 +88,10 @@ const FilterFormFormat = ({
                     <FilterButton id={formatData[5].id} name={formatData[5].name} state={filterSpecial} setState={setFilterSpecial}/>
                 </div>
             </div>
+            <button className="btn btn-primary" type={"submit"}>
+                <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
+                {LABELS_AND_HEADINGS.SEARCH}
+            </button>
         </form>
     )
 };
