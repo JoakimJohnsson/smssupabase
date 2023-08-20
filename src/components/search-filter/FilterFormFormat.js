@@ -40,8 +40,7 @@ const FilterFormFormat = ({
         setFilterSpecial(isTrue(special) || false);
     }, [query, comic, comiclarge, album, pocket, hardcover, special]);
 
-    const updateSearchParams = (e) => {
-        e.preventDefault();
+    const updateSearchParams = () => {
         setSearchParams({
             query: filterQuery,
             comic: filterComic,
@@ -53,8 +52,14 @@ const FilterFormFormat = ({
         });
     }
 
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            updateSearchParams();
+        }
+    }
+
     return (
-        <form className={"form-group sms-section--light mb-4"} onSubmit={(e) => updateSearchParams(e)}>
+        <div className={"form-group sms-section--light mb-4"}>
             <div className="col-12 col-xl-8 mb-2">
                 <label className={"form-label"} htmlFor="query">{LABELS_AND_HEADINGS.DO_FILTER}</label>
                 <div className="input-group mb-3 col-8">
@@ -65,6 +70,7 @@ const FilterFormFormat = ({
                            className="form-control border-bottom-0"
                            placeholder={placeholder}
                            value={filterQuery}
+                           onKeyDown={(e) => handleEnter(e)}
                            onChange={(e) => setFilterQuery(e.target.value)}
                     />
                     <button className="btn btn-outline-primary" onClick={() => setFilterQuery("")} aria-label={LABELS_AND_HEADINGS.RESET}>
@@ -88,11 +94,11 @@ const FilterFormFormat = ({
                     <FilterButton id={formatData[5].id} name={formatData[5].name} state={filterSpecial} setState={setFilterSpecial}/>
                 </div>
             </div>
-            <button className="btn btn-primary" type={"submit"}>
+            <button className="btn btn-primary" onClick={() => updateSearchParams()}>
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
                 {LABELS_AND_HEADINGS.SEARCH}
             </button>
-        </form>
+        </div>
     )
 };
 export default FilterFormFormat;
