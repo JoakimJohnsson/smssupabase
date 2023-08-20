@@ -31,13 +31,30 @@ export const Publishers = () => {
                             :
                             <ul className={"sms-list--with-cards"}>
                                 {
-                                    publishersData
-                                        .filter(publisher => publisher.name.toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            query === ""
-                                        )
-                                        .sort((a, b) => sortByName(a, b))
-                                        .map((publisher) =>
+                                    query ?
+                                        publishersData
+                                            .filter(publisher => publisher.name.toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                query === ""
+                                            )
+                                            .sort((a, b) => sortByName(a, b))
+                                            .map((publisher) =>
+                                                <li key={publisher.id} className={"title-card"}>
+                                                    <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
+                                                          title={publisher.name}>
+                                                        <div className={"image-container mb-2 position-relative"}>
+                                                            <img
+                                                                src={publisher.image_url}
+                                                                alt={publisher.name}
+                                                                className="w-100"
+                                                                loading={"lazy"}
+                                                            />
+                                                        </div>
+                                                    </Link>
+                                                </li>
+                                            )
+                                        :
+                                        publishersData.map((publisher) =>
                                             <li key={publisher.id} className={"title-card"}>
                                                 <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
                                                       title={publisher.name}>

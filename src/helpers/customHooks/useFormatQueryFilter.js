@@ -5,6 +5,7 @@ import {DEFAULT_SEARCH_PARAMS_FORMATS} from "../constants";
 export const useFormatQueryFilter = () => {
 
     const [searchParams, setSearchParams] = useSearchParams(DEFAULT_SEARCH_PARAMS_FORMATS);
+
     const query = searchParams.get("query");
     const comic = searchParams.get("comic");
     const comiclarge = searchParams.get("comiclarge");
@@ -12,7 +13,6 @@ export const useFormatQueryFilter = () => {
     const pocket = searchParams.get("pocket");
     const hardcover = searchParams.get("hardcover");
     const special = searchParams.get("special");
-
 
     return [
         setSearchParams,

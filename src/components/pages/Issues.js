@@ -31,17 +31,22 @@ export const Issues = () => {
                             :
                             <ul className={"sms-list--with-cards"}>
                                 {
-                                    issuesData
-                                        .filter(issue => issue.titles.name.toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            issue.publishers.name.toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            issue.year.toString().toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            query === ""
-                                        )
-                                        .sort((a, b) => sortByName(a.titles, b.titles))
-                                        .map(issue =>
+                                    query ?
+                                        issuesData
+                                            .filter(issue => issue.titles.name.toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                issue.publishers.name.toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                issue.year.toString().toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                query === ""
+                                            )
+                                            .sort((a, b) => sortByName(a.titles, b.titles))
+                                            .map(issue =>
+                                                <IssueCard key={issue.id} issue={issue}/>
+                                            )
+                                        :
+                                        issuesData.map(issue =>
                                             <IssueCard key={issue.id} issue={issue}/>
                                         )
                                 }

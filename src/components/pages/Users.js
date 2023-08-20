@@ -30,12 +30,19 @@ export const Users = () => {
                             :
                             <ul className={"sms-list--with-cards"}>
                                 {
-                                    usersData
-                                        .filter(user => user.firstname?.toLowerCase().includes(query.toLowerCase()) ||
-                                            user.lastname?.toLowerCase().includes(query.toLowerCase()) ||
-                                            query === ""
-                                        )
-                                        .map((user) =>
+                                    query ?
+                                        usersData
+                                            .filter(user => user.firstname?.toLowerCase().includes(query.toLowerCase()) ||
+                                                user.lastname?.toLowerCase().includes(query.toLowerCase()) ||
+                                                query === ""
+                                            )
+                                            .map((user) =>
+                                                // Only show public users here
+                                                user.is_public === 1 &&
+                                                <UserCard key={user.id} user={user}/>
+                                            )
+                                        :
+                                        usersData.map((user) =>
                                             // Only show public users here
                                             user.is_public === 1 &&
                                             <UserCard key={user.id} user={user}/>

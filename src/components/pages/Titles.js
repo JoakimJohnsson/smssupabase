@@ -40,15 +40,20 @@ export const Titles = () => {
                             :
                             <ul className={"sms-list--with-cards"}>
                                 {
-                                    titlesData
-                                        .filter(title => title.name.toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            title.start_year.toString().toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            query === ""
-                                        )
-                                        .sort((a, b) => sortByNameAndStartYear(a, b))
-                                        .map((title) =>
+                                    query ?
+                                        titlesData
+                                            .filter(title => title.name.toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                title.start_year.toString().toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                query === ""
+                                            )
+                                            .sort((a, b) => sortByNameAndStartYear(a, b))
+                                            .map((title) =>
+                                                <TitlesListItem key={title.id} title={title}/>
+                                            )
+                                        :
+                                        titlesData.map((title) =>
                                             <TitlesListItem key={title.id} title={title}/>
                                         )
                                 }

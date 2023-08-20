@@ -34,15 +34,20 @@ export const Marvelklubben = () => {
                             :
                             <ul className={"sms-list--with-cards"}>
                                 {
-                                    marvelKlubbenData
-                                        .filter(issue => issue.titles.name.toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            issue.marvelklubben_number.toString().toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            issue.year.toString().toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            query === "")
-                                        .map(issue =>
+                                    query ?
+                                        marvelKlubbenData
+                                            .filter(issue => issue.titles.name.toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                issue.marvelklubben_number.toString().toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                issue.year.toString().toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                query === "")
+                                            .map(issue =>
+                                                <IssueCard key={issue.id} issue={issue}/>
+                                            )
+                                        :
+                                        marvelKlubbenData.map(issue =>
                                             <IssueCard key={issue.id} issue={issue}/>
                                         )
                                 }

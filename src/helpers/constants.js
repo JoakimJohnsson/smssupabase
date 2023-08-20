@@ -230,6 +230,7 @@ export const LABELS_AND_HEADINGS = {
     RESET_FORM: "Rensa formulär",
     RESET_PASSWORD: "Ändra lösenord",
     SAVE: "Spara",
+    SEARCH: "Sök",
     SEE_ALL_PUBLISHERS: "Se alla förlag",
     SEE_ALL_TITLES: "Se alla titlar",
     SEE_ALL_USERS: "Se alla användare",
