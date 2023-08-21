@@ -24,6 +24,15 @@ export const Titles = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                    {/* TODO - remove testcode */}
+                    <div className={"bg-dark mb-3"}>
+                        <p>Comic {comic.toString()}</p>
+                        <p>Comiclarge {comiclarge.toString()}</p>
+                        <p>Album {album.toString()}</p>
+                        <p>Pocket {pocket.toString()}</p>
+                        <p>Hardcover {hardcover.toString()}</p>
+                        <p className={"mb-0"}>Special {special.toString()}</p>
+                    </div>
                     <FilterFormFormat
                         setSearchParams={setSearchParams}
                         query={query}

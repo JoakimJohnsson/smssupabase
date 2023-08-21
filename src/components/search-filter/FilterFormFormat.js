@@ -79,7 +79,7 @@ const FilterFormFormat = ({
                 </div>
             </div>
             <div className="col-12 mb-2">
-                <div className={"input-group mb-3"}>
+                <div className={"input-group"}>
                     {/* comic */}
                     <FilterButton id={formatData[0].id} name={formatData[0].name} state={filterComic} setState={setFilterComic}/>
                     {/* comiclarge */}
@@ -94,10 +94,21 @@ const FilterFormFormat = ({
                     <FilterButton id={formatData[5].id} name={formatData[5].name} state={filterSpecial} setState={setFilterSpecial}/>
                 </div>
             </div>
-            <button className="btn btn-primary" onClick={() => updateSearchParams()}>
+            <button className="btn btn-primary mb-3" onClick={() => updateSearchParams()}>
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
                 {LABELS_AND_HEADINGS.SEARCH}
             </button>
+
+            {/* TODO - remove testcode */}
+            <div className={"bg-dark mb-3"}>
+                <p className={"mt-4"}>filterComic {filterComic.toString()}</p>
+                <p>filterComiclarge {filterComiclarge.toString()}</p>
+                <p>filterAlbum {filterAlbum.toString()}</p>
+                <p>filterPocket {filterPocket.toString()}</p>
+                <p>filterHardcover {filterHardcover.toString()}</p>
+                <p className={"mb-0"}>filterSpecial {filterSpecial.toString()}</p>
+            </div>
+
         </div>
     )
 };
