@@ -189,7 +189,6 @@ export const isTrue = (string) => (string === "true");
 // Helper function to check if any string in an array is true.
 export const hasTrueValue = (stringArray) => {
     for (let i = 0; i < stringArray.length; i++) {
-
         if (isTrue(stringArray[i])) {
             return true;
         }
