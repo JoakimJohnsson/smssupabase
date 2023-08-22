@@ -1,12 +1,12 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {getIssueName} from "../../helpers/functions/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {Icon} from "../icons";
+import {EditIcon, Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {Grade} from "../grade/Grade";
 import {FormatBadge} from "../minis/FormatBadge";
@@ -29,7 +29,7 @@ import {PublisherBadge} from "../minis/PublisherBadge";
 export const Issue = () => {
 
     const {id} = useParams();
-    const {setInformationMessage, user} = useAppContext();
+    const {setInformationMessage, user, profile} = useAppContext();
     const [grade, setGrade] = useState(1);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
@@ -154,6 +154,10 @@ export const Issue = () => {
                                     {
                                         countryData &&
                                         <CountryBadge countryId={issue.publishers.country_id}/>
+                                    }
+                                    {
+                                        profile && profile.role >= 1 &&
+                                        <Link to={`/admin/issues/${issue.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + displayName}><span className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
                                     }
                                 </div>
                                 <div className={"mb-4"}>

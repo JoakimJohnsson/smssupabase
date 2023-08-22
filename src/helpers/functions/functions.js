@@ -186,10 +186,47 @@ export const getTitleProgressForUser = async (title, userId) => {
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");
 
+// Helper function to check if any string in an array is true.
+export const hasTrueValue = (stringArray) => {
+    for (let i = 0; i < stringArray.length; i++) {
+        if (isTrue(stringArray[i])) {
+            return true;
+        }
+    }
+    return false;
+};
+
 export const getCurrentDate = () => {
     return (new Date()).toISOString();
 }
 
 export const sortableName = (name) => {
     return name.trim().replace(":", "").replace("-", "").toLowerCase();
+}
+
+// Helper function for removing whitespace from strings - i.e. "My string" --> "mystring" or "my-string" if provided "-" as replacement.
+export const trimAndReplace = (string, replacement = "") => {
+    return string.trim().toLowerCase().replaceAll(" ", replacement);
+}
+
+// Filter functions
+export const filterQueryByNameAndStartYear = (obj, query) => {
+    return (
+        obj.name.toLowerCase()
+            .includes(query.toLowerCase()) ||
+        obj.start_year.toString().toLowerCase()
+            .includes(query.toLowerCase()) ||
+        query === ""
+    )
+}
+
+export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover, special) => {
+    return (
+        (isTrue(comic) && obj.format_id === 32545) ||
+        (isTrue(comiclarge) && obj.format_id === 33541) ||
+        (isTrue(album) && obj.format_id === 23445) ||
+        (isTrue(pocket) && obj.format_id === 24543) ||
+        (isTrue(hardcover) && obj.format_id === 23577) ||
+        (isTrue(special) && obj.format_id === 26224)
+    )
 }

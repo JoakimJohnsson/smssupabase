@@ -23,7 +23,19 @@ const Demo = () => {
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.8.8 - 2023-06-15</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.0 - 2023-08-22</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Visa format på titelkort.</li>
+                    <li className={"list-group-item px-0"}>Visa senast inlagda information på startsidan.</li>
+                    <li className={"list-group-item px-0"}>Visa hur många titlar som återstår att lägga in i databasen.</li>
+                    <li className={"list-group-item px-0"}>Länk för redigering på titel, förlag och publikation - Bara synlig för admin.</li>
+                    <li className={"list-group-item px-0"}>Bugfix - fält för dubbelnummer lades inte till vid generering av publikation.</li>
+                    <li className={"list-group-item px-0"}>Bugfix - inlagd datum visades inte korrekt.</li>
+                    <li className={"list-group-item px-0"}>Informationsmeddelanden stängs automatiskt efter 10 sekunder.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att filtrera titlar på format.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.8 - 2023-06-15</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Länk till titel på comics.org.</li>
@@ -32,17 +44,9 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Förbättrat utseende och funktion för att lägga till och ta bort publikationer och titlar från samlingen.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att börja samla på en titel från publikations sidan.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.7 - 2023-05-27</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Förbättrad sortering på många ställen.</li>
-                    <li className={"list-group-item px-0"}>Länk för att snabbt gå tillbaka till toppen på sidan.</li>
-                    <li className={"list-group-item px-0"}>Länk för att hoppa direkt till innehåll på sidan.</li>
-                    <li className={"list-group-item px-0"}>Visa information om variant på publikation.</li>
-                    <li className={"list-group-item px-0"}>Förbättrat kort för visning av användare i filter / sök.</li>
-                </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Visa statistik och information på startsida och kontrollpanel.</li>
+                    <li className={"list-group-item px-0"}>Visa mer statistik och information på startsida och kontrollpanel.</li>
                     <li className={"list-group-item px-0"}>Adminfunktioner på användares profilsida.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>

@@ -1,10 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import countryData from "../../helpers/valueLists/countries.json";
-import {Icon} from "../icons";
+import {EditIcon, Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {CustomSpinner} from "../minis/CustomSpinner";
@@ -12,6 +12,7 @@ import {CountryBadge} from "../minis/CountryBadge";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {getRowByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {getIssuesWithTitleAndPublisherByPublisherId} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {useAppContext} from "../../context/AppContext";
 
 
 export const Publisher = () => {
@@ -19,6 +20,7 @@ export const Publisher = () => {
     const [publisher, setPublisher] = useState({});
     const [issuesData, setIssuesData] = useState({});
     const [loading, setLoading] = useState(true);
+    const {profile} = useAppContext();
     const {id} = useParams();
 
     const fetchPublisherAndIssuesData = useCallback(() => {
@@ -49,6 +51,10 @@ export const Publisher = () => {
                                     {
                                         countryData &&
                                         <CountryBadge countryId={publisher.country_id}/>
+                                    }
+                                    {
+                                        profile && profile.role >= 1 &&
+                                        <Link to={`/admin/publishers/${publisher.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + publisher.name}><span className={`tag-badge bg-publisher-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + publisher.name}</span></Link>
                                     }
                                 </div>
                                 {

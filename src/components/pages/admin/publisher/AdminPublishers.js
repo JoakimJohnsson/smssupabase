@@ -7,15 +7,15 @@ import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
-import FilterForm from "../../../search-filter/FilterForm";
+import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
+import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 
 
 export const AdminPublishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
     const navigate = useNavigate();
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
@@ -23,22 +23,20 @@ export const AdminPublishers = () => {
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
-            <div className={"row"}>
-                <div className={"col-12 row-padding--main"}>
-                    <div className={"sms-dashboard-col"}>
+            <div className={"row row-padding--main"}>
+                <div className={"sms-page-col"}>
                         <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
                         <Breadcrumbs/>
-                        <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
-                                    placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                        <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                         <div className={"sms-section--light"}>
                             {publishersData &&
-                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} filter={filter}/>}
+                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} query={query}/>}
                             <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
                                         label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                         label={LABELS_AND_HEADINGS.BACK}/>
                         </div>
-                    </div>
+
                 </div>
             </div>
         </main>

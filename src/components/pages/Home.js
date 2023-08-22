@@ -13,6 +13,7 @@ import {TitlesList} from "../lists/titles/TitlesList";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
+import {ProgressBar} from "react-bootstrap";
 
 
 export const Home = () => {
@@ -22,9 +23,11 @@ export const Home = () => {
     const [alertText, setAlertText] = useState("");
     const [totalTitles, setTotalTitles] = useState(0);
     const [totalIssues, setTotalIssues] = useState(0);
+    const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(true);
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
+    const TOTAL_TITLES_COUNT = 144;
 
     useEffect(() => {
         if (profile) {
@@ -45,12 +48,21 @@ export const Home = () => {
     }, []);
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn(TABLES.TITLES, "created_at", setLimitedTitlesData, 10, false).then(() => {
-            getAllIssuesWithTitleAndPublisherWithLimit(setLimitedIssuesData, 15, false).then(() => {
-                fetchData();
+        if (user && user.id) {
+            getRowsByTableWithLimitAndOrderByColumn(TABLES.TITLES, "created_at", setLimitedTitlesData, 10, false).then(() => {
+                getAllIssuesWithTitleAndPublisherWithLimit(setLimitedIssuesData, 15, false).then(() => {
+                    fetchData();
+                });
             });
-        });
-    }, [fetchData]);
+        }
+    }, [fetchData, user]);
+
+
+    useEffect(() => {
+        if (totalTitles && totalTitles > 0) {
+            setProgress(Math.round(totalTitles / TOTAL_TITLES_COUNT * 100))
+        }
+    }, [totalTitles]);
 
     return user && user.id ? (
             <main id="main-content" className={"container-fluid main-container dashboard"}>
@@ -73,24 +85,41 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className={"row row-padding--secondary"}>
-                    <div className={"col-12 col-xl-6 mb-4 col-x-padding--xs-only"}>
+                    <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>Titlar</h2>
                         <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <CustomSpinner/> : totalTitles}
                         </p>
+
+                        <div className={"mb-4"}>
+                            {
+                                <>
+                                    <p>
+                                        {TEXTS.ADDING_TITLE_TEXT_1 + " " + progress + TEXTS.ADDING_TITLE_TEXT_2}
+                                    </p>
+                                    {
+                                        progress === 100 ?
+                                            <ProgressBar striped variant="success" now={progress}/>
+                                            :
+                                            <ProgressBar striped now={progress} label={progress > 10 ? totalTitles + " / " + TOTAL_TITLES_COUNT : ""}/>
+                                    }
+                                </>
+                            }
+                        </div>
+
                         <h3>{TEXTS.LATEST_TITLES}</h3>
                         {
                             limitedTitlesData ?
                                 <>
-                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showAdminInfo={false}/>
+                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showCreatedInfo={true}/>
                                 </>
                                 :
                                 <NoDataAvailable/>
                         }
                     </div>
-                    <div className={"col-12 col-xl-6 mb-4 col-x-padding--xs-only"}>
+                    <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>Publikationer</h2>
                         <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ? <CustomSpinner/> : totalIssues}</p>
-                        <h3>{TEXTS.LATEST_ISSUES}</h3>
+                        <h3 className={"mb-3"}>{TEXTS.LATEST_ISSUES}</h3>
                         {
                             limitedIssuesData ?
                                 <>

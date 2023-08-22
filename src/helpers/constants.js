@@ -2,6 +2,7 @@ import React from "react";
 import {Icon} from "../components/icons";
 import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation} from "@fortawesome/pro-regular-svg-icons";
 
+
 export const MESSAGES = {
     ERROR: {
         VALIDATION_EMAIL: "Ange en korrekt e-postadress.",
@@ -20,7 +21,8 @@ export const MESSAGES = {
         GENERAL_ERROR: "Ett mindre allvarligt fel har inträffat."
     },
     INFO: {
-        ABORTED: "Operationen avbröts!"
+        ABORTED: "Operationen avbröts!",
+        WILL_CLOSE: "Meddelandet, om du väljer att läsa det, stängs automatiskt om 10 sekunder.",
     },
     SUCCESS: {
         VALIDATION_EMAIL: "Det där är en korrekt e-postadress!",
@@ -139,6 +141,7 @@ export const LABELS_AND_HEADINGS = {
     CREATE_ACCOUNT_CTA: "Registrera dig",
     CREATED_AT: "Inlagd",
     DASHBOARD: "Kontrollpanel",
+    DEFAULT_FORMATS: "Alla format",
     DELETE: "Ta bort",
     DELETING: "Tar bort",
     DELETE_ALL_ISSUES_FOR: "Ta bort alla publikationer för",
@@ -161,6 +164,7 @@ export const LABELS_AND_HEADINGS = {
     FILTER_NUMBER_TITLE_OR_YEAR: "Filtrera på nummer, titel eller årtal",
     FILTER_TITLE_OR_YEAR: "Filtrera på titel eller årtal",
     FILTER_NAME: "Filtrera på namn",
+    FILTER_PUBLISHER_NAME: "Filtrera på förlagets namn",
     FILTER_NAME_OR_ID: "Filtrera på namn eller id",
     DO_FILTER: "Filtrera",
     FIRST_NAME: "Förnamn",
@@ -212,6 +216,7 @@ export const LABELS_AND_HEADINGS = {
     PASSWORD: "Lösenord",
     NEW_PASSWORD: "Nytt lösenord",
     PASSWORD_CONFIRM: "Bekräfta lösenord",
+    PAUSE: "Pausa",
     PREVIOUS: "Tidigare",
     PROFILE_IMAGE: "Profilbild",
     PUBLISHERS: "Förlag",
@@ -221,9 +226,11 @@ export const LABELS_AND_HEADINGS = {
     RELEASE_PREVIOUS: "Föregående releaser",
     RELEASE_FUTURE: "Kommande funktionalitet",
     RESET: "Rensa",
+    RESET_FILTER: "Rensa filter",
     RESET_FORM: "Rensa formulär",
     RESET_PASSWORD: "Ändra lösenord",
     SAVE: "Spara",
+    SEARCH: "Sök",
     SEE_ALL_PUBLISHERS: "Se alla förlag",
     SEE_ALL_TITLES: "Se alla titlar",
     SEE_ALL_USERS: "Se alla användare",
@@ -240,7 +247,7 @@ export const LABELS_AND_HEADINGS = {
     SORT_0_9: "Sortera 0 till 9",
     SORT_A_Z: "Sortera A till Ö",
     SORT_Z_A: "Sortera Ö till A",
-    START: "Översikt",
+    START: "Starta",
     START_YEAR: "Startår",
     START_YEAR_DB: "Startår (start_year)",
     SVENSKA_MARVELSAMLARE: "Svenska Marvelsamlare",
@@ -280,7 +287,9 @@ export const TEXTS = {
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar.",
     COLLECTING_TITLE_100: "Grattis! Du har samlat 100% av denna titel.",
     COLLECTING_TITLE_TEXT_1: "Du har samlat",
+    ADDING_TITLE_TEXT_1: "Vi har lagt in totalt",
     COLLECTING_TITLE_TEXT_2: "% av denna titel.",
+    ADDING_TITLE_TEXT_2: "% av alla titlar i databasen.",
     CONSENT: "Svenska Marvelsamlare är måna om att skydda dina personliga uppgifter. När du loggar in, eller registrerar dig, bekräftar och godkänner du att vi endast använder denna information, och eventuella cookies, för att administrera ditt konto och tillhandahålla de tjänster du förväntar dig av oss.",
     DEMO_TEXT_1: "Här visar vi exempel på senast tillagd funktionalitet, saker som är på gång och saker som vi funderar på att implementera i framtiden.",
     DEMO_TEXT_2: "Sök / filtrera bland publikationerna. Fler titlar läggs till löpande. För komplettisten kommer vi även lägga in mer obskyra publikationer där marvelfigurer figurerar som hastigast.",
@@ -292,6 +301,7 @@ export const TEXTS = {
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer. Välj förlag ovanför.",
     AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER: "Du har valt förlaget ",
+    AUTO_GENERATE_ISSUES_NO_CHOICE: "Du har inte valt något förlag än!",
     DELETE_ALL_ISSUES_INFO: "Tar bort alla publikationer för denna titel.",
     CHANGE_PASSWORD_SEND_INFO: "Vi skickar information för att bekräfta återställning av lösenord.",
     CHANGE_PASSWORD_INFO: "OBS! Lösenordet ändras direkt - vi skickar ingen information för att bekräfta återställning av lösenord.",
@@ -394,4 +404,14 @@ export const VARIANT_MAPPER = {
     success: 2,
     warning: 3,
     danger: 4
+}
+
+export const DEFAULT_SEARCH_PARAMS_FORMATS = {
+    query: "",
+    comic: false,
+    comiclarge: false,
+    album: false,
+    pocket: false,
+    hardcover: false,
+    special: false
 }

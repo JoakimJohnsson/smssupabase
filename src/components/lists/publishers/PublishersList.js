@@ -7,7 +7,7 @@ import {hasImage, sortByName} from "../../../helpers/functions/functions";
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 
-export const PublishersList = ({publishersData, setPublishersData, showAdminInfo, filter = ""}) => {
+export const PublishersList = ({publishersData, setPublishersData, showAdminInfo, query = ""}) => {
 
     return publishersData && (
         <ul className={"sms-list--with-tools mb-4"}>
@@ -15,8 +15,8 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                 publishersData.length ?
                     (publishersData
                             .filter(publisher => publisher.name.toLowerCase()
-                                    .includes(filter.toLowerCase()) ||
-                                filter === ""
+                                    .includes(query.toLowerCase()) ||
+                                query === ""
                             ).sort((a, b) => sortByName(a, b)).map((p, index) =>
                             <li key={index} className={"list-group-item px-0"}>
                                 <div className={"row"}>
@@ -31,7 +31,7 @@ export const PublishersList = ({publishersData, setPublishersData, showAdminInfo
                                                     {p.name}
                                                 </Link>
                                                 {
-                                                    showAdminInfo ?? <ListItemPublishedInfo dateString={p.created_at}/>
+                                                    showAdminInfo && <ListItemPublishedInfo dateString={p.created_at}/>
                                                 }
                                             </div>
                                         </div>

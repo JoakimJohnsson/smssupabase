@@ -170,9 +170,8 @@ input[type="checkbox"] + label {
         background-color: $white;
       }
       .title-card--year {
-        @extend .h6, .py-1, .px-2;
+        @extend .h6, .py-1, .px-2, .mb-0;
         color: $black;
-        position: absolute;
         top: 0;
         right: 0;
         display: flex;
@@ -315,6 +314,7 @@ input[type="checkbox"] + label {
   @extend .badge, .py-2, .mb-2, .d-inline-block;
   margin-right: .5rem;
   padding-right: 1rem;
+  white-space: normal;
   padding-left: 1rem;
 }
 
@@ -331,7 +331,7 @@ input[type="checkbox"] + label {
 .cover-image--wrapper {
   @extend .mb-2, .bg-light;
   width: 100%;
-  aspect-ratio: 3.6/5;
+  aspect-ratio: 3.8/5;
   overflow: hidden;
   border: $border--primary;
   .cover-image {
@@ -367,7 +367,13 @@ input[type="checkbox"] + label {
   @extend .mb-3, .text-secondary;
 }
 
-/* Skip link */
+// Forms
+.form-check-input,
+.form-check-label {
+  cursor: pointer;
+}
+
+// Skip link
 .skip-link {
   background-color: $color-bg-whale;
   text-align: center;
@@ -390,4 +396,9 @@ input[type="checkbox"] + label {
       width: auto
     }
   }
+}
+
+// Progress
+.alert .progress {
+  height: .5rem;
 }

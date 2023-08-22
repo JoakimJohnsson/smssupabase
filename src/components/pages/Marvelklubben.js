@@ -4,15 +4,15 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {IssueCard} from "../lists/issues/IssueCard";
-import FilterForm from "../search-filter/FilterForm";
-import {useSearchFilter} from "../../helpers/customHooks/useSearchFilter";
+import FilterFormSimple from "../search-filter/FilterFormSimple";
+import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 
 
 export const Marvelklubben = () => {
 
     const [loading, setLoading] = useState(true);
     const [marvelKlubbenData, setMarvelKlubbenData] = useState(null);
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getAllMarvelklubbenIssues(setMarvelKlubbenData).then(() => setLoading(false));
@@ -27,27 +27,27 @@ export const Marvelklubben = () => {
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"
                                                        target={"_blank"}>Wikipedia</a>.</p>
-                </div>
-            </div>
-            <div className={"row row-padding--secondary"}>
-                <div className={"sms-page-col"}>
-                    <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
-                                placeholder={LABELS_AND_HEADINGS.FILTER_NUMBER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NUMBER_TITLE_OR_YEAR}/>
                     {
                         loading ?
                             <OverlaySpinner/>
                             :
                             <ul className={"sms-list--with-cards"}>
                                 {
-                                    marvelKlubbenData
-                                        .filter(issue => issue.titles.name.toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
-                                            issue.marvelklubben_number.toString().toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
-                                            issue.year.toString().toLowerCase()
-                                                .includes(filter.toLowerCase()) ||
-                                            filter === "")
-                                        .map(issue =>
+                                    query ?
+                                        marvelKlubbenData
+                                            .filter(issue => issue.titles.name.toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                issue.marvelklubben_number.toString().toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                issue.year.toString().toLowerCase()
+                                                    .includes(query.toLowerCase()) ||
+                                                query === "")
+                                            .map(issue =>
+                                                <IssueCard key={issue.id} issue={issue}/>
+                                            )
+                                        :
+                                        marvelKlubbenData.map(issue =>
                                             <IssueCard key={issue.id} issue={issue}/>
                                         )
                                 }

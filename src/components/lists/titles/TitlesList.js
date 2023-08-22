@@ -7,7 +7,7 @@ import {hasImage, sortByNameAndStartYear} from "../../../helpers/functions/funct
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 
-export const TitlesList = ({titlesData, setTitlesData, showAdminInfo, filter = ""}) => {
+export const TitlesList = ({titlesData, setTitlesData, showAdminInfo = false, showCreatedInfo = false, query = ""}) => {
 
     return titlesData && (
         <ul className={"sms-list--with-tools mb-4"}>
@@ -15,10 +15,10 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo, filter = "
                 titlesData.length ?
                     (titlesData
                             .filter(title => title.name.toLowerCase()
-                                    .includes(filter.toLowerCase()) ||
+                                    .includes(query.toLowerCase()) ||
                                 title.start_year.toString().toLowerCase()
-                                    .includes(filter.toLowerCase()) ||
-                                filter === ""
+                                    .includes(query.toLowerCase()) ||
+                                query === ""
                             )
                             .sort((a, b) => sortByNameAndStartYear(a, b)).map((t, index) =>
                             <li key={index} className={"list-group-item px-0"}>
@@ -34,7 +34,7 @@ export const TitlesList = ({titlesData, setTitlesData, showAdminInfo, filter = "
                                                     {t.name} {t.start_year}
                                                 </Link>
                                                 {
-                                                    showAdminInfo ?? <ListItemPublishedInfo dateString={t.created_at}/>
+                                                    (showAdminInfo || showCreatedInfo)  && <ListItemPublishedInfo dateString={t.created_at}/>
                                                 }
                                             </div>
                                         </div>

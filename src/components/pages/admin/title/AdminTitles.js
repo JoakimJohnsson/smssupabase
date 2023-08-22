@@ -8,15 +8,15 @@ import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import FilterForm from "../../../search-filter/FilterForm";
-import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
+import FilterFormSimple from "../../../search-filter/FilterFormSimple";
+import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
 
 
 export const AdminTitles = () => {
 
     const [titlesData, setTitlesData] = useState(null);
     const navigate = useNavigate();
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();
@@ -25,19 +25,18 @@ export const AdminTitles = () => {
     return (
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
-                    <div className={"sms-dashboard-col"}>
-                        <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
-                        <Breadcrumbs/>
-                        <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
-                                    placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
-                        <div className={"sms-section--light"}>
-                        {titlesData ? <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true} filter={filter}/> : <CustomSpinner/>}
+                <div className={"sms-page-col"}>
+                    <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
+                    <Breadcrumbs/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <div className={"sms-section--light"}>
+                        {titlesData ?
+                            <TitlesList titlesData={titlesData} setTitlesData={setTitlesData} showAdminInfo={true} query={query}/> :
+                            <CustomSpinner/>}
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
                                     label={LABELS_AND_HEADINGS.ADD_TITLE}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS_AND_HEADINGS.BACK}/>
-                        </div>
                     </div>
                 </div>
             </div>

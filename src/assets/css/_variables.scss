@@ -15,9 +15,11 @@ $format: #f09f59;
 $country: #7ad145;
 $publisher: #bc29a6;
 $title: #ccff66;
+$issue: #ede798;
 $marvelklubben: #ed1d24;
 $white: #fff;
 $white--darker: #c0c7cf;
+$color-white--darker--trans: rgba(192, 199, 207, .3);
 $black: #000;
 $black--lighter: #444;
 $black--lightest: #999;
@@ -75,7 +77,9 @@ $tooltip-opacity: 1;
 $headings-margin-bottom: .5rem;
 $headings-color: $secondary--lighter;
 $progress-bar-color: $black;
+$progress-bg: $color-white--darker--trans;
 $progress-height: 1.5rem;
+$grid-gutter-width: 2.5rem;
 
 $theme-colors: (
         "primary":    $primary,

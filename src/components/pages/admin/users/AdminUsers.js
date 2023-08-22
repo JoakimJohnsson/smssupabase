@@ -8,14 +8,14 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {UsersList} from "../../../lists/users/UsersList";
-import {useSearchFilter} from "../../../../helpers/customHooks/useSearchFilter";
-import FilterForm from "../../../search-filter/FilterForm";
+import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
+import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 
 
 export const AdminUsers = () => {
 
     const [usersData, setUsersData] = useState(null);
-    const [searchParams, setSearchParams, filter] = useSearchFilter();
+    const [setSearchParams, query] = useSimpleQueryFilter();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,22 +25,19 @@ export const AdminUsers = () => {
     return (
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
-                    <div className={"sms-dashboard-col"}>
-                        <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_USERS}</h1>
-                        <Breadcrumbs/>
-                        <FilterForm filter={filter} searchParams={searchParams} setSearchParams={setSearchParams}
-                                    placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
-                        <div className={"sms-section--light"}>
-                            {
-                                usersData && usersData.length > 0 ?
-                                    <UsersList usersData={usersData} filter={filter}/>
-                                    :
-                                    <NoDataAvailable/>
-                            }
-                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                        label={LABELS_AND_HEADINGS.BACK}/>
-                        </div>
+                <div className={"sms-page-col"}>
+                    <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_USERS}</h1>
+                    <Breadcrumbs/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <div className={"sms-section--light"}>
+                        {
+                            usersData && usersData.length > 0 ?
+                                <UsersList usersData={usersData} query={query}/>
+                                :
+                                <NoDataAvailable/>
+                        }
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                    label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
             </div>
