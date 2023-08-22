@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {sortByNameAndStartYear} from "../../helpers/functions/functions";
+import {hasTrueValue, isTrue, sortByNameAndStartYear} from "../../helpers/functions/functions";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
@@ -24,15 +24,6 @@ export const Titles = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                    {/* TODO - remove testcode */}
-                    <div className={"bg-dark mb-3"}>
-                        <p>Comic {comic.toString()}</p>
-                        <p>Comiclarge {comiclarge.toString()}</p>
-                        <p>Album {album.toString()}</p>
-                        <p>Pocket {pocket.toString()}</p>
-                        <p>Hardcover {hardcover.toString()}</p>
-                        <p className={"mb-0"}>Special {special.toString()}</p>
-                    </div>
                     <FilterFormFormat
                         setSearchParams={setSearchParams}
                         query={query}
@@ -51,20 +42,57 @@ export const Titles = () => {
                                 {
                                     query ?
                                         titlesData
-                                            .filter(title => title.name.toLowerCase()
-                                                    .includes(query.toLowerCase()) ||
-                                                title.start_year.toString().toLowerCase()
-                                                    .includes(query.toLowerCase()) ||
-                                                query === ""
-                                            )
+                                            .filter((title) => {
+                                                    return (
+                                                        title.name.toLowerCase()
+                                                            .includes(query.toLowerCase()) ||
+                                                        title.start_year.toString().toLowerCase()
+                                                            .includes(query.toLowerCase()) ||
+                                                        query === ""
+                                                    )
+                                                }
+                                            ).filter((title) => {
+                                                // Filter by Format
+                                                // TODO - a function for all of this!!! - REFACTORING!!!!
+                                                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
+                                                    return (
+                                                        (isTrue(comic) && title.format_id === 32545) ||
+                                                        (isTrue(comiclarge) && title.format_id === 33541) ||
+                                                        (isTrue(album) && title.format_id === 23445) ||
+                                                        (isTrue(pocket) && title.format_id === 24543) ||
+                                                        (isTrue(hardcover) && title.format_id === 23577) ||
+                                                        (isTrue(special) && title.format_id === 26224)
+                                                    )
+                                                } else {
+                                                    return true;
+                                                }
+                                            }
+                                        )
                                             .sort((a, b) => sortByNameAndStartYear(a, b))
                                             .map((title) =>
                                                 <TitlesListItem key={title.id} title={title}/>
                                             )
                                         :
-                                        titlesData.map((title) =>
-                                            <TitlesListItem key={title.id} title={title}/>
-                                        )
+                                        titlesData
+                                            .filter((title) => {
+                                                    // Filter by Format
+                                                    if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
+                                                        return (
+                                                            (isTrue(comic) && title.format_id === 32545) ||
+                                                            (isTrue(comiclarge) && title.format_id === 33541) ||
+                                                            (isTrue(album) && title.format_id === 23445) ||
+                                                            (isTrue(pocket) && title.format_id === 24543) ||
+                                                            (isTrue(hardcover) && title.format_id === 23577) ||
+                                                            (isTrue(special) && title.format_id === 26224)
+                                                        )
+                                                    } else {
+                                                        return true;
+                                                    }
+                                                }
+                                            )
+                                            .map((title) =>
+                                                <TitlesListItem key={title.id} title={title}/>
+                                            )
                                 }
                             </ul>
                     }

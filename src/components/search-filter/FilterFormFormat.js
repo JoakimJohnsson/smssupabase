@@ -98,17 +98,6 @@ const FilterFormFormat = ({
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
                 {LABELS_AND_HEADINGS.SEARCH}
             </button>
-
-            {/* TODO - remove testcode */}
-            <div className={"bg-dark mb-3"}>
-                <p className={"mt-4"}>filterComic {filterComic.toString()}</p>
-                <p>filterComiclarge {filterComiclarge.toString()}</p>
-                <p>filterAlbum {filterAlbum.toString()}</p>
-                <p>filterPocket {filterPocket.toString()}</p>
-                <p>filterHardcover {filterHardcover.toString()}</p>
-                <p className={"mb-0"}>filterSpecial {filterSpecial.toString()}</p>
-            </div>
-
         </div>
     )
 };
