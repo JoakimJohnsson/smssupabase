@@ -231,24 +231,3 @@ export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover,
         (isTrue(special) && obj.format_id === 26224)
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
