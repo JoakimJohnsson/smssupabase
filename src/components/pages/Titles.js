@@ -90,6 +90,7 @@ export const Titles = () => {
                                                     }
                                                 }
                                             )
+                                            .sort((a, b) => sortByNameAndStartYear(a, b))
                                             .map((title) =>
                                                 <TitlesListItem key={title.id} title={title}/>
                                             )
