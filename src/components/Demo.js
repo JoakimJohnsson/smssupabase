@@ -23,7 +23,11 @@ const Demo = () => {
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.0 - 2023-08-22</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.x - 2023-xx-xx</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.0 - 2023-08-22</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Visa format på titelkort.</li>
@@ -34,15 +38,6 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Bugfix - inlagd datum visades inte korrekt.</li>
                     <li className={"list-group-item px-0"}>Informationsmeddelanden stängs automatiskt efter 10 sekunder.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att filtrera titlar på format.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.8.8 - 2023-06-15</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                    <li className={"list-group-item px-0"}>Länk till titel på comics.org.</li>
-                    <li className={"list-group-item px-0"}>Lazy loading av bilder.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att välja list- eller grid-vy för publikationer på titel.</li>
-                    <li className={"list-group-item px-0"}>Förbättrat utseende och funktion för att lägga till och ta bort publikationer och titlar från samlingen.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att börja samla på en titel från publikations sidan.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
