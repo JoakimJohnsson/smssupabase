@@ -165,7 +165,7 @@ input[type="checkbox"] + label {
   li {
     &.title-card {
       @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
-      align-self: flex-end;
+      //align-self: flex-end;
       .image-container {
         background-color: $white;
       }
@@ -216,11 +216,10 @@ input[type="checkbox"] + label {
       }
       .issue-card--marvelklubben {
         @extend .h5, .py-1, .px-2;
-        border-radius: $border-radius--lg;
         color: $black;
         position: absolute;
-        top: .5rem;
-        right: .5rem;
+        top: 0;
+        right: 0;
         background-color: $marvelklubben;
         display: flex;
         align-items: center;
