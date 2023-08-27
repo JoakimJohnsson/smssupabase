@@ -69,6 +69,7 @@ const FilterFormFormat = ({
         setReadyForSearch(true);
         setFilterQuery("");
     }
+
     const handleResetAll = () => {
         handleReset();
         setFilterComic(false);
@@ -77,6 +78,10 @@ const FilterFormFormat = ({
         setFilterPocket(false);
         setFilterHardcover(false);
         setFilterSpecial(false);
+    }
+
+    const getFormat = (id) => {
+        return formatData.find(item => item.id === id);
     }
 
     return (
@@ -105,23 +110,23 @@ const FilterFormFormat = ({
             </div>
             <div className="col-12 mb-2">
                 <div className={"input-group"}>
-                    {/* comic */}
-                    <FilterButton id={formatData[0].id} name={formatData[0].name} state={filterComic} setState={setFilterComic}
+                    {/* comic 32545 */}
+                    <FilterButton format={getFormat(32545)} state={filterComic} setState={setFilterComic}
                                   setReadyForSearch={setReadyForSearch}/>
-                    {/* comiclarge */}
-                    <FilterButton id={formatData[1].id} name={formatData[1].name} state={filterComiclarge} setState={setFilterComiclarge}
+                    {/* comiclarge 33541 */}
+                    <FilterButton format={getFormat(33541)} state={filterComiclarge} setState={setFilterComiclarge}
                                   setReadyForSearch={setReadyForSearch}/>
-                    {/* album */}
-                    <FilterButton id={formatData[2].id} name={formatData[2].name} state={filterAlbum} setState={setFilterAlbum}
+                    {/* album 23445 */}
+                    <FilterButton format={getFormat(23445)} state={filterAlbum} setState={setFilterAlbum}
                                   setReadyForSearch={setReadyForSearch}/>
-                    {/* pocket */}
-                    <FilterButton id={formatData[3].id} name={formatData[3].name} state={filterPocket} setState={setFilterPocket}
+                    {/* pocket 24543 */}
+                    <FilterButton format={getFormat(24543)} state={filterPocket} setState={setFilterPocket}
                                   setReadyForSearch={setReadyForSearch}/>
-                    {/* hardcover */}
-                    <FilterButton id={formatData[4].id} name={formatData[4].name} state={filterHardcover} setState={setFilterHardcover}
+                    {/* hardcover 23577 */}
+                    <FilterButton format={getFormat(23577)} state={filterHardcover} setState={setFilterHardcover}
                                   setReadyForSearch={setReadyForSearch}/>
-                    {/* special */}
-                    <FilterButton id={formatData[5].id} name={formatData[5].name} state={filterSpecial} setState={setFilterSpecial}
+                    {/* special 26224 */}
+                    <FilterButton format={getFormat(26224)} state={filterSpecial} setState={setFilterSpecial}
                                   setReadyForSearch={setReadyForSearch}/>
                 </div>
             </div>

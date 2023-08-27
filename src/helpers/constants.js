@@ -416,3 +416,7 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
     hardcover: false,
     special: false
 }
+
+export const STATISTICS = {
+    TOTAL_TITLES_COUNT: 143
+}
