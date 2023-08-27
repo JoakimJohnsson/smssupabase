@@ -188,7 +188,7 @@ export const LABELS_AND_HEADINGS = {
     VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
     VARIANT_SUFFIX: "Variant suffix",
     IS_VARIANT: "Variant",
-    IS_VARIANT_DB: "Variant (is_variant)",
+    IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUES: "Publikationer",
     LAST_NAME: "Efternamn",
