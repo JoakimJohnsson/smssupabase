@@ -122,7 +122,7 @@ export const Home = () => {
                         {
                             limitedIssuesData ?
                                 <>
-                                    <IssuesListSimple issuesData={limitedIssuesData} showCollectingButtons={false}/>
+                                    <IssuesListSimple issuesData={limitedIssuesData} showCollectingButtons={true}/>
                                 </>
                                 :
                                 <NoDataAvailable/>
