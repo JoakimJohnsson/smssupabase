@@ -84,7 +84,7 @@ export const Issue = () => {
                                 <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true} bcName={getIssueName(issue)}/>
                             </div>
                             <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
-                                <ImageViewerCover url={issue.image_url} displayName={displayName}/>
+                                <ImageViewerCover url={issue.image_url} displayName={displayName} isCollectingIssue={isCollectingIssue}/>
                                 {
                                     isCollectingTitle ?
                                         <button

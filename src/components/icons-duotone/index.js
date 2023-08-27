@@ -90,9 +90,10 @@ export const ImageIconDuoTone = ({size, className}) => {
 
 export const IssueIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faFileLines} size={size} className={className}/>
+        <Icon icon={issueIconDuoTone} size={size} className={className}/>
     )
 }
+export const issueIconDuoTone = faFileLines;
 
 export const QuestionIconDuoTone = ({size, className}) => {
     return (
