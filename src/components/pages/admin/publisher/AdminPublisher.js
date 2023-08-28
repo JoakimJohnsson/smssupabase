@@ -1,11 +1,13 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {BUCKETS, FILETYPES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {publishersIconDuoTone} from "../../../icons-duotone";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminPublisher = () => {
@@ -17,6 +19,7 @@ export const AdminPublisher = () => {
     const [imageUrl, setImageUrl] = useState("");
     const {id} = useParams();
     const [newPublisher, setNewPublisher] = useState({});
+    const navigate = useNavigate();
 
     const fetchPublisherAndTitlesData = useCallback(() => {
         getRowByTableAndId(TABLES.PUBLISHERS, setPublisher, id).then(() => setLoading(false));
@@ -45,6 +48,8 @@ export const AdminPublisher = () => {
                             <div className={"sms-page-col--full"}>
                                 <HeadingWithBreadCrumbs text={publisher.name}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
+                                <IconButton variant={"primary"} icon={publishersIconDuoTone} onClick={() => navigate(`/publishers/${publisher.id}`)}
+                                            label={publisher.name}/>
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>

@@ -127,7 +127,7 @@ export const LogoutIconDuoTone = ({size, className}) => {
 
 export const PublishersIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faBuildingColumns} size={size} className={className}/>
+        <Icon icon={publishersIconDuoTone} size={size} className={className}/>
     )
 }
 
@@ -153,7 +153,7 @@ export const StartIconDuoTone = ({size, className}) => {
 
 export const TitlesIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faFiles} size={size} className={className}/>
+        <Icon icon={titlesIconDuoTone} size={size} className={className}/>
     )
 }
 
@@ -161,7 +161,7 @@ export const titlesIconDuoTone = faFiles;
 
 export const TitleIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faFile} size={size} className={className}/>
+        <Icon icon={titleIconDuoTone} size={size} className={className}/>
     )
 }
 
