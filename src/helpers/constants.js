@@ -168,6 +168,7 @@ export const LABELS_AND_HEADINGS = {
     FILTER_NAME_OR_ID: "Filtrera på namn eller id",
     DO_FILTER: "Filtrera",
     FIRST_NAME: "Förnamn",
+    FIND_TITLES: "Hitta titlar",
     FORMAT: "Format",
     FORMAT_DB: "Format (format)",
     FORGOT_PASSWORD: "Glömt lösenordet?",
@@ -187,7 +188,7 @@ export const LABELS_AND_HEADINGS = {
     VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
     VARIANT_SUFFIX: "Variant suffix",
     IS_VARIANT: "Variant",
-    IS_VARIANT_DB: "Variant (is_variant)",
+    IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUES: "Publikationer",
     LAST_NAME: "Efternamn",
@@ -226,7 +227,7 @@ export const LABELS_AND_HEADINGS = {
     RELEASE_PREVIOUS: "Föregående releaser",
     RELEASE_FUTURE: "Kommande funktionalitet",
     RESET: "Rensa",
-    RESET_FILTER: "Rensa filter",
+    RESET_FILTER: "Rensa alla filter",
     RESET_FORM: "Rensa formulär",
     RESET_PASSWORD: "Ändra lösenord",
     SAVE: "Spara",
@@ -414,4 +415,8 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
     pocket: false,
     hardcover: false,
     special: false
+}
+
+export const STATISTICS = {
+    TOTAL_TITLES_COUNT: 143
 }

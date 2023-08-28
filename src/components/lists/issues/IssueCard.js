@@ -27,7 +27,7 @@ export const IssueCard = ({issue}) => {
                     <img
                         src={issue.image_url}
                         alt={displayName}
-                        className="cover-image"
+                        className={`cover-image ${!isCollectingIssue && "grayscale-80"}`}
                         loading={"lazy"}
                     />
                     {

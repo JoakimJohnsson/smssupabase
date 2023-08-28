@@ -6,7 +6,7 @@ import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName} from "../../../../helpers/functions/functions";
 import {IconButton} from "../../../minis/IconButton";
-import {publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
+import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
@@ -51,6 +51,8 @@ export const AdminIssue = () => {
                                                         name={getIssueName(issue)}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                                 <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
+                                <IconButton variant={"primary"} icon={issueIconDuoTone} onClick={() => navigate(`/issues/${issue.id}`)}
+                                            label={getIssueName(issue)}/>
                                 <IconButton variant={"primary"} icon={titleIconDuoTone} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
                                             label={issue.titles.name + " " + issue.titles.start_year}/>
                                 <IconButton variant={"primary"} icon={publishersIconDuoTone}

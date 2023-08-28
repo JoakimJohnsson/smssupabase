@@ -12,6 +12,10 @@
   }
 }
 
+.grayscale-80 {
+  filter: grayscale(80%);
+}
+
 a {
   &:hover,
   &:focus,
@@ -122,4 +126,21 @@ input {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+}
+
+// Grayscale
+.grayscale-100 {
+  filter: grayscale(100%);
+}
+.grayscale-80 {
+  filter: grayscale(80%);
+}
+.grayscale-60 {
+  filter: grayscale(60%);
+}
+.grayscale-40 {
+  filter: grayscale(40%);
+}
+.grayscale-20 {
+  filter: grayscale(20%);
 }

@@ -10,6 +10,20 @@ Create a file called .env.local and copy contents of .env.dist. Ask admin for ur
 
 Be aware! There is no dev DB.
 
+### Local files - Git ignored
+
+#### Font Awesome
+A Pro version of Font Awesome is used. Add a file called .npmrc in root folder. It should have the following properties:
+
+```
+@fortawesome:registry=https://npm.fontawesome.com/
+//npm.fontawesome.com/:_authToken=< Ask Admin for token >
+```
+
+#### Local Env
+Add a file called .env.local in root folder. Copy properties from .env.dist and ask Admin for keys and urls.
+
+
 ## Deployment
 
 On push to main (merging release<x.x.x> into main) - project will automatically be built and deployed to www.svenskamarvelsamlare.se.
@@ -20,10 +34,17 @@ Edit .github/workflows/main.yml to make changes in the GitHub Action script.
 
 ### Versioning
 
-Before merging develop to release-<x.x.x> - Please run `npm version <major> <minor> <patch>` to update version information.
+Before merging develop to release-<x.x.x> - Please run `npm version <major> <minor> <patch>` (see below) to update version information.
 
 Then do `git push` and `git push --tags`. A new tag will appear in gitHub - https://github.com/JoakimJohnsson/smssupabase/tags (only used for archive
 purposes at the moment).
+
+#### NPM version
+https://docs.npmjs.com/updating-your-published-package-version-number
+
+- $ npm version major --> X.x.x
+- $ npm version minor --> x.X.x
+- $ npm version patch --> x.x.X
 
 ### Workflow
 

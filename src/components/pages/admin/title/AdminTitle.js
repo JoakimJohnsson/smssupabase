@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
     getRowByTableAndId, getRowsByTable,
@@ -21,6 +21,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {titleIconDuoTone} from "../../../icons-duotone";
+import {IconButton} from "../../../minis/IconButton";
 
 
 export const AdminTitle = () => {
@@ -47,6 +49,7 @@ export const AdminTitle = () => {
     const {setInformationMessage} = useAppContext();
     const [publisher_id, setPublisher_id] = useState("");
     const [chosenPublisherName, setChosenPublisherName] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
@@ -152,6 +155,8 @@ export const AdminTitle = () => {
                             <div className={"sms-page-col--full"}>
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
+                                <IconButton variant={"primary"} icon={titleIconDuoTone} onClick={() => navigate(`/titles/${title.id}`)}
+                                            label={title.name}/>
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>

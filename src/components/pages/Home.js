@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, STATISTICS, TABLES, TEXTS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {HomePublic} from "./HomePublic";
@@ -27,7 +27,6 @@ export const Home = () => {
     const [loading, setLoading] = useState(true);
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
-    const TOTAL_TITLES_COUNT = 144;
 
     useEffect(() => {
         if (profile) {
@@ -60,7 +59,7 @@ export const Home = () => {
 
     useEffect(() => {
         if (totalTitles && totalTitles > 0) {
-            setProgress(Math.round(totalTitles / TOTAL_TITLES_COUNT * 100))
+            setProgress(Math.round(totalTitles / STATISTICS.TOTAL_TITLES_COUNT * 100));
         }
     }, [totalTitles]);
 
@@ -100,7 +99,7 @@ export const Home = () => {
                                         progress === 100 ?
                                             <ProgressBar striped variant="success" now={progress}/>
                                             :
-                                            <ProgressBar striped now={progress} label={progress > 10 ? totalTitles + " / " + TOTAL_TITLES_COUNT : ""}/>
+                                            <ProgressBar striped now={progress} label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}/>
                                     }
                                 </>
                             }
@@ -123,7 +122,7 @@ export const Home = () => {
                         {
                             limitedIssuesData ?
                                 <>
-                                    <IssuesListSimple issuesData={limitedIssuesData} showCollectingButtons={false}/>
+                                    <IssuesListSimple issuesData={limitedIssuesData} showCollectingButtons={true}/>
                                 </>
                                 :
                                 <NoDataAvailable/>
