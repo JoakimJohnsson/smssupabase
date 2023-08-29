@@ -35,7 +35,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
                     <img
                         src={issue.image_url}
                         alt={displayName}
-                        className={`cover-image ${!isCollectingIssue && "grayscale-80"}`}
+                        className={`cover-image ${!isCollectingIssue && "grayscale"}`}
                         loading={"lazy"}
                     />
                     {

@@ -338,6 +338,9 @@ input[type="checkbox"] + label {
     border-radius: 0;
     object-fit: cover;
     object-position: -4px -4px;
+    &.grayscale {
+      @extend .grayscale-90;
+    }
   }
 }
 
