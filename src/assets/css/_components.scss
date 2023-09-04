@@ -303,7 +303,7 @@ input[type="checkbox"] + label {
 
 // Tooltip
 .tooltip {
-  @media (hover: none) {
+  @include media-breakpoint-down(lg){
     visibility: hidden !important;
   }
 }

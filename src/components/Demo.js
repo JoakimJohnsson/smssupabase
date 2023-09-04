@@ -29,6 +29,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Förbättrad visning av publikationer med undertitel.</li>
                     <li className={"list-group-item px-0"}>Bättre överblick över saknade publikationer - sv/v filter.</li>
                     <li className={"list-group-item px-0"}>Bugfix - Formatfilter fick ibland fel label.</li>
+                    <li className={"list-group-item px-0"}>Bugfix - Dölj tooltips i mobil/tablet läge.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.0 - 2023-08-22</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
