@@ -303,7 +303,7 @@ input[type="checkbox"] + label {
 
 // Tooltip
 .tooltip {
-  @include media-breakpoint-down(lg){
+  @include media-breakpoint-down(xl){
     visibility: hidden !important;
   }
 }
@@ -332,7 +332,10 @@ input[type="checkbox"] + label {
   width: 100%;
   aspect-ratio: 3.8/5;
   overflow: hidden;
-  border: $border--primary;
+  border: $border--secondary;
+  &.collecting {
+    border: $border--success;
+  }
   .cover-image {
     width: 105%;
     border-radius: 0;

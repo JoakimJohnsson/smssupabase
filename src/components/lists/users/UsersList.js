@@ -30,7 +30,6 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                 doSetLoading(false);
             }
         });
-
     }
 
     return usersData && (

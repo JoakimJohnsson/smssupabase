@@ -31,11 +31,11 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
     return issue && issue.titles && (
         <li className={"issue-card"}>
             <Link to={`/issues/${issue.id}`} title={displayName}>
-                <div className={"cover-image--wrapper position-relative"}>
+                <div className={`cover-image--wrapper${isCollectingIssue ? " collecting" : ""}`}>
                     <img
                         src={issue.image_url}
                         alt={displayName}
-                        className={`cover-image ${!isCollectingIssue && "grayscale"}`}
+                        className={`cover-image${isCollectingIssue ? "" : " grayscale"}`}
                         loading={"lazy"}
                     />
                     {
