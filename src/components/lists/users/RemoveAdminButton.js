@@ -6,31 +6,45 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {getUserName} from "../../../helpers/functions/functions";
 
 
-export const RemoveAdminButton = ({user, handleChangeAdmin}) => {
+export const RemoveAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => {
 
     const [loading, setLoading] = useState(false);
 
-    return (
-        <OverlayTrigger
-            key={"remove-admin-tooltip"}
-            placement={"top"}
-            overlay={
-                <Tooltip id={"remove-admin-tooltip"}>
-                    {LABELS_AND_HEADINGS.REMOVE_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.REMOVE_ADMIN_2}
-                </Tooltip>
-            }
-        >
+    return useTooltip && user ? (
+            <OverlayTrigger
+                key={"remove-admin-tooltip"}
+                placement={"top"}
+                overlay={
+                    <Tooltip id={"remove-admin-tooltip"}>
+                        {LABELS_AND_HEADINGS.REMOVE_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.REMOVE_ADMIN_2}
+                    </Tooltip>
+                }
+            >
+                <button
+                    className={"btn text-success sms-tool-btn"}
+                    aria-label={LABELS_AND_HEADINGS.REMOVE_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.REMOVE_ADMIN_2}
+                    onClick={() => handleChangeAdmin(user.id, 0, setLoading)}>
+                    {
+                        loading ?
+                            <CustomSpinner className={"fa-xl"}/>
+                            :
+                            <AdminIconDuoTone className={"fa-xl"}/>
+                    }
+                </button>
+            </OverlayTrigger>
+        )
+        :
+        (
             <button
-                className={"btn text-success sms-tool-btn"}
-                aria-label={LABELS_AND_HEADINGS.REMOVE_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.REMOVE_ADMIN_2}
+                className={"btn btn-success mb-3"}
                 onClick={() => handleChangeAdmin(user.id, 0, setLoading)}>
                 {
                     loading ?
-                        <CustomSpinner className={"fa-xl"}/>
+                        <CustomSpinner className={"fa-xl me-2"}/>
                         :
-                        <AdminIconDuoTone className={"fa-xl"}/>
+                        <AdminIconDuoTone className={"fa-xl me-2"}/>
                 }
+                {LABELS_AND_HEADINGS.REMOVE_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.REMOVE_ADMIN_2}
             </button>
-        </OverlayTrigger>
-    )
+        )
 }
