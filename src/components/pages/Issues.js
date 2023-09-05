@@ -5,7 +5,7 @@ import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {IssueCard} from "../lists/issues/IssueCard";
 import {getAllIssuesWithTitleAndPublisher} from "../../helpers/functions/serviceFunctions/issueFunctions";
-import {sortByName} from "../../helpers/functions/functions";
+import {filterQueryByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions/functions";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 
 
@@ -33,14 +33,11 @@ export const Issues = () => {
                                 {
                                     query ?
                                         issuesData
-                                            .filter(issue => issue.titles.name.toLowerCase()
-                                                    .includes(query.toLowerCase()) ||
-                                                issue.publishers.name.toLowerCase()
-                                                    .includes(query.toLowerCase()) ||
-                                                issue.year.toString().toLowerCase()
-                                                    .includes(query.toLowerCase()) ||
-                                                query === ""
-                                            )
+                                            .filter((issue) => {
+                                                return (
+                                                    filterQueryByTitleNamePublisherNameYearAndSource(issue, query)
+                                                )
+                                            })
                                             .sort((a, b) => sortByName(a.titles, b.titles))
                                             .map(issue =>
                                                 <IssueCard key={issue.id} issue={issue}/>
