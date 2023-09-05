@@ -250,6 +250,8 @@ export const LABELS_AND_HEADINGS = {
     SORT_0_9: "Sortera 0 till 9",
     SORT_A_Z: "Sortera A till Ö",
     SORT_Z_A: "Sortera Ö till A",
+    SOURCE_DB: "Källmaterial (source)",
+    SOURCE_EXAMPLE: "EXEMPEL: Amazing Spiderman vol 3 (1998) #224 - https://comics.org/issue/234234124, Amazing Spiderman vol 3 (1998) #225 - https://comics.org/issue/23543254",
     START: "Starta",
     START_YEAR: "Startår",
     START_YEAR_DB: "Startår (start_year)",

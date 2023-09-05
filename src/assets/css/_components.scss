@@ -333,6 +333,7 @@ input[type="checkbox"] + label {
   aspect-ratio: 3.8/5;
   overflow: hidden;
   border: $border--secondary;
+  position: relative;
   &.collecting {
     border: $border--success;
   }
