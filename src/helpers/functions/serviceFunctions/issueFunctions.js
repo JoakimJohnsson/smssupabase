@@ -147,6 +147,7 @@ export const getAllIssuesWithTitleAndPublisher = async (setData) => {
         console.error(error);
     }
 }
+
 export const getAllIssuesWithTitleAndPublisherWithLimit = async (setData, limit, ascending) => {
     try {
         let {data, error, status} = await supabase

@@ -163,6 +163,7 @@ export const LABELS_AND_HEADINGS = {
     FILTER: "Filter",
     FILTER_NUMBER_TITLE_OR_YEAR: "Filtrera på nummer, titel eller årtal",
     FILTER_TITLE_OR_YEAR: "Filtrera på titel eller årtal",
+    FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE: "Filtrera på titel, förlag, årtal eller källmaterial",
     FILTER_NAME: "Filtrera på namn",
     FILTER_PUBLISHER_NAME: "Filtrera på förlagets namn",
     FILTER_NAME_OR_ID: "Filtrera på namn eller id",

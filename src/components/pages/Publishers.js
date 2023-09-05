@@ -54,21 +54,23 @@ export const Publishers = () => {
                                                 </li>
                                             )
                                         :
-                                        publishersData.map((publisher) =>
-                                            <li key={publisher.id} className={"title-card"}>
-                                                <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
-                                                      title={publisher.name}>
-                                                    <div className={"image-container mb-2 position-relative"}>
-                                                        <img
-                                                            src={publisher.image_url}
-                                                            alt={publisher.name}
-                                                            className="w-100"
-                                                            loading={"lazy"}
-                                                        />
-                                                    </div>
-                                                </Link>
-                                            </li>
-                                        )
+                                        publishersData
+                                            .sort((a, b) => sortByName(a, b))
+                                            .map((publisher) =>
+                                                <li key={publisher.id} className={"title-card"}>
+                                                    <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
+                                                          title={publisher.name}>
+                                                        <div className={"image-container mb-2 position-relative"}>
+                                                            <img
+                                                                src={publisher.image_url}
+                                                                alt={publisher.name}
+                                                                className="w-100"
+                                                                loading={"lazy"}
+                                                            />
+                                                        </div>
+                                                    </Link>
+                                                </li>
+                                            )
                                 }
                             </ul>
                     }

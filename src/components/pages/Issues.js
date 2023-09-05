@@ -3,10 +3,10 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
-import {IssueCard} from "../lists/issues/IssueCard";
 import {getAllIssuesWithTitleAndPublisher} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {filterQueryByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions/functions";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
+import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 
 
 export const Issues = () => {
@@ -24,7 +24,7 @@ export const Issues = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
-                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -40,11 +40,13 @@ export const Issues = () => {
                                             })
                                             .sort((a, b) => sortByName(a.titles, b.titles))
                                             .map(issue =>
-                                                <IssueCard key={issue.id} issue={issue}/>
+                                                <IssueLinkCard key={issue.id} issue={issue}/>
                                             )
                                         :
-                                        issuesData.map(issue =>
-                                            <IssueCard key={issue.id} issue={issue}/>
+                                        issuesData
+                                            .sort((a, b) => sortByName(a.titles, b.titles))
+                                            .map(issue =>
+                                            <IssueLinkCard key={issue.id} issue={issue}/>
                                         )
                                 }
                             </ul>
