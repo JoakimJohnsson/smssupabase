@@ -23,19 +23,20 @@ const Demo = () => {
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.2 - 2023-09-xx</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Bugfix - Dölj tooltips i mobil/tablet läge.</li>
+                    <li className={"list-group-item px-0"}>Bugfix titelsida - Man ska inte ha möjlighet att sluta samla på en titel samtidigt som man har publikationer av den i samlingen.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad funktion för att hantera användares roller.</li>
+                    <li className={"list-group-item px-0"}>Lägg till grundläggande information på användares egen sida.</li>
+                </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.1 - 2023-08-28</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Förbättrad visning av publikationer med undertitel.</li>
                     <li className={"list-group-item px-0"}>Bättre överblick över saknade publikationer - sv/v filter.</li>
                     <li className={"list-group-item px-0"}>Bugfix - Formatfilter fick ibland fel label.</li>
-                    <li className={"list-group-item px-0"}>Bugfix - Dölj tooltips i mobil/tablet läge.</li>
-                    <li className={"list-group-item px-0"}>Bugfix titelsida - Man ska inte ha möjlighet att sluta samla på en titel samtidigt som man har publikationer av den i samlingen.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad funktion för att hantera användares roller.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.0 - 2023-08-22</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Visa format på titelkort.</li>
                     <li className={"list-group-item px-0"}>Visa senast inlagda information på startsidan.</li>
                     <li className={"list-group-item px-0"}>Visa hur många titlar som återstår att lägga in i databasen.</li>
@@ -48,7 +49,6 @@ const Demo = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Visa mer statistik och information på startsida och kontrollpanel.</li>
-                    <li className={"list-group-item px-0"}>Adminfunktioner på användares profilsida.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>
