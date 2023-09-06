@@ -223,15 +223,17 @@ export const filterQueryByNameAndStartYear = (obj, query) => {
         query === ""
     )
 }
-export const filterQueryByTitleNamePublisherNameYearAndSource = (obj, query) => {
+export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query) => {
     return (
-        obj.titles.name.toLowerCase()
+        issue.titles.name.toLowerCase()
             .includes(query.toLowerCase()) ||
-        obj.publishers.name.toString().toLowerCase()
+        issue.publishers.name.toString().toLowerCase()
             .includes(query.toLowerCase()) ||
-        obj.year.toString().toLowerCase()
+        issue.year.toString().toLowerCase()
             .includes(query.toLowerCase()) ||
-        obj.source.toString().toLowerCase()
+        issue.source.toString().toLowerCase()
+            .includes(query.toLowerCase()) ||
+        getIssueName(issue).toString().toLowerCase()
             .includes(query.toLowerCase()) ||
         query === ""
     )
