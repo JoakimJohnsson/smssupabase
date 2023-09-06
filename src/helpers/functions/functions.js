@@ -223,6 +223,19 @@ export const filterQueryByNameAndStartYear = (obj, query) => {
         query === ""
     )
 }
+export const filterQueryByTitleNamePublisherNameYearAndSource = (obj, query) => {
+    return (
+        obj.titles.name.toLowerCase()
+            .includes(query.toLowerCase()) ||
+        obj.publishers.name.toString().toLowerCase()
+            .includes(query.toLowerCase()) ||
+        obj.year.toString().toLowerCase()
+            .includes(query.toLowerCase()) ||
+        obj.source.toString().toLowerCase()
+            .includes(query.toLowerCase()) ||
+        query === ""
+    )
+}
 
 export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover, special) => {
     return (

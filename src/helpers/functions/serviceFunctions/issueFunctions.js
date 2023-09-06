@@ -16,6 +16,7 @@ export const addIssueData = async (data, setInformationMessage) => {
                 is_variant: data.is_variant,
                 is_double: data.is_double,
                 variant_suffix: data.variant_suffix,
+                source: data.source
             }])
         setInformationMessage({show: true, status: status, error: error});
     } catch (error) {
@@ -37,6 +38,7 @@ export const updateIssueData = async (id, data) => {
                 marvelklubben_number: data.marvelklubben_number,
                 is_variant: data.is_variant,
                 variant_suffix: data.variant_suffix,
+                source: data.source
             }])
             .eq("id", id);
     } catch (error) {
@@ -145,6 +147,7 @@ export const getAllIssuesWithTitleAndPublisher = async (setData) => {
         console.error(error);
     }
 }
+
 export const getAllIssuesWithTitleAndPublisherWithLimit = async (setData, limit, ascending) => {
     try {
         let {data, error, status} = await supabase

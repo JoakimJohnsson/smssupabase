@@ -246,6 +246,15 @@ input[type="checkbox"] + label {
         justify-content: center;
       }
     }
+    &.issue-link-card {
+      @extend .col-12, .col-lg-6, .col-xl-4, .mb-4;
+      a {
+        @extend .hocus-standard;
+      }
+      .issue-link-card--content {
+        @extend .border, .border-primary, .p-2;
+      }
+    }
     &.user-card {
       @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
       a {
@@ -303,7 +312,7 @@ input[type="checkbox"] + label {
 
 // Tooltip
 .tooltip {
-  @media (hover: none) {
+  @include media-breakpoint-down(xl){
     visibility: hidden !important;
   }
 }
@@ -332,12 +341,19 @@ input[type="checkbox"] + label {
   width: 100%;
   aspect-ratio: 3.8/5;
   overflow: hidden;
-  border: $border--primary;
+  border: $border--secondary;
+  position: relative;
+  &.collecting {
+    border: $border--success;
+  }
   .cover-image {
     width: 105%;
     border-radius: 0;
     object-fit: cover;
     object-position: -4px -4px;
+    &.grayscale {
+      @extend .grayscale-90;
+    }
   }
 }
 

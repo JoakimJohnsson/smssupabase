@@ -17,12 +17,10 @@ export const updateProfileData = async (id, data) => {
     }
 }
 
-export const updateProfileRole = async (id, value, setInformationMessage, setConfirmed) => {
+export const updateProfileRole = async (id, value, setInformationMessage) => {
     if (!window.confirm(MESSAGES.CONFIRM.CHANGE_ROLE)) {
         setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
         return false;
-    } else {
-        setConfirmed(true);
     }
     try {
         await supabase
@@ -34,4 +32,9 @@ export const updateProfileRole = async (id, value, setInformationMessage, setCon
     } catch (error) {
         console.error(error);
     }
+}
+
+// Calculate if to show full info - If the user have a public profile, or if logged in profile is super admin, or logged in profile is looking at her own info.
+export const showFullInfo = (user, profile) => {
+    return user.is_public || profile.role === 2 || (user.id === profile.id);
 }

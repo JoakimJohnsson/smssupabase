@@ -40,6 +40,7 @@ export const AdminTitle = () => {
     const {id} = useParams();
     const [year, setYear] = useState(1975);
     const [number, setNumber] = useState(1);
+    const [source, setSource] = useState("");
     const [is_marvelklubben, setIs_marvelklubben] = useState(0);
     const [is_variant, setIs_variant] = useState(0);
     const [is_double, setIs_double] = useState(0);
@@ -90,6 +91,7 @@ export const AdminTitle = () => {
 
     const resetAddIssueForm = async () => {
         setNumber(1);
+        setSource("");
         setIs_marvelklubben(0);
         setIs_variant(0);
         setMarvelklubben_number(0);
@@ -228,6 +230,16 @@ export const AdminTitle = () => {
                                             min={1}
                                             onChange={(e) => handleInput(e, setNumber)}
                                         />
+                                        <label className={"form-label mb-0"} htmlFor="source">{LABELS_AND_HEADINGS.SOURCE_DB}</label>
+                                        <p className={"form-text"}>{LABELS_AND_HEADINGS.SOURCE_EXAMPLE}</p>
+                                        <textarea
+                                            id={"source"}
+                                            name={"source"}
+                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            rows={3}
+                                            value={source || ""}
+                                            onChange={(e) => handleInput(e, setSource)}
+                                        />
                                         <div>
                                             <input
                                                 id={"double"}
@@ -291,6 +303,7 @@ export const AdminTitle = () => {
                                                     publisher_id: publisher_id,
                                                     year: year,
                                                     number: number,
+                                                    source: source,
                                                     is_marvelklubben: is_marvelklubben,
                                                     marvelklubben_number: marvelklubben_number,
                                                     is_double: is_double,

@@ -6,31 +6,45 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {getUserName} from "../../../helpers/functions/functions";
 
 
-export const AddAdminButton = ({user, handleChangeAdmin}) => {
+export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => {
 
     const [loading, setLoading] = useState(false);
 
-    return (
-        <OverlayTrigger
-            key={"add-admin-tooltip"}
-            placement={"top"}
-            overlay={
-                <Tooltip id={"add-admin-tooltip"}>
-                    {LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
-                </Tooltip>
-            }
-        >
+    return useTooltip ? (
+            <OverlayTrigger
+                key={"add-admin-tooltip"}
+                placement={"top"}
+                overlay={
+                    <Tooltip id={"add-admin-tooltip"}>
+                        {LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
+                    </Tooltip>
+                }
+            >
+                <button
+                    className={"btn text-danger sms-tool-btn"}
+                    aria-label={LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
+                    onClick={() => handleChangeAdmin(user.id, 1, setLoading)}>
+                    {
+                        loading ?
+                            <CustomSpinner className={"fa-xl"}/>
+                            :
+                            <NotAdminIconDuoTone className={"fa-xl"}/>
+                    }
+                </button>
+            </OverlayTrigger>
+        )
+        :
+        (
             <button
-                className={"btn text-danger sms-tool-btn"}
-                aria-label={LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
+                className={"btn btn-danger mb-3"}
                 onClick={() => handleChangeAdmin(user.id, 1, setLoading)}>
                 {
                     loading ?
-                        <CustomSpinner className={"fa-xl"}/>
+                        <CustomSpinner className={"fa-xl me-2"}/>
                         :
-                        <NotAdminIconDuoTone className={"fa-xl"}/>
+                        <NotAdminIconDuoTone className={"fa-xl me-2"}/>
                 }
+                {LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
             </button>
-        </OverlayTrigger>
-    )
+        )
 }

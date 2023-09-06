@@ -24,7 +24,7 @@ export const TitlesPane = () => {
                     <CustomSpinner size={"4x"}/>
                     :
                     <div className={"sms-section--light"}>
-                        <TitlesList titlesData={titlesData} showAdminInfo={false}/>
+                        <TitlesList titlesData={titlesData} showAdminInfo={false} showToolbox/>
                     </div>
             }
 

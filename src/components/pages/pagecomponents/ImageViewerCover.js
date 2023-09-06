@@ -5,11 +5,11 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 export const ImageViewerCover = ({url, displayName, isCollectingIssue = false}) => {
 
     return url && displayName ? (
-        <div className={"cover-image--wrapper"}>
+        <div className={`cover-image--wrapper${isCollectingIssue ? " collecting" : ""}`}>
             <img
                 src={url}
                 alt={displayName}
-                className={`cover-image ${!isCollectingIssue && "grayscale-80"}`}
+                className={`cover-image${isCollectingIssue ? "" : " grayscale"}`}
                 loading={"lazy"}
             />
         </div>
