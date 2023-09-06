@@ -224,9 +224,6 @@ export const filterQueryByNameAndStartYear = (obj, query) => {
     )
 }
 export const filterQueryByTitleNamePublisherNameYearAndSource = (obj, query) => {
-    console.log("doing filter");
-    console.log("src", obj.source);
-    console.log("q", query);
     return (
         obj.titles.name.toLowerCase()
             .includes(query.toLowerCase()) ||
