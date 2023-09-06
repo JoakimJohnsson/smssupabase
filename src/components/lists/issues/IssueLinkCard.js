@@ -10,12 +10,11 @@ export const IssueLinkCard = ({issue, index}) => {
 
     return issue && (
         <li className={"issue-link-card"}>
-            <p>{index}</p>
             <Link to={`/issues/${issue.id}`} title={displayName}>
-                <div className={"issue-link-card--content"}>
+                <div className={"issue-link-card--content d-flex align-items-center"}>
                     {
                         hasImage(issue) && index < 24 &&
-                        <img src={issue.image_url} className={"list-image list-image--large me-2"} alt={""}/>
+                        <img src={issue.image_url} className={"list-image list-image--large me-3"} alt={""}/>
                     }
                     {displayName}
                 </div>
