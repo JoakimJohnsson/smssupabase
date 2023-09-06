@@ -29,6 +29,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Lägga in och visa information om källmaterial.</li>
                     <li className={"list-group-item px-0"}>Förbättra visning av sökresultat i publikationssök.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att filtrera på hela publikationens namn i publikationssök.</li>
+                    <li className={"list-group-item px-0"}>Visa källinformation på publikationssida.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.2 - 2023-09-06</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
