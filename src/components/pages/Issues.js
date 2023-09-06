@@ -39,14 +39,14 @@ export const Issues = () => {
                                                 )
                                             })
                                             .sort((a, b) => sortByName(a.titles, b.titles))
-                                            .map(issue =>
-                                                <IssueLinkCard key={issue.id} issue={issue}/>
+                                            .map((issue, index) =>
+                                                <IssueLinkCard key={issue.id} issue={issue} index={index}/>
                                             )
                                         :
                                         issuesData
                                             .sort((a, b) => sortByName(a.titles, b.titles))
-                                            .map(issue =>
-                                            <IssueLinkCard key={issue.id} issue={issue}/>
+                                            .map((issue, index) =>
+                                            <IssueLinkCard key={issue.id} issue={issue} index={index}/>
                                         )
                                 }
                             </ul>
