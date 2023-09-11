@@ -132,12 +132,17 @@ export const Title = () => {
                                                             label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
                                     }
                                     {
-                                        listViewMissing ?
-                                            <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewMissing(!listViewMissing)}
-                                                            label={"Visa alla publikationer"} id={"list-variant-toggler"}/>
+                                        listViewGrid ?
+                                            listViewMissing ?
+                                                <FunctionButton variant={"secondary"} icon={faGrid}
+                                                                onClick={() => setListViewMissing(!listViewMissing)}
+                                                                label={"Visa alla publikationer"} id={"list-variant-toggler"}/>
+                                                :
+                                                <FunctionButton variant={"secondary"} icon={faGrid}
+                                                                onClick={() => setListViewMissing(!listViewMissing)}
+                                                                label={"Visa endast saknade publikationer"} id={"list-variant-toggler"}/>
                                             :
-                                            <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewMissing(!listViewMissing)}
-                                                            label={"Visa endast saknade publikationer"} id={"list-variant-toggler"}/>
+                                            false
                                     }
                                 </div>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}

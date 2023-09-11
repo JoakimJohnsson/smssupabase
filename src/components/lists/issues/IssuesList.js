@@ -2,7 +2,7 @@ import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {getIndexList} from "../../../helpers/functions/functions";
 import {IssuesListGrid} from "./IssuesListGrid";
-import {IssuesListList} from "./IssuesListList";
+import {IssuesListAccordion} from "./IssuesListAccordion";
 
 
 export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollectingButtons, listViewGrid = false, listViewMissing = false, fetchTitleProgress}) => {
@@ -26,9 +26,9 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollec
                                 showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
                                 fetchTitleProgress={fetchTitleProgress} listViewMissing={listViewMissing}/>
                 :
-                <IssuesListList groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
-                                showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
-                                fetchTitleProgress={fetchTitleProgress} listViewMissing={listViewMissing}/>
+                <IssuesListAccordion groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
+                                     showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
+                                     fetchTitleProgress={fetchTitleProgress}/>
         )
         :
         <NoDataAvailable/>
