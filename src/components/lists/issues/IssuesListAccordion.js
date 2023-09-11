@@ -31,7 +31,6 @@ export const IssuesListAccordion = ({
                                             (year.sort((a, b) => a.number - b.number).map((issue, index) =>
                                                 <IssueListItem
                                                     key={issue.id}
-                                                    index={index}
                                                     showAdminInfo={showAdminInfo}
                                                     issue={issue}
                                                     setIssuesData={setIssuesData}
