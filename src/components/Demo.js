@@ -30,6 +30,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Förbättra visning av sökresultat i publikationssök.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att filtrera på hela publikationens namn i publikationssök.</li>
                     <li className={"list-group-item px-0"}>Visa källinformation på publikationssida.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att bara visa saknade publikationer på en titelsida.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.2 - 2023-09-06</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
@@ -44,7 +45,6 @@ const Demo = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Visa mer statistik och information på startsida och kontrollpanel.</li>
-                    <li className={"list-group-item px-0"}>Förbättra visning av titelsidan - T.ex. visa bara saknade publikationer.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>
