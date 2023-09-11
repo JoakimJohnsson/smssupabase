@@ -28,7 +28,7 @@ export const IssuesListAccordion = ({
                                 <ul className={"sms-list--with-tools mb-0"}>
                                     {
                                         year.length ?
-                                            (year.sort((a, b) => a.number - b.number).map((issue, index) =>
+                                            (year.sort((a, b) => a.number - b.number).map((issue) =>
                                                 <IssueListItem
                                                     key={issue.id}
                                                     showAdminInfo={showAdminInfo}
