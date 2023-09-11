@@ -242,6 +242,8 @@ export const LABELS_AND_HEADINGS = {
     SERIEWIKIN_FOR: "Seriewikin för",
     SETTINGS: "Inställningar",
     SETTINGS_CREDENTIALS: "Inloggningsuppgifter",
+    SHOW_ALL_ISSUES: "Visa alla publikationer",
+    SHOW_MISSING_ISSUES: "Visa endast saknade publikationer",
     SIGN_OUT: "Logga ut",
     SIGN_UP_SUCCESS: "Registreringen lyckades!",
     SKIP_LINK_TEXT: "Gå direkt till innehåll",

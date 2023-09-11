@@ -136,11 +136,11 @@ export const Title = () => {
                                             listViewMissing ?
                                                 <FunctionButton variant={"secondary"} icon={faGrid2Plus}
                                                                 onClick={() => setListViewMissing(!listViewMissing)}
-                                                                label={"Visa alla publikationer"} id={"list-variant-toggler"}/>
+                                                                label={LABELS_AND_HEADINGS.SHOW_ALL_ISSUES} id={"list-variant-toggler"}/>
                                                 :
                                                 <FunctionButton variant={"secondary"} icon={faGrid2}
                                                                 onClick={() => setListViewMissing(!listViewMissing)}
-                                                                label={"Visa endast saknade publikationer"} id={"list-variant-toggler"}/>
+                                                                label={LABELS_AND_HEADINGS.SHOW_MISSING_ISSUES} id={"list-variant-toggler"}/>
                                             :
                                             false
                                     }
