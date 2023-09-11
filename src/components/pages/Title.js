@@ -6,7 +6,7 @@ import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {EditIcon, Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {faGrid, faList} from "@fortawesome/pro-duotone-svg-icons";
+import {faGrid, faList, faGrid2, faGrid2Plus} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -134,11 +134,11 @@ export const Title = () => {
                                     {
                                         listViewGrid ?
                                             listViewMissing ?
-                                                <FunctionButton variant={"secondary"} icon={faGrid}
+                                                <FunctionButton variant={"secondary"} icon={faGrid2Plus}
                                                                 onClick={() => setListViewMissing(!listViewMissing)}
                                                                 label={"Visa alla publikationer"} id={"list-variant-toggler"}/>
                                                 :
-                                                <FunctionButton variant={"secondary"} icon={faGrid}
+                                                <FunctionButton variant={"secondary"} icon={faGrid2}
                                                                 onClick={() => setListViewMissing(!listViewMissing)}
                                                                 label={"Visa endast saknade publikationer"} id={"list-variant-toggler"}/>
                                             :
