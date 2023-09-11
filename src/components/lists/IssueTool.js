@@ -11,7 +11,7 @@ import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/se
 export const IssueTool = ({issue, displayName, fetchTitleProgress = false}) => {
 
     const {setInformationMessage, user} = useAppContext();
-    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id)
+    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
     const collectIssueIcon = isCollectingIssue ? faBadgeCheck : faBadge;

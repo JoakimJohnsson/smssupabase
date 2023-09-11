@@ -1,15 +1,12 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useParams} from "react-router-dom";
-import {
-    getRowByTableAndId,
-    handleCollectingTitle
-} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowByTableAndId, handleCollectingTitle} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {EditIcon, Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {faList, faGrid} from "@fortawesome/pro-duotone-svg-icons";
+import {faGrid, faList} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -33,6 +30,7 @@ export const Title = () => {
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
     const [listViewGrid, setListViewGrid] = useState(true);
+    const [listViewMissing, setListViewMissing] = useState(false);
     const [titleProgress, setTitleProgress] = useState({});
 
     const fetchTitleAndIssuesData = useCallback(() => {
@@ -43,15 +41,15 @@ export const Title = () => {
 
     const fetchTitleProgress = useCallback(async () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))
-    }, [title, user.id])
+    }, [title, user.id]);
 
     useEffect(() => {
         fetchTitleAndIssuesData();
-    }, [fetchTitleAndIssuesData])
+    }, [fetchTitleAndIssuesData]);
 
     useEffect(() => {
         fetchTitleProgress().then(() => console.log("Fetched progress"));
-    }, [fetchTitleProgress])
+    }, [fetchTitleProgress]);
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -133,9 +131,17 @@ export const Title = () => {
                                             <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
                                                             label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
                                     }
+                                    {
+                                        listViewMissing ?
+                                            <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewMissing(!listViewMissing)}
+                                                            label={"Visa alla publikationer"} id={"list-variant-toggler"}/>
+                                            :
+                                            <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewMissing(!listViewMissing)}
+                                                            label={"Visa endast saknade publikationer"} id={"list-variant-toggler"}/>
+                                    }
                                 </div>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
-                                            listViewGrid={listViewGrid} fetchTitleProgress={fetchTitleProgress}/>
+                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} fetchTitleProgress={fetchTitleProgress}/>
                             </div>
                         </>
                 }

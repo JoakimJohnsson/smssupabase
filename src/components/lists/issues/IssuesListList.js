@@ -3,10 +3,12 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {IssueGridCard} from "./IssueGridCard";
 
 
-export const IssuesGrid = ({groupedIssuesData, showCollectingButtons, fetchTitleProgress}) => {
+export const IssuesListList = ({groupedIssuesData, showCollectingButtons, fetchTitleProgress, listViewMissing}) => {
 
     return (
         <div className={"mb-4"}>
+            {/*TODO*/}
+            <p>Make it look more like a list - see accordion</p>
             {
                 groupedIssuesData.length &&
                 (groupedIssuesData.map((year, index) =>
@@ -17,7 +19,7 @@ export const IssuesGrid = ({groupedIssuesData, showCollectingButtons, fetchTitle
                                     year.length ?
                                         (year.sort((a, b) => a.number - b.number).map((issue) =>
                                             <IssueGridCard key={issue.id} issue={issue} showCollectingButtons={showCollectingButtons}
-                                                           fetchTitleProgress={fetchTitleProgress}/>
+                                                           fetchTitleProgress={fetchTitleProgress} listViewMissing={listViewMissing}/>
                                         ))
                                         :
                                         (<NoDataAvailable/>)
