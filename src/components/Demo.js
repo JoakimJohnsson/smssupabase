@@ -31,6 +31,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Möjlighet att filtrera på hela publikationens namn i publikationssök.</li>
                     <li className={"list-group-item px-0"}>Visa källinformation på publikationssida.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att bara visa saknade publikationer på en titelsida.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att visualisera statistik med hjälp av Recharts.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.2 - 2023-09-06</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

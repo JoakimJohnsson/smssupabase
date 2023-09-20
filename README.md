@@ -23,6 +23,13 @@ A Pro version of Font Awesome is used. Add a file called .npmrc in root folder. 
 #### Local Env
 Add a file called .env.local in root folder. Copy properties from .env.dist and ask Admin for keys and urls.
 
+## Recharts
+
+The app uses Recharts components for visual representation of statistics.
+
+* https://recharts.org/en-US
+* https://recharts.org/en-US/api
+* https://recharts.org/en-US/storybook
 
 ## Deployment
 
