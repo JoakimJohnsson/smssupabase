@@ -359,6 +359,21 @@ input[type="checkbox"] + label {
       @extend .grayscale-90;
     }
   }
+  &:hover {
+    .zoom-icon {
+      display: flex;
+    }
+  }
+  .zoom-icon {
+    display: none;
+    @extend .p-2;
+    color: $black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .user-image--wrapper {

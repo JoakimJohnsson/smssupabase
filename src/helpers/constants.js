@@ -244,6 +244,7 @@ export const LABELS_AND_HEADINGS = {
     SETTINGS_CREDENTIALS: "Inloggningsuppgifter",
     SHOW_ALL_ISSUES: "Visa alla publikationer",
     SHOW_MISSING_ISSUES: "Visa endast saknade publikationer",
+    SHOW_ORIGINAL_IMAGE: "Visa originalbild",
     SIGN_OUT: "Logga ut",
     SIGN_UP_SUCCESS: "Registreringen lyckades!",
     SKIP_LINK_TEXT: "Gå direkt till innehåll",
