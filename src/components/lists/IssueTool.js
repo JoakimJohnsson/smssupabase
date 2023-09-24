@@ -3,15 +3,14 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {Icon} from "../icons";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
-import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../context/AppContext";
 import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 
-export const IssueTool = ({issue, displayName, fetchTitleProgress = false}) => {
+export const IssueTool = ({issue, displayName, fetchTitleProgress = false, isCollectingIssue, setIsCollectingIssue}) => {
 
     const {setInformationMessage, user} = useAppContext();
-    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
+
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
     const collectIssueIcon = isCollectingIssue ? faBadgeCheck : faBadge;
