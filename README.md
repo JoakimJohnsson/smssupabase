@@ -10,6 +10,15 @@ Create a file called .env.local and copy contents of .env.dist. Ask admin for ur
 
 Be aware! There is no dev DB.
 
+### Update packages
+Update packages via npm commands:
+* `npm outdated` to show available and recommended updates.
+* `npm update` to update packages.
+* `npm outdated` should now show a clean slate. 
+* `npm install` and `npm run build` to see if everything is OK. Fix any issues and repeat process until fixed.
+
+Commit and push.
+
 ### Local files - Git ignored
 
 #### Font Awesome
@@ -32,7 +41,6 @@ The app uses Recharts components for visual representation of statistics.
 * https://recharts.org/en-US
 * https://recharts.org/en-US/api
 * https://recharts.org/en-US/storybook
-*
 
 ## Yet another react lightbox
 
