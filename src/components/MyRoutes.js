@@ -5,7 +5,7 @@ import {ROUTES} from "../helpers/constants";
 import {Home} from "./pages/Home";
 import {Dashboard} from "./pages/Dashboard";
 import {OverviewPane} from "./dashboard/dashboardTabPanes/OverviewPane";
-import {TitlesPane} from "./dashboard/dashboardTabPanes/TitlesPane";
+import {TitlesPane} from "./dashboard/dashboardTabPanes/Titles/TitlesPane";
 import {OtherCollectionsPane} from "./dashboard/dashboardTabPanes/OtherCollectionsPane";
 import Profile from "./pages/Profile";
 import {Title} from "./pages/Title";

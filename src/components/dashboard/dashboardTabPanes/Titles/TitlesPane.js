@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
-import {PANES} from "../../../helpers/constants";
-import {TitlesList} from "../../lists/titles/TitlesList";
-import {useAppContext} from "../../../context/AppContext";
-import {getTitlesForUser} from "../../../helpers/functions/serviceFunctions/titleFunctions";
-import {CustomSpinner} from "../../minis/CustomSpinner";
+import {PANES} from "../../../../helpers/constants";
+import {useAppContext} from "../../../../context/AppContext";
+import {getTitlesForUser} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
+import {TitlesPaneTitlesList} from "./TitlesPaneTitlesList";
 
 
 export const TitlesPane = () => {
@@ -24,10 +24,9 @@ export const TitlesPane = () => {
                     <CustomSpinner size={"4x"}/>
                     :
                     <div className={"sms-section--light"}>
-                        <TitlesList titlesData={titlesData} showAdminInfo={false} showToolbox/>
+                        <TitlesPaneTitlesList titlesData={titlesData}/>
                     </div>
             }
-
         </>
     )
 }
