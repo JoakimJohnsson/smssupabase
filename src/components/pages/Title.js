@@ -51,6 +51,12 @@ export const Title = () => {
         fetchTitleProgress().then(() => console.log("Fetched progress"));
     }, [fetchTitleProgress]);
 
+    useEffect(() => {
+        if (titleProgress && titleProgress.progress === 100) {
+            setListViewMissing(false);
+        }
+    }, [titleProgress]);
+
     return (
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
@@ -132,7 +138,7 @@ export const Title = () => {
                                                             label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
                                     }
                                     {
-                                        listViewGrid ?
+                                        listViewGrid && (titleProgress.progress !== 100) ?
                                             listViewMissing ?
                                                 <FunctionButton variant={"secondary"} icon={faGrid2Plus}
                                                                 onClick={() => setListViewMissing(!listViewMissing)}
