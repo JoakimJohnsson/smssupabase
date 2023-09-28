@@ -83,6 +83,7 @@ export const ROUTES = {
         OVERVIEW: "overview",
         TITLES: "titles",
         OTHER_COLLECTIONS: "other-collections",
+        PATH_MY_TITLES: "/dashboard/titles"
     },
     ADMIN: {
         ROOT: "/admin",
@@ -141,6 +142,7 @@ export const LABELS_AND_HEADINGS = {
     CREATE_ACCOUNT_CTA: "Registrera dig",
     CREATED_AT: "Inlagd",
     DASHBOARD: "Kontrollpanel",
+    DASHBOARD_MY_TITLES: "Kontrollpanel / Mina titlar",
     DEFAULT_FORMATS: "Alla format",
     DELETE: "Ta bort",
     DELETING: "Tar bort",

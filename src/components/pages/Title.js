@@ -2,9 +2,9 @@ import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useParams} from "react-router-dom";
 import {getRowByTableAndId, handleCollectingTitle} from "../../helpers/functions/serviceFunctions/serviceFunctions";
-import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
-import {EditIcon, Icon} from "../icons";
+import {EditIcon, Icon, TitlesIcon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faGrid, faList, faGrid2, faGrid2Plus} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
@@ -87,7 +87,7 @@ export const Title = () => {
                                     profile && profile.role >= 1 &&
                                     <Link to={`/admin/titles/${title.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + title.name}>
                                         <span className={`tag-badge mb-3 text-black bg-title-400`}>
-                                            <EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + title.name}
+                                            <EditIcon className={"me-1"}/>{LABELS_AND_HEADINGS.EDIT + " " + title.name}
                                         </span>
                                     </Link>
                                 }
@@ -124,6 +124,9 @@ export const Title = () => {
                                 }
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-9"}>
+                                <Link className={"btn btn-primary sms-btn"} to={ROUTES.DASHBOARD.PATH_MY_TITLES}>
+                                    <TitlesIcon className={"me-2"}/>{LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
+                                </Link>
                                 {
                                     isCollectingTitle &&
                                     <TitleProgress titleProgress={titleProgress}/>
