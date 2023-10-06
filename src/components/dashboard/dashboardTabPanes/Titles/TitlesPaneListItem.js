@@ -50,7 +50,7 @@ export const TitlesPaneListItem = ({title}) => {
                 </div>
             </Link>
             <div className={"border p-2"}>
-            <p className={"text-center mb-0"}>{titleProgress.noCollectedIssues + " / " + titleProgress.totalIssues}</p>
+            <p className={"text-center mb-0"}>{titleProgress.progress + "%"}</p>
                 <ResponsiveContainer width="100%" height={175}>
                     <PieChart>
                         <Pie
