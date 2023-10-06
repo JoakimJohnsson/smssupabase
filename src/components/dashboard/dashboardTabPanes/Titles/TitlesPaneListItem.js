@@ -1,16 +1,40 @@
-import React from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {PieChart, Pie, ResponsiveContainer, Cell} from "recharts";
+import {useAppContext} from "../../../../context/AppContext";
+import {getTitleProgressForUser} from "../../../../helpers/functions/functions";
 
 
 export const TitlesPaneListItem = ({title}) => {
 
-    const data = [
-        { name: 'Group A', value: 400 },
-        { name: 'Group B', value: 300 }
-    ];
+    const {user} = useAppContext();
+    const [titleProgress, setTitleProgress] = useState({});
+    const [progressData, setProgressData] = useState([]);
 
-    const colors = ["#41bee0", "#999"];
+    const fetchTitleProgress = useCallback(async () => {
+        setTitleProgress(await getTitleProgressForUser(title, user.id))
+    }, [title, user.id]);
+
+    useEffect(() => {
+        fetchTitleProgress().then(() => console.log("Fetched progress"));
+    }, [fetchTitleProgress]);
+
+    useEffect(() => {
+        if (titleProgress) {
+            setProgressData([
+                {name: 'Group A', value: titleProgress.noCollectedIssues, color: "#41bee0"},
+                {name: 'Group B', value: titleProgress.noMissingIssues, color: "#999"}
+            ]);
+        }
+    }, [titleProgress]);
+
+    const setFillColor = (color) => {
+        if (titleProgress.noCollectedIssues === titleProgress.totalIssues) {
+            return "#33cc99"
+        } else {
+            return color;
+        }
+    }
 
     return (
         <li className={"title-card"}>
@@ -25,24 +49,23 @@ export const TitlesPaneListItem = ({title}) => {
                     />
                 </div>
             </Link>
-
-            <div className={"d-flex justify-content-center border p-2"} style={{ overflow: 'hidden'}}>
-
-                <ResponsiveContainer width="100%" height={225}>
-                    <PieChart width={200} height={200}>
+            <div className={"border p-2"}>
+            <p className={"text-center mb-0"}>{titleProgress.noCollectedIssues + " / " + titleProgress.totalIssues}</p>
+                <ResponsiveContainer width="100%" height={175}>
+                    <PieChart>
                         <Pie
                             dataKey="value"
-                            data={data}
+                            data={progressData}
                             cx="50%"
                             cy="50%"
-                            innerRadius={40}
+                            innerRadius={30}
                             outerRadius={80}
                             stroke="none"
-                            label={true}
+                            label={false}
                         >
                             {
-                                data.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={colors[index]}/>
+                                progressData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={setFillColor(entry.color)}/>
                                 ))
                             }
                         </Pie>
