@@ -22,7 +22,7 @@ export const Dashboard = () => {
             <main id="main-content" className={"container-fluid main-container dashboard"}>
                 <div className={"row"}>
                     <Sidebar isOpen={isOpen} handleClick={handleClick}/>
-                    <div className={"p-0 d-block d-sm-none "}>
+                    <div className={"p-0 d-block d-md-none "}>
                         <button
                             className={btnClass}
                             onClick={handleClick}

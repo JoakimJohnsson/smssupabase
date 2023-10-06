@@ -6,6 +6,7 @@ import {
     sortByNameAndStartYear
 } from "../../../../helpers/functions/functions";
 import {Link} from "react-router-dom";
+import {TitlesPaneListItem} from "./TitlesPaneListItem";
 
 
 export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, pocket, hardcover, special}) => {
@@ -43,19 +44,7 @@ export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, poc
                         })
                         .sort((a, b) => sortByNameAndStartYear(a, b))
                         .map((t) =>
-                            <li key={t.id} className={"title-card"}>
-                                <Link to={`/titles/${t.id}`} className={"hocus-standard"}
-                                      title={t.name}>
-                                    <div className={"image-container mb-2 position-relative"}>
-                                        <img
-                                            src={t.image_url}
-                                            alt={t.name}
-                                            className="w-100"
-                                            loading={"lazy"}
-                                        />
-                                    </div>
-                                </Link>
-                            </li>
+                            <TitlesPaneListItem title={t}/>
                         )
             }
         </ul>
