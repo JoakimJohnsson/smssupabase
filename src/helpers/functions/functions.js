@@ -183,6 +183,7 @@ export const getTitleProgressForUser = async (title, userId) => {
     return {
         totalIssues: totalIssues,
         noCollectedIssues: noCollectedIssues,
+        noMissingIssues: totalIssues - noCollectedIssues,
         progress: Math.round(noCollectedIssues / totalIssues * 100)
     };
 }
