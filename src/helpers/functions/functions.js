@@ -249,3 +249,24 @@ export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover,
         (isTrue(special) && obj.format_id === 26224)
     )
 }
+
+export const filterTitlesData = (titlesData, query, comic, comiclarge, album, pocket, hardcover, special) => {
+    return (
+        titlesData
+            .filter((title) => {
+                return (
+                    filterQueryByNameAndStartYear(title, query)
+                )
+            })
+            .filter((title) => {
+                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
+                    return (
+                        filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special)
+                    )
+                } else {
+                    return true;
+                }
+            })
+            .sort((a, b) => sortByNameAndStartYear(a, b))
+    )
+}

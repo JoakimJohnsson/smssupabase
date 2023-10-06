@@ -1,5 +1,10 @@
 import React from "react";
-import {filterByFormat, filterQueryByNameAndStartYear, hasTrueValue, sortByNameAndStartYear} from "../../../../helpers/functions/functions";
+import {
+    filterByFormat,
+    filterTitlesData,
+    hasTrueValue,
+    sortByNameAndStartYear
+} from "../../../../helpers/functions/functions";
 import {Link} from "react-router-dom";
 
 
@@ -9,22 +14,7 @@ export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, poc
         <ul className={"sms-list--with-cards"}>
             {
                 query ?
-                    titlesData
-                        .filter((title) => {
-                            return (
-                                filterQueryByNameAndStartYear(title, query)
-                            )
-                        })
-                        .filter((title) => {
-                            if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
-                                return (
-                                    filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special)
-                                )
-                            } else {
-                                return true;
-                            }
-                        })
-                        .sort((a, b) => sortByNameAndStartYear(a, b))
+                    filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special)
                         .map((t) =>
                             <li key={t.id} className={"title-card"}>
                                 <Link to={`/titles/${t.id}`} className={"hocus-standard"}
