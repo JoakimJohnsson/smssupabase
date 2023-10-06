@@ -164,8 +164,7 @@ input[type="checkbox"] + label {
 
   li {
     &.title-card {
-      @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
-      //align-self: flex-end;
+      @extend .col-12, .col-sm-6, .col-lg-4, .col-xl-3, .mb-4;
       .image-container {
         background-color: $white;
       }

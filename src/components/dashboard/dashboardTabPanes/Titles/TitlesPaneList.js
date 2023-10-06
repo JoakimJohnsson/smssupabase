@@ -44,7 +44,7 @@ export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, poc
                         })
                         .sort((a, b) => sortByNameAndStartYear(a, b))
                         .map((t) =>
-                            <TitlesPaneListItem title={t}/>
+                            <TitlesPaneListItem key={t.id} title={t}/>
                         )
             }
         </ul>
