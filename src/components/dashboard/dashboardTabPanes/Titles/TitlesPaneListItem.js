@@ -22,8 +22,8 @@ export const TitlesPaneListItem = ({title}) => {
     useEffect(() => {
         if (titleProgress) {
             setProgressData([
-                {name: 'Group A', value: titleProgress.noCollectedIssues, color: "#41bee0"},
-                {name: 'Group B', value: titleProgress.noMissingIssues, color: "#999"}
+                {name: 'A', value: titleProgress.noCollectedIssues, color: "#41bee0"},
+                {name: 'B', value: titleProgress.noMissingIssues, color: "#999"}
             ]);
         }
     }, [titleProgress]);
@@ -53,6 +53,14 @@ export const TitlesPaneListItem = ({title}) => {
             <p className={"text-center mb-0"}>{titleProgress.progress + "%"}</p>
                 <ResponsiveContainer width="100%" height={175}>
                     <PieChart>
+                        <defs>
+                            <pattern id="pattern-A" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+                                <rect width="2" height="4" fill="#41bee0" />
+                            </pattern>
+                            <pattern id="pattern-B" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+                                <rect width="1" height="6" fill="#999" />
+                            </pattern>
+                        </defs>
                         <Pie
                             dataKey="value"
                             data={progressData}
@@ -65,7 +73,7 @@ export const TitlesPaneListItem = ({title}) => {
                         >
                             {
                                 progressData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={setFillColor(entry.color)}/>
+                                    <Cell key={`cell-${index}`} fill={setFillColor(`url(#pattern-${entry.name})`)}/>
                                 ))
                             }
                         </Pie>
