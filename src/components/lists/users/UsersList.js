@@ -8,6 +8,8 @@ import {RemoveAdminButton} from "./RemoveAdminButton";
 import {AddAdminButton} from "./AddAdminButton";
 import {getUserName, hasImage} from "../../../helpers/functions/functions";
 import {Link} from "react-router-dom";
+import {AdminIconDuoTone} from "../../icons-duotone";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 
 export const UsersList = ({usersData, setUsersData, limited = false, query = ""}) => {
@@ -40,8 +42,6 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                                 query === ""
                             )
                             .map((u, index) =>
-                                // Super admins does not have to be in this list
-                                u.role !== 2 &&
                                 <li key={index} className={"list-group-item px-0"}>
                                     <div className={"row"}>
                                         <div className={"sms-list-col--main"}>
@@ -68,10 +68,29 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                                         <div className={"sms-list-col--tools"}>
                                             <div className={"d-inline-block text-end"}>
                                                 {
-                                                    u.role === 1 ?
-                                                        <RemoveAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
+                                                    u.role !== 2 ?
+                                                        (
+                                                            u.role === 1 ?
+                                                                <RemoveAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
+                                                                :
+                                                                <AddAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
+                                                        )
                                                         :
-                                                        <AddAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
+                                                        <OverlayTrigger
+                                                            key={"is-super-admin-tooltip"}
+                                                            placement={"top"}
+                                                            overlay={
+                                                                <Tooltip id={"is-super-admin-tooltip"}>
+                                                                    {getUserName(u) + LABELS_AND_HEADINGS.IS_SUPER_ADMIN}
+                                                                </Tooltip>
+                                                            }
+                                                        >
+                                                            <button
+                                                                className={"text-secondary btn sms-tool-btn no-hover"}
+                                                                aria-label={getUserName(u) + LABELS_AND_HEADINGS.IS_SUPER_ADMIN}>
+                                                                <AdminIconDuoTone className={"fa-xl"}/>
+                                                            </button>
+                                                        </OverlayTrigger>
                                                 }
                                             </div>
                                         </div>

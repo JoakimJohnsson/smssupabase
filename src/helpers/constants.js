@@ -114,6 +114,7 @@ export const LABELS_AND_HEADINGS = {
     ADMIN: "Admin",
     ADD_ADMIN_1: "Gör ",
     ADD_ADMIN_2: " till admin",
+    IS_SUPER_ADMIN: " är super admin.",
     REMOVE_ADMIN_1: "Ta bort ",
     REMOVE_ADMIN_2: " som admin",
     ALL_ISSUES: "Alla publikationer",
