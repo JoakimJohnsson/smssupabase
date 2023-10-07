@@ -23,6 +23,20 @@ const Demo = () => {
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.3 - 2023-10-07</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Lägga in och visa information om källmaterial.</li>
+                    <li className={"list-group-item px-0"}>Förbättra visning av sökresultat i publikationssök.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att filtrera på hela publikationens namn i publikationssök.</li>
+                    <li className={"list-group-item px-0"}>Visa källinformation på publikationssida.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att bara visa saknade publikationer på en titelsida.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att visualisera statistik med hjälp av Recharts.</li>
+                    <li className={"list-group-item px-0"}>Kunna visa original omslagsbild på publikationssida.</li>
+                    <li className={"list-group-item px-0"}>Kontrollpanel - Mina titlar - Möjlighet att kunna söka och filtrera titlar.</li>
+                    <li className={"list-group-item px-0"}>Kontrollpanel - Mina titlar - Förbättrad visning av titlar - Status o.s.v.</li>
+                    <li className={"list-group-item px-0"}>Titelsida - Länk till Kontrollpanel - Mina titlar.</li>
+                </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.2 - 2023-09-06</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
@@ -32,21 +46,6 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Lägg till grundläggande information på profilsida.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att lägga till information om källmaterial på publikation.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att filtrera på information om källmaterial i publikationssöket.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.1 - 2023-08-28</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad visning av publikationer med undertitel.</li>
-                    <li className={"list-group-item px-0"}>Bättre överblick över saknade publikationer - sv/v filter.</li>
-                    <li className={"list-group-item px-0"}>Bugfix - Formatfilter fick ibland fel label.</li>
-                    <li className={"list-group-item px-0"}>Visa format på titelkort.</li>
-                    <li className={"list-group-item px-0"}>Visa senast inlagda information på startsidan.</li>
-                    <li className={"list-group-item px-0"}>Visa hur många titlar som återstår att lägga in i databasen.</li>
-                    <li className={"list-group-item px-0"}>Länk för redigering på titel, förlag och publikation - Bara synlig för admin.</li>
-                    <li className={"list-group-item px-0"}>Bugfix - fält för dubbelnummer lades inte till vid generering av publikation.</li>
-                    <li className={"list-group-item px-0"}>Bugfix - inlagd datum visades inte korrekt.</li>
-                    <li className={"list-group-item px-0"}>Informationsmeddelanden stängs automatiskt efter 10 sekunder.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att filtrera titlar på format.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

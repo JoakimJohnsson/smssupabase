@@ -57,6 +57,14 @@
     opacity: .9;
     border: 1px solid $border-color;
   }
+  &.no-hover {
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
+      border: 1px solid;
+    }
+  }
 }
 
 .sms-function-btn {
@@ -83,6 +91,7 @@
 
 .sms-link-to-top-button {
   @extend .btn, .btn-primary;
+  aspect-ratio: 1/1;
   position: fixed;
   bottom: 25px;
   right: 25px;

@@ -3,9 +3,14 @@ import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
 import {getIssueName, hasImage} from "../../../helpers/functions/functions";
+import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
+import {useAppContext} from "../../../context/AppContext";
 
 
 export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, showCollectingButtons, fetchTitleProgress}) => {
+
+    const {user} = useAppContext();
+    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
 
     return (
         <li className={"list-group-item px-0"}>
@@ -13,8 +18,8 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, 
                 <div className={"sms-list-col--main"}>
                     <div className={"d-flex align-items-center"}>
                         {
-                            hasImage(issue) &&
-                            <img src={issue.image_url} className={"list-image me-2"} alt={""}/>
+                            hasImage(issue) && !showAdminInfo &&
+                            <img src={issue.image_url} className={`list-image me-2${isCollectingIssue ? "" : " grayscale"}`} alt={""}/>
                         }
                         <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={getIssueName(issue)}/>
                     </div>
@@ -35,6 +40,8 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, 
                                 imageBucket={BUCKETS.ISSUE_IMAGES}
                                 fetchTitleProgress={fetchTitleProgress}
                                 isIssue
+                                isCollectingIssue={isCollectingIssue}
+                                setIsCollectingIssue={setIsCollectingIssue}
                             />
                         }
                     </div>

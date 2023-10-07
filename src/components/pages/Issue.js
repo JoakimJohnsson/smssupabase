@@ -24,6 +24,7 @@ import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTit
 import {getGradeByUserIdAndIssueId} from "../../helpers/functions/serviceFunctions/collectFunctions";
 import {TitleBadge} from "../minis/TitleBadge";
 import {PublisherBadge} from "../minis/PublisherBadge";
+import {Sources} from "./pagecomponents/Sources";
 
 
 export const Issue = () => {
@@ -157,31 +158,38 @@ export const Issue = () => {
                                     }
                                     {
                                         profile && profile.role >= 1 &&
-                                        <Link to={`/admin/issues/${issue.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + displayName}><span className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
+                                        <Link to={`/admin/issues/${issue.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + displayName}><span
+                                            className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
                                     }
                                 </div>
                                 <div className={"mb-4"}>
                                     <h2>{issue.titles.name}</h2>
-                                    <p>{issue.titles.description}</p>
+                                    <p className={"mb-4"}>{issue.titles.description}</p>
                                     <h2>{issue.publishers.name}</h2>
-                                    <p>{issue.publishers.description}</p>
+                                    <div className={"mb-4"}>
+                                        <p>{issue.publishers.description}</p>
+                                        {
+                                            issue.titles.wiki_url &&
+                                            <p>
+                                                <a href={issue.titles.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                                    {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue.titles.name}
+                                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                                </a>
+                                            </p>
+                                        }
+                                        {
+                                            issue.titles.comics_org_url &&
+                                            <p>
+                                                <a href={issue.titles.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                                    {issue.titles.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                                </a>
+                                            </p>
+                                        }
+                                    </div>
                                     {
-                                        issue.titles.wiki_url &&
-                                        <p>
-                                            <a href={issue.titles.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                                {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue.titles.name}
-                                                <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                            </a>
-                                        </p>
-                                    }
-                                    {
-                                        issue.titles.comics_org_url &&
-                                        <p>
-                                            <a href={issue.titles.comics_org_url} target={"_blank"} rel={"noreferrer"}>
-                                                {issue.titles.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
-                                                <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                            </a>
-                                        </p>
+                                        issue.source && issue.source !== "" &&
+                                        <Sources issue={issue}/>
                                     }
                                 </div>
                                 {

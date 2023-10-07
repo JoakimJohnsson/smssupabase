@@ -52,6 +52,7 @@ $color-bg-whale--light: scale-color($color-bg-whale, $lightness: 5%);
 $color-bg-elephant: scale-color($color-bg-whale, $lightness: 5%);
 $color-bg-horse: scale-color($color-bg-whale, $lightness: 10%);
 $color-bg-dog: scale-color($color-bg-whale, $lightness: 15%);
+$color-bg-whale--trans: rgba(28, 26, 27, .9);
 $color-bg-elephant--trans: rgba(29, 31, 47, .8);
 $color-bg-horse--trans: rgba(35, 37, 54, .8);
 $color-bg-dog--trans: rgba(39, 41, 59, .8);
@@ -156,5 +157,36 @@ $border-radius--xl: 26px;
 $list-group-bg: transparent;
 $list-group-color: $body-color;
 $list-group-border-color: $primary--dark;
+
+// Yet Another React Lightbox
+//$yarl__fade_animation_duration: ;
+//$yarl__fade_animation_timing_function: ;
+//$yarl__portal_zindex: ;
+//$yarl__container_background_color: ;
+$yarl__color_backdrop: $color-bg-whale__trans;
+//$yarl__controller_overscroll-behavior: ;
+//$yarl__controller_touch_action: ;
+//$yarl__pull_down_opacity: ;
+//$yarl__swipe_offset: ;
+//$yarl__pull_down_offset: ;
+//$yarl__carousel_slides_count: ;
+//$yarl__carousel_spacing_px: ;
+//$yarl__carousel_spacing_percent: ;
+//$yarl__carousel_padding_px: ;
+//$yarl__carousel_padding_percent: ;
+//$yarl__slide_icon_loading_color: ;
+$yarl__color_button: $danger;
+//$yarl__slide_icon_error_color: ;
+//$yarl__slide_icon_error_size: ;
+//$yarl__toolbar_padding: ;
+//$yarl__icon_size: ;
+//$yarl__button_background_color: ;
+//$yarl__button_border: ;
+//$yarl__button_filter: ;
+//$yarl__button_margin: ;
+//$yarl__button_padding: ;
+$yarl__color_button_active: $danger;
+//$yarl__color_button_disabled: ;
+//$yarl__navigation_button_padding: ;
 
 

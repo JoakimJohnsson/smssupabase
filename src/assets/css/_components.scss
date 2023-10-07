@@ -164,8 +164,7 @@ input[type="checkbox"] + label {
 
   li {
     &.title-card {
-      @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
-      //align-self: flex-end;
+      @extend .col-12, .col-sm-6, .col-lg-4, .col-xl-3, .mb-4;
       .image-container {
         background-color: $white;
       }
@@ -334,6 +333,13 @@ input[type="checkbox"] + label {
   border-radius: 0;
   background-color: $light;
   border: 1px solid;
+  &.list-image--large {
+    width: 60px;
+    height: 75px;
+  }
+  &.grayscale {
+    @extend .grayscale-90;
+  }
 }
 
 .cover-image--wrapper {
@@ -354,6 +360,21 @@ input[type="checkbox"] + label {
     &.grayscale {
       @extend .grayscale-90;
     }
+  }
+  &:hover {
+    .zoom-icon {
+      display: flex;
+    }
+  }
+  .zoom-icon {
+    display: none;
+    @extend .p-2;
+    color: $black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
   }
 }
 

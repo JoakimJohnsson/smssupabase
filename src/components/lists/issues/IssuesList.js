@@ -1,11 +1,11 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {getIndexList} from "../../../helpers/functions/functions";
-import {IssuesGrid} from "./IssuesGrid";
+import {IssuesListGrid} from "./IssuesListGrid";
 import {IssuesListAccordion} from "./IssuesListAccordion";
 
 
-export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollectingButtons, listViewGrid = false, fetchTitleProgress}) => {
+export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollectingButtons, listViewGrid = false, listViewMissing = false, fetchTitleProgress}) => {
 
     let groupedIssuesData = [];
     let groupedIssuesDataIndexes = [];
@@ -22,9 +22,9 @@ export const IssuesList = ({issuesData, setIssuesData, showAdminInfo, showCollec
     return issuesData && issuesData.length && groupedIssuesData.length ?
         (
             listViewGrid ?
-                <IssuesGrid groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
-                            showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
-                            fetchTitleProgress={fetchTitleProgress}/>
+                <IssuesListGrid groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
+                                showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}
+                                fetchTitleProgress={fetchTitleProgress} listViewMissing={listViewMissing}/>
                 :
                 <IssuesListAccordion groupedIssuesData={groupedIssuesData} groupedIssuesDataIndexes={groupedIssuesDataIndexes} issuesData={issuesData}
                                      showAdminInfo={showAdminInfo} setIssuesData={setIssuesData} showCollectingButtons={showCollectingButtons}

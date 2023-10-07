@@ -10,7 +10,7 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 
 
-export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false}) => {
+export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false, listViewMissing}) => {
 
     const {setInformationMessage, user} = useAppContext();
     const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
@@ -29,6 +29,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
     }
 
     return issue && issue.titles && (
+        (!listViewMissing || (listViewMissing && !isCollectingIssue)) &&
         <li className={"issue-card"}>
             <Link to={`/issues/${issue.id}`} title={displayName}>
                 <div className={`cover-image--wrapper${isCollectingIssue ? " collecting" : ""}`}>

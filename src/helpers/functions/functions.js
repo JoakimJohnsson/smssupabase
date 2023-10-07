@@ -183,6 +183,7 @@ export const getTitleProgressForUser = async (title, userId) => {
     return {
         totalIssues: totalIssues,
         noCollectedIssues: noCollectedIssues,
+        noMissingIssues: totalIssues - noCollectedIssues,
         progress: Math.round(noCollectedIssues / totalIssues * 100)
     };
 }
@@ -223,15 +224,17 @@ export const filterQueryByNameAndStartYear = (obj, query) => {
         query === ""
     )
 }
-export const filterQueryByTitleNamePublisherNameYearAndSource = (obj, query) => {
+export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query) => {
     return (
-        obj.titles.name.toLowerCase()
+        issue.titles.name.toLowerCase()
             .includes(query.toLowerCase()) ||
-        obj.publishers.name.toString().toLowerCase()
+        issue.publishers.name.toString().toLowerCase()
             .includes(query.toLowerCase()) ||
-        obj.year.toString().toLowerCase()
+        issue.year.toString().toLowerCase()
             .includes(query.toLowerCase()) ||
-        obj.source.toString().toLowerCase()
+        issue.source.toString().toLowerCase()
+            .includes(query.toLowerCase()) ||
+        getIssueName(issue).toString().toLowerCase()
             .includes(query.toLowerCase()) ||
         query === ""
     )
@@ -245,5 +248,26 @@ export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover,
         (isTrue(pocket) && obj.format_id === 24543) ||
         (isTrue(hardcover) && obj.format_id === 23577) ||
         (isTrue(special) && obj.format_id === 26224)
+    )
+}
+
+export const filterTitlesData = (titlesData, query, comic, comiclarge, album, pocket, hardcover, special) => {
+    return (
+        titlesData
+            .filter((title) => {
+                return (
+                    filterQueryByNameAndStartYear(title, query)
+                )
+            })
+            .filter((title) => {
+                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
+                    return (
+                        filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special)
+                    )
+                } else {
+                    return true;
+                }
+            })
+            .sort((a, b) => sortByNameAndStartYear(a, b))
     )
 }

@@ -2,7 +2,12 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {filterByFormat, filterQueryByNameAndStartYear, hasTrueValue, sortByNameAndStartYear} from "../../helpers/functions/functions";
+import {
+    filterByFormat,
+    filterTitlesData,
+    hasTrueValue,
+    sortByNameAndStartYear
+} from "../../helpers/functions/functions";
 import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
@@ -41,22 +46,7 @@ export const Titles = () => {
                             <ul className={"sms-list--with-cards"}>
                                 {
                                     query ?
-                                        titlesData
-                                            .filter((title) => {
-                                                return (
-                                                    filterQueryByNameAndStartYear(title, query)
-                                                )
-                                            })
-                                            .filter((title) => {
-                                                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
-                                                    return (
-                                                        filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special)
-                                                    )
-                                                } else {
-                                                    return true;
-                                                }
-                                            })
-                                            .sort((a, b) => sortByNameAndStartYear(a, b))
+                                        filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special)
                                             .map((title) =>
                                                 <TitlesListItem key={title.id} title={title}/>
                                             )
