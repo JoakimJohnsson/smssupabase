@@ -80,6 +80,9 @@
 .bg-format-0 {
   background-color: $format;
 }
+.bg-format-100 {
+  background-color: scale-color($format, $lightness: 90%);
+}
 .bg-format-200 {
   background-color: scale-color($format, $lightness: 80%);
 }

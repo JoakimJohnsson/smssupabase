@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {PieChart, Pie, ResponsiveContainer, Cell} from "recharts";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitleProgressForUser} from "../../../../helpers/functions/functions";
+import {FormatBadge} from "../../../minis/FormatBadge";
 
 
 export const TitlesPaneListItem = ({title}) => {
@@ -10,6 +11,7 @@ export const TitlesPaneListItem = ({title}) => {
     const {user} = useAppContext();
     const [titleProgress, setTitleProgress] = useState({});
     const [progressData, setProgressData] = useState([]);
+    const [completed, setCompleted] = useState(false);
 
     const fetchTitleProgress = useCallback(async () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))
@@ -25,11 +27,14 @@ export const TitlesPaneListItem = ({title}) => {
                 {name: 'A', value: titleProgress.noCollectedIssues, color: "#41bee0"},
                 {name: 'B', value: titleProgress.noMissingIssues, color: "#999"}
             ]);
+            setCompleted((titleProgress.noCollectedIssues === titleProgress.totalIssues));
         }
     }, [titleProgress]);
 
+
+
     const setFillColor = (color) => {
-        if (titleProgress.noCollectedIssues === titleProgress.totalIssues) {
+        if (completed) {
             return "#33cc99"
         } else {
             return color;
@@ -49,8 +54,9 @@ export const TitlesPaneListItem = ({title}) => {
                     />
                 </div>
             </Link>
+            <span className={`tag-badge text-black mb-1 ${completed ? "bg-success" : "bg-primary"}`}>{titleProgress.progress + "%"}</span>
+            <FormatBadge formatId={title.format_id} customClass={"mb-1"} year={title.start_year}/>
             <div className={"border p-2"}>
-            <p className={"text-center mb-0"}>{titleProgress.progress + "%"}</p>
                 <ResponsiveContainer width="100%" height={175}>
                     <PieChart>
                         <defs>
