@@ -18,7 +18,6 @@ const Demo = () => {
         <div className={"sms-section--light"} id={"demo-section"}>
             <div className={"text-center"}>
                 <DemoIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
-
             </div>
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
@@ -26,6 +25,7 @@ const Demo = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.4 - 2023-10-XX</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Öppna upp registrering för 3 st beta test användare.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.3 - 2023-10-07</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
@@ -49,7 +49,7 @@ const Demo = () => {
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Öppna upp för beta test användare.</li>
+                    <li className={"list-group-item px-0"}>Förbättringar efter beta test.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>
