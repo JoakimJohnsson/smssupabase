@@ -4,24 +4,33 @@
 * GitHub - https://github.com/JoakimJohnsson/smssupabase
 * Supabase - https://app.supabase.com/projects
 
-## Setup
+**TABLE OF CONTENTS**
+* [Setup and Packages](#setup)
+  * [Local files - Git ignored](#local)
+    * [Font Awesome](#fontawesome)
+    * [Local Environment file](#localenv)
+  * [Packages](#packages)
+    * [Update ackages](#updatepackages)
+    * [Recharts](#recharts)
+    * [Yet another react lightbox](#lightbox)
+* [Deployment](#deployment)
+  * [GitHub Actions](#actions)
+  * [Versioning](#versioning)
+    * [NPM Version](#npmversion)
+  * [Workflow](#workflow)
+  * [Available Scripts](#scripts)
+    * [Start](#start)
+    * [Test](#test)
+
+## <a id="setup"></a> Setup and packages
 
 Create a file called .env.local and copy contents of .env.dist. Ask admin for url and anon key. This is needed to communicate with Supabase.
 
 Be aware! There is no dev DB.
 
-### Update packages
-Update packages via npm commands:
-* `npm outdated` to show available and recommended updates.
-* `npm update` to update packages.
-* `npm outdated` should now show a clean slate. 
-* `npm install` and `npm run build` to see if everything is OK. Fix any issues and repeat process until fixed.
+### <a id="local"></a> Local files - Git ignored
 
-Commit and push.
-
-### Local files - Git ignored
-
-#### Font Awesome
+#### <a id="fontawesome"></a> Font Awesome
 
 A Pro version of Font Awesome is used. Add a file called .npmrc in root folder. It should have the following properties:
 
@@ -30,11 +39,22 @@ A Pro version of Font Awesome is used. Add a file called .npmrc in root folder. 
 //npm.fontawesome.com/:_authToken=< Ask Admin for token >
 ```
 
-#### Local Env
+#### <a id="localenv"></a> Local Environment file
 
 Add a file called .env.local in root folder. Copy properties from .env.dist and ask Admin for keys and urls.
 
-## Recharts
+### <a id="packages"></a> Packages
+
+#### <a id="updatepackages"></a> Update packages
+Update packages via npm commands:
+* `npm outdated` to show available and recommended updates.
+* `npm update` to update packages.
+* `npm outdated` should now show a clean slate.
+* `npm install` and `npm run build` to see if everything is OK. Fix any issues and repeat process until fixed.
+
+Commit and push.
+
+#### <a id="recharts"></a> Recharts
 
 The app uses Recharts components for visual representation of statistics.
 
@@ -42,7 +62,7 @@ The app uses Recharts components for visual representation of statistics.
 * https://recharts.org/en-US/api
 * https://recharts.org/en-US/storybook
 
-## Yet another react lightbox
+#### <a id="lightbox"></a> Yet another react lightbox
 
 The app uses Yet another react lightbox for image viewing. CSS is copied from package to _lightbox.scss. This file also handles conversion between
 SASS variables and Yarl variables.
@@ -51,22 +71,22 @@ Please update CSS when upgrading package.
 
 * https://yet-another-react-lightbox.com
 
-## Deployment
+## <a id="deployment"></a> Deployment
 
 On push to main (merging release<x.x.x> into main) - project will automatically be built and deployed to www.svenskamarvelsamlare.se.
 
-### Action script
+### <a id="actions"></a> GitHub Actions
 
 Edit .github/workflows/main.yml to make changes in the GitHub Action script.
 
-### Versioning
+### <a id="versioning"></a> Versioning
 
 Before merging develop to release-<x.x.x> - Please run `npm version <major> <minor> <patch>` (see below) to update version information.
 
 Then do `git push` and `git push --tags`. A new tag will appear in gitHub - https://github.com/JoakimJohnsson/smssupabase/tags (only used for archive
 purposes at the moment).
 
-#### NPM version
+#### <a id="npmversion"></a> NPM Version
 
 https://docs.npmjs.com/updating-your-published-package-version-number
 
@@ -74,7 +94,7 @@ https://docs.npmjs.com/updating-your-published-package-version-number
 - $ npm version minor --> x.X.x
 - $ npm version patch --> x.x.X
 
-### Workflow
+### <a id="workflow"></a> Workflow
 
 https://github.com/JoakimJohnsson/smssupabase/issues
 
@@ -88,19 +108,19 @@ https://github.com/JoakimJohnsson/smssupabase/issues
 * Admin will review and merge.
 * The action script will run tests and deploy to www.svenskamarvelsamlare.se.
 
-## Available Scripts
+### <a id="scripts"></a> Available Scripts
 
 In the project directory, you can run:
-
-### `npm start`
+#### <a id="start"></a> Start
+`npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
+### <a id="test"></a> Test
+`npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.

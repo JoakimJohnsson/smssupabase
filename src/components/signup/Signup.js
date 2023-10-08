@@ -81,7 +81,7 @@ export const Signup = () => {
                        ref={emailRef}
                        onSubmit={(e) => handleEmailValidation(e)}
                        className={emailInputClass}
-                       placeholder={"name@myplace.se"}
+                       placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
                        required/>
                 <ValidationMessage success={emailValidated} message={emailValidationMessage}/>
                 <label className={"form-label d-flex"} htmlFor="input-signup-password">{LABELS_AND_HEADINGS.PASSWORD}</label>

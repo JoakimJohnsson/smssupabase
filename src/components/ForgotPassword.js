@@ -21,7 +21,7 @@ const ForgotPassword = () => {
                    type="email"
                    onChange={(e) => setEmail(e.target.value)}
                    className={"form-control"}
-                   placeholder={"name@myplace.se"}
+                   placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
                    required/>
             <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_SEND_INFO}</div>
             <button type="submit" className={"btn btn-primary sms-btn"} disabled={email === ""}>

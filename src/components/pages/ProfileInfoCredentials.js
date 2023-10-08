@@ -28,14 +28,14 @@ export const ProfileInfoCredentials = ({
                        type="email"
                        onChange={(e) => setNewEmail(e.target.value)}
                        className={"form-control mb-3"}
-                       placeholder={"name@myplace.se"}
+                       placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
                        required/>
                 <label className={"form-label"} htmlFor="input-confirm-email">{LABELS_AND_HEADINGS.CONFIRM_NEW_EMAIL}</label>
                 <input id="input-confirm-email"
                        type="email"
                        onChange={(e) => setConfirmNewEmail(e.target.value)}
                        className={"form-control"}
-                       placeholder={"name@myplace.se"}
+                       placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
                        required/>
                 <div className={"form-text mb-3"}>{TEXTS.CHANGE_EMAIL_SEND_INFO}</div>
                 <button className={"btn btn-primary sms-btn"} onClick={() => handleChangeEmail()}

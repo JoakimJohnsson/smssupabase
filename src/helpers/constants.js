@@ -224,6 +224,7 @@ export const LABELS_AND_HEADINGS = {
     NEW_PASSWORD: "Nytt lösenord",
     PASSWORD_CONFIRM: "Bekräfta lösenord",
     PAUSE: "Pausa",
+    PLACEHOLDER_MAIL: "namn@posten.se",
     PREVIOUS: "Tidigare",
     PROFILE_IMAGE: "Profilbild",
     PUBLISHERS: "Förlag",
