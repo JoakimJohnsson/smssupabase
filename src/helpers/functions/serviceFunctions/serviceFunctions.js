@@ -88,6 +88,23 @@ export const getCountByTable = async (table, setData) => {
     }
 }
 
+export const getTitlesCountByUser = async (userId, setData) => {
+    try {
+        let {count, error} = await supabase
+            .from(TABLES.USERS_TITLES)
+            .select('*', {count: 'exact', head: true})
+            .eq("user_id", userId);
+        if (error) {
+            console.error(error);
+        }
+        if (count) {
+            setData(count);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const getNameByTableAndId = async (table, id, setData) => {
     try {
         let {data, error, status} = await supabase

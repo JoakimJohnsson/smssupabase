@@ -383,7 +383,10 @@ export const PANES = {
         NAME: "Mina titlar"
     },
     OVERVIEW: {
-        NAME: "Översikt"
+        NAME: "Översikt",
+        COLLECTING_1: "Du samlar på",
+        COLLECTING_2: "av totalt",
+        COLLECTING_3: "inlagda titlar."
     },
     OTHER_COLLECTIONS: {
         NAME: "Andra samlingar"

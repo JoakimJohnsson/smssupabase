@@ -45,7 +45,7 @@ export const updateTitleData = async (id, data) => {
 export const getTitlesForUser = async (userId, setTitlesData) => {
     try {
         let {data, error, status} = await supabase
-            .from("users")
+            .from(TABLES.USERS)
             .select(`
             id,
             titles (*)
