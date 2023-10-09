@@ -1,27 +1,61 @@
 import React, {useState, useEffect} from "react";
-import {PANES, STATISTICS} from "../../../helpers/constants";
+import {PANES, STATISTICS, TABLES} from "../../../helpers/constants";
 import {useAppContext} from "../../../context/AppContext";
-import {getTitlesCountByUser} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowCountByTableAndUserId} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {CustomSpinner} from "../../minis/CustomSpinner";
+import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../helpers/functions/serviceFunctions/titleFunctions";
 
 
 export const OverviewPane = () => {
 
     const {user} = useAppContext();
-    const [userTitlesCount, setUserTitlesCount] = useState(null);
+    const [userTitlesData, setUserTitlesData] = useState(null);
+    const [totalIssuesCountForCollection, setTotalIssuesCountForCollection] = useState(null);
+    const [userIssuesCount, setUserIssuesCount] = useState(null);
 
     useEffect(() => {
         if (user) {
-            getTitlesCountByUser(user.id, setUserTitlesCount).then();
+            getTitlesForUser(user.id, setUserTitlesData).then();
         }
-
     }, [user]);
+
+    useEffect(() => {
+        if (user) {
+            getRowCountByTableAndUserId(TABLES.USERS_ISSUES, user.id, setUserIssuesCount).then();
+        }
+    }, [user]);
+
+    useEffect(() => {
+        if (userTitlesData) {
+            let totalCount;
+            totalCount = getTotalIssuesCountForTitlesData(userTitlesData);
+            if (totalCount) {
+                setTotalIssuesCountForCollection(totalCount);
+            }
+        }
+    }, [userTitlesData]);
 
     return (
         <div>
             <h1>{PANES.OVERVIEW.NAME}</h1>
-            <p>
-                {PANES.OVERVIEW.COLLECTING_1} {userTitlesCount && userTitlesCount} {PANES.OVERVIEW.COLLECTING_2} {STATISTICS.TOTAL_TITLES_COUNT} {PANES.OVERVIEW.COLLECTING_3}
-            </p>
+            {
+                userTitlesData ?
+                    <p>
+                        {PANES.OVERVIEW.COLLECTING_TITLES_1} {userTitlesData.length} {PANES.OVERVIEW.COLLECTING_TITLES_2} {STATISTICS.TOTAL_TITLES_COUNT} {PANES.OVERVIEW.COLLECTING_TITLES_3}
+                    </p>
+                    :
+                    <CustomSpinner className={"mb-3"}/>
+            }
+            {
+                userIssuesCount ?
+                    <p>
+                        {PANES.OVERVIEW.COLLECTING_ISSUES_1} {userIssuesCount && userIssuesCount} {PANES.OVERVIEW.COLLECTING_ISSUES_2} {Math.round(userIssuesCount / totalIssuesCountForCollection * 100)}%
+                        ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
+                    </p>
+                    :
+                    <CustomSpinner className={"mb-3"}/>
+
+            }
         </div>
     )
 }

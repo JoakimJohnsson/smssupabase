@@ -60,3 +60,11 @@ export const getTitlesForUser = async (userId, setTitlesData) => {
         console.error(error);
     }
 }
+
+export const getTotalIssuesCountForTitlesData = (titlesData) => {
+    let totalCount = 0;
+    titlesData.map((data) => {
+        return totalCount += data.total_issues;
+    });
+    return totalCount;
+}

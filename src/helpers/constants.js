@@ -384,9 +384,12 @@ export const PANES = {
     },
     OVERVIEW: {
         NAME: "Översikt",
-        COLLECTING_1: "Du samlar på",
-        COLLECTING_2: "av totalt",
-        COLLECTING_3: "inlagda titlar."
+        COLLECTING_TITLES_1: "Du samlar på",
+        COLLECTING_TITLES_2: "av totalt",
+        COLLECTING_TITLES_3: "inlagda titlar.",
+        COLLECTING_ISSUES_1: "Totalt ingår",
+        COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
+        COLLECTING_ISSUES_3: "komplett."
     },
     OTHER_COLLECTIONS: {
         NAME: "Andra samlingar"
