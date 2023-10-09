@@ -14,7 +14,7 @@ export const OverviewPane = () => {
             getTitlesCountByUser(user.id, setUserTitlesCount).then();
         }
 
-    }, [user])
+    }, [user]);
 
     return (
         <div>
