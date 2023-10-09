@@ -44,7 +44,7 @@ export const OverviewPane = () => {
                         {PANES.OVERVIEW.COLLECTING_TITLES_1} {userTitlesData.length} {PANES.OVERVIEW.COLLECTING_TITLES_2} {STATISTICS.TOTAL_TITLES_COUNT} {PANES.OVERVIEW.COLLECTING_TITLES_3}
                     </p>
                     :
-                    <CustomSpinner className={"mb-3"}/>
+                    <CustomSpinner className={"mb-3 d-block"}/>
             }
             {
                 userIssuesCount ?
@@ -53,7 +53,7 @@ export const OverviewPane = () => {
                         ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                     </p>
                     :
-                    <CustomSpinner className={"mb-3"}/>
+                    <CustomSpinner className={"mb-3 d-block"}/>
 
             }
         </div>
