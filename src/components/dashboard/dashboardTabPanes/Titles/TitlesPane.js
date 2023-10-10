@@ -12,7 +12,7 @@ export const TitlesPane = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special] = useFormatQueryFilter();
+    const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible] = useFormatQueryFilter();
     const {user} = useAppContext();
 
     useEffect(() => {
@@ -37,7 +37,7 @@ export const TitlesPane = () => {
                     <CustomSpinner size={"4x"}/>
                     :
                     <TitlesPaneList query={query} titlesData={titlesData} comic={comic} comiclarge={comiclarge} album={album} pocket={pocket}
-                                    hardcover={hardcover} special={special}/>
+                                    hardcover={hardcover} special={special} collectible={collectible}/>
 
             }
         </>

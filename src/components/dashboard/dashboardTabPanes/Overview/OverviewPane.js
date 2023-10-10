@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from "react";
-import {PANES, STATISTICS, TABLES} from "../../../helpers/constants";
-import {useAppContext} from "../../../context/AppContext";
-import {getRowCountByTableAndUserId} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
-import {CustomSpinner} from "../../minis/CustomSpinner";
-import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../helpers/functions/serviceFunctions/titleFunctions";
+import {PANES, STATISTICS, TABLES} from "../../../../helpers/constants";
+import {useAppContext} from "../../../../context/AppContext";
+import {getRowCountByTableAndUserId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
+import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {OverviewTitlesPane} from "./OverviewTitlesPane";
+import {OverviewIssuesPane} from "./OverviewIssuesPane";
+import {OverviewFormatsPane} from "./OverviewFormatsPane";
 
 
 export const OverviewPane = () => {
@@ -54,8 +57,10 @@ export const OverviewPane = () => {
                     </p>
                     :
                     <CustomSpinner className={"mb-3 d-block"}/>
-
             }
+            <OverviewTitlesPane/>
+            <OverviewIssuesPane/>
+            <OverviewFormatsPane/>
         </div>
     )
 }

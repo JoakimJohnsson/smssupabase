@@ -9,13 +9,13 @@ import {Link} from "react-router-dom";
 import {TitlesPaneListItem} from "./TitlesPaneListItem";
 
 
-export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, pocket, hardcover, special}) => {
+export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, pocket, hardcover, special, collectible}) => {
 
     return (
         <ul className={"sms-list--with-cards"}>
             {
                 query ?
-                    filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special)
+                    filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special, collectible)
                         .map((t) =>
                             <li key={t.id} className={"title-card"}>
                                 <Link to={`/titles/${t.id}`} className={"hocus-standard"}
@@ -34,9 +34,9 @@ export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, poc
                     :
                     titlesData
                         .filter((title) => {
-                            if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
+                            if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special, collectible])) {
                                 return (
-                                    filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special)
+                                    filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special, collectible)
                                 )
                             } else {
                                 return true;

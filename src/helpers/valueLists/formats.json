@@ -21,18 +21,24 @@
     "id": 24543,
     "name": "Pocket",
     "nameEn": "Pocket",
-    "shade": 400
+    "shade": 800
   },
   {
     "id": 23577,
     "name": "Inbunden",
     "nameEn": "Hard cover",
-    "shade": 600
+    "shade": 400
   },
   {
     "id": 26224,
     "name": "Specialtidning",
     "nameEn": "Special",
-    "shade": 800
+    "shade": 600
+  },
+  {
+    "id": 674899,
+    "name": "Samlarföremål",
+    "nameEn": "Collectible",
+    "shade": 300
   }
 ]

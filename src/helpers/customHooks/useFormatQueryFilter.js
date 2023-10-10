@@ -13,6 +13,7 @@ export const useFormatQueryFilter = () => {
     const pocket = searchParams.get("pocket");
     const hardcover = searchParams.get("hardcover");
     const special = searchParams.get("special");
+    const collectible = searchParams.get("collectible");
 
     return [
         setSearchParams,
@@ -22,6 +23,7 @@ export const useFormatQueryFilter = () => {
         album,
         pocket,
         hardcover,
-        special
+        special,
+        collectible
     ]
 }
