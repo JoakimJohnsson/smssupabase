@@ -32,7 +32,6 @@ export const TitlesPaneListItem = ({title}) => {
     }, [titleProgress]);
 
 
-
     const setFillColor = (color) => {
         if (completed) {
             return "#33cc99"
@@ -43,48 +42,52 @@ export const TitlesPaneListItem = ({title}) => {
 
     return (
         <li className={"title-card"}>
-            <Link to={`/titles/${title.id}`} className={"hocus-standard"}
-                  title={title.name}>
-                <div className={"image-container mb-2 position-relative"}>
-                    <img
-                        src={title.image_url}
-                        alt={title.name}
-                        className="w-100"
-                        loading={"lazy"}
-                    />
+            <div className={"bg-horse"}>
+                <Link to={`/titles/${title.id}`} className={"hocus-standard"}
+                      title={title.name}>
+                    <div className={"image-container mb-2 position-relative"}>
+                        <img
+                            src={title.image_url}
+                            alt={title.name}
+                            className="w-100"
+                            loading={"lazy"}
+                        />
+                    </div>
+                </Link>
+                <div className={"px-2 border-bottom"}>
+                    <span className={`tag-badge text-black mb-1 ${completed ? "bg-success" : "bg-primary"}`}>{titleProgress.progress + "%"}</span>
+                    <FormatBadge formatId={title.format_id} customClass={"mb-1"} year={title.start_year}/>
                 </div>
-            </Link>
-            <span className={`tag-badge text-black mb-1 ${completed ? "bg-success" : "bg-primary"}`}>{titleProgress.progress + "%"}</span>
-            <FormatBadge formatId={title.format_id} customClass={"mb-1"} year={title.start_year}/>
-            <div className={"border p-2"}>
-                <ResponsiveContainer width="100%" height={175}>
-                    <PieChart>
-                        <defs>
-                            <pattern id="pattern-A" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
-                                <rect width="2" height="4" fill="#41bee0" />
-                            </pattern>
-                            <pattern id="pattern-B" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
-                                <rect width="1" height="6" fill="#999" />
-                            </pattern>
-                        </defs>
-                        <Pie
-                            dataKey="value"
-                            data={progressData}
-                            cx="50%"
-                            cy="50%"
-                            innerRadius={30}
-                            outerRadius={80}
-                            stroke="none"
-                            label={false}
-                        >
-                            {
-                                progressData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={setFillColor(`url(#pattern-${entry.name})`)}/>
-                                ))
-                            }
-                        </Pie>
-                    </PieChart>
-                </ResponsiveContainer>
+                <div className={"p-2"}>
+                    <ResponsiveContainer width="100%" height={175}>
+                        <PieChart>
+                            <defs>
+                                <pattern id="pattern-A" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+                                    <rect width="2" height="4" fill="#41bee0"/>
+                                </pattern>
+                                <pattern id="pattern-B" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+                                    <rect width="1" height="6" fill="#999"/>
+                                </pattern>
+                            </defs>
+                            <Pie
+                                dataKey="value"
+                                data={progressData}
+                                cx="50%"
+                                cy="50%"
+                                innerRadius={30}
+                                outerRadius={80}
+                                stroke="none"
+                                label={false}
+                            >
+                                {
+                                    progressData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={setFillColor(`url(#pattern-${entry.name})`)}/>
+                                    ))
+                                }
+                            </Pie>
+                        </PieChart>
+                    </ResponsiveContainer>
+                </div>
             </div>
         </li>
     )
