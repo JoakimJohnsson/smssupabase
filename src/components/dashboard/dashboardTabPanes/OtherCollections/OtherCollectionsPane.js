@@ -19,22 +19,20 @@ export const OtherCollectionsPane = () => {
     return (
         <>
             <h1 className={"mb-5"}>{PANES.OTHER_COLLECTIONS.NAME}</h1>
-            <div>
-                {
-                    loading ?
-                        <OverlaySpinner/>
-                        :
-                        <ul className={"sms-list--with-cards"}>
-                            {
-                                usersData.map((user) =>
-                                    // List public users other than profile
-                                    user.is_public === 1 && user.id !== profile.id &&
-                                    <OtherCollectionsPaneListItem user={user}/>
-                                )
-                            }
-                        </ul>
-                }
-            </div>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <ul className={"sms-list--with-cards"}>
+                        {
+                            usersData.map((user) =>
+                                // List public users other than profile
+                                user.is_public === 1 && user.id !== profile.id &&
+                                <OtherCollectionsPaneListItem user={user}/>
+                            )
+                        }
+                    </ul>
+            }
         </>
     )
 }

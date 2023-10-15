@@ -255,7 +255,12 @@ input[type="checkbox"] + label {
       }
     }
     &.user-card {
-      @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
+      &.user-card--full {
+        @extend .col-12, .mb-4;
+      }
+      &.user-card--responsive {
+        @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
+      }
       a {
         @extend .hocus-standard;
       }

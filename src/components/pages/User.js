@@ -103,7 +103,7 @@ export const User = () => {
                                             {LABELS_AND_HEADINGS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                         </a>
                                     </p>
-                                    <h2>{LABELS_AND_HEADINGS.MY_TITLES}</h2>
+                                    <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                                     {
                                         loading ?
                                             <CustomSpinner size={"4x"}/>
