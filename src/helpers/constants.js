@@ -392,7 +392,11 @@ export const PANES = {
         COLLECTING_ISSUES_3: "komplett."
     },
     OTHER_COLLECTIONS: {
-        NAME: "Andra samlingar"
+        NAME: "Andra samlingar",
+        COLLECTING: "Samlar på",
+        TITLES: "titlar",
+        COMPLETE: "% komplett",
+
     }
 }
 
