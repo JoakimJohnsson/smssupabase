@@ -1,6 +1,6 @@
 import React from "react";
-import {ProgressBar} from "react-bootstrap";
 import {TEXTS} from "../../helpers/constants";
+import CustomProgressBar from "../CustomProgressBar";
 
 
 export const TitleProgress = ({titleProgress}) => {
@@ -18,10 +18,9 @@ export const TitleProgress = ({titleProgress}) => {
                     </p>
                     {
                         titleProgress.progress === 100 ?
-                            <ProgressBar striped variant="success" now={titleProgress.progress}/>
+                            <CustomProgressBar label={collectTextParts} variant={"success"} valueNow={titleProgress.progress}/>
                             :
-                            <ProgressBar striped now={titleProgress.progress} label={titleProgress.progress > 10 ? collectTextParts : ""}/>
-
+                            <CustomProgressBar label={collectTextParts} variant={"primary"} valueNow={titleProgress.progress}/>
                     }
                 </>
             }

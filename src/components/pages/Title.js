@@ -6,7 +6,7 @@ import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constant
 import {IssuesList} from "../lists/issues/IssuesList";
 import {EditIcon, Icon, TitlesIcon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {faGrid, faList, faGrid2, faGrid2Plus} from "@fortawesome/pro-duotone-svg-icons";
+import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -153,7 +153,17 @@ export const Title = () => {
                                             :
                                             false
                                     }
+
+                                    <FunctionButton variant={"danger"} icon={faCartPlus}
+                                                    onClick={() => console.log(LABELS_AND_HEADINGS.COLLECTING_ADD_ALL)}
+                                                    label={LABELS_AND_HEADINGS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
+
+                                    <FunctionButton variant={"danger"} icon={faTrashCanList}
+                                                    onClick={() => console.log(LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL)}
+                                                    label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
+
                                 </div>
+                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
                                             listViewGrid={listViewGrid} listViewMissing={listViewMissing} fetchTitleProgress={fetchTitleProgress}/>
                             </div>

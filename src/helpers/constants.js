@@ -134,6 +134,8 @@ export const LABELS_AND_HEADINGS = {
     COLLECT_ISSUE_START_2: "i samlingen.",
     COLLECT_ISSUE_STOP: "Ta bort",
     COLLECT_ISSUE_STOP_2: "från samlingen.",
+    COLLECTING_ADD_ALL: "Lägg till alla",
+    COLLECTING_REMOVE_ALL: "Töm samlingen",
     COMMUNITY: "Socialt",
     CONTACT: "Kontakt",
     CONTENT: "Innehåll",
