@@ -16,6 +16,7 @@ import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/s
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
+import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../helpers/functions/serviceFunctions/collectFunctions";
 
 
 export const Title = () => {
@@ -56,6 +57,24 @@ export const Title = () => {
             setListViewMissing(false);
         }
     }, [titleProgress]);
+
+    const addAllIssues = () => {
+        issuesData.map((issue) => {
+            return addIssueToCollection(user.id, issue.id).then(() => {
+                fetchTitleAndIssuesData();
+                setListViewGrid(!listViewGrid);
+            })
+        });
+    }
+
+    const removeAllIssues = () => {
+        issuesData.map((issue) => {
+            return removeIssueFromCollectionSimple(user.id, issue.id).then(() => {
+                fetchTitleAndIssuesData();
+                setListViewGrid(!listViewGrid);
+            })
+        });
+    }
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -153,15 +172,24 @@ export const Title = () => {
                                             :
                                             false
                                     }
+                                    {
+                                        isCollectingTitle &&
+                                        <>
+                                            {
+                                                titleProgress.progress !== 100 &&
+                                                <FunctionButton variant={"danger"} icon={faCartPlus}
+                                                                onClick={() => addAllIssues()}
+                                                                label={LABELS_AND_HEADINGS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
+                                            }
+                                            {
+                                                titleProgress.progress > 0 &&
+                                                <FunctionButton variant={"danger"} icon={faTrashCanList}
+                                                onClick={() => removeAllIssues()}
+                                                label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
 
-                                    <FunctionButton variant={"danger"} icon={faCartPlus}
-                                                    onClick={() => console.log(LABELS_AND_HEADINGS.COLLECTING_ADD_ALL)}
-                                                    label={LABELS_AND_HEADINGS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
-
-                                    <FunctionButton variant={"danger"} icon={faTrashCanList}
-                                                    onClick={() => console.log(LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL)}
-                                                    label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
-
+                                            }
+                                        </>
+                                    }
                                 </div>
                                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
