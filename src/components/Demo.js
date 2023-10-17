@@ -28,6 +28,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Öppna upp registrering för 3 st beta test användare.</li>
                     <li className={"list-group-item px-0"}>Översikt - Visa lite statistik.</li>
                     <li className={"list-group-item px-0"}>Andra Samlingar - Visa lite statistik för andra användares samlingar.</li>
+                    <li className={"list-group-item px-0"}>Knappar för att lägga till eller ta bort alla publikationer från en titel man samlar på.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.3 - 2023-10-07</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
