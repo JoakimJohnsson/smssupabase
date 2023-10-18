@@ -25,6 +25,9 @@ export const Title = () => {
     const [title, setTitle] = useState({});
     const [issuesData, setIssuesData] = useState({});
     const [loading, setLoading] = useState(true);
+    const [addIssue, setAddIssue] = useState(false);
+    const [removeIssue, setRemoveIssue] = useState(false);
+    const [doUpdate, setDoUpdate] = useState({});
     const {id} = useParams();
     const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, id);
     const displayName = title.name + " " + title.start_year;
@@ -60,21 +63,37 @@ export const Title = () => {
 
     const addAllIssues = () => {
         issuesData.map((issue) => {
+            setAddIssue(false);
+            setAddIssue(false);
             return addIssueToCollection(user.id, issue.id).then(() => {
                 fetchTitleAndIssuesData();
-                setListViewGrid(!listViewGrid);
+                setAddIssue(true);
+                setRemoveIssue(false);
+
             })
         });
     }
 
     const removeAllIssues = () => {
         issuesData.map((issue) => {
+            setAddIssue(false);
+            setAddIssue(false);
             return removeIssueFromCollectionSimple(user.id, issue.id).then(() => {
                 fetchTitleAndIssuesData();
-                setListViewGrid(!listViewGrid);
+                setRemoveIssue(true);
+                setAddIssue(false);
             })
         });
     }
+
+    useEffect(() => {
+        setDoUpdate(
+            {
+                addIssue: addIssue,
+                removeIssue: removeIssue
+            }
+        )
+    }, [addIssue, removeIssue])
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -173,7 +192,7 @@ export const Title = () => {
                                             false
                                     }
                                     {
-                                        isCollectingTitle &&
+                                        isCollectingTitle && listViewGrid &&
                                         <>
                                             {
                                                 titleProgress.progress !== 100 &&
@@ -184,8 +203,8 @@ export const Title = () => {
                                             {
                                                 titleProgress.progress > 0 &&
                                                 <FunctionButton variant={"danger"} icon={faTrashCanList}
-                                                onClick={() => removeAllIssues()}
-                                                label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
+                                                                onClick={() => removeAllIssues()}
+                                                                label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
 
                                             }
                                         </>
@@ -193,7 +212,8 @@ export const Title = () => {
                                 </div>
                                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
-                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} fetchTitleProgress={fetchTitleProgress}/>
+                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} fetchTitleProgress={fetchTitleProgress}
+                                            doUpdate={doUpdate}/>
                             </div>
                         </>
                 }

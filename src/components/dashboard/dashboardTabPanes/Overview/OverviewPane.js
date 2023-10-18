@@ -56,7 +56,10 @@ export const OverviewPane = () => {
                         ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                     </p>
                     :
-                    <CustomSpinner className={"mb-3 d-block"}/>
+                    <p>
+                        {PANES.OVERVIEW.COLLECTING_ISSUES_1} 0 {PANES.OVERVIEW.COLLECTING_ISSUES_2} 0%
+                        (0/0) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
+                    </p>
             }
             <OverviewTitlesPane/>
             <OverviewIssuesPane/>

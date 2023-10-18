@@ -57,7 +57,6 @@ export const OtherCollectionsPaneListItem = ({user}) => {
                         {PANES.OTHER_COLLECTIONS.COLLECTING} {titlesData.length} / {STATISTICS.TOTAL_TITLES_COUNT} {PANES.OTHER_COLLECTIONS.TITLES}.
                     </p>
                     {
-                        progress &&
                         <CustomProgressBar label={progress + PANES.OTHER_COLLECTIONS.COMPLETE} variant={progress === 100 ? "success" : "primary"}
                                            valueNow={progress}/>
                     }
