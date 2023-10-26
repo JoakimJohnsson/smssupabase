@@ -4,9 +4,6 @@ import {useAppContext} from "../../../../context/AppContext";
 import {getRowCountByTableAndUserId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
-import {OverviewTitlesPane} from "./OverviewTitlesPane";
-import {OverviewIssuesPane} from "./OverviewIssuesPane";
-import {OverviewFormatsPane} from "./OverviewFormatsPane";
 
 
 export const OverviewPane = () => {
@@ -61,9 +58,6 @@ export const OverviewPane = () => {
                         (0/0) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                     </p>
             }
-            <OverviewTitlesPane/>
-            <OverviewIssuesPane/>
-            <OverviewFormatsPane/>
         </div>
     )
 }
