@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
 import {handleCollectingIssue} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
@@ -10,7 +10,7 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 
 
-export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false, listViewMissing}) => {
+export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false, listViewMissing, doUpdate}) => {
 
     const {setInformationMessage, user} = useAppContext();
     const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
@@ -27,6 +27,16 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
             }, 200);
         }
     }
+
+    useEffect(() => {
+        if (doUpdate) {
+            if (doUpdate.addIssue && !doUpdate.removeIssue) {
+                setIsCollectingIssue(true);
+            } else {
+                setIsCollectingIssue(false);
+            }
+        }
+    }, [doUpdate, setIsCollectingIssue])
 
     return issue && issue.titles && (
         (!listViewMissing || (listViewMissing && !isCollectingIssue)) &&

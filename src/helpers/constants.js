@@ -128,12 +128,14 @@ export const LABELS_AND_HEADINGS = {
     BREADCRUMB: "Brödsmula",
     CHOOSE: "--- Välj ---",
     CLOSE: "Stäng",
-    COLLECT_TITLE_START: "Börja samla på",
-    COLLECT_TITLE_STOP: "Sluta samla på",
+    COLLECT_TITLE_START: "Börja samla på titeln",
+    COLLECT_TITLE_STOP: "Sluta samla på titeln",
     COLLECT_ISSUE_START: "Lägg till",
     COLLECT_ISSUE_START_2: "i samlingen.",
     COLLECT_ISSUE_STOP: "Ta bort",
     COLLECT_ISSUE_STOP_2: "från samlingen.",
+    COLLECTING_ADD_ALL: "Lägg till alla",
+    COLLECTING_REMOVE_ALL: "Töm samlingen",
     COMMUNITY: "Socialt",
     CONTACT: "Kontakt",
     CONTENT: "Innehåll",
@@ -224,6 +226,7 @@ export const LABELS_AND_HEADINGS = {
     NEW_PASSWORD: "Nytt lösenord",
     PASSWORD_CONFIRM: "Bekräfta lösenord",
     PAUSE: "Pausa",
+    PLACEHOLDER_MAIL: "namn@posten.se",
     PREVIOUS: "Tidigare",
     PROFILE_IMAGE: "Profilbild",
     PUBLISHERS: "Förlag",
@@ -382,10 +385,20 @@ export const PANES = {
         NAME: "Mina titlar"
     },
     OVERVIEW: {
-        NAME: "Översikt"
+        NAME: "Översikt",
+        COLLECTING_TITLES_1: "Du samlar på",
+        COLLECTING_TITLES_2: "av totalt",
+        COLLECTING_TITLES_3: "inlagda titlar.",
+        COLLECTING_ISSUES_1: "Totalt ingår",
+        COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
+        COLLECTING_ISSUES_3: "komplett."
     },
     OTHER_COLLECTIONS: {
-        NAME: "Andra samlingar"
+        NAME: "Andra samlingar",
+        COLLECTING: "Samlar på",
+        TITLES: "titlar",
+        COMPLETE: "% komplett",
+
     }
 }
 
@@ -430,5 +443,5 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 143
+    TOTAL_TITLES_COUNT: 144
 }

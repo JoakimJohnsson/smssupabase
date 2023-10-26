@@ -1,12 +1,13 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
-import {MESSAGES, CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {MESSAGES, CLASSES, LABELS_AND_HEADINGS, TEXTS, TABLES} from "../../helpers/constants";
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../helpers/functions/functions";
 import {RegisterIcon} from "../icons";
 import {RegisterIconDuoTone} from "../icons-duotone";
+import {getCountByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 
 export const Signup = () => {
     // Success and error variants of form-input is available
@@ -20,6 +21,8 @@ export const Signup = () => {
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [emailValidated, setEmailValidated] = useState(false);
     const [passwordValidated, setPasswordValidated] = useState(false);
+    const [totalProfiles, setTotalProfiles] = useState(0);
+    const [signupDisabled, setSignupDisabled] = useState(true);
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -67,6 +70,18 @@ export const Signup = () => {
             handlePasswordInput(false, setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage);
     }
 
+    const fetchProfileCount = useCallback(() => {
+        getCountByTable(TABLES.PROFILES, setTotalProfiles).then(() => {
+            if (totalProfiles) {
+                setSignupDisabled(totalProfiles > 6)
+            }
+        });
+    }, [totalProfiles]);
+
+    useEffect(() => {
+        fetchProfileCount();
+    }, [fetchProfileCount]);
+
     return (
         <>
             <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"create-account-section"}>
@@ -81,7 +96,7 @@ export const Signup = () => {
                        ref={emailRef}
                        onSubmit={(e) => handleEmailValidation(e)}
                        className={emailInputClass}
-                       placeholder={"name@myplace.se"}
+                       placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
                        required/>
                 <ValidationMessage success={emailValidated} message={emailValidationMessage}/>
                 <label className={"form-label d-flex"} htmlFor="input-signup-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
@@ -100,12 +115,17 @@ export const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
-              {/*  <button type="submit" className={"btn btn-primary sms-btn"} disabled={!passwordValidated || passwordRef.current.value !== passwordConfirm}>
-                    <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
-                </button>*/}
-                <button className={"btn btn-danger sms-btn"} disabled={true}>
-                    <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.DISABLED}
-                </button>
+                {
+                    signupDisabled ?
+                        <button className={"btn btn-danger sms-btn"} disabled={true}>
+                            <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.DISABLED}
+                        </button>
+                        :
+                        <button type="submit" className={"btn btn-primary sms-btn"}
+                                disabled={!passwordValidated || passwordRef.current.value !== passwordConfirm}>
+                            <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
+                        </button>
+                }
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
             </form>
         </>

@@ -45,7 +45,7 @@ export const updateTitleData = async (id, data) => {
 export const getTitlesForUser = async (userId, setTitlesData) => {
     try {
         let {data, error, status} = await supabase
-            .from("users")
+            .from(TABLES.USERS)
             .select(`
             id,
             titles (*)
@@ -59,4 +59,12 @@ export const getTitlesForUser = async (userId, setTitlesData) => {
     } catch (error) {
         console.error(error);
     }
+}
+
+export const getTotalIssuesCountForTitlesData = (titlesData) => {
+    let totalCount = 0;
+    titlesData.map((data) => {
+        return totalCount += data.total_issues;
+    });
+    return totalCount;
 }

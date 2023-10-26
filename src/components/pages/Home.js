@@ -109,7 +109,7 @@ export const Home = () => {
                         {
                             limitedTitlesData ?
                                 <>
-                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showCreatedInfo showToolbox/>
+                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showCreatedInfo showToolbox={false}/>
                                 </>
                                 :
                                 <NoDataAvailable/>
@@ -122,7 +122,7 @@ export const Home = () => {
                         {
                             limitedIssuesData ?
                                 <>
-                                    <IssuesListSimple issuesData={limitedIssuesData} showCollectingButtons={true}/>
+                                    <IssuesListSimple issuesData={limitedIssuesData} showCollectingButtons={false}/>
                                 </>
                                 :
                                 <NoDataAvailable/>

@@ -18,14 +18,20 @@ const Demo = () => {
         <div className={"sms-section--light"} id={"demo-section"}>
             <div className={"text-center"}>
                 <DemoIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
-
             </div>
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.3 - 2023-10-07</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.4 - 2023-10-26</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Öppna upp registrering för 3 st beta test användare.</li>
+                    <li className={"list-group-item px-0"}>Översikt - Visa lite statistik.</li>
+                    <li className={"list-group-item px-0"}>Andra Samlingar - Visa lite statistik över andra användares samlingar.</li>
+                    <li className={"list-group-item px-0"}>Knappar för att lägga till eller ta bort alla publikationer från en titel man samlar på.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.3 - 2023-10-07</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Lägga in och visa information om källmaterial.</li>
                     <li className={"list-group-item px-0"}>Förbättra visning av sökresultat i publikationssök.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att filtrera på hela publikationens namn i publikationssök.</li>
@@ -36,9 +42,6 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Kontrollpanel - Mina titlar - Möjlighet att kunna söka och filtrera titlar.</li>
                     <li className={"list-group-item px-0"}>Kontrollpanel - Mina titlar - Förbättrad visning av titlar - Status o.s.v.</li>
                     <li className={"list-group-item px-0"}>Titelsida - Länk till Kontrollpanel - Mina titlar.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.2 - 2023-09-06</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Bugfix - Dölj tooltips i mobil/tablet läge.</li>
                     <li className={"list-group-item px-0"}>Bugfix titelsida - Man ska inte ha möjlighet att sluta samla på en titel samtidigt som man har publikationer av den i samlingen.</li>
@@ -49,7 +52,7 @@ const Demo = () => {
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Visa mer statistik och information på startsida och kontrollpanel.</li>
+                    <li className={"list-group-item px-0"}>Förbättringar efter beta test.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>

@@ -46,7 +46,7 @@ const Login = () => {
                    ref={emailRef}
                    onChange={(e) => simpleInputValidation(e, setEmailValidated)}
                    className={emailValidated ? "form-control success mb-3" : CLASSES.FORM_INPUT_DEFAULT}
-                   placeholder={"name@myplace.se"}
+                   placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
                    required/>
             <label className={"form-label"} htmlFor="input-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
             <input id="input-password"

@@ -240,18 +240,19 @@ export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, que
     )
 }
 
-export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover, special) => {
+export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover, special, collectible) => {
     return (
         (isTrue(comic) && obj.format_id === 32545) ||
         (isTrue(comiclarge) && obj.format_id === 33541) ||
         (isTrue(album) && obj.format_id === 23445) ||
         (isTrue(pocket) && obj.format_id === 24543) ||
         (isTrue(hardcover) && obj.format_id === 23577) ||
-        (isTrue(special) && obj.format_id === 26224)
+        (isTrue(special) && obj.format_id === 26224) ||
+        (isTrue(collectible) && obj.format_id === 674899)
     )
 }
 
-export const filterTitlesData = (titlesData, query, comic, comiclarge, album, pocket, hardcover, special) => {
+export const filterTitlesData = (titlesData, query, comic, comiclarge, album, pocket, hardcover, special, collectible) => {
     return (
         titlesData
             .filter((title) => {
@@ -260,9 +261,9 @@ export const filterTitlesData = (titlesData, query, comic, comiclarge, album, po
                 )
             })
             .filter((title) => {
-                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
+                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special, collectible])) {
                     return (
-                        filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special)
+                        filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special, collectible)
                     )
                 } else {
                     return true;

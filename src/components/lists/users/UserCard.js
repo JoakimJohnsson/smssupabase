@@ -14,7 +14,7 @@ export const UserCard = ({user}) => {
     }, [user])
 
     return user && (
-        <li className={"user-card"}>
+        <li className={"user-card user-card--responsive"}>
             <Link to={`/users/${user.id}`} title={displayName}>
                 <div className={"user-image--wrapper position-relative"}>
                     <img

@@ -17,6 +17,7 @@ const FilterFormFormat = ({
                               pocket,
                               hardcover,
                               special,
+                              collectible,
                               placeholder
                           }) => {
 
@@ -28,6 +29,7 @@ const FilterFormFormat = ({
     const [filterPocket, setFilterPocket] = useState(false);
     const [filterHardcover, setFilterHardcover] = useState(false);
     const [filterSpecial, setFilterSpecial] = useState(false);
+    const [filterCollectible, setFilterCollectible] = useState(false);
     const [readyForSearch, setReadyForSearch] = useState(false);
 
     // Pick up search params if provided
@@ -39,7 +41,8 @@ const FilterFormFormat = ({
         setFilterPocket(isTrue(pocket) || false);
         setFilterHardcover(isTrue(hardcover) || false);
         setFilterSpecial(isTrue(special) || false);
-    }, [query, comic, comiclarge, album, pocket, hardcover, special]);
+        setFilterCollectible(isTrue(collectible) || false);
+    }, [query, comic, comiclarge, album, pocket, hardcover, special, collectible]);
 
     const updateSearchParams = () => {
         setSearchParams({
@@ -49,7 +52,8 @@ const FilterFormFormat = ({
             album: filterAlbum,
             pocket: filterPocket,
             hardcover: filterHardcover,
-            special: filterSpecial
+            special: filterSpecial,
+            collectible: filterCollectible
         });
         setReadyForSearch(false);
     }
@@ -78,6 +82,7 @@ const FilterFormFormat = ({
         setFilterPocket(false);
         setFilterHardcover(false);
         setFilterSpecial(false);
+        setFilterCollectible(false);
     }
 
     const getFormat = (id) => {
@@ -127,6 +132,9 @@ const FilterFormFormat = ({
                                   setReadyForSearch={setReadyForSearch}/>
                     {/* special 26224 */}
                     <FilterButton format={getFormat(26224)} state={filterSpecial} setState={setFilterSpecial}
+                                  setReadyForSearch={setReadyForSearch}/>
+                    {/* special 674899 */}
+                    <FilterButton format={getFormat(674899)} state={filterCollectible} setState={setFilterCollectible}
                                   setReadyForSearch={setReadyForSearch}/>
                 </div>
             </div>

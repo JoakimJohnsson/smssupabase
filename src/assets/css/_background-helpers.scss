@@ -86,6 +86,9 @@
 .bg-format-200 {
   background-color: scale-color($format, $lightness: 80%);
 }
+.bg-format-300 {
+  background-color: scale-color($format, $lightness: 50%);
+}
 .bg-format-400 {
   background-color: scale-color($format, $lightness: 60%);
 }

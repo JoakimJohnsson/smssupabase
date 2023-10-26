@@ -6,7 +6,7 @@ import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constant
 import {IssuesList} from "../lists/issues/IssuesList";
 import {EditIcon, Icon, TitlesIcon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {faGrid, faList, faGrid2, faGrid2Plus} from "@fortawesome/pro-duotone-svg-icons";
+import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -16,6 +16,7 @@ import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/s
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
+import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../helpers/functions/serviceFunctions/collectFunctions";
 
 
 export const Title = () => {
@@ -24,6 +25,9 @@ export const Title = () => {
     const [title, setTitle] = useState({});
     const [issuesData, setIssuesData] = useState({});
     const [loading, setLoading] = useState(true);
+    const [addIssue, setAddIssue] = useState(false);
+    const [removeIssue, setRemoveIssue] = useState(false);
+    const [doUpdate, setDoUpdate] = useState({});
     const {id} = useParams();
     const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, id);
     const displayName = title.name + " " + title.start_year;
@@ -56,6 +60,40 @@ export const Title = () => {
             setListViewMissing(false);
         }
     }, [titleProgress]);
+
+    const addAllIssues = () => {
+        issuesData.map((issue) => {
+            setAddIssue(false);
+            setAddIssue(false);
+            return addIssueToCollection(user.id, issue.id).then(() => {
+                fetchTitleAndIssuesData();
+                setAddIssue(true);
+                setRemoveIssue(false);
+
+            })
+        });
+    }
+
+    const removeAllIssues = () => {
+        issuesData.map((issue) => {
+            setAddIssue(false);
+            setAddIssue(false);
+            return removeIssueFromCollectionSimple(user.id, issue.id).then(() => {
+                fetchTitleAndIssuesData();
+                setRemoveIssue(true);
+                setAddIssue(false);
+            })
+        });
+    }
+
+    useEffect(() => {
+        setDoUpdate(
+            {
+                addIssue: addIssue,
+                removeIssue: removeIssue
+            }
+        )
+    }, [addIssue, removeIssue])
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -153,9 +191,29 @@ export const Title = () => {
                                             :
                                             false
                                     }
+                                    {
+                                        isCollectingTitle && listViewGrid &&
+                                        <>
+                                            {
+                                                titleProgress.progress !== 100 &&
+                                                <FunctionButton variant={"danger"} icon={faCartPlus}
+                                                                onClick={() => addAllIssues()}
+                                                                label={LABELS_AND_HEADINGS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
+                                            }
+                                            {
+                                                titleProgress.progress > 0 &&
+                                                <FunctionButton variant={"danger"} icon={faTrashCanList}
+                                                                onClick={() => removeAllIssues()}
+                                                                label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
+
+                                            }
+                                        </>
+                                    }
                                 </div>
+                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
-                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} fetchTitleProgress={fetchTitleProgress}/>
+                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} fetchTitleProgress={fetchTitleProgress}
+                                            doUpdate={doUpdate}/>
                             </div>
                         </>
                 }

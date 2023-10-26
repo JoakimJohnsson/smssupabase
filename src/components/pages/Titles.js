@@ -18,7 +18,7 @@ export const Titles = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special] = useFormatQueryFilter();
+    const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible] = useFormatQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
@@ -38,6 +38,7 @@ export const Titles = () => {
                         pocket={pocket}
                         hardcover={hardcover}
                         special={special}
+                        collectible={collectible}
                         placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     {
                         loading ?
@@ -46,16 +47,16 @@ export const Titles = () => {
                             <ul className={"sms-list--with-cards"}>
                                 {
                                     query ?
-                                        filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special)
+                                        filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special, collectible)
                                             .map((title) =>
                                                 <TitlesListItem key={title.id} title={title}/>
                                             )
                                         :
                                         titlesData
                                             .filter((title) => {
-                                                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special])) {
+                                                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special, collectible])) {
                                                     return (
-                                                        filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special)
+                                                        filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special, collectible)
                                                     )
                                                 } else {
                                                     return true;
