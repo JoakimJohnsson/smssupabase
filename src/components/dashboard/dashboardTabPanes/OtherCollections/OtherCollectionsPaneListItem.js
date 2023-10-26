@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {getRowCountByTableAndUserId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
-import {PANES, STATISTICS, TABLES} from "../../../../helpers/constants";
+import {getCountByTable, getRowCountByTableAndUserId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {PANES, TABLES} from "../../../../helpers/constants";
 import {Link} from "react-router-dom";
 import CustomProgressBar from "../../../CustomProgressBar";
 
@@ -11,6 +11,7 @@ export const OtherCollectionsPaneListItem = ({user}) => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
+    const [totalTitles, setTotalTitles] = useState(0);
     const [totalIssuesCountForCollection, setTotalIssuesCountForCollection] = useState(null);
     const [userIssuesCount, setUserIssuesCount] = useState(null);
     const [progress, setProgress] = useState(0);
@@ -46,6 +47,10 @@ export const OtherCollectionsPaneListItem = ({user}) => {
         }
     }, [totalIssuesCountForCollection, userIssuesCount]);
 
+    useEffect(() => {
+        getCountByTable(TABLES.TITLES, setTotalTitles).then();
+    }, []);
+
     return loading ?
         <CustomSpinner/>
         :
@@ -54,7 +59,7 @@ export const OtherCollectionsPaneListItem = ({user}) => {
                 <div className={"bg-horse p-3"}>
                     <h2>{displayName}</h2>
                     <p>
-                        {PANES.OTHER_COLLECTIONS.COLLECTING} {titlesData.length} / {STATISTICS.TOTAL_TITLES_COUNT} {PANES.OTHER_COLLECTIONS.TITLES}.
+                        {PANES.OTHER_COLLECTIONS.COLLECTING} {titlesData.length} / {totalTitles} {PANES.OTHER_COLLECTIONS.TITLES}.
                     </p>
                     {
                         <CustomProgressBar label={progress + PANES.OTHER_COLLECTIONS.COMPLETE} variant={progress === 100 ? "success" : "primary"}
