@@ -33,14 +33,12 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
             {
                 usersData.length ?
                     (usersData
-                            .filter(user => user.firstname.toLowerCase()
-                                    .includes(query.toLowerCase()) ||
-                                user.lastname.toLowerCase()
-                                    .includes(query.toLowerCase()) ||
-                                user.id.toLowerCase()
-                                    .includes(query.toLowerCase()) ||
+                            .filter(user => (
+                                (!user.firstname || user.firstname.toLowerCase().includes(query.toLowerCase())) ||
+                                (!user.lastname || user.lastname.toLowerCase().includes(query.toLowerCase())) ||
+                                user.id.toLowerCase().includes(query.toLowerCase()) ||
                                 query === ""
-                            )
+                            ))
                             .map((u, index) =>
                                 <li key={index} className={"list-group-item px-0"}>
                                     <div className={"row"}>
