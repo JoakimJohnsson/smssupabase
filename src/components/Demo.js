@@ -22,9 +22,13 @@ const Demo = () => {
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.4 - 2023-10-26</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.5 - 2023-10-xx</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Lista med användare kraschade på grund av missad null check.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.4 - 2023-10-26</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Öppna upp registrering för 3 st beta test användare.</li>
                     <li className={"list-group-item px-0"}>Översikt - Visa lite statistik.</li>
                     <li className={"list-group-item px-0"}>Andra Samlingar - Visa lite statistik över andra användares samlingar.</li>
