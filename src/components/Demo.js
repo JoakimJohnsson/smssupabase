@@ -26,6 +26,7 @@ const Demo = () => {
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Lista med användare kraschade på grund av missad null check.</li>
+                    <li className={"list-group-item px-0"}>Öppnat upp registrering för fler användare.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.4 - 2023-10-26</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
@@ -34,29 +35,12 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Andra Samlingar - Visa lite statistik över andra användares samlingar.</li>
                     <li className={"list-group-item px-0"}>Knappar för att lägga till eller ta bort alla publikationer från en titel man samlar på.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.3 - 2023-10-07</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Lägga in och visa information om källmaterial.</li>
-                    <li className={"list-group-item px-0"}>Förbättra visning av sökresultat i publikationssök.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att filtrera på hela publikationens namn i publikationssök.</li>
-                    <li className={"list-group-item px-0"}>Visa källinformation på publikationssida.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att bara visa saknade publikationer på en titelsida.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att visualisera statistik med hjälp av Recharts.</li>
-                    <li className={"list-group-item px-0"}>Kunna visa original omslagsbild på publikationssida.</li>
-                    <li className={"list-group-item px-0"}>Kontrollpanel - Mina titlar - Möjlighet att kunna söka och filtrera titlar.</li>
-                    <li className={"list-group-item px-0"}>Kontrollpanel - Mina titlar - Förbättrad visning av titlar - Status o.s.v.</li>
-                    <li className={"list-group-item px-0"}>Titelsida - Länk till Kontrollpanel - Mina titlar.</li>
-                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                    <li className={"list-group-item px-0"}>Bugfix - Dölj tooltips i mobil/tablet läge.</li>
-                    <li className={"list-group-item px-0"}>Bugfix titelsida - Man ska inte ha möjlighet att sluta samla på en titel samtidigt som man har publikationer av den i samlingen.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad funktion för att hantera användares roller.</li>
-                    <li className={"list-group-item px-0"}>Lägg till grundläggande information på profilsida.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att lägga till information om källmaterial på publikation.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att filtrera på information om källmaterial i publikationssöket.</li>
-                </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Förbättringar efter beta test.</li>
+                    <li className={"list-group-item px-0"}>Förbättring / utökning av graderingssystemet.</li>
+                    <li className={"list-group-item px-0"}>Utreda om man kan ha flera exemplar av en publikation - med olika gradering o.s.v.</li>
+                    <li className={"list-group-item px-0"}>Det ska vara enkelt att rapportera felaktigheter / buggar.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>
