@@ -73,7 +73,7 @@ export const Signup = () => {
     const fetchProfileCount = useCallback(() => {
         getCountByTable(TABLES.PROFILES, setTotalProfiles).then(() => {
             if (totalProfiles) {
-                setSignupDisabled(totalProfiles > 6)
+                setSignupDisabled(totalProfiles > 12)
             }
         });
     }, [totalProfiles]);
