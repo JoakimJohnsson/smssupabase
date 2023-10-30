@@ -18,7 +18,7 @@ export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, 
                 <div className={"sms-list-col--main"}>
                     <div className={"d-flex align-items-center"}>
                         {
-                            hasImage(issue) && !showAdminInfo &&
+                            hasImage(issue) &&
                             <img src={issue.image_url} className={`list-image me-2${isCollectingIssue ? "" : " grayscale"}`} alt={""}/>
                         }
                         <IssueLink showAdminInfo={showAdminInfo} issue={issue} issueName={getIssueName(issue)}/>
