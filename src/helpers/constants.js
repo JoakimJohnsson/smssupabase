@@ -187,6 +187,7 @@ export const LABELS_AND_HEADINGS = {
     IMAGE: "Bild",
     INFORMATION: "Information",
     INFORMATION_ABOUT: "Information om",
+    INFORMATION_MISSING: "Information saknas.",
     IS_MARVELKLUBBEN: "Ingår i marvelklubben",
     IS_PUBLIC: "Gör profilsidan publik",
     IS_DOUBLE: "Dubbelnummer",
