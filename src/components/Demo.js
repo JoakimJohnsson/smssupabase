@@ -28,7 +28,7 @@ const Demo = () => {
                     <li className={"list-group-item px-0"}>Registrering nu helt öppen.</li>
                     <li className={"list-group-item px-0"}>Om information saknas på profilsida visas nu en default text.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v0.9.5 - 2023-10-27</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.5 - 2023-10-27</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Lista med användare kraschade på grund av missad null check.</li>
