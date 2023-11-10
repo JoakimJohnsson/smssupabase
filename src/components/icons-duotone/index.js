@@ -52,7 +52,7 @@ export const DateIconDuoTone = ({size, className}) => {
     )
 }
 
-export const DemoIconDuoTone = ({size, className}) => {
+export const InfoIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faFaceExplode} size={size} className={className}/>
     )

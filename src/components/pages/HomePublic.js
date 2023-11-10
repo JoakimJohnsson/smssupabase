@@ -3,7 +3,7 @@ import {HeroHeader} from "../header/HeroHeader";
 import {Signup} from "../signup/Signup";
 import Login from "../Login";
 import ForgotPassword from "../ForgotPassword";
-import Demo from "../Demo";
+import Information from "../Information";
 
 
 export const HomePublic = () => {
@@ -17,7 +17,7 @@ export const HomePublic = () => {
                         <Login/>
                         <Signup/>
                         <ForgotPassword/>
-                        <Demo/>
+                        <Information/>
                     </div>
                 </div>
             </main>
