@@ -38,3 +38,7 @@ export const updateProfileRole = async (id, value, setInformationMessage) => {
 export const showFullInfo = (user, profile) => {
     return user.is_public || profile.role === 2 || (user.id === profile.id);
 }
+
+export const isSuperAdmin = (profile) => {
+    return profile && profile.role && profile.role === 2;
+}

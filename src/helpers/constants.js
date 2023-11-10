@@ -209,6 +209,7 @@ export const LABELS_AND_HEADINGS = {
     MARVELKLUBBEN_NUMBER: "Marvelklubben nummer",
     MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",
     MENU: "Meny",
+    MESSAGES: "Meddelanden",
     MISCELLANEOUS: "Övrigt",
     MY_COLLECTION: "Min samling",
     MY_TITLES: "Mina titlar",
