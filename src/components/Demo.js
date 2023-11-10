@@ -22,7 +22,7 @@ const Demo = () => {
             <div>
                 <h2 className={"text-center"}>{LABELS_AND_HEADINGS.DEMO}</h2>
                 <p className={"lead"}>{TEXTS.DEMO_TEXT_1}</p>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.0.0 - 2023-11-10</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.0.1 - 2023-11-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Registrering nu helt öppen.</li>
