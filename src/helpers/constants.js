@@ -187,6 +187,7 @@ export const LABELS_AND_HEADINGS = {
     IMAGE: "Bild",
     INFORMATION: "Information",
     INFORMATION_ABOUT: "Information om",
+    INFORMATION_MISSING: "Information saknas.",
     IS_MARVELKLUBBEN: "Ingår i marvelklubben",
     IS_PUBLIC: "Gör profilsidan publik",
     IS_DOUBLE: "Dubbelnummer",
@@ -208,6 +209,7 @@ export const LABELS_AND_HEADINGS = {
     MARVELKLUBBEN_NUMBER: "Marvelklubben nummer",
     MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",
     MENU: "Meny",
+    MESSAGES: "Meddelanden",
     MISCELLANEOUS: "Övrigt",
     MY_COLLECTION: "Min samling",
     MY_TITLES: "Mina titlar",
@@ -443,5 +445,5 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 144
+    TOTAL_TITLES_COUNT: 143
 }

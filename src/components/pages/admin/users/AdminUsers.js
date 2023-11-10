@@ -32,7 +32,7 @@ export const AdminUsers = () => {
                     <div className={"sms-section--light"}>
                         {
                             usersData && usersData.length > 0 ?
-                                <UsersList usersData={usersData} query={query}/>
+                                <UsersList usersData={usersData} setUsersData={setUsersData} query={query}/>
                                 :
                                 <NoDataAvailable/>
                         }

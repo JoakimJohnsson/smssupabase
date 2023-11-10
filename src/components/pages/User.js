@@ -99,9 +99,15 @@ export const User = () => {
                                     }
                                     <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                                     <p className={"mb-4"}>
-                                        <a href={prepareUrl(user.website)} target={"_blank"} rel="noreferrer">
-                                            {LABELS_AND_HEADINGS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                        </a>
+                                        {
+                                            user.website ?
+                                                <a href={prepareUrl(user.website)} target={"_blank"} rel="noreferrer">
+                                                    {LABELS_AND_HEADINGS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                                </a>
+                                                :
+                                                <>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</>
+
+                                        }
                                     </p>
                                     <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                                     {

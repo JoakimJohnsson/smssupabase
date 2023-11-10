@@ -1,0 +1,23 @@
+[
+  {
+    "id": 9830362,
+    "name": "Förbättringsförslag",
+    "nameEn": "Improvement suggestions",
+    "description": "Har du idéer för att göra vår Svenska Marvelsamlare ännu bättre? Dela dina förbättringsförslag här och hjälp oss förbättra din upplevelse!",
+    "descriptionEn": "Have ideas to make our platform even better? Share your improvement suggestions here and help us enhance your experience!"
+  },
+  {
+    "id": 163738632,
+    "name": "Bugrapportering",
+    "nameEn": "Bug report",
+    "description": "Stötte på ett oväntat beteende? Rapportera eventuella buggar du stöter på! Din feedback är ovärderlig!",
+    "descriptionEn": "Encountered an unexpected behavior? Report any bugs you come across, and our team will work diligently to resolve them. Your feedback is invaluable!"
+  },
+  {
+    "id": 92023739,
+    "name": "Felrapportering",
+    "nameEn": "Error report",
+    "description": "Märker du några felaktigheter eller inkorrekta uppgifter? Vänligen rapportera eventuella fel här. Tack för din hjälp med att förbättra kvaliteten på informationen!",
+    "descriptionEn": "Notice any inaccuracies or incorrect information? Please report any errors here. Thank you for helping us improve the quality of our information!"
+  }
+]

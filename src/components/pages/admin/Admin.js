@@ -9,6 +9,8 @@ import {UsersSection} from "../../dashboard/dashboardSections/admin/UsersSection
 import {useAppContext} from "../../../context/AppContext";
 import {UtilsSection} from "../../dashboard/dashboardSections/admin/UtilsSection";
 import {Link} from "react-router-dom";
+import {MessagesSection} from "../../dashboard/dashboardSections/admin/MessagesSection";
+import {isSuperAdmin} from "../../../helpers/functions/serviceFunctions/profileFunctions";
 
 
 export const Admin = () => {
@@ -35,10 +37,14 @@ export const Admin = () => {
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
+                {
+                    isSuperAdmin(profile) &&
+                    <MessagesSection/>
+                }
                 <TitlesSection/>
                 <PublishersSection/>
                 {
-                    profile && profile.role && profile.role === 2 &&
+                    isSuperAdmin(profile) &&
                     <UsersSection/>
                 }
                 <UtilsSection/>
