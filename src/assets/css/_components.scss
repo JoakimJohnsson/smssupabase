@@ -119,7 +119,7 @@ input[type="checkbox"] + label {
 }
 
 .sms-page-col--full {
-  @extend .col-12, .col-lg-8, .col-x-padding--xs-only;
+  @extend .col-12, .col-md-8, .col-x-padding--xs-only;
 }
 
 // Breadcrumb
