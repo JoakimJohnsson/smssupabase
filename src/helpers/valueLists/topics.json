@@ -1,23 +1,42 @@
 [
   {
     "id": 9830362,
+    "isGlobal": false,
     "name": "Förbättringsförslag",
     "nameEn": "Improvement suggestions",
-    "description": "Har du idéer för att göra vår Svenska Marvelsamlare ännu bättre? Dela dina förbättringsförslag här och hjälp oss förbättra din upplevelse!",
-    "descriptionEn": "Have ideas to make our platform even better? Share your improvement suggestions here and help us enhance your experience!"
+    "description": "Har du idéer för att göra vår Svenska Marvelsamlare ännu bättre? Dela dina förbättringsförslag här och hjälp oss förbättra din upplevelse.",
+    "descriptionEn": "Have ideas to make our platform even better? Share your improvement suggestions here and help us enhance your experience."
   },
   {
     "id": 163738632,
+    "isGlobal": false,
     "name": "Bugrapportering",
     "nameEn": "Bug report",
-    "description": "Stötte på ett oväntat beteende? Rapportera eventuella buggar du stöter på! Din feedback är ovärderlig!",
-    "descriptionEn": "Encountered an unexpected behavior? Report any bugs you come across, and our team will work diligently to resolve them. Your feedback is invaluable!"
+    "description": "Stötte på ett oväntat beteende? Rapportera eventuella buggar du stöter på! Din feedback är ovärderlig.",
+    "descriptionEn": "Encountered an unexpected behavior? Report any bugs you come across, and our team will work diligently to resolve them. Your feedback is invaluable."
   },
   {
     "id": 92023739,
+    "isGlobal": false,
     "name": "Felrapportering",
     "nameEn": "Error report",
-    "description": "Märker du några felaktigheter eller inkorrekta uppgifter? Vänligen rapportera eventuella fel här. Tack för din hjälp med att förbättra kvaliteten på informationen!",
-    "descriptionEn": "Notice any inaccuracies or incorrect information? Please report any errors here. Thank you for helping us improve the quality of our information!"
+    "description": "Märker du några felaktigheter eller inkorrekta uppgifter? Vänligen rapportera eventuella fel här. Tack för din hjälp med att förbättra kvaliteten på informationen.",
+    "descriptionEn": "Notice any inaccuracies or incorrect information? Please report any errors here. Thank you for helping us improve the quality of our information."
+  },
+  {
+    "id": 546223357,
+    "isGlobal": true,
+    "name": "Nyhet",
+    "nameEn": "News",
+    "description": "En nyhet från Super-Admin.",
+    "descriptionEn": "News from Super-Admin."
+  },
+  {
+    "id": 83377575,
+    "isGlobal": true,
+    "name": "Varning",
+    "nameEn": "Warning",
+    "description": "En varning från Super-Admin.",
+    "descriptionEn": "A warning from Super-Admin."
   }
 ]

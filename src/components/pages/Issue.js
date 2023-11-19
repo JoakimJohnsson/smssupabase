@@ -25,6 +25,7 @@ import {getGradeByUserIdAndIssueId} from "../../helpers/functions/serviceFunctio
 import {TitleBadge} from "../minis/TitleBadge";
 import {PublisherBadge} from "../minis/PublisherBadge";
 import {Sources} from "./pagecomponents/Sources";
+import {Message} from "../message/Message";
 
 
 export const Issue = () => {
@@ -196,6 +197,7 @@ export const Issue = () => {
                                     isCollectingIssue &&
                                     <Grade issue={issue} grade={grade} setGrade={setGrade}/>
                                 }
+                                <Message originId={issue.id}/>
                             </div>
                         </>
                 }
