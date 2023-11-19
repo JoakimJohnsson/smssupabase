@@ -34,6 +34,7 @@ export const Admin = () => {
                     <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.ISSUES}>{LABELS_AND_HEADINGS.ALL_ISSUES}</Link>
                     <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</Link>
                     <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.USERS}>{LABELS_AND_HEADINGS.ALL_USERS}</Link>
+                    <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.ALL_MESSAGES}</Link>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

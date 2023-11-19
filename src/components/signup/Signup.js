@@ -74,7 +74,7 @@ export const Signup = () => {
                 <div className={"text-center mb-4 mb-sm-5"}>
                     <RegisterIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
                     <h2>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</h2>
-                    <p className={"small"}>{TEXTS.CONSENT}</p>
+                    <p className={"lead"}>{TEXTS.CONSENT}</p>
                 </div>
                 <label className={"form-label"} htmlFor="input-signup-email">{LABELS_AND_HEADINGS.EMAIL}</label>
                 <input id="input-signup-email"

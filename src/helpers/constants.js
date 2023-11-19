@@ -99,6 +99,8 @@ export const ROUTES = {
         TITLE_ADD: "/admin/titles/add/",
         TITLE_EDIT_ID: "/admin/titles/:id/edit",
         USERS: "/admin/users/",
+        MESSAGES: "/admin/messages/",
+        MESSAGE_ID: "/admin/messages/:id"
     }
 }
 
@@ -121,6 +123,7 @@ export const LABELS_AND_HEADINGS = {
     ALL_PUBLISHERS: "Alla förlag",
     ALL_TITLES: "Alla titlar",
     ALL_USERS: "Alla användare",
+    ALL_MESSAGES: "Alla meddelanden",
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     BACK: "Tillbaka",
     BACK_TO: "Tillbaka till",
@@ -321,6 +324,7 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
     GRADE_TEXT_2: "Mer information om skickgradering hittar du hos",
+    INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
     MARVELKLUBBEN_TEXT_1: "Du måste lägga börja samla på titeln för att kunna lägga till publikationen i din samling.",
@@ -365,6 +369,7 @@ export const BUCKETS = {
 
 export const TABLES = {
     ISSUES: "issues",
+    MESSAGES: "messages",
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
     TITLES: "titles",
@@ -438,5 +443,5 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 143
+    TOTAL_TITLES_COUNT: 152
 }
