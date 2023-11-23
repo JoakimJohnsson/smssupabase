@@ -97,6 +97,16 @@
     color: $white--darker;
     font-weight: 300;
   }
+  &.primary {
+    background-color: $primary--lighter;
+    color: $black;
+    h2 {
+      color: $black;
+    }
+    .form-label {
+      color: $black--lighter;
+    }
+  }
 }
 
 select.form-control,

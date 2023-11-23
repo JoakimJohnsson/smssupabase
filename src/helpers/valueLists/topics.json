@@ -1,6 +1,6 @@
 [
   {
-    "id": 9830362,
+    "id": 8362,
     "isGlobal": false,
     "name": "Förbättringsförslag",
     "nameEn": "Improvement suggestions",
@@ -8,23 +8,23 @@
     "descriptionEn": "Have ideas to make our platform even better? Share your improvement suggestions here and help us enhance your experience."
   },
   {
-    "id": 163738632,
+    "id": 6332,
     "isGlobal": false,
-    "name": "Bugrapportering",
+    "name": "Rapportera en bug",
     "nameEn": "Bug report",
     "description": "Stötte på ett oväntat beteende? Rapportera eventuella buggar du stöter på! Din feedback är ovärderlig.",
     "descriptionEn": "Encountered an unexpected behavior? Report any bugs you come across, and our team will work diligently to resolve them. Your feedback is invaluable."
   },
   {
-    "id": 92023739,
+    "id": 2739,
     "isGlobal": false,
-    "name": "Felrapportering",
+    "name": "Rapportera ett fel",
     "nameEn": "Error report",
     "description": "Märker du några felaktigheter eller inkorrekta uppgifter? Vänligen rapportera eventuella fel här. Tack för din hjälp med att förbättra kvaliteten på informationen.",
     "descriptionEn": "Notice any inaccuracies or incorrect information? Please report any errors here. Thank you for helping us improve the quality of our information."
   },
   {
-    "id": 546223357,
+    "id": 4657,
     "isGlobal": true,
     "name": "Nyhet",
     "nameEn": "News",
@@ -32,7 +32,7 @@
     "descriptionEn": "News from Super-Admin."
   },
   {
-    "id": 83377575,
+    "id": 7575,
     "isGlobal": true,
     "name": "Varning",
     "nameEn": "Warning",

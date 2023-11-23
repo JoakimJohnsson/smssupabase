@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {getIssueName} from "../../helpers/functions/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
@@ -197,7 +197,7 @@ export const Issue = () => {
                                     isCollectingIssue &&
                                     <Grade issue={issue} grade={grade} setGrade={setGrade}/>
                                 }
-                                <Message originId={issue.id}/>
+                                <Message originId={issue.id} originTable={TABLES.ISSUES}/>
                             </div>
                         </>
                 }
