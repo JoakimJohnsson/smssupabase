@@ -47,7 +47,7 @@ export const Message = ({originObject, originTable}) => {
 
     useEffect(() => {
         if (useThisObject) {
-            setTitle(currentTitle => currentTitle + ": " + originTable);
+            setTitle(currentTitle => currentTitle + " - " + originTable);
         } else {
             if (topic_id !== "") {
                 setTitle(getDataName(topicData, topic_id));
@@ -85,7 +85,7 @@ export const Message = ({originObject, originTable}) => {
                                 updateTitle(e);
                             }}>
                             <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                            {printOptions(topicData)}
+                            {printOptions(topicData.filter((t) => t.isGlobal === false))}
                         </select>
                     }
                     <div>
