@@ -38,5 +38,21 @@
     "nameEn": "Warning",
     "description": "En varning från Super-Admin.",
     "descriptionEn": "A warning from Super-Admin."
+  },
+  {
+    "id": 1243,
+    "isGlobal": true,
+    "name": "Ny funktionalitet",
+    "nameEn": "New functions",
+    "description": "Ny funktionalitet efter release.",
+    "descriptionEn": "New functions after release."
+  },
+  {
+    "id": 7646,
+    "isGlobal": true,
+    "name": "Nya titlar",
+    "nameEn": "New titles",
+    "description": "Nya titlar har blivit inlagda i databasen.",
+    "descriptionEn": "New titles added to the database."
   }
 ]
