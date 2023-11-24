@@ -10,7 +10,7 @@
   {
     "id": 6332,
     "isGlobal": false,
-    "name": "Rapportera en bug",
+    "name": "Bugrapport",
     "nameEn": "Bug report",
     "description": "Stötte på ett oväntat beteende? Rapportera eventuella buggar du stöter på! Din feedback är ovärderlig.",
     "descriptionEn": "Encountered an unexpected behavior? Report any bugs you come across, and our team will work diligently to resolve them. Your feedback is invaluable."
@@ -18,7 +18,7 @@
   {
     "id": 2739,
     "isGlobal": false,
-    "name": "Rapportera ett fel",
+    "name": "Felrapport",
     "nameEn": "Error report",
     "description": "Märker du några felaktigheter eller inkorrekta uppgifter? Vänligen rapportera eventuella fel här. Tack för din hjälp med att förbättra kvaliteten på informationen.",
     "descriptionEn": "Notice any inaccuracies or incorrect information? Please report any errors here. Thank you for helping us improve the quality of our information."

@@ -25,10 +25,15 @@ export const getCalculatedYear = (startYear, endYear) => {
 }
 
 export const getDataName = (data, id) => {
-    return data.find(f => f.id === id).name;
+    // Make sure the id is a number.
+    const numericId = Number(id);
+    return data.find(f => f.id === numericId).name;
 }
+
 export const getDataShade = (data, id) => {
-    return data.find(f => f.id === id).shade;
+    // Make sure the id is a number.
+    const numericId = Number(id);
+    return data.find(f => f.id === numericId).shade;
 }
 
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {

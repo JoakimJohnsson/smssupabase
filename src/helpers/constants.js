@@ -213,6 +213,7 @@ export const LABELS_AND_HEADINGS = {
     MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",
     MENU: "Meny",
     MESSAGE: "Meddelande",
+    MESSAGE_TITLE: "Rubrik",
     ADD_MESSAGE_PLACEHOLDER: "Skriv ett meddelande här",
     MESSAGES: "Meddelanden",
     MESSAGES_SHOW: "Visa formulär för meddelande",

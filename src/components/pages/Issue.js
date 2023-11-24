@@ -163,6 +163,7 @@ export const Issue = () => {
                                             className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
                                     }
                                 </div>
+                                <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                 <div className={"mb-4"}>
                                     <h2>{issue.titles.name}</h2>
                                     <p className={"mb-4"}>{issue.titles.description}</p>
@@ -197,7 +198,6 @@ export const Issue = () => {
                                     isCollectingIssue &&
                                     <Grade issue={issue} grade={grade} setGrade={setGrade}/>
                                 }
-                                <Message originId={issue.id} originTable={TABLES.ISSUES}/>
                             </div>
                         </>
                 }
