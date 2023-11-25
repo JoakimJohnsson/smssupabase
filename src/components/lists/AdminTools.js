@@ -8,7 +8,7 @@ import {faPenCircle, faCircleXmark} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 
-export const AdminTools = ({item, name, displayName, data, setData, route, table, imageBucket}) => {
+export const AdminTools = ({item, name, displayName, data, setData, route, table, imageBucket, showEditButton}) => {
 
     const editText = LABELS_AND_HEADINGS.EDIT + " " + displayName;
     const deleteText = LABELS_AND_HEADINGS.DELETE + " " + displayName;
@@ -16,21 +16,23 @@ export const AdminTools = ({item, name, displayName, data, setData, route, table
 
     return (
             <div className={"d-inline-block text-end"}>
-                <OverlayTrigger
-                    key={"edit-tooltip"}
-                    placement={"top"}
-                    overlay={
-                        <Tooltip id={"edit-tooltip"}>
-                            {editText}
-                        </Tooltip>
-                    }
-                >
-                    <Link to={route + item.id + "?edit=true"} className={"btn text-primary sms-tool-btn"} title={editText}>
-                        <Icon icon={faPenCircle} className={"fa-xl"}/>
-                        <span className={"visually-hidden"}>{editText}</span>
-                    </Link>
-                </OverlayTrigger>
-
+                {
+                    showEditButton &&
+                    <OverlayTrigger
+                        key={"edit-tooltip"}
+                        placement={"top"}
+                        overlay={
+                            <Tooltip id={"edit-tooltip"}>
+                                {editText}
+                            </Tooltip>
+                        }
+                    >
+                        <Link to={route + item.id + "?edit=true"} className={"btn text-primary sms-tool-btn"} title={editText}>
+                            <Icon icon={faPenCircle} className={"fa-xl"}/>
+                            <span className={"visually-hidden"}>{editText}</span>
+                        </Link>
+                    </OverlayTrigger>
+                }
                 <OverlayTrigger
                     key={"delete-tooltip"}
                     placement={"top"}

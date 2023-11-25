@@ -25,6 +25,7 @@ export const getCalculatedYear = (startYear, endYear) => {
 }
 
 export const getDataName = (data, id) => {
+    console.log("id", id);
     // Make sure the id is a number.
     const numericId = Number(id);
     return data.find(f => f.id === numericId).name;

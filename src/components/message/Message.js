@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {faMessages} from "@fortawesome/pro-duotone-svg-icons";
+import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FunctionButton} from "../minis/FunctionButton";
 import {addMessageData} from "../../helpers/functions/serviceFunctions/messageFunctions";
@@ -15,7 +15,7 @@ export const Message = ({originObject, originTable}) => {
     const [open, setOpen] = useState(false);
     const [formInputClass, setFormInputClass] = useCommonFormStates();
     const [topic_id, setTopic_id] = useState("");
-    const [title, setTitle] = useState(LABELS_AND_HEADINGS.MESSAGE_TITLE);
+    const [title, setTitle] = useState(LABELS_AND_HEADINGS.MESSAGE);
     const [text, setText] = useState("");
     const [useThisObject, setUseThisObject] = useState(false);
 
@@ -23,7 +23,7 @@ export const Message = ({originObject, originTable}) => {
 
     const resetAddMessageForm = async () => {
         if (topic_id === "") {
-            setTitle(LABELS_AND_HEADINGS.MESSAGE_TITLE);
+            setTitle(LABELS_AND_HEADINGS.MESSAGE);
         }
         setText("");
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
@@ -52,7 +52,7 @@ export const Message = ({originObject, originTable}) => {
             if (topic_id !== "") {
                 setTitle(getDataName(topicData, topic_id));
             } else {
-                setTitle(LABELS_AND_HEADINGS.MESSAGE_TITLE);
+                setTitle(LABELS_AND_HEADINGS.MESSAGE);
             }
         }
     }, [useThisObject, topic_id, originTable]);
@@ -61,16 +61,16 @@ export const Message = ({originObject, originTable}) => {
         <>
             <FunctionButton
                 variant={"primary"}
-                customClass={"mb-3"}
-                icon={faMessages}
+                icon={open ? faTimes : faMessages}
                 onClick={() => setOpen(!open)}
                 label={open ? LABELS_AND_HEADINGS.MESSAGES_CLOSE : LABELS_AND_HEADINGS.MESSAGES_SHOW}
                 id={"message-form-toggler"}
+                showLabel={false}
             />
             {
                 open &&
                 <div className={"sms-section--light primary mb-3"}>
-                    <h2>{LABELS_AND_HEADINGS.MESSAGES_CREATE}</h2>
+                    <h2>{LABELS_AND_HEADINGS.MESSAGE_ADMIN_CREATE}</h2>
                     <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.MESSAGE_TITLE}</label>
                     <p>{title}</p>
                     <label className={"form-label"} htmlFor="topic">{LABELS_AND_HEADINGS.TOPIC}</label>
@@ -90,14 +90,14 @@ export const Message = ({originObject, originTable}) => {
                     }
                     <div>
                         <input
-                            id={"double"}
-                            name={"is_double"}
+                            id={"useThisObject"}
+                            name={"useThisObject"}
                             className={"form-check-input me-2"}
                             type="checkbox"
                             checked={useThisObject}
                             onChange={() => setUseThisObject(!useThisObject)}
                         />
-                        <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_DOUBLE_DB}</label>
+                        <label className={"form-label"} htmlFor="useThisObject">{LABELS_AND_HEADINGS.MESSAGE_USE_THIS_OBJECT}</label>
                     </div>
                     <label className={"form-label"} htmlFor="text">{LABELS_AND_HEADINGS.MESSAGE}</label>
                     <textarea

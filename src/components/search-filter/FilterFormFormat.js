@@ -138,7 +138,7 @@ const FilterFormFormat = ({
                                   setReadyForSearch={setReadyForSearch}/>
                 </div>
             </div>
-            <button className="btn btn-lg btn-primary mb-3 me-2" onClick={() => updateSearchParams()} disabled={!readyForSearch}>
+            <button className="btn btn-lg btn-primary mb-3 me-3" onClick={() => updateSearchParams()} disabled={!readyForSearch}>
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
                 {LABELS_AND_HEADINGS.FIND_TITLES}
             </button>
