@@ -136,6 +136,12 @@ export const EditIcon = ({size, className}) => {
     )
 }
 
+export const GlobalIcon = ({size, className}) => {
+    return (
+        <Icon icon={faEarthAmericas} size={size} className={className}/>
+    )
+}
+
 export const ImageIcon = ({size, className}) => {
     return (
         <Icon icon={faFileImage} size={size} className={className}/>

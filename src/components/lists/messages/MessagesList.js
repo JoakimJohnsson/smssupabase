@@ -4,6 +4,7 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {ListToolBox} from "../ListToolBox";
 import {ROUTES, TABLES} from "../../../helpers/constants";
 import {sortByDateCreated} from "../../../helpers/functions/functions";
+import {MessageIcons} from "./MessageIcons";
 
 
 export const MessagesList = ({messagesData, setMessagesData}) => {
@@ -19,6 +20,7 @@ export const MessagesList = ({messagesData, setMessagesData}) => {
                                         <div className={"sms-list-col--main"}>
                                             <div className={"d-flex align-items-center"}>
                                                 <div>
+                                                    <MessageIcons message={m}/>
                                                     <Link to={`/admin/messages/${m.id}`} className={"me-3"}>
                                                         {m.title}
                                                     </Link>

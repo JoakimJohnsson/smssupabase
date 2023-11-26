@@ -36,6 +36,11 @@ export const getDataShade = (data, id) => {
     const numericId = Number(id);
     return data.find(f => f.id === numericId).shade;
 }
+export const getDataIcon = (data, id) => {
+    // Make sure the id is a number.
+    const numericId = Number(id);
+    return data.find(f => f.id === numericId).icon;
+}
 
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
     if (success) {
