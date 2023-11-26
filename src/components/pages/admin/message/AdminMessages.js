@@ -24,7 +24,12 @@ export const AdminMessages = () => {
                 <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.MESSAGES}</h1>
                     <Breadcrumbs/>
+                </div>
+            </div>
+            <div className={"row row-padding--secondary"}>
+                <div className={"sms-dashboard-col"}>
                     <div className={"sms-section--light"}>
+                        <h2>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h2>
                         {
                             messagesData &&
                             <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showAdminInfo={true}/>
@@ -32,7 +37,11 @@ export const AdminMessages = () => {
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
-
+                </div>
+                <div className={"sms-dashboard-col"}>
+                    <div className={"sms-section--light"}>
+                        <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
+                    </div>
                 </div>
             </div>
         </main>

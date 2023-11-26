@@ -18,8 +18,6 @@ export const MessagesSection = () => {
         <div className={"sms-page-col--full mb-5 "}>
             <div className={"sms-section--light"}>
                 <h2>{LABELS_AND_HEADINGS.MESSAGES}</h2>
-
-
                 {
                     limitedMessagesData ?
                         <>
@@ -30,7 +28,6 @@ export const MessagesSection = () => {
                         <NoDataAvailable/>
                 }
                 <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.SEE_ALL_MESSAGES}</Link>
-
             </div>
         </div>
     )

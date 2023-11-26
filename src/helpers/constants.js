@@ -217,6 +217,8 @@ export const LABELS_AND_HEADINGS = {
     MESSAGE_USE_THIS_OBJECT: "Bifoga information om detta objekt",
     ADD_MESSAGE_PLACEHOLDER: "Skriv ett meddelande här",
     MESSAGES: "Meddelanden",
+    MESSAGES_RECEIVED: "Inkomna meddelanden",
+    MESSAGES_GLOBAL_SEND: "Skicka globalt meddelande",
     MESSAGES_SHOW: "Visa formulär för meddelande",
     MESSAGES_CLOSE: "Stäng formulär för meddelande",
     MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
