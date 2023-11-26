@@ -1,75 +1,79 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faShieldCat,
-    faShield,
-    faHouse,
-    faFile,
-    faFileLines,
-    faChartLine,
-    faGears,
-    faFiles,
-    faBuildingColumns,
-    faFileImage,
-    faComet,
-    faListTimeline,
-    faLink,
-    faMoneyCheckPen,
-    faRectangleHistoryCirclePlus,
-    faClipboardListCheck,
-    faMagnifyingGlassDollar,
     faArrowDownToArc,
     faArrowRightFromArc,
-    faHeartCirclePlus,
-    faCalendarHeart,
-    faTypewriter,
-    faLightbulbOn,
-    faHeartCrack,
-    faMosquito,
-    faBomb,
-    faTriangleExclamation,
-    faEarthAmericas,
-    faUser,
-    faSend,
-    faUsers,
     faBadge,
-    faKey
+    faBomb,
+    faBuildingColumns,
+    faCalendarHeart,
+    faChartLine,
+    faClipboardListCheck,
+    faComet,
+    faEarthAmericas,
+    faEye,
+    faEyeSlash,
+    faFile,
+    faFiles,
+    faFileImage,
+    faFileLines,
+    faGears,
+    faHeartCirclePlus,
+    faHeartCrack,
+    faHouse,
+    faKey,
+    faListTimeline,
+    faLink,
+    faLightbulbOn,
+    faMosquito,
+    faMagnifyingGlassDollar,
+    faMoneyCheckPen,
+    faRectangleHistoryCirclePlus,
+    faSend,
+    faShield,
+    faShieldCat,
+    faTriangleExclamation,
+    faTypewriter,
+    faUser,
+    faUsers
 } from "@fortawesome/pro-regular-svg-icons";
 
 const iconMap = {
-    faShieldCat: faShieldCat,
-    faShield: faShield,
-    faHouse: faHouse,
-    faFile: faFile,
-    faFileLines: faFileLines,
-    faChartLine: faChartLine,
-    faGears: faGears,
-    faFiles: faFiles,
-    faBuildingColumns: faBuildingColumns,
-    faFileImage: faFileImage,
-    faComet: faComet,
-    faListTimeline: faListTimeline,
-    faLink: faLink,
-    faMoneyCheckPen: faMoneyCheckPen,
-    faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
-    faClipboardListCheck: faClipboardListCheck,
-    faMagnifyingGlassDollar: faMagnifyingGlassDollar,
     faArrowDownToArc: faArrowDownToArc,
     faArrowRightFromArc: faArrowRightFromArc,
-    faHeartCirclePlus: faHeartCirclePlus,
-    faCalendarHeart: faCalendarHeart,
-    faTypewriter: faTypewriter,
-    faLightbulbOn: faLightbulbOn,
-    faHeartCrack: faHeartCrack,
-    faMosquito: faMosquito,
-    faTriangleExclamation: faTriangleExclamation,
-    faEarthAmericas: faEarthAmericas,
-    faBomb: faBomb,
-    faUser: faUser,
-    faSend: faSend,
-    faUsers: faUsers,
     faBadge: faBadge,
-    faKey: faKey
+    faBomb: faBomb,
+    faBuildingColumns: faBuildingColumns,
+    faCalendarHeart: faCalendarHeart,
+    faChartLine: faChartLine,
+    faClipboardListCheck: faClipboardListCheck,
+    faComet: faComet,
+    faEarthAmericas: faEarthAmericas,
+    faEye: faEye,
+    faEyeSlash: faEyeSlash,
+    faFile: faFile,
+    faFiles: faFiles,
+    faFileImage: faFileImage,
+    faFileLines: faFileLines,
+    faGears: faGears,
+    faHeartCirclePlus: faHeartCirclePlus,
+    faHeartCrack: faHeartCrack,
+    faHouse: faHouse,
+    faKey: faKey,
+    faListTimeline: faListTimeline,
+    faLink: faLink,
+    faLightbulbOn: faLightbulbOn,
+    faMosquito: faMosquito,
+    faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faMoneyCheckPen: faMoneyCheckPen,
+    faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
+    faSend: faSend,
+    faShield: faShield,
+    faShieldCat: faShieldCat,
+    faTriangleExclamation: faTriangleExclamation,
+    faTypewriter: faTypewriter,
+    faUser: faUser,
+    faUsers: faUsers,
 }
 
 export const getIconByName = (iconName) => {
@@ -218,6 +222,24 @@ export const SettingsIcon = ({size, className}) => {
 export const StartIcon = ({size, className}) => {
     return (
         <Icon icon={faHouse} size={size} className={className}/>
+    )
+}
+
+export const StatusIconRead = ({size, className}) => {
+    return (
+        <Icon icon={faEye} size={size} className={className}/>
+    )
+}
+
+export const StatusIconUnRead = ({size, className}) => {
+    return (
+        <Icon icon={faEyeSlash} size={size} className={className}/>
+    )
+}
+
+export const StatusIconTodo = ({size, className}) => {
+    return (
+        <Icon icon={faEye} size={size} className={className}/>
     )
 }
 
