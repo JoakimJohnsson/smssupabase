@@ -22,6 +22,13 @@ import {
     faArrowRightFromArc,
     faHeartCirclePlus,
     faCalendarHeart,
+    faTypewriter,
+    faLightbulbOn,
+    faHeartCrack,
+    faMosquito,
+    faBomb,
+    faTriangleExclamation,
+    faEarthAmericas,
     faUser,
     faSend,
     faUsers,
@@ -29,6 +36,45 @@ import {
     faKey
 } from "@fortawesome/pro-regular-svg-icons";
 
+const iconMap = {
+    faShieldCat: faShieldCat,
+    faShield: faShield,
+    faHouse: faHouse,
+    faFile: faFile,
+    faFileLines: faFileLines,
+    faChartLine: faChartLine,
+    faGears: faGears,
+    faFiles: faFiles,
+    faBuildingColumns: faBuildingColumns,
+    faFileImage: faFileImage,
+    faComet: faComet,
+    faListTimeline: faListTimeline,
+    faLink: faLink,
+    faMoneyCheckPen: faMoneyCheckPen,
+    faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
+    faClipboardListCheck: faClipboardListCheck,
+    faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faArrowDownToArc: faArrowDownToArc,
+    faArrowRightFromArc: faArrowRightFromArc,
+    faHeartCirclePlus: faHeartCirclePlus,
+    faCalendarHeart: faCalendarHeart,
+    faTypewriter: faTypewriter,
+    faLightbulbOn: faLightbulbOn,
+    faHeartCrack: faHeartCrack,
+    faMosquito: faMosquito,
+    faTriangleExclamation: faTriangleExclamation,
+    faEarthAmericas: faEarthAmericas,
+    faBomb: faBomb,
+    faUser: faUser,
+    faSend: faSend,
+    faUsers: faUsers,
+    faBadge: faBadge,
+    faKey: faKey
+}
+
+export const getIconByName = (iconName) => {
+    return iconMap[iconName] || null;
+}
 
 export const Icon = ({icon, size, className, spin = false}) => {
     return (

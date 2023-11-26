@@ -5,7 +5,8 @@
     "name": "Förbättringsförslag",
     "nameEn": "Improvement suggestions",
     "description": "Har du idéer för att göra vår Svenska Marvelsamlare ännu bättre? Dela dina förbättringsförslag här och hjälp oss förbättra din upplevelse.",
-    "descriptionEn": "Have ideas to make our platform even better? Share your improvement suggestions here and help us enhance your experience."
+    "descriptionEn": "Have ideas to make our platform even better? Share your improvement suggestions here and help us enhance your experience.",
+    "icon": "faLightbulbOn"
   },
   {
     "id": 6332,
@@ -13,7 +14,8 @@
     "name": "Bugrapport",
     "nameEn": "Bug report",
     "description": "Stötte på ett oväntat beteende? Rapportera eventuella buggar du stöter på! Din feedback är ovärderlig.",
-    "descriptionEn": "Encountered an unexpected behavior? Report any bugs you come across, and our team will work diligently to resolve them. Your feedback is invaluable."
+    "descriptionEn": "Encountered an unexpected behavior? Report any bugs you come across, and our team will work diligently to resolve them. Your feedback is invaluable.",
+    "icon": "faMosquito"
   },
   {
     "id": 2739,
@@ -21,7 +23,8 @@
     "name": "Felrapport",
     "nameEn": "Error report",
     "description": "Märker du några felaktigheter eller inkorrekta uppgifter? Vänligen rapportera eventuella fel här. Tack för din hjälp med att förbättra kvaliteten på informationen.",
-    "descriptionEn": "Notice any inaccuracies or incorrect information? Please report any errors here. Thank you for helping us improve the quality of our information."
+    "descriptionEn": "Notice any inaccuracies or incorrect information? Please report any errors here. Thank you for helping us improve the quality of our information.",
+    "icon": "faBomb"
   },
   {
     "id": 4657,
@@ -29,7 +32,8 @@
     "name": "Nyhet",
     "nameEn": "News",
     "description": "En nyhet från Super-Admin.",
-    "descriptionEn": "News from Super-Admin."
+    "descriptionEn": "News from Super-Admin.",
+    "icon": "faTypewriter"
   },
   {
     "id": 7575,
@@ -37,7 +41,8 @@
     "name": "Varning",
     "nameEn": "Warning",
     "description": "En varning från Super-Admin.",
-    "descriptionEn": "A warning from Super-Admin."
+    "descriptionEn": "A warning from Super-Admin.",
+    "icon": "faTriangleExclamation"
   },
   {
     "id": 1243,
@@ -45,7 +50,8 @@
     "name": "Ny funktionalitet",
     "nameEn": "New functions",
     "description": "Ny funktionalitet efter release.",
-    "descriptionEn": "New functions after release."
+    "descriptionEn": "New functions after release.",
+    "icon": "faComet"
   },
   {
     "id": 7646,
@@ -53,6 +59,7 @@
     "name": "Nya titlar",
     "nameEn": "New titles",
     "description": "Nya titlar har blivit inlagda i databasen.",
-    "descriptionEn": "New titles added to the database."
+    "descriptionEn": "New titles added to the database.",
+    "icon": "faFiles"
   }
 ]

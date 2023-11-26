@@ -21,12 +21,56 @@ import {
     faClipboardListCheck,
     faMagnifyingGlassDollar,
     faCalendarHeart,
+    faTypewriter,
+    faLightbulbOn,
+    faHeartCrack,
+    faMosquito,
+    faBomb,
+    faTriangleExclamation,
+    faEarthAmericas,
     faUser,
     faUsers,
     faKey
 } from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
 
+const iconMap = {
+    faShieldCat: faShieldCat,
+    faShield: faShield,
+    faHouse: faHouse,
+    faFile: faFile,
+    faFileLines: faFileLines,
+    faChartLine: faChartLine,
+    faCommentsQuestion: faCommentsQuestion,
+    faGears: faGears,
+    faFiles: faFiles,
+    faFaceExplode: faFaceExplode,
+    faBuildingColumns: faBuildingColumns,
+    faFileImage: faFileImage,
+    faListTimeline: faListTimeline,
+    faComet: faComet,
+    faArrowDownToArc: faArrowDownToArc,
+    faArrowRightFromArc: faArrowRightFromArc,
+    faHeartCirclePlus: faHeartCirclePlus,
+    faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
+    faTypewriter: faTypewriter,
+    faLightbulbOn: faLightbulbOn,
+    faHeartCrack: faHeartCrack,
+    faMosquito: faMosquito,
+    faClipboardListCheck: faClipboardListCheck,
+    faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faCalendarHeart: faCalendarHeart,
+    faTriangleExclamation: faTriangleExclamation,
+    faEarthAmericas: faEarthAmericas,
+    faBomb: faBomb,
+    faUser: faUser,
+    faUsers: faUsers,
+    faKey: faKey
+}
+
+export const getDuoToneIconByName = (iconName) => {
+    return iconMap[iconName] || null;
+}
 
 export const AdminIconDuoTone = ({size, className}) => {
     return (
