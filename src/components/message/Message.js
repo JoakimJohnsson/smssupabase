@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from "react";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {FunctionButton} from "../minis/FunctionButton";
 import {addMessageData} from "../../helpers/functions/serviceFunctions/messageFunctions";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useCommonFormStates} from "../../helpers/customHooks/useCommonFormStates";
 import topicData from "../../helpers/valueLists/topics.json";
-import {getDataName, printOptions, trimInputString} from "../../helpers/functions/functions";
+import {getDataIcon, getDataName, getIssueName, printOptions, trimInputString} from "../../helpers/functions/functions";
+import {getIconByName, Icon} from "../icons";
 
 
 export const Message = ({originObject, originTable}) => {
@@ -47,7 +48,25 @@ export const Message = ({originObject, originTable}) => {
 
     useEffect(() => {
         if (useThisObject) {
-            setTitle(currentTitle => currentTitle + " - " + originTable);
+            if (originTable === TABLES.ISSUES) {
+                if (topic_id !== "") {
+                    setTitle(currentTitle => currentTitle + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
+                } else {
+                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
+                }
+            } else if (originTable === TABLES.TITLES) {
+                if (topic_id !== "") {
+                    setTitle(currentTitle => currentTitle + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
+                } else {
+                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
+                }
+            } else {
+                if (topic_id !== "") {
+                    setTitle(currentTitle => currentTitle + " - " + originTable);
+                } else {
+                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " - " + originTable);
+                }
+            }
         } else {
             if (topic_id !== "") {
                 setTitle(getDataName(topicData, topic_id));
@@ -55,7 +74,7 @@ export const Message = ({originObject, originTable}) => {
                 setTitle(LABELS_AND_HEADINGS.MESSAGE);
             }
         }
-    }, [useThisObject, topic_id, originTable]);
+    }, [useThisObject, topic_id, originTable, originObject]);
 
     return (
         <>
@@ -72,7 +91,13 @@ export const Message = ({originObject, originTable}) => {
                 <div className={"sms-section--light primary mb-3"}>
                     <h2>{LABELS_AND_HEADINGS.MESSAGE_ADMIN_CREATE}</h2>
                     <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.MESSAGE_TITLE}</label>
-                    <p>{title}</p>
+                    <p className={"h5 text-black"}>
+                        {
+                            topic_id &&
+                            <Icon icon={getIconByName(getDataIcon(topicData, topic_id))} className={`me-2 fa-fw`}/>
+                        }
+                        {title}
+                    </p>
                     <label className={"form-label"} htmlFor="topic">{LABELS_AND_HEADINGS.TOPIC}</label>
                     {
                         topicData &&
