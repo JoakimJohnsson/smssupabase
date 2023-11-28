@@ -4,6 +4,7 @@ import {
     faArrowDownToArc,
     faArrowRightFromArc,
     faBadge,
+    faBellExclamation,
     faBomb,
     faBuildingColumns,
     faCalendarHeart,
@@ -42,6 +43,7 @@ const iconMap = {
     faArrowDownToArc: faArrowDownToArc,
     faArrowRightFromArc: faArrowRightFromArc,
     faBadge: faBadge,
+    faBellExclamation: faBellExclamation,
     faBomb: faBomb,
     faBuildingColumns: faBuildingColumns,
     faCalendarHeart: faCalendarHeart,
@@ -239,7 +241,7 @@ export const StatusIconUnRead = ({size, className}) => {
 
 export const StatusIconTodo = ({size, className}) => {
     return (
-        <Icon icon={faEye} size={size} className={className}/>
+        <Icon icon={faBellExclamation} size={size} className={className}/>
     )
 }
 

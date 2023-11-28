@@ -343,6 +343,7 @@ export const TEXTS = {
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
     MARVELKLUBBEN_TEXT_1: "Du måste lägga börja samla på titeln för att kunna lägga till publikationen i din samling.",
     MARVELKLUBBEN_TEXT_2: "Mer information om Marvelklubben hittar du på",
+    MESSAGE_WAS_SENT: "Meddelandet skickades",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet.",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt ändra dina inloggningsuppgifter.",
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",

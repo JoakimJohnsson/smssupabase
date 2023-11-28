@@ -4,15 +4,16 @@ import {TopicIcon} from "./TopicIcon";
 import {StatusIcon} from "./StatusIcon";
 
 
-export const MessageIcons = ({message, size = false}) => {
+export const MessageIcons = ({message, size = false, showBorder = false}) => {
+    
     return message && (
-        <>
-            <TopicIcon topicId={message.topic_id} size={size}/>
+        <div className={`me-3 ${showBorder && "border-end"}`}>
             <StatusIcon statusId={message.status} size={size}/>
+            <TopicIcon topicId={message.topic_id} size={size}/>
             {
                 message.is_global === 1 &&
                 <GlobalIcon className={`me-2 text-country fa-fw ${size}`}/>
             }
-        </>
+        </div>
     )
 }

@@ -1,10 +1,11 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, ROUTES, TABLES} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, MESSAGES, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {MessageIcons} from "../../../message/MessageIcons";
+import {FriendlyDate} from "../../../minis/FriendlyDate";
 
 
 export const AdminMessage = () => {
@@ -32,13 +33,14 @@ export const AdminMessage = () => {
                     <>
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
-                                <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.MESSAGE}/>
+                                <HeadingWithBreadCrumbs doIgnoreName={true} text={LABELS_AND_HEADINGS.MESSAGE}/>
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
                                     <h2>{message.title} - {MESSAGE_STATUS_TEXT[message.status].name} {message.is_global === 1 && " - " + LABELS_AND_HEADINGS.MESSAGE_GLOBAL}</h2>
+                                    <p className={"mb-3"}>{TEXTS.MESSAGE_WAS_SENT}: <FriendlyDate dateString={message.created_at}/></p>
                                     <div className={"mb-4"}>
                                         <MessageIcons message={message} size={"fa-3x"}/>
                                     </div>

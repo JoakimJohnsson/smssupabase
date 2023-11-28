@@ -9,7 +9,7 @@ export const StatusIcon = ({statusId, size}) => {
         case 1:
             return (<StatusIconRead className={`me-2 fa-fw text-success ${size}`}/>);
         case 2:
-            return (<StatusIconTodo className={`me-2 fa-fw text-danger--lighter ${size}`}/>);
+            return (<StatusIconTodo className={`me-2 fa-fw text-title ${size}`}/>);
         default:
             return false;
     }
