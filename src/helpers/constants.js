@@ -220,6 +220,7 @@ export const LABELS_AND_HEADINGS = {
     ADD_MESSAGE_PLACEHOLDER: "Skriv ett meddelande här",
     MESSAGES: "Meddelanden",
     MESSAGES_RECEIVED: "Inkomna meddelanden",
+    MESSAGE_GLOBAL: "Globalt meddelande",
     MESSAGES_GLOBAL_SEND: "Skicka globalt meddelande",
     MESSAGES_SHOW: "Visa formulär för meddelande",
     MESSAGES_CLOSE: "Stäng formulär för meddelande",
@@ -444,6 +445,21 @@ export const VARIANT_MAPPER = {
     success: 2,
     warning: 3,
     danger: 4
+}
+
+export const MESSAGE_STATUS_TEXT = {
+    0: {
+        name: "Oläst",
+        nameEn: "Unread"
+    },
+    1: {
+        name: "Läst",
+        nameEn: "Read"
+    },
+    2: {
+        name: "TODO!",
+        nameEn: "TODO!"
+    },
 }
 
 export const DEFAULT_SEARCH_PARAMS_FORMATS = {

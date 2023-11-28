@@ -1,11 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
-import {TABLES, TEXTS} from "../../../../helpers/constants";
+import {Link, useParams} from "react-router-dom";
+import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, ROUTES, TABLES} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {publishersIconDuoTone} from "../../../icons-duotone";
-import {IconButton} from "../../../minis/IconButton";
+import {MessageIcons} from "../../../message/MessageIcons";
 
 
 export const AdminMessage = () => {
@@ -13,7 +12,6 @@ export const AdminMessage = () => {
     const [message, setMessage] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
-    const navigate = useNavigate();
 
     const fetchMessageData = useCallback(() => {
         getRowByTableAndId(TABLES.MESSAGES, setMessage, id).then(() => setLoading(false));
@@ -34,19 +32,22 @@ export const AdminMessage = () => {
                     <>
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
-                                <HeadingWithBreadCrumbs text={message.title}/>
-                                <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
-                                <IconButton variant={"primary"} icon={publishersIconDuoTone} onClick={() => navigate(`/messages/${message.id}`)}
-                                            label={message.title}/>
+                                <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.MESSAGE}/>
                             </div>
-
                         </div>
                         <div className={"row row-padding--secondary"}>
-                            <p>Lägg till message?</p>
                             <div className={"sms-dashboard-col"}>
-
-                                <p>Hejsan</p>
-
+                                <div className={"sms-section--light"}>
+                                    <h2>{message.title} - {MESSAGE_STATUS_TEXT[message.status].name} {message.is_global === 1 && " - " + LABELS_AND_HEADINGS.MESSAGE_GLOBAL}</h2>
+                                    <div className={"mb-4"}>
+                                        <MessageIcons message={message} size={"fa-3x"}/>
+                                    </div>
+                                    <p className={"mb-5"}>{message.text}</p>
+                                    <div className={"bg-dog p-3 mb-3"}>
+                                        Ändra status
+                                    </div>
+                                    <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.SEE_ALL_MESSAGES}</Link>
+                                </div>
                             </div>
                         </div>
                     </>
