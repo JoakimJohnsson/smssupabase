@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/co
 import {Link} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {MessagesList} from "../../../lists/messages/MessagesList";
+import {MessagesList} from "../../../message/MessagesList";
 
 
 export const MessagesSection = () => {

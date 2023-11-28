@@ -1,5 +1,5 @@
 import React from "react";
-import {StatusIconRead, StatusIconTodo, StatusIconUnRead} from "../../icons";
+import {StatusIconRead, StatusIconTodo, StatusIconUnRead} from "../icons";
 
 
 export const StatusIcon = ({statusId}) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import {GlobalIcon} from "../../icons";
+import {GlobalIcon} from "../icons";
 import {TopicIcon} from "./TopicIcon";
 import {StatusIcon} from "./StatusIcon";
 

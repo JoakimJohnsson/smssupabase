@@ -6,7 +6,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {handleBacking} from "../../../../helpers/functions/functions";
-import {MessagesList} from "../../../lists/messages/MessagesList";
+import {MessagesList} from "../../../message/MessagesList";
 
 
 export const AdminMessages = () => {

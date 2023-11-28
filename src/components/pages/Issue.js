@@ -25,7 +25,7 @@ import {getGradeByUserIdAndIssueId} from "../../helpers/functions/serviceFunctio
 import {TitleBadge} from "../minis/TitleBadge";
 import {PublisherBadge} from "../minis/PublisherBadge";
 import {Sources} from "./pagecomponents/Sources";
-import {Message} from "../message/Message";
+import {AddUserMessage} from "../message/AddUserMessage";
 
 
 export const Issue = () => {
@@ -163,7 +163,7 @@ export const Issue = () => {
                                             className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
                                     }
                                 </div>
-                                <Message originObject={issue} originTable={TABLES.ISSUES}/>
+                                <AddUserMessage originObject={issue} originTable={TABLES.ISSUES}/>
                                 <div className={"mb-4"}>
                                     <h2>{issue.titles.name}</h2>
                                     <p className={"mb-4"}>{issue.titles.description}</p>

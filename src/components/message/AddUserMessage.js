@@ -11,7 +11,7 @@ import {getDataIcon, getDataName, getIssueName, printOptions, trimInputString} f
 import {getIconByName, Icon} from "../icons";
 
 
-export const Message = ({originObject, originTable}) => {
+export const AddUserMessage = ({originObject, originTable}) => {
 
     const [open, setOpen] = useState(false);
     const [formInputClass, setFormInputClass] = useCommonFormStates();
