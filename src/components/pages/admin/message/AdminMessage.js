@@ -40,14 +40,18 @@ export const AdminMessage = () => {
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
                                     <h2>{message.title} - {MESSAGE_STATUS_TEXT[message.status].name} {message.is_global === 1 && " - " + LABELS_AND_HEADINGS.MESSAGE_GLOBAL}</h2>
-                                    <p className={"mb-3"}>{TEXTS.MESSAGE_WAS_SENT}: <FriendlyDate dateString={message.created_at}/></p>
                                     <div className={"mb-4"}>
                                         <MessageIcons message={message} size={"fa-3x"}/>
                                     </div>
+                                    <p className={"mb-3 lead"}>{TEXTS.MESSAGE_WAS_SENT}: <FriendlyDate dateString={message.created_at}/></p>
                                     <p className={"mb-5"}>{message.text}</p>
                                     <div className={"bg-dog p-3 mb-3"}>
                                         Ändra status
                                     </div>
+                                    {
+                                        message.origin_table && message.origin_id &&
+                                        <Link className={"btn btn-outline-primary sms-btn"} to={`/${message.origin_table}/${message.origin_id}`}>{TEXTS.MESSAGE_LINK}</Link>
+                                    }
                                     <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.SEE_ALL_MESSAGES}</Link>
                                 </div>
                             </div>

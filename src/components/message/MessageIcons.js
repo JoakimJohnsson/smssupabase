@@ -7,8 +7,8 @@ import {StatusIcon} from "./StatusIcon";
 export const MessageIcons = ({message, size = false, showBorder = false}) => {
     
     return message && (
-        <div className={`me-3 ${showBorder && "border-end"}`}>
-            <StatusIcon statusId={message.status} size={size}/>
+        <div className={`d-none d-md-block me-3 ${showBorder && "border-end"}`}>
+            <StatusIcon isGlobal={message.is_global} statusId={message.status} size={size}/>
             <TopicIcon topicId={message.topic_id} size={size}/>
             {
                 message.is_global === 1 &&

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {getRowsByTable} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
@@ -24,10 +24,12 @@ export const AdminMessages = () => {
                 <div className={"sms-page-col"}>
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.MESSAGES}</h1>
                     <Breadcrumbs/>
+                    <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
+                    <p>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
-                <div className={"sms-dashboard-col"}>
+                <div className={"sms-page-col--full mb-5"}>
                     <div className={"sms-section--light"}>
                         <h2>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h2>
                         {
@@ -38,7 +40,7 @@ export const AdminMessages = () => {
                                     label={LABELS_AND_HEADINGS.BACK}/>
                     </div>
                 </div>
-                <div className={"sms-dashboard-col"}>
+                <div className={"sms-page-col--full mb-5"}>
                     <div className={"sms-section--light"}>
                         <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
                     </div>

@@ -26,6 +26,7 @@ import {
     faListTimeline,
     faLink,
     faLightbulbOn,
+    faLightbulb,
     faMosquito,
     faMagnifyingGlassDollar,
     faMoneyCheckPen,
@@ -33,6 +34,8 @@ import {
     faSend,
     faShield,
     faShieldCat,
+    faSpider,
+    faThoughtBubble,
     faTriangleExclamation,
     faTypewriter,
     faUser,
@@ -65,6 +68,7 @@ const iconMap = {
     faListTimeline: faListTimeline,
     faLink: faLink,
     faLightbulbOn: faLightbulbOn,
+    faLightbulb: faLightbulb,
     faMosquito: faMosquito,
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
     faMoneyCheckPen: faMoneyCheckPen,
@@ -72,6 +76,8 @@ const iconMap = {
     faSend: faSend,
     faShield: faShield,
     faShieldCat: faShieldCat,
+    faSpider: faSpider,
+    faThoughtBubble: faThoughtBubble,
     faTriangleExclamation: faTriangleExclamation,
     faTypewriter: faTypewriter,
     faUser: faUser,
@@ -224,6 +230,18 @@ export const SettingsIcon = ({size, className}) => {
 export const StartIcon = ({size, className}) => {
     return (
         <Icon icon={faHouse} size={size} className={className}/>
+    )
+}
+
+export const StatusIconActive = ({size, className}) => {
+    return (
+        <Icon icon={faLightbulbOn} size={size} className={className}/>
+    )
+}
+
+export const StatusIconInactive = ({size, className}) => {
+    return (
+        <Icon icon={faLightbulb} size={size} className={className}/>
     )
 }
 

@@ -344,6 +344,9 @@ export const TEXTS = {
     MARVELKLUBBEN_TEXT_1: "Du måste lägga börja samla på titeln för att kunna lägga till publikationen i din samling.",
     MARVELKLUBBEN_TEXT_2: "Mer information om Marvelklubben hittar du på",
     MESSAGE_WAS_SENT: "Meddelandet skickades",
+    MESSAGE_LINK: "Länk till bifogat objekt",
+    MESSAGES_ADMIN_TEXT_1: "Här kan du hantera meddelanden.",
+    MESSAGES_ADMIN_TEXT_2: "Du kan bland annat sända ut globala meddelanden som visas för alla användare. Samt administrera inkomna meddelanden.",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet.",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt ändra dina inloggningsuppgifter.",
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
@@ -450,12 +453,12 @@ export const VARIANT_MAPPER = {
 
 export const MESSAGE_STATUS_TEXT = {
     0: {
-        name: "Oläst",
-        nameEn: "Unread"
+        name: "Oläst / Inaktivt",
+        nameEn: "Unread / Inactive"
     },
     1: {
-        name: "Läst",
-        nameEn: "Read"
+        name: "Läst / Aktivt",
+        nameEn: "Read / Active"
     },
     2: {
         name: "TODO!",
