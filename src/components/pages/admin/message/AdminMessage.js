@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, MESSAGES, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";

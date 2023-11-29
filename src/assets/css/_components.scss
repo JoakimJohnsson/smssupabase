@@ -453,3 +453,10 @@ input[type="checkbox"] + label {
 .alert .progress {
   height: .5rem;
 }
+
+// Calendar date
+.calendar-date {
+  max-width: 90px;
+  border-radius: $border-radius--md;
+  text-align: center;
+}
