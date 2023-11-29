@@ -1,11 +1,12 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, MESSAGE_STATUS_TEXT_GLOBAL, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {MessageIcons} from "../../../message/MessageIcons";
 import {FriendlyDate} from "../../../minis/FriendlyDate";
+import {MessageStatusChanger} from "../../../message/MessageStatusChanger";
 
 
 export const AdminMessage = () => {
@@ -37,22 +38,31 @@ export const AdminMessage = () => {
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
-                            <div className={"sms-dashboard-col"}>
+                            <div className={"col-12 col-lg-10"}>
                                 <div className={"sms-section--light"}>
-                                    <h2>{message.title} - {MESSAGE_STATUS_TEXT[message.status].name} {message.is_global === 1 && " - " + LABELS_AND_HEADINGS.MESSAGE_GLOBAL}</h2>
+                                    <h2>
+                                        <span>{message.title} - </span>
+                                        <span>{message.is_global ? MESSAGE_STATUS_TEXT_GLOBAL[message.status].name : MESSAGE_STATUS_TEXT[message.status].name} </span>
+                                        <span>{message.is_global === 1 && " - " + LABELS_AND_HEADINGS.MESSAGE_GLOBAL}</span>
+                                    </h2>
                                     <div className={"mb-4"}>
                                         <MessageIcons message={message} size={"fa-3x"}/>
                                     </div>
-                                    <p className={"mb-3 lead"}>{TEXTS.MESSAGE_WAS_SENT}: <FriendlyDate dateString={message.created_at}/></p>
+                                    <p className={"mb-3 lead"}>{TEXTS.MESSAGE_WAS_SENT} <FriendlyDate dateString={message.created_at}/>.</p>
                                     <p className={"mb-5"}>{message.text}</p>
-                                    <div className={"bg-dog p-3 mb-3"}>
-                                        Ändra status
-                                    </div>
+                                    <MessageStatusChanger message={message} fetchMessageData={fetchMessageData}/>
                                     {
                                         message.origin_table && message.origin_id &&
-                                        <Link className={"btn btn-outline-primary sms-btn"} to={`/${message.origin_table}/${message.origin_id}`}>{TEXTS.MESSAGE_LINK}</Link>
+                                        <Link className={"btn btn-outline-primary sms-btn"}
+                                              to={`/${message.origin_table}/${message.origin_id}`}>{TEXTS.MESSAGE_LINK}</Link>
                                     }
-                                    <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.SEE_ALL_MESSAGES}</Link>
+                                    {
+                                        message.sender_id &&
+                                        <Link className={"btn btn-outline-primary sms-btn"}
+                                              to={`/users/${message.sender_id}`}>{TEXTS.MESSAGE_LINK_SENDER}</Link>
+                                    }
+                                    <Link className={"btn btn-outline-primary sms-btn"}
+                                          to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.SEE_ALL_MESSAGES}</Link>
                                 </div>
                             </div>
                         </div>

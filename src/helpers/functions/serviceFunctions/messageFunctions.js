@@ -21,3 +21,16 @@ export const addMessageData = async (data, setInformationMessage) => {
         console.error(error);
     }
 }
+
+export const updateMessageStatus = async (id, value) => {
+    try {
+        await supabase
+            .from(TABLES.MESSAGES)
+            .update([{
+                status: value
+            }])
+            .eq("id", id);
+    } catch (error) {
+        console.error(error);
+    }
+}

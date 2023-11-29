@@ -224,6 +224,11 @@ export const LABELS_AND_HEADINGS = {
     MESSAGES_GLOBAL_SEND: "Skicka globalt meddelande",
     MESSAGES_SHOW: "Visa formulär för meddelande",
     MESSAGES_CLOSE: "Stäng formulär för meddelande",
+    MESSAGES_MARK_AS_READ: "Markera som läst",
+    MESSAGES_MARK_AS_UNREAD: "Markera som oläst",
+    MESSAGES_MARK_AS_ACTIVE: "Markera som aktivt",
+    MESSAGES_MARK_AS_INACTIVE: "Markera som inaktivt",
+    MESSAGES_MARK_AS_TODO: "Åtgärd krävs",
     MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
     MISCELLANEOUS: "Övrigt",
     MY_COLLECTION: "Min samling",
@@ -345,6 +350,7 @@ export const TEXTS = {
     MARVELKLUBBEN_TEXT_2: "Mer information om Marvelklubben hittar du på",
     MESSAGE_WAS_SENT: "Meddelandet skickades",
     MESSAGE_LINK: "Länk till bifogat objekt",
+    MESSAGE_LINK_SENDER: "Länk till anmälare",
     MESSAGES_ADMIN_TEXT_1: "Här kan du hantera meddelanden.",
     MESSAGES_ADMIN_TEXT_2: "Du kan bland annat sända ut globala meddelanden som visas för alla användare. Samt administrera inkomna meddelanden.",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet.",
@@ -453,15 +459,30 @@ export const VARIANT_MAPPER = {
 
 export const MESSAGE_STATUS_TEXT = {
     0: {
-        name: "Oläst / Inaktivt",
-        nameEn: "Unread / Inactive"
+        name: "Oläst",
+        nameEn: "Unread"
     },
     1: {
-        name: "Läst / Aktivt",
-        nameEn: "Read / Active"
+        name: "Läst",
+        nameEn: "Read"
     },
     2: {
-        name: "TODO!",
+        name: "Åtgärd krävs!",
+        nameEn: "TODO!"
+    },
+}
+
+export const MESSAGE_STATUS_TEXT_GLOBAL = {
+    0: {
+        name: "Inaktivt",
+        nameEn: "Inactive"
+    },
+    1: {
+        name: "Aktivt",
+        nameEn: "Active"
+    },
+    2: {
+        name: "Åtgärd krävs!",
         nameEn: "TODO!"
     },
 }

@@ -7,7 +7,7 @@ export const StatusIcon = ({isGlobal, statusId, size}) => {
     switch (statusId) {
         case 0:
             if (isGlobal) {
-                return (<StatusIconInactive className={`me-2 fa-fw text-white-50 ${size}`}/>);
+                return (<StatusIconInactive className={`me-2 fa-fw text-black--lightest ${size}`}/>);
             } else {
                 return (<StatusIconUnRead className={`me-2 fa-fw text-danger ${size}`}/>);
             }
