@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {MESSAGES, TABLES} from "../helpers/constants";
 import {getRowByTableAndId} from "../helpers/functions/serviceFunctions/serviceFunctions";
+import {getAllActiveGlobalMessages, getAllUnreadMessages} from "../helpers/functions/serviceFunctions/messageFunctions";
 
 
 const AppContext = React.createContext();
@@ -10,6 +11,8 @@ export function AppContextProvider({children}) {
 
     // Global states
     const [user, setUser] = useState(null);
+    const [activeGlobalMessages, setActiveGlobalMessages] = useState(null);
+    const [unreadMessages, setUnreadMessages] = useState(null);
     const [showUserNotification, setShowUserNotification] = useState(false);
     const [showAdminNotification, setShowAdminNotification] = useState(false);
     const [profile, setProfile] = useState(null);
@@ -18,6 +21,23 @@ export function AppContextProvider({children}) {
     const fetchProfileData = useCallback((id) => {
         getRowByTableAndId(TABLES.PROFILES, setProfile, id).then();
     }, []);
+
+    const updateMessages = useCallback(() => {
+        getAllActiveGlobalMessages(setActiveGlobalMessages).then(() => {
+            if (activeGlobalMessages && activeGlobalMessages.length > 0) {
+                setShowUserNotification(true);
+            } else {
+                setShowUserNotification(false);
+            }
+        });
+        getAllUnreadMessages(setUnreadMessages).then(() => {
+            if (unreadMessages && unreadMessages.length > 0) {
+                setShowAdminNotification(true);
+            } else {
+                setShowAdminNotification(false);
+            }
+        });
+    }, [activeGlobalMessages, unreadMessages]);
 
     useEffect(() => {
         // Check active session and sets the user
@@ -63,10 +83,8 @@ export function AppContextProvider({children}) {
     }, [informationMessage]);
 
     useEffect(() => {
-        setShowUserNotification(true);
-        setShowAdminNotification(true);
-    }, []);
-
+        updateMessages();
+    }, [updateMessages]);
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
@@ -79,6 +97,8 @@ export function AppContextProvider({children}) {
         setUser,
         showUserNotification,
         showAdminNotification,
+        activeGlobalMessages,
+        unreadMessages,
         profile,
         setProfile,
         fetchProfileData,
