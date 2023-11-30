@@ -221,6 +221,7 @@ export const LABELS_AND_HEADINGS = {
     MESSAGES: "Meddelanden",
     MESSAGES_RECEIVED: "Inkomna meddelanden",
     MESSAGE_GLOBAL: "Globalt meddelande",
+    MESSAGES_GLOBAL: "Globala meddelanden",
     MESSAGES_GLOBAL_SEND: "Skicka globalt meddelande",
     MESSAGES_SHOW: "Visa formulär för meddelande",
     MESSAGES_CLOSE: "Stäng formulär för meddelande",

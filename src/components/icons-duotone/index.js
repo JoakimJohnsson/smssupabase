@@ -126,7 +126,7 @@ export const DataIconDuoTone = ({size, className}) => {
     )
 }
 
-export const GlobalIcon = ({size, className}) => {
+export const GlobalIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faEarthAmericas} size={size} className={className}/>
     )

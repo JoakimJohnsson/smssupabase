@@ -7,6 +7,8 @@ import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {handleBacking} from "../../../../helpers/functions/functions";
 import {MessagesList} from "../../../message/MessagesList";
+import {AddMessage} from "../../../message/AddMessage";
+import {GlobalIconDuoTone} from "../../../icons-duotone";
 
 
 export const AdminMessages = () => {
@@ -25,7 +27,10 @@ export const AdminMessages = () => {
                     <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.MESSAGES}</h1>
                     <Breadcrumbs/>
                     <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
-                    <p>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
+                    <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
+                    <a href={"#global-message-section"} className={"btn btn-primary btn-cta d-inline-block mb-4"}>
+                        <GlobalIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}
+                    </a>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
@@ -34,7 +39,12 @@ export const AdminMessages = () => {
                         <h2>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h2>
                         {
                             messagesData &&
-                            <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showAdminInfo={true}/>
+                            <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showGlobal={false}/>
+                        }
+                        <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h2>
+                        {
+                            messagesData &&
+                            <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showGlobal={true}/>
                         }
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS_AND_HEADINGS.BACK}/>
@@ -42,7 +52,8 @@ export const AdminMessages = () => {
                 </div>
                 <div className={"sms-page-col--full mb-5"}>
                     <div className={"sms-section--light"}>
-                        <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
+                        <h2 id={"global-message-section"}>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
+                        <AddMessage isGlobalMessage={true}/>
                     </div>
                 </div>
             </div>

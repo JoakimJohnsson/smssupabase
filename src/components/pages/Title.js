@@ -17,7 +17,7 @@ import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
 import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../helpers/functions/serviceFunctions/collectFunctions";
-import {AddUserMessage} from "../message/AddUserMessage";
+import {AddMessage} from "../message/AddMessage";
 
 
 export const Title = () => {
@@ -210,7 +210,7 @@ export const Title = () => {
                                             }
                                         </>
                                     }
-                                    <AddUserMessage originObject={title} originTable={TABLES.TITLES}/>
+                                    <AddMessage originObject={title} originTable={TABLES.TITLES}/>
                                 </div>
                                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}

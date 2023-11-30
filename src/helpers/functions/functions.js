@@ -25,7 +25,6 @@ export const getCalculatedYear = (startYear, endYear) => {
 }
 
 export const getDataName = (data, id) => {
-    console.log("id", id);
     // Make sure the id is a number.
     const numericId = Number(id);
     return data.find(f => f.id === numericId).name;
@@ -269,6 +268,14 @@ export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, que
             .includes(query.toLowerCase()) ||
         query === ""
     )
+}
+
+export const filterGlobalMessage = (message, showGlobal) => {
+    if (showGlobal) {
+        return message.is_global === 1;
+    } else {
+        return message.is_global === 0;
+    }
 }
 
 export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover, special, collectible) => {
