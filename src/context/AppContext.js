@@ -10,6 +10,8 @@ export function AppContextProvider({children}) {
 
     // Global states
     const [user, setUser] = useState(null);
+    const [showUserNotification, setShowUserNotification] = useState(false);
+    const [showAdminNotification, setShowAdminNotification] = useState(false);
     const [profile, setProfile] = useState(null);
     const [informationMessage, _setInformationMessage] = useState(MESSAGES.EMPTY);
 
@@ -60,6 +62,12 @@ export function AppContextProvider({children}) {
         }
     }, [informationMessage]);
 
+    useEffect(() => {
+        setShowUserNotification(true);
+        setShowAdminNotification(true);
+    }, []);
+
+
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
         signUp: (data) => supabase.auth.signUp(data),
@@ -69,6 +77,8 @@ export function AppContextProvider({children}) {
         setInformationMessage: setInformationMessage,
         user,
         setUser,
+        showUserNotification,
+        showAdminNotification,
         profile,
         setProfile,
         fetchProfileData,

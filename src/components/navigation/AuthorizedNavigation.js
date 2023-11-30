@@ -23,7 +23,7 @@ export const AuthorizedNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
     const collapseClass = "collapse navbar-collapse";
-    const {profile} = useAppContext();
+    const {profile, showUserNotification, showAdminNotification} = useAppContext();
 
     const handleClick = () => {
         setIsOpen(!isOpen)
@@ -53,7 +53,8 @@ export const AuthorizedNavigation = () => {
 
                     {/* desktop ul (no click handler) */}
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<StartIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}/>
+                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<StartIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}
+                                   showUserNotification={showUserNotification}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<DashboardIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
@@ -89,7 +90,8 @@ export const AuthorizedNavigation = () => {
                         </NavDropdown>
                         <LiNavItem route={ROUTES.PROFILE} icon={<SettingsIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}/>
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}
+                                       showAdminNotification={showAdminNotification}/>
                         }
                         <li className="nav-item">
                             <NavbarProfileInformation/>
@@ -98,7 +100,7 @@ export const AuthorizedNavigation = () => {
                     </ul>
                     {/* mobile ul */}
                     <ul className="d-lg-none navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<StartIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<StartIconDuoTone size={"1x"}/>} showUserNotification={showUserNotification}
                                    text={LABELS_AND_HEADINGS.HOME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<DashboardIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
@@ -115,7 +117,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<SettingsIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIconDuoTone size={"1x"}/>}
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIconDuoTone size={"1x"}/>} showAdminNotification={showAdminNotification}
                                        text={LABELS_AND_HEADINGS.ADMIN}/>
                         }
                         <li className="nav-item">
