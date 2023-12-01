@@ -72,3 +72,22 @@ export const getAllUnreadMessages = async (setData) => {
         console.error(error);
     }
 }
+
+export const getAllTodoMessages = async (setData) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.MESSAGES)
+            .select("*")
+            .eq("is_global", 0)
+            .eq("status", 2)
+            .order("created_at", {ascending: true})
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}

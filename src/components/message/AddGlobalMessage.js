@@ -8,16 +8,17 @@ import {getDataIcon, printOptions, trimInputString} from "../../helpers/function
 import {getIconByName, Icon} from "../icons";
 
 
-export const GlobalMessage = ({
-                                  topic_id,
-                                  setTopic_id,
-                                  text,
-                                  setText,
-                                  updateTitle,
-                                  resetAddMessageForm,
-                                  formInputClass,
-                                  title,
-                              }) => {
+export const AddGlobalMessage = ({
+                                     topic_id,
+                                     setTopic_id,
+                                     text,
+                                     setText,
+                                     updateTitle,
+                                     resetAddMessageForm,
+                                     formInputClass,
+                                     title,
+                                     fetchMessages
+                                 }) => {
 
     const {user, setInformationMessage} = useAppContext();
 
@@ -65,7 +66,10 @@ export const GlobalMessage = ({
                         topic_id: topic_id,
                         title: trimInputString(title),
                         text: trimInputString(text)
-                    }, setInformationMessage).then(() => resetAddMessageForm())}
+                    }, setInformationMessage).then(() => {
+                        resetAddMessageForm();
+                        fetchMessages();
+                    })}
                     disabled={title === "" || text === "" || topic_id === ""}
             >
                 {LABELS_AND_HEADINGS.SEND}

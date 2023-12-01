@@ -2,12 +2,18 @@ import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {updateMessageStatus} from "../../helpers/functions/serviceFunctions/messageFunctions";
 import {StatusIconActive, StatusIconInactive, StatusIconRead, StatusIconTodo, StatusIconUnRead} from "../icons";
+import {useAppContext} from "../../context/AppContext";
 
 
 export const MessageStatusChanger = ({message, fetchMessageData}) => {
 
+    const {fetchMessages} = useAppContext();
+
     const handleSubmit = (value) => {
-        updateMessageStatus(message.id, value).then(() => fetchMessageData());
+        updateMessageStatus(message.id, value).then(() => {
+            fetchMessageData();
+            fetchMessages();
+        });
     }
 
     return message && (

@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {MESSAGES, TABLES} from "../helpers/constants";
 import {getRowByTableAndId} from "../helpers/functions/serviceFunctions/serviceFunctions";
-import {getAllActiveGlobalMessages, getAllUnreadMessages} from "../helpers/functions/serviceFunctions/messageFunctions";
+import {getAllActiveGlobalMessages, getAllTodoMessages, getAllUnreadMessages} from "../helpers/functions/serviceFunctions/messageFunctions";
 
 
 const AppContext = React.createContext();
@@ -13,8 +13,10 @@ export function AppContextProvider({children}) {
     const [user, setUser] = useState(null);
     const [activeGlobalMessages, setActiveGlobalMessages] = useState(null);
     const [unreadMessages, setUnreadMessages] = useState(null);
+    const [todoMessages, setTodoMessages] = useState(null);
     const [showUserNotification, setShowUserNotification] = useState(false);
     const [showAdminNotification, setShowAdminNotification] = useState(false);
+    const [showAdminTodoNotification, setShowAdminTodoNotification] = useState(false);
     const [profile, setProfile] = useState(null);
     const [informationMessage, _setInformationMessage] = useState(MESSAGES.EMPTY);
 
@@ -22,22 +24,11 @@ export function AppContextProvider({children}) {
         getRowByTableAndId(TABLES.PROFILES, setProfile, id).then();
     }, []);
 
-    const updateMessages = useCallback(() => {
-        getAllActiveGlobalMessages(setActiveGlobalMessages).then(() => {
-            if (activeGlobalMessages && activeGlobalMessages.length > 0) {
-                setShowUserNotification(true);
-            } else {
-                setShowUserNotification(false);
-            }
-        });
-        getAllUnreadMessages(setUnreadMessages).then(() => {
-            if (unreadMessages && unreadMessages.length > 0) {
-                setShowAdminNotification(true);
-            } else {
-                setShowAdminNotification(false);
-            }
-        });
-    }, [activeGlobalMessages, unreadMessages]);
+    const fetchMessages = useCallback(() => {
+        getAllActiveGlobalMessages(setActiveGlobalMessages).then();
+        getAllUnreadMessages(setUnreadMessages).then();
+        getAllTodoMessages(setTodoMessages).then();
+    }, []);
 
     useEffect(() => {
         // Check active session and sets the user
@@ -83,8 +74,32 @@ export function AppContextProvider({children}) {
     }, [informationMessage]);
 
     useEffect(() => {
-        updateMessages();
-    }, [updateMessages]);
+        fetchMessages();
+    }, [fetchMessages]);
+
+    useEffect(() => {
+        if (activeGlobalMessages && activeGlobalMessages.length > 0) {
+            setShowUserNotification(true);
+        } else {
+            setShowUserNotification(false);
+        }
+    }, [activeGlobalMessages]);
+
+    useEffect(() => {
+        if (unreadMessages && unreadMessages.length > 0) {
+            setShowAdminNotification(true);
+        } else {
+            setShowAdminNotification(false);
+        }
+    }, [unreadMessages]);
+
+    useEffect(() => {
+        if (todoMessages && todoMessages.length > 0) {
+            setShowAdminTodoNotification(true);
+        } else {
+            setShowAdminTodoNotification(false);
+        }
+    }, [todoMessages]);
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
@@ -97,8 +112,11 @@ export function AppContextProvider({children}) {
         setUser,
         showUserNotification,
         showAdminNotification,
+        showAdminTodoNotification,
         activeGlobalMessages,
         unreadMessages,
+        todoMessages,
+        fetchMessages,
         profile,
         setProfile,
         fetchProfileData,

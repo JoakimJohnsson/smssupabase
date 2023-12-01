@@ -10,7 +10,7 @@ import {getDataIcon, printOptions, trimInputString} from "../../helpers/function
 import {getIconByName, Icon} from "../icons";
 
 
-export const UserMessage = ({
+export const AddUserMessage = ({
                                 topic_id,
                                 setTopic_id,
                                 text,
