@@ -4,12 +4,12 @@
 // Buttons
 .btn {
   @extend .lh-sm;
-  border-radius: $border-radius--sm;
+  border-radius: $border-radius-sm;
   display: inline-flex;
   align-items: center;
   &.btn-cta {
     padding: .8rem 2rem;
-    border-radius: $border-radius--lg;
+    border-radius: $border-radius-lg;
     font-weight: bold;
     font-size: 1.3rem;
     display: flex;

@@ -56,6 +56,7 @@ export const AdminMessages = () => {
                                         <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showGlobal={false}/>
                                     }
                                     <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h2>
+                                    <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_3}</p>
                                     {
                                         messagesData &&
                                         <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showGlobal={true}/>

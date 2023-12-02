@@ -42,7 +42,7 @@ export const getAllActiveGlobalMessages = async (setData) => {
             .select("*")
             .eq("is_global", 1)
             .eq("status", 1)
-            .order("created_at", {ascending: true})
+            .order("created_at", {ascending: false})
         if (error && status !== 406) {
             console.error(error);
         }

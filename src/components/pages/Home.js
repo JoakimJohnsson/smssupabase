@@ -14,6 +14,7 @@ import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../helpers/functions/serviceFunctions/issueFunctions";
 import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
 import {ProgressBar} from "react-bootstrap";
+import {GlobalMessageViewer} from "../message/GlobalMessageViewer";
 
 
 export const Home = () => {
@@ -81,6 +82,7 @@ export const Home = () => {
                                 admin@svenskamarvelsamlare.se
                             </a>
                         </p>
+                        <GlobalMessageViewer />
                     </div>
                 </div>
                 <div className={"row row-padding--secondary"}>

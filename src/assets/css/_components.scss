@@ -69,7 +69,7 @@
 
 .sms-section--light {
   @extend .p-0, .p-sm-4, .p-md-5;
-  border-radius: $border-radius--sm;
+  border-radius: $border-radius-sm;
   background-color: transparent;
   @include media-breakpoint-up(sm) {
     background-color: $color-bg-horse;
@@ -457,11 +457,22 @@ input[type="checkbox"] + label {
 // Calendar date
 .calendar-date {
   max-width: 90px;
-  border-radius: $border-radius--md;
+  border-radius: $border-radius;
   text-align: center;
 }
 
 // Message notification
 .message-notification {
   @extend .mb-3, .d-flex, .justify-content-center, .align-items-center;
+}
+
+// Global message viewer
+.global-message-viewer {
+  @extend .sms-section--light, .mt-5;
+  .global-message {
+    @extend .bg-white, .text-black, .p-3, .rounded-3;
+    &:not(:last-of-type) {
+      @extend .mb-5;
+    }
+  }
 }
