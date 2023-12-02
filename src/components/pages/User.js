@@ -9,12 +9,12 @@ import {getAnonDisplayName, getUserName, prepareUrl} from "../../helpers/functio
 import marvel from "../../assets/images/publishers/marvel.gif";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {useAppContext} from "../../context/AppContext";
-import {showFullInfo, updateProfileRole} from "../../helpers/functions/serviceFunctions/profileFunctions";
+import {showFullInfo, updateProfileRole} from "../../helpers/functions/serviceFunctions/profileService";
 import {AddAdminButton} from "../lists/users/AddAdminButton";
 import {RemoveAdminButton} from "../lists/users/RemoveAdminButton";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
-import {getTitlesForUser} from "../../helpers/functions/serviceFunctions/titleFunctions";
+import {getTitlesForUser} from "../../helpers/functions/serviceFunctions/titleService";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
 

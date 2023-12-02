@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {updateReleaseDate} from "../../helpers/functions/serviceFunctions/utilsFunctions";
+import {updateReleaseDate} from "../../helpers/functions/serviceFunctions/utilsService";
 import {IconButton} from "./IconButton";
 import {faCalendarHeart} from "@fortawesome/pro-regular-svg-icons";
 import {useAppContext} from "../../context/AppContext";

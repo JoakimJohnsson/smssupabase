@@ -233,7 +233,7 @@ export const requestPasswordResetForEmail = async (email, setMessage, e) => {
     if (emailExists) {
         try {
             await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: "http://svenskamarvelsamlare.se/change-password",
+                redirectTo: "https://svenskamarvelsamlare.se/change-password",
             })
         } catch (error) {
             console.error(error.message)

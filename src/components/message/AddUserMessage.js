@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FunctionButton} from "../minis/FunctionButton";
-import {addMessageData} from "../../helpers/functions/serviceFunctions/messageFunctions";
+import {addMessageData} from "../../helpers/functions/serviceFunctions/messageService";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";

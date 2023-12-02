@@ -3,7 +3,7 @@ import {PANES, TABLES} from "../../../../helpers/constants";
 import {useAppContext} from "../../../../context/AppContext";
 import {getCountByTable, getRowCountByTableAndUserId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleService";
 
 
 export const OverviewPane = () => {

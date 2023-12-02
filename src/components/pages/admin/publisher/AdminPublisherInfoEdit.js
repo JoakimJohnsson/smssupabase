@@ -2,7 +2,7 @@ import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
-import {updatePublisherData} from "../../../../helpers/functions/serviceFunctions/publisherFunctions";
+import {updatePublisherData} from "../../../../helpers/functions/serviceFunctions/publisherService";
 import {handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";

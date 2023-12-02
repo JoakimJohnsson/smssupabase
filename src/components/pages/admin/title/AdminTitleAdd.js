@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
-import {addTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {addTitleData} from "../../../../helpers/functions/serviceFunctions/titleService";
 import {handleInput} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";

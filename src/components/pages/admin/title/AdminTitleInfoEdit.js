@@ -2,7 +2,7 @@ import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
-import {updateTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {updateTitleData} from "../../../../helpers/functions/serviceFunctions/titleService";
 import {handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";

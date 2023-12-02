@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {getCountByTable, getRowCountByTableAndUserId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
 import {PANES, TABLES} from "../../../../helpers/constants";

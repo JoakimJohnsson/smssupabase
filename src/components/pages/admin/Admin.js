@@ -10,7 +10,7 @@ import {useAppContext} from "../../../context/AppContext";
 import {UtilsSection} from "../../dashboard/dashboardSections/admin/UtilsSection";
 import {Link} from "react-router-dom";
 import {MessagesSection} from "../../dashboard/dashboardSections/admin/MessagesSection";
-import {isSuperAdmin} from "../../../helpers/functions/serviceFunctions/profileFunctions";
+import {isSuperAdmin} from "../../../helpers/functions/serviceFunctions/profileService";
 
 
 export const Admin = () => {

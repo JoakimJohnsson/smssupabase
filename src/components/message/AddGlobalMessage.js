@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {addMessageData} from "../../helpers/functions/serviceFunctions/messageFunctions";
+import {addMessageData} from "../../helpers/functions/serviceFunctions/messageService";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";

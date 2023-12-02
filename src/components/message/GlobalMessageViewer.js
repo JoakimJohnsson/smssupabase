@@ -4,7 +4,7 @@ import {getDataIcon} from "../../helpers/functions/functions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FriendlyDate} from "../minis/FriendlyDate";
-import {getAllActiveGlobalMessages} from "../../helpers/functions/serviceFunctions/messageFunctions";
+import {getAllActiveGlobalMessages} from "../../helpers/functions/serviceFunctions/messageService";
 
 
 export const GlobalMessageViewer = () => {

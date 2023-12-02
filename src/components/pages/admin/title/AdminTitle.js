@@ -8,7 +8,7 @@ import {
 import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherByTitleId
-} from "../../../../helpers/functions/serviceFunctions/issueFunctions";
+} from "../../../../helpers/functions/serviceFunctions/issueService";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";

@@ -11,7 +11,7 @@ import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../he
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
-import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../helpers/functions/serviceFunctions/issueService";
 import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
 import {ProgressBar} from "react-bootstrap";
 import {GlobalMessageViewer} from "../message/GlobalMessageViewer";

@@ -6,7 +6,7 @@ import {handleBacking} from "../../../../helpers/functions/functions";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
-import {getAllIssuesWithTitleAndPublisher} from "../../../../helpers/functions/serviceFunctions/issueFunctions";
+import {getAllIssuesWithTitleAndPublisher} from "../../../../helpers/functions/serviceFunctions/issueService";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 

@@ -11,7 +11,7 @@ import {CustomSpinner} from "../minis/CustomSpinner";
 import {CountryBadge} from "../minis/CountryBadge";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {getRowByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
-import {getIssuesWithTitleAndPublisherByPublisherId} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {getIssuesWithTitleAndPublisherByPublisherId} from "../../helpers/functions/serviceFunctions/issueService";
 import {useAppContext} from "../../context/AppContext";
 
 

@@ -2,6 +2,7 @@ import {MESSAGES} from "../../constants";
 import {generateUniqueHashedFilename} from "../functions";
 import {supabase} from "../../../supabase/supabaseClient";
 
+
 export const uploadImage = async (e, tableName, id, setUploading, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {
     setUploading(true);
     if (!e.target.files || e.target.files.length === 0) {

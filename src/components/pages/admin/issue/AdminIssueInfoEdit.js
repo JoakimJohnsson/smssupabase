@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions/functions";
 import {getRowsByTable, handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
-import {updateIssueData} from "../../../../helpers/functions/serviceFunctions/issueFunctions";
+import {updateIssueData} from "../../../../helpers/functions/serviceFunctions/issueService";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";

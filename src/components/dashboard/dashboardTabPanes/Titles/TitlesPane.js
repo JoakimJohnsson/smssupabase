@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants";
 import {useAppContext} from "../../../../context/AppContext";
-import {getTitlesForUser} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {getTitlesForUser} from "../../../../helpers/functions/serviceFunctions/titleService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import FilterFormFormat from "../../../search-filter/FilterFormFormat";
 import {useFormatQueryFilter} from "../../../../helpers/customHooks/useFormatQueryFilter";
