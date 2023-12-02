@@ -14,18 +14,25 @@ import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
 import {MarvelKlubbenBadge} from "../grade/MarvelKlubbenBadge";
 import {getIssueIdByTitleAndNumber} from "../../services/issueService";
-import {faArrowLeftLong, faArrowRightLong} from "@fortawesome/pro-duotone-svg-icons";
+import {faArrowLeftLong, faArrowRightLong, faCloudQuestion, faCloud, faCloudArrowUp} from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIssue";
 import {handleCollectingIssue, handleCollectingTitle} from "../../services/serviceFunctions";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
-import {getGradeByUserIdAndIssueId} from "../../services/collectService";
+import {
+    addIssueToUpgrade,
+    addIssueToWanted,
+    getGradeByUserIdAndIssueId,
+    removeIssueFromUpgrade,
+    removeIssueFromWanted
+} from "../../services/collectingService";
 import {TitleBadge} from "../minis/TitleBadge";
 import {PublisherBadge} from "../minis/PublisherBadge";
 import {Sources} from "./pagecomponents/Sources";
 import {AddMessage} from "../message/AddMessage";
+import {FunctionButton} from "../minis/FunctionButton";
 
 
 export const Issue = () => {
@@ -38,7 +45,7 @@ export const Issue = () => {
     const [nextIssueId, setNextIssueId] = useState(null);
     const [loadingButtons, setLoadingButtons] = useState(true);
     const navigate = useNavigate();
-    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, id);
+    const [isCollectingIssue, setIsCollectingIssue, isWantingIssue, setIsWantingIssue, isUpgradingIssue, setIsUpgradingIssue] = useIsCollectingIssue(user.id, id);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
@@ -73,6 +80,22 @@ export const Issue = () => {
             fetchGrade();
         }
     }, [fetchIssueIds, fetchGrade, issue])
+
+    const handleWanted = () => {
+        if (isWantingIssue) {
+            removeIssueFromWanted(user.id, issue.id).then(() => setIsWantingIssue(false));
+        } else {
+            addIssueToWanted(user.id, issue.id).then(() => setIsWantingIssue(true));
+        }
+    }
+
+    const handleUpgrade = () => {
+        if (isUpgradingIssue) {
+            removeIssueFromUpgrade(user.id, issue.id).then(() => setIsUpgradingIssue(false));
+        } else {
+            addIssueToUpgrade(user.id, issue.id).then(() => setIsUpgradingIssue(true));
+        }
+    }
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -163,7 +186,25 @@ export const Issue = () => {
                                             className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
                                     }
                                 </div>
-                                <AddMessage originObject={issue} originTable={TABLES.ISSUES}/>
+                                <div className={"mb-3"}>
+                                    <FunctionButton
+                                        variant={"secondary"}
+                                        icon={isWantingIssue ? faCloud : faCloudQuestion}
+                                        onClick={() => handleWanted()}
+                                        label={isWantingIssue ? LABELS_AND_HEADINGS.REMOVE_ISSUE_WANTED : LABELS_AND_HEADINGS.ADD_ISSUE_WANTED}
+                                        id={"message-form-toggler"}
+                                        showLabel={true}
+                                    />
+                                    <FunctionButton
+                                        variant={"secondary"}
+                                        icon={isUpgradingIssue ? faCloud : faCloudArrowUp}
+                                        onClick={() => handleUpgrade()}
+                                        label={isUpgradingIssue ? LABELS_AND_HEADINGS.REMOVE_ISSUE_UPGRADE : LABELS_AND_HEADINGS.ADD_ISSUE_UPGRADE}
+                                        id={"message-form-toggler"}
+                                        showLabel={true}
+                                    />
+                                    <AddMessage originObject={issue} originTable={TABLES.ISSUES}/>
+                                </div>
                                 <div className={"mb-4"}>
                                     <h2>{issue.titles.name}</h2>
                                     <p className={"mb-4"}>{issue.titles.description}</p>

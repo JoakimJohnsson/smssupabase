@@ -1,7 +1,7 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../helpers/constants";
 import {deleteImageFromBucketSimple} from "./imageService";
-import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectService";
+import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectingService";
 import {doesEmailExist} from "../helpers/functions";
 
 // GENERIC FUNCTIONS
