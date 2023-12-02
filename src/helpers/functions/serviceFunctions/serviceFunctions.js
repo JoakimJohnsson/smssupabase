@@ -1,6 +1,6 @@
 import {supabase} from "../../../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../../constants";
-import {deleteImageFromBucketSimple} from "./imageFunctions";
+import {deleteImageFromBucketSimple} from "./imageService";
 import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectService";
 import {doesEmailExist} from "../functions";
 
