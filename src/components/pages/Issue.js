@@ -21,7 +21,7 @@ import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIssue";
 import {handleCollectingIssue, handleCollectingTitle} from "../../helpers/functions/serviceFunctions/serviceFunctions";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
-import {getGradeByUserIdAndIssueId} from "../../helpers/functions/serviceFunctions/collectFunctions";
+import {getGradeByUserIdAndIssueId} from "../../helpers/functions/serviceFunctions/collectService";
 import {TitleBadge} from "../minis/TitleBadge";
 import {PublisherBadge} from "../minis/PublisherBadge";
 import {Sources} from "./pagecomponents/Sources";

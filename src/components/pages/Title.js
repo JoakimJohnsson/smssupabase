@@ -16,7 +16,7 @@ import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/s
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
-import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../helpers/functions/serviceFunctions/collectFunctions";
+import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../helpers/functions/serviceFunctions/collectService";
 import {AddMessage} from "../message/AddMessage";
 
 
