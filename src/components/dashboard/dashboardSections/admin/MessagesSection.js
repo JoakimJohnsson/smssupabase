@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {Link} from "react-router-dom";
-import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {MessagesList} from "../../../message/MessagesList";
 

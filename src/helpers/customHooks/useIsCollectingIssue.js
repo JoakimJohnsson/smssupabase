@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {checkIfIsCollectingIssue} from "../functions/serviceFunctions/collectService";
+import {checkIfIsCollectingIssue} from "../../services/collectService";
 
 
 export const useIsCollectingIssue = (userId, issueId) => {

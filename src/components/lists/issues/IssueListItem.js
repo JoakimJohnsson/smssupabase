@@ -2,7 +2,7 @@ import React from "react";
 import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
-import {getIssueName, hasImage} from "../../../helpers/functions/functions";
+import {getIssueName, hasImage} from "../../../helpers/functions";
 import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
 

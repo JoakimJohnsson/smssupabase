@@ -10,8 +10,8 @@ import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {CountryBadge} from "../minis/CountryBadge";
 import {IssuesList} from "../lists/issues/IssuesList";
-import {getRowByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
-import {getIssuesWithTitleAndPublisherByPublisherId} from "../../helpers/functions/serviceFunctions/issueService";
+import {getRowByTableAndId} from "../../services/serviceFunctions";
+import {getIssuesWithTitleAndPublisherByPublisherId} from "../../services/issueService";
 import {useAppContext} from "../../context/AppContext";
 
 

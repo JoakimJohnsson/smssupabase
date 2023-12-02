@@ -1,11 +1,11 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
 import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
-import {getRowsByTable} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
-import {handleBacking} from "../../../../helpers/functions/functions";
+import {handleBacking} from "../../../../helpers/functions";
 import {MessagesList} from "../../../message/MessagesList";
 import {AddMessage} from "../../../message/AddMessage";
 import {GlobalIconDuoTone} from "../../../icons-duotone";

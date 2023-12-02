@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {checkIfIsCollectingTitle} from "../functions/serviceFunctions/collectService";
+import {checkIfIsCollectingTitle} from "../../services/collectService";
 
 
 export const useIsCollectingTitle = (userId, titleId) => {

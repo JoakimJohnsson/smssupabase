@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {updateMessageStatus} from "../../helpers/functions/serviceFunctions/messageService";
+import {updateMessageStatus} from "../../services/messageService";
 import {StatusIconActive, StatusIconInactive, StatusIconRead, StatusIconTodo, StatusIconUnRead} from "../icons";
 import {useAppContext} from "../../context/AppContext";
 

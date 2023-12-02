@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
-import {handleBacking} from "../../../../helpers/functions/functions";
+import {handleBacking} from "../../../../helpers/functions";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
-import {getAllIssuesWithTitleAndPublisher} from "../../../../helpers/functions/serviceFunctions/issueService";
+import {getAllIssuesWithTitleAndPublisher} from "../../../../services/issueService";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 

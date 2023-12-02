@@ -1,7 +1,7 @@
 import React from "react";
 import {useAppContext} from "../context/AppContext";
 import {CustomSpinner} from "./minis/CustomSpinner";
-import {getUserName} from "../helpers/functions/functions";
+import {getUserName} from "../helpers/functions";
 import {Link} from "react-router-dom";
 import marvel from "../assets/images/publishers/marvel.gif";
 

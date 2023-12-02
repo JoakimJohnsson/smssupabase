@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {ListToolBox} from "../lists/ListToolBox";
 import {ROUTES, TABLES} from "../../helpers/constants";
-import {filterGlobalMessage, sortByDateCreatedDesc} from "../../helpers/functions/functions";
+import {filterGlobalMessage, sortByDateCreatedDesc} from "../../helpers/functions";
 import {MessageIcons} from "./MessageIcons";
 import {CalendarDate} from "../minis/CalendarDate";
 

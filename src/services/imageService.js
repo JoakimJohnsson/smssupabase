@@ -1,6 +1,6 @@
-import {MESSAGES} from "../../constants";
-import {generateUniqueHashedFilename} from "../functions";
-import {supabase} from "../../../supabase/supabaseClient";
+import {MESSAGES} from "../helpers/constants";
+import {generateUniqueHashedFilename} from "../helpers/functions";
+import {supabase} from "../supabase/supabaseClient";
 
 
 export const uploadImage = async (e, tableName, id, setUploading, bucketName, fileType, imageUrl, setImageFilename, setImageUrl) => {

@@ -1,10 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {getIconByName, Icon} from "../icons";
-import {getDataIcon} from "../../helpers/functions/functions";
+import {getDataIcon} from "../../helpers/functions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FriendlyDate} from "../minis/FriendlyDate";
-import {getAllActiveGlobalMessages} from "../../helpers/functions/serviceFunctions/messageService";
+import {getAllActiveGlobalMessages} from "../../services/messageService";
 
 
 export const GlobalMessageViewer = () => {

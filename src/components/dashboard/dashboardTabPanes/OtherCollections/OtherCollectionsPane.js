@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {OtherCollectionsPaneListItem} from "./OtherCollectionsPaneListItem";
 import {PANES, TABLES} from "../../../../helpers/constants";
-import {getRowsByTable} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
 

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
-import {hasImage, sortByNameAndStartYear} from "../../../helpers/functions/functions";
+import {hasImage, sortByNameAndStartYear} from "../../../helpers/functions";
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 

@@ -1,5 +1,5 @@
-import {supabase} from "../../../supabase/supabaseClient";
-import {TABLES} from "../../constants";
+import {supabase} from "../supabase/supabaseClient";
+import {TABLES} from "../helpers/constants";
 
 
 // TITLE

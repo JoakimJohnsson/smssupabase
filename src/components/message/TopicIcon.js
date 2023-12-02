@@ -1,7 +1,7 @@
 import React from "react";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getIconByName, Icon} from "../icons";
-import {getDataIcon, getDataShade} from "../../helpers/functions/functions";
+import {getDataIcon, getDataShade} from "../../helpers/functions";
 
 export const TopicIcon = ({topicId, size}) => {
     return topicId && (

@@ -1,6 +1,6 @@
 import React from "react";
 import countryData from "../../helpers/valueLists/countries.json";
-import {getDataName, getDataShade} from "../../helpers/functions/functions";
+import {getDataName, getDataShade} from "../../helpers/functions";
 
 
 export const CountryBadge = ({countryId}) => {

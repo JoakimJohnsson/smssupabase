@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {ButtonGroup, OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Icon} from "../icons";
 import {faCertificate} from "@fortawesome/pro-solid-svg-icons";
-import {editGrade} from "../../helpers/functions/serviceFunctions/collectService";
+import {editGrade} from "../../services/collectService";
 import {useAppContext} from "../../context/AppContext";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 

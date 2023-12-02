@@ -2,7 +2,7 @@ import React from "react";
 import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
 import {useIsCollectingTitle} from "../../../helpers/customHooks/useIsCollectingTitle";
-import {handleCollectingIssue} from "../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleCollectingIssue} from "../../../services/serviceFunctions";
 import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";

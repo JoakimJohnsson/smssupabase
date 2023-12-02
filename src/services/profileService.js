@@ -1,5 +1,5 @@
-import {supabase} from "../../../supabase/supabaseClient";
-import {MESSAGES, TABLES} from "../../constants";
+import {supabase} from "../supabase/supabaseClient";
+import {MESSAGES, TABLES} from "../helpers/constants";
 
 export const updateProfileData = async (id, data) => {
     try {

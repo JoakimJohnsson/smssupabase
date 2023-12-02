@@ -4,7 +4,7 @@ import {faTimes, faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons"
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import formatData from "../../helpers/valueLists/formats.json";
-import {isTrue} from "../../helpers/functions/functions";
+import {isTrue} from "../../helpers/functions";
 import FilterButton from "./FilterButton";
 
 

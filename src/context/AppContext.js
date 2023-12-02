@@ -1,8 +1,8 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {MESSAGES, TABLES} from "../helpers/constants";
-import {getRowByTableAndId} from "../helpers/functions/serviceFunctions/serviceFunctions";
-import {getAllActiveGlobalMessages, getAllTodoMessages, getAllUnreadMessages} from "../helpers/functions/serviceFunctions/messageService";
+import {getRowByTableAndId} from "../services/serviceFunctions";
+import {getAllActiveGlobalMessages, getAllTodoMessages, getAllUnreadMessages} from "../services/messageService";
 
 
 const AppContext = React.createContext();

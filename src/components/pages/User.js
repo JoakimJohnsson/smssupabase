@@ -1,20 +1,20 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {getRowByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowByTableAndId} from "../../services/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {getAnonDisplayName, getUserName, prepareUrl} from "../../helpers/functions/functions";
+import {getAnonDisplayName, getUserName, prepareUrl} from "../../helpers/functions";
 import marvel from "../../assets/images/publishers/marvel.gif";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {useAppContext} from "../../context/AppContext";
-import {showFullInfo, updateProfileRole} from "../../helpers/functions/serviceFunctions/profileService";
+import {showFullInfo, updateProfileRole} from "../../services/profileService";
 import {AddAdminButton} from "../lists/users/AddAdminButton";
 import {RemoveAdminButton} from "../lists/users/RemoveAdminButton";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
-import {getTitlesForUser} from "../../helpers/functions/serviceFunctions/titleService";
+import {getTitlesForUser} from "../../services/titleService";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
 

@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {PANES, TABLES} from "../../../../helpers/constants";
 import {useAppContext} from "../../../../context/AppContext";
-import {getCountByTable, getRowCountByTableAndUserId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getCountByTable, getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleService";
+import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
 
 
 export const OverviewPane = () => {

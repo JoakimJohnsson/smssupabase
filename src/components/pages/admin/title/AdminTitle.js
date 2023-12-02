@@ -4,11 +4,11 @@ import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
     getRowByTableAndId, getRowsByTable,
     handleInput
-} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+} from "../../../../services/serviceFunctions";
 import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherByTitleId
-} from "../../../../helpers/functions/serviceFunctions/issueService";
+} from "../../../../services/issueService";
 import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
@@ -16,7 +16,7 @@ import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions/functions";
+import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";

@@ -7,8 +7,8 @@ import {
     filterTitlesData,
     hasTrueValue,
     sortByNameAndStartYear
-} from "../../helpers/functions/functions";
-import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+} from "../../helpers/functions";
+import {getRowsByTable} from "../../services/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
 import FilterFormFormat from "../search-filter/FilterFormFormat";

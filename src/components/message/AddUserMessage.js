@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FunctionButton} from "../minis/FunctionButton";
-import {addMessageData} from "../../helpers/functions/serviceFunctions/messageService";
+import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
-import {handleInput} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
-import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions/functions";
+import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
 
 

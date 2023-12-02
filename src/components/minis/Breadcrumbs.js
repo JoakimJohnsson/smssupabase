@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 import {Link, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
-import {getNameByTableAndId, getStartYearByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getNameByTableAndId, getStartYearByTableAndId} from "../../services/serviceFunctions";
 
 
 export const Breadcrumbs = ({doIgnoreName, bcName}) => {

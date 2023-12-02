@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useCommonFormStates} from "../../helpers/customHooks/useCommonFormStates";
 import topicData from "../../helpers/valueLists/topics.json";
-import {getDataName, getIssueName} from "../../helpers/functions/functions";
+import {getDataName, getIssueName} from "../../helpers/functions";
 import {AddUserMessage} from "./AddUserMessage";
 import {AddGlobalMessage} from "./AddGlobalMessage";
 

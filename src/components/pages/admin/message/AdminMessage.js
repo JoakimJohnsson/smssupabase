@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, MESSAGE_STATUS_TEXT_GLOBAL, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {MessageIcons} from "../../../message/MessageIcons";
 import {FriendlyDate} from "../../../minis/FriendlyDate";

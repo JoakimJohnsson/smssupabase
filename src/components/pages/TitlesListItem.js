@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {Link} from "react-router-dom";
 import {TitleTool} from "../lists/TitleTool";
 import formatData from "../../helpers/valueLists/formats.json";
-import {getDataName} from "../../helpers/functions/functions";
+import {getDataName} from "../../helpers/functions";
 
 
 export const TitlesListItem = ({title}) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
-import {hasImage} from "../../../helpers/functions/functions";
+import {hasImage} from "../../../helpers/functions";
 
 
 export const IssueLinkCard = ({issue, index}) => {

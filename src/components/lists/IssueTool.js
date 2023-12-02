@@ -4,7 +4,7 @@ import {Icon} from "../icons";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useAppContext} from "../../context/AppContext";
-import {handleCollectingIssue} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleCollectingIssue} from "../../services/serviceFunctions";
 
 
 export const IssueTool = ({issue, displayName, fetchTitleProgress = false, isCollectingIssue, setIsCollectingIssue}) => {

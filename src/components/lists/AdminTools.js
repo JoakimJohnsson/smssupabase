@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {handleDelete} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleDelete} from "../../services/serviceFunctions";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faPenCircle, faCircleXmark} from "@fortawesome/pro-duotone-svg-icons";

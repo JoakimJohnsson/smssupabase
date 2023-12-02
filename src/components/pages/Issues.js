@@ -3,8 +3,8 @@ import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
-import {getAllIssuesWithTitleAndPublisher} from "../../helpers/functions/serviceFunctions/issueService";
-import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions/functions";
+import {getAllIssuesWithTitleAndPublisher} from "../../services/issueService";
+import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 
