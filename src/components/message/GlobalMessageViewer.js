@@ -35,7 +35,7 @@ export const GlobalMessageViewer = () => {
                                     <FriendlyDate dateString={m.created_at}/>
                                 </div>
                                 <h3>{m.title}</h3>
-                                {m.text}
+                                <p className={"text-parsed"}>{m.text}</p>
                             </div>
                     )
                 })

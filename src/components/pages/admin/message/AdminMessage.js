@@ -49,7 +49,7 @@ export const AdminMessage = () => {
                                         <MessageIcons message={message} size={"fa-3x"}/>
                                     </div>
                                     <p className={"mb-3 lead"}>{TEXTS.MESSAGE_WAS_SENT} <FriendlyDate dateString={message.created_at}/>.</p>
-                                    <p className={"mb-5"}>{message.text}</p>
+                                    <p className={"mb-5 text-parsed"}>{message.text}</p>
                                     <MessageStatusChanger message={message} fetchMessageData={fetchMessageData}/>
                                     {
                                         message.origin_table && message.origin_id &&
