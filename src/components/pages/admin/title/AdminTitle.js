@@ -9,7 +9,7 @@ import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherByTitleId
 } from "../../../../services/issueService";
-import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {BUCKETS, CLASSES, CONFIG, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
@@ -109,13 +109,13 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingGI(false);
                     fetchTitleAndIssuesData();
-                }, 1000);
+                }, CONFIG.GENERATE_ISSUES_TIMEOUT);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_UPLOAD_MISSING_INFO});
             setTimeout(() => {
                 setLoadingGI(false);
-            }, 1000);
+            }, CONFIG.GENERATE_ISSUES_TIMEOUT);
         }
     }
 
@@ -126,13 +126,13 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingDI(false);
                     fetchTitleAndIssuesData();
-                }, 1000);
+                }, CONFIG.DELETE_ISSUES_TIMEOUT);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_DELETE});
             setTimeout(() => {
                 setLoadingDI(false);
-            }, 1000);
+            }, CONFIG.DELETE_ISSUES_TIMEOUT);
         }
     }
 

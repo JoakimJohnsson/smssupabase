@@ -11,7 +11,7 @@ export const MessagesSection = () => {
     const [limitedMessagesData, setLimitedMessagesData] = useState(null);
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn(TABLES.MESSAGES, "created_at", setLimitedMessagesData, 5, false).then()
+        getRowsByTableWithLimitAndOrderByColumn(TABLES.MESSAGES, "created_at", setLimitedMessagesData, 5, true).then()
     }, [])
 
     return (
@@ -22,7 +22,15 @@ export const MessagesSection = () => {
                     limitedMessagesData ?
                         <>
                             <p>{TEXTS.SHOWING_LATEST_MESSAGES}</p>
-                            <MessagesList messagesData={limitedMessagesData} setMessagesData={setLimitedMessagesData} showAdminInfo={true}/>
+                            <h3>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h3>
+                            <MessagesList messagesData={limitedMessagesData}
+                                          setMessagesData={setLimitedMessagesData}
+                                          showAdminInfo={true}/>
+                            <h3>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h3>
+                            <MessagesList messagesData={limitedMessagesData}
+                                          setMessagesData={setLimitedMessagesData}
+                                          showAdminInfo={true}
+                                          showGlobal/>
                         </>
                         :
                         <NoDataAvailable/>

@@ -4,7 +4,7 @@ import {useAppContext} from "../../../context/AppContext";
 import {handleCollectingIssue} from "../../../services/serviceFunctions";
 import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
@@ -24,7 +24,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
         if (fetchTitleProgress) {
             setTimeout(() => {
                 fetchTitleProgress();
-            }, 200);
+            }, CONFIG.FETCH_TITLE_PROGRESS_TIMEOUT);
         }
     }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../services/serviceFunctions";
@@ -17,10 +17,10 @@ export const AddGlobalMessage = ({
                                      resetAddMessageForm,
                                      formInputClass,
                                      title,
-                                     fetchMessages
+                                     fetchAdminMessages
                                  }) => {
 
-    const {user, setInformationMessage} = useAppContext();
+    const {user, setInformationMessage, fetchMessages} = useAppContext();
 
     return (
         <>
@@ -56,7 +56,9 @@ export const AddGlobalMessage = ({
                 onChange={(e) => handleInput(e, setText)}
             />
             <button className={"btn btn-primary sms-btn"}
-                    onClick={() => addMessageData({
+                    onClick={
+                () => {
+                    addMessageData({
                         origin_id: null,
                         origin_table: null,
                         is_global: 1,
@@ -68,8 +70,14 @@ export const AddGlobalMessage = ({
                         text: trimInputString(text)
                     }, setInformationMessage).then(() => {
                         resetAddMessageForm();
-                        fetchMessages();
-                    })}
+                        fetchAdminMessages();
+                        // Update messages after a while.
+                        setTimeout(() => {
+                            fetchMessages();
+                        }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
+                    });
+                }
+            }
                     disabled={title === "" || text === "" || topic_id === ""}
             >
                 {LABELS_AND_HEADINGS.SEND}

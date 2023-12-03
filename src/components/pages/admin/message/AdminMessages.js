@@ -18,13 +18,13 @@ export const AdminMessages = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    const fetchMessages = useCallback(() => {
+    const fetchAdminMessages = useCallback(() => {
         getRowsByTable(TABLES.MESSAGES, setMessagesData).then(() => setLoading(false));
     }, [])
 
     useEffect(() => {
-        fetchMessages();
-    }, [fetchMessages])
+        fetchAdminMessages();
+    }, [fetchAdminMessages])
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -56,7 +56,6 @@ export const AdminMessages = () => {
                                         <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showGlobal={false}/>
                                     }
                                     <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h2>
-                                    <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_3}</p>
                                     {
                                         messagesData &&
                                         <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showGlobal={true}/>
@@ -70,7 +69,7 @@ export const AdminMessages = () => {
                 <div className={"sms-page-col--full mb-5"}>
                     <div className={"sms-section--light"}>
                         <h2 id={"global-message-section"}>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
-                        <AddMessage isGlobalMessage={true} fetchMessages={fetchMessages}/>
+                        <AddMessage isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ export const GlobalMessageViewer = () => {
             {
                 activeGlobalMessages.map((m) => {
                     return (
-                            <div className={"global-message"}>
+                            <div key={m.id} className={"global-message"}>
                                 <div className={"d-flex align-items-center mb-2"}>
                                     {
                                         m.topic_id &&

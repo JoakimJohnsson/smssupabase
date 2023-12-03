@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {MESSAGES, TABLES} from "../helpers/constants";
+import {CONFIG, MESSAGES, TABLES} from "../helpers/constants";
 import {getRowByTableAndId} from "../services/serviceFunctions";
 import {getAllActiveGlobalMessages, getAllTodoMessages, getAllUnreadMessages} from "../services/messageService";
 
@@ -67,7 +67,7 @@ export function AppContextProvider({children}) {
         if (msg && oldMsg) {
             setTimeout(() => {
                 _setInformationMessage(msg)
-            }, 150);
+            }, CONFIG.SET_INFORMATION_MESSAGE_TIMEOUT);
         } else if (msg) {
             _setInformationMessage(msg);
         }
@@ -78,6 +78,7 @@ export function AppContextProvider({children}) {
     }, [fetchMessages]);
 
     useEffect(() => {
+        setShowUserNotification(false);
         if (activeGlobalMessages && activeGlobalMessages.length > 0) {
             setShowUserNotification(true);
         } else {
@@ -86,6 +87,7 @@ export function AppContextProvider({children}) {
     }, [activeGlobalMessages]);
 
     useEffect(() => {
+        setShowAdminNotification(false);
         if (unreadMessages && unreadMessages.length > 0) {
             setShowAdminNotification(true);
         } else {
@@ -94,6 +96,7 @@ export function AppContextProvider({children}) {
     }, [unreadMessages]);
 
     useEffect(() => {
+        setShowAdminTodoNotification(false);
         if (todoMessages && todoMessages.length > 0) {
             setShowAdminTodoNotification(true);
         } else {

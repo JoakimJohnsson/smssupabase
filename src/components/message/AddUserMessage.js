@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FunctionButton} from "../minis/FunctionButton";
 import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
@@ -26,7 +26,7 @@ export const AddUserMessage = ({
                             }) => {
 
     const [open, setOpen] = useState(false);
-    const {user, setInformationMessage} = useAppContext();
+    const {user, setInformationMessage, fetchMessages} = useAppContext();
 
     return (
         <>
@@ -84,7 +84,9 @@ export const AddUserMessage = ({
                         onChange={(e) => handleInput(e, setText)}
                     />
                     <button className={"btn btn-primary sms-btn"}
-                            onClick={() => addMessageData({
+                            onClick={
+                        () => {
+                            addMessageData({
                                 origin_id: originObject.id,
                                 origin_table: originTable,
                                 is_global: 0,
@@ -94,7 +96,15 @@ export const AddUserMessage = ({
                                 topic_id: topic_id,
                                 title: trimInputString(title),
                                 text: trimInputString(text)
-                            }, setInformationMessage).then(() => resetAddMessageForm())}
+                            }, setInformationMessage).then(() => {
+                                resetAddMessageForm();
+                                // Update after a while.
+                                setTimeout(() => {
+                                    fetchMessages();
+                                }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
+                            });
+                        }
+                    }
                             disabled={title === "" || text === "" || topic_id === ""}
                     >
                         {LABELS_AND_HEADINGS.SEND}

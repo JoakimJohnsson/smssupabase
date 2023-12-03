@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {handleDelete} from "../../services/serviceFunctions";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
@@ -46,7 +46,12 @@ export const AdminTools = ({item, name, displayName, data, setData, route, table
                     className={"btn text-danger sms-tool-btn"}
                     aria-label={deleteText}
                     onClick={() => {
-                        handleDelete(table, item.id, name, setData, data, item.image_filename, imageBucket, setInformationMessage).then(() => fetchMessages());
+                        handleDelete(table, item.id, name, setData, data, item.image_filename, imageBucket, setInformationMessage).then(() => {
+                            // Update messages after a while.
+                            setTimeout(() => {
+                                fetchMessages();
+                            }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
+                        });
                     }}>
                     <Icon icon={faCircleXmark} className={"fa-xl"}/>
                 </button>

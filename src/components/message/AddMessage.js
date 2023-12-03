@@ -7,7 +7,7 @@ import {AddUserMessage} from "./AddUserMessage";
 import {AddGlobalMessage} from "./AddGlobalMessage";
 
 
-export const AddMessage = ({originObject, originTable, isGlobalMessage = false, fetchMessages = false}) => {
+export const AddMessage = ({originObject, originTable, isGlobalMessage = false, fetchAdminMessages = false}) => {
 
     const [formInputClass, setFormInputClass] = useCommonFormStates();
     const [topic_id, setTopic_id] = useState("");
@@ -80,7 +80,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
                 title={title}
                 text={text}
                 setText={setText}
-                fetchMessages={fetchMessages}
+                fetchAdminMessages={fetchAdminMessages}
             />
             :
             <AddUserMessage

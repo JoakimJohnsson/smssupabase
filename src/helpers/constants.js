@@ -359,14 +359,13 @@ export const TEXTS = {
     MESSAGE_LINK_SENDER: "Länk till anmälare",
     MESSAGES_ADMIN_TEXT_1: "Här kan du hantera meddelanden.",
     MESSAGES_ADMIN_TEXT_2: "Du kan bland annat sända ut globala meddelanden som visas för alla användare. Samt administrera inkomna meddelanden.",
-    MESSAGES_ADMIN_TEXT_3: "Vänligen inaktivera meddelanden innan borttagning.",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet.",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt ändra dina inloggningsuppgifter.",
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SETTINGS_CREDENTIALS: "Ändra din e-postadress (användarnamn) eller lösenord här.",
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
-    SHOWING_LATEST_MESSAGES: "Visar senast inkomna meddelanden.",
+    SHOWING_LATEST_MESSAGES: "Visar senast inkomna meddelanden från användare, samt eventuella globala meddelanden från Admin.",
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
     TOTAL_TITLE_COUNT: "Totalt antal inlagda titlar:",
@@ -508,4 +507,12 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 
 export const STATISTICS = {
     TOTAL_TITLES_COUNT: 152
+}
+
+export const CONFIG = {
+    MESSAGE_UPDATE_TIMEOUT: 2000,
+    FETCH_TITLE_PROGRESS_TIMEOUT: 200,
+    SET_INFORMATION_MESSAGE_TIMEOUT: 150,
+    GENERATE_ISSUES_TIMEOUT: 1000,
+    DELETE_ISSUES_TIMEOUT: 1000
 }
