@@ -47,7 +47,7 @@ export const getAllActiveGlobalMessages = async (setData) => {
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -66,7 +66,7 @@ export const getAllUnreadMessages = async (setData) => {
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -85,7 +85,7 @@ export const getAllTodoMessages = async (setData) => {
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);

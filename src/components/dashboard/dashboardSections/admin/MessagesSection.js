@@ -4,15 +4,25 @@ import {Link} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {MessagesList} from "../../../message/MessagesList";
+import {filterGlobalMessage} from "../../../../helpers/functions";
 
 
 export const MessagesSection = () => {
 
     const [limitedMessagesData, setLimitedMessagesData] = useState(null);
+    const [messages, setMessages] = useState(null);
+    const [globalMessages, setGlobalMessages] = useState(null);
 
     useEffect(() => {
         getRowsByTableWithLimitAndOrderByColumn(TABLES.MESSAGES, "created_at", setLimitedMessagesData, 5, true).then()
     }, [])
+
+    useEffect(() => {
+        if (limitedMessagesData) {
+            setMessages(limitedMessagesData.filter((m) => filterGlobalMessage(m, false)));
+            setGlobalMessages(limitedMessagesData.filter((m) => filterGlobalMessage(m, true)));
+        }
+    }, [limitedMessagesData]);
 
     return (
         <div className={"sms-page-col--full mb-5 "}>
@@ -23,14 +33,9 @@ export const MessagesSection = () => {
                         <>
                             <p>{TEXTS.SHOWING_LATEST_MESSAGES}</p>
                             <h3>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h3>
-                            <MessagesList messagesData={limitedMessagesData}
-                                          setMessagesData={setLimitedMessagesData}
-                                          showAdminInfo={true}/>
+                            <MessagesList messagesData={messages} setMessagesData={setLimitedMessagesData}/>
                             <h3>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h3>
-                            <MessagesList messagesData={limitedMessagesData}
-                                          setMessagesData={setLimitedMessagesData}
-                                          showAdminInfo={true}
-                                          showGlobal/>
+                            <MessagesList messagesData={globalMessages} setMessagesData={setLimitedMessagesData}/>
                         </>
                         :
                         <NoDataAvailable/>

@@ -280,6 +280,26 @@ export const removeIssueFromWanted = async (userId, issueId) => {
     }
 }
 
+export const getWantedIssuesForUser = async (userId, setData) => {
+    if (userId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("*, users!users_issues_wanted!inner (id), titles (*)")
+                .eq("users.id", userId)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data && data.length > 0) {
+                console.log("data getWantedIssuesForUser", data);
+                setData(data);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
 // UPGRADE
 
 export const addIssueToUpgrade = async (userId, issueId) => {
@@ -303,5 +323,25 @@ export const removeIssueFromUpgrade = async (userId, issueId) => {
             .match({user_id: userId, issue_id: issueId})
     } catch (error) {
         console.error(error);
+    }
+}
+
+export const getUpgradeIssuesForUser = async (userId, setData) => {
+    if (userId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("*, users!users_issues_upgrade!inner (id), titles (*)")
+                .eq("users.id", userId)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data && data.length > 0) {
+                console.log("data getUpgradeIssuesForUser", data);
+                setData(data);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 }

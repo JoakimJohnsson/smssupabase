@@ -31,7 +31,7 @@ export const getRowsByTableForeignKeyColumnAndForeignKeyId = async (table, keyCo
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -169,7 +169,7 @@ export const getRowsByTableWithLimitAndOrderByColumn = async (table, column, set
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);

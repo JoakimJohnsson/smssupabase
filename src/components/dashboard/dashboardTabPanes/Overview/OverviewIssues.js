@@ -2,12 +2,14 @@ import React, {useState, useEffect} from "react";
 import {LABELS_AND_HEADINGS, PANES, TABLES} from "../../../../helpers/constants";
 import {getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
+import {useAppContext} from "../../../../context/AppContext";
 
 
-export const OverviewIssues = ({titlesData, user}) => {
+export const OverviewIssues = ({titlesData}) => {
 
     const [userIssuesCount, setUserIssuesCount] = useState(null);
     const [totalIssuesCountForCollection, setTotalIssuesCountForCollection] = useState(null);
+    const {user} = useAppContext();
 
     useEffect(() => {
         if (user) {

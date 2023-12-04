@@ -125,7 +125,7 @@ export const getAllMarvelklubbenIssues = async (setData) => {
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -141,7 +141,7 @@ export const getAllIssuesWithTitleAndPublisher = async (setData) => {
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -159,7 +159,7 @@ export const getAllIssuesWithTitleAndPublisherWithLimit = async (setData, limit,
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -176,7 +176,7 @@ export const getIssuesWithTitleAndPublisherByTitleId = async (setData, id) => {
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -192,7 +192,7 @@ export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, id) =
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);

@@ -5,26 +5,36 @@ import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
-import {handleBacking} from "../../../../helpers/functions";
+import {filterGlobalMessage, handleBacking} from "../../../../helpers/functions";
 import {MessagesList} from "../../../message/MessagesList";
 import {AddMessage} from "../../../message/AddMessage";
 import {GlobalIconDuoTone} from "../../../icons-duotone";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 
 
 export const AdminMessages = () => {
 
     const [messagesData, setMessagesData] = useState(null);
+    const [messages, setMessages] = useState(null);
+    const [globalMessages, setGlobalMessages] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     const fetchAdminMessages = useCallback(() => {
         getRowsByTable(TABLES.MESSAGES, setMessagesData).then(() => setLoading(false));
-    }, [])
+    }, []);
 
     useEffect(() => {
         fetchAdminMessages();
-    }, [fetchAdminMessages])
+    }, [fetchAdminMessages]);
+
+    useEffect(() => {
+        if (messagesData) {
+            setMessages(messagesData.filter((m) => filterGlobalMessage(m, false)));
+            setGlobalMessages(messagesData.filter((m) => filterGlobalMessage(m, true)));
+        }
+    }, [messagesData]);
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -42,7 +52,6 @@ export const AdminMessages = () => {
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-page-col--full mb-5"}>
                     <div className={"sms-section--light"}>
-
                         {
                             loading ?
                                 <div className={"row row-padding--main"}>
@@ -52,13 +61,17 @@ export const AdminMessages = () => {
                                 <>
                                     <h2>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h2>
                                     {
-                                        messagesData &&
-                                        <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showGlobal={false}/>
+                                        messages ?
+                                            <MessagesList messagesData={messages} setMessagesData={setMessagesData}/>
+                                            :
+                                            <NoDataAvailable/>
                                     }
                                     <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h2>
                                     {
-                                        messagesData &&
-                                        <MessagesList messagesData={messagesData} setMessagesData={setMessagesData} showGlobal={true}/>
+                                        globalMessages ?
+                                            <MessagesList messagesData={globalMessages} setMessagesData={setMessagesData}/>
+                                            :
+                                            <NoDataAvailable/>
                                     }
                                     <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                                 label={LABELS_AND_HEADINGS.BACK}/>

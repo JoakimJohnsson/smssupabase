@@ -3,23 +3,18 @@ import {Link} from "react-router-dom";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {ListToolBox} from "../lists/ListToolBox";
 import {ROUTES, TABLES} from "../../helpers/constants";
-import {filterGlobalMessage, sortByDateCreatedDesc} from "../../helpers/functions";
+import {sortByDateCreatedDesc} from "../../helpers/functions";
 import {MessageIcons} from "./MessageIcons";
 import {CalendarDate} from "../minis/CalendarDate";
 
 
-export const MessagesList = ({messagesData, setMessagesData, showGlobal}) => {
+export const MessagesList = ({messagesData, setMessagesData}) => {
 
     return messagesData && (
         <ul className={"sms-list--with-tools mb-4"}>
             {
                 messagesData.length ?
                     (messagesData
-                            .filter((m) => {
-                                return (
-                                    filterGlobalMessage(m, showGlobal)
-                                )
-                            })
                             .sort((a, b) => sortByDateCreatedDesc(a, b)).map((m, index) =>
                                 <li key={index} className={"list-group-item px-0"}>
                                     <div className={"row"}>
