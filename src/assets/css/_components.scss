@@ -59,7 +59,7 @@
 
 // Dashboard
 .sms-dashboard-col {
-  @extend .col-12, .col-xl-6, .col-x-padding--xs-only;
+  @extend .col-12, .col-lg-6, .col-xxl-4, .col-x-padding--xs-only;
   margin-bottom: $grid-gutter-width;
 
   .sms-section--light {
@@ -139,7 +139,10 @@ input[type="checkbox"] + label {
 }
 
 .sms-page-col--full {
-  @extend .col-12, .col-lg-10, .col-x-padding--xs-only;
+  @extend .col-12, .col-lg-10, .col-xxl-8, .col-x-padding--xs-only;
+  .sms-section--light {
+    @extend .h-100;
+  }
 }
 
 // Breadcrumb

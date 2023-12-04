@@ -66,7 +66,7 @@ export const AdminMessages = () => {
                         }
                     </div>
                 </div>
-                <div className={"sms-page-col--full mb-5"}>
+                <div className={"sms-dashboard-col mb-5"}>
                     <div className={"sms-section--light"}>
                         <h2 id={"global-message-section"}>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
                         <AddMessage isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>

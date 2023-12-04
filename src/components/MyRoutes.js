@@ -19,7 +19,6 @@ import {AdminTitle} from "./pages/admin/title/AdminTitle";
 import {AdminTitles} from "./pages/admin/title/AdminTitles";
 import {AdminTitleAdd} from "./pages/admin/title/AdminTitleAdd";
 import {AdminIssue} from "./pages/admin/issue/AdminIssue";
-import {AdminIssues} from "./pages/admin/issue/AdminIssues";
 import {Issue} from "./pages/Issue";
 import {Issues} from "./pages/Issues";
 import {Publisher} from "./pages/Publisher";
@@ -79,7 +78,6 @@ export const MyRoutes = () => {
                        element={(user && user.id && profile.role >= 1) ? <AdminTitleAdd/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Issue */}
                 <Route path={ROUTES.ADMIN.ISSUE_ID} element={(user && user.id && profile.role >= 1) ? <AdminIssue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                <Route path={ROUTES.ADMIN.ISSUES} element={(user && user.id && profile.role >= 1) ? <AdminIssues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Users */}
                 <Route path={ROUTES.ADMIN.USERS} element={(user && user.id && profile.role >= 1) ? <AdminUsers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Messages */}

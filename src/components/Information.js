@@ -24,7 +24,10 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Det ska vara enkelt att rapportera felaktigheter, buggar och förbättringsförslag till
                         admin.
                     </li>
-                    <li className={"list-group-item px-0"}>Admin ska kunna skicka ut globala meddelanden om releaser, nyheter och information.</li>
+                    <li className={"list-group-item px-0"}>Admin ska kunna skicka ut globala meddelanden om t.ex. releaser, nyheter och information.</li>
+                    <li className={"list-group-item px-0"}>Funktion för att kunna markera publikationer som efterlysta.</li>
+                    <li className={"list-group-item px-0"}>Funktion för att kunna markera publikationer som behöver uppgraderas.</li>
+                    <li className={"list-group-item px-0"}>Visa information om efterlysning och uppgradering på profilsida och översikt.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v0.9.5 - 2023-10-27</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
@@ -36,12 +39,6 @@ const Information = () => {
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>
-                        Funktion för att markera publikationer som extra eftersökta. Visas på profilsida och i översikt.
-                    </li>
-                    <li className={"list-group-item px-0"}>
-                        Funktion för att markera publikationer som behöver uppgraderas. Visas på profilsida och i översikt.
-                    </li>
                     <li className={"list-group-item px-0"}>
                         Under utredning - möjlighet att ha flera exemplar av samma publikation.
                     </li>
