@@ -4,6 +4,9 @@ import {useAppContext} from "../../../../context/AppContext";
 import {getTitlesForUser} from "../../../../services/titleService";
 import {OverviewTitles} from "./OverviewTitles";
 import {OverviewIssues} from "./OverviewIssues";
+import {OverviewMissingIssues} from "./OverviewMissingIssues";
+import {OverviewUpgradeIssues} from "./OverviewUpgradeIssues";
+import {OverviewWantedIssues} from "./OverviewWantedIssues";
 
 
 export const OverviewPane = () => {
@@ -21,8 +24,11 @@ export const OverviewPane = () => {
         <>
             <h1>{PANES.OVERVIEW.NAME}</h1>
             <div className={"row"}>
-            <OverviewTitles titlesData={userTitlesData}/>
-            <OverviewIssues titlesData={userTitlesData} user={user}/>
+                <OverviewTitles titlesData={userTitlesData}/>
+                <OverviewIssues titlesData={userTitlesData} user={user}/>
+                <OverviewWantedIssues />
+                <OverviewUpgradeIssues />
+                <OverviewMissingIssues />
             </div>
         </>
     )
