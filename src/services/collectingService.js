@@ -291,7 +291,6 @@ export const getWantedIssuesForUser = async (userId, setData) => {
                 console.error(error);
             }
             if (data && data.length > 0) {
-                console.log("data getWantedIssuesForUser", data);
                 setData(data);
             }
         } catch (error) {
@@ -337,7 +336,6 @@ export const getUpgradeIssuesForUser = async (userId, setData) => {
                 console.error(error);
             }
             if (data && data.length > 0) {
-                console.log("data getUpgradeIssuesForUser", data);
                 setData(data);
             }
         } catch (error) {
