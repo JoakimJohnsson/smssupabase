@@ -14,14 +14,9 @@ import {AddAdminButton} from "../lists/users/AddAdminButton";
 import {RemoveAdminButton} from "../lists/users/RemoveAdminButton";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
-import {getTitlesForUser} from "../../services/titleService";
 import {CustomSpinner} from "../minis/CustomSpinner";
-import {TitlesList} from "../lists/titles/TitlesList";
 import {getWantedIssuesForUser} from "../../services/collectingService";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
-import {IssuesListGrid} from "../lists/issues/IssuesListGrid";
-import {IssuesList} from "../lists/issues/IssuesList";
-import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
 
 
 export const User = () => {
@@ -31,13 +26,10 @@ export const User = () => {
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const {profile, setInformationMessage} = useAppContext();
-    const [titlesData, setTitlesData] = useState(null);
     const [wantedIssuesData, setWantedIssuesData] = useState(null);
 
     const fetchUserData = useCallback(() => {
-        getRowByTableAndId(TABLES.PROFILES, setUser, id).then(() => {
-            getTitlesForUser(id, setTitlesData).then(() => setLoading(false));
-        });
+        getRowByTableAndId(TABLES.PROFILES, setUser, id).then(() => setLoading(false));
     }, [id])
 
     useEffect(() => {
@@ -117,7 +109,7 @@ export const User = () => {
                                                     {LABELS_AND_HEADINGS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                                 :
-                                                <>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</>
+                                                <p>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</p>
 
                                         }
                                     </p>
@@ -135,7 +127,7 @@ export const User = () => {
                                                                 <IssueLinkCard key={issue.id} issue={issue} index={index}/>
                                                             )
                                                         :
-                                                        <p>{LABELS_AND_HEADINGS.NO_WANTED_ISSUES}</p>
+                                                        <p>{user.firstname} {LABELS_AND_HEADINGS.NO_WANTED_ISSUES_USER}</p>
                                                 }
                                             </ul>
                                     }
