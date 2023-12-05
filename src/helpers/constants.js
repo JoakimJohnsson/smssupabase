@@ -378,6 +378,8 @@ export const TEXTS = {
     TOTAL_ISSUE_COUNT: "Totalt antal inlagda publikationer:",
     LATEST_ISSUES: "Senast inlagda publikationer:",
     SHOWING_LATEST_USERS: "Visar de senast uppdaterade användarna från databasen.",
+    USERS_COUNT_TEXT_1: "Totalt finns det ",
+    USERS_COUNT_TEXT_2: "användare.",
     TOTAL_PUBLISHED: "Totalt gavs det ut",
     TOTAL_PUBLISHED_PUBLICATION: "publikation.",
     TOTAL_PUBLISHED_PUBLICATIONS: "publikationer.",
