@@ -486,7 +486,7 @@ input[type="checkbox"] + label {
 .global-message-viewer {
   @extend .mt-5;
   .global-message {
-    @extend .bg-white, .text-black, .p-3, .rounded-3;
+    @extend .bg-dog, .p-3, .rounded-3;
     &:not(:last-of-type) {
       @extend .mb-5;
     }
