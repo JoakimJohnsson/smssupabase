@@ -5,7 +5,7 @@ import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {getAnonDisplayName, getUserName, prepareUrl} from "../../helpers/functions";
+import {getAnonDisplayName, getUserName, prepareUrl, sortByName} from "../../helpers/functions";
 import marvel from "../../assets/images/publishers/marvel.gif";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {useAppContext} from "../../context/AppContext";
@@ -17,6 +17,11 @@ import {Icon} from "../icons";
 import {getTitlesForUser} from "../../services/titleService";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
+import {getWantedIssuesForUser} from "../../services/collectingService";
+import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
+import {IssuesListGrid} from "../lists/issues/IssuesListGrid";
+import {IssuesList} from "../lists/issues/IssuesList";
+import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
 
 
 export const User = () => {
@@ -27,6 +32,7 @@ export const User = () => {
     const {id} = useParams();
     const {profile, setInformationMessage} = useAppContext();
     const [titlesData, setTitlesData] = useState(null);
+    const [wantedIssuesData, setWantedIssuesData] = useState(null);
 
     const fetchUserData = useCallback(() => {
         getRowByTableAndId(TABLES.PROFILES, setUser, id).then(() => {
@@ -51,6 +57,12 @@ export const User = () => {
             doSetLoading(false);
         });
     }
+
+    useEffect(() => {
+        if (user && user.id) {
+            getWantedIssuesForUser(user.id, setWantedIssuesData).then(() => setLoading(false));
+        }
+    }, [user]);
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -109,14 +121,23 @@ export const User = () => {
 
                                         }
                                     </p>
-                                    <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
+                                    <h2>{LABELS_AND_HEADINGS.WANTED_ISSUES}</h2>
                                     {
                                         loading ?
                                             <CustomSpinner size={"4x"}/>
                                             :
-                                            <div className={"sms-section--light"}>
-                                                <TitlesList titlesData={titlesData} showAdminInfo={false}/>
-                                            </div>
+                                            <ul className={"sms-list--with-cards"}>
+                                                {
+                                                    wantedIssuesData ?
+                                                        wantedIssuesData
+                                                            .sort((a, b) => sortByName(a.titles, b.titles))
+                                                            .map((issue, index) =>
+                                                                <IssueLinkCard key={issue.id} issue={issue} index={index}/>
+                                                            )
+                                                        :
+                                                        <p>{LABELS_AND_HEADINGS.NO_WANTED_ISSUES}</p>
+                                                }
+                                            </ul>
                                     }
                                 </div>
                             }
