@@ -11,7 +11,7 @@ export const UsersSection = () => {
     const [limitedUsersData, setLimitedUsersData] = useState(null);
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setLimitedUsersData, 5, false).then();
+        getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "updated_at", setLimitedUsersData, 5, true).then();
     }, [])
 
     return (
