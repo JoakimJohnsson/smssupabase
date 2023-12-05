@@ -78,12 +78,9 @@
 }
 
 .sms-section--light {
-  @extend .p-0, .p-sm-4, .p-md-5;
+  @extend .p-4, .p-md-5;
   border-radius: $border-radius-sm;
-  background-color: transparent;
-  @include media-breakpoint-up(sm) {
-    background-color: $color-bg-horse;
-  }
+  background-color: $color-bg-horse;
   .form-control, .form-select {
     border-bottom: 3px solid $gray-600;
     border-radius: 0;
