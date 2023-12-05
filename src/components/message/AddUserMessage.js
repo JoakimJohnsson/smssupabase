@@ -36,7 +36,7 @@ export const AddUserMessage = ({
                 onClick={() => setOpen(!open)}
                 label={open ? LABELS_AND_HEADINGS.MESSAGES_CLOSE : LABELS_AND_HEADINGS.MESSAGES_SHOW}
                 id={"message-form-toggler"}
-                showLabel={false}
+                showLabel={true}
             />
             {
                 open &&
