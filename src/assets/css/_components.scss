@@ -484,7 +484,7 @@ input[type="checkbox"] + label {
 
 // Global message viewer
 .global-message-viewer {
-  @extend .sms-section--light, .mt-5;
+  @extend .mt-5;
   .global-message {
     @extend .bg-white, .text-black, .p-3, .rounded-3;
     &:not(:last-of-type) {

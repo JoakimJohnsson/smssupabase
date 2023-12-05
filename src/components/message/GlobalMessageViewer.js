@@ -22,7 +22,7 @@ export const GlobalMessageViewer = () => {
 
     return activeGlobalMessages && !!activeGlobalMessages.length && (
         <div className={"global-message-viewer"}>
-            <h2>{LABELS_AND_HEADINGS.NEWS}</h2>
+            <h2 className={"mb-3"}>{LABELS_AND_HEADINGS.MESSAGES_FROM_ADMIN}</h2>
             {
                 activeGlobalMessages.map((m) => {
                     return (

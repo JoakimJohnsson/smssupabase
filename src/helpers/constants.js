@@ -234,6 +234,7 @@ export const LABELS_AND_HEADINGS = {
     MESSAGES_GLOBAL: "Globala meddelanden",
     MESSAGES_GLOBAL_SEND: "Skicka globalt meddelande",
     MESSAGES_SHOW: "Meddelande",
+    MESSAGES_FROM_ADMIN: "Meddelanden från Admin",
     MESSAGES_CLOSE: "Stäng meddelande",
     MESSAGES_MARK_AS_READ: "Markera som läst",
     MESSAGES_MARK_AS_UNREAD: "Markera som oläst",
