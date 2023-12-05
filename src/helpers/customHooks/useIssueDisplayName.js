@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {getIssueName} from "../functions/functions";
+import {getIssueName} from "../functions";
 
 
 export const useIssueDisplayName = (issue) => {

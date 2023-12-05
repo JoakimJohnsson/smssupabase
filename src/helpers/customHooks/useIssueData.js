@@ -1,5 +1,5 @@
 import {useState, useCallback, useEffect} from "react";
-import {getIssueDataWithPublisherAndTitle} from "../functions/serviceFunctions/serviceFunctions";
+import {getIssueDataWithPublisherAndTitle} from "../../services/serviceFunctions";
 
 
 export const useIssueData = (id, withFetchAndSetIssue = false) => {

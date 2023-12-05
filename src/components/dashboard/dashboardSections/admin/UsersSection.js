@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
-import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {UsersList} from "../../../lists/users/UsersList";
 import {Link} from "react-router-dom";
@@ -9,10 +9,15 @@ import {Link} from "react-router-dom";
 export const UsersSection = () => {
 
     const [limitedUsersData, setLimitedUsersData] = useState(null);
+    const [totalProfiles, setTotalProfiles] = useState(null);
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "lastname", setLimitedUsersData, 5, false).then();
+        getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "updated_at", setLimitedUsersData, 5, true).then();
     }, [])
+
+    useEffect(() => {
+        getCountByTable(TABLES.PROFILES, setTotalProfiles).then();
+    }, []);
 
     return (
         <div className={"sms-dashboard-col"}>
@@ -22,6 +27,7 @@ export const UsersSection = () => {
                     limitedUsersData ?
                         <>
                             <p>{TEXTS.SHOWING_LATEST_USERS}</p>
+                            <p>{TEXTS.USERS_COUNT_TEXT_1} {totalProfiles} {TEXTS.USERS_COUNT_TEXT_2}</p>
                             <UsersList usersData={limitedUsersData} setUsersData={setLimitedUsersData} limited/>
                         </>
                         :

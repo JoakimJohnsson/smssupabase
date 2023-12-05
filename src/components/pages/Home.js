@@ -7,13 +7,14 @@ import Footer from "../Footer";
 import {Icon} from "../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {InformationAlert} from "../minis/InformationAlert";
-import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../services/serviceFunctions";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
-import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueService";
 import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
 import {ProgressBar} from "react-bootstrap";
+import {GlobalMessageViewer} from "../message/GlobalMessageViewer";
 
 
 export const Home = () => {
@@ -81,6 +82,7 @@ export const Home = () => {
                                 admin@svenskamarvelsamlare.se
                             </a>
                         </p>
+                        <GlobalMessageViewer />
                     </div>
                 </div>
                 <div className={"row row-padding--secondary"}>

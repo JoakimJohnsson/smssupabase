@@ -4,19 +4,19 @@ import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
     getRowByTableAndId, getRowsByTable,
     handleInput
-} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+} from "../../../../services/serviceFunctions";
 import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherByTitleId
-} from "../../../../helpers/functions/serviceFunctions/issueFunctions";
-import {BUCKETS, CLASSES, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
+} from "../../../../services/issueService";
+import {BUCKETS, CLASSES, CONFIG, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions/functions";
+import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";
@@ -109,13 +109,13 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingGI(false);
                     fetchTitleAndIssuesData();
-                }, 1000);
+                }, CONFIG.GENERATE_ISSUES_TIMEOUT);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_UPLOAD_MISSING_INFO});
             setTimeout(() => {
                 setLoadingGI(false);
-            }, 1000);
+            }, CONFIG.GENERATE_ISSUES_TIMEOUT);
         }
     }
 
@@ -126,13 +126,13 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingDI(false);
                     fetchTitleAndIssuesData();
-                }, 1000);
+                }, CONFIG.DELETE_ISSUES_TIMEOUT);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_DELETE});
             setTimeout(() => {
                 setLoadingDI(false);
-            }, 1000);
+            }, CONFIG.DELETE_ISSUES_TIMEOUT);
         }
     }
 

@@ -4,7 +4,7 @@ import {
     filterTitlesData,
     hasTrueValue,
     sortByNameAndStartYear
-} from "../../../../helpers/functions/functions";
+} from "../../../../helpers/functions";
 import {TitlesPaneListItem} from "./TitlesPaneListItem";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 

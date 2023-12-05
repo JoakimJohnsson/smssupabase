@@ -1,22 +1,22 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {getRowByTableAndId} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowByTableAndId} from "../../services/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {getAnonDisplayName, getUserName, prepareUrl} from "../../helpers/functions/functions";
+import {getAnonDisplayName, getUserName, prepareUrl, sortByName} from "../../helpers/functions";
 import marvel from "../../assets/images/publishers/marvel.gif";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {useAppContext} from "../../context/AppContext";
-import {showFullInfo, updateProfileRole} from "../../helpers/functions/serviceFunctions/profileFunctions";
+import {showFullInfo, updateProfileRole} from "../../services/profileService";
 import {AddAdminButton} from "../lists/users/AddAdminButton";
 import {RemoveAdminButton} from "../lists/users/RemoveAdminButton";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
-import {getTitlesForUser} from "../../helpers/functions/serviceFunctions/titleFunctions";
 import {CustomSpinner} from "../minis/CustomSpinner";
-import {TitlesList} from "../lists/titles/TitlesList";
+import {getWantedIssuesForUser} from "../../services/collectingService";
+import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 
 
 export const User = () => {
@@ -26,12 +26,10 @@ export const User = () => {
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const {profile, setInformationMessage} = useAppContext();
-    const [titlesData, setTitlesData] = useState(null);
+    const [wantedIssuesData, setWantedIssuesData] = useState(null);
 
     const fetchUserData = useCallback(() => {
-        getRowByTableAndId(TABLES.PROFILES, setUser, id).then(() => {
-            getTitlesForUser(id, setTitlesData).then(() => setLoading(false));
-        });
+        getRowByTableAndId(TABLES.PROFILES, setUser, id).then(() => setLoading(false));
     }, [id])
 
     useEffect(() => {
@@ -51,6 +49,12 @@ export const User = () => {
             doSetLoading(false);
         });
     }
+
+    useEffect(() => {
+        if (user && user.id) {
+            getWantedIssuesForUser(user.id, setWantedIssuesData).then(() => setLoading(false));
+        }
+    }, [user]);
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -105,18 +109,27 @@ export const User = () => {
                                                     {LABELS_AND_HEADINGS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                                 :
-                                                <>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</>
+                                                <p>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</p>
 
                                         }
                                     </p>
-                                    <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
+                                    <h2>{LABELS_AND_HEADINGS.WANTED_ISSUES}</h2>
                                     {
                                         loading ?
                                             <CustomSpinner size={"4x"}/>
                                             :
-                                            <div className={"sms-section--light"}>
-                                                <TitlesList titlesData={titlesData} showAdminInfo={false}/>
-                                            </div>
+                                            <ul className={"sms-list--with-cards"}>
+                                                {
+                                                    wantedIssuesData ?
+                                                        wantedIssuesData
+                                                            .sort((a, b) => sortByName(a.titles, b.titles))
+                                                            .map((issue, index) =>
+                                                                <IssueLinkCard key={issue.id} issue={issue} index={index}/>
+                                                            )
+                                                        :
+                                                        <p>{user.firstname} {LABELS_AND_HEADINGS.NO_WANTED_ISSUES_USER}</p>
+                                                }
+                                            </ul>
                                     }
                                 </div>
                             }

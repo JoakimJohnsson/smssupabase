@@ -2,12 +2,12 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
-import {handleBacking} from "../../../../helpers/functions/functions";
-import {IssuesList} from "../../../lists/issues/IssuesList";
+import {handleBacking, sortByName} from "../../../../helpers/functions";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
-import {getAllIssuesWithTitleAndPublisher} from "../../../../helpers/functions/serviceFunctions/issueFunctions";
+import {getAllIssuesWithTitleAndPublisher} from "../../../../services/issueService";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 
 
 export const AdminIssues = () => {
@@ -30,7 +30,16 @@ export const AdminIssues = () => {
                         loading ?
                             <OverlaySpinner/>
                             :
-                            <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/>
+                            <ul className={"sms-list--with-cards"}>
+
+                                {
+                                    issuesData
+                                        .sort((a, b) => sortByName(a.titles, b.titles))
+                                        .map((issue, index) =>
+                                            <IssueLinkCard key={issue.id} issue={issue} index={index}/>
+                                        )
+                                }
+                            </ul>
                     }
                     <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                 label={LABELS_AND_HEADINGS.BACK}/>

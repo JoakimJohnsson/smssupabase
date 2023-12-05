@@ -1,34 +1,92 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faShieldCat,
-    faShield,
-    faHouse,
-    faFile,
-    faFileLines,
-    faChartLine,
-    faGears,
-    faFiles,
-    faBuildingColumns,
-    faFileImage,
-    faComet,
-    faListTimeline,
-    faLink,
-    faMoneyCheckPen,
-    faRectangleHistoryCirclePlus,
-    faClipboardListCheck,
-    faMagnifyingGlassDollar,
     faArrowDownToArc,
     faArrowRightFromArc,
-    faHeartCirclePlus,
-    faCalendarHeart,
-    faUser,
-    faSend,
-    faUsers,
     faBadge,
-    faKey
+    faBellExclamation,
+    faBomb,
+    faBuildingColumns,
+    faCalendarHeart,
+    faChartLine,
+    faClipboardListCheck,
+    faComet,
+    faEarthAmericas,
+    faEye,
+    faEyeSlash,
+    faFile,
+    faFiles,
+    faFileImage,
+    faFileLines,
+    faGears,
+    faHeartCirclePlus,
+    faHeartCrack,
+    faHouse,
+    faKey,
+    faListTimeline,
+    faLink,
+    faLightbulbOn,
+    faLightbulb,
+    faMosquito,
+    faMagnifyingGlassDollar,
+    faMoneyCheckPen,
+    faRectangleHistoryCirclePlus,
+    faSend,
+    faShield,
+    faShieldCat,
+    faSpider,
+    faThoughtBubble,
+    faTriangleExclamation,
+    faTypewriter,
+    faUser,
+    faUsers
 } from "@fortawesome/pro-regular-svg-icons";
 
+const iconMap = {
+    faArrowDownToArc: faArrowDownToArc,
+    faArrowRightFromArc: faArrowRightFromArc,
+    faBadge: faBadge,
+    faBellExclamation: faBellExclamation,
+    faBomb: faBomb,
+    faBuildingColumns: faBuildingColumns,
+    faCalendarHeart: faCalendarHeart,
+    faChartLine: faChartLine,
+    faClipboardListCheck: faClipboardListCheck,
+    faComet: faComet,
+    faEarthAmericas: faEarthAmericas,
+    faEye: faEye,
+    faEyeSlash: faEyeSlash,
+    faFile: faFile,
+    faFiles: faFiles,
+    faFileImage: faFileImage,
+    faFileLines: faFileLines,
+    faGears: faGears,
+    faHeartCirclePlus: faHeartCirclePlus,
+    faHeartCrack: faHeartCrack,
+    faHouse: faHouse,
+    faKey: faKey,
+    faListTimeline: faListTimeline,
+    faLink: faLink,
+    faLightbulbOn: faLightbulbOn,
+    faLightbulb: faLightbulb,
+    faMosquito: faMosquito,
+    faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faMoneyCheckPen: faMoneyCheckPen,
+    faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
+    faSend: faSend,
+    faShield: faShield,
+    faShieldCat: faShieldCat,
+    faSpider: faSpider,
+    faThoughtBubble: faThoughtBubble,
+    faTriangleExclamation: faTriangleExclamation,
+    faTypewriter: faTypewriter,
+    faUser: faUser,
+    faUsers: faUsers,
+}
+
+export const getIconByName = (iconName) => {
+    return iconMap[iconName] || null;
+}
 
 export const Icon = ({icon, size, className, spin = false}) => {
     return (
@@ -87,6 +145,12 @@ export const DataIcon = ({size, className}) => {
 export const EditIcon = ({size, className}) => {
     return (
         <Icon icon={faMoneyCheckPen} size={size} className={className}/>
+    )
+}
+
+export const GlobalIcon = ({size, className}) => {
+    return (
+        <Icon icon={faEarthAmericas} size={size} className={className}/>
     )
 }
 
@@ -166,6 +230,36 @@ export const SettingsIcon = ({size, className}) => {
 export const StartIcon = ({size, className}) => {
     return (
         <Icon icon={faHouse} size={size} className={className}/>
+    )
+}
+
+export const StatusIconActive = ({size, className}) => {
+    return (
+        <Icon icon={faLightbulbOn} size={size} className={className}/>
+    )
+}
+
+export const StatusIconInactive = ({size, className}) => {
+    return (
+        <Icon icon={faLightbulb} size={size} className={className}/>
+    )
+}
+
+export const StatusIconRead = ({size, className}) => {
+    return (
+        <Icon icon={faEye} size={size} className={className}/>
+    )
+}
+
+export const StatusIconUnRead = ({size, className}) => {
+    return (
+        <Icon icon={faEyeSlash} size={size} className={className}/>
+    )
+}
+
+export const StatusIconTodo = ({size, className}) => {
+    return (
+        <Icon icon={faBellExclamation} size={size} className={className}/>
     )
 }
 

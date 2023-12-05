@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
+import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {getCountByTable, getRowCountByTableAndUserId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getCountByTable, getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {PANES, TABLES} from "../../../../helpers/constants";
 import {Link} from "react-router-dom";
 import CustomProgressBar from "../../../CustomProgressBar";

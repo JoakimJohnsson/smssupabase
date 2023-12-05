@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
-import {getRowsByTable} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowsByTable} from "../../services/serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";

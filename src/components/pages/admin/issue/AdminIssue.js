@@ -4,7 +4,7 @@ import {BUCKETS, FILETYPES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
-import {getIssueName} from "../../../../helpers/functions/functions";
+import {getIssueName} from "../../../../helpers/functions";
 import {IconButton} from "../../../minis/IconButton";
 import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";

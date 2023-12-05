@@ -8,6 +8,12 @@ html {
   }
 }
 
+.text-black {
+  h1, h2, h3, h4, h5, h6, p {
+    color: $black--lighter;
+  }
+}
+
 // Text color
 .text-primary--lighter {
   color: $primary--lighter !important;
@@ -50,15 +56,19 @@ html {
 }
 
 .text-danger--lighter {
-  color: $danger--darker !important;
+  color: $danger--lighter !important;
 }
 
 .text-danger--darker {
-  color: $danger--lighter !important;
+  color: $danger--darker !important;
 }
 
 .text-black--lighter {
   color: $black--lighter !important;
+}
+
+.text-black--lightest {
+  color: $black--lightest !important;
 }
 
 .text-grade-0 {
@@ -144,4 +154,8 @@ html {
 .text-icon-header {
   display: flex;
   align-items: center;
+}
+
+.text-parsed {
+  white-space: pre-wrap;
 }

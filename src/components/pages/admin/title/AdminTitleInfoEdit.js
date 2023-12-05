@@ -1,9 +1,9 @@
 import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
-import {isTrue, printOptions} from "../../../../helpers/functions/functions";
+import {isTrue, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
-import {updateTitleData} from "../../../../helpers/functions/serviceFunctions/titleFunctions";
-import {handleChange} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {updateTitleData} from "../../../../services/titleService";
+import {handleChange} from "../../../../services/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";

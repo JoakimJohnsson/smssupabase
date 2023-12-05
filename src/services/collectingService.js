@@ -1,5 +1,5 @@
-import {supabase} from "../../../supabase/supabaseClient";
-import {TABLES} from "../../constants";
+import {supabase} from "../supabase/supabaseClient";
+import {TABLES} from "../helpers/constants";
 
 
 // TITLE
@@ -68,6 +68,40 @@ export const checkIfIsCollectingIssue = async (userId, issueId, setIsCollectingI
         }
         if (data && data.length > 0) {
             setIsCollectingIssue(true)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const checkIfIsWantingIssue = async (userId, issueId, setIsWantingIssue) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.USERS_ISSUES_WANTED)
+            .select()
+            .match({user_id: userId, issue_id: issueId})
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data && data.length > 0) {
+            setIsWantingIssue(true)
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const checkIfIsUpgradingIssue = async (userId, issueId, setIsUpgradingIssue) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.USERS_ISSUES_UPGRADE)
+            .select()
+            .match({user_id: userId, issue_id: issueId})
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data && data.length > 0) {
+            setIsUpgradingIssue(true)
         }
     } catch (error) {
         console.error(error);
@@ -147,7 +181,7 @@ export const getNoCollectedIssues = async (titleId, userId) => {
         try {
             let {data, error, status} = await supabase
                 .from(TABLES.ISSUES)
-                .select("id, users!inner (id)")
+                .select("id, users!users_issues!inner (id)")
                 .eq("title_id", titleId)
                 .eq("users.id", userId)
             if (error && status !== 406) {
@@ -161,6 +195,8 @@ export const getNoCollectedIssues = async (titleId, userId) => {
         }
     }
 }
+
+// GRADE
 
 export const addGrade = async (userId, issueId) => {
     try {
@@ -215,5 +251,95 @@ export const getGradeByUserIdAndIssueId = async (userId, issueId, setGrade) => {
 
     } catch (error) {
         console.error(error);
+    }
+}
+
+// WANTED
+
+export const addIssueToWanted = async (userId, issueId) => {
+    try {
+        await supabase
+            .from(TABLES.USERS_ISSUES_WANTED)
+            .insert([{
+                user_id: userId,
+                issue_id: issueId,
+            }])
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const removeIssueFromWanted = async (userId, issueId) => {
+    try {
+        await supabase
+            .from(TABLES.USERS_ISSUES_WANTED)
+            .delete()
+            .match({user_id: userId, issue_id: issueId})
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getWantedIssuesForUser = async (userId, setData) => {
+    if (userId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("*, users!users_issues_wanted!inner (id), titles (*)")
+                .eq("users.id", userId)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data && data.length > 0) {
+                setData(data);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
+// UPGRADE
+
+export const addIssueToUpgrade = async (userId, issueId) => {
+    try {
+        await supabase
+            .from(TABLES.USERS_ISSUES_UPGRADE)
+            .insert([{
+                user_id: userId,
+                issue_id: issueId,
+            }])
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const removeIssueFromUpgrade = async (userId, issueId) => {
+    try {
+        await supabase
+            .from(TABLES.USERS_ISSUES_UPGRADE)
+            .delete()
+            .match({user_id: userId, issue_id: issueId})
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getUpgradeIssuesForUser = async (userId, setData) => {
+    if (userId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("*, users!users_issues_upgrade!inner (id), titles (*)")
+                .eq("users.id", userId)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data && data.length > 0) {
+                setData(data);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 }

@@ -4,7 +4,7 @@ import {faTimes, faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons"
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import formatData from "../../helpers/valueLists/formats.json";
-import {isTrue} from "../../helpers/functions/functions";
+import {isTrue} from "../../helpers/functions";
 import FilterButton from "./FilterButton";
 
 
@@ -138,7 +138,7 @@ const FilterFormFormat = ({
                                   setReadyForSearch={setReadyForSearch}/>
                 </div>
             </div>
-            <button className="btn btn-lg btn-primary mb-3 me-2" onClick={() => updateSearchParams()} disabled={!readyForSearch}>
+            <button className="btn btn-lg btn-primary mb-3 me-3" onClick={() => updateSearchParams()} disabled={!readyForSearch}>
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
                 {LABELS_AND_HEADINGS.FIND_TITLES}
             </button>

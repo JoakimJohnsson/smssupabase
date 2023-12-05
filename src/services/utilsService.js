@@ -1,6 +1,6 @@
-import {supabase} from "../../../supabase/supabaseClient";
-import {TABLES} from "../../constants";
-import {getCurrentDate} from "../functions";
+import {supabase} from "../supabase/supabaseClient";
+import {TABLES} from "../helpers/constants";
+import {getCurrentDate} from "../helpers/functions";
 
 export const updateReleaseDate = async (setInformationMessage) => {
     try {

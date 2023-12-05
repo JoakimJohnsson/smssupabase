@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {BUCKETS, FILETYPES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {getRowByTableAndId} from "../../../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";

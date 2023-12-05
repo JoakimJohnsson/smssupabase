@@ -1,6 +1,6 @@
 import React from "react";
 import formatData from "../../helpers/valueLists/formats.json";
-import {getDataName, getDataShade} from "../../helpers/functions/functions";
+import {getDataName, getDataShade} from "../../helpers/functions";
 
 
 export const FormatBadge = ({formatId, customClass, year = null}) => {

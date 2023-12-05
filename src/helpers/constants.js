@@ -99,6 +99,8 @@ export const ROUTES = {
         TITLE_ADD: "/admin/titles/add/",
         TITLE_EDIT_ID: "/admin/titles/:id/edit",
         USERS: "/admin/users/",
+        MESSAGES: "/admin/messages/",
+        MESSAGE_ID: "/admin/messages/:id"
     }
 }
 
@@ -106,6 +108,10 @@ export const LABELS_AND_HEADINGS = {
     ABORT: "Avbryt",
     ADD: "Lägg till",
     ADD_ISSUES: "Lägg till publikationer",
+    ADD_ISSUE_WANTED: "Efterlysning",
+    REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
+    ADD_ISSUE_UPGRADE: "Uppgradering",
+    REMOVE_ISSUE_UPGRADE: "Ta bort uppgradering",
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADD_ISSUE: "Lägg till enstaka ny publikation",
     ADD_PUBLISHER: "Lägg till nytt förlag",
@@ -121,6 +127,7 @@ export const LABELS_AND_HEADINGS = {
     ALL_PUBLISHERS: "Alla förlag",
     ALL_TITLES: "Alla titlar",
     ALL_USERS: "Alla användare",
+    ALL_MESSAGES: "Alla meddelanden",
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     BACK: "Tillbaka",
     BACK_TO: "Tillbaka till",
@@ -198,6 +205,12 @@ export const LABELS_AND_HEADINGS = {
     IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUES: "Publikationer",
+    MISSING_ISSUES: "Saknade publikationer",
+    WANTED_ISSUES: "Efterlysta publikationer",
+    NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
+    NO_WANTED_ISSUES_USER: "har inga efterlysta publikationer.",
+    UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
+    NO_UPGRADE_ISSUES: "Du har inga publikationer i behov av uppgradering.",
     LAST_NAME: "Efternamn",
     LIST_VIEW_GRID_SHOW: "Visa som grid",
     LIST_VIEW_LIST_SHOW: "Visa som lista",
@@ -209,7 +222,26 @@ export const LABELS_AND_HEADINGS = {
     MARVELKLUBBEN_NUMBER: "Marvelklubben nummer",
     MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",
     MENU: "Meny",
+    MESSAGE: "Meddelande",
+    MESSAGE_TITLE: "Rubrik",
+    MESSAGE_TITLE_SUFFIX_FOR: "för",
+    MESSAGE_TITLE_SUFFIX_FOR_TITLE: "för titeln",
+    MESSAGE_USE_THIS_OBJECT: "Bifoga information om detta objekt",
+    ADD_MESSAGE_PLACEHOLDER: "Skriv ett meddelande här",
     MESSAGES: "Meddelanden",
+    MESSAGES_RECEIVED: "Inkomna meddelanden",
+    MESSAGE_GLOBAL: "Globalt meddelande",
+    MESSAGES_GLOBAL: "Globala meddelanden",
+    MESSAGES_GLOBAL_SEND: "Skicka globalt meddelande",
+    MESSAGES_SHOW: "Meddelande",
+    MESSAGES_FROM_ADMIN: "Meddelanden från Admin",
+    MESSAGES_CLOSE: "Stäng meddelande",
+    MESSAGES_MARK_AS_READ: "Markera som läst",
+    MESSAGES_MARK_AS_UNREAD: "Markera som oläst",
+    MESSAGES_MARK_AS_ACTIVE: "Markera som aktivt",
+    MESSAGES_MARK_AS_INACTIVE: "Markera som inaktivt",
+    MESSAGES_MARK_AS_TODO: "Åtgärd krävs",
+    MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
     MISCELLANEOUS: "Övrigt",
     MY_COLLECTION: "Min samling",
     MY_TITLES: "Mina titlar",
@@ -218,6 +250,7 @@ export const LABELS_AND_HEADINGS = {
     NAME: "Namn",
     NAME_DB: "Namn (name)",
     NEXT: "Nästa",
+    NEWS: "Nyheter",
     NUMBER: "Nummer",
     NUMBER_DB: "Nummer (number)",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
@@ -244,6 +277,7 @@ export const LABELS_AND_HEADINGS = {
     SAVE: "Spara",
     SEARCH: "Sök",
     SEE_ALL_PUBLISHERS: "Se alla förlag",
+    SEE_ALL_MESSAGES: "Se alla meddelanden",
     SEE_ALL_TITLES: "Se alla titlar",
     SEE_ALL_USERS: "Se alla användare",
     SEND: "Skicka",
@@ -273,6 +307,7 @@ export const LABELS_AND_HEADINGS = {
     TITLE: "Titel",
     TITLES: "Titlar",
     TITLE_DB: "Titel (title)",
+    TOPIC: "Ämne",
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     TOTAL_ISSUES_DB: "Totalt antal publikationer (total_issues)",
     UPDATE: "Uppdatera",
@@ -309,13 +344,6 @@ export const TEXTS = {
     COLLECTING_TITLE_TEXT_2: "% av denna titel.",
     ADDING_TITLE_TEXT_2: "% av alla titlar i databasen.",
     CONSENT: "Svenska Marvelsamlare är måna om att skydda dina personliga uppgifter. När du loggar in, eller registrerar dig, bekräftar och godkänner du att vi endast använder denna information, och eventuella cookies, för att administrera ditt konto och tillhandahålla de tjänster du förväntar dig av oss.",
-    DEMO_TEXT_1: "Här visar vi exempel på senast tillagd funktionalitet, saker som är på gång och saker som vi funderar på att implementera i framtiden.",
-    DEMO_TEXT_2: "Sök / filtrera bland publikationerna. Fler titlar läggs till löpande. För komplettisten kommer vi även lägga in mer obskyra publikationer där marvelfigurer figurerar som hastigast.",
-    DEMO_TEXT_3: "Välj titlar att börja samla på.",
-    DEMO_TEXT_4: "När du valt att börja samla på en titel kan du lägga till publikationer i samlingen.",
-    DEMO_TEXT_5: "På publikationens sida kan du bland annat ange skickgradering för ditt exemplar.",
-    DEMO_TEXT_6: "Få översikt över din samling via kontrollpanelen.",
-    DEMO_TEXT_7: "På förlagets sida ser du alla dess publikationer.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer. Välj förlag ovanför.",
     AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER: "Du har valt förlaget ",
@@ -328,23 +356,33 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
     GRADE_TEXT_2: "Mer information om skickgradering hittar du hos",
+    INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
     MARVELKLUBBEN_TEXT_1: "Du måste lägga börja samla på titeln för att kunna lägga till publikationen i din samling.",
     MARVELKLUBBEN_TEXT_2: "Mer information om Marvelklubben hittar du på",
+    MESSAGE_WAS_SENT: "Meddelandet skickades",
+    MESSAGE_LINK: "Länk till bifogat objekt",
+    MESSAGE_LINK_SENDER: "Länk till anmälare",
+    MESSAGES_ADMIN_TEXT_1: "Här kan du hantera meddelanden.",
+    MESSAGES_ADMIN_TEXT_2: "Du kan bland annat sända ut globala meddelanden som visas för alla användare. Samt administrera inkomna meddelanden.",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet.",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt ändra dina inloggningsuppgifter.",
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SETTINGS_CREDENTIALS: "Ändra din e-postadress (användarnamn) eller lösenord här.",
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
+    SHOWING_LATEST_MESSAGES: "Visar senast inkomna meddelanden från användare, samt eventuella globala meddelanden från Admin.",
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
     TOTAL_TITLE_COUNT: "Totalt antal inlagda titlar:",
     LATEST_TITLES: "Senast inlagda titlar:",
     TOTAL_ISSUE_COUNT: "Totalt antal inlagda publikationer:",
     LATEST_ISSUES: "Senast inlagda publikationer:",
-    SHOWING_LATEST_USERS: "Visar de senast inlagda användarna från databasen.",
+    SHOWING_LATEST_USERS: "Visar de senast uppdaterade användarna från databasen.",
+    SHOWING_USERS: "Här kan du se alla registrerade användare.",
+    USERS_COUNT_TEXT_1: "Totalt finns det ",
+    USERS_COUNT_TEXT_2: "användare.",
     TOTAL_PUBLISHED: "Totalt gavs det ut",
     TOTAL_PUBLISHED_PUBLICATION: "publikation.",
     TOTAL_PUBLISHED_PUBLICATIONS: "publikationer.",
@@ -372,11 +410,14 @@ export const BUCKETS = {
 
 export const TABLES = {
     ISSUES: "issues",
+    MESSAGES: "messages",
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
     TITLES: "titles",
     USERS_TITLES: "users_titles",
     USERS_ISSUES: "users_issues",
+    USERS_ISSUES_WANTED: "users_issues_wanted",
+    USERS_ISSUES_UPGRADE: "users_issues_upgrade",
     GRADES: "grades",
     UTILS: "utils",
     USERS: "users"
@@ -434,6 +475,36 @@ export const VARIANT_MAPPER = {
     danger: 4
 }
 
+export const MESSAGE_STATUS_TEXT = {
+    0: {
+        name: "Oläst",
+        nameEn: "Unread"
+    },
+    1: {
+        name: "Läst",
+        nameEn: "Read"
+    },
+    2: {
+        name: "Åtgärd krävs!",
+        nameEn: "TODO!"
+    },
+}
+
+export const MESSAGE_STATUS_TEXT_GLOBAL = {
+    0: {
+        name: "Inaktivt",
+        nameEn: "Inactive"
+    },
+    1: {
+        name: "Aktivt",
+        nameEn: "Active"
+    },
+    2: {
+        name: "Åtgärd krävs!",
+        nameEn: "TODO!"
+    },
+}
+
 export const DEFAULT_SEARCH_PARAMS_FORMATS = {
     query: "",
     comic: false,
@@ -445,5 +516,13 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 143
+    TOTAL_TITLES_COUNT: 152
+}
+
+export const CONFIG = {
+    MESSAGE_UPDATE_TIMEOUT: 2000,
+    FETCH_TITLE_PROGRESS_TIMEOUT: 200,
+    SET_INFORMATION_MESSAGE_TIMEOUT: 150,
+    GENERATE_ISSUES_TIMEOUT: 1000,
+    DELETE_ISSUES_TIMEOUT: 1000
 }

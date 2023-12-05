@@ -1,21 +1,23 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {handleDelete} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {handleDelete} from "../../services/serviceFunctions";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faPenCircle, faCircleXmark} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 
-export const AdminTools = ({item, name, displayName, data, setData, route, table, imageBucket}) => {
+export const AdminTools = ({item, name, displayName, data, setData, route, table, imageBucket, showEditButton}) => {
 
     const editText = LABELS_AND_HEADINGS.EDIT + " " + displayName;
     const deleteText = LABELS_AND_HEADINGS.DELETE + " " + displayName;
-    const {setInformationMessage} = useAppContext();
+    const {setInformationMessage, fetchMessages} = useAppContext();
 
     return (
-            <div className={"d-inline-block text-end"}>
+        <div className={"d-inline-block text-end"}>
+            {
+                showEditButton &&
                 <OverlayTrigger
                     key={"edit-tooltip"}
                     placement={"top"}
@@ -30,23 +32,30 @@ export const AdminTools = ({item, name, displayName, data, setData, route, table
                         <span className={"visually-hidden"}>{editText}</span>
                     </Link>
                 </OverlayTrigger>
-
-                <OverlayTrigger
-                    key={"delete-tooltip"}
-                    placement={"top"}
-                    overlay={
-                        <Tooltip id={"delete-tooltip"}>
-                            {deleteText}
-                        </Tooltip>
-                    }
-                >
-                    <button
-                        className={"btn text-danger sms-tool-btn"}
-                        aria-label={deleteText}
-                        onClick={() => handleDelete(table, item.id, name, setData, data, item.image_filename, imageBucket, setInformationMessage)}>
-                        <Icon icon={faCircleXmark} className={"fa-xl"}/>
-                    </button>
-                </OverlayTrigger>
-            </div>
-        )
+            }
+            <OverlayTrigger
+                key={"delete-tooltip"}
+                placement={"top"}
+                overlay={
+                    <Tooltip id={"delete-tooltip"}>
+                        {deleteText}
+                    </Tooltip>
+                }
+            >
+                <button
+                    className={"btn text-danger sms-tool-btn"}
+                    aria-label={deleteText}
+                    onClick={() => {
+                        handleDelete(table, item.id, name, setData, data, item.image_filename, imageBucket, setInformationMessage).then(() => {
+                            // Update messages after a while.
+                            setTimeout(() => {
+                                fetchMessages();
+                            }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
+                        });
+                    }}>
+                    <Icon icon={faCircleXmark} className={"fa-xl"}/>
+                </button>
+            </OverlayTrigger>
+        </div>
+    )
 }

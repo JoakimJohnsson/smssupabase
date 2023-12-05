@@ -4,7 +4,7 @@ import {
     CollectionCheckIconDuoTone,
     CollectionPlusIconDuoTone,
     CollectionSearchIconDuoTone,
-    DemoIconDuoTone,
+    InfoIconDuoTone,
     LoginIconDuoTone,
     LogoIconDuoTone,
     RegisterIconDuoTone
@@ -30,8 +30,8 @@ export const HeroHeader = () => {
                             <a href={"#create-account-section"} className={"btn btn-primary btn-cta d-block mb-4"}>
                                 <RegisterIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
                             </a>
-                            <a href={"#demo-section"} className={"btn btn-secondary btn-cta d-block mb-4"}>
-                                <DemoIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.DEMO}
+                            <a href={"#info-section"} className={"btn btn-secondary btn-cta d-block mb-4"}>
+                                <InfoIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.INFORMATION}
                             </a>
                         </div>
 

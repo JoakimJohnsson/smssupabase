@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
 import {SendIcon} from "./icons";
 import {QuestionIconDuoTone} from "./icons-duotone";
-import {requestPasswordResetForEmail} from "../helpers/functions/serviceFunctions/serviceFunctions";
+import {requestPasswordResetForEmail} from "../services/serviceFunctions";
 
 const ForgotPassword = () => {
 

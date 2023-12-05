@@ -1,5 +1,6 @@
-import {supabase} from "../../../supabase/supabaseClient";
-import {MESSAGES, TABLES} from "../../constants";
+import {supabase} from "../supabase/supabaseClient";
+import {MESSAGES, TABLES} from "../helpers/constants";
+
 
 export const updateProfileData = async (id, data) => {
     try {
@@ -9,7 +10,8 @@ export const updateProfileData = async (id, data) => {
                 website: data.website,
                 firstname: data.firstname,
                 lastname: data.lastname,
-                is_public: data.is_public
+                is_public: data.is_public,
+                updated_at: new Date().toISOString()
             }])
             .eq("id", id);
     } catch (error) {

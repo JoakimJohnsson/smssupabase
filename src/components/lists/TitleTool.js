@@ -5,7 +5,7 @@ import {Icon} from "../icons";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
-import {handleCollectingTitle} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {handleCollectingTitle} from "../../services/serviceFunctions";
 
 
 export const TitleTool = ({title, displayName, isCard = false, setUserCollectsTitle = false}) => {

@@ -83,10 +83,14 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
-
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
                                     <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile} setNewProfile={setNewProfile}/>
+
+                                </div>
+                            </div>
+                            <div className={"sms-dashboard-col"}>
+                                <div className={"sms-section--light"}>
                                     <ProfileInfoCredentials
                                         newEmail={newEmail}
                                         setNewEmail={setNewEmail}
@@ -103,7 +107,6 @@ const Profile = () => {
                                     />
                                 </div>
                             </div>
-
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
                                     <ImageUploader

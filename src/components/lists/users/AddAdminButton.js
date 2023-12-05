@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {CustomSpinner} from "../../minis/CustomSpinner";
 import {NotAdminIconDuoTone} from "../../icons-duotone";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
-import {getUserName} from "../../../helpers/functions/functions";
+import {getUserName} from "../../../helpers/functions";
 
 
 export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => {

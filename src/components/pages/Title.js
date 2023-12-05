@@ -1,22 +1,23 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useParams} from "react-router-dom";
-import {getRowByTableAndId, handleCollectingTitle} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {getRowByTableAndId, handleCollectingTitle} from "../../services/serviceFunctions";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {EditIcon, Icon, TitlesIcon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
-import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions/functions";
+import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions";
 import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
-import {getIssuesWithTitleAndPublisherByTitleId} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {getIssuesWithTitleAndPublisherByTitleId} from "../../services/issueService";
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
-import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../helpers/functions/serviceFunctions/collectFunctions";
+import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
+import {AddMessage} from "../message/AddMessage";
 
 
 export const Title = () => {
@@ -209,6 +210,7 @@ export const Title = () => {
                                             }
                                         </>
                                     }
+                                    <AddMessage originObject={title} originTable={TABLES.TITLES}/>
                                 </div>
                                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}

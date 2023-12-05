@@ -1,7 +1,8 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {MESSAGES, TABLES} from "../helpers/constants";
-import {getRowByTableAndId} from "../helpers/functions/serviceFunctions/serviceFunctions";
+import {CONFIG, MESSAGES, TABLES} from "../helpers/constants";
+import {getRowByTableAndId} from "../services/serviceFunctions";
+import {getAllActiveGlobalMessages, getAllTodoMessages, getAllUnreadMessages} from "../services/messageService";
 
 
 const AppContext = React.createContext();
@@ -10,11 +11,23 @@ export function AppContextProvider({children}) {
 
     // Global states
     const [user, setUser] = useState(null);
+    const [activeGlobalMessages, setActiveGlobalMessages] = useState(null);
+    const [unreadMessages, setUnreadMessages] = useState(null);
+    const [todoMessages, setTodoMessages] = useState(null);
+    const [showUserNotification, setShowUserNotification] = useState(false);
+    const [showAdminNotification, setShowAdminNotification] = useState(false);
+    const [showAdminTodoNotification, setShowAdminTodoNotification] = useState(false);
     const [profile, setProfile] = useState(null);
     const [informationMessage, _setInformationMessage] = useState(MESSAGES.EMPTY);
 
     const fetchProfileData = useCallback((id) => {
         getRowByTableAndId(TABLES.PROFILES, setProfile, id).then();
+    }, []);
+
+    const fetchMessages = useCallback(() => {
+        getAllActiveGlobalMessages(setActiveGlobalMessages).then();
+        getAllUnreadMessages(setUnreadMessages).then();
+        getAllTodoMessages(setTodoMessages).then();
     }, []);
 
     useEffect(() => {
@@ -54,11 +67,42 @@ export function AppContextProvider({children}) {
         if (msg && oldMsg) {
             setTimeout(() => {
                 _setInformationMessage(msg)
-            }, 150);
+            }, CONFIG.SET_INFORMATION_MESSAGE_TIMEOUT);
         } else if (msg) {
             _setInformationMessage(msg);
         }
     }, [informationMessage]);
+
+    useEffect(() => {
+        fetchMessages();
+    }, [fetchMessages]);
+
+    useEffect(() => {
+        setShowUserNotification(false);
+        if (activeGlobalMessages && activeGlobalMessages.length > 0) {
+            setShowUserNotification(true);
+        } else {
+            setShowUserNotification(false);
+        }
+    }, [activeGlobalMessages]);
+
+    useEffect(() => {
+        setShowAdminNotification(false);
+        if (unreadMessages && unreadMessages.length > 0) {
+            setShowAdminNotification(true);
+        } else {
+            setShowAdminNotification(false);
+        }
+    }, [unreadMessages]);
+
+    useEffect(() => {
+        setShowAdminTodoNotification(false);
+        if (todoMessages && todoMessages.length > 0) {
+            setShowAdminTodoNotification(true);
+        } else {
+            setShowAdminTodoNotification(false);
+        }
+    }, [todoMessages]);
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
@@ -69,6 +113,13 @@ export function AppContextProvider({children}) {
         setInformationMessage: setInformationMessage,
         user,
         setUser,
+        showUserNotification,
+        showAdminNotification,
+        showAdminTodoNotification,
+        activeGlobalMessages,
+        unreadMessages,
+        todoMessages,
+        fetchMessages,
         profile,
         setProfile,
         fetchProfileData,

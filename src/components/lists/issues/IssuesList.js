@@ -1,6 +1,6 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {getIndexList} from "../../../helpers/functions/functions";
+import {getIndexList} from "../../../helpers/functions";
 import {IssuesListGrid} from "./IssuesListGrid";
 import {IssuesListAccordion} from "./IssuesListAccordion";
 

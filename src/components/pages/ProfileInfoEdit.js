@@ -1,8 +1,8 @@
 import React from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {isTrue} from "../../helpers/functions/functions";
-import {updateProfileData} from "../../helpers/functions/serviceFunctions/profileFunctions";
-import {handleChange} from "../../helpers/functions/serviceFunctions/serviceFunctions";
+import {isTrue} from "../../helpers/functions";
+import {updateProfileData} from "../../services/profileService";
+import {handleChange} from "../../services/serviceFunctions";
 import {useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 

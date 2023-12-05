@@ -2,7 +2,7 @@ import React, {useState, useCallback, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {PieChart, Pie, ResponsiveContainer, Cell} from "recharts";
 import {useAppContext} from "../../../../context/AppContext";
-import {getTitleProgressForUser} from "../../../../helpers/functions/functions";
+import {getTitleProgressForUser} from "../../../../helpers/functions";
 import {FormatBadge} from "../../../minis/FormatBadge";
 
 

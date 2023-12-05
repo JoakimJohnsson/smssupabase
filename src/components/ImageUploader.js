@@ -2,7 +2,7 @@ import React from "react";
 import {LABELS_AND_HEADINGS} from "../helpers/constants";
 import {CustomSpinner} from "./minis/CustomSpinner";
 import {NoDataAvailable} from "./minis/NoDataAvailable";
-import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "../helpers/functions/serviceFunctions/imageFunctions";
+import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "../services/imageService";
 import {IconButton} from "./minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {useAppContext} from "../context/AppContext";

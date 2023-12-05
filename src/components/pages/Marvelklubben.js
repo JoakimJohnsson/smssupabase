@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {getAllMarvelklubbenIssues} from "../../helpers/functions/serviceFunctions/issueFunctions";
+import {getAllMarvelklubbenIssues} from "../../services/issueService";
 import {IssueCard} from "../lists/issues/IssueCard";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";

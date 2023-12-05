@@ -10,7 +10,7 @@ import {useAppContext} from "../../../context/AppContext";
 import {UtilsSection} from "../../dashboard/dashboardSections/admin/UtilsSection";
 import {Link} from "react-router-dom";
 import {MessagesSection} from "../../dashboard/dashboardSections/admin/MessagesSection";
-import {isSuperAdmin} from "../../../helpers/functions/serviceFunctions/profileFunctions";
+import {isSuperAdmin} from "../../../services/profileService";
 
 
 export const Admin = () => {
@@ -31,9 +31,9 @@ export const Admin = () => {
                         </a>
                     </p>
                     <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.ALL_TITLES}</Link>
-                    <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.ISSUES}>{LABELS_AND_HEADINGS.ALL_ISSUES}</Link>
                     <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</Link>
                     <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.USERS}>{LABELS_AND_HEADINGS.ALL_USERS}</Link>
+                    <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.ALL_MESSAGES}</Link>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>

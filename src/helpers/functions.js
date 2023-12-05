@@ -1,7 +1,7 @@
-import {supabase} from "../../supabase/supabaseClient";
-import {CLASSES, MESSAGES} from "../constants";
+import {supabase} from "../supabase/supabaseClient";
+import {CLASSES, MESSAGES} from "./constants";
 import React from "react";
-import {getNoCollectedIssues} from "./serviceFunctions/collectFunctions";
+import {getNoCollectedIssues} from "../services/collectingService";
 
 export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
@@ -25,10 +25,20 @@ export const getCalculatedYear = (startYear, endYear) => {
 }
 
 export const getDataName = (data, id) => {
-    return data.find(f => f.id === id).name;
+    // Make sure the id is a number.
+    const numericId = Number(id);
+    return data.find(f => f.id === numericId).name;
 }
+
 export const getDataShade = (data, id) => {
-    return data.find(f => f.id === id).shade;
+    // Make sure the id is a number.
+    const numericId = Number(id);
+    return data.find(f => f.id === numericId).shade;
+}
+export const getDataIcon = (data, id) => {
+    // Make sure the id is a number.
+    const numericId = Number(id);
+    return data.find(f => f.id === numericId).icon;
 }
 
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
@@ -41,6 +51,16 @@ export const handleEmailInput = (success, setEmailInputClass, setEmailValidated,
         setEmailValidated(false);
         setEmailValidationMessage(MESSAGES.ERROR.VALIDATION_EMAIL);
     }
+}
+
+export const trimInputString = (input) => {
+    // Define a regular expression pattern to match Swedish letters, spaces, and numbers. And some characters like ':' and '/'.
+    const pattern = /[a-zA-ZåäöÅÄÖ0-9\s:/.!"]/g;
+    if (!input) {
+        return "";
+    }
+    const result = input.match(pattern);
+    return result ? result.join("") : "";
 }
 
 export const handlePasswordInput = (success, setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage) => {
@@ -163,6 +183,16 @@ export const sortByName = (a, b) => {
     return 0;
 }
 
+export const sortByDateCreated = (a, b) => {
+    if (a.created_at < b.created_at) return -1;
+    if (a.created_at > b.created_at) return 1;
+    return 0;
+}
+export const sortByDateCreatedDesc = (a, b) => {
+    if (a.created_at < b.created_at) return 1;
+    if (a.created_at > b.created_at) return -1;
+    return 0;
+}
 
 export const sortByNameAndStartYear = (a, b) => {
     let aName = sortableName(a.name);
@@ -238,6 +268,14 @@ export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, que
             .includes(query.toLowerCase()) ||
         query === ""
     )
+}
+
+export const filterGlobalMessage = (message, showGlobal) => {
+    if (showGlobal) {
+        return message.is_global === 1;
+    } else {
+        return message.is_global === 0;
+    }
 }
 
 export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover, special, collectible) => {

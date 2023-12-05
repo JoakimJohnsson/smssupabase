@@ -1,8 +1,8 @@
-import {supabase} from "../../../supabase/supabaseClient";
-import {MESSAGES, TABLES} from "../../constants";
-import {deleteImageFromBucketSimple} from "./imageFunctions";
-import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectFunctions";
-import {doesEmailExist} from "../functions";
+import {supabase} from "../supabase/supabaseClient";
+import {MESSAGES, TABLES} from "../helpers/constants";
+import {deleteImageFromBucketSimple} from "./imageService";
+import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectingService";
+import {doesEmailExist} from "../helpers/functions";
 
 // GENERIC FUNCTIONS
 export const getRowsByTable = async (table, setData) => {
@@ -31,7 +31,7 @@ export const getRowsByTableForeignKeyColumnAndForeignKeyId = async (table, keyCo
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -169,7 +169,7 @@ export const getRowsByTableWithLimitAndOrderByColumn = async (table, column, set
             console.error(error);
         }
         if (data) {
-            setData(data)
+            setData(data);
         }
     } catch (error) {
         console.error(error);
@@ -233,7 +233,7 @@ export const requestPasswordResetForEmail = async (email, setMessage, e) => {
     if (emailExists) {
         try {
             await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: "http://svenskamarvelsamlare.se/change-password",
+                redirectTo: "https://svenskamarvelsamlare.se/change-password",
             })
         } catch (error) {
             console.error(error.message)
