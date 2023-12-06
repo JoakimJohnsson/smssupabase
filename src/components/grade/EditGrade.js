@@ -1,23 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {ButtonGroup, OverlayTrigger, Tooltip} from "react-bootstrap";
-import {Icon} from "../icons";
-import {faCertificate} from "@fortawesome/pro-solid-svg-icons";
+import {ButtonGroup} from "react-bootstrap";
 import {editGrade} from "../../services/collectingService";
 import {useAppContext} from "../../context/AppContext";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {GRADE_RADIOS} from "../../helpers/constants";
+
 
 export const EditGrade = ({grade, setGrade, issue}) => {
 
     const [radioValue, setRadioValue] = useState(null);
     const {user} = useAppContext();
-
-    const radios = [
-        {name: 'G', value: 1, displayName: "Good"},
-        {name: 'VG', value: 2, displayName: "Very good"},
-        {name: 'FN', value: 3, displayName: "Fine"},
-        {name: 'VF', value: 4, displayName: "Very fine"},
-        {name: 'NM', value: 5, displayName: "Near mint"},
-    ];
 
     useEffect(() => {
         setRadioValue(grade);
@@ -29,8 +20,8 @@ export const EditGrade = ({grade, setGrade, issue}) => {
 
     return radioValue && (
         <div className={"w-100"}>
-            <ButtonGroup className={"mb-2"}>
-                {radios.map((radio, index) => {
+            <ButtonGroup className={"mb-2 d-flex flex-wrap"}>
+                {GRADE_RADIOS.map((radio, index) => {
                     const checked = radioValue.toString() === radio.value.toString();
                     return (
                         <div key={index + radio.value}>
@@ -44,24 +35,10 @@ export const EditGrade = ({grade, setGrade, issue}) => {
                                 checked={checked}
                                 onChange={(e) => handleEditGrade(e)}
                             />
-                            <label tabIndex="0" htmlFor={`radio-${index + 1}`} className={`p-0 rounded-0 sms-grade-btn ${checked ? "active" : ""}`}>
-                                <div className={"fa-2x"}>
-                                    <OverlayTrigger
-                                        key={radio.name}
-                                        placement={"top"}
-                                        overlay={
-                                            <Tooltip id={radio.name}>
-                                                {radio.displayName}
-                                            </Tooltip>
-                                        }
-                                    >
-                                        <div className={"fa-layers fa-fw"}>
-                                            <Icon icon={faCertificate} className={checked ? "text-grade-0" : "text-grade-200"}/>
-                                            <span aria-hidden={"true"} className={"fa-layers-text text-black fs-small"}>{radio.name}</span>
-                                            <span className={"sr-only"}>{LABELS_AND_HEADINGS.GRADE}: {radio.displayName}</span>
-                                        </div>
-                                    </OverlayTrigger>
-                                </div>
+                            <label tabIndex="0" htmlFor={`radio-${index + 1}`} className={`p-0 sms-grade-btn ${checked ? "active" : ""}`}>
+                                    <div className={`${checked ? "bg-dog text-grade-0" : "bg-elephant text-grade-200"} fs-small py-2 px-3 rounded-pill`}>
+                                        <span aria-hidden={"true"} className={"d-inline-block text-nowrap"}>{radio.name} {radio.value.toFixed(1)}</span>
+                                    </div>
                             </label>
                         </div>
                     )

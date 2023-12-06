@@ -526,3 +526,146 @@ export const CONFIG = {
     GENERATE_ISSUES_TIMEOUT: 1000,
     DELETE_ISSUES_TIMEOUT: 1000
 }
+
+export const GRADE_VARIANTS = {
+    0.5: {
+        text: "PR",
+        displayName: "Poor",
+        color: "100"
+    },
+    1: {
+        text: "FR",
+        displayName: "Fair",
+        color: "100"
+    },
+    1.5: {
+        text: "FR/GD",
+        displayName: "Fair / Good",
+        color: "100"
+    },
+    2: {
+        text: "GD",
+        displayName: "Good",
+        color: "200"
+    },
+    2.5: {
+        text: "GD+",
+        displayName: "Good +",
+        color: "200"
+    },
+    3: {
+        text: "GD/VG",
+        displayName: "Good / Very good",
+        color: "200"
+    },
+    3.5: {
+        text: "VG-",
+        displayName: "Very good -",
+        color: "300"
+    },
+    4: {
+        text: "VG",
+        displayName: "Very good",
+        color: "300"
+    },
+    4.5: {
+        text: "VG+",
+        displayName: "Very good +",
+        color: "300"
+    },
+    5: {
+        text: "VG/FN",
+        displayName: "Very good / Fine",
+        color: "400"
+    },
+    5.5: {
+        text: "FN-",
+        displayName: "Fine -",
+        color: "500"
+    },
+    6: {
+        text: "FN",
+        displayName: "Fine",
+        color: "600"
+    },
+    6.5: {
+        text: "FN+",
+        displayName: "Fine +",
+        color: "700"
+    },
+    7: {
+        text: "FN/VF",
+        displayName: "Fine / Very fine",
+        color: "700"
+    },
+    7.5: {
+        text: "VF-",
+        displayName: "Very fine -",
+        color: "800"
+    },
+    8: {
+        text: "VF",
+        displayName: "Very fine",
+        color: "800"
+    },
+    8.5: {
+        text: "VF+",
+        displayName: "Very fine +",
+        color: "800"
+    },
+    9: {
+        text: "VF/NM",
+        displayName: "Very fine / Near mint",
+        color: "0"
+    },
+    9.2: {
+        text: "NM-",
+        displayName: "Near mint -",
+        color: "0"
+    },
+    9.4: {
+        text: "NM",
+        displayName: "Near mint",
+        color: "0"
+    },
+    9.6: {
+        text: "NM+",
+        displayName: "Near mint +",
+        color: "0"
+    },
+    9.8: {
+        text: "NM/M",
+        displayName: "Near mint / mint",
+        color: "0"
+    },
+    9.9: {
+        text: "M",
+        displayName: "Mint",
+        color: "0"
+    }
+}
+
+export const GRADE_RADIOS = [
+    {name: 'PR', value: 0.5},
+    {name: 'FR', value: 1.0},
+    {name: 'FR/GD', value: 1.5},
+    {name: 'GD', value: 2.0},
+    {name: 'GD/VG', value: 3.0},
+    {name: 'VG-', value: 3.5},
+    {name: 'VG', value: 4.0},
+    {name: 'VG+', value: 4.5},
+    {name: 'VG/FN', value: 5.0},
+    {name: 'FN-', value: 5.5},
+    {name: 'FN', value: 6.0},
+    {name: 'FN+', value: 6.5},
+    {name: 'FN/VF', value: 7.0},
+    {name: 'VF-', value: 7.5},
+    {name: 'VF', value: 8.0},
+    {name: 'VF+', value: 8.5},
+    {name: 'VF/NM', value: 9.0},
+    {name: 'NM-', value: 9.2},
+    {name: 'NM', value: 9.4},
+    {name: 'NM+', value: 9.6},
+    {name: 'NM/M', value: 9.8},
+    {name: 'M', value: 9.9},
+];
