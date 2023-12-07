@@ -39,7 +39,7 @@ export const Issue = () => {
 
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
-    const [grade, setGrade] = useState(1);
+    const [grade, setGrade] = useState(4);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);

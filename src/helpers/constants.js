@@ -434,7 +434,9 @@ export const PANES = {
         COLLECTING_TITLES_3: "inlagda titlar.",
         COLLECTING_ISSUES_1: "Totalt ingår",
         COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
-        COLLECTING_ISSUES_3: "komplett."
+        COLLECTING_ISSUES_3: "komplett.",
+        GRADE: "Gradering",
+        COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har ett medelvärde för gradering som ligger på"
     },
     OTHER_COLLECTIONS: {
         NAME: "Andra samlingar",

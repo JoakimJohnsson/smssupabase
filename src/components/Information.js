@@ -19,7 +19,8 @@ const Information = () => {
                 </div>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.2.0 - 2023-01-XX</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Utökat graderingssystem.</li>
+                    <li className={"list-group-item px-0"}>Utökat och förbättrat graderingssystem.</li>
+                    <li className={"list-group-item px-0"}>Medelvärde för gradering visas i kontrollpanelen.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.1.0 - 2023-12-05</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

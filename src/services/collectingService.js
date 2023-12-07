@@ -8,12 +8,12 @@ export const checkIfIsCollectingTitle = async (userId, titleId, setIsCollectingT
         let {data, error, status} = await supabase
             .from(TABLES.USERS_TITLES)
             .select()
-            .match({user_id: userId, title_id: titleId})
+            .match({user_id: userId, title_id: titleId});
         if (error && status !== 406) {
             console.error(error);
         }
         if (data && data.length > 0) {
-            setIsCollectingTitle(true)
+            setIsCollectingTitle(true);
         }
     } catch (error) {
         console.error(error);
@@ -27,7 +27,7 @@ export const addTitleToCollection = async (userId, titleId) => {
             .insert([{
                 user_id: userId,
                 title_id: titleId,
-            }])
+            }]);
     } catch (error) {
         console.error(error);
     }
@@ -45,7 +45,7 @@ export const removeTitleFromCollection = async (userId, titleId, setInformationM
         let {error, status} = await supabase
             .from(TABLES.USERS_TITLES)
             .delete()
-            .match({user_id: userId, title_id: titleId})
+            .match({user_id: userId, title_id: titleId});
         if (error && status !== 406) {
             setInformationMessage({show: true, status: status, error: error});
         } else {
@@ -62,12 +62,12 @@ export const checkIfIsCollectingIssue = async (userId, issueId, setIsCollectingI
         let {data, error, status} = await supabase
             .from(TABLES.USERS_ISSUES)
             .select()
-            .match({user_id: userId, issue_id: issueId})
+            .match({user_id: userId, issue_id: issueId});
         if (error && status !== 406) {
             console.error(error);
         }
         if (data && data.length > 0) {
-            setIsCollectingIssue(true)
+            setIsCollectingIssue(true);
         }
     } catch (error) {
         console.error(error);
@@ -79,12 +79,12 @@ export const checkIfIsWantingIssue = async (userId, issueId, setIsWantingIssue) 
         let {data, error, status} = await supabase
             .from(TABLES.USERS_ISSUES_WANTED)
             .select()
-            .match({user_id: userId, issue_id: issueId})
+            .match({user_id: userId, issue_id: issueId});
         if (error && status !== 406) {
             console.error(error);
         }
         if (data && data.length > 0) {
-            setIsWantingIssue(true)
+            setIsWantingIssue(true);
         }
     } catch (error) {
         console.error(error);
@@ -96,12 +96,12 @@ export const checkIfIsUpgradingIssue = async (userId, issueId, setIsUpgradingIss
         let {data, error, status} = await supabase
             .from(TABLES.USERS_ISSUES_UPGRADE)
             .select()
-            .match({user_id: userId, issue_id: issueId})
+            .match({user_id: userId, issue_id: issueId});
         if (error && status !== 406) {
             console.error(error);
         }
         if (data && data.length > 0) {
-            setIsUpgradingIssue(true)
+            setIsUpgradingIssue(true);
         }
     } catch (error) {
         console.error(error);
@@ -117,7 +117,7 @@ export const addIssueToCollection = async (userId, issueId) => {
                 issue_id: issueId,
             }]).then(async () => {
                 await addGrade(userId, issueId);
-            })
+            });
     } catch (error) {
         console.error(error);
     }
@@ -128,7 +128,7 @@ export const removeIssueFromCollection = async (userId, issueId, setInformationM
         let {error, status} = await supabase
             .from(TABLES.USERS_ISSUES)
             .delete()
-            .match({user_id: userId, issue_id: issueId})
+            .match({user_id: userId, issue_id: issueId});
         if (error && status !== 406) {
             setInformationMessage({show: true, status: status, error: error});
         } else {
@@ -149,7 +149,7 @@ export const removeIssueFromCollectionSimple = async (userId, issueId) => {
             .match({user_id: userId, issue_id: issueId})
             .then(() => {
                 removeGrade(userId, issueId);
-            })
+            });
     } catch (error) {
         console.error(error);
     }
@@ -162,12 +162,12 @@ export const getAllIssueIdsForTitle = async (titleId) => {
             let {data, error, status} = await supabase
                 .from(TABLES.ISSUES)
                 .select("id")
-                .eq("title_id", titleId)
+                .eq("title_id", titleId);
             if (error && status !== 406) {
                 console.error(error);
             }
             if (data) {
-                data.forEach(data => issueIds.push(data.id))
+                data.forEach(data => issueIds.push(data.id));
                 return issueIds;
             }
         } catch (error) {
@@ -183,12 +183,12 @@ export const getNoCollectedIssues = async (titleId, userId) => {
                 .from(TABLES.ISSUES)
                 .select("id, users!users_issues!inner (id)")
                 .eq("title_id", titleId)
-                .eq("users.id", userId)
+                .eq("users.id", userId);
             if (error && status !== 406) {
                 console.error(error);
             }
             if (data && data.length > 0) {
-                return data.length
+                return data.length;
             }
         } catch (error) {
             console.error(error);
@@ -205,7 +205,7 @@ export const addGrade = async (userId, issueId) => {
             .insert([{
                 user_id: userId,
                 issue_id: issueId,
-            }])
+            }]);
     } catch (error) {
         console.error(error);
     }
@@ -216,7 +216,7 @@ export const removeGrade = async (userId, issueId) => {
         await supabase
             .from(TABLES.GRADES)
             .delete()
-            .match({user_id: userId, issue_id: issueId})
+            .match({user_id: userId, issue_id: issueId});
     } catch (error) {
         console.error(error);
     }
@@ -230,7 +230,7 @@ export const editGrade = async (userId, issueId, value) => {
                 grade: value
             }])
             .eq("user_id", userId)
-            .eq("issue_id", issueId)
+            .eq("issue_id", issueId);
     } catch (error) {
         console.error(error);
     }
@@ -241,12 +241,30 @@ export const getGradeByUserIdAndIssueId = async (userId, issueId, setGrade) => {
         let {data, error, status} = await supabase
             .from(TABLES.GRADES)
             .select("grade")
-            .match({user_id: userId, issue_id: issueId})
+            .match({user_id: userId, issue_id: issueId});
         if (error && status !== 406) {
             console.error(error);
         }
         if (data && data.length > 0) {
-            setGrade(data[0].grade)
+            setGrade(data[0].grade);
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getAllGradesByUserId = async (userId, setGrades) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.GRADES)
+            .select("*")
+            .match({user_id: userId});
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data && data.length > 0) {
+            setGrades(data);
         }
 
     } catch (error) {
@@ -263,7 +281,7 @@ export const addIssueToWanted = async (userId, issueId) => {
             .insert([{
                 user_id: userId,
                 issue_id: issueId,
-            }])
+            }]);
     } catch (error) {
         console.error(error);
     }
@@ -274,7 +292,7 @@ export const removeIssueFromWanted = async (userId, issueId) => {
         await supabase
             .from(TABLES.USERS_ISSUES_WANTED)
             .delete()
-            .match({user_id: userId, issue_id: issueId})
+            .match({user_id: userId, issue_id: issueId});
     } catch (error) {
         console.error(error);
     }
@@ -286,7 +304,7 @@ export const getWantedIssuesForUser = async (userId, setData) => {
             let {data, error, status} = await supabase
                 .from(TABLES.ISSUES)
                 .select("*, users!users_issues_wanted!inner (id), titles (*)")
-                .eq("users.id", userId)
+                .eq("users.id", userId);
             if (error && status !== 406) {
                 console.error(error);
             }
@@ -308,7 +326,7 @@ export const addIssueToUpgrade = async (userId, issueId) => {
             .insert([{
                 user_id: userId,
                 issue_id: issueId,
-            }])
+            }]);
     } catch (error) {
         console.error(error);
     }
@@ -319,7 +337,7 @@ export const removeIssueFromUpgrade = async (userId, issueId) => {
         await supabase
             .from(TABLES.USERS_ISSUES_UPGRADE)
             .delete()
-            .match({user_id: userId, issue_id: issueId})
+            .match({user_id: userId, issue_id: issueId});
     } catch (error) {
         console.error(error);
     }
@@ -331,7 +349,7 @@ export const getUpgradeIssuesForUser = async (userId, setData) => {
             let {data, error, status} = await supabase
                 .from(TABLES.ISSUES)
                 .select("*, users!users_issues_upgrade!inner (id), titles (*)")
-                .eq("users.id", userId)
+                .eq("users.id", userId);
             if (error && status !== 406) {
                 console.error(error);
             }
