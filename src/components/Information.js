@@ -21,6 +21,7 @@ const Information = () => {
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Utökat och förbättrat graderingssystem.</li>
                     <li className={"list-group-item px-0"}>Medelvärde för gradering visas i kontrollpanelen.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad komponent för statussidor (404) och felaktig routing.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.1.0 - 2023-12-05</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
@@ -39,7 +40,6 @@ const Information = () => {
                         Under utredning - möjlighet att ha flera exemplar av samma publikation.
                     </li>
                     <li className={"list-group-item px-0"}>Optimering av bilder.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad komponent för statussidor (404) och felaktig routing.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>
