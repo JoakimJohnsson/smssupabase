@@ -31,6 +31,7 @@ import {User} from "./pages/User";
 import {Users} from "./pages/Users";
 import {AdminMessages} from "./pages/admin/message/AdminMessages";
 import {AdminMessage} from "./pages/admin/message/AdminMessage";
+import {NoMatch} from "./pages/NoMatch";
 
 
 export const MyRoutes = () => {
@@ -86,7 +87,7 @@ export const MyRoutes = () => {
                 <Route path={ROUTES.ADMIN.MESSAGE_ID} element={(user && user.id && profile.role >= 1) ? <AdminMessage/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.ADMIN.MESSAGES} element={(user && user.id && profile.role >= 1) ? <AdminMessages/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 {/* Catch all */}
-                <Route path={"*"} element={<p>No match!</p>}/>
+                <Route path={"*"} element={<NoMatch/>}/>
             </Routes>
         )
         :
