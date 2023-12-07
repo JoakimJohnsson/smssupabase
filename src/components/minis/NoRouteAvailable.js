@@ -8,7 +8,7 @@ import useBreadcrumbs from "use-react-router-breadcrumbs";
 export const NoRouteAvailable = () => {
 
     const breadcrumbs = useBreadcrumbs();
-    const pathname = breadcrumbs[breadcrumbs.length -1].location.pathname || "ajaja";
+    const pathname = breadcrumbs[breadcrumbs.length -1].location.pathname;
 
     return (
         <div className={"d-flex align-items-center py-2 mb-3"}>
