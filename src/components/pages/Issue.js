@@ -1,14 +1,13 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {getIssueName} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {EditIcon, Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {Grade} from "../grade/Grade";
 import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
@@ -33,6 +32,7 @@ import {PublisherBadge} from "../minis/PublisherBadge";
 import {Sources} from "./pagecomponents/Sources";
 import {AddMessage} from "../message/AddMessage";
 import {FunctionButton} from "../minis/FunctionButton";
+import {EditGrade} from "../grade/EditGrade";
 
 
 export const Issue = () => {
@@ -245,7 +245,11 @@ export const Issue = () => {
                                 </div>
                                 {
                                     isCollectingIssue &&
-                                    <Grade issue={issue} grade={grade} setGrade={setGrade}/>
+                                    <div className={"sms-section--light mb-4"}>
+                                        <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
+                                        <p>{TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer" target={"_blank"}>Seriekatalogen</a>.</p>
+                                        <EditGrade grade={grade} setGrade={setGrade} issue={issue}/>
+                                    </div>
                                 }
                             </div>
                         </>
