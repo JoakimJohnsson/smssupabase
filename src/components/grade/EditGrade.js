@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react";
 import {ButtonGroup} from "react-bootstrap";
 import {editGrade} from "../../services/collectingService";
 import {useAppContext} from "../../context/AppContext";
-import {GRADE_RADIOS} from "../../helpers/constants";
+import {GRADE_RADIOS, LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 
-export const EditGrade = ({grade, setGrade, issue}) => {
+export const EditGrade = ({grade, setGrade, issue, index}) => {
 
     const [radioValue, setRadioValue] = useState(null);
     const {user} = useAppContext();
@@ -19,8 +19,9 @@ export const EditGrade = ({grade, setGrade, issue}) => {
     }
 
     return radioValue && (
-        <div className={"w-100"}>
-            <ButtonGroup className={"mb-2 d-flex flex-wrap"}>
+        <div className={"border rounded-3 p-3 bg-dog"}>
+            <h3 className={"mb-4"}>{LABELS_AND_HEADINGS.COPY} {index}</h3>
+            <ButtonGroup className={"mb-2 d-flex flex-wrap "}>
                 {GRADE_RADIOS.map((radio, index) => {
                     const checked = radioValue.toString() === radio.value.toString();
                     return (
@@ -44,6 +45,7 @@ export const EditGrade = ({grade, setGrade, issue}) => {
                     )
                 })}
             </ButtonGroup>
+            {/* TODO Knapp för att ta bort denna grade! */}
         </div>
     )
 }

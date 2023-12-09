@@ -148,6 +148,7 @@ export const LABELS_AND_HEADINGS = {
     CONTENT: "Innehåll",
     COUNTRY: "Utgivningsland",
     COUNTRY_DB: "Utgivningsland (country)",
+    COPY: "Exemplar",
     CREATE_ACCOUNT: "Registrera dig",
     CREATE_ACCOUNT_CTA: "Registrera dig",
     CREATED_AT: "Inlagd",
@@ -204,6 +205,7 @@ export const LABELS_AND_HEADINGS = {
     IS_VARIANT: "Variant",
     IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
+    ISSUE: "Publikation",
     ISSUES: "Publikationer",
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
@@ -554,7 +556,7 @@ export const GRADE_VARIANTS = {
     },
     2.5: {
         text: "GD+",
-        displayName: "Good +",
+        displayName: "Good (+)",
         color: "200"
     },
     3: {
@@ -564,7 +566,7 @@ export const GRADE_VARIANTS = {
     },
     3.5: {
         text: "VG-",
-        displayName: "Very good -",
+        displayName: "Very good (-)",
         color: "300"
     },
     4: {
@@ -574,7 +576,7 @@ export const GRADE_VARIANTS = {
     },
     4.5: {
         text: "VG+",
-        displayName: "Very good +",
+        displayName: "Very good (+)",
         color: "300"
     },
     5: {
@@ -584,7 +586,7 @@ export const GRADE_VARIANTS = {
     },
     5.5: {
         text: "FN-",
-        displayName: "Fine -",
+        displayName: "Fine (-)",
         color: "500"
     },
     6: {
@@ -594,7 +596,7 @@ export const GRADE_VARIANTS = {
     },
     6.5: {
         text: "FN+",
-        displayName: "Fine +",
+        displayName: "Fine (+)",
         color: "700"
     },
     7: {
@@ -604,7 +606,7 @@ export const GRADE_VARIANTS = {
     },
     7.5: {
         text: "VF-",
-        displayName: "Very fine -",
+        displayName: "Very fine (-)",
         color: "800"
     },
     8: {
@@ -614,7 +616,7 @@ export const GRADE_VARIANTS = {
     },
     8.5: {
         text: "VF+",
-        displayName: "Very fine +",
+        displayName: "Very fine (+)",
         color: "800"
     },
     9: {
@@ -624,7 +626,7 @@ export const GRADE_VARIANTS = {
     },
     9.2: {
         text: "NM-",
-        displayName: "Near mint -",
+        displayName: "Near mint (-)",
         color: "0"
     },
     9.4: {
@@ -634,7 +636,7 @@ export const GRADE_VARIANTS = {
     },
     9.6: {
         text: "NM+",
-        displayName: "Near mint +",
+        displayName: "Near mint (+)",
         color: "0"
     },
     9.8: {

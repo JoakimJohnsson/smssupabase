@@ -248,7 +248,9 @@ export const Issue = () => {
                                     <div className={"sms-section--light mb-4"}>
                                         <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
                                         <p>{TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer" target={"_blank"}>Seriekatalogen</a>.</p>
-                                        <EditGrade grade={grade} setGrade={setGrade} issue={issue}/>
+                                        {/* TODO Map för att rendera existerande grades. */}
+                                        <EditGrade grade={grade} setGrade={setGrade} issue={issue} index={1}/>
+                                        {/* TODO Knapp för att lägga till skickgradering för ytterligare exemplar. */}
                                     </div>
                                 }
                             </div>
