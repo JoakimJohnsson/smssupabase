@@ -236,7 +236,7 @@ export const editGrade = async (userId, issueId, value) => {
     }
 }
 
-export const getGradeByUserIdAndIssueId = async (userId, issueId, setGrade) => {
+export const getGradesByUserIdAndIssueId = async (userId, issueId, setGrade) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.GRADES)

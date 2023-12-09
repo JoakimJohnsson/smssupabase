@@ -24,7 +24,7 @@ import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTit
 import {
     addIssueToUpgrade,
     addIssueToWanted,
-    getGradeByUserIdAndIssueId,
+    getGradesByUserIdAndIssueId,
     removeIssueFromUpgrade,
     removeIssueFromWanted
 } from "../../services/collectingService";
@@ -70,7 +70,7 @@ export const Issue = () => {
     }, [issue]);
 
     const fetchGrade = useCallback(() => {
-        getGradeByUserIdAndIssueId(user.id, id, setGrade).then();
+        getGradesByUserIdAndIssueId(user.id, id, setGrade).then();
     }, [id, user.id])
 
     useEffect(() => {
