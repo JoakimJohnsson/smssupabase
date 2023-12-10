@@ -5,7 +5,7 @@ import {useAppContext} from "../../context/AppContext";
 import {GRADE_RADIOS, LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 
-export const EditGrade = ({grade, fetchGrades, issue, index}) => {
+export const EditGrade = ({id, grade, fetchGrades, issue, index}) => {
 
     const [radioValue, setRadioValue] = useState(null);
     const {user} = useAppContext();
@@ -15,12 +15,12 @@ export const EditGrade = ({grade, fetchGrades, issue, index}) => {
     }, [grade])
 
     const handleEditGrade = (e) => {
-        editGrade(user.id, issue.id, e.target.value).then(() => fetchGrades())
+        editGrade(id, user.id, issue.id, e.target.value).then(() => fetchGrades())
     }
 
     return radioValue && (
         <div className={"border rounded-3 p-3 bg-dog"}>
-            <h3 className={"mb-4"}>{LABELS_AND_HEADINGS.COPY} {index}</h3>
+            <h3 className={"mb-4"}>{LABELS_AND_HEADINGS.COPY} {index + 1}</h3>
             <ButtonGroup className={"mb-2 d-flex flex-wrap "}>
                 {GRADE_RADIOS.map((radio, index) => {
                     const checked = radioValue.toString() === radio.value.toString();

@@ -222,13 +222,14 @@ export const removeGrade = async (userId, issueId) => {
     }
 }
 
-export const editGrade = async (userId, issueId, value) => {
+export const editGrade = async (gradeId, userId, issueId, value) => {
     try {
         await supabase
             .from(TABLES.GRADES)
             .update([{
                 grade: value
             }])
+            .eq("id", gradeId)
             .eq("user_id", userId)
             .eq("issue_id", issueId);
     } catch (error) {
@@ -236,19 +237,18 @@ export const editGrade = async (userId, issueId, value) => {
     }
 }
 
-export const getGradesByUserIdAndIssueId = async (userId, issueId, setGrade) => {
+export const getGradesByUserIdAndIssueId = async (userId, issueId, setGrades) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.GRADES)
-            .select("grade")
+            .select("*")
             .match({user_id: userId, issue_id: issueId});
         if (error && status !== 406) {
             console.error(error);
         }
         if (data && data.length > 0) {
-            setGrade(data[0].grade);
+            setGrades(data);
         }
-
     } catch (error) {
         console.error(error);
     }

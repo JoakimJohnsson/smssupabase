@@ -39,7 +39,7 @@ export const Issue = () => {
 
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
-    const [grades, setGrades] = useState(4);
+    const [grades, setGrades] = useState([]);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
@@ -162,8 +162,8 @@ export const Issue = () => {
                             <div className={"col-12 col-md-8 col-xl-6"}>
                                 <div className={"d-flex align-items-center flex-wrap mb-3"}>
                                     {
-                                        isCollectingIssue &&
-                                        <GradeBadge grade={grades}/>
+                                        isCollectingIssue && grades &&
+                                        grades.map((g) => <GradeBadge key={g.id} grade={g.grade}/>)
                                     }
                                     <TitleBadge title={issue.titles}/>
                                     {
@@ -247,9 +247,15 @@ export const Issue = () => {
                                     isCollectingIssue &&
                                     <div className={"sms-section--light mb-4"}>
                                         <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
-                                        <p>{TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer" target={"_blank"}>Seriekatalogen</a>.</p>
-                                        {/* TODO Map för att rendera existerande grades. */}
-                                        <EditGrade grade={grades} fetchGrades={fetchGrades} issue={issue} index={1}/>
+                                        <p>
+                                            {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer"
+                                                                    target={"_blank"}>Seriekatalogen</a>.
+                                        </p>
+                                        {
+                                            grades &&
+                                            grades.map((g, index) => <EditGrade id={g.id} grade={g.grade} fetchGrades={fetchGrades} issue={issue}
+                                                                                index={index}/>)
+                                        }
                                         {/* TODO Knapp för att lägga till skickgradering för ytterligare exemplar. */}
                                     </div>
                                 }
