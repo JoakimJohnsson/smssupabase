@@ -19,9 +19,10 @@ const Information = () => {
                 </div>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.2.0 - 2023-01-XX</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Utökat och förbättrat graderingssystem.</li>
+                    <li className={"list-group-item px-0"}>Utökat och förbättrat graderingssystem - fler värden kan nu anges.</li>
+                    <li className={"list-group-item px-0"}>Användare kan lägga till skickgraderingar för fler än ett exemplar av en publikation.</li>
                     <li className={"list-group-item px-0"}>Medelvärde för gradering visas i kontrollpanelen.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad komponent för statussidor (404) och felaktig routing.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad komponent för felaktig routing.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.1.0 - 2023-12-05</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
@@ -36,9 +37,6 @@ const Information = () => {
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>
-                        Under utredning - möjlighet att ha flera exemplar av samma publikation.
-                    </li>
                     <li className={"list-group-item px-0"}>Optimering av bilder.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
