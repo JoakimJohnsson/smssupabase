@@ -42,7 +42,7 @@ export const Issue = () => {
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
     const [grades, setGrades] = useState([]);
-    const [totalCopies, setTotalCopies] = useState(1);
+    const [totalCopies, setTotalCopies] = useState(null);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
@@ -87,8 +87,12 @@ export const Issue = () => {
     useEffect(() => {
         if (grades && grades.length > 0) {
             setTotalCopies(grades.length);
+        } else if (isCollectingIssue) {
+            setTotalCopies(1);
+        } else {
+            setTotalCopies(0);
         }
-    }, [grades]);
+    }, [grades, isCollectingIssue]);
 
     const handleWanted = () => {
         if (isWantingIssue) {
