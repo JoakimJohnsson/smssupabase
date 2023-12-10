@@ -115,9 +115,7 @@ export const addIssueToCollection = async (userId, issueId) => {
             .insert([{
                 user_id: userId,
                 issue_id: issueId,
-            }]).then(async () => {
-                await addGrade(userId, issueId);
-            });
+            }]).then();
     } catch (error) {
         console.error(error);
     }
@@ -136,8 +134,6 @@ export const removeIssueFromCollection = async (userId, issueId, setInformationM
         }
     } catch (error) {
         console.error(error);
-    } finally {
-        await removeGrade(userId, issueId);
     }
 }
 
@@ -147,9 +143,7 @@ export const removeIssueFromCollectionSimple = async (userId, issueId) => {
             .from(TABLES.USERS_ISSUES)
             .delete()
             .match({user_id: userId, issue_id: issueId})
-            .then(() => {
-                removeGrade(userId, issueId);
-            });
+            .then();
     } catch (error) {
         console.error(error);
     }
@@ -211,12 +205,12 @@ export const addGrade = async (userId, issueId) => {
     }
 }
 
-export const removeGrade = async (userId, issueId) => {
+export const removeGrade = async (gradeId, userId, issueId) => {
     try {
         await supabase
             .from(TABLES.GRADES)
             .delete()
-            .match({user_id: userId, issue_id: issueId});
+            .match({id: gradeId, user_id: userId, issue_id: issueId});
     } catch (error) {
         console.error(error);
     }
@@ -248,6 +242,8 @@ export const getGradesByUserIdAndIssueId = async (userId, issueId, setGrades) =>
         }
         if (data && data.length > 0) {
             setGrades(data);
+        } else {
+            setGrades([]);
         }
     } catch (error) {
         console.error(error);

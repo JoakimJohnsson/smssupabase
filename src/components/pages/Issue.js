@@ -21,6 +21,7 @@ import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIss
 import {handleCollectingIssue, handleCollectingTitle} from "../../services/serviceFunctions";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {
+    addGrade,
     addIssueToUpgrade,
     addIssueToWanted,
     getGradesByUserIdAndIssueId,
@@ -33,6 +34,7 @@ import {Sources} from "./pagecomponents/Sources";
 import {AddMessage} from "../message/AddMessage";
 import {FunctionButton} from "../minis/FunctionButton";
 import {EditGrade} from "../grade/EditGrade";
+import {IconButton} from "../minis/IconButton";
 
 
 export const Issue = () => {
@@ -40,6 +42,7 @@ export const Issue = () => {
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
     const [grades, setGrades] = useState([]);
+    const [totalCopies, setTotalCopies] = useState(1);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
@@ -71,7 +74,7 @@ export const Issue = () => {
 
     const fetchGrades = useCallback(() => {
         getGradesByUserIdAndIssueId(user.id, id, setGrades).then();
-    }, [id, user.id])
+    }, [id, user.id]);
 
     useEffect(() => {
         if (issue) {
@@ -79,7 +82,13 @@ export const Issue = () => {
             fetchIssueIds();
             fetchGrades();
         }
-    }, [fetchIssueIds, fetchGrades, issue])
+    }, [fetchIssueIds, fetchGrades, issue]);
+
+    useEffect(() => {
+        if (grades && grades.length > 0) {
+            setTotalCopies(grades.length);
+        }
+    }, [grades]);
 
     const handleWanted = () => {
         if (isWantingIssue) {
@@ -95,6 +104,10 @@ export const Issue = () => {
         } else {
             addIssueToUpgrade(user.id, issue.id).then(() => setIsUpgradingIssue(true));
         }
+    }
+
+    const handleAddGrade = () => {
+        addGrade(user.id, issue.id).then(() => fetchGrades());
     }
 
     return (
@@ -115,7 +128,10 @@ export const Issue = () => {
                                         <button
                                             aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
                                             className={`btn ${isCollectingIssue ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 justify-content-center mb-4`}
-                                            onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                                            onClick={() => {
+                                                handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);
+                                                fetchGrades();
+                                            }}>
                                             {
                                                 isCollectingIssue ?
                                                     <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
@@ -161,10 +177,6 @@ export const Issue = () => {
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
                                 <div className={"d-flex align-items-center flex-wrap mb-3"}>
-                                    {
-                                        isCollectingIssue && grades &&
-                                        grades.map((g) => <GradeBadge key={g.id} grade={g.grade}/>)
-                                    }
                                     <TitleBadge title={issue.titles}/>
                                     {
                                         !!issue.is_variant &&
@@ -185,6 +197,7 @@ export const Issue = () => {
                                         <Link to={`/admin/issues/${issue.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + displayName}><span
                                             className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
                                     }
+                                    <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS_AND_HEADINGS.COPY}</span>
                                 </div>
                                 <div className={"mb-3"}>
                                     {
@@ -247,16 +260,26 @@ export const Issue = () => {
                                     isCollectingIssue &&
                                     <div className={"sms-section--light mb-4"}>
                                         <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
+                                        <div className={"mb-3"}>
+                                            {
+                                                isCollectingIssue && grades &&
+                                                grades.map((g) => <GradeBadge key={g.id} grade={g.grade}/>)
+                                            }
+                                        </div>
                                         <p>
                                             {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer"
                                                                     target={"_blank"}>Seriekatalogen</a>.
                                         </p>
                                         {
                                             grades &&
-                                            grades.map((g, index) => <EditGrade id={g.id} grade={g.grade} fetchGrades={fetchGrades} issue={issue}
-                                                                                index={index}/>)
+                                            grades.sort((a, b) => a.id - b.id).map((grade, index) => {
+                                                return (
+                                                    <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index}/>
+                                                );
+                                            })
                                         }
-                                        {/* TODO Knapp för att lägga till skickgradering för ytterligare exemplar. */}
+                                        <IconButton variant={"primary"} icon={faPlus} onClick={() => handleAddGrade()}
+                                                    label={LABELS_AND_HEADINGS.ADD_GRADE}/>
                                     </div>
                                 }
                             </div>

@@ -116,7 +116,8 @@ export const LABELS_AND_HEADINGS = {
     ADD_ISSUE: "Lägg till enstaka ny publikation",
     ADD_PUBLISHER: "Lägg till nytt förlag",
     ADD_TITLE: "Lägg till ny titel",
-    ADD_GRADE: "Lägg till skickgradering för nytt exemplar",
+    ADD_GRADE: "Lägg till skickgradering",
+    DELETE_GRADE: "Ta bort skickgradering för",
     ADDED: "Inlagd",
     ADMIN: "Admin",
     ADD_ADMIN_1: "Gör ",
@@ -359,7 +360,7 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
-    GRADE_TEXT_2: "Mer information om skickgradering hittar du hos",
+    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering hittar du hos",
     INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
@@ -441,7 +442,7 @@ export const PANES = {
         COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
         COLLECTING_ISSUES_3: "komplett.",
         GRADE: "Gradering",
-        COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har ett medelvärde för gradering som ligger på"
+        COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har en snittgradering på"
     },
     OTHER_COLLECTIONS: {
         NAME: "Andra samlingar",
