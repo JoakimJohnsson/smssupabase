@@ -117,14 +117,26 @@
 .bg-grade-0 {
   background-color: $grade;
 }
+.bg-grade-100 {
+  background-color: scale-color($grade, $lightness: 90%);
+}
 .bg-grade-200 {
   background-color: scale-color($grade, $lightness: 80%);
+}
+.bg-grade-300 {
+  background-color: scale-color($grade, $lightness: 70%);
 }
 .bg-grade-400 {
   background-color: scale-color($grade, $lightness: 60%);
 }
+.bg-grade-500 {
+  background-color: scale-color($grade, $lightness: 50%);
+}
 .bg-grade-600 {
   background-color: scale-color($grade, $lightness: 40%);
+}
+.bg-grade-700 {
+  background-color: scale-color($grade, $lightness: 30%);
 }
 .bg-grade-800 {
   background-color: scale-color($grade, $lightness: 20%);

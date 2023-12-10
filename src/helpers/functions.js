@@ -235,6 +235,14 @@ export const getCurrentDate = () => {
     return (new Date()).toISOString();
 }
 
+export const getMediumGrade = (grades) => {
+    let totalGradeAmount = 0.0;
+    for (let i = 0; i < grades.length; i++) {
+        totalGradeAmount += grades[i].grade;
+    }
+    return totalGradeAmount / grades.length || 0.0;
+}
+
 export const sortableName = (name) => {
     return name.trim().replace(":", "").replace("-", "").toLowerCase();
 }

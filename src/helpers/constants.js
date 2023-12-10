@@ -116,6 +116,8 @@ export const LABELS_AND_HEADINGS = {
     ADD_ISSUE: "Lägg till enstaka ny publikation",
     ADD_PUBLISHER: "Lägg till nytt förlag",
     ADD_TITLE: "Lägg till ny titel",
+    ADD_GRADE: "Lägg till skickgradering",
+    DELETE_GRADE: "Ta bort skickgradering för",
     ADDED: "Inlagd",
     ADMIN: "Admin",
     ADD_ADMIN_1: "Gör ",
@@ -148,6 +150,7 @@ export const LABELS_AND_HEADINGS = {
     CONTENT: "Innehåll",
     COUNTRY: "Utgivningsland",
     COUNTRY_DB: "Utgivningsland (country)",
+    COPY: "Exemplar",
     CREATE_ACCOUNT: "Registrera dig",
     CREATE_ACCOUNT_CTA: "Registrera dig",
     CREATED_AT: "Inlagd",
@@ -204,6 +207,7 @@ export const LABELS_AND_HEADINGS = {
     IS_VARIANT: "Variant",
     IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
+    ISSUE: "Publikation",
     ISSUES: "Publikationer",
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
@@ -302,6 +306,7 @@ export const LABELS_AND_HEADINGS = {
     START: "Starta",
     START_YEAR: "Startår",
     START_YEAR_DB: "Startår (start_year)",
+    STATUS_404: "404",
     SVENSKA_MARVELSAMLARE: "Svenska Marvelsamlare",
     SVENSKA_MARVELSAMLARE_SHORT: "SMS",
     TITLE: "Titel",
@@ -355,7 +360,7 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
-    GRADE_TEXT_2: "Mer information om skickgradering hittar du hos",
+    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering hittar du hos",
     INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
@@ -375,6 +380,7 @@ export const TEXTS = {
     SHOWING_LATEST_MESSAGES: "Visar senast inkomna meddelanden från användare, samt eventuella globala meddelanden från Admin.",
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
+    STATUS_404_ROUTE: "Hittade tyvärr ingen route för",
     TOTAL_TITLE_COUNT: "Totalt antal inlagda titlar:",
     LATEST_TITLES: "Senast inlagda titlar:",
     TOTAL_ISSUE_COUNT: "Totalt antal inlagda publikationer:",
@@ -434,7 +440,9 @@ export const PANES = {
         COLLECTING_TITLES_3: "inlagda titlar.",
         COLLECTING_ISSUES_1: "Totalt ingår",
         COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
-        COLLECTING_ISSUES_3: "komplett."
+        COLLECTING_ISSUES_3: "komplett.",
+        GRADE: "Gradering",
+        COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har en snittgradering på"
     },
     OTHER_COLLECTIONS: {
         NAME: "Andra samlingar",
@@ -526,3 +534,146 @@ export const CONFIG = {
     GENERATE_ISSUES_TIMEOUT: 1000,
     DELETE_ISSUES_TIMEOUT: 1000
 }
+
+export const GRADE_VARIANTS = {
+    0.5: {
+        text: "PR",
+        displayName: "Poor",
+        color: "100"
+    },
+    1: {
+        text: "FR",
+        displayName: "Fair",
+        color: "100"
+    },
+    1.5: {
+        text: "FR/GD",
+        displayName: "Fair / Good",
+        color: "100"
+    },
+    2: {
+        text: "GD",
+        displayName: "Good",
+        color: "200"
+    },
+    2.5: {
+        text: "GD+",
+        displayName: "Good (+)",
+        color: "200"
+    },
+    3: {
+        text: "GD/VG",
+        displayName: "Good / Very good",
+        color: "200"
+    },
+    3.5: {
+        text: "VG-",
+        displayName: "Very good (-)",
+        color: "300"
+    },
+    4: {
+        text: "VG",
+        displayName: "Very good",
+        color: "300"
+    },
+    4.5: {
+        text: "VG+",
+        displayName: "Very good (+)",
+        color: "300"
+    },
+    5: {
+        text: "VG/FN",
+        displayName: "Very good / Fine",
+        color: "400"
+    },
+    5.5: {
+        text: "FN-",
+        displayName: "Fine (-)",
+        color: "500"
+    },
+    6: {
+        text: "FN",
+        displayName: "Fine",
+        color: "600"
+    },
+    6.5: {
+        text: "FN+",
+        displayName: "Fine (+)",
+        color: "700"
+    },
+    7: {
+        text: "FN/VF",
+        displayName: "Fine / Very fine",
+        color: "700"
+    },
+    7.5: {
+        text: "VF-",
+        displayName: "Very fine (-)",
+        color: "800"
+    },
+    8: {
+        text: "VF",
+        displayName: "Very fine",
+        color: "800"
+    },
+    8.5: {
+        text: "VF+",
+        displayName: "Very fine (+)",
+        color: "800"
+    },
+    9: {
+        text: "VF/NM",
+        displayName: "Very fine / Near mint",
+        color: "0"
+    },
+    9.2: {
+        text: "NM-",
+        displayName: "Near mint (-)",
+        color: "0"
+    },
+    9.4: {
+        text: "NM",
+        displayName: "Near mint",
+        color: "0"
+    },
+    9.6: {
+        text: "NM+",
+        displayName: "Near mint (+)",
+        color: "0"
+    },
+    9.8: {
+        text: "NM/M",
+        displayName: "Near mint / mint",
+        color: "0"
+    },
+    9.9: {
+        text: "M",
+        displayName: "Mint",
+        color: "0"
+    }
+}
+
+export const GRADE_RADIOS = [
+    {name: 'PR', value: 0.5},
+    {name: 'FR', value: 1.0},
+    {name: 'FR/GD', value: 1.5},
+    {name: 'GD', value: 2.0},
+    {name: 'GD/VG', value: 3.0},
+    {name: 'VG-', value: 3.5},
+    {name: 'VG', value: 4.0},
+    {name: 'VG+', value: 4.5},
+    {name: 'VG/FN', value: 5.0},
+    {name: 'FN-', value: 5.5},
+    {name: 'FN', value: 6.0},
+    {name: 'FN+', value: 6.5},
+    {name: 'FN/VF', value: 7.0},
+    {name: 'VF-', value: 7.5},
+    {name: 'VF', value: 8.0},
+    {name: 'VF+', value: 8.5},
+    {name: 'VF/NM', value: 9.0},
+    {name: 'NM-', value: 9.2},
+    {name: 'NM', value: 9.4},
+    {name: 'NM+', value: 9.6},
+    {name: 'NM/M', value: 9.8},
+    {name: 'M', value: 9.9},
+];

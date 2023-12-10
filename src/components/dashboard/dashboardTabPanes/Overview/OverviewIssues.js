@@ -3,17 +3,27 @@ import {LABELS_AND_HEADINGS, PANES, TABLES} from "../../../../helpers/constants"
 import {getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
 import {useAppContext} from "../../../../context/AppContext";
+import {getAllGradesByUserId} from "../../../../services/collectingService";
+import {getMediumGrade} from "../../../../helpers/functions";
 
 
 export const OverviewIssues = ({titlesData}) => {
 
     const [userIssuesCount, setUserIssuesCount] = useState(null);
     const [totalIssuesCountForCollection, setTotalIssuesCountForCollection] = useState(null);
+    const [grades, setGrades] = useState(null);
+    const [mediumGrade, setMediumGrade] = useState(null);
     const {user} = useAppContext();
 
     useEffect(() => {
         if (user) {
             getRowCountByTableAndUserId(TABLES.USERS_ISSUES, user.id, setUserIssuesCount).then();
+        }
+    }, [user]);
+
+    useEffect(() => {
+        if (user) {
+            getAllGradesByUserId(user.id, setGrades).then();
         }
     }, [user]);
 
@@ -26,6 +36,12 @@ export const OverviewIssues = ({titlesData}) => {
             }
         }
     }, [titlesData]);
+
+    useEffect(() => {
+        if (grades && grades.length) {
+            setMediumGrade(getMediumGrade(grades).toFixed(1));
+        }
+    }, [grades]);
 
     return (
         <div className={"sms-dashboard-col--sm"}>
@@ -43,6 +59,8 @@ export const OverviewIssues = ({titlesData}) => {
                             (0/0) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                         </p>
                 }
+                <h3>{PANES.OVERVIEW.GRADE}</h3>
+                <p>{PANES.OVERVIEW.COLLECTING_ISSUES_GRADE_1} <span className={mediumGrade > 6 ? "text-success" : "text-danger"}>{mediumGrade}</span>.</p>
             </div>
         </div>
     )

@@ -1,14 +1,13 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
 import {getIssueName} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {EditIcon, Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {Grade} from "../grade/Grade";
 import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
@@ -22,9 +21,10 @@ import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIss
 import {handleCollectingIssue, handleCollectingTitle} from "../../services/serviceFunctions";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {
+    addGrade,
     addIssueToUpgrade,
     addIssueToWanted,
-    getGradeByUserIdAndIssueId,
+    getGradesByUserIdAndIssueId,
     removeIssueFromUpgrade,
     removeIssueFromWanted
 } from "../../services/collectingService";
@@ -33,13 +33,16 @@ import {PublisherBadge} from "../minis/PublisherBadge";
 import {Sources} from "./pagecomponents/Sources";
 import {AddMessage} from "../message/AddMessage";
 import {FunctionButton} from "../minis/FunctionButton";
+import {EditGrade} from "../grade/EditGrade";
+import {IconButton} from "../minis/IconButton";
 
 
 export const Issue = () => {
 
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
-    const [grade, setGrade] = useState(1);
+    const [grades, setGrades] = useState([]);
+    const [totalCopies, setTotalCopies] = useState(null);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
@@ -69,17 +72,27 @@ export const Issue = () => {
         }
     }, [issue]);
 
-    const fetchGrade = useCallback(() => {
-        getGradeByUserIdAndIssueId(user.id, id, setGrade).then();
-    }, [id, user.id])
+    const fetchGrades = useCallback(() => {
+        getGradesByUserIdAndIssueId(user.id, id, setGrades).then();
+    }, [id, user.id]);
 
     useEffect(() => {
         if (issue) {
             setDisplayName(getIssueName(issue));
             fetchIssueIds();
-            fetchGrade();
+            fetchGrades();
         }
-    }, [fetchIssueIds, fetchGrade, issue])
+    }, [fetchIssueIds, fetchGrades, issue]);
+
+    useEffect(() => {
+        if (grades && grades.length > 0) {
+            setTotalCopies(grades.length);
+        } else if (isCollectingIssue) {
+            setTotalCopies(1);
+        } else {
+            setTotalCopies(0);
+        }
+    }, [grades, isCollectingIssue]);
 
     const handleWanted = () => {
         if (isWantingIssue) {
@@ -95,6 +108,10 @@ export const Issue = () => {
         } else {
             addIssueToUpgrade(user.id, issue.id).then(() => setIsUpgradingIssue(true));
         }
+    }
+
+    const handleAddGrade = () => {
+        addGrade(user.id, issue.id).then(() => fetchGrades());
     }
 
     return (
@@ -115,7 +132,10 @@ export const Issue = () => {
                                         <button
                                             aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
                                             className={`btn ${isCollectingIssue ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 justify-content-center mb-4`}
-                                            onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
+                                            onClick={() => {
+                                                handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);
+                                                fetchGrades();
+                                            }}>
                                             {
                                                 isCollectingIssue ?
                                                     <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
@@ -161,10 +181,6 @@ export const Issue = () => {
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
                                 <div className={"d-flex align-items-center flex-wrap mb-3"}>
-                                    {
-                                        isCollectingIssue &&
-                                        <GradeBadge grade={grade}/>
-                                    }
                                     <TitleBadge title={issue.titles}/>
                                     {
                                         !!issue.is_variant &&
@@ -185,6 +201,7 @@ export const Issue = () => {
                                         <Link to={`/admin/issues/${issue.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + displayName}><span
                                             className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
                                     }
+                                    <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS_AND_HEADINGS.COPY}</span>
                                 </div>
                                 <div className={"mb-3"}>
                                     {
@@ -245,7 +262,29 @@ export const Issue = () => {
                                 </div>
                                 {
                                     isCollectingIssue &&
-                                    <Grade issue={issue} grade={grade} setGrade={setGrade}/>
+                                    <div className={"sms-section--light mb-4"}>
+                                        <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
+                                        <div className={"mb-3"}>
+                                            {
+                                                isCollectingIssue && grades &&
+                                                grades.map((g) => <GradeBadge key={g.id} grade={g.grade}/>)
+                                            }
+                                        </div>
+                                        <p>
+                                            {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer"
+                                                                    target={"_blank"}>Seriekatalogen</a>.
+                                        </p>
+                                        {
+                                            grades &&
+                                            grades.sort((a, b) => a.id - b.id).map((grade, index) => {
+                                                return (
+                                                    <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index}/>
+                                                );
+                                            })
+                                        }
+                                        <IconButton variant={"primary"} icon={faPlus} onClick={() => handleAddGrade()}
+                                                    label={LABELS_AND_HEADINGS.ADD_GRADE}/>
+                                    </div>
                                 }
                             </div>
                         </>
