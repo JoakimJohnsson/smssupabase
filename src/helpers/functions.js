@@ -55,7 +55,7 @@ export const handleEmailInput = (success, setEmailInputClass, setEmailValidated,
 
 export const trimInputString = (input) => {
     // Define a regular expression pattern to match Swedish letters, spaces, and numbers. And some characters like ':' and '/'.
-    const pattern = /[a-zA-ZåäöÅÄÖ0-9\s:/.!"]/g;
+    const pattern = /[a-zA-ZåäöÅÄÖ0-9\s:/.!",]/g;
     if (!input) {
         return "";
     }
