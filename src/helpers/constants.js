@@ -116,6 +116,7 @@ export const LABELS_AND_HEADINGS = {
     ADD_ISSUE: "Lägg till enstaka ny publikation",
     ADD_PUBLISHER: "Lägg till nytt förlag",
     ADD_TITLE: "Lägg till ny titel",
+    ADD_GRADE: "Lägg till skickgradering för nytt exemplar",
     ADDED: "Inlagd",
     ADMIN: "Admin",
     ADD_ADMIN_1: "Gör ",
