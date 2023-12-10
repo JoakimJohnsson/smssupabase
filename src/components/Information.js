@@ -17,7 +17,7 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.2.0 - 2023-01-XX</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.2.0 - 2023-12-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Utökat och förbättrat graderingssystem - fler värden kan nu anges.</li>
                     <li className={"list-group-item px-0"}>Användare kan lägga till skickgraderingar för fler än ett exemplar av en publikation.</li>
