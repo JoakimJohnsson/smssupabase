@@ -39,7 +39,7 @@ export const Issue = () => {
 
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
-    const [grade, setGrade] = useState(4);
+    const [grades, setGrades] = useState(4);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
@@ -69,17 +69,17 @@ export const Issue = () => {
         }
     }, [issue]);
 
-    const fetchGrade = useCallback(() => {
-        getGradesByUserIdAndIssueId(user.id, id, setGrade).then();
+    const fetchGrades = useCallback(() => {
+        getGradesByUserIdAndIssueId(user.id, id, setGrades).then();
     }, [id, user.id])
 
     useEffect(() => {
         if (issue) {
             setDisplayName(getIssueName(issue));
             fetchIssueIds();
-            fetchGrade();
+            fetchGrades();
         }
-    }, [fetchIssueIds, fetchGrade, issue])
+    }, [fetchIssueIds, fetchGrades, issue])
 
     const handleWanted = () => {
         if (isWantingIssue) {
@@ -163,7 +163,7 @@ export const Issue = () => {
                                 <div className={"d-flex align-items-center flex-wrap mb-3"}>
                                     {
                                         isCollectingIssue &&
-                                        <GradeBadge grade={grade}/>
+                                        <GradeBadge grade={grades}/>
                                     }
                                     <TitleBadge title={issue.titles}/>
                                     {
@@ -249,7 +249,7 @@ export const Issue = () => {
                                         <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
                                         <p>{TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer" target={"_blank"}>Seriekatalogen</a>.</p>
                                         {/* TODO Map för att rendera existerande grades. */}
-                                        <EditGrade grade={grade} setGrade={setGrade} issue={issue} index={1}/>
+                                        <EditGrade grade={grades} fetchGrades={fetchGrades} issue={issue} index={1}/>
                                         {/* TODO Knapp för att lägga till skickgradering för ytterligare exemplar. */}
                                     </div>
                                 }

@@ -5,7 +5,7 @@ import {useAppContext} from "../../context/AppContext";
 import {GRADE_RADIOS, LABELS_AND_HEADINGS} from "../../helpers/constants";
 
 
-export const EditGrade = ({grade, setGrade, issue, index}) => {
+export const EditGrade = ({grade, fetchGrades, issue, index}) => {
 
     const [radioValue, setRadioValue] = useState(null);
     const {user} = useAppContext();
@@ -15,7 +15,7 @@ export const EditGrade = ({grade, setGrade, issue, index}) => {
     }, [grade])
 
     const handleEditGrade = (e) => {
-        editGrade(user.id, issue.id, e.target.value).then(() => setGrade(e.target.value))
+        editGrade(user.id, issue.id, e.target.value).then(() => fetchGrades())
     }
 
     return radioValue && (
