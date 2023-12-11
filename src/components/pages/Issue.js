@@ -267,7 +267,7 @@ export const Issue = () => {
                                         <div className={"mb-3"}>
                                             {
                                                 isCollectingIssue && grades &&
-                                                grades.sort((a, b) => a.id - b.id).map((g) => <GradeBadge key={g.id} grade={g.grade}/>)
+                                                grades.sort((a, b) => a.id - b.id).map((g, index) => <GradeBadge key={g.id} grade={g.grade} index={index}/>)
                                             }
                                         </div>
                                         <p>
