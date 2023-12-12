@@ -45,7 +45,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index}) => {
                                 }}
                             />
                             <label tabIndex="0" htmlFor={`radio-${grade.id}-${index + 1}`} className={`p-0 sms-grade-btn ${checked ? "active" : ""}`}>
-                                    <div className={`${checked ? "bg-dog text-grade-0" : "bg-elephant text-grade-200"} fs-small py-2 px-3 rounded-pill`}>
+                                    <div className={"fs-small py-2 px-3"}>
                                         <span aria-hidden={"true"} className={"d-inline-block text-nowrap"}>{radio.name} {radio.value.toFixed(1)}</span>
                                     </div>
                             </label>
