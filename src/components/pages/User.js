@@ -3,7 +3,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {getRowByTableAndId} from "../../services/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
-import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
+import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAnonDisplayName, getUserName, prepareUrl, sortByName} from "../../helpers/functions";
 import marvel from "../../assets/images/publishers/marvel.gif";
@@ -77,14 +77,7 @@ export const User = () => {
                                 showFullInfo(user, profile) ?
                                     <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
                                         {
-                                            user.image_url ?
-                                                <ImageViewerLogo url={user.image_url} fileName={user.image_filename}/>
-                                                :
-                                                <img
-                                                    src={marvel}
-                                                    alt={userName}
-                                                    className="w-100"
-                                                />
+                                            <ImageViewerSmall url={user.image_url || marvel} fileName={userName}/>
                                         }
                                     </div>
                                     :

@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {Link, useParams} from "react-router-dom";
-import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
+import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import countryData from "../../helpers/valueLists/countries.json";
 import {EditIcon, Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
@@ -46,7 +46,7 @@ export const Publisher = () => {
                                 <HeadingWithBreadCrumbs text={publisher.name}/>
                             </div>
                             <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
-                                <ImageViewerLogo url={publisher.image_url} fileName={publisher.image_filename}/>
+                                <ImageViewerSmall url={publisher.image_url} fileName={publisher.image_filename}/>
                                 <div className={"mb-2"}>
                                     {
                                         countryData &&

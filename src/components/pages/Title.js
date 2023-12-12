@@ -8,7 +8,7 @@ import {EditIcon, Icon, TitlesIcon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions";
-import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
+import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
@@ -108,7 +108,7 @@ export const Title = () => {
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
-                                <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
+                                <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
                                 <button
                                     disabled={isCollectingTitle && titleProgress.progress > 0}
                                     aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
