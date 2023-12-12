@@ -75,7 +75,7 @@ export const User = () => {
                             </div>
                             {
                                 showFullInfo(user, profile) ?
-                                    <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
+                                    <div className={"col-12 col-md-5 col-xl-3 mb-5 col-x-padding--xs-only"}>
                                         {
                                             <ImageViewerSmall url={user.image_url || marvel} fileName={userName}/>
                                         }
@@ -84,7 +84,7 @@ export const User = () => {
                                     <NoDataAvailable isUser/>
                             }
                             {
-                                <div className={"col-12 col-lg-7 col-xl-9"}>
+                                <div className={"col-12 col-md-7 col-xl-9 col-x-padding--xs-only"}>
                                     {
                                         profile && profile.role === 2 && user.role !== 2 &&
                                         (
