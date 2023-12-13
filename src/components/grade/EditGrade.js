@@ -33,6 +33,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index}) => {
                     return (
                         <div key={grade.id + index}>
                             <input
+                                tabIndex="0"
                                 className="btn-check"
                                 name="radio"
                                 type="radio"
@@ -44,7 +45,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index}) => {
                                     handleEditGrade(e);
                                 }}
                             />
-                            <label tabIndex="0" htmlFor={`radio-${grade.id}-${index + 1}`} className={`p-0 sms-grade-btn ${checked ? "active" : ""}`}>
+                            <label htmlFor={`radio-${grade.id}-${index + 1}`} className={`p-0 sms-grade-btn ${checked ? "active" : ""}`}>
                                     <div className={"fs-small py-2 px-3"}>
                                         <span aria-hidden={"true"} className={"d-inline-block text-nowrap"}>{radio.name} {radio.value.toFixed(1)}</span>
                                     </div>
