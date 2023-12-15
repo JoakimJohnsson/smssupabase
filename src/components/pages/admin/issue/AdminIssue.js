@@ -9,6 +9,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
 
 
 export const AdminIssue = () => {
@@ -61,7 +62,6 @@ export const AdminIssue = () => {
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
-                            <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={issue.titles}/>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
                                     <ImageUploader
@@ -79,6 +79,8 @@ export const AdminIssue = () => {
                                     />
                                 </div>
                             </div>
+                            <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={issue.titles}/>
+                            <AdminIssueGradeValueEdit issue={issue} title={issue.titles}/>
                         </div>
                     </>
             }

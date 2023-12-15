@@ -5,16 +5,24 @@ import {useAppContext} from "../../context/AppContext";
 import {GRADE_RADIOS, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {IconButton} from "../minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {getDataGradeValue} from "../../helpers/functions";
 
 
-export const EditGrade = ({grade, fetchGrades, issue, index}) => {
+export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
 
     const [radioValue, setRadioValue] = useState(null);
+    const [issueValue, setIssueValue] = useState(0);
     const {user} = useAppContext();
 
     useEffect(() => {
         setRadioValue(grade.grade);
     }, [grade.grade]);
+
+    useEffect(() => {
+        if (radioValue) {
+            setIssueValue(getDataGradeValue(gradeValues, radioValue));
+        }
+    }, [gradeValues, radioValue]);
 
     const handleEditGrade = (e) => {
         editGrade(grade.id, user.id, issue.id, e.target.value).then(() => fetchGrades());
@@ -26,7 +34,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index}) => {
 
     return radioValue && (
         <div className={"border rounded-3 p-3 bg-dog mb-4"}>
-            <h3 className={"mb-4"}>{LABELS_AND_HEADINGS.COPY} {index + 1}</h3>
+            <h3 className={"mb-4"}>{LABELS_AND_HEADINGS.COPY} {index + 1} {issueValue && <span>| {LABELS_AND_HEADINGS.COPY_VALUE} {issueValue}</span>}</h3>
             <ButtonGroup className={"mb-2 d-flex flex-wrap "}>
                 {GRADE_RADIOS.map((radio, index) => {
                     const checked = radioValue.toString() === radio.value.toString();

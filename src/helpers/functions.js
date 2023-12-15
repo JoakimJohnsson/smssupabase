@@ -30,6 +30,10 @@ export const getDataName = (data, id) => {
     return data.find(f => f.id === numericId).name;
 }
 
+export const getDataGradeValue = (data, grade) => {
+    return data.find(f => f.grade === grade).value;
+}
+
 export const getDataShade = (data, id) => {
     // Make sure the id is a number.
     const numericId = Number(id);

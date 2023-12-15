@@ -190,6 +190,27 @@ export const getNoCollectedIssues = async (titleId, userId) => {
     }
 }
 
+// GRADE VALUES
+
+export const getGradeValuesByIssueId = async (issueId, setGradeValues) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.GRADE_VALUES)
+            .select("*")
+            .match({issue_id: issueId});
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data && data.length > 0) {
+            setGradeValues(data);
+        } else {
+            setGradeValues([]);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 // GRADE
 
 export const addGrade = async (userId, issueId) => {

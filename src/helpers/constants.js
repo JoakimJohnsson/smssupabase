@@ -151,6 +151,7 @@ export const LABELS_AND_HEADINGS = {
     COUNTRY: "Utgivningsland",
     COUNTRY_DB: "Utgivningsland (country)",
     COPY: "Exemplar",
+    COPY_VALUE: "Värde (betafunktion):",
     CREATE_ACCOUNT: "Registrera dig",
     CREATE_ACCOUNT_CTA: "Registrera dig",
     CREATED_AT: "Inlagd",
@@ -168,6 +169,7 @@ export const LABELS_AND_HEADINGS = {
     EDIT: "Redigera",
     EDIT_GRADE: "Ändra skick",
     EDIT_INFORMATION: "Redigera information",
+    EDIT_GRADE_VALUE: "Redigera värde för gradering",
     EMAIL: "E-postadress",
     NEW_EMAIL: "Ny e-postadress",
     CONFIRM_NEW_EMAIL: "Bekräfta ny e-postadress",
@@ -361,6 +363,7 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
     GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering hittar du hos",
+    GRADE_TEXT_3: "Seriekatalogen",
     INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
@@ -425,6 +428,7 @@ export const TABLES = {
     USERS_ISSUES_WANTED: "users_issues_wanted",
     USERS_ISSUES_UPGRADE: "users_issues_upgrade",
     GRADES: "grades",
+    GRADE_VALUES: "grade_values",
     UTILS: "utils",
     USERS: "users"
 }

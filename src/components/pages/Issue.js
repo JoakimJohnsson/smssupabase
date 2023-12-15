@@ -25,6 +25,7 @@ import {
     addIssueToUpgrade,
     addIssueToWanted,
     getGradesByUserIdAndIssueId,
+    getGradeValuesByIssueId,
     removeIssueFromUpgrade,
     removeIssueFromWanted
 } from "../../services/collectingService";
@@ -42,6 +43,7 @@ export const Issue = () => {
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
     const [grades, setGrades] = useState([]);
+    const [gradeValues, setGradeValues] = useState([]);
     const [totalCopies, setTotalCopies] = useState(null);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
@@ -76,13 +78,18 @@ export const Issue = () => {
         getGradesByUserIdAndIssueId(user.id, id, setGrades).then();
     }, [id, user.id]);
 
+    const fetchGradeValues = useCallback(() => {
+        getGradeValuesByIssueId(id, setGradeValues).then();
+    }, [id]);
+
     useEffect(() => {
         if (issue) {
             setDisplayName(getIssueName(issue));
             fetchIssueIds();
             fetchGrades();
+            fetchGradeValues();
         }
-    }, [fetchIssueIds, fetchGrades, issue]);
+    }, [fetchIssueIds, fetchGrades, issue, fetchGradeValues]);
 
     useEffect(() => {
         if (grades && grades.length > 0) {
@@ -272,13 +279,13 @@ export const Issue = () => {
                                         </div>
                                         <p>
                                             {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer"
-                                                                    target={"_blank"}>Seriekatalogen</a>.
+                                                                    target={"_blank"}>{TEXTS.GRADE_TEXT_3}</a>.
                                         </p>
                                         {
                                             grades &&
                                             grades.sort((a, b) => a.id - b.id).map((grade, index) => {
-                                                return (
-                                                    <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index}/>
+                                                return gradeValues && gradeValues.length && (
+                                                    <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index} gradeValues={gradeValues}/>
                                                 );
                                             })
                                         }
