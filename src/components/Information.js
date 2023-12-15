@@ -21,6 +21,8 @@ const Information = () => {
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att ange skickgradering via tangentbordsnavigering.</li>
+                    <li className={"list-group-item px-0"}>(BETA) Värdering baserat på skick - Funktionalitet för Admin att redigera värden.</li>
+                    <li className={"list-group-item px-0"}>(BETA) Värdering - grundläggande värden inlagt på vissa publikationer. Delvis baserat på Seriekatalogens värdering.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.2.0 - 2023-12-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
