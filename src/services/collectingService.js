@@ -33,6 +33,18 @@ export const addTitleToCollection = async (userId, titleId) => {
     }
 }
 
+export const updateIsValued = async (titleId, isValued) => {
+    try {
+        await supabase
+            .from(TABLES.TITLES)
+            .update([{
+                is_valued: isValued,
+            }]).match({id: titleId});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle) => {
     let issueIds = [];
     await getAllIssueIdsForTitle(titleId).then((result) => {

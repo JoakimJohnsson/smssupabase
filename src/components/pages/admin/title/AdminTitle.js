@@ -18,11 +18,12 @@ import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {faMoneyBillSimpleWave, faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon} from "../../../icons";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {titleIconDuoTone} from "../../../icons-duotone";
 import {IconButton} from "../../../minis/IconButton";
+import {updateIsValued} from "../../../../services/collectingService";
 
 
 export const AdminTitle = () => {
@@ -43,6 +44,7 @@ export const AdminTitle = () => {
     const [source, setSource] = useState("");
     const [is_marvelklubben, setIs_marvelklubben] = useState(0);
     const [is_variant, setIs_variant] = useState(0);
+    const [is_valued, setIs_valued] = useState(0);
     const [is_double, setIs_double] = useState(0);
     const [marvelklubben_number, setMarvelklubben_number] = useState(0);
     const [variant_suffix, setVariant_suffix] = useState("a");
@@ -73,7 +75,8 @@ export const AdminTitle = () => {
         setImageFilename(title.image_filename);
         setImageUrl(title.image_url);
         setYear(title.start_year);
-    }, [id, fetchTitleAndIssuesData, setImageFilename, setImageUrl, imageFilename, imageUrl, title.image_filename, title.image_url, title.start_year, title.title_id])
+        setIs_valued(title.is_valued);
+    }, [id, fetchTitleAndIssuesData, setImageFilename, setImageUrl, imageFilename, imageUrl, title.image_filename, title.image_url, title.start_year, title.title_id, title.is_valued])
 
     useEffect(() => {
         setNewTitle({...title});
@@ -136,6 +139,14 @@ export const AdminTitle = () => {
         }
     }
 
+    const handleIsValued = () => {
+        if (is_valued === 0) {
+            updateIsValued(title.id, 1).then(() => setIs_valued(1));
+        } else {
+            updateIsValued(title.id, 0).then(() => setIs_valued(0));
+        }
+    }
+
     const handleCheckboxInput = (value, setData) => {
         if (value === 1) {
             setData(0)
@@ -178,6 +189,19 @@ export const AdminTitle = () => {
                                         id={title.id}
                                         update={fetchTitleAndIssuesData}
                                     />
+                                </div>
+                            </div>
+                            <div className={"sms-dashboard-col"}>
+                                <div className={"sms-section--light"}>
+                                    <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
+                                    <p>{TEXTS.GRADE_IS_VALUED_LEAD}</p>
+                                    {
+                                        is_valued === 0 ?
+                                            <p className={"alert alert-info"}>{TEXTS.GRADE_IS_NOT_VALUED}</p>
+                                            :
+                                            <p className={"alert alert-success"}>{TEXTS.GRADE_IS_VALUED}</p>
+                                    }
+                                    <IconButton variant={"primary"} icon={faMoneyBillSimpleWave} onClick={handleIsValued} label={LABELS_AND_HEADINGS.UPDATE}/>
                                 </div>
                             </div>
                         </div>
