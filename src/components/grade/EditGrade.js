@@ -35,7 +35,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
     return radioValue && (
         <div className={"border rounded-3 p-3 bg-dog mb-4"}>
             <h3 className={"mb-4"}>
-                <span className={"d-block mb-2 pb-2 border-bottom"}>{LABELS_AND_HEADINGS.COPY} {index + 1}</span>
+                <span className={"d-block mb-2 pb-2 border-bottom text-capitalize"}>{LABELS_AND_HEADINGS.COPY} {index + 1}</span>
                 {
                     issueValue >= 0 &&
                     <span className={"small"}>{LABELS_AND_HEADINGS.COPY_VALUE} {issueValue} {LABELS_AND_HEADINGS.COPY_VALUE_SEK}</span>

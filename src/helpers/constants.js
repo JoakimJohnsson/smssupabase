@@ -151,7 +151,7 @@ export const LABELS_AND_HEADINGS = {
     CONTENT: "Innehåll",
     COUNTRY: "Utgivningsland",
     COUNTRY_DB: "Utgivningsland (country)",
-    COPY: "Exemplar",
+    COPY: "exemplar",
     COPY_VALUE: "Värde:",
     COPY_VALUE_SEK: "kr",
     CREATE_ACCOUNT: "Registrera dig",
@@ -539,7 +539,7 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 152
+    TOTAL_TITLES_COUNT: 148
 }
 
 export const CONFIG = {
