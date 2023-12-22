@@ -152,7 +152,7 @@ export const LABELS_AND_HEADINGS = {
     COUNTRY: "Utgivningsland",
     COUNTRY_DB: "Utgivningsland (country)",
     COPY: "Exemplar",
-    COPY_VALUE: "Värde (betafunktion):",
+    COPY_VALUE: "Värde:",
     COPY_VALUE_SEK: "kr",
     CREATE_ACCOUNT: "Registrera dig",
     CREATE_ACCOUNT_CTA: "Registrera dig",
