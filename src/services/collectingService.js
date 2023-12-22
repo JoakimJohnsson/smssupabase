@@ -223,6 +223,21 @@ export const getGradeValuesByIssueId = async (issueId, setGradeValues) => {
     }
 }
 
+export const updateGradeValuesValues = async (gradeValues) => {
+    for (let i = 0; i < gradeValues.length; i++) {
+        try {
+            await supabase
+                .from(TABLES.GRADE_VALUES)
+                .update([{
+                    value: gradeValues[i].value
+                }])
+                .eq("id", gradeValues[i].id);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
 // GRADE
 
 export const addGrade = async (userId, issueId) => {

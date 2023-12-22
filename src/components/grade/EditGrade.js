@@ -34,7 +34,9 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
 
     return radioValue && (
         <div className={"border rounded-3 p-3 bg-dog mb-4"}>
-            <h3 className={"mb-4"}>{LABELS_AND_HEADINGS.COPY} {index + 1} {issueValue && <span>| {LABELS_AND_HEADINGS.COPY_VALUE} {issueValue}</span>}</h3>
+            <h3 className={"mb-4"}>
+                {LABELS_AND_HEADINGS.COPY} {index + 1} {issueValue && <span>| {LABELS_AND_HEADINGS.COPY_VALUE} {issueValue} {LABELS_AND_HEADINGS.COPY_VALUE_SEK}</span>}
+            </h3>
             <ButtonGroup className={"mb-2 d-flex flex-wrap "}>
                 {GRADE_RADIOS.map((radio, index) => {
                     const checked = radioValue.toString() === radio.value.toString();

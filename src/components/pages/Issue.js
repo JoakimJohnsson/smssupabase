@@ -284,7 +284,7 @@ export const Issue = () => {
                                         {
                                             grades &&
                                             grades.sort((a, b) => a.id - b.id).map((grade, index) => {
-                                                return gradeValues && gradeValues.length && (
+                                                return gradeValues && !!gradeValues.length && (
                                                     <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index} gradeValues={gradeValues}/>
                                                 );
                                             })

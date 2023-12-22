@@ -199,7 +199,7 @@ export const AdminTitle = () => {
                                         is_valued === 0 ?
                                             <p className={"alert alert-info"}>{TEXTS.GRADE_IS_NOT_VALUED}</p>
                                             :
-                                            <p className={"alert alert-success"}>{TEXTS.GRADE_IS_VALUED}</p>
+                                            <p className={"alert alert-success"}>{TEXTS.GRADE_TITLE_IS_VALUED}</p>
                                     }
                                     <IconButton variant={"primary"} icon={faMoneyBillSimpleWave} onClick={handleIsValued} label={LABELS_AND_HEADINGS.UPDATE}/>
                                 </div>
