@@ -28,6 +28,7 @@ import {
     faBomb,
     faTriangleExclamation,
     faEarthAmericas,
+    faMoneyCheckPen,
     faUser,
     faUsers,
     faKey
@@ -59,6 +60,7 @@ const iconMap = {
     faMosquito: faMosquito,
     faClipboardListCheck: faClipboardListCheck,
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faMoneyCheckPen: faMoneyCheckPen,
     faCalendarHeart: faCalendarHeart,
     faTriangleExclamation: faTriangleExclamation,
     faEarthAmericas: faEarthAmericas,
@@ -93,6 +95,12 @@ export const DashboardIconDuoTone = ({size, className}) => {
 export const DateIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faCalendarHeart} size={size} className={className}/>
+    )
+}
+
+export const EditIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={faMoneyCheckPen} size={size} className={className}/>
     )
 }
 

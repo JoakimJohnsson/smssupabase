@@ -22,6 +22,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Visar nu antal träffar när man söker/filtrerar bland "Alla titlar".</li>
                     <li className={"list-group-item px-0"}>Möjlighet att ange skickgradering via tangentbordsnavigering.</li>
+                    <li className={"list-group-item px-0"}>Enklare att klicka sig vidare från titel och publikation.</li>
                     <li className={"list-group-item px-0"}>(BETA) Värdering baserat på skick - Funktionalitet för Admin att redigera värden.</li>
                     <li className={"list-group-item px-0"}>(BETA) Värdering - grundläggande värden inlagt på vissa publikationer. Delvis baserat på Seriekatalogens värdering.</li>
                 </ul>
