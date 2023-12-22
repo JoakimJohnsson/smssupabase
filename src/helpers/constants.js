@@ -390,6 +390,8 @@ export const TEXTS = {
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_MESSAGES: "Visar senast inkomna meddelanden från användare, samt eventuella globala meddelanden från Admin.",
+    SHOWING: "Visar",
+    SHOWING_OF: "av",
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
     STATUS_404_ROUTE: "Hittade tyvärr ingen route för",

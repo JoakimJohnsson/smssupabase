@@ -87,10 +87,9 @@ export const Home = () => {
                 </div>
                 <div className={"row row-padding--secondary"}>
                     <div className={"col-12 mb-4 col-x-padding--xs-only"}>
-                        <h2>Titlar</h2>
+                        <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                         <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <CustomSpinner/> : totalTitles}
                         </p>
-
                         <div className={"mb-4"}>
                             {
                                 <>
@@ -106,7 +105,6 @@ export const Home = () => {
                                 </>
                             }
                         </div>
-
                         <h3>{TEXTS.LATEST_TITLES}</h3>
                         {
                             limitedTitlesData ?
