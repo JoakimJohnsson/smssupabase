@@ -38,7 +38,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
                 <span className={"d-block mb-2 pb-2 border-bottom text-capitalize"}>{LABELS_AND_HEADINGS.COPY} {index + 1}</span>
                 {
                     issueValue >= 0 &&
-                    <span className={"small"}>{LABELS_AND_HEADINGS.COPY_VALUE} {issueValue} {LABELS_AND_HEADINGS.COPY_VALUE_SEK}</span>
+                    <span className={"small"}>{LABELS_AND_HEADINGS.COPY_VALUE} {issueValue} {LABELS_AND_HEADINGS.COPY_VALUE_SEK} {issue.titles.is_valued === 0 && LABELS_AND_HEADINGS.COPY_NOT_VALUED}</span>
                 }
             </h3>
             <ButtonGroup className={"mb-2 d-flex flex-wrap "}>

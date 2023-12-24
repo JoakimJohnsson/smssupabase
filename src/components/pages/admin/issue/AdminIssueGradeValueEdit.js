@@ -23,7 +23,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
     const handleAddGradeValues = async () => {
         try {
             // Performing a supabase sql function - insert_all_grade_values_for_issue
-            await supabase.rpc('insert_all_grade_values_for_issue', {input_issue_id: issue.id, input_value: 10}).then(() => fetchGradeValues());
+            await supabase.rpc('insert_all_grade_values_for_issue', {input_issue_id: issue.id, input_value: 0}).then(() => fetchGradeValues());
         } catch (error) {
             console.error(error);
         }
