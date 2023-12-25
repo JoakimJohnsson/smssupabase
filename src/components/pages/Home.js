@@ -109,7 +109,7 @@ export const Home = () => {
                         {
                             limitedTitlesData ?
                                 <>
-                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showCreatedInfo showToolbox={false}/>
+                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} doSortByName={false} showCreatedInfo showToolbox={false}/>
                                 </>
                                 :
                                 <NoDataAvailable/>

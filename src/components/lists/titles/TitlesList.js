@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
-import {hasImage, sortByNameAndStartYear} from "../../../helpers/functions";
+import {hasImage, sortByDateCreatedDesc, sortByNameAndStartYear} from "../../../helpers/functions";
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";
 
 
-export const TitlesList = ({titlesData, setTitlesData, showToolbox = false, showAdminInfo = false, showCreatedInfo = false, query = ""}) => {
+export const TitlesList = ({titlesData, setTitlesData, showToolbox = false, showAdminInfo = false, showCreatedInfo = false, query = "", doSortByName = true}) => {
 
     return titlesData && (
         <ul className={"sms-list--with-tools mb-4"}>
@@ -20,7 +20,9 @@ export const TitlesList = ({titlesData, setTitlesData, showToolbox = false, show
                                     .includes(query.toLowerCase()) ||
                                 query === ""
                             )
-                            .sort((a, b) => sortByNameAndStartYear(a, b)).map((t, index) =>
+                            .sort((a, b) => {
+                                return doSortByName ? sortByNameAndStartYear(a, b) : sortByDateCreatedDesc(a, b);
+                            }).map((t, index) =>
                                 <li key={index} className={"list-group-item px-0"}>
                                     <div className={"row"}>
                                         <div className={"sms-list-col--main"}>
