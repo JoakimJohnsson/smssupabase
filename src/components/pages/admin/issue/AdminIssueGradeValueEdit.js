@@ -69,7 +69,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                     </div>
                 }
                 {
-                    gradeValues &&
+                    gradeValues && !!gradeValues.length &&
                     <>
                         <h3>{LABELS_AND_HEADINGS.EDIT_GRADE_VALUE}</h3>
                         {gradeValues.map((gradeValue) => {
