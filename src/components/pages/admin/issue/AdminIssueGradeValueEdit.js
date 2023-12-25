@@ -17,7 +17,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
     const editGradeValue = isTrue(searchParams.get("editgradevalue"));
 
     const handleSubmit = () => {
-        updateGradeValuesValues(gradeValues).then();
+        updateGradeValuesValues(gradeValues).then(() => setSearchParams({editgradevalue: false}));
     }
 
     const handleAddGradeValues = async () => {
@@ -82,7 +82,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                                         className={CLASSES.FORM_INPUT_DEFAULT}
                                         type="number"
                                         step={"10"}
-                                        value={gradeValue.value || ""}
+                                        value={gradeValue.value || 0}
                                         // Using functional version of setGradeValues()
                                         onChange={(e) => {
                                             const updatedValue = e.target.value;
