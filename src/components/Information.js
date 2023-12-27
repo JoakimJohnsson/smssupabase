@@ -17,23 +17,21 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.2.0 - 2023-12-10</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.3.0 - 2023-12-27</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Visar nu antal träffar när man söker/filtrerar bland "Alla titlar".</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att ange skickgradering via tangentbordsnavigering.</li>
+                    <li className={"list-group-item px-0"}>Enklare att klicka sig vidare från titel och publikation.</li>
+                    <li className={"list-group-item px-0"}>(BETA) Värdering baserat på skick - Funktionalitet för Admin att redigera värden.</li>
+                    <li className={"list-group-item px-0"}>(BETA) Värdering - grundläggande värden inlagt på vissa publikationer. Delvis baserat på Seriekatalogens värdering.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.2.0 - 2023-12-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Utökat och förbättrat graderingssystem - fler värden kan nu anges.</li>
                     <li className={"list-group-item px-0"}>Användare kan lägga till skickgraderingar för fler än ett exemplar av en publikation.</li>
                     <li className={"list-group-item px-0"}>Snittvärde för gradering visas i kontrollpanelen.</li>
                     <li className={"list-group-item px-0"}>Förbättrad komponent för felaktig routing.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.1.0 - 2023-12-05</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Förbättrade adminfunktioner.</li>
-                    <li className={"list-group-item px-0"}>Det ska vara enkelt att rapportera felaktigheter, buggar och förbättringsförslag till
-                        admin.
-                    </li>
-                    <li className={"list-group-item px-0"}>Admin ska kunna skicka ut globala meddelanden om t.ex. releaser, nyheter och information.</li>
-                    <li className={"list-group-item px-0"}>Funktion för att kunna markera publikationer som efterlysta.</li>
-                    <li className={"list-group-item px-0"}>Funktion för att kunna markera publikationer som behöver uppgraderas.</li>
-                    <li className={"list-group-item px-0"}>Visa information om efterlysning och uppgradering på profilsida och översikt.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

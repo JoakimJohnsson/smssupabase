@@ -33,6 +33,18 @@ export const addTitleToCollection = async (userId, titleId) => {
     }
 }
 
+export const updateIsValued = async (titleId, isValued) => {
+    try {
+        await supabase
+            .from(TABLES.TITLES)
+            .update([{
+                is_valued: isValued,
+            }]).match({id: titleId});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle) => {
     let issueIds = [];
     await getAllIssueIdsForTitle(titleId).then((result) => {
@@ -184,6 +196,42 @@ export const getNoCollectedIssues = async (titleId, userId) => {
             if (data && data.length > 0) {
                 return data.length;
             }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
+// GRADE VALUES
+
+export const getGradeValuesByIssueId = async (issueId, setGradeValues) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.GRADE_VALUES)
+            .select("*")
+            .match({issue_id: issueId});
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data && data.length > 0) {
+            setGradeValues(data);
+        } else {
+            setGradeValues([]);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const updateGradeValuesValues = async (gradeValues) => {
+    for (let i = 0; i < gradeValues.length; i++) {
+        try {
+            await supabase
+                .from(TABLES.GRADE_VALUES)
+                .update([{
+                    value: gradeValues[i].value
+                }])
+                .eq("id", gradeValues[i].id);
         } catch (error) {
             console.error(error);
         }

@@ -25,7 +25,7 @@ export const TitlesSection = () => {
                     limitedTitlesData ?
                         <>
                             <p>{TEXTS.SHOWING_LATEST_TITLES}</p>
-                            <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} showAdminInfo={true} showToolbox/>
+                            <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} doSortByName={false} showAdminInfo={true} showToolbox/>
                         </>
                         :
                         <NoDataAvailable />

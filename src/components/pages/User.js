@@ -3,7 +3,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {getRowByTableAndId} from "../../services/serviceFunctions";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
-import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
+import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAnonDisplayName, getUserName, prepareUrl, sortByName} from "../../helpers/functions";
 import marvel from "../../assets/images/publishers/marvel.gif";
@@ -75,23 +75,16 @@ export const User = () => {
                             </div>
                             {
                                 showFullInfo(user, profile) ?
-                                    <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
+                                    <div className={"col-12 col-md-5 col-xl-3 mb-5 col-x-padding--xs-only"}>
                                         {
-                                            user.image_url ?
-                                                <ImageViewerLogo url={user.image_url} fileName={user.image_filename}/>
-                                                :
-                                                <img
-                                                    src={marvel}
-                                                    alt={userName}
-                                                    className="w-100"
-                                                />
+                                            <ImageViewerSmall url={user.image_url || marvel} fileName={userName}/>
                                         }
                                     </div>
                                     :
                                     <NoDataAvailable isUser/>
                             }
                             {
-                                <div className={"col-12 col-lg-7 col-xl-9"}>
+                                <div className={"col-12 col-md-7 col-xl-9 col-x-padding--xs-only"}>
                                     {
                                         profile && profile.role === 2 && user.role !== 2 &&
                                         (

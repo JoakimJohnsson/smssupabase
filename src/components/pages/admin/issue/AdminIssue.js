@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {BUCKETS, FILETYPES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -9,6 +9,8 @@ import {IconButton} from "../../../minis/IconButton";
 import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
+import {getGradeValuesByIssueId} from "../../../../services/collectingService";
 
 
 export const AdminIssue = () => {
@@ -18,6 +20,7 @@ export const AdminIssue = () => {
     const [imageUrl, setImageUrl] = useState("");
     const {id} = useParams();
     const [newIssue, setNewIssue] = useState({});
+    const [gradeValues, setGradeValues] = useState([]);
     const navigate = useNavigate();
 
     const [
@@ -32,9 +35,14 @@ export const AdminIssue = () => {
         setImageUrl(issue.image_url);
     }, [id, setImageFilename, setImageUrl, imageFilename, imageUrl, issue.image_filename, issue.image_url])
 
+    const fetchGradeValues = useCallback(() => {
+        getGradeValuesByIssueId(id, setGradeValues).then();
+    }, [id]);
+
     useEffect(() => {
+        fetchGradeValues();
         setNewIssue({...issue});
-    }, [issue])
+    }, [fetchGradeValues, issue]);
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -61,7 +69,6 @@ export const AdminIssue = () => {
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
-                            <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={issue.titles}/>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
                                     <ImageUploader
@@ -79,6 +86,8 @@ export const AdminIssue = () => {
                                     />
                                 </div>
                             </div>
+                            <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={issue.titles}/>
+                            <AdminIssueGradeValueEdit issue={issue} title={issue.titles} gradeValues={gradeValues} setGradeValues={setGradeValues} fetchGradeValues={fetchGradeValues}/>
                         </div>
                     </>
             }

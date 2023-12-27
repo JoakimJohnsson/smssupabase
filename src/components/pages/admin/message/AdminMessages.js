@@ -44,7 +44,7 @@ export const AdminMessages = () => {
                     <Breadcrumbs/>
                     <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
                     <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
-                    <a href={"#global-message-section"} className={"btn btn-primary btn-cta d-inline-block mb-4"}>
+                    <a href={"#global-message-section"} className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
                         <GlobalIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}
                     </a>
                 </div>

@@ -30,6 +30,10 @@ export const getDataName = (data, id) => {
     return data.find(f => f.id === numericId).name;
 }
 
+export const getDataGradeValue = (data, grade) => {
+    return data.find(f => f.grade === grade).value;
+}
+
 export const getDataShade = (data, id) => {
     // Make sure the id is a number.
     const numericId = Number(id);
@@ -55,7 +59,7 @@ export const handleEmailInput = (success, setEmailInputClass, setEmailValidated,
 
 export const trimInputString = (input) => {
     // Define a regular expression pattern to match Swedish letters, spaces, and numbers. And some characters like ':' and '/'.
-    const pattern = /[a-zA-ZåäöÅÄÖ0-9\s:/.!"]/g;
+    const pattern = /[a-zA-ZåäöÅÄÖ0-9\s:/.!",-]/g;
     if (!input) {
         return "";
     }

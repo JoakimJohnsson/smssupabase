@@ -33,6 +33,7 @@ export const MESSAGES = {
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
+        DELETE_GRADE_VALUES: "Vill du verkligen ta bort grundvärden för denna publikation?",
         REMOVE_1: "Vill du verkligen sluta samla på ",
         REMOVE_2: "?",
         FROM: " från tabellen ",
@@ -108,10 +109,10 @@ export const LABELS_AND_HEADINGS = {
     ABORT: "Avbryt",
     ADD: "Lägg till",
     ADD_ISSUES: "Lägg till publikationer",
-    ADD_ISSUE_WANTED: "Efterlysning",
+    ADD_ISSUE_WANTED: "Markera som efterlyst",
     REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
-    ADD_ISSUE_UPGRADE: "Uppgradering",
-    REMOVE_ISSUE_UPGRADE: "Ta bort uppgradering",
+    ADD_ISSUE_UPGRADE: "Markera behov av uppgradering",
+    REMOVE_ISSUE_UPGRADE: "Ta bort behov av uppgradering",
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADD_ISSUE: "Lägg till enstaka ny publikation",
     ADD_PUBLISHER: "Lägg till nytt förlag",
@@ -150,7 +151,10 @@ export const LABELS_AND_HEADINGS = {
     CONTENT: "Innehåll",
     COUNTRY: "Utgivningsland",
     COUNTRY_DB: "Utgivningsland (country)",
-    COPY: "Exemplar",
+    COPY: "exemplar",
+    COPY_VALUE: "Värde:",
+    COPY_NOT_VALUED: "(Värden ej inlagda för denna titel)",
+    COPY_VALUE_SEK: "kr",
     CREATE_ACCOUNT: "Registrera dig",
     CREATE_ACCOUNT_CTA: "Registrera dig",
     CREATED_AT: "Inlagd",
@@ -168,6 +172,8 @@ export const LABELS_AND_HEADINGS = {
     EDIT: "Redigera",
     EDIT_GRADE: "Ändra skick",
     EDIT_INFORMATION: "Redigera information",
+    EDIT_GRADE_VALUE: "Redigera värde för gradering",
+    ADD_GRADE_VALUE: "Lägg till grundvärde för gradering",
     EMAIL: "E-postadress",
     NEW_EMAIL: "Ny e-postadress",
     CONFIRM_NEW_EMAIL: "Bekräfta ny e-postadress",
@@ -274,6 +280,7 @@ export const LABELS_AND_HEADINGS = {
     RELEASE_LATEST: "Senaste releasen",
     RELEASE_PREVIOUS: "Föregående releaser",
     RELEASE_FUTURE: "Kommande funktionalitet",
+    REMOVE: "Ta bort",
     RESET: "Rensa",
     RESET_FILTER: "Rensa alla filter",
     RESET_FORM: "Rensa formulär",
@@ -361,6 +368,12 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
     GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering hittar du hos",
+    GRADE_TEXT_3: "Seriekatalogen",
+    GRADE_IS_VALUED_LEAD: "Här kan du markera att alla publikationer på den här titeln har fått rätt värden enligt Seriekatalogens värdering.",
+    GRADE_ISSUE_IS_VALUED_TEXT: "Publikationen har fått grundvärden.",
+    GRADE_ADD_VALUE_TEXT: "Grundvärden för denna publikation saknas. Tryck på knappen för att lägga till.",
+    GRADE_IS_NOT_VALUED: "Vissa publikationer saknar värden.",
+    GRADE_TITLE_IS_VALUED: "Alla publikationer har fått rätt värden.",
     INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
@@ -378,6 +391,8 @@ export const TEXTS = {
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_MESSAGES: "Visar senast inkomna meddelanden från användare, samt eventuella globala meddelanden från Admin.",
+    SHOWING: "Visar",
+    SHOWING_OF: "av",
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
     STATUS_404_ROUTE: "Hittade tyvärr ingen route för",
@@ -425,6 +440,7 @@ export const TABLES = {
     USERS_ISSUES_WANTED: "users_issues_wanted",
     USERS_ISSUES_UPGRADE: "users_issues_upgrade",
     GRADES: "grades",
+    GRADE_VALUES: "grade_values",
     UTILS: "utils",
     USERS: "users"
 }
@@ -524,7 +540,7 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 152
+    TOTAL_TITLES_COUNT: 148
 }
 
 export const CONFIG = {

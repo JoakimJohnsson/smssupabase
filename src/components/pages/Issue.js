@@ -1,12 +1,12 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
 import {getIssueName} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {EditIcon, Icon} from "../icons";
+import {Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
@@ -25,16 +25,16 @@ import {
     addIssueToUpgrade,
     addIssueToWanted,
     getGradesByUserIdAndIssueId,
+    getGradeValuesByIssueId,
     removeIssueFromUpgrade,
     removeIssueFromWanted
 } from "../../services/collectingService";
-import {TitleBadge} from "../minis/TitleBadge";
-import {PublisherBadge} from "../minis/PublisherBadge";
 import {Sources} from "./pagecomponents/Sources";
 import {AddMessage} from "../message/AddMessage";
 import {FunctionButton} from "../minis/FunctionButton";
 import {EditGrade} from "../grade/EditGrade";
 import {IconButton} from "../minis/IconButton";
+import {EditIconDuoTone, PublishersIconDuoTone, TitleIconDuoTone, TitlesIconDuoTone} from "../icons-duotone";
 
 
 export const Issue = () => {
@@ -42,6 +42,7 @@ export const Issue = () => {
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
     const [grades, setGrades] = useState([]);
+    const [gradeValues, setGradeValues] = useState([]);
     const [totalCopies, setTotalCopies] = useState(null);
     const [prevIssueId, setPrevIssueId] = useState(null);
     const [displayName, setDisplayName] = useState("");
@@ -76,13 +77,18 @@ export const Issue = () => {
         getGradesByUserIdAndIssueId(user.id, id, setGrades).then();
     }, [id, user.id]);
 
+    const fetchGradeValues = useCallback(() => {
+        getGradeValuesByIssueId(id, setGradeValues).then();
+    }, [id]);
+
     useEffect(() => {
         if (issue) {
             setDisplayName(getIssueName(issue));
             fetchIssueIds();
             fetchGrades();
+            fetchGradeValues();
         }
-    }, [fetchIssueIds, fetchGrades, issue]);
+    }, [fetchIssueIds, fetchGrades, issue, fetchGradeValues]);
 
     useEffect(() => {
         if (grades && grades.length > 0) {
@@ -180,13 +186,27 @@ export const Issue = () => {
                                 }
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
+                                <Link className={"btn btn-primary sms-btn"} to={ROUTES.DASHBOARD.PATH_MY_TITLES}>
+                                    <TitlesIconDuoTone className={"me-2"}/>{LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
+                                </Link>
+                                <Link className={"btn btn-primary sms-btn"} to={`/titles/${issue.titles.id}`} title={issue.titles.name}>
+                                    <TitleIconDuoTone className={"me-2"}/> {issue.titles.name}
+                                </Link>
+                                <Link className={"btn btn-primary sms-btn"} to={`/publishers/${issue.publishers.id}`} title={issue.publishers.name}>
+                                    <PublishersIconDuoTone className={"me-2"}/> {issue.publishers.name}
+                                </Link>
+                                {
+                                    profile && profile.role >= 1 &&
+                                    <Link className={"btn btn-primary sms-btn"} to={`/admin/issues/${issue.id}?edit=true`}
+                                          title={LABELS_AND_HEADINGS.EDIT + " " + displayName}>
+                                        <EditIconDuoTone className={"me-2"}/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}
+                                    </Link>
+                                }
                                 <div className={"d-flex align-items-center flex-wrap mb-3"}>
-                                    <TitleBadge title={issue.titles}/>
                                     {
                                         !!issue.is_variant &&
                                         <span className={`tag-badge text-black bg-info`}>Variant</span>
                                     }
-                                    <PublisherBadge publisher={issue.publishers}/>
                                     {
                                         issue.is_marvelklubben === 1 &&
                                         <MarvelKlubbenBadge number={issue.marvelklubben_number}/>
@@ -195,11 +215,6 @@ export const Issue = () => {
                                     {
                                         countryData &&
                                         <CountryBadge countryId={issue.publishers.country_id}/>
-                                    }
-                                    {
-                                        profile && profile.role >= 1 &&
-                                        <Link to={`/admin/issues/${issue.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + displayName}><span
-                                            className={`tag-badge text-black bg-issue-400`}><EditIcon/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}</span></Link>
                                     }
                                     <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS_AND_HEADINGS.COPY}</span>
                                 </div>
@@ -267,18 +282,20 @@ export const Issue = () => {
                                         <div className={"mb-3"}>
                                             {
                                                 isCollectingIssue && grades &&
-                                                grades.map((g) => <GradeBadge key={g.id} grade={g.grade}/>)
+                                                grades.sort((a, b) => a.id - b.id).map((g, index) => <GradeBadge key={g.id} grade={g.grade}
+                                                                                                                 index={index}/>)
                                             }
                                         </div>
                                         <p>
                                             {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer"
-                                                                    target={"_blank"}>Seriekatalogen</a>.
+                                                                    target={"_blank"}>{TEXTS.GRADE_TEXT_3}</a>.
                                         </p>
                                         {
                                             grades &&
                                             grades.sort((a, b) => a.id - b.id).map((grade, index) => {
-                                                return (
-                                                    <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index}/>
+                                                return gradeValues && !!gradeValues.length && (
+                                                    <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index}
+                                                               gradeValues={gradeValues}/>
                                                 );
                                             })
                                         }

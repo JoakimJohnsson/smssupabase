@@ -4,11 +4,11 @@ import {Link, useParams} from "react-router-dom";
 import {getRowByTableAndId, handleCollectingTitle} from "../../services/serviceFunctions";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
-import {EditIcon, Icon, TitlesIcon} from "../icons";
+import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions";
-import {ImageViewerLogo} from "./pagecomponents/ImageViewerLogo";
+import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
@@ -18,6 +18,7 @@ import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
 import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
+import {EditIconDuoTone, TitlesIconDuoTone} from "../icons-duotone";
 
 
 export const Title = () => {
@@ -108,7 +109,7 @@ export const Title = () => {
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
-                                <ImageViewerLogo url={title.image_url} fileName={title.image_filename}/>
+                                <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
                                 <button
                                     disabled={isCollectingTitle && titleProgress.progress > 0}
                                     aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
@@ -122,14 +123,6 @@ export const Title = () => {
                                     }
                                 </button>
                                 <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
-                                {
-                                    profile && profile.role >= 1 &&
-                                    <Link to={`/admin/titles/${title.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + title.name}>
-                                        <span className={`tag-badge mb-3 text-black bg-title-400`}>
-                                            <EditIcon className={"me-1"}/>{LABELS_AND_HEADINGS.EDIT + " " + title.name}
-                                        </span>
-                                    </Link>
-                                }
                                 {
                                     title.description &&
                                     <>
@@ -164,8 +157,15 @@ export const Title = () => {
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-9"}>
                                 <Link className={"btn btn-primary sms-btn"} to={ROUTES.DASHBOARD.PATH_MY_TITLES}>
-                                    <TitlesIcon className={"me-2"}/>{LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
+                                    <TitlesIconDuoTone className={"me-2"}/>{LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
                                 </Link>
+                                {
+                                    profile && profile.role >= 1 &&
+                                    <Link className={"btn btn-primary sms-btn"} to={`/admin/titles/${title.id}?edit=true`}
+                                          title={LABELS_AND_HEADINGS.EDIT + " " + title.name}>
+                                        <EditIconDuoTone className={"me-2"}/> {LABELS_AND_HEADINGS.EDIT + " " + title.name}
+                                    </Link>
+                                }
                                 {
                                     isCollectingTitle &&
                                     <TitleProgress titleProgress={titleProgress}/>
