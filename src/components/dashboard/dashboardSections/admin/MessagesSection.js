@@ -33,9 +33,9 @@ export const MessagesSection = () => {
                         <>
                             <p>{TEXTS.SHOWING_LATEST_MESSAGES}</p>
                             <h3>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h3>
-                            <MessagesList messagesData={messages} setMessagesData={setLimitedMessagesData}/>
+                            <MessagesList messagesData={messages} setMessagesData={setMessages}/>
                             <h3>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h3>
-                            <MessagesList messagesData={globalMessages} setMessagesData={setLimitedMessagesData}/>
+                            <MessagesList messagesData={globalMessages} setMessagesData={setGlobalMessages}/>
                         </>
                         :
                         <NoDataAvailable/>
