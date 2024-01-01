@@ -323,6 +323,7 @@ export const LABELS_AND_HEADINGS = {
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     TOTAL_ISSUES_DB: "Totalt antal publikationer (total_issues)",
     UPDATE: "Uppdatera",
+    UPDATE_DEFAULT_VALUES: "Uppdatera grundläggande värden",
     RELEASE_DATE: "Releasedatum",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
