@@ -24,6 +24,7 @@ import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {titleIconDuoTone} from "../../../icons-duotone";
 import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
+import {supabase} from "../../../../supabase/supabaseClient";
 
 
 export const AdminTitle = () => {
@@ -49,6 +50,16 @@ export const AdminTitle = () => {
     const [marvelklubben_number, setMarvelklubben_number] = useState(0);
     const [variant_suffix, setVariant_suffix] = useState("a");
     const [newTitle, setNewTitle] = useState({});
+    const [updateGradeValues, setUpdateGradeValues] = useState(
+        {
+            pr: 0,
+            gd: 0,
+            vg: 0,
+            fn: 0,
+            vf: 0,
+            nm: 0
+        }
+    );
     const {setInformationMessage} = useAppContext();
     const [publisher_id, setPublisher_id] = useState("");
     const [chosenPublisherName, setChosenPublisherName] = useState("");
@@ -155,6 +166,31 @@ export const AdminTitle = () => {
         }
     }
 
+    const handleInputChange = (event) => {
+        const {name, value} = event.target;
+        setUpdateGradeValues(prevValues => ({
+            ...prevValues,
+            [name]: value
+        }));
+    };
+
+    const handleUpdateDefaultGradeValues = async () => {
+        try {
+            // Performing a supabase sql function - update_grade_values_for_titles
+            await supabase.rpc('update_grade_values_for_titles', {
+                title_ids: [title.id],
+                value_pr: updateGradeValues.pr,
+                value_gd: updateGradeValues.gd,
+                value_vg: updateGradeValues.vg,
+                value_fn: updateGradeValues.fn,
+                value_vf: updateGradeValues.vf,
+                value_nm: updateGradeValues.nm,
+            }).then();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <main id="main-content" className={"container-fluid main-container"}>
             {
@@ -193,15 +229,44 @@ export const AdminTitle = () => {
                             </div>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
-                                    <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
-                                    <p>{TEXTS.GRADE_IS_VALUED_LEAD}</p>
-                                    {
-                                        is_valued === 0 ?
-                                            <p className={"alert alert-info"}>{TEXTS.GRADE_IS_NOT_VALUED}</p>
-                                            :
-                                            <p className={"alert alert-success"}>{TEXTS.GRADE_TITLE_IS_VALUED}</p>
-                                    }
-                                    <IconButton variant={"primary"} icon={faMoneyBillSimpleWave} onClick={handleIsValued} label={LABELS_AND_HEADINGS.UPDATE}/>
+                                    <div className={"mb-3"}>
+                                        <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
+                                        <p>{TEXTS.GRADE_IS_VALUED_LEAD}</p>
+                                        {
+                                            is_valued === 0 ?
+                                                <p className={"alert alert-info"}>{TEXTS.GRADE_IS_NOT_VALUED}</p>
+                                                :
+                                                <p className={"alert alert-success"}>{TEXTS.GRADE_TITLE_IS_VALUED}</p>
+                                        }
+                                        <IconButton variant={"primary"} icon={faMoneyBillSimpleWave} onClick={handleIsValued}
+                                                    label={LABELS_AND_HEADINGS.UPDATE}/>
+                                    </div>
+                                    <div>
+                                        <h3>{LABELS_AND_HEADINGS.UPDATE_DEFAULT_VALUES}</h3>
+                                        {
+                                            Object.entries(updateGradeValues).map(([key, value]) => {
+                                                return (
+                                                    <div key={key}>
+                                                        <label className={"form-label"} htmlFor={key}>{key.toUpperCase()}</label>
+                                                        <input
+                                                            id={key + key.toUpperCase()}
+                                                            name={key}
+                                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                                            type="number"
+                                                            step={"10"}
+                                                            min={0}
+                                                            value={value}
+                                                            onChange={handleInputChange}
+                                                            disabled={is_valued === 1}
+                                                        />
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                        <IconButton variant={"primary"} icon={faMoneyBillSimpleWave} onClick={handleUpdateDefaultGradeValues}
+                                                    label={LABELS_AND_HEADINGS.UPDATE} disabled={is_valued === 1}/>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

@@ -302,6 +302,13 @@ export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover,
     )
 }
 
+export const filterByIsValued = (obj, isvalued, isnotvalued) => {
+    return (
+        (isTrue(isvalued) && obj.is_valued === 1) ||
+        (isTrue(isnotvalued) && obj.is_valued === 0)
+    )
+}
+
 export const filterTitlesData = (titlesData, query, comic, comiclarge, album, pocket, hardcover, special, collectible) => {
     return (
         titlesData
@@ -314,6 +321,27 @@ export const filterTitlesData = (titlesData, query, comic, comiclarge, album, po
                 if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special, collectible])) {
                     return (
                         filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special, collectible)
+                    )
+                } else {
+                    return true;
+                }
+            })
+            .sort((a, b) => sortByNameAndStartYear(a, b))
+    )
+}
+
+export const filterAdminTitlesData = (titlesData, query, isvalued, isnotvalued) => {
+    return (
+        titlesData
+            .filter((title) => {
+                return (
+                    filterQueryByNameAndStartYear(title, query)
+                )
+            })
+            .filter((title) => {
+                if (hasTrueValue([isvalued, isnotvalued])) {
+                    return (
+                        filterByIsValued(title, isvalued, isnotvalued)
                     )
                 } else {
                     return true;
