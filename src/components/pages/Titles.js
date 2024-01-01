@@ -8,7 +8,7 @@ import {
     hasTrueValue,
     sortByNameAndStartYear
 } from "../../helpers/functions";
-import {getCountByTable, getRowsByTable} from "../../services/serviceFunctions";
+import {getRowsByTable} from "../../services/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
 import FilterFormFormat from "../search-filter/FilterFormFormat";
@@ -19,16 +19,11 @@ export const Titles = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [totalTitlesCount, setTotalTitlesCount] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
     const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible] = useFormatQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
-    }, []);
-
-    useEffect(() => {
-        getCountByTable(TABLES.TITLES, setTotalTitlesCount).then();
     }, []);
 
     useEffect(() => {
@@ -74,7 +69,7 @@ export const Titles = () => {
                                 :
                                 <CustomSpinner/>
                         }
-                        </span> {TEXTS.SHOWING_OF} {totalTitlesCount} {LABELS_AND_HEADINGS.TITLES}
+                        </span> {TEXTS.SHOWING_OF} {titlesData && titlesData.length} {LABELS_AND_HEADINGS.TITLES}
                     </p>
                     {
                         loading ?
