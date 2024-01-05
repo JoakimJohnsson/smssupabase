@@ -16,6 +16,7 @@ import {
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import FilterFormAdminTitles from "../../../search-filter/FilterFormAdminTitles";
 import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdminTitlesQueryFilter";
+import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 
 
 export const AdminTitles = () => {
@@ -56,14 +57,14 @@ export const AdminTitles = () => {
                     <Breadcrumbs/>
                     <FilterFormAdminTitles query={query} isvalued={isvalued} isnotvalued={isnotvalued} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     <p className={"text-uppercase fs-large"}>
-                        {TEXTS.SHOWING} <span className={"fw-bolder fs-x-large"}>
+                        {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredTitlesData ?
                                 filteredTitlesData.length
                                 :
-                                <CustomSpinner/>
+                                <LazyTextPlaceholder charCount={2}/>
                         }
-                        </span> {TEXTS.SHOWING_OF} {titlesData && titlesData.length} {LABELS_AND_HEADINGS.TITLES}
+                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
                     </p>
                     <div className={"sms-section--light"}>
                         {
