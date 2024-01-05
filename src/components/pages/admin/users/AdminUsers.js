@@ -4,7 +4,6 @@ import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions";
-import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {UsersList} from "../../../lists/users/UsersList";
