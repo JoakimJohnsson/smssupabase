@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {TitlesList} from "../../../lists/titles/TitlesList";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
@@ -17,6 +16,7 @@ import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import FilterFormAdminTitles from "../../../search-filter/FilterFormAdminTitles";
 import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdminTitlesQueryFilter";
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const AdminTitles = () => {
@@ -71,7 +71,7 @@ export const AdminTitles = () => {
                             filteredTitlesData ?
                                 <TitlesList titlesData={filteredTitlesData} setTitlesData={setTitlesData} showAdminInfo={true} query={query} showToolbox/>
                                 :
-                                <CustomSpinner className={"mb-3 d-block"}/>
+                                <OverlaySpinner/>
                         }
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
                                     label={LABELS_AND_HEADINGS.ADD_TITLE}/>
