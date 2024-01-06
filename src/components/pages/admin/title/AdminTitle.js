@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {
     getRowByTableAndId, getRowsByTable,
@@ -16,12 +16,12 @@ import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getCalculatedYear, getIssueName, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
+import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMoneyBillSimpleWave, faTrashCan} from "@fortawesome/pro-regular-svg-icons";
+import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {IssueIcon, valueIcon} from "../../../icons";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {issueIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
+import {titleIconDuoTone} from "../../../icons-duotone";
 import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
 import {supabase} from "../../../../supabase/supabaseClient";
@@ -64,7 +64,6 @@ export const AdminTitle = () => {
     const {setInformationMessage} = useAppContext();
     const [publisher_id, setPublisher_id] = useState("");
     const [chosenPublisherName, setChosenPublisherName] = useState("");
-    const navigate = useNavigate();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();

@@ -18,6 +18,7 @@ import {
     faFiles,
     faFileImage,
     faFileLines,
+    faFloppyDisk,
     faGears,
     faHeartCirclePlus,
     faHeartCrack,
@@ -61,6 +62,7 @@ const iconMap = {
     faFiles: faFiles,
     faFileImage: faFileImage,
     faFileLines: faFileLines,
+    faFloppyDisk: faFloppyDisk,
     faGears: faGears,
     faHeartCirclePlus: faHeartCirclePlus,
     faHeartCrack: faHeartCrack,
@@ -146,9 +148,11 @@ export const DataIcon = ({size, className}) => {
 
 export const EditIcon = ({size, className}) => {
     return (
-        <Icon icon={faMoneyCheckPen} size={size} className={className}/>
+        <Icon icon={editIcon} size={size} className={className}/>
     )
 }
+
+export const editIcon = faMoneyCheckPen;
 
 export const GlobalIcon = ({size, className}) => {
     return (
@@ -216,6 +220,14 @@ export const RegisterIcon = ({size, className}) => {
         <Icon icon={faHeartCirclePlus} size={size} className={className}/>
     )
 }
+
+export const SaveIcon = ({size, className}) => {
+    return (
+        <Icon icon={saveIcon} size={size} className={className}/>
+    )
+}
+
+export const saveIcon = faFloppyDisk;
 
 export const SendIcon = ({size, className}) => {
     return (

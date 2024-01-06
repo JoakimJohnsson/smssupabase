@@ -7,6 +7,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {supabase} from "../../../../supabase/supabaseClient";
 import {useAppContext} from "../../../../context/AppContext";
 import {updateGradeValuesValues} from "../../../../services/collectingService";
+import {editIcon, saveIcon} from "../../../icons";
 
 
 export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeValues, fetchGradeValues}) => {
@@ -100,18 +101,14 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                         {
                             editGradeValue ?
                                 <>
-                                    <button onClick={handleSubmit} className={"btn btn-primary sms-btn"}>
-                                        {LABELS_AND_HEADINGS.SAVE}
-                                    </button>
+                                    <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon}/>
                                     <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                         {LABELS_AND_HEADINGS.ABORT}
                                     </button>
                                 </>
                                 :
                                 <>
-                                    <button onClick={() => setSearchParams({editgradevalue: true})} className={"btn btn-primary sms-btn"}>
-                                        {LABELS_AND_HEADINGS.EDIT}
-                                    </button>
+                                    <IconButton variant={"primary"} onClick={() => setSearchParams({editgradevalue: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
                                     <IconButton variant={"outline-primary"} icon={faArrowLeft}
                                                 onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
                                                 label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>

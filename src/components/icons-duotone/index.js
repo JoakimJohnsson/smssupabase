@@ -5,6 +5,7 @@ import {
     faHouse,
     faFile,
     faFileLines,
+    faFloppyDisk,
     faChartLine,
     faCommentsQuestion,
     faGears,
@@ -47,6 +48,7 @@ const iconMap = {
     faGears: faGears,
     faFiles: faFiles,
     faFaceExplode: faFaceExplode,
+    faFloppyDisk: faFloppyDisk,
     faBuildingColumns: faBuildingColumns,
     faFileImage: faFileImage,
     faListTimeline: faListTimeline,
@@ -200,6 +202,14 @@ export const RegisterIconDuoTone = ({size, className}) => {
         <Icon icon={faHeartCirclePlus} size={size} className={className}/>
     )
 }
+
+export const SaveIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={saveIconDuoTone} size={size} className={className}/>
+    )
+}
+
+export const saveIconDuoTone = faFloppyDisk;
 
 export const SettingsIconDuoTone = ({size, className}) => {
     return (
