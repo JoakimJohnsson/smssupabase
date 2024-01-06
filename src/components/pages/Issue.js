@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
 import {getIssueName} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
@@ -34,7 +34,13 @@ import {AddMessage} from "../message/AddMessage";
 import {FunctionButton} from "../minis/FunctionButton";
 import {EditGrade} from "../grade/EditGrade";
 import {IconButton} from "../minis/IconButton";
-import {EditIconDuoTone, PublishersIconDuoTone, TitleIconDuoTone, TitlesIconDuoTone} from "../icons-duotone";
+import {
+    editIconDuoTone,
+    publishersIconDuoTone,
+    titleIconDuoTone,
+    titlesIconDuoTone,
+} from "../icons-duotone";
+import {IconLink} from "../minis/IconLink";
 
 
 export const Issue = () => {
@@ -186,21 +192,32 @@ export const Issue = () => {
                                 }
                             </div>
                             <div className={"col-12 col-md-8 col-xl-6"}>
-                                <Link className={"btn btn-primary sms-btn"} to={ROUTES.DASHBOARD.PATH_MY_TITLES}>
-                                    <TitlesIconDuoTone className={"me-2"}/>{LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
-                                </Link>
-                                <Link className={"btn btn-primary sms-btn"} to={`/titles/${issue.titles.id}`} title={issue.titles.name}>
-                                    <TitleIconDuoTone className={"me-2"}/> {issue.titles.name}
-                                </Link>
-                                <Link className={"btn btn-primary sms-btn"} to={`/publishers/${issue.publishers.id}`} title={issue.publishers.name}>
-                                    <PublishersIconDuoTone className={"me-2"}/> {issue.publishers.name}
-                                </Link>
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={titlesIconDuoTone}
+                                    path={ROUTES.DASHBOARD.PATH_MY_TITLES}
+                                    label={LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
+                                />
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={titleIconDuoTone}
+                                    path={`/titles/${issue.titles.id}`}
+                                    label={issue.titles.name}
+                                />
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={publishersIconDuoTone}
+                                    path={`/publishers/${issue.publishers.id}`}
+                                    label={issue.publishers.name}
+                                />
                                 {
                                     profile && profile.role >= 1 &&
-                                    <Link className={"btn btn-primary sms-btn"} to={`/admin/issues/${issue.id}?edit=true`}
-                                          title={LABELS_AND_HEADINGS.EDIT + " " + displayName}>
-                                        <EditIconDuoTone className={"me-2"}/> {LABELS_AND_HEADINGS.EDIT + " " + displayName}
-                                    </Link>
+                                    <IconLink
+                                        variant={"primary"}
+                                        icon={editIconDuoTone}
+                                        path={`/admin/issues/${issue.id}?edit=true`}
+                                        label={LABELS_AND_HEADINGS.EDIT + " " + displayName}
+                                    />
                                 }
                                 <div className={"d-flex align-items-center flex-wrap mb-3"}>
                                     {

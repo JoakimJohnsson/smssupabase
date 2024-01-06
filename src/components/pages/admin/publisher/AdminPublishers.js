@@ -9,6 +9,7 @@ import {handleBacking} from "../../../../helpers/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../../../search-filter/FilterFormSimple";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const AdminPublishers = () => {
@@ -25,17 +26,22 @@ export const AdminPublishers = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                        <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
-                        <Breadcrumbs/>
-                        <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
-                        <div className={"sms-section--light"}>
-                            {publishersData &&
-                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true} query={query}/>}
-                            <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
-                                        label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
-                            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                        label={LABELS_AND_HEADINGS.BACK}/>
-                        </div>
+                    <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</h1>
+                    <Breadcrumbs/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <div className={"sms-section--light"}>
+                        {
+                            publishersData ?
+                                <PublishersList publishersData={publishersData} setPublishersData={setPublishersData} showAdminInfo={true}
+                                                query={query}/>
+                                :
+                                <OverlaySpinner/>
+                        }
+                        <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
+                                    label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                    label={LABELS_AND_HEADINGS.BACK}/>
+                    </div>
 
                 </div>
             </div>

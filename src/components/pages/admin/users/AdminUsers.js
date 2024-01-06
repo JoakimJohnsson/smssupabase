@@ -4,12 +4,12 @@ import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useNavigate} from "react-router-dom";
 import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {handleBacking} from "../../../../helpers/functions";
-import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {UsersList} from "../../../lists/users/UsersList";
 import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../../../search-filter/FilterFormSimple";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const AdminUsers = () => {
@@ -33,10 +33,10 @@ export const AdminUsers = () => {
                     <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     <div className={"sms-section--light"}>
                         {
-                            usersData && usersData.length > 0 ?
+                            usersData ?
                                 <UsersList usersData={usersData} setUsersData={setUsersData} query={query}/>
                                 :
-                                <NoDataAvailable/>
+                                <OverlaySpinner/>
                         }
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS_AND_HEADINGS.BACK}/>

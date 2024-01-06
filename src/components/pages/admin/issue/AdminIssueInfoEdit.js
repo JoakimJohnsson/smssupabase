@@ -6,6 +6,7 @@ import {updateIssueData} from "../../../../services/issueService";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
+import {editIcon, saveIcon} from "../../../icons";
 
 
 export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, title}) => {
@@ -187,18 +188,14 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                 {
                     edit ?
                         <>
-                            <button onClick={handleSubmit} className={"btn btn-primary sms-btn"}>
-                                {LABELS_AND_HEADINGS.SAVE}
-                            </button>
+                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>
                         </>
                         :
                         <>
-                            <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary sms-btn"}>
-                                {LABELS_AND_HEADINGS.EDIT}
-                            </button>
+                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
                                         label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>
                         </>

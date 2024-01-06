@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {getRowByTableAndId, handleCollectingTitle} from "../../services/serviceFunctions";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
@@ -18,7 +18,8 @@ import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
 import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
-import {EditIconDuoTone, TitlesIconDuoTone} from "../icons-duotone";
+import {editIconDuoTone, titlesIconDuoTone} from "../icons-duotone";
+import {IconLink} from "../minis/IconLink";
 
 
 export const Title = () => {
@@ -156,15 +157,20 @@ export const Title = () => {
                                 }
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-9"}>
-                                <Link className={"btn btn-primary sms-btn"} to={ROUTES.DASHBOARD.PATH_MY_TITLES}>
-                                    <TitlesIconDuoTone className={"me-2"}/>{LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
-                                </Link>
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={titlesIconDuoTone}
+                                    path={ROUTES.DASHBOARD.PATH_MY_TITLES}
+                                    label={LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
+                                />
                                 {
                                     profile && profile.role >= 1 &&
-                                    <Link className={"btn btn-primary sms-btn"} to={`/admin/titles/${title.id}?edit=true`}
-                                          title={LABELS_AND_HEADINGS.EDIT + " " + title.name}>
-                                        <EditIconDuoTone className={"me-2"}/> {LABELS_AND_HEADINGS.EDIT + " " + title.name}
-                                    </Link>
+                                    <IconLink
+                                    variant={"primary"}
+                                    icon={editIconDuoTone}
+                                    path={`/admin/titles/${title.id}?edit=true`}
+                                    label={LABELS_AND_HEADINGS.EDIT + " " + title.name}
+                                    />
                                 }
                                 {
                                     isCollectingTitle &&

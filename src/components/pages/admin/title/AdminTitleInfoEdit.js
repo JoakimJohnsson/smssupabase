@@ -7,6 +7,7 @@ import {handleChange} from "../../../../services/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
+import {editIcon, saveIcon} from "../../../icons";
 
 
 export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => {
@@ -117,18 +118,14 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 {
                     edit ?
                         <>
-                            <button onClick={handleSubmit} className={"btn btn-primary sms-btn"}>
-                                {LABELS_AND_HEADINGS.SAVE}
-                            </button>
+                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>
                         </>
                         :
                         <>
-                            <button onClick={() => setSearchParams({edit: true})} className={"btn btn-primary sms-btn"}>
-                                {LABELS_AND_HEADINGS.EDIT}
-                            </button>
+                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.TITLES)}
                                         label={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         </>

@@ -12,7 +12,7 @@ import {getRowsByTable} from "../../services/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
 import FilterFormFormat from "../search-filter/FilterFormFormat";
-import {CustomSpinner} from "../minis/CustomSpinner";
+import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 
 
 export const Titles = () => {
@@ -62,14 +62,14 @@ export const Titles = () => {
                         collectible={collectible}
                         placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     <p className={"text-uppercase fs-large"}>
-                        {TEXTS.SHOWING} <span className={"fw-bolder fs-x-large"}>
+                        {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredTitlesData ?
                                 filteredTitlesData.length
                                 :
-                                <CustomSpinner/>
+                                <LazyTextPlaceholder charCount={2}/>
                         }
-                        </span> {TEXTS.SHOWING_OF} {titlesData && titlesData.length} {LABELS_AND_HEADINGS.TITLES}
+                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
                     </p>
                     {
                         loading ?
