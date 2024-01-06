@@ -8,13 +8,13 @@ import {Icon} from "../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {InformationAlert} from "../minis/InformationAlert";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../services/serviceFunctions";
-import {CustomSpinner} from "../minis/CustomSpinner";
 import {TitlesList} from "../lists/titles/TitlesList";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueService";
 import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
 import {ProgressBar} from "react-bootstrap";
 import {GlobalMessageViewer} from "../message/GlobalMessageViewer";
+import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 
 
 export const Home = () => {
@@ -88,7 +88,7 @@ export const Home = () => {
                 <div className={"row row-padding--secondary"}>
                     <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
-                        <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <CustomSpinner/> : totalTitles}
+                        <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <LazyTextPlaceholder charCount={3}/> : totalTitles}
                         </p>
                         <div className={"mb-4"}>
                             {
@@ -117,7 +117,7 @@ export const Home = () => {
                     </div>
                     <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>Publikationer</h2>
-                        <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ? <CustomSpinner/> : totalIssues}</p>
+                        <p className={"mb-4"}><span className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ? <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
                         <h3 className={"mb-3"}>{TEXTS.LATEST_ISSUES}</h3>
                         {
                             limitedIssuesData ?
