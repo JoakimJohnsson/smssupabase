@@ -16,15 +16,16 @@ import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
 import {useAppContext} from "../../../../context/AppContext";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
+import {getCalculatedYear, getIssueName, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMoneyBillSimpleWave, faTrashCan} from "@fortawesome/pro-regular-svg-icons";
-import {IssueIcon} from "../../../icons";
+import {IssueIcon, valueIcon} from "../../../icons";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {titleIconDuoTone} from "../../../icons-duotone";
+import {issueIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
 import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
 import {supabase} from "../../../../supabase/supabaseClient";
+import {IconLink} from "../../../minis/IconLink";
 
 
 export const AdminTitle = () => {
@@ -204,8 +205,12 @@ export const AdminTitle = () => {
                             <div className={"sms-page-col--full"}>
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
-                                <IconButton variant={"primary"} icon={titleIconDuoTone} onClick={() => navigate(`/titles/${title.id}`)}
-                                            label={title.name}/>
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={titleIconDuoTone}
+                                    path={`/titles/${title.id}`}
+                                    label={title.name}
+                                />
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
@@ -238,7 +243,7 @@ export const AdminTitle = () => {
                                                 :
                                                 <p className={"alert alert-success"}>{TEXTS.GRADE_TITLE_IS_VALUED}</p>
                                         }
-                                        <IconButton variant={"primary"} icon={faMoneyBillSimpleWave} onClick={handleIsValued}
+                                        <IconButton variant={"primary"} icon={valueIcon} onClick={handleIsValued}
                                                     label={LABELS_AND_HEADINGS.UPDATE}/>
                                     </div>
                                     <div>
@@ -263,7 +268,7 @@ export const AdminTitle = () => {
                                                 )
                                             })
                                         }
-                                        <IconButton variant={"primary"} icon={faMoneyBillSimpleWave} onClick={handleUpdateDefaultGradeValues}
+                                        <IconButton variant={"primary"} icon={valueIcon} onClick={handleUpdateDefaultGradeValues}
                                                     label={LABELS_AND_HEADINGS.UPDATE} disabled={is_valued === 1}/>
                                     </div>
 

@@ -1,16 +1,16 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {useNavigate, useParams} from "react-router-dom";
-import {BUCKETS, FILETYPES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {useParams} from "react-router-dom";
+import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName} from "../../../../helpers/functions";
-import {IconButton} from "../../../minis/IconButton";
 import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
 import {getGradeValuesByIssueId} from "../../../../services/collectingService";
+import {IconLink} from "../../../minis/IconLink";
 
 
 export const AdminIssue = () => {
@@ -21,7 +21,6 @@ export const AdminIssue = () => {
     const {id} = useParams();
     const [newIssue, setNewIssue] = useState({});
     const [gradeValues, setGradeValues] = useState([]);
-    const navigate = useNavigate();
 
     const [
         issue,
@@ -59,13 +58,24 @@ export const AdminIssue = () => {
                                                         name={getIssueName(issue)}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                                 <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
-                                <IconButton variant={"primary"} icon={issueIconDuoTone} onClick={() => navigate(`/issues/${issue.id}`)}
-                                            label={getIssueName(issue)}/>
-                                <IconButton variant={"primary"} icon={titleIconDuoTone} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
-                                            label={issue.titles.name + " " + issue.titles.start_year}/>
-                                <IconButton variant={"primary"} icon={publishersIconDuoTone}
-                                            onClick={() => navigate(`/admin/publishers/${issue.publisher_id}`)}
-                                            label={issue.publishers.name}/>
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={issueIconDuoTone}
+                                    path={`/issues/${issue.id}`}
+                                    label={getIssueName(issue)}
+                                />
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={titleIconDuoTone}
+                                    path={`/admin/titles/${issue.title_id}`}
+                                    label={LABELS_AND_HEADINGS.EDIT + " " + issue.titles.name + " " + issue.titles.start_year}
+                                />
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={publishersIconDuoTone}
+                                    path={`/admin/publishers/${issue.publisher_id}`}
+                                    label={LABELS_AND_HEADINGS.EDIT + " " + issue.publishers.name}
+                                />
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
@@ -87,7 +97,8 @@ export const AdminIssue = () => {
                                 </div>
                             </div>
                             <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={issue.titles}/>
-                            <AdminIssueGradeValueEdit issue={issue} title={issue.titles} gradeValues={gradeValues} setGradeValues={setGradeValues} fetchGradeValues={fetchGradeValues}/>
+                            <AdminIssueGradeValueEdit issue={issue} title={issue.titles} gradeValues={gradeValues} setGradeValues={setGradeValues}
+                                                      fetchGradeValues={fetchGradeValues}/>
                         </div>
                     </>
             }

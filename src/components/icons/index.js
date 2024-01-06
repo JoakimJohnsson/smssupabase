@@ -31,6 +31,7 @@ import {
     faMagnifyingGlassDollar,
     faMoneyCheckPen,
     faRectangleHistoryCirclePlus,
+    faSackDollar,
     faSend,
     faShield,
     faShieldCat,
@@ -73,6 +74,7 @@ const iconMap = {
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
     faMoneyCheckPen: faMoneyCheckPen,
     faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
+    faSackDollar: faSackDollar,
     faSend: faSend,
     faShield: faShield,
     faShieldCat: faShieldCat,
@@ -290,3 +292,11 @@ export const UserIcon = ({size, className}) => {
         <Icon icon={faUser} size={size} className={className}/>
     )
 }
+
+export const ValueIcon = ({size, className}) => {
+    return (
+        <Icon icon={valueIcon} size={size} className={className}/>
+    )
+}
+
+export const valueIcon = faSackDollar;

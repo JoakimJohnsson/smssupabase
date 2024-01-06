@@ -26,6 +26,7 @@ import {
     faHeartCrack,
     faMosquito,
     faBomb,
+    faSackDollar,
     faTriangleExclamation,
     faEarthAmericas,
     faMoneyCheckPen,
@@ -62,6 +63,7 @@ const iconMap = {
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
     faMoneyCheckPen: faMoneyCheckPen,
     faCalendarHeart: faCalendarHeart,
+    faSackDollar: faSackDollar,
     faTriangleExclamation: faTriangleExclamation,
     faEarthAmericas: faEarthAmericas,
     faBomb: faBomb,
@@ -103,6 +105,8 @@ export const EditIconDuoTone = ({size, className}) => {
         <Icon icon={faMoneyCheckPen} size={size} className={className}/>
     )
 }
+
+export const editIconDuoTone = faMoneyCheckPen;
 
 export const InfoIconDuoTone = ({size, className}) => {
     return (
@@ -222,17 +226,28 @@ export const TitleIconDuoTone = ({size, className}) => {
         <Icon icon={titleIconDuoTone} size={size} className={className}/>
     )
 }
-
 export const titleIconDuoTone = faFile;
 
 export const UsersIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faUsers} size={size} className={className}/>
+        <Icon icon={usersIconDuoTone} size={size} className={className}/>
     )
 }
+
+export const usersIconDuoTone = faUsers;
 
 export const UserIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faUser} size={size} className={className}/>
     )
 }
+
+export const userIconDuoTone = faUser;
+
+export const ValueIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={valueIconDuoTone} size={size} className={className}/>
+    )
+}
+
+export const valueIconDuoTone = faSackDollar;
