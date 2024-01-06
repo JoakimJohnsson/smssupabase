@@ -74,7 +74,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                     <>
                         <h3>{LABELS_AND_HEADINGS.EDIT_GRADE_VALUE}</h3>
                         {gradeValues.sort((a, b) => {
-                           return (a.grade > b.grade);
+                           return (a.grade - b.grade);
                         }).map((gradeValue) => {
                             return (
                                 <div key={gradeValue.id}>
