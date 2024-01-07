@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
@@ -14,10 +14,15 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = () => {
-        updatePublisherData(publisher.id, newPublisher).then(() => setSearchParams({edit: false}));
+        setLoading(true);
+        updatePublisherData(publisher.id, newPublisher).then(() => {
+            setSearchParams({edit: false});
+            setLoading(false);
+        });
         setPublisher({...newPublisher});
     }
 
@@ -38,7 +43,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     type={"text"}
                     value={newPublisher.name || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                 <input
@@ -48,7 +53,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     type={"text"}
                     value={newPublisher.description || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
                 <input
@@ -58,7 +63,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     type={"text"}
                     value={newPublisher.wiki_url || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
                 {
@@ -68,7 +73,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                         name={"country_id"}
                         className={"form-select mb-3"}
                         value={newPublisher.country_id}
-                        disabled={!edit}
+                        disabled={!edit || loading}
                         onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(countryData)}
@@ -77,7 +82,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                 {
                     edit ?
                         <>
-                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon}/>
+                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>
