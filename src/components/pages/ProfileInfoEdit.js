@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {isTrue} from "../../helpers/functions";
 import {updateProfileData} from "../../services/profileService";
@@ -13,10 +13,15 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
+    const [loading, setLoading] = useState(false);
     const {setInformationMessage} = useAppContext();
 
     const handleSubmit = () => {
-        updateProfileData(profile.id, newProfile, setInformationMessage).then(() => setSearchParams({edit: false}));
+        setLoading(true);
+        updateProfileData(profile.id, newProfile, setInformationMessage).then(() => {
+            setSearchParams({edit: false});
+            setLoading(false);
+        });
         setProfile({...newProfile});
     }
 
@@ -44,7 +49,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                 type="text"
                 value={newProfile.firstname || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
-                disabled={!edit}
+                disabled={!edit || loading}
             />
             <label className={"form-label"} htmlFor="lastname">{LABELS_AND_HEADINGS.LAST_NAME}</label>
             <input
@@ -54,7 +59,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                 type="text"
                 value={newProfile.lastname || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
-                disabled={!edit}
+                disabled={!edit || loading}
             />
             <label className={"form-label"} htmlFor="website">{LABELS_AND_HEADINGS.WEBSITE}</label>
             <input
@@ -64,7 +69,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                 type="text"
                 value={newProfile.website || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
-                disabled={!edit}
+                disabled={!edit || loading}
             />
             <div className={"mb-3"}>
                 <input
@@ -75,14 +80,14 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                     value={newProfile.is_public}
                     checked={newProfile.is_public === 1}
                     onChange={() => handlePublicCheckboxChange(newProfile.is_public)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="is_public">{LABELS_AND_HEADINGS.IS_PUBLIC}</label>
             </div>
             {
                 edit ?
                     <>
-                        <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon}/>
+                        <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                         <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                             {LABELS_AND_HEADINGS.ABORT}
                         </button>

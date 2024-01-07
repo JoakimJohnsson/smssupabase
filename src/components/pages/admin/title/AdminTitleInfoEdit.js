@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
@@ -14,10 +14,15 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
 
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = () => {
-        updateTitleData(title.id, newTitle).then(() => setSearchParams({edit: false}));
+        setLoading(true);
+        updateTitleData(title.id, newTitle).then(() => {
+            setSearchParams({edit: false});
+            setLoading(false);
+        });
         setTitle({...newTitle});
     }
 
@@ -38,7 +43,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     type={"text"}
                     value={newTitle.name || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
                 <input
@@ -48,7 +53,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     type={"text"}
                     value={newTitle.description || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
                 <input
@@ -58,7 +63,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     type={"text"}
                     value={newTitle.wiki_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="comicsorgurl">{LABELS_AND_HEADINGS.COMICS_ORG_URL_DB}</label>
                 <input
@@ -68,7 +73,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     type={"text"}
                     value={newTitle.comics_org_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
                 <input
@@ -78,7 +83,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     type="number"
                     value={newTitle.start_year || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
                 <input
@@ -88,7 +93,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     type="number"
                     value={newTitle.end_year || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.FORMAT_DB}</label>
                 {
@@ -98,7 +103,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         name={"format_id"}
                         className={"form-select mb-3"}
                         value={newTitle.format_id}
-                        disabled={!edit}
+                        disabled={!edit || loading}
                         onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(formatData)}
@@ -113,12 +118,12 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     min="1"
                     value={newTitle.total_issues || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 {
                     edit ?
                         <>
-                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon}/>
+                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>

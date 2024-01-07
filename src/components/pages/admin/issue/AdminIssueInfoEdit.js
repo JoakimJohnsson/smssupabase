@@ -14,6 +14,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     const [searchParams, setSearchParams] = useSearchParams({edit: false})
     const edit = isTrue(searchParams.get("edit"));
     const [titlesData, setTitlesData] = useState(null);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const [publishersData, setPublishersData] = useState(null);
 
@@ -26,7 +27,11 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     }, [])
 
     const handleSubmit = () => {
-        updateIssueData(issue.id, newIssue).then(() => setSearchParams({edit: false}));
+        setLoading(true);
+        updateIssueData(issue.id, newIssue).then(() => {
+            setSearchParams({edit: false});
+            setLoading(false);
+        });
         setIssue({...newIssue});
     }
 
@@ -71,7 +76,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         name={"title_id"}
                         className={"form-select mb-3"}
                         value={newIssue.title_id}
-                        disabled={!edit}
+                        disabled={!edit || loading}
                         onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(titlesData)}
@@ -85,7 +90,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         name={"publisher_id"}
                         className={"form-select mb-3"}
                         value={newIssue.publisher_id}
-                        disabled={!edit}
+                        disabled={!edit || loading}
                         onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
                         {printOptions(publishersData)}
@@ -99,7 +104,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     type="number"
                     value={newIssue.year || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
                 <input
@@ -111,7 +116,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     min={1}
                     value={newIssue.number || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <label className={"form-label mb-0"} htmlFor="source">{LABELS_AND_HEADINGS.SOURCE_DB}</label>
                 <p className={"form-text"}>{LABELS_AND_HEADINGS.SOURCE_EXAMPLE}</p>
@@ -122,7 +127,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     rows={3}
                     value={newIssue.source || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <div>
                     <input
@@ -133,7 +138,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         value={newIssue.is_double}
                         checked={newIssue.is_double === 1}
                         onChange={() => handleDoubleCheckboxChange(newIssue.is_double)}
-                        disabled={!edit}
+                        disabled={!edit || loading}
                     />
                     <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_DOUBLE_DB}</label>
                 </div>
@@ -146,7 +151,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         value={newIssue.is_marvelklubben || ""}
                         checked={newIssue.is_marvelklubben === 1}
                         onChange={() => handleMKCheckboxChange(newIssue.is_marvelklubben)}
-                        disabled={!edit}
+                        disabled={!edit || loading}
                     />
                     <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
                 </div>
@@ -160,7 +165,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     min={0}
                     value={newIssue.marvelklubben_number || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 <div>
                     <input
@@ -171,7 +176,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         value={newIssue.is_variant}
                         checked={newIssue.is_variant === 1}
                         onChange={() => handleVariantCheckboxChange(newIssue.is_variant)}
-                        disabled={!edit}
+                        disabled={!edit || loading}
                     />
                     <label className={"form-label"} htmlFor="variant">{LABELS_AND_HEADINGS.IS_VARIANT_DB}</label>
                 </div>
@@ -183,12 +188,12 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     type="text"
                     value={newIssue.variant_suffix || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
-                    disabled={!edit}
+                    disabled={!edit || loading}
                 />
                 {
                     edit ?
                         <>
-                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon}/>
+                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                 {LABELS_AND_HEADINGS.ABORT}
                             </button>
