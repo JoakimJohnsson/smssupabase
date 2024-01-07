@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, MESSAGES, TEXTS} from "../../../../helpers/constants";
 import {isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";
@@ -14,11 +14,16 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
 
     const [searchParams, setSearchParams] = useSearchParams({editgradevalue: false})
     const {setInformationMessage} = useAppContext();
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const editGradeValue = isTrue(searchParams.get("editgradevalue"));
 
     const handleSubmit = () => {
-        updateGradeValuesValues(gradeValues).then(() => setSearchParams({editgradevalue: false}));
+        setLoading(true);
+        updateGradeValuesValues(gradeValues).then(() => {
+            setSearchParams({editgradevalue: false});
+            setLoading(false);
+        });
     }
 
     const handleAddGradeValues = async () => {
@@ -95,7 +100,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                                                 )
                                             );
                                         }}
-                                        disabled={!editGradeValue}
+                                        disabled={!editGradeValue || loading}
                                     />
                                 </div>
                             )
@@ -103,7 +108,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                         {
                             editGradeValue ?
                                 <>
-                                    <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon}/>
+                                    <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                                     <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                         {LABELS_AND_HEADINGS.ABORT}
                                     </button>

@@ -37,6 +37,8 @@ export const AdminTitle = () => {
     const [loading, setLoading] = useState(true);
     const [loadingGI, setLoadingGI] = useState(false);
     const [loadingDI, setLoadingDI] = useState(false);
+    const [loadingIV, setLoadingIV] = useState(false);
+    const [loadingGG, setLoadingGG] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -151,10 +153,17 @@ export const AdminTitle = () => {
     }
 
     const handleIsValued = () => {
+        setLoadingIV(true);
         if (is_valued === 0) {
-            updateIsValued(title.id, 1).then(() => setIs_valued(1));
+            updateIsValued(title.id, 1).then(() => {
+                setIs_valued(1);
+                setLoadingIV(false);
+            });
         } else {
-            updateIsValued(title.id, 0).then(() => setIs_valued(0));
+            updateIsValued(title.id, 0).then(() => {
+                setIs_valued(0);
+                setLoadingIV(false);
+            });
         }
     }
 
@@ -175,6 +184,7 @@ export const AdminTitle = () => {
     };
 
     const handleUpdateDefaultGradeValues = async () => {
+        setLoadingGG(true);
         try {
             // Performing a supabase sql function - update_grade_values_for_titles
             await supabase.rpc('update_grade_values_for_titles', {
@@ -185,7 +195,7 @@ export const AdminTitle = () => {
                 value_fn: updateGradeValues.fn,
                 value_vf: updateGradeValues.vf,
                 value_nm: updateGradeValues.nm,
-            }).then();
+            }).then(() => setLoadingGG(false));
         } catch (error) {
             console.error(error);
         }
@@ -242,7 +252,7 @@ export const AdminTitle = () => {
                                                 :
                                                 <p className={"alert alert-success"}>{TEXTS.GRADE_TITLE_IS_VALUED}</p>
                                         }
-                                        <IconButton variant={"primary"} icon={valueIcon} onClick={handleIsValued}
+                                        <IconButton variant={"primary"} icon={valueIcon} onClick={handleIsValued} loading={loadingIV}
                                                     label={LABELS_AND_HEADINGS.UPDATE}/>
                                     </div>
                                     <div>
@@ -261,14 +271,14 @@ export const AdminTitle = () => {
                                                             min={0}
                                                             value={value}
                                                             onChange={handleInputChange}
-                                                            disabled={is_valued === 1}
+                                                            disabled={is_valued === 1 || loadingGG}
                                                         />
                                                     </div>
                                                 )
                                             })
                                         }
                                         <IconButton variant={"primary"} icon={valueIcon} onClick={handleUpdateDefaultGradeValues}
-                                                    label={LABELS_AND_HEADINGS.UPDATE} disabled={is_valued === 1}/>
+                                                    label={LABELS_AND_HEADINGS.UPDATE} disabled={is_valued === 1} loading={loadingGG}/>
                                     </div>
 
                                 </div>
