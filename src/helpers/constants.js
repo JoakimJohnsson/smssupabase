@@ -370,6 +370,7 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
     GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering hittar du hos",
     GRADE_TEXT_3: "Seriekatalogen",
+    GRADE_TEXT_4: "Värden för GD, VG, FN, VF och NM har hämtats från Seriekatalogen. Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
     GRADE_IS_VALUED_LEAD: "Här kan du markera att alla publikationer på den här titeln har fått rätt värden enligt Seriekatalogens värdering.",
     GRADE_ISSUE_IS_VALUED_TEXT: "Publikationen har fått grundvärden.",
     GRADE_ADD_VALUE_TEXT: "Grundvärden för denna publikation saknas. Tryck på knappen för att lägga till.",
@@ -696,3 +697,11 @@ export const GRADE_RADIOS = [
     {name: 'NM/M', value: 9.8},
     {name: 'M', value: 9.9},
 ];
+
+export const SK_GRADE_VALUES = [
+    2.0, 4.0, 6.0, 8.0, 9.4
+]
+
+export const SK_GRADE_NAMES = [
+    "GD", "VG", "FN", "VF", "NM"
+]

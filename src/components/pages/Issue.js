@@ -307,6 +307,7 @@ export const Issue = () => {
                                             {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer"
                                                                     target={"_blank"}>{TEXTS.GRADE_TEXT_3}</a>.
                                         </p>
+                                        <p>{TEXTS.GRADE_TEXT_4}</p>
                                         {
                                             grades &&
                                             grades.sort((a, b) => a.id - b.id).map((grade, index) => {

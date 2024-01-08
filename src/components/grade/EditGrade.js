@@ -5,7 +5,7 @@ import {useAppContext} from "../../context/AppContext";
 import {GRADE_RADIOS, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {IconButton} from "../minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
-import {getDataGradeValue} from "../../helpers/functions";
+import {getDataGradeValue, isSKGradeValue} from "../../helpers/functions";
 
 
 export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
@@ -59,7 +59,10 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
                                     handleEditGrade(e);
                                 }}
                             />
-                            <label htmlFor={`radio-${grade.id}-${index + 1}`} className={`p-0 sms-grade-btn ${checked ? "active" : ""}`}>
+                            <label
+                                htmlFor={`radio-${grade.id}-${index + 1}`}
+                                className={`p-0 sms-grade-btn ${isSKGradeValue(radio.value) ? "sk-grade" : ""} ${checked ? "active" : ""}`}
+                            >
                                 <div className={"fs-small py-2 px-3"}>
                                     <span aria-hidden={"true"} className={"d-inline-block text-nowrap"}>{radio.name} {radio.value.toFixed(1)}</span>
                                 </div>

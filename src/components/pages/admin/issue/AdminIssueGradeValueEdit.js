@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, MESSAGES, TEXTS} from "../../../../helpers/constants";
-import {isTrue} from "../../../../helpers/functions";
+import {isSKGradeName, isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft, faPlus, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
@@ -83,7 +83,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                         }).map((gradeValue) => {
                             return (
                                 <div key={gradeValue.id}>
-                                    <label className={"form-label"} htmlFor={gradeValue.id}>{gradeValue.grade_name} {gradeValue.grade}</label>
+                                    <label className={`form-label ${isSKGradeName(gradeValue.grade_name) && "text-grade"}`} htmlFor={gradeValue.id}>{gradeValue.grade_name} {gradeValue.grade}</label>
                                     <input
                                         id={gradeValue.id}
                                         name={gradeValue.id}

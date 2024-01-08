@@ -115,31 +115,31 @@
 }
 
 .bg-grade-0 {
-  background-color: $grade;
+  background-color: $grade !important;
 }
 .bg-grade-100 {
-  background-color: scale-color($grade, $lightness: 90%);
+  background-color: scale-color($grade, $lightness: 90%) !important;
 }
 .bg-grade-200 {
-  background-color: scale-color($grade, $lightness: 80%);
+  background-color: scale-color($grade, $lightness: 80%) !important;
 }
 .bg-grade-300 {
-  background-color: scale-color($grade, $lightness: 70%);
+  background-color: scale-color($grade, $lightness: 70%) !important;
 }
 .bg-grade-400 {
-  background-color: scale-color($grade, $lightness: 60%);
+  background-color: scale-color($grade, $lightness: 60%) !important;
 }
 .bg-grade-500 {
-  background-color: scale-color($grade, $lightness: 50%);
+  background-color: scale-color($grade, $lightness: 50%) !important;
 }
 .bg-grade-600 {
-  background-color: scale-color($grade, $lightness: 40%);
+  background-color: scale-color($grade, $lightness: 40%) !important;
 }
 .bg-grade-700 {
-  background-color: scale-color($grade, $lightness: 30%);
+  background-color: scale-color($grade, $lightness: 30%) !important;
 }
 .bg-grade-800 {
-  background-color: scale-color($grade, $lightness: 20%);
+  background-color: scale-color($grade, $lightness: 20%) !important;
 }
 
 .bg-publisher-0 {

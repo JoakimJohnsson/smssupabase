@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, MESSAGES} from "./constants";
+import {CLASSES, MESSAGES, SK_GRADE_NAMES, SK_GRADE_VALUES} from "./constants";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
 
@@ -239,12 +239,20 @@ export const getCurrentDate = () => {
     return (new Date()).toISOString();
 }
 
-export const getMediumGrade = (grades) => {
+export const getAverageGrade = (grades) => {
     let totalGradeAmount = 0.0;
     for (let i = 0; i < grades.length; i++) {
         totalGradeAmount += grades[i].grade;
     }
     return totalGradeAmount / grades.length || 0.0;
+}
+
+export const isSKGradeValue = (gradeValue) => {
+    return SK_GRADE_VALUES.includes(gradeValue);
+}
+
+export const isSKGradeName = (gradeName) => {
+    return SK_GRADE_NAMES.includes(gradeName);
 }
 
 export const sortableName = (name) => {
