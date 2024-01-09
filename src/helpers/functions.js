@@ -40,6 +40,10 @@ export const getDataGradeValue = (data, grade) => {
     return data.find(f => f.grade === grade).value;
 }
 
+export const getDataGradeValueByGradeName = (data, gradeName) => {
+    return data.find(gv => gv.grade_name === gradeName).value;
+}
+
 export const getDataShade = (data, id) => {
     // Make sure the id is a number.
     const numericId = Number(id);

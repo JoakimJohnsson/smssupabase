@@ -23,6 +23,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Värdering / gradering - Förbättrade adminfunktioner för input av värden.</li>
                     <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid skickgradering.</li>
                     <li className={"list-group-item px-0"}>Möjlighet för användare att skicka meddelanden gällande värdering.</li>
+                    <li className={"list-group-item px-0"}>Ny vy för att visa skickvärdering för en titel.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.3.0 - 2023-12-27</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

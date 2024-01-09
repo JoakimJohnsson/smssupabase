@@ -12,13 +12,13 @@ import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
-import {getIssuesWithTitleAndPublisherByTitleId} from "../../services/issueService";
+import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
 import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
-import {editIconDuoTone, titlesIconDuoTone} from "../icons-duotone";
+import {editIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
 import {IconLink} from "../minis/IconLink";
 
 
@@ -38,11 +38,12 @@ export const Title = () => {
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
     const [listViewGrid, setListViewGrid] = useState(true);
     const [listViewMissing, setListViewMissing] = useState(false);
+    const [listViewGrades, setListViewGrades] = useState(false);
     const [titleProgress, setTitleProgress] = useState({});
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getIssuesWithTitleAndPublisherByTitleId(setIssuesData, id).then(() => setLoading(false));
+            getIssuesWithTitleAndPublisherAndGradeValuesByTitleId(setIssuesData, id).then(() => setLoading(false));
         });
     }, [id]);
 
@@ -166,10 +167,10 @@ export const Title = () => {
                                 {
                                     profile && profile.role >= 1 &&
                                     <IconLink
-                                    variant={"primary"}
-                                    icon={editIconDuoTone}
-                                    path={`/admin/titles/${title.id}?edit=true`}
-                                    label={LABELS_AND_HEADINGS.EDIT + " " + title.name}
+                                        variant={"primary"}
+                                        icon={editIconDuoTone}
+                                        path={`/admin/titles/${title.id}?edit=true`}
+                                        label={LABELS_AND_HEADINGS.EDIT + " " + title.name}
                                     />
                                 }
                                 {
@@ -178,15 +179,24 @@ export const Title = () => {
                                 }
                                 <div className={"mb-4"}>
                                     {
-                                        listViewGrid ?
-                                            <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
-                                                            label={LABELS_AND_HEADINGS.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
-                                            :
-                                            <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
-                                                            label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
+                                        <FunctionButton variant={"secondary"} icon={valueIconDuoTone}
+                                                        onClick={() => setListViewGrades(!listViewGrades)}
+                                                        label={listViewGrades ? LABELS_AND_HEADINGS.LIST_VIEW_GRADES_HIDE : LABELS_AND_HEADINGS.LIST_VIEW_GRADES_SHOW}
+                                                        id={"list-variant-toggler"} disabled={!title.is_valued}/>
                                     }
                                     {
-                                        listViewGrid && (titleProgress.progress !== 100) ?
+                                        !listViewGrades ?
+                                            listViewGrid ?
+                                                <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
+                                                                label={LABELS_AND_HEADINGS.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
+                                                :
+                                                <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
+                                                                label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
+                                            :
+                                            false
+                                    }
+                                    {
+                                        !listViewGrades && listViewGrid && (titleProgress.progress !== 100) ?
                                             listViewMissing ?
                                                 <FunctionButton variant={"secondary"} icon={faGrid2Plus}
                                                                 onClick={() => setListViewMissing(!listViewMissing)}
@@ -199,28 +209,32 @@ export const Title = () => {
                                             false
                                     }
                                     {
-                                        isCollectingTitle && listViewGrid &&
-                                        <>
-                                            {
-                                                titleProgress.progress !== 100 &&
-                                                <FunctionButton variant={"danger"} icon={faCartPlus}
-                                                                onClick={() => addAllIssues()}
-                                                                label={LABELS_AND_HEADINGS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
-                                            }
-                                            {
-                                                titleProgress.progress > 0 &&
-                                                <FunctionButton variant={"danger"} icon={faTrashCanList}
-                                                                onClick={() => removeAllIssues()}
-                                                                label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
+                                        !listViewGrades ?
+                                            isCollectingTitle && listViewGrid &&
+                                            <>
+                                                {
+                                                    titleProgress.progress !== 100 &&
+                                                    <FunctionButton variant={"danger"} icon={faCartPlus}
+                                                                    onClick={() => addAllIssues()}
+                                                                    label={LABELS_AND_HEADINGS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
+                                                }
+                                                {
+                                                    titleProgress.progress > 0 &&
+                                                    <FunctionButton variant={"danger"} icon={faTrashCanList}
+                                                                    onClick={() => removeAllIssues()}
+                                                                    label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
 
-                                            }
-                                        </>
+                                                }
+                                            </>
+                                            :
+                                            false
                                     }
                                     <AddMessage originObject={title} originTable={TABLES.TITLES}/>
                                 </div>
-                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                <h2>{listViewGrades ? LABELS_AND_HEADINGS.GRADE_VALUE_VALUES : LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
-                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} fetchTitleProgress={fetchTitleProgress}
+                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} listViewGrades={listViewGrades}
+                                            fetchTitleProgress={fetchTitleProgress}
                                             doUpdate={doUpdate}/>
                             </div>
                         </>

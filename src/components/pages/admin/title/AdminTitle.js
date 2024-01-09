@@ -7,7 +7,7 @@ import {
 } from "../../../../services/serviceFunctions";
 import {
     addIssueData, deleteAllIssues,
-    generateIssuesForTitle, getIssuesWithTitleAndPublisherByTitleId
+    generateIssuesForTitle, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId
 } from "../../../../services/issueService";
 import {BUCKETS, CLASSES, CONFIG, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -79,7 +79,7 @@ export const AdminTitle = () => {
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getIssuesWithTitleAndPublisherByTitleId(setIssuesData, id).then(() => setLoading(false));
+            getIssuesWithTitleAndPublisherAndGradeValuesByTitleId(setIssuesData, id).then(() => setLoading(false));
         });
     }, [id]);
 
