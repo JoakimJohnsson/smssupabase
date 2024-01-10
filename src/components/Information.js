@@ -17,17 +17,22 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.3.0 - 2023-12-27</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.4.0 - 2023-01-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Värdering / gradering - Förbättrade adminfunktioner för input av värden.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid skickgradering.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad sortering av publikationslistor som innehåller varianter.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet för användare att skicka meddelanden gällande värdering.</li>
+                    <li className={"list-group-item px-0"}>Ny vy för att visa skickvärdering för en titel.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.3.0 - 2023-12-27</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Visar nu antal träffar när man söker/filtrerar bland "Alla titlar".</li>
                     <li className={"list-group-item px-0"}>Möjlighet att ange skickgradering via tangentbordsnavigering.</li>
                     <li className={"list-group-item px-0"}>Enklare att klicka sig vidare från titel och publikation.</li>
                     <li className={"list-group-item px-0"}>(BETA) Värdering baserat på skick - Funktionalitet för Admin att redigera värden.</li>
                     <li className={"list-group-item px-0"}>(BETA) Värdering - grundläggande värden inlagt på vissa publikationer. Delvis baserat på Seriekatalogens värdering.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.2.0 - 2023-12-10</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Utökat och förbättrat graderingssystem - fler värden kan nu anges.</li>
                     <li className={"list-group-item px-0"}>Användare kan lägga till skickgraderingar för fler än ett exemplar av en publikation.</li>
                     <li className={"list-group-item px-0"}>Snittvärde för gradering visas i kontrollpanelen.</li>
@@ -36,6 +41,7 @@ const Information = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Optimering av bilder.</li>
+                    <li className={"list-group-item px-0"}>Utökad funktionalitet och förbättrade vyer i kontrollpanelen.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>

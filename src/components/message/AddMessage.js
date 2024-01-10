@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {useCommonFormStates} from "../../helpers/customHooks/useCommonFormStates";
 import topicData from "../../helpers/valueLists/topics.json";
-import {getDataName, getIssueName} from "../../helpers/functions";
+import {getDataDescription, getDataName, getIssueName} from "../../helpers/functions";
 import {AddUserMessage} from "./AddUserMessage";
 import {AddGlobalMessage} from "./AddGlobalMessage";
 
@@ -11,6 +11,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
 
     const [formInputClass, setFormInputClass] = useCommonFormStates();
     const [topic_id, setTopic_id] = useState("");
+    const [description, setDescription] = useState("");
     const [title, setTitle] = useState(LABELS_AND_HEADINGS.MESSAGE);
     const [text, setText] = useState("");
     const [useThisObject, setUseThisObject] = useState(false);
@@ -18,6 +19,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
     const resetAddMessageForm = async () => {
         if (topic_id === "") {
             setTitle(LABELS_AND_HEADINGS.MESSAGE);
+            setDescription("");
         }
         setText("");
         setFormInputClass(CLASSES.FORM_INPUT_ERROR);
@@ -33,9 +35,10 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
         }
     }, [topic_id, text, title, setFormInputClass]);
 
-    const updateTitle = (e) => {
+    const updateTitleAndDescription = (e) => {
         if (topicData && e.target.value !== "") {
             setTitle(getDataName(topicData, e.target.value));
+            setDescription(getDataDescription(topicData, e.target.value));
         }
     }
 
@@ -63,8 +66,10 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
         } else {
             if (topic_id !== "") {
                 setTitle(getDataName(topicData, topic_id));
+                setDescription(getDataDescription(topicData, topic_id));
             } else {
                 setTitle(LABELS_AND_HEADINGS.MESSAGE);
+                setDescription("");
             }
         }
     }, [useThisObject, topic_id, originTable, originObject]);
@@ -74,7 +79,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
             <AddGlobalMessage
                 topic_id={topic_id}
                 setTopic_id={setTopic_id}
-                updateTitle={updateTitle}
+                updateTitle={updateTitleAndDescription}
                 resetAddMessageForm={resetAddMessageForm}
                 formInputClass={formInputClass}
                 title={title}
@@ -86,10 +91,11 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
             <AddUserMessage
                 topic_id={topic_id}
                 setTopic_id={setTopic_id}
-                updateTitle={updateTitle}
+                updateTitle={updateTitleAndDescription}
                 resetAddMessageForm={resetAddMessageForm}
                 formInputClass={formInputClass}
                 title={title}
+                description={description}
                 text={text}
                 setText={setText}
                 useThisObject={useThisObject}

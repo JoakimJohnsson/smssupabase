@@ -223,6 +223,14 @@ export const StartIconDuoTone = ({size, className}) => {
     )
 }
 
+export const StatusIconActiveDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={statusIconActiveDuoTone} size={size} className={className}/>
+    )
+}
+
+export const statusIconActiveDuoTone = faLightbulbOn;
+
 export const TitlesIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={titlesIconDuoTone} size={size} className={className}/>

@@ -79,13 +79,17 @@
 
 .sms-grade-btn {
   @extend .btn, .rounded-1, .mb-2, .me-2, .text-grade-200, .bg-elephant;
-  &:hover,
-  &:active,
-  &:focus,
   &.active {
-    @extend .text-grade-0, .bg-whale;
+    @extend .text-black, .bg-grade;
     opacity: .9;
+  }
+  &:focus,
+  &:hover,
+  &:active {
     border: 1px solid $grade;
+  }
+  &.sk-grade {
+    @extend .text-grade-600;
   }
 }
 

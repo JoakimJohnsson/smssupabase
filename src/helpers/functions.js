@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, MESSAGES} from "./constants";
+import {CLASSES, MESSAGES, SK_GRADE_NAMES, SK_GRADE_VALUES} from "./constants";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
 
@@ -30,8 +30,18 @@ export const getDataName = (data, id) => {
     return data.find(f => f.id === numericId).name;
 }
 
+export const getDataDescription = (data, id) => {
+    // Make sure the id is a number.
+    const numericId = Number(id);
+    return data.find(f => f.id === numericId).description;
+}
+
 export const getDataGradeValue = (data, grade) => {
     return data.find(f => f.grade === grade).value;
+}
+
+export const getDataGradeValuesByGradeName = (data, gradeName) => {
+    return data.find(gv => gv.grade_name === gradeName).value;
 }
 
 export const getDataShade = (data, id) => {
@@ -208,6 +218,17 @@ export const sortByNameAndStartYear = (a, b) => {
     return 0;
 }
 
+export const sortByNumberAndVariantSuffix = (a, b) => {
+    // First, compare by number
+    if (a.number !== b.number) {
+        return a.number - b.number;
+    }
+    // If numbers are equal, compare by suffix, considering undefined as less than any suffix
+    let suffixA = a.variant_suffix || '';
+    let suffixB = b.variant_suffix || '';
+    return suffixA.localeCompare(suffixB);
+}
+
 export const getTitleProgressForUser = async (title, userId) => {
     let totalIssues = title.total_issues;
     let noCollectedIssues = 0;
@@ -239,12 +260,20 @@ export const getCurrentDate = () => {
     return (new Date()).toISOString();
 }
 
-export const getMediumGrade = (grades) => {
+export const getAverageGrade = (grades) => {
     let totalGradeAmount = 0.0;
     for (let i = 0; i < grades.length; i++) {
         totalGradeAmount += grades[i].grade;
     }
     return totalGradeAmount / grades.length || 0.0;
+}
+
+export const isSKGradeValue = (gradeValue) => {
+    return SK_GRADE_VALUES.includes(gradeValue);
+}
+
+export const isSKGradeName = (gradeName) => {
+    return SK_GRADE_NAMES.includes(gradeName);
 }
 
 export const sortableName = (name) => {

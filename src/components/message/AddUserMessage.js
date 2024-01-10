@@ -11,19 +11,20 @@ import {getIconByName, Icon} from "../icons";
 
 
 export const AddUserMessage = ({
-                                topic_id,
-                                setTopic_id,
-                                text,
-                                setText,
-                                updateTitle,
-                                resetAddMessageForm,
-                                formInputClass,
-                                title,
-                                useThisObject,
-                                setUseThisObject,
-                                originObject,
-                                originTable
-                            }) => {
+                                   topic_id,
+                                   setTopic_id,
+                                   text,
+                                   setText,
+                                   updateTitle,
+                                   resetAddMessageForm,
+                                   formInputClass,
+                                   title,
+                                   description,
+                                   useThisObject,
+                                   setUseThisObject,
+                                   originObject,
+                                   originTable
+                               }) => {
 
     const [open, setOpen] = useState(false);
     const {user, setInformationMessage, fetchMessages} = useAppContext();
@@ -50,6 +51,10 @@ export const AddUserMessage = ({
                         }
                         {title}
                     </p>
+                    {
+                        description &&
+                        <p className={"mb-2"}>{description}</p>
+                    }
                     <label className={"form-label"} htmlFor="topic">{LABELS_AND_HEADINGS.TOPIC}</label>
                     {
                         topicData &&
@@ -85,26 +90,26 @@ export const AddUserMessage = ({
                     />
                     <button className={"btn btn-primary sms-btn"}
                             onClick={
-                        () => {
-                            addMessageData({
-                                origin_id: originObject.id,
-                                origin_table: originTable,
-                                is_global: 0,
-                                status: 0,
-                                sender_id: user.id,
-                                receiver_id: null,
-                                topic_id: topic_id,
-                                title: trimInputString(title),
-                                text: trimInputString(text)
-                            }, setInformationMessage).then(() => {
-                                resetAddMessageForm();
-                                // Update after a while.
-                                setTimeout(() => {
-                                    fetchMessages();
-                                }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
-                            });
-                        }
-                    }
+                                () => {
+                                    addMessageData({
+                                        origin_id: originObject.id,
+                                        origin_table: originTable,
+                                        is_global: 0,
+                                        status: 0,
+                                        sender_id: user.id,
+                                        receiver_id: null,
+                                        topic_id: topic_id,
+                                        title: trimInputString(title),
+                                        text: trimInputString(text)
+                                    }, setInformationMessage).then(() => {
+                                        resetAddMessageForm();
+                                        // Update after a while.
+                                        setTimeout(() => {
+                                            fetchMessages();
+                                        }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
+                                    });
+                                }
+                            }
                             disabled={title === "" || text === "" || topic_id === ""}
                     >
                         {LABELS_AND_HEADINGS.SEND}

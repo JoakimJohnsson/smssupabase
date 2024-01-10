@@ -14,7 +14,7 @@
     "isGlobal": false,
     "name": "Bugrapport",
     "nameEn": "Bug report",
-    "description": "Stötte på ett oväntat beteende? Rapportera eventuella buggar du stöter på! Din feedback är ovärderlig.",
+    "description": "Stötte du på ett oväntat beteende? Rapportera eventuella buggar du stöter på! Din feedback är ovärderlig.",
     "descriptionEn": "Encountered an unexpected behavior? Report any bugs you come across, and our team will work diligently to resolve them. Your feedback is invaluable.",
     "shade": 200,
     "icon": "faSpider"
@@ -28,6 +28,16 @@
     "descriptionEn": "Notice any inaccuracies or incorrect information? Please report any errors here. Thank you for helping us improve the quality of our information.",
     "shade": 400,
     "icon": "faBomb"
+  },
+  {
+    "id": 5676,
+    "isGlobal": false,
+    "name": "Värdering",
+    "nameEn": "Grade values",
+    "description": "Vänligen rapportera eventuella fel angående värdering här. Tack för din hjälp med att förbättra kvaliteten på informationen.",
+    "descriptionEn": "Please report any errors concerning grade values here. Thank you for helping us improve the quality of our information.",
+    "shade": 0,
+    "icon": "faSackDollar"
   },
   {
     "id": 4657,

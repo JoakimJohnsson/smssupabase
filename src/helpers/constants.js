@@ -33,7 +33,7 @@ export const MESSAGES = {
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
-        DELETE_GRADE_VALUES: "Vill du verkligen ta bort grundvärden för denna publikation?",
+        DELETE_GRADE_VALUES: "Vill du verkligen ta bort grundläggande graderingsvärden för denna publikation?",
         REMOVE_1: "Vill du verkligen sluta samla på ",
         REMOVE_2: "?",
         FROM: " från tabellen ",
@@ -172,8 +172,8 @@ export const LABELS_AND_HEADINGS = {
     EDIT: "Redigera",
     EDIT_GRADE: "Ändra skick",
     EDIT_INFORMATION: "Redigera information",
-    EDIT_GRADE_VALUE: "Redigera värde för gradering",
-    ADD_GRADE_VALUE: "Lägg till grundvärde för gradering",
+    EDIT_GRADE_VALUE: "Redigera värde för skickgradering",
+    ADD_GRADE_VALUE: "Lägg till grundvärde för skickgradering",
     EMAIL: "E-postadress",
     NEW_EMAIL: "Ny e-postadress",
     CONFIRM_NEW_EMAIL: "Bekräfta ny e-postadress",
@@ -215,6 +215,8 @@ export const LABELS_AND_HEADINGS = {
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUE: "Publikation",
     ISSUES: "Publikationer",
+    GRADE_VALUE_VALUES: "Skickvärdering",
+    GRADE_VALUE_VALUES_FOR: "Skickvärdering för",
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
     NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
@@ -224,6 +226,8 @@ export const LABELS_AND_HEADINGS = {
     LAST_NAME: "Efternamn",
     LIST_VIEW_GRID_SHOW: "Visa som grid",
     LIST_VIEW_LIST_SHOW: "Visa som lista",
+    LIST_VIEW_GRADES_SHOW: "Visa skickvärdering",
+    LIST_VIEW_GRADES_HIDE: "Dölj skickvärdering",
     LOADING: "Laddar",
     LOG_IN: "Logga in",
     LOG_IN_CTA: "Logga in",
@@ -368,9 +372,10 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
-    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering hittar du hos",
+    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering, och mer exakt värdering, hittar du hos",
     GRADE_TEXT_3: "Seriekatalogen",
-    GRADE_IS_VALUED_LEAD: "Här kan du markera att alla publikationer på den här titeln har fått rätt värden enligt Seriekatalogens värdering.",
+    GRADE_TEXT_4: "Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
+    GRADE_IS_VALUED_LEAD: "Här kan du markera att alla publikationer på den här titeln har fått rätt värden.",
     GRADE_ISSUE_IS_VALUED_TEXT: "Publikationen har fått grundvärden.",
     GRADE_ADD_VALUE_TEXT: "Grundvärden för denna publikation saknas. Tryck på knappen för att lägga till.",
     GRADE_IS_NOT_VALUED: "Vissa publikationer saknar värden.",
@@ -696,3 +701,11 @@ export const GRADE_RADIOS = [
     {name: 'NM/M', value: 9.8},
     {name: 'M', value: 9.9},
 ];
+
+export const SK_GRADE_VALUES = [
+    2.0, 4.0, 6.0, 8.0, 9.4
+]
+
+export const SK_GRADE_NAMES = [
+    "GD", "VG", "FN", "VF", "NM"
+]

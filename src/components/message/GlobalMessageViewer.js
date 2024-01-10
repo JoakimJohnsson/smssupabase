@@ -5,6 +5,7 @@ import topicData from "../../helpers/valueLists/topics.json";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FriendlyDate} from "../minis/FriendlyDate";
 import {getAllActiveGlobalMessages} from "../../services/messageService";
+import {StatusIconActiveDuoTone} from "../icons-duotone";
 
 
 export const GlobalMessageViewer = () => {
@@ -22,7 +23,7 @@ export const GlobalMessageViewer = () => {
 
     return activeGlobalMessages && !!activeGlobalMessages.length && (
         <div className={"global-message-viewer"}>
-            <h2 className={"mb-3"}>{LABELS_AND_HEADINGS.MESSAGES_FROM_ADMIN}</h2>
+            <h2 className={"mb-3"}><StatusIconActiveDuoTone className={"me-2"} size={"2x"}/> {LABELS_AND_HEADINGS.MESSAGES_FROM_ADMIN}</h2>
             {
                 activeGlobalMessages.map((m) => {
                     return (
