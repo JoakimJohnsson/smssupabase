@@ -1,14 +1,14 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {getDataGradeValueByGradeName, sortByNumberAndVariantSuffix} from "../../../helpers/functions";
+import {getDataGradeValuesByGradeName, sortByNumberAndVariantSuffix} from "../../../helpers/functions";
 
 
 export const IssuesListGrades = ({groupedIssuesData}) => {
 
-    const renderGradeValue = (year, gradeName) => {
-        const data = year.grade_values;
-        const value = getDataGradeValueByGradeName(data, gradeName);
+    const renderGradeValue = (issueData, gradeName) => {
+        const gradeValues = issueData.grade_values;
+        const value = getDataGradeValuesByGradeName(gradeValues, gradeName);
         return value > 0 ? value : "-";
     }
 
