@@ -18,8 +18,6 @@ export const IssuesListAccordion = ({
                                         fetchTitleProgress
                                     }) => {
 
-    console.log("gradf", groupedIssuesData);
-
     return (
         <Accordion className={"sms-list--accordion mb-4"} flush defaultActiveKey={issuesData.length < 14 ? groupedIssuesDataIndexes : "0"}>
             {
