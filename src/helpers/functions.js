@@ -218,6 +218,17 @@ export const sortByNameAndStartYear = (a, b) => {
     return 0;
 }
 
+export const sortByNumberAndVariantSuffix = (a, b) => {
+    // First, compare by number
+    if (a.number !== b.number) {
+        return a.number - b.number;
+    }
+    // If numbers are equal, compare by suffix, considering undefined as less than any suffix
+    let suffixA = a.variant_suffix || '';
+    let suffixB = b.variant_suffix || '';
+    return suffixA.localeCompare(suffixB);
+}
+
 export const getTitleProgressForUser = async (title, userId) => {
     let totalIssues = title.total_issues;
     let noCollectedIssues = 0;

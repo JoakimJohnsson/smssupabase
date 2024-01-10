@@ -1,6 +1,7 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {IssueGridCard} from "./IssueGridCard";
+import {sortByNumberAndVariantSuffix} from "../../../helpers/functions";
 
 
 export const IssuesListGrid = ({groupedIssuesData, showCollectingButtons, fetchTitleProgress, listViewMissing, doUpdate}) => {
@@ -15,7 +16,7 @@ export const IssuesListGrid = ({groupedIssuesData, showCollectingButtons, fetchT
                             <ul className={"sms-list--with-cards mb-0"}>
                                 {
                                     year.length ?
-                                        (year.sort((a, b) => a.number - b.number).map((issue) =>
+                                        (year.sort((a, b) => sortByNumberAndVariantSuffix(a, b)).map((issue) =>
                                             <IssueGridCard key={issue.id} issue={issue} showCollectingButtons={showCollectingButtons}
                                                            fetchTitleProgress={fetchTitleProgress} listViewMissing={listViewMissing} doUpdate={doUpdate}/>
                                         ))

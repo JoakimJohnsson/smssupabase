@@ -17,11 +17,12 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.4.0 - 2023-01-xx</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.4.0 - 2023-01-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Värdering / gradering - Förbättrade adminfunktioner för input av värden.</li>
                     <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid skickgradering.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad sortering av publikationslistor som innehåller varianter.</li>
                     <li className={"list-group-item px-0"}>Möjlighet för användare att skicka meddelanden gällande värdering.</li>
                     <li className={"list-group-item px-0"}>Ny vy för att visa skickvärdering för en titel.</li>
                 </ul>

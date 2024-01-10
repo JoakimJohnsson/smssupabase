@@ -5,6 +5,7 @@ import {Accordion} from "react-bootstrap";
 import AccordionItem from "react-bootstrap/AccordionItem";
 import AccordionHeader from "react-bootstrap/AccordionHeader";
 import AccordionBody from "react-bootstrap/AccordionBody";
+import {sortByNumberAndVariantSuffix} from "../../../helpers/functions";
 
 
 export const IssuesListAccordion = ({
@@ -17,6 +18,8 @@ export const IssuesListAccordion = ({
                                         fetchTitleProgress
                                     }) => {
 
+    console.log("gradf", groupedIssuesData);
+
     return (
         <Accordion className={"sms-list--accordion mb-4"} flush defaultActiveKey={issuesData.length < 14 ? groupedIssuesDataIndexes : "0"}>
             {
@@ -28,7 +31,7 @@ export const IssuesListAccordion = ({
                                 <ul className={"sms-list--with-tools mb-0"}>
                                     {
                                         year.length ?
-                                            (year.sort((a, b) => a.number - b.number).map((issue) =>
+                                            (year.sort((a, b) => sortByNumberAndVariantSuffix(a, b)).map((issue) =>
                                                 <IssueListItem
                                                     key={issue.id}
                                                     showAdminInfo={showAdminInfo}

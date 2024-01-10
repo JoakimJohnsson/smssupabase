@@ -1,7 +1,7 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
-import {getDataGradeValueByGradeName} from "../../../helpers/functions";
+import {getDataGradeValueByGradeName, sortByNumberAndVariantSuffix} from "../../../helpers/functions";
 
 
 export const IssuesListGrades = ({groupedIssuesData}) => {
@@ -31,7 +31,7 @@ export const IssuesListGrades = ({groupedIssuesData}) => {
                         <tbody key={index}>
                         {
                             year.length ?
-                                (year.sort((a, b) => a.number - b.number).map((issue) =>
+                                (year.sort((a, b) => sortByNumberAndVariantSuffix(a, b)).map((issue) =>
                                     <tr key={issue.id}>
                                         <th scope={"row"}>{year[0].year} {issue.number}</th>
                                         <td>{renderGradeValue(year, "GD")}</td>
