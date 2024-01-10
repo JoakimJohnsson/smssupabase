@@ -7,7 +7,7 @@ import {getDataGradeValueByGradeName, sortByNumberAndVariantSuffix} from "../../
 export const IssuesListGrades = ({groupedIssuesData}) => {
 
     const renderGradeValue = (year, gradeName) => {
-        const data = year[0].grade_values;
+        const data = year.grade_values;
         const value = getDataGradeValueByGradeName(data, gradeName);
         return value > 0 ? value : "-";
     }
@@ -31,14 +31,14 @@ export const IssuesListGrades = ({groupedIssuesData}) => {
                         <tbody key={index}>
                         {
                             year.length ?
-                                (year.sort((a, b) => sortByNumberAndVariantSuffix(a, b)).map((issue) =>
+                                (year.sort((a, b) => sortByNumberAndVariantSuffix(a, b)).map((issue, index) =>
                                     <tr key={issue.id}>
                                         <th scope={"row"}>{year[0].year} {issue.number}</th>
-                                        <td>{renderGradeValue(year, "GD")}</td>
-                                        <td>{renderGradeValue(year, "VG")}</td>
-                                        <td>{renderGradeValue(year, "FN")}</td>
-                                        <td>{renderGradeValue(year, "VF")}</td>
-                                        <td>{renderGradeValue(year, "NM")}</td>
+                                        <td>{renderGradeValue(year[index], "GD")}</td>
+                                        <td>{renderGradeValue(year[index], "VG")}</td>
+                                        <td>{renderGradeValue(year[index], "FN")}</td>
+                                        <td>{renderGradeValue(year[index], "VF")}</td>
+                                        <td>{renderGradeValue(year[index], "NM")}</td>
                                     </tr>
                                 ))
                                 :
