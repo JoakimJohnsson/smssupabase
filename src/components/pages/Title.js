@@ -156,6 +156,12 @@ export const Title = () => {
                                         </a>
                                     </p>
                                 }
+                                <p>
+                                    <a href={"https://seriekatalogen.se"} target={"_blank"} rel={"noreferrer"}>
+                                        Seriekatalogen
+                                        <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                    </a>
+                                </p>
                             </div>
                             <div className={"col-12 col-lg-7 col-xl-9"}>
                                 <IconLink
