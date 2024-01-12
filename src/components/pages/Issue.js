@@ -55,7 +55,7 @@ export const Issue = () => {
     const [nextIssueId, setNextIssueId] = useState(null);
     const [loadingButtons, setLoadingButtons] = useState(true);
     const navigate = useNavigate();
-    const [isCollectingIssue, setIsCollectingIssue, isWantingIssue, setIsWantingIssue, isUpgradingIssue, setIsUpgradingIssue] = useIsCollectingIssue(user.id, id);
+    const {isCollectingIssue, setIsCollectingIssue, isWantingIssue, setIsWantingIssue, isUpgradingIssue, setIsUpgradingIssue} = useIsCollectingIssue(user.id, id);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
