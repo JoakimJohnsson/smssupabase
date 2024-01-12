@@ -381,9 +381,6 @@ export const filterAdminTitlesData = (titlesData, query, isvalued, isnotvalued) 
 }
 
 export const renderGradeValue = (issueData, gradeName) => {
-
-    console.log("issuesD", issueData);
-
     const gradeValues = issueData.grade_values;
     const value = getDataGradeValuesByGradeName(gradeValues, gradeName);
     return value > 0 ? value : "-";
