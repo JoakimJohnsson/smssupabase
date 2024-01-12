@@ -61,7 +61,7 @@ export const Titles = () => {
                         special={special}
                         collectible={collectible}
                         placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
-                    <p className={"text-uppercase fs-large"}>
+                    <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredTitlesData ?
