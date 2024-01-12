@@ -80,7 +80,7 @@
 .sms-grade-btn {
   @extend .btn, .rounded-1, .mb-2, .me-2, .text-grade-200, .bg-elephant;
   &.active {
-    @extend .text-black, .bg-grade;
+    @extend .text-black;
     opacity: .9;
   }
   &:focus,

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {ButtonGroup} from "react-bootstrap";
 import {editGrade, removeGrade} from "../../services/collectingService";
 import {useAppContext} from "../../context/AppContext";
-import {GRADE_RADIOS, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {GRADE_RADIOS, GRADE_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {IconButton} from "../minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {getDataGradeValue, isSKGradeValue} from "../../helpers/functions";
@@ -61,7 +61,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
                             />
                             <label
                                 htmlFor={`radio-${grade.id}-${index + 1}`}
-                                className={`p-0 sms-grade-btn ${isSKGradeValue(radio.value) ? "sk-grade" : ""} ${checked ? "active" : ""}`}
+                                className={`p-0 sms-grade-btn ${isSKGradeValue(radio.value) ? "sk-grade" : ""} ${checked ? "active bg-grade-" + GRADE_VARIANTS[radio.value].color : ""}`}
                             >
                                 <div className={"fs-small py-2 px-3"}>
                                     <span aria-hidden={"true"} className={"d-inline-block text-nowrap"}>{radio.name} {radio.value.toFixed(1)}</span>
