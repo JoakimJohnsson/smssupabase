@@ -64,7 +64,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
                                 className={`p-0 sms-grade-btn ${isSKGradeValue(radio.value) ? "sk-grade" : ""} ${checked ? "active bg-grade-" + GRADE_VARIANTS[radio.value].color : ""}`}
                             >
                                 <div className={"fs-small py-2 px-3"}>
-                                    <span aria-hidden={"true"} className={"d-inline-block text-nowrap"}>{radio.name} {radio.value.toFixed(1)}</span>
+                                    <span className={"d-inline-block text-nowrap"}>{radio.name} {radio.value.toFixed(1)}</span>
                                 </div>
                             </label>
                         </div>
