@@ -21,6 +21,7 @@ const Information = () => {
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Bugfix - När man raderade ett meddelande försvann alla tillfälligt ur listan.</li>
+                    <li className={"list-group-item px-0"}>Tydligare meddelande när användare väljer att sluta samla på en titel.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.4.0 - 2024-01-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

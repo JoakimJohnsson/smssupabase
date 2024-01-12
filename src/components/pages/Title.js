@@ -112,18 +112,23 @@ export const Title = () => {
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
                                 <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
-                                <button
-                                    disabled={isCollectingTitle && titleProgress.progress > 0}
-                                    aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                                    className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
-                                    onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
-                                    {
-                                        isCollectingTitle ?
-                                            <>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
-                                            :
-                                            <>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
-                                    }
-                                </button>
+
+                                {
+                                    titleProgress.progress === 0 ?
+                                        <button
+                                            aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                                            className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
+                                            onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, false)}>
+                                            {
+                                                isCollectingTitle ?
+                                                    <>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
+                                                    :
+                                                    <>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
+                                            }
+                                        </button>
+                                        :
+                                        <p className={"alert alert-info"}>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP_REMOVE}</p>
+                                }
                                 <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
                                 {
                                     title.description &&

@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {TABLES} from "../helpers/constants";
+import {MESSAGES, TABLES} from "../helpers/constants";
 
 
 // TITLE
@@ -45,7 +45,10 @@ export const updateIsValued = async (titleId, isValued) => {
     }
 }
 
-export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle) => {
+export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm) => {
+    if (doConfirm && !window.confirm(MESSAGES.CONFIRM.STOP_COLLECTING)) {
+        return false;
+    }
     let issueIds = [];
     await getAllIssueIdsForTitle(titleId).then((result) => {
         issueIds = result;

@@ -159,7 +159,7 @@ export const Issue = () => {
                                         <button
                                             aria-label={LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue.titles.name}
                                             className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
-                                            onClick={() => handleCollectingTitle(user.id, issue.titles.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
+                                            onClick={() => handleCollectingTitle(user.id, issue.titles.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
                                             {LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue.titles.name}
                                         </button>
                                 }

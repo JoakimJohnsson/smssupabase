@@ -207,9 +207,9 @@ export const handleMultipleDeleteNoConfirm = async (table, id, name, setData, in
     }
 }
 
-export const handleCollectingTitle = (userId, titleId, setInformationMessage, isCollectingTitle, setIsCollectingTitle) => {
+export const handleCollectingTitle = (userId, titleId, setInformationMessage, isCollectingTitle, setIsCollectingTitle, doConfirm) => {
     if (isCollectingTitle) {
-        removeTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle).then(() => {
+        removeTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm).then(() => {
         });
 
     } else {
