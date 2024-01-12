@@ -59,7 +59,7 @@ export const getIssueDataWithPublisherAndTitle = async (setData, id) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
-            .select("*, publishers (*), titles (*)")
+            .select("*, publishers (*), titles (*), grade_values (*)")
             .eq("id", id)
         if (error && status !== 406) {
             console.error(error);
