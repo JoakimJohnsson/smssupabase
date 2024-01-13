@@ -300,7 +300,7 @@ export const Issue = () => {
                                     }
                                 </div>
                                 {
-                                    !!issue.titles.is_valued &&
+                                    !!issue.titles.is_valued && issue.grade_values && !!issue.grade_values.length &&
                                     <div className={"sms-section--light section--grade mb-4"}>
                                         <h2>{LABELS_AND_HEADINGS.GRADE_VALUE_VALUES}</h2>
                                         <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
