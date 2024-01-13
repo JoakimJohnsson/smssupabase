@@ -39,6 +39,8 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
                 return LABELS_AND_HEADINGS.EDIT;
             case "issues":
                 return LABELS_AND_HEADINGS.ISSUES;
+            case "grade values":
+                return LABELS_AND_HEADINGS.GRADE_VALUES;
             case "messages":
                 return LABELS_AND_HEADINGS.MESSAGES;
             case "add":

@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, MESSAGES, SK_GRADE_NAMES, SK_GRADE_VALUES} from "./constants";
+import {CLASSES, MESSAGES, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
 
@@ -269,11 +269,11 @@ export const getAverageGrade = (grades) => {
 }
 
 export const isSKGradeValue = (gradeValue) => {
-    return SK_GRADE_VALUES.includes(gradeValue);
+    return SK_GRADE_RADIO_VALUES.includes(gradeValue);
 }
 
 export const isSKGradeName = (gradeName) => {
-    return SK_GRADE_NAMES.includes(gradeName);
+    return SK_GRADE_RADIO_NAMES.includes(gradeName);
 }
 
 export const sortableName = (name) => {

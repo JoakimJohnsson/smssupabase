@@ -33,7 +33,7 @@ export const MESSAGES = {
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
-        DELETE_GRADE_VALUES: "Vill du verkligen ta bort grundläggande graderingsvärden för denna publikation?",
+        DELETE_GRADES: "Vill du verkligen ta bort grundläggande graderingsvärden för denna publikation?",
         REMOVE_1: "Vill du verkligen sluta samla på ",
         REMOVE_2: "?",
         FROM: " från tabellen ",
@@ -74,6 +74,7 @@ export const ROUTES = {
     TITLES: "/titles",
     TITLE_ID: "/titles/:id",
     ISSUES: "/issues",
+    GRADE_VALUES: "/grade-values",
     ISSUE_ID: "/issues/:id",
     PUBLISHERS: "/publishers",
     MARVELKLUBBEN: "/marvelklubben",
@@ -217,8 +218,8 @@ export const LABELS_AND_HEADINGS = {
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUE: "Publikation",
     ISSUES: "Publikationer",
-    GRADE_VALUE_VALUES: "Skickvärdering",
-    GRADE_VALUE_VALUES_FOR: "Skickvärdering för",
+    GRADE_VALUES: "Skickvärdering",
+    GRADE_VALUES_FOR: "Skickvärdering för",
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
     NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
@@ -704,10 +705,10 @@ export const GRADE_RADIOS = [
     {name: 'M', value: 9.9},
 ];
 
-export const SK_GRADE_VALUES = [
+export const SK_GRADE_RADIO_VALUES = [
     2.0, 4.0, 6.0, 8.0, 9.4
 ]
 
-export const SK_GRADE_NAMES = [
+export const SK_GRADE_RADIO_NAMES = [
     "GD", "VG", "FN", "VF", "NM"
 ]

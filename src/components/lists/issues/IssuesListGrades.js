@@ -9,7 +9,7 @@ export const IssuesListGrades = ({groupedIssuesData}) => {
 
     return (
         <table className={"table table-sm table-responsive table-striped mb-4 mt-3"}>
-            <caption>{LABELS_AND_HEADINGS.GRADE_VALUE_VALUES_FOR} {groupedIssuesData[0][0].titles.name}</caption>
+            <caption>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {groupedIssuesData[0][0].titles.name}</caption>
             <thead>
             <tr>
                 <th scope={"col"}>År / Nummer</th>

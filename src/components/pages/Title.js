@@ -242,7 +242,7 @@ export const Title = () => {
                                     }
                                     <AddMessage originObject={title} originTable={TABLES.TITLES}/>
                                 </div>
-                                <h2>{listViewGrades ? LABELS_AND_HEADINGS.GRADE_VALUE_VALUES : LABELS_AND_HEADINGS.ISSUES}</h2>
+                                <h2>{listViewGrades ? LABELS_AND_HEADINGS.GRADE_VALUES : LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
                                             listViewGrid={listViewGrid} listViewMissing={listViewMissing} listViewGrades={listViewGrades}
                                             fetchTitleProgress={fetchTitleProgress}

@@ -200,6 +200,9 @@ input[type="checkbox"] + label {
         align-items: center;
         justify-content: center;
       }
+      &.grade-values {
+        @extend .col-12, .col-lg-6;
+      }
     }
     &.issue-card {
       @extend .col-12, .mb-4;

@@ -13,7 +13,7 @@ import {
     PublishersIconDuoTone,
     SettingsIconDuoTone,
     StartIconDuoTone,
-    TitlesIconDuoTone, UsersIconDuoTone
+    TitlesIconDuoTone, UsersIconDuoTone, ValueIconDuoTone
 } from "../icons-duotone";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
@@ -70,6 +70,12 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.GRADE_VALUES} className={"nav-link nav-link--dropdown"}>
+                                    <ValueIconDuoTone className={"me-2"}/>
+                                    <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.GRADE_VALUES}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.MARVELKLUBBEN} className={"nav-link nav-link--dropdown"}>
                                     <MarvelKlubbenIcon className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.MARVELKLUBBEN}</span>
@@ -110,6 +116,8 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<IssueIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
+                        <LiNavItem route={ROUTES.GRADE_VALUES} onClick={handleClick} icon={<ValueIconDuoTone size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.GRADE_VALUES}/>
                         <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<MarvelKlubbenIcon size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
                         <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<PublishersIconDuoTone size={"1x"}/>}

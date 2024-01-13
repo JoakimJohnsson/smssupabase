@@ -36,7 +36,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
     }
 
     const handleDeleteGradeValues = async () => {
-        if (!window.confirm(MESSAGES.CONFIRM.DELETE_GRADE_VALUES)) {
+        if (!window.confirm(MESSAGES.CONFIRM.DELETE_GRADES)) {
             setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
             return false;
         }

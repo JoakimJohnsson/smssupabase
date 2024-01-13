@@ -32,6 +32,7 @@ import {Users} from "./pages/Users";
 import {AdminMessages} from "./pages/admin/message/AdminMessages";
 import {AdminMessage} from "./pages/admin/message/AdminMessage";
 import {NoMatch} from "./pages/NoMatch";
+import {GradeValues} from "./pages/GradeValues";
 
 
 export const MyRoutes = () => {
@@ -59,6 +60,7 @@ export const MyRoutes = () => {
                 <Route path={ROUTES.TITLES} element={user && user.id ? <Titles/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.ISSUE_ID} element={user && user.id ? <Issue/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.ISSUES} element={user && user.id ? <Issues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                <Route path={ROUTES.GRADE_VALUES} element={user && user.id ? <GradeValues/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.PUBLISHER_ID} element={user && user.id ? <Publisher/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.PUBLISHERS} element={user && user.id ? <Publishers/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                 <Route path={ROUTES.USER_ID} element={user && user.id ? <User/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
