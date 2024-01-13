@@ -99,7 +99,7 @@ export const Home = () => {
                                         progress === 100 ?
                                             <ProgressBar striped variant="success" now={progress}/>
                                             :
-                                            <ProgressBar striped now={progress} label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}/>
+                                            <ProgressBar striped variant={"grade"} now={progress} label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}/>
                                     }
                                 </>
                             }

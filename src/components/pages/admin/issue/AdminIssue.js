@@ -67,6 +67,12 @@ export const AdminIssue = () => {
                                 <IconLink
                                     variant={"primary"}
                                     icon={titleIconDuoTone}
+                                    path={`/titles/${issue.title_id}`}
+                                    label={issue.titles.name + " " + issue.titles.start_year}
+                                />
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={titleIconDuoTone}
                                     path={`/admin/titles/${issue.title_id}`}
                                     label={LABELS_AND_HEADINGS.EDIT + " " + issue.titles.name + " " + issue.titles.start_year}
                                 />

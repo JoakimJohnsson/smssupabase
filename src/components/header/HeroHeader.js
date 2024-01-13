@@ -17,7 +17,6 @@ export const HeroHeader = () => {
             <SkipLink/>
             <div className={"container-fluid"}>
                 <div className={"row"}>
-
                     <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
                         <LogoIconDuoTone size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
                         <h1 className={"sms-logo-text mb-5"}>

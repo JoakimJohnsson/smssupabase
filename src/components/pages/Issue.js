@@ -301,9 +301,9 @@ export const Issue = () => {
                                 </div>
                                 {
                                     !!issue.titles.is_valued &&
-                                    <div className={"sms-section--light mb-4"}>
+                                    <div className={"sms-section--light section--grade mb-4"}>
                                         <h2>{LABELS_AND_HEADINGS.GRADE_VALUE_VALUES}</h2>
-                                        <table className={"table table-sm table-responsive table-striped mb-4 mt-3"}>
+                                        <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                             <caption>{LABELS_AND_HEADINGS.GRADE_VALUE_VALUES_FOR} {displayName}</caption>
                                             <thead>
                                             <tr>
@@ -330,7 +330,7 @@ export const Issue = () => {
                                 }
                                 {
                                     isCollectingIssue &&
-                                    <div className={"sms-section--light mb-4"}>
+                                    <div className={"sms-section--light section--grade mb-4"}>
                                         <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
                                         <div className={"mb-3"}>
                                             {

@@ -81,6 +81,9 @@
   @extend .p-4, .p-md-5;
   border-radius: $border-radius-sm;
   background-color: $color-bg-horse;
+  &.section--grade {
+    @extend .rounded-3, .border, .border-grade;
+  }
   .form-control, .form-select {
     border-bottom: 3px solid $gray-600;
     border-radius: 0;
@@ -425,7 +428,7 @@ input[type="checkbox"] + label {
 
 // Icons
 .fa-icon--cta {
-  @extend .mb-3, .text-secondary;
+  @extend .mb-3, .text-grade;
 }
 
 // Forms
