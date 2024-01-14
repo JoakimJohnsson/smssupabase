@@ -84,7 +84,7 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                                                             }
                                                         >
                                                             <button
-                                                                className={"text-secondary btn sms-tool-btn no-hover"}
+                                                                className={"text-grade btn sms-tool-btn no-hover"}
                                                                 aria-label={getUserName(u) + LABELS_AND_HEADINGS.IS_SUPER_ADMIN}>
                                                                 <AdminIconDuoTone className={"fa-xl"}/>
                                                             </button>

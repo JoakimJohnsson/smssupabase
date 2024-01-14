@@ -17,13 +17,14 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.5.0 - 2024-01-xx</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.5.0 - 2024-01-14</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Bugfix - När man raderade ett meddelande försvann alla tillfälligt ur listan.</li>
                     <li className={"list-group-item px-0"}>Tydligare meddelande när användare väljer att sluta samla på en titel.</li>
-                    <li className={"list-group-item px-0"}>Grid vyn på titelsida visar nu antal exemplar och dess skick av en publikation.</li>
+                    <li className={"list-group-item px-0"}>Gridvy på titelsida visar nu antal exemplar och dess skick av en publikation.</li>
                     <li className={"list-group-item px-0"}>Visa skickvärdering även på sida för publikation.</li>
+                    <li className={"list-group-item px-0"}>Egen sida med sök och filter för skickvärdering.</li>
                     <li className={"list-group-item px-0"}>Justering av färger för en bättre användarupplevelse.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.4.0 - 2024-01-10</h3>
