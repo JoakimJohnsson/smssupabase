@@ -20,7 +20,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
 
     const handleSubmit = () => {
         setLoading(true);
-        updateGradeValuesValues(gradeValues).then(() => {
+        updateGradeValuesValues(gradeValues, setInformationMessage).then(() => {
             setSearchParams({editgradevalue: false});
             setLoading(false);
         });
@@ -36,7 +36,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
     }
 
     const handleDeleteGradeValues = async () => {
-        if (!window.confirm(MESSAGES.CONFIRM.DELETE_GRADE_VALUES)) {
+        if (!window.confirm(MESSAGES.CONFIRM.DELETE_GRADES)) {
             setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
             return false;
         }
@@ -90,6 +90,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                                         className={CLASSES.FORM_INPUT_DEFAULT}
                                         type="number"
                                         step={"10"}
+                                        min={0}
                                         value={gradeValue.value || 0}
                                         // Using functional version of setGradeValues()
                                         onChange={(e) => {

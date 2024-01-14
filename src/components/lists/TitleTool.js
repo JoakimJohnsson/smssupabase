@@ -27,7 +27,7 @@ export const TitleTool = ({title, displayName, isCard = false, setUserCollectsTi
             <button
                 aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
                 className={`btn ${isCollectingTitle ? "btn-success" : "btn-secondary"} btn-sm p-2 rounded-0 w-100 flex-column justify-content-center`}
-                onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
+                onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
                 {
                     isCollectingTitle ?
                         <>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
@@ -50,7 +50,7 @@ export const TitleTool = ({title, displayName, isCard = false, setUserCollectsTi
                 <button
                     className={collectTitleBtnClassName}
                     aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                    onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
+                    onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
                     <Icon icon={collectTitleIcon} className={"fa-xl"}/>
                 </button>
             </OverlayTrigger>

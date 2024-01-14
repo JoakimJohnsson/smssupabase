@@ -62,14 +62,14 @@ export const AdminMessages = () => {
                                     <h2>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h2>
                                     {
                                         messages ?
-                                            <MessagesList messagesData={messages} setMessagesData={setMessagesData}/>
+                                            <MessagesList messagesData={messages} setMessagesData={setMessages}/>
                                             :
                                             <NoDataAvailable/>
                                     }
                                     <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h2>
                                     {
                                         globalMessages ?
-                                            <MessagesList messagesData={globalMessages} setMessagesData={setMessagesData}/>
+                                            <MessagesList messagesData={globalMessages} setMessagesData={setGlobalMessages}/>
                                             :
                                             <NoDataAvailable/>
                                     }

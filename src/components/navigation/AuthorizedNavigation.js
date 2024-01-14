@@ -13,7 +13,7 @@ import {
     PublishersIconDuoTone,
     SettingsIconDuoTone,
     StartIconDuoTone,
-    TitlesIconDuoTone, UsersIconDuoTone
+    TitlesIconDuoTone, UsersIconDuoTone, ValueIconDuoTone
 } from "../icons-duotone";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
@@ -34,9 +34,9 @@ export const AuthorizedNavigation = () => {
             <div className="container-fluid px-3 pt-1">
                 <Link to={ROUTES.DEFAULT} className={"hocus-standard h-100 d-flex align-items-center"}>
                     {/* desktop icon */}
-                    <LogoIconDuoTone size={"3x"} className={"mx-3 fa-swap-opacity text-secondary d-none d-sm-flex"}/>
+                    <LogoIconDuoTone size={"3x"} className={"mx-3 fa-swap-opacity text-grade d-none d-sm-flex"}/>
                     {/* mobile icon */}
-                    <LogoIconDuoTone size={"2x"} className={"mx-2 fa-swap-opacity text-secondary d-flex d-sm-none"}/>
+                    <LogoIconDuoTone size={"2x"} className={"mx-2 fa-swap-opacity text-grade d-flex d-sm-none"}/>
                     <div className={"sms-logo-text"}>
                         <span className={"d-none d-sm-inline"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}</span>
                         <span className={"d-inline d-sm-none"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE_SHORT}</span>
@@ -67,6 +67,12 @@ export const AuthorizedNavigation = () => {
                                 <NavLink exact={"true"} to={ROUTES.ISSUES} className={"nav-link nav-link--dropdown"}>
                                     <IssueIconDuoTone className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.GRADE_VALUES} className={"nav-link nav-link--dropdown"}>
+                                    <ValueIconDuoTone className={"me-2"}/>
+                                    <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.GRADE_VALUES}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
@@ -110,6 +116,8 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<IssueIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
+                        <LiNavItem route={ROUTES.GRADE_VALUES} onClick={handleClick} icon={<ValueIconDuoTone size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.GRADE_VALUES}/>
                         <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<MarvelKlubbenIcon size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
                         <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<PublishersIconDuoTone size={"1x"}/>}

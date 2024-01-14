@@ -8,16 +8,21 @@ import {
     hasTrueValue,
     sortByNameAndStartYear
 } from "../../helpers/functions";
-import {getRowsByTable} from "../../services/serviceFunctions";
-import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
+import {getRowsByTable} from "../../services/serviceFunctions";
 import FilterFormFormat from "../search-filter/FilterFormFormat";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
+import {GradeValuesListItem} from "./GradeValuesListItem";
+import {Accordion} from "react-bootstrap";
+import AccordionHeader from "react-bootstrap/AccordionHeader";
+import AccordionBody from "react-bootstrap/AccordionBody";
+import AccordionItem from "react-bootstrap/AccordionItem";
 
 
-export const Titles = () => {
+export const GradeValues = () => {
 
     const [loading, setLoading] = useState(true);
+    const [activeKey, setActiveKey] = useState(null);
     const [titlesData, setTitlesData] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
     const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible] = useFormatQueryFilter();
@@ -45,11 +50,15 @@ export const Titles = () => {
         }
     }, [album, collectible, comic, comiclarge, hardcover, pocket, query, special, titlesData]);
 
+    const handleSelect = (eventKey) => {
+        setActiveKey(eventKey);
+    };
+
     return (
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.GRADE_VALUES}/>
                     <FilterFormFormat
                         setSearchParams={setSearchParams}
                         query={query}
@@ -69,18 +78,30 @@ export const Titles = () => {
                                 :
                                 <LazyTextPlaceholder charCount={2}/>
                         }
-                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
+                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length :
+                        <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
                     </p>
                     {
                         loading ?
                             <OverlaySpinner/>
                             :
-                            <ul className={"sms-list--with-cards"}>
+                            <Accordion className={"sms-list--accordion mb-4"} flush onSelect={handleSelect}>
                                 {
                                     filteredTitlesData &&
-                                    filteredTitlesData.map((title) => <TitlesListItem key={title.id} title={title}/>)
+                                    filteredTitlesData.map(
+                                        (title, index) =>
+                                            <AccordionItem eventKey={index.toString()} key={index} onToggle={() => {
+                                                console.log("toggling!!!");
+                                                setActiveKey(index.toString())
+                                            }}>
+                                                <AccordionHeader as={"h2"} className={"pb-0 mb-0"}>{title.name} {title.start_year}</AccordionHeader>
+                                                <AccordionBody>
+                                                    <GradeValuesListItem title={title} isActive={activeKey === index.toString()}/>
+                                                </AccordionBody>
+                                            </AccordionItem>
+                                    )
                                 }
-                            </ul>
+                            </Accordion>
                     }
                 </div>
             </div>

@@ -62,7 +62,7 @@ export const OtherCollectionsPaneListItem = ({user}) => {
                         {PANES.OTHER_COLLECTIONS.COLLECTING} {titlesData.length} / {totalTitles} {PANES.OTHER_COLLECTIONS.TITLES}.
                     </p>
                     {
-                        <CustomProgressBar label={progress + PANES.OTHER_COLLECTIONS.COMPLETE} variant={progress === 100 ? "success" : "primary"}
+                        <CustomProgressBar label={progress + PANES.OTHER_COLLECTIONS.COMPLETE} variant={progress === 100 ? "success" : "grade"}
                                            valueNow={progress}/>
                     }
                 </div>

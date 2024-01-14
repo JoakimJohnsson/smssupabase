@@ -24,7 +24,7 @@ export const TitlesPaneListItem = ({title}) => {
     useEffect(() => {
         if (titleProgress) {
             setProgressData([
-                {name: 'A', value: titleProgress.noCollectedIssues, color: "#41bee0"},
+                {name: 'A', value: titleProgress.noCollectedIssues, color: "#ffd700"},
                 {name: 'B', value: titleProgress.noMissingIssues, color: "#999"}
             ]);
             setCompleted((titleProgress.noCollectedIssues === titleProgress.totalIssues));
@@ -55,7 +55,7 @@ export const TitlesPaneListItem = ({title}) => {
                     </div>
                 </Link>
                 <div className={"px-2 border-bottom"}>
-                    <span className={`tag-badge text-black mb-1 ${completed ? "bg-success" : "bg-primary"}`}>{titleProgress.progress + "%"}</span>
+                    <span className={`tag-badge text-black mb-1 ${completed ? "bg-success" : "bg-grade"}`}>{titleProgress.progress + "%"}</span>
                     <FormatBadge formatId={title.format_id} customClass={"mb-1"} year={title.start_year}/>
                 </div>
                 <div className={"p-2"}>
@@ -63,7 +63,7 @@ export const TitlesPaneListItem = ({title}) => {
                         <PieChart>
                             <defs>
                                 <pattern id="pattern-A" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
-                                    <rect width="2" height="4" fill="#41bee0"/>
+                                    <rect width="2" height="4" fill="#ffd700"/>
                                 </pattern>
                                 <pattern id="pattern-B" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
                                     <rect width="1" height="6" fill="#999"/>

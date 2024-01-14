@@ -8,7 +8,7 @@ export const LazyTextPlaceholder = ({charCount}) => {
         placeholder += "X";
     }
     return (
-        <p className={"placeholder-glow d-inline"}><span className="placeholder">{placeholder}</span></p>
+        <span className="placeholder">{placeholder}</span>
     )
 };
 

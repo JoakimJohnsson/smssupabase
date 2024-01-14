@@ -8,12 +8,13 @@ import {CONFIG, LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
+import {GradeBadge} from "../../grade/GradeBadge";
 
 
 export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false, listViewMissing, doUpdate}) => {
 
     const {setInformationMessage, user} = useAppContext();
-    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
+    const {isCollectingIssue, setIsCollectingIssue, grades} = useIsCollectingIssue(user.id, issue.id);
     const [displayName] = useIssueDisplayName(issue);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
@@ -54,6 +55,14 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
                     }
                 </div>
             </Link>
+            {
+                isCollectingIssue && grades &&
+                grades.map((g, index) => {
+                    return (
+                        <GradeBadge key={g.id} grade={g.grade} index={index} small/>
+                    )
+                })
+            }
             {
                 showCollectingButtons &&
                 <div className={"d-flex align-items-center"}>
