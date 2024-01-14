@@ -12,11 +12,8 @@ import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilt
 import {getRowsByTable} from "../../services/serviceFunctions";
 import FilterFormFormat from "../search-filter/FilterFormFormat";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
-import {TitlesListItem} from "./TitlesListItem";
 import {GradeValuesListItem} from "./GradeValuesListItem";
 
-
-// TODO SEARCH FILTER GRADES
 
 export const GradeValues = () => {
 
