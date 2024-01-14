@@ -1,21 +1,40 @@
-import React from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import React, {useState, useCallback, useEffect} from "react";
+import {IssuesList} from "../lists/issues/IssuesList";
+import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
 
 
-export const GradeValuesListItem = ({title}) => {
+export const GradeValuesListItem = ({title, isActive}) => {
+
+    const [issuesData, setIssuesData] = useState({});
+    const [loading, setLoading] = useState(true);
+
+    const fetchIssuesData = useCallback(() => {
+        if (isActive && title && title.id) {
+            getIssuesWithTitleAndPublisherAndGradeValuesByTitleId(setIssuesData, title.id).then(() => setLoading(false));
+        }
+    }, [isActive, title]);
+
+    useEffect(() => {
+        if (isActive) {
+            fetchIssuesData();
+        }
+    }, [fetchIssuesData, isActive]);
 
     return (
+        <div key={title.id} className={"col-12"}>
+            {
+                loading ?
+                    <OverlaySpinner />
+                    :
+                    <IssuesList issuesData={issuesData}
+                                showAdminInfo={false}
+                                showCollectingButtons={false}
+                                listViewGrades={true}
+                                fetchTitleProgress={false}
+                                doUpdate={false}/>
 
-        <li key={title.id} className={"title-card grade-values"}>
-                <div className={"image-container mb-2 position-relative"}>
-                    <img
-                        src={title.image_url}
-                        alt={LABELS_AND_HEADINGS.TITLE + " " + title.name}
-                        className="w-100"
-                        loading={"lazy"}
-                    />
-                </div>
-        </li>
-
+            }
+        </div>
     )
 }

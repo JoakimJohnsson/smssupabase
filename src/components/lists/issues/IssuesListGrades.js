@@ -2,14 +2,15 @@ import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {renderGradeValue, sortByNumberAndVariantSuffix} from "../../../helpers/functions";
+import {Link} from "react-router-dom";
 
 
 export const IssuesListGrades = ({groupedIssuesData}) => {
 
 
     return (
-        <table className={"table table-sm table-responsive table-striped mb-4 mt-3"}>
-            <caption>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {groupedIssuesData[0][0].titles.name}</caption>
+        <table className={"table table-sm table-responsive table-striped mt-3"}>
+            <caption>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} <Link to={`/titles/${groupedIssuesData[0][0].titles.id}`}>{groupedIssuesData[0][0].titles.name}</Link></caption>
             <thead>
             <tr>
                 <th scope={"col"}>År / Nummer</th>

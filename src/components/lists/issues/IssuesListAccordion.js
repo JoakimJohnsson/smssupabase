@@ -22,7 +22,8 @@ export const IssuesListAccordion = ({
         <Accordion className={"sms-list--accordion mb-4"} flush defaultActiveKey={issuesData.length < 14 ? groupedIssuesDataIndexes : "0"}>
             {
                 groupedIssuesData.length &&
-                (groupedIssuesData.map((year, index) =>
+                groupedIssuesData.map(
+                    (year, index) =>
                         <AccordionItem eventKey={index.toString()} key={index}>
                             <AccordionHeader as={"h3"} className={"pb-0 mb-0"}>{year[0].year}</AccordionHeader>
                             <AccordionBody>
@@ -44,7 +45,7 @@ export const IssuesListAccordion = ({
                                     }
                                 </ul>
                             </AccordionBody>
-                        </AccordionItem>)
+                        </AccordionItem>
                 )
             }
         </Accordion>
