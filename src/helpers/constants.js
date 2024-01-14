@@ -33,12 +33,13 @@ export const MESSAGES = {
     },
     CONFIRM: {
         DELETE: "Du kommer nu ta bort ",
-        DELETE_GRADE_VALUES: "Vill du verkligen ta bort grundläggande graderingsvärden för denna publikation?",
+        DELETE_GRADES: "Vill du verkligen ta bort grundläggande graderingsvärden för denna publikation?",
         REMOVE_1: "Vill du verkligen sluta samla på ",
         REMOVE_2: "?",
         FROM: " från tabellen ",
         DELETE_ISSUES: "Vill du verkligen ta bort alla publikationer för den här titeln?",
         GENERATE_ISSUES: "Vill du verkligen lägga till publikationer för den här titeln?",
+        STOP_COLLECTING: "Vill du verkligen sluta samla på den här titeln? Titeln kommer att tömmas på publikationer.",
         CHANGE_ROLE: "Vill du verkligen ändra användarens roll?",
         GENERATE: "Du kommer automatiskt lägga till ",
         ISSUES_PER_YEAR: " publikationer per år.",
@@ -73,6 +74,7 @@ export const ROUTES = {
     TITLES: "/titles",
     TITLE_ID: "/titles/:id",
     ISSUES: "/issues",
+    GRADE_VALUES: "/grade-values",
     ISSUE_ID: "/issues/:id",
     PUBLISHERS: "/publishers",
     MARVELKLUBBEN: "/marvelklubben",
@@ -140,6 +142,7 @@ export const LABELS_AND_HEADINGS = {
     CLOSE: "Stäng",
     COLLECT_TITLE_START: "Börja samla på titeln",
     COLLECT_TITLE_STOP: "Sluta samla på titeln",
+    COLLECT_TITLE_STOP_REMOVE: "Töm samlingen på publikationer innan du kan sluta samla på den här titeln.",
     COLLECT_ISSUE_START: "Lägg till",
     COLLECT_ISSUE_START_2: "i samlingen.",
     COLLECT_ISSUE_STOP: "Ta bort",
@@ -215,8 +218,8 @@ export const LABELS_AND_HEADINGS = {
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUE: "Publikation",
     ISSUES: "Publikationer",
-    GRADE_VALUE_VALUES: "Skickvärdering",
-    GRADE_VALUE_VALUES_FOR: "Skickvärdering för",
+    GRADE_VALUES: "Skickvärdering",
+    GRADE_VALUES_FOR: "Skickvärdering för",
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
     NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
@@ -548,7 +551,7 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 148
+    TOTAL_TITLES_COUNT: 149
 }
 
 export const CONFIG = {
@@ -702,10 +705,10 @@ export const GRADE_RADIOS = [
     {name: 'M', value: 9.9},
 ];
 
-export const SK_GRADE_VALUES = [
+export const SK_GRADE_RADIO_VALUES = [
     2.0, 4.0, 6.0, 8.0, 9.4
 ]
 
-export const SK_GRADE_NAMES = [
+export const SK_GRADE_RADIO_NAMES = [
     "GD", "VG", "FN", "VF", "NM"
 ]

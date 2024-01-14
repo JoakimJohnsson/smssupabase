@@ -13,7 +13,7 @@ import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayN
 export const IssueCard = ({issue}) => {
 
     const {setInformationMessage, user} = useAppContext();
-    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
+    const {isCollectingIssue, setIsCollectingIssue} = useIsCollectingIssue(user.id, issue.id);
     const [isCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
     const [displayName] = useIssueDisplayName(issue);
 

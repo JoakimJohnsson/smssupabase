@@ -2,7 +2,7 @@ import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useNavigate, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
-import {getIssueName} from "../../helpers/functions";
+import {getIssueName, renderGradeValue} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -55,7 +55,14 @@ export const Issue = () => {
     const [nextIssueId, setNextIssueId] = useState(null);
     const [loadingButtons, setLoadingButtons] = useState(true);
     const navigate = useNavigate();
-    const [isCollectingIssue, setIsCollectingIssue, isWantingIssue, setIsWantingIssue, isUpgradingIssue, setIsUpgradingIssue] = useIsCollectingIssue(user.id, id);
+    const {
+        isCollectingIssue,
+        setIsCollectingIssue,
+        isWantingIssue,
+        setIsWantingIssue,
+        isUpgradingIssue,
+        setIsUpgradingIssue
+    } = useIsCollectingIssue(user.id, id);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
@@ -159,7 +166,7 @@ export const Issue = () => {
                                         <button
                                             aria-label={LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue.titles.name}
                                             className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
-                                            onClick={() => handleCollectingTitle(user.id, issue.titles.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle)}>
+                                            onClick={() => handleCollectingTitle(user.id, issue.titles.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
                                             {LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue.titles.name}
                                         </button>
                                 }
@@ -293,8 +300,37 @@ export const Issue = () => {
                                     }
                                 </div>
                                 {
+                                    !!issue.titles.is_valued && issue.grade_values && !!issue.grade_values.length &&
+                                    <div className={"sms-section--light section--grade mb-4"}>
+                                        <h2>{LABELS_AND_HEADINGS.GRADE_VALUES}</h2>
+                                        <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
+                                            <caption>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {displayName}</caption>
+                                            <thead>
+                                            <tr>
+                                                <th scope={"col"}>År / Nummer</th>
+                                                <th scope={"col"}>GD</th>
+                                                <th scope={"col"}>VG</th>
+                                                <th scope={"col"}>FN</th>
+                                                <th scope={"col"}>VF</th>
+                                                <th scope={"col"}>NM</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope={"row"}>{issue.year} {issue.number}</th>
+                                                <td>{renderGradeValue(issue, "GD")}</td>
+                                                <td>{renderGradeValue(issue, "VG")}</td>
+                                                <td>{renderGradeValue(issue, "FN")}</td>
+                                                <td>{renderGradeValue(issue, "VF")}</td>
+                                                <td>{renderGradeValue(issue, "NM")}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                                {
                                     isCollectingIssue &&
-                                    <div className={"sms-section--light mb-4"}>
+                                    <div className={"sms-section--light section--grade mb-4"}>
                                         <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
                                         <div className={"mb-3"}>
                                             {

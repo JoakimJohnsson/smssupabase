@@ -59,7 +59,7 @@ export const getIssueDataWithPublisherAndTitle = async (setData, id) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
-            .select("*, publishers (*), titles (*)")
+            .select("*, publishers (*), titles (*), grade_values (*)")
             .eq("id", id)
         if (error && status !== 406) {
             console.error(error);
@@ -207,9 +207,9 @@ export const handleMultipleDeleteNoConfirm = async (table, id, name, setData, in
     }
 }
 
-export const handleCollectingTitle = (userId, titleId, setInformationMessage, isCollectingTitle, setIsCollectingTitle) => {
+export const handleCollectingTitle = (userId, titleId, setInformationMessage, isCollectingTitle, setIsCollectingTitle, doConfirm) => {
     if (isCollectingTitle) {
-        removeTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle).then(() => {
+        removeTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm).then(() => {
         });
 
     } else {

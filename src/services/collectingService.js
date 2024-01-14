@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {TABLES} from "../helpers/constants";
+import {MESSAGES, TABLES} from "../helpers/constants";
 
 
 // TITLE
@@ -45,7 +45,10 @@ export const updateIsValued = async (titleId, isValued) => {
     }
 }
 
-export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle) => {
+export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm) => {
+    if (doConfirm && !window.confirm(MESSAGES.CONFIRM.STOP_COLLECTING)) {
+        return false;
+    }
     let issueIds = [];
     await getAllIssueIdsForTitle(titleId).then((result) => {
         issueIds = result;
@@ -223,15 +226,18 @@ export const getGradeValuesByIssueId = async (issueId, setGradeValues) => {
     }
 }
 
-export const updateGradeValuesValues = async (gradeValues) => {
+export const updateGradeValuesValues = async (gradeValues, setInformationMessage) => {
     for (let i = 0; i < gradeValues.length; i++) {
         try {
-            await supabase
+            let {error, status} = await supabase
                 .from(TABLES.GRADE_VALUES)
                 .update([{
                     value: gradeValues[i].value
                 }])
                 .eq("id", gradeValues[i].id);
+            if (error && status !== 406) {
+                setInformationMessage({show: true, status: status, error: error});
+            }
         } catch (error) {
             console.error(error);
         }

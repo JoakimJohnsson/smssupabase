@@ -81,6 +81,9 @@
   @extend .p-4, .p-md-5;
   border-radius: $border-radius-sm;
   background-color: $color-bg-horse;
+  &.section--grade {
+    @extend .rounded-3, .border, .border-grade;
+  }
   .form-control, .form-select {
     border-bottom: 3px solid $gray-600;
     border-radius: 0;
@@ -200,38 +203,33 @@ input[type="checkbox"] + label {
     }
     &.issue-card {
       @extend .col-12, .mb-4;
+      flex: 0 0 auto;
       a {
         @extend .hocus-standard;
       }
-      @media (min-width: 300px) {
+      @media (min-width: 450px) {
         // .col-6
-        flex: 0 0 auto;
         width: 50%;
       }
-      @media (min-width: 450px) {
-        // .col-4
-        flex: 0 0 auto;
-        width: 33.33333333%;
-      }
       @media (min-width: 700px) {
-        // .col-3
-        flex: 0 0 auto;
-        width: 25%;
+        // .col-4
+        width: 33.33333333%;
       }
       @media (min-width: 900px) {
         // .col-3
-        flex: 0 0 auto;
-        width: 20%;
+        width: 25%;
+      }
+      @media (min-width: 992px) {
+        // .col-6
+        width: 50%;
       }
       @media (min-width: 1200px) {
-        // .col-1
-        flex: 0 0 auto;
-        width: 16.66666666%;
+        // .col-3
+        width: 25%;
       }
       @media (min-width: 1400px) {
-        // .col-1
-        flex: 0 0 auto;
-        width: 12.5%;
+        // .col-2
+        width: 20%;
       }
       .issue-card--marvelklubben {
         @extend .h5, .py-1, .px-2;
@@ -346,11 +344,13 @@ input[type="checkbox"] + label {
 
 // Tag-badge
 .tag-badge {
-  @extend .badge, .py-2, .mb-2, .d-inline-block;
+  @extend .badge, .py-2, .px-3, .mb-2, .d-inline-block;
   margin-right: .5rem;
-  padding-right: 1rem;
   white-space: normal;
-  padding-left: 1rem;
+  &.small {
+    @extend .py-1, .px-2;
+    margin-right: .2rem;
+  }
 }
 
 // Images
@@ -428,7 +428,7 @@ input[type="checkbox"] + label {
 
 // Icons
 .fa-icon--cta {
-  @extend .mb-3, .text-secondary;
+  @extend .mb-3, .text-grade;
 }
 
 // Forms

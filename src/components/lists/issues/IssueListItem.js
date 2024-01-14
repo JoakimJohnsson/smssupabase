@@ -10,7 +10,7 @@ import {useAppContext} from "../../../context/AppContext";
 export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, showCollectingButtons, fetchTitleProgress}) => {
 
     const {user} = useAppContext();
-    const [isCollectingIssue, setIsCollectingIssue] = useIsCollectingIssue(user.id, issue.id);
+    const {isCollectingIssue, setIsCollectingIssue} = useIsCollectingIssue(user.id, issue.id);
 
     return (
         <li className={"list-group-item px-0"}>
