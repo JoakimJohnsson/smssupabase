@@ -117,6 +117,15 @@ export const printOptions = (data) => {
     )
 }
 
+export const printTitleOptions = (titleData) => {
+    return titleData && (
+        titleData
+            .sort((a, b) => sortByName(a, b))
+            .map(
+            (item) => <option key={item.id} value={item.id}>{item.name} {item.start_year}</option>)
+    )
+}
+
 export const getObjectNameById = (data, myId) => {
     let obj = data.filter(item => item.id === myId);
     return obj[0].name;
