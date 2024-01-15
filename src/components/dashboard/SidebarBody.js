@@ -20,7 +20,7 @@ export const SidebarBody = ({handleClick}) => {
                 </div>
                 <div>
                     <p className={"sidebar-label"}>{LABELS_AND_HEADINGS.COMMUNITY}</p>
-                    <SidebarNavLink route={ROUTES.DASHBOARD.OTHER_COLLECTIONS} handleClick={handleClick} text={PANES.OTHER_COLLECTIONS.NAME} variant={"secondary"}
+                    <SidebarNavLink route={ROUTES.DASHBOARD.OTHER_COLLECTIONS} handleClick={handleClick} text={PANES.OTHER_COLLECTIONS.NAME} variant={"info"}
                                     icon={<Icon icon={faRectangleHistoryCircleUser} size={"2x"}/>}/>
                 </div>
             </Nav>

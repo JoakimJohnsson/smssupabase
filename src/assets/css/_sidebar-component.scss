@@ -22,6 +22,7 @@
   background-color: $color-bg-whale;
   padding: 0;
   .sidebar-label {
+    border-left: $border--transparent-lg;
     padding: .5rem;
     margin-bottom: .2rem;
     text-transform: uppercase;
@@ -45,6 +46,7 @@
   }
   .nav-link {
     background-color: $color-bg-whale;
+    border-left: $border--transparent-lg;
     @extend .sidebar-x-padding, .fs-small;
     min-height: 80px;
     @include media-breakpoint-up(lg) {
@@ -55,6 +57,7 @@
       border-top: $border--vague;
     }
     &:hover, &:focus {
+      border-left: $border--default-lg;
       background-color: $color-bg-whale--light;
     }
     &.primary {
@@ -94,26 +97,32 @@
       }
     }
     &.active.primary {
+      border-left: $border--primary-lg;
       background-color: $primary--darker;
       color: $primary--lighter;
     }
     &.active.danger {
+      border-left: $border--danger-lg;
       background-color: $danger--darker;
       color: $danger--lighter;
     }
     &.active.secondary {
+      border-left: $border--secondary-lg;
       background-color: $secondary--darker;
       color: $secondary--lighter;
     }
     &.active.success {
+      border-left: $border--success-lg;
       background-color: $success--darker;
       color: $success--lighter;
     }
     &.active.warning {
+      border-left: $border--warning-lg;
       background-color: $warning--darker;
       color: $warning--lighter;
     }
     &.active.info {
+      border-left: $border--info-lg;
       background-color: $info--darker;
       color: $info--lighter;
     }

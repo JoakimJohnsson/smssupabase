@@ -2,8 +2,8 @@ import React, {useState, useEffect} from "react";
 import {OtherCollectionsPaneListItem} from "./OtherCollectionsPaneListItem";
 import {PANES, TABLES} from "../../../../helpers/constants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
-import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
 
 
 export const OtherCollectionsPane = () => {
@@ -21,7 +21,7 @@ export const OtherCollectionsPane = () => {
             <h1 className={"mb-5"}>{PANES.OTHER_COLLECTIONS.NAME}</h1>
             {
                 loading ?
-                    <OverlaySpinner/>
+                    <CustomSpinner size={"4x"}/>
                     :
                     <ul className={"sms-list--with-cards"}>
                         {
