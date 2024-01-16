@@ -11,10 +11,11 @@ import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../se
 import {TitlesList} from "../lists/titles/TitlesList";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueService";
-import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
 import {ProgressBar} from "react-bootstrap";
 import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
+import {sortByName} from "../../helpers/functions";
+import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 
 
 export const Home = () => {
@@ -131,9 +132,16 @@ export const Home = () => {
                         <h3 className={"mb-3"}>{TEXTS.LATEST_ISSUES}</h3>
                         {
                             limitedIssuesData ?
-                                <>
-                                    <IssuesListSimple issuesData={limitedIssuesData} showCollectingButtons={false}/>
-                                </>
+                                <ul className={"sms-list--with-cards"}>
+
+                                    {
+                                        limitedIssuesData
+                                            .sort((a, b) => sortByName(a.titles, b.titles))
+                                            .map((issue, index) =>
+                                                <IssueLinkCard key={issue.id} issue={issue} index={index}/>
+                                            )
+                                    }
+                                </ul>
                                 :
                                 <NoDataAvailable/>
                         }

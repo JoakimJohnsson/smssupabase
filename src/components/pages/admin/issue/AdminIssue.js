@@ -55,7 +55,7 @@ export const AdminIssue = () => {
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
                                 <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
-                                                        name={getIssueName(issue)}/>
+                                                        bcName={getIssueName(issue)}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                                 <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
                                 <IconLink

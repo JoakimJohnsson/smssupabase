@@ -272,10 +272,10 @@ input[type="checkbox"] + label {
         @extend .col-12;
       }
       a {
-        @extend .hocus-standard;
+        @extend .hocus-standard, .text-black;
       }
       .issue-link-card--content {
-        @extend .border, .border-primary, .p-2;
+        @extend .p-0, .bg-primary;
       }
     }
     &.user-card {
