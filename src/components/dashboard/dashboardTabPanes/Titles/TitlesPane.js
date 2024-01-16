@@ -22,22 +22,24 @@ export const TitlesPane = () => {
     return (
         <>
             <h1 className={"mb-5"}>{PANES.TITLES.NAME}</h1>
-            <FilterFormFormat
-                setSearchParams={setSearchParams}
-                query={query}
-                comic={comic}
-                comiclarge={comiclarge}
-                album={album}
-                pocket={pocket}
-                hardcover={hardcover}
-                special={special}
-                placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
             {
                 loading ?
                     <CustomSpinner size={"4x"}/>
                     :
-                    <TitlesPaneList query={query} titlesData={titlesData} comic={comic} comiclarge={comiclarge} album={album} pocket={pocket}
-                                    hardcover={hardcover} special={special} collectible={collectible}/>
+                    <>
+                        <FilterFormFormat
+                            setSearchParams={setSearchParams}
+                            query={query}
+                            comic={comic}
+                            comiclarge={comiclarge}
+                            album={album}
+                            pocket={pocket}
+                            hardcover={hardcover}
+                            special={special}
+                            placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                        <TitlesPaneList query={query} titlesData={titlesData} comic={comic} comiclarge={comiclarge} album={album} pocket={pocket}
+                                        hardcover={hardcover} special={special} collectible={collectible}/>
+                    </>
 
             }
         </>

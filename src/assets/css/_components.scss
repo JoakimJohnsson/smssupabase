@@ -55,6 +55,9 @@
   .row-padding--secondary {
     @extend .px-3, .px-sm-5;
   }
+  .row-padding--dashboard {
+    @extend .px-3, .py-2, .py-md-5, .px-sm-5;
+  }
 }
 
 // Dashboard

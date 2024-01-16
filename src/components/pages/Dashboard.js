@@ -32,7 +32,7 @@ export const Dashboard = () => {
                             <Icon icon={isOpen ? faTimes : faChevronsRight} className={"sms-icon--hovering me-0"}/>
                         </button>
                     </div>
-                    <div className={"col row-padding--main"}>
+                    <div className={"col row-padding--dashboard"}>
                         <Outlet/>
                     </div>
                 </div>
