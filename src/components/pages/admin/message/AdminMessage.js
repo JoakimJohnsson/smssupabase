@@ -34,7 +34,8 @@ export const AdminMessage = () => {
                     <>
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
-                                <HeadingWithBreadCrumbs doIgnoreName={true} text={LABELS_AND_HEADINGS.MESSAGE}/>
+                                {/* Table MESSAGE does not have a name column - ignore name and use message title instead. */}
+                                <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title} text={LABELS_AND_HEADINGS.MESSAGE}/>
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>
