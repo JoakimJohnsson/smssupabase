@@ -120,6 +120,7 @@ export const LABELS_AND_HEADINGS = {
     ADD_PUBLISHER: "Lägg till nytt förlag",
     ADD_TITLE: "Lägg till ny titel",
     ADD_GRADE: "Lägg till skickgradering",
+    ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
     ADDED: "Inlagd",
     ADMIN: "Admin",

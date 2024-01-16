@@ -13,7 +13,7 @@ import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueService";
 import {IssuesListSimple} from "../lists/issues/IssuesListSimple";
 import {ProgressBar} from "react-bootstrap";
-import {GlobalMessageViewer} from "../message/GlobalMessageViewer";
+import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 
 
@@ -82,13 +82,21 @@ export const Home = () => {
                                 admin@svenskamarvelsamlare.se
                             </a>
                         </p>
-                        <GlobalMessageViewer />
+                        <MessageViewer viewGlobal/>
+                        {
+                            profile && profile.role > 0 &&
+                            <>
+                                <MessageViewer viewUnread/>
+                                <MessageViewer viewTodo/>
+                            </>
+                        }
                     </div>
                 </div>
                 <div className={"row row-padding--secondary"}>
                     <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
-                        <p className={"mb-4 placeholder-glow"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ? <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
+                        <p className={"mb-4 placeholder-glow"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ?
+                            <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
                         <div className={"mb-4"}>
                             {
                                 <>
@@ -99,7 +107,8 @@ export const Home = () => {
                                         progress === 100 ?
                                             <ProgressBar striped variant="success" now={progress}/>
                                             :
-                                            <ProgressBar striped variant={"grade"} now={progress} label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}/>
+                                            <ProgressBar striped variant={"grade"} now={progress}
+                                                         label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}/>
                                     }
                                 </>
                             }
@@ -108,7 +117,8 @@ export const Home = () => {
                         {
                             limitedTitlesData ?
                                 <>
-                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} doSortByName={false} showCreatedInfo showToolbox={false}/>
+                                    <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} doSortByName={false} showCreatedInfo
+                                                showToolbox={false}/>
                                 </>
                                 :
                                 <NoDataAvailable/>
@@ -116,7 +126,8 @@ export const Home = () => {
                     </div>
                     <div className={"col-12 mb-4 col-x-padding--xs-only"}>
                         <h2>Publikationer</h2>
-                        <p className={"mb-4 placeholder-glow"}><span className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ? <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
+                        <p className={"mb-4 placeholder-glow"}><span className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
+                            <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
                         <h3 className={"mb-3"}>{TEXTS.LATEST_ISSUES}</h3>
                         {
                             limitedIssuesData ?

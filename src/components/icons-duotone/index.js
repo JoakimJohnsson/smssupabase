@@ -15,6 +15,8 @@ import {
     faFileImage,
     faListTimeline,
     faComet,
+    faEyeSlash,
+    faBellExclamation,
     faArrowDownToArc,
     faArrowRightFromArc,
     faHeartCirclePlus,
@@ -46,6 +48,8 @@ const iconMap = {
     faChartLine: faChartLine,
     faCommentsQuestion: faCommentsQuestion,
     faGears: faGears,
+    faEyeSlash: faEyeSlash,
+    faBellExclamation: faBellExclamation,
     faFiles: faFiles,
     faFaceExplode: faFaceExplode,
     faFloppyDisk: faFloppyDisk,
@@ -230,6 +234,22 @@ export const StatusIconActiveDuoTone = ({size, className}) => {
 }
 
 export const statusIconActiveDuoTone = faLightbulbOn;
+
+export const StatusIconUnReadDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={statusIconUnreadDuoTone} size={size} className={className}/>
+    )
+}
+
+export const statusIconUnreadDuoTone = faEyeSlash;
+
+export const StatusIconTodoDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={statusIconTodoDuoTone} size={size} className={className}/>
+    )
+}
+
+export const statusIconTodoDuoTone = faBellExclamation;
 
 export const TitlesIconDuoTone = ({size, className}) => {
     return (
