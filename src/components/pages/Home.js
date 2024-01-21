@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {LABELS_AND_HEADINGS, STATISTICS, TABLES, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, PANES, ROUTES, STATISTICS, TABLES, TEXTS} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {HomePublic} from "./HomePublic";
@@ -16,6 +16,8 @@ import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {sortByName} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
+import {OtherCollectionsIconDuoTone, OverviewIconDuoTone, TitlesIconDuoTone} from "../icons-duotone";
+import {Link} from "react-router-dom";
 
 
 export const Home = () => {
@@ -77,12 +79,25 @@ export const Home = () => {
                         <p className={"lead"}>Sidan är för tillfället under utveckling och genomgår nu olika stadier av utveckling, test och
                             kravställning.</p>
                         <p>För frågor och förbättringsförslag:</p>
-                        <p>
+                        <p className={"mb-5"}>
                             <a href={"mailto: admin@svenskamarvelsamlare.se"}>
                                 <Icon icon={faMailboxFlagUp} className={"me-2"}/>
                                 admin@svenskamarvelsamlare.se
                             </a>
                         </p>
+                        <div>
+                            <Link to={ROUTES.DASHBOARD.PATH_OVERVIEW} className={"btn btn-primary p-2 p-sm-3 d-flex d-sm-inline-flex mb-4 me-3 flex-column"}>
+                                <OverviewIconDuoTone className={"mb-2"} size={"2x"}/>{PANES.OVERVIEW.NAME}
+                            </Link>
+
+                            <Link to={ROUTES.DASHBOARD.PATH_MY_TITLES} className={"btn btn-primary p-2 p-sm-3 d-flex d-sm-inline-flex mb-4 me-3 flex-column"}>
+                                <TitlesIconDuoTone className={"mb-2"} size={"2x"}/>{PANES.TITLES.NAME}
+                            </Link>
+
+                            <Link to={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS} className={"btn btn-info p-2 p-sm-3 d-flex d-sm-inline-flex mb-4 me-3 flex-column"}>
+                                <OtherCollectionsIconDuoTone className={"mb-2"} size={"2x"}/>{PANES.OTHER_COLLECTIONS.NAME}
+                            </Link>
+                        </div>
                         <MessageViewer viewGlobal/>
                         {
                             profile && profile.role > 0 &&

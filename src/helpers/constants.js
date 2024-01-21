@@ -84,9 +84,11 @@ export const ROUTES = {
     DASHBOARD: {
         ROOT: "dashboard",
         OVERVIEW: "overview",
+        PATH_OVERVIEW: "/dashboard/overview",
         TITLES: "titles",
+        PATH_MY_TITLES: "/dashboard/titles",
         OTHER_COLLECTIONS: "other-collections",
-        PATH_MY_TITLES: "/dashboard/titles"
+        PATH_OTHER_COLLECTIONS: "/dashboard/other-collections"
     },
     ADMIN: {
         ROOT: "/admin",

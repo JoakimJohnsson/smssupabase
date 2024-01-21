@@ -21,6 +21,8 @@ import {
     faArrowRightFromArc,
     faHeartCirclePlus,
     faRectangleHistoryCirclePlus,
+    faRectangleHistoryCircleUser,
+    faPresentationScreen,
     faClipboardListCheck,
     faMagnifyingGlassDollar,
     faCalendarHeart,
@@ -61,6 +63,8 @@ const iconMap = {
     faArrowRightFromArc: faArrowRightFromArc,
     faHeartCirclePlus: faHeartCirclePlus,
     faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
+    faRectangleHistoryCircleUser: faRectangleHistoryCircleUser,
+    faPresentationScreen: faPresentationScreen,
     faTypewriter: faTypewriter,
     faLightbulbOn: faLightbulbOn,
     faHeartCrack: faHeartCrack,
@@ -192,6 +196,21 @@ export const LogoutIconDuoTone = ({size, className}) => {
         <Icon icon={faArrowRightFromArc} size={size} className={className}/>
     )
 }
+export const OtherCollectionsIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={otherCollectionsIconDuoTone} size={size} className={className}/>
+    )
+}
+
+export const otherCollectionsIconDuoTone = faRectangleHistoryCircleUser;
+
+export const OverviewIconDuoTone = ({size, className}) => {
+    return (
+        <Icon icon={overviewIconDuoTone} size={size} className={className}/>
+    )
+}
+
+export const overviewIconDuoTone = faPresentationScreen;
 
 export const PublishersIconDuoTone = ({size, className}) => {
     return (
