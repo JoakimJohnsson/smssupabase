@@ -65,8 +65,8 @@ export const TitlesPaneListItem = ({title}) => {
                                 <pattern id="pattern-A" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
                                     <rect width="2" height="4" fill="#ffd700"/>
                                 </pattern>
-                                <pattern id="pattern-B" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
-                                    <rect width="1" height="6" fill="#999"/>
+                                <pattern id="pattern-B" width="1" height="1" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+                                    <rect width="1" height="1" fill="#141a1b"/>
                                 </pattern>
                             </defs>
                             <Pie
