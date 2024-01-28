@@ -86,16 +86,14 @@ export const Home = () => {
                             </a>
                         </p>
                         <div>
-                            <Link to={ROUTES.DASHBOARD.PATH_OVERVIEW} className={"btn btn-primary p-2 p-sm-3 d-flex d-sm-inline-flex mb-4 me-3 flex-column"}>
-                                <OverviewIconDuoTone className={"mb-2"} size={"2x"}/>{PANES.OVERVIEW.NAME}
+                            <Link to={ROUTES.DASHBOARD.PATH_OVERVIEW} className={"btn btn-primary btn-cta btn-cta__lg"}>
+                                <OverviewIconDuoTone className={"btn-cta--icon"} size={"2x"}/>{PANES.OVERVIEW.NAME}
                             </Link>
-
-                            <Link to={ROUTES.DASHBOARD.PATH_MY_TITLES} className={"btn btn-primary p-2 p-sm-3 d-flex d-sm-inline-flex mb-4 me-3 flex-column"}>
-                                <TitlesIconDuoTone className={"mb-2"} size={"2x"}/>{PANES.TITLES.NAME}
+                            <Link to={ROUTES.DASHBOARD.PATH_MY_TITLES} className={"btn btn-primary btn-cta btn-cta__lg"}>
+                                <TitlesIconDuoTone className={"btn-cta--icon"} size={"2x"}/>{PANES.TITLES.NAME}
                             </Link>
-
-                            <Link to={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS} className={"btn btn-info p-2 p-sm-3 d-flex d-sm-inline-flex mb-4 me-3 flex-column"}>
-                                <OtherCollectionsIconDuoTone className={"mb-2"} size={"2x"}/>{PANES.OTHER_COLLECTIONS.NAME}
+                            <Link to={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS} className={"btn btn-info btn-cta btn-cta__lg"}>
+                                <OtherCollectionsIconDuoTone className={"btn-cta--icon"} size={"2x"}/>{PANES.OTHER_COLLECTIONS.NAME}
                             </Link>
                         </div>
                         <MessageViewer viewGlobal/>
