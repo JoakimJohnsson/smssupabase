@@ -8,6 +8,7 @@
   display: inline-flex;
   align-items: center;
   &.btn-cta {
+    @extend .mb-4;
     padding: .8rem 2rem;
     border-radius: $border-radius-lg;
     font-weight: bold;
@@ -19,26 +20,17 @@
       padding: 1rem 3rem;
     }
     .btn-cta--icon {
-      @extend .me-0, .me-sm-3, .align-self-center;
+      @extend .me-2, .me-sm-3, .align-self-center;
       font-size: 1.5rem;
-      width: 100%;
-      @include media-breakpoint-up(sm) {
-        width: auto;
-      }
     }
     &.btn-cta__lg {
-      @extend .rounded-1, .mb-4, .flex-column;
+      @extend .rounded-1, .flex-column;
       @include media-breakpoint-up(md) {
         display: inline-flex;
         margin-right: 2rem;
       }
       .btn-cta--icon {
         @extend .me-0, .mb-2, .align-self-center;
-        font-size: 1.5rem;
-        width: 100%;
-        @include media-breakpoint-up(sm) {
-          width: auto;
-        }
       }
     }
   }

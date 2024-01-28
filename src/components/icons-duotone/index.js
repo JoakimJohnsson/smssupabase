@@ -120,9 +120,11 @@ export const editIconDuoTone = faMoneyCheckPen;
 
 export const InfoIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faFaceExplode} size={size} className={className}/>
+        <Icon icon={infoIconDuoTone} size={size} className={className}/>
     )
 }
+
+export const infoIconDuoTone = faFaceExplode;
 
 export const CollectionPlusIconDuoTone = ({size, className}) => {
     return (
@@ -187,9 +189,11 @@ export const LogoIconDuoTone = ({size, className}) => {
 
 export const LoginIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faArrowDownToArc} size={size} className={className}/>
+        <Icon icon={loginIconDuoTone} size={size} className={className}/>
     )
 }
+
+export const loginIconDuoTone = faArrowDownToArc;
 
 export const LogoutIconDuoTone = ({size, className}) => {
     return (
@@ -222,9 +226,11 @@ export const publishersIconDuoTone = faBuildingColumns;
 
 export const RegisterIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faHeartCirclePlus} size={size} className={className}/>
+        <Icon icon={registerIconDuoTone} size={size} className={className}/>
     )
 }
+
+export const registerIconDuoTone = faHeartCirclePlus;
 
 export const SaveIconDuoTone = ({size, className}) => {
     return (

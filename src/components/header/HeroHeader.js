@@ -4,12 +4,13 @@ import {
     CollectionCheckIconDuoTone,
     CollectionPlusIconDuoTone,
     CollectionSearchIconDuoTone,
-    InfoIconDuoTone,
-    LoginIconDuoTone,
+    infoIconDuoTone,
+    loginIconDuoTone,
     LogoIconDuoTone,
-    RegisterIconDuoTone
+    registerIconDuoTone
 } from "../icons-duotone";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
+import {IconLinkCta} from "../minis/IconLinkCta";
 
 export const HeroHeader = () => {
     return (
@@ -23,15 +24,24 @@ export const HeroHeader = () => {
                             {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                         </h1>
                         <div className={"mb-5"}>
-                            <a href={"#login-section"} className={"btn btn-primary btn-cta d-block mb-4"}>
-                                <LoginIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.LOG_IN_CTA}
-                            </a>
-                            <a href={"#create-account-section"} className={"btn btn-primary btn-cta d-block mb-4"}>
-                                <RegisterIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
-                            </a>
-                            <a href={"#info-section"} className={"btn btn-secondary btn-cta d-block mb-4"}>
-                                <InfoIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.INFORMATION}
-                            </a>
+                            <IconLinkCta
+                                variant={"primary"}
+                                icon={loginIconDuoTone}
+                                path={"#login-section"}
+                                label={LABELS_AND_HEADINGS.LOG_IN_CTA}
+                            />
+                            <IconLinkCta
+                                variant={"primary"}
+                                icon={registerIconDuoTone}
+                                path={"#create-account-section"}
+                                label={LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
+                            />
+                            <IconLinkCta
+                                variant={"secondary"}
+                                icon={infoIconDuoTone}
+                                path={"#info-section"}
+                                label={LABELS_AND_HEADINGS.INFORMATION}
+                            />
                         </div>
 
                         <p className={"lead mb-5"}>{TEXTS.DO_YOU_COLLECT}</p>

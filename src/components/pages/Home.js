@@ -16,8 +16,12 @@ import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {sortByName} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
-import {OtherCollectionsIconDuoTone, OverviewIconDuoTone, TitlesIconDuoTone} from "../icons-duotone";
-import {Link} from "react-router-dom";
+import {
+    otherCollectionsIconDuoTone,
+    overviewIconDuoTone,
+    titlesIconDuoTone,
+} from "../icons-duotone";
+import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
 
 
 export const Home = () => {
@@ -86,15 +90,24 @@ export const Home = () => {
                             </a>
                         </p>
                         <div>
-                            <Link to={ROUTES.DASHBOARD.PATH_OVERVIEW} className={"btn btn-primary btn-cta btn-cta__lg"}>
-                                <OverviewIconDuoTone className={"btn-cta--icon"} size={"2x"}/>{PANES.OVERVIEW.NAME}
-                            </Link>
-                            <Link to={ROUTES.DASHBOARD.PATH_MY_TITLES} className={"btn btn-primary btn-cta btn-cta__lg"}>
-                                <TitlesIconDuoTone className={"btn-cta--icon"} size={"2x"}/>{PANES.TITLES.NAME}
-                            </Link>
-                            <Link to={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS} className={"btn btn-info btn-cta btn-cta__lg"}>
-                                <OtherCollectionsIconDuoTone className={"btn-cta--icon"} size={"2x"}/>{PANES.OTHER_COLLECTIONS.NAME}
-                            </Link>
+                            <IconLinkCtaLg
+                                variant={"primary"}
+                                icon={overviewIconDuoTone}
+                                path={ROUTES.DASHBOARD.PATH_OVERVIEW}
+                                label={PANES.OVERVIEW.NAME}
+                            />
+                            <IconLinkCtaLg
+                                variant={"primary"}
+                                icon={titlesIconDuoTone}
+                                path={ROUTES.DASHBOARD.PATH_MY_TITLES}
+                                label={PANES.TITLES.NAME}
+                            />
+                            <IconLinkCtaLg
+                                variant={"info"}
+                                icon={otherCollectionsIconDuoTone}
+                                path={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS}
+                                label={PANES.OTHER_COLLECTIONS.NAME}
+                            />
                         </div>
                         <MessageViewer viewGlobal/>
                         {
