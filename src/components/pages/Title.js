@@ -190,7 +190,7 @@ export const Title = () => {
                                 }
                                 <div className={"mb-4"}>
                                     {
-                                        <FunctionButton variant={"secondary"} icon={valueIconDuoTone}
+                                        <FunctionButton variant={"grade"} icon={valueIconDuoTone}
                                                         onClick={() => setListViewGrades(!listViewGrades)}
                                                         label={listViewGrades ? LABELS_AND_HEADINGS.LIST_VIEW_GRADES_HIDE : LABELS_AND_HEADINGS.LIST_VIEW_GRADES_SHOW}
                                                         id={"list-variant-toggler"} disabled={!title.is_valued}/>

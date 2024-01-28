@@ -4,7 +4,7 @@ import {Icon} from "../icons";
 
 export const FunctionButton = ({customClass, variant, onClick, label, icon, showLabel = true, disabled = false}) => {
 
-    const defaultClass = `btn btn-outline-${variant} sms-function-btn ms-0 me-2 mb-3`;
+    const defaultClass = `btn btn-outline-${variant} sms-function-btn ms-0 me-3 mb-3`;
     const className = customClass ? defaultClass + " " + customClass : defaultClass;
 
     return (
