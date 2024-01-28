@@ -145,7 +145,7 @@ export const LABELS_AND_HEADINGS = {
     CLOSE: "Stäng",
     COLLECT_TITLE_START: "Börja samla på titeln",
     COLLECT_TITLE_STOP: "Sluta samla på titeln",
-    COLLECT_TITLE_STOP_REMOVE: "Töm samlingen på publikationer innan du kan sluta samla på den här titeln.",
+    COLLECT_TITLE_STOP_REMOVE: "Du måste tömma samlingen på publikationer innan du kan sluta samla på den här titeln.",
     COLLECT_ISSUE_START: "Lägg till",
     COLLECT_ISSUE_START_2: "i samlingen.",
     COLLECT_ISSUE_STOP: "Ta bort",

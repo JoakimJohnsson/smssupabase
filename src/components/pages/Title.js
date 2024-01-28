@@ -127,7 +127,7 @@ export const Title = () => {
                                             }
                                         </button>
                                         :
-                                        <p className={"alert alert-info"}>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP_REMOVE}</p>
+                                        <p>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP_REMOVE}</p>
                                 }
                                 <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
                                 {
