@@ -85,10 +85,12 @@ export const ROUTES = {
         ROOT: "dashboard",
         OVERVIEW: "overview",
         PATH_OVERVIEW: "/dashboard/overview",
-        TITLES: "titles",
+        TITLES: "my-titles",
         PATH_MY_TITLES: "/dashboard/titles",
         OTHER_COLLECTIONS: "other-collections",
-        PATH_OTHER_COLLECTIONS: "/dashboard/other-collections"
+        PATH_OTHER_COLLECTIONS: "/dashboard/other-collections",
+        VALUATION: "valuation",
+        PATH_VALUATION: "/dashboard/valuation"
     },
     ADMIN: {
         ROOT: "/admin",
@@ -479,6 +481,10 @@ export const PANES = {
         COLLECTING: "Samlar på",
         TITLES: "titlar",
         COMPLETE: "% komplett",
+
+    },
+    VALUATION: {
+        NAME: "Värdering"
 
     }
 }

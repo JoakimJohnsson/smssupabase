@@ -7,6 +7,7 @@ import {OverviewIssues} from "./OverviewIssues";
 import {OverviewUpgradeIssues} from "./OverviewUpgradeIssues";
 import {OverviewWantedIssues} from "./OverviewWantedIssues";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 
 
 export const OverviewPane = () => {
@@ -23,7 +24,7 @@ export const OverviewPane = () => {
 
     return (
         <>
-            <h1>{PANES.OVERVIEW.NAME}</h1>
+            <HeadingWithBreadCrumbs text={PANES.OVERVIEW.NAME}/>
             {
                 loading ?
                     <CustomSpinner size={"4x"}/>

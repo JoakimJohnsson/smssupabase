@@ -6,6 +6,7 @@ import {CustomSpinner} from "../../../minis/CustomSpinner";
 import FilterFormFormat from "../../../search-filter/FilterFormFormat";
 import {useFormatQueryFilter} from "../../../../helpers/customHooks/useFormatQueryFilter";
 import {TitlesPaneList} from "./TitlesPaneList";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 
 
 export const TitlesPane = () => {
@@ -21,7 +22,7 @@ export const TitlesPane = () => {
 
     return (
         <>
-            <h1 className={"mb-5"}>{PANES.TITLES.NAME}</h1>
+            <HeadingWithBreadCrumbs text={PANES.TITLES.NAME}/>
             {
                 loading ?
                     <CustomSpinner size={"4x"}/>

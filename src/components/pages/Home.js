@@ -19,7 +19,7 @@ import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {
     otherCollectionsIconDuoTone,
     overviewIconDuoTone,
-    titlesIconDuoTone,
+    titlesIconDuoTone, valueIconDuoTone,
 } from "../icons-duotone";
 import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
 
@@ -101,6 +101,12 @@ export const Home = () => {
                                 icon={titlesIconDuoTone}
                                 path={ROUTES.DASHBOARD.PATH_MY_TITLES}
                                 label={PANES.TITLES.NAME}
+                            />
+                            <IconLinkCtaLg
+                                variant={"primary"}
+                                icon={valueIconDuoTone}
+                                path={ROUTES.DASHBOARD.PATH_VALUATION}
+                                label={PANES.VALUATION.NAME}
                             />
                             <IconLinkCtaLg
                                 variant={"info"}

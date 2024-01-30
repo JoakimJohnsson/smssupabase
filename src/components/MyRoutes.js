@@ -33,6 +33,7 @@ import {AdminMessages} from "./pages/admin/message/AdminMessages";
 import {AdminMessage} from "./pages/admin/message/AdminMessage";
 import {NoMatch} from "./pages/NoMatch";
 import {GradeValues} from "./pages/GradeValues";
+import {ValuationPane} from "./dashboard/dashboardTabPanes/Valuation/ValuationPane";
 
 
 export const MyRoutes = () => {
@@ -50,6 +51,7 @@ export const MyRoutes = () => {
                     <Route index
                            element={user && user.id ? <Navigate replace to={ROUTES.DASHBOARD.OVERVIEW}/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={ROUTES.DASHBOARD.OVERVIEW} element={user && user.id ? <OverviewPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                    <Route path={ROUTES.DASHBOARD.VALUATION} element={user && user.id ? <ValuationPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={ROUTES.DASHBOARD.TITLES} element={user && user.id ? <TitlesPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={ROUTES.DASHBOARD.OTHER_COLLECTIONS}
                            element={user && user.id ? <OtherCollectionsPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>

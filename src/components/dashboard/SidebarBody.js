@@ -2,7 +2,7 @@ import React from "react";
 import {LABELS_AND_HEADINGS, PANES, ROUTES} from "../../helpers/constants";
 import {Nav} from "react-bootstrap";
 import {SidebarNavLink} from "./SidebarNavLink";
-import {OtherCollectionsIconDuoTone, OverviewIconDuoTone, TitlesIconDuoTone} from "../icons-duotone";
+import {OtherCollectionsIconDuoTone, OverviewIconDuoTone, TitlesIconDuoTone, ValueIconDuoTone} from "../icons-duotone";
 
 
 export const SidebarBody = ({handleClick}) => {
@@ -15,6 +15,8 @@ export const SidebarBody = ({handleClick}) => {
                                     icon={<OverviewIconDuoTone size={"2x"}/>}/>
                     <SidebarNavLink route={ROUTES.DASHBOARD.TITLES} handleClick={handleClick} text={PANES.TITLES.NAME} variant={"primary"}
                                     icon={<TitlesIconDuoTone size={"2x"}/>}/>
+                    <SidebarNavLink route={ROUTES.DASHBOARD.VALUATION} handleClick={handleClick} text={PANES.VALUATION.NAME} variant={"primary"}
+                                    icon={<ValueIconDuoTone size={"2x"}/>}/>
                 </div>
                 <div>
                     <p className={"sidebar-label"}>{LABELS_AND_HEADINGS.COMMUNITY}</p>

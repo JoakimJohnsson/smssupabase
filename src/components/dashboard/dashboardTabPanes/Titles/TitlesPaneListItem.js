@@ -42,7 +42,7 @@ export const TitlesPaneListItem = ({title}) => {
 
     return (
         <li className={"title-card"}>
-            <div className={"bg-horse"}>
+            <div className={"bg-horse border"}>
                 <Link to={`/titles/${title.id}`} className={"hocus-standard"}
                       title={title.name}>
                     <div className={"image-container mb-2 position-relative"}>

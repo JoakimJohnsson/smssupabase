@@ -4,6 +4,7 @@ import {PANES, TABLES} from "../../../../helpers/constants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 
 
 export const OtherCollectionsPane = () => {
@@ -18,7 +19,7 @@ export const OtherCollectionsPane = () => {
 
     return (
         <>
-            <h1 className={"mb-5"}>{PANES.OTHER_COLLECTIONS.NAME}</h1>
+            <HeadingWithBreadCrumbs text={PANES.OTHER_COLLECTIONS.NAME}/>
             {
                 loading ?
                     <CustomSpinner size={"4x"}/>
