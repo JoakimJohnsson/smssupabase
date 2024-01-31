@@ -6,7 +6,7 @@ import {getTitleProgressForUser} from "../../../../helpers/functions";
 import {FormatBadge} from "../../../minis/FormatBadge";
 
 
-export const TitlesPaneListItem = ({title}) => {
+export const MyTitlesPaneListItem = ({title}) => {
 
     const {user} = useAppContext();
     const [titleProgress, setTitleProgress] = useState({});

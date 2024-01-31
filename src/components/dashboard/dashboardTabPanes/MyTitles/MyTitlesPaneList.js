@@ -5,11 +5,11 @@ import {
     hasTrueValue,
     sortByNameAndStartYear
 } from "../../../../helpers/functions";
-import {TitlesPaneListItem} from "./TitlesPaneListItem";
+import {MyTitlesPaneListItem} from "./MyTitlesPaneListItem";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 
 
-export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, pocket, hardcover, special, collectible}) => {
+export const MyTitlesPaneList = ({query, titlesData, comic, comiclarge, album, pocket, hardcover, special, collectible}) => {
 
     return titlesData && !!titlesData.length ?
         (
@@ -18,7 +18,7 @@ export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, poc
                     query ?
                         filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special, collectible)
                             .map((t) =>
-                                <TitlesPaneListItem key={t.id} title={t}/>
+                                <MyTitlesPaneListItem key={t.id} title={t}/>
                             )
                         :
                         titlesData
@@ -33,7 +33,7 @@ export const TitlesPaneList = ({query, titlesData, comic, comiclarge, album, poc
                             })
                             .sort((a, b) => sortByNameAndStartYear(a, b))
                             .map((t) =>
-                                <TitlesPaneListItem key={t.id} title={t}/>
+                                <MyTitlesPaneListItem key={t.id} title={t}/>
                             )
                 }
             </ul>

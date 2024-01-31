@@ -5,7 +5,7 @@ import {ROUTES} from "../helpers/constants";
 import {Home} from "./pages/Home";
 import {Dashboard} from "./pages/Dashboard";
 import {OverviewPane} from "./dashboard/dashboardTabPanes/Overview/OverviewPane";
-import {TitlesPane} from "./dashboard/dashboardTabPanes/Titles/TitlesPane";
+import {MyTitlesPane} from "./dashboard/dashboardTabPanes/MyTitles/MyTitlesPane";
 import {OtherCollectionsPane} from "./dashboard/dashboardTabPanes/OtherCollections/OtherCollectionsPane";
 import Profile from "./pages/Profile";
 import {Title} from "./pages/Title";
@@ -52,7 +52,7 @@ export const MyRoutes = () => {
                            element={user && user.id ? <Navigate replace to={ROUTES.DASHBOARD.OVERVIEW}/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={ROUTES.DASHBOARD.OVERVIEW} element={user && user.id ? <OverviewPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={ROUTES.DASHBOARD.VALUATION} element={user && user.id ? <ValuationPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                    <Route path={ROUTES.DASHBOARD.TITLES} element={user && user.id ? <TitlesPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
+                    <Route path={ROUTES.DASHBOARD.MY_TITLES} element={user && user.id ? <MyTitlesPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={ROUTES.DASHBOARD.OTHER_COLLECTIONS}
                            element={user && user.id ? <OtherCollectionsPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={"*"} element={<p>No match!</p>}/>

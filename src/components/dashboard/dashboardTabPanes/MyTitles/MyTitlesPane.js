@@ -5,11 +5,11 @@ import {getTitlesForUser} from "../../../../services/titleService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import FilterFormFormat from "../../../search-filter/FilterFormFormat";
 import {useFormatQueryFilter} from "../../../../helpers/customHooks/useFormatQueryFilter";
-import {TitlesPaneList} from "./TitlesPaneList";
+import {MyTitlesPaneList} from "./MyTitlesPaneList";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 
 
-export const TitlesPane = () => {
+export const MyTitlesPane = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
@@ -38,8 +38,8 @@ export const TitlesPane = () => {
                             hardcover={hardcover}
                             special={special}
                             placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
-                        <TitlesPaneList query={query} titlesData={titlesData} comic={comic} comiclarge={comiclarge} album={album} pocket={pocket}
-                                        hardcover={hardcover} special={special} collectible={collectible}/>
+                        <MyTitlesPaneList query={query} titlesData={titlesData} comic={comic} comiclarge={comiclarge} album={album} pocket={pocket}
+                                          hardcover={hardcover} special={special} collectible={collectible}/>
                     </>
 
             }
