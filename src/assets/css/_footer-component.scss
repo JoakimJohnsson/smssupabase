@@ -2,12 +2,12 @@
 @import "variables";
 
 .dashboard-footer {
-  @extend .container-fluid, .fixed-bottom, .border-top, .border-primary;
+  @extend .container-fluid, .fixed-bottom;
   background-color: $color-bg-whale;
   padding: 0;
   min-height: auto;
   .footer-navlink-text {
-    @extend .d-none, .d-sm-block, .mb-2, .mb-lg-0;
+    @extend .d-none, .d-lg-block, .mb-2, .mb-lg-0;
     text-align: center;
     font-size: .775rem;
     @include media-breakpoint-up(lg) {
@@ -17,7 +17,6 @@
   }
   .nav-link {
     background-color: $color-bg-whale;
-    border: $border--default;
     border-radius: $border-radius-lg;
     @extend .fs-small, .mx-3, .mx-sm-2;
     min-width: 50px;
@@ -28,7 +27,6 @@
       min-width: 190px;
     }
     &:hover, &:focus {
-      border: $border--default;
       background-color: $color-bg-whale--light;
     }
     &.primary {
@@ -68,27 +66,27 @@
       }
     }
     &.active.primary {
-      border: $border--primary;
+      background-color: $primary--darker;
       color: $primary--lighter;
     }
     &.active.danger {
-      border: $border--danger;
+      background-color: $danger--darker;
       color: $danger--lighter;
     }
     &.active.secondary {
-      border: $border--secondary;
+      background-color: $secondary--darker;
       color: $secondary--lighter;
     }
     &.active.success {
-      border: $border--success;
+      background-color: $success--darker;
       color: $success--lighter;
     }
     &.active.warning {
-      border: $border--warning;
+      background-color: $warning--darker;
       color: $warning--lighter;
     }
     &.active.info {
-      border: $border--info;
+      background-color: $info--darker;
       color: $info--lighter;
     }
     svg {
