@@ -56,7 +56,8 @@
     @extend .px-3, .px-sm-5;
   }
   .row-padding--dashboard {
-    @extend .px-3, .py-2, .py-md-5, .px-sm-5;
+    @extend .px-3, .px-sm-5, .pt-5;
+    padding-bottom: 10rem;
   }
 }
 

@@ -1,0 +1,103 @@
+// Imports
+@import "variables";
+
+.dashboard-footer {
+  @extend .container-fluid, .fixed-bottom, .border-top, .border-primary;
+  background-color: $color-bg-whale;
+  padding: 0;
+  min-height: auto;
+  .footer-navlink-text {
+    @extend .d-none, .d-sm-block, .mb-2, .mb-lg-0;
+    text-align: center;
+    font-size: .775rem;
+    @include media-breakpoint-up(lg) {
+      font-size: .885rem;
+      text-align: left;
+    }
+  }
+  .nav-link {
+    background-color: $color-bg-whale;
+    border: $border--default;
+    border-radius: $border-radius-lg;
+    @extend .fs-small, .mx-3, .mx-sm-2;
+    min-width: 50px;
+    @include media-breakpoint-up(sm) {
+      min-width: 125px;
+    }
+    @include media-breakpoint-up(lg) {
+      min-width: 190px;
+    }
+    &:hover, &:focus {
+      border: $border--default;
+      background-color: $color-bg-whale--light;
+    }
+    &.primary {
+      color: $primary;
+      &:hover, &:focus {
+        color: $primary--lighter;
+      }
+    }
+    &.danger {
+      color: $danger;
+      &:hover, &:focus {
+        color: $danger--lighter;
+      }
+    }
+    &.secondary {
+      color: $secondary;
+      &:hover, &:focus {
+        color: $secondary--lighter;
+      }
+    }
+    &.success {
+      color: $success;
+      &:hover, &:focus {
+        color: $success--lighter;
+      }
+    }
+    &.warning {
+      color: $warning;
+      &:hover, &:focus {
+        color: $warning--lighter;
+      }
+    }
+    &.info {
+      color: $info;
+      &:hover, &:focus {
+        color: $info--lighter;
+      }
+    }
+    &.active.primary {
+      border: $border--primary;
+      color: $primary--lighter;
+    }
+    &.active.danger {
+      border: $border--danger;
+      color: $danger--lighter;
+    }
+    &.active.secondary {
+      border: $border--secondary;
+      color: $secondary--lighter;
+    }
+    &.active.success {
+      border: $border--success;
+      color: $success--lighter;
+    }
+    &.active.warning {
+      border: $border--warning;
+      color: $warning--lighter;
+    }
+    &.active.info {
+      border: $border--info;
+      color: $info--lighter;
+    }
+    svg {
+      @extend .p-2, .px-sm-0;
+      width: 22px;
+      margin-right: 0;
+      @include media-breakpoint-up(lg) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

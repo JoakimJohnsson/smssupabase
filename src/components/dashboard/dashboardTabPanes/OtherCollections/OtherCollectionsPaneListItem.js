@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
-import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {getCountByTable, getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {PANES, TABLES} from "../../../../helpers/constants";
 import {Link} from "react-router-dom";
@@ -51,9 +50,7 @@ export const OtherCollectionsPaneListItem = ({user}) => {
         getCountByTable(TABLES.TITLES, setTotalTitles).then();
     }, []);
 
-    return loading ?
-        <CustomSpinner/>
-        :
+    return titlesData && !loading &&
         <li className={"user-card user-card--full"}>
             <Link to={`/users/${user.id}`} title={displayName}>
                 <div className={"bg-horse p-3"}>
