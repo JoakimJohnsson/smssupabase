@@ -57,13 +57,13 @@
   }
   .row-padding--dashboard {
     @extend .px-3, .px-sm-5, .pt-5;
-    padding-bottom: 10rem;
+    padding-bottom: 8rem;
   }
 }
 
 // Dashboard
 .sms-dashboard-col {
-  @extend .col-12, .col-lg-6, .col-xxl-4, .col-x-padding--xs-only;
+  @extend .col-12, .col-lg-6, .col-xxl-4;
   margin-bottom: $grid-gutter-width;
 
   .sms-section--light {
@@ -139,11 +139,11 @@ input[type="checkbox"] + label {
 }
 
 .sms-page-col {
-  @extend .col-12, .col-x-padding--xs-only;
+  @extend .col-12;
 }
 
 .sms-page-col--full {
-  @extend .col-12, .col-lg-10, .col-xxl-8, .col-x-padding--xs-only;
+  @extend .col-12, .col-lg-10, .col-xxl-8;
   .sms-section--light {
     @extend .h-100;
   }

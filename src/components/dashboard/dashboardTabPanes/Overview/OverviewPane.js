@@ -29,12 +29,12 @@ export const OverviewPane = () => {
                 loading ?
                     <CustomSpinner size={"4x"}/>
                     :
-                    <div className={"row"}>
+                    <>
                         <OverviewTitles titlesData={userTitlesData}/>
                         <OverviewIssues titlesData={userTitlesData}/>
                         <OverviewWantedIssues/>
                         <OverviewUpgradeIssues/>
-                    </div>
+                    </>
             }
         </>
     )

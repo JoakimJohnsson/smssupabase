@@ -103,9 +103,14 @@
 .sms-link-to-top-button {
   @extend .btn, .btn-primary;
   aspect-ratio: 1/1;
+  z-index: 1200;
+  opacity: .6;
   position: fixed;
-  bottom: 25px;
+  bottom: 35px;
   right: 25px;
   border-radius: 50%;
+  &:hover {
+    opacity: 1;
+  }
 }
 

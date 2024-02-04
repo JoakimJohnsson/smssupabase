@@ -8,7 +8,7 @@ import {FooterDashboardNavLink} from "./FooterDashboardNavLink";
 export const FooterDashboardNavigation = () => {
     return (
         <footer className="dashboard-footer">
-            <Nav className={"w-100 d-flex justify-content-center py-3 py-sm-4"}>
+            <Nav className={"w-100 d-flex justify-content-center py-3 py-lg-4"}>
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.OVERVIEW} text={PANES.OVERVIEW.NAME} variant={"primary"}
                                         icon={<OverviewIconDuoTone size={"2x"}/>}/>
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.MY_TITLES} text={PANES.TITLES.NAME} variant={"primary"}

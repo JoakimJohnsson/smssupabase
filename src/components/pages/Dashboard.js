@@ -12,11 +12,9 @@ export const Dashboard = () => {
     return user ? (
         <>
             <main id="main-content" className={"container-fluid main-container dashboard"}>
-                <div className={"row"}>
-                    <div className={"col row-padding--dashboard"}>
+                    <div className={"row row-padding--dashboard"}>
                         <Outlet/>
                     </div>
-                </div>
             </main>
             <FooterDashboardNavigation />
         </>

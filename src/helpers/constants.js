@@ -477,7 +477,7 @@ export const PANES = {
         COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har en snittgradering på"
     },
     OTHER_COLLECTIONS: {
-        NAME: "Andra samlingar",
+        NAME: "Samlingar",
         COLLECTING: "Samlar på",
         TITLES: "titlar",
         COMPLETE: "% komplett",

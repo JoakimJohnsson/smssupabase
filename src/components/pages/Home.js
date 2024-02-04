@@ -126,7 +126,7 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className={"row row-padding--secondary"}>
-                    <div className={"col-12 mb-4 col-x-padding--xs-only"}>
+                    <div className={"col-12 mb-4"}>
                         <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                         <p className={"mb-4 placeholder-glow"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ?
                             <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
@@ -157,7 +157,7 @@ export const Home = () => {
                                 <NoDataAvailable/>
                         }
                     </div>
-                    <div className={"col-12 mb-4 col-x-padding--xs-only"}>
+                    <div className={"col-12 mb-4"}>
                         <h2>Publikationer</h2>
                         <p className={"mb-4 placeholder-glow"}><span className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
                             <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>

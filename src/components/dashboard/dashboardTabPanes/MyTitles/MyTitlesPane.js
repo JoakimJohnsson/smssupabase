@@ -21,7 +21,7 @@ export const MyTitlesPane = () => {
     }, [user.id])
 
     return (
-        <>
+        <div className={"sms-page-col"}>
             <HeadingWithBreadCrumbs text={PANES.TITLES.NAME}/>
             {
                 loading ?
@@ -43,6 +43,6 @@ export const MyTitlesPane = () => {
                     </>
 
             }
-        </>
+        </div>
     )
 }

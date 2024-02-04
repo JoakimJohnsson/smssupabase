@@ -90,7 +90,7 @@ const FilterFormFormat = ({
     }
 
     return (
-        <div className={"form-group sms-section--light mb-4"}>
+        <div className={"col-12 form-group mb-4 bg-horse p-4"}>
             <div className="col-12 col-xl-8 mb-2">
                 <label className={"form-label"} htmlFor="query">{LABELS_AND_HEADINGS.DO_FILTER}</label>
                 <div className="input-group mb-3 col-8">
