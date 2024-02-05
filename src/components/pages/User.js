@@ -84,6 +84,7 @@ export const User = () => {
                                     <NoDataAvailable isUser/>
                             }
                             {
+                                showFullInfo(user, profile) &&
                                 <div className={"col-12 col-md-7 col-xl-9"}>
                                     {
                                         profile && profile.role === 2 && user.role !== 2 &&
@@ -102,8 +103,7 @@ export const User = () => {
                                                     {LABELS_AND_HEADINGS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                                 :
-                                                <p>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</p>
-
+                                                <>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</>
                                         }
                                     </p>
                                     <h2>{LABELS_AND_HEADINGS.WANTED_ISSUES}</h2>
@@ -120,7 +120,7 @@ export const User = () => {
                                                                 <IssueLinkCard key={issue.id} issue={issue} index={index}/>
                                                             )
                                                         :
-                                                        <p>{user.firstname} {LABELS_AND_HEADINGS.NO_WANTED_ISSUES_USER}</p>
+                                                        <p>{LABELS_AND_HEADINGS.NO_WANTED_ISSUES_USER}</p>
                                                 }
                                             </ul>
                                     }

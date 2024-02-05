@@ -229,7 +229,7 @@ export const LABELS_AND_HEADINGS = {
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
     NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
-    NO_WANTED_ISSUES_USER: "har inga efterlysta publikationer.",
+    NO_WANTED_ISSUES_USER: "Inga efterlysta publikationer.",
     UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
     NO_UPGRADE_ISSUES: "Du har inga publikationer i behov av uppgradering.",
     LAST_NAME: "Efternamn",
