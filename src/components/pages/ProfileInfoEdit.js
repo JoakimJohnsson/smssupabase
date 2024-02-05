@@ -82,7 +82,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                     onChange={() => handlePublicCheckboxChange(newProfile.is_public)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="is_public">{LABELS_AND_HEADINGS.IS_PUBLIC}</label>
+                <label className={"form-label"} htmlFor="is_public">{LABELS_AND_HEADINGS.MAKE_PUBLIC}</label>
             </div>
             {
                 edit ?

@@ -65,26 +65,20 @@
 .sms-dashboard-col {
   @extend .col-12, .col-lg-6, .col-xxl-4;
   margin-bottom: $grid-gutter-width;
-
-  .sms-section--light {
-    height: 100%;
-  }
 }
 
 // Overview
 .sms-dashboard-col--sm {
   @extend .col-12, .col-lg-6;
   margin-bottom: $grid-gutter-width;
-
-  .sms-section--light {
-    height: 100%;
-  }
 }
 
 .sms-section--light {
-  @extend .p-4, .p-md-5;
+  @extend .p-0, .p-sm-4, .p-md-5;
   border-radius: $border-radius-sm;
-  background-color: $color-bg-horse;
+  @include media-breakpoint-up(sm) {
+    background-color: $color-bg-horse;
+  }
   &.section--grade {
     @extend .rounded-3, .border, .border-grade;
   }
@@ -144,9 +138,6 @@ input[type="checkbox"] + label {
 
 .sms-page-col--full {
   @extend .col-12, .col-lg-10, .col-xxl-8;
-  .sms-section--light {
-    @extend .h-100;
-  }
 }
 
 // Breadcrumb

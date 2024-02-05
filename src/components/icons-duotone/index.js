@@ -242,9 +242,11 @@ export const saveIconDuoTone = faFloppyDisk;
 
 export const SettingsIconDuoTone = ({size, className}) => {
     return (
-        <Icon icon={faGears} size={size} className={className}/>
+        <Icon icon={settingsIconDuoTone} size={size} className={className}/>
     )
 }
+
+export const settingsIconDuoTone = faGears;
 
 export const StartIconDuoTone = ({size, className}) => {
     return (

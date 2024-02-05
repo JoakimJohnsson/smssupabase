@@ -18,10 +18,11 @@ import {sortByName} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {
     otherCollectionsIconDuoTone,
-    overviewIconDuoTone,
+    overviewIconDuoTone, settingsIconDuoTone,
     titlesIconDuoTone, valueIconDuoTone,
 } from "../icons-duotone";
 import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
+import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 
 
 export const Home = () => {
@@ -37,11 +38,12 @@ export const Home = () => {
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
 
     useEffect(() => {
+        setShowAlert(false);
         if (profile) {
             if (!profile.firstname || !profile.lastname || !profile.image_filename) {
                 setShowAlert(true);
                 setAlertText(TEXTS.ALERT_HOME_NAME_INFO);
-            } else if (!profile.is_public) {
+            } else if (profile.is_public === 0) {
                 setShowAlert(true);
                 setAlertText(TEXTS.ALERT_HOME_IS_PUBLIC_INFO);
             }
@@ -71,17 +73,47 @@ export const Home = () => {
         }
     }, [totalTitles]);
 
-    return user && user.id ? (
+    return profile && user && user.id ? (
             <main id="main-content" className={"container-fluid main-container dashboard"}>
                 <div className={"row row-padding--main"}>
                     <div className={"sms-page-col--full"}>
-                        <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.WELCOME}/>
-                        {
-                            showAlert &&
-                            <InformationAlert variant={"info"} text={alertText}/>
-                        }
-                        <p className={"lead"}>Sidan är för tillfället under utveckling och genomgår nu olika stadier av utveckling, test och
-                            kravställning.</p>
+                        <div className={"mb-5"}>
+                            <HeadingWithBreadCrumbs
+                                text={LABELS_AND_HEADINGS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + LABELS_AND_HEADINGS.WELCOME_TEXT_2}/>
+                        </div>
+                        <div className={"mb-4"}>
+                            <div className={"sms-section--light"}>
+                                {
+                                    showAlert &&
+                                    <InformationAlert variant={"info"} text={alertText}/>
+                                }
+                                <h2>{LABELS_AND_HEADINGS.YOUR_INFORMATION}</h2>
+
+                                <div className={"row"}>
+                                    <div className={"col-12 col-md-4"}>
+                                        <ImageViewerSmall url={profile.image_url} fileName={profile.image_filename}/>
+                                    </div>
+                                    <div className={"col-12 col-md-8"}>
+                                        <p className={"m-0"}><span
+                                            className={"text-label me-4"}>{LABELS_AND_HEADINGS.FIRST_NAME}:</span> {profile.firstname}</p>
+                                        <p className={"m-0"}><span
+                                            className={"text-label me-4"}>{LABELS_AND_HEADINGS.LAST_NAME}:</span> {profile.lastname}</p>
+                                        <p className={"m-0"}><span className={"text-label me-4"}>{LABELS_AND_HEADINGS.WEBSITE}:</span> {profile.website}
+                                        </p>
+                                        <p className={"mb-4"}><span
+                                            className={"text-label me-4"}>{LABELS_AND_HEADINGS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
+                                        </p>
+                                        <IconLinkCtaLg
+                                            variant={"primary"}
+                                            icon={settingsIconDuoTone}
+                                            path={ROUTES.PROFILE}
+                                            label={LABELS_AND_HEADINGS.SETTINGS}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <p>För frågor och förbättringsförslag:</p>
                         <p className={"mb-5"}>
                             <a href={"mailto: admin@svenskamarvelsamlare.se"}>
@@ -89,32 +121,31 @@ export const Home = () => {
                                 admin@svenskamarvelsamlare.se
                             </a>
                         </p>
-                        <div>
-                            <IconLinkCtaLg
-                                variant={"primary"}
-                                icon={overviewIconDuoTone}
-                                path={ROUTES.DASHBOARD.PATH_OVERVIEW}
-                                label={PANES.OVERVIEW.NAME}
-                            />
-                            <IconLinkCtaLg
-                                variant={"primary"}
-                                icon={titlesIconDuoTone}
-                                path={ROUTES.DASHBOARD.PATH_MY_TITLES}
-                                label={PANES.TITLES.NAME}
-                            />
-                            <IconLinkCtaLg
-                                variant={"primary"}
-                                icon={valueIconDuoTone}
-                                path={ROUTES.DASHBOARD.PATH_VALUATION}
-                                label={PANES.VALUATION.NAME}
-                            />
-                            <IconLinkCtaLg
-                                variant={"info"}
-                                icon={otherCollectionsIconDuoTone}
-                                path={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS}
-                                label={PANES.OTHER_COLLECTIONS.NAME}
-                            />
-                        </div>
+                        <h2>{LABELS_AND_HEADINGS.DASHBOARD}</h2>
+                        <IconLinkCtaLg
+                            variant={"primary"}
+                            icon={overviewIconDuoTone}
+                            path={ROUTES.DASHBOARD.PATH_OVERVIEW}
+                            label={PANES.OVERVIEW.NAME}
+                        />
+                        <IconLinkCtaLg
+                            variant={"primary"}
+                            icon={titlesIconDuoTone}
+                            path={ROUTES.DASHBOARD.PATH_MY_TITLES}
+                            label={PANES.TITLES.NAME}
+                        />
+                        <IconLinkCtaLg
+                            variant={"primary"}
+                            icon={valueIconDuoTone}
+                            path={ROUTES.DASHBOARD.PATH_VALUATION}
+                            label={PANES.VALUATION.NAME}
+                        />
+                        <IconLinkCtaLg
+                            variant={"info"}
+                            icon={otherCollectionsIconDuoTone}
+                            path={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS}
+                            label={PANES.OTHER_COLLECTIONS.NAME}
+                        />
                         <MessageViewer viewGlobal/>
                         {
                             profile && profile.role > 0 &&
