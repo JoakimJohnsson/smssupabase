@@ -183,6 +183,27 @@ export const handleDelete = async (table, id, name, setData, initialData, image_
         return false;
     }
     try {
+        if (table === TABLES.ISSUES) {
+            // Delete all grades
+            try {
+                await supabase
+                    .from(TABLES.GRADES)
+                    .delete()
+                    .match({issue_id: id})
+            } catch (error) {
+                console.error(error);
+            }
+            // Delete users issues
+            try {
+                await supabase
+                    .from(TABLES.USERS_ISSUES)
+                    .delete()
+                    .match({issue_id: id})
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        console.log("Deleting rows");
         deleteRowsByTableAndId(table, id, setData, initialData, setInformationMessage, false)
             .then(() => {
                 if (image_filename && image_filename !== "") {
