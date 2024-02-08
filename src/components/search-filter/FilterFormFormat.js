@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTimes, faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
+import {faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import formatData from "../../helpers/valueLists/formats.json";
@@ -72,10 +72,6 @@ const FilterFormFormat = ({
     const handleReset = () => {
         setReadyForSearch(true);
         setFilterQuery("");
-    }
-
-    const handleResetAll = () => {
-        handleReset();
         setFilterComic(false);
         setFilterComiclarge(false);
         setFilterAlbum(false);
@@ -106,9 +102,9 @@ const FilterFormFormat = ({
                     />
                     {
                         filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => handleReset()}>
-                            <FontAwesomeIcon icon={faTimes} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.RESET}
+                        <button className="btn btn-primary" onClick={() => updateSearchParams()}>
+                            <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
+                            {LABELS_AND_HEADINGS.SEARCH}
                         </button>
                     }
                 </div>
@@ -142,7 +138,7 @@ const FilterFormFormat = ({
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
                 {LABELS_AND_HEADINGS.FIND_TITLES}
             </button>
-            <button className="btn btn-lg btn-outline-primary mb-3" onClick={() => handleResetAll()}>
+            <button className="btn btn-lg btn-outline-primary mb-3" onClick={() => handleReset()}>
                 <FontAwesomeIcon icon={faDeleteLeft} className={"me-2"}/>
                 {LABELS_AND_HEADINGS.RESET_FILTER}
             </button>

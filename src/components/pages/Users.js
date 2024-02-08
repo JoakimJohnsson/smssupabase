@@ -6,6 +6,7 @@ import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {UserCard} from "../lists/users/UserCard";
+import {filterQueryByFirstNameAndLastName} from "../../helpers/functions";
 
 
 export const Users = () => {
@@ -32,9 +33,11 @@ export const Users = () => {
                                 {
                                     query ?
                                         usersData
-                                            .filter(user => user.firstname?.toLowerCase().includes(query.toLowerCase()) ||
-                                                user.lastname?.toLowerCase().includes(query.toLowerCase()) ||
-                                                query === ""
+                                            .filter((user) => {
+                                                    return (
+                                                        filterQueryByFirstNameAndLastName(user, query)
+                                                    )
+                                                }
                                             )
                                             .map((user) =>
                                                 // Only show public users here

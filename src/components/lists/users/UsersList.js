@@ -34,8 +34,8 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                 usersData.length ?
                     (usersData
                             .filter(user => (
-                                (!user.firstname || user.firstname.toLowerCase().includes(query.toLowerCase())) ||
-                                (!user.lastname || user.lastname.toLowerCase().includes(query.toLowerCase())) ||
+                                (user.firstname?.toLowerCase().includes(query.toLowerCase())) ||
+                                (user.lastname?.toLowerCase().includes(query.toLowerCase())) ||
                                 user.id.toLowerCase().includes(query.toLowerCase()) ||
                                 query === ""
                             ))

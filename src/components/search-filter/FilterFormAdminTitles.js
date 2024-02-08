@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTimes, faSearch, faDeleteLeft, faCircleXmark, faFilter} from "@fortawesome/pro-solid-svg-icons";
+import {faSearch, faDeleteLeft, faCircleXmark, faFilter} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
 import {isTrue} from "../../helpers/functions";
@@ -80,9 +80,9 @@ const FilterFormFormat = ({
                     />
                     {
                         filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => handleReset()}>
-                            <FontAwesomeIcon icon={faTimes} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.RESET}
+                        <button className="btn btn-primary" onClick={() => updateSearchParams()}>
+                            <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
+                            {LABELS_AND_HEADINGS.SEARCH}
                         </button>
                     }
                 </div>
