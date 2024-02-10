@@ -13,6 +13,7 @@
     * [Update ackages](#updatepackages)
     * [Recharts](#recharts)
     * [Yet another react lightbox](#lightbox)
+* [Development](#development)
 * [Deployment](#deployment)
   * [GitHub Actions](#actions)
   * [Versioning](#versioning)
@@ -71,13 +72,33 @@ Please update CSS when upgrading package.
 
 * https://yet-another-react-lightbox.com
 
+## <a id="development"></a> Development
+
+### <a id="workflow"></a> Workflow
+
+https://github.com/JoakimJohnsson/smssupabase/issues
+* Use your own development branch - like <Your Initials>-develop - for development work.
+* When an issue is complete - make a pull request to develop branch, or other feature branch.
+  * The pull request will automatically be reviewed by PR Agent and/or Admin.
+* When develop is ready for deploy - Admin will:
+  * Change version.
+  * Merge into a release branch (release-x.x.x).
+  * Git tags (`git push --tags`).
+* A pull request is made from the release branch.
+* Admin will review and merge.
+* The action script will run tests and deploy to www.svenskamarvelsamlare.se.
+
+### <a id="actions"></a> GitHub Actions
+
+Edit .github/workflows/pr-agent.yml to make changes in the GitHub Action script for PR Agent.
+
 ## <a id="deployment"></a> Deployment
 
 On push to main (merging release<x.x.x> into main) - project will automatically be built and deployed to www.svenskamarvelsamlare.se.
 
 ### <a id="actions"></a> GitHub Actions
 
-Edit .github/workflows/main.yml to make changes in the GitHub Action script.
+Edit .github/workflows/main.yml to make changes in the GitHub Action script for Deployment.
 
 ### <a id="versioning"></a> Versioning
 
@@ -93,20 +114,6 @@ https://docs.npmjs.com/updating-your-published-package-version-number
 - $ npm version major --> X.x.x
 - $ npm version minor --> x.X.x
 - $ npm version patch --> x.x.X
-
-### <a id="workflow"></a> Workflow
-
-https://github.com/JoakimJohnsson/smssupabase/issues
-
-* When an issue is complete - push changes to develop (directly or via pull request), or other feature branch.
-    * If on a feature branch - make a pull request to develop first.
-* When develop is ready for deploy - Admin will:
-    * Change version.
-    * Merge into a release branch (release-x.x.x).
-    * Git tags (`git push --tags`).
-* A pull request is made from the release branch.
-* Admin will review and merge.
-* The action script will run tests and deploy to www.svenskamarvelsamlare.se.
 
 ### <a id="scripts"></a> Available Scripts
 
