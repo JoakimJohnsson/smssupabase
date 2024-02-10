@@ -2,8 +2,8 @@ on:
   pull_request:
   issue_comment:
     branches:
-      - development
-name: 🤓 Review PR's to development
+      - develop
+name: 🤓 Review PR's to develop branch
 jobs:
   pr_agent_job:
     runs-on: ubuntu-latest
