@@ -23,6 +23,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Förbättrad möjlighet för Admin att se, åtgärda och administrera meddelanden.</li>
                     <li className={"list-group-item px-0"}>Kontrollpanel - footer navigering istället för sidebar.</li>
                     <li className={"list-group-item px-0"}>Tydligare personlig information.</li>
+                    <li className={"list-group-item px-0"}>Fixade bug som gjorde att Adminfunktion för att radera publikation inte fungerade.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.5.0 - 2024-01-14</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
