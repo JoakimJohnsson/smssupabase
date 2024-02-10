@@ -24,6 +24,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Kontrollpanel - footer navigering istället för sidebar.</li>
                     <li className={"list-group-item px-0"}>Tydligare personlig information.</li>
                     <li className={"list-group-item px-0"}>Fixade bug som gjorde att Adminfunktion för att radera publikation inte fungerade.</li>
+                    <li className={"list-group-item px-0"}>Uppgraderad till senaste version av Bootstrap.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.5.0 - 2024-01-14</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
