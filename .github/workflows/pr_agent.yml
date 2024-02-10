@@ -1,8 +1,8 @@
 on:
   pull_request:
-  issue_comment:
     branches:
       - develop
+  issue_comment:
 name: 🤓 Review PR's to develop branch
 jobs:
   pr_agent_job:
