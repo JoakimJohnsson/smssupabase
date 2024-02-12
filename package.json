@@ -3,26 +3,26 @@
   "version": "1.5.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.2",
-    "@fortawesome/pro-duotone-svg-icons": "^6.4.2",
-    "@fortawesome/pro-regular-svg-icons": "^6.4.2",
-    "@fortawesome/pro-solid-svg-icons": "^6.4.2",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/pro-duotone-svg-icons": "^6.5.1",
+    "@fortawesome/pro-regular-svg-icons": "^6.5.1",
+    "@fortawesome/pro-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@supabase/supabase-js": "^2.32.0",
-    "@testing-library/jest-dom": "^6.0.1",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
-    "eslint": "^8.47.0",
+    "@supabase/supabase-js": "^2.39.3",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
+    "@testing-library/user-event": "^14.5.2",
+    "eslint": "^8.56.0",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.8.0",
+    "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0",
+    "react-router-dom": "^6.22.0",
     "react-scripts": "^5.0.1",
-    "recharts": "^2.8.0",
+    "recharts": "^2.12.0",
     "use-react-router-breadcrumbs": "^4.0.1",
     "validator": "^13.11.0",
-    "web-vitals": "^3.4.0",
-    "yet-another-react-lightbox": "^3.12.2"
+    "web-vitals": "^3.5.2",
+    "yet-another-react-lightbox": "^3.17.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -49,8 +49,8 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.58.0",
-    "@babel/plugin-transform-private-property-in-object": "^7.22.11",
+    "sass": "^1.70.0",
+    "@babel/plugin-transform-private-property-in-object": "^7.23.4",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "overrides": {
