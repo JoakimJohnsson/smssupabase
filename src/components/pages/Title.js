@@ -12,13 +12,13 @@ import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
 import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
-import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
+import {doesIssueNeedGrading, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
 import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
-import {editIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
+import {editIconDuoTone, InfoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
 import {IconLink} from "../minis/IconLink";
 
 
@@ -39,6 +39,7 @@ export const Title = () => {
     const [listViewGrid, setListViewGrid] = useState(true);
     const [listViewMissing, setListViewMissing] = useState(false);
     const [listViewGrades, setListViewGrades] = useState(false);
+    const [issueNeedsGrading, setIssueNeedsGrading] = useState(false);
     const [titleProgress, setTitleProgress] = useState({});
 
     const fetchTitleAndIssuesData = useCallback(() => {
@@ -50,6 +51,23 @@ export const Title = () => {
     const fetchTitleProgress = useCallback(async () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))
     }, [title, user.id]);
+
+    const checkIfIssuesNeedGrading = useCallback(async () => {
+        let index = 0;
+        while (index < issuesData.length) {
+            const issueId = issuesData[index].id;
+            const needsGrading = await doesIssueNeedGrading(issueId, user.id);
+            if (needsGrading === true) {
+                setIssueNeedsGrading(true);
+                break;
+            }
+            index++;
+        }
+    }, [issuesData, user.id]);
+
+    useEffect(() => {
+        checkIfIssuesNeedGrading().then();
+    }, [checkIfIssuesNeedGrading]);
 
     useEffect(() => {
         fetchTitleAndIssuesData();
@@ -188,7 +206,7 @@ export const Title = () => {
                                     isCollectingTitle &&
                                     <TitleProgress titleProgress={titleProgress}/>
                                 }
-                                <div className={"mb-4"}>
+                                <div className={"mb-3"}>
                                     {
                                         <FunctionButton variant={"grade"} icon={valueIconDuoTone}
                                                         onClick={() => setListViewGrades(!listViewGrades)}
@@ -242,6 +260,13 @@ export const Title = () => {
                                     }
                                     <AddMessage originObject={title} originTable={TABLES.TITLES}/>
                                 </div>
+                                {
+                                    isCollectingTitle && issueNeedsGrading &&
+                                    <div className={"alert alert-info d-flex align-items-center mb-4"}>
+                                        <InfoIconDuoTone className={"me-3"} size={"2x"}/>
+                                        {TEXTS.GRADE_MISSING}
+                                    </div>
+                                }
                                 <h2>{listViewGrades ? LABELS_AND_HEADINGS.GRADE_VALUES : LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
                                             listViewGrid={listViewGrid} listViewMissing={listViewMissing} listViewGrades={listViewGrades}

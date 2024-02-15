@@ -392,7 +392,7 @@ export const TEXTS = {
     GRADE_IS_NOT_VALUED: "Vissa publikationer saknar värden.",
     GRADE_VALUED: "Har värden",
     GRADE_NOT_VALUED: "Saknar värden",
-    GRADE_MISSING: "Det är möjligt att någon av dina publikationer saknar skickgradering.",
+    GRADE_MISSING: "Det verkar som att någon av dina publikationer saknar skickgradering.",
     GRADE_TITLE_IS_VALUED: "Alla publikationer har fått rätt värden.",
     INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",

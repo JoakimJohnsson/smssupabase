@@ -9,6 +9,7 @@ import {
     faBuildingColumns,
     faCalendarHeart,
     faChartLine,
+    faFaceExplode,
     faClipboardListCheck,
     faComet,
     faEarthAmericas,
@@ -54,6 +55,7 @@ const iconMap = {
     faBuildingColumns: faBuildingColumns,
     faCalendarHeart: faCalendarHeart,
     faChartLine: faChartLine,
+    faFaceExplode: faFaceExplode,
     faClipboardListCheck: faClipboardListCheck,
     faComet: faComet,
     faEarthAmericas: faEarthAmericas,
@@ -102,9 +104,12 @@ export const Icon = ({icon, size, className, spin = false}) => {
 
 export const AdminIcon = ({size, className}) => {
     return (
-        <Icon icon={faShieldCat} size={size} className={className}/>
+        <Icon icon={adminIcon} size={size} className={className}/>
     )
 }
+
+export const adminIcon = faShieldCat;
+
 
 export const NotAdminIcon = ({size, className}) => {
     return (
@@ -117,6 +122,8 @@ export const DateIcon = ({size, className}) => {
         <Icon icon={faCalendarHeart} size={size} className={className}/>
     )
 }
+
+export const dateIcon = faCalendarHeart;
 
 export const CollectionPlusIcon = ({size, className}) => {
     return (
@@ -167,6 +174,14 @@ export const ImageIcon = ({size, className}) => {
         <Icon icon={faFileImage} size={size} className={className}/>
     )
 }
+
+export const InfoIcon = ({size, className}) => {
+    return (
+        <Icon icon={infoIcon} size={size} className={className}/>
+    )
+}
+
+export const infoIcon = faFaceExplode;
 
 export const IssueIcon = ({size, className}) => {
     return (
