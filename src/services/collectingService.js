@@ -89,6 +89,25 @@ export const checkIfIsCollectingIssue = async (userId, issueId, setIsCollectingI
     }
 }
 
+export const checkIfIsCollectingIssueSimple = async (issueId, userId) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.USERS_ISSUES)
+            .select()
+            .match({user_id: userId, issue_id: issueId});
+        if (error && status !== 406) {
+            console.error(error);
+            return false;
+        }
+        if (data && data.length > 0) {
+            return true;
+        }
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
 export const checkIfIsWantingIssue = async (userId, issueId, setIsWantingIssue) => {
     try {
         let {data, error, status} = await supabase
