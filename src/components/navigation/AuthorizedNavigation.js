@@ -8,7 +8,7 @@ import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
 import {Icon, MarvelKlubbenIcon} from "../icons";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
-    AdminIconDuoTone,
+    adminIconDuoTone,
     DashboardIconDuoTone, IssueIconDuoTone, LogoIconDuoTone,
     PublishersIconDuoTone,
     SettingsIconDuoTone,
@@ -97,7 +97,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.PROFILE} icon={<SettingsIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {
                             profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<AdminIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}
                                        doShowNotification={showAdminNotification || showAdminTodoNotification} isAdminNotification={true}/>
                         }
                         <li className="nav-item">
@@ -128,7 +128,7 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {
                             profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<AdminIconDuoTone size={"1x"}/>}
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<Icon icon={adminIconDuoTone} size={"1x"}/>}
                                        doShowNotification={showAdminNotification || showAdminTodoNotification}
                                        isAdminNotification={true}
                                        text={LABELS_AND_HEADINGS.ADMIN}/>

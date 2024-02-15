@@ -1,14 +1,12 @@
 import React from "react";
 import {
-    faShieldCat,
-    faShield,
-    faHouse,
-    faFile,
-    faFileLines,
-    faFloppyDisk,
     faChartLine,
     faCircleInfo,
     faCommentsQuestion,
+    faFile,
+    faFileLines,
+    faFloppyDisk,
+    faHouse,
     faGears,
     faFiles,
     faFaceExplode,
@@ -36,6 +34,8 @@ import {
     faTriangleExclamation,
     faEarthAmericas,
     faMoneyCheckPen,
+    faShield,
+    faShieldCat,
     faUser,
     faUsers,
     faKey
@@ -88,11 +88,7 @@ export const getDuoToneIconByName = (iconName) => {
     return iconMap[iconName] || null;
 }
 
-export const AdminIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faShieldCat} size={size} className={className}/>
-    )
-}
+export const adminIconDuoTone = faShieldCat;
 
 export const NotAdminIconDuoTone = ({size, className}) => {
     return (
