@@ -1,9 +1,9 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
 import {
-    CollectionCheckIconDuoTone,
-    CollectionPlusIconDuoTone,
-    CollectionSearchIconDuoTone,
+    collectionCheckIconDuoTone,
+    collectionPlusIconDuoTone,
+    collectionSearchIconDuoTone,
     infoIconDuoTone,
     loginIconDuoTone,
     LogoIconDuoTone,
@@ -11,6 +11,8 @@ import {
 } from "../icons-duotone";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
 import {IconLinkCta} from "../minis/IconLinkCta";
+import {Icon} from "../icons";
+
 
 export const HeroHeader = () => {
     return (
@@ -45,11 +47,11 @@ export const HeroHeader = () => {
                         </div>
 
                         <p className={"lead mb-5"}>{TEXTS.DO_YOU_COLLECT}</p>
-                        <CollectionCheckIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionCheckIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.MANAGE_YOUR_COLLECTION}</p>
-                        <CollectionPlusIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionPlusIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.NEW_TITLES}</p>
-                        <CollectionSearchIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionSearchIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.ALWAYS_AVAILABLE}</p>
                     </div>
                 </div>

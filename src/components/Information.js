@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
-import {InfoIconDuoTone} from "./icons-duotone";
+import {infoIconDuoTone} from "./icons-duotone";
 import {Icon} from "./icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 
@@ -10,7 +10,7 @@ const Information = () => {
     return (
         <div className={"sms-section--light"} id={"info-section"}>
             <div className={"text-center"}>
-                <InfoIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
+                <Icon icon={infoIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
             </div>
             <div>
                 <div className={"text-center mb-4 mb-sm-5"}>

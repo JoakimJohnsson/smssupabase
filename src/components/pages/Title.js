@@ -18,7 +18,7 @@ import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
 import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
-import {editIconDuoTone, InfoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
+import {editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
 import {IconLink} from "../minis/IconLink";
 
 
@@ -263,7 +263,7 @@ export const Title = () => {
                                 {
                                     isCollectingTitle && issueNeedsGrading &&
                                     <div className={"alert alert-info d-flex align-items-center mb-4"}>
-                                        <InfoIconDuoTone className={"me-3"} size={"2x"}/>
+                                        <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
                                         {TEXTS.GRADE_MISSING}
                                     </div>
                                 }
