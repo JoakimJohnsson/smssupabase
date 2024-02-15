@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {CustomSpinner} from "../../minis/CustomSpinner";
-import {NotAdminIconDuoTone} from "../../icons-duotone";
+import {notAdminIconDuoTone} from "../../icons-duotone";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {getUserName} from "../../../helpers/functions";
+import {Icon} from "../../icons";
 
 
 export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => {
@@ -28,7 +29,7 @@ export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => 
                         loading ?
                             <CustomSpinner className={"fa-xl"}/>
                             :
-                            <NotAdminIconDuoTone className={"fa-xl"}/>
+                            <Icon icon={notAdminIconDuoTone} className={"fa-xl"}/>
                     }
                 </button>
             </OverlayTrigger>
@@ -42,7 +43,7 @@ export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => 
                     loading ?
                         <CustomSpinner className={"fa-xl me-2"}/>
                         :
-                        <NotAdminIconDuoTone className={"fa-xl me-2"}/>
+                        <Icon icon={notAdminIconDuoTone} className={"fa-xl me-2"}/>
                 }
                 {LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
             </button>

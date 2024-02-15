@@ -1,35 +1,36 @@
 import React from "react";
 import {
-    faChartLine,
-    faCircleInfo,
-    faCommentsQuestion,
-    faFile,
-    faFileLines,
-    faFloppyDisk,
-    faHouse,
-    faGears,
-    faFiles,
-    faFaceExplode,
-    faBuildingColumns,
-    faFileImage,
-    faListTimeline,
-    faComet,
-    faEyeSlash,
-    faBellExclamation,
     faArrowDownToArc,
     faArrowRightFromArc,
+    faBellExclamation,
+    faBomb,
+    faBuildingColumns,
+    faClipboardListCheck,
+    faCalendarHeart,
+    faChartLine,
+    faCircleInfo,
+    faComet,
+    faCommentsQuestion,
+    faEyeSlash,
+    faFaceExplode,
+    faFile,
+    faFileImage,
+    faFiles,
+    faFileLines,
+    faFloppyDisk,
+    faGears,
+    faHouse,
+    faKey,
+    faListTimeline,
     faHeartCirclePlus,
     faRectangleHistoryCirclePlus,
     faRectangleHistoryCircleUser,
     faPresentationScreen,
-    faClipboardListCheck,
     faMagnifyingGlassDollar,
-    faCalendarHeart,
     faTypewriter,
     faLightbulbOn,
     faHeartCrack,
     faMosquito,
-    faBomb,
     faSackDollar,
     faTriangleExclamation,
     faEarthAmericas,
@@ -37,8 +38,7 @@ import {
     faShield,
     faShieldCat,
     faUser,
-    faUsers,
-    faKey
+    faUsers
 } from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
 
@@ -89,31 +89,9 @@ export const getDuoToneIconByName = (iconName) => {
 }
 
 export const adminIconDuoTone = faShieldCat;
-
-export const NotAdminIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faShield} size={size} className={className}/>
-    )
-}
-
-export const DashboardIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faChartLine} size={size} className={className}/>
-    )
-}
-
-export const DateIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faCalendarHeart} size={size} className={className}/>
-    )
-}
-
-export const EditIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faMoneyCheckPen} size={size} className={className}/>
-    )
-}
-
+export const notAdminIconDuoTone = faShield;
+export const dashboardIconDuoTone = faChartLine;
+export const dateIconDuoTone = faCalendarHeart;
 export const editIconDuoTone = faMoneyCheckPen;
 
 export const InfoIconDuoTone = ({size, className}) => {

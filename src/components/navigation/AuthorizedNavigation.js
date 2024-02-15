@@ -8,8 +8,8 @@ import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
 import {Icon, MarvelKlubbenIcon} from "../icons";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
-    adminIconDuoTone,
-    DashboardIconDuoTone, IssueIconDuoTone, LogoIconDuoTone,
+    adminIconDuoTone, dashboardIconDuoTone,
+    IssueIconDuoTone, LogoIconDuoTone,
     PublishersIconDuoTone,
     SettingsIconDuoTone,
     StartIconDuoTone,
@@ -55,7 +55,7 @@ export const AuthorizedNavigation = () => {
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
                         <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<StartIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<DashboardIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
@@ -110,7 +110,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<StartIconDuoTone size={"1x"}/>}
                                    doShowNotification={showUserNotification} isUserNotification={true}
                                    text={LABELS_AND_HEADINGS.HOME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<DashboardIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<Icon icon={dashboardIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<TitlesIconDuoTone size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_TITLES}/>
