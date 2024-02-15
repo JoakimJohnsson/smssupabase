@@ -94,15 +94,11 @@ export const collectionPlusIconDuoTone = faRectangleHistoryCirclePlus;
 export const collectionCheckIconDuoTone = faClipboardListCheck;
 export const collectionSearchIconDuoTone = faMagnifyingGlassDollar;
 export const dashboardIconDuoTone = faChartLine;
+export const dataIconDuoTone = faListTimeline;
 export const dateIconDuoTone = faCalendarHeart;
 export const editIconDuoTone = faMoneyCheckPen;
 export const infoIconDuoTone = faFaceExplode;
 
-export const DataIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faListTimeline} size={size} className={className}/>
-    )
-}
 
 export const GlobalIconDuoTone = ({size, className}) => {
     return (
@@ -110,11 +106,15 @@ export const GlobalIconDuoTone = ({size, className}) => {
     )
 }
 
+export const globalIconDuoTone = faEarthAmericas;
+
 export const ImageIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faFileImage} size={size} className={className}/>
     )
 }
+
+export const imageIconDuoTone = faFileImage;
 
 export const IssueIconDuoTone = ({size, className}) => {
     return (
@@ -129,17 +129,23 @@ export const QuestionIconDuoTone = ({size, className}) => {
     )
 }
 
+export const questionIconDuoTone = faCommentsQuestion;
+
 export const KeyIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faKey} size={size} className={className}/>
     )
 }
 
+export const keyIconDuoTone = faKey;
+
 export const LogoIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={faComet} size={size} className={className}/>
     )
 }
+
+export const logoIconDuoTone = faComet;
 
 export const LoginIconDuoTone = ({size, className}) => {
     return (
@@ -154,6 +160,9 @@ export const LogoutIconDuoTone = ({size, className}) => {
         <Icon icon={faArrowRightFromArc} size={size} className={className}/>
     )
 }
+
+export const logoutIconDuoTone = faArrowRightFromArc;
+
 export const OtherCollectionsIconDuoTone = ({size, className}) => {
     return (
         <Icon icon={otherCollectionsIconDuoTone} size={size} className={className}/>
@@ -207,6 +216,8 @@ export const StartIconDuoTone = ({size, className}) => {
         <Icon icon={faHouse} size={size} className={className}/>
     )
 }
+
+export const startIconDuoTone = faHouse;
 
 export const StatusIconActiveDuoTone = ({size, className}) => {
     return (
