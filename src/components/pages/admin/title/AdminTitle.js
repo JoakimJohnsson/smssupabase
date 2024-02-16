@@ -19,7 +19,7 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
-import {IssueIcon, valueIcon} from "../../../icons";
+import {Icon, issueIcon, valueIcon} from "../../../icons";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {titleIconDuoTone} from "../../../icons-duotone";
 import {IconButton} from "../../../minis/IconButton";
@@ -414,7 +414,7 @@ export const AdminTitle = () => {
                                                     variant_suffix: variant_suffix,
                                                 }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
                                                 disabled={!year || !number}>
-                                            <IssueIcon className={"me-2"}/>
+                                            <Icon icon={issueIcon} className={"me-2"}/>
                                             {LABELS_AND_HEADINGS.ADD}
                                         </button>
                                         <button className={"btn btn-secondary sms-btn"}
@@ -462,7 +462,7 @@ export const AdminTitle = () => {
                                                             </>
                                                             :
                                                             <>
-                                                                <IssueIcon className={"me-2"}/>
+                                                                <Icon icon={issueIcon} className={"me-2"}/>
                                                                 {LABELS_AND_HEADINGS.GENERATE_ISSUES}
                                                             </>
                                                     }

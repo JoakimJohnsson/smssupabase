@@ -91,7 +91,6 @@ export const GradeValues = () => {
                                     filteredTitlesData.map(
                                         (title, index) =>
                                             <AccordionItem eventKey={index.toString()} key={index} onToggle={() => {
-                                                console.log("toggling!!!");
                                                 setActiveKey(index.toString())
                                             }}>
                                                 <AccordionHeader as={"h2"} className={"pb-0 mb-0"}>{title.name} {title.start_year}</AccordionHeader>

@@ -1,7 +1,14 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {updateMessageStatus} from "../../services/messageService";
-import {StatusIconActive, StatusIconInactive, StatusIconRead, StatusIconTodo, StatusIconUnRead} from "../icons";
+import {
+    Icon,
+    statusIconActive,
+    statusIconInactive,
+    statusIconRead,
+    statusIconTodo,
+    statusIconUnRead,
+} from "../icons";
 import {useAppContext} from "../../context/AppContext";
 
 
@@ -26,7 +33,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             className={"btn bg-white hocus-standard text-black sms-btn"}
                             disabled={message.status === 0}
                         >
-                            <StatusIconInactive className={"me-2"}/>
+                            <Icon icon={statusIconInactive} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_INACTIVE}
                         </button>
                         <button
@@ -34,7 +41,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             className={"btn bg-white hocus-standard text-black sms-btn"}
                             disabled={message.status === 1}
                         >
-                            <StatusIconActive className={"me-2"}/>
+                            <Icon icon={statusIconActive} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_ACTIVE}
                         </button>
                     </>
@@ -45,7 +52,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             className={"btn btn-danger sms-btn"}
                             disabled={message.status === 0}
                         >
-                            <StatusIconUnRead className={"me-2"}/>
+                            <Icon icon={statusIconUnRead} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_UNREAD}
                         </button>
                         <button
@@ -53,7 +60,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             className={"btn btn-success sms-btn"}
                             disabled={message.status === 1}
                         >
-                            <StatusIconRead className={"me-2"}/>
+                            <Icon icon={statusIconRead} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_READ}
                         </button>
                         <button
@@ -61,7 +68,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             className={"btn btn-title sms-btn"}
                             disabled={message.status === 2}
                         >
-                            <StatusIconTodo className={"me-2"}/>
+                            <Icon icon={statusIconTodo} className={"me-2"}/>
                             {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_TODO}
                         </button>
                     </>

@@ -3,8 +3,8 @@ import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/AppContext";
 import {simpleInputValidation} from "../helpers/validations";
 import {CLASSES, LABELS_AND_HEADINGS} from "../helpers/constants";
-import {LoginIcon} from "./icons";
-import {LoginIconDuoTone} from "./icons-duotone";
+import {Icon, loginIcon} from "./icons";
+import {loginIconDuoTone} from "./icons-duotone";
 
 const Login = () => {
 
@@ -37,7 +37,7 @@ const Login = () => {
     return (
         <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"login-section"}>
             <div className={"text-center mb-4 mb-sm-5"}>
-                <LoginIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
+                <Icon icon={loginIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
                 <h2>{LABELS_AND_HEADINGS.LOG_IN}</h2>
             </div>
             <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
@@ -60,7 +60,7 @@ const Login = () => {
                 <a href={"#forgot-password-section"}>{LABELS_AND_HEADINGS.FORGOT_PASSWORD}</a>
             </div>
             <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary sms-btn" : "btn btn-primary sms-btn disabled"}>
-                <LoginIcon className={"me-2"}/>{LABELS_AND_HEADINGS.LOG_IN}
+                <Icon icon={loginIcon} className={"me-2"}/>{LABELS_AND_HEADINGS.LOG_IN}
             </button>
             {showFormError && <p className={"alert alert-danger mt-3"} role={"alert"}>{formErrorMessage}</p>}
         </form>

@@ -8,8 +8,9 @@ import {RemoveAdminButton} from "./RemoveAdminButton";
 import {AddAdminButton} from "./AddAdminButton";
 import {getUserName, hasImage} from "../../../helpers/functions";
 import {Link} from "react-router-dom";
-import {AdminIconDuoTone} from "../../icons-duotone";
+import {adminIconDuoTone} from "../../icons-duotone";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
+import {Icon} from "../../icons";
 
 
 export const UsersList = ({usersData, setUsersData, limited = false, query = ""}) => {
@@ -86,7 +87,7 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                                                             <button
                                                                 className={"text-grade btn sms-tool-btn no-hover"}
                                                                 aria-label={getUserName(u) + LABELS_AND_HEADINGS.IS_SUPER_ADMIN}>
-                                                                <AdminIconDuoTone className={"fa-xl"}/>
+                                                                <Icon icon={adminIconDuoTone} className={"fa-xl"}/>
                                                             </button>
                                                         </OverlayTrigger>
                                                 }

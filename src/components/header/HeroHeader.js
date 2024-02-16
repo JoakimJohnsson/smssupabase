@@ -1,16 +1,18 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
 import {
-    CollectionCheckIconDuoTone,
-    CollectionPlusIconDuoTone,
-    CollectionSearchIconDuoTone,
+    collectionCheckIconDuoTone,
+    collectionPlusIconDuoTone,
+    collectionSearchIconDuoTone,
     infoIconDuoTone,
     loginIconDuoTone,
-    LogoIconDuoTone,
+    logoIconDuoTone,
     registerIconDuoTone
 } from "../icons-duotone";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
 import {IconLinkCta} from "../minis/IconLinkCta";
+import {Icon} from "../icons";
+
 
 export const HeroHeader = () => {
     return (
@@ -19,7 +21,7 @@ export const HeroHeader = () => {
             <div className={"container-fluid"}>
                 <div className={"row"}>
                     <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
-                        <LogoIconDuoTone size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
+                        <Icon icon={logoIconDuoTone} size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
                         <h1 className={"sms-logo-text mb-5"}>
                             {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                         </h1>
@@ -45,11 +47,11 @@ export const HeroHeader = () => {
                         </div>
 
                         <p className={"lead mb-5"}>{TEXTS.DO_YOU_COLLECT}</p>
-                        <CollectionCheckIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionCheckIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.MANAGE_YOUR_COLLECTION}</p>
-                        <CollectionPlusIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionPlusIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.NEW_TITLES}</p>
-                        <CollectionSearchIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionSearchIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.ALWAYS_AVAILABLE}</p>
                     </div>
                 </div>

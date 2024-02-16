@@ -81,10 +81,11 @@ $progress-bg: $color-white--darker--trans;
 $progress-height: 1.5rem;
 $grid-gutter-width: 2.5rem;
 $table-bg: $color-bg-horse;
+$table-color: $grade;
 $table-accent-bg: $color-bg-elephant;
 $table-cell-padding-y-sm: .35rem;
 $table-cell-padding-x-sm: .35rem;
-
+$accordion-button-active-color: $primary;
 
 $theme-colors: (
         "primary":    $primary,

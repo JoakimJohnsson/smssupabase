@@ -1,6 +1,7 @@
 import {supabase} from "../supabase/supabaseClient";
 import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
 import {handleMultipleDeleteNoConfirm} from "./serviceFunctions";
+import {checkIfIsCollectingIssueSimple} from "./collectingService";
 
 export const addIssueData = async (data, setInformationMessage) => {
     try {
@@ -182,6 +183,7 @@ export const getIssuesWithTitleAndPublisherAndGradeValuesByTitleId = async (setD
         console.error(error);
     }
 }
+
 export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, id) => {
     try {
         let {data, error, status} = await supabase
@@ -196,5 +198,26 @@ export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, id) =
         }
     } catch (error) {
         console.error(error);
+    }
+}
+
+export const doesIssueNeedGrading = async (issueId, userId) => {
+    const isCollectingIssue = await checkIfIsCollectingIssueSimple(issueId, userId);
+    if (isCollectingIssue === false || isCollectingIssue === undefined) {
+        return false;
+    }
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.GRADES)
+            .select("*")
+            .match({issue_id: issueId, user_id: userId})
+        if (error && status !== 406) {
+            console.error(error);
+            return false;
+        }
+        return !(data && data.length > 0);
+    } catch (error) {
+        console.error(error);
+        return false;
     }
 }

@@ -3,6 +3,7 @@
 
 .dashboard-footer {
   @extend .container-fluid, .fixed-bottom;
+  border-top: $border--primary-md;
   background-color: $color-bg-whale;
   padding: 0;
   min-height: auto;
