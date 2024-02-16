@@ -6,7 +6,7 @@ import {
     collectionSearchIconDuoTone,
     infoIconDuoTone,
     loginIconDuoTone,
-    LogoIconDuoTone,
+    logoIconDuoTone,
     registerIconDuoTone
 } from "../icons-duotone";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
@@ -21,7 +21,7 @@ export const HeroHeader = () => {
             <div className={"container-fluid"}>
                 <div className={"row"}>
                     <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
-                        <LogoIconDuoTone size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
+                        <Icon icon={logoIconDuoTone} size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
                         <h1 className={"sms-logo-text mb-5"}>
                             {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                         </h1>

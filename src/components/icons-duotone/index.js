@@ -115,38 +115,11 @@ export const globalIconDuoTone = faEarthAmericas;
 export const imageIconDuoTone = faFileImage;
 export const infoIconDuoTone = faFaceExplode;
 export const issueIconDuoTone = faFileLines;
+export const keyIconDuoTone = faKey;
+export const loginIconDuoTone = faArrowDownToArc;
+export const logoIconDuoTone = faComet;
 export const marvelKlubbenIconDuoTone = faBadge;
 export const questionIconDuoTone = faCommentsQuestion;
-
-export const KeyIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faKey} size={size} className={className}/>
-    )
-}
-
-export const keyIconDuoTone = faKey;
-
-export const LogoIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faComet} size={size} className={className}/>
-    )
-}
-
-export const logoIconDuoTone = faComet;
-
-export const LoginIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={loginIconDuoTone} size={size} className={className}/>
-    )
-}
-
-export const loginIconDuoTone = faArrowDownToArc;
-
-export const LogoutIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faArrowRightFromArc} size={size} className={className}/>
-    )
-}
 
 export const logoutIconDuoTone = faArrowRightFromArc;
 
@@ -155,7 +128,6 @@ export const OtherCollectionsIconDuoTone = ({size, className}) => {
         <Icon icon={otherCollectionsIconDuoTone} size={size} className={className}/>
     )
 }
-
 
 export const otherCollectionsIconDuoTone = faRectangleHistoryCircleUser;
 
