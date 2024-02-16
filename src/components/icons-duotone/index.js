@@ -1,4 +1,3 @@
-import React from "react";
 import {
     faArrowDownToArc,
     faArrowRightFromArc,
@@ -120,124 +119,19 @@ export const loginIconDuoTone = faArrowDownToArc;
 export const logoIconDuoTone = faComet;
 export const marvelKlubbenIconDuoTone = faBadge;
 export const questionIconDuoTone = faCommentsQuestion;
-
 export const logoutIconDuoTone = faArrowRightFromArc;
-
-export const OtherCollectionsIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={otherCollectionsIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const otherCollectionsIconDuoTone = faRectangleHistoryCircleUser;
-
-export const OverviewIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={overviewIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const overviewIconDuoTone = faPresentationScreen;
-
-export const PublishersIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={publishersIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const publishersIconDuoTone = faBuildingColumns;
-
-export const RegisterIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={registerIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const registerIconDuoTone = faHeartCirclePlus;
-
-export const SaveIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={saveIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const saveIconDuoTone = faFloppyDisk;
-
-export const SettingsIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={settingsIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const settingsIconDuoTone = faGears;
-
-export const StartIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faHouse} size={size} className={className}/>
-    )
-}
-
 export const startIconDuoTone = faHouse;
-
-export const StatusIconActiveDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={statusIconActiveDuoTone} size={size} className={className}/>
-    )
-}
-
 export const statusIconActiveDuoTone = faLightbulbOn;
-
-export const StatusIconUnReadDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={statusIconUnreadDuoTone} size={size} className={className}/>
-    )
-}
-
 export const statusIconUnreadDuoTone = faEyeSlash;
-
-export const StatusIconTodoDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={statusIconTodoDuoTone} size={size} className={className}/>
-    )
-}
-
 export const statusIconTodoDuoTone = faBellExclamation;
-
-export const TitlesIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={titlesIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const titlesIconDuoTone = faFiles;
-
-export const TitleIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={titleIconDuoTone} size={size} className={className}/>
-    )
-}
 export const titleIconDuoTone = faFile;
-
-export const UsersIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={usersIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const usersIconDuoTone = faUsers;
-
-export const UserIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faUser} size={size} className={className}/>
-    )
-}
-
 export const userIconDuoTone = faUser;
-
-export const ValueIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={valueIconDuoTone} size={size} className={className}/>
-    )
-}
-
 export const valueIconDuoTone = faSackDollar;

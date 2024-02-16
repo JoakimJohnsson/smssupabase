@@ -5,8 +5,8 @@ import {MESSAGES, CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/const
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
-import {RegisterIcon} from "../icons";
-import {RegisterIconDuoTone} from "../icons-duotone";
+import {Icon, RegisterIcon} from "../icons";
+import {registerIconDuoTone} from "../icons-duotone";
 
 
 export const Signup = () => {
@@ -72,7 +72,7 @@ export const Signup = () => {
         <>
             <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"create-account-section"}>
                 <div className={"text-center mb-4 mb-sm-5"}>
-                    <RegisterIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
+                    <Icon icon={registerIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
                     <h2>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</h2>
                     <p className={"lead"}>{TEXTS.CONSENT}</p>
                 </div>

@@ -4,7 +4,11 @@ import {getDataIcon} from "../../helpers/functions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FriendlyDate} from "../minis/FriendlyDate";
-import {StatusIconActiveDuoTone, StatusIconTodoDuoTone, StatusIconUnReadDuoTone} from "../icons-duotone";
+import {
+    statusIconActiveDuoTone,
+    statusIconTodoDuoTone,
+    statusIconUnreadDuoTone
+} from "../icons-duotone";
 import {Link} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 
@@ -26,11 +30,11 @@ export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo 
 
     const getIcon = () => {
         if (viewGlobal) {
-            return <StatusIconActiveDuoTone className={"me-2"} size={"2x"}/>;
+            return <Icon icon={statusIconActiveDuoTone} className={"me-2"} size={"2x"}/>;
         } else if (viewTodo) {
-            return <StatusIconTodoDuoTone className={"me-2"} size={"2x"}/>;
+            return <Icon icon={statusIconTodoDuoTone} className={"me-2"} size={"2x"}/>;
         } else {
-            return <StatusIconUnReadDuoTone className={"me-2"} size={"2x"}/>;
+            return <Icon icon={statusIconUnreadDuoTone} className={"me-2"} size={"2x"}/>;
         }
     }
 
