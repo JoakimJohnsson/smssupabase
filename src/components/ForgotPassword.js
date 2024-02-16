@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
-import {Icon, SendIcon} from "./icons";
+import {Icon, sendIcon} from "./icons";
 import {questionIconDuoTone} from "./icons-duotone";
 import {requestPasswordResetForEmail} from "../services/serviceFunctions";
 
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
                    required/>
             <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_SEND_INFO}</div>
             <button type="submit" className={"btn btn-primary sms-btn"} disabled={email === ""}>
-                <SendIcon className={"me-2"}/>{LABELS_AND_HEADINGS.SEND}
+                <Icon icon={sendIcon} className={"me-2"}/>{LABELS_AND_HEADINGS.SEND}
             </button>
             {message.show && <p className={`alert ${message.isError ? "alert-danger" : "alert-success"} mt-3`} role={"alert"}>{message.message}</p>}
         </form>

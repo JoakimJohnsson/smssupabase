@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/AppContext";
 import {simpleInputValidation} from "../helpers/validations";
 import {CLASSES, LABELS_AND_HEADINGS} from "../helpers/constants";
-import {Icon, LoginIcon} from "./icons";
+import {Icon, loginIcon} from "./icons";
 import {loginIconDuoTone} from "./icons-duotone";
 
 const Login = () => {
@@ -60,7 +60,7 @@ const Login = () => {
                 <a href={"#forgot-password-section"}>{LABELS_AND_HEADINGS.FORGOT_PASSWORD}</a>
             </div>
             <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary sms-btn" : "btn btn-primary sms-btn disabled"}>
-                <LoginIcon className={"me-2"}/>{LABELS_AND_HEADINGS.LOG_IN}
+                <Icon icon={loginIcon} className={"me-2"}/>{LABELS_AND_HEADINGS.LOG_IN}
             </button>
             {showFormError && <p className={"alert alert-danger mt-3"} role={"alert"}>{formErrorMessage}</p>}
         </form>

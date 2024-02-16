@@ -6,7 +6,7 @@ import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "../ser
 import {IconButton} from "./minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {useAppContext} from "../context/AppContext";
-import {ImageIcon} from "./icons";
+import {Icon, imageIcon} from "./icons";
 
 
 export const ImageUploader = ({
@@ -75,7 +75,7 @@ export const ImageUploader = ({
                                     </>
                                     :
                                     <>
-                                        <ImageIcon size={"1x"} className={"me-2"}/>
+                                        <Icon icon={imageIcon} size={"1x"} className={"me-2"}/>
                                         {LABELS_AND_HEADINGS.UPLOAD_IMAGE}
                                     </>
                                 }

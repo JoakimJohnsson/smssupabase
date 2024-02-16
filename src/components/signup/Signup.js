@@ -5,7 +5,7 @@ import {MESSAGES, CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/const
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
-import {Icon, RegisterIcon} from "../icons";
+import {Icon, registerIcon} from "../icons";
 import {registerIconDuoTone} from "../icons-duotone";
 
 
@@ -103,7 +103,7 @@ export const Signup = () => {
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
                 <button type="submit" className={"btn btn-primary sms-btn"}
                         disabled={!passwordValidated || passwordRef.current.value !== passwordConfirm}>
-                    <RegisterIcon className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
+                    <Icon icon={registerIcon} className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
                 </button>
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
             </form>

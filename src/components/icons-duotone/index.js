@@ -46,7 +46,6 @@ import {
     faUser,
     faUsers
 } from "@fortawesome/pro-duotone-svg-icons";
-import {Icon} from "../icons";
 
 const iconMapDuoTone = {
     faArrowDownToArcDT: faArrowDownToArc,
