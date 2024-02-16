@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
-import {SendIcon} from "./icons";
-import {QuestionIconDuoTone} from "./icons-duotone";
+import {Icon, SendIcon} from "./icons";
+import {questionIconDuoTone} from "./icons-duotone";
 import {requestPasswordResetForEmail} from "../services/serviceFunctions";
 
 const ForgotPassword = () => {
@@ -13,7 +13,7 @@ const ForgotPassword = () => {
         <form onSubmit={(e) => requestPasswordResetForEmail(email, setMessage, e)} className={"sms-section--light mb-5"}
               id={"forgot-password-section"}>
             <div className={"text-center mb-4 mb-sm-5"}>
-                <QuestionIconDuoTone size={"2x"} className={"fa-icon--cta"}/>
+                <Icon icon={questionIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
                 <h2>{LABELS_AND_HEADINGS.FORGOT_PASSWORD}</h2>
             </div>
             <label className={"form-label"} htmlFor="input-forgot-email">{LABELS_AND_HEADINGS.EMAIL_SEND}</label>

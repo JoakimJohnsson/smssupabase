@@ -5,15 +5,20 @@ import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
 import {LiNavItem} from "../lists/LiNavItem";
 import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
-import {Icon, MarvelKlubbenIcon} from "../icons";
+import {Icon} from "../icons";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
-    adminIconDuoTone, dashboardIconDuoTone,
-    IssueIconDuoTone, LogoIconDuoTone,
-    PublishersIconDuoTone,
-    SettingsIconDuoTone,
-    StartIconDuoTone,
-    TitlesIconDuoTone, UsersIconDuoTone, ValueIconDuoTone
+    adminIconDuoTone,
+    dashboardIconDuoTone,
+    issueIconDuoTone,
+    LogoIconDuoTone,
+    marvelKlubbenIconDuoTone,
+    publishersIconDuoTone,
+    settingsIconDuoTone,
+    startIconDuoTone,
+    titlesIconDuoTone,
+    usersIconDuoTone,
+    valueIconDuoTone
 } from "../icons-duotone";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
@@ -53,48 +58,48 @@ export const AuthorizedNavigation = () => {
 
                     {/* desktop ul (no click handler) */}
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<StartIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}
+                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
-                                    <TitlesIconDuoTone className={"me-2"}/>
+                                    <Icon icon={titlesIconDuoTone}  className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_TITLES}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.ISSUES} className={"nav-link nav-link--dropdown"}>
-                                    <IssueIconDuoTone className={"me-2"}/>
+                                    <Icon icon={issueIconDuoTone} className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.GRADE_VALUES} className={"nav-link nav-link--dropdown"}>
-                                    <ValueIconDuoTone className={"me-2"}/>
+                                    <Icon icon={valueIconDuoTone} className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.GRADE_VALUES}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.MARVELKLUBBEN} className={"nav-link nav-link--dropdown"}>
-                                    <MarvelKlubbenIcon className={"me-2"}/>
+                                    <Icon icon={marvelKlubbenIconDuoTone} className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.MARVELKLUBBEN}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.PUBLISHERS} className={"nav-link nav-link--dropdown"}>
-                                    <PublishersIconDuoTone className={"me-2"}/>
+                                    <Icon icon={publishersIconDuoTone} className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.USERS} className={"nav-link nav-link--dropdown"}>
-                                    <UsersIconDuoTone className={"me-2"}/>
+                                    <Icon icon={usersIconDuoTone} className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_USERS}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <LiNavItem route={ROUTES.PROFILE} icon={<SettingsIconDuoTone size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
+                        <LiNavItem route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {
                             profile.role >= 1 &&
                             <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}
@@ -107,24 +112,24 @@ export const AuthorizedNavigation = () => {
                     </ul>
                     {/* mobile ul */}
                     <ul className="d-lg-none navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<StartIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<Icon icon={startIconDuoTone} size={"1x"}/>}
                                    doShowNotification={showUserNotification} isUserNotification={true}
                                    text={LABELS_AND_HEADINGS.HOME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<Icon icon={dashboardIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
-                        <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<TitlesIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_TITLES}/>
-                        <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<IssueIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
-                        <LiNavItem route={ROUTES.GRADE_VALUES} onClick={handleClick} icon={<ValueIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.GRADE_VALUES} onClick={handleClick} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.GRADE_VALUES}/>
-                        <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<MarvelKlubbenIcon size={"1x"}/>}
+                        <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<Icon icon={marvelKlubbenIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
-                        <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<PublishersIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<Icon icon={publishersIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
-                        <LiNavItem route={ROUTES.USERS} onClick={handleClick} icon={<UsersIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.USERS} onClick={handleClick} icon={<Icon icon={usersIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.ALL_USERS}/>
-                        <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<SettingsIconDuoTone size={"1x"}/>}
+                        <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {
                             profile.role >= 1 &&

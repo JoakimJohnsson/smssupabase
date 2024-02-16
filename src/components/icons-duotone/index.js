@@ -3,6 +3,7 @@ import {
     faArrowDownToArc,
     faArrowRightFromArc,
     faBellExclamation,
+    faBadge,
     faBomb,
     faBuildingColumns,
     faClipboardListCheck,
@@ -12,6 +13,7 @@ import {
     faComet,
     faCommentsQuestion,
     faEarthAmericas,
+    faEye,
     faEyeSlash,
     faFaceExplode,
     faFile,
@@ -24,7 +26,9 @@ import {
     faHeartCrack,
     faHouse,
     faKey,
+    faLink,
     faListTimeline,
+    faLightbulb,
     faLightbulbOn,
     faMagnifyingGlassDollar,
     faMosquito,
@@ -33,8 +37,11 @@ import {
     faRectangleHistoryCirclePlus,
     faRectangleHistoryCircleUser,
     faSackDollar,
+    faSend,
     faShield,
     faShieldCat,
+    faSpider,
+    faThoughtBubble,
     faTriangleExclamation,
     faTypewriter,
     faUser,
@@ -42,50 +49,57 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
 
-const iconMap = {
-    faArrowDownToArc: faArrowDownToArc,
-    faArrowRightFromArc: faArrowRightFromArc,
-    faBellExclamation: faBellExclamation,
-    faBomb: faBomb,
-    faBuildingColumns: faBuildingColumns,
-    faClipboardListCheck: faClipboardListCheck,
-    faCalendarHeart: faCalendarHeart,
-    faChartLine: faChartLine,
-    faCircleInfo: faCircleInfo,
-    faComet: faComet,
-    faCommentsQuestion: faCommentsQuestion,
-    faEarthAmericas: faEarthAmericas,
-    faEyeSlash: faEyeSlash,
-    faFaceExplode: faFaceExplode,
-    faFile: faFile,
-    faFileImage: faFileImage,
-    faFiles: faFiles,
-    faFileLines: faFileLines,
-    faFloppyDisk: faFloppyDisk,
-    faGears: faGears,
-    faHeartCirclePlus: faHeartCirclePlus,
-    faHeartCrack: faHeartCrack,
-    faHouse: faHouse,
-    faKey: faKey,
-    faListTimeline: faListTimeline,
-    faLightbulbOn: faLightbulbOn,
-    faMagnifyingGlassDollar: faMagnifyingGlassDollar,
-    faMosquito: faMosquito,
-    faMoneyCheckPen: faMoneyCheckPen,
-    faPresentationScreen: faPresentationScreen,
-    faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
-    faRectangleHistoryCircleUser: faRectangleHistoryCircleUser,
-    faSackDollar: faSackDollar,
-    faShield: faShield,
-    faShieldCat: faShieldCat,
-    faTriangleExclamation: faTriangleExclamation,
-    faTypewriter: faTypewriter,
-    faUser: faUser,
-    faUsers: faUsers
+const iconMapDuoTone = {
+    faArrowDownToArcDT: faArrowDownToArc,
+    faArrowRightFromArcDT: faArrowRightFromArc,
+    faBellExclamationDT: faBellExclamation,
+    faBadgeDT: faBadge,
+    faBombDT: faBomb,
+    faBuildingColumnsDT: faBuildingColumns,
+    faClipboardListCheckDT: faClipboardListCheck,
+    faCalendarHeartDT: faCalendarHeart,
+    faChartLineDT: faChartLine,
+    faCircleInfoDT: faCircleInfo,
+    faCometDT: faComet,
+    faCommentsQuestionDT: faCommentsQuestion,
+    faEarthAmericasDT: faEarthAmericas,
+    faEyeDT: faEye,
+    faEyeSlashDT: faEyeSlash,
+    faFaceExplodeDT: faFaceExplode,
+    faFileDT: faFile,
+    faFileImageDT: faFileImage,
+    faFilesDT: faFiles,
+    faFileLinesDT: faFileLines,
+    faFloppyDiskDT: faFloppyDisk,
+    faGearsDT: faGears,
+    faHeartCirclePlusDT: faHeartCirclePlus,
+    faHeartCrackDT: faHeartCrack,
+    faHouseDT: faHouse,
+    faKeyDT: faKey,
+    faLinkDT: faLink,
+    faListTimelineDT: faListTimeline,
+    faLightbulbDT: faLightbulb,
+    faLightbulbOnDT: faLightbulbOn,
+    faMagnifyingGlassDollarDT: faMagnifyingGlassDollar,
+    faMosquitoDT: faMosquito,
+    faMoneyCheckPenDT: faMoneyCheckPen,
+    faPresentationScreenDT: faPresentationScreen,
+    faRectangleHistoryCirclePlusDT: faRectangleHistoryCirclePlus,
+    faRectangleHistoryCircleUserDT: faRectangleHistoryCircleUser,
+    faSackDollarDT: faSackDollar,
+    faSendDT: faSend,
+    faShieldDT: faShield,
+    faShieldCatDT: faShieldCat,
+    faSpiderDT: faSpider,
+    faThoughtBubbleDT: faThoughtBubble,
+    faTriangleExclamationDT: faTriangleExclamation,
+    faTypewriterDT: faTypewriter,
+    faUserDT: faUser,
+    faUsersDT: faUsers
 }
 
 export const getDuoToneIconByName = (iconName) => {
-    return iconMap[iconName] || null;
+    return iconMapDuoTone[iconName + "DT"] || null;
 }
 
 export const adminIconDuoTone = faShieldCat;
@@ -97,38 +111,11 @@ export const dashboardIconDuoTone = faChartLine;
 export const dataIconDuoTone = faListTimeline;
 export const dateIconDuoTone = faCalendarHeart;
 export const editIconDuoTone = faMoneyCheckPen;
-export const infoIconDuoTone = faFaceExplode;
-
-
-export const GlobalIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faEarthAmericas} size={size} className={className}/>
-    )
-}
-
 export const globalIconDuoTone = faEarthAmericas;
-
-export const ImageIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faFileImage} size={size} className={className}/>
-    )
-}
-
 export const imageIconDuoTone = faFileImage;
-
-export const IssueIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={issueIconDuoTone} size={size} className={className}/>
-    )
-}
+export const infoIconDuoTone = faFaceExplode;
 export const issueIconDuoTone = faFileLines;
-
-export const QuestionIconDuoTone = ({size, className}) => {
-    return (
-        <Icon icon={faCommentsQuestion} size={size} className={className}/>
-    )
-}
-
+export const marvelKlubbenIconDuoTone = faBadge;
 export const questionIconDuoTone = faCommentsQuestion;
 
 export const KeyIconDuoTone = ({size, className}) => {
@@ -168,6 +155,7 @@ export const OtherCollectionsIconDuoTone = ({size, className}) => {
         <Icon icon={otherCollectionsIconDuoTone} size={size} className={className}/>
     )
 }
+
 
 export const otherCollectionsIconDuoTone = faRectangleHistoryCircleUser;
 
