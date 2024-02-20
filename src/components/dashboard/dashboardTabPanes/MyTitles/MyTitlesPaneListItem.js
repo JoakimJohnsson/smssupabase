@@ -18,7 +18,7 @@ export const MyTitlesPaneListItem = ({title}) => {
     const [loading, setLoading] = useState(true);
     const [issueNeedsGrading, setIssueNeedsGrading] = useState(false);
 
-    const fetchIssuesDatan = useCallback(() => {
+    const fetchIssuesData = useCallback(() => {
             getIssuesByTitleId(setIssuesData, title.id).then(() => setLoading(false));
     }, [title.id]);
 
@@ -55,8 +55,8 @@ export const MyTitlesPaneListItem = ({title}) => {
     }, [titleProgress]);
 
     useEffect(() => {
-        fetchIssuesDatan();
-    }, [fetchIssuesDatan]);
+        fetchIssuesData();
+    }, [fetchIssuesData]);
 
     useEffect(() => {
             checkIfIssuesNeedGrading().then(() => setLoading(false));
