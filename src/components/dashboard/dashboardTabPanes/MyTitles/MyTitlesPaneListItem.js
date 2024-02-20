@@ -77,7 +77,7 @@ export const MyTitlesPaneListItem = ({title}) => {
                     loading ?
                         <CustomSpinner/>
                         :
-                        <h1>{issueNeedsGrading.toString()}</h1>
+                        <p className={"alert alert-success"}>{issueNeedsGrading.toString()}</p>
                 }
 
                 <Link to={`/titles/${title.id}`} className={"hocus-standard"}
