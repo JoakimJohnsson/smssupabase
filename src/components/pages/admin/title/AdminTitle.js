@@ -24,8 +24,8 @@ import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {titleIconDuoTone} from "../../../icons-duotone";
 import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
-import {supabase} from "../../../../supabase/supabaseClient";
 import {IconLink} from "../../../minis/IconLink";
+import {updateGradeValuesForTitles} from "../../../../helpers/databaseFunctions";
 
 
 export const AdminTitle = () => {
@@ -185,20 +185,7 @@ export const AdminTitle = () => {
 
     const handleUpdateDefaultGradeValues = async () => {
         setLoadingGG(true);
-        try {
-            // Performing a supabase sql function - update_grade_values_for_titles
-            await supabase.rpc('update_grade_values_for_titles', {
-                title_ids: [title.id],
-                value_pr: updateGradeValues.pr,
-                value_gd: updateGradeValues.gd,
-                value_vg: updateGradeValues.vg,
-                value_fn: updateGradeValues.fn,
-                value_vf: updateGradeValues.vf,
-                value_nm: updateGradeValues.nm,
-            }).then(() => setLoadingGG(false));
-        } catch (error) {
-            console.error(error);
-        }
+        await updateGradeValuesForTitles(title.id, updateGradeValues.pr, updateGradeValues.gd, updateGradeValues.vg, updateGradeValues.fn, updateGradeValues.vf, updateGradeValues.nm, setLoadingGG);
     }
 
     return (
