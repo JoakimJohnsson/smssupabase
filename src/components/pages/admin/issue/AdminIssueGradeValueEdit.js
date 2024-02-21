@@ -4,10 +4,10 @@ import {isSKGradeName, isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft, faPlus, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
-import {supabase} from "../../../../supabase/supabaseClient";
 import {useAppContext} from "../../../../context/AppContext";
 import {updateGradeValuesValues} from "../../../../services/collectingService";
 import {editIcon, saveIcon} from "../../../icons";
+import {deleteAllGradeValuesForIssue, insertAllGradeValuesForIssue} from "../../../../helpers/databaseFunctions";
 
 
 export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeValues, fetchGradeValues}) => {
@@ -26,28 +26,13 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
         });
     }
 
-    const handleAddGradeValues = async () => {
-        try {
-            // Performing a supabase sql function - insert_all_grade_values_for_issue
-            await supabase.rpc('insert_all_grade_values_for_issue', {input_issue_id: issue.id, input_value: 0}).then(() => fetchGradeValues());
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
     const handleDeleteGradeValues = async () => {
         if (!window.confirm(MESSAGES.CONFIRM.DELETE_GRADES)) {
             setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
             return false;
         }
-        try {
-            // Performing a supabase sql function - delete_all_grade_values_for_issue
-            await supabase.rpc('delete_all_grade_values_for_issue', {input_issue_id: issue.id}).then(() => fetchGradeValues());
-        } catch (error) {
-            console.error(error);
-        }
+        await deleteAllGradeValuesForIssue(issue.id, fetchGradeValues);
     }
-
     const handleAbort = () => {
         setSearchParams({editgradevalue: false});
     }
@@ -63,7 +48,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                             gradeValues && gradeValues.length === 0 ?
                                 <>
                                     <p>{TEXTS.GRADE_ADD_VALUE_TEXT}</p>
-                                    <IconButton variant={"primary"} onClick={handleAddGradeValues} label={LABELS_AND_HEADINGS.ADD} icon={faPlus}/>
+                                    <IconButton variant={"primary"} onClick={() => insertAllGradeValuesForIssue(issue.id, fetchGradeValues)} label={LABELS_AND_HEADINGS.ADD} icon={faPlus}/>
                                 </>
                                 :
                                 <>

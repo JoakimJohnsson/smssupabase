@@ -399,7 +399,11 @@ export const filterAdminTitlesData = (titlesData, query, isvalued, isnotvalued) 
 }
 
 export const renderGradeValue = (issueData, gradeName) => {
-    const gradeValues = issueData.grade_values;
-    const value = getDataGradeValuesByGradeName(gradeValues, gradeName);
-    return value > 0 ? value : "-";
+    try {
+        const gradeValues = issueData.grade_values;
+        const value = getDataGradeValuesByGradeName(gradeValues, gradeName);
+        return value > 0 ? value : "-";
+    } catch (error) {
+        console.error(error);
+    }
 }

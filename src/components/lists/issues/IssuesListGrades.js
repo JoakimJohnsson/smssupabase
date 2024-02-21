@@ -6,9 +6,7 @@ import {Link} from "react-router-dom";
 
 
 export const IssuesListGrades = ({groupedIssuesData}) => {
-
-
-    return (
+    return groupedIssuesData && (
         <table className={"table table-sm table-responsive table-striped mt-3"}>
             <caption>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} <Link to={`/titles/${groupedIssuesData[0][0].titles.id}`}>{groupedIssuesData[0][0].titles.name}</Link></caption>
             <thead>

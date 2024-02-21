@@ -167,12 +167,28 @@ export const getAllIssuesWithTitleAndPublisherWithLimit = async (setData, limit,
     }
 }
 
-export const getIssuesWithTitleAndPublisherAndGradeValuesByTitleId = async (setData, id) => {
+export const getIssuesWithTitleAndPublisherAndGradeValuesByTitleId = async (setData, titleId) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
             .select("*, publishers (*), titles (*), grade_values (*)")
-            .eq("title_id", id)
+            .eq("title_id", titleId)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+export const getIssuesByTitleId = async (setData, titleId) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*")
+            .eq("title_id", titleId)
         if (error && status !== 406) {
             console.error(error);
         }
@@ -184,12 +200,12 @@ export const getIssuesWithTitleAndPublisherAndGradeValuesByTitleId = async (setD
     }
 }
 
-export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, id) => {
+export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, publisherId) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
             .select("*, publishers (*), titles (*)")
-            .eq("publisher_id", id)
+            .eq("publisher_id", publisherId)
         if (error && status !== 406) {
             console.error(error);
         }

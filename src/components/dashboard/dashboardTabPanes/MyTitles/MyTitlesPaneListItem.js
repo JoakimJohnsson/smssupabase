@@ -4,6 +4,8 @@ import {PieChart, Pie, ResponsiveContainer, Cell} from "recharts";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitleProgressForUser} from "../../../../helpers/functions";
 import {FormatBadge} from "../../../minis/FormatBadge";
+import {doesIssueNeedGrading, getIssuesByTitleId} from "../../../../services/issueService";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
 
 
 export const MyTitlesPaneListItem = ({title}) => {
@@ -12,6 +14,27 @@ export const MyTitlesPaneListItem = ({title}) => {
     const [titleProgress, setTitleProgress] = useState({});
     const [progressData, setProgressData] = useState([]);
     const [completed, setCompleted] = useState(false);
+    const [issuesData, setIssuesData] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [issueNeedsGrading, setIssueNeedsGrading] = useState(false);
+
+    const fetchIssuesDatan = useCallback(() => {
+            getIssuesByTitleId(setIssuesData, title.id).then(() => setLoading(false));
+    }, [title.id]);
+
+    const checkIfIssuesNeedGrading = useCallback(async () => {
+        setLoading(true);
+        let index = 0;
+        while (index < issuesData.length) {
+            const issueId = issuesData[index].id;
+            const needsGrading = await doesIssueNeedGrading(issueId, user.id);
+            if (needsGrading === true) {
+                setIssueNeedsGrading(true);
+                break;
+            }
+            index++;
+        }
+    }, [issuesData, user.id]);
 
     const fetchTitleProgress = useCallback(async () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))
@@ -31,6 +54,13 @@ export const MyTitlesPaneListItem = ({title}) => {
         }
     }, [titleProgress]);
 
+    useEffect(() => {
+        fetchIssuesDatan();
+    }, [fetchIssuesDatan]);
+
+    useEffect(() => {
+            checkIfIssuesNeedGrading().then(() => setLoading(false));
+        }, [checkIfIssuesNeedGrading]);
 
     const setFillColor = (color) => {
         if (completed) {
@@ -43,6 +73,13 @@ export const MyTitlesPaneListItem = ({title}) => {
     return (
         <li className={"title-card"}>
             <div className={"bg-horse border"}>
+                {
+                    loading ?
+                        <CustomSpinner/>
+                        :
+                        <p className={"alert alert-success"}>{issueNeedsGrading.toString()}</p>
+                }
+
                 <Link to={`/titles/${title.id}`} className={"hocus-standard"}
                       title={title.name}>
                     <div className={"image-container mb-2 position-relative"}>
