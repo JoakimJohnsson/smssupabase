@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
 import {handleCollectingIssue} from "../../../services/serviceFunctions";
 import {Icon} from "../../icons";
@@ -9,12 +8,13 @@ import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 import {GradeBadge} from "../../grade/GradeBadge";
+import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";
 
 
 export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false, listViewMissing, doUpdate}) => {
 
     const {setInformationMessage, user} = useAppContext();
-    const {isCollectingIssue, setIsCollectingIssue, grades} = useIsCollectingIssue(user.id, issue.id);
+    const {isCollectingIssue, setIsCollectingIssue, grades} = useCollectingStatus(user.id, issue.id, false);
     const [displayName] = useIssueDisplayName(issue);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;

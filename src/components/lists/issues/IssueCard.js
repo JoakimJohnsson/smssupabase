@@ -1,20 +1,18 @@
 import React from "react";
-import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
-import {useIsCollectingTitle} from "../../../helpers/customHooks/useIsCollectingTitle";
 import {handleCollectingIssue} from "../../../services/serviceFunctions";
 import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {Link} from "react-router-dom";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
+import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";
 
 
 export const IssueCard = ({issue}) => {
 
     const {setInformationMessage, user} = useAppContext();
-    const {isCollectingIssue, setIsCollectingIssue} = useIsCollectingIssue(user.id, issue.id);
-    const [isCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
+    const {isCollectingTitle, isCollectingIssue, setIsCollectingIssue} = useCollectingStatus(user.id, issue.id, issue.title_id);
     const [displayName] = useIssueDisplayName(issue);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;

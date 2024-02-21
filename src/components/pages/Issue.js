@@ -17,9 +17,7 @@ import {faArrowLeftLong, faArrowRightLong, faCloudQuestion, faCloudXmark, faClou
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
 import {useAppContext} from "../../context/AppContext";
-import {useIsCollectingIssue} from "../../helpers/customHooks/useIsCollectingIssue";
 import {handleCollectingIssue, handleCollectingTitle} from "../../services/serviceFunctions";
-import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {
     addGrade,
     addIssueToUpgrade,
@@ -41,6 +39,7 @@ import {
     titlesIconDuoTone,
 } from "../icons-duotone";
 import {IconLink} from "../minis/IconLink";
+import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 
 
 export const Issue = () => {
@@ -55,24 +54,23 @@ export const Issue = () => {
     const [nextIssueId, setNextIssueId] = useState(null);
     const [loadingButtons, setLoadingButtons] = useState(true);
     const navigate = useNavigate();
+    const [
+        issue,
+        loading
+    ] = useIssueData(id);
     const {
         isCollectingIssue,
         setIsCollectingIssue,
         isWantingIssue,
         setIsWantingIssue,
         isUpgradingIssue,
-        setIsUpgradingIssue
-    } = useIsCollectingIssue(user.id, id);
+        setIsUpgradingIssue,
+        isCollectingTitle,
+        setIsCollectingTitle
+    } = useCollectingStatus(user.id, id, issue.title_id);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
-
-    const [
-        issue,
-        loading
-    ] = useIssueData(id);
-
-    const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, issue.title_id);
 
     const fetchIssueIds = useCallback(() => {
         if (issue.number && issue.title_id && issue.year) {

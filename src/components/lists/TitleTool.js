@@ -4,14 +4,14 @@ import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
-import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {handleCollectingTitle} from "../../services/serviceFunctions";
+import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 
 
 export const TitleTool = ({title, displayName, isCard = false, setUserCollectsTitle = false}) => {
 
     const {setInformationMessage, user} = useAppContext();
-    const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, title.id);
+    const {isCollectingTitle, setIsCollectingTitle} = useCollectingStatus(user.id, false, title.id);
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
     const collectTitleIcon = isCollectingTitle ? faBadgeCheck : faBadge;
