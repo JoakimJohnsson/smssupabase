@@ -13,7 +13,7 @@ export const IssueCard = ({issue}) => {
 
     const {setInformationMessage, user} = useAppContext();
     const {isCollectingTitle, isCollectingIssue, setIsCollectingIssue} = useCollectingStatus(user.id, issue.id, issue.title_id);
-    const [displayName] = useIssueDisplayName(issue);
+    const {displayName} = useIssueDisplayName(issue);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;

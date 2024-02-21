@@ -15,7 +15,7 @@ import {HeadingWithBreadCrumbs} from "../../../headings";
 export const AdminUsers = () => {
 
     const [usersData, setUsersData] = useState(null);
-    const [setSearchParams, query] = useSimpleQueryFilter();
+    const {setSearchParams, query} = useSimpleQueryFilter();
     const navigate = useNavigate();
 
     useEffect(() => {

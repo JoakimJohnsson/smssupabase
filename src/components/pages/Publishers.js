@@ -13,7 +13,7 @@ export const Publishers = () => {
 
     const [loading, setLoading] = useState(true);
     const [publishersData, setPublishersData] = useState(null);
-    const [setSearchParams, query] = useSimpleQueryFilter();
+    const {setSearchParams, query} = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then(() => setLoading(false));

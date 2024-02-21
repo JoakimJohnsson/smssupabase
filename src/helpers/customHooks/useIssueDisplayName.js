@@ -12,7 +12,7 @@ export const useIssueDisplayName = (issue) => {
         }
     }, [issue])
 
-    return [
+    return {
         displayName
-    ];
+    };
 }

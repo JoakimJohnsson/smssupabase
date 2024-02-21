@@ -7,7 +7,6 @@ export const useIssueData = (id, withFetchAndSetIssue = false) => {
     const [issue, setIssue] = useState({});
     const [loading, setLoading] = useState(true);
 
-
     const fetchData = useCallback(() => {
         getIssueDataWithPublisherAndTitle(setIssue, id).then(() => setLoading(false));
     }, [id]);
@@ -17,18 +16,18 @@ export const useIssueData = (id, withFetchAndSetIssue = false) => {
     }, [fetchData])
 
     if (withFetchAndSetIssue) {
-        return [
+        return {
             issue,
             setIssue,
             loading,
             fetchData
-        ];
+        };
 
     } else {
-        return [
+        return {
             issue,
             loading
-        ];
+        };
 
     }
 

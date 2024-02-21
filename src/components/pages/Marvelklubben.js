@@ -12,7 +12,7 @@ export const Marvelklubben = () => {
 
     const [loading, setLoading] = useState(true);
     const [marvelKlubbenData, setMarvelKlubbenData] = useState(null);
-    const [setSearchParams, query] = useSimpleQueryFilter();
+    const {setSearchParams, query} = useSimpleQueryFilter();
 
     useEffect(() => {
         getAllMarvelklubbenIssues(setMarvelKlubbenData).then(() => setLoading(false));

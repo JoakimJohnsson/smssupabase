@@ -13,7 +13,7 @@ export const Issues = () => {
 
     const [loading, setLoading] = useState(true);
     const [issuesData, setIssuesData] = useState(null);
-    const [setSearchParams, query] = useSimpleQueryFilter();
+    const {setSearchParams, query} = useSimpleQueryFilter();
 
     useEffect(() => {
         getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
