@@ -5,6 +5,7 @@ import {
     faArrowRightFromArc,
     faBellExclamation,
     faBadge,
+    faBadgeCheck,
     faBomb,
     faBuildingColumns,
     faClipboardListCheck,
@@ -54,6 +55,7 @@ const iconMap = {
     faArrowRightFromArc: faArrowRightFromArc,
     faBellExclamation: faBellExclamation,
     faBadge: faBadge,
+    faBadgeCheck: faBadgeCheck,
     faBomb: faBomb,
     faBuildingColumns: faBuildingColumns,
     faClipboardListCheck: faClipboardListCheck,
@@ -119,7 +121,7 @@ export const dataIcon = faListTimeline;
 export const editIcon = faMoneyCheckPen;
 export const globalIcon = faEarthAmericas;
 export const imageIcon = faFileImage;
-export const infoIcon = faFaceExplode;
+export const infoIcon = faCircleInfo;
 export const issueIcon = faFileLines;
 export const keyIcon = faKey;
 export const linkIcon = faLink;
@@ -134,10 +136,12 @@ export const sendIcon = faSend;
 export const settingsIcon = faGears;
 export const startIcon = faHouse;
 export const statusIconActive = faLightbulbOn;
+export const statusIconFail = faTriangleExclamation;
 export const statusIconInactive = faLightbulb;
 export const statusIconRead = faEye;
 export const statusIconUnRead = faEyeSlash;
 export const statusIconTodo = faBellExclamation;
+export const statusIconSuccess = faBadgeCheck;
 export const titlesIcon = faFiles;
 export const titleIcon = faFile;
 export const usersIcon = faUsers;

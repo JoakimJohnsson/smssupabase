@@ -1,25 +1,8 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../helpers/constants";
-
+import {doesIssueNeedGrading} from "./issueService";
 
 // TITLE
-export const checkIfIsCollectingTitle = async (userId, titleId, setIsCollectingTitle) => {
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.USERS_TITLES)
-            .select()
-            .match({user_id: userId, title_id: titleId});
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data && data.length > 0) {
-            setIsCollectingTitle(true);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 export const addTitleToCollection = async (userId, titleId) => {
     try {
         await supabase
@@ -264,6 +247,23 @@ export const updateGradeValuesValues = async (gradeValues, setInformationMessage
 }
 
 // GRADE
+
+export const checkGradingStatus = async (issuesData, userId, callbackFunction) => {
+    try {
+        let index = 0;
+        while (index < issuesData.length) {
+            const issueId = issuesData[index].id;
+            const needsGrading = await doesIssueNeedGrading(issueId, userId);
+            if (needsGrading === true) {
+                callbackFunction(true);
+                break;
+            }
+            index++;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 export const addGrade = async (userId, issueId) => {
     try {
