@@ -11,11 +11,11 @@ import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/function
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
-import {doesIssueNeedGrading, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
+import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
-import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
+import {addIssueToCollection, checkGradingStatus, removeIssueFromCollectionSimple} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
 import {editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
 import {IconLink} from "../minis/IconLink";
@@ -52,22 +52,9 @@ export const Title = () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))
     }, [title, user.id]);
 
-    const checkIfIssuesNeedGrading = useCallback(async () => {
-        let index = 0;
-        while (index < issuesData.length) {
-            const issueId = issuesData[index].id;
-            const needsGrading = await doesIssueNeedGrading(issueId, user.id);
-            if (needsGrading === true) {
-                setIssueNeedsGrading(true);
-                break;
-            }
-            index++;
-        }
-    }, [issuesData, user.id]);
-
     useEffect(() => {
-        checkIfIssuesNeedGrading().then();
-    }, [checkIfIssuesNeedGrading]);
+        checkGradingStatus(issuesData, user.id, setIssueNeedsGrading).then();
+    }, [issuesData, user.id]);
 
     useEffect(() => {
         fetchTitleAndIssuesData();
