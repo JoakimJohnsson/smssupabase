@@ -2,6 +2,14 @@ import {supabase} from "../supabase/supabaseClient";
 
 // Helper methods for performing SQL Supabase database functions defined and edited in the SMS Supabase project.
 
+export const deleteAllGradeValuesForIssue = async (issueId, callbackFunction) => {
+    try {
+        await supabase.rpc('delete_all_grade_values_for_issue', {input_issue_id: issueId}).then(() => callbackFunction());
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const insertAllGradeValuesForIssue = async (issueId, callbackFunction) => {
     try {
         await supabase.rpc('insert_all_grade_values_for_issue', {input_issue_id: issueId, input_value: 0}).then(() => callbackFunction());
@@ -10,11 +18,21 @@ export const insertAllGradeValuesForIssue = async (issueId, callbackFunction) =>
     }
 }
 
-export const deleteAllGradeValuesForIssue = async (issueId, callbackFunction) => {
+export const doesUserCollectIssue = async (userId, issueId) => {
     try {
-        await supabase.rpc('delete_all_grade_values_for_issue', {input_issue_id: issueId}).then(() => callbackFunction());
+        return await supabase.rpc('does_user_collect_issue', {input_user_id: userId, input_issue_id: issueId});
     } catch (error) {
         console.error(error);
+        return false;
+    }
+}
+
+export const doesUserCollectTitle = async (userId, titleId) => {
+    try {
+        return await supabase.rpc('does_user_collect_title', {input_user_id: userId, input_title_id: titleId});
+    } catch (error) {
+        console.error(error);
+        return false;
     }
 }
 

@@ -5,11 +5,17 @@ import {
     checkIfIsWantingIssue,
     getGradesByUserIdAndIssueId
 } from "../../services/collectingService";
+import {doesUserCollectTitle} from "../databaseFunctions";
 
 
-export const useIsCollectingIssue = (userId, issueId) => {
+// TODO Använd denna istället för use is coll issue och title
+
+
+export const useCollectingStatus = (userId, issueId, titleId) => {
 
     const [isCollectingIssue, setIsCollectingIssue] = useState(false);
+    const [isCollectingTitle, setIsCollectingTitle] = useState(false);
+
     const [isWantingIssue, setIsWantingIssue] = useState(false);
     const [isUpgradingIssue, setIsUpgradingIssue] = useState(false);
     const [grades, setGrades] = useState([]);
@@ -44,13 +50,26 @@ export const useIsCollectingIssue = (userId, issueId) => {
         }
     }, [userId, issueId]);
 
-        return {
-            isCollectingIssue,
-            setIsCollectingIssue,
-            isWantingIssue,
-            setIsWantingIssue,
-            isUpgradingIssue,
-            setIsUpgradingIssue,
-            grades
+    useEffect(() => {
+        const checkCollectingTitleStatus = async () => {
+            if (userId && titleId) {
+                const response = await doesUserCollectTitle(userId, titleId);
+                const isSuccess = response?.data === true || response === true;
+                setIsCollectingTitle(isSuccess);
+            }
         };
+        checkCollectingTitleStatus().then();
+    }, [userId, titleId]);
+
+    return {
+        isCollectingIssue,
+        setIsCollectingIssue,
+        isWantingIssue,
+        setIsWantingIssue,
+        isUpgradingIssue,
+        setIsUpgradingIssue,
+        grades,
+        isCollectingTitle,
+        setIsCollectingTitle
+    };
 }

@@ -11,7 +11,6 @@ import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/function
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
-import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {doesIssueNeedGrading, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
@@ -20,6 +19,7 @@ import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../servi
 import {AddMessage} from "../message/AddMessage";
 import {editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
 import {IconLink} from "../minis/IconLink";
+import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 
 
 export const Title = () => {
@@ -32,7 +32,7 @@ export const Title = () => {
     const [removeIssue, setRemoveIssue] = useState(false);
     const [doUpdate, setDoUpdate] = useState({});
     const {id} = useParams();
-    const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, id);
+    const {isCollectingTitle, setIsCollectingTitle} = useCollectingStatus(user.id, false, id);
     const displayName = title.name + " " + title.start_year;
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
@@ -127,6 +127,7 @@ export const Title = () => {
                         <>
                             <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
+                                <h1>{isCollectingTitle.toString()}</h1>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
                                 <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
