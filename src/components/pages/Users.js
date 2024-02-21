@@ -13,7 +13,7 @@ export const Users = () => {
 
     const [loading, setLoading] = useState(true);
     const [usersData, setUsersData] = useState(null);
-    const [setSearchParams, query] = useSimpleQueryFilter();
+    const {setSearchParams, query} = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PROFILES, setUsersData).then(() => setLoading(false));

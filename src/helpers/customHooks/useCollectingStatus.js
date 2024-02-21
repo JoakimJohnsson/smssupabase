@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {
     checkIfIsCollectingIssue,
     checkIfIsUpgradingIssue,
@@ -8,14 +8,10 @@ import {
 import {doesUserCollectTitle} from "../databaseFunctions";
 
 
-// TODO Använd denna istället för use is coll issue och title
-
-
 export const useCollectingStatus = (userId, issueId, titleId) => {
 
     const [isCollectingIssue, setIsCollectingIssue] = useState(false);
     const [isCollectingTitle, setIsCollectingTitle] = useState(false);
-
     const [isWantingIssue, setIsWantingIssue] = useState(false);
     const [isUpgradingIssue, setIsUpgradingIssue] = useState(false);
     const [grades, setGrades] = useState([]);
@@ -53,15 +49,22 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
     useEffect(() => {
         const checkCollectingTitleStatus = async () => {
             if (userId && titleId) {
-                const response = await doesUserCollectTitle(userId, titleId);
-                const isSuccess = response?.data === true || response === true;
-                setIsCollectingTitle(isSuccess);
+                try {
+                    const response = await doesUserCollectTitle(userId, titleId);
+                    const isSuccess = response?.data === true || response === true;
+                    setIsCollectingTitle(isSuccess);
+                } catch (error) {
+                    console.error(error);
+                    setIsCollectingTitle(false);
+                }
             }
         };
         checkCollectingTitleStatus().then();
     }, [userId, titleId]);
 
-    return {
+    // By wrapping the return object with useMemo and specifying its dependencies,
+    // React will only recompute the memoized value when one of these dependencies changes.
+    return useMemo(() => ({
         isCollectingIssue,
         setIsCollectingIssue,
         isWantingIssue,
@@ -71,5 +74,5 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         grades,
         isCollectingTitle,
         setIsCollectingTitle
-    };
+    }), [isCollectingIssue, isWantingIssue, isUpgradingIssue, grades, isCollectingTitle]);
 }

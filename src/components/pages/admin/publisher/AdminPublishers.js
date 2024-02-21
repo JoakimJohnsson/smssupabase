@@ -16,7 +16,7 @@ export const AdminPublishers = () => {
 
     const [publishersData, setPublishersData] = useState(null);
     const navigate = useNavigate();
-    const [setSearchParams, query] = useSimpleQueryFilter();
+    const {setSearchParams, query} = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();

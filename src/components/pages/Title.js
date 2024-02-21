@@ -11,11 +11,11 @@ import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/function
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
-import {doesIssueNeedGrading, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
+import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
-import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
+import {addIssueToCollection, checkGradingStatus, removeIssueFromCollectionSimple} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
 import {editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
 import {IconLink} from "../minis/IconLink";
@@ -52,22 +52,9 @@ export const Title = () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))
     }, [title, user.id]);
 
-    const checkIfIssuesNeedGrading = useCallback(async () => {
-        let index = 0;
-        while (index < issuesData.length) {
-            const issueId = issuesData[index].id;
-            const needsGrading = await doesIssueNeedGrading(issueId, user.id);
-            if (needsGrading === true) {
-                setIssueNeedsGrading(true);
-                break;
-            }
-            index++;
-        }
-    }, [issuesData, user.id]);
-
     useEffect(() => {
-        checkIfIssuesNeedGrading().then();
-    }, [checkIfIssuesNeedGrading]);
+        checkGradingStatus(issuesData, user.id, setIssueNeedsGrading).then();
+    }, [issuesData, user.id]);
 
     useEffect(() => {
         fetchTitleAndIssuesData();
@@ -127,11 +114,9 @@ export const Title = () => {
                         <>
                             <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
-                                <h1>{isCollectingTitle.toString()}</h1>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
                                 <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
-
                                 {
                                     titleProgress.progress === 0 ?
                                         <button

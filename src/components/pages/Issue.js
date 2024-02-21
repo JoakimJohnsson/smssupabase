@@ -54,10 +54,10 @@ export const Issue = () => {
     const [nextIssueId, setNextIssueId] = useState(null);
     const [loadingButtons, setLoadingButtons] = useState(true);
     const navigate = useNavigate();
-    const [
+    const {
         issue,
         loading
-    ] = useIssueData(id);
+    } = useIssueData(id);
     const {
         isCollectingIssue,
         setIsCollectingIssue,

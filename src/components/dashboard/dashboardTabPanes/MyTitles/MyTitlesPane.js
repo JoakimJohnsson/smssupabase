@@ -13,7 +13,7 @@ export const MyTitlesPane = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible] = useFormatQueryFilter();
+    const {setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible} = useFormatQueryFilter();
     const {user} = useAppContext();
 
     useEffect(() => {

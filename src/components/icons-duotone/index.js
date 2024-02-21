@@ -3,6 +3,7 @@ import {
     faArrowRightFromArc,
     faBellExclamation,
     faBadge,
+    faBadgeCheck,
     faBomb,
     faBuildingColumns,
     faClipboardListCheck,
@@ -52,6 +53,7 @@ const iconMapDuoTone = {
     faArrowRightFromArcDT: faArrowRightFromArc,
     faBellExclamationDT: faBellExclamation,
     faBadgeDT: faBadge,
+    faBadgeCheckDT: faBadgeCheck,
     faBombDT: faBomb,
     faBuildingColumnsDT: faBuildingColumns,
     faClipboardListCheckDT: faClipboardListCheck,
@@ -111,7 +113,7 @@ export const dateIconDuoTone = faCalendarHeart;
 export const editIconDuoTone = faMoneyCheckPen;
 export const globalIconDuoTone = faEarthAmericas;
 export const imageIconDuoTone = faFileImage;
-export const infoIconDuoTone = faFaceExplode;
+export const infoIconDuoTone = faCircleInfo;
 export const issueIconDuoTone = faFileLines;
 export const keyIconDuoTone = faKey;
 export const loginIconDuoTone = faArrowDownToArc;
@@ -127,8 +129,10 @@ export const saveIconDuoTone = faFloppyDisk;
 export const settingsIconDuoTone = faGears;
 export const startIconDuoTone = faHouse;
 export const statusIconActiveDuoTone = faLightbulbOn;
+export const statusIconFailDuoTone = faTriangleExclamation;
 export const statusIconUnreadDuoTone = faEyeSlash;
 export const statusIconTodoDuoTone = faBellExclamation;
+export const statusIconSuccessDuoTone = faBadgeCheck;
 export const titlesIconDuoTone = faFiles;
 export const titleIconDuoTone = faFile;
 export const usersIconDuoTone = faUsers;

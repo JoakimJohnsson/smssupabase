@@ -15,7 +15,7 @@ export const useFormatQueryFilter = () => {
     const special = searchParams.get("special");
     const collectible = searchParams.get("collectible");
 
-    return [
+    return {
         setSearchParams,
         query,
         comic,
@@ -25,5 +25,5 @@ export const useFormatQueryFilter = () => {
         hardcover,
         special,
         collectible
-    ]
+    }
 }

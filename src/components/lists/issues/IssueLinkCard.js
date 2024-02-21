@@ -6,7 +6,7 @@ import {hasImage} from "../../../helpers/functions";
 
 export const IssueLinkCard = ({issue, index, simple = false}) => {
 
-    const [displayName] = useIssueDisplayName(issue);
+    const {displayName} = useIssueDisplayName(issue);
 
     return issue && (
         <li className={simple ? "issue-link-card simple" : "issue-link-card"}>

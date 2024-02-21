@@ -25,7 +25,7 @@ export const GradeValues = () => {
     const [activeKey, setActiveKey] = useState(null);
     const [titlesData, setTitlesData] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
-    const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible] = useFormatQueryFilter();
+    const {setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible} = useFormatQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));

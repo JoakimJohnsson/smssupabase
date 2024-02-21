@@ -24,7 +24,7 @@ export const AdminTitles = () => {
     const [titlesData, setTitlesData] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
     const navigate = useNavigate();
-    const [setSearchParams, query, isvalued, isnotvalued] = useAdminTitlesQueryFilter();
+    const {setSearchParams, query, isvalued, isnotvalued} = useAdminTitlesQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();

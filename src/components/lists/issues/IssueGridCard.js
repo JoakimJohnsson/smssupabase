@@ -15,7 +15,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
 
     const {setInformationMessage, user} = useAppContext();
     const {isCollectingIssue, setIsCollectingIssue, grades} = useCollectingStatus(user.id, issue.id, false);
-    const [displayName] = useIssueDisplayName(issue);
+    const {displayName} = useIssueDisplayName(issue);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;

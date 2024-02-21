@@ -22,12 +22,12 @@ export const AdminIssue = () => {
     const [newIssue, setNewIssue] = useState({});
     const [gradeValues, setGradeValues] = useState([]);
 
-    const [
+    const {
         issue,
         setIssue,
         loading,
         fetchData
-    ] = useIssueData(id, true);
+    } = useIssueData(id, true);
 
     useEffect(() => {
         setImageFilename(issue.image_filename);

@@ -14,12 +14,16 @@ import {IconButton} from "../../../minis/IconButton";
 
 export const AdminTitleAdd = () => {
 
-    const [
-        name, setName,
-        description, setDescription,
-        wiki_url, setWiki_url,
-        formInputClass, setFormInputClass,
-    ] = useCommonFormStates();
+    const {
+        name,
+        setName,
+        description,
+        setDescription,
+        wiki_url,
+        setWiki_url,
+        formInputClass,
+        setFormInputClass
+    } = useCommonFormStates();
 
     const {setInformationMessage} = useAppContext();
     const [start_year, setStart_year] = useState(1975);

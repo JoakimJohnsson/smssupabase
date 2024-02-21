@@ -6,9 +6,8 @@ export const useSimpleQueryFilter = () => {
     const [searchParams, setSearchParams] = useSearchParams({query: ""});
     const query = searchParams.get("query");
 
-
-    return [
+    return {
         setSearchParams,
         query
-    ]
+    }
 }

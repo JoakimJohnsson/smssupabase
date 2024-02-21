@@ -4,8 +4,13 @@ import {PieChart, Pie, ResponsiveContainer, Cell} from "recharts";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitleProgressForUser} from "../../../../helpers/functions";
 import {FormatBadge} from "../../../minis/FormatBadge";
-import {doesIssueNeedGrading, getIssuesByTitleId} from "../../../../services/issueService";
+import {getIssuesByTitleId} from "../../../../services/issueService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
+import {FunctionButton} from "../../../minis/FunctionButton";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
+import {checkGradingStatus} from "../../../../services/collectingService";
+import {statusIconFailDuoTone, statusIconSuccessDuoTone} from "../../../icons-duotone";
+import {Icon} from "../../../icons";
 
 
 export const MyTitlesPaneListItem = ({title}) => {
@@ -14,27 +19,14 @@ export const MyTitlesPaneListItem = ({title}) => {
     const [titleProgress, setTitleProgress] = useState({});
     const [progressData, setProgressData] = useState([]);
     const [completed, setCompleted] = useState(false);
+    const [gradingStatusOpen, setGradingStatusOpen] = useState(false);
     const [issuesData, setIssuesData] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [loadingGradingStatus, setLoadingGradingStatus] = useState(false);
     const [issueNeedsGrading, setIssueNeedsGrading] = useState(false);
 
     const fetchIssuesData = useCallback(() => {
-            getIssuesByTitleId(setIssuesData, title.id).then(() => setLoading(false));
+        getIssuesByTitleId(setIssuesData, title.id).then(() => setLoadingGradingStatus(false));
     }, [title.id]);
-
-    const checkIfIssuesNeedGrading = useCallback(async () => {
-        setLoading(true);
-        let index = 0;
-        while (index < issuesData.length) {
-            const issueId = issuesData[index].id;
-            const needsGrading = await doesIssueNeedGrading(issueId, user.id);
-            if (needsGrading === true) {
-                setIssueNeedsGrading(true);
-                break;
-            }
-            index++;
-        }
-    }, [issuesData, user.id]);
 
     const fetchTitleProgress = useCallback(async () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))
@@ -58,10 +50,6 @@ export const MyTitlesPaneListItem = ({title}) => {
         fetchIssuesData();
     }, [fetchIssuesData]);
 
-    useEffect(() => {
-            checkIfIssuesNeedGrading().then(() => setLoading(false));
-        }, [checkIfIssuesNeedGrading]);
-
     const setFillColor = (color) => {
         if (completed) {
             return "#33cc99"
@@ -70,60 +58,102 @@ export const MyTitlesPaneListItem = ({title}) => {
         }
     }
 
+    const handleCheckGradingStatus = () => {
+        setGradingStatusOpen(!gradingStatusOpen);
+        setLoadingGradingStatus(true);
+        checkGradingStatus(issuesData, user.id, setIssueNeedsGrading).then(() => setLoadingGradingStatus(false));
+    }
+
     return (
         <li className={"title-card"}>
             <div className={"bg-horse border"}>
-                {
-                    loading ?
-                        <CustomSpinner/>
-                        :
-                        <p className={"alert alert-success"}>{issueNeedsGrading.toString()}</p>
-                }
-
-                <Link to={`/titles/${title.id}`} className={"hocus-standard"}
-                      title={title.name}>
-                    <div className={"image-container mb-2 position-relative"}>
-                        <img
-                            src={title.image_url}
-                            alt={title.name}
-                            className="w-100"
-                            loading={"lazy"}
-                        />
+                <div className={"row p-0 p-sm-3"}>
+                    <div className={"col-12 col-md-6 col-lg-12 col-xl-5"}>
+                        <Link to={`/titles/${title.id}`} className={"hocus-standard"}
+                              title={title.name}>
+                            <div className={"image-container mb-2 position-relative"}>
+                                <img
+                                    src={title.image_url}
+                                    alt={title.name}
+                                    className="w-100"
+                                    loading={"lazy"}
+                                />
+                            </div>
+                        </Link>
+                        <div className={"p-2 p-sm-0"}>
+                            <span
+                                className={`tag-badge text-black mb-3 ${completed ? "bg-success" : "bg-grade"}`}>{titleProgress.progress + "%"}</span>
+                            <FormatBadge formatId={title.format_id} customClass={"mb-3"} year={title.start_year}/>
+                            {
+                                gradingStatusOpen ?
+                                    <>
+                                        {
+                                            loadingGradingStatus ?
+                                                <div className={"text-center"}>
+                                                    <CustomSpinner size={"2x"}/>
+                                                </div>
+                                                :
+                                                <>
+                                                    {
+                                                        issueNeedsGrading ?
+                                                            <p className={"alert alert-danger d-flex align-items-center "}>
+                                                                <Icon icon={statusIconFailDuoTone} className={"me-3"} size={"2x"}/>
+                                                                {TEXTS.GRADE_MISSING}
+                                                            </p>
+                                                            :
+                                                            <p className={"alert alert-success d-flex align-items-center "}>
+                                                                <Icon icon={statusIconSuccessDuoTone} className={"me-3"} size={"2x"}/>
+                                                                {TEXTS.GRADE_FOUND}
+                                                            </p>
+                                                    }
+                                                </>
+                                        }
+                                    </>
+                                    :
+                                    <FunctionButton customClass={"w-100"}
+                                                    variant={"primary"}
+                                                    onClick={() => handleCheckGradingStatus()}
+                                                    label={
+                                                        LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_1 +
+                                                        ` ${title.name} ` +
+                                                        LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_2
+                                                    }
+                                                    id={"list-variant-toggler"}/>
+                            }
+                        </div>
                     </div>
-                </Link>
-                <div className={"px-2 border-bottom"}>
-                    <span className={`tag-badge text-black mb-1 ${completed ? "bg-success" : "bg-grade"}`}>{titleProgress.progress + "%"}</span>
-                    <FormatBadge formatId={title.format_id} customClass={"mb-1"} year={title.start_year}/>
-                </div>
-                <div className={"p-2"}>
-                    <ResponsiveContainer width="100%" height={175}>
-                        <PieChart>
-                            <defs>
-                                <pattern id="pattern-A" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
-                                    <rect width="2" height="4" fill="#ffd700"/>
-                                </pattern>
-                                <pattern id="pattern-B" width="1" height="1" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
-                                    <rect width="1" height="1" fill="#141a1b"/>
-                                </pattern>
-                            </defs>
-                            <Pie
-                                dataKey="value"
-                                data={progressData}
-                                cx="50%"
-                                cy="50%"
-                                innerRadius={30}
-                                outerRadius={80}
-                                stroke="none"
-                                label={false}
-                            >
-                                {
-                                    progressData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={setFillColor(`url(#pattern-${entry.name})`)}/>
-                                    ))
-                                }
-                            </Pie>
-                        </PieChart>
-                    </ResponsiveContainer>
+                    <div className={"col-12 col-md-6 col-lg-12 col-xl-7"}>
+                        <div className={"p-2 h-100"}>
+                            <ResponsiveContainer width="100%" minHeight={"225px"}>
+                                <PieChart>
+                                    <defs>
+                                        <pattern id="pattern-A" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+                                            <rect width="2" height="4" fill="#ffd700"/>
+                                        </pattern>
+                                        <pattern id="pattern-B" width="1" height="1" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+                                            <rect width="1" height="1" fill="#141a1b"/>
+                                        </pattern>
+                                    </defs>
+                                    <Pie
+                                        dataKey="value"
+                                        data={progressData}
+                                        cx="50%"
+                                        cy="50%"
+                                        innerRadius={30}
+                                        outerRadius={80}
+                                        stroke="none"
+                                        label={true}
+                                    >
+                                        {
+                                            progressData.map((entry, index) => (
+                                                <Cell key={`cell-${index}`} fill={setFillColor(`url(#pattern-${entry.name})`)}/>
+                                            ))
+                                        }
+                                    </Pie>
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </div>
                 </div>
             </div>
         </li>
