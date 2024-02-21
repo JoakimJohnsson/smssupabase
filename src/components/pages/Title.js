@@ -127,11 +127,9 @@ export const Title = () => {
                         <>
                             <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
-                                <h1>{isCollectingTitle.toString()}</h1>
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
                                 <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
-
                                 {
                                     titleProgress.progress === 0 ?
                                         <button
