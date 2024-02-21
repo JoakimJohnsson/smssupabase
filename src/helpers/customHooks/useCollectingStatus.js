@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {
     checkIfIsCollectingIssue,
     checkIfIsUpgradingIssue,
@@ -62,7 +62,9 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         checkCollectingTitleStatus().then();
     }, [userId, titleId]);
 
-    return {
+    // By wrapping the return object with useMemo and specifying its dependencies,
+    // React will only recompute the memoized value when one of these dependencies changes.
+    return useMemo(() => ({
         isCollectingIssue,
         setIsCollectingIssue,
         isWantingIssue,
@@ -72,5 +74,5 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         grades,
         isCollectingTitle,
         setIsCollectingTitle
-    };
+    }), [isCollectingIssue, isWantingIssue, isUpgradingIssue, grades, isCollectingTitle]);
 }
