@@ -2,6 +2,7 @@ import {supabase} from "../supabase/supabaseClient";
 import {CLASSES, MESSAGES, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
+import {getGradeValueByIssueIdAndGrade} from "./databaseFunctions";
 
 export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
@@ -113,7 +114,7 @@ export const printOptions = (data) => {
         data
             .sort((a, b) => sortByName(a, b))
             .map(
-            (item) => <option key={item.id} value={item.id}>{item.name}</option>)
+                (item) => <option key={item.id} value={item.id}>{item.name}</option>)
     )
 }
 
@@ -122,7 +123,7 @@ export const printTitleOptions = (titleData) => {
         titleData
             .sort((a, b) => sortByName(a, b))
             .map(
-            (item) => <option key={item.id} value={item.id}>{item.name} {item.start_year}</option>)
+                (item) => <option key={item.id} value={item.id}>{item.name} {item.start_year}</option>)
     )
 }
 
@@ -275,6 +276,22 @@ export const getAverageGrade = (grades) => {
         totalGradeAmount += grades[i].grade;
     }
     return totalGradeAmount / grades.length || 0.0;
+}
+
+export const getTotalGradeValue = async (grades) => {
+
+    let totalGradeValue = 0;
+    for (let i = 0; i < grades.length; i++) {
+        try {
+            const response = await getGradeValueByIssueIdAndGrade(grades[i].issue_id, grades[i].grade);
+            if (response && response.data) {
+                totalGradeValue += response.data;
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    return totalGradeValue;
 }
 
 export const isSKGradeValue = (gradeValue) => {

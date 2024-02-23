@@ -10,14 +10,6 @@ export const deleteAllGradeValuesForIssue = async (issueId, callbackFunction) =>
     }
 }
 
-export const insertAllGradeValuesForIssue = async (issueId, callbackFunction) => {
-    try {
-        await supabase.rpc('insert_all_grade_values_for_issue', {input_issue_id: issueId, input_value: 0}).then(() => callbackFunction());
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 export const doesUserCollectIssue = async (userId, issueId) => {
     try {
         return await supabase.rpc('does_user_collect_issue', {input_user_id: userId, input_issue_id: issueId});
@@ -33,6 +25,23 @@ export const doesUserCollectTitle = async (userId, titleId) => {
     } catch (error) {
         console.error(error);
         return false;
+    }
+}
+
+export const getGradeValueByIssueIdAndGrade = async (issueId, grade) => {
+    try {
+        return await supabase.rpc('get_grade_value_by_issue_id_and_grade', {input_issue_id: issueId, input_grade: grade});
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
+export const insertAllGradeValuesForIssue = async (issueId, callbackFunction) => {
+    try {
+        await supabase.rpc('insert_all_grade_values_for_issue', {input_issue_id: issueId, input_value: 0}).then(() => callbackFunction());
+    } catch (error) {
+        console.error(error);
     }
 }
 

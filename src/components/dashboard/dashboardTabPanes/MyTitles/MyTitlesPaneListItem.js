@@ -8,7 +8,7 @@ import {getIssuesByTitleId} from "../../../../services/issueService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
 import {checkGradingStatus} from "../../../../services/collectingService";
-import {statusIconFailDuoTone, statusIconSuccessDuoTone, valueIconDuoTone} from "../../../icons-duotone";
+import {gradingIconDuoTone, infoIconDuoTone, statusIconFailDuoTone, statusIconSuccessDuoTone} from "../../../icons-duotone";
 import {Icon} from "../../../icons";
 
 
@@ -147,17 +147,28 @@ export const MyTitlesPaneListItem = ({title}) => {
                                         }
                                     </>
                                     :
-                                    <button onClick={() => handleCheckGradingStatus()}
-                                            className={"btn btn-outline-primary rounded-2 w-100 d-flex align-items-center text-start"}>
-                                        <Icon icon={valueIconDuoTone} className={"me-2"} size={"2x"}/>
-                                        <span className={"mx-3"}>
-                                            {
-                                                LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_1 +
-                                                ` ${title.name} ` +
-                                                LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_2
-                                            }
-                                        </span>
-                                    </button>
+                                    <>
+
+                                        {
+                                            !!titleProgress.progress ?
+                                                <button onClick={() => handleCheckGradingStatus()}
+                                                        className={"btn btn-outline-primary p-3 rounded-2 w-100 d-flex align-items-center text-start"}>
+                                                    <Icon icon={gradingIconDuoTone} className={"me-2"} size={"2x"}/>
+                                                    <span className={"mx-3"}>
+                                                        {
+                                                            LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_1 +
+                                                            ` ${title.name} ` +
+                                                            LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_2
+                                                        }
+                                                    </span>
+                                                </button>
+                                                :
+                                                <p className={"alert alert-info d-flex align-items-center m-0"}>
+                                                    <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
+                                                    {LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES}
+                                                </p>
+                                        }
+                                    </>
                             }
                         </div>
                     </div>
