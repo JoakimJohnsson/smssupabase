@@ -155,7 +155,7 @@ export const LABELS_AND_HEADINGS = {
     COLLECTING_ADD_ALL: "Lägg till alla",
     COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES: "Du har inte lagt in några publikationer i samlingen.",
     COLLECTING_CHECK_GRADING_STATUS_OPEN_1: "Kontrollera om någon publikation av",
-    COLLECTING_CHECK_GRADING_STATUS_OPEN_2: "behöver skickgradering",
+    COLLECTING_CHECK_GRADING_STATUS_OPEN_2: "behöver skickgradering.",
     COLLECTING_CHECK_GRADING_STATUS_CLOSE: "Lägg till alla",
     COLLECTING_REMOVE_ALL: "Töm samlingen",
     COMMUNITY: "Socialt",

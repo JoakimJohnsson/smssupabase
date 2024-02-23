@@ -11,7 +11,7 @@ export const TitlesListItem = ({title}) => {
 
     return (
 
-        <li key={title.id} className={"title-card"}>
+        <li key={title.id} className={"title-card simple"}>
             <Link to={`/titles/${title.id}`} className={"hocus-standard"}
                   title={title.name + " " + title.start_year}>
                 <div className={`title-card--year ${userCollectsTitle ? "bg-success" : "bg-secondary"}`}>{getDataName(formatData, title.format_id)} / {title.start_year}</div>
