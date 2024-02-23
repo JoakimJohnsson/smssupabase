@@ -182,7 +182,7 @@ input[type="checkbox"] + label {
 
   li {
     &.title-card {
-      @extend .col-12, .col-lg-6, .mb-4;
+      @extend .col-12, .col-lg-6, .col-xl-12, .col-xxl-6, .mb-4;
       .image-container {
         background-color: $white;
       }

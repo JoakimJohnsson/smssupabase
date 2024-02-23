@@ -6,10 +6,9 @@ import {getTitleProgressForUser} from "../../../../helpers/functions";
 import {FormatBadge} from "../../../minis/FormatBadge";
 import {getIssuesByTitleId} from "../../../../services/issueService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {FunctionButton} from "../../../minis/FunctionButton";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
 import {checkGradingStatus} from "../../../../services/collectingService";
-import {statusIconFailDuoTone, statusIconSuccessDuoTone} from "../../../icons-duotone";
+import {statusIconFailDuoTone, statusIconSuccessDuoTone, valueIconDuoTone} from "../../../icons-duotone";
 import {Icon} from "../../../icons";
 
 
@@ -84,42 +83,7 @@ export const MyTitlesPaneListItem = ({title}) => {
                             <span
                                 className={`tag-badge text-black mb-3 ${completed ? "bg-success" : "bg-grade"}`}>{titleProgress.progress + "%"}</span>
                             <FormatBadge formatId={title.format_id} customClass={"mb-3"} year={title.start_year}/>
-                            {
-                                gradingStatusOpen ?
-                                    <>
-                                        {
-                                            loadingGradingStatus ?
-                                                <div className={"text-center"}>
-                                                    <CustomSpinner size={"2x"}/>
-                                                </div>
-                                                :
-                                                <>
-                                                    {
-                                                        issueNeedsGrading ?
-                                                            <p className={"alert alert-danger d-flex align-items-center "}>
-                                                                <Icon icon={statusIconFailDuoTone} className={"me-3"} size={"2x"}/>
-                                                                {TEXTS.GRADE_MISSING}
-                                                            </p>
-                                                            :
-                                                            <p className={"alert alert-success d-flex align-items-center "}>
-                                                                <Icon icon={statusIconSuccessDuoTone} className={"me-3"} size={"2x"}/>
-                                                                {TEXTS.GRADE_FOUND}
-                                                            </p>
-                                                    }
-                                                </>
-                                        }
-                                    </>
-                                    :
-                                    <FunctionButton customClass={"w-100"}
-                                                    variant={"primary"}
-                                                    onClick={() => handleCheckGradingStatus()}
-                                                    label={
-                                                        LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_1 +
-                                                        ` ${title.name} ` +
-                                                        LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_2
-                                                    }
-                                                    id={"list-variant-toggler"}/>
-                            }
+
                         </div>
                     </div>
                     <div className={"col-12 col-md-6 col-lg-12 col-xl-7"}>
@@ -154,6 +118,50 @@ export const MyTitlesPaneListItem = ({title}) => {
                             </ResponsiveContainer>
                         </div>
                     </div>
+
+                    <div className={"col-12 col-md-8 col-lg-12 col-xl-6 col-xxl-12"}>
+                        <div className={"p-3 p-sm-0"}>
+                            {
+                                gradingStatusOpen ?
+                                    <>
+                                        {
+                                            loadingGradingStatus ?
+                                                <div className={"text-center"}>
+                                                    <CustomSpinner size={"2x"}/>
+                                                </div>
+                                                :
+                                                <>
+                                                    {
+                                                        issueNeedsGrading ?
+                                                            <p className={"alert alert-danger d-flex align-items-center m-0"}>
+                                                                <Icon icon={statusIconFailDuoTone} className={"me-3"} size={"2x"}/>
+                                                                {TEXTS.GRADE_MISSING}
+                                                            </p>
+                                                            :
+                                                            <p className={"alert alert-success d-flex align-items-center m-0"}>
+                                                                <Icon icon={statusIconSuccessDuoTone} className={"me-3"} size={"2x"}/>
+                                                                {TEXTS.GRADE_FOUND}
+                                                            </p>
+                                                    }
+                                                </>
+                                        }
+                                    </>
+                                    :
+                                    <button onClick={() => handleCheckGradingStatus()}
+                                            className={"btn btn-outline-primary rounded-2 w-100 d-flex align-items-center text-start"}>
+                                        <Icon icon={valueIconDuoTone} className={"me-2"} size={"2x"}/>
+                                        <span className={"mx-3"}>
+                                            {
+                                                LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_1 +
+                                                ` ${title.name} ` +
+                                                LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_2
+                                            }
+                                        </span>
+                                    </button>
+                            }
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </li>
