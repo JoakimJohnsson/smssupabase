@@ -12,6 +12,7 @@ import {
     faCircleInfo,
     faComet,
     faCommentsQuestion,
+    faDisplayChartUp,
     faEarthAmericas,
     faEye,
     faEyeSlash,
@@ -37,6 +38,7 @@ import {
     faRectangleHistoryCirclePlus,
     faRectangleHistoryCircleUser,
     faSackDollar,
+    faScaleUnbalanced,
     faSend,
     faShield,
     faShieldCat,
@@ -62,6 +64,7 @@ const iconMapDuoTone = {
     faCircleInfoDT: faCircleInfo,
     faCometDT: faComet,
     faCommentsQuestionDT: faCommentsQuestion,
+    faDisplayChartUpDT: faDisplayChartUp,
     faEarthAmericasDT: faEarthAmericas,
     faEyeDT: faEye,
     faEyeSlashDT: faEyeSlash,
@@ -87,6 +90,7 @@ const iconMapDuoTone = {
     faRectangleHistoryCirclePlusDT: faRectangleHistoryCirclePlus,
     faRectangleHistoryCircleUserDT: faRectangleHistoryCircleUser,
     faSackDollarDT: faSackDollar,
+    faScaleUnbalancedDT: faScaleUnbalanced,
     faSendDT: faSend,
     faShieldDT: faShield,
     faShieldCatDT: faShieldCat,
@@ -112,6 +116,7 @@ export const dataIconDuoTone = faListTimeline;
 export const dateIconDuoTone = faCalendarHeart;
 export const editIconDuoTone = faMoneyCheckPen;
 export const globalIconDuoTone = faEarthAmericas;
+export const gradingIconDuoTone = faScaleUnbalanced;
 export const imageIconDuoTone = faFileImage;
 export const infoIconDuoTone = faCircleInfo;
 export const issueIconDuoTone = faFileLines;

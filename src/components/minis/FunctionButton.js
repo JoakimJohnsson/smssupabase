@@ -9,7 +9,8 @@ export const FunctionButton = ({customClass, variant, onClick, label, icon, show
 
     return (
         <button onClick={onClick} className={className} disabled={disabled}>
-            <Icon icon={icon} className={"fa-xl fa-fw"}/> {showLabel && <span className={"mx-3"}>{label}</span>}
+            {icon && <Icon icon={icon} className={"fa-xl fa-fw"}/>}
+            {showLabel && <span className={"mx-3"}>{label}</span>}
         </button>
     )
 }

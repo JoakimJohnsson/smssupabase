@@ -335,7 +335,6 @@ export const getAllGradesByUserId = async (userId, setGrades) => {
         if (data && data.length > 0) {
             setGrades(data);
         }
-
     } catch (error) {
         console.error(error);
     }
