@@ -6,7 +6,7 @@ import {useAppContext} from "../../../../context/AppContext";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
 import {getAverageGrade, getTotalGradeValue} from "../../../../helpers/functions";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {gradingIconDuoTone} from "../../../icons-duotone";
+import {valueIconDuoTone} from "../../../icons-duotone";
 import {Icon} from "../../../icons";
 
 
@@ -76,7 +76,7 @@ export const OverviewIssues = ({titlesData}) => {
                                     <p>{PANES.OVERVIEW.COLLECTING_VALUE_1}</p>
                                     <div className={"d-flex justify-content-center p-2 text-grade"}>
                                         <p className={"fs-x-large py-3 px-5 d-flex align-items-center rounded border border-grade"}>
-                                            <Icon icon={gradingIconDuoTone} size={"2x"} className={"me-3 "}/>
+                                            <Icon icon={valueIconDuoTone} size={"2x"} className={"me-3 "}/>
                                             <span>{totalValue ? totalValue + " kr" : <CustomSpinner size={"2x"}/>}</span>
                                         </p>
                                     </div>

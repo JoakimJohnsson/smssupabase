@@ -266,8 +266,12 @@ export const hasTrueValue = (stringArray) => {
     return false;
 };
 
-export const getCurrentDate = () => {
+export const getCurrentDateAsISOString = () => {
     return (new Date()).toISOString();
+}
+
+export const getCurrentDate = () => {
+    return new Date();
 }
 
 export const getAverageGrade = (grades) => {
