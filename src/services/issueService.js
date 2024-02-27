@@ -183,6 +183,7 @@ export const getIssuesWithTitleAndPublisherAndGradeValuesByTitleId = async (setD
         console.error(error);
     }
 }
+
 export const getIssuesByTitleId = async (setData, titleId) => {
     try {
         let {data, error, status} = await supabase
@@ -211,6 +212,23 @@ export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, publi
         }
         if (data) {
             setData(data);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getIssueWithPublisherAndTitle = async (setData, id) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*, publishers (*), titles (*), grade_values (*)")
+            .eq("id", id)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data[0]);
         }
     } catch (error) {
         console.error(error);

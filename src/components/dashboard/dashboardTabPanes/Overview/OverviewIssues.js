@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import {LABELS_AND_HEADINGS, PANES, TABLES} from "../../../../helpers/constants";
-import {getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
+import {getRowCountByTableAndUserId, getTotalValuationValuesForUser} from "../../../../services/serviceFunctions";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
 import {useAppContext} from "../../../../context/AppContext";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
@@ -8,6 +8,7 @@ import {getAverageGrade, getTotalGradeValue} from "../../../../helpers/functions
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {valueIconDuoTone} from "../../../icons-duotone";
 import {Icon} from "../../../icons";
+import {Logger} from "../../../minis/Logger";
 
 
 export const OverviewIssues = ({titlesData}) => {
@@ -16,8 +17,15 @@ export const OverviewIssues = ({titlesData}) => {
     const [totalIssuesCountForCollection, setTotalIssuesCountForCollection] = useState(null);
     const [grades, setGrades] = useState(null);
     const [averageGrade, setAverageGrade] = useState(null);
-    const [totalValue, setTotalValue] = useState(null);
+    const [newCalculatedValuationValue, setNewCalculatedValuationValue] = useState(null);
+    const [totalValuationValuesForUser, setTotalValuationValuesForUser] = useState(null);
     const {user} = useAppContext();
+
+    const fetchTotalValuationValuesForUser = useCallback(async () => {
+        await getTotalValuationValuesForUser(user.id).then((result) => {
+            setTotalValuationValuesForUser(result);
+        })
+    }, [user.id])
 
     useEffect(() => {
         if (user) {
@@ -48,12 +56,16 @@ export const OverviewIssues = ({titlesData}) => {
     }, [grades]);
 
     useEffect(() => {
+        fetchTotalValuationValuesForUser().then();
+    }, [fetchTotalValuationValuesForUser]);
+
+    useEffect(() => {
         const fetchTotalGradeValue = async () => {
             if (grades && grades.length) {
                 const value = await getTotalGradeValue(grades);
-                setTotalValue(value);
+                setNewCalculatedValuationValue(value);
             } else {
-                setTotalValue(0);
+                setNewCalculatedValuationValue(0);
             }
         }
         fetchTotalGradeValue().then();
@@ -63,6 +75,7 @@ export const OverviewIssues = ({titlesData}) => {
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light"}>
                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                <Logger log={totalValuationValuesForUser} stringify/>
                 {
                     userIssuesCount ?
                         <>
@@ -71,13 +84,13 @@ export const OverviewIssues = ({titlesData}) => {
                                 ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                             </p>
                             {
-                                !!totalValue &&
+                                !!newCalculatedValuationValue &&
                                 <>
                                     <p>{PANES.OVERVIEW.COLLECTING_VALUE_1}</p>
                                     <div className={"d-flex justify-content-center p-2 text-grade"}>
                                         <p className={"fs-x-large py-3 px-5 d-flex align-items-center rounded border border-grade"}>
                                             <Icon icon={valueIconDuoTone} size={"2x"} className={"me-3 "}/>
-                                            <span>{totalValue ? totalValue + " kr" : <CustomSpinner size={"2x"}/>}</span>
+                                            <span>{newCalculatedValuationValue ? newCalculatedValuationValue + " kr" : <CustomSpinner size={"2x"}/>}</span>
                                         </p>
                                     </div>
                                 </>

@@ -55,23 +55,6 @@ export const getRowByTableAndId = async (table, setData, id) => {
     }
 }
 
-export const getIssueDataWithPublisherAndTitle = async (setData, id) => {
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.ISSUES)
-            .select("*, publishers (*), titles (*), grade_values (*)")
-            .eq("id", id)
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data) {
-            setData(data[0]);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 export const getCountByTable = async (table, setData) => {
     try {
         let {count, error} = await supabase
@@ -170,6 +153,24 @@ export const getRowsByTableWithLimitAndOrderByColumn = async (table, column, set
         }
         if (data) {
             setData(data);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getTotalValuationValuesForUser = async (userId) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.USER_TOTAL_VALUATION_VALUES)
+            .select("*")
+            .match({user_id: userId})
+            .order("total_valuation_date", true)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            return data;
         }
     } catch (error) {
         console.error(error);

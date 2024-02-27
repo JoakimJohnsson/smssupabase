@@ -464,6 +464,7 @@ export const TABLES = {
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
     TITLES: "titles",
+    USER_TOTAL_VALUATION_VALUES: "user_total_valuation_values",
     USERS_TITLES: "users_titles",
     USERS_ISSUES: "users_issues",
     USERS_ISSUES_WANTED: "users_issues_wanted",
