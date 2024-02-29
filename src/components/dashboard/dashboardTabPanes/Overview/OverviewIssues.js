@@ -14,6 +14,7 @@ import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {valueIconDuoTone} from "../../../icons-duotone";
 import {Icon} from "../../../icons";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
+import {OverviewIssuesValueComparison} from "./OverviewIssuesValueComparison";
 
 
 export const OverviewIssues = ({titlesData}) => {
@@ -76,7 +77,7 @@ export const OverviewIssues = ({titlesData}) => {
         fetchTotalGradeValue().then();
     }, [grades, user.id]);
 
-    const doAddTotalValuationValue = useCallback( () => {
+    const doAddTotalValuationValue = useCallback(() => {
         // Function to delete oldest value
         const deleteValue = async (values) => {
             const idToDelete = values.pop().id;
@@ -100,7 +101,7 @@ export const OverviewIssues = ({titlesData}) => {
         }
     }, [newCalculatedValuationValue, totalValuationValuesForUser]);
 
-    useEffect( () => {
+    useEffect(() => {
         // Function to add value
         const addValue = async () => {
             await addTotalValuationValueForUser(user.id, newCalculatedValuationValue);
@@ -123,15 +124,24 @@ export const OverviewIssues = ({titlesData}) => {
                             </p>
                             {
                                 !!newCalculatedValuationValue ?
-                                <>
-                                    <p>{PANES.OVERVIEW.COLLECTING_VALUE_1}</p>
-                                    <div className={"d-flex justify-content-center p-2 text-grade"}>
-                                        <p className={"fs-x-large py-3 px-5 d-flex align-items-center rounded border border-grade"}>
-                                            <Icon icon={valueIconDuoTone} size={"2x"} className={"me-3 "}/>
-                                            <span>{newCalculatedValuationValue ? newCalculatedValuationValue + " kr" : <CustomSpinner size={"2x"}/>}</span>
-                                        </p>
-                                    </div>
-                                </>
+                                    <>
+                                        <p>{PANES.OVERVIEW.COLLECTING_VALUE_1}</p>
+                                        <div className={"d-flex justify-content-center p-2 text-grade"}>
+                                            <p className={"fs-x-large py-3 px-5 d-flex align-items-center rounded border border-grade"}>
+                                                <Icon icon={valueIconDuoTone} size={"2x"} className={"me-3 "}/>
+                                                <span>{newCalculatedValuationValue ? newCalculatedValuationValue + " kr" :
+                                                    <CustomSpinner size={"2x"}/>}</span>
+                                            </p>
+                                        </div>
+                                        {
+                                            totalValuationValuesForUser.length > 1 &&
+                                            <OverviewIssuesValueComparison
+                                                oldValue={totalValuationValuesForUser[1].total_valuation_value}
+                                                timeStamp={totalValuationValuesForUser[1].total_valuation_date}
+                                                newValue={newCalculatedValuationValue}
+                                            />
+                                        }
+                                    </>
                                     :
                                     <NoDataAvailable isValuation/>
                             }
