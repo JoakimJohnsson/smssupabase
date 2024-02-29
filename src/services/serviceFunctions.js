@@ -202,6 +202,17 @@ export const deleteTotalValuationValueForUserById = async (id) => {
     }
 }
 
+export const deleteAllTotalValuationValueForUserByUserId = async (userId) => {
+    try {
+        await supabase
+            .from(TABLES.USER_TOTAL_VALUATION_VALUES)
+            .delete()
+            .match({user_id: userId});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 // HANDLERS
 export const handleDelete = async (table, id, name, setData, initialData, image_filename, bucket, setInformationMessage) => {
     if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {

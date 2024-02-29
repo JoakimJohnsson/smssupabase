@@ -86,13 +86,14 @@ export const OverviewIssues = ({titlesData}) => {
         if (newCalculatedValuationValue) {
             // The latest value must not be the same as the new value
             // Also - no more than 20 values are allowed
-            if (totalValuationValuesForUser && totalValuationValuesForUser.length) {
+            if (totalValuationValuesForUser && totalValuationValuesForUser.length > 0) {
                 if (totalValuationValuesForUser.length >= 20) {
                     deleteValue(totalValuationValuesForUser).then();
                 }
                 return totalValuationValuesForUser[0].total_valuation_value !== newCalculatedValuationValue;
             } else {
-                return false;
+                // There were no values saved - add new value
+                return true;
             }
         } else {
             return false;

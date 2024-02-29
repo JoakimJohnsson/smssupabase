@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {getRowByTableAndId} from "../../services/serviceFunctions";
-import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../services/serviceFunctions";
+import {LABELS_AND_HEADINGS, MESSAGES, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -17,6 +17,8 @@ import {Icon} from "../icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {getWantedIssuesForUser} from "../../services/collectingService";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
+import {FunctionButton} from "../minis/FunctionButton";
+import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 
 
 export const User = () => {
@@ -48,6 +50,14 @@ export const User = () => {
             fetchUserData();
             doSetLoading(false);
         });
+    }
+
+    const handleDeleteValuationValues = () => {
+        if (!window.confirm(MESSAGES.CONFIRM.DELETE_VALUATION_VALUES)) {
+            setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
+            return false;
+        }
+        deleteAllTotalValuationValueForUserByUserId(user.id).then();
     }
 
     useEffect(() => {
@@ -87,13 +97,24 @@ export const User = () => {
                                 showFullInfo(user, profile) &&
                                 <div className={"col-12 col-md-7 col-xl-9"}>
                                     {
-                                        profile && profile.role === 2 && user.role !== 2 &&
-                                        (
-                                            user.role === 1 ?
-                                                <RemoveAdminButton user={user} handleChangeAdmin={handleChangeAdmin} useTooltip={false}/>
-                                                :
-                                                <AddAdminButton user={user} handleChangeAdmin={handleChangeAdmin} useTooltip={false}/>
-                                        )
+                                        profile && profile.role === 2 &&
+                                        <>
+                                            {
+                                                user.role !== 2 &&
+                                                (
+                                                    user.role === 1 ?
+                                                        <RemoveAdminButton user={user} handleChangeAdmin={handleChangeAdmin} useTooltip={false}/>
+                                                        :
+                                                        <AddAdminButton user={user} handleChangeAdmin={handleChangeAdmin} useTooltip={false}/>
+                                                )
+                                            }
+                                            <FunctionButton
+                                                variant={"danger"}
+                                                icon={faFaceExplode}
+                                                    onClick={handleDeleteValuationValues}
+                                                label={LABELS_AND_HEADINGS.REMOVE_ALL_VALUATION_VALUES_FOR_USER}
+                                            />
+                                        </>
                                     }
                                     <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                                     <p className={"mb-4"}>
