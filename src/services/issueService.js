@@ -155,7 +155,7 @@ export const getAllIssuesWithTitleAndPublisherWithLimit = async (setData, limit,
             .from(TABLES.ISSUES)
             .select("*, publishers (*), titles (*)")
             .limit(limit)
-            .order("created_at", {ascending})
+            .order("created_at", {ascending: true})
         if (error && status !== 406) {
             console.error(error);
         }

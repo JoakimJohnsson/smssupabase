@@ -2,7 +2,7 @@ import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../helpers/constants";
 import {deleteImageFromBucketSimple} from "./imageService";
 import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectingService";
-import {doesEmailExist} from "../helpers/functions";
+import {doesEmailExist, getCurrentDateAsISOString} from "../helpers/functions";
 
 // GENERIC FUNCTIONS
 export const getRowsByTable = async (table, setData) => {
@@ -147,7 +147,7 @@ export const getRowsByTableWithLimitAndOrderByColumn = async (table, column, set
             .from(table)
             .select("*")
             .limit(limit)
-            .order(column, {ascending})
+            .order(column, {ascending: true})
         if (error && status !== 406) {
             console.error(error);
         }
@@ -165,7 +165,7 @@ export const getTotalValuationValuesForUser = async (userId) => {
             .from(TABLES.USER_TOTAL_VALUATION_VALUES)
             .select("*")
             .match({user_id: userId})
-            .order("total_valuation_date", true)
+            .order("total_valuation_date", {ascending: false})
         if (error && status !== 406) {
             console.error(error);
         }
@@ -177,6 +177,30 @@ export const getTotalValuationValuesForUser = async (userId) => {
     }
 }
 
+export const addTotalValuationValueForUser = async (userId, value) => {
+    try {
+        await supabase
+            .from(TABLES.USER_TOTAL_VALUATION_VALUES)
+            .insert([{
+                user_id: userId,
+                total_valuation_value: value,
+                total_valuation_date: getCurrentDateAsISOString()
+            }]);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const deleteTotalValuationValueForUserById = async (id) => {
+    try {
+        await supabase
+            .from(TABLES.USER_TOTAL_VALUATION_VALUES)
+            .delete()
+            .match({id: id});
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 // HANDLERS
 export const handleDelete = async (table, id, name, setData, initialData, image_filename, bucket, setInformationMessage) => {

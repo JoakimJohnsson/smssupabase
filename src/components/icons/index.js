@@ -40,6 +40,7 @@ import {
     faRectangleHistoryCirclePlus,
     faRectangleHistoryCircleUser,
     faSackDollar,
+    faSadTear,
     faSend,
     faScaleUnbalanced,
     faShield,
@@ -92,6 +93,7 @@ const iconMap = {
     faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
     faRectangleHistoryCircleUser: faRectangleHistoryCircleUser,
     faSackDollar: faSackDollar,
+    faSadTear: faSadTear,
     faScaleUnbalanced: faScaleUnbalanced,
     faSend: faSend,
     faShield: faShield,
@@ -142,6 +144,7 @@ export const settingsIcon = faGears;
 export const startIcon = faHouse;
 export const statusIconActive = faLightbulbOn;
 export const statusIconFail = faTriangleExclamation;
+export const statusIconSadFail = faSadTear;
 export const statusIconInactive = faLightbulb;
 export const statusIconRead = faEye;
 export const statusIconUnRead = faEyeSlash;

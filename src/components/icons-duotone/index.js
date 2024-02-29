@@ -38,6 +38,7 @@ import {
     faRectangleHistoryCirclePlus,
     faRectangleHistoryCircleUser,
     faSackDollar,
+    faSadTear,
     faScaleUnbalanced,
     faSend,
     faShield,
@@ -90,6 +91,7 @@ const iconMapDuoTone = {
     faRectangleHistoryCirclePlusDT: faRectangleHistoryCirclePlus,
     faRectangleHistoryCircleUserDT: faRectangleHistoryCircleUser,
     faSackDollarDT: faSackDollar,
+    faSadTearDT: faSadTear,
     faScaleUnbalancedDT: faScaleUnbalanced,
     faSendDT: faSend,
     faShieldDT: faShield,
@@ -135,6 +137,7 @@ export const settingsIconDuoTone = faGears;
 export const startIconDuoTone = faHouse;
 export const statusIconActiveDuoTone = faLightbulbOn;
 export const statusIconFailDuoTone = faTriangleExclamation;
+export const statusIconSadFailDuoTone = faSadTear;
 export const statusIconUnreadDuoTone = faEyeSlash;
 export const statusIconTodoDuoTone = faBellExclamation;
 export const statusIconSuccessDuoTone = faBadgeCheck;

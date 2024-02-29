@@ -1,6 +1,11 @@
 import React, {useState, useEffect, useCallback} from "react";
 import {LABELS_AND_HEADINGS, PANES, TABLES} from "../../../../helpers/constants";
-import {getRowCountByTableAndUserId, getTotalValuationValuesForUser} from "../../../../services/serviceFunctions";
+import {
+    addTotalValuationValueForUser,
+    deleteTotalValuationValueForUserById,
+    getRowCountByTableAndUserId,
+    getTotalValuationValuesForUser
+} from "../../../../services/serviceFunctions";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
 import {useAppContext} from "../../../../context/AppContext";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
@@ -8,7 +13,7 @@ import {getAverageGrade, getTotalGradeValue} from "../../../../helpers/functions
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {valueIconDuoTone} from "../../../icons-duotone";
 import {Icon} from "../../../icons";
-import {Logger} from "../../../minis/Logger";
+import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 
 
 export const OverviewIssues = ({titlesData}) => {
@@ -69,13 +74,45 @@ export const OverviewIssues = ({titlesData}) => {
             }
         }
         fetchTotalGradeValue().then();
-    }, [grades]);
+    }, [grades, user.id]);
+
+    const doAddTotalValuationValue = useCallback( () => {
+        // Function to delete oldest value
+        const deleteValue = async (values) => {
+            const idToDelete = values.pop().id;
+            await deleteTotalValuationValueForUserById(idToDelete);
+        }
+        // We must have a new calculated value
+        if (newCalculatedValuationValue) {
+            // The latest value must not be the same as the new value
+            // Also - no more than 20 values are allowed
+            if (totalValuationValuesForUser && totalValuationValuesForUser.length) {
+                if (totalValuationValuesForUser.length >= 20) {
+                    deleteValue(totalValuationValuesForUser).then();
+                }
+                return totalValuationValuesForUser[0].total_valuation_value !== newCalculatedValuationValue;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }, [newCalculatedValuationValue, totalValuationValuesForUser]);
+
+    useEffect( () => {
+        // Function to add value
+        const addValue = async () => {
+            await addTotalValuationValueForUser(user.id, newCalculatedValuationValue);
+        }
+        if (doAddTotalValuationValue()) {
+            addValue().then();
+        }
+    }, [doAddTotalValuationValue, newCalculatedValuationValue, user.id]);
 
     return (
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light"}>
                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
-                <Logger log={totalValuationValuesForUser} stringify/>
                 {
                     userIssuesCount ?
                         <>
@@ -84,7 +121,7 @@ export const OverviewIssues = ({titlesData}) => {
                                 ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                             </p>
                             {
-                                !!newCalculatedValuationValue &&
+                                !!newCalculatedValuationValue ?
                                 <>
                                     <p>{PANES.OVERVIEW.COLLECTING_VALUE_1}</p>
                                     <div className={"d-flex justify-content-center p-2 text-grade"}>
@@ -94,8 +131,9 @@ export const OverviewIssues = ({titlesData}) => {
                                         </p>
                                     </div>
                                 </>
+                                    :
+                                    <NoDataAvailable isValuation/>
                             }
-
                             <h3>{PANES.OVERVIEW.GRADE}</h3>
                             <p>{PANES.OVERVIEW.COLLECTING_ISSUES_GRADE_1} <span
                                 className={averageGrade > 6 ? "text-success" : "text-danger"}>{averageGrade}</span>.</p>
