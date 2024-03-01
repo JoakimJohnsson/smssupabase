@@ -53,6 +53,59 @@ import {
     faUsers
 } from "@fortawesome/pro-regular-svg-icons";
 
+import {
+    faArrowDownToArc as faArrowDownToArcDT,
+    faArrowRightFromArc as faArrowRightFromArcDT,
+    faBellExclamation as faBellExclamationDT,
+    faBadge as faBadgeDT,
+    faBadgeCheck as faBadgeCheckDT,
+    faBomb as faBombDT,
+    faBuildingColumns as faBuildingColumnsDT,
+    faClipboardListCheck as faClipboardListCheckDT,
+    faCalendarHeart as faCalendarHeartDT,
+    faChartLine as faChartLineDT,
+    faCircleInfo as faCircleInfoDT,
+    faComet as faCometDT,
+    faCommentsQuestion as faCommentsQuestionDT,
+    faDisplayChartUp as faDisplayChartUpDT,
+    faEarthAmericas as faEarthAmericasDT,
+    faEye as faEyeDT,
+    faEyeSlash as faEyeSlashDT,
+    faFaceExplode as faFaceExplodeDT,
+    faFile as faFileDT,
+    faFileImage as faFileImageDT,
+    faFiles as faFilesDT,
+    faFileLines as faFileLinesDT,
+    faFloppyDisk as faFloppyDiskDT,
+    faGears as faGearsDT,
+    faHeartCirclePlus as faHeartCirclePlusDT,
+    faHeartCrack as faHeartCrackDT,
+    faHouse as faHouseDT,
+    faKey as faKeyDT,
+    faLink as faLinkDT,
+    faListTimeline as faListTimelineDT,
+    faLightbulb as faLightbulbDT,
+    faLightbulbOn as faLightbulbOnDT,
+    faMagnifyingGlassDollar as faMagnifyingGlassDollarDT,
+    faMosquito as faMosquitoDT,
+    faMoneyCheckPen as faMoneyCheckPenDT,
+    faPresentationScreen as faPresentationScreenDT,
+    faRectangleHistoryCirclePlus as faRectangleHistoryCirclePlusDT,
+    faRectangleHistoryCircleUser as faRectangleHistoryCircleUserDT,
+    faSackDollar as faSackDollarDT,
+    faSadTear as faSadTearDT,
+    faScaleUnbalanced as faScaleUnbalancedDT,
+    faSend as faSendDT,
+    faShield as faShieldDT,
+    faShieldCat as faShieldCatDT,
+    faSpider as faSpiderDT,
+    faThoughtBubble as faThoughtBubbleDT,
+    faTriangleExclamation as faTriangleExclamationDT,
+    faTypewriter as faTypewriterDT,
+    faUser as faUserDT,
+    faUsers as faUsersDT
+} from "@fortawesome/pro-duotone-svg-icons";
+
 const iconMap = {
     faArrowDownToArc: faArrowDownToArc,
     faArrowRightFromArc: faArrowRightFromArc,
@@ -106,8 +159,65 @@ const iconMap = {
     faUsers: faUsers
 }
 
+const iconMapDuoTone = {
+    faArrowDownToArcDT: faArrowDownToArcDT,
+    faArrowRightFromArcDT: faArrowRightFromArcDT,
+    faBellExclamationDT: faBellExclamationDT,
+    faBadgeDT: faBadgeDT,
+    faBadgeCheckDT: faBadgeCheckDT,
+    faBombDT: faBombDT,
+    faBuildingColumnsDT: faBuildingColumnsDT,
+    faClipboardListCheckDT: faClipboardListCheckDT,
+    faCalendarHeartDT: faCalendarHeartDT,
+    faChartLineDT: faChartLineDT,
+    faCircleInfoDT: faCircleInfoDT,
+    faCometDT: faCometDT,
+    faCommentsQuestionDT: faCommentsQuestionDT,
+    faDisplayChartUpDT: faDisplayChartUpDT,
+    faEarthAmericasDT: faEarthAmericasDT,
+    faEyeDT: faEyeDT,
+    faEyeSlashDT: faEyeSlashDT,
+    faFaceExplodeDT: faFaceExplodeDT,
+    faFileDT: faFileDT,
+    faFileImageDT: faFileImageDT,
+    faFilesDT: faFilesDT,
+    faFileLinesDT: faFileLinesDT,
+    faFloppyDiskDT: faFloppyDiskDT,
+    faGearsDT: faGearsDT,
+    faHeartCirclePlusDT: faHeartCirclePlusDT,
+    faHeartCrackDT: faHeartCrackDT,
+    faHouseDT: faHouseDT,
+    faKeyDT: faKeyDT,
+    faLinkDT: faLinkDT,
+    faListTimelineDT: faListTimelineDT,
+    faLightbulbDT: faLightbulbDT,
+    faLightbulbOnDT: faLightbulbOnDT,
+    faMagnifyingGlassDollarDT: faMagnifyingGlassDollarDT,
+    faMosquitoDT: faMosquitoDT,
+    faMoneyCheckPenDT: faMoneyCheckPenDT,
+    faPresentationScreenDT: faPresentationScreenDT,
+    faRectangleHistoryCirclePlusDT: faRectangleHistoryCirclePlusDT,
+    faRectangleHistoryCircleUserDT: faRectangleHistoryCircleUserDT,
+    faSackDollarDT: faSackDollarDT,
+    faSadTearDT: faSadTearDT,
+    faScaleUnbalancedDT: faScaleUnbalancedDT,
+    faSendDT: faSendDT,
+    faShieldDT: faShieldDT,
+    faShieldCatDT: faShieldCatDT,
+    faSpiderDT: faSpiderDT,
+    faThoughtBubbleDT: faThoughtBubbleDT,
+    faTriangleExclamationDT: faTriangleExclamationDT,
+    faTypewriterDT: faTypewriterDT,
+    faUserDT: faUserDT,
+    faUsersDT: faUsersDT
+}
+
 export const getIconByName = (iconName) => {
     return iconMap[iconName] || null;
+}
+
+export const getDuoToneIconByName = (iconName) => {
+    return iconMapDuoTone[iconName + "DT"] || null;
 }
 
 export const Icon = ({icon, size, className, spin = false}) => {
@@ -116,6 +226,7 @@ export const Icon = ({icon, size, className, spin = false}) => {
     )
 }
 
+// Regular
 export const adminIcon = faShieldCat;
 export const notAdminIcon = faShield;
 export const collectionPlusIcon = faRectangleHistoryCirclePlus;
@@ -155,3 +266,43 @@ export const titleIcon = faFile;
 export const usersIcon = faUsers;
 export const userIcon = faUser;
 export const valueIcon = faSackDollar;
+
+// DuoTone
+export const adminIconDuoTone = faShieldCatDT;
+export const notAdminIconDuoTone = faShieldDT;
+export const collectionPlusIconDuoTone = faRectangleHistoryCirclePlusDT;
+export const collectionCheckIconDuoTone = faClipboardListCheckDT;
+export const collectionSearchIconDuoTone = faMagnifyingGlassDollarDT;
+export const dashboardIconDuoTone = faChartLineDT;
+export const dataIconDuoTone = faListTimelineDT;
+export const dateIconDuoTone = faCalendarHeartDT;
+export const editIconDuoTone = faMoneyCheckPenDT;
+export const globalIconDuoTone = faEarthAmericasDT;
+export const gradingIconDuoTone = faScaleUnbalancedDT;
+export const imageIconDuoTone = faFileImageDT;
+export const infoIconDuoTone = faCircleInfoDT;
+export const issueIconDuoTone = faFileLinesDT;
+export const keyIconDuoTone = faKeyDT;
+export const loginIconDuoTone = faArrowDownToArcDT;
+export const logoIconDuoTone = faCometDT;
+export const marvelKlubbenIconDuoTone = faBadgeDT;
+export const questionIconDuoTone = faCommentsQuestionDT;
+export const logoutIconDuoTone = faArrowRightFromArcDT;
+export const otherCollectionsIconDuoTone = faRectangleHistoryCircleUserDT;
+export const overviewIconDuoTone = faPresentationScreenDT;
+export const publishersIconDuoTone = faBuildingColumnsDT;
+export const registerIconDuoTone = faHeartCirclePlusDT;
+export const saveIconDuoTone = faFloppyDiskDT;
+export const settingsIconDuoTone = faGearsDT;
+export const startIconDuoTone = faHouseDT;
+export const statusIconActiveDuoTone = faLightbulbOnDT;
+export const statusIconFailDuoTone = faTriangleExclamationDT;
+export const statusIconSadFailDuoTone = faSadTearDT;
+export const statusIconUnreadDuoTone = faEyeSlashDT;
+export const statusIconTodoDuoTone = faBellExclamationDT;
+export const statusIconSuccessDuoTone = faBadgeCheckDT;
+export const titlesIconDuoTone = faFilesDT;
+export const titleIconDuoTone = faFileDT;
+export const usersIconDuoTone = faUsersDT;
+export const userIconDuoTone = faUserDT;
+export const valueIconDuoTone = faSackDollarDT;

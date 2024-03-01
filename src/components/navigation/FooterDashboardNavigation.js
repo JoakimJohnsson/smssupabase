@@ -1,14 +1,14 @@
 import React from "react";
 import {PANES, ROUTES} from "../../helpers/constants";
 import {
+    Icon,
     otherCollectionsIconDuoTone,
     overviewIconDuoTone,
     titlesIconDuoTone,
     valueIconDuoTone
-} from "../icons-duotone";
+} from "../icons";
 import {Nav} from "react-bootstrap";
 import {FooterDashboardNavLink} from "./FooterDashboardNavLink";
-import {Icon} from "../icons";
 
 
 export const FooterDashboardNavigation = () => {

@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
-import {Icon, sendIcon} from "./icons";
-import {questionIconDuoTone} from "./icons-duotone";
+import {Icon, sendIcon, questionIconDuoTone} from "./icons";
 import {requestPasswordResetForEmail} from "../services/serviceFunctions";
+
 
 const ForgotPassword = () => {
 

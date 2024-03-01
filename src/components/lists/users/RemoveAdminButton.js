@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {CustomSpinner} from "../../minis/CustomSpinner";
-import {adminIconDuoTone} from "../../icons-duotone";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {getUserName} from "../../../helpers/functions";
-import {Icon} from "../../icons";
+import {Icon, adminIconDuoTone} from "../../icons";
 import {FunctionButton} from "../../minis/FunctionButton";
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import {PANES, ROUTES} from "../../../../helpers/constants";
-import {valueIconDuoTone} from "../../../icons-duotone";
+import {valueIconDuoTone} from "../../../icons";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
 
 
@@ -12,16 +12,23 @@ export const OverviewIssuesValueComparison = ({oldValue, newValue, timeStamp}) =
     return (
         <>
             {
-                oldValue < newValue ?
-                    <p>
-                        {PANES.OVERVIEW.COLLECTING_VALUE_2} <span
-                        className={"text-success"}>+{newValue - oldValue}</span> kr {PANES.OVERVIEW.COLLECTING_VALUE_4} ({dateString}).
-                    </p>
+                oldValue === newValue ?
+                    (
+                        <p>{PANES.OVERVIEW.COLLECTING_VALUE_6}</p>
+                    )
                     :
-                    <p>
-                        {PANES.OVERVIEW.COLLECTING_VALUE_3} <span
-                        className={"text-danger"}>-{oldValue - newValue}</span> kr {PANES.OVERVIEW.COLLECTING_VALUE_4} ({dateString}).
-                    </p>
+                    (
+                        oldValue < newValue ?
+                            <p>
+                                {PANES.OVERVIEW.COLLECTING_VALUE_2} <span
+                                className={"text-success"}>+{newValue - oldValue}</span> kr {PANES.OVERVIEW.COLLECTING_VALUE_4} ({dateString}).
+                            </p>
+                            :
+                            <p>
+                                {PANES.OVERVIEW.COLLECTING_VALUE_3} <span
+                                className={"text-danger"}>-{oldValue - newValue}</span> kr {PANES.OVERVIEW.COLLECTING_VALUE_4} ({dateString}).
+                            </p>
+                    )
             }
             <p>{PANES.OVERVIEW.COLLECTING_VALUE_5}</p>
             <IconLinkCtaLg

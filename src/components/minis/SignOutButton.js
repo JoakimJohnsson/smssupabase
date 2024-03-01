@@ -2,9 +2,8 @@ import {useNavigate} from "react-router-dom";
 import React from "react";
 import {useAppContext} from "../../context/AppContext";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {logoutIconDuoTone} from "../icons-duotone";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
-import {Icon} from "../icons";
+import {Icon, logoutIconDuoTone} from "../icons";
 
 
 export const SignOutButton = ({mobile}) => {

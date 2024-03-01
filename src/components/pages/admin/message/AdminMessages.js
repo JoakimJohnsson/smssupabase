@@ -7,11 +7,10 @@ import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {filterGlobalMessage, handleBacking} from "../../../../helpers/functions";
 import {MessagesList} from "../../../message/MessagesList";
 import {AddMessage} from "../../../message/AddMessage";
-import {globalIconDuoTone} from "../../../icons-duotone";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {Icon} from "../../../icons";
+import {Icon, globalIconDuoTone} from "../../../icons";
 
 
 export const AdminMessages = () => {

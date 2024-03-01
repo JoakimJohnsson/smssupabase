@@ -1,6 +1,9 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {SkipLink} from "../pages/pagecomponents/SkipLink";
+import {IconLinkCta} from "../minis/IconLinkCta";
 import {
+    Icon,
     collectionCheckIconDuoTone,
     collectionPlusIconDuoTone,
     collectionSearchIconDuoTone,
@@ -8,10 +11,7 @@ import {
     loginIconDuoTone,
     logoIconDuoTone,
     registerIconDuoTone
-} from "../icons-duotone";
-import {SkipLink} from "../pages/pagecomponents/SkipLink";
-import {IconLinkCta} from "../minis/IconLinkCta";
-import {Icon} from "../icons";
+} from "../icons";
 
 
 export const HeroHeader = () => {

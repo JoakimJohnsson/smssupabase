@@ -1,7 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
-import {Icon} from "../icons";
-import {statusIconSadFailDuoTone, valueIconDuoTone} from "../icons-duotone";
+import {Icon, statusIconSadFailDuoTone, valueIconDuoTone} from "../icons";
 
 
 export const NoDataAvailable = ({isUser = false, isValuation = false}) => {

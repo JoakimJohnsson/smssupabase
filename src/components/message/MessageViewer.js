@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {getIconByName, Icon} from "../icons";
 import {getDataIcon} from "../../helpers/functions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {FriendlyDate} from "../minis/FriendlyDate";
 import {
+    getIconByName,
+    Icon,
     statusIconActiveDuoTone,
     statusIconTodoDuoTone,
     statusIconUnreadDuoTone
-} from "../icons-duotone";
+} from "../icons";
 import {Link} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 

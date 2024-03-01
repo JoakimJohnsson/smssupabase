@@ -1,7 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
-import {infoIconDuoTone} from "./icons-duotone";
-import {Icon} from "./icons";
+import {Icon, infoIconDuoTone} from "./icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 
 

@@ -8,8 +8,7 @@ import {getIssuesByTitleId} from "../../../../services/issueService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
 import {checkGradingStatus} from "../../../../services/collectingService";
-import {gradingIconDuoTone, infoIconDuoTone, statusIconFailDuoTone, statusIconSuccessDuoTone} from "../../../icons-duotone";
-import {Icon} from "../../../icons";
+import {Icon, gradingIconDuoTone, infoIconDuoTone, statusIconFailDuoTone, statusIconSuccessDuoTone} from "../../../icons";
 
 
 export const MyTitlesPaneListItem = ({title}) => {

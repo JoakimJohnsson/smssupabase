@@ -5,9 +5,9 @@ import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
 import {LiNavItem} from "../lists/LiNavItem";
 import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
-import {Icon} from "../icons";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
+    Icon,
     adminIconDuoTone,
     dashboardIconDuoTone,
     issueIconDuoTone, logoIconDuoTone,
@@ -18,7 +18,7 @@ import {
     titlesIconDuoTone,
     usersIconDuoTone,
     valueIconDuoTone
-} from "../icons-duotone";
+} from "../icons";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
 

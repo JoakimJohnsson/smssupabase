@@ -11,8 +11,7 @@ import {useAppContext} from "../../../../context/AppContext";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
 import {getAverageGrade, getTotalGradeValue} from "../../../../helpers/functions";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {valueIconDuoTone} from "../../../icons-duotone";
-import {Icon} from "../../../icons";
+import {Icon, valueIconDuoTone} from "../../../icons";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {OverviewIssuesValueComparison} from "./OverviewIssuesValueComparison";
 
@@ -80,7 +79,7 @@ export const OverviewIssues = ({titlesData}) => {
     const doAddTotalValuationValue = useCallback(() => {
         // Function to delete oldest value
         const deleteValue = async (values) => {
-            const idToDelete = values.pop().id;
+            const idToDelete = values[values.length - 1].id;
             await deleteTotalValuationValueForUserById(idToDelete);
         }
         // We must have a new calculated value

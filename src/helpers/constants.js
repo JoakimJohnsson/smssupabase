@@ -492,6 +492,7 @@ export const PANES = {
         COLLECTING_VALUE_3: "Vilket är en minskning med",
         COLLECTING_VALUE_4: "sedan senast sparade värdering",
         COLLECTING_VALUE_5: "Gå till värderingspanelen för mer information.",
+        COLLECTING_VALUE_6: "Ingen värdeförändring.",
         COLLECTING_ISSUES_1: "Totalt ingår",
         COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
         COLLECTING_ISSUES_3: "komplett.",
