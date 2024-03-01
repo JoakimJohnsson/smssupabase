@@ -6,7 +6,6 @@ import {getIssueName, renderGradeValue} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {Icon} from "../icons";
 import {faArrowUpRightFromSquare, faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
@@ -33,11 +32,12 @@ import {FunctionButton} from "../minis/FunctionButton";
 import {EditGrade} from "../grade/EditGrade";
 import {IconButton} from "../minis/IconButton";
 import {
+    Icon,
     editIconDuoTone,
     publishersIconDuoTone,
     titleIconDuoTone,
     titlesIconDuoTone,
-} from "../icons-duotone";
+} from "../icons";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 

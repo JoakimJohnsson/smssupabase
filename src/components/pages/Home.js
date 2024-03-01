@@ -4,7 +4,6 @@ import {useAppContext} from "../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {HomePublic} from "./HomePublic";
 import Footer from "../Footer";
-import {Icon} from "../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {InformationAlert} from "../minis/InformationAlert";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../services/serviceFunctions";
@@ -17,10 +16,13 @@ import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {sortByName} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {
+    Icon,
     otherCollectionsIconDuoTone,
-    overviewIconDuoTone, settingsIconDuoTone,
-    titlesIconDuoTone, valueIconDuoTone,
-} from "../icons-duotone";
+    overviewIconDuoTone,
+    settingsIconDuoTone,
+    titlesIconDuoTone,
+    valueIconDuoTone,
+} from "../icons";
 import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 

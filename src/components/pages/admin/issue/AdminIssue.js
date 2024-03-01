@@ -5,7 +5,7 @@ import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName} from "../../../../helpers/functions";
-import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
+import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";

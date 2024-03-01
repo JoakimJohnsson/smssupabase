@@ -5,8 +5,7 @@ import {MESSAGES, CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/const
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
-import {Icon, registerIcon} from "../icons";
-import {registerIconDuoTone} from "../icons-duotone";
+import {Icon, registerIcon, registerIconDuoTone} from "../icons";
 
 
 export const Signup = () => {

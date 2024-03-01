@@ -8,9 +8,8 @@ import {RemoveAdminButton} from "./RemoveAdminButton";
 import {AddAdminButton} from "./AddAdminButton";
 import {getUserName, hasImage} from "../../../helpers/functions";
 import {Link} from "react-router-dom";
-import {adminIconDuoTone} from "../../icons-duotone";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
-import {Icon} from "../../icons";
+import {Icon, adminIconDuoTone} from "../../icons";
 
 
 export const UsersList = ({usersData, setUsersData, limited = false, query = ""}) => {

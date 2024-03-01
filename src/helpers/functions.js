@@ -212,6 +212,7 @@ export const sortByDateCreated = (a, b) => {
     if (a.created_at > b.created_at) return 1;
     return 0;
 }
+
 export const sortByDateCreatedDesc = (a, b) => {
     if (a.created_at < b.created_at) return 1;
     if (a.created_at > b.created_at) return -1;
@@ -266,8 +267,12 @@ export const hasTrueValue = (stringArray) => {
     return false;
 };
 
-export const getCurrentDate = () => {
+export const getCurrentDateAsISOString = () => {
     return (new Date()).toISOString();
+}
+
+export const getCurrentDate = () => {
+    return new Date();
 }
 
 export const getAverageGrade = (grades) => {

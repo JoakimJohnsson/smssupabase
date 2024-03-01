@@ -3,8 +3,8 @@ import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/AppContext";
 import {simpleInputValidation} from "../helpers/validations";
 import {CLASSES, LABELS_AND_HEADINGS} from "../helpers/constants";
-import {Icon, loginIcon} from "./icons";
-import {loginIconDuoTone} from "./icons-duotone";
+import {Icon, loginIcon, loginIconDuoTone} from "./icons";
+
 
 const Login = () => {
 
