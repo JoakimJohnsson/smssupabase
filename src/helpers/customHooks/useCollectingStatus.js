@@ -23,12 +23,13 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
     }, [issueId, userId]);
 
     useEffect(() => {
+        fetchGrades();
         // Reset value before checking
         setIsCollectingIssue(false);
         if (userId && issueId) {
             checkIfIsCollectingIssue(userId, issueId, setIsCollectingIssue).then();
         }
-    }, [userId, issueId]);
+    }, [userId, issueId, fetchGrades]);
 
     useEffect(() => {
         // Reset value before checking
@@ -45,10 +46,6 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
             checkIfIsUpgradingIssue(userId, issueId, setIsUpgradingIssue).then();
         }
     }, [userId, issueId]);
-
-    useEffect(() => {
-        fetchGrades();
-    }, [fetchGrades]);
 
     useEffect(() => {
         const checkCollectingTitleStatus = async () => {
