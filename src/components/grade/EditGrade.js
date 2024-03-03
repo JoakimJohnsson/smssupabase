@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {ButtonGroup} from "react-bootstrap";
-import {editGrade, removeGrade} from "../../services/collectingService";
+import {editGrade, deleteGrade} from "../../services/collectingService";
 import {useAppContext} from "../../context/AppContext";
 import {GRADE_RADIOS, GRADE_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {IconButton} from "../minis/IconButton";
@@ -29,7 +29,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
     }
 
     const handleDeleteGrade = () => {
-        removeGrade(grade.id, user.id, issue.id).then(() => fetchGrades());
+        deleteGrade(grade.id, user.id, issue.id).then(() => fetchGrades());
     }
 
     return radioValue && (

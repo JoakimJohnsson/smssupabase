@@ -14,7 +14,7 @@ import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingSta
 export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false, listViewMissing, doUpdate}) => {
 
     const {setInformationMessage, user} = useAppContext();
-    const {isCollectingIssue, setIsCollectingIssue, grades} = useCollectingStatus(user.id, issue.id, false);
+    const {isCollectingIssue, setIsCollectingIssue, grades, fetchGrades} = useCollectingStatus(user.id, issue.id, false);
     const {displayName} = useIssueDisplayName(issue);
 
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
@@ -22,6 +22,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
 
     const handleClick = async () => {
         handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);
+        fetchGrades();
         if (fetchTitleProgress) {
             setTimeout(() => {
                 fetchTitleProgress();

@@ -28,7 +28,7 @@ export const updateIsValued = async (titleId, isValued) => {
     }
 }
 
-export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm) => {
+export const deleteTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm) => {
     if (doConfirm && !window.confirm(MESSAGES.CONFIRM.STOP_COLLECTING)) {
         return false;
     }
@@ -37,7 +37,9 @@ export const removeTitleFromCollection = async (userId, titleId, setInformationM
         issueIds = result;
     })
     issueIds.forEach((issueId) => {
-        removeIssueFromCollectionSimple(userId, issueId);
+        deleteIssueFromCollectionSimple(userId, issueId);
+
+        deleteAllGradesByUserAndIssue(userId, issueId);
     })
     try {
         let {error, status} = await supabase
@@ -138,7 +140,7 @@ export const addIssueToCollection = async (userId, issueId) => {
     }
 }
 
-export const removeIssueFromCollection = async (userId, issueId, setInformationMessage, setIsCollectingIssue) => {
+export const deleteIssueFromCollection = async (userId, issueId, setInformationMessage, setIsCollectingIssue) => {
     try {
         let {error, status} = await supabase
             .from(TABLES.USERS_ISSUES)
@@ -154,7 +156,7 @@ export const removeIssueFromCollection = async (userId, issueId, setInformationM
     }
 }
 
-export const removeIssueFromCollectionSimple = async (userId, issueId) => {
+export const deleteIssueFromCollectionSimple = async (userId, issueId) => {
     try {
         await supabase
             .from(TABLES.USERS_ISSUES)
@@ -278,12 +280,23 @@ export const addGrade = async (userId, issueId) => {
     }
 }
 
-export const removeGrade = async (gradeId, userId, issueId) => {
+export const deleteGrade = async (gradeId, userId, issueId) => {
     try {
         await supabase
             .from(TABLES.GRADES)
             .delete()
             .match({id: gradeId, user_id: userId, issue_id: issueId});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const deleteAllGradesByUserAndIssue = async (userId, issueId) => {
+    try {
+        await supabase
+            .from(TABLES.GRADES)
+            .delete()
+            .match({user_id: userId, issue_id: issueId});
     } catch (error) {
         console.error(error);
     }

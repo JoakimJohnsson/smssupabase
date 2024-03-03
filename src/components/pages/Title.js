@@ -14,7 +14,12 @@ import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../servi
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
-import {addIssueToCollection, checkGradingStatus, removeIssueFromCollectionSimple} from "../../services/collectingService";
+import {
+    addIssueToCollection,
+    checkGradingStatus,
+    deleteAllGradesByUserAndIssue,
+    deleteIssueFromCollectionSimple
+} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
 import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons";
 import {IconLink} from "../minis/IconLink";
@@ -86,10 +91,12 @@ export const Title = () => {
         issuesData.map((issue) => {
             setAddIssue(false);
             setAddIssue(false);
-            return removeIssueFromCollectionSimple(user.id, issue.id).then(() => {
-                fetchTitleAndIssuesData();
-                setRemoveIssue(true);
-                setAddIssue(false);
+            return deleteIssueFromCollectionSimple(user.id, issue.id).then(() => {
+                deleteAllGradesByUserAndIssue(user.id, issue.id).then(() => {
+                    fetchTitleAndIssuesData();
+                    setRemoveIssue(true);
+                    setAddIssue(false);
+                });
             })
         });
     }

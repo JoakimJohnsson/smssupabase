@@ -1,7 +1,13 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../helpers/constants";
 import {deleteImageFromBucketSimple} from "./imageService";
-import {addIssueToCollection, addTitleToCollection, removeIssueFromCollection, removeTitleFromCollection} from "./collectingService";
+import {
+    addIssueToCollection,
+    addTitleToCollection,
+    deleteAllGradesByUserAndIssue,
+    deleteIssueFromCollection,
+    deleteTitleFromCollection
+} from "./collectingService";
 import {doesEmailExist, getCurrentDateAsISOString} from "../helpers/functions";
 
 // GENERIC FUNCTIONS
@@ -266,7 +272,7 @@ export const handleMultipleDeleteNoConfirm = async (table, id, name, setData, in
 
 export const handleCollectingTitle = (userId, titleId, setInformationMessage, isCollectingTitle, setIsCollectingTitle, doConfirm) => {
     if (isCollectingTitle) {
-        removeTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm).then(() => {
+        deleteTitleFromCollection(userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm).then(() => {
         });
 
     } else {
@@ -276,7 +282,8 @@ export const handleCollectingTitle = (userId, titleId, setInformationMessage, is
 
 export const handleCollectingIssue = (userId, issueId, setInformationMessage, isCollectingIssue, setIsCollectingIssue) => {
     if (isCollectingIssue) {
-        removeIssueFromCollection(userId, issueId, setInformationMessage, setIsCollectingIssue).then(() => {
+        deleteIssueFromCollection(userId, issueId, setInformationMessage, setIsCollectingIssue).then(() => {
+            deleteAllGradesByUserAndIssue(userId, issueId).then();
         });
     } else {
         addIssueToCollection(userId, issueId).then(() => setIsCollectingIssue(true));
