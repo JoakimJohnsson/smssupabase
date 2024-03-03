@@ -1,10 +1,6 @@
 import React, {useState, useEffect, useCallback} from "react";
 import {CONFIG, LABELS_AND_HEADINGS, PANES, ROUTES} from "../../../../helpers/constants";
-import {
-    addTotalValuationValueForUser,
-    deleteTotalValuationValueForUserById,
-    getTotalValuationValuesForUser
-} from "../../../../services/serviceFunctions";
+import * as ServiceFunctions from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
 import {getTotalGradeValue} from "../../../../helpers/functions";
@@ -26,7 +22,7 @@ export const OverviewValuation = () => {
 
     const fetchTotalValuationValuesForUser = useCallback(async () => {
         setLoading(true);
-        await getTotalValuationValuesForUser(user.id).then((result) => {
+        await ServiceFunctions.getTotalValuationValuesForUser(user.id).then((result) => {
             setTotalValuationValuesForUser(result);
             setTimeout(() => {
                 setLoading(false);
@@ -61,7 +57,7 @@ export const OverviewValuation = () => {
         // Function to delete oldest value
         const deleteValue = async (values) => {
             const idToDelete = values[values.length - 1].id;
-            await deleteTotalValuationValueForUserById(idToDelete);
+            await ServiceFunctions.deleteTotalValuationValueForUserById(idToDelete);
         }
         // We must have a new calculated value
         if (newCalculatedValuationValue) {
@@ -84,7 +80,7 @@ export const OverviewValuation = () => {
     useEffect(() => {
         // Function to add value
         const addValue = async () => {
-            await addTotalValuationValueForUser(user.id, newCalculatedValuationValue);
+            await ServiceFunctions.addTotalValuationValueForUser(user.id, newCalculatedValuationValue);
         }
         if (doAddTotalValuationValue()) {
             addValue().then(() => {
