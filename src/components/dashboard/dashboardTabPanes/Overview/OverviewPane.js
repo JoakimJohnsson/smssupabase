@@ -33,7 +33,7 @@ export const OverviewPane = () => {
                     <>
                         <OverviewTitles titlesData={userTitlesData}/>
                         <OverviewIssues titlesData={userTitlesData}/>
-                        <OverviewValuation titlesData={userTitlesData}/>
+                        <OverviewValuation />
                         <OverviewWantedIssues/>
                         <OverviewUpgradeIssues/>
                     </>

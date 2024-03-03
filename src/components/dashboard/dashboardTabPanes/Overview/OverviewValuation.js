@@ -13,7 +13,7 @@ import {OverviewIssuesValueComparison} from "./OverviewIssuesValueComparison";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 
 
-export const OverviewValuation = ({titlesData}) => {
+export const OverviewValuation = () => {
 
     const [loading, setLoading] = useState(false);
     const [loadingNewValue, setLoadingNewValue] = useState(false);
@@ -83,7 +83,6 @@ export const OverviewValuation = ({titlesData}) => {
             await addTotalValuationValueForUser(user.id, newCalculatedValuationValue);
         }
         if (doAddTotalValuationValue()) {
-            console.log("adding value");
             addValue().then(() => {
                 fetchTotalValuationValuesForUser().then();
             });
