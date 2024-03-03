@@ -21,7 +21,7 @@ export const IssueTool = ({issue, displayName, fetchTitleProgress = false, isCol
         if (fetchTitleProgress) {
             setTimeout(() => {
                 fetchTitleProgress();
-            }, CONFIG.FETCH_TITLE_PROGRESS_TIMEOUT);
+            }, CONFIG.TIMEOUT_SM);
         }
     }
 

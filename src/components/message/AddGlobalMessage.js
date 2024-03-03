@@ -74,7 +74,7 @@ export const AddGlobalMessage = ({
                         // Update messages after a while.
                         setTimeout(() => {
                             fetchMessages();
-                        }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
+                        }, CONFIG.TIMEOUT_XXL);
                     });
                 }
             }

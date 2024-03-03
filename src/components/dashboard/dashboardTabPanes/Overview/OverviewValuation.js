@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS, PANES, ROUTES} from "../../../../helpers/constants";
 import {
     addTotalValuationValueForUser,
     deleteTotalValuationValueForUserById,
@@ -11,6 +11,8 @@ import {getTotalGradeValue} from "../../../../helpers/functions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {OverviewIssuesValueComparison} from "./OverviewIssuesValueComparison";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
+import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
+import {valueIconDuoTone} from "../../../icons";
 
 
 export const OverviewValuation = () => {
@@ -26,7 +28,9 @@ export const OverviewValuation = () => {
         setLoading(true);
         await getTotalValuationValuesForUser(user.id).then((result) => {
             setTotalValuationValuesForUser(result);
-            setLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            }, CONFIG.TIMEOUT_LG);
         })
     }, [user.id])
 
@@ -107,6 +111,13 @@ export const OverviewValuation = () => {
                             />
                     }
                 </>
+                <p>{PANES.OVERVIEW.COLLECTING_VALUE_5}</p>
+                <IconLinkCtaLg
+                    variant={"primary"}
+                    icon={valueIconDuoTone}
+                    path={ROUTES.DASHBOARD.PATH_VALUATION}
+                    label={PANES.VALUATION.NAME}
+                />
             </div>
         </div>
     )

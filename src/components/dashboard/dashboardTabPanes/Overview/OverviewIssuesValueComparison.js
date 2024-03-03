@@ -1,7 +1,6 @@
 import React from "react";
-import {PANES, ROUTES} from "../../../../helpers/constants";
+import {PANES} from "../../../../helpers/constants";
 import {Icon, valueIconDuoTone} from "../../../icons";
-import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
 
 
 export const OverviewIssuesValueComparison = ({oldValue, newValue, timeStamp}) => {
@@ -37,13 +36,6 @@ export const OverviewIssuesValueComparison = ({oldValue, newValue, timeStamp}) =
                             </p>
                     )
             }
-            <p>{PANES.OVERVIEW.COLLECTING_VALUE_5}</p>
-            <IconLinkCtaLg
-                variant={"primary"}
-                icon={valueIconDuoTone}
-                path={ROUTES.DASHBOARD.PATH_VALUATION}
-                label={PANES.VALUATION.NAME}
-            />
         </>
     )
 }

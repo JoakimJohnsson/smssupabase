@@ -26,7 +26,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
         if (fetchTitleProgress) {
             setTimeout(() => {
                 fetchTitleProgress();
-            }, CONFIG.FETCH_TITLE_PROGRESS_TIMEOUT);
+            }, CONFIG.TIMEOUT_SM);
         }
     }
 
