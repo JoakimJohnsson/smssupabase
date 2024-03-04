@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import {
     checkIfIsCollectingIssue,
     checkIfIsUpgradingIssue,
@@ -16,13 +16,20 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
     const [isUpgradingIssue, setIsUpgradingIssue] = useState(false);
     const [grades, setGrades] = useState([]);
 
+    const fetchGrades = useCallback(() => {
+        if (userId && issueId) {
+            getGradesByUserIdAndIssueId(userId, issueId, setGrades).then();
+        }
+    }, [issueId, userId]);
+
     useEffect(() => {
+        fetchGrades();
         // Reset value before checking
         setIsCollectingIssue(false);
         if (userId && issueId) {
             checkIfIsCollectingIssue(userId, issueId, setIsCollectingIssue).then();
         }
-    }, [userId, issueId]);
+    }, [userId, issueId, fetchGrades]);
 
     useEffect(() => {
         // Reset value before checking
@@ -37,12 +44,6 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         setIsUpgradingIssue(false);
         if (userId && issueId) {
             checkIfIsUpgradingIssue(userId, issueId, setIsUpgradingIssue).then();
-        }
-    }, [userId, issueId]);
-
-    useEffect(() => {
-        if (userId && issueId) {
-            getGradesByUserIdAndIssueId(userId, issueId, setGrades).then();
         }
     }, [userId, issueId]);
 
@@ -73,6 +74,7 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         setIsUpgradingIssue,
         grades,
         isCollectingTitle,
-        setIsCollectingTitle
-    }), [isCollectingIssue, isWantingIssue, isUpgradingIssue, grades, isCollectingTitle]);
+        setIsCollectingTitle,
+        fetchGrades
+    }), [isCollectingIssue, isWantingIssue, isUpgradingIssue, grades, isCollectingTitle, fetchGrades]);
 }

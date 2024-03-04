@@ -8,6 +8,7 @@ import {OverviewUpgradeIssues} from "./OverviewUpgradeIssues";
 import {OverviewWantedIssues} from "./OverviewWantedIssues";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {OverviewValuation} from "./OverviewValuation";
 
 
 export const OverviewPane = () => {
@@ -32,6 +33,7 @@ export const OverviewPane = () => {
                     <>
                         <OverviewTitles titlesData={userTitlesData}/>
                         <OverviewIssues titlesData={userTitlesData}/>
+                        <OverviewValuation />
                         <OverviewWantedIssues/>
                         <OverviewUpgradeIssues/>
                     </>

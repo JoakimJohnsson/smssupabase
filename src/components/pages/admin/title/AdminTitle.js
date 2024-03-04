@@ -124,13 +124,13 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingGI(false);
                     fetchTitleAndIssuesData();
-                }, CONFIG.GENERATE_ISSUES_TIMEOUT);
+                }, CONFIG.TIMEOUT_XL);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_UPLOAD_MISSING_INFO});
             setTimeout(() => {
                 setLoadingGI(false);
-            }, CONFIG.GENERATE_ISSUES_TIMEOUT);
+            }, CONFIG.TIMEOUT_XL);
         }
     }
 
@@ -141,13 +141,13 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingDI(false);
                     fetchTitleAndIssuesData();
-                }, CONFIG.DELETE_ISSUES_TIMEOUT);
+                }, CONFIG.TIMEOUT_XL);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_DELETE});
             setTimeout(() => {
                 setLoadingDI(false);
-            }, CONFIG.DELETE_ISSUES_TIMEOUT);
+            }, CONFIG.TIMEOUT_XL);
         }
     }
 

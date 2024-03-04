@@ -1,7 +1,6 @@
 import React from "react";
-import {PANES, ROUTES} from "../../../../helpers/constants";
-import {valueIconDuoTone} from "../../../icons";
-import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
+import {PANES} from "../../../../helpers/constants";
+import {Icon, valueIconDuoTone} from "../../../icons";
 
 
 export const OverviewIssuesValueComparison = ({oldValue, newValue, timeStamp}) => {
@@ -11,6 +10,13 @@ export const OverviewIssuesValueComparison = ({oldValue, newValue, timeStamp}) =
 
     return (
         <>
+            <p>{PANES.OVERVIEW.COLLECTING_VALUE_1}</p>
+            <div className={"d-flex justify-content-center p-2 text-grade"}>
+                <p className={"fs-x-large py-3 px-5 d-flex align-items-center rounded border border-grade"}>
+                    <Icon icon={valueIconDuoTone} size={"2x"} className={"me-3 "}/>
+                    <span>{newValue + " kr"}</span>
+                </p>
+            </div>
             {
                 oldValue === newValue ?
                     (
@@ -30,13 +36,6 @@ export const OverviewIssuesValueComparison = ({oldValue, newValue, timeStamp}) =
                             </p>
                     )
             }
-            <p>{PANES.OVERVIEW.COLLECTING_VALUE_5}</p>
-            <IconLinkCtaLg
-                variant={"primary"}
-                icon={valueIconDuoTone}
-                path={ROUTES.DASHBOARD.PATH_VALUATION}
-                label={PANES.VALUATION.NAME}
-            />
         </>
     )
 }

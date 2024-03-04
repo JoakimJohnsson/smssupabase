@@ -50,7 +50,7 @@ export const AdminTools = ({item, name, displayName, data, setData, route, table
                             // Update messages after a while.
                             setTimeout(() => {
                                 fetchMessages();
-                            }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
+                            }, CONFIG.TIMEOUT_XXL);
                         });
                     }}>
                     <Icon icon={faCircleXmark} className={"fa-xl"}/>

@@ -29,6 +29,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Blandade kodförbättringar.</li>
                     <li className={"list-group-item px-0"}>Räkna ut och visa upp det sammanlagda värdet på samlingen.</li>
                     <li className={"list-group-item px-0"}>Spara och visa viss historik över värderingens förändring över tid.</li>
+                    <li className={"list-group-item px-0"}>Skickgraderingar för publikation tas nu bort när användaren slutar samla på den.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.5.0 - 2024-01-14</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

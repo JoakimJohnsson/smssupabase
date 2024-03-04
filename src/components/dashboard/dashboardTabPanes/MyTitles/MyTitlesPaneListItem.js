@@ -77,12 +77,12 @@ export const MyTitlesPaneListItem = ({title}) => {
                                     loading={"lazy"}
                                 />
                             </div>
+                            <h2 className={"p-2 p-sm-0 mb-3"}>{title.name}</h2>
                         </Link>
                         <div className={"p-2 p-sm-0"}>
                             <span
                                 className={`tag-badge text-black mb-3 ${completed ? "bg-success" : "bg-grade"}`}>{titleProgress.progress + "%"}</span>
                             <FormatBadge formatId={title.format_id} customClass={"mb-3"} year={title.start_year}/>
-
                         </div>
                     </div>
                     <div className={"col-12 col-md-6 col-lg-12 col-xl-7"}>

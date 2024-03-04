@@ -283,7 +283,7 @@ export const LABELS_AND_HEADINGS = {
     NUMBER_DB: "Nummer (number)",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
-    CALCULATING_VALUATION: "Beräknar värdering!",
+    CALCULATING_VALUATION: "Beräknar ny värdering!",
     OPEN: "Öppna",
     ON_COMICS_ORG: "på Comics.org",
     PASSWORD: "Lösenord",
@@ -351,6 +351,7 @@ export const LABELS_AND_HEADINGS = {
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
     UTILS: "Verktyg, knappar och reglage",
+    VALUATION: "Värdering",
     WEBSITE: "Webbplats",
     WELCOME_TEXT_1: "Hej",
     WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!",
@@ -587,11 +588,11 @@ export const STATISTICS = {
 }
 
 export const CONFIG = {
-    MESSAGE_UPDATE_TIMEOUT: 2000,
-    FETCH_TITLE_PROGRESS_TIMEOUT: 200,
-    SET_INFORMATION_MESSAGE_TIMEOUT: 150,
-    GENERATE_ISSUES_TIMEOUT: 1000,
-    DELETE_ISSUES_TIMEOUT: 1000
+    TIMEOUT_XXL: 2000,
+    TIMEOUT_XL: 1000,
+    TIMEOUT_LG: 500,
+    TIMEOUT_MD: 400,
+    TIMEOUT_SM: 200
 }
 
 export const GRADE_VARIANTS = {
