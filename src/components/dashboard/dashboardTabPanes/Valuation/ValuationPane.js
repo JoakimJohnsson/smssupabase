@@ -71,7 +71,7 @@ export const ValuationPane = () => {
     };
 
     const CustomTooltip = ({active, payload, label}) => {
-        if (active && payload && payload.length) {
+        if (active && payload && payload.length && payload[0].hasOwnProperty('value')) {
             return (
                 <div className="bg-grade-100 rounded text-black p-3">
                     <p className="mb-0"><span className={"text-label"}>{LABELS_AND_HEADINGS.DATE}:</span> {getFriendlyDateFromTimestamp(label)}</p>
