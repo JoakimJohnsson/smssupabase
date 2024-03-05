@@ -38,8 +38,7 @@ export const ValuationPane = () => {
     }, [user]);
 
     const deleteValue = async (values) => {
-        // Ensure values are sorted by date in ascending order
-        values.sort((a, b) => new Date(a.total_valuation_date) - new Date(b.total_valuation_date));
+        // Values are sorted ascending
         if (values && values.length >= 20) {
             const idToDelete = values[0].id;
             await ServiceFunctions.deleteTotalValuationValueForUserById(idToDelete);
