@@ -87,6 +87,12 @@ export const ValuationPane = () => {
             <HeadingWithBreadCrumbs text={PANES.VALUATION.NAME}/>
             <p className={"lead"}>{PANES.VALUATION.LEAD}</p>
             {
+                totalValuationValuesForUser && totalValuationValuesForUser.length &&
+                <p>
+                    {PANES.VALUATION.COLLECTING_VALUE_1} <span className={"text-grade"}>{totalValuationValuesForUser[totalValuationValuesForUser.length -1].total_valuation_value}</span> kr.
+                </p>
+            }
+            {
                 loading ?
                     <OverlaySpinner/>
                     :

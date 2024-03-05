@@ -46,7 +46,7 @@ export const OverviewValuation = () => {
                     }
                 </div>
                 <IconLinkCtaLg
-                    variant={"primary"}
+                    variant={"grade"}
                     icon={valueIconDuoTone}
                     path={ROUTES.DASHBOARD.PATH_VALUATION}
                     label={PANES.VALUATION.NAME}

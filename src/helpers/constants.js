@@ -512,7 +512,8 @@ export const PANES = {
     },
     VALUATION: {
         NAME: "Värdering",
-        LEAD: "Här visas de senaste värderingarna som sparats i databasen. Vi visar max 20 st."
+        LEAD: "Här visas de senaste värderingarna som sparats i databasen. Vi visar max 20 st.",
+        COLLECTING_VALUE_1: "Det sammanlagda värdet av din samling är: ",
     }
 }
 
