@@ -165,7 +165,7 @@ export const getTotalValuationValuesForUser = async (userId) => {
             .from(TABLES.USER_TOTAL_VALUATION_VALUES)
             .select("*")
             .match({user_id: userId})
-            .order("total_valuation_date", {ascending: false})
+            .order("total_valuation_date", {ascending: true})
         if (error && status !== 406) {
             console.error(error);
         }

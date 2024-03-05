@@ -2,11 +2,11 @@ import React, {useState, useEffect} from "react";
 import {LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitlesForUser} from "../../../../services/titleService";
-import {CustomSpinner} from "../../../minis/CustomSpinner";
 import FilterFormFormat from "../../../search-filter/FilterFormFormat";
 import {useFormatQueryFilter} from "../../../../helpers/customHooks/useFormatQueryFilter";
 import {MyTitlesPaneList} from "./MyTitlesPaneList";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const MyTitlesPane = () => {
@@ -25,7 +25,7 @@ export const MyTitlesPane = () => {
             <HeadingWithBreadCrumbs text={PANES.TITLES.NAME}/>
             {
                 loading ?
-                    <CustomSpinner size={"4x"}/>
+                    <OverlaySpinner/>
                     :
                     <>
                         <FilterFormFormat

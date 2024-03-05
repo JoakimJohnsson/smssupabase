@@ -275,6 +275,20 @@ export const getCurrentDate = () => {
     return new Date();
 }
 
+export const getFriendlyDateFromTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toISOString().split('T')[0];
+}
+
+export const getTinyFriendlyDateFromTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    // Get the day and month, noting that getMonth() returns 0-11 for Jan-Dec
+    const day = date.getDate(); // Day of the month
+    const month = date.getMonth() + 1; // Month of the year (1-12)
+    // Format the date as "29/2"
+    return `${day}/${month}`;
+}
+
 export const getAverageGrade = (grades) => {
     let totalGradeAmount = 0.0;
     for (let i = 0; i < grades.length; i++) {
