@@ -3,8 +3,8 @@ import {OtherCollectionsPaneListItem} from "./OtherCollectionsPaneListItem";
 import {PANES, TABLES} from "../../../../helpers/constants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
-import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const OtherCollectionsPane = () => {
@@ -18,11 +18,11 @@ export const OtherCollectionsPane = () => {
     }, [])
 
     return (
-        <>
+        <div className={"sms-page-col"}>
             <HeadingWithBreadCrumbs text={PANES.OTHER_COLLECTIONS.NAME}/>
             {
                 loading ?
-                    <CustomSpinner size={"4x"}/>
+                    <OverlaySpinner/>
                     :
                     <ul className={"sms-list--with-cards"}>
                         {
@@ -34,6 +34,6 @@ export const OtherCollectionsPane = () => {
                         }
                     </ul>
             }
-        </>
+        </div>
     )
 }

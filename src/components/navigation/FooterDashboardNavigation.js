@@ -19,7 +19,7 @@ export const FooterDashboardNavigation = () => {
                                         icon={<Icon icon={overviewIconDuoTone} size={"2x"}/>}/>
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.MY_TITLES} text={PANES.TITLES.NAME} variant={"primary"}
                                         icon={<Icon icon={titlesIconDuoTone} size={"2x"}/>}/>
-                <FooterDashboardNavLink route={ROUTES.DASHBOARD.VALUATION} text={PANES.VALUATION.NAME} variant={"primary"}
+                <FooterDashboardNavLink route={ROUTES.DASHBOARD.VALUATION} text={PANES.VALUATION.NAME} variant={"grade"}
                                         icon={<Icon icon={valueIconDuoTone} size={"2x"}/>}/>
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.OTHER_COLLECTIONS} text={PANES.OTHER_COLLECTIONS.NAME} variant={"info"}
                                         icon={<Icon icon={otherCollectionsIconDuoTone} size={"2x"}/>}/>

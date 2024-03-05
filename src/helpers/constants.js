@@ -173,6 +173,7 @@ export const LABELS_AND_HEADINGS = {
     CREATED_AT: "Inlagd",
     DASHBOARD: "Kontrollpanel",
     DASHBOARD_MY_TITLES: "Kontrollpanel / Mina titlar",
+    DATE: "Datum",
     DEFAULT_FORMATS: "Alla format",
     DELETE: "Ta bort",
     DELETING: "Tar bort",
@@ -351,7 +352,10 @@ export const LABELS_AND_HEADINGS = {
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
     UTILS: "Verktyg, knappar och reglage",
+    VALUE: "Värde",
     VALUATION: "Värdering",
+    VALUATION_CALCULATE: "Beräkna ny värdering",
+    VALUATION_CALCULATE_MESSAGE_1: "Ingen värdeförändring - behöver inte spara ny värdering.",
     WEBSITE: "Webbplats",
     WELCOME_TEXT_1: "Hej",
     WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!",
@@ -492,7 +496,6 @@ export const PANES = {
         COLLECTING_VALUE_2: "Vilket är en ökning med",
         COLLECTING_VALUE_3: "Vilket är en minskning med",
         COLLECTING_VALUE_4: "sedan senast sparade värdering",
-        COLLECTING_VALUE_5: "Gå till värderingspanelen för mer information.",
         COLLECTING_VALUE_6: "Ingen värdeförändring.",
         COLLECTING_ISSUES_1: "Totalt ingår",
         COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
@@ -508,8 +511,8 @@ export const PANES = {
 
     },
     VALUATION: {
-        NAME: "Värdering"
-
+        NAME: "Värdering",
+        LEAD: "Här visas de senaste värderingarna som sparats i databasen. Vi visar max 20 st."
     }
 }
 
@@ -592,7 +595,8 @@ export const CONFIG = {
     TIMEOUT_XL: 1000,
     TIMEOUT_LG: 500,
     TIMEOUT_MD: 400,
-    TIMEOUT_SM: 200
+    TIMEOUT_SM: 200,
+    MAX_VALUATION_VALUES: 20
 }
 
 export const GRADE_VARIANTS = {

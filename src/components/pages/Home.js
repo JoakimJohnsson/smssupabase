@@ -137,7 +137,7 @@ export const Home = () => {
                             label={PANES.TITLES.NAME}
                         />
                         <IconLinkCtaLg
-                            variant={"primary"}
+                            variant={"grade"}
                             icon={valueIconDuoTone}
                             path={ROUTES.DASHBOARD.PATH_VALUATION}
                             label={PANES.VALUATION.NAME}

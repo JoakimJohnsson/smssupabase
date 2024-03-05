@@ -117,7 +117,6 @@ export const MyTitlesPaneListItem = ({title}) => {
                             </ResponsiveContainer>
                         </div>
                     </div>
-
                     <div className={"col-12 col-md-8 col-lg-12 col-xl-6 col-xxl-12"}>
                         <div className={"p-3 p-sm-0"}>
                             {
