@@ -39,8 +39,10 @@ export const ValuationPane = () => {
 
     const deleteValue = async (values) => {
         // Values are sorted ascending
-        const idToDelete = values[0].id;
-        await ServiceFunctions.deleteTotalValuationValueForUserById(idToDelete);
+        if (values && values.length >= 20) {
+            const idToDelete = values[0].id;
+            await ServiceFunctions.deleteTotalValuationValueForUserById(idToDelete);
+        }
     }
 
     useEffect(() => {
