@@ -67,6 +67,12 @@
         color: $info--lighter;
       }
     }
+    &.grade {
+      color: $grade;
+      &:hover, &:focus {
+        color: $grade--lighter;
+      }
+    }
     &.active.primary {
       background-color: $primary--darker;
       color: $primary--lighter;
@@ -90,6 +96,10 @@
     &.active.info {
       background-color: $info--darker;
       color: $info--lighter;
+    }
+    &.active.grade {
+      background-color: $grade--darker;
+      color: $grade--lighter;
     }
     svg {
       @extend .p-2, .px-sm-0;

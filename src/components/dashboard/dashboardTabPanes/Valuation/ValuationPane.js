@@ -71,7 +71,7 @@ export const ValuationPane = () => {
     const CustomTooltip = ({active, payload, label}) => {
         if (active && payload && payload.length) {
             return (
-                <div className="bg-primary text-black p-3">
+                <div className="bg-grade-100 rounded text-black p-3">
                     <p className="mb-0"><span className={"text-label"}>{LABELS_AND_HEADINGS.DATE}:</span> {getFriendlyDateFromTimestamp(label)}</p>
                     <p className="mb-0"><span className={"text-label"}>{LABELS_AND_HEADINGS.VALUE}:</span> {payload[0].value} kr</p>
                 </div>
@@ -121,7 +121,7 @@ export const ValuationPane = () => {
                                         name={LABELS_AND_HEADINGS.VALUE}
                                         type="monotone"
                                         dataKey="total_valuation_value"
-                                        stroke="#41bee0"
+                                        stroke="#ffd700"
                                         activeDot={{r: 8}}
                                     />
                                 </LineChart>
