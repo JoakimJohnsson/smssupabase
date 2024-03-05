@@ -595,7 +595,8 @@ export const CONFIG = {
     TIMEOUT_XL: 1000,
     TIMEOUT_LG: 500,
     TIMEOUT_MD: 400,
-    TIMEOUT_SM: 200
+    TIMEOUT_SM: 200,
+    MAX_VALUATION_VALUES: 20
 }
 
 export const GRADE_VARIANTS = {

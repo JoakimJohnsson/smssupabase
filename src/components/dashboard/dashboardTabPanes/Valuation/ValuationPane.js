@@ -38,7 +38,8 @@ export const ValuationPane = () => {
     }, [user]);
 
     const deleteValue = async (values) => {
-        // Values are sorted ascending
+        // Ensure values are sorted by date in ascending order
+        values.sort((a, b) => new Date(a.total_valuation_date) - new Date(b.total_valuation_date));
         if (values && values.length >= 20) {
             const idToDelete = values[0].id;
             await ServiceFunctions.deleteTotalValuationValueForUserById(idToDelete);
@@ -52,15 +53,15 @@ export const ValuationPane = () => {
     const handleDoCalculateAndAddNewValue = async () => {
         setLoadingNewValue(true);
         if (totalValuationValuesForUser && grades && grades.length > 0) {
-            const value = await getTotalGradeValue(grades);
+            const newTotalValuationValue = await getTotalGradeValue(grades);
             // Delete oldest value if too many values
-            if (totalValuationValuesForUser && totalValuationValuesForUser.length >= 20) {
+            if (totalValuationValuesForUser && totalValuationValuesForUser.length >= CONFIG.MAX_VALUATION_VALUES) {
                 await deleteValue(totalValuationValuesForUser);
             }
             // Only update if it differs from latest value
-            if (value !== totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value) {
+            if (totalValuationValuesForUser && totalValuationValuesForUser.length && newTotalValuationValue !== totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value) {
                 // Add the new value
-                await ServiceFunctions.addTotalValuationValueForUser(user.id, value);
+                await ServiceFunctions.addTotalValuationValueForUser(user.id, newTotalValuationValue);
                 await fetchTotalValuationValuesForUser();
             } else {
                 // No need to save new value
@@ -102,6 +103,7 @@ export const ValuationPane = () => {
                                             label={LABELS_AND_HEADINGS.VALUATION_CALCULATE}
                                             icon={valueIconDuoTone}
                                             onClick={handleDoCalculateAndAddNewValue}
+                                            disabled={loadingNewValue}
                                         />
                                 }
                             </div>
