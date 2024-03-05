@@ -51,23 +51,37 @@ export const ValuationPane = () => {
 
     const handleDoCalculateAndAddNewValue = async () => {
         setLoadingNewValue(true);
-        if (totalValuationValuesForUser && grades && grades.length > 0) {
+
+        if (grades && grades.length > 0) {
             const newTotalValuationValue = await getTotalGradeValue(grades);
-            // Delete oldest value if too many values
-            if (totalValuationValuesForUser && totalValuationValuesForUser.length >= CONFIG.MAX_VALUATION_VALUES) {
-                await deleteValue(totalValuationValuesForUser);
-            }
-            // Only update if it differs from latest value
-            if (totalValuationValuesForUser && totalValuationValuesForUser.length && newTotalValuationValue !== totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value) {
+            if (totalValuationValuesForUser && totalValuationValuesForUser.length > 0) {
+                // Delete oldest value if too many values
+                if (totalValuationValuesForUser && totalValuationValuesForUser.length >= CONFIG.MAX_VALUATION_VALUES) {
+                    await deleteValue(totalValuationValuesForUser);
+                }
+                // Only update if it differs from latest value
+                if (newTotalValuationValue !== totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value) {
+                    // Add the new value
+                    await ServiceFunctions.addTotalValuationValueForUser(user.id, newTotalValuationValue);
+                } else {
+                    // No need to save new value
+                    setInformationMessage({show: true, status: 2, error: LABELS_AND_HEADINGS.VALUATION_CALCULATE_MESSAGE_1});
+                }
+            } else {
                 // Add the new value
                 await ServiceFunctions.addTotalValuationValueForUser(user.id, newTotalValuationValue);
-                await fetchTotalValuationValuesForUser();
+            }
+        } else {
+            // No grades found
+            if (totalValuationValuesForUser == null || totalValuationValuesForUser.length === 0 || (totalValuationValuesForUser && totalValuationValuesForUser.length && totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value !== 0)) {
+                await ServiceFunctions.addTotalValuationValueForUser(user.id, 0);
             } else {
                 // No need to save new value
                 setInformationMessage({show: true, status: 2, error: LABELS_AND_HEADINGS.VALUATION_CALCULATE_MESSAGE_1});
             }
-            setLoadingNewValue(false);
         }
+        await fetchTotalValuationValuesForUser();
+        setLoadingNewValue(false);
     };
 
     const CustomTooltip = ({active, payload, label}) => {
@@ -85,11 +99,14 @@ export const ValuationPane = () => {
     return (
         <div className={"sms-page-col"}>
             <HeadingWithBreadCrumbs text={PANES.VALUATION.NAME}/>
-            <p className={"lead"}>{PANES.VALUATION.LEAD}</p>
+            <div className={"col-12 col-md-8 col-xxl-6"}>
+                <p className={"lead"}>{PANES.VALUATION.LEAD}</p>
+            </div>
             {
-                totalValuationValuesForUser && totalValuationValuesForUser.length &&
+                totalValuationValuesForUser && !!totalValuationValuesForUser.length &&
                 <p>
-                    {PANES.VALUATION.COLLECTING_VALUE_1} <span className={"text-grade"}>{totalValuationValuesForUser[totalValuationValuesForUser.length -1].total_valuation_value}</span> kr.
+                    {PANES.VALUATION.COLLECTING_VALUE_1} <span
+                    className={"text-grade"}>{totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value}</span> kr.
                 </p>
             }
             {
@@ -113,28 +130,30 @@ export const ValuationPane = () => {
                                 }
                             </div>
                             <Logger log={totalValuationValuesForUser} stringify={false}/>
-                            <ResponsiveContainer width="100%" height={300}>
-                                <LineChart
-                                    width={600}
-                                    height={300}
-                                    data={totalValuationValuesForUser}
-                                    margin={{top: 10, right: 10, left: 10, bottom: 10}}
-                                >
-                                    <CartesianGrid strokeDasharray="3 3"/>
-                                    <XAxis interval={3} tickFormatter={(tick) => getTinyFriendlyDateFromTimestamp(tick)}
-                                           dataKey="total_valuation_date"/>
-                                    <YAxis/>
-                                    <Tooltip content={<CustomTooltip/>}/>
-                                    <Legend/>
-                                    <Line
-                                        name={LABELS_AND_HEADINGS.VALUE}
-                                        type="monotone"
-                                        dataKey="total_valuation_value"
-                                        stroke="#ffd700"
-                                        activeDot={{r: 8}}
-                                    />
-                                </LineChart>
-                            </ResponsiveContainer>
+                            {totalValuationValuesForUser && !!totalValuationValuesForUser.length &&
+                                <ResponsiveContainer width="100%" height={300}>
+                                    <LineChart
+                                        width={600}
+                                        height={300}
+                                        data={totalValuationValuesForUser}
+                                        margin={{top: 10, right: 10, left: 10, bottom: 10}}
+                                    >
+                                        <CartesianGrid strokeDasharray="3 3"/>
+                                        <XAxis interval={3} tickFormatter={(tick) => getTinyFriendlyDateFromTimestamp(tick)}
+                                               dataKey="total_valuation_date"/>
+                                        <YAxis/>
+                                        <Tooltip content={<CustomTooltip/>}/>
+                                        <Legend/>
+                                        <Line
+                                            name={LABELS_AND_HEADINGS.VALUE}
+                                            type="monotone"
+                                            dataKey="total_valuation_value"
+                                            stroke="#ffd700"
+                                            activeDot={{r: 8}}
+                                        />
+                                    </LineChart>
+                                </ResponsiveContainer>
+                            }
                         </div>
                     </div>
             }

@@ -347,6 +347,8 @@ export const filterQueryByFirstNameAndLastName = (user, query) => {
 }
 export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query) => {
     return (
+        issue.id.toLowerCase()
+            .includes(query.toLowerCase()) ||
         issue.titles.name.toLowerCase()
             .includes(query.toLowerCase()) ||
         issue.publishers.name.toString().toLowerCase()

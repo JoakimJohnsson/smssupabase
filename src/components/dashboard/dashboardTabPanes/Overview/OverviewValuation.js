@@ -34,15 +34,29 @@ export const OverviewValuation = () => {
                 <h2>{LABELS_AND_HEADINGS.VALUATION}</h2>
                 <div className={"mb-3"}>
                     {
+                        (totalValuationValuesForUser == null || totalValuationValuesForUser.length <= 0) &&
+                        <p>{PANES.OVERVIEW.COLLECTING_VALUE_7}</p>
+                    }
+                    {
                         loading ?
                             <CustomSpinner className={"mb-3"} size={"2x"}/>
                             :
-                            totalValuationValuesForUser && totalValuationValuesForUser.length > 2 &&
-                            <OverviewIssuesValueComparison
-                                oldValue={totalValuationValuesForUser[totalValuationValuesForUser.length -2].total_valuation_value}
-                                timeStamp={totalValuationValuesForUser[totalValuationValuesForUser.length -2].total_valuation_date}
-                                newValue={totalValuationValuesForUser[totalValuationValuesForUser.length -1].total_valuation_value}
-                            />
+                            totalValuationValuesForUser && totalValuationValuesForUser.length > 1 ?
+                                <OverviewIssuesValueComparison
+                                    oldValue={totalValuationValuesForUser[totalValuationValuesForUser.length - 2].total_valuation_value}
+                                    timeStamp={totalValuationValuesForUser[totalValuationValuesForUser.length - 2].total_valuation_date}
+                                    newValue={totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value}
+                                />
+                                :
+                                <>
+                                    {
+                                        totalValuationValuesForUser && !!totalValuationValuesForUser.length &&
+                                        <p>
+                                            {PANES.VALUATION.COLLECTING_VALUE_1} <span
+                                            className={"text-grade"}>{totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value}</span> kr.
+                                        </p>
+                                    }
+                                </>
                     }
                 </div>
                 <IconLinkCtaLg
