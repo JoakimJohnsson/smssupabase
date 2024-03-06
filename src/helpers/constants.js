@@ -1,6 +1,5 @@
 import React from "react";
-import {Icon} from "../components/icons";
-import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation} from "@fortawesome/pro-regular-svg-icons";
+import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../components/icons";
 
 
 export const MESSAGES = {
@@ -523,23 +522,23 @@ export const PANES = {
 export const ALERT_VARIANTS = {
     1: {
         variant: "info",
-        icon: <Icon icon={faCircleInfo} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={infoIconDuoTone} className={"fa-2xl me-3"}/>
     },
     2: {
         variant: "success",
-        icon: <Icon icon={faHeart} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={statusIconSuccessDuoTone} className={"fa-2xl me-3"}/>
     },
     3: {
         variant: "warning",
-        icon: <Icon icon={faSealExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={warningIconDuoTone} className={"fa-2xl me-3"}/>
     },
     4: {
         variant: "danger",
-        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={dangerIconDuoTone} className={"fa-2xl me-3"}/>
     },
     5: {
         variant: "danger",
-        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={dangerIconDuoTone} className={"fa-2xl me-3"}/>
     }
 }
 

@@ -51,7 +51,6 @@ export const ValuationPane = () => {
 
     const handleDoCalculateAndAddNewValue = async () => {
         setLoadingNewValue(true);
-
         if (grades && grades.length > 0) {
             const newTotalValuationValue = await getTotalGradeValue(grades);
             if (totalValuationValuesForUser && totalValuationValuesForUser.length > 0) {
@@ -71,17 +70,14 @@ export const ValuationPane = () => {
                 // Add the new value
                 await ServiceFunctions.addTotalValuationValueForUser(user.id, newTotalValuationValue);
             }
+            await fetchTotalValuationValuesForUser();
+            setLoadingNewValue(false);
         } else {
             // No grades found
-            if (totalValuationValuesForUser == null || totalValuationValuesForUser.length === 0 || (totalValuationValuesForUser && totalValuationValuesForUser.length && totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value !== 0)) {
-                await ServiceFunctions.addTotalValuationValueForUser(user.id, 0);
-            } else {
-                // No need to save new value
-                setInformationMessage({show: true, status: 2, error: LABELS_AND_HEADINGS.VALUATION_CALCULATE_MESSAGE_1});
-            }
+            // No need to save new value
+            setLoadingNewValue(false);
+            setInformationMessage({show: true, status: 1, error: LABELS_AND_HEADINGS.VALUATION_CALCULATE_MESSAGE_3});
         }
-        await fetchTotalValuationValuesForUser();
-        setLoadingNewValue(false);
     };
 
     const CustomTooltip = ({active, payload, label}) => {

@@ -41,9 +41,11 @@ import {
     faRectangleHistoryCircleUser,
     faSackDollar,
     faSadTear,
+    faSealExclamation,
     faSend,
     faScaleUnbalanced,
     faShield,
+    faShieldExclamation,
     faShieldCat,
     faSpider,
     faThoughtBubble,
@@ -95,8 +97,10 @@ import {
     faSackDollar as faSackDollarDT,
     faSadTear as faSadTearDT,
     faScaleUnbalanced as faScaleUnbalancedDT,
+    faSealExclamation as faSealExclamationDT,
     faSend as faSendDT,
     faShield as faShieldDT,
+    faShieldExclamation as faShieldExclamationDT,
     faShieldCat as faShieldCatDT,
     faSpider as faSpiderDT,
     faThoughtBubble as faThoughtBubbleDT,
@@ -148,8 +152,10 @@ const iconMap = {
     faSackDollar: faSackDollar,
     faSadTear: faSadTear,
     faScaleUnbalanced: faScaleUnbalanced,
+    faSealExclamation: faSealExclamation,
     faSend: faSend,
     faShield: faShield,
+    faShieldExclamation: faShieldExclamation,
     faShieldCat: faShieldCat,
     faSpider: faSpider,
     faThoughtBubble: faThoughtBubble,
@@ -201,8 +207,10 @@ const iconMapDuoTone = {
     faSackDollarDT: faSackDollarDT,
     faSadTearDT: faSadTearDT,
     faScaleUnbalancedDT: faScaleUnbalancedDT,
+    faSealExclamationDT: faSealExclamationDT,
     faSendDT: faSendDT,
     faShieldDT: faShieldDT,
+    faShieldExclamationDT: faShieldExclamationDT,
     faShieldCatDT: faShieldCatDT,
     faSpiderDT: faSpiderDT,
     faThoughtBubbleDT: faThoughtBubbleDT,
@@ -232,6 +240,7 @@ export const notAdminIcon = faShield;
 export const collectionPlusIcon = faRectangleHistoryCirclePlus;
 export const collectionCheckIcon = faClipboardListCheck;
 export const collectionSearchIcon = faMagnifyingGlassDollar;
+export const dangerIcon = faShieldExclamation;
 export const dateIcon = faCalendarHeart;
 export const dashboardIcon = faChartLine;
 export const dataIcon = faListTimeline;
@@ -266,6 +275,7 @@ export const titleIcon = faFile;
 export const usersIcon = faUsers;
 export const userIcon = faUser;
 export const valueIcon = faSackDollar;
+export const warningIcon = faSealExclamation;
 
 // DuoTone
 export const adminIconDuoTone = faShieldCatDT;
@@ -274,6 +284,7 @@ export const collectionPlusIconDuoTone = faRectangleHistoryCirclePlusDT;
 export const collectionCheckIconDuoTone = faClipboardListCheckDT;
 export const collectionSearchIconDuoTone = faMagnifyingGlassDollarDT;
 export const dashboardIconDuoTone = faChartLineDT;
+export const dangerIconDuoTone = faShieldExclamationDT;
 export const dataIconDuoTone = faListTimelineDT;
 export const dateIconDuoTone = faCalendarHeartDT;
 export const editIconDuoTone = faMoneyCheckPenDT;
@@ -306,3 +317,4 @@ export const titleIconDuoTone = faFileDT;
 export const usersIconDuoTone = faUsersDT;
 export const userIconDuoTone = faUserDT;
 export const valueIconDuoTone = faSackDollarDT;
+export const warningIconDuoTone = faSealExclamationDT;
