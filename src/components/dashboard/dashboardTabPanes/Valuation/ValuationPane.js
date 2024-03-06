@@ -4,7 +4,6 @@ import {useAppContext} from "../../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import * as ServiceFunctions from "../../../../services/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {Logger} from "../../../minis/Logger";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 import {getFriendlyDateFromTimestamp, getTinyFriendlyDateFromTimestamp, getTotalGradeValue} from "../../../../helpers/functions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
@@ -125,7 +124,6 @@ export const ValuationPane = () => {
                                         />
                                 }
                             </div>
-                            <Logger log={totalValuationValuesForUser} stringify={false}/>
                             {totalValuationValuesForUser && !!totalValuationValuesForUser.length &&
                                 <ResponsiveContainer width="100%" height={300}>
                                     <LineChart
