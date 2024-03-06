@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
-import {Icon, keyIcon, sendIcon, SendIcon} from "../icons";
+import {Icon, keyIcon, sendIcon} from "../icons";
 
 
 export const ProfileInfoCredentials = ({
