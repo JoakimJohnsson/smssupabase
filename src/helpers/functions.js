@@ -282,11 +282,7 @@ export const getFriendlyDateFromTimestamp = (timestamp) => {
 
 export const getTinyFriendlyDateFromTimestamp = (timestamp) => {
     const date = new Date(timestamp);
-    // Get the day and month, noting that getMonth() returns 0-11 for Jan-Dec
-    const day = date.getDate(); // Day of the month
-    const month = date.getMonth() + 1; // Month of the year (1-12)
-    // Format the date as "29/2"
-    return `${day}/${month}`;
+    return date.toLocaleDateString('sv-SE', { day: 'numeric', month: 'numeric' });
 }
 
 export const getAverageGrade = (grades) => {
@@ -351,6 +347,8 @@ export const filterQueryByFirstNameAndLastName = (user, query) => {
 }
 export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query) => {
     return (
+        issue.id.toLowerCase()
+            .includes(query.toLowerCase()) ||
         issue.titles.name.toLowerCase()
             .includes(query.toLowerCase()) ||
         issue.publishers.name.toString().toLowerCase()

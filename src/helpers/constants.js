@@ -1,6 +1,5 @@
 import React from "react";
-import {Icon} from "../components/icons";
-import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation} from "@fortawesome/pro-regular-svg-icons";
+import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../components/icons";
 
 
 export const MESSAGES = {
@@ -356,6 +355,8 @@ export const LABELS_AND_HEADINGS = {
     VALUATION: "Värdering",
     VALUATION_CALCULATE: "Beräkna ny värdering",
     VALUATION_CALCULATE_MESSAGE_1: "Ingen värdeförändring - behöver inte spara ny värdering.",
+    VALUATION_CALCULATE_MESSAGE_2: "Inga värderingar funna - sparar ny värdering.",
+    VALUATION_CALCULATE_MESSAGE_3: "För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
     WEBSITE: "Webbplats",
     WELCOME_TEXT_1: "Hej",
     WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!",
@@ -497,6 +498,7 @@ export const PANES = {
         COLLECTING_VALUE_3: "Vilket är en minskning med",
         COLLECTING_VALUE_4: "sedan senast sparade värdering",
         COLLECTING_VALUE_6: "Ingen värdeförändring.",
+        COLLECTING_VALUE_7: "Det finns inga sparade värderingar. Gå till värderingssidan för att räkna ut ett nytt värde på din samling.",
         COLLECTING_ISSUES_1: "Totalt ingår",
         COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
         COLLECTING_ISSUES_3: "komplett.",
@@ -512,30 +514,31 @@ export const PANES = {
     },
     VALUATION: {
         NAME: "Värdering",
-        LEAD: "Här visas de senaste värderingarna som sparats i databasen. Vi visar max 20 st."
+        LEAD: "Här visas de senaste värderingarna som sparats i databasen. Vi visar max 20 st. För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
+        COLLECTING_VALUE_1: "Det sammanlagda värdet av din samling är: ",
     }
 }
 
 export const ALERT_VARIANTS = {
     1: {
         variant: "info",
-        icon: <Icon icon={faCircleInfo} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={infoIconDuoTone} className={"fa-2xl me-3"}/>
     },
     2: {
         variant: "success",
-        icon: <Icon icon={faHeart} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={statusIconSuccessDuoTone} className={"fa-2xl me-3"}/>
     },
     3: {
         variant: "warning",
-        icon: <Icon icon={faSealExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={warningIconDuoTone} className={"fa-2xl me-3"}/>
     },
     4: {
         variant: "danger",
-        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={dangerIconDuoTone} className={"fa-2xl me-3"}/>
     },
     5: {
         variant: "danger",
-        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={dangerIconDuoTone} className={"fa-2xl me-3"}/>
     }
 }
 
