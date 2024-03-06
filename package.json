@@ -1,6 +1,6 @@
 {
   "name": "sms-supabase",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -57,4 +57,3 @@
     "autoprefixer": "10.4.5"
   }
 }
-
