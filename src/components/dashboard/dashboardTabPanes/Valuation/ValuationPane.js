@@ -55,7 +55,7 @@ export const ValuationPane = () => {
             const newTotalValuationValue = await getTotalGradeValue(grades);
             if (totalValuationValuesForUser && totalValuationValuesForUser.length > 0) {
                 // Delete oldest value if too many values
-                if (totalValuationValuesForUser && totalValuationValuesForUser.length >= CONFIG.MAX_VALUATION_VALUES) {
+                if (totalValuationValuesForUser.length >= CONFIG.MAX_VALUATION_VALUES) {
                     await deleteValue(totalValuationValuesForUser);
                 }
                 // Only update if it differs from latest value
