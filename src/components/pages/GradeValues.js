@@ -25,7 +25,7 @@ export const GradeValues = () => {
     const [activeKey, setActiveKey] = useState(null);
     const [titlesData, setTitlesData] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
-    const [setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible] = useFormatQueryFilter();
+    const {setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible} = useFormatQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
@@ -91,7 +91,6 @@ export const GradeValues = () => {
                                     filteredTitlesData.map(
                                         (title, index) =>
                                             <AccordionItem eventKey={index.toString()} key={index} onToggle={() => {
-                                                console.log("toggling!!!");
                                                 setActiveKey(index.toString())
                                             }}>
                                                 <AccordionHeader as={"h2"} className={"pb-0 mb-0"}>{title.name} {title.start_year}</AccordionHeader>

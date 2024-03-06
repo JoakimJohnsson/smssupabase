@@ -1,11 +1,12 @@
 import React from "react";
-import {DataIconDuoTone} from "../icons-duotone";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {Icon, dataIconDuoTone} from "../icons";
+
 
 export const NavDropdownTitle = () => {
     return (
         <>
-            <DataIconDuoTone size={"2x"}/>
+            <Icon icon={dataIconDuoTone} size={"2x"}/>
             {LABELS_AND_HEADINGS.CONTENT}
         </>
     )

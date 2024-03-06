@@ -1,15 +1,18 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
-import {
-    CollectionCheckIconDuoTone,
-    CollectionPlusIconDuoTone,
-    CollectionSearchIconDuoTone,
-    InfoIconDuoTone,
-    LoginIconDuoTone,
-    LogoIconDuoTone,
-    RegisterIconDuoTone
-} from "../icons-duotone";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
+import {IconLinkCta} from "../minis/IconLinkCta";
+import {
+    Icon,
+    collectionCheckIconDuoTone,
+    collectionPlusIconDuoTone,
+    collectionSearchIconDuoTone,
+    infoIconDuoTone,
+    loginIconDuoTone,
+    logoIconDuoTone,
+    registerIconDuoTone
+} from "../icons";
+
 
 export const HeroHeader = () => {
     return (
@@ -18,28 +21,37 @@ export const HeroHeader = () => {
             <div className={"container-fluid"}>
                 <div className={"row"}>
                     <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
-                        <LogoIconDuoTone size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
+                        <Icon icon={logoIconDuoTone} size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
                         <h1 className={"sms-logo-text mb-5"}>
                             {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                         </h1>
                         <div className={"mb-5"}>
-                            <a href={"#login-section"} className={"btn btn-primary btn-cta d-block mb-4"}>
-                                <LoginIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.LOG_IN_CTA}
-                            </a>
-                            <a href={"#create-account-section"} className={"btn btn-primary btn-cta d-block mb-4"}>
-                                <RegisterIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
-                            </a>
-                            <a href={"#info-section"} className={"btn btn-secondary btn-cta d-block mb-4"}>
-                                <InfoIconDuoTone className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.INFORMATION}
-                            </a>
+                            <IconLinkCta
+                                variant={"primary"}
+                                icon={loginIconDuoTone}
+                                path={"#login-section"}
+                                label={LABELS_AND_HEADINGS.LOG_IN_CTA}
+                            />
+                            <IconLinkCta
+                                variant={"primary"}
+                                icon={registerIconDuoTone}
+                                path={"#create-account-section"}
+                                label={LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
+                            />
+                            <IconLinkCta
+                                variant={"secondary"}
+                                icon={infoIconDuoTone}
+                                path={"#info-section"}
+                                label={LABELS_AND_HEADINGS.INFORMATION}
+                            />
                         </div>
 
                         <p className={"lead mb-5"}>{TEXTS.DO_YOU_COLLECT}</p>
-                        <CollectionCheckIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionCheckIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.MANAGE_YOUR_COLLECTION}</p>
-                        <CollectionPlusIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionPlusIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.NEW_TITLES}</p>
-                        <CollectionSearchIconDuoTone size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
+                        <Icon icon={collectionSearchIconDuoTone} size={"2x"} className={"fa-icon--cta fa-swap-opacity"}/>
                         <p>{TEXTS.ALWAYS_AVAILABLE}</p>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
-import {isTrue, printOptions} from "../../../../helpers/functions";
+import {isTrue, printOptions, printTitleOptions} from "../../../../helpers/functions";
 import {getRowsByTable, handleChange} from "../../../../services/serviceFunctions";
 import {updateIssueData} from "../../../../services/issueService";
 import {useNavigate, useSearchParams} from "react-router-dom";
@@ -79,7 +79,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
                         <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
-                        {printOptions(titlesData)}
+                        {printTitleOptions(titlesData)}
                     </select>
                 }
                 <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>

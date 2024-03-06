@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, PANES, TABLES} from "../../helpers/constants";
 import {getNameByTableAndId, getStartYearByTableAndId} from "../../services/serviceFunctions";
 
 
@@ -25,10 +25,14 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
                 return LABELS_AND_HEADINGS.HOME;
             case "admin":
                 return LABELS_AND_HEADINGS.ADMIN;
+            case "dashboard":
+                return LABELS_AND_HEADINGS.DASHBOARD;
             case "profile":
                 return LABELS_AND_HEADINGS.SETTINGS;
             case "titles":
                 return LABELS_AND_HEADINGS.ALL_TITLES;
+            case "my titles":
+                return PANES.TITLES.NAME;
             case "marvel club":
                 return LABELS_AND_HEADINGS.MARVELKLUBBEN;
             case "publishers":
@@ -39,6 +43,12 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
                 return LABELS_AND_HEADINGS.EDIT;
             case "issues":
                 return LABELS_AND_HEADINGS.ISSUES;
+            case "valuation":
+                return PANES.VALUATION.NAME;
+            case "overview":
+                return PANES.OVERVIEW.NAME;
+            case "other collections":
+                return PANES.OTHER_COLLECTIONS.NAME;
             case "grade values":
                 return LABELS_AND_HEADINGS.GRADE_VALUES;
             case "messages":

@@ -1,0 +1,113 @@
+// Imports
+@import "variables";
+
+.dashboard-footer {
+  @extend .container-fluid, .fixed-bottom;
+  border-top: $border--primary-md;
+  background-color: $color-bg-whale;
+  padding: 0;
+  min-height: auto;
+  .footer-navlink-text {
+    @extend .mb-2, .mb-lg-0;
+    text-align: center;
+    font-size: .775rem;
+    @include media-breakpoint-up(lg) {
+      font-size: .885rem;
+      text-align: left;
+    }
+  }
+  .nav-link {
+    background-color: $color-bg-whale;
+    border-radius: $border-radius-lg;
+    @extend .fs-small;
+    margin: 0 .5rem;
+    min-width: 60px;
+    @include media-breakpoint-up(sm) {
+      min-width: 125px;
+    }
+    @include media-breakpoint-up(lg) {
+      min-width: 190px;
+    }
+    &:hover, &:focus {
+      background-color: $color-bg-whale--light;
+    }
+    &.primary {
+      color: $primary;
+      &:hover, &:focus {
+        color: $primary--lighter;
+      }
+    }
+    &.danger {
+      color: $danger;
+      &:hover, &:focus {
+        color: $danger--lighter;
+      }
+    }
+    &.secondary {
+      color: $secondary;
+      &:hover, &:focus {
+        color: $secondary--lighter;
+      }
+    }
+    &.success {
+      color: $success;
+      &:hover, &:focus {
+        color: $success--lighter;
+      }
+    }
+    &.warning {
+      color: $warning;
+      &:hover, &:focus {
+        color: $warning--lighter;
+      }
+    }
+    &.info {
+      color: $info;
+      &:hover, &:focus {
+        color: $info--lighter;
+      }
+    }
+    &.grade {
+      color: $grade;
+      &:hover, &:focus {
+        color: $grade--lighter;
+      }
+    }
+    &.active.primary {
+      background-color: $primary--darker;
+      color: $primary--lighter;
+    }
+    &.active.danger {
+      background-color: $danger--darker;
+      color: $danger--lighter;
+    }
+    &.active.secondary {
+      background-color: $secondary--darker;
+      color: $secondary--lighter;
+    }
+    &.active.success {
+      background-color: $success--darker;
+      color: $success--lighter;
+    }
+    &.active.warning {
+      background-color: $warning--darker;
+      color: $warning--lighter;
+    }
+    &.active.info {
+      background-color: $info--darker;
+      color: $info--lighter;
+    }
+    &.active.grade {
+      background-color: $grade--darker;
+      color: $grade--lighter;
+    }
+    svg {
+      @extend .p-2, .px-sm-0;
+      width: 22px;
+      margin-right: 0;
+      @include media-breakpoint-up(lg) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

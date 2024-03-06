@@ -3,20 +3,25 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faArrowDownToArc,
     faArrowRightFromArc,
-    faBadge,
     faBellExclamation,
+    faBadge,
+    faBadgeCheck,
     faBomb,
     faBuildingColumns,
+    faClipboardListCheck,
     faCalendarHeart,
     faChartLine,
-    faClipboardListCheck,
+    faCircleInfo,
     faComet,
+    faCommentsQuestion,
+    faDisplayChartUp,
     faEarthAmericas,
     faEye,
     faEyeSlash,
+    faFaceExplode,
     faFile,
-    faFiles,
     faFileImage,
+    faFiles,
     faFileLines,
     faFloppyDisk,
     faGears,
@@ -24,17 +29,23 @@ import {
     faHeartCrack,
     faHouse,
     faKey,
-    faListTimeline,
     faLink,
-    faLightbulbOn,
+    faListTimeline,
     faLightbulb,
-    faMosquito,
+    faLightbulbOn,
     faMagnifyingGlassDollar,
+    faMosquito,
     faMoneyCheckPen,
+    faPresentationScreen,
     faRectangleHistoryCirclePlus,
+    faRectangleHistoryCircleUser,
     faSackDollar,
+    faSadTear,
+    faSealExclamation,
     faSend,
+    faScaleUnbalanced,
     faShield,
+    faShieldExclamation,
     faShieldCat,
     faSpider,
     faThoughtBubble,
@@ -44,23 +55,83 @@ import {
     faUsers
 } from "@fortawesome/pro-regular-svg-icons";
 
+import {
+    faArrowDownToArc as faArrowDownToArcDT,
+    faArrowRightFromArc as faArrowRightFromArcDT,
+    faBellExclamation as faBellExclamationDT,
+    faBadge as faBadgeDT,
+    faBadgeCheck as faBadgeCheckDT,
+    faBomb as faBombDT,
+    faBuildingColumns as faBuildingColumnsDT,
+    faClipboardListCheck as faClipboardListCheckDT,
+    faCalendarHeart as faCalendarHeartDT,
+    faChartLine as faChartLineDT,
+    faCircleInfo as faCircleInfoDT,
+    faComet as faCometDT,
+    faCommentsQuestion as faCommentsQuestionDT,
+    faDisplayChartUp as faDisplayChartUpDT,
+    faEarthAmericas as faEarthAmericasDT,
+    faEye as faEyeDT,
+    faEyeSlash as faEyeSlashDT,
+    faFaceExplode as faFaceExplodeDT,
+    faFile as faFileDT,
+    faFileImage as faFileImageDT,
+    faFiles as faFilesDT,
+    faFileLines as faFileLinesDT,
+    faFloppyDisk as faFloppyDiskDT,
+    faGears as faGearsDT,
+    faHeartCirclePlus as faHeartCirclePlusDT,
+    faHeartCrack as faHeartCrackDT,
+    faHouse as faHouseDT,
+    faKey as faKeyDT,
+    faLink as faLinkDT,
+    faListTimeline as faListTimelineDT,
+    faLightbulb as faLightbulbDT,
+    faLightbulbOn as faLightbulbOnDT,
+    faMagnifyingGlassDollar as faMagnifyingGlassDollarDT,
+    faMosquito as faMosquitoDT,
+    faMoneyCheckPen as faMoneyCheckPenDT,
+    faPresentationScreen as faPresentationScreenDT,
+    faRectangleHistoryCirclePlus as faRectangleHistoryCirclePlusDT,
+    faRectangleHistoryCircleUser as faRectangleHistoryCircleUserDT,
+    faSackDollar as faSackDollarDT,
+    faSadTear as faSadTearDT,
+    faScaleUnbalanced as faScaleUnbalancedDT,
+    faSealExclamation as faSealExclamationDT,
+    faSend as faSendDT,
+    faShield as faShieldDT,
+    faShieldExclamation as faShieldExclamationDT,
+    faShieldCat as faShieldCatDT,
+    faSpider as faSpiderDT,
+    faThoughtBubble as faThoughtBubbleDT,
+    faTriangleExclamation as faTriangleExclamationDT,
+    faTypewriter as faTypewriterDT,
+    faUser as faUserDT,
+    faUsers as faUsersDT
+} from "@fortawesome/pro-duotone-svg-icons";
+
 const iconMap = {
     faArrowDownToArc: faArrowDownToArc,
     faArrowRightFromArc: faArrowRightFromArc,
-    faBadge: faBadge,
     faBellExclamation: faBellExclamation,
+    faBadge: faBadge,
+    faBadgeCheck: faBadgeCheck,
     faBomb: faBomb,
     faBuildingColumns: faBuildingColumns,
+    faClipboardListCheck: faClipboardListCheck,
     faCalendarHeart: faCalendarHeart,
     faChartLine: faChartLine,
-    faClipboardListCheck: faClipboardListCheck,
+    faCircleInfo: faCircleInfo,
     faComet: faComet,
+    faCommentsQuestion: faCommentsQuestion,
+    faDisplayChartUp: faDisplayChartUp,
     faEarthAmericas: faEarthAmericas,
     faEye: faEye,
     faEyeSlash: faEyeSlash,
+    faFaceExplode: faFaceExplode,
     faFile: faFile,
-    faFiles: faFiles,
     faFileImage: faFileImage,
+    faFiles: faFiles,
     faFileLines: faFileLines,
     faFloppyDisk: faFloppyDisk,
     faGears: faGears,
@@ -68,28 +139,93 @@ const iconMap = {
     faHeartCrack: faHeartCrack,
     faHouse: faHouse,
     faKey: faKey,
-    faListTimeline: faListTimeline,
     faLink: faLink,
-    faLightbulbOn: faLightbulbOn,
+    faListTimeline: faListTimeline,
     faLightbulb: faLightbulb,
-    faMosquito: faMosquito,
+    faLightbulbOn: faLightbulbOn,
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faMosquito: faMosquito,
     faMoneyCheckPen: faMoneyCheckPen,
+    faPresentationScreen: faPresentationScreen,
     faRectangleHistoryCirclePlus: faRectangleHistoryCirclePlus,
+    faRectangleHistoryCircleUser: faRectangleHistoryCircleUser,
     faSackDollar: faSackDollar,
+    faSadTear: faSadTear,
+    faScaleUnbalanced: faScaleUnbalanced,
+    faSealExclamation: faSealExclamation,
     faSend: faSend,
     faShield: faShield,
+    faShieldExclamation: faShieldExclamation,
     faShieldCat: faShieldCat,
     faSpider: faSpider,
     faThoughtBubble: faThoughtBubble,
     faTriangleExclamation: faTriangleExclamation,
     faTypewriter: faTypewriter,
     faUser: faUser,
-    faUsers: faUsers,
+    faUsers: faUsers
+}
+
+const iconMapDuoTone = {
+    faArrowDownToArcDT: faArrowDownToArcDT,
+    faArrowRightFromArcDT: faArrowRightFromArcDT,
+    faBellExclamationDT: faBellExclamationDT,
+    faBadgeDT: faBadgeDT,
+    faBadgeCheckDT: faBadgeCheckDT,
+    faBombDT: faBombDT,
+    faBuildingColumnsDT: faBuildingColumnsDT,
+    faClipboardListCheckDT: faClipboardListCheckDT,
+    faCalendarHeartDT: faCalendarHeartDT,
+    faChartLineDT: faChartLineDT,
+    faCircleInfoDT: faCircleInfoDT,
+    faCometDT: faCometDT,
+    faCommentsQuestionDT: faCommentsQuestionDT,
+    faDisplayChartUpDT: faDisplayChartUpDT,
+    faEarthAmericasDT: faEarthAmericasDT,
+    faEyeDT: faEyeDT,
+    faEyeSlashDT: faEyeSlashDT,
+    faFaceExplodeDT: faFaceExplodeDT,
+    faFileDT: faFileDT,
+    faFileImageDT: faFileImageDT,
+    faFilesDT: faFilesDT,
+    faFileLinesDT: faFileLinesDT,
+    faFloppyDiskDT: faFloppyDiskDT,
+    faGearsDT: faGearsDT,
+    faHeartCirclePlusDT: faHeartCirclePlusDT,
+    faHeartCrackDT: faHeartCrackDT,
+    faHouseDT: faHouseDT,
+    faKeyDT: faKeyDT,
+    faLinkDT: faLinkDT,
+    faListTimelineDT: faListTimelineDT,
+    faLightbulbDT: faLightbulbDT,
+    faLightbulbOnDT: faLightbulbOnDT,
+    faMagnifyingGlassDollarDT: faMagnifyingGlassDollarDT,
+    faMosquitoDT: faMosquitoDT,
+    faMoneyCheckPenDT: faMoneyCheckPenDT,
+    faPresentationScreenDT: faPresentationScreenDT,
+    faRectangleHistoryCirclePlusDT: faRectangleHistoryCirclePlusDT,
+    faRectangleHistoryCircleUserDT: faRectangleHistoryCircleUserDT,
+    faSackDollarDT: faSackDollarDT,
+    faSadTearDT: faSadTearDT,
+    faScaleUnbalancedDT: faScaleUnbalancedDT,
+    faSealExclamationDT: faSealExclamationDT,
+    faSendDT: faSendDT,
+    faShieldDT: faShieldDT,
+    faShieldExclamationDT: faShieldExclamationDT,
+    faShieldCatDT: faShieldCatDT,
+    faSpiderDT: faSpiderDT,
+    faThoughtBubbleDT: faThoughtBubbleDT,
+    faTriangleExclamationDT: faTriangleExclamationDT,
+    faTypewriterDT: faTypewriterDT,
+    faUserDT: faUserDT,
+    faUsersDT: faUsersDT
 }
 
 export const getIconByName = (iconName) => {
     return iconMap[iconName] || null;
+}
+
+export const getDuoToneIconByName = (iconName) => {
+    return iconMapDuoTone[iconName + "DT"] || null;
 }
 
 export const Icon = ({icon, size, className, spin = false}) => {
@@ -98,217 +234,87 @@ export const Icon = ({icon, size, className, spin = false}) => {
     )
 }
 
-export const AdminIcon = ({size, className}) => {
-    return (
-        <Icon icon={faShieldCat} size={size} className={className}/>
-    )
-}
-
-export const NotAdminIcon = ({size, className}) => {
-    return (
-        <Icon icon={faShield} size={size} className={className}/>
-    )
-}
-
-export const DateIcon = ({size, className}) => {
-    return (
-        <Icon icon={faCalendarHeart} size={size} className={className}/>
-    )
-}
-
-export const CollectionPlusIcon = ({size, className}) => {
-    return (
-        <Icon icon={faRectangleHistoryCirclePlus} size={size} className={className}/>
-    )
-}
-
-export const CollectionCheckIcon = ({size, className}) => {
-    return (
-        <Icon icon={faClipboardListCheck} size={size} className={className}/>
-    )
-}
-
-export const CollectionSearchIcon = ({size, className}) => {
-    return (
-        <Icon icon={faMagnifyingGlassDollar} size={size} className={className}/>
-    )
-}
-
-export const DashboardIcon = ({size, className}) => {
-    return (
-        <Icon icon={faChartLine} size={size} className={className}/>
-    )
-}
-
-export const DataIcon = ({size, className}) => {
-    return (
-        <Icon icon={faListTimeline} size={size} className={className}/>
-    )
-}
-
-export const EditIcon = ({size, className}) => {
-    return (
-        <Icon icon={editIcon} size={size} className={className}/>
-    )
-}
-
+// Regular
+export const adminIcon = faShieldCat;
+export const notAdminIcon = faShield;
+export const collectionPlusIcon = faRectangleHistoryCirclePlus;
+export const collectionCheckIcon = faClipboardListCheck;
+export const collectionSearchIcon = faMagnifyingGlassDollar;
+export const dangerIcon = faShieldExclamation;
+export const dateIcon = faCalendarHeart;
+export const dashboardIcon = faChartLine;
+export const dataIcon = faListTimeline;
 export const editIcon = faMoneyCheckPen;
-
-export const GlobalIcon = ({size, className}) => {
-    return (
-        <Icon icon={faEarthAmericas} size={size} className={className}/>
-    )
-}
-
-export const ImageIcon = ({size, className}) => {
-    return (
-        <Icon icon={faFileImage} size={size} className={className}/>
-    )
-}
-
-export const IssueIcon = ({size, className}) => {
-    return (
-        <Icon icon={faFileLines} size={size} className={className}/>
-    )
-}
-
-export const KeyIcon = ({size, className}) => {
-    return (
-        <Icon icon={faKey} size={size} className={className}/>
-    )
-}
-
-export const LinkIcon = ({size, className}) => {
-    return (
-        <Icon icon={faLink} size={size} className={className}/>
-    )
-}
-
-export const LoginIcon = ({size, className}) => {
-    return (
-        <Icon icon={faArrowDownToArc} size={size} className={className}/>
-    )
-}
-
-export const LogoutIcon = ({size, className}) => {
-    return (
-        <Icon icon={faArrowRightFromArc} size={size} className={className}/>
-    )
-}
-
-export const LogoIcon = ({size, className}) => {
-    return (
-        <Icon icon={faComet} size={size} className={className}/>
-    )
-}
-export const MarvelKlubbenIcon = ({size, className}) => {
-    return (
-        <Icon icon={faBadge} size={size} className={className}/>
-    )
-}
-
-export const PublishersIcon = ({size, className}) => {
-    return (
-        <Icon icon={faBuildingColumns} size={size} className={className}/>
-    )
-}
-
+export const globalIcon = faEarthAmericas;
+export const gradingIconDuo = faScaleUnbalanced;
+export const imageIcon = faFileImage;
+export const infoIcon = faCircleInfo;
+export const issueIcon = faFileLines;
+export const keyIcon = faKey;
+export const linkIcon = faLink;
+export const loginIcon = faArrowDownToArc;
+export const logoutIcon = faArrowRightFromArc;
+export const logoIcon = faComet;
+export const marvelKlubbenIcon = faBadge;
 export const publishersIcon = faBuildingColumns;
-
-export const RegisterIcon = ({size, className}) => {
-    return (
-        <Icon icon={faHeartCirclePlus} size={size} className={className}/>
-    )
-}
-
-export const SaveIcon = ({size, className}) => {
-    return (
-        <Icon icon={saveIcon} size={size} className={className}/>
-    )
-}
-
+export const registerIcon = faHeartCirclePlus;
 export const saveIcon = faFloppyDisk;
-
-export const SendIcon = ({size, className}) => {
-    return (
-        <Icon icon={faSend} size={size} className={className}/>
-    )
-}
-
-export const SettingsIcon = ({size, className}) => {
-    return (
-        <Icon icon={faGears} size={size} className={className}/>
-    )
-}
-
-export const StartIcon = ({size, className}) => {
-    return (
-        <Icon icon={faHouse} size={size} className={className}/>
-    )
-}
-
-export const StatusIconActive = ({size, className}) => {
-    return (
-        <Icon icon={faLightbulbOn} size={size} className={className}/>
-    )
-}
-
-export const StatusIconInactive = ({size, className}) => {
-    return (
-        <Icon icon={faLightbulb} size={size} className={className}/>
-    )
-}
-
-export const StatusIconRead = ({size, className}) => {
-    return (
-        <Icon icon={faEye} size={size} className={className}/>
-    )
-}
-
-export const StatusIconUnRead = ({size, className}) => {
-    return (
-        <Icon icon={faEyeSlash} size={size} className={className}/>
-    )
-}
-
-export const StatusIconTodo = ({size, className}) => {
-    return (
-        <Icon icon={faBellExclamation} size={size} className={className}/>
-    )
-}
-
-export const TitlesIcon = ({size, className}) => {
-    return (
-        <Icon icon={faFiles} size={size} className={className}/>
-    )
-}
-
+export const sendIcon = faSend;
+export const settingsIcon = faGears;
+export const startIcon = faHouse;
+export const statusIconActive = faLightbulbOn;
+export const statusIconFail = faTriangleExclamation;
+export const statusIconSadFail = faSadTear;
+export const statusIconInactive = faLightbulb;
+export const statusIconRead = faEye;
+export const statusIconUnRead = faEyeSlash;
+export const statusIconTodo = faBellExclamation;
+export const statusIconSuccess = faBadgeCheck;
 export const titlesIcon = faFiles;
-
-export const TitleIcon = ({size, className}) => {
-    return (
-        <Icon icon={faFile} size={size} className={className}/>
-    )
-}
-
 export const titleIcon = faFile;
-
-export const UsersIcon = ({size, className}) => {
-    return (
-        <Icon icon={faUsers} size={size} className={className}/>
-    )
-}
-
-export const UserIcon = ({size, className}) => {
-    return (
-        <Icon icon={faUser} size={size} className={className}/>
-    )
-}
-
-export const ValueIcon = ({size, className}) => {
-    return (
-        <Icon icon={valueIcon} size={size} className={className}/>
-    )
-}
-
+export const usersIcon = faUsers;
+export const userIcon = faUser;
 export const valueIcon = faSackDollar;
+export const warningIcon = faSealExclamation;
+
+// DuoTone
+export const adminIconDuoTone = faShieldCatDT;
+export const notAdminIconDuoTone = faShieldDT;
+export const collectionPlusIconDuoTone = faRectangleHistoryCirclePlusDT;
+export const collectionCheckIconDuoTone = faClipboardListCheckDT;
+export const collectionSearchIconDuoTone = faMagnifyingGlassDollarDT;
+export const dashboardIconDuoTone = faChartLineDT;
+export const dangerIconDuoTone = faShieldExclamationDT;
+export const dataIconDuoTone = faListTimelineDT;
+export const dateIconDuoTone = faCalendarHeartDT;
+export const editIconDuoTone = faMoneyCheckPenDT;
+export const globalIconDuoTone = faEarthAmericasDT;
+export const gradingIconDuoTone = faScaleUnbalancedDT;
+export const imageIconDuoTone = faFileImageDT;
+export const infoIconDuoTone = faCircleInfoDT;
+export const issueIconDuoTone = faFileLinesDT;
+export const keyIconDuoTone = faKeyDT;
+export const loginIconDuoTone = faArrowDownToArcDT;
+export const logoIconDuoTone = faCometDT;
+export const marvelKlubbenIconDuoTone = faBadgeDT;
+export const questionIconDuoTone = faCommentsQuestionDT;
+export const logoutIconDuoTone = faArrowRightFromArcDT;
+export const otherCollectionsIconDuoTone = faRectangleHistoryCircleUserDT;
+export const overviewIconDuoTone = faPresentationScreenDT;
+export const publishersIconDuoTone = faBuildingColumnsDT;
+export const registerIconDuoTone = faHeartCirclePlusDT;
+export const saveIconDuoTone = faFloppyDiskDT;
+export const settingsIconDuoTone = faGearsDT;
+export const startIconDuoTone = faHouseDT;
+export const statusIconActiveDuoTone = faLightbulbOnDT;
+export const statusIconFailDuoTone = faTriangleExclamationDT;
+export const statusIconSadFailDuoTone = faSadTearDT;
+export const statusIconUnreadDuoTone = faEyeSlashDT;
+export const statusIconTodoDuoTone = faBellExclamationDT;
+export const statusIconSuccessDuoTone = faBadgeCheckDT;
+export const titlesIconDuoTone = faFilesDT;
+export const titleIconDuoTone = faFileDT;
+export const usersIconDuoTone = faUsersDT;
+export const userIconDuoTone = faUserDT;
+export const valueIconDuoTone = faSackDollarDT;
+export const warningIconDuoTone = faSealExclamationDT;

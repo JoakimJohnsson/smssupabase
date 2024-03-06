@@ -9,7 +9,7 @@ import {AddGlobalMessage} from "./AddGlobalMessage";
 
 export const AddMessage = ({originObject, originTable, isGlobalMessage = false, fetchAdminMessages = false}) => {
 
-    const [formInputClass, setFormInputClass] = useCommonFormStates();
+    const {formInputClass, setFormInputClass} = useCommonFormStates();
     const [topic_id, setTopic_id] = useState("");
     const [description, setDescription] = useState("");
     const [title, setTitle] = useState(LABELS_AND_HEADINGS.MESSAGE);

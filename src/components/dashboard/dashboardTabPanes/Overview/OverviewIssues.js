@@ -15,6 +15,7 @@ export const OverviewIssues = ({titlesData}) => {
     const [averageGrade, setAverageGrade] = useState(null);
     const {user} = useAppContext();
 
+
     useEffect(() => {
         if (user) {
             getRowCountByTableAndUserId(TABLES.USERS_ISSUES, user.id, setUserIssuesCount).then();
@@ -49,18 +50,21 @@ export const OverviewIssues = ({titlesData}) => {
                 <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
                 {
                     userIssuesCount ?
-                        <p>
-                            {PANES.OVERVIEW.COLLECTING_ISSUES_1} {userIssuesCount && userIssuesCount} {PANES.OVERVIEW.COLLECTING_ISSUES_2} {Math.round(userIssuesCount / totalIssuesCountForCollection * 100)}%
-                            ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
-                        </p>
+                        <>
+                            <p>
+                                {PANES.OVERVIEW.COLLECTING_ISSUES_1} {userIssuesCount && userIssuesCount} {PANES.OVERVIEW.COLLECTING_ISSUES_2} {Math.round(userIssuesCount / totalIssuesCountForCollection * 100)}%
+                                ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
+                            </p>
+                            <h3>{PANES.OVERVIEW.GRADE}</h3>
+                            <p>{PANES.OVERVIEW.COLLECTING_ISSUES_GRADE_1} <span
+                                className={averageGrade > 6 ? "text-success" : "text-danger"}>{averageGrade}</span>.</p>
+                        </>
                         :
                         <p>
                             {PANES.OVERVIEW.COLLECTING_ISSUES_1} 0 {PANES.OVERVIEW.COLLECTING_ISSUES_2} 0%
                             (0/0) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                         </p>
                 }
-                <h3>{PANES.OVERVIEW.GRADE}</h3>
-                <p>{PANES.OVERVIEW.COLLECTING_ISSUES_GRADE_1} <span className={averageGrade > 6 ? "text-success" : "text-danger"}>{averageGrade}</span>.</p>
             </div>
         </div>
     )

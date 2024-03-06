@@ -1,6 +1,7 @@
 import {supabase} from "../supabase/supabaseClient";
 import {BUCKETS, MESSAGES, TABLES} from "../helpers/constants";
 import {handleMultipleDeleteNoConfirm} from "./serviceFunctions";
+import {checkIfIsCollectingIssueSimple} from "./collectingService";
 
 export const addIssueData = async (data, setInformationMessage) => {
     try {
@@ -154,7 +155,7 @@ export const getAllIssuesWithTitleAndPublisherWithLimit = async (setData, limit,
             .from(TABLES.ISSUES)
             .select("*, publishers (*), titles (*)")
             .limit(limit)
-            .order("created_at", {ascending})
+            .order("created_at", {ascending: true})
         if (error && status !== 406) {
             console.error(error);
         }
@@ -166,12 +167,12 @@ export const getAllIssuesWithTitleAndPublisherWithLimit = async (setData, limit,
     }
 }
 
-export const getIssuesWithTitleAndPublisherAndGradeValuesByTitleId = async (setData, id) => {
+export const getIssuesWithTitleAndPublisherAndGradeValuesByTitleId = async (setData, titleId) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
             .select("*, publishers (*), titles (*), grade_values (*)")
-            .eq("title_id", id)
+            .eq("title_id", titleId)
         if (error && status !== 406) {
             console.error(error);
         }
@@ -182,12 +183,13 @@ export const getIssuesWithTitleAndPublisherAndGradeValuesByTitleId = async (setD
         console.error(error);
     }
 }
-export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, id) => {
+
+export const getIssuesByTitleId = async (setData, titleId) => {
     try {
         let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
-            .select("*, publishers (*), titles (*)")
-            .eq("publisher_id", id)
+            .select("*")
+            .eq("title_id", titleId)
         if (error && status !== 406) {
             console.error(error);
         }
@@ -196,5 +198,60 @@ export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, id) =
         }
     } catch (error) {
         console.error(error);
+    }
+}
+
+export const getIssuesWithTitleAndPublisherByPublisherId = async (setData, publisherId) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*, publishers (*), titles (*)")
+            .eq("publisher_id", publisherId)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getIssueWithPublisherAndTitle = async (setData, id) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.ISSUES)
+            .select("*, publishers (*), titles (*), grade_values (*)")
+            .eq("id", id)
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data[0]);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const doesIssueNeedGrading = async (issueId, userId) => {
+    const isCollectingIssue = await checkIfIsCollectingIssueSimple(issueId, userId);
+    if (isCollectingIssue === false || isCollectingIssue === undefined) {
+        return false;
+    }
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.GRADES)
+            .select("*")
+            .match({issue_id: issueId, user_id: userId})
+        if (error && status !== 406) {
+            console.error(error);
+            return false;
+        }
+        return !(data && data.length > 0);
+    } catch (error) {
+        console.error(error);
+        return false;
     }
 }

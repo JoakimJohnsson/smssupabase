@@ -106,7 +106,7 @@ export const AddUserMessage = ({
                                         // Update after a while.
                                         setTimeout(() => {
                                             fetchMessages();
-                                        }, CONFIG.MESSAGE_UPDATE_TIMEOUT);
+                                        }, CONFIG.TIMEOUT_XXL);
                                     });
                                 }
                             }

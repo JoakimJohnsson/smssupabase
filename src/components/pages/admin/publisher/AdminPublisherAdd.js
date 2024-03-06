@@ -14,12 +14,16 @@ import {IconButton} from "../../../minis/IconButton";
 
 export const AdminPublisherAdd = () => {
 
-    const [
-        name, setName,
-        description, setDescription,
-        wiki_url, setWiki_url,
-        formInputClass, setFormInputClass
-    ] = useCommonFormStates();
+    const {
+        name,
+        setName,
+        description,
+        setDescription,
+        wiki_url,
+        setWiki_url,
+        formInputClass,
+        setFormInputClass
+    } = useCommonFormStates();
 
     const {setInformationMessage} = useAppContext();
     const navigate = useNavigate();

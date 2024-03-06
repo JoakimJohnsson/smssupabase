@@ -6,13 +6,14 @@ import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {UserCard} from "../lists/users/UserCard";
+import {filterQueryByFirstNameAndLastName} from "../../helpers/functions";
 
 
 export const Users = () => {
 
     const [loading, setLoading] = useState(true);
     const [usersData, setUsersData] = useState(null);
-    const [setSearchParams, query] = useSimpleQueryFilter();
+    const {setSearchParams, query} = useSimpleQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.PROFILES, setUsersData).then(() => setLoading(false));
@@ -32,9 +33,11 @@ export const Users = () => {
                                 {
                                     query ?
                                         usersData
-                                            .filter(user => user.firstname?.toLowerCase().includes(query.toLowerCase()) ||
-                                                user.lastname?.toLowerCase().includes(query.toLowerCase()) ||
-                                                query === ""
+                                            .filter((user) => {
+                                                    return (
+                                                        filterQueryByFirstNameAndLastName(user, query)
+                                                    )
+                                                }
                                             )
                                             .map((user) =>
                                                 // Only show public users here

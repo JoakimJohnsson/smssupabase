@@ -6,7 +6,7 @@ import {hasImage} from "../../../helpers/functions";
 
 export const IssueLinkCard = ({issue, index, simple = false}) => {
 
-    const [displayName] = useIssueDisplayName(issue);
+    const {displayName} = useIssueDisplayName(issue);
 
     return issue && (
         <li className={simple ? "issue-link-card simple" : "issue-link-card"}>
@@ -14,9 +14,9 @@ export const IssueLinkCard = ({issue, index, simple = false}) => {
                 <div className={"issue-link-card--content d-flex align-items-center"}>
                     {
                         hasImage(issue) && index < 24 &&
-                        <img src={issue.image_url} className={"list-image list-image--large me-3"} alt={""}/>
+                        <img src={issue.image_url} className={"list-image border-0 list-image--large me-2"} alt={""}/>
                     }
-                    {displayName}
+                    <span className={"p-2"}>{displayName}</span>
                 </div>
             </Link>
         </li>

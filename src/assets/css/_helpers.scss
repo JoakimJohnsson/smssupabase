@@ -114,21 +114,6 @@ input {
   }
 }
 
-// Spacing
-.sidebar-x-padding {
-  @include media-breakpoint-up(lg) {
-    padding-left: 2rem;
-    padding-right: 1rem;
-  }
-}
-
-.col-x-padding--xs-only {
-  @include media-breakpoint-only(xs) {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
-
 // Grayscale
 .grayscale-100 {
   filter: grayscale(100%);

@@ -6,28 +6,38 @@ import {OverviewTitles} from "./OverviewTitles";
 import {OverviewIssues} from "./OverviewIssues";
 import {OverviewUpgradeIssues} from "./OverviewUpgradeIssues";
 import {OverviewWantedIssues} from "./OverviewWantedIssues";
+import {CustomSpinner} from "../../../minis/CustomSpinner";
+import {HeadingWithBreadCrumbs} from "../../../headings";
+import {OverviewValuation} from "./OverviewValuation";
 
 
 export const OverviewPane = () => {
 
     const {user} = useAppContext();
     const [userTitlesData, setUserTitlesData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (user) {
-            getTitlesForUser(user.id, setUserTitlesData).then();
+            getTitlesForUser(user.id, setUserTitlesData).then(() => setLoading(false));
         }
     }, [user]);
 
     return (
         <>
-            <h1>{PANES.OVERVIEW.NAME}</h1>
-            <div className={"row"}>
-                <OverviewTitles titlesData={userTitlesData}/>
-                <OverviewIssues titlesData={userTitlesData}/>
-                <OverviewWantedIssues/>
-                <OverviewUpgradeIssues/>
-            </div>
+            <HeadingWithBreadCrumbs text={PANES.OVERVIEW.NAME}/>
+            {
+                loading ?
+                    <CustomSpinner size={"4x"}/>
+                    :
+                    <>
+                        <OverviewTitles titlesData={userTitlesData}/>
+                        <OverviewIssues titlesData={userTitlesData}/>
+                        <OverviewValuation />
+                        <OverviewWantedIssues/>
+                        <OverviewUpgradeIssues/>
+                    </>
+            }
         </>
     )
 }

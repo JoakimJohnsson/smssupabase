@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {getRowByTableAndId} from "../../services/serviceFunctions";
-import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../services/serviceFunctions";
+import {LABELS_AND_HEADINGS, MESSAGES, TABLES} from "../../helpers/constants";
 import {useParams} from "react-router-dom";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -17,6 +17,8 @@ import {Icon} from "../icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {getWantedIssuesForUser} from "../../services/collectingService";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
+import {FunctionButton} from "../minis/FunctionButton";
+import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 
 
 export const User = () => {
@@ -50,6 +52,14 @@ export const User = () => {
         });
     }
 
+    const handleDeleteValuationValues = () => {
+        if (!window.confirm(MESSAGES.CONFIRM.DELETE_VALUATION_VALUES)) {
+            setInformationMessage({show: true, status: 1, error: MESSAGES.INFO.ABORTED});
+            return false;
+        }
+        deleteAllTotalValuationValueForUserByUserId(user.id).then();
+    }
+
     useEffect(() => {
         if (user && user.id) {
             getWantedIssuesForUser(user.id, setWantedIssuesData).then(() => setLoading(false));
@@ -75,7 +85,7 @@ export const User = () => {
                             </div>
                             {
                                 showFullInfo(user, profile) ?
-                                    <div className={"col-12 col-md-5 col-xl-3 mb-5 col-x-padding--xs-only"}>
+                                    <div className={"col-12 col-md-5 col-xl-3 mb-5"}>
                                         {
                                             <ImageViewerSmall url={user.image_url || marvel} fileName={userName}/>
                                         }
@@ -84,15 +94,27 @@ export const User = () => {
                                     <NoDataAvailable isUser/>
                             }
                             {
-                                <div className={"col-12 col-md-7 col-xl-9 col-x-padding--xs-only"}>
+                                showFullInfo(user, profile) &&
+                                <div className={"col-12 col-md-7 col-xl-9"}>
                                     {
-                                        profile && profile.role === 2 && user.role !== 2 &&
-                                        (
-                                            user.role === 1 ?
-                                                <RemoveAdminButton user={user} handleChangeAdmin={handleChangeAdmin} useTooltip={false}/>
-                                                :
-                                                <AddAdminButton user={user} handleChangeAdmin={handleChangeAdmin} useTooltip={false}/>
-                                        )
+                                        profile && profile.role === 2 &&
+                                        <>
+                                            {
+                                                user.role !== 2 &&
+                                                (
+                                                    user.role === 1 ?
+                                                        <RemoveAdminButton user={user} handleChangeAdmin={handleChangeAdmin} useTooltip={false}/>
+                                                        :
+                                                        <AddAdminButton user={user} handleChangeAdmin={handleChangeAdmin} useTooltip={false}/>
+                                                )
+                                            }
+                                            <FunctionButton
+                                                variant={"danger"}
+                                                icon={faFaceExplode}
+                                                    onClick={handleDeleteValuationValues}
+                                                label={LABELS_AND_HEADINGS.REMOVE_ALL_VALUATION_VALUES_FOR_USER}
+                                            />
+                                        </>
                                     }
                                     <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                                     <p className={"mb-4"}>
@@ -102,8 +124,7 @@ export const User = () => {
                                                     {LABELS_AND_HEADINGS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                                 :
-                                                <p>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</p>
-
+                                                <>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</>
                                         }
                                     </p>
                                     <h2>{LABELS_AND_HEADINGS.WANTED_ISSUES}</h2>
@@ -120,7 +141,7 @@ export const User = () => {
                                                                 <IssueLinkCard key={issue.id} issue={issue} index={index}/>
                                                             )
                                                         :
-                                                        <p>{user.firstname} {LABELS_AND_HEADINGS.NO_WANTED_ISSUES_USER}</p>
+                                                        <p>{LABELS_AND_HEADINGS.NO_WANTED_ISSUES_USER}</p>
                                                 }
                                             </ul>
                                     }

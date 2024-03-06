@@ -9,10 +9,10 @@ export const useAdminTitlesQueryFilter = () => {
     const isnotvalued = searchParams.get("isnotvalued");
 
 
-    return [
+    return {
         setSearchParams,
         query,
         isvalued,
         isnotvalued
-    ]
+    }
 }

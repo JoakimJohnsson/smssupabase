@@ -5,7 +5,7 @@ import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName} from "../../../../helpers/functions";
-import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons-duotone";
+import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
@@ -22,12 +22,12 @@ export const AdminIssue = () => {
     const [newIssue, setNewIssue] = useState({});
     const [gradeValues, setGradeValues] = useState([]);
 
-    const [
+    const {
         issue,
         setIssue,
         loading,
         fetchData
-    ] = useIssueData(id, true);
+    } = useIssueData(id, true);
 
     useEffect(() => {
         setImageFilename(issue.image_filename);
@@ -55,7 +55,7 @@ export const AdminIssue = () => {
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
                                 <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
-                                                        name={getIssueName(issue)}/>
+                                                        bcName={getIssueName(issue)}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                                 <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
                                 <IconLink

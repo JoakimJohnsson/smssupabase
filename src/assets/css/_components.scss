@@ -55,32 +55,30 @@
   .row-padding--secondary {
     @extend .px-3, .px-sm-5;
   }
+  .row-padding--dashboard {
+    @extend .px-3, .px-sm-5, .pt-5;
+    padding-bottom: 8rem;
+  }
 }
 
 // Dashboard
 .sms-dashboard-col {
-  @extend .col-12, .col-lg-6, .col-xxl-4, .col-x-padding--xs-only;
+  @extend .col-12, .col-lg-6, .col-xxl-4;
   margin-bottom: $grid-gutter-width;
-
-  .sms-section--light {
-    height: 100%;
-  }
 }
 
 // Overview
 .sms-dashboard-col--sm {
   @extend .col-12, .col-lg-6;
   margin-bottom: $grid-gutter-width;
-
-  .sms-section--light {
-    height: 100%;
-  }
 }
 
 .sms-section--light {
-  @extend .p-4, .p-md-5;
+  @extend .p-0, .p-sm-4, .p-md-5;
   border-radius: $border-radius-sm;
-  background-color: $color-bg-horse;
+  @include media-breakpoint-up(sm) {
+    background-color: $color-bg-horse;
+  }
   &.section--grade {
     @extend .rounded-3, .border, .border-grade;
   }
@@ -135,14 +133,11 @@ input[type="checkbox"] + label {
 }
 
 .sms-page-col {
-  @extend .col-12, .col-x-padding--xs-only;
+  @extend .col-12;
 }
 
 .sms-page-col--full {
-  @extend .col-12, .col-lg-10, .col-xxl-8, .col-x-padding--xs-only;
-  .sms-section--light {
-    @extend .h-100;
-  }
+  @extend .col-12, .col-lg-10, .col-xxl-8;
 }
 
 // Breadcrumb
@@ -187,7 +182,10 @@ input[type="checkbox"] + label {
 
   li {
     &.title-card {
-      @extend .col-12, .col-sm-6, .col-lg-4, .col-xl-3, .mb-4;
+      @extend .col-12, .col-lg-6, .col-xl-12, .col-xxl-6, .mb-4;
+      &.simple {
+        @extend .col-12, .col-md-6, .col-lg-4, .col-xxl-3;
+      }
       .image-container {
         background-color: $white;
       }
@@ -269,10 +267,10 @@ input[type="checkbox"] + label {
         @extend .col-12;
       }
       a {
-        @extend .hocus-standard;
+        @extend .hocus-standard, .text-black;
       }
       .issue-link-card--content {
-        @extend .border, .border-primary, .p-2;
+        @extend .p-0, .bg-primary;
       }
     }
     &.user-card {

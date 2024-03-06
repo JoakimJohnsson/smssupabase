@@ -1,25 +1,8 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES, TABLES} from "../helpers/constants";
-
+import {doesIssueNeedGrading} from "./issueService";
 
 // TITLE
-export const checkIfIsCollectingTitle = async (userId, titleId, setIsCollectingTitle) => {
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.USERS_TITLES)
-            .select()
-            .match({user_id: userId, title_id: titleId});
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data && data.length > 0) {
-            setIsCollectingTitle(true);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 export const addTitleToCollection = async (userId, titleId) => {
     try {
         await supabase
@@ -45,7 +28,7 @@ export const updateIsValued = async (titleId, isValued) => {
     }
 }
 
-export const removeTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm) => {
+export const deleteTitleFromCollection = async (userId, titleId, setInformationMessage, setIsCollectingTitle, doConfirm) => {
     if (doConfirm && !window.confirm(MESSAGES.CONFIRM.STOP_COLLECTING)) {
         return false;
     }
@@ -54,7 +37,9 @@ export const removeTitleFromCollection = async (userId, titleId, setInformationM
         issueIds = result;
     })
     issueIds.forEach((issueId) => {
-        removeIssueFromCollectionSimple(userId, issueId);
+        deleteIssueFromCollectionSimple(userId, issueId);
+
+        deleteAllGradesByUserAndIssue(userId, issueId);
     })
     try {
         let {error, status} = await supabase
@@ -86,6 +71,25 @@ export const checkIfIsCollectingIssue = async (userId, issueId, setIsCollectingI
         }
     } catch (error) {
         console.error(error);
+    }
+}
+
+export const checkIfIsCollectingIssueSimple = async (issueId, userId) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.USERS_ISSUES)
+            .select()
+            .match({user_id: userId, issue_id: issueId});
+        if (error && status !== 406) {
+            console.error(error);
+            return false;
+        }
+        if (data && data.length > 0) {
+            return true;
+        }
+    } catch (error) {
+        console.error(error);
+        return false;
     }
 }
 
@@ -136,7 +140,7 @@ export const addIssueToCollection = async (userId, issueId) => {
     }
 }
 
-export const removeIssueFromCollection = async (userId, issueId, setInformationMessage, setIsCollectingIssue) => {
+export const deleteIssueFromCollection = async (userId, issueId, setInformationMessage, setIsCollectingIssue) => {
     try {
         let {error, status} = await supabase
             .from(TABLES.USERS_ISSUES)
@@ -152,7 +156,7 @@ export const removeIssueFromCollection = async (userId, issueId, setInformationM
     }
 }
 
-export const removeIssueFromCollectionSimple = async (userId, issueId) => {
+export const deleteIssueFromCollectionSimple = async (userId, issueId) => {
     try {
         await supabase
             .from(TABLES.USERS_ISSUES)
@@ -246,6 +250,23 @@ export const updateGradeValuesValues = async (gradeValues, setInformationMessage
 
 // GRADE
 
+export const checkGradingStatus = async (issuesData, userId, callbackFunction) => {
+    try {
+        let index = 0;
+        while (index < issuesData.length) {
+            const issueId = issuesData[index].id;
+            const needsGrading = await doesIssueNeedGrading(issueId, userId);
+            if (needsGrading === true) {
+                callbackFunction(true);
+                break;
+            }
+            index++;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const addGrade = async (userId, issueId) => {
     try {
         await supabase
@@ -259,12 +280,23 @@ export const addGrade = async (userId, issueId) => {
     }
 }
 
-export const removeGrade = async (gradeId, userId, issueId) => {
+export const deleteGrade = async (gradeId, userId, issueId) => {
     try {
         await supabase
             .from(TABLES.GRADES)
             .delete()
             .match({id: gradeId, user_id: userId, issue_id: issueId});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const deleteAllGradesByUserAndIssue = async (userId, issueId) => {
+    try {
+        await supabase
+            .from(TABLES.GRADES)
+            .delete()
+            .match({user_id: userId, issue_id: issueId});
     } catch (error) {
         console.error(error);
     }
@@ -316,7 +348,6 @@ export const getAllGradesByUserId = async (userId, setGrades) => {
         if (data && data.length > 0) {
             setGrades(data);
         }
-
     } catch (error) {
         console.error(error);
     }

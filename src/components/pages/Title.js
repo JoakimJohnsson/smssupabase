@@ -4,22 +4,26 @@ import {useParams} from "react-router-dom";
 import {getRowByTableAndId, handleCollectingTitle} from "../../services/serviceFunctions";
 import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
 import {IssuesList} from "../lists/issues/IssuesList";
-import {Icon} from "../icons";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
-import {useIsCollectingTitle} from "../../helpers/customHooks/useIsCollectingTitle";
 import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
 import {FunctionButton} from "../minis/FunctionButton";
 import {TitleProgress} from "./TitleProgress";
 import {FormatBadge} from "../minis/FormatBadge";
-import {addIssueToCollection, removeIssueFromCollectionSimple} from "../../services/collectingService";
+import {
+    addIssueToCollection,
+    checkGradingStatus,
+    deleteAllGradesByUserAndIssue,
+    deleteIssueFromCollectionSimple
+} from "../../services/collectingService";
 import {AddMessage} from "../message/AddMessage";
-import {editIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons-duotone";
+import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons";
 import {IconLink} from "../minis/IconLink";
+import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 
 
 export const Title = () => {
@@ -32,13 +36,14 @@ export const Title = () => {
     const [removeIssue, setRemoveIssue] = useState(false);
     const [doUpdate, setDoUpdate] = useState({});
     const {id} = useParams();
-    const [isCollectingTitle, setIsCollectingTitle] = useIsCollectingTitle(user.id, id);
+    const {isCollectingTitle, setIsCollectingTitle} = useCollectingStatus(user.id, false, id);
     const displayName = title.name + " " + title.start_year;
     const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
     const [listViewGrid, setListViewGrid] = useState(true);
     const [listViewMissing, setListViewMissing] = useState(false);
     const [listViewGrades, setListViewGrades] = useState(false);
+    const [issueNeedsGrading, setIssueNeedsGrading] = useState(false);
     const [titleProgress, setTitleProgress] = useState({});
 
     const fetchTitleAndIssuesData = useCallback(() => {
@@ -50,6 +55,10 @@ export const Title = () => {
     const fetchTitleProgress = useCallback(async () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))
     }, [title, user.id]);
+
+    useEffect(() => {
+        checkGradingStatus(issuesData, user.id, setIssueNeedsGrading).then();
+    }, [issuesData, user.id]);
 
     useEffect(() => {
         fetchTitleAndIssuesData();
@@ -82,10 +91,12 @@ export const Title = () => {
         issuesData.map((issue) => {
             setAddIssue(false);
             setAddIssue(false);
-            return removeIssueFromCollectionSimple(user.id, issue.id).then(() => {
-                fetchTitleAndIssuesData();
-                setRemoveIssue(true);
-                setAddIssue(false);
+            return deleteIssueFromCollectionSimple(user.id, issue.id).then(() => {
+                deleteAllGradesByUserAndIssue(user.id, issue.id).then(() => {
+                    fetchTitleAndIssuesData();
+                    setRemoveIssue(true);
+                    setAddIssue(false);
+                });
             })
         });
     }
@@ -112,7 +123,6 @@ export const Title = () => {
                             </div>
                             <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
                                 <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
-
                                 {
                                     titleProgress.progress === 0 ?
                                         <button
@@ -127,7 +137,7 @@ export const Title = () => {
                                             }
                                         </button>
                                         :
-                                        <p className={"alert alert-info"}>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP_REMOVE}</p>
+                                        <p>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP_REMOVE}</p>
                                 }
                                 <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
                                 {
@@ -188,9 +198,9 @@ export const Title = () => {
                                     isCollectingTitle &&
                                     <TitleProgress titleProgress={titleProgress}/>
                                 }
-                                <div className={"mb-4"}>
+                                <div className={"mb-3"}>
                                     {
-                                        <FunctionButton variant={"secondary"} icon={valueIconDuoTone}
+                                        <FunctionButton variant={"grade"} icon={valueIconDuoTone}
                                                         onClick={() => setListViewGrades(!listViewGrades)}
                                                         label={listViewGrades ? LABELS_AND_HEADINGS.LIST_VIEW_GRADES_HIDE : LABELS_AND_HEADINGS.LIST_VIEW_GRADES_SHOW}
                                                         id={"list-variant-toggler"} disabled={!title.is_valued}/>
@@ -242,6 +252,13 @@ export const Title = () => {
                                     }
                                     <AddMessage originObject={title} originTable={TABLES.TITLES}/>
                                 </div>
+                                {
+                                    isCollectingTitle && issueNeedsGrading &&
+                                    <div className={"alert alert-info d-flex align-items-center mb-4"}>
+                                        <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
+                                        {TEXTS.GRADE_MISSING}
+                                    </div>
+                                }
                                 <h2>{listViewGrades ? LABELS_AND_HEADINGS.GRADE_VALUES : LABELS_AND_HEADINGS.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
                                             listViewGrid={listViewGrid} listViewMissing={listViewMissing} listViewGrades={listViewGrades}

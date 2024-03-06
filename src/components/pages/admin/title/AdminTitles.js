@@ -4,7 +4,6 @@ import {TitlesList} from "../../../lists/titles/TitlesList";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";
 import {useNavigate} from "react-router-dom";
-import {Breadcrumbs} from "../../../minis/Breadcrumbs";
 import {
     filterAdminTitlesData,
     filterByIsValued,
@@ -17,6 +16,7 @@ import FilterFormAdminTitles from "../../../search-filter/FilterFormAdminTitles"
 import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdminTitlesQueryFilter";
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {HeadingWithBreadCrumbs} from "../../../headings";
 
 
 export const AdminTitles = () => {
@@ -24,7 +24,7 @@ export const AdminTitles = () => {
     const [titlesData, setTitlesData] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
     const navigate = useNavigate();
-    const [setSearchParams, query, isvalued, isnotvalued] = useAdminTitlesQueryFilter();
+    const {setSearchParams, query, isvalued, isnotvalued} = useAdminTitlesQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then();
@@ -53,8 +53,7 @@ export const AdminTitles = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <h1 className={"text-icon-header"}>{LABELS_AND_HEADINGS.ALL_TITLES}</h1>
-                    <Breadcrumbs/>
+                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
                     <FilterFormAdminTitles query={query} isvalued={isvalued} isnotvalued={isnotvalued} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>

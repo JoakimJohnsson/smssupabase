@@ -67,7 +67,7 @@ export function AppContextProvider({children}) {
         if (msg && oldMsg) {
             setTimeout(() => {
                 _setInformationMessage(msg)
-            }, CONFIG.SET_INFORMATION_MESSAGE_TIMEOUT);
+            }, CONFIG.TIMEOUT_SM);
         } else if (msg) {
             _setInformationMessage(msg);
         }

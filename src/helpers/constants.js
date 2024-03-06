@@ -1,6 +1,5 @@
 import React from "react";
-import {Icon} from "../components/icons";
-import {faCircleInfo, faHeart, faSealExclamation, faShieldExclamation} from "@fortawesome/pro-regular-svg-icons";
+import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../components/icons";
 
 
 export const MESSAGES = {
@@ -38,6 +37,7 @@ export const MESSAGES = {
         REMOVE_2: "?",
         FROM: " från tabellen ",
         DELETE_ISSUES: "Vill du verkligen ta bort alla publikationer för den här titeln?",
+        DELETE_VALUATION_VALUES: "Vill du verkligen ta bort alla värderingar för den här användaren?",
         GENERATE_ISSUES: "Vill du verkligen lägga till publikationer för den här titeln?",
         STOP_COLLECTING: "Vill du verkligen sluta samla på den här titeln? Titeln kommer att tömmas på publikationer.",
         CHANGE_ROLE: "Vill du verkligen ändra användarens roll?",
@@ -84,9 +84,13 @@ export const ROUTES = {
     DASHBOARD: {
         ROOT: "dashboard",
         OVERVIEW: "overview",
-        TITLES: "titles",
+        PATH_OVERVIEW: "/dashboard/overview",
+        MY_TITLES: "my-titles",
+        PATH_MY_TITLES: "/dashboard/my-titles",
         OTHER_COLLECTIONS: "other-collections",
-        PATH_MY_TITLES: "/dashboard/titles"
+        PATH_OTHER_COLLECTIONS: "/dashboard/other-collections",
+        VALUATION: "valuation",
+        PATH_VALUATION: "/dashboard/valuation"
     },
     ADMIN: {
         ROOT: "/admin",
@@ -120,6 +124,7 @@ export const LABELS_AND_HEADINGS = {
     ADD_PUBLISHER: "Lägg till nytt förlag",
     ADD_TITLE: "Lägg till ny titel",
     ADD_GRADE: "Lägg till skickgradering",
+    ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
     ADDED: "Inlagd",
     ADMIN: "Admin",
@@ -142,12 +147,16 @@ export const LABELS_AND_HEADINGS = {
     CLOSE: "Stäng",
     COLLECT_TITLE_START: "Börja samla på titeln",
     COLLECT_TITLE_STOP: "Sluta samla på titeln",
-    COLLECT_TITLE_STOP_REMOVE: "Töm samlingen på publikationer innan du kan sluta samla på den här titeln.",
+    COLLECT_TITLE_STOP_REMOVE: "Du måste tömma samlingen på publikationer innan du kan sluta samla på den här titeln.",
     COLLECT_ISSUE_START: "Lägg till",
     COLLECT_ISSUE_START_2: "i samlingen.",
     COLLECT_ISSUE_STOP: "Ta bort",
     COLLECT_ISSUE_STOP_2: "från samlingen.",
     COLLECTING_ADD_ALL: "Lägg till alla",
+    COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES: "Du har inte lagt in några publikationer i samlingen.",
+    COLLECTING_CHECK_GRADING_STATUS_OPEN_1: "Kontrollera om någon publikation av",
+    COLLECTING_CHECK_GRADING_STATUS_OPEN_2: "behöver skickgradering.",
+    COLLECTING_CHECK_GRADING_STATUS_CLOSE: "Lägg till alla",
     COLLECTING_REMOVE_ALL: "Töm samlingen",
     COMMUNITY: "Socialt",
     CONTACT: "Kontakt",
@@ -163,6 +172,7 @@ export const LABELS_AND_HEADINGS = {
     CREATED_AT: "Inlagd",
     DASHBOARD: "Kontrollpanel",
     DASHBOARD_MY_TITLES: "Kontrollpanel / Mina titlar",
+    DATE: "Datum",
     DEFAULT_FORMATS: "Alla format",
     DELETE: "Ta bort",
     DELETING: "Tar bort",
@@ -176,7 +186,7 @@ export const LABELS_AND_HEADINGS = {
     EDIT_GRADE: "Ändra skick",
     EDIT_INFORMATION: "Redigera information",
     EDIT_GRADE_VALUE: "Redigera värde för skickgradering",
-    ADD_GRADE_VALUE: "Lägg till grundvärde för skickgradering",
+    ADD_GRADE_VALUE: "Lägg till skickgradering för publikationern",
     EMAIL: "E-postadress",
     NEW_EMAIL: "Ny e-postadress",
     CONFIRM_NEW_EMAIL: "Bekräfta ny e-postadress",
@@ -208,7 +218,8 @@ export const LABELS_AND_HEADINGS = {
     INFORMATION_ABOUT: "Information om",
     INFORMATION_MISSING: "Information saknas.",
     IS_MARVELKLUBBEN: "Ingår i marvelklubben",
-    IS_PUBLIC: "Gör profilsidan publik",
+    IS_PUBLIC: "Publik information",
+    MAKE_PUBLIC: "Gör din profilsida och information publik",
     IS_DOUBLE: "Dubbelnummer",
     IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
     VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
@@ -223,7 +234,7 @@ export const LABELS_AND_HEADINGS = {
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
     NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
-    NO_WANTED_ISSUES_USER: "har inga efterlysta publikationer.",
+    NO_WANTED_ISSUES_USER: "Inga efterlysta publikationer.",
     UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
     NO_UPGRADE_ISSUES: "Du har inga publikationer i behov av uppgradering.",
     LAST_NAME: "Efternamn",
@@ -272,12 +283,14 @@ export const LABELS_AND_HEADINGS = {
     NUMBER_DB: "Nummer (number)",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
+    CALCULATING_VALUATION: "Beräknar ny värdering!",
     OPEN: "Öppna",
     ON_COMICS_ORG: "på Comics.org",
     PASSWORD: "Lösenord",
     NEW_PASSWORD: "Nytt lösenord",
     PASSWORD_CONFIRM: "Bekräfta lösenord",
     PAUSE: "Pausa",
+    YOUR_INFORMATION: "Din information",
     PLACEHOLDER_MAIL: "namn@posten.se",
     PREVIOUS: "Tidigare",
     PROFILE_IMAGE: "Profilbild",
@@ -288,6 +301,7 @@ export const LABELS_AND_HEADINGS = {
     RELEASE_PREVIOUS: "Föregående releaser",
     RELEASE_FUTURE: "Kommande funktionalitet",
     REMOVE: "Ta bort",
+    REMOVE_ALL_VALUATION_VALUES_FOR_USER: "Ta bort alla sparade värderingar för användaren",
     RESET: "Rensa",
     RESET_FILTER: "Rensa alla filter",
     RESET_FORM: "Rensa formulär",
@@ -330,15 +344,22 @@ export const LABELS_AND_HEADINGS = {
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     TOTAL_ISSUES_DB: "Totalt antal publikationer (total_issues)",
     UPDATE: "Uppdatera",
-    UPDATE_DEFAULT_VALUES: "Uppdatera grundläggande värden",
+    UPDATE_DEFAULT_VALUES: "Populera publikationer med grundläggande värden - OBS! alla publikationer måste ha fått sin skickgradering",
     RELEASE_DATE: "Releasedatum",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
     UTILS: "Verktyg, knappar och reglage",
+    VALUE: "Värde",
+    VALUATION: "Värdering",
+    VALUATION_CALCULATE: "Beräkna ny värdering",
+    VALUATION_CALCULATE_MESSAGE_1: "Ingen värdeförändring - behöver inte spara ny värdering.",
+    VALUATION_CALCULATE_MESSAGE_2: "Inga värderingar funna - sparar ny värdering.",
+    VALUATION_CALCULATE_MESSAGE_3: "För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
     WEBSITE: "Webbplats",
-    WELCOME: "Välkommen till Svenska Marvelsamlares hemsida!",
+    WELCOME_TEXT_1: "Hej",
+    WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!",
     WIKI_URL: "Länk till Seriewikin",
     WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
     COMICS_ORG_URL: "Länk till Comics.org",
@@ -384,6 +405,8 @@ export const TEXTS = {
     GRADE_IS_NOT_VALUED: "Vissa publikationer saknar värden.",
     GRADE_VALUED: "Har värden",
     GRADE_NOT_VALUED: "Saknar värden",
+    GRADE_MISSING: "Det verkar som att några publikationer saknar skickgradering.",
+    GRADE_FOUND: "Alla publikationer har skickgradering.",
     GRADE_TITLE_IS_VALUED: "Alla publikationer har fått rätt värden.",
     INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
@@ -405,7 +428,11 @@ export const TEXTS = {
     SHOWING: "Visar",
     SHOWING_OF: "av",
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
-    SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen.",
+    SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen. För att lägga till en ny titel:",
+    SHOWING_LATEST_TITLES_STEP_1: "Skapa titel",
+    SHOWING_LATEST_TITLES_STEP_2: "Lägg till publikationer",
+    SHOWING_LATEST_TITLES_STEP_3: "För varje publikation - lägg till skickgradering",
+    SHOWING_LATEST_TITLES_STEP_4: "På titeln - populera alla publikationer med grundvärden för skickgradering",
     STATUS_404_ROUTE: "Hittade tyvärr ingen route för",
     TOTAL_TITLE_COUNT: "Totalt antal inlagda titlar:",
     LATEST_TITLES: "Senast inlagda titlar:",
@@ -446,6 +473,7 @@ export const TABLES = {
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
     TITLES: "titles",
+    USER_TOTAL_VALUATION_VALUES: "user_total_valuation_values",
     USERS_TITLES: "users_titles",
     USERS_ISSUES: "users_issues",
     USERS_ISSUES_WANTED: "users_issues_wanted",
@@ -465,6 +493,12 @@ export const PANES = {
         COLLECTING_TITLES_1: "Du samlar på",
         COLLECTING_TITLES_2: "av totalt",
         COLLECTING_TITLES_3: "inlagda titlar.",
+        COLLECTING_VALUE_1: "Det sammanlagda värdet av din samling är: ",
+        COLLECTING_VALUE_2: "Vilket är en ökning med",
+        COLLECTING_VALUE_3: "Vilket är en minskning med",
+        COLLECTING_VALUE_4: "sedan senast sparade värdering",
+        COLLECTING_VALUE_6: "Ingen värdeförändring.",
+        COLLECTING_VALUE_7: "Det finns inga sparade värderingar. Gå till värderingssidan för att räkna ut ett nytt värde på din samling.",
         COLLECTING_ISSUES_1: "Totalt ingår",
         COLLECTING_ISSUES_2: "publikationer i din samling, som är till",
         COLLECTING_ISSUES_3: "komplett.",
@@ -472,34 +506,39 @@ export const PANES = {
         COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har en snittgradering på"
     },
     OTHER_COLLECTIONS: {
-        NAME: "Andra samlingar",
+        NAME: "Samlingar",
         COLLECTING: "Samlar på",
         TITLES: "titlar",
         COMPLETE: "% komplett",
 
+    },
+    VALUATION: {
+        NAME: "Värdering",
+        LEAD: "Här visas de senaste värderingarna som sparats i databasen. Vi visar max 20 st. För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
+        COLLECTING_VALUE_1: "Det sammanlagda värdet av din samling är: ",
     }
 }
 
 export const ALERT_VARIANTS = {
     1: {
         variant: "info",
-        icon: <Icon icon={faCircleInfo} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={infoIconDuoTone} className={"fa-2xl me-3"}/>
     },
     2: {
         variant: "success",
-        icon: <Icon icon={faHeart} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={statusIconSuccessDuoTone} className={"fa-2xl me-3"}/>
     },
     3: {
         variant: "warning",
-        icon: <Icon icon={faSealExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={warningIconDuoTone} className={"fa-2xl me-3"}/>
     },
     4: {
         variant: "danger",
-        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={dangerIconDuoTone} className={"fa-2xl me-3"}/>
     },
     5: {
         variant: "danger",
-        icon: <Icon icon={faShieldExclamation} className={"fa-2xl me-3"}/>
+        icon: <Icon icon={dangerIconDuoTone} className={"fa-2xl me-3"}/>
     }
 }
 
@@ -555,11 +594,12 @@ export const STATISTICS = {
 }
 
 export const CONFIG = {
-    MESSAGE_UPDATE_TIMEOUT: 2000,
-    FETCH_TITLE_PROGRESS_TIMEOUT: 200,
-    SET_INFORMATION_MESSAGE_TIMEOUT: 150,
-    GENERATE_ISSUES_TIMEOUT: 1000,
-    DELETE_ISSUES_TIMEOUT: 1000
+    TIMEOUT_XXL: 2000,
+    TIMEOUT_XL: 1000,
+    TIMEOUT_LG: 500,
+    TIMEOUT_MD: 400,
+    TIMEOUT_SM: 200,
+    MAX_VALUATION_VALUES: 20
 }
 
 export const GRADE_VARIANTS = {

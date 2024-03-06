@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {ALERT_VARIANTS, LABELS_AND_HEADINGS, MESSAGES} from "../../helpers/constants";
 import {useAppContext} from "../../context/AppContext";
-import {faTimes, faPause} from "@fortawesome/pro-regular-svg-icons";
+import {faTimes, faPause} from "@fortawesome/pro-solid-svg-icons";
 import {Icon} from "../icons";
 import {ProgressBar} from "react-bootstrap";
 

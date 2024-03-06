@@ -6,7 +6,7 @@ import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {publishersIconDuoTone} from "../../../icons-duotone";
+import {publishersIconDuoTone} from "../../../icons";
 import {IconButton} from "../../../minis/IconButton";
 
 

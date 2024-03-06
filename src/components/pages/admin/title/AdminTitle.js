@@ -19,13 +19,12 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {getCalculatedYear, getIssuesPerYear, getYearsList, printOptions} from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
-import {IssueIcon, valueIcon} from "../../../icons";
+import {Icon, issueIcon, valueIcon, titleIconDuoTone} from "../../../icons";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {titleIconDuoTone} from "../../../icons-duotone";
 import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
-import {supabase} from "../../../../supabase/supabaseClient";
 import {IconLink} from "../../../minis/IconLink";
+import {updateGradeValuesForTitles} from "../../../../helpers/databaseFunctions";
 
 
 export const AdminTitle = () => {
@@ -125,13 +124,13 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingGI(false);
                     fetchTitleAndIssuesData();
-                }, CONFIG.GENERATE_ISSUES_TIMEOUT);
+                }, CONFIG.TIMEOUT_XL);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_UPLOAD_MISSING_INFO});
             setTimeout(() => {
                 setLoadingGI(false);
-            }, CONFIG.GENERATE_ISSUES_TIMEOUT);
+            }, CONFIG.TIMEOUT_XL);
         }
     }
 
@@ -142,13 +141,13 @@ export const AdminTitle = () => {
                 setTimeout(() => {
                     setLoadingDI(false);
                     fetchTitleAndIssuesData();
-                }, CONFIG.DELETE_ISSUES_TIMEOUT);
+                }, CONFIG.TIMEOUT_XL);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_DELETE});
             setTimeout(() => {
                 setLoadingDI(false);
-            }, CONFIG.DELETE_ISSUES_TIMEOUT);
+            }, CONFIG.TIMEOUT_XL);
         }
     }
 
@@ -185,20 +184,7 @@ export const AdminTitle = () => {
 
     const handleUpdateDefaultGradeValues = async () => {
         setLoadingGG(true);
-        try {
-            // Performing a supabase sql function - update_grade_values_for_titles
-            await supabase.rpc('update_grade_values_for_titles', {
-                title_ids: [title.id],
-                value_pr: updateGradeValues.pr,
-                value_gd: updateGradeValues.gd,
-                value_vg: updateGradeValues.vg,
-                value_fn: updateGradeValues.fn,
-                value_vf: updateGradeValues.vf,
-                value_nm: updateGradeValues.nm,
-            }).then(() => setLoadingGG(false));
-        } catch (error) {
-            console.error(error);
-        }
+        await updateGradeValuesForTitles(title.id, updateGradeValues.pr, updateGradeValues.gd, updateGradeValues.vg, updateGradeValues.fn, updateGradeValues.vf, updateGradeValues.nm, setLoadingGG);
     }
 
     return (
@@ -414,7 +400,7 @@ export const AdminTitle = () => {
                                                     variant_suffix: variant_suffix,
                                                 }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
                                                 disabled={!year || !number}>
-                                            <IssueIcon className={"me-2"}/>
+                                            <Icon icon={issueIcon} className={"me-2"}/>
                                             {LABELS_AND_HEADINGS.ADD}
                                         </button>
                                         <button className={"btn btn-secondary sms-btn"}
@@ -462,7 +448,7 @@ export const AdminTitle = () => {
                                                             </>
                                                             :
                                                             <>
-                                                                <IssueIcon className={"me-2"}/>
+                                                                <Icon icon={issueIcon} className={"me-2"}/>
                                                                 {LABELS_AND_HEADINGS.GENERATE_ISSUES}
                                                             </>
                                                     }

@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {CustomSpinner} from "../../minis/CustomSpinner";
-import {NotAdminIconDuoTone} from "../../icons-duotone";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {getUserName} from "../../../helpers/functions";
+import {Icon, notAdminIconDuoTone} from "../../icons";
+import {FunctionButton} from "../../minis/FunctionButton";
 
 
 export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => {
@@ -28,23 +29,17 @@ export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => 
                         loading ?
                             <CustomSpinner className={"fa-xl"}/>
                             :
-                            <NotAdminIconDuoTone className={"fa-xl"}/>
+                            <Icon icon={notAdminIconDuoTone} className={"fa-xl"}/>
                     }
                 </button>
             </OverlayTrigger>
         )
         :
-        (
-            <button
-                className={"btn btn-danger mb-3"}
-                onClick={() => handleChangeAdmin(user.id, 1, setLoading)}>
-                {
-                    loading ?
-                        <CustomSpinner className={"fa-xl me-2"}/>
-                        :
-                        <NotAdminIconDuoTone className={"fa-xl me-2"}/>
-                }
-                {LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
-            </button>
-        )
+        <FunctionButton
+            variant={"danger"}
+            customClass={"me-2"}
+            icon={notAdminIconDuoTone}
+            label={LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
+            onClick={() => handleChangeAdmin(user.id, 1, setLoading)}
+        />
 }

@@ -1,5 +1,5 @@
 import {useState, useCallback, useEffect} from "react";
-import {getIssueDataWithPublisherAndTitle} from "../../services/serviceFunctions";
+import {getIssueWithPublisherAndTitle} from "../../services/issueService";
 
 
 export const useIssueData = (id, withFetchAndSetIssue = false) => {
@@ -7,9 +7,8 @@ export const useIssueData = (id, withFetchAndSetIssue = false) => {
     const [issue, setIssue] = useState({});
     const [loading, setLoading] = useState(true);
 
-
     const fetchData = useCallback(() => {
-        getIssueDataWithPublisherAndTitle(setIssue, id).then(() => setLoading(false));
+        getIssueWithPublisherAndTitle(setIssue, id).then(() => setLoading(false));
     }, [id]);
 
     useEffect(() => {
@@ -17,18 +16,18 @@ export const useIssueData = (id, withFetchAndSetIssue = false) => {
     }, [fetchData])
 
     if (withFetchAndSetIssue) {
-        return [
+        return {
             issue,
             setIssue,
             loading,
             fetchData
-        ];
+        };
 
     } else {
-        return [
+        return {
             issue,
             loading
-        ];
+        };
 
     }
 

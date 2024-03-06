@@ -2,6 +2,7 @@ import {supabase} from "../supabase/supabaseClient";
 import {CLASSES, MESSAGES, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
+import {getGradeValueByIssueIdAndGrade} from "./databaseFunctions";
 
 export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
@@ -113,7 +114,16 @@ export const printOptions = (data) => {
         data
             .sort((a, b) => sortByName(a, b))
             .map(
-            (item) => <option key={item.id} value={item.id}>{item.name}</option>)
+                (item) => <option key={item.id} value={item.id}>{item.name}</option>)
+    )
+}
+
+export const printTitleOptions = (titleData) => {
+    return titleData && (
+        titleData
+            .sort((a, b) => sortByName(a, b))
+            .map(
+                (item) => <option key={item.id} value={item.id}>{item.name} {item.start_year}</option>)
     )
 }
 
@@ -202,6 +212,7 @@ export const sortByDateCreated = (a, b) => {
     if (a.created_at > b.created_at) return 1;
     return 0;
 }
+
 export const sortByDateCreatedDesc = (a, b) => {
     if (a.created_at < b.created_at) return 1;
     if (a.created_at > b.created_at) return -1;
@@ -256,8 +267,22 @@ export const hasTrueValue = (stringArray) => {
     return false;
 };
 
-export const getCurrentDate = () => {
+export const getCurrentDateAsISOString = () => {
     return (new Date()).toISOString();
+}
+
+export const getCurrentDate = () => {
+    return new Date();
+}
+
+export const getFriendlyDateFromTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toISOString().split('T')[0];
+}
+
+export const getTinyFriendlyDateFromTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('sv-SE', { day: 'numeric', month: 'numeric' });
 }
 
 export const getAverageGrade = (grades) => {
@@ -266,6 +291,22 @@ export const getAverageGrade = (grades) => {
         totalGradeAmount += grades[i].grade;
     }
     return totalGradeAmount / grades.length || 0.0;
+}
+
+export const getTotalGradeValue = async (grades) => {
+
+    let totalGradeValue = 0;
+    for (let i = 0; i < grades.length; i++) {
+        try {
+            const response = await getGradeValueByIssueIdAndGrade(grades[i].issue_id, grades[i].grade);
+            if (response && response.data) {
+                totalGradeValue += response.data;
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    return totalGradeValue;
 }
 
 export const isSKGradeValue = (gradeValue) => {
@@ -295,8 +336,19 @@ export const filterQueryByNameAndStartYear = (obj, query) => {
         query === ""
     )
 }
+export const filterQueryByFirstNameAndLastName = (user, query) => {
+    return (
+        user.firstname?.toLowerCase()
+            .includes(query.toLowerCase()) ||
+        user.lastname?.toLowerCase()
+            .includes(query.toLowerCase()) ||
+        query === ""
+    )
+}
 export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query) => {
     return (
+        issue.id.toLowerCase()
+            .includes(query.toLowerCase()) ||
         issue.titles.name.toLowerCase()
             .includes(query.toLowerCase()) ||
         issue.publishers.name.toString().toLowerCase()
@@ -381,7 +433,11 @@ export const filterAdminTitlesData = (titlesData, query, isvalued, isnotvalued) 
 }
 
 export const renderGradeValue = (issueData, gradeName) => {
-    const gradeValues = issueData.grade_values;
-    const value = getDataGradeValuesByGradeName(gradeValues, gradeName);
-    return value > 0 ? value : "-";
+    try {
+        const gradeValues = issueData.grade_values;
+        const value = getDataGradeValuesByGradeName(gradeValues, gradeName);
+        return value > 0 ? value : "-";
+    } catch (error) {
+        console.error(error);
+    }
 }

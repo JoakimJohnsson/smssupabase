@@ -25,6 +25,12 @@ export const TitlesSection = () => {
                     limitedTitlesData ?
                         <>
                             <p>{TEXTS.SHOWING_LATEST_TITLES}</p>
+                            <ol>
+                                <li>{TEXTS.SHOWING_LATEST_TITLES_STEP_1}</li>
+                                <li>{TEXTS.SHOWING_LATEST_TITLES_STEP_2}</li>
+                                <li>{TEXTS.SHOWING_LATEST_TITLES_STEP_3}</li>
+                                <li>{TEXTS.SHOWING_LATEST_TITLES_STEP_4}</li>
+                            </ol>
                             <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData} doSortByName={false} showAdminInfo={true} showToolbox/>
                         </>
                         :

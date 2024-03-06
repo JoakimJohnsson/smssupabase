@@ -3,14 +3,14 @@ import {IssueLink} from "./IssueLink";
 import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
 import {ListToolBox} from "../ListToolBox";
 import {getIssueName, hasImage} from "../../../helpers/functions";
-import {useIsCollectingIssue} from "../../../helpers/customHooks/useIsCollectingIssue";
 import {useAppContext} from "../../../context/AppContext";
+import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";
 
 
 export const IssueListItem = ({showAdminInfo, issue, issuesData, setIssuesData, showCollectingButtons, fetchTitleProgress}) => {
 
     const {user} = useAppContext();
-    const {isCollectingIssue, setIsCollectingIssue} = useIsCollectingIssue(user.id, issue.id);
+    const {isCollectingIssue, setIsCollectingIssue} = useCollectingStatus(user.id, issue.id, false);
 
     return (
         <li className={"list-group-item px-0"}>

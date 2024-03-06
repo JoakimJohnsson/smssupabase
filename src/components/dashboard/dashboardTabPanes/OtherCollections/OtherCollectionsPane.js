@@ -2,8 +2,9 @@ import React, {useState, useEffect} from "react";
 import {OtherCollectionsPaneListItem} from "./OtherCollectionsPaneListItem";
 import {PANES, TABLES} from "../../../../helpers/constants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
-import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
+import {HeadingWithBreadCrumbs} from "../../../headings";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
 export const OtherCollectionsPane = () => {
@@ -17,8 +18,8 @@ export const OtherCollectionsPane = () => {
     }, [])
 
     return (
-        <>
-            <h1 className={"mb-5"}>{PANES.OTHER_COLLECTIONS.NAME}</h1>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={PANES.OTHER_COLLECTIONS.NAME}/>
             {
                 loading ?
                     <OverlaySpinner/>
@@ -28,11 +29,11 @@ export const OtherCollectionsPane = () => {
                             usersData.map((user) =>
                                 // List public users other than profile
                                 user.is_public === 1 && user.id !== profile.id &&
-                                <OtherCollectionsPaneListItem user={user}/>
+                                <OtherCollectionsPaneListItem user={user} key={user.id}/>
                             )
                         }
                     </ul>
             }
-        </>
+        </div>
     )
 }

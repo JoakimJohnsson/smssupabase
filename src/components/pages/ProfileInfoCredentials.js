@@ -1,6 +1,6 @@
 import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
-import {KeyIcon, SendIcon} from "../icons";
+import {Icon, keyIcon, sendIcon, SendIcon} from "../icons";
 
 
 export const ProfileInfoCredentials = ({
@@ -40,7 +40,7 @@ export const ProfileInfoCredentials = ({
                 <div className={"form-text mb-3"}>{TEXTS.CHANGE_EMAIL_SEND_INFO}</div>
                 <button className={"btn btn-primary sms-btn"} onClick={() => handleChangeEmail()}
                         disabled={newEmail === "" || newEmail !== confirmNewEmail}>
-                    <SendIcon className={"me-2"}/>{LABELS_AND_HEADINGS.SEND}
+                    <Icon icon={sendIcon} className={"me-2"}/>{LABELS_AND_HEADINGS.SEND}
                 </button>
                 {message.show && <p className={`alert ${message.isError ? "alert-danger" : "alert-success"} mt-3`}
                                     role={"alert"}>{message.text}</p>}
@@ -65,7 +65,7 @@ export const ProfileInfoCredentials = ({
                 <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_INFO}</div>
                 <button className={"btn btn-danger sms-btn"} onClick={() => handleChangePassword()}
                         disabled={confirmNewPassword === "" || newPassword !== confirmNewPassword}>
-                    <KeyIcon className={"me-2"}/>{LABELS_AND_HEADINGS.RESET_PASSWORD}
+                    <Icon icon={keyIcon} className={"me-2"}/>{LABELS_AND_HEADINGS.RESET_PASSWORD}
                 </button>
                 {pwMessage.show && <p className={`alert ${pwMessage.isError ? "alert-danger" : "alert-success"} mt-3`}
                                       role={"alert"}>{pwMessage.text}</p>}
