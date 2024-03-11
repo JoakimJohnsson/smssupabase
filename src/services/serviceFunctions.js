@@ -147,7 +147,7 @@ export const getRowsByTableWithLimitAndOrderByColumn = async (table, column, set
             .from(table)
             .select("*")
             .limit(limit)
-            .order(column, {ascending: true})
+            .order(column, {ascending: ascending})
         if (error && status !== 406) {
             console.error(error);
         }
