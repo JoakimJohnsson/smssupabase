@@ -267,16 +267,16 @@ export const hasTrueValue = (stringArray) => {
     return false;
 };
 
-export const listDoesExists = (list) => {
+export const listDoesExist = (list) => {
     return list && list.length > 0;
 }
 
 export const allListsDoesExist = (arrayOfLists) => {
-    return arrayOfLists.every(list => listDoesExists(list));
+    return arrayOfLists.every(list => listDoesExist(list));
 };
 
 export const atLeastOneListDoesExist = (arrayOfLists) => {
-    return arrayOfLists.some(list => listDoesExists(list));
+    return arrayOfLists.some(list => listDoesExist(list));
 };
 
 export const getCurrentDateAsISOString = () => {
