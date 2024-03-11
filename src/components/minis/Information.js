@@ -53,7 +53,7 @@ export const Information = ({message}) => {
                     {alertIcon}
                 </div>
                 <div className={"w-100"}>
-                    <p className={"mb-2"}>{messageText}</p>
+                    <p className={"mb-2 me-5 me-sm-4"}>{messageText}</p>
                     {
                         !pauseCounter &&
                         <>
