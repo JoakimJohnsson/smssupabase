@@ -590,7 +590,7 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 149
+    TOTAL_TITLES_COUNT: 150
 }
 
 export const CONFIG = {
