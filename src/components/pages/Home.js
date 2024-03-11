@@ -13,7 +13,7 @@ import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueSe
 import {ProgressBar} from "react-bootstrap";
 import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
-import {sortByName} from "../../helpers/functions";
+import {atLeastOneListDoesExist, sortByName} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {
     Icon,
@@ -29,7 +29,7 @@ import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 
 export const Home = () => {
 
-    const {user, profile} = useAppContext();
+    const {user, profile, activeGlobalMessages, unreadMessages, todoMessages} = useAppContext();
     const [showAlert, setShowAlert] = useState(false);
     const [alertText, setAlertText] = useState("");
     const [totalTitles, setTotalTitles] = useState(0);
@@ -123,6 +123,19 @@ export const Home = () => {
                                 admin@svenskamarvelsamlare.se
                             </a>
                         </p>
+                        {
+                            atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
+                            <div className={"mb-5"}>
+                                <MessageViewer viewGlobal/>
+                                {
+                                    profile && profile.role > 0 &&
+                                    <>
+                                        <MessageViewer viewUnread/>
+                                        <MessageViewer viewTodo/>
+                                    </>
+                                }
+                            </div>
+                        }
                         <h2>{LABELS_AND_HEADINGS.DASHBOARD}</h2>
                         <IconLinkCtaLg
                             variant={"primary"}
@@ -148,14 +161,6 @@ export const Home = () => {
                             path={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS}
                             label={PANES.OTHER_COLLECTIONS.NAME}
                         />
-                        <MessageViewer viewGlobal/>
-                        {
-                            profile && profile.role > 0 &&
-                            <>
-                                <MessageViewer viewUnread/>
-                                <MessageViewer viewTodo/>
-                            </>
-                        }
                     </div>
                 </div>
                 <div className={"row row-padding--secondary"}>

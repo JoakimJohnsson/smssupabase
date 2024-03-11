@@ -40,6 +40,16 @@
     "icon": "faSackDollar"
   },
   {
+    "id": 5996,
+    "isGlobal": false,
+    "name": "Kompletteringsbehov",
+    "nameEn": "Additions needed",
+    "description": "Vänligen rapportera eventuella kompletteringsbehov här. Tack för din hjälp med att förbättra kvaliteten på informationen.",
+    "descriptionEn": "Please report the need of more information here. Thank you for helping us improve the quality of our information.",
+    "shade": 0,
+    "icon": "faHeartCirclePlus"
+  },
+  {
     "id": 4657,
     "isGlobal": true,
     "name": "Nyhet",
