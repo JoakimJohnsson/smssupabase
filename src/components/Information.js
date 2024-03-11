@@ -16,9 +16,15 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.6.0 - 2024-03-06</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.6.3 - 2024-03-11</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Nu visas senast inlagda titlar och publikationer korrekt på startsidan.</li>
+                    <li className={"list-group-item px-0"}>Det är nu möjligt att skicka meddelanden till admin med ämnet "Kompletteringar".</li>
+
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.6.0 - 2024-03-06</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Förbättrad möjlighet för Admin att se, åtgärda och administrera meddelanden.</li>
                     <li className={"list-group-item px-0"}>Kontrollpanel - footer navigering istället för sidebar.</li>
                     <li className={"list-group-item px-0"}>Tydligare personlig information.</li>
@@ -30,20 +36,6 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Räkna ut och visa upp det sammanlagda värdet på samlingen.</li>
                     <li className={"list-group-item px-0"}>Spara och visa viss historik över värderingens förändring över tid.</li>
                     <li className={"list-group-item px-0"}>Skickgraderingar för publikation tas nu bort när användaren slutar samla på den.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.5.0 - 2024-01-14</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Bugfix - När man raderade ett meddelande försvann alla tillfälligt ur listan.</li>
-                    <li className={"list-group-item px-0"}>Tydligare meddelande när användare väljer att sluta samla på en titel.</li>
-                    <li className={"list-group-item px-0"}>Gridvy på titelsida visar nu antal exemplar och dess skick av en publikation.</li>
-                    <li className={"list-group-item px-0"}>Visa skickvärdering även på sida för publikation.</li>
-                    <li className={"list-group-item px-0"}>Egen sida med sök och filter för skickvärdering.</li>
-                    <li className={"list-group-item px-0"}>Justering av färger för en bättre användarupplevelse.</li>
-                    <li className={"list-group-item px-0"}>Värdering / gradering - Förbättrade adminfunktioner för input av värden.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad användarupplevelse vid skickgradering.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad sortering av publikationslistor som innehåller varianter.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet för användare att skicka meddelanden gällande värdering.</li>
-                    <li className={"list-group-item px-0"}>Ny vy för att visa skickvärdering för en titel.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
