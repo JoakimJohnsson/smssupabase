@@ -10,6 +10,7 @@ import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AdminTitleAdd = () => {
@@ -154,7 +155,7 @@ export const AdminTitleAdd = () => {
                                     total_issues: total_issues,
                                 }, setInformationMessage).then(() => resetAddTitleForm())}
                                 disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === "" || comics_org_url === ""}>
-                            {LABELS_AND_HEADINGS.ADD}
+                            {LABELS.COMMON.ADD}
                         </button>
                         <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddTitleForm}>

@@ -40,6 +40,7 @@ import {
 } from "../icons";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
+import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
 
 
 export const Issue = () => {
@@ -157,7 +158,7 @@ export const Issue = () => {
                                                 isCollectingIssue ?
                                                     <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
                                                     :
-                                                    <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                                    <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.ADD}</>
                                             }
                                         </button>
                                         :

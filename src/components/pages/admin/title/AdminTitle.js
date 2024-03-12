@@ -25,6 +25,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
 import {updateGradeValuesForTitles} from "../../../../helpers/databaseFunctions";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AdminTitle = () => {
@@ -401,7 +402,7 @@ export const AdminTitle = () => {
                                                 }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
                                                 disabled={!year || !number}>
                                             <Icon icon={issueIcon} className={"me-2"}/>
-                                            {LABELS_AND_HEADINGS.ADD}
+                                            {LABELS.COMMON.ADD}
                                         </button>
                                         <button className={"btn btn-secondary sms-btn"}
                                                 onClick={resetAddIssueForm}>

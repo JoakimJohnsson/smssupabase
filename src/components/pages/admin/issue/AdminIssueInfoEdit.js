@@ -7,6 +7,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {editIcon, saveIcon} from "../../../icons";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, title}) => {
@@ -195,7 +196,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         <>
                             <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
-                                {LABELS_AND_HEADINGS.ABORT}
+                                {LABELS.COMMON.ABORT}
                             </button>
                         </>
                         :

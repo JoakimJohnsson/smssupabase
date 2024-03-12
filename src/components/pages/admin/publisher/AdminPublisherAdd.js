@@ -10,6 +10,7 @@ import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AdminPublisherAdd = () => {
@@ -103,7 +104,7 @@ export const AdminPublisherAdd = () => {
                                     country_id: country_id
                                 }, setInformationMessage).then(() => resetAddPublisherForm())}
                                 disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
-                            {LABELS_AND_HEADINGS.ADD}
+                            {LABELS.COMMON.ADD}
                         </button>
                         <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddPublisherForm}>

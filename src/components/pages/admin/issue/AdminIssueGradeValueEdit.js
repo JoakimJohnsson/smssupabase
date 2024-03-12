@@ -8,6 +8,7 @@ import {useAppContext} from "../../../../context/AppContext";
 import {updateGradeValuesValues} from "../../../../services/collectingService";
 import {editIcon, saveIcon} from "../../../icons";
 import {deleteAllGradeValuesForIssue, insertAllGradeValuesForIssue} from "../../../../helpers/databaseFunctions";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeValues, fetchGradeValues}) => {
@@ -48,7 +49,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                             gradeValues && gradeValues.length === 0 ?
                                 <>
                                     <p>{TEXTS.GRADE_ADD_VALUE_TEXT}</p>
-                                    <IconButton variant={"primary"} onClick={() => insertAllGradeValuesForIssue(issue.id, fetchGradeValues)} label={LABELS_AND_HEADINGS.ADD} icon={faPlus}/>
+                                    <IconButton variant={"primary"} onClick={() => insertAllGradeValuesForIssue(issue.id, fetchGradeValues)} label={LABELS.COMMON.ADD} icon={faPlus}/>
                                 </>
                                 :
                                 <>
@@ -96,7 +97,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                                 <>
                                     <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                                     <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
-                                        {LABELS_AND_HEADINGS.ABORT}
+                                        {LABELS.COMMON.ABORT}
                                     </button>
                                 </>
                                 :

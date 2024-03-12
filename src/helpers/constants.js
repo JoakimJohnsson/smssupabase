@@ -112,8 +112,6 @@ export const ROUTES = {
 }
 
 export const LABELS_AND_HEADINGS = {
-    ABORT: "Avbryt",
-    ADD: "Lägg till",
     ADD_ISSUES: "Lägg till publikationer",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
     REMOVE_ISSUE_WANTED: "Ta bort efterlysning",

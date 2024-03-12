@@ -7,6 +7,7 @@ import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {Link} from "react-router-dom";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";
+import {LABELS} from "../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const IssueCard = ({issue}) => {
@@ -46,7 +47,7 @@ export const IssueCard = ({issue}) => {
                             isCollectingIssue ?
                                 <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
                                 :
-                                <><Icon icon={faPlus} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                <><Icon icon={faPlus} className={"me-2"}/>{LABELS.COMMON.ADD}</>
                         }
                     </button>
                 </div>
