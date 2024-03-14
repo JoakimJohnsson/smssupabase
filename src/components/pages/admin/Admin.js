@@ -11,6 +11,7 @@ import {UtilsSection} from "../../dashboard/dashboardSections/admin/UtilsSection
 import {Link} from "react-router-dom";
 import {MessagesSection} from "../../dashboard/dashboardSections/admin/MessagesSection";
 import {isSuperAdmin} from "../../../services/profileService";
+import {BREADCRUMB_NAMES} from "../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const Admin = () => {
@@ -21,7 +22,7 @@ export const Admin = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col--full"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADMIN}/>
+                    <HeadingWithBreadCrumbs text={BREADCRUMB_NAMES.ADMIN}/>
                     <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
                     <p>{TEXTS.ADMIN_INFO}</p>
                     <p>

@@ -124,8 +124,6 @@ export const LABELS_AND_HEADINGS = {
     ADD_GRADE: "Lägg till skickgradering",
     ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
-    ADDED: "Inlagd",
-    ADMIN: "Admin",
     ADD_ADMIN_1: "Gör ",
     ADD_ADMIN_2: " till admin",
     IS_SUPER_ADMIN: " är super admin.",
@@ -227,7 +225,7 @@ export const LABELS_AND_HEADINGS = {
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
     ISSUE: "Publikation",
     ISSUES: "Publikationer",
-    GRADE_VALUES: "Skickvärdering",
+    GRADE_VALUES: "Skickvärderingar",
     GRADE_VALUES_FOR: "Skickvärdering för",
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
@@ -504,7 +502,7 @@ export const PANES = {
         COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har en snittgradering på"
     },
     OTHER_COLLECTIONS: {
-        NAME: "Samlingar",
+        NAME: "Andra samlingar",
         COLLECTING: "Samlar på",
         TITLES: "titlar",
         COMPLETE: "% komplett",

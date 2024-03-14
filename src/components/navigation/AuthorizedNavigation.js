@@ -21,6 +21,7 @@ import {
 } from "../icons";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
+import {BREADCRUMB_NAMES} from "../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AuthorizedNavigation = () => {
@@ -101,7 +102,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {
                             profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.ADMIN}
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={BREADCRUMB_NAMES.ADMIN}
                                        doShowNotification={showAdminNotification || showAdminTodoNotification} isAdminNotification={true}/>
                         }
                         <li className="nav-item">
@@ -135,7 +136,7 @@ export const AuthorizedNavigation = () => {
                             <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<Icon icon={adminIconDuoTone} size={"1x"}/>}
                                        doShowNotification={showAdminNotification || showAdminTodoNotification}
                                        isAdminNotification={true}
-                                       text={LABELS_AND_HEADINGS.ADMIN}/>
+                                       text={BREADCRUMB_NAMES.ADMIN}/>
                         }
                         <li className="nav-item">
                             <NavbarProfileInformation/>
