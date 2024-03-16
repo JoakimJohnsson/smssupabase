@@ -9,8 +9,8 @@ import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId
 } from "../../../../services/issueService";
-import {CLASSES, CONFIG, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
-import {BUCKETS} from "../../../../helpers/constants/serviceConstants";
+import {CLASSES, CONFIG, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TEXTS} from "../../../../helpers/constants";
+import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";

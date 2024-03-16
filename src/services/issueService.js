@@ -1,8 +1,9 @@
 import {supabase} from "../supabase/supabaseClient";
-import {MESSAGES, TABLES} from "../helpers/constants";
-import {BUCKETS} from "../helpers/constants/serviceConstants";
+import {MESSAGES} from "../helpers/constants";
+import {BUCKETS, TABLES} from "../helpers/constants/serviceConstants";
 import {handleMultipleDeleteNoConfirm} from "./serviceFunctions";
 import {checkIfIsCollectingIssueSimple} from "./collectingService";
+
 
 export const addIssueData = async (data, setInformationMessage) => {
     try {

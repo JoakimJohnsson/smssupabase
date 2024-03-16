@@ -1,8 +1,9 @@
 import {supabase} from "../supabase/supabaseClient";
-import {MESSAGES, TABLES} from "../helpers/constants";
+import {MESSAGES} from "../helpers/constants";
+import {TABLES} from "../helpers/constants/serviceConstants";
 import {doesIssueNeedGrading} from "./issueService";
 
-// TITLE
+
 export const addTitleToCollection = async (userId, titleId) => {
     try {
         await supabase

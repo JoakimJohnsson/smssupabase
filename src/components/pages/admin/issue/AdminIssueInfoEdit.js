@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {isTrue, printOptions, printTitleOptions} from "../../../../helpers/functions";
 import {getRowsByTable, handleChange} from "../../../../services/serviceFunctions";
 import {updateIssueData} from "../../../../services/issueService";

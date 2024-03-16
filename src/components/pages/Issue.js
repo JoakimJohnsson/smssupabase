@@ -1,7 +1,8 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../helpers/constants";
+import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getIssueName, renderGradeValue} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";

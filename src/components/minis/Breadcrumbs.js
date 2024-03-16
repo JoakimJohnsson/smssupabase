@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getNameByTableAndId, getStartYearByTableAndId} from "../../services/serviceFunctions";
 import {BREADCRUMB_NAMES} from "../../helpers/constants/textConstants/labelsAndHeadings";
 

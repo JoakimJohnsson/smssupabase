@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {FILETYPES, TABLES, TEXTS} from "../../../../helpers/constants";
-import {BUCKETS} from "../../../../helpers/constants/serviceConstants";
+import {FILETYPES, TEXTS} from "../../../../helpers/constants";
+import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
