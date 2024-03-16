@@ -7,6 +7,7 @@ import {getAllIssuesWithTitleAndPublisher} from "../../services/issueService";
 import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
+import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
 
 
 export const Issues = () => {
@@ -23,7 +24,7 @@ export const Issues = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
                     <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
                     {
                         loading ?

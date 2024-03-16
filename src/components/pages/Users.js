@@ -7,6 +7,7 @@ import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilt
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {UserCard} from "../lists/users/UserCard";
 import {filterQueryByFirstNameAndLastName} from "../../helpers/functions";
+import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
 
 
 export const Users = () => {
@@ -23,7 +24,7 @@ export const Users = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_USERS}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
                     <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     {
                         loading ?

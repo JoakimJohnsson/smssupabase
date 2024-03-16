@@ -21,7 +21,7 @@ import {
 } from "../icons";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
-import {BREADCRUMB_NAMES} from "../../helpers/textConstants/labelsAndHeadings";
+import {BREADCRUMB_NAMES, LABELS} from "../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AuthorizedNavigation = () => {
@@ -65,13 +65,13 @@ export const AuthorizedNavigation = () => {
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={titlesIconDuoTone}  className={"me-2"}/>
-                                    <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_TITLES}</span>
+                                    <span className={"sms-nav-link--text"}>{LABELS.SECTIONS.TITLES.ALL_TITLES}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.ISSUES} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={issueIconDuoTone} className={"me-2"}/>
-                                    <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_ISSUES}</span>
+                                    <span className={"sms-nav-link--text"}>{LABELS.SECTIONS.ISSUES.ALL_ISSUES}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
@@ -89,13 +89,13 @@ export const AuthorizedNavigation = () => {
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.PUBLISHERS} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={publishersIconDuoTone} className={"me-2"}/>
-                                    <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_PUBLISHERS}</span>
+                                    <span className={"sms-nav-link--text"}>{LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.USERS} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={usersIconDuoTone} className={"me-2"}/>
-                                    <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.ALL_USERS}</span>
+                                    <span className={"sms-nav-link--text"}>{LABELS.SECTIONS.USERS.ALL_USERS}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
@@ -118,17 +118,17 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<Icon icon={dashboardIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                                   text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
+                                   text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
                         <LiNavItem route={ROUTES.GRADE_VALUES} onClick={handleClick} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.GRADE_VALUES}/>
                         <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<Icon icon={marvelKlubbenIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
                         <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<Icon icon={publishersIconDuoTone} size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                                   text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
                         <LiNavItem route={ROUTES.USERS} onClick={handleClick} icon={<Icon icon={usersIconDuoTone} size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.ALL_USERS}/>
+                                   text={LABELS.SECTIONS.USERS.ALL_USERS}/>
                         <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {

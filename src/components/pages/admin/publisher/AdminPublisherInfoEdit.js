@@ -92,7 +92,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                         <>
                             <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)}
-                                        label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                                        label={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
                         </>
                 }
             </div>

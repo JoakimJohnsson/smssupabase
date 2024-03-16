@@ -133,7 +133,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         <>
                             <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.TITLES)}
-                                        label={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                                        label={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                         </>
                 }
             </div>

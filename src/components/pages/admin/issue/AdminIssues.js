@@ -8,6 +8,7 @@ import {getAllIssuesWithTitleAndPublisher} from "../../../../services/issueServi
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AdminIssues = () => {
@@ -24,7 +25,7 @@ export const AdminIssues = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
                     {
                         loading ?
                             <OverlaySpinner/>

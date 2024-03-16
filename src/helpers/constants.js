@@ -1,6 +1,7 @@
 import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../components/icons";
 
+// 745 rader
 
 export const MESSAGES = {
     ERROR: {
@@ -125,11 +126,6 @@ export const LABELS_AND_HEADINGS = {
     IS_SUPER_ADMIN: " är super admin.",
     REMOVE_ADMIN_1: "Ta bort ",
     REMOVE_ADMIN_2: " som admin",
-    ALL_ISSUES: "Alla publikationer",
-    ALL_PUBLISHERS: "Alla förlag",
-    ALL_TITLES: "Alla titlar",
-    ALL_USERS: "Alla användare",
-    ALL_MESSAGES: "Alla meddelanden",
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     BACK: "Tillbaka",
     BACK_TO: "Tillbaka till",

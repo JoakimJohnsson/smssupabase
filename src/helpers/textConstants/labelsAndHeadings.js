@@ -11,15 +11,23 @@ export const LABELS = {
         GRADES: {
             ADD_GRADE: "Lägg till skickgradering"
         },
-        ISSUES: {},
-        MESSAGES: {},
+        ISSUES: {
+            ALL_ISSUES: "Alla publikationer"
+        },
+        MESSAGES: {
+            ALL_MESSAGES: "Alla meddelanden"
+        },
         PUBLISHERS: {
-            ADD_PUBLISHER: "Lägg till förlag"
+            ADD_PUBLISHER: "Lägg till förlag",
+            ALL_PUBLISHERS: "Alla förlag"
         },
         TITLES: {
-            ADD_TITLE: "Lägg till titel"
+            ADD_TITLE: "Lägg till titel",
+            ALL_TITLES: "Alla titlar"
         },
-        USERS: {}
+        USERS: {
+            ALL_USERS: "Alla användare"
+        }
     }
 }
 
