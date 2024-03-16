@@ -6,6 +6,7 @@ export const LABELS = {
         ADMIN: "Admin",
         CHOOSE: "--- Välj ---",
         CLOSE: "Stäng",
+        YEAR_DB: "År (year)"
     },
     SECTIONS: {
         GRADES: {

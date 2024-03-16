@@ -350,8 +350,6 @@ export const LABELS_AND_HEADINGS = {
     WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
     COMICS_ORG_URL: "Länk till Comics.org",
     COMICS_ORG_URL_DB: "Länk till Comics.org (comics_org_url)",
-    YEAR: "År",
-    YEAR_DB: "År (year)"
 }
 
 export const TEXTS = {

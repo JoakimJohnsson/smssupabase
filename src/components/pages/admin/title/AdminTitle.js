@@ -300,7 +300,7 @@ export const AdminTitle = () => {
                                             </select>
                                         }
                                         <h2>{LABELS_AND_HEADINGS.ADD_ISSUE_FOR} {title.name}</h2>
-                                        <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
+                                        <label className={"form-label"} htmlFor="year">{LABELS.COMMON.YEAR_DB}</label>
                                         <input
                                             id="year"
                                             name="year"

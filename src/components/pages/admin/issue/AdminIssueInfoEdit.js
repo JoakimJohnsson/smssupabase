@@ -97,7 +97,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         {printOptions(publishersData)}
                     </select>
                 }
-                <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
+                <label className={"form-label"} htmlFor="year">{LABELS.COMMON.YEAR_DB}</label>
                 <input
                     id={"year"}
                     name={"year"}
