@@ -353,7 +353,7 @@ export const Issue = () => {
                                             })
                                         }
                                         <IconButton variant={"primary"} icon={faPlus} onClick={() => handleAddGrade()}
-                                                    label={LABELS_AND_HEADINGS.ADD_GRADE}/>
+                                                    label={LABELS.SECTIONS.GRADES.ADD_GRADE}/>
                                     </div>
                                 }
                             </div>

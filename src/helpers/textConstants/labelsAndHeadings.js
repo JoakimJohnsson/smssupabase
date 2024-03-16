@@ -4,6 +4,18 @@ export const LABELS = {
         ABORT: "Avbryt",
         ADD: "Lägg till",
         ADMIN: "Admin"
+    },
+    SECTIONS: {
+        GRADES: {
+            ADD_GRADE: "Lägg till skickgradering"
+        },
+        ISSUES: {},
+        PUBLISHERS: {
+            ADD_PUBLISHER: "Lägg till förlag"
+        },
+        TITLES: {
+            ADD_TITLE: "Lägg till titel"
+        }
     }
 }
 

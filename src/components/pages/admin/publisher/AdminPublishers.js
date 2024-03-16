@@ -10,6 +10,7 @@ import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQue
 import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AdminPublishers = () => {
@@ -37,7 +38,7 @@ export const AdminPublishers = () => {
                                 <OverlaySpinner/>
                         }
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
-                                    label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                                    label={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS_AND_HEADINGS.BACK}/>
                     </div>

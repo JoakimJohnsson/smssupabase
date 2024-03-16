@@ -17,6 +17,7 @@ import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdmi
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AdminTitles = () => {
@@ -73,7 +74,7 @@ export const AdminTitles = () => {
                                 <OverlaySpinner/>
                         }
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
-                                    label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                                    label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS_AND_HEADINGS.BACK}/>
                     </div>

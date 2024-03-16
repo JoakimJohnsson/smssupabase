@@ -6,6 +6,7 @@ import {TitlesList} from "../../../lists/titles/TitlesList";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {IconButton} from "../../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const TitlesSection = () => {
@@ -36,7 +37,7 @@ export const TitlesSection = () => {
                         :
                         <NoDataAvailable />
                 }
-                <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
                 <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
             </div>
         </div>

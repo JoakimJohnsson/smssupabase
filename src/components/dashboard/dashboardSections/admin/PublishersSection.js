@@ -6,6 +6,7 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {PublishersList} from "../../../lists/publishers/PublishersList";
 import {IconButton} from "../../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
+import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
 
 
 export const PublishersSection = () => {
@@ -31,7 +32,7 @@ export const PublishersSection = () => {
                         <NoDataAvailable/>
                 }
                 <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
-                            label={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                            label={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
                 <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
             </div>
         </div>

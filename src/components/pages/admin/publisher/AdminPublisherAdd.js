@@ -51,7 +51,7 @@ export const AdminPublisherAdd = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
