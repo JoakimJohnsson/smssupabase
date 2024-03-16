@@ -1,6 +1,7 @@
 import {useAppContext} from "../../context/AppContext";
 import React, {useEffect, useState} from "react";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../helpers/constants";
+import {FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../helpers/constants";
+import {BUCKETS} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
