@@ -7,7 +7,7 @@ import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilt
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {UserCard} from "../lists/users/UserCard";
 import {filterQueryByFirstNameAndLastName} from "../../helpers/functions";
-import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Users = () => {

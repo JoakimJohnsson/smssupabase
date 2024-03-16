@@ -7,7 +7,7 @@ import {getAllIssuesWithTitleAndPublisher} from "../../services/issueService";
 import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
-import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Issues = () => {

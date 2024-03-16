@@ -7,7 +7,7 @@ import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilt
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {sortByName} from "../../helpers/functions";
 import {Link} from "react-router-dom";
-import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Publishers = () => {

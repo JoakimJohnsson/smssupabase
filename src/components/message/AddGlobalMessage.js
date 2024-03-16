@@ -6,7 +6,7 @@ import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
-import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AddGlobalMessage = ({

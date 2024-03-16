@@ -17,7 +17,7 @@ import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdmi
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitles = () => {

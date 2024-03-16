@@ -8,7 +8,7 @@ import {getAllIssuesWithTitleAndPublisher} from "../../../../services/issueServi
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminIssues = () => {

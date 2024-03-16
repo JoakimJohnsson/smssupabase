@@ -25,7 +25,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
 import {updateGradeValuesForTitles} from "../../../../helpers/databaseFunctions";
-import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitle = () => {

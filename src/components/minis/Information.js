@@ -4,7 +4,7 @@ import {useAppContext} from "../../context/AppContext";
 import {faTimes, faPause} from "@fortawesome/pro-solid-svg-icons";
 import {Icon} from "../icons";
 import {ProgressBar} from "react-bootstrap";
-import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Information = ({message}) => {

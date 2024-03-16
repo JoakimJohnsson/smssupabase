@@ -7,7 +7,7 @@ import {useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 import {IconButton} from "../minis/IconButton";
 import {editIcon, saveIcon} from "../icons";
-import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}) => {

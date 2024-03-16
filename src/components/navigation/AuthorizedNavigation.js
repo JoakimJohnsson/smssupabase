@@ -21,7 +21,7 @@ import {
 } from "../icons";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
-import {BREADCRUMB_NAMES, LABELS} from "../../helpers/textConstants/labelsAndHeadings";
+import {BREADCRUMB_NAMES, LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AuthorizedNavigation = () => {

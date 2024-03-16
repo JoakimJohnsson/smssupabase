@@ -6,7 +6,7 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {PublishersList} from "../../../lists/publishers/PublishersList";
 import {IconButton} from "../../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS} from "../../../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const PublishersSection = () => {

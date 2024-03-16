@@ -7,7 +7,7 @@ import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
 import {Link} from "react-router-dom";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";
-import {LABELS} from "../../../helpers/textConstants/labelsAndHeadings";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const IssueCard = ({issue}) => {

@@ -3,7 +3,7 @@ import useBreadcrumbs from "use-react-router-breadcrumbs";
 import {Link, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
 import {getNameByTableAndId, getStartYearByTableAndId} from "../../services/serviceFunctions";
-import {BREADCRUMB_NAMES} from "../../helpers/textConstants/labelsAndHeadings";
+import {BREADCRUMB_NAMES} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Breadcrumbs = ({doIgnoreName, bcName}) => {
