@@ -129,7 +129,7 @@ export const AdminTitleAdd = () => {
                                 name={"format_id"}
                                 className={formInputClass}
                                 onChange={(e) => handleInput(e, setFormat_id)}>
-                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                                 {printOptions(formatData)}
                             </select>
                         }

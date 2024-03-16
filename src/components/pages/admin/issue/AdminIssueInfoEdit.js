@@ -79,7 +79,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         value={newIssue.title_id}
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                         {printTitleOptions(titlesData)}
                     </select>
                 }
@@ -93,7 +93,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         value={newIssue.publisher_id}
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                         {printOptions(publishersData)}
                     </select>
                 }

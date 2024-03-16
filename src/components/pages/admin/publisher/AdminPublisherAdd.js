@@ -92,7 +92,7 @@ export const AdminPublisherAdd = () => {
                                 name="country"
                                 className={formInputClass}
                                 onChange={(e) => setCountry_id(e.target.value)}>
-                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                                 {printOptions(countryData)}
                             </select>
                         }

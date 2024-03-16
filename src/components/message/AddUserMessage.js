@@ -8,6 +8,7 @@ import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
+import {LABELS} from "../../helpers/textConstants/labelsAndHeadings";
 
 
 export const AddUserMessage = ({
@@ -66,7 +67,7 @@ export const AddUserMessage = ({
                                 handleInput(e, setTopic_id);
                                 updateTitle(e);
                             }}>
-                            <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                            <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                             {printOptions(topicData.filter((t) => t.isGlobal === false))}
                         </select>
                     }

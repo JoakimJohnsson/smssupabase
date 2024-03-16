@@ -295,7 +295,7 @@ export const AdminTitle = () => {
                                                 name={"publisher_id"}
                                                 className={CLASSES.FORM_INPUT_DEFAULT + " mb-5"}
                                                 onChange={(e) => handleInput(e, setPublisher_id)}>
-                                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                                <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                                                 {printOptions(publishersData)}
                                             </select>
                                         }

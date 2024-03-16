@@ -76,7 +76,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                         value={newPublisher.country_id}
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                         {printOptions(countryData)}
                     </select>
                 }

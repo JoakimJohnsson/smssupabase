@@ -3,19 +3,23 @@ export const LABELS = {
     COMMON: {
         ABORT: "Avbryt",
         ADD: "Lägg till",
-        ADMIN: "Admin"
+        ADMIN: "Admin",
+        CHOOSE: "--- Välj ---",
+        CLOSE: "Stäng",
     },
     SECTIONS: {
         GRADES: {
             ADD_GRADE: "Lägg till skickgradering"
         },
         ISSUES: {},
+        MESSAGES: {},
         PUBLISHERS: {
             ADD_PUBLISHER: "Lägg till förlag"
         },
         TITLES: {
             ADD_TITLE: "Lägg till titel"
-        }
+        },
+        USERS: {}
     }
 }
 

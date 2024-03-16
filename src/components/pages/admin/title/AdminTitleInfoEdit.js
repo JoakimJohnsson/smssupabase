@@ -106,7 +106,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         value={newTitle.format_id}
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                         {printOptions(formatData)}
                     </select>
                 }
