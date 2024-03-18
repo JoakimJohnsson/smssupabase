@@ -77,7 +77,7 @@ export const AdminTitles = () => {
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
                                     label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                                    label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>
             </div>

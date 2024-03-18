@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
 import {useNavigate} from "react-router-dom";
 import {handleBacking, sortByName} from "../../../../helpers/functions";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
@@ -42,7 +41,7 @@ export const AdminIssues = () => {
                             </ul>
                     }
                     <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                label={LABELS_AND_HEADINGS.BACK}/>
+                                label={LABELS.COMMON.BACK}/>
                 </div>
             </div>
         </main>

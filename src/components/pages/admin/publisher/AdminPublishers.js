@@ -41,7 +41,7 @@ export const AdminPublishers = () => {
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
                                     label={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                                    label={LABELS.COMMON.BACK}/>
                     </div>
 
                 </div>

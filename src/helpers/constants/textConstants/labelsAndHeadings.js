@@ -4,6 +4,10 @@ export const LABELS = {
         ABORT: "Avbryt",
         ADD: "Lägg till",
         ADMIN: "Admin",
+        BACK: "Tillbaka",
+        BACK_TO: "Tillbaka till",
+        BACK_TO_TOP: "Tillbaka till toppen",
+        BREADCRUMB: "Brödsmula",
         CHOOSE: "--- Välj ---",
         CLOSE: "Stäng",
         YEAR_DB: "År (year)"

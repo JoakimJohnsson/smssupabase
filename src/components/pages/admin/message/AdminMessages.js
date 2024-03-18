@@ -12,6 +12,7 @@ import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {Icon, globalIconDuoTone} from "../../../icons";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminMessages = () => {
@@ -74,7 +75,7 @@ export const AdminMessages = () => {
                                             <NoDataAvailable/>
                                     }
                                     <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                                label={LABELS_AND_HEADINGS.BACK}/>
+                                                label={LABELS.COMMON.BACK}/>
                                 </>
                         }
                     </div>

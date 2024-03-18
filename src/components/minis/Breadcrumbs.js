@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getNameByTableAndId, getStartYearByTableAndId} from "../../services/serviceFunctions";
-import {BREADCRUMB_NAMES} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {BREADCRUMB_NAMES, LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Breadcrumbs = ({doIgnoreName, bcName}) => {
@@ -98,7 +97,7 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
     }
 
     return (
-        <nav aria-label={LABELS_AND_HEADINGS.BREADCRUMB} className={"mb-5 breadcrumb-nav hide"}>
+        <nav aria-label={LABELS.COMMON.BREADCRUMB} className={"mb-5 breadcrumb-nav hide"}>
             <ol className="breadcrumb small">
                 {breadcrumbs.map(({match, breadcrumb}, index) => {
                         return printBreadCrumbLinkItems(index, breadcrumb, match);

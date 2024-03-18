@@ -162,7 +162,7 @@ export const AdminTitleAdd = () => {
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                                    label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>
             </div>

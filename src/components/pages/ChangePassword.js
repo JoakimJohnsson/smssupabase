@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants";
 import {supabase} from "../../supabase/supabaseClient";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 const ChangePassword = () => {
 
@@ -22,7 +23,7 @@ const ChangePassword = () => {
                 <div className={"col-12 col-md-6 text-center"}>
                     <h1 className={"text-primary"}>{LABELS_AND_HEADINGS.CHANGE_PASSWORD}</h1>
                     <a href={"/"}>
-                        {LABELS_AND_HEADINGS.BACK}
+                        {LABELS.COMMON.BACK}
                     </a>
                 </div>
             </div>
