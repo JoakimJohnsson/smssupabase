@@ -2,6 +2,7 @@ import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
 import {Icon, infoIconDuoTone} from "./icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
+import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const Information = () => {
@@ -42,7 +43,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Optimering av bilder.</li>
                     <li className={"list-group-item px-0"}>Utökad funktionalitet och förbättrade vyer i kontrollpanelen.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.CONTACT}</h3>
+                <h3>{LABELS.COMMON.CONTACT}</h3>
                 <p>{TEXTS.ADMIN_INFO_2}</p>
                 <p className={"mb-4"}>
                     <a href={"mailto: admin@svenskamarvelsamlare.se"}>

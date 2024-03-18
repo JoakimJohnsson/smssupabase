@@ -84,7 +84,7 @@ export const AdminPublisherAdd = () => {
                             value={wiki_url || ""}
                             onChange={(e) => handleInput(e, setWiki_url)}
                         />
-                        <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
+                        <label className={"form-label"} htmlFor="country">{LABELS.COMMON.COUNTRY_DB}</label>
                         {
                             countryData &&
                             <select

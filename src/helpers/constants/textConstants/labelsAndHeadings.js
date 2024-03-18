@@ -1,4 +1,4 @@
-// Labels - used in buttons and such
+// Labels - used in buttons, forms and such
 export const LABELS = {
     COMMON: {
         ABORT: "Avbryt",
@@ -10,6 +10,9 @@ export const LABELS = {
         BREADCRUMB: "Brödsmula",
         CHOOSE: "--- Välj ---",
         CLOSE: "Stäng",
+        CONTACT: "Kontakt",
+        CONTENT: "Innehåll",
+        COUNTRY_DB: "Utgivningsland (country)",
         LOG_IN: "Logga in",
         YEAR_DB: "År (year)"
     },
