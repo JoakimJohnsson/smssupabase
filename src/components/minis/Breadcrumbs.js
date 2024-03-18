@@ -36,8 +36,8 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
                 return BREADCRUMB_NAMES.HOME;
             case "issues":
                 return BREADCRUMB_NAMES.ISSUES;
-            case "marvel club":
-                return BREADCRUMB_NAMES.MARVEL_CLUB;
+            case "marvelklubben":
+                return BREADCRUMB_NAMES.MARVELKLUBBEN;
             case "messages":
                 return BREADCRUMB_NAMES.MESSAGES;
             case "my titles":

@@ -20,6 +20,8 @@ export const LABELS = {
         ISSUES: {
             ALL_ISSUES: "Alla publikationer"
         },
+        MARVELKLUBBEN: {
+        },
         MESSAGES: {
             ALL_MESSAGES: "Alla meddelanden"
         },
@@ -45,7 +47,7 @@ export const BREADCRUMB_NAMES = {
     GRADE_VALUES: "Skickvärderingar",
     HOME: "Hem",
     ISSUES: "Publikationer",
-    MARVEL_CLUB: "Marvelklubben",
+    MARVELKLUBBEN: "Marvelklubben",
     MESSAGES: "Meddelanden",
     MY_TITLES: "Mina titlar",
     OTHER_COLLECTIONS: "Andra samlingar",
