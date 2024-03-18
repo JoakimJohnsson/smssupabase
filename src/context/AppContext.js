@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect, useCallback} from 'react';
 import {supabase} from '../supabase/supabaseClient';
-import {CONFIG, MESSAGES} from "../helpers/constants";
+import {CONFIG} from "../helpers/constants";
+import {MESSAGES} from "../helpers/constants/textConstants/messages";
 import {TABLES} from "../helpers/constants/serviceConstants";
 import {getRowByTableAndId} from "../services/serviceFunctions";
 import {getAllActiveGlobalMessages, getAllTodoMessages, getAllUnreadMessages} from "../services/messageService";

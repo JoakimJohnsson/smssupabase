@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {ALERT_VARIANTS, LABELS_AND_HEADINGS, MESSAGES} from "../../helpers/constants";
+import {ALERT_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {useAppContext} from "../../context/AppContext";
 import {faTimes, faPause} from "@fortawesome/pro-solid-svg-icons";
 import {Icon} from "../icons";

@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {MESSAGES} from "../helpers/constants";
+import {MESSAGES} from "../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../helpers/constants/serviceConstants";
 import {handleMultipleDeleteNoConfirm} from "./serviceFunctions";
 import {checkIfIsCollectingIssueSimple} from "./collectingService";

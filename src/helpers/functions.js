@@ -1,5 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, MESSAGES, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants";
+import {CLASSES, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants";
+import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
 import {getGradeValueByIssueIdAndGrade} from "./databaseFunctions";

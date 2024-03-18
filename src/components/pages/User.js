@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../services/serviceFunctions";
-import {LABELS_AND_HEADINGS, MESSAGES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useParams} from "react-router-dom";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";

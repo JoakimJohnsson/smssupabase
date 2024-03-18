@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, MESSAGES, TEXTS} from "../../../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
+import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {isSKGradeName, isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft, faPlus, faTimes} from "@fortawesome/pro-regular-svg-icons";
