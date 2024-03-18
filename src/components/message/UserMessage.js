@@ -11,7 +11,7 @@ import {getIconByName, Icon} from "../icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
-export const AddUserMessage = ({
+export const UserMessage = ({
                                    topic_id,
                                    setTopic_id,
                                    text,
@@ -42,7 +42,7 @@ export const AddUserMessage = ({
             />
             {
                 open &&
-                <div className={"sms-section--light primary mb-3"}>
+                <div className={"sms-section--light primary mb-3 p-3"}>
                     <h2>{LABELS_AND_HEADINGS.MESSAGE_ADMIN_CREATE}</h2>
                     <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.MESSAGE_TITLE}</label>
                     <p className={"h5 text-black"}>

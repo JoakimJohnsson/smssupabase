@@ -7,7 +7,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {filterGlobalMessage, handleBacking} from "../../../../helpers/functions";
 import {MessagesList} from "../../../message/MessagesList";
-import {AddMessage} from "../../../message/AddMessage";
+import {Message} from "../../../message/Message";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -82,7 +82,7 @@ export const AdminMessages = () => {
                 <div className={"sms-dashboard-col mb-5"}>
                     <div className={"sms-section--light"}>
                         <h2 id={"global-message-section"}>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
-                        <AddMessage isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>
+                        <Message isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>
                     </div>
                 </div>
             </div>

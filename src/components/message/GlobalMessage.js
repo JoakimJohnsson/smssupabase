@@ -9,7 +9,7 @@ import {getIconByName, Icon} from "../icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
-export const AddGlobalMessage = ({
+export const GlobalMessage = ({
                                      topic_id,
                                      setTopic_id,
                                      text,

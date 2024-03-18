@@ -28,7 +28,7 @@ import {
     removeIssueFromWanted
 } from "../../services/collectingService";
 import {Sources} from "./pagecomponents/Sources";
-import {AddMessage} from "../message/AddMessage";
+import {Message} from "../message/Message";
 import {FunctionButton} from "../minis/FunctionButton";
 import {EditGrade} from "../grade/EditGrade";
 import {IconButton} from "../minis/IconButton";
@@ -267,7 +267,7 @@ export const Issue = () => {
                                             }
                                         </>
                                     }
-                                    <AddMessage originObject={issue} originTable={TABLES.ISSUES}/>
+                                    <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                 </div>
                                 <div className={"mb-4"}>
                                     <h2>{issue.titles.name}</h2>

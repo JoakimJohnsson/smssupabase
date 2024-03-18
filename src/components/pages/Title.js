@@ -21,7 +21,7 @@ import {
     deleteAllGradesByUserAndIssue,
     deleteIssueFromCollectionSimple
 } from "../../services/collectingService";
-import {AddMessage} from "../message/AddMessage";
+import {Message} from "../message/Message";
 import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
@@ -251,7 +251,7 @@ export const Title = () => {
                                             :
                                             false
                                     }
-                                    <AddMessage originObject={title} originTable={TABLES.TITLES}/>
+                                    <Message originObject={title} originTable={TABLES.TITLES}/>
                                 </div>
                                 {
                                     isCollectingTitle && issueNeedsGrading &&

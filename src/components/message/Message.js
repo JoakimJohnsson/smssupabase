@@ -4,11 +4,11 @@ import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useCommonFormStates} from "../../helpers/customHooks/useCommonFormStates";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataDescription, getDataName, getIssueName} from "../../helpers/functions";
-import {AddUserMessage} from "./AddUserMessage";
-import {AddGlobalMessage} from "./AddGlobalMessage";
+import {UserMessage} from "./UserMessage";
+import {GlobalMessage} from "./GlobalMessage";
 
 
-export const AddMessage = ({originObject, originTable, isGlobalMessage = false, fetchAdminMessages = false}) => {
+export const Message = ({originObject, originTable, isGlobalMessage = false, fetchAdminMessages = false}) => {
 
     const {formInputClass, setFormInputClass} = useCommonFormStates();
     const [topic_id, setTopic_id] = useState("");
@@ -77,7 +77,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
 
     return (
         isGlobalMessage ?
-            <AddGlobalMessage
+            <GlobalMessage
                 topic_id={topic_id}
                 setTopic_id={setTopic_id}
                 updateTitle={updateTitleAndDescription}
@@ -89,7 +89,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
                 fetchAdminMessages={fetchAdminMessages}
             />
             :
-            <AddUserMessage
+            <UserMessage
                 topic_id={topic_id}
                 setTopic_id={setTopic_id}
                 updateTitle={updateTitleAndDescription}
