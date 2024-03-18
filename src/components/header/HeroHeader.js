@@ -12,6 +12,7 @@ import {
     logoIconDuoTone,
     registerIconDuoTone
 } from "../icons";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const HeroHeader = () => {
@@ -30,7 +31,7 @@ export const HeroHeader = () => {
                                 variant={"primary"}
                                 icon={loginIconDuoTone}
                                 path={"#login-section"}
-                                label={LABELS_AND_HEADINGS.LOG_IN_CTA}
+                                label={LABELS.COMMON.LOG_IN}
                             />
                             <IconLinkCta
                                 variant={"primary"}

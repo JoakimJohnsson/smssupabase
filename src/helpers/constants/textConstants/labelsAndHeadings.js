@@ -10,6 +10,7 @@ export const LABELS = {
         BREADCRUMB: "Brödsmula",
         CHOOSE: "--- Välj ---",
         CLOSE: "Stäng",
+        LOG_IN: "Logga in",
         YEAR_DB: "År (year)"
     },
     SECTIONS: {
