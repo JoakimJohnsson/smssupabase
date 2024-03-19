@@ -25,6 +25,7 @@ import {Message} from "../message/Message";
 import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Title = () => {
@@ -192,7 +193,7 @@ export const Title = () => {
                                         variant={"primary"}
                                         icon={editIconDuoTone}
                                         path={`/admin/titles/${title.id}?edit=true`}
-                                        label={LABELS_AND_HEADINGS.EDIT + " " + title.name}
+                                        label={LABELS.COMMON.EDIT + " " + title.name}
                                     />
                                 }
                                 {

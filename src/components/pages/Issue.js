@@ -223,7 +223,7 @@ export const Issue = () => {
                                         variant={"primary"}
                                         icon={editIconDuoTone}
                                         path={`/admin/issues/${issue.id}?edit=true`}
-                                        label={LABELS_AND_HEADINGS.EDIT + " " + displayName}
+                                        label={LABELS.COMMON.EDIT + " " + displayName}
                                     />
                                 }
                                 <div className={"d-flex align-items-center flex-wrap mb-3"}>

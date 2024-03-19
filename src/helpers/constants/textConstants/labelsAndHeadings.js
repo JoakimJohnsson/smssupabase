@@ -13,6 +13,8 @@ export const LABELS = {
         CONTACT: "Kontakt",
         CONTENT: "Innehåll",
         COUNTRY_DB: "Utgivningsland (country)",
+        DESCRIPTION_DB: "Beskrivning (description)",
+        EDIT: "Redigera",
         LOG_IN: "Logga in",
         YEAR_DB: "År (year)"
     },

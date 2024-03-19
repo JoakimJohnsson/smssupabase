@@ -6,11 +6,12 @@ import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faPenCircle, faCircleXmark} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTools = ({item, name, displayName, data, setData, route, table, imageBucket, showEditButton}) => {
 
-    const editText = LABELS_AND_HEADINGS.EDIT + " " + displayName;
+    const editText = LABELS.COMMON.EDIT + " " + displayName;
     const deleteText = LABELS_AND_HEADINGS.DELETE + " " + displayName;
     const {setInformationMessage, fetchMessages} = useAppContext();
 

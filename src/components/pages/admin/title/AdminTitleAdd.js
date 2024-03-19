@@ -76,7 +76,7 @@ export const AdminTitleAdd = () => {
                             value={name || ""}
                             onChange={(e) => handleInput(e, setName)}
                         />
-                        <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                        <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
                         <input
                             id={"description"}
                             name={"description"}

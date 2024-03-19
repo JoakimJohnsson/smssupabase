@@ -46,7 +46,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
                 <input
                     id={"description"}
                     name={"description"}
@@ -90,7 +90,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                         </>
                         :
                         <>
-                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
+                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS.COMMON.EDIT} icon={editIcon}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)}
                                         label={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
                         </>

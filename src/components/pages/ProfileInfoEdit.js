@@ -95,7 +95,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                     </>
                     :
                     <>
-                        <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
+                        <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS.COMMON.EDIT} icon={editIcon}/>
                     </>
             }
         </div>
