@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "../Login";
 import {Link} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 const SignupSuccess = () => {

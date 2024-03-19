@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants/configConstants";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitlesForUser} from "../../../../services/titleService";
 import FilterFormFormat from "../../../search-filter/FilterFormFormat";

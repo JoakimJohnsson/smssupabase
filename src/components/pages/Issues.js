@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../search-filter/FilterFormSimple";

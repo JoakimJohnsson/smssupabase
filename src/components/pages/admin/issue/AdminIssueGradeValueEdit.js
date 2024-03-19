@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {isSKGradeName, isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";

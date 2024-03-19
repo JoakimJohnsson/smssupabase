@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch, faDeleteLeft, faCircleXmark, faFilter} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {isTrue} from "../../helpers/functions";
 
 

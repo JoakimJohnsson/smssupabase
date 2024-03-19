@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";

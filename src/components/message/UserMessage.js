@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {FunctionButton} from "../minis/FunctionButton";
 import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";

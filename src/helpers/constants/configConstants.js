@@ -1,5 +1,5 @@
 import React from "react";
-import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../components/icons";
+import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
 
 // 649 rader
 export const CLASSES = {
@@ -126,10 +126,6 @@ export const LABELS_AND_HEADINGS = {
     GENERATING_ISSUES: "Lägger till publikationer",
     GO_TO: "Gå till",
     GRADE: "Skickgradering",
-    HOME: "Hem",
-    ID: "Id",
-    IMAGE: "Bild",
-    INFORMATION: "Information",
     INFORMATION_ABOUT: "Information om",
     INFORMATION_MISSING: "Information saknas.",
     IS_MARVELKLUBBEN: "Ingår i marvelklubben",

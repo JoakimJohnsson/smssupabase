@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants/configConstants";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";

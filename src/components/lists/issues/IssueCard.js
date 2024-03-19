@@ -3,7 +3,7 @@ import {useAppContext} from "../../../context/AppContext";
 import {handleCollectingIssue} from "../../../services/serviceFunctions";
 import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {Link} from "react-router-dom";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";

@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants/configConstants";
 import {Icon, infoIconDuoTone} from "./icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
@@ -14,7 +14,7 @@ const Information = () => {
             </div>
             <div>
                 <div className={"text-center mb-4 mb-sm-5"}>
-                    <h2 className={"text-center"}>{LABELS_AND_HEADINGS.INFORMATION}</h2>
+                    <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.6.3 - 2024-03-11</h3>

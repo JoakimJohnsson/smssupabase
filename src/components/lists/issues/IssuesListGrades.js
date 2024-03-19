@@ -1,6 +1,6 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {renderGradeValue, sortByNumberAndVariantSuffix} from "../../../helpers/functions";
 import {Link} from "react-router-dom";
 

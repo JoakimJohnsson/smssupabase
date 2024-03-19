@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {getDataIcon} from "../../helpers/functions";
 import topicData from "../../helpers/valueLists/topics.json";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {FriendlyDate} from "../minis/FriendlyDate";
 import {
     getIconByName,

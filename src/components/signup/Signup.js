@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
-import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useCommonFormStates} from "../../helpers/customHooks/useCommonFormStates";
 import topicData from "../../helpers/valueLists/topics.json";

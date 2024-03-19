@@ -6,7 +6,7 @@ import {getTitleProgressForUser} from "../../../../helpers/functions";
 import {FormatBadge} from "../../../minis/FormatBadge";
 import {getIssuesByTitleId} from "../../../../services/issueService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
 import {checkGradingStatus} from "../../../../services/collectingService";
 import {Icon, gradingIconDuoTone, infoIconDuoTone, statusIconFailDuoTone, statusIconSuccessDuoTone} from "../../../icons";
 

@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {supabase} from "../../supabase/supabaseClient";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 

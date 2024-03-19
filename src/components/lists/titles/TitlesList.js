@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {ROUTES} from "../../../helpers/constants";
+import {ROUTES} from "../../../helpers/constants/configConstants";
 import {BUCKETS, TABLES} from "../../../helpers/constants/serviceConstants";
 import {ListToolBox} from "../ListToolBox";
 import {hasImage, sortByDateCreatedDesc, sortByNameAndStartYear} from "../../../helpers/functions";

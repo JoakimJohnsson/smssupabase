@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {CustomSpinner} from "../../minis/CustomSpinner";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {getUserName} from "../../../helpers/functions";

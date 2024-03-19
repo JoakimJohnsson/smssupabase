@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../services/serviceFunctions";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useParams} from "react-router-dom";
@@ -21,6 +21,7 @@ import {getWantedIssuesForUser} from "../../services/collectingService";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {FunctionButton} from "../minis/FunctionButton";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const User = () => {
@@ -118,7 +119,7 @@ export const User = () => {
                                             />
                                         </>
                                     }
-                                    <h2>{LABELS_AND_HEADINGS.INFORMATION}</h2>
+                                    <h2>{LABELS.COMMON.INFORMATION}</h2>
                                     <p className={"mb-4"}>
                                         {
                                             user.website ?

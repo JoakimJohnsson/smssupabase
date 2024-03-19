@@ -9,7 +9,7 @@ import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId
 } from "../../../../services/issueService";
-import {CLASSES, CONFIG, FILETYPES, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
+import {CLASSES, CONFIG, FILETYPES, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";

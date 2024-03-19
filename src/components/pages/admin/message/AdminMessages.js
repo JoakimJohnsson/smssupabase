@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";

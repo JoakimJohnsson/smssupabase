@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import formatData from "../../helpers/valueLists/formats.json";
 import {isTrue} from "../../helpers/functions";
 import FilterButton from "./FilterButton";

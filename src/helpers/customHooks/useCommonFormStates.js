@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {CLASSES} from "../constants";
+import {CLASSES} from "../constants/configConstants";
 
 
 export const useCommonFormStates = () => {

@@ -15,6 +15,10 @@ export const LABELS = {
         COUNTRY_DB: "Utgivningsland (country)",
         DESCRIPTION_DB: "Beskrivning (description)",
         EDIT: "Redigera",
+        HOME: "Hem",
+        ID: "Id",
+        IMAGE: "Bild",
+        INFORMATION: "Information",
         LOG_IN: "Logga in",
         YEAR_DB: "År (year)"
     },

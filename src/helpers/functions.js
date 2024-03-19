@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants";
+import {CLASSES, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
 import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";

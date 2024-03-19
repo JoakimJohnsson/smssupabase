@@ -3,7 +3,7 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import CustomLightbox from "../../CustomLightbox";
 import {Icon} from "../../icons";
 import {faSearch} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 
 
 export const ImageViewerCover = ({url, displayName, isCollectingIssue = false}) => {

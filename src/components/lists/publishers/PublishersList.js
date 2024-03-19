@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {ListToolBox} from "../ListToolBox";
-import {ROUTES} from "../../../helpers/constants";
+import {ROUTES} from "../../../helpers/constants/configConstants";
 import {BUCKETS, TABLES} from "../../../helpers/constants/serviceConstants";
 import {hasImage, sortByName} from "../../../helpers/functions";
 import {ListItemPublishedInfo} from "../ListItemPublishedInfo";

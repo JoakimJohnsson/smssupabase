@@ -4,7 +4,7 @@ import {SignOutButton} from "../minis/SignOutButton";
 import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
 import {LiNavItem} from "../lists/LiNavItem";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
     Icon,
@@ -58,7 +58,7 @@ export const AuthorizedNavigation = () => {
 
                     {/* desktop ul (no click handler) */}
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.HOME}
+                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>} text={LABELS.COMMON.HOME}
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
@@ -114,7 +114,7 @@ export const AuthorizedNavigation = () => {
                     <ul className="d-lg-none navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
                         <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<Icon icon={startIconDuoTone} size={"1x"}/>}
                                    doShowNotification={showUserNotification} isUserNotification={true}
-                                   text={LABELS_AND_HEADINGS.HOME}/>
+                                   text={LABELS.COMMON.HOME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<Icon icon={dashboardIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.DASHBOARD}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}

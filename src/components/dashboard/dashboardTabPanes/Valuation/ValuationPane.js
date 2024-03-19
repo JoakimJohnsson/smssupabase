@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useEffect} from "react";
-import {CONFIG, LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants/configConstants";
 import {useAppContext} from "../../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import * as ServiceFunctions from "../../../../services/serviceFunctions";

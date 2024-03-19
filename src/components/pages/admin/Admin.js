@@ -1,5 +1,5 @@
 import React from "react";
-import {ROUTES, TEXTS} from "../../../helpers/constants";
+import {ROUTES, TEXTS} from "../../../helpers/constants/configConstants";
 import {TitlesSection} from "../../dashboard/dashboardSections/admin/TitlesSection";
 import {PublishersSection} from "../../dashboard/dashboardSections/admin/PublishersSection";
 import {HeadingWithBreadCrumbs} from "../../headings";

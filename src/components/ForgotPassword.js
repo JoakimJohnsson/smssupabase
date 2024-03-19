@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants/configConstants";
 import {Icon, sendIcon, questionIconDuoTone} from "./icons";
 import {requestPasswordResetForEmail} from "../services/serviceFunctions";
 

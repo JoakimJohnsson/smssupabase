@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {isTrue} from "../../helpers/functions";
 import {updateProfileData} from "../../services/profileService";
 import {handleChange} from "../../services/serviceFunctions";

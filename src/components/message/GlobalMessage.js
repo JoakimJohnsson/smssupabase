@@ -1,5 +1,5 @@
 import React from "react";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../services/serviceFunctions";

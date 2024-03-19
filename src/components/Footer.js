@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useEffect} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants/configConstants";
 import {TABLES} from "../helpers/constants/serviceConstants";
 import {getRowByTableAndId} from "../services/serviceFunctions";
 import {useAppContext} from "../context/AppContext";

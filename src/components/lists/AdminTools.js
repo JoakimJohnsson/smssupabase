@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {handleDelete} from "../../services/serviceFunctions";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";

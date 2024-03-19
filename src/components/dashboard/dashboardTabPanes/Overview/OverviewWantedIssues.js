@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {getWantedIssuesForUser} from "../../../../services/collectingService";
 import {sortByName} from "../../../../helpers/functions";

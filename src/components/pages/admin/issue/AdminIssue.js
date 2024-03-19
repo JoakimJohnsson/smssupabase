@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {useParams} from "react-router-dom";
-import {FILETYPES, TEXTS} from "../../../../helpers/constants";
+import {FILETYPES, TEXTS} from "../../../../helpers/constants/configConstants";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";

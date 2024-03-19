@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import React from "react";
 import {useAppContext} from "../../context/AppContext";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Icon, logoutIconDuoTone} from "../icons";
 

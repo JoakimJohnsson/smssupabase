@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 
 
 const FilterFormSimple = ({query, setSearchParams, placeholder}) => {

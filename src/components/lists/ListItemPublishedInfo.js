@@ -1,6 +1,6 @@
 import React from "react";
 import {FriendlyDate} from "../minis/FriendlyDate";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 
 
 export const ListItemPublishedInfo = ({dateString}) => {

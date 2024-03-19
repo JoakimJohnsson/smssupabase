@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {Link} from "react-router-dom";
 import {TitleTool} from "../lists/TitleTool";
 import formatData from "../../helpers/valueLists/formats.json";

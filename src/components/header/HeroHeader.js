@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
 import {IconLinkCta} from "../minis/IconLinkCta";
 import {
@@ -43,7 +43,7 @@ export const HeroHeader = () => {
                                 variant={"secondary"}
                                 icon={infoIconDuoTone}
                                 path={"#info-section"}
-                                label={LABELS_AND_HEADINGS.INFORMATION}
+                                label={LABELS.COMMON.INFORMATION}
                             />
                         </div>
 

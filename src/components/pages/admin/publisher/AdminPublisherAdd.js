@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
 import {addPublisherData} from "../../../../services/publisherService";
 import {handleInput} from "../../../../services/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
