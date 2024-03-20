@@ -60,7 +60,7 @@ export const AuthorizedNavigation = () => {
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
                         <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>} text={LABELS.COMMON.HOME}
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>} text={LABELS.SECTIONS.DASHBOARD.NAME}/>
                         <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
@@ -116,7 +116,7 @@ export const AuthorizedNavigation = () => {
                                    doShowNotification={showUserNotification} isUserNotification={true}
                                    text={LABELS.COMMON.HOME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<Icon icon={dashboardIconDuoTone} size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.DASHBOARD}/>
+                                   text={LABELS.SECTIONS.DASHBOARD.NAME}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {updatePublisherData} from "../../../../services/publisherService";
@@ -40,7 +40,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                 <input
                     id={"name"}
                     name={"name"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newPublisher.name || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
@@ -50,7 +50,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                 <input
                     id={"description"}
                     name={"description"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newPublisher.description || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
@@ -60,7 +60,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                 <input
                     id={"wikiurl"}
                     name={"wiki_url"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newPublisher.wiki_url || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}

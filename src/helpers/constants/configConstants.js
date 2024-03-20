@@ -1,14 +1,7 @@
 import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
 
-// 649 rader
-export const CLASSES = {
-    FORM_INPUT_DEFAULT: "form-control mb-3",
-    FORM_INPUT_DISABLED: "form-control opacity-50 mb-3",
-    FORM_INPUT_SUCCESS: "form-control success mb-3",
-    FORM_INPUT_ERROR: "form-control danger mb-3"
-}
-
+// 624 rader
 export const ROUTES = {
     DEFAULT: "/",
     SUCCESS: "/success",
@@ -86,12 +79,6 @@ export const LABELS_AND_HEADINGS = {
     COPY_VALUE: "Värde:",
     COPY_NOT_VALUED: "(Värden ej inlagda för denna titel)",
     COPY_VALUE_SEK: "kr",
-    CREATE_ACCOUNT: "Registrera dig",
-    CREATE_ACCOUNT_CTA: "Registrera dig",
-    CREATED_AT: "Inlagd",
-    DASHBOARD: "Kontrollpanel",
-    DASHBOARD_MY_TITLES: "Kontrollpanel / Mina titlar",
-    DATE: "Datum",
     DEFAULT_FORMATS: "Alla format",
     DELETE: "Ta bort",
     DELETING: "Tar bort",
@@ -138,8 +125,6 @@ export const LABELS_AND_HEADINGS = {
     IS_VARIANT: "Variant",
     IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
     IS_DOUBLE_DB: "Dubbelnummer (is_double)",
-    ISSUE: "Publikation",
-    ISSUES: "Publikationer",
     GRADE_VALUES: "Skickvärderingar",
     GRADE_VALUES_FOR: "Skickvärdering för",
     MISSING_ISSUES: "Saknade publikationer",

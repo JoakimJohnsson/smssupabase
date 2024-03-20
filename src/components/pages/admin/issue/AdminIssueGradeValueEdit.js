@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {isSKGradeName, isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";
@@ -74,7 +74,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                                     <input
                                         id={gradeValue.id}
                                         name={gradeValue.id}
-                                        className={CLASSES.FORM_INPUT_DEFAULT}
+                                        className={"form-input--default"}
                                         type="number"
                                         step={"10"}
                                         min={0}

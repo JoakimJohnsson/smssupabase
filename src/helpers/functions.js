@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {CLASSES, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
+import {SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
 import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
@@ -59,11 +59,11 @@ export const getDataIcon = (data, id) => {
 
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
     if (success) {
-        setEmailInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        setEmailInputClass("form-input--success");
         setEmailValidated(true);
         setEmailValidationMessage(MESSAGES.SUCCESS.VALIDATION_EMAIL);
     } else {
-        setEmailInputClass(CLASSES.FORM_INPUT_ERROR);
+        setEmailInputClass("form-input--error");
         setEmailValidated(false);
         setEmailValidationMessage(MESSAGES.ERROR.VALIDATION_EMAIL);
     }
@@ -81,11 +81,11 @@ export const trimInputString = (input) => {
 
 export const handlePasswordInput = (success, setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage) => {
     if (success) {
-        setPasswordInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        setPasswordInputClass("form-input--success");
         setPasswordValidated(true);
         setPasswordValidationMessage(MESSAGES.SUCCESS.VALIDATION_PASSWORD);
     } else {
-        setPasswordInputClass(CLASSES.FORM_INPUT_ERROR);
+        setPasswordInputClass("form-input--error");
         setPasswordValidated(false)
         setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
     }
@@ -93,10 +93,10 @@ export const handlePasswordInput = (success, setPasswordInputClass, setPasswordV
 
 export const handleGenericFormInput = (success, setInputClass, setValidated) => {
     if (success) {
-        setInputClass(CLASSES.FORM_INPUT_SUCCESS);
+        setInputClass("form-input--success");
         setValidated(true);
     } else {
-        setInputClass(CLASSES.FORM_INPUT_ERROR);
+        setInputClass("form-input--error");
         setValidated(false);
     }
 }

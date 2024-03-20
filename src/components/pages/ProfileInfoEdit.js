@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {isTrue} from "../../helpers/functions";
 import {updateProfileData} from "../../services/profileService";
 import {handleChange} from "../../services/serviceFunctions";
@@ -46,7 +46,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
             <input
                 id="firstname"
                 name="firstname"
-                className={CLASSES.FORM_INPUT_DEFAULT}
+                className={"form-input--default"}
                 type="text"
                 value={newProfile.firstname || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
@@ -56,7 +56,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
             <input
                 id="lastname"
                 name="lastname"
-                className={CLASSES.FORM_INPUT_DEFAULT}
+                className={"form-input--default"}
                 type="text"
                 value={newProfile.lastname || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
@@ -66,7 +66,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
             <input
                 id="website"
                 name="website"
-                className={CLASSES.FORM_INPUT_DEFAULT}
+                className={"form-input--default"}
                 type="text"
                 value={newProfile.website || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}

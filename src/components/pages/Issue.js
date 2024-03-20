@@ -203,7 +203,7 @@ export const Issue = () => {
                                     variant={"primary"}
                                     icon={titlesIconDuoTone}
                                     path={ROUTES.DASHBOARD.PATH_MY_TITLES}
-                                    label={LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
+                                    label={LABELS.SECTIONS.DASHBOARD.MY_TITLES}
                                 />
                                 <IconLink
                                     variant={"primary"}

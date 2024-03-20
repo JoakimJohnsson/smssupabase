@@ -185,7 +185,7 @@ export const Title = () => {
                                     variant={"primary"}
                                     icon={titlesIconDuoTone}
                                     path={ROUTES.DASHBOARD.PATH_MY_TITLES}
-                                    label={LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
+                                    label={LABELS.SECTIONS.DASHBOARD.MY_TITLES}
                                 />
                                 {
                                     profile && profile.role >= 1 &&
@@ -261,7 +261,7 @@ export const Title = () => {
                                         {TEXTS.GRADE_MISSING}
                                     </div>
                                 }
-                                <h2>{listViewGrades ? LABELS_AND_HEADINGS.GRADE_VALUES : LABELS_AND_HEADINGS.ISSUES}</h2>
+                                <h2>{listViewGrades ? LABELS_AND_HEADINGS.GRADE_VALUES : LABELS.COMMON.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
                                             listViewGrid={listViewGrid} listViewMissing={listViewMissing} listViewGrades={listViewGrades}
                                             fetchTitleProgress={fetchTitleProgress}

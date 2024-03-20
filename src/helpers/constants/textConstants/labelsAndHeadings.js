@@ -13,6 +13,9 @@ export const LABELS = {
         CONTACT: "Kontakt",
         CONTENT: "Innehåll",
         COUNTRY_DB: "Utgivningsland (country)",
+        CREATE_ACCOUNT: "Registrera dig",
+        CREATED_AT: "Inlagd",
+        DATE: "Datum",
         DESCRIPTION_DB: "Beskrivning (description)",
         EDIT: "Redigera",
         HOME: "Hem",
@@ -23,10 +26,15 @@ export const LABELS = {
         YEAR_DB: "År (year)"
     },
     SECTIONS: {
+        DASHBOARD: {
+            NAME: "Kontrollpanel",
+            MY_TITLES: "Kontrollpanel / Mina titlar",
+        },
         GRADES: {
             ADD_GRADE: "Lägg till skickgradering"
         },
         ISSUES: {
+            ISSUES: "Publikationer",
             ALL_ISSUES: "Alla publikationer"
         },
         MARVELKLUBBEN: {

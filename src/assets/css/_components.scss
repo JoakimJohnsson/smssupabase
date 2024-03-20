@@ -2,7 +2,7 @@
 @import "variables";
 @import "./bootstrap/scss/variables";
 
-// links
+// Links
 .nav-link {
   cursor: pointer;
   background-color: transparent;
@@ -114,6 +114,19 @@
     .form-label {
       color: $black--lighter;
     }
+  }
+}
+
+// Forms
+.form-input {
+  &--default {
+    @extend .form-control, .mb-3;
+  }
+  &--success {
+    @extend .form-control, .success, .mb-3;
+  }
+  &--error {
+    @extend .form-control, .danger, .mb-3;
   }
 }
 

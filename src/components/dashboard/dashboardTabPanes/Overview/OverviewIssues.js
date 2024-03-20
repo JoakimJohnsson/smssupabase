@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
-import {LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants/configConstants";
+import {PANES} from "../../../../helpers/constants/configConstants";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
 import {useAppContext} from "../../../../context/AppContext";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
 import {getAverageGrade} from "../../../../helpers/functions";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const OverviewIssues = ({titlesData}) => {
@@ -48,7 +49,7 @@ export const OverviewIssues = ({titlesData}) => {
     return (
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                <h2>{LABELS.COMMON.ISSUES}</h2>
                 {
                     userIssuesCount ?
                         <>

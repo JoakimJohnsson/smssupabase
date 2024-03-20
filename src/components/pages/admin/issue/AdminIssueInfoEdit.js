@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {isTrue, printOptions, printTitleOptions} from "../../../../helpers/functions";
 import {getRowsByTable, handleChange} from "../../../../services/serviceFunctions";
@@ -102,7 +102,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                 <input
                     id={"year"}
                     name={"year"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     value={newIssue.year || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
@@ -112,7 +112,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                 <input
                     id={"number"}
                     name={"number"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     max={999}
                     min={1}
@@ -125,7 +125,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                 <textarea
                     id={"source"}
                     name={"source"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     rows={3}
                     value={newIssue.source || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
@@ -161,7 +161,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                 <input
                     id={"marvelklubbennumber"}
                     name={"marvelklubben_number"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     max={999}
                     min={0}
@@ -186,7 +186,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                 <input
                     id={"variantsuffix"}
                     name={"variant_suffix"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="text"
                     value={newIssue.variant_suffix || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}

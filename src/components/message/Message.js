@@ -23,16 +23,16 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
             setDescription("");
         }
         setText("");
-        setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        setFormInputClass("form-input--error");
     }
 
     useEffect(() => {
         if (topic_id && text && title !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setFormInputClass("form-input--success");
         } else if (topic_id || text || title !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+            setFormInputClass("form-input--default")
         } else {
-            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+            setFormInputClass("form-input--error");
         }
     }, [topic_id, text, title, setFormInputClass]);
 

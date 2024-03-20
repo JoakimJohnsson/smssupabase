@@ -37,7 +37,7 @@ export const HeroHeader = () => {
                                 variant={"primary"}
                                 icon={registerIconDuoTone}
                                 path={"#create-account-section"}
-                                label={LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
+                                label={LABELS.COMMON.CREATE_ACCOUNT}
                             />
                             <IconLinkCta
                                 variant={"secondary"}

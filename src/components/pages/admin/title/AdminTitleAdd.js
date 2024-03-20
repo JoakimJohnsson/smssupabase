@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
 import {addTitleData} from "../../../../services/titleService";
 import {handleInput} from "../../../../services/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
@@ -43,16 +43,16 @@ export const AdminTitleAdd = () => {
         setStart_year(1975);
         setEnd_year(1975);
         setTotal_issues(12);
-        setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        setFormInputClass("form-input--error");
     }
 
     useEffect(() => {
         if (format_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "" && comics_org_url !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setFormInputClass("form-input--success");
         } else if (format_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "" || comics_org_url !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+            setFormInputClass("form-input--default")
         } else {
-            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+            setFormInputClass("form-input--error");
         }
     }, [format_id, name, description, wiki_url, comics_org_url, start_year, end_year, total_issues, setFormInputClass])
 

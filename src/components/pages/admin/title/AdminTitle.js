@@ -254,7 +254,7 @@ export const AdminTitle = () => {
                                                         <input
                                                             id={key + key.toUpperCase()}
                                                             name={key}
-                                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                                            className={"form-input--default"}
                                                             type="number"
                                                             step={"10"}
                                                             min={0}
@@ -276,7 +276,7 @@ export const AdminTitle = () => {
                         <div className={"row row-padding--secondary"}>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light mb-4"}>
-                                    <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                    <h2>{LABELS.COMMON.ISSUES}</h2>
                                     {
                                         issuesData && issuesData.length > 0 ?
                                             <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/>
@@ -295,7 +295,7 @@ export const AdminTitle = () => {
                                             <select
                                                 id="publisher"
                                                 name={"publisher_id"}
-                                                className={CLASSES.FORM_INPUT_DEFAULT + " mb-5"}
+                                                className={"form-input--default" + " mb-5"}
                                                 onChange={(e) => handleInput(e, setPublisher_id)}>
                                                 <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                                                 {printOptions(publishersData)}
@@ -306,7 +306,7 @@ export const AdminTitle = () => {
                                         <input
                                             id="year"
                                             name="year"
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             type="number"
                                             value={year || ""}
                                             onChange={(e) => handleInput(e, setYear)}
@@ -315,7 +315,7 @@ export const AdminTitle = () => {
                                         <input
                                             id="number"
                                             name="number"
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             type="number"
                                             value={number || ""}
                                             max={999}
@@ -327,7 +327,7 @@ export const AdminTitle = () => {
                                         <textarea
                                             id={"source"}
                                             name={"source"}
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             rows={3}
                                             value={source || ""}
                                             onChange={(e) => handleInput(e, setSource)}
@@ -361,7 +361,7 @@ export const AdminTitle = () => {
                                         <input
                                             id={"marvelklubbennumber"}
                                             name={"marvelklubben_number"}
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             type="number"
                                             value={marvelklubben_number || ""}
                                             max={999}
@@ -384,7 +384,7 @@ export const AdminTitle = () => {
                                         <input
                                             id={"variantsuffix"}
                                             name={"variant_suffix"}
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             type="text"
                                             value={variant_suffix || ""}
                                             onChange={(e) => handleInput(e, setVariant_suffix)}

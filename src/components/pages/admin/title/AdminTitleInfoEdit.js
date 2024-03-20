@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {updateTitleData} from "../../../../services/titleService";
@@ -40,7 +40,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"name"}
                     name={"name"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newTitle.name || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
@@ -50,7 +50,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"description"}
                     name={"description"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newTitle.description || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
@@ -60,7 +60,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"wikiurl"}
                     name={"wiki_url"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newTitle.wiki_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
@@ -70,7 +70,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"comicsorgurl"}
                     name={"comics_org_url"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newTitle.comics_org_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
@@ -80,7 +80,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"startyear"}
                     name={"start_year"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     value={newTitle.start_year || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
@@ -90,7 +90,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"endyear"}
                     name={"end_year"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     value={newTitle.end_year || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
@@ -114,7 +114,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"totalissues"}
                     name={"total_issues"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     min="1"
                     value={newTitle.total_issues || ""}

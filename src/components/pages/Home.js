@@ -26,6 +26,7 @@ import {
 } from "../icons";
 import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Home = () => {
@@ -137,7 +138,7 @@ export const Home = () => {
                                 }
                             </div>
                         }
-                        <h2>{LABELS_AND_HEADINGS.DASHBOARD}</h2>
+                        <h2>{LABELS.SECTIONS.DASHBOARD.NAME}</h2>
                         <IconLinkCtaLg
                             variant={"primary"}
                             icon={overviewIconDuoTone}
