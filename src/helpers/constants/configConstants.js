@@ -2,51 +2,6 @@ import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
 
 // 600 rader
-export const ROUTES = {
-    DEFAULT: "/",
-    SUCCESS: "/success",
-    PROFILE: "/profile",
-    CHANGE_PASSWORD: "/change-password",
-    TITLES: "/titles",
-    TITLE_ID: "/titles/:id",
-    ISSUES: "/issues",
-    GRADE_VALUES: "/grade-values",
-    ISSUE_ID: "/issues/:id",
-    PUBLISHERS: "/publishers",
-    MARVELKLUBBEN: "/marvelklubben",
-    PUBLISHER_ID: "/publishers/:id",
-    USERS: "/users",
-    USER_ID: "/users/:id",
-    DASHBOARD: {
-        ROOT: "dashboard",
-        OVERVIEW: "overview",
-        PATH_OVERVIEW: "/dashboard/overview",
-        MY_TITLES: "my-titles",
-        PATH_MY_TITLES: "/dashboard/my-titles",
-        OTHER_COLLECTIONS: "other-collections",
-        PATH_OTHER_COLLECTIONS: "/dashboard/other-collections",
-        VALUATION: "valuation",
-        PATH_VALUATION: "/dashboard/valuation"
-    },
-    ADMIN: {
-        ROOT: "/admin",
-        ISSUES: "/admin/issues/",
-        ISSUE_ID: "/admin/issues/:id",
-        ISSUE_EDIT_ID: "/admin/issues/:id/edit",
-        PUBLISHERS: "/admin/publishers/",
-        PUBLISHER_ID: "/admin/publishers/:id",
-        PUBLISHER_ADD: "/admin/publishers/add/",
-        PUBLISHER_EDIT_ID: "/admin/publishers/:id/edit",
-        TITLES: "/admin/titles/",
-        TITLE_ID: "/admin/titles/:id",
-        TITLE_ADD: "/admin/titles/add/",
-        TITLE_EDIT_ID: "/admin/titles/:id/edit",
-        USERS: "/admin/users/",
-        MESSAGES: "/admin/messages/",
-        MESSAGE_ID: "/admin/messages/:id"
-    }
-}
-
 export const LABELS_AND_HEADINGS = {
     ADD_ISSUES: "Lägg till publikationer",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
@@ -322,6 +277,51 @@ export const TEXTS = {
     UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
 }
 
+export const ROUTES = {
+    DEFAULT: "/",
+    SUCCESS: "/success",
+    PROFILE: "/profile",
+    CHANGE_PASSWORD: "/change-password",
+    TITLES: "/titles",
+    TITLE_ID: "/titles/:id",
+    ISSUES: "/issues",
+    GRADE_VALUES: "/grade-values",
+    ISSUE_ID: "/issues/:id",
+    PUBLISHERS: "/publishers",
+    MARVELKLUBBEN: "/marvelklubben",
+    PUBLISHER_ID: "/publishers/:id",
+    USERS: "/users",
+    USER_ID: "/users/:id",
+    DASHBOARD: {
+        ROOT: "dashboard",
+        OVERVIEW: "overview",
+        PATH_OVERVIEW: "/dashboard/overview",
+        MY_TITLES: "my-titles",
+        PATH_MY_TITLES: "/dashboard/my-titles",
+        OTHER_COLLECTIONS: "other-collections",
+        PATH_OTHER_COLLECTIONS: "/dashboard/other-collections",
+        VALUATION: "valuation",
+        PATH_VALUATION: "/dashboard/valuation"
+    },
+    ADMIN: {
+        ROOT: "/admin",
+        ISSUES: "/admin/issues/",
+        ISSUE_ID: "/admin/issues/:id",
+        ISSUE_EDIT_ID: "/admin/issues/:id/edit",
+        PUBLISHERS: "/admin/publishers/",
+        PUBLISHER_ID: "/admin/publishers/:id",
+        PUBLISHER_ADD: "/admin/publishers/add/",
+        PUBLISHER_EDIT_ID: "/admin/publishers/:id/edit",
+        TITLES: "/admin/titles/",
+        TITLE_ID: "/admin/titles/:id",
+        TITLE_ADD: "/admin/titles/add/",
+        TITLE_EDIT_ID: "/admin/titles/:id/edit",
+        USERS: "/admin/users/",
+        MESSAGES: "/admin/messages/",
+        MESSAGE_ID: "/admin/messages/:id"
+    }
+}
+
 export const FILETYPES = {
     AVATAR_IMAGE: "avatar-img-",
     ISSUE_IMAGE: "issue-img-",
@@ -392,36 +392,6 @@ export const VARIANT_MAPPER = {
     success: 2,
     warning: 3,
     danger: 4
-}
-
-export const MESSAGE_STATUS_TEXT = {
-    0: {
-        name: "Oläst",
-        nameEn: "Unread"
-    },
-    1: {
-        name: "Läst",
-        nameEn: "Read"
-    },
-    2: {
-        name: "Åtgärd krävs!",
-        nameEn: "TODO!"
-    },
-}
-
-export const MESSAGE_STATUS_TEXT_GLOBAL = {
-    0: {
-        name: "Inaktivt",
-        nameEn: "Inactive"
-    },
-    1: {
-        name: "Aktivt",
-        nameEn: "Active"
-    },
-    2: {
-        name: "Åtgärd krävs!",
-        nameEn: "TODO!"
-    },
 }
 
 export const DEFAULT_SEARCH_PARAMS_FORMATS = {
