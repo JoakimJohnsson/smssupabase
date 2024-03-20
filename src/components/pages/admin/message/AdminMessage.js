@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, MESSAGE_STATUS_TEXT_GLOBAL, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {MESSAGE_STATUS_TEXT, MESSAGE_STATUS_TEXT_GLOBAL} from "../../../../helpers/constants/textConstants/messages";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../services/serviceFunctions";

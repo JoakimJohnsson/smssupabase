@@ -55,3 +55,33 @@ export const MESSAGES = {
         409: "409 \"Conflict\" - Klientfel. Kunde inte genomföra processen. Det kan t.ex finnas referenser till detta objekt som inte kan tas bort."
     }
 }
+
+export const MESSAGE_STATUS_TEXT = {
+    0: {
+        name: "Oläst",
+        nameEn: "Unread"
+    },
+    1: {
+        name: "Läst",
+        nameEn: "Read"
+    },
+    2: {
+        name: "Åtgärd krävs!",
+        nameEn: "TODO!"
+    },
+}
+
+export const MESSAGE_STATUS_TEXT_GLOBAL = {
+    0: {
+        name: "Inaktivt",
+        nameEn: "Inactive"
+    },
+    1: {
+        name: "Aktivt",
+        nameEn: "Active"
+    },
+    2: {
+        name: "Åtgärd krävs!",
+        nameEn: "TODO!"
+    },
+}
