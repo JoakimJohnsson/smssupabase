@@ -26,7 +26,7 @@ export const GlobalMessage = ({
     return (
         <>
 
-            <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.MESSAGE_TITLE}</label>
+            <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
             <p className={"h5 text-white"}>
                 {
                     topic_id &&
@@ -49,7 +49,7 @@ export const GlobalMessage = ({
                     {printOptions(topicData.filter((t) => t.isGlobal === true))}
                 </select>
             }
-            <label className={"form-label"} htmlFor="text">{LABELS_AND_HEADINGS.MESSAGE}</label>
+            <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
             <textarea
                 className={formInputClass}
                 placeholder={LABELS_AND_HEADINGS.ADD_MESSAGE_PLACEHOLDER}

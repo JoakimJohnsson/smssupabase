@@ -36,7 +36,7 @@ export const UserMessage = ({
                 variant={"primary"}
                 icon={open ? faTimes : faMessages}
                 onClick={() => setOpen(!open)}
-                label={open ? LABELS_AND_HEADINGS.MESSAGES_CLOSE : LABELS_AND_HEADINGS.MESSAGES_SHOW}
+                label={open ? LABELS.SECTIONS.MESSAGES.MESSAGE_CLOSE : LABELS.SECTIONS.MESSAGES.MESSAGE_SHOW}
                 id={"message-form-toggler"}
                 showLabel={true}
             />
@@ -44,7 +44,7 @@ export const UserMessage = ({
                 open &&
                 <div className={"sms-section--light primary mb-3 p-3"}>
                     <h2>{LABELS_AND_HEADINGS.MESSAGE_ADMIN_CREATE}</h2>
-                    <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.MESSAGE_TITLE}</label>
+                    <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
                     <p className={"h5 text-black"}>
                         {
                             topic_id &&
@@ -82,7 +82,7 @@ export const UserMessage = ({
                         />
                         <label className={"form-label"} htmlFor="useThisObject">{LABELS_AND_HEADINGS.MESSAGE_USE_THIS_OBJECT}</label>
                     </div>
-                    <label className={"form-label"} htmlFor="text">{LABELS_AND_HEADINGS.MESSAGE}</label>
+                    <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
                     <textarea
                         className={formInputClass}
                         placeholder={LABELS_AND_HEADINGS.ADD_MESSAGE_PLACEHOLDER}

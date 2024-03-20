@@ -8,6 +8,7 @@ import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {MessageIcons} from "../../../message/MessageIcons";
 import {FriendlyDate} from "../../../minis/FriendlyDate";
 import {MessageStatusChanger} from "../../../message/MessageStatusChanger";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminMessage = () => {
@@ -36,7 +37,7 @@ export const AdminMessage = () => {
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
                                 {/* Table MESSAGE does not have a name column - ignore name and use message title instead. */}
-                                <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title} text={LABELS_AND_HEADINGS.MESSAGE}/>
+                                <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title} text={LABELS.SECTIONS.MESSAGES.MESSAGE}/>
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>

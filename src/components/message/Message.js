@@ -6,6 +6,7 @@ import topicData from "../../helpers/valueLists/topics.json";
 import {getDataDescription, getDataName, getIssueName} from "../../helpers/functions";
 import {UserMessage} from "./UserMessage";
 import {GlobalMessage} from "./GlobalMessage";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Message = ({originObject, originTable, isGlobalMessage = false, fetchAdminMessages = false}) => {
@@ -13,13 +14,13 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
     const {formInputClass, setFormInputClass} = useCommonFormStates();
     const [topic_id, setTopic_id] = useState("");
     const [description, setDescription] = useState("");
-    const [title, setTitle] = useState(LABELS_AND_HEADINGS.MESSAGE);
+    const [title, setTitle] = useState(LABELS.SECTIONS.MESSAGES.MESSAGE);
     const [text, setText] = useState("");
     const [useThisObject, setUseThisObject] = useState(false);
 
     const resetAddMessageForm = async () => {
         if (topic_id === "") {
-            setTitle(LABELS_AND_HEADINGS.MESSAGE);
+            setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE);
             setDescription("");
         }
         setText("");
@@ -49,19 +50,19 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
                 if (topic_id !== "") {
                     setTitle(currentTitle => currentTitle + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
                 } else {
-                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
+                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
                 }
             } else if (originTable === TABLES.TITLES) {
                 if (topic_id !== "") {
                     setTitle(currentTitle => currentTitle + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
                 } else {
-                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
+                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
                 }
             } else {
                 if (topic_id !== "") {
                     setTitle(currentTitle => currentTitle + " - " + originTable);
                 } else {
-                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " - " + originTable);
+                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " - " + originTable);
                 }
             }
         } else {
@@ -69,7 +70,7 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
                 setTitle(getDataName(topicData, topic_id));
                 setDescription(getDataDescription(topicData, topic_id));
             } else {
-                setTitle(LABELS_AND_HEADINGS.MESSAGE);
+                setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE);
                 setDescription("");
             }
         }

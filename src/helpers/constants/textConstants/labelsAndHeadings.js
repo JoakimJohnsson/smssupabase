@@ -45,7 +45,12 @@ export const LABELS = {
         MARVELKLUBBEN: {
         },
         MESSAGES: {
-            ALL_MESSAGES: "Alla meddelanden"
+            ALL_MESSAGES: "Alla meddelanden",
+            MESSAGE: "Meddelande",
+            MESSAGES: "Meddelanden",
+            MESSAGE_CLOSE: "Stäng meddelande",
+            MESSAGE_SHOW: "Meddelande",
+            MESSAGE_TITLE: "Rubrik",
         },
         PUBLISHERS: {
             ADD_PUBLISHER: "Lägg till förlag",

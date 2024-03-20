@@ -6,6 +6,7 @@ import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serv
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {MessagesList} from "../../../message/MessagesList";
 import {filterGlobalMessage} from "../../../../helpers/functions";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const MessagesSection = () => {
@@ -28,7 +29,7 @@ export const MessagesSection = () => {
     return (
         <div className={"sms-page-col--full mb-5 "}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.MESSAGES}</h2>
+                <h2>{LABELS.SECTIONS.MESSAGES.MESSAGES}</h2>
                 {
                     limitedMessagesData ?
                         <>

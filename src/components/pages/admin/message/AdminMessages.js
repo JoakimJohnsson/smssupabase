@@ -42,7 +42,7 @@ export const AdminMessages = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.MESSAGES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
                     <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
                     <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
                     <a href={"#global-message-section"} className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
