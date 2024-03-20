@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useCallback} from "react";
-import {CONFIG, LABELS_AND_HEADINGS, PANES, ROUTES} from "../../../../helpers/constants/configConstants";
+import {CONFIG, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import * as ServiceFunctions from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
 import {OverviewIssuesValueComparison} from "./OverviewIssuesValueComparison";

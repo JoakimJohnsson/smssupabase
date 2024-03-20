@@ -1,5 +1,6 @@
 import React from "react";
-import {PANES, ROUTES} from "../../helpers/constants/configConstants";
+import {ROUTES} from "../../helpers/constants/configConstants";
+import {PANES} from "../../helpers/constants/textConstants/texts";
 import {
     Icon,
     otherCollectionsIconDuoTone,

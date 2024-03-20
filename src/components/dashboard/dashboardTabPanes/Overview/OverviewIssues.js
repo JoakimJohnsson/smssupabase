@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {PANES} from "../../../../helpers/constants/configConstants";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";

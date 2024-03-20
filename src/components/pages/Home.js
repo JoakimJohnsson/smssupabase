@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {LABELS_AND_HEADINGS, PANES, ROUTES, STATISTICS, TEXTS} from "../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../helpers/constants/configConstants";
+import {PANES} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../headings";

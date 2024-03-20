@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {PANES} from "../../../../helpers/constants/configConstants";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitlesForUser} from "../../../../services/titleService";
 import {OverviewTitles} from "./OverviewTitles";

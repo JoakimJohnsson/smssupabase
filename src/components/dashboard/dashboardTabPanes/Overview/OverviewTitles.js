@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {getCountByTable} from "../../../../services/serviceFunctions";
-import {LABELS_AND_HEADINGS, PANES, ROUTES} from "../../../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {titlesIconDuoTone} from "../../../icons";

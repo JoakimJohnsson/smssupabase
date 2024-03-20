@@ -1,5 +1,5 @@
 import React from "react";
-import {PANES} from "../../../../helpers/constants/configConstants";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {Icon, valueIconDuoTone} from "../../../icons";
 
 
