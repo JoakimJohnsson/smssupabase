@@ -4,6 +4,7 @@ import {faSearch, faDeleteLeft, faCircleXmark, faFilter} from "@fortawesome/pro-
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {isTrue} from "../../helpers/functions";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const FilterFormFormat = ({
@@ -66,7 +67,7 @@ const FilterFormFormat = ({
     return (
         <div className={"form-group sms-section--light mb-4"}>
             <div className="col-12 col-xl-8 mb-2">
-                <label className={"form-label"} htmlFor="query">{LABELS_AND_HEADINGS.DO_FILTER}</label>
+                <label className={"form-label"} htmlFor="query">{LABELS.COMMON.DO_FILTER}</label>
                 <div className="input-group mb-3 col-8">
                     <span className="input-group-text"><FontAwesomeIcon icon={faFilters}/></span>
                     <input id="query"

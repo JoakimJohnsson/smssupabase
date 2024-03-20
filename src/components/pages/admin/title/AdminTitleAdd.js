@@ -112,7 +112,7 @@ export const AdminTitleAdd = () => {
                             value={start_year || ""}
                             onChange={(e) => handleInput(e, setStart_year)}
                         />
-                        <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
+                        <label className={"form-label"} htmlFor="endyear">{LABELS.COMMON.END_YEAR_DB}</label>
                         <input
                             id="endyear"
                             name={"end_year"}

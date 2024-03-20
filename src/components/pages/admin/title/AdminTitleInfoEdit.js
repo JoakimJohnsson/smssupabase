@@ -86,7 +86,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
+                <label className={"form-label"} htmlFor="endyear">{LABELS.COMMON.END_YEAR_DB}</label>
                 <input
                     id={"endyear"}
                     name={"end_year"}

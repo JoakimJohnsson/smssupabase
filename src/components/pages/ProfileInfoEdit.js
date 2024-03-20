@@ -42,7 +42,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
     return (
         <div className={"mb-4"}>
             <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
-            <label className={"form-label"} htmlFor="firstname">{LABELS_AND_HEADINGS.FIRST_NAME}</label>
+            <label className={"form-label"} htmlFor="firstname">{LABELS.COMMON.FIRST_NAME}</label>
             <input
                 id="firstname"
                 name="firstname"
@@ -52,7 +52,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
                 disabled={!edit || loading}
             />
-            <label className={"form-label"} htmlFor="lastname">{LABELS_AND_HEADINGS.LAST_NAME}</label>
+            <label className={"form-label"} htmlFor="lastname">{LABELS.COMMON.LAST_NAME}</label>
             <input
                 id="lastname"
                 name="lastname"
