@@ -17,6 +17,7 @@ export const LABELS = {
         CREATED_AT: "Inlagd",
         DATE: "Datum",
         DESCRIPTION_DB: "Beskrivning (description)",
+        EMAIL: "E-postadress",
         EDIT: "Redigera",
         HOME: "Hem",
         ID: "Id",

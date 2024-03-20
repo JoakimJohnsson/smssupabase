@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/AppContext";
 import {simpleInputValidation} from "../helpers/validations";
-import {CLASSES, LABELS_AND_HEADINGS} from "../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS} from "../helpers/constants/configConstants";
 import {Icon, loginIcon, loginIconDuoTone} from "./icons";
 import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
 
@@ -41,7 +41,7 @@ const Login = () => {
                 <Icon icon={loginIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
                 <h2>{LABELS.COMMON.LOG_IN}</h2>
             </div>
-            <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.EMAIL}</label>
+            <label className={"form-label"} htmlFor="input-email">{LABELS.COMMON.EMAIL}</label>
             <input id="input-email"
                    type="email"
                    ref={emailRef}

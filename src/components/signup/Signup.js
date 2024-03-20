@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
-import {CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
@@ -77,7 +77,7 @@ export const Signup = () => {
                     <h2>{LABELS.COMMON.CREATE_ACCOUNT}</h2>
                     <p className={"lead"}>{TEXTS.CONSENT}</p>
                 </div>
-                <label className={"form-label"} htmlFor="input-signup-email">{LABELS_AND_HEADINGS.EMAIL}</label>
+                <label className={"form-label"} htmlFor="input-signup-email">{LABELS.COMMON.EMAIL}</label>
                 <input id="input-signup-email"
                        type="email"
                        ref={emailRef}
