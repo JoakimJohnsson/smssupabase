@@ -56,7 +56,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                <label className={"form-label"} htmlFor="description">{LABELS.COMMON.WIKI_URL_DB}</label>
                 <input
                     id={"wikiurl"}
                     name={"wiki_url"}

@@ -85,7 +85,7 @@ export const AdminTitleAdd = () => {
                             value={description || ""}
                             onChange={(e) => handleInput(e, setDescription)}
                         />
-                        <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                        <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
                         <input
                             id="wikiurl"
                             name="wiki_url"
@@ -94,7 +94,7 @@ export const AdminTitleAdd = () => {
                             value={wiki_url || ""}
                             onChange={(e) => handleInput(e, setWiki_url)}
                         />
-                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS_AND_HEADINGS.COMICS_ORG_URL_DB}</label>
+                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS.COMMON.COMICS_ORG_URL_DB}</label>
                         <input
                             id="comicsorgurl"
                             name="comics_orgurl"

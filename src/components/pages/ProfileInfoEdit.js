@@ -62,7 +62,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
                 disabled={!edit || loading}
             />
-            <label className={"form-label"} htmlFor="website">{LABELS_AND_HEADINGS.WEBSITE}</label>
+            <label className={"form-label"} htmlFor="website">{LABELS.COMMON.WEBSITE}</label>
             <input
                 id="website"
                 name="website"

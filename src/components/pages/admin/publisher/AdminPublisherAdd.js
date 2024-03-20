@@ -75,7 +75,7 @@ export const AdminPublisherAdd = () => {
                             value={description || ""}
                             onChange={(e) => handleInput(e, setDescription)}
                         />
-                        <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                        <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
                         <input
                             id="wikiurl"
                             name="wiki_url"

@@ -10,6 +10,7 @@ export const LABELS = {
         BREADCRUMB: "Brödsmula",
         CHOOSE: "--- Välj ---",
         CLOSE: "Stäng",
+        COMICS_ORG_URL_DB: "Länk till Comics.org (comics_org_url)",
         CONTACT: "Kontakt",
         CONTENT: "Innehåll",
         COUNTRY_DB: "Utgivningsland (country)",
@@ -28,6 +29,8 @@ export const LABELS = {
         INFORMATION: "Information",
         LAST_NAME: "Efternamn",
         LOG_IN: "Logga in",
+        WEBSITE: "Webbplats",
+        WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
         YEAR_DB: "År (year)"
     },
     SECTIONS: {

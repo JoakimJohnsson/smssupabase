@@ -102,7 +102,7 @@ export const Home = () => {
                                             className={"text-label me-4"}>{LABELS.COMMON.FIRST_NAME}:</span> {profile.firstname}</p>
                                         <p className={"m-0"}><span
                                             className={"text-label me-4"}>{LABELS.COMMON.LAST_NAME}:</span> {profile.lastname}</p>
-                                        <p className={"m-0"}><span className={"text-label me-4"}>{LABELS_AND_HEADINGS.WEBSITE}:</span> {profile.website}
+                                        <p className={"m-0"}><span className={"text-label me-4"}>{LABELS.COMMON.WEBSITE}:</span> {profile.website}
                                         </p>
                                         <p className={"mb-4"}><span
                                             className={"text-label me-4"}>{LABELS_AND_HEADINGS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}

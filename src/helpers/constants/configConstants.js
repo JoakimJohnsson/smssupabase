@@ -1,7 +1,7 @@
 import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
 
-// 604 rader
+// 600 rader
 export const ROUTES = {
     DEFAULT: "/",
     SUCCESS: "/success",
@@ -237,13 +237,8 @@ export const LABELS_AND_HEADINGS = {
     VALUATION_CALCULATE_MESSAGE_1: "Ingen värdeförändring - behöver inte spara ny värdering.",
     VALUATION_CALCULATE_MESSAGE_2: "Inga värderingar funna - sparar ny värdering.",
     VALUATION_CALCULATE_MESSAGE_3: "För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
-    WEBSITE: "Webbplats",
     WELCOME_TEXT_1: "Hej",
-    WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!",
-    WIKI_URL: "Länk till Seriewikin",
-    WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
-    COMICS_ORG_URL: "Länk till Comics.org",
-    COMICS_ORG_URL_DB: "Länk till Comics.org (comics_org_url)",
+    WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!"
 }
 
 export const TEXTS = {
