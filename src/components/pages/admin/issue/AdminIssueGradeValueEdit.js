@@ -45,7 +45,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                 <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
                 {
                     <div className={"mb-4"}>
-                        <h3>{LABELS_AND_HEADINGS.ADD_GRADE_VALUE}</h3>
+                        <h3>{LABELS.SECTIONS.GRADES.ADD_GRADE_VALUE_VALUES}</h3>
                         {
                             gradeValues && gradeValues.length === 0 ?
                                 <>
@@ -64,7 +64,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                 {
                     gradeValues && !!gradeValues.length &&
                     <>
-                        <h3>{LABELS_AND_HEADINGS.EDIT_GRADE_VALUE}</h3>
+                        <h3>{LABELS.SECTIONS.GRADES.EDIT_GRADE_VALUE_VALUES}</h3>
                         {gradeValues.sort((a, b) => {
                            return (a.grade - b.grade);
                         }).map((gradeValue) => {

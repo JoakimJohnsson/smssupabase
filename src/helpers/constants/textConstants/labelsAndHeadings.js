@@ -49,6 +49,8 @@ export const LABELS = {
         },
         GRADES: {
             ADD_GRADE: "Lägg till skickgradering",
+            ADD_GRADE_VALUE_VALUES: "Lägg till skickvärden för publikationerna",
+            EDIT_GRADE_VALUE_VALUES: "Redigera skickvärden",
             GRADE_VALUE: "Skickvärdering",
             GRADE_VALUES: "Skickvärderingar"
         },
