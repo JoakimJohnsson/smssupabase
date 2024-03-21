@@ -18,6 +18,7 @@ import {Accordion} from "react-bootstrap";
 import AccordionHeader from "react-bootstrap/AccordionHeader";
 import AccordionBody from "react-bootstrap/AccordionBody";
 import AccordionItem from "react-bootstrap/AccordionItem";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const GradeValues = () => {
@@ -59,7 +60,7 @@ export const GradeValues = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.GRADE_VALUES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.GRADES.GRADE_VALUES}/>
                     <FilterFormFormat
                         setSearchParams={setSearchParams}
                         query={query}

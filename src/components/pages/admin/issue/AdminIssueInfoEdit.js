@@ -142,7 +142,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         onChange={() => handleDoubleCheckboxChange(newIssue.is_double)}
                         disabled={!edit || loading}
                     />
-                    <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_DOUBLE_DB}</label>
+                    <label className={"form-label"} htmlFor="double">{LABELS.COMMON.IS_DOUBLE_DB}</label>
                 </div>
                 <div>
                     <input
@@ -155,7 +155,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         onChange={() => handleMKCheckboxChange(newIssue.is_marvelklubben)}
                         disabled={!edit || loading}
                     />
-                    <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                    <label className={"form-label"} htmlFor="marvelklubben">{LABELS.COMMON.IS_MARVELKLUBBEN_DB}</label>
                 </div>
                 <label className={"form-label"} htmlFor="marvelklubbennumber">{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER_DB}</label>
                 <input
@@ -180,9 +180,9 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         onChange={() => handleVariantCheckboxChange(newIssue.is_variant)}
                         disabled={!edit || loading}
                     />
-                    <label className={"form-label"} htmlFor="variant">{LABELS_AND_HEADINGS.IS_VARIANT_DB}</label>
+                    <label className={"form-label"} htmlFor="variant">{LABELS.COMMON.IS_VARIANT_DB}</label>
                 </div>
-                <label className={"form-label"} htmlFor="variantsuffix">{LABELS_AND_HEADINGS.VARIANT_SUFFIX_DB}</label>
+                <label className={"form-label"} htmlFor="variantsuffix">{LABELS.COMMON.VARIANT_SUFFIX_DB}</label>
                 <input
                     id={"variantsuffix"}
                     name={"variant_suffix"}

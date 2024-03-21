@@ -27,8 +27,17 @@ export const LABELS = {
         ID: "Id",
         IMAGE: "Bild",
         INFORMATION: "Information",
+        IS_DOUBLE_DB: "Dubbelnummer (is_double)",
+        IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
+        IS_PUBLIC: "Publik information",
+        IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
         LAST_NAME: "Efternamn",
+        LIST_VIEW_GRADE_VALUE_HIDE: "Dölj skickvärdering",
+        LIST_VIEW_GRADE_VALUE_SHOW: "Visa skickvärdering",
+        LIST_VIEW_GRID_SHOW: "Visa som grid",
+        LIST_VIEW_LIST_SHOW: "Visa som lista",
         LOG_IN: "Logga in",
+        VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
         WEBSITE: "Webbplats",
         WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
         YEAR_DB: "År (year)"
@@ -39,7 +48,9 @@ export const LABELS = {
             MY_TITLES: "Kontrollpanel / Mina titlar",
         },
         GRADES: {
-            ADD_GRADE: "Lägg till skickgradering"
+            ADD_GRADE: "Lägg till skickgradering",
+            GRADE_VALUE: "Skickvärdering",
+            GRADE_VALUES: "Skickvärderingar"
         },
         ISSUES: {
             ISSUES: "Publikationer",

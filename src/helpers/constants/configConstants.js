@@ -1,7 +1,7 @@
 import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
 
-// 535 rader
+// 521 rader
 export const LABELS_AND_HEADINGS = {
     ADD_ISSUES: "Lägg till publikationer",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
@@ -64,17 +64,7 @@ export const LABELS_AND_HEADINGS = {
     GRADE: "Skickgradering",
     INFORMATION_ABOUT: "Information om",
     INFORMATION_MISSING: "Information saknas.",
-    IS_MARVELKLUBBEN: "Ingår i marvelklubben",
-    IS_PUBLIC: "Publik information",
     MAKE_PUBLIC: "Gör din profilsida och information publik",
-    IS_DOUBLE: "Dubbelnummer",
-    IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
-    VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
-    VARIANT_SUFFIX: "Variant suffix",
-    IS_VARIANT: "Variant",
-    IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
-    IS_DOUBLE_DB: "Dubbelnummer (is_double)",
-    GRADE_VALUES: "Skickvärderingar",
     GRADE_VALUES_FOR: "Skickvärdering för",
     MISSING_ISSUES: "Saknade publikationer",
     WANTED_ISSUES: "Efterlysta publikationer",
@@ -82,10 +72,6 @@ export const LABELS_AND_HEADINGS = {
     NO_WANTED_ISSUES_USER: "Inga efterlysta publikationer.",
     UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
     NO_UPGRADE_ISSUES: "Du har inga publikationer i behov av uppgradering.",
-    LIST_VIEW_GRID_SHOW: "Visa som grid",
-    LIST_VIEW_LIST_SHOW: "Visa som lista",
-    LIST_VIEW_GRADES_SHOW: "Visa skickvärdering",
-    LIST_VIEW_GRADES_HIDE: "Dölj skickvärdering",
     MARVELKLUBBEN: "Marvelklubben",
     MARVELKLUBBEN_NUMBER: "Marvelklubben nummer",
     MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",

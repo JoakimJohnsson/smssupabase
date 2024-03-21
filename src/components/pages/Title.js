@@ -44,7 +44,7 @@ export const Title = () => {
     const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
     const [listViewGrid, setListViewGrid] = useState(true);
     const [listViewMissing, setListViewMissing] = useState(false);
-    const [listViewGrades, setListViewGrades] = useState(false);
+    const [listViewGradeValue, setListViewGradeValue] = useState(false);
     const [issueNeedsGrading, setIssueNeedsGrading] = useState(false);
     const [titleProgress, setTitleProgress] = useState({});
 
@@ -203,23 +203,23 @@ export const Title = () => {
                                 <div className={"mb-3"}>
                                     {
                                         <FunctionButton variant={"grade"} icon={valueIconDuoTone}
-                                                        onClick={() => setListViewGrades(!listViewGrades)}
-                                                        label={listViewGrades ? LABELS_AND_HEADINGS.LIST_VIEW_GRADES_HIDE : LABELS_AND_HEADINGS.LIST_VIEW_GRADES_SHOW}
+                                                        onClick={() => setListViewGradeValue(!listViewGradeValue)}
+                                                        label={listViewGradeValue ? LABELS.COMMON.LIST_VIEW_GRADE_VALUE_HIDE : LABELS.COMMON.LIST_VIEW_GRADE_VALUE_SHOW}
                                                         id={"list-variant-toggler"} disabled={!title.is_valued}/>
                                     }
                                     {
-                                        !listViewGrades ?
+                                        !listViewGradeValue ?
                                             listViewGrid ?
                                                 <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
-                                                                label={LABELS_AND_HEADINGS.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
+                                                                label={LABELS.COMMON.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
                                                 :
                                                 <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
-                                                                label={LABELS_AND_HEADINGS.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
+                                                                label={LABELS.COMMON.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
                                             :
                                             false
                                     }
                                     {
-                                        !listViewGrades && listViewGrid && (titleProgress.progress !== 100) ?
+                                        !listViewGradeValue && listViewGrid && (titleProgress.progress !== 100) ?
                                             listViewMissing ?
                                                 <FunctionButton variant={"secondary"} icon={faGrid2Plus}
                                                                 onClick={() => setListViewMissing(!listViewMissing)}
@@ -232,7 +232,7 @@ export const Title = () => {
                                             false
                                     }
                                     {
-                                        !listViewGrades ?
+                                        !listViewGradeValue ?
                                             isCollectingTitle && listViewGrid &&
                                             <>
                                                 {
@@ -261,9 +261,9 @@ export const Title = () => {
                                         {TEXTS.GRADE_MISSING}
                                     </div>
                                 }
-                                <h2>{listViewGrades ? LABELS_AND_HEADINGS.GRADE_VALUES : LABELS.COMMON.ISSUES}</h2>
+                                <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.COMMON.ISSUES}</h2>
                                 <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
-                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} listViewGrades={listViewGrades}
+                                            listViewGrid={listViewGrid} listViewMissing={listViewMissing} listViewGrades={listViewGradeValue}
                                             fetchTitleProgress={fetchTitleProgress}
                                             doUpdate={doUpdate}/>
                             </div>
