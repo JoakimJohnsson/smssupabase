@@ -11,6 +11,7 @@ import {getUserName, hasImage} from "../../../helpers/functions";
 import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Icon, adminIconDuoTone} from "../../icons";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const UsersList = ({usersData, setUsersData, limited = false, query = ""}) => {
@@ -80,13 +81,13 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                                                             placement={"top"}
                                                             overlay={
                                                                 <Tooltip id={"is-super-admin-tooltip"}>
-                                                                    {getUserName(u) + LABELS_AND_HEADINGS.IS_SUPER_ADMIN}
+                                                                    {getUserName(u) + LABELS.COMMON.IS_SUPER_ADMIN}
                                                                 </Tooltip>
                                                             }
                                                         >
                                                             <button
                                                                 className={"text-grade btn sms-tool-btn no-hover"}
-                                                                aria-label={getUserName(u) + LABELS_AND_HEADINGS.IS_SUPER_ADMIN}>
+                                                                aria-label={getUserName(u) + LABELS.COMMON.IS_SUPER_ADMIN}>
                                                                 <Icon icon={adminIconDuoTone} className={"fa-xl"}/>
                                                             </button>
                                                         </OverlayTrigger>

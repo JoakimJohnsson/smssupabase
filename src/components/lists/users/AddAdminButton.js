@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {CustomSpinner} from "../../minis/CustomSpinner";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {getUserName} from "../../../helpers/functions";
 import {Icon, notAdminIconDuoTone} from "../../icons";
 import {FunctionButton} from "../../minis/FunctionButton";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => {
@@ -17,13 +17,13 @@ export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => 
                 placement={"top"}
                 overlay={
                     <Tooltip id={"add-admin-tooltip"}>
-                        {LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
+                        {LABELS.COMMON.ADD_ADMIN_1 + getUserName(user) + LABELS.COMMON.ADD_ADMIN_2}
                     </Tooltip>
                 }
             >
                 <button
                     className={"btn text-danger sms-tool-btn"}
-                    aria-label={LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
+                    aria-label={LABELS.COMMON.ADD_ADMIN_1 + getUserName(user) + LABELS.COMMON.ADD_ADMIN_2}
                     onClick={() => handleChangeAdmin(user.id, 1, setLoading)}>
                     {
                         loading ?
@@ -39,7 +39,7 @@ export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => 
             variant={"danger"}
             customClass={"me-2"}
             icon={notAdminIconDuoTone}
-            label={LABELS_AND_HEADINGS.ADD_ADMIN_1 + getUserName(user) + LABELS_AND_HEADINGS.ADD_ADMIN_2}
+            label={LABELS.COMMON.ADD_ADMIN_1 + getUserName(user) + LABELS.COMMON.ADD_ADMIN_2}
             onClick={() => handleChangeAdmin(user.id, 1, setLoading)}
         />
 }
