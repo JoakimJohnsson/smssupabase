@@ -6,7 +6,8 @@ import {getTitleProgressForUser} from "../../../../helpers/functions";
 import {FormatBadge} from "../../../minis/FormatBadge";
 import {getIssuesByTitleId} from "../../../../services/issueService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {checkGradingStatus} from "../../../../services/collectingService";
 import {Icon, gradingIconDuoTone, infoIconDuoTone, statusIconFailDuoTone, statusIconSuccessDuoTone} from "../../../icons";
 
@@ -163,7 +164,7 @@ export const MyTitlesPaneListItem = ({title}) => {
                                                 :
                                                 <p className={"alert alert-info d-flex align-items-center m-0"}>
                                                     <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
-                                                    {LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES}
+                                                    {TEXTS.SECTIONS.TITLES.COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES}
                                                 </p>
                                         }
                                     </>

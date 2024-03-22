@@ -1,7 +1,7 @@
 import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
 
-// 521 rader
+// 511 rader
 export const LABELS_AND_HEADINGS = {
     ADD_ISSUES: "Lägg till publikationer",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
@@ -14,13 +14,11 @@ export const LABELS_AND_HEADINGS = {
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     COLLECT_TITLE_START: "Börja samla på titeln",
     COLLECT_TITLE_STOP: "Sluta samla på titeln",
-    COLLECT_TITLE_STOP_REMOVE: "Du måste tömma samlingen på publikationer innan du kan sluta samla på den här titeln.",
     COLLECT_ISSUE_START: "Lägg till",
     COLLECT_ISSUE_START_2: "i samlingen.",
     COLLECT_ISSUE_STOP: "Ta bort",
     COLLECT_ISSUE_STOP_2: "från samlingen.",
     COLLECTING_ADD_ALL: "Lägg till alla",
-    COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES: "Du har inte lagt in några publikationer i samlingen.",
     COLLECTING_CHECK_GRADING_STATUS_OPEN_1: "Kontrollera om någon publikation av",
     COLLECTING_CHECK_GRADING_STATUS_OPEN_2: "behöver skickgradering.",
     COLLECTING_CHECK_GRADING_STATUS_CLOSE: "Lägg till alla",
