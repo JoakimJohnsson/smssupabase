@@ -83,7 +83,7 @@ export const AuthorizedNavigation = () => {
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.MARVELKLUBBEN} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={marvelKlubbenIconDuoTone} className={"me-2"}/>
-                                    <span className={"sms-nav-link--text"}>{LABELS_AND_HEADINGS.MARVELKLUBBEN}</span>
+                                    <span className={"sms-nav-link--text"}>{LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
@@ -124,7 +124,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.GRADE_VALUES} onClick={handleClick} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.GRADES.GRADE_VALUES}/>
                         <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<Icon icon={marvelKlubbenIconDuoTone} size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
+                                   text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
                         <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<Icon icon={publishersIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
                         <LiNavItem route={ROUTES.USERS} onClick={handleClick} icon={<Icon icon={usersIconDuoTone} size={"1x"}/>}

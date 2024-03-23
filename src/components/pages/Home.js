@@ -100,13 +100,13 @@ export const Home = () => {
                                     </div>
                                     <div className={"col-12 col-md-8"}>
                                         <p className={"m-0"}><span
-                                            className={"text-label me-4"}>{LABELS.COMMON.FIRST_NAME}:</span> {profile.firstname}</p>
+                                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.FIRST_NAME}:</span> {profile.firstname}</p>
                                         <p className={"m-0"}><span
-                                            className={"text-label me-4"}>{LABELS.COMMON.LAST_NAME}:</span> {profile.lastname}</p>
+                                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.LAST_NAME}:</span> {profile.lastname}</p>
                                         <p className={"m-0"}><span className={"text-label me-4"}>{LABELS.COMMON.WEBSITE}:</span> {profile.website}
                                         </p>
                                         <p className={"mb-4"}><span
-                                            className={"text-label me-4"}>{LABELS.COMMON.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
+                                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
                                         </p>
                                         <IconLinkCtaLg
                                             variant={"primary"}

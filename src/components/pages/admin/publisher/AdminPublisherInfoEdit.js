@@ -66,7 +66,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="country">{LABELS.COMMON.COUNTRY_DB}</label>
+                <label className={"form-label"} htmlFor="country">{LABELS.SECTIONS.PUBLISHERS.COUNTRY_DB}</label>
                 {
                     countryData &&
                     <select

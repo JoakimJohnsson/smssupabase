@@ -12,10 +12,8 @@ export const LABELS = {
         BREADCRUMB: "Brödsmula",
         CHOOSE: "--- Välj ---",
         CLOSE: "Stäng",
-        COMICS_ORG_URL_DB: "Länk till Comics.org (comics_org_url)",
         CONTACT: "Kontakt",
         CONTENT: "Innehåll",
-        COUNTRY_DB: "Utgivningsland (country)",
         CREATE_ACCOUNT: "Registrera dig",
         CREATED_AT: "Inlagd",
         DATE: "Datum",
@@ -23,26 +21,15 @@ export const LABELS = {
         DO_FILTER: "Filtrera",
         EDIT: "Redigera",
         EMAIL: "E-postadress",
-        END_YEAR_DB: "Slutår (end_year)",
-        FIRST_NAME: "Förnamn",
         HOME: "Hem",
         ID: "Id",
         IMAGE: "Bild",
         INFORMATION: "Information",
-        IS_DOUBLE_DB: "Dubbelnummer (is_double)",
-        IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
-        IS_PUBLIC: "Publik information",
-        IS_SUPER_ADMIN: " är super admin.",
-        IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
-        LAST_NAME: "Efternamn",
         LIST_VIEW_GRADE_VALUE_HIDE: "Dölj skickvärdering",
         LIST_VIEW_GRADE_VALUE_SHOW: "Visa skickvärdering",
         LIST_VIEW_GRID_SHOW: "Visa som grid",
         LIST_VIEW_LIST_SHOW: "Visa som lista",
         LOG_IN: "Logga in",
-        REMOVE_ADMIN_1: "Ta bort ",
-        REMOVE_ADMIN_2: " som admin",
-        VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
         WEBSITE: "Webbplats",
         WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
         YEAR_DB: "År (year)"
@@ -60,10 +47,16 @@ export const LABELS = {
             GRADE_VALUES: "Skickvärderingar"
         },
         ISSUES: {
+            ALL_ISSUES: "Alla publikationer",
+            IS_DOUBLE_DB: "Dubbelnummer (is_double)",
+            IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
             ISSUES: "Publikationer",
-            ALL_ISSUES: "Alla publikationer"
+            VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
         },
         MARVELKLUBBEN: {
+            IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
+            MARVELKLUBBEN: "Marvelklubben",
+            MARVELKLUBBEN_NUMBER_DB: "Marvelklubben nummer (marvelklubben_number)",
         },
         MESSAGES: {
             ALL_MESSAGES: "Alla meddelanden",
@@ -75,14 +68,23 @@ export const LABELS = {
         },
         PUBLISHERS: {
             ADD_PUBLISHER: "Lägg till förlag",
-            ALL_PUBLISHERS: "Alla förlag"
+            ALL_PUBLISHERS: "Alla förlag",
+            COUNTRY_DB: "Utgivningsland (country)"
         },
         TITLES: {
             ADD_TITLE: "Lägg till titel",
-            ALL_TITLES: "Alla titlar"
+            ALL_TITLES: "Alla titlar",
+            COMICS_ORG_URL_DB: "Länk till Comics.org (comics_org_url)",
+            END_YEAR_DB: "Slutår (end_year)"
         },
         USERS: {
-            ALL_USERS: "Alla användare"
+            ALL_USERS: "Alla användare",
+            FIRST_NAME: "Förnamn",
+            IS_PUBLIC: "Publik information",
+            IS_SUPER_ADMIN: " är super admin.",
+            LAST_NAME: "Efternamn",
+            REMOVE_ADMIN_1: "Ta bort ",
+            REMOVE_ADMIN_2: " som admin",
         }
     }
 }

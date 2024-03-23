@@ -94,7 +94,7 @@ export const AdminTitleAdd = () => {
                             value={wiki_url || ""}
                             onChange={(e) => handleInput(e, setWiki_url)}
                         />
-                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS.COMMON.COMICS_ORG_URL_DB}</label>
+                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS.SECTIONS.TITLES.COMICS_ORG_URL_DB}</label>
                         <input
                             id="comicsorgurl"
                             name="comics_orgurl"
@@ -112,7 +112,7 @@ export const AdminTitleAdd = () => {
                             value={start_year || ""}
                             onChange={(e) => handleInput(e, setStart_year)}
                         />
-                        <label className={"form-label"} htmlFor="endyear">{LABELS.COMMON.END_YEAR_DB}</label>
+                        <label className={"form-label"} htmlFor="endyear">{LABELS.SECTIONS.TITLES.END_YEAR_DB}</label>
                         <input
                             id="endyear"
                             name={"end_year"}
