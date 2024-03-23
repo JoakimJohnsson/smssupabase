@@ -15,7 +15,7 @@ import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueSe
 import {ProgressBar} from "react-bootstrap";
 import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
-import {atLeastOneListDoesExist, sortByName} from "../../helpers/functions";
+import {atLeastOneListDoesExist} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {
     Icon,
