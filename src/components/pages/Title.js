@@ -2,8 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useParams} from "react-router-dom";
 import {getRowByTableAndId, handleCollectingTitle} from "../../services/serviceFunctions";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
-import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../helpers/constants/configConstants";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
@@ -140,7 +139,7 @@ export const Title = () => {
                                             }
                                         </button>
                                         :
-                                        <p>{TEXTS.SECTIONS.TITLES.COLLECT_TITLE_STOP_REMOVE}</p>
+                                        <p>{TEXTS.COLLECT_TITLE_STOP_REMOVE}</p>
                                 }
                                 <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
                                 {

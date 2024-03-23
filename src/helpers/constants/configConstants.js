@@ -185,6 +185,8 @@ export const TEXTS = {
     ADDING_TITLE_TEXT_1: "Vi har lagt in totalt",
     COLLECTING_TITLE_TEXT_2: "% av denna titel.",
     ADDING_TITLE_TEXT_2: "% av alla titlar i databasen.",
+    COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES: "Du har inte lagt in några publikationer i samlingen.",
+    COLLECT_TITLE_STOP_REMOVE: "Du måste tömma samlingen på publikationer innan du kan sluta samla på den här titeln.",
     CONSENT: "Svenska Marvelsamlare är måna om att skydda dina personliga uppgifter. När du loggar in, eller registrerar dig, bekräftar och godkänner du att vi endast använder denna information, och eventuella cookies, för att administrera ditt konto och tillhandahålla de tjänster du förväntar dig av oss.",
     DO_YOU_COLLECT: "Samlar du på svenska marveltidningar?",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer. Välj förlag ovanför.",

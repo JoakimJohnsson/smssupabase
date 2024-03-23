@@ -5,10 +5,7 @@ export const TEXTS = {
         ISSUES: {},
         MESSAGES: {},
         PUBLISHERS: {},
-        TITLES: {
-            COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES: "Du har inte lagt in några publikationer i samlingen.",
-            COLLECT_TITLE_STOP_REMOVE: "Du måste tömma samlingen på publikationer innan du kan sluta samla på den här titeln."
-        },
+        TITLES: {},
         USERS: {}
     }
 }
