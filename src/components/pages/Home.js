@@ -209,7 +209,6 @@ export const Home = () => {
 
                                     {
                                         limitedIssuesData
-                                            .sort((a, b) => sortByName(a.titles, b.titles))
                                             .map((issue, index) =>
                                                 <IssueLinkCard key={issue.id} issue={issue} index={index}/>
                                             )
