@@ -206,7 +206,6 @@ export const Home = () => {
                         {
                             limitedIssuesData ?
                                 <ul className={"sms-list--with-cards"}>
-
                                     {
                                         limitedIssuesData
                                             .map((issue, index) =>
