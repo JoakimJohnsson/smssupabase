@@ -45,7 +45,7 @@ export const IssueCard = ({issue}) => {
                         onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
                         {
                             isCollectingIssue ?
-                                <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                <><Icon icon={faMinus} className={"me-2"}/>{LABELS.COMMON.DELETE}</>
                                 :
                                 <><Icon icon={faPlus} className={"me-2"}/>{LABELS.COMMON.ADD}</>
                         }

@@ -63,7 +63,7 @@ export const ImageUploader = ({
                                 className="w-100 mb-3 bg-light"
                             />
                             <p>{imageFilename}</p>
-                            <IconButton variant={"danger"} icon={faTrashCan} onClick={handleDeleteImage} label={LABELS_AND_HEADINGS.DELETE_IMAGE}/>
+                            <IconButton variant={"danger"} icon={faTrashCan} onClick={handleDeleteImage} label={LABELS.COMMON.DELETE_IMAGE}/>
                         </>
                         :
                         <>

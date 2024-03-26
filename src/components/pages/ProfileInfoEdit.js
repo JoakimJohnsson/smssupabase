@@ -41,7 +41,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
 
     return (
         <div className={"mb-4"}>
-            <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
+            <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
             <label className={"form-label"} htmlFor="firstname">{LABELS.SECTIONS.USERS.FIRST_NAME}</label>
             <input
                 id="firstname"

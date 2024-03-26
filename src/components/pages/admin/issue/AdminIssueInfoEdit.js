@@ -69,7 +69,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
+                <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
                 <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.TITLE_DB}</label>
                 {
                     titlesData &&

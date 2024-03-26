@@ -56,7 +56,7 @@ export const Publisher = () => {
                                     }
                                     {
                                         profile && profile.role >= 1 &&
-                                        <Link to={`/admin/publishers/${publisher.id}?edit=true`} title={LABELS.COMMON.EDIT + " " + publisher.name}><span className={`tag-badge bg-publisher-400`}><Icon icon={editIcon}/> {LABELS_AND_HEADINGS.EDIT + " " + publisher.name}</span></Link>
+                                        <Link to={`/admin/publishers/${publisher.id}?edit=true`} title={LABELS.COMMON.EDIT + " " + publisher.name}><span className={`tag-badge bg-publisher-400`}><Icon icon={editIcon}/> {LABELS.COMMON.EDIT + " " + publisher.name}</span></Link>
                                     }
                                 </div>
                                 {

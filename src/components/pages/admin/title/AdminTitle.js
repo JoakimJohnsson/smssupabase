@@ -423,12 +423,12 @@ export const AdminTitle = () => {
                                             loadingDI ?
                                                 <>
                                                     <CustomSpinner size={"1x"} className={"me-2"}/>
-                                                    {LABELS_AND_HEADINGS.DELETING}
+                                                    {LABELS.COMMON.DELETING}
                                                 </>
                                                 :
                                                 <>
                                                     <FontAwesomeIcon className={"me-2"} icon={faTrashCan}/>
-                                                    {LABELS_AND_HEADINGS.DELETE}
+                                                    {LABELS.COMMON.DELETE}
                                                 </>
                                         }
                                     </button>

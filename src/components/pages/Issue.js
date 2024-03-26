@@ -157,7 +157,7 @@ export const Issue = () => {
                                             }}>
                                             {
                                                 isCollectingIssue ?
-                                                    <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                                    <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.DELETE}</>
                                                     :
                                                     <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.ADD}</>
                                             }

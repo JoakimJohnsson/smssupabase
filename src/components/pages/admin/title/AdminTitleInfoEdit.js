@@ -35,7 +35,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
+                <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
                 <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
                 <input
                     id={"name"}
