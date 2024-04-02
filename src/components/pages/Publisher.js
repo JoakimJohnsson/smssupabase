@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {TABLES} from "../../helpers/constants/serviceConstants";
 import {Link, useParams} from "react-router-dom";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import countryData from "../../helpers/valueLists/countries.json";
@@ -13,6 +14,7 @@ import {IssuesList} from "../lists/issues/IssuesList";
 import {getRowByTableAndId} from "../../services/serviceFunctions";
 import {getIssuesWithTitleAndPublisherByPublisherId} from "../../services/issueService";
 import {useAppContext} from "../../context/AppContext";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Publisher = () => {
@@ -54,7 +56,7 @@ export const Publisher = () => {
                                     }
                                     {
                                         profile && profile.role >= 1 &&
-                                        <Link to={`/admin/publishers/${publisher.id}?edit=true`} title={LABELS_AND_HEADINGS.EDIT + " " + publisher.name}><span className={`tag-badge bg-publisher-400`}><Icon icon={editIcon}/> {LABELS_AND_HEADINGS.EDIT + " " + publisher.name}</span></Link>
+                                        <Link to={`/admin/publishers/${publisher.id}?edit=true`} title={LABELS.COMMON.EDIT + " " + publisher.name}><span className={`tag-badge bg-publisher-400`}><Icon icon={editIcon}/> {LABELS.COMMON.EDIT + " " + publisher.name}</span></Link>
                                     }
                                 </div>
                                 {
@@ -72,7 +74,7 @@ export const Publisher = () => {
                                 }
                             </div>
                             <div className={"col-12 col-md-8 col-lg-7 col-xl-9 mb-4"}>
-                                <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                <h2>{LABELS.COMMON.ISSUES}</h2>
                                 {issuesData ? <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={false}/> :
                                     <CustomSpinner/>}
                             </div>

@@ -1,17 +1,19 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
-import {MESSAGES, CLASSES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {validateEmail, validatePassword} from "../../helpers/validations";
 import ValidationMessage from "./ValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
 import {Icon, registerIcon, registerIconDuoTone} from "../icons";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Signup = () => {
     // Success and error variants of form-input is available
-    const [emailInputClass, setEmailInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
-    const [passwordInputClass, setPasswordInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
+    const [emailInputClass, setEmailInputClass] = useState("form-input--default");
+    const [passwordInputClass, setPasswordInputClass] = useState("form-input--default");
     // Error and validation handling
     const [showFormError, setShowFormError] = useState(false);
     const [formErrorMessage, setFormErrorMessage] = useState("");
@@ -72,10 +74,10 @@ export const Signup = () => {
             <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"create-account-section"}>
                 <div className={"text-center mb-4 mb-sm-5"}>
                     <Icon icon={registerIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
-                    <h2>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}</h2>
+                    <h2>{LABELS.COMMON.CREATE_ACCOUNT}</h2>
                     <p className={"lead"}>{TEXTS.CONSENT}</p>
                 </div>
-                <label className={"form-label"} htmlFor="input-signup-email">{LABELS_AND_HEADINGS.EMAIL}</label>
+                <label className={"form-label"} htmlFor="input-signup-email">{LABELS.COMMON.EMAIL}</label>
                 <input id="input-signup-email"
                        type="email"
                        ref={emailRef}
@@ -102,7 +104,7 @@ export const Signup = () => {
                 <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
                 <button type="submit" className={"btn btn-primary sms-btn"}
                         disabled={!passwordValidated || passwordRef.current.value !== passwordConfirm}>
-                    <Icon icon={registerIcon} className={"me-2"}/>{LABELS_AND_HEADINGS.CREATE_ACCOUNT}
+                    <Icon icon={registerIcon} className={"me-2"}/>{LABELS.COMMON.CREATE_ACCOUNT}
                 </button>
                 {showFormError && <p className={"alert alert-danger mt-3"}>{formErrorMessage}</p>}
             </form>

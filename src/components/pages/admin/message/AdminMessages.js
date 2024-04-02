@@ -1,16 +1,18 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {filterGlobalMessage, handleBacking} from "../../../../helpers/functions";
 import {MessagesList} from "../../../message/MessagesList";
-import {AddMessage} from "../../../message/AddMessage";
+import {Message} from "../../../message/Message";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {Icon, globalIconDuoTone} from "../../../icons";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminMessages = () => {
@@ -40,7 +42,7 @@ export const AdminMessages = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.MESSAGES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
                     <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
                     <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
                     <a href={"#global-message-section"} className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
@@ -73,7 +75,7 @@ export const AdminMessages = () => {
                                             <NoDataAvailable/>
                                     }
                                     <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                                label={LABELS_AND_HEADINGS.BACK}/>
+                                                label={LABELS.COMMON.BACK}/>
                                 </>
                         }
                     </div>
@@ -81,7 +83,7 @@ export const AdminMessages = () => {
                 <div className={"sms-dashboard-col mb-5"}>
                     <div className={"sms-section--light"}>
                         <h2 id={"global-message-section"}>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
-                        <AddMessage isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>
+                        <Message isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>
                     </div>
                 </div>
             </div>

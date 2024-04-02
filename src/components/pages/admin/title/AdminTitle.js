@@ -9,7 +9,9 @@ import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId
 } from "../../../../services/issueService";
-import {BUCKETS, CLASSES, CONFIG, FILETYPES, LABELS_AND_HEADINGS, MESSAGES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {CONFIG, FILETYPES, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
+import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
@@ -25,6 +27,7 @@ import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
 import {updateGradeValuesForTitles} from "../../../../helpers/databaseFunctions";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitle = () => {
@@ -45,6 +48,7 @@ export const AdminTitle = () => {
     const [year, setYear] = useState(1975);
     const [number, setNumber] = useState(1);
     const [source, setSource] = useState("");
+    const [description, setDescription] = useState("");
     const [is_marvelklubben, setIs_marvelklubben] = useState(0);
     const [is_variant, setIs_variant] = useState(0);
     const [is_valued, setIs_valued] = useState(0);
@@ -251,7 +255,7 @@ export const AdminTitle = () => {
                                                         <input
                                                             id={key + key.toUpperCase()}
                                                             name={key}
-                                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                                            className={"form-input--default"}
                                                             type="number"
                                                             step={"10"}
                                                             min={0}
@@ -273,7 +277,7 @@ export const AdminTitle = () => {
                         <div className={"row row-padding--secondary"}>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light mb-4"}>
-                                    <h2>{LABELS_AND_HEADINGS.ISSUES}</h2>
+                                    <h2>{LABELS.COMMON.ISSUES}</h2>
                                     {
                                         issuesData && issuesData.length > 0 ?
                                             <IssuesList issuesData={issuesData} setIssuesData={setIssuesData} showAdminInfo={true}/>
@@ -292,39 +296,48 @@ export const AdminTitle = () => {
                                             <select
                                                 id="publisher"
                                                 name={"publisher_id"}
-                                                className={CLASSES.FORM_INPUT_DEFAULT + " mb-5"}
+                                                className={"form-input--default mb-5"}
                                                 onChange={(e) => handleInput(e, setPublisher_id)}>
-                                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                                <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                                                 {printOptions(publishersData)}
                                             </select>
                                         }
                                         <h2>{LABELS_AND_HEADINGS.ADD_ISSUE_FOR} {title.name}</h2>
-                                        <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
+                                        <label className={"form-label"} htmlFor="year">{LABELS.COMMON.YEAR_DB}</label>
                                         <input
                                             id="year"
                                             name="year"
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             type="number"
                                             value={year || ""}
                                             onChange={(e) => handleInput(e, setYear)}
                                         />
-                                        <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
+                                        <label className={"form-label"} htmlFor="number">{LABELS.COMMON.NUMBER_DB}</label>
                                         <input
                                             id="number"
                                             name="number"
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             type="number"
                                             value={number || ""}
                                             max={999}
                                             min={1}
                                             onChange={(e) => handleInput(e, setNumber)}
                                         />
+                                        <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
+                                        <textarea
+                                            id={"description"}
+                                            name={"description"}
+                                            className={"form-input--default"}
+                                            rows={3}
+                                            value={description || ""}
+                                            onChange={(e) => handleInput(e, setDescription)}
+                                        />
                                         <label className={"form-label mb-0"} htmlFor="source">{LABELS_AND_HEADINGS.SOURCE_DB}</label>
                                         <p className={"form-text"}>{LABELS_AND_HEADINGS.SOURCE_EXAMPLE}</p>
                                         <textarea
                                             id={"source"}
                                             name={"source"}
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             rows={3}
                                             value={source || ""}
                                             onChange={(e) => handleInput(e, setSource)}
@@ -339,7 +352,7 @@ export const AdminTitle = () => {
                                                 checked={is_double === 1}
                                                 onChange={() => handleCheckboxInput(is_double, setIs_double)}
                                             />
-                                            <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_DOUBLE_DB}</label>
+                                            <label className={"form-label"} htmlFor="double">{LABELS.SECTIONS.ISSUES.IS_DOUBLE_DB}</label>
                                         </div>
                                         <div>
                                             <input
@@ -351,14 +364,14 @@ export const AdminTitle = () => {
                                                 checked={is_marvelklubben === 1}
                                                 onChange={() => handleCheckboxInput(is_marvelklubben, setIs_marvelklubben)}
                                             />
-                                            <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                                            <label className={"form-label"} htmlFor="marvelklubben">{LABELS.SECTIONS.MARVELKLUBBEN.IS_MARVELKLUBBEN_DB}</label>
                                         </div>
                                         <label className={"form-label"}
-                                               htmlFor="marvelklubbennumber">{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER_DB}</label>
+                                               htmlFor="marvelklubbennumber">{LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN_NUMBER_DB}</label>
                                         <input
                                             id={"marvelklubbennumber"}
                                             name={"marvelklubben_number"}
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             type="number"
                                             value={marvelklubben_number || ""}
                                             max={999}
@@ -375,13 +388,13 @@ export const AdminTitle = () => {
                                                 checked={is_variant === 1}
                                                 onChange={() => handleCheckboxInput(is_variant, setIs_variant)}
                                             />
-                                            <label className={"form-label"} htmlFor="variant">{LABELS_AND_HEADINGS.IS_VARIANT_DB}</label>
+                                            <label className={"form-label"} htmlFor="variant">{LABELS.SECTIONS.ISSUES.IS_VARIANT_DB}</label>
                                         </div>
-                                        <label className={"form-label"} htmlFor="variantsuffix">{LABELS_AND_HEADINGS.VARIANT_SUFFIX_DB}</label>
+                                        <label className={"form-label"} htmlFor="variantsuffix">{LABELS.SECTIONS.ISSUES.VARIANT_SUFFIX_DB}</label>
                                         <input
                                             id={"variantsuffix"}
                                             name={"variant_suffix"}
-                                            className={CLASSES.FORM_INPUT_DEFAULT}
+                                            className={"form-input--default"}
                                             type="text"
                                             value={variant_suffix || ""}
                                             onChange={(e) => handleInput(e, setVariant_suffix)}
@@ -392,6 +405,7 @@ export const AdminTitle = () => {
                                                     publisher_id: publisher_id,
                                                     year: year,
                                                     number: number,
+                                                    description: description,
                                                     source: source,
                                                     is_marvelklubben: is_marvelklubben,
                                                     marvelklubben_number: marvelklubben_number,
@@ -401,7 +415,7 @@ export const AdminTitle = () => {
                                                 }, setInformationMessage).then(() => fetchTitleAndIssuesData())}
                                                 disabled={!year || !number}>
                                             <Icon icon={issueIcon} className={"me-2"}/>
-                                            {LABELS_AND_HEADINGS.ADD}
+                                            {LABELS.COMMON.ADD}
                                         </button>
                                         <button className={"btn btn-secondary sms-btn"}
                                                 onClick={resetAddIssueForm}>
@@ -420,12 +434,12 @@ export const AdminTitle = () => {
                                             loadingDI ?
                                                 <>
                                                     <CustomSpinner size={"1x"} className={"me-2"}/>
-                                                    {LABELS_AND_HEADINGS.DELETING}
+                                                    {LABELS.COMMON.DELETING}
                                                 </>
                                                 :
                                                 <>
                                                     <FontAwesomeIcon className={"me-2"} icon={faTrashCan}/>
-                                                    {LABELS_AND_HEADINGS.DELETE}
+                                                    {LABELS.COMMON.DELETE}
                                                 </>
                                         }
                                     </button>

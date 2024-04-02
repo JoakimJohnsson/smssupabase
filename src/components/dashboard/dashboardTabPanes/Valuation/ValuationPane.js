@@ -1,5 +1,6 @@
 import React, {useState, useCallback, useEffect} from "react";
-import {CONFIG, LABELS_AND_HEADINGS, PANES} from "../../../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import * as ServiceFunctions from "../../../../services/serviceFunctions";
@@ -10,6 +11,7 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {FunctionButton} from "../../../minis/FunctionButton";
 import {valueIconDuoTone} from "../../../icons";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ValuationPane = () => {
@@ -83,7 +85,7 @@ export const ValuationPane = () => {
         if (active && payload && payload.length && payload[0].hasOwnProperty('value')) {
             return (
                 <div className="bg-grade-100 rounded text-black p-3">
-                    <p className="mb-0"><span className={"text-label"}>{LABELS_AND_HEADINGS.DATE}:</span> {getFriendlyDateFromTimestamp(label)}</p>
+                    <p className="mb-0"><span className={"text-label"}>{LABELS.COMMON.DATE}:</span> {getFriendlyDateFromTimestamp(label)}</p>
                     <p className="mb-0"><span className={"text-label"}>{LABELS_AND_HEADINGS.VALUE}:</span> {payload[0].value} kr</p>
                 </div>
             );

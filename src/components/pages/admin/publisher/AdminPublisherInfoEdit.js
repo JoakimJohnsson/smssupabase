@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {updatePublisherData} from "../../../../services/publisherService";
@@ -8,6 +8,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {editIcon, saveIcon} from "../../../icons";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, setNewPublisher}) => {
@@ -34,38 +35,38 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
-                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
+                <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
                 <input
                     id={"name"}
                     name={"name"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newPublisher.name || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
                 <input
                     id={"description"}
                     name={"description"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newPublisher.description || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                <label className={"form-label"} htmlFor="description">{LABELS.COMMON.WIKI_URL_DB}</label>
                 <input
                     id={"wikiurl"}
                     name={"wiki_url"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newPublisher.wiki_url || ""}
                     onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
+                <label className={"form-label"} htmlFor="country">{LABELS.SECTIONS.PUBLISHERS.COUNTRY_DB}</label>
                 {
                     countryData &&
                     <select
@@ -75,7 +76,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                         value={newPublisher.country_id}
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newPublisher, setNewPublisher, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                         {printOptions(countryData)}
                     </select>
                 }
@@ -84,14 +85,14 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
                         <>
                             <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
-                                {LABELS_AND_HEADINGS.ABORT}
+                                {LABELS.COMMON.ABORT}
                             </button>
                         </>
                         :
                         <>
-                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
+                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS.COMMON.EDIT} icon={editIcon}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.PUBLISHERS)}
-                                        label={LABELS_AND_HEADINGS.ALL_PUBLISHERS}/>
+                                        label={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
                         </>
                 }
             </div>

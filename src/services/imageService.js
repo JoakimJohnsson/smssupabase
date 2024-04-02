@@ -1,4 +1,4 @@
-import {MESSAGES} from "../helpers/constants";
+import {MESSAGES} from "../helpers/constants/textConstants/messages";
 import {generateUniqueHashedFilename} from "../helpers/functions";
 import {supabase} from "../supabase/supabaseClient";
 

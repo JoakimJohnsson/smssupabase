@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {getTitlesForUser, getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
 import {getCountByTable, getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
-import {PANES, TABLES} from "../../../../helpers/constants";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {Link} from "react-router-dom";
 import CustomProgressBar from "../../../CustomProgressBar";
 

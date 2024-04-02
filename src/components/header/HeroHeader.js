@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
 import {IconLinkCta} from "../minis/IconLinkCta";
 import {
@@ -12,6 +12,7 @@ import {
     logoIconDuoTone,
     registerIconDuoTone
 } from "../icons";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const HeroHeader = () => {
@@ -30,19 +31,19 @@ export const HeroHeader = () => {
                                 variant={"primary"}
                                 icon={loginIconDuoTone}
                                 path={"#login-section"}
-                                label={LABELS_AND_HEADINGS.LOG_IN_CTA}
+                                label={LABELS.COMMON.LOG_IN}
                             />
                             <IconLinkCta
                                 variant={"primary"}
                                 icon={registerIconDuoTone}
                                 path={"#create-account-section"}
-                                label={LABELS_AND_HEADINGS.CREATE_ACCOUNT_CTA}
+                                label={LABELS.COMMON.CREATE_ACCOUNT}
                             />
                             <IconLinkCta
                                 variant={"secondary"}
                                 icon={infoIconDuoTone}
                                 path={"#info-section"}
-                                label={LABELS_AND_HEADINGS.INFORMATION}
+                                label={LABELS.COMMON.INFORMATION}
                             />
                         </div>
 

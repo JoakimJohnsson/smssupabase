@@ -3,10 +3,11 @@ import {useAppContext} from "../../../context/AppContext";
 import {handleCollectingIssue} from "../../../services/serviceFunctions";
 import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {Link} from "react-router-dom";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const IssueCard = ({issue}) => {
@@ -44,9 +45,9 @@ export const IssueCard = ({issue}) => {
                         onClick={() => handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue)}>
                         {
                             isCollectingIssue ?
-                                <><Icon icon={faMinus} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                <><Icon icon={faMinus} className={"me-2"}/>{LABELS.COMMON.DELETE}</>
                                 :
-                                <><Icon icon={faPlus} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                <><Icon icon={faPlus} className={"me-2"}/>{LABELS.COMMON.ADD}</>
                         }
                     </button>
                 </div>

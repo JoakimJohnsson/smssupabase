@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {Icon, keyIcon, sendIcon} from "../icons";
 
 

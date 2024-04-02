@@ -1,5 +1,7 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {LABELS_AND_HEADINGS, PANES, ROUTES, STATISTICS, TABLES, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../helpers/constants/configConstants";
+import {PANES} from "../../helpers/constants/textConstants/texts";
+import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {HomePublic} from "./HomePublic";
@@ -13,7 +15,7 @@ import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueSe
 import {ProgressBar} from "react-bootstrap";
 import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
-import {atLeastOneListDoesExist, sortByName} from "../../helpers/functions";
+import {atLeastOneListDoesExist} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {
     Icon,
@@ -25,6 +27,7 @@ import {
 } from "../icons";
 import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Home = () => {
@@ -97,13 +100,13 @@ export const Home = () => {
                                     </div>
                                     <div className={"col-12 col-md-8"}>
                                         <p className={"m-0"}><span
-                                            className={"text-label me-4"}>{LABELS_AND_HEADINGS.FIRST_NAME}:</span> {profile.firstname}</p>
+                                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.FIRST_NAME}:</span> {profile.firstname}</p>
                                         <p className={"m-0"}><span
-                                            className={"text-label me-4"}>{LABELS_AND_HEADINGS.LAST_NAME}:</span> {profile.lastname}</p>
-                                        <p className={"m-0"}><span className={"text-label me-4"}>{LABELS_AND_HEADINGS.WEBSITE}:</span> {profile.website}
+                                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.LAST_NAME}:</span> {profile.lastname}</p>
+                                        <p className={"m-0"}><span className={"text-label me-4"}>{LABELS.COMMON.WEBSITE}:</span> {profile.website}
                                         </p>
                                         <p className={"mb-4"}><span
-                                            className={"text-label me-4"}>{LABELS_AND_HEADINGS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
+                                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
                                         </p>
                                         <IconLinkCtaLg
                                             variant={"primary"}
@@ -136,7 +139,7 @@ export const Home = () => {
                                 }
                             </div>
                         }
-                        <h2>{LABELS_AND_HEADINGS.DASHBOARD}</h2>
+                        <h2>{LABELS.SECTIONS.DASHBOARD.NAME}</h2>
                         <IconLinkCtaLg
                             variant={"primary"}
                             icon={overviewIconDuoTone}
@@ -203,10 +206,8 @@ export const Home = () => {
                         {
                             limitedIssuesData ?
                                 <ul className={"sms-list--with-cards"}>
-
                                     {
                                         limitedIssuesData
-                                            .sort((a, b) => sortByName(a.titles, b.titles))
                                             .map((issue, index) =>
                                                 <IssueLinkCard key={issue.id} issue={issue} index={index}/>
                                             )

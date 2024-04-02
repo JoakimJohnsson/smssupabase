@@ -1,7 +1,8 @@
 import React from "react";
 import Login from "../Login";
 import {Link} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 const SignupSuccess = () => {
 
@@ -15,7 +16,7 @@ const SignupSuccess = () => {
                         <Login/>
                     </div>
                     <Link to="/" className={"btn btn-primary btn-cta mb-5"}>
-                    {LABELS_AND_HEADINGS.BACK}
+                    {LABELS.COMMON.BACK}
                     </Link>
                 </div>
             </div>

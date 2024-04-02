@@ -1,5 +1,5 @@
 import React from "react";
-import {TEXTS} from "../../helpers/constants";
+import {TEXTS} from "../../helpers/constants/configConstants";
 import CustomProgressBar from "../CustomProgressBar";
 
 

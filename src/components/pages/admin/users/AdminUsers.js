@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useNavigate} from "react-router-dom";
 import {handleBacking} from "../../../../helpers/functions";
@@ -10,6 +11,7 @@ import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQue
 import FilterFormSimple from "../../../search-filter/FilterFormSimple";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminUsers = () => {
@@ -26,7 +28,7 @@ export const AdminUsers = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_USERS}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
                     <p className={"lead"}>{TEXTS.SHOWING_LATEST_USERS}</p>
                     <p className={"mb-5"}>{TEXTS.USERS_COUNT_TEXT_1} {usersData && usersData.length} {TEXTS.USERS_COUNT_TEXT_2}</p>
                     <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
@@ -38,7 +40,7 @@ export const AdminUsers = () => {
                                 <OverlaySpinner/>
                         }
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                                    label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>
             </div>

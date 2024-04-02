@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {isTrue, printOptions, printTitleOptions} from "../../../../helpers/functions";
 import {getRowsByTable, handleChange} from "../../../../services/serviceFunctions";
 import {updateIssueData} from "../../../../services/issueService";
@@ -7,6 +8,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {editIcon, saveIcon} from "../../../icons";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, title}) => {
@@ -67,7 +69,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
+                <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
                 <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.TITLE_DB}</label>
                 {
                     titlesData &&
@@ -78,7 +80,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         value={newIssue.title_id}
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                         {printTitleOptions(titlesData)}
                     </select>
                 }
@@ -92,29 +94,39 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         value={newIssue.publisher_id}
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                         {printOptions(publishersData)}
                     </select>
                 }
-                <label className={"form-label"} htmlFor="year">{LABELS_AND_HEADINGS.YEAR_DB}</label>
+                <label className={"form-label"} htmlFor="year">{LABELS.COMMON.YEAR_DB}</label>
                 <input
                     id={"year"}
                     name={"year"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     value={newIssue.year || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
+                <label className={"form-label"} htmlFor="number">{LABELS.COMMON.NUMBER_DB}</label>
                 <input
                     id={"number"}
                     name={"number"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     max={999}
                     min={1}
                     value={newIssue.number || ""}
+                    onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
+                    disabled={!edit || loading}
+                />
+                <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
+                <textarea
+                    id={"description"}
+                    name={"description"}
+                    className={"form-input--default"}
+                    rows={3}
+                    value={newIssue.description || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
@@ -123,7 +135,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                 <textarea
                     id={"source"}
                     name={"source"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     rows={3}
                     value={newIssue.source || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
@@ -140,7 +152,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         onChange={() => handleDoubleCheckboxChange(newIssue.is_double)}
                         disabled={!edit || loading}
                     />
-                    <label className={"form-label"} htmlFor="double">{LABELS_AND_HEADINGS.IS_DOUBLE_DB}</label>
+                    <label className={"form-label"} htmlFor="double">{LABELS.SECTIONS.ISSUES.IS_DOUBLE_DB}</label>
                 </div>
                 <div>
                     <input
@@ -153,13 +165,13 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         onChange={() => handleMKCheckboxChange(newIssue.is_marvelklubben)}
                         disabled={!edit || loading}
                     />
-                    <label className={"form-label"} htmlFor="marvelklubben">{LABELS_AND_HEADINGS.IS_MARVELKLUBBEN_DB}</label>
+                    <label className={"form-label"} htmlFor="marvelklubben">{LABELS.SECTIONS.MARVELKLUBBEN.IS_MARVELKLUBBEN_DB}</label>
                 </div>
-                <label className={"form-label"} htmlFor="marvelklubbennumber">{LABELS_AND_HEADINGS.MARVELKLUBBEN_NUMBER_DB}</label>
+                <label className={"form-label"} htmlFor="marvelklubbennumber">{LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN_NUMBER_DB}</label>
                 <input
                     id={"marvelklubbennumber"}
                     name={"marvelklubben_number"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     max={999}
                     min={0}
@@ -178,13 +190,13 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         onChange={() => handleVariantCheckboxChange(newIssue.is_variant)}
                         disabled={!edit || loading}
                     />
-                    <label className={"form-label"} htmlFor="variant">{LABELS_AND_HEADINGS.IS_VARIANT_DB}</label>
+                    <label className={"form-label"} htmlFor="variant">{LABELS.SECTIONS.ISSUES.IS_VARIANT_DB}</label>
                 </div>
-                <label className={"form-label"} htmlFor="variantsuffix">{LABELS_AND_HEADINGS.VARIANT_SUFFIX_DB}</label>
+                <label className={"form-label"} htmlFor="variantsuffix">{LABELS.SECTIONS.ISSUES.VARIANT_SUFFIX_DB}</label>
                 <input
                     id={"variantsuffix"}
                     name={"variant_suffix"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="text"
                     value={newIssue.variant_suffix || ""}
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
@@ -195,14 +207,14 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         <>
                             <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
-                                {LABELS_AND_HEADINGS.ABORT}
+                                {LABELS.COMMON.ABORT}
                             </button>
                         </>
                         :
                         <>
-                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
+                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS.COMMON.EDIT} icon={editIcon}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
-                                        label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>
+                                        label={LABELS.COMMON.BACK_TO + " " + title.name}/>
                         </>
                 }
             </div>

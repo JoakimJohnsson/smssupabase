@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {isTrue} from "../../helpers/functions";
 import {updateProfileData} from "../../services/profileService";
 import {handleChange} from "../../services/serviceFunctions";
@@ -7,6 +7,7 @@ import {useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 import {IconButton} from "../minis/IconButton";
 import {editIcon, saveIcon} from "../icons";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}) => {
@@ -40,32 +41,32 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
 
     return (
         <div className={"mb-4"}>
-            <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
-            <label className={"form-label"} htmlFor="firstname">{LABELS_AND_HEADINGS.FIRST_NAME}</label>
+            <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
+            <label className={"form-label"} htmlFor="firstname">{LABELS.SECTIONS.USERS.FIRST_NAME}</label>
             <input
                 id="firstname"
                 name="firstname"
-                className={CLASSES.FORM_INPUT_DEFAULT}
+                className={"form-input--default"}
                 type="text"
                 value={newProfile.firstname || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
                 disabled={!edit || loading}
             />
-            <label className={"form-label"} htmlFor="lastname">{LABELS_AND_HEADINGS.LAST_NAME}</label>
+            <label className={"form-label"} htmlFor="lastname">{LABELS.SECTIONS.USERS.LAST_NAME}</label>
             <input
                 id="lastname"
                 name="lastname"
-                className={CLASSES.FORM_INPUT_DEFAULT}
+                className={"form-input--default"}
                 type="text"
                 value={newProfile.lastname || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
                 disabled={!edit || loading}
             />
-            <label className={"form-label"} htmlFor="website">{LABELS_AND_HEADINGS.WEBSITE}</label>
+            <label className={"form-label"} htmlFor="website">{LABELS.COMMON.WEBSITE}</label>
             <input
                 id="website"
                 name="website"
-                className={CLASSES.FORM_INPUT_DEFAULT}
+                className={"form-input--default"}
                 type="text"
                 value={newProfile.website || ""}
                 onChange={(e) => handleChange(newProfile, setNewProfile, e.target.name, e.target.value)}
@@ -89,12 +90,12 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                     <>
                         <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                         <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
-                            {LABELS_AND_HEADINGS.ABORT}
+                            {LABELS.COMMON.ABORT}
                         </button>
                     </>
                     :
                     <>
-                        <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
+                        <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS.COMMON.EDIT} icon={editIcon}/>
                     </>
             }
         </div>

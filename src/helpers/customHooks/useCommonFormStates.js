@@ -1,5 +1,4 @@
 import {useState} from "react";
-import {CLASSES} from "../constants";
 
 
 export const useCommonFormStates = () => {
@@ -7,7 +6,7 @@ export const useCommonFormStates = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [wiki_url, setWiki_url] = useState("");
-    const [formInputClass, setFormInputClass] = useState(CLASSES.FORM_INPUT_DEFAULT);
+    const [formInputClass, setFormInputClass] = useState("form-input--default");
 
     return {
         name,

@@ -1,14 +1,15 @@
 import React from "react";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
-export const AddGlobalMessage = ({
+export const GlobalMessage = ({
                                      topic_id,
                                      setTopic_id,
                                      text,
@@ -25,7 +26,7 @@ export const AddGlobalMessage = ({
     return (
         <>
 
-            <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.MESSAGE_TITLE}</label>
+            <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
             <p className={"h5 text-white"}>
                 {
                     topic_id &&
@@ -44,11 +45,11 @@ export const AddGlobalMessage = ({
                         handleInput(e, setTopic_id);
                         updateTitle(e);
                     }}>
-                    <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                    <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                     {printOptions(topicData.filter((t) => t.isGlobal === true))}
                 </select>
             }
-            <label className={"form-label"} htmlFor="text">{LABELS_AND_HEADINGS.MESSAGE}</label>
+            <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
             <textarea
                 className={formInputClass}
                 placeholder={LABELS_AND_HEADINGS.ADD_MESSAGE_PLACEHOLDER}

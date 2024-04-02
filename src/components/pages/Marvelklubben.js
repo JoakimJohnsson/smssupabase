@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../services/issueService";
 import {IssueCard} from "../lists/issues/IssueCard";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Marvelklubben = () => {
@@ -22,7 +23,7 @@ export const Marvelklubben = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.MARVELKLUBBEN}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
                     <p className={"lead"}>{TEXTS.MARVELKLUBBEN_LEAD}</p>
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"

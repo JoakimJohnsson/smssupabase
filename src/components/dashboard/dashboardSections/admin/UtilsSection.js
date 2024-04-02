@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
 import {useAppContext} from "../../../../context/AppContext";
 import {updateReleaseDate} from "../../../../services/utilsService";
 import {faCalendarHeart} from "@fortawesome/pro-regular-svg-icons";
