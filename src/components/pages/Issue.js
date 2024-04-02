@@ -317,7 +317,7 @@ export const Issue = () => {
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <th scope={"row"}>{issue.year} {issue.number}</th>
+                                                <th scope={"row"}>{issue.year} {issue.number}{!!issue.is_variant && issue.variant_suffix}</th>
                                                 <td>{renderGradeValue(issue, "GD")}</td>
                                                 <td>{renderGradeValue(issue, "VG")}</td>
                                                 <td>{renderGradeValue(issue, "FN")}</td>
