@@ -55,6 +55,9 @@ Update packages via npm commands:
 
 Commit and push.
 
+Other useful npm commands:
+* `npm audit --omit=dev` will omit devDependencies from audit.
+
 #### <a id="recharts"></a> Recharts
 
 The app uses Recharts components for visual representation of statistics.
