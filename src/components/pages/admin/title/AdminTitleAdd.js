@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
 import {addTitleData} from "../../../../services/titleService";
 import {handleInput} from "../../../../services/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
@@ -10,6 +10,7 @@ import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitleAdd = () => {
@@ -42,16 +43,16 @@ export const AdminTitleAdd = () => {
         setStart_year(1975);
         setEnd_year(1975);
         setTotal_issues(12);
-        setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        setFormInputClass("form-input--error");
     }
 
     useEffect(() => {
         if (format_id && start_year && end_year && total_issues && name !== "" && description !== "" && wiki_url !== "" && comics_org_url !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setFormInputClass("form-input--success");
         } else if (format_id || start_year || end_year || total_issues || name !== "" || description !== "" || wiki_url !== "" || comics_org_url !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+            setFormInputClass("form-input--default")
         } else {
-            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+            setFormInputClass("form-input--error");
         }
     }, [format_id, name, description, wiki_url, comics_org_url, start_year, end_year, total_issues, setFormInputClass])
 
@@ -60,13 +61,13 @@ export const AdminTitleAdd = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-section--light"}>
-                        <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                        <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
                         <input
                             id={"name"}
                             name={"name"}
@@ -75,7 +76,7 @@ export const AdminTitleAdd = () => {
                             value={name || ""}
                             onChange={(e) => handleInput(e, setName)}
                         />
-                        <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                        <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
                         <input
                             id={"description"}
                             name={"description"}
@@ -84,7 +85,7 @@ export const AdminTitleAdd = () => {
                             value={description || ""}
                             onChange={(e) => handleInput(e, setDescription)}
                         />
-                        <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                        <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
                         <input
                             id="wikiurl"
                             name="wiki_url"
@@ -93,7 +94,7 @@ export const AdminTitleAdd = () => {
                             value={wiki_url || ""}
                             onChange={(e) => handleInput(e, setWiki_url)}
                         />
-                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS_AND_HEADINGS.COMICS_ORG_URL_DB}</label>
+                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS.SECTIONS.TITLES.COMICS_ORG_URL_DB}</label>
                         <input
                             id="comicsorgurl"
                             name="comics_orgurl"
@@ -111,7 +112,7 @@ export const AdminTitleAdd = () => {
                             value={start_year || ""}
                             onChange={(e) => handleInput(e, setStart_year)}
                         />
-                        <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
+                        <label className={"form-label"} htmlFor="endyear">{LABELS.SECTIONS.TITLES.END_YEAR_DB}</label>
                         <input
                             id="endyear"
                             name={"end_year"}
@@ -128,7 +129,7 @@ export const AdminTitleAdd = () => {
                                 name={"format_id"}
                                 className={formInputClass}
                                 onChange={(e) => handleInput(e, setFormat_id)}>
-                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                                 {printOptions(formatData)}
                             </select>
                         }
@@ -154,14 +155,14 @@ export const AdminTitleAdd = () => {
                                     total_issues: total_issues,
                                 }, setInformationMessage).then(() => resetAddTitleForm())}
                                 disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === "" || comics_org_url === ""}>
-                            {LABELS_AND_HEADINGS.ADD}
+                            {LABELS.COMMON.ADD}
                         </button>
                         <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddTitleForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                                    label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {NoRouteAvailable} from "../minis/NoRouteAvailable";
 
 

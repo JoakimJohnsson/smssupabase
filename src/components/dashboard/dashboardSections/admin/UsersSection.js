@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {UsersList} from "../../../lists/users/UsersList";

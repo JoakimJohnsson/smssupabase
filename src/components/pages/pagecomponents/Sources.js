@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {SourceLink} from "./SourceLink";
 
 

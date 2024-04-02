@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {ButtonGroup} from "react-bootstrap";
 import {editGrade, deleteGrade} from "../../services/collectingService";
 import {useAppContext} from "../../context/AppContext";
-import {GRADE_RADIOS, GRADE_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {GRADE_RADIOS, GRADE_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {IconButton} from "../minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {getDataGradeValue, isSKGradeValue} from "../../helpers/functions";

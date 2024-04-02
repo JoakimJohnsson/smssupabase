@@ -1,6 +1,6 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 
 
 export const ImageViewerSmall = ({url, fileName, linked = false}) => {

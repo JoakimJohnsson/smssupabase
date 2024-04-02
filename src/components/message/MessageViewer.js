@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {getDataIcon} from "../../helpers/functions";
 import topicData from "../../helpers/valueLists/topics.json";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {FriendlyDate} from "../minis/FriendlyDate";
 import {
     getIconByName,
@@ -12,6 +12,7 @@ import {
 } from "../icons";
 import {Link} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo = false}) => {
@@ -25,7 +26,7 @@ export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo 
         } else if (viewTodo) {
             return LABELS_AND_HEADINGS.MESSAGES_MARK_AS_TODO;
         } else {
-            return LABELS_AND_HEADINGS.MESSAGES;
+            return LABELS.SECTIONS.MESSAGES.MESSAGES;
         }
     }
 

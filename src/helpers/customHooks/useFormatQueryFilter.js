@@ -1,5 +1,5 @@
 import {useSearchParams} from "react-router-dom";
-import {DEFAULT_SEARCH_PARAMS_FORMATS} from "../constants";
+import {DEFAULT_SEARCH_PARAMS_FORMATS} from "../constants/configConstants";
 
 
 export const useFormatQueryFilter = () => {

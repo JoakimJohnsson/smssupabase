@@ -1,5 +1,5 @@
 import React from "react";
-import {TEXTS} from "../../helpers/constants";
+import {TEXTS} from "../../helpers/constants/configConstants";
 import {faDoNotEnter} from "@fortawesome/pro-duotone-svg-icons";
 import {Icon} from "../icons";
 import useBreadcrumbs from "use-react-router-breadcrumbs";

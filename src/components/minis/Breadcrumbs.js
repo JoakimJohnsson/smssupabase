@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, PANES, TABLES} from "../../helpers/constants";
+import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getNameByTableAndId, getStartYearByTableAndId} from "../../services/serviceFunctions";
+import {BREADCRUMB_NAMES, LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Breadcrumbs = ({doIgnoreName, bcName}) => {
@@ -21,40 +22,40 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
     const getTranslatedBreadcrumbName = (breadcrumbName, breadcrumb) => {
         updatePreviousCrumb(breadcrumb);
         switch (breadcrumbName) {
-            case "home":
-                return LABELS_AND_HEADINGS.HOME;
-            case "admin":
-                return LABELS_AND_HEADINGS.ADMIN;
-            case "dashboard":
-                return LABELS_AND_HEADINGS.DASHBOARD;
-            case "profile":
-                return LABELS_AND_HEADINGS.SETTINGS;
-            case "titles":
-                return LABELS_AND_HEADINGS.ALL_TITLES;
-            case "my titles":
-                return PANES.TITLES.NAME;
-            case "marvel club":
-                return LABELS_AND_HEADINGS.MARVELKLUBBEN;
-            case "publishers":
-                return LABELS_AND_HEADINGS.ALL_PUBLISHERS;
-            case "users":
-                return LABELS_AND_HEADINGS.ALL_USERS;
-            case "edit":
-                return LABELS_AND_HEADINGS.EDIT;
-            case "issues":
-                return LABELS_AND_HEADINGS.ISSUES;
-            case "valuation":
-                return PANES.VALUATION.NAME;
-            case "overview":
-                return PANES.OVERVIEW.NAME;
-            case "other collections":
-                return PANES.OTHER_COLLECTIONS.NAME;
-            case "grade values":
-                return LABELS_AND_HEADINGS.GRADE_VALUES;
-            case "messages":
-                return LABELS_AND_HEADINGS.MESSAGES;
             case "add":
-                return LABELS_AND_HEADINGS.ADD;
+                return BREADCRUMB_NAMES.ADD;
+            case "admin":
+                return BREADCRUMB_NAMES.ADMIN;
+            case "dashboard":
+                return BREADCRUMB_NAMES.DASHBOARD;
+            case "edit":
+                return BREADCRUMB_NAMES.EDIT;
+            case "grade values":
+                return BREADCRUMB_NAMES.GRADE_VALUES;
+            case "home":
+                return BREADCRUMB_NAMES.HOME;
+            case "issues":
+                return BREADCRUMB_NAMES.ISSUES;
+            case "marvelklubben":
+                return BREADCRUMB_NAMES.MARVELKLUBBEN;
+            case "messages":
+                return BREADCRUMB_NAMES.MESSAGES;
+            case "my titles":
+                return BREADCRUMB_NAMES.MY_TITLES;
+            case "other collections":
+                return BREADCRUMB_NAMES.OTHER_COLLECTIONS;
+            case "overview":
+                return BREADCRUMB_NAMES.OVERVIEW;
+            case "profile":
+                return BREADCRUMB_NAMES.PROFILE;
+            case "publishers":
+                return BREADCRUMB_NAMES.PUBLISHERS;
+            case "titles":
+                return BREADCRUMB_NAMES.TITLES;
+            case "users":
+                return BREADCRUMB_NAMES.USERS;
+            case "valuation":
+                return BREADCRUMB_NAMES.VALUATION;
             default:
                 return breadcrumbName;
         }
@@ -96,7 +97,7 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
     }
 
     return (
-        <nav aria-label={LABELS_AND_HEADINGS.BREADCRUMB} className={"mb-5 breadcrumb-nav hide"}>
+        <nav aria-label={LABELS.COMMON.BREADCRUMB} className={"mb-5 breadcrumb-nav hide"}>
             <ol className="breadcrumb small">
                 {breadcrumbs.map(({match, breadcrumb}, index) => {
                         return printBreadCrumbLinkItems(index, breadcrumb, match);

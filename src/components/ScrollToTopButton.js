@@ -1,12 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {faArrowUp} from "@fortawesome/pro-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {LABELS_AND_HEADINGS} from "../helpers/constants";
+import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const ScrollToTopButton = () => {
-
-    // TODO - dölj när man scrollar upp - samt på mobil - gör lite transparent
 
     const [showScrollButton, setShowScrollButton] = useState(false);
 
@@ -42,7 +40,7 @@ const ScrollToTopButton = () => {
     }, [toggleShow])
 
     return showScrollButton && (
-        <button className={"sms-link-to-top-button d-none d-lg-block"} aria-label={LABELS_AND_HEADINGS.BACK_TO_TOP} onClick={scrollToTop}>
+        <button className={"sms-link-to-top-button d-none d-lg-block"} aria-label={LABELS.COMMON.BACK_TO_TOP} onClick={scrollToTop}>
             <FontAwesomeIcon icon={faArrowUp} className={"fa-2x"}/>
         </button>
     )

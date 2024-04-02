@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {useParams} from "react-router-dom";
-import {BUCKETS, FILETYPES, LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../../../helpers/constants";
+import {FILETYPES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
@@ -11,6 +12,7 @@ import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
 import {getGradeValuesByIssueId} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminIssue = () => {
@@ -74,13 +76,13 @@ export const AdminIssue = () => {
                                     variant={"primary"}
                                     icon={titleIconDuoTone}
                                     path={`/admin/titles/${issue.title_id}`}
-                                    label={LABELS_AND_HEADINGS.EDIT + " " + issue.titles.name + " " + issue.titles.start_year}
+                                    label={LABELS.COMMON.EDIT + " " + issue.titles.name + " " + issue.titles.start_year}
                                 />
                                 <IconLink
                                     variant={"primary"}
                                     icon={publishersIconDuoTone}
                                     path={`/admin/publishers/${issue.publisher_id}`}
-                                    label={LABELS_AND_HEADINGS.EDIT + " " + issue.publishers.name}
+                                    label={LABELS.COMMON.EDIT + " " + issue.publishers.name}
                                 />
                             </div>
                         </div>

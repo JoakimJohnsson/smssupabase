@@ -1,8 +1,9 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../helpers/constants";
-import {getIssueName, renderGradeValue} from "../../helpers/functions";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../helpers/constants/configConstants";
+import {TABLES} from "../../helpers/constants/serviceConstants";
+import {getIssueName, renderGradeValue, trimAndReplace} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -27,7 +28,7 @@ import {
     removeIssueFromWanted
 } from "../../services/collectingService";
 import {Sources} from "./pagecomponents/Sources";
-import {AddMessage} from "../message/AddMessage";
+import {Message} from "../message/Message";
 import {FunctionButton} from "../minis/FunctionButton";
 import {EditGrade} from "../grade/EditGrade";
 import {IconButton} from "../minis/IconButton";
@@ -40,6 +41,7 @@ import {
 } from "../icons";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Issue = () => {
@@ -155,9 +157,9 @@ export const Issue = () => {
                                             }}>
                                             {
                                                 isCollectingIssue ?
-                                                    <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.DELETE}</>
+                                                    <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.DELETE}</>
                                                     :
-                                                    <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS_AND_HEADINGS.ADD}</>
+                                                    <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.ADD}</>
                                             }
                                         </button>
                                         :
@@ -187,7 +189,7 @@ export const Issue = () => {
                                                         <button
                                                             onClick={() => navigate(`/issues/${nextIssueId}`)}
                                                             disabled={!nextIssueId}
-                                                            className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS_AND_HEADINGS.NEXT}>
+                                                            className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS.COMMON.NEXT}>
                                                             <Icon icon={faArrowRightLong} className={"fa-2x"}/>
                                                         </button>
                                                     </div>
@@ -201,7 +203,7 @@ export const Issue = () => {
                                     variant={"primary"}
                                     icon={titlesIconDuoTone}
                                     path={ROUTES.DASHBOARD.PATH_MY_TITLES}
-                                    label={LABELS_AND_HEADINGS.DASHBOARD_MY_TITLES}
+                                    label={LABELS.SECTIONS.DASHBOARD.LINKS.MY_TITLES}
                                 />
                                 <IconLink
                                     variant={"primary"}
@@ -221,7 +223,7 @@ export const Issue = () => {
                                         variant={"primary"}
                                         icon={editIconDuoTone}
                                         path={`/admin/issues/${issue.id}?edit=true`}
-                                        label={LABELS_AND_HEADINGS.EDIT + " " + displayName}
+                                        label={LABELS.COMMON.EDIT + " " + displayName}
                                     />
                                 }
                                 <div className={"d-flex align-items-center flex-wrap mb-3"}>
@@ -265,9 +267,13 @@ export const Issue = () => {
                                             }
                                         </>
                                     }
-                                    <AddMessage originObject={issue} originTable={TABLES.ISSUES}/>
+                                    <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                 </div>
                                 <div className={"mb-4"}>
+                                    {
+                                        issue.description &&
+                                        <p className={"lead mb-4"}>{issue.description}</p>
+                                    }
                                     <h2>{issue.titles.name}</h2>
                                     <p className={"mb-4"}>{issue.titles.description}</p>
                                     <h2>{issue.publishers.name}</h2>
@@ -300,9 +306,15 @@ export const Issue = () => {
                                 {
                                     !!issue.titles.is_valued && issue.grade_values && !!issue.grade_values.length &&
                                     <div className={"sms-section--light section--grade mb-4"}>
-                                        <h2>{LABELS_AND_HEADINGS.GRADE_VALUES}</h2>
+                                        <h2>{LABELS.SECTIONS.GRADES.GRADE_VALUE}</h2>
                                         <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
-                                            <caption>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {displayName}</caption>
+                                            <caption>
+                                                <p className={"mb-0"}>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {displayName}</p>
+                                                <a href={"https://seriekatalogen.se/title/#" + trimAndReplace(issue.titles.name, "_")} target={"_blank"} rel={"noreferrer"}>
+                                                    {issue.titles.name} hos Seriekatalogen
+                                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                                </a>
+                                            </caption>
                                             <thead>
                                             <tr>
                                                 <th scope={"col"}>År / Nummer</th>
@@ -315,7 +327,7 @@ export const Issue = () => {
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <th scope={"row"}>{issue.year} {issue.number}</th>
+                                                <th scope={"row"}>{issue.year} {issue.number}{!!issue.is_variant && issue.variant_suffix}</th>
                                                 <td>{renderGradeValue(issue, "GD")}</td>
                                                 <td>{renderGradeValue(issue, "VG")}</td>
                                                 <td>{renderGradeValue(issue, "FN")}</td>
@@ -352,7 +364,7 @@ export const Issue = () => {
                                             })
                                         }
                                         <IconButton variant={"primary"} icon={faPlus} onClick={() => handleAddGrade()}
-                                                    label={LABELS_AND_HEADINGS.ADD_GRADE}/>
+                                                    label={LABELS.SECTIONS.GRADES.ADD_GRADE}/>
                                     </div>
                                 }
                             </div>

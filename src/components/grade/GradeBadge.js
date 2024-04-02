@@ -1,5 +1,5 @@
 import React from "react";
-import {GRADE_VARIANTS} from "../../helpers/constants";
+import {GRADE_VARIANTS} from "../../helpers/constants/configConstants";
 
 
 export const GradeBadge = ({grade, index, small = false}) => {

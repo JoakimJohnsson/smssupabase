@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {TitlesList} from "../../../lists/titles/TitlesList";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";
@@ -17,6 +18,7 @@ import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdmi
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitles = () => {
@@ -53,7 +55,7 @@ export const AdminTitles = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                     <FilterFormAdminTitles query={query} isvalued={isvalued} isnotvalued={isnotvalued} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
                     <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>
@@ -73,9 +75,9 @@ export const AdminTitles = () => {
                                 <OverlaySpinner/>
                         }
                         <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
-                                    label={LABELS_AND_HEADINGS.ADD_TITLE}/>
+                                    label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                                    label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>
             </div>

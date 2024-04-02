@@ -1,37 +1,39 @@
 import React, {useState, useEffect} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, TABLES} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useCommonFormStates} from "../../helpers/customHooks/useCommonFormStates";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataDescription, getDataName, getIssueName} from "../../helpers/functions";
-import {AddUserMessage} from "./AddUserMessage";
-import {AddGlobalMessage} from "./AddGlobalMessage";
+import {UserMessage} from "./UserMessage";
+import {GlobalMessage} from "./GlobalMessage";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
-export const AddMessage = ({originObject, originTable, isGlobalMessage = false, fetchAdminMessages = false}) => {
+export const Message = ({originObject, originTable, isGlobalMessage = false, fetchAdminMessages = false}) => {
 
     const {formInputClass, setFormInputClass} = useCommonFormStates();
     const [topic_id, setTopic_id] = useState("");
     const [description, setDescription] = useState("");
-    const [title, setTitle] = useState(LABELS_AND_HEADINGS.MESSAGE);
+    const [title, setTitle] = useState(LABELS.SECTIONS.MESSAGES.MESSAGE);
     const [text, setText] = useState("");
     const [useThisObject, setUseThisObject] = useState(false);
 
     const resetAddMessageForm = async () => {
         if (topic_id === "") {
-            setTitle(LABELS_AND_HEADINGS.MESSAGE);
+            setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE);
             setDescription("");
         }
         setText("");
-        setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        setFormInputClass("form-input--error");
     }
 
     useEffect(() => {
         if (topic_id && text && title !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setFormInputClass("form-input--success");
         } else if (topic_id || text || title !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+            setFormInputClass("form-input--default")
         } else {
-            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+            setFormInputClass("form-input--error");
         }
     }, [topic_id, text, title, setFormInputClass]);
 
@@ -48,19 +50,19 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
                 if (topic_id !== "") {
                     setTitle(currentTitle => currentTitle + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
                 } else {
-                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
+                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
                 }
             } else if (originTable === TABLES.TITLES) {
                 if (topic_id !== "") {
                     setTitle(currentTitle => currentTitle + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
                 } else {
-                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
+                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
                 }
             } else {
                 if (topic_id !== "") {
                     setTitle(currentTitle => currentTitle + " - " + originTable);
                 } else {
-                    setTitle(LABELS_AND_HEADINGS.MESSAGE + " - " + originTable);
+                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " - " + originTable);
                 }
             }
         } else {
@@ -68,7 +70,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
                 setTitle(getDataName(topicData, topic_id));
                 setDescription(getDataDescription(topicData, topic_id));
             } else {
-                setTitle(LABELS_AND_HEADINGS.MESSAGE);
+                setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE);
                 setDescription("");
             }
         }
@@ -76,7 +78,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
 
     return (
         isGlobalMessage ?
-            <AddGlobalMessage
+            <GlobalMessage
                 topic_id={topic_id}
                 setTopic_id={setTopic_id}
                 updateTitle={updateTitleAndDescription}
@@ -88,7 +90,7 @@ export const AddMessage = ({originObject, originTable, isGlobalMessage = false, 
                 fetchAdminMessages={fetchAdminMessages}
             />
             :
-            <AddUserMessage
+            <UserMessage
                 topic_id={topic_id}
                 setTopic_id={setTopic_id}
                 updateTitle={updateTitleAndDescription}
