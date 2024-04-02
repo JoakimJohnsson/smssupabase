@@ -27,7 +27,7 @@ export const IssuesListGrades = ({groupedIssuesData}) => {
                             year.length ?
                                 (year.sort((a, b) => sortByNumberAndVariantSuffix(a, b)).map((issue, index) =>
                                     <tr key={issue.id}>
-                                        <th scope={"row"}>{year[0].year} {issue.number}</th>
+                                        <th scope={"row"}>{year[0].year} {issue.number} {!!issue.is_variant && issue.variant_suffix}</th>
                                         <td>{renderGradeValue(year[index], "GD")}</td>
                                         <td>{renderGradeValue(year[index], "VG")}</td>
                                         <td>{renderGradeValue(year[index], "FN")}</td>

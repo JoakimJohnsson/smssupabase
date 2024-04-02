@@ -17,11 +17,12 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.6.3 - 2024-03-11</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.6.4 - 2024-04-XX</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Nu visas senast inlagda titlar och publikationer korrekt på startsidan.</li>
                     <li className={"list-group-item px-0"}>Det är nu möjligt att skicka meddelanden till admin med ämnet "Kompletteringar".</li>
+                    <li className={"list-group-item px-0"}>Tydligare information om varianter i lista med skickvärderingar.</li>
 
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.6.0 - 2024-03-06</h3>
