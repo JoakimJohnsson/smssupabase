@@ -1,5 +1,7 @@
 // Texts - for longer text blocks
 export const TEXTS = {
+    NO_DATA_AVAILABLE: "Det finns inget att visa!",
+    NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
     SECTIONS: {
         GRADES: {},
         ISSUES: {},

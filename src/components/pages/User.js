@@ -124,7 +124,7 @@ export const User = () => {
                                         {
                                             user.website ?
                                                 <a href={prepareUrl(user.website)} target={"_blank"} rel="noreferrer">
-                                                    {LABELS_AND_HEADINGS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                                    {LABELS.SECTIONS.USERS.MY_WEBSITE} <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                                 :
                                                 <>{LABELS_AND_HEADINGS.INFORMATION_MISSING}</>

@@ -311,7 +311,7 @@ export const AdminTitle = () => {
                                             value={year || ""}
                                             onChange={(e) => handleInput(e, setYear)}
                                         />
-                                        <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
+                                        <label className={"form-label"} htmlFor="number">{LABELS.COMMON.NUMBER_DB}</label>
                                         <input
                                             id="number"
                                             name="number"

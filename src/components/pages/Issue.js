@@ -189,7 +189,7 @@ export const Issue = () => {
                                                         <button
                                                             onClick={() => navigate(`/issues/${nextIssueId}`)}
                                                             disabled={!nextIssueId}
-                                                            className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS_AND_HEADINGS.NEXT}>
+                                                            className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS.COMMON.NEXT}>
                                                             <Icon icon={faArrowRightLong} className={"fa-2x"}/>
                                                         </button>
                                                     </div>
@@ -203,7 +203,7 @@ export const Issue = () => {
                                     variant={"primary"}
                                     icon={titlesIconDuoTone}
                                     path={ROUTES.DASHBOARD.PATH_MY_TITLES}
-                                    label={LABELS.SECTIONS.DASHBOARD.MY_TITLES}
+                                    label={LABELS.SECTIONS.DASHBOARD.LINKS.MY_TITLES}
                                 />
                                 <IconLink
                                     variant={"primary"}

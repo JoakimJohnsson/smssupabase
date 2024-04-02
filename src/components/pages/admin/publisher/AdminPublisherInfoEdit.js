@@ -36,7 +36,7 @@ export const AdminPublisherInfoEdit = ({publisher, setPublisher, newPublisher, s
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
                 <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
-                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
                 <input
                     id={"name"}
                     name={"name"}

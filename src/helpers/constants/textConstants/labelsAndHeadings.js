@@ -34,6 +34,9 @@ export const LABELS = {
         LIST_VIEW_GRID_SHOW: "Visa som grid",
         LIST_VIEW_LIST_SHOW: "Visa som lista",
         LOG_IN: "Logga in",
+        NAME_DB: "Namn (name)",
+        NEXT: "Nästa",
+        NUMBER_DB: "Nummer (number)",
         WEBSITE: "Webbplats",
         WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
         YEAR_DB: "År (year)"
@@ -41,7 +44,9 @@ export const LABELS = {
     SECTIONS: {
         DASHBOARD: {
             NAME: "Kontrollpanel",
-            MY_TITLES: "Kontrollpanel / Mina titlar",
+            LINKS: {
+                MY_TITLES: "Kontrollpanel / Mina titlar"
+            }
         },
         GRADES: {
             ADD_GRADE: "Lägg till skickgradering",
@@ -87,6 +92,7 @@ export const LABELS = {
             IS_PUBLIC: "Publik information",
             IS_SUPER_ADMIN: " är super admin.",
             LAST_NAME: "Efternamn",
+            MY_WEBSITE: "Min hemsida",
             REMOVE_ADMIN_1: "Ta bort ",
             REMOVE_ADMIN_2: " som admin",
         }

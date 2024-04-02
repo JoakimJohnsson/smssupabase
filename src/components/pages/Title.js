@@ -185,7 +185,7 @@ export const Title = () => {
                                     variant={"primary"}
                                     icon={titlesIconDuoTone}
                                     path={ROUTES.DASHBOARD.PATH_MY_TITLES}
-                                    label={LABELS.SECTIONS.DASHBOARD.MY_TITLES}
+                                    label={LABELS.SECTIONS.DASHBOARD.LINKS.MY_TITLES}
                                 />
                                 {
                                     profile && profile.role >= 1 &&

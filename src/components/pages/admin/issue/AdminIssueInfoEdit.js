@@ -108,7 +108,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="number">{LABELS_AND_HEADINGS.NUMBER_DB}</label>
+                <label className={"form-label"} htmlFor="number">{LABELS.COMMON.NUMBER_DB}</label>
                 <input
                     id={"number"}
                     name={"number"}

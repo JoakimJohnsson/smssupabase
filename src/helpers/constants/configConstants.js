@@ -1,7 +1,7 @@
 import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
 
-// 511 rader
+// 491 rader
 export const LABELS_AND_HEADINGS = {
     ADD_ISSUES: "Lägg till publikationer",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
@@ -72,19 +72,6 @@ export const LABELS_AND_HEADINGS = {
     MESSAGES_MARK_AS_INACTIVE: "Markera som inaktivt",
     MESSAGES_MARK_AS_TODO: "Åtgärd krävs",
     MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
-    MISCELLANEOUS: "Övrigt",
-    MY_COLLECTION: "Min samling",
-    MY_TITLES: "Mina titlar",
-    MY_USER_PAGE: "Min sida",
-    MY_WEBSITE: "Min hemsida",
-    NAME: "Namn",
-    NAME_DB: "Namn (name)",
-    NEXT: "Nästa",
-    NEWS: "Nyheter",
-    NUMBER: "Nummer",
-    NUMBER_DB: "Nummer (number)",
-    NO_DATA_AVAILABLE: "Det finns inget att visa!",
-    NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
     CALCULATING_VALUATION: "Beräknar ny värdering!",
     OPEN: "Öppna",
     ON_COMICS_ORG: "på Comics.org",
