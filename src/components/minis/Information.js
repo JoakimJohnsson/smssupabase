@@ -1,9 +1,11 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {ALERT_VARIANTS, LABELS_AND_HEADINGS, MESSAGES} from "../../helpers/constants";
+import {ALERT_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {useAppContext} from "../../context/AppContext";
 import {faTimes, faPause} from "@fortawesome/pro-solid-svg-icons";
 import {Icon} from "../icons";
 import {ProgressBar} from "react-bootstrap";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Information = ({message}) => {
@@ -71,7 +73,7 @@ export const Information = ({message}) => {
                         <Icon icon={faPause} className={"fa-lg sms-icon--hovering"}/>
                     </button>
                 }
-                <button type="button" className="p-1 btn text-black-50" aria-label={LABELS_AND_HEADINGS.CLOSE}
+                <button type="button" className="p-1 btn text-black-50" aria-label={LABELS.COMMON.CLOSE}
                         onClick={() => closeInformationMessage()}>
                     <Icon icon={faTimes} className={"fa-lg sms-icon--hovering"}/>
                 </button>

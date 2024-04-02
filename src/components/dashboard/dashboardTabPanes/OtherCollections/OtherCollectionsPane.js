@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {OtherCollectionsPaneListItem} from "./OtherCollectionsPaneListItem";
-import {PANES, TABLES} from "../../../../helpers/constants";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../../headings";

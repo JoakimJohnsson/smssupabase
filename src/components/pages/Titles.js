@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {
@@ -13,6 +14,7 @@ import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
 import FilterFormFormat from "../search-filter/FilterFormFormat";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Titles = () => {
@@ -49,7 +51,7 @@ export const Titles = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                     <FilterFormFormat
                         setSearchParams={setSearchParams}
                         query={query}

@@ -1,12 +1,15 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, MESSAGE_STATUS_TEXT, MESSAGE_STATUS_TEXT_GLOBAL, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {MESSAGE_STATUS_TEXT, MESSAGE_STATUS_TEXT_GLOBAL} from "../../../../helpers/constants/textConstants/messages";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {MessageIcons} from "../../../message/MessageIcons";
 import {FriendlyDate} from "../../../minis/FriendlyDate";
 import {MessageStatusChanger} from "../../../message/MessageStatusChanger";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminMessage = () => {
@@ -35,7 +38,7 @@ export const AdminMessage = () => {
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
                                 {/* Table MESSAGE does not have a name column - ignore name and use message title instead. */}
-                                <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title} text={LABELS_AND_HEADINGS.MESSAGE}/>
+                                <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title} text={LABELS.SECTIONS.MESSAGES.MESSAGE}/>
                             </div>
                         </div>
                         <div className={"row row-padding--secondary"}>

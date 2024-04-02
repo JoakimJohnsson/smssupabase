@@ -1,6 +1,6 @@
 import React from "react";
 import {Alert} from "react-bootstrap";
-import {ALERT_VARIANTS, VARIANT_MAPPER} from "../../helpers/constants";
+import {ALERT_VARIANTS, VARIANT_MAPPER} from "../../helpers/constants/configConstants";
 
 
 export const InformationAlert = ({variant, text}) => {

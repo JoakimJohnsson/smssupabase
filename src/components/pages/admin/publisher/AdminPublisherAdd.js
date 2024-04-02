@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
 import {addPublisherData} from "../../../../services/publisherService";
 import {handleInput} from "../../../../services/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
@@ -10,6 +10,7 @@ import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminPublisherAdd = () => {
@@ -33,16 +34,16 @@ export const AdminPublisherAdd = () => {
         setName("");
         setDescription("");
         setWiki_url("");
-        setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+        setFormInputClass("form-input--error");
     }
 
     useEffect(() => {
         if (country_id && name !== "" && description !== "" && wiki_url !== !"") {
-            setFormInputClass(CLASSES.FORM_INPUT_SUCCESS);
+            setFormInputClass("form-input--success");
         } else if (country_id || name !== "" || description !== "" || wiki_url !== "") {
-            setFormInputClass(CLASSES.FORM_INPUT_DEFAULT)
+            setFormInputClass("form-input--default")
         } else {
-            setFormInputClass(CLASSES.FORM_INPUT_ERROR);
+            setFormInputClass("form-input--error");
         }
     }, [name, description, country_id, setFormInputClass, wiki_url])
 
@@ -50,13 +51,13 @@ export const AdminPublisherAdd = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ADD_PUBLISHER}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
                 </div>
             </div>
             <div className={"row row-padding--secondary"}>
                 <div className={"sms-dashboard-col"}>
                     <div className={"sms-section--light"}>
-                        <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                        <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
                         <input
                             id="name"
                             name="name"
@@ -65,7 +66,7 @@ export const AdminPublisherAdd = () => {
                             value={name || ""}
                             onChange={(e) => handleInput(e, setName)}
                         />
-                        <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                        <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
                         <input
                             id="description"
                             name="description"
@@ -74,7 +75,7 @@ export const AdminPublisherAdd = () => {
                             value={description || ""}
                             onChange={(e) => handleInput(e, setDescription)}
                         />
-                        <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                        <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
                         <input
                             id="wikiurl"
                             name="wiki_url"
@@ -83,7 +84,7 @@ export const AdminPublisherAdd = () => {
                             value={wiki_url || ""}
                             onChange={(e) => handleInput(e, setWiki_url)}
                         />
-                        <label className={"form-label"} htmlFor="country">{LABELS_AND_HEADINGS.COUNTRY_DB}</label>
+                        <label className={"form-label"} htmlFor="country">{LABELS.SECTIONS.PUBLISHERS.COUNTRY_DB}</label>
                         {
                             countryData &&
                             <select
@@ -91,7 +92,7 @@ export const AdminPublisherAdd = () => {
                                 name="country"
                                 className={formInputClass}
                                 onChange={(e) => setCountry_id(e.target.value)}>
-                                <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                                <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                                 {printOptions(countryData)}
                             </select>
                         }
@@ -103,14 +104,14 @@ export const AdminPublisherAdd = () => {
                                     country_id: country_id
                                 }, setInformationMessage).then(() => resetAddPublisherForm())}
                                 disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
-                            {LABELS_AND_HEADINGS.ADD}
+                            {LABELS.COMMON.ADD}
                         </button>
                         <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddPublisherForm}>
                             {LABELS_AND_HEADINGS.RESET_FORM}
                         </button>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS_AND_HEADINGS.BACK}/>
+                                    label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../helpers/constants";
+import {LABELS_AND_HEADINGS} from "../helpers/constants/configConstants";
 import {CustomSpinner} from "./minis/CustomSpinner";
 import {NoDataAvailable} from "./minis/NoDataAvailable";
 import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "../services/imageService";
@@ -7,6 +7,7 @@ import {IconButton} from "./minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {useAppContext} from "../context/AppContext";
 import {Icon, imageIcon} from "./icons";
+import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ImageUploader = ({
@@ -52,7 +53,7 @@ export const ImageUploader = ({
     return (
         <>
             <div className={"mb-3"}>
-                <h2>{LABELS_AND_HEADINGS.IMAGE}</h2>
+                <h2>{LABELS.COMMON.IMAGE}</h2>
                 {
                     imageUrl ?
                         <>
@@ -62,7 +63,7 @@ export const ImageUploader = ({
                                 className="w-100 mb-3 bg-light"
                             />
                             <p>{imageFilename}</p>
-                            <IconButton variant={"danger"} icon={faTrashCan} onClick={handleDeleteImage} label={LABELS_AND_HEADINGS.DELETE_IMAGE}/>
+                            <IconButton variant={"danger"} icon={faTrashCan} onClick={handleDeleteImage} label={LABELS.COMMON.DELETE_IMAGE}/>
                         </>
                         :
                         <>

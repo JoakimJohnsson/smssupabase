@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TABLES, TEXTS} from "../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {
@@ -17,6 +18,7 @@ import {Accordion} from "react-bootstrap";
 import AccordionHeader from "react-bootstrap/AccordionHeader";
 import AccordionBody from "react-bootstrap/AccordionBody";
 import AccordionItem from "react-bootstrap/AccordionItem";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const GradeValues = () => {
@@ -58,7 +60,7 @@ export const GradeValues = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.GRADE_VALUES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.GRADES.GRADE_VALUES}/>
                     <FilterFormFormat
                         setSearchParams={setSearchParams}
                         query={query}

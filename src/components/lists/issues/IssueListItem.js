@@ -1,6 +1,7 @@
 import React from "react";
 import {IssueLink} from "./IssueLink";
-import {BUCKETS, ROUTES, TABLES} from "../../../helpers/constants";
+import {ROUTES} from "../../../helpers/constants/configConstants";
+import {BUCKETS, TABLES} from "../../../helpers/constants/serviceConstants";
 import {ListToolBox} from "../ListToolBox";
 import {getIssueName, hasImage} from "../../../helpers/functions";
 import {useAppContext} from "../../../context/AppContext";

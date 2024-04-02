@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, MESSAGES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {isSKGradeName, isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft, faPlus, faTimes} from "@fortawesome/pro-regular-svg-icons";
@@ -8,6 +9,7 @@ import {useAppContext} from "../../../../context/AppContext";
 import {updateGradeValuesValues} from "../../../../services/collectingService";
 import {editIcon, saveIcon} from "../../../icons";
 import {deleteAllGradeValuesForIssue, insertAllGradeValuesForIssue} from "../../../../helpers/databaseFunctions";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeValues, fetchGradeValues}) => {
@@ -43,12 +45,12 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                 <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
                 {
                     <div className={"mb-4"}>
-                        <h3>{LABELS_AND_HEADINGS.ADD_GRADE_VALUE}</h3>
+                        <h3>{LABELS.SECTIONS.GRADES.ADD_GRADE_VALUE_VALUES}</h3>
                         {
                             gradeValues && gradeValues.length === 0 ?
                                 <>
                                     <p>{TEXTS.GRADE_ADD_VALUE_TEXT}</p>
-                                    <IconButton variant={"primary"} onClick={() => insertAllGradeValuesForIssue(issue.id, fetchGradeValues)} label={LABELS_AND_HEADINGS.ADD} icon={faPlus}/>
+                                    <IconButton variant={"primary"} onClick={() => insertAllGradeValuesForIssue(issue.id, fetchGradeValues)} label={LABELS.COMMON.ADD} icon={faPlus}/>
                                 </>
                                 :
                                 <>
@@ -62,7 +64,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                 {
                     gradeValues && !!gradeValues.length &&
                     <>
-                        <h3>{LABELS_AND_HEADINGS.EDIT_GRADE_VALUE}</h3>
+                        <h3>{LABELS.SECTIONS.GRADES.EDIT_GRADE_VALUE_VALUES}</h3>
                         {gradeValues.sort((a, b) => {
                            return (a.grade - b.grade);
                         }).map((gradeValue) => {
@@ -72,7 +74,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                                     <input
                                         id={gradeValue.id}
                                         name={gradeValue.id}
-                                        className={CLASSES.FORM_INPUT_DEFAULT}
+                                        className={"form-input--default"}
                                         type="number"
                                         step={"10"}
                                         min={0}
@@ -96,15 +98,15 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                                 <>
                                     <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                                     <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
-                                        {LABELS_AND_HEADINGS.ABORT}
+                                        {LABELS.COMMON.ABORT}
                                     </button>
                                 </>
                                 :
                                 <>
-                                    <IconButton variant={"primary"} onClick={() => setSearchParams({editgradevalue: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
+                                    <IconButton variant={"primary"} onClick={() => setSearchParams({editgradevalue: true})} label={LABELS.COMMON.EDIT} icon={editIcon}/>
                                     <IconButton variant={"outline-primary"} icon={faArrowLeft}
                                                 onClick={() => navigate(`/admin/titles/${issue.title_id}`)}
-                                                label={LABELS_AND_HEADINGS.BACK_TO + " " + title.name}/>
+                                                label={LABELS.COMMON.BACK_TO + " " + title.name}/>
                                 </>
                         }
                     </>

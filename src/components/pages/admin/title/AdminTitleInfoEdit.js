@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CLASSES, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {updateTitleData} from "../../../../services/titleService";
@@ -8,6 +8,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {editIcon, saveIcon} from "../../../icons";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => {
@@ -34,42 +35,42 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.EDIT_INFORMATION}</h2>
-                <label className={"form-label"} htmlFor="name">{LABELS_AND_HEADINGS.NAME_DB}</label>
+                <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
+                <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
                 <input
                     id={"name"}
                     name={"name"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newTitle.name || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="description">{LABELS_AND_HEADINGS.DESCRIPTION_DB}</label>
+                <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
                 <input
                     id={"description"}
                     name={"description"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newTitle.description || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="wikiurl">{LABELS_AND_HEADINGS.WIKI_URL_DB}</label>
+                <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
                 <input
                     id={"wikiurl"}
                     name={"wiki_url"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newTitle.wiki_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="comicsorgurl">{LABELS_AND_HEADINGS.COMICS_ORG_URL_DB}</label>
+                <label className={"form-label"} htmlFor="comicsorgurl">{LABELS.SECTIONS.TITLES.COMICS_ORG_URL_DB}</label>
                 <input
                     id={"comicsorgurl"}
                     name={"comics_org_url"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type={"text"}
                     value={newTitle.comics_org_url || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
@@ -79,17 +80,17 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"startyear"}
                     name={"start_year"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     value={newTitle.start_year || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="endyear">{LABELS_AND_HEADINGS.END_YEAR_DB}</label>
+                <label className={"form-label"} htmlFor="endyear">{LABELS.SECTIONS.TITLES.END_YEAR_DB}</label>
                 <input
                     id={"endyear"}
                     name={"end_year"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     value={newTitle.end_year || ""}
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
@@ -105,7 +106,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         value={newTitle.format_id}
                         disabled={!edit || loading}
                         onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}>
-                        <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                        <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                         {printOptions(formatData)}
                     </select>
                 }
@@ -113,7 +114,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 <input
                     id={"totalissues"}
                     name={"total_issues"}
-                    className={CLASSES.FORM_INPUT_DEFAULT}
+                    className={"form-input--default"}
                     type="number"
                     min="1"
                     value={newTitle.total_issues || ""}
@@ -125,14 +126,14 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         <>
                             <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
-                                {LABELS_AND_HEADINGS.ABORT}
+                                {LABELS.COMMON.ABORT}
                             </button>
                         </>
                         :
                         <>
-                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS_AND_HEADINGS.EDIT} icon={editIcon}/>
+                            <IconButton variant={"primary"} onClick={() => setSearchParams({edit: true})} label={LABELS.COMMON.EDIT} icon={editIcon}/>
                             <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => navigate(ROUTES.ADMIN.TITLES)}
-                                        label={LABELS_AND_HEADINGS.ALL_TITLES}/>
+                                        label={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                         </>
                 }
             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {Icon} from "../icons";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants";
 import {useNavigate} from "react-router-dom";
 import {handleBacking, sortByName} from "../../../../helpers/functions";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
@@ -8,6 +7,7 @@ import {getAllIssuesWithTitleAndPublisher} from "../../../../services/issueServi
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {HeadingWithBreadCrumbs} from "../../../headings";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminIssues = () => {
@@ -24,7 +24,7 @@ export const AdminIssues = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.ALL_ISSUES}/>
+                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
                     {
                         loading ?
                             <OverlaySpinner/>
@@ -41,7 +41,7 @@ export const AdminIssues = () => {
                             </ul>
                     }
                     <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                label={LABELS_AND_HEADINGS.BACK}/>
+                                label={LABELS.COMMON.BACK}/>
                 </div>
             </div>
         </main>

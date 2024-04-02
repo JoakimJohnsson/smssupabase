@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TABLES, TEXTS} from "../../../../helpers/constants";
+import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {Link} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {MessagesList} from "../../../message/MessagesList";
 import {filterGlobalMessage} from "../../../../helpers/functions";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const MessagesSection = () => {
@@ -27,7 +29,7 @@ export const MessagesSection = () => {
     return (
         <div className={"sms-page-col--full mb-5 "}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.MESSAGES}</h2>
+                <h2>{LABELS.SECTIONS.MESSAGES.MESSAGES}</h2>
                 {
                     limitedMessagesData ?
                         <>

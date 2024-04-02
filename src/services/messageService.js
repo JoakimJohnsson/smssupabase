@@ -1,5 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
-import {TABLES} from "../helpers/constants";
+import {TABLES} from "../helpers/constants/serviceConstants";
+
 
 export const addMessageData = async (data, setInformationMessage) => {
     try {

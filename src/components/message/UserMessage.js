@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants";
+import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {FunctionButton} from "../minis/FunctionButton";
 import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
@@ -8,9 +8,10 @@ import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
-export const AddUserMessage = ({
+export const UserMessage = ({
                                    topic_id,
                                    setTopic_id,
                                    text,
@@ -35,15 +36,15 @@ export const AddUserMessage = ({
                 variant={"primary"}
                 icon={open ? faTimes : faMessages}
                 onClick={() => setOpen(!open)}
-                label={open ? LABELS_AND_HEADINGS.MESSAGES_CLOSE : LABELS_AND_HEADINGS.MESSAGES_SHOW}
+                label={open ? LABELS.SECTIONS.MESSAGES.MESSAGE_CLOSE : LABELS.SECTIONS.MESSAGES.MESSAGE_SHOW}
                 id={"message-form-toggler"}
                 showLabel={true}
             />
             {
                 open &&
-                <div className={"sms-section--light primary mb-3"}>
+                <div className={"sms-section--light primary mb-3 p-3"}>
                     <h2>{LABELS_AND_HEADINGS.MESSAGE_ADMIN_CREATE}</h2>
-                    <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.MESSAGE_TITLE}</label>
+                    <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
                     <p className={"h5 text-black"}>
                         {
                             topic_id &&
@@ -66,7 +67,7 @@ export const AddUserMessage = ({
                                 handleInput(e, setTopic_id);
                                 updateTitle(e);
                             }}>
-                            <option value={""}>{LABELS_AND_HEADINGS.CHOOSE}</option>
+                            <option value={""}>{LABELS.COMMON.CHOOSE}</option>
                             {printOptions(topicData.filter((t) => t.isGlobal === false))}
                         </select>
                     }
@@ -81,7 +82,7 @@ export const AddUserMessage = ({
                         />
                         <label className={"form-label"} htmlFor="useThisObject">{LABELS_AND_HEADINGS.MESSAGE_USE_THIS_OBJECT}</label>
                     </div>
-                    <label className={"form-label"} htmlFor="text">{LABELS_AND_HEADINGS.MESSAGE}</label>
+                    <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
                     <textarea
                         className={formInputClass}
                         placeholder={LABELS_AND_HEADINGS.ADD_MESSAGE_PLACEHOLDER}
