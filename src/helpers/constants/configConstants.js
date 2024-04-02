@@ -227,8 +227,8 @@ export const TEXTS = {
     USERS_COUNT_TEXT_1: "Totalt finns det ",
     USERS_COUNT_TEXT_2: "användare.",
     TOTAL_PUBLISHED: "Totalt gavs det ut",
-    TOTAL_PUBLISHED_PUBLICATION: "publikation.",
-    TOTAL_PUBLISHED_PUBLICATIONS: "publikationer.",
+    TOTAL_PUBLISHED_PUBLICATION: "publikation som kan vara intressant för marvelsamlare.",
+    TOTAL_PUBLISHED_PUBLICATIONS: "publikationer som kan vara intressanta för marvelsamlare.",
     UTILS: "Speciella funktioner för förbättrade användarupplevelser.",
     UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
 }
