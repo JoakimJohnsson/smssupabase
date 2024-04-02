@@ -7,7 +7,7 @@ import {TABLES} from "../../helpers/constants/serviceConstants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
-import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions";
+import {getCalculatedYear, getTitleProgressForUser, trimAndReplace} from "../../helpers/functions";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
@@ -174,7 +174,7 @@ export const Title = () => {
                                     </p>
                                 }
                                 <p>
-                                    <a href={"https://seriekatalogen.se"} target={"_blank"} rel={"noreferrer"}>
+                                    <a href={"https://seriekatalogen.se/title/#" + trimAndReplace(title.name, "_")} target={"_blank"} rel={"noreferrer"}>
                                         Seriekatalogen
                                         <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                     </a>
