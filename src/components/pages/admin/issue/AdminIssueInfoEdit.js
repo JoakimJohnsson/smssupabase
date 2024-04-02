@@ -120,6 +120,16 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
+                <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
+                <textarea
+                    id={"description"}
+                    name={"description"}
+                    className={"form-input--default"}
+                    rows={3}
+                    value={newIssue.description || ""}
+                    onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
+                    disabled={!edit || loading}
+                />
                 <label className={"form-label mb-0"} htmlFor="source">{LABELS_AND_HEADINGS.SOURCE_DB}</label>
                 <p className={"form-text"}>{LABELS_AND_HEADINGS.SOURCE_EXAMPLE}</p>
                 <textarea

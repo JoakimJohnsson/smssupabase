@@ -48,6 +48,7 @@ export const AdminTitle = () => {
     const [year, setYear] = useState(1975);
     const [number, setNumber] = useState(1);
     const [source, setSource] = useState("");
+    const [description, setDescription] = useState("");
     const [is_marvelklubben, setIs_marvelklubben] = useState(0);
     const [is_variant, setIs_variant] = useState(0);
     const [is_valued, setIs_valued] = useState(0);
@@ -322,6 +323,15 @@ export const AdminTitle = () => {
                                             min={1}
                                             onChange={(e) => handleInput(e, setNumber)}
                                         />
+                                        <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
+                                        <textarea
+                                            id={"description"}
+                                            name={"description"}
+                                            className={"form-input--default"}
+                                            rows={3}
+                                            value={description || ""}
+                                            onChange={(e) => handleInput(e, setDescription)}
+                                        />
                                         <label className={"form-label mb-0"} htmlFor="source">{LABELS_AND_HEADINGS.SOURCE_DB}</label>
                                         <p className={"form-text"}>{LABELS_AND_HEADINGS.SOURCE_EXAMPLE}</p>
                                         <textarea
@@ -395,6 +405,7 @@ export const AdminTitle = () => {
                                                     publisher_id: publisher_id,
                                                     year: year,
                                                     number: number,
+                                                    description: description,
                                                     source: source,
                                                     is_marvelklubben: is_marvelklubben,
                                                     marvelklubben_number: marvelklubben_number,

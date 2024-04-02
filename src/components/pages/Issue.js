@@ -270,6 +270,10 @@ export const Issue = () => {
                                     <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                 </div>
                                 <div className={"mb-4"}>
+                                    {
+                                        issue.description &&
+                                        <p className={"lead mb-4"}>{issue.description}</p>
+                                    }
                                     <h2>{issue.titles.name}</h2>
                                     <p className={"mb-4"}>{issue.titles.description}</p>
                                     <h2>{issue.publishers.name}</h2>
