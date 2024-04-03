@@ -20,7 +20,7 @@ export const OtherCollectionsPane = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={PANES.OTHER_COLLECTIONS.NAME}/>
+            <HeadingWithBreadCrumbs text={PANES.COLLECTIONS.NAME}/>
             {
                 loading ?
                     <OverlaySpinner/>

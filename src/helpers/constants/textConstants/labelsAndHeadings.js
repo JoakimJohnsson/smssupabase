@@ -110,7 +110,7 @@ export const BREADCRUMB_NAMES = {
     MARVELKLUBBEN: "Marvelklubben",
     MESSAGES: "Meddelanden",
     MY_TITLES: "Mina titlar",
-    OTHER_COLLECTIONS: "Andra samlingar",
+    COLLECTIONS: "Samlingar",
     OVERVIEW: "Översikt",
     PROFILE: "Inställningar",
     PUBLISHERS: "Alla förlag",

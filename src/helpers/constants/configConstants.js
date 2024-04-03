@@ -254,8 +254,8 @@ export const ROUTES = {
         PATH_OVERVIEW: "/dashboard/overview",
         MY_TITLES: "my-titles",
         PATH_MY_TITLES: "/dashboard/my-titles",
-        OTHER_COLLECTIONS: "other-collections",
-        PATH_OTHER_COLLECTIONS: "/dashboard/other-collections",
+        COLLECTIONS: "collections",
+        PATH_COLLECTIONS: "/dashboard/collections",
         VALUATION: "valuation",
         PATH_VALUATION: "/dashboard/valuation"
     },

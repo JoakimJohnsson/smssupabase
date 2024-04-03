@@ -161,8 +161,8 @@ export const Home = () => {
                         <IconLinkCtaLg
                             variant={"info"}
                             icon={otherCollectionsIconDuoTone}
-                            path={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS}
-                            label={PANES.OTHER_COLLECTIONS.NAME}
+                            path={ROUTES.DASHBOARD.PATH_COLLECTIONS}
+                            label={PANES.COLLECTIONS.NAME}
                         />
                     </div>
                 </div>

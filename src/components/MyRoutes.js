@@ -53,7 +53,7 @@ export const MyRoutes = () => {
                     <Route path={ROUTES.DASHBOARD.OVERVIEW} element={user && user.id ? <OverviewPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={ROUTES.DASHBOARD.VALUATION} element={user && user.id ? <ValuationPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={ROUTES.DASHBOARD.MY_TITLES} element={user && user.id ? <MyTitlesPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
-                    <Route path={ROUTES.DASHBOARD.OTHER_COLLECTIONS}
+                    <Route path={ROUTES.DASHBOARD.COLLECTIONS}
                            element={user && user.id ? <OtherCollectionsPane/> : <Navigate replace to={ROUTES.DEFAULT}/>}/>
                     <Route path={"*"} element={<p>No match!</p>}/>
                 </Route>
