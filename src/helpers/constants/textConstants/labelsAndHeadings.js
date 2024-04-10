@@ -29,6 +29,7 @@ export const LABELS = {
         ID: "Id",
         IMAGE: "Bild",
         INFORMATION: "Information",
+        LINKS: "Länkar",
         LIST_VIEW_GRADE_VALUE_HIDE: "Dölj skickvärdering",
         LIST_VIEW_GRADE_VALUE_SHOW: "Visa skickvärdering",
         LIST_VIEW_GRID_SHOW: "Visa som grid",

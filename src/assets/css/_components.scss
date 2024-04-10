@@ -45,9 +45,6 @@
   min-height: $main-content-min-height;
   h1, .h1 {
     margin-bottom: 3rem;
-    @include media-breakpoint-up(sm) {
-      margin-bottom: 1rem;
-    }
   }
   .row-padding--main {
     @extend .px-3, .py-5, .p-sm-5;

@@ -269,7 +269,7 @@ export const Issue = () => {
                                     }
                                     <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                 </div>
-                                <div className={"mb-4"}>
+                                <div className={"mb-5"}>
                                     {
                                         issue.description &&
                                         <p className={"lead mb-4"}>{issue.description}</p>
@@ -278,24 +278,21 @@ export const Issue = () => {
                                     <p className={"mb-4"}>{issue.titles.description}</p>
                                     <h2>{issue.publishers.name}</h2>
                                     <div className={"mb-4"}>
-                                        <p>{issue.publishers.description}</p>
+                                        <p className={"mb-4"}>{issue.publishers.description}</p>
+                                        <h2>{LABELS.COMMON.LINKS}</h2>
                                         {
                                             issue.titles.wiki_url &&
-                                            <p>
-                                                <a href={issue.titles.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                                    {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue.titles.name}
-                                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                                </a>
-                                            </p>
+                                            <a className={"d-block"} href={issue.titles.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                                {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue.titles.name}
+                                                <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                            </a>
                                         }
                                         {
                                             issue.titles.comics_org_url &&
-                                            <p>
-                                                <a href={issue.titles.comics_org_url} target={"_blank"} rel={"noreferrer"}>
-                                                    {issue.titles.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
-                                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                                </a>
-                                            </p>
+                                            <a className={"d-block"} href={issue.titles.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                                {issue.titles.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                                <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                            </a>
                                         }
                                     </div>
                                     {
@@ -310,7 +307,8 @@ export const Issue = () => {
                                         <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                             <caption>
                                                 <p className={"mb-0"}>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {displayName}</p>
-                                                <a href={"https://seriekatalogen.se/title/#" + trimAndReplace(issue.titles.name, "_")} target={"_blank"} rel={"noreferrer"}>
+                                                <a href={"https://seriekatalogen.se/title/#" + trimAndReplace(issue.titles.name, "_")}
+                                                   target={"_blank"} rel={"noreferrer"}>
                                                     {issue.titles.name} hos Seriekatalogen
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
