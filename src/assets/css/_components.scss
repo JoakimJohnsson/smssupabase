@@ -77,7 +77,7 @@
     background-color: $color-bg-horse;
   }
   &.section--grade {
-    @extend .rounded-3, .border, .border-grade;
+    @extend .rounded-3, .border, .border-grade, .p-3;
   }
   .form-control, .form-select {
     border-bottom: 3px solid $gray-600;

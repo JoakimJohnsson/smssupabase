@@ -3,7 +3,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {useNavigate, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../helpers/constants/configConstants";
 import {TABLES} from "../../helpers/constants/serviceConstants";
-import {getIssueName, renderGradeValue, trimAndReplace} from "../../helpers/functions";
+import {getIssueName, renderGradeValue, trimAndReplace, trimAndReplaceSwedishCharacters} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -42,6 +42,7 @@ import {
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 
 
 export const Issue = () => {
@@ -307,11 +308,7 @@ export const Issue = () => {
                                         <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                             <caption>
                                                 <p className={"mb-0"}>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {displayName}</p>
-                                                <a href={"https://seriekatalogen.se/title/#" + trimAndReplace(issue.titles.name, "_")}
-                                                   target={"_blank"} rel={"noreferrer"}>
-                                                    {issue.titles.name} hos Seriekatalogen
-                                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                                </a>
+                                                <SeriekatalogenTitleLink titleName={issue.titles.name}/>
                                             </caption>
                                             <thead>
                                             <tr>

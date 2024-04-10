@@ -26,6 +26,7 @@ import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoT
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 
 
 export const Title = () => {
@@ -169,6 +170,9 @@ export const Title = () => {
                                         <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                     </a>
                                 }
+
+                                <SeriekatalogenTitleLink titleName={title.name}/>
+
                                 <a className={"d-block"} href={"https://seriekatalogen.se/title/#" + trimAndReplace(title.name, "_")}
                                    target={"_blank"} rel={"noreferrer"}>
                                     Seriekatalogen

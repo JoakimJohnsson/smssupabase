@@ -339,6 +339,11 @@ export const trimAndReplace = (string, replacement = "") => {
     return string.trim().toLowerCase().replaceAll(" ", replacement);
 }
 
+export const trimAndReplaceSwedishCharacters = (string, replacement = "") => {
+    let trimmedString = trimAndReplace(string, replacement)
+    return trimmedString.replaceAll("å", "a").replaceAll("ä", "a").replaceAll("ö", "o");
+}
+
 // Filter functions
 export const filterQueryByNameAndStartYear = (obj, query) => {
     return (
