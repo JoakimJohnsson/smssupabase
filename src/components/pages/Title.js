@@ -7,7 +7,7 @@ import {TABLES} from "../../helpers/constants/serviceConstants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
-import {getCalculatedYear, getTitleProgressForUser, trimAndReplace} from "../../helpers/functions";
+import {getCalculatedYear, getTitleProgressForUser} from "../../helpers/functions";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useAppContext} from "../../context/AppContext";
@@ -124,7 +124,7 @@ export const Title = () => {
                             <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             </div>
-                            <div className={"col-12 col-lg-5 col-xl-3 mb-5"}>
+                            <div className={"col-12 col-lg-5 col-xl-4 mb-5"}>
                                 <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
                                 {
                                     titleProgress.progress === 0 ?
@@ -170,16 +170,9 @@ export const Title = () => {
                                         <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                     </a>
                                 }
-
                                 <SeriekatalogenTitleLink titleName={title.name}/>
-
-                                <a className={"d-block"} href={"https://seriekatalogen.se/title/#" + trimAndReplace(title.name, "_")}
-                                   target={"_blank"} rel={"noreferrer"}>
-                                    Seriekatalogen
-                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                </a>
                             </div>
-                            <div className={"col-12 col-lg-7 col-xl-9"}>
+                            <div className={"col-12 col-lg-7 col-xl-8"}>
                                 <IconLink
                                     variant={"primary"}
                                     icon={titlesIconDuoTone}
