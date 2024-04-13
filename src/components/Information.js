@@ -29,6 +29,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Tydligare information om varianter i lista med skickvärderingar.</li>
                     <li className={"list-group-item px-0"}>Länk till seriekatalogen försöker nu hänvisa till rätt titel.</li>
                     <li className={"list-group-item px-0"}>Möjlighet att lägga till beskrivning på publikationer.</li>
+                    <li className={"list-group-item px-0"}>Omdirigera till startsida med login om man försöker nå sida utan att vara inloggad.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

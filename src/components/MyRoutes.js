@@ -40,7 +40,6 @@ export const MyRoutes = () => {
 
     const {user, profile} = useAppContext();
 
-
     return user && profile ? (
             <Routes>
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
@@ -100,8 +99,8 @@ export const MyRoutes = () => {
                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
                 <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
-                {/* Catch all */}
-                <Route path={"*"} element={<></>}/>
+                {/* Catch all - redirect to start page with login */}
+                <Route path={"*"} element={<Navigate replace to={ROUTES.DEFAULT_LOGIN}/>}/>
             </Routes>
         )
 }
