@@ -189,10 +189,9 @@ input[type="checkbox"] + label {
 
 .sms-list--with-cards {
   @extend .row, .list-unstyled;
-
   li {
     &.title-card {
-      @extend .col-12, .col-lg-6, .col-xl-12, .col-xxl-6, .mb-4;
+      @extend .col-12, .col-md-6, .col-xl-4, .col-xxl-6, .mb-5;
       &.simple {
         @extend .col-12, .col-md-6, .col-lg-4, .col-xxl-3;
       }

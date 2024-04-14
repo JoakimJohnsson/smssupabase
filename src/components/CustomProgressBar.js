@@ -1,10 +1,9 @@
 import React from "react";
 
 
-const CustomProgressBar = ({label, variant, valueNow}) => {
-
+const CustomProgressBar = ({rounded = true, label, variant, valueNow}) => {
     return (
-        <div className="progress">
+        <div className={`progress ${!rounded && "rounded-0"}`}>
             <div
                 className={`progress-bar progress-bar-striped bg-${variant}`}
                 role="progressbar"
