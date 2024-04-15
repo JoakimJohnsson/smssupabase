@@ -36,62 +36,74 @@ import {GradeValues} from "../pages/GradeValues";
 import {ValuationPane} from "../dashboard/dashboardTabPanes/Valuation/ValuationPane";
 import {PrivateRoute} from "./PrivateRoute";
 import {AdminRoute} from "./AdminRoute";
+import {RouteLoadingIndicator} from "./RouteLoadingIndicator";
 
 
 export const MyRoutes = () => {
 
-    const {user, profile} = useAppContext();
+    const {user, profile, evaluatingUser} = useAppContext();
 
-    return user && profile ? (
-            <Routes>
-                <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
-                <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
-                <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
+    console.log("Evaluating user - my routes: ", evaluatingUser);
 
-                {/* Private routes - USER */}
-                <Route path={ROUTES.DASHBOARD.ROOT} element={<PrivateRoute><Dashboard/></PrivateRoute>}>
-                    <Route index element={<Navigate replace to={ROUTES.DASHBOARD.OVERVIEW}/>}/>
-                    <Route path={ROUTES.DASHBOARD.OVERVIEW} element={<PrivateRoute><OverviewPane/></PrivateRoute>}/>
-                    <Route path={ROUTES.DASHBOARD.VALUATION} element={<PrivateRoute><ValuationPane/></PrivateRoute>}/>
-                    <Route path={ROUTES.DASHBOARD.MY_TITLES} element={<PrivateRoute><MyTitlesPane/></PrivateRoute>}/>
-                    <Route path={ROUTES.DASHBOARD.COLLECTIONS} element={<PrivateRoute><OtherCollectionsPane/></PrivateRoute>}/>
-                    <Route path={"*"} element={<NoMatch/>}/>
-                </Route>
-                <Route path={ROUTES.PROFILE} element={<PrivateRoute><Profile/></PrivateRoute>}/>
-                <Route path={ROUTES.TITLE_ID} element={<PrivateRoute><Title/></PrivateRoute>}/>
-                <Route path={ROUTES.TITLES} element={<PrivateRoute><Titles/></PrivateRoute>}/>
-                <Route path={ROUTES.ISSUE_ID} element={<PrivateRoute><Issue/></PrivateRoute>}/>
-                <Route path={ROUTES.ISSUES} element={<PrivateRoute><Issues/></PrivateRoute>}/>
-                <Route path={ROUTES.GRADE_VALUES} element={<PrivateRoute><GradeValues/></PrivateRoute>}/>
-                <Route path={ROUTES.PUBLISHER_ID} element={<PrivateRoute><Publisher/></PrivateRoute>}/>
-                <Route path={ROUTES.PUBLISHERS} element={<PrivateRoute><Publishers/></PrivateRoute>}/>
-                <Route path={ROUTES.USER_ID} element={<PrivateRoute><User/></PrivateRoute>}/>
-                <Route path={ROUTES.USERS} element={<PrivateRoute><Users/></PrivateRoute>}/>
-                <Route path={ROUTES.MARVELKLUBBEN} element={<PrivateRoute><Marvelklubben/></PrivateRoute>}/>
-
-                {/* Private routes - USER + ADMIN */}
-                <Route path={ROUTES.ADMIN.ROOT} element={<AdminRoute><Admin/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.PUBLISHER_ID} element={<AdminRoute><AdminPublisher/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.PUBLISHERS} element={<AdminRoute><AdminPublishers/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.PUBLISHER_ADD} element={<AdminRoute><AdminPublisherAdd/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.TITLE_ID} element={<AdminRoute><AdminTitle/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.TITLES} element={<AdminRoute><AdminTitles/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.TITLE_ADD} element={<AdminRoute><AdminTitleAdd/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.ISSUE_ID} element={<AdminRoute><AdminIssue/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.ISSUES} element={<AdminRoute><AdminIssues/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.USERS} element={<AdminRoute><AdminUsers/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.MESSAGE_ID} element={<AdminRoute><AdminMessage/></AdminRoute>}/>
-                <Route path={ROUTES.ADMIN.MESSAGES} element={<AdminRoute><AdminMessages/></AdminRoute>}/>
-                <Route path={"*"} element={<NoMatch/>}/>
-            </Routes>
-        )
-        :
-        (
-            <Routes>
-                <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
-                <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
-                <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
-                <Route path={"*"} element={<Navigate replace to={ROUTES.DEFAULT}/>}/>
-            </Routes>
-        )
+    return (
+        <Routes>
+            {
+                evaluatingUser ?
+                    (
+                        <Route path="*" element={<RouteLoadingIndicator/>}/>
+                    )
+                    :
+                    user && profile ?
+                        (
+                            <>
+                                <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
+                                <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
+                                <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
+                                <Route path={ROUTES.DASHBOARD.ROOT} element={<PrivateRoute><Dashboard/></PrivateRoute>}>
+                                    <Route index element={<Navigate replace to={ROUTES.DASHBOARD.OVERVIEW}/>}/>
+                                    <Route path={ROUTES.DASHBOARD.OVERVIEW} element={<PrivateRoute><OverviewPane/></PrivateRoute>}/>
+                                    <Route path={ROUTES.DASHBOARD.VALUATION} element={<PrivateRoute><ValuationPane/></PrivateRoute>}/>
+                                    <Route path={ROUTES.DASHBOARD.MY_TITLES} element={<PrivateRoute><MyTitlesPane/></PrivateRoute>}/>
+                                    <Route path={ROUTES.DASHBOARD.COLLECTIONS} element={<PrivateRoute><OtherCollectionsPane/></PrivateRoute>}/>
+                                    <Route path={"*"} element={<NoMatch/>}/>
+                                </Route>
+                                <Route path={ROUTES.PROFILE} element={<PrivateRoute><Profile/></PrivateRoute>}/>
+                                <Route path={ROUTES.TITLE_ID} element={<PrivateRoute><Title/></PrivateRoute>}/>
+                                <Route path={ROUTES.TITLES} element={<PrivateRoute><Titles/></PrivateRoute>}/>
+                                <Route path={ROUTES.ISSUE_ID} element={<PrivateRoute><Issue/></PrivateRoute>}/>
+                                <Route path={ROUTES.ISSUES} element={<PrivateRoute><Issues/></PrivateRoute>}/>
+                                <Route path={ROUTES.GRADE_VALUES} element={<PrivateRoute><GradeValues/></PrivateRoute>}/>
+                                <Route path={ROUTES.PUBLISHER_ID} element={<PrivateRoute><Publisher/></PrivateRoute>}/>
+                                <Route path={ROUTES.PUBLISHERS} element={<PrivateRoute><Publishers/></PrivateRoute>}/>
+                                <Route path={ROUTES.USER_ID} element={<PrivateRoute><User/></PrivateRoute>}/>
+                                <Route path={ROUTES.USERS} element={<PrivateRoute><Users/></PrivateRoute>}/>
+                                <Route path={ROUTES.MARVELKLUBBEN} element={<PrivateRoute><Marvelklubben/></PrivateRoute>}/>
+                                {/* Private routes - USER + ADMIN */}
+                                <Route path={ROUTES.ADMIN.ROOT} element={<AdminRoute><Admin/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.PUBLISHER_ID} element={<AdminRoute><AdminPublisher/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.PUBLISHERS} element={<AdminRoute><AdminPublishers/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.PUBLISHER_ADD} element={<AdminRoute><AdminPublisherAdd/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.TITLE_ID} element={<AdminRoute><AdminTitle/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.TITLES} element={<AdminRoute><AdminTitles/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.TITLE_ADD} element={<AdminRoute><AdminTitleAdd/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.ISSUE_ID} element={<AdminRoute><AdminIssue/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.ISSUES} element={<AdminRoute><AdminIssues/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.USERS} element={<AdminRoute><AdminUsers/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.MESSAGE_ID} element={<AdminRoute><AdminMessage/></AdminRoute>}/>
+                                <Route path={ROUTES.ADMIN.MESSAGES} element={<AdminRoute><AdminMessages/></AdminRoute>}/>
+                                <Route path={"*"} element={<NoMatch/>}/>
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
+                                <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
+                                <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
+                                <Route path={"*"} element={<Navigate replace to={ROUTES.DEFAULT}/>}/>
+                            </>
+                        )
+            }
+        </Routes>
+    );
 }

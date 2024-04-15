@@ -13,6 +13,7 @@ export function AppContextProvider({children}) {
 
     // Global states
     const [user, setUser] = useState(null);
+    const [evaluatingUser, setEvaluatingUser] = useState(true);
     const [activeGlobalMessages, setActiveGlobalMessages] = useState(null);
     const [unreadMessages, setUnreadMessages] = useState(null);
     const [todoMessages, setTodoMessages] = useState(null);
@@ -34,33 +35,28 @@ export function AppContextProvider({children}) {
 
     useEffect(() => {
         // Check active session and sets the user
-        supabase.auth.getSession().then(({data: {session}}) => {
-            if (session && session.user) {
-                setUser(session.user)
-            }
-        })
-    }, []);
-
-    useEffect(() => {
-        // Check active session and sets the user
+        setEvaluatingUser(true);
         supabase.auth.getSession().then(({data: {session}}) => {
             if (session && session.user) {
                 setUser(session.user);
                 fetchProfileData(session.user.id);
             }
+            setEvaluatingUser(false);
         })
     }, [fetchProfileData]);
 
     useEffect(() => {
         // Listen for changes on auth state. Log in/out etc.
         supabase.auth.onAuthStateChange((event, session) => {
+            setEvaluatingUser(true);
                 setUser(session?.user ?? null);
                 if (session && session.user) {
                     fetchProfileData(session.user.id);
                 }
+                setEvaluatingUser(false);
             }
         )
-    }, [fetchProfileData])
+    }, [fetchProfileData]);
 
     // Public wrapper for setting messages:
     const setInformationMessage = useCallback((msg) => {
@@ -115,6 +111,7 @@ export function AppContextProvider({children}) {
         setInformationMessage: setInformationMessage,
         user,
         setUser,
+        evaluatingUser,
         showUserNotification,
         showAdminNotification,
         showAdminTodoNotification,
