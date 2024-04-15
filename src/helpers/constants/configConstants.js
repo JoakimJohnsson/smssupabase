@@ -235,7 +235,6 @@ export const TEXTS = {
 
 export const ROUTES = {
     DEFAULT: "/",
-    DEFAULT_LOGIN: "/#login-section",
     SUCCESS: "/success",
     PROFILE: "/profile",
     CHANGE_PASSWORD: "/change-password",
