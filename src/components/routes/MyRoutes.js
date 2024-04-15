@@ -31,19 +31,17 @@ import {User} from "../pages/User";
 import {Users} from "../pages/Users";
 import {AdminMessages} from "../pages/admin/message/AdminMessages";
 import {AdminMessage} from "../pages/admin/message/AdminMessage";
-import {NoMatch} from "../pages/NoMatch";
 import {GradeValues} from "../pages/GradeValues";
 import {ValuationPane} from "../dashboard/dashboardTabPanes/Valuation/ValuationPane";
 import {PrivateRoute} from "./PrivateRoute";
 import {AdminRoute} from "./AdminRoute";
 import {RouteLoadingIndicator} from "./RouteLoadingIndicator";
+import {CatchAll} from "./CatchAll";
 
 
 export const MyRoutes = () => {
 
     const {user, profile, evaluatingUser} = useAppContext();
-
-    console.log("Evaluating user - my routes: ", evaluatingUser);
 
     return (
         <Routes>
@@ -65,7 +63,7 @@ export const MyRoutes = () => {
                                     <Route path={ROUTES.DASHBOARD.VALUATION} element={<PrivateRoute><ValuationPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.MY_TITLES} element={<PrivateRoute><MyTitlesPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.COLLECTIONS} element={<PrivateRoute><OtherCollectionsPane/></PrivateRoute>}/>
-                                    <Route path={"*"} element={<NoMatch/>}/>
+                                    <Route path={"*"} element={<CatchAll/>}/>
                                 </Route>
                                 <Route path={ROUTES.PROFILE} element={<PrivateRoute><Profile/></PrivateRoute>}/>
                                 <Route path={ROUTES.TITLE_ID} element={<PrivateRoute><Title/></PrivateRoute>}/>
@@ -91,7 +89,7 @@ export const MyRoutes = () => {
                                 <Route path={ROUTES.ADMIN.USERS} element={<AdminRoute><AdminUsers/></AdminRoute>}/>
                                 <Route path={ROUTES.ADMIN.MESSAGE_ID} element={<AdminRoute><AdminMessage/></AdminRoute>}/>
                                 <Route path={ROUTES.ADMIN.MESSAGES} element={<AdminRoute><AdminMessages/></AdminRoute>}/>
-                                <Route path={"*"} element={<NoMatch/>}/>
+                                <Route path={"*"} element={<CatchAll/>}/>
                             </>
                         )
                         :
@@ -100,7 +98,13 @@ export const MyRoutes = () => {
                                 <Route exact path={ROUTES.DEFAULT} element={<Home/>}/>
                                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
                                 <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
-                                <Route path={"*"} element={<Navigate replace to={ROUTES.DEFAULT}/>}/>
+                                <Route path={"*"} element={<CatchAll method={"Catch all"}/>}/>
+                                <Route path={ROUTES.TITLES + "/*"} element={<CatchAll/>}/>
+                                <Route path={ROUTES.ISSUES + "/*"} element={<CatchAll/>}/>
+                                <Route path={ROUTES.GRADE_VALUES + "/*"} element={<CatchAll/>}/>
+                                <Route path={ROUTES.MARVELKLUBBEN + "/*"} element={<CatchAll/>}/>
+                                <Route path={ROUTES.PUBLISHERS + "/*"} element={<CatchAll/>}/>
+                                <Route path={ROUTES.USERS + "/*"} element={<CatchAll/>}/>
                             </>
                         )
             }

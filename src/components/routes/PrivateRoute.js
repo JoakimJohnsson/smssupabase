@@ -7,12 +7,8 @@ import {RouteLoadingIndicator} from "./RouteLoadingIndicator";
 
 export const PrivateRoute = ({children}) => {
     const {user, evaluatingUser} = useAppContext();
-    let routeName = children.type.name;
-
-    console.log("Evaluating user - private route: ", evaluatingUser);
-
     if (evaluatingUser) {
-        return <RouteLoadingIndicator text={"Evaluating private route:" + routeName}/>;
+        return <RouteLoadingIndicator/>;
     }
     return user && user.id ? <>{children}</> : <Navigate to={ROUTES.DEFAULT}/>;
 };
