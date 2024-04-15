@@ -268,6 +268,10 @@ export const hasTrueValue = (stringArray) => {
     return false;
 };
 
+export const objectDoesExist = (object) => {
+    return Object.entries(object).length > 0;
+}
+
 export const listDoesExist = (list) => {
     return list && list.length > 0;
 }

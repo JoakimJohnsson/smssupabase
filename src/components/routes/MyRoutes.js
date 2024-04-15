@@ -99,12 +99,6 @@ export const MyRoutes = () => {
                                 <Route path={ROUTES.SUCCESS} element={<SignupSuccess/>}/>
                                 <Route path={ROUTES.CHANGE_PASSWORD} element={<ChangePassword/>}/>
                                 <Route path={"*"} element={<CatchAll method={"Catch all"}/>}/>
-                                <Route path={ROUTES.TITLES + "/*"} element={<CatchAll/>}/>
-                                <Route path={ROUTES.ISSUES + "/*"} element={<CatchAll/>}/>
-                                <Route path={ROUTES.GRADE_VALUES + "/*"} element={<CatchAll/>}/>
-                                <Route path={ROUTES.MARVELKLUBBEN + "/*"} element={<CatchAll/>}/>
-                                <Route path={ROUTES.PUBLISHERS + "/*"} element={<CatchAll/>}/>
-                                <Route path={ROUTES.USERS + "/*"} element={<CatchAll/>}/>
                             </>
                         )
             }
