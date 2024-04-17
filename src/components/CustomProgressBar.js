@@ -12,7 +12,12 @@ const CustomProgressBar = ({rounded = true, label, variant, valueNow}) => {
                 aria-valuenow={valueNow}
                 aria-valuemin="0"
                 aria-valuemax="100"
-            />
+            >
+                {
+                    valueNow > 33 &&
+                    label
+                }
+            </div>
         </div>
     )
 }

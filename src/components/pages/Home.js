@@ -12,7 +12,6 @@ import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../se
 import {TitlesList} from "../lists/titles/TitlesList";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueService";
-import {ProgressBar} from "react-bootstrap";
 import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {atLeastOneListDoesExist} from "../../helpers/functions";
@@ -28,6 +27,7 @@ import {
 import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import CustomProgressBar from "../CustomProgressBar";
 
 
 export const Home = () => {
@@ -70,7 +70,6 @@ export const Home = () => {
             });
         }
     }, [fetchData, user]);
-
 
     useEffect(() => {
         if (totalTitles && totalTitles > 0) {
@@ -159,7 +158,7 @@ export const Home = () => {
                             label={PANES.VALUATION.NAME}
                         />
                         <IconLinkCtaLg
-                            variant={"info"}
+                            variant={"country"}
                             icon={otherCollectionsIconDuoTone}
                             path={ROUTES.DASHBOARD.PATH_COLLECTIONS}
                             label={PANES.COLLECTIONS.NAME}
@@ -179,10 +178,9 @@ export const Home = () => {
                                     </p>
                                     {
                                         progress === 100 ?
-                                            <ProgressBar striped variant="success" now={progress}/>
+                                            <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE} variant={"success"} valueNow={progress}/>
                                             :
-                                            <ProgressBar striped variant={"grade"} now={progress}
-                                                         label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}/>
+                                            <CustomProgressBar label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""} variant={"grade"} valueNow={progress}/>
                                     }
                                 </>
                             }

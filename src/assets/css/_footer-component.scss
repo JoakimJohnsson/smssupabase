@@ -73,6 +73,12 @@
         color: $grade--lighter;
       }
     }
+    &.country {
+      color: $country;
+      &:hover, &:focus {
+        color: $country--lighter;
+      }
+    }
     &.active.primary {
       background-color: $primary--darker;
       color: $primary--lighter;
@@ -100,6 +106,10 @@
     &.active.grade {
       background-color: $grade--darker;
       color: $grade--lighter;
+    }
+    &.active.country {
+      background-color: $country--darker;
+      color: $country--lighter;
     }
     svg {
       width: 22px;
