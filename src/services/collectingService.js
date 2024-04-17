@@ -443,3 +443,22 @@ export const getUpgradeIssuesForUser = async (userId, setData) => {
         }
     }
 }
+
+export const getCollectedIssuesWithTitlesForUser = async (userId, setData) => {
+    if (userId) {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.ISSUES)
+                .select("*, users!users_issues!inner (id), titles (*)")
+                .eq("users.id", userId);
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data) {
+                setData(data);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}

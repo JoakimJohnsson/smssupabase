@@ -9,7 +9,7 @@ import {OverviewWantedIssues} from "./OverviewWantedIssues";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {OverviewValuation} from "./OverviewValuation";
-import {getCollectedIssuesForUser} from "../../../../services/collectingService";
+import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
 
 
 export const OverviewPane = () => {
@@ -27,7 +27,7 @@ export const OverviewPane = () => {
 
     useEffect(() => {
         if (user) {
-            getCollectedIssuesForUser(user.id, setUserIssuesData).then(() => setLoading(false));
+            getCollectedIssuesWithTitlesForUser(user.id, setUserIssuesData).then(() => setLoading(false));
         }
     }, [user]);
 
