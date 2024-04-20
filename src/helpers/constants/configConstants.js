@@ -1,5 +1,16 @@
 import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
+import {
+    faBat,
+    faBird,
+    faComet,
+    faHippo,
+    faRaccoon,
+    faRobotAstromech,
+    faStrawberry,
+    faTRex,
+    faUserBountyHunter
+} from "@fortawesome/pro-thin-svg-icons";
 
 // 491 rader
 export const LABELS_AND_HEADINGS = {
@@ -307,6 +318,18 @@ export const ALERT_VARIANTS = {
         icon: <Icon icon={dangerIconDuoTone} className={"fa-2xl me-3"}/>
     }
 }
+
+export const LOGO_ICONS = [
+    faBat,
+    faBird,
+    faComet,
+    faHippo,
+    faRaccoon,
+    faRobotAstromech,
+    faStrawberry,
+    faTRex,
+    faUserBountyHunter
+]
 
 export const VARIANT_MAPPER = {
     info: 1,

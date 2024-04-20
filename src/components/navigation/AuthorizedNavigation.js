@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {SignOutButton} from "../minis/SignOutButton";
 import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
@@ -10,7 +10,7 @@ import {
     Icon,
     adminIconDuoTone,
     dashboardIconDuoTone,
-    issueIconDuoTone, logoIconDuoTone,
+    issueIconDuoTone,
     marvelKlubbenIconDuoTone,
     publishersIconDuoTone,
     settingsIconDuoTone,
@@ -22,6 +22,7 @@ import {
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
 import {BREADCRUMB_NAMES, LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {NavigationLogo} from "./NavigationLogo";
 
 
 export const AuthorizedNavigation = () => {
@@ -37,16 +38,7 @@ export const AuthorizedNavigation = () => {
     return profile && (
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid px-3 pt-1">
-                <Link to={ROUTES.DEFAULT} className={"hocus-standard h-100 d-flex align-items-center"}>
-                    {/* desktop icon */}
-                    <Icon icon={logoIconDuoTone} size={"3x"} className={"mx-3 fa-swap-opacity text-grade d-none d-sm-flex"}/>
-                    {/* mobile icon */}
-                    <Icon icon={logoIconDuoTone} size={"2x"} className={"mx-2 fa-swap-opacity text-grade d-flex d-sm-none"}/>
-                    <div className={"sms-logo-text"}>
-                        <span className={"d-none d-sm-inline"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}</span>
-                        <span className={"d-inline d-sm-none"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE_SHORT}</span>
-                    </div>
-                </Link>
+                <NavigationLogo/>
                 <button
                     className={isOpen ? "btn sms-icon-btn d-block d-lg-none text-danger px-2" : "btn sms-icon-btn d-block d-lg-none text-primary px-2"}
                     onClick={handleClick}>
@@ -55,16 +47,17 @@ export const AuthorizedNavigation = () => {
                         <Icon icon={faBars} className={"fa-2xl sms-icon--hovering"}/>}
                 </button>
                 <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
-
                     {/* desktop ul (no click handler) */}
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>} text={LABELS.COMMON.HOME}
+                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>}
+                                   text={LABELS.COMMON.HOME}
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>} text={LABELS.SECTIONS.DASHBOARD.NAME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>}
+                                   text={LABELS.SECTIONS.DASHBOARD.NAME}/>
                         <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
-                                    <Icon icon={titlesIconDuoTone}  className={"me-2"}/>
+                                    <Icon icon={titlesIconDuoTone} className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS.SECTIONS.TITLES.ALL_TITLES}</span>
                                 </NavLink>
                             </NavDropdown.Item>
