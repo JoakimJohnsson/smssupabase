@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useMemo} from "react";
 import {LABELS_AND_HEADINGS, LOGO_ICONS, ROUTES} from "../../helpers/constants/configConstants";
 import {Icon} from "../icons";
 import {Link} from "react-router-dom";
@@ -6,12 +6,10 @@ import {Link} from "react-router-dom";
 
 export const NavigationLogo = () => {
 
-    const [icon, setIcon] = useState(null);
-
-    useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * LOGO_ICONS.length);
-        setIcon(LOGO_ICONS[randomIndex]);
-    }, []);
+        const icon = useMemo(() => {
+            const randomIndex = Math.floor(Math.random() * LOGO_ICONS.length);
+            return LOGO_ICONS[randomIndex];
+        }, []);
 
     return icon && (
         <Link to={ROUTES.DEFAULT} className={"hocus-standard h-100 d-flex align-items-center"}>

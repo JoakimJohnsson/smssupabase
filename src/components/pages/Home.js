@@ -73,7 +73,7 @@ export const Home = () => {
 
     useEffect(() => {
         if (totalTitles && totalTitles > 0) {
-            setProgress(Math.round(totalTitles / STATISTICS.TOTAL_TITLES_COUNT * 100));
+            setProgress(STATISTICS.TOTAL_TITLES_COUNT > 0 ? Math.round(totalTitles / STATISTICS.TOTAL_TITLES_COUNT * 100) : 0);
         }
     }, [totalTitles]);
 

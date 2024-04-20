@@ -36,7 +36,7 @@ export const OverviewIssues = ({titlesData, issuesData}) => {
         if (titlesData) {
             let totalCount;
             totalCount = getTotalIssuesCountForTitlesData(titlesData);
-            setTotalIssuesCountForCollection(totalCount || 0);
+            setTotalIssuesCountForCollection(totalCount ? totalCount : 0);
         }
     }, [titlesData]);
 
@@ -44,7 +44,7 @@ export const OverviewIssues = ({titlesData, issuesData}) => {
         if (issuesData) {
             let totalCount;
             totalCount = getTotalMarvelklubbenCountForIssuesData(issuesData);
-            setUserMarvelklubbenIssuesCount(totalCount || 0);
+            setUserMarvelklubbenIssuesCount(totalCount ? totalCount : 0);
         }
     }, [issuesData]);
 
@@ -62,7 +62,7 @@ export const OverviewIssues = ({titlesData, issuesData}) => {
                     userIssuesCount ?
                         <>
                             <p>
-                                {PANES.OVERVIEW.COLLECTING_ISSUES_1} {userIssuesCount && userIssuesCount} {PANES.OVERVIEW.COLLECTING_ISSUES_2} {Math.round(userIssuesCount / totalIssuesCountForCollection * 100)}%
+                                {PANES.OVERVIEW.COLLECTING_ISSUES_1} {userIssuesCount && userIssuesCount} {PANES.OVERVIEW.COLLECTING_ISSUES_2} {STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT > 0 ? Math.round(userMarvelklubbenIssuesCount / STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT * 100) : 0}%
                                 ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                             </p>
                             <h3>{PANES.OVERVIEW.GRADE}</h3>
