@@ -8,6 +8,7 @@ import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
+import {showLessItems, showMoreItems} from "../../helpers/functions";
 
 
 export const Marvelklubben = () => {
@@ -20,22 +21,6 @@ export const Marvelklubben = () => {
     useEffect(() => {
         getAllMarvelklubbenIssues(setMarvelKlubbenData).then(() => setLoading(false));
     }, []);
-
-    const showMoreItems = () => {
-        if (filteredData.length < itemsToShow) {
-            setItemsToShow(filteredData.length - CONFIG.PAGINATION_ITEM_COUNT);
-        } else {
-            setItemsToShow(prev => prev + CONFIG.PAGINATION_ITEM_COUNT);
-        }
-    };
-
-    const showLessItems = () => {
-        if (filteredData.length < itemsToShow) {
-            setItemsToShow(filteredData.length - CONFIG.PAGINATION_ITEM_COUNT);
-        } else {
-            setItemsToShow(prev => prev - CONFIG.PAGINATION_ITEM_COUNT);
-        }
-    };
 
     const filteredData = marvelKlubbenData.filter(issue =>
         issue.titles.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -66,17 +51,19 @@ export const Marvelklubben = () => {
                                 <LazyTextPlaceholder charCount={2}/>
                         }
                         </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
-                        <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
+                        <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
                     </p>
-                    {loading ? (
+                    {loading ?
                         <OverlaySpinner/>
-                    ) : (
+                        :
                         <ul className="sms-list--with-cards">
-                            {filteredData.slice(0, itemsToShow).map(issue => (
-                                <IssueCard key={issue.id} issue={issue}/>
-                            ))}
+                            {
+                                filteredData.slice(0, itemsToShow).map(issue => (
+                                    <IssueCard key={issue.id} issue={issue}/>
+                                ))
+                            }
                         </ul>
-                    )}
+                    }
                     {
                         filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&
                         <p className={"text-uppercase fs-large placeholder-glow"}>
@@ -91,18 +78,18 @@ export const Marvelklubben = () => {
                                 <LazyTextPlaceholder charCount={2}/>
                         }
                         </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
-                            <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
+                            <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
                         </p>
                     }
                     {
                         itemsToShow < filteredData.length &&
-                        <button className={"btn btn-primary me-2"} onClick={showMoreItems}>
+                        <button className={"btn btn-primary me-2"} onClick={() => showMoreItems(filteredData, setItemsToShow)}>
                             {LABELS.COMMON.SHOW_MORE}
                         </button>
                     }
                     {
-                        (itemsToShow > CONFIG.PAGINATION_ITEM_COUNT) &&
-                        <button className={"btn btn-secondary"} onClick={showLessItems}>
+                        (itemsToShow > CONFIG.PAGINATION_ITEM_COUNT) && !(itemsToShow > filteredData.length) &&
+                        <button className={"btn btn-secondary"} onClick={() => showLessItems(filteredData, setItemsToShow, itemsToShow)}>
                             {LABELS.COMMON.SHOW_LESS}
                         </button>
                     }

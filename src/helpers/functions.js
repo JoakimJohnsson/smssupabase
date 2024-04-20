@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
+import {CONFIG, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
 import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
@@ -299,7 +299,7 @@ export const getFriendlyDateFromTimestamp = (timestamp) => {
 
 export const getTinyFriendlyDateFromTimestamp = (timestamp) => {
     const date = new Date(timestamp);
-    return date.toLocaleDateString('sv-SE', { day: 'numeric', month: 'numeric' });
+    return date.toLocaleDateString('sv-SE', {day: 'numeric', month: 'numeric'});
 }
 
 export const getAverageGrade = (grades) => {
@@ -463,3 +463,15 @@ export const renderGradeValue = (issueData, gradeName) => {
         console.error(error);
     }
 }
+
+export const showMoreItems = (data, setItemsToShow) => {
+    setItemsToShow(prev => prev + CONFIG.PAGINATION_ITEM_COUNT);
+};
+
+export const showLessItems = (data, setItemsToShow, itemsToShow) => {
+    if (data.length < itemsToShow) {
+        setItemsToShow(data.length - CONFIG.PAGINATION_ITEM_COUNT);
+    } else {
+        setItemsToShow(prev => prev - CONFIG.PAGINATION_ITEM_COUNT);
+    }
+};
