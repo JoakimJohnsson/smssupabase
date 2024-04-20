@@ -38,6 +38,8 @@ export const LABELS = {
         NAME_DB: "Namn (name)",
         NEXT: "Nästa",
         NUMBER_DB: "Nummer (number)",
+        SHOW_MORE: "Visa mer",
+        SHOW_LESS: "Visa mindre",
         WEBSITE: "Webbplats",
         WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
         YEAR_DB: "År (year)"
