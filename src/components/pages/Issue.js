@@ -166,14 +166,14 @@ export const Issue = () => {
                                             </button>
                                             :
                                             <button
-                                                aria-label={LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue.titles.name}
+                                                aria-label={LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue?.titles?.name}
                                                 className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
-                                                onClick={() => handleCollectingTitle(user.id, issue.titles.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
-                                                {LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue.titles.name}
+                                                onClick={() => handleCollectingTitle(user.id, issue?.titles?.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
+                                                {LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue?.titles?.name}
                                             </button>
                                     }
                                     {
-                                        issue.titles.total_issues > 1 &&
+                                        issue?.titles?.total_issues > 1 &&
                                         <>
                                             {
                                                 loadingButtons ?
@@ -210,14 +210,14 @@ export const Issue = () => {
                                     <IconLink
                                         variant={"primary"}
                                         icon={titleIconDuoTone}
-                                        path={`/titles/${issue.titles.id}`}
-                                        label={issue.titles.name}
+                                        path={`/titles/${issue?.titles?.id}`}
+                                        label={issue?.titles?.name}
                                     />
                                     <IconLink
                                         variant={"primary"}
                                         icon={publishersIconDuoTone}
-                                        path={`/publishers/${issue.publishers.id}`}
-                                        label={issue.publishers.name}
+                                        path={`/publishers/${issue?.publishers?.id}`}
+                                        label={issue?.publishers?.name}
                                     />
                                     {
                                         profile && profile.role >= 1 &&
@@ -237,10 +237,10 @@ export const Issue = () => {
                                             issue.is_marvelklubben === 1 &&
                                             <MarvelKlubbenBadge number={issue.marvelklubben_number}/>
                                         }
-                                        <FormatBadge formatId={issue.titles.format_id}/>
+                                        <FormatBadge formatId={issue?.titles?.format_id}/>
                                         {
                                             countryData &&
-                                            <CountryBadge countryId={issue.publishers.country_id}/>
+                                            <CountryBadge countryId={issue?.publishers?.country_id}/>
                                         }
                                         <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS_AND_HEADINGS.COPY}</span>
                                     </div>
@@ -276,23 +276,23 @@ export const Issue = () => {
                                             issue.description &&
                                             <p className={"lead mb-4"}>{issue.description}</p>
                                         }
-                                        <h2>{issue.titles.name}</h2>
-                                        <p className={"mb-4"}>{issue.titles.description}</p>
-                                        <h2>{issue.publishers.name}</h2>
+                                        <h2>{issue?.titles?.name}</h2>
+                                        <p className={"mb-4"}>{issue?.titles?.description}</p>
+                                        <h2>{issue?.publishers?.name}</h2>
                                         <div className={"mb-4"}>
-                                            <p className={"mb-4"}>{issue.publishers.description}</p>
+                                            <p className={"mb-4"}>{issue?.publishers?.description}</p>
                                             <h2>{LABELS.COMMON.LINKS}</h2>
                                             {
-                                                issue.titles.wiki_url &&
-                                                <a className={"d-block"} href={issue.titles.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                                    {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue.titles.name}
+                                                issue?.titles?.wiki_url &&
+                                                <a className={"d-block"} href={issue?.titles?.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                                    {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue?.titles?.name}
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                             }
                                             {
-                                                issue.titles.comics_org_url &&
-                                                <a className={"d-block"} href={issue.titles.comics_org_url} target={"_blank"} rel={"noreferrer"}>
-                                                    {issue.titles.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                                issue?.titles?.comics_org_url &&
+                                                <a className={"d-block"} href={issue?.titles?.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                                    {issue?.titles?.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                             }
@@ -303,13 +303,13 @@ export const Issue = () => {
                                         }
                                     </div>
                                     {
-                                        !!issue.titles.is_valued && issue.grade_values && !!issue.grade_values.length &&
+                                        !!issue?.titles?.is_valued && issue.grade_values && !!issue.grade_values.length &&
                                         <div className={"sms-section--light section--grade mb-4"}>
                                             <h2>{LABELS.SECTIONS.GRADES.GRADE_VALUE}</h2>
                                             <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                                 <caption>
                                                     <p className={"mb-0"}>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {displayName}</p>
-                                                    <SeriekatalogenTitleLink titleName={issue.titles.name}/>
+                                                    <SeriekatalogenTitleLink titleName={issue?.titles?.name}/>
                                                 </caption>
                                                 <thead>
                                                 <tr>
