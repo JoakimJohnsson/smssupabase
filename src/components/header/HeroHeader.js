@@ -29,7 +29,7 @@ export const HeroHeader = () => {
             <div className={"container-fluid"}>
                 <div className={"row"}>
                     <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
-                        <Icon icon={icon} size={"4x"} className={"me-2 fa-swap-opacity fa-icon--cta"}/>
+                        <Icon icon={icon} size={"4x"} className={"fa-icon--cta"}/>
                         <h1 className={"sms-logo-text mb-5"}>
                             {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
                         </h1>

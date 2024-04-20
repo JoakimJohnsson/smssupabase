@@ -5,11 +5,10 @@ import {
     faBird,
     faComet,
     faHippo,
-    faRaccoon,
-    faRobotAstromech,
+    faStar,
     faStrawberry,
-    faTRex,
-    faUserBountyHunter
+    faSwords,
+    faTRex
 } from "@fortawesome/pro-thin-svg-icons";
 
 // 491 rader
@@ -323,12 +322,11 @@ export const LOGO_ICONS = [
     faBat,
     faBird,
     faComet,
+    faStar,
     faHippo,
-    faRaccoon,
-    faRobotAstromech,
     faStrawberry,
-    faTRex,
-    faUserBountyHunter
+    faSwords,
+    faTRex
 ]
 
 export const VARIANT_MAPPER = {
