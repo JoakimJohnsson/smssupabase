@@ -45,9 +45,6 @@
   min-height: $main-content-min-height;
   h1, .h1 {
     margin-bottom: 3rem;
-    @include media-breakpoint-up(sm) {
-      margin-bottom: 1rem;
-    }
   }
   .row-padding--main {
     @extend .px-3, .py-5, .p-sm-5;
@@ -80,7 +77,7 @@
     background-color: $color-bg-horse;
   }
   &.section--grade {
-    @extend .rounded-3, .border, .border-grade;
+    @extend .rounded-3, .border, .border-grade, .p-3;
   }
   .form-control, .form-select {
     border-bottom: 3px solid $gray-600;
@@ -192,10 +189,9 @@ input[type="checkbox"] + label {
 
 .sms-list--with-cards {
   @extend .row, .list-unstyled;
-
   li {
     &.title-card {
-      @extend .col-12, .col-lg-6, .col-xl-12, .col-xxl-6, .mb-4;
+      @extend .col-12, .col-md-6, .col-xl-4, .mb-5;
       &.simple {
         @extend .col-12, .col-md-6, .col-lg-4, .col-xxl-3;
       }

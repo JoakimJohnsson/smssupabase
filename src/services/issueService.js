@@ -259,3 +259,14 @@ export const doesIssueNeedGrading = async (issueId, userId) => {
         return false;
     }
 }
+
+export const getTotalMarvelklubbenCountForIssuesData = (issuesData) => {
+    let totalCount = 0;
+    issuesData.map((data) => {
+        if (data.is_marvelklubben === 1) {
+            totalCount++;
+        }
+        return totalCount;
+    });
+    return totalCount;
+}

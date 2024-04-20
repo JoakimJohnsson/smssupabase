@@ -9,17 +9,25 @@ import {OverviewWantedIssues} from "./OverviewWantedIssues";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {OverviewValuation} from "./OverviewValuation";
+import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
 
 
 export const OverviewPane = () => {
 
     const {user} = useAppContext();
     const [userTitlesData, setUserTitlesData] = useState(null);
+    const [userIssuesData, setUserIssuesData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (user) {
             getTitlesForUser(user.id, setUserTitlesData).then(() => setLoading(false));
+        }
+    }, [user]);
+
+    useEffect(() => {
+        if (user) {
+            getCollectedIssuesWithTitlesForUser(user.id, setUserIssuesData).then(() => setLoading(false));
         }
     }, [user]);
 
@@ -32,7 +40,7 @@ export const OverviewPane = () => {
                     :
                     <>
                         <OverviewTitles titlesData={userTitlesData}/>
-                        <OverviewIssues titlesData={userTitlesData}/>
+                        <OverviewIssues titlesData={userTitlesData} issuesData={userIssuesData}/>
                         <OverviewValuation />
                         <OverviewWantedIssues/>
                         <OverviewUpgradeIssues/>

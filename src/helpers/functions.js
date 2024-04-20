@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
+import {CONFIG, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
 import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
@@ -268,6 +268,10 @@ export const hasTrueValue = (stringArray) => {
     return false;
 };
 
+export const objectDoesExist = (object) => {
+    return Object.entries(object).length > 0;
+}
+
 export const listDoesExist = (list) => {
     return list && list.length > 0;
 }
@@ -295,7 +299,7 @@ export const getFriendlyDateFromTimestamp = (timestamp) => {
 
 export const getTinyFriendlyDateFromTimestamp = (timestamp) => {
     const date = new Date(timestamp);
-    return date.toLocaleDateString('sv-SE', { day: 'numeric', month: 'numeric' });
+    return date.toLocaleDateString('sv-SE', {day: 'numeric', month: 'numeric'});
 }
 
 export const getAverageGrade = (grades) => {
@@ -337,6 +341,11 @@ export const sortableName = (name) => {
 // Helper function for removing whitespace from strings - i.e. "My string" --> "mystring" or "my-string" if provided "-" as replacement.
 export const trimAndReplace = (string, replacement = "") => {
     return string.trim().toLowerCase().replaceAll(" ", replacement);
+}
+
+export const trimAndReplaceSwedishCharacters = (string, replacement = "") => {
+    let trimmedString = trimAndReplace(string, replacement)
+    return trimmedString.replaceAll("å", "a").replaceAll("ä", "a").replaceAll("ö", "o");
 }
 
 // Filter functions
@@ -454,3 +463,15 @@ export const renderGradeValue = (issueData, gradeName) => {
         console.error(error);
     }
 }
+
+export const showMoreItems = (data, setItemsToShow) => {
+    setItemsToShow(prev => prev + CONFIG.PAGINATION_ITEM_COUNT);
+};
+
+export const showLessItems = (data, setItemsToShow, itemsToShow) => {
+    if (data.length < itemsToShow) {
+        setItemsToShow(data.length - CONFIG.PAGINATION_ITEM_COUNT);
+    } else {
+        setItemsToShow(prev => prev - CONFIG.PAGINATION_ITEM_COUNT);
+    }
+};

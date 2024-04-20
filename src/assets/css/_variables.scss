@@ -38,6 +38,7 @@ $info--dark: scale-color($info, $lightness: $amount-less--sm);
 $warning--darker: scale-color($warning, $lightness: $amount-less--lg);
 $danger--darker: scale-color($danger, $lightness: $amount-less--lg);
 $grade--darker: scale-color($grade, $lightness: $amount-less--lg);
+$country--darker: scale-color($country, $lightness: $amount-less--lg);
 
 $primary--lighter: scale-color($primary, $lightness: $amount-more--md);
 $secondary--lighter: scale-color($secondary, $lightness: $amount-more--md);
@@ -46,6 +47,7 @@ $info--lighter: scale-color($info, $lightness: $amount-more--md);
 $warning--lighter: scale-color($warning, $lightness: $amount-more--md);
 $danger--lighter: scale-color($danger, $lightness: $amount-more--md);
 $grade--lighter: scale-color($grade, $lightness: $amount-more--md);
+$country--lighter: scale-color($country, $lightness: $amount-more--md);
 
 $color-bg-whale: scale-color($primary--darker, $lightness: $amount-less--sm, $saturation: $amount-less--lg);
 $color-bg-whale--lighter: scale-color($color-bg-whale, $lightness: 10%);
