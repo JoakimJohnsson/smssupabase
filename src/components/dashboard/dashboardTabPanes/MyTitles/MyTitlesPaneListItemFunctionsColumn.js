@@ -28,8 +28,7 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
     }, [fetchIssuesData]);
 
     return (
-        <div className={"col-12 col-xxl-6"}>
-
+        <div className={"col-12"}>
             <div className={"p-3"}>
                 {
                     gradingStatusOpen ?
@@ -58,7 +57,6 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
                         </>
                         :
                         <>
-
                             {
                                 !!titleProgress.progress ?
                                     <button onClick={() => handleCheckGradingStatus()}
@@ -81,7 +79,6 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
                         </>
                 }
             </div>
-
         </div>
     )
 }

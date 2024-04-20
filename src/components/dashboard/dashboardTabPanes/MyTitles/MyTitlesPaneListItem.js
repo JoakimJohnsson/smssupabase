@@ -6,6 +6,7 @@ import {MyTitlesPaneListItemImage} from "./MyTitlesPaneListItemImage";
 import {MyTitlesPaneListItemTitle} from "./MyTitlesPaneListItemTitle";
 import {MyTitlesPaneListItemInfoColumn} from "./MyTitlesPaneListItemInfoColumn";
 import {MyTitlesPaneListItemFunctionsColumn} from "./MyTitlesPaneListItemFunctionsColumn";
+import {Link} from "react-router-dom";
 
 
 export const MyTitlesPaneListItem = ({title}) => {
@@ -32,11 +33,14 @@ export const MyTitlesPaneListItem = ({title}) => {
 
     return (
         <li className={"title-card"}>
-            <div className={"row"}>
-                <MyTitlesPaneListItemTitle title={title}/>
-                <MyTitlesPaneListItemImage title={title}/>
-                <MyTitlesPaneListItemProgress titleProgress={titleProgress} collectTextParts={collectTextParts}/>
-                <div className={"col-12 "}>
+            <article className={"row"}>
+                <Link to={`/titles/${title.id}`} className={"hocus-standard"}
+                      title={title.name}>
+                    <MyTitlesPaneListItemTitle title={title}/>
+                    <MyTitlesPaneListItemImage title={title}/>
+                    <MyTitlesPaneListItemProgress titleProgress={titleProgress} collectTextParts={collectTextParts}/>
+                </Link>
+                <div className={"col-12"}>
                     <div className={"bg-horse"}>
                         <div className={"row"}>
                             <MyTitlesPaneListItemInfoColumn title={title} completed={completed} titleProgress={titleProgress}/>
@@ -44,7 +48,7 @@ export const MyTitlesPaneListItem = ({title}) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
         </li>
     )
 }

@@ -191,7 +191,7 @@ input[type="checkbox"] + label {
   @extend .row, .list-unstyled;
   li {
     &.title-card {
-      @extend .col-12, .col-md-6, .col-xl-4, .col-xxl-6, .mb-5;
+      @extend .col-12, .col-md-6, .col-xl-4, .mb-5;
       &.simple {
         @extend .col-12, .col-md-6, .col-lg-4, .col-xxl-3;
       }
