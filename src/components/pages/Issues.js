@@ -4,11 +4,12 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {getAllIssuesWithTitleAndPublisher} from "../../services/issueService";
-import {filterQueryIssueByTitleNamePublisherNameYearAndSource, showLessItems, showMoreItems, sortByName} from "../../helpers/functions";
+import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {IssueCard} from "../lists/issues/IssueCard";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
+import {ShowMoreButtons} from "../minis/ShowMoreButtons";
 
 
 export const Issues = () => {
@@ -20,16 +21,14 @@ export const Issues = () => {
 
     useEffect(() => {
         getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
-    }, [])
-
+    }, []);
 
     const filteredData = issuesData.filter(issue => {
-                return (
-                    filterQueryIssueByTitleNamePublisherNameYearAndSource(issue, query)
-                )
-            }
-        )
-    ;
+            return (
+                filterQueryIssueByTitleNamePublisherNameYearAndSource(issue, query)
+            )
+        }
+    );
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -84,18 +83,7 @@ export const Issues = () => {
                             <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
                         </p>
                     }
-                    {
-                        itemsToShow < filteredData.length &&
-                        <button className={"btn btn-primary me-2"} onClick={() => showMoreItems(filteredData, setItemsToShow)}>
-                            {LABELS.COMMON.SHOW_MORE}
-                        </button>
-                    }
-                    {
-                        (itemsToShow > CONFIG.PAGINATION_ITEM_COUNT) && !(itemsToShow > filteredData.length) &&
-                        <button className={"btn btn-secondary"} onClick={() => showLessItems(filteredData, setItemsToShow, itemsToShow)}>
-                            {LABELS.COMMON.SHOW_LESS}
-                        </button>
-                    }
+                    <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
                 </div>
             </div>
         </main>
