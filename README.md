@@ -13,6 +13,7 @@
     * [Update packages](#updatepackages)
     * [Recharts](#recharts)
     * [Yet another react lightbox](#lightbox)
+  * [API:s](#apis)
 * [Development](#development)
   * [Workflow](#workflow)
 * [Deployment](#deployment)
@@ -74,6 +75,12 @@ SASS variables and Yarl variables.
 Please update CSS when upgrading package.
 
 * https://yet-another-react-lightbox.com
+
+### <a id="apis"></a> API:s
+
+The app uses different Google Maps API:s.
+
+Ask Admin for REACT_APP_GOOGLE_CLOUD_API_KEY.
 
 ## <a id="development"></a> Development
 
