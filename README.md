@@ -9,6 +9,7 @@
   * [Local files - Git ignored](#local)
     * [Font Awesome](#fontawesome)
     * [Local Environment file](#localenv)
+  * [Environment variables - Secrets](#environment)
   * [Packages](#packages)
     * [Update packages](#updatepackages)
     * [Recharts](#recharts)
@@ -44,6 +45,19 @@ A Pro version of Font Awesome is used. Add a file called .npmrc in root folder. 
 #### <a id="localenv"></a> Local Environment file
 
 Add a file called .env.local in root folder. Copy properties from .env.dist and ask Admin for keys and urls.
+
+### <a id="environment"></a> Environment variables - Secrets
+
+Locally, properties are fetched from `.env.local` - see above. 
+
+Secrets, like API keys, are stored on GitHub and used for deployment in workflow `main.yml`.
+
+New properties must be added on these locations:
+
+1. GitHub - Secrets and variables - Actions.
+2. `.env.local` - Local secret.
+3. `.env.dist` - Placeholder.
+4. `main.yml` - Or other workflow where the variable is used.
 
 ### <a id="packages"></a> Packages
 
