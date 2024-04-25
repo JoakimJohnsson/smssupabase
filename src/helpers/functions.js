@@ -59,9 +59,9 @@ export const getDataIcon = (data, id) => {
 }
 
 export const getLogoIcon = () => {
-    if (Math.random() < 0.7) {
+    if (Math.random() < CONFIG.FREQUENT_ICON_PROBABILITY) {
         // One logo returns more often (faComet)
-        return LOGO_ICONS[0];
+        return LOGO_ICONS[CONFIG.FREQUENT_ICON_INDEX];
     } else {
         const randomIndex = Math.floor(Math.random() * LOGO_ICONS.length);
         return LOGO_ICONS[randomIndex];

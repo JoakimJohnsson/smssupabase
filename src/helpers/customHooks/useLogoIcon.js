@@ -8,6 +8,10 @@ export const useLogoIcon = () => {
 
     useEffect(() => {
         setIcon(getLogoIcon());
+        // Cleanup logic to handle component unmounting and avoid potential memory leaks or state update issues on unmounted components.
+        return () => {
+            setIcon(null);
+        };
     }, []);
 
     return {

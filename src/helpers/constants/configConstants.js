@@ -356,6 +356,8 @@ export const STATISTICS = {
 }
 
 export const CONFIG = {
+    FREQUENT_ICON_INDEX: 0,
+    FREQUENT_ICON_PROBABILITY: 0.7,
     TIMEOUT_XXL: 2000,
     TIMEOUT_XL: 1000,
     TIMEOUT_LG: 500,

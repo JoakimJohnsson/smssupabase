@@ -7,7 +7,7 @@ import {FunctionButton} from "./FunctionButton";
 
 
 export const ShowMoreButtons = ({data, setItemsToShow, itemsToShow}) => {
-    return (
+    return data && data.length && (
         <>
             {
                 itemsToShow < data.length &&
