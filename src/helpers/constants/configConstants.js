@@ -3,9 +3,11 @@ import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warn
 import {
     faBat,
     faBird,
+    faCat,
     faComet,
+    faDolphin,
     faHippo,
-    faStar,
+    faStarfighterTwinIonEngineAdvanced,
     faStrawberry,
     faSwords,
     faTRex
@@ -319,10 +321,12 @@ export const ALERT_VARIANTS = {
 }
 
 export const LOGO_ICONS = [
+    faComet,
     faBat,
     faBird,
-    faComet,
-    faStar,
+    faCat,
+    faDolphin,
+    faStarfighterTwinIonEngineAdvanced,
     faHippo,
     faStrawberry,
     faSwords,
@@ -352,6 +356,8 @@ export const STATISTICS = {
 }
 
 export const CONFIG = {
+    FREQUENT_ICON_INDEX: 0,
+    FREQUENT_ICON_PROBABILITY: 0.7,
     TIMEOUT_XXL: 2000,
     TIMEOUT_XL: 1000,
     TIMEOUT_LG: 500,

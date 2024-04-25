@@ -8,7 +8,7 @@ import FilterFormSimple from "../search-filter/FilterFormSimple";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
-import {showLessItems, showMoreItems} from "../../helpers/functions";
+import {ShowMoreButtons} from "../minis/ShowMoreButtons";
 
 
 export const Marvelklubben = () => {
@@ -81,18 +81,7 @@ export const Marvelklubben = () => {
                             <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
                         </p>
                     }
-                    {
-                        itemsToShow < filteredData.length &&
-                        <button className={"btn btn-primary me-2"} onClick={() => showMoreItems(filteredData, setItemsToShow)}>
-                            {LABELS.COMMON.SHOW_MORE}
-                        </button>
-                    }
-                    {
-                        (itemsToShow > CONFIG.PAGINATION_ITEM_COUNT) && !(itemsToShow > filteredData.length) &&
-                        <button className={"btn btn-secondary"} onClick={() => showLessItems(filteredData, setItemsToShow, itemsToShow)}>
-                            {LABELS.COMMON.SHOW_LESS}
-                        </button>
-                    }
+                    <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
                 </div>
             </div>
         </main>

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, LOGO_ICONS, TEXTS} from "../../helpers/constants/configConstants";
+import React from "react";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
 import {IconLinkCta} from "../minis/IconLinkCta";
 import {
@@ -12,16 +12,12 @@ import {
     registerIconDuoTone
 } from "../icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {useLogoIcon} from "../../helpers/customHooks/useLogoIcon";
 
 
 export const HeroHeader = () => {
 
-    const [icon, setIcon] = useState(null);
-
-    useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * LOGO_ICONS.length);
-        setIcon(LOGO_ICONS[randomIndex]);
-    }, []);
+   const {icon} = useLogoIcon();
 
     return (
         <header className={"sms-hero-header mb-5"}>

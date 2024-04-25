@@ -1,5 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
-import {CONFIG, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
+import {CONFIG, LOGO_ICONS, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
 import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
@@ -51,10 +51,21 @@ export const getDataShade = (data, id) => {
     const numericId = Number(id);
     return data.find(f => f.id === numericId).shade;
 }
+
 export const getDataIcon = (data, id) => {
     // Make sure the id is a number.
     const numericId = Number(id);
     return data.find(f => f.id === numericId).icon;
+}
+
+export const getLogoIcon = () => {
+    if (Math.random() < CONFIG.FREQUENT_ICON_PROBABILITY) {
+        // One logo returns more often (faComet)
+        return LOGO_ICONS[CONFIG.FREQUENT_ICON_INDEX];
+    } else {
+        const randomIndex = Math.floor(Math.random() * LOGO_ICONS.length);
+        return LOGO_ICONS[randomIndex];
+    }
 }
 
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
