@@ -6,7 +6,7 @@ import {Home} from "../pages/Home";
 import {Dashboard} from "../pages/Dashboard";
 import {OverviewPane} from "../dashboard/dashboardTabPanes/Overview/OverviewPane";
 import {MyTitlesPane} from "../dashboard/dashboardTabPanes/MyTitles/MyTitlesPane";
-import {OtherCollectionsPane} from "../dashboard/dashboardTabPanes/OtherCollections/OtherCollectionsPane";
+import {CollectionsPane} from "../dashboard/dashboardTabPanes/Collections/CollectionsPane";
 import Profile from "../pages/Profile";
 import {Title} from "../pages/Title";
 import {Titles} from "../pages/Titles";
@@ -62,7 +62,7 @@ export const MyRoutes = () => {
                                     <Route path={ROUTES.DASHBOARD.OVERVIEW} element={<PrivateRoute><OverviewPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.VALUATION} element={<PrivateRoute><ValuationPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.MY_TITLES} element={<PrivateRoute><MyTitlesPane/></PrivateRoute>}/>
-                                    <Route path={ROUTES.DASHBOARD.COLLECTIONS} element={<PrivateRoute><OtherCollectionsPane/></PrivateRoute>}/>
+                                    <Route path={ROUTES.DASHBOARD.COLLECTIONS} element={<PrivateRoute><CollectionsPane/></PrivateRoute>}/>
                                     <Route path={"*"} element={<CatchAll/>}/>
                                 </Route>
                                 <Route path={ROUTES.PROFILE} element={<PrivateRoute><Profile/></PrivateRoute>}/>

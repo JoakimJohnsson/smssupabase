@@ -18,7 +18,7 @@ import {atLeastOneListDoesExist} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {
     Icon,
-    otherCollectionsIconDuoTone,
+    collectionsIconDuoTone,
     overviewIconDuoTone,
     settingsIconDuoTone,
     titlesIconDuoTone,
@@ -168,7 +168,7 @@ export const Home = () => {
                         />
                         <IconLinkCtaLg
                             variant={"country"}
-                            icon={otherCollectionsIconDuoTone}
+                            icon={collectionsIconDuoTone}
                             path={ROUTES.DASHBOARD.PATH_COLLECTIONS}
                             label={PANES.COLLECTIONS.NAME}
                         />

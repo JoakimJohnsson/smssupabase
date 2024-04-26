@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {OtherCollectionsPaneListItem} from "./OtherCollectionsPaneListItem";
+import {CollectionsPaneListItem} from "./CollectionsPaneListItem";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
@@ -8,7 +8,7 @@ import {HeadingWithBreadCrumbs} from "../../../headings";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 
 
-export const OtherCollectionsPane = () => {
+export const CollectionsPane = () => {
 
     const [loading, setLoading] = useState(true);
     const [usersData, setUsersData] = useState(null);
@@ -30,7 +30,7 @@ export const OtherCollectionsPane = () => {
                             usersData.map((user) =>
                                 // List public users other than profile
                                 user.is_public === 1 && user.id !== profile.id &&
-                                <OtherCollectionsPaneListItem user={user} key={user.id}/>
+                                <CollectionsPaneListItem user={user} key={user.id}/>
                             )
                         }
                     </ul>
