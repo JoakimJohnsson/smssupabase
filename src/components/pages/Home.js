@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../helpers/constants/configConstants";
+import {CONFIG, LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../helpers/constants/configConstants";
 import {PANES} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../context/AppContext";
@@ -28,6 +28,7 @@ import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import CustomProgressBar from "../CustomProgressBar";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
 
 
 export const Home = () => {
@@ -39,8 +40,16 @@ export const Home = () => {
     const [totalIssues, setTotalIssues] = useState(0);
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [loadingUser, setLoadingUser] = useState(true);
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoadingUser(false);
+        }, CONFIG.TIMEOUT_XXL);
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         setShowAlert(false);
@@ -180,7 +189,8 @@ export const Home = () => {
                                         progress === 100 ?
                                             <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE} variant={"success"} valueNow={progress}/>
                                             :
-                                            <CustomProgressBar label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""} variant={"grade"} valueNow={progress}/>
+                                            <CustomProgressBar label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}
+                                                               variant={"grade"} valueNow={progress}/>
                                     }
                                 </>
                             }
@@ -219,8 +229,13 @@ export const Home = () => {
             </main>
         )
         :
-        <>
-            <HomePublic/>
-            <Footer/>
-        </>
+        loadingUser ?
+            <div className={"row row-padding-main"}>
+                <OverlaySpinner/>
+            </div>
+            :
+            <>
+                <HomePublic/>
+                <Footer/>
+            </>
 }
