@@ -60,7 +60,7 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
                             {
                                 !!titleProgress.progress ?
                                     <button onClick={() => handleCheckGradingStatus()}
-                                            className={"btn btn-outline-primary p-3 rounded-2 w-100 d-flex align-items-center text-start"}>
+                                            className={"btn btn-primary p-3 rounded-2 w-100 d-flex align-items-center text-start"}>
                                         <Icon icon={gradingIconDuoTone} className={"me-2"} size={"2x"}/>
                                         <span className={"mx-3"}>
                                                     {
