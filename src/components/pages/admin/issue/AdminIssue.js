@@ -5,7 +5,7 @@ import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
-import {getIssueName} from "../../../../helpers/functions";
+import {getIssueName, objectDoesExist} from "../../../../helpers/functions";
 import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
@@ -13,6 +13,7 @@ import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
 import {getGradeValuesByIssueId} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {NoMatch} from "../../../routes/NoMatch";
 
 
 export const AdminIssue = () => {
@@ -45,71 +46,73 @@ export const AdminIssue = () => {
         setNewIssue({...issue});
     }, [fetchGradeValues, issue]);
 
-    return (
-        <main id="main-content" className={"container-fluid main-container"}>
-            {
-                loading ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
-                    :
-                    <>
+    return objectDoesExist(issue) ? (
+            <main id="main-content" className={"container-fluid main-container"}>
+                {
+                    loading ?
                         <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col--full"}>
-                                <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
-                                                        bcName={getIssueName(issue)}/>
-                                <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
-                                <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={issueIconDuoTone}
-                                    path={`/issues/${issue.id}`}
-                                    label={getIssueName(issue)}
-                                />
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={titleIconDuoTone}
-                                    path={`/titles/${issue.title_id}`}
-                                    label={issue.titles.name + " " + issue.titles.start_year}
-                                />
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={titleIconDuoTone}
-                                    path={`/admin/titles/${issue.title_id}`}
-                                    label={LABELS.COMMON.EDIT + " " + issue.titles.name + " " + issue.titles.start_year}
-                                />
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={publishersIconDuoTone}
-                                    path={`/admin/publishers/${issue.publisher_id}`}
-                                    label={LABELS.COMMON.EDIT + " " + issue.publishers.name}
-                                />
-                            </div>
+                            <OverlaySpinner/>
                         </div>
-                        <div className={"row row-padding--secondary"}>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light"}>
-                                    <ImageUploader
-                                        imageUrl={imageUrl}
-                                        setImageUrl={setImageUrl}
-                                        imageFilename={imageFilename}
-                                        setImageFilename={setImageFilename}
-                                        uploading={uploading}
-                                        setUploading={setUploading}
-                                        bucketName={BUCKETS.ISSUE_IMAGES}
-                                        tableName={TABLES.ISSUES}
-                                        fileType={FILETYPES.ISSUE_IMAGE}
-                                        id={issue.id}
-                                        update={fetchData}
+                        :
+                        <>
+                            <div className={"row row-padding--main"}>
+                                <div className={"sms-page-col--full"}>
+                                    <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
+                                                            bcName={getIssueName(issue)}/>
+                                    <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
+                                    <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
+                                    <IconLink
+                                        variant={"primary"}
+                                        icon={issueIconDuoTone}
+                                        path={`/issues/${issue.id}`}
+                                        label={getIssueName(issue)}
+                                    />
+                                    <IconLink
+                                        variant={"primary"}
+                                        icon={titleIconDuoTone}
+                                        path={`/titles/${issue.title_id}`}
+                                        label={issue.titles.name + " " + issue.titles.start_year}
+                                    />
+                                    <IconLink
+                                        variant={"primary"}
+                                        icon={titleIconDuoTone}
+                                        path={`/admin/titles/${issue.title_id}`}
+                                        label={LABELS.COMMON.EDIT + " " + issue.titles.name + " " + issue.titles.start_year}
+                                    />
+                                    <IconLink
+                                        variant={"primary"}
+                                        icon={publishersIconDuoTone}
+                                        path={`/admin/publishers/${issue.publisher_id}`}
+                                        label={LABELS.COMMON.EDIT + " " + issue.publishers.name}
                                     />
                                 </div>
                             </div>
-                            <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={issue.titles}/>
-                            <AdminIssueGradeValueEdit issue={issue} title={issue.titles} gradeValues={gradeValues} setGradeValues={setGradeValues}
-                                                      fetchGradeValues={fetchGradeValues}/>
-                        </div>
-                    </>
-            }
-        </main>
-    )
+                            <div className={"row row-padding--secondary"}>
+                                <div className={"sms-dashboard-col"}>
+                                    <div className={"sms-section--light"}>
+                                        <ImageUploader
+                                            imageUrl={imageUrl}
+                                            setImageUrl={setImageUrl}
+                                            imageFilename={imageFilename}
+                                            setImageFilename={setImageFilename}
+                                            uploading={uploading}
+                                            setUploading={setUploading}
+                                            bucketName={BUCKETS.ISSUE_IMAGES}
+                                            tableName={TABLES.ISSUES}
+                                            fileType={FILETYPES.ISSUE_IMAGE}
+                                            id={issue.id}
+                                            update={fetchData}
+                                        />
+                                    </div>
+                                </div>
+                                <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue} setNewIssue={setNewIssue} title={issue.titles}/>
+                                <AdminIssueGradeValueEdit issue={issue} title={issue.titles} gradeValues={gradeValues} setGradeValues={setGradeValues}
+                                                          fetchGradeValues={fetchGradeValues}/>
+                            </div>
+                        </>
+                }
+            </main>
+        )
+        :
+        <NoMatch/>
 }

@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../helpers/constants/configConstants";
+import {CONFIG, LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../helpers/constants/configConstants";
 import {PANES} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../context/AppContext";
@@ -12,14 +12,13 @@ import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../se
 import {TitlesList} from "../lists/titles/TitlesList";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueService";
-import {ProgressBar} from "react-bootstrap";
 import {MessageViewer} from "../message/MessageViewer";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {atLeastOneListDoesExist} from "../../helpers/functions";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {
     Icon,
-    otherCollectionsIconDuoTone,
+    collectionsIconDuoTone,
     overviewIconDuoTone,
     settingsIconDuoTone,
     titlesIconDuoTone,
@@ -28,6 +27,8 @@ import {
 import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import CustomProgressBar from "../CustomProgressBar";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
 
 
 export const Home = () => {
@@ -39,8 +40,16 @@ export const Home = () => {
     const [totalIssues, setTotalIssues] = useState(0);
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [loadingUser, setLoadingUser] = useState(true);
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoadingUser(false);
+        }, CONFIG.TIMEOUT_XXL);
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         setShowAlert(false);
@@ -71,10 +80,9 @@ export const Home = () => {
         }
     }, [fetchData, user]);
 
-
     useEffect(() => {
         if (totalTitles && totalTitles > 0) {
-            setProgress(Math.round(totalTitles / STATISTICS.TOTAL_TITLES_COUNT * 100));
+            setProgress(STATISTICS.TOTAL_TITLES_COUNT > 0 ? Math.round(totalTitles / STATISTICS.TOTAL_TITLES_COUNT * 100) : 0);
         }
     }, [totalTitles]);
 
@@ -159,10 +167,10 @@ export const Home = () => {
                             label={PANES.VALUATION.NAME}
                         />
                         <IconLinkCtaLg
-                            variant={"info"}
-                            icon={otherCollectionsIconDuoTone}
-                            path={ROUTES.DASHBOARD.PATH_OTHER_COLLECTIONS}
-                            label={PANES.OTHER_COLLECTIONS.NAME}
+                            variant={"country"}
+                            icon={collectionsIconDuoTone}
+                            path={ROUTES.DASHBOARD.PATH_COLLECTIONS}
+                            label={PANES.COLLECTIONS.NAME}
                         />
                     </div>
                 </div>
@@ -179,10 +187,10 @@ export const Home = () => {
                                     </p>
                                     {
                                         progress === 100 ?
-                                            <ProgressBar striped variant="success" now={progress}/>
+                                            <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE} variant={"success"} valueNow={progress}/>
                                             :
-                                            <ProgressBar striped variant={"grade"} now={progress}
-                                                         label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}/>
+                                            <CustomProgressBar label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}
+                                                               variant={"grade"} valueNow={progress}/>
                                     }
                                 </>
                             }
@@ -221,8 +229,13 @@ export const Home = () => {
             </main>
         )
         :
-        <>
-            <HomePublic/>
-            <Footer/>
-        </>
+        loadingUser ?
+            <div className={"row row-padding-main"}>
+                <OverlaySpinner/>
+            </div>
+            :
+            <>
+                <HomePublic/>
+                <Footer/>
+            </>
 }

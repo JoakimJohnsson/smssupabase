@@ -1,5 +1,17 @@
 import React from "react";
 import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
+import {
+    faBat,
+    faBird,
+    faCat,
+    faComet,
+    faDolphin,
+    faHippo,
+    faStarfighterTwinIonEngineAdvanced,
+    faStrawberry,
+    faSwords,
+    faTRex
+} from "@fortawesome/pro-thin-svg-icons";
 
 // 491 rader
 export const LABELS_AND_HEADINGS = {
@@ -254,8 +266,8 @@ export const ROUTES = {
         PATH_OVERVIEW: "/dashboard/overview",
         MY_TITLES: "my-titles",
         PATH_MY_TITLES: "/dashboard/my-titles",
-        OTHER_COLLECTIONS: "other-collections",
-        PATH_OTHER_COLLECTIONS: "/dashboard/other-collections",
+        COLLECTIONS: "collections",
+        PATH_COLLECTIONS: "/dashboard/collections",
         VALUATION: "valuation",
         PATH_VALUATION: "/dashboard/valuation"
     },
@@ -308,6 +320,19 @@ export const ALERT_VARIANTS = {
     }
 }
 
+export const LOGO_ICONS = [
+    faComet,
+    faBat,
+    faBird,
+    faCat,
+    faDolphin,
+    faStarfighterTwinIonEngineAdvanced,
+    faHippo,
+    faStrawberry,
+    faSwords,
+    faTRex
+]
+
 export const VARIANT_MAPPER = {
     info: 1,
     success: 2,
@@ -326,16 +351,20 @@ export const DEFAULT_SEARCH_PARAMS_FORMATS = {
 }
 
 export const STATISTICS = {
-    TOTAL_TITLES_COUNT: 150
+    TOTAL_TITLES_COUNT: 151,
+    TOTAL_MARVELKLUBBEN_ISSUES_COUNT: 592,
 }
 
 export const CONFIG = {
+    FREQUENT_ICON_INDEX: 0,
+    FREQUENT_ICON_PROBABILITY: 0.7,
     TIMEOUT_XXL: 2000,
     TIMEOUT_XL: 1000,
     TIMEOUT_LG: 500,
     TIMEOUT_MD: 400,
     TIMEOUT_SM: 200,
-    MAX_VALUATION_VALUES: 20
+    MAX_VALUATION_VALUES: 20,
+    PAGINATION_ITEM_COUNT: 25
 }
 
 export const GRADE_VARIANTS = {

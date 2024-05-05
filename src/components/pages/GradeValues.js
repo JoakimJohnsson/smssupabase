@@ -19,6 +19,7 @@ import AccordionHeader from "react-bootstrap/AccordionHeader";
 import AccordionBody from "react-bootstrap/AccordionBody";
 import AccordionItem from "react-bootstrap/AccordionItem";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {FormatBadge} from "../minis/FormatBadge";
 
 
 export const GradeValues = () => {
@@ -95,7 +96,9 @@ export const GradeValues = () => {
                                             <AccordionItem eventKey={index.toString()} key={index} onToggle={() => {
                                                 setActiveKey(index.toString())
                                             }}>
-                                                <AccordionHeader as={"h2"} className={"pb-0 mb-0"}>{title.name} {title.start_year}</AccordionHeader>
+                                                <AccordionHeader as={"h2"} className={"pb-0 mb-0"}>{title.name}
+                                                    <FormatBadge formatId={title.format_id} customClass={"d-inline-block mx-3 mb-0"}
+                                                                 year={title.start_year}/></AccordionHeader>
                                                 <AccordionBody>
                                                     <GradeValuesListItem title={title} isActive={activeKey === index.toString()}/>
                                                 </AccordionBody>

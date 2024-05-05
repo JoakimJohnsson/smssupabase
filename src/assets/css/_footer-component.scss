@@ -8,7 +8,6 @@
   padding: 0;
   min-height: auto;
   .footer-navlink-text {
-    @extend .mb-2, .mb-lg-0;
     text-align: center;
     font-size: .775rem;
     @include media-breakpoint-up(lg) {
@@ -19,6 +18,7 @@
   .nav-link {
     background-color: $color-bg-whale;
     border-radius: $border-radius-lg;
+    border: 1px solid $color-bg-elephant;
     @extend .fs-small;
     margin: 0 .5rem;
     min-width: 60px;
@@ -26,7 +26,7 @@
       min-width: 125px;
     }
     @include media-breakpoint-up(lg) {
-      min-width: 190px;
+      min-width: 150px;
     }
     &:hover, &:focus {
       background-color: $color-bg-whale--light;
@@ -73,6 +73,12 @@
         color: $grade--lighter;
       }
     }
+    &.country {
+      color: $country;
+      &:hover, &:focus {
+        color: $country--lighter;
+      }
+    }
     &.active.primary {
       background-color: $primary--darker;
       color: $primary--lighter;
@@ -101,8 +107,11 @@
       background-color: $grade--darker;
       color: $grade--lighter;
     }
+    &.active.country {
+      background-color: $country--darker;
+      color: $country--lighter;
+    }
     svg {
-      @extend .p-2, .px-sm-0;
       width: 22px;
       margin-right: 0;
       @include media-breakpoint-up(lg) {
