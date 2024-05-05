@@ -31,7 +31,7 @@ export const OverviewValuation = () => {
 
     return (
         <div className={"sms-dashboard-col--sm"}>
-            <div className={"sms-section--light"}>
+            <div className={"sms-section--light h-100"}>
                 <h2>{LABELS_AND_HEADINGS.VALUATION}</h2>
                 <div className={"mb-3"}>
                     {

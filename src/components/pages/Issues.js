@@ -40,7 +40,7 @@ export const Issues = () => {
                     <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
-                            filteredData ?
+                            filteredData && filteredData.length ?
                                 itemsToShow < filteredData.length ?
                                     itemsToShow
                                     :
@@ -56,7 +56,6 @@ export const Issues = () => {
                             <OverlaySpinner/>
                             :
                             <ul className={"sms-list--with-cards"}>
-
                                 {
                                     filteredData.slice(0, itemsToShow)
                                         .sort((a, b) => sortByName(a.titles, b.titles))
@@ -71,7 +70,7 @@ export const Issues = () => {
                         <p className={"text-uppercase fs-large placeholder-glow"}>
                             {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
-                            filteredData ?
+                            filteredData && filteredData.length ?
                                 itemsToShow < filteredData.length ?
                                     itemsToShow
                                     :
