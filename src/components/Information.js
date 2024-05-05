@@ -17,11 +17,12 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.6.5 - 2024-04-XX</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.6.6 - 2024-05-05</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Förbättrad länk till Seriekatalogen för titel.</li>
                     <li className={"list-group-item px-0"}>Visa status för marvelklubben-samlingen på Kontrollpanelens översikt.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad visning av Skickvärderingar.</li>
                     <li className={"list-group-item px-0"}>Visa mer / mindre funktion för stora filtersökningar där det behövdes. T.ex. Marvelklubben
                         och Alla publikationer.
                     </li>

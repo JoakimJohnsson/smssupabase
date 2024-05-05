@@ -147,7 +147,7 @@ input[type="checkbox"] + label {
 }
 
 .sms-page-col--full {
-  @extend .col-12, .col-lg-10, .col-xxl-8;
+  @extend .col-12, .col-xxl-10;
 }
 
 // Breadcrumb
@@ -344,15 +344,16 @@ input[type="checkbox"] + label {
 
 // Tooltip
 .tooltip {
-  @include media-breakpoint-down(xl){
+  @include media-breakpoint-down(xl) {
     visibility: hidden !important;
   }
 }
 
 // Tag-badge
 .tag-badge {
-  @extend .badge, .py-2, .px-3, .mb-2, .d-inline-block;
+  @extend .badge, .py-2, .px-3, .d-inline-block, .fw-bold;
   margin-right: .5rem;
+  margin-bottom: .5rem;
   white-space: normal;
   &.small {
     @extend .py-1, .px-2;

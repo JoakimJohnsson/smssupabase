@@ -41,7 +41,7 @@ export const MyTitlesPaneListItem = ({title}) => {
                     <MyTitlesPaneListItemProgress titleProgress={titleProgress} collectTextParts={collectTextParts}/>
                 </Link>
                 <div className={"col-12"}>
-                    <div className={"bg-horse"}>
+                    <div className={"bg-dog border-bottom border-end border-start border-primary"}>
                         <div className={"row"}>
                             <MyTitlesPaneListItemInfoColumn title={title} completed={completed} titleProgress={titleProgress}/>
                             <MyTitlesPaneListItemFunctionsColumn title={title} user={user} titleProgress={titleProgress}/>

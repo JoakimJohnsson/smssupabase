@@ -16,7 +16,7 @@ export const UtilsSection = () => {
 
     return (
         <div className={"sms-dashboard-col"}>
-            <div className={"sms-section--light"}>
+            <div className={"sms-section--light h-100"}>
                 <h2>{LABELS_AND_HEADINGS.UTILS}</h2>
                 <p>{TEXTS.UTILS}</p>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_DATE}</h3>

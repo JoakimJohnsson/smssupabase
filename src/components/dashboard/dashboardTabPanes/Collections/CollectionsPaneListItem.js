@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import CustomProgressBar from "../../../CustomProgressBar";
 
 
-export const OtherCollectionsPaneListItem = ({user}) => {
+export const CollectionsPaneListItem = ({user}) => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);

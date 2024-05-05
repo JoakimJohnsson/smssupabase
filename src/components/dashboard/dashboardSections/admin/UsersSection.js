@@ -22,7 +22,7 @@ export const UsersSection = () => {
 
     return (
         <div className={"sms-dashboard-col"}>
-            <div className={"sms-section--light"}>
+            <div className={"sms-section--light h-100"}>
                 <h2>{LABELS_AND_HEADINGS.USERS}</h2>
                 {
                     limitedUsersData ?

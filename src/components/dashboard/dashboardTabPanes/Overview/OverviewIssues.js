@@ -56,7 +56,7 @@ export const OverviewIssues = ({titlesData, issuesData}) => {
 
     return (
         <div className={"sms-dashboard-col--sm"}>
-            <div className={"sms-section--light"}>
+            <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
                 {
                     userIssuesCount ?

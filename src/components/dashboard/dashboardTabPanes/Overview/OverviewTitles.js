@@ -19,7 +19,7 @@ export const OverviewTitles = ({titlesData}) => {
     return titlesData ?
 
         <div className={"sms-dashboard-col--sm"}>
-            <div className={"sms-section--light"}>
+            <div className={"sms-section--light h-100"}>
                 <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
                 <p className={"mb-3"}>
                     {PANES.OVERVIEW.COLLECTING_TITLES_1} {titlesData.length} {PANES.OVERVIEW.COLLECTING_TITLES_2} {totalTitles} {PANES.OVERVIEW.COLLECTING_TITLES_3}
