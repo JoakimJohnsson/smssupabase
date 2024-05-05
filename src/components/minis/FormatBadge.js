@@ -9,6 +9,6 @@ export const FormatBadge = ({formatId, customClass, year = null}) => {
     const className = customClass ? defaultClass + " " + customClass : defaultClass;
 
     return formatId && (
-        <span className={className}>{getDataName(formatData, formatId)} {year && year}</span>
+        <span className={className}>{getDataName(formatData, formatId)} - {year && year}</span>
     )
 }

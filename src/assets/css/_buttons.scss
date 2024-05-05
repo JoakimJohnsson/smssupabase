@@ -3,7 +3,7 @@
 
 // Buttons
 .btn {
-  @extend .lh-sm;
+  @extend .lh-sm, .fw-bold;
   border-radius: $border-radius-sm;
   display: inline-flex;
   align-items: center;
@@ -11,7 +11,6 @@
     @extend .mb-4;
     padding: .8rem 2rem;
     border-radius: $border-radius-lg;
-    font-weight: bold;
     font-size: 1.3rem;
     display: flex;
     align-items: center;

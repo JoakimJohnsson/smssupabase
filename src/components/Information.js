@@ -22,6 +22,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Förbättrad länk till Seriekatalogen för titel.</li>
                     <li className={"list-group-item px-0"}>Visa status för marvelklubben-samlingen på Kontrollpanelens översikt.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad visning av Skickvärderingar.</li>
                     <li className={"list-group-item px-0"}>Visa mer / mindre funktion för stora filtersökningar där det behövdes. T.ex. Marvelklubben
                         och Alla publikationer.
                     </li>
