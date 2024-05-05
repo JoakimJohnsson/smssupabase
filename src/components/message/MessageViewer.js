@@ -32,11 +32,11 @@ export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo 
 
     const getIcon = () => {
         if (viewGlobal) {
-            return <Icon icon={statusIconActiveDuoTone} className={"me-2"} size={"2x"}/>;
+            return <Icon icon={statusIconActiveDuoTone} className={"text-light me-2"} size={"2x"}/>;
         } else if (viewTodo) {
-            return <Icon icon={statusIconTodoDuoTone} className={"me-2"} size={"2x"}/>;
+            return <Icon icon={statusIconTodoDuoTone} className={"text-light me-2"} size={"2x"}/>;
         } else {
-            return <Icon icon={statusIconUnreadDuoTone} className={"me-2"} size={"2x"}/>;
+            return <Icon icon={statusIconUnreadDuoTone} className={"text-light me-2"} size={"2x"}/>;
         }
     }
 

@@ -28,7 +28,7 @@ export const MessagesSection = () => {
 
     return (
         <div className={"sms-page-col--full mb-5 "}>
-            <div className={"sms-section--light"}>
+            <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.SECTIONS.MESSAGES.MESSAGES}</h2>
                 {
                     limitedMessagesData ?

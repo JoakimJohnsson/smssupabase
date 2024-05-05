@@ -4,7 +4,7 @@ import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayN
 import {hasImage} from "../../../helpers/functions";
 
 
-export const IssueLinkCard = ({issue, index, simple = false}) => {
+export const IssueLinkCard = ({issue, simple = false}) => {
 
     const {displayName} = useIssueDisplayName(issue);
 
@@ -13,7 +13,7 @@ export const IssueLinkCard = ({issue, index, simple = false}) => {
             <Link to={`/issues/${issue.id}`} title={displayName}>
                 <div className={"issue-link-card--content d-flex align-items-center"}>
                     {
-                        hasImage(issue) && index < 24 &&
+                        hasImage(issue) &&
                         <img src={issue.image_url} className={"list-image border-0 list-image--large me-2"} alt={""}/>
                     }
                     <span className={"p-2"}>{displayName}</span>

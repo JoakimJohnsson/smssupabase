@@ -37,7 +37,7 @@ export const Admin = () => {
                     <Link className={"btn btn-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS.SECTIONS.MESSAGES.ALL_MESSAGES}</Link>
                 </div>
             </div>
-            <div className={"row row-padding--secondary"}>
+            <div className={"row row-padding--secondary mb-5"}>
                 {
                     isSuperAdmin(profile) &&
                     <MessagesSection/>

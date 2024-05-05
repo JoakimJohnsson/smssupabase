@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import CustomProgressBar from "../../../CustomProgressBar";
 
 
-export const OtherCollectionsPaneListItem = ({user}) => {
+export const CollectionsPaneListItem = ({user}) => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
@@ -57,10 +57,10 @@ export const OtherCollectionsPaneListItem = ({user}) => {
                 <div className={"bg-horse p-3"}>
                     <h2>{displayName}</h2>
                     <p>
-                        {PANES.OTHER_COLLECTIONS.COLLECTING} {titlesData.length} / {totalTitles} {PANES.OTHER_COLLECTIONS.TITLES}.
+                        {PANES.COLLECTIONS.COLLECTING} {titlesData.length} / {totalTitles} {PANES.COLLECTIONS.TITLES}.
                     </p>
                     {
-                        <CustomProgressBar label={progress + PANES.OTHER_COLLECTIONS.COMPLETE} variant={progress === 100 ? "success" : "grade"}
+                        <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE} variant={progress === 100 ? "success" : "grade"}
                                            valueNow={progress}/>
                     }
                 </div>

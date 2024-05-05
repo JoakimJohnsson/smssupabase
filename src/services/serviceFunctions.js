@@ -239,6 +239,17 @@ export const handleDelete = async (table, id, name, setData, initialData, image_
             } catch (error) {
                 console.error(error);
             }
+        } else if (table === TABLES.TITLES) {
+            // Delete all users titles
+            try {
+                console.log("Deleting title");
+                await supabase
+                    .from(TABLES.USERS_TITLES)
+                    .delete()
+                    .match({title_id: id})
+            } catch (error) {
+                console.error(error);
+            }
         }
         console.log("Deleting rows");
         deleteRowsByTableAndId(table, id, setData, initialData, setInformationMessage, false)

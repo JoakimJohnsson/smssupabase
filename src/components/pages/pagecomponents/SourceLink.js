@@ -24,12 +24,10 @@ export const SourceLink = ({source}) => {
 
     return sourceText && sourceUrl && (
         <>
-            <p>
-                <a href={sourceUrl} target={"_blank"} rel={"noreferrer"}>
-                    {sourceText}
-                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                </a>
-            </p>
+            <a className={"d-block"} href={sourceUrl} target={"_blank"} rel={"noreferrer"}>
+                {sourceText}
+                <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+            </a>
         </>
     )
 }

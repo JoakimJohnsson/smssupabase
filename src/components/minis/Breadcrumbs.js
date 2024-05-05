@@ -42,8 +42,8 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
                 return BREADCRUMB_NAMES.MESSAGES;
             case "my titles":
                 return BREADCRUMB_NAMES.MY_TITLES;
-            case "other collections":
-                return BREADCRUMB_NAMES.OTHER_COLLECTIONS;
+            case "collections":
+                return BREADCRUMB_NAMES.COLLECTIONS;
             case "overview":
                 return BREADCRUMB_NAMES.OVERVIEW;
             case "profile":

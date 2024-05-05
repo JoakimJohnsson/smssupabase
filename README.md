@@ -9,10 +9,12 @@
   * [Local files - Git ignored](#local)
     * [Font Awesome](#fontawesome)
     * [Local Environment file](#localenv)
+  * [Environment variables - Secrets](#environment)
   * [Packages](#packages)
     * [Update packages](#updatepackages)
     * [Recharts](#recharts)
     * [Yet another react lightbox](#lightbox)
+  * [API:s](#apis)
 * [Development](#development)
   * [Workflow](#workflow)
 * [Deployment](#deployment)
@@ -44,6 +46,19 @@ A Pro version of Font Awesome is used. Add a file called .npmrc in root folder. 
 
 Add a file called .env.local in root folder. Copy properties from .env.dist and ask Admin for keys and urls.
 
+### <a id="environment"></a> Environment variables - Secrets
+
+Locally, properties are fetched from `.env.local` - see above. 
+
+Secrets, like API keys, are stored on GitHub and used for deployment in workflow `main.yml`.
+
+New properties must be added on these locations:
+
+1. GitHub - Secrets and variables - Actions.
+2. `.env.local` - Local secret.
+3. `.env.dist` - Placeholder.
+4. `main.yml` - Or other workflow where the variable is used.
+
 ### <a id="packages"></a> Packages
 
 #### <a id="updatepackages"></a> Update packages
@@ -74,6 +89,12 @@ SASS variables and Yarl variables.
 Please update CSS when upgrading package.
 
 * https://yet-another-react-lightbox.com
+
+### <a id="apis"></a> API:s
+
+The app uses different Google Maps API:s.
+
+Ask Admin for REACT_APP_GOOGLE_CLOUD_API_KEY.
 
 ## <a id="development"></a> Development
 
