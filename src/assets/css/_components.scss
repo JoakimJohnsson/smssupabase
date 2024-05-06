@@ -23,7 +23,8 @@
   }
 }
 
-.dropdown-toggle::after {
+.dropdown-toggle::after,
+.dropup .dropdown-toggle::after {
   display: none;
 }
 
