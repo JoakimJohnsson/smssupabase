@@ -35,8 +35,8 @@ import {GradeValues} from "../pages/GradeValues";
 import {ValuationPane} from "../dashboard/dashboardTabPanes/Valuation/ValuationPane";
 import {PrivateRoute} from "./PrivateRoute";
 import {AdminRoute} from "./AdminRoute";
-import {RouteLoadingIndicator} from "./RouteLoadingIndicator";
 import {CatchAll} from "./CatchAll";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
 
 
 export const MyRoutes = () => {
@@ -48,7 +48,7 @@ export const MyRoutes = () => {
             {
                 evaluatingUser ?
                     (
-                        <Route path="*" element={<RouteLoadingIndicator/>}/>
+                        <Route path="*" element={<OverlaySpinner/>}/>
                     )
                     :
                     user && profile ?
