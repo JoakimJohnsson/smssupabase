@@ -269,7 +269,9 @@ export const ROUTES = {
         COLLECTIONS: "collections",
         PATH_COLLECTIONS: "/dashboard/collections",
         VALUATION: "valuation",
-        PATH_VALUATION: "/dashboard/valuation"
+        PATH_VALUATION: "/dashboard/valuation",
+        MAPS: "maps",
+        PATH_MAPS: "/dashboard/maps"
     },
     ADMIN: {
         ROOT: "/admin",

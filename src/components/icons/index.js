@@ -34,6 +34,7 @@ import {
     faLightbulb,
     faLightbulbOn,
     faMagnifyingGlassDollar,
+    faMapLocationDot,
     faMosquito,
     faMoneyCheckPen,
     faPresentationScreen,
@@ -89,6 +90,7 @@ import {
     faLightbulb as faLightbulbDT,
     faLightbulbOn as faLightbulbOnDT,
     faMagnifyingGlassDollar as faMagnifyingGlassDollarDT,
+    faMapLocationDot as faMapLocationDotDT,
     faMosquito as faMosquitoDT,
     faMoneyCheckPen as faMoneyCheckPenDT,
     faPresentationScreen as faPresentationScreenDT,
@@ -144,6 +146,7 @@ const iconMap = {
     faLightbulb: faLightbulb,
     faLightbulbOn: faLightbulbOn,
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faMapLocationDot: faMapLocationDot,
     faMosquito: faMosquito,
     faMoneyCheckPen: faMoneyCheckPen,
     faPresentationScreen: faPresentationScreen,
@@ -199,6 +202,7 @@ const iconMapDuoTone = {
     faLightbulbDT: faLightbulbDT,
     faLightbulbOnDT: faLightbulbOnDT,
     faMagnifyingGlassDollarDT: faMagnifyingGlassDollarDT,
+    faMapLocationDotDT: faMapLocationDotDT,
     faMosquitoDT: faMosquitoDT,
     faMoneyCheckPenDT: faMoneyCheckPenDT,
     faPresentationScreenDT: faPresentationScreenDT,
@@ -255,6 +259,7 @@ export const linkIcon = faLink;
 export const loginIcon = faArrowDownToArc;
 export const logoutIcon = faArrowRightFromArc;
 export const logoIcon = faComet;
+export const mapsIcon = faMapLocationDot;
 export const marvelKlubbenIcon = faBadge;
 export const publishersIcon = faBuildingColumns;
 export const registerIcon = faHeartCirclePlus;
@@ -296,6 +301,7 @@ export const issueIconDuoTone = faFileLinesDT;
 export const keyIconDuoTone = faKeyDT;
 export const loginIconDuoTone = faArrowDownToArcDT;
 export const logoIconDuoTone = faCometDT;
+export const mapsIconDuoTone = faMapLocationDotDT;
 export const marvelKlubbenIconDuoTone = faBadgeDT;
 export const questionIconDuoTone = faCommentsQuestionDT;
 export const logoutIconDuoTone = faArrowRightFromArcDT;

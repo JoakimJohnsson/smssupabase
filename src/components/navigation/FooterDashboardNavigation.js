@@ -6,7 +6,7 @@ import {
     collectionsIconDuoTone,
     overviewIconDuoTone,
     titlesIconDuoTone,
-    valueIconDuoTone
+    valueIconDuoTone, mapsIconDuoTone
 } from "../icons";
 import {Nav} from "react-bootstrap";
 import {FooterDashboardNavLink} from "./FooterDashboardNavLink";
@@ -24,6 +24,8 @@ export const FooterDashboardNavigation = () => {
                                         icon={<Icon icon={valueIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.COLLECTIONS} text={PANES.COLLECTIONS.NAME} variant={"country"}
                                         icon={<Icon icon={collectionsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
+                <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAPS} text={PANES.MAPS.NAME} variant={"info"}
+                                        icon={<Icon icon={mapsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
             </Nav>
         </footer>
     )

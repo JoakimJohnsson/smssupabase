@@ -46,5 +46,9 @@ export const PANES = {
         NAME: "Värdering",
         LEAD: "Här visas de senaste värderingarna som sparats i databasen. Vi visar max 20 st. För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
         COLLECTING_VALUE_1: "Det sammanlagda värdet av din samling är: ",
+    },
+    MAPS: {
+        NAME: "Kartor",
+        LEAD: "Om du har valt att låta Svenska Marvelsamlare använda din position kan du här enkelt leta efter loppisar, second hand-butiker eller serietidningsaffärer nära dig."
     }
 }
