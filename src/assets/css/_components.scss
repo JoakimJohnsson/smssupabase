@@ -23,6 +23,10 @@
   }
 }
 
+.dropdown-toggle::after {
+  display: none;
+}
+
 .sms-hero-header {
   background: center / cover no-repeat url("../images/heroimage.jpg");
 }

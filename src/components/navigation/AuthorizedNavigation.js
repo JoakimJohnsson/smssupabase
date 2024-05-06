@@ -54,6 +54,13 @@ export const AuthorizedNavigation = () => {
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
                         <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>}
                                    text={LABELS.SECTIONS.DASHBOARD.NAME}/>
+
+                        <LiNavItem route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
+                        {
+                            profile.role >= 1 &&
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={BREADCRUMB_NAMES.ADMIN}
+                                       doShowNotification={showAdminNotification || showAdminTodoNotification} isAdminNotification={true}/>
+                        }
                         <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
@@ -92,12 +99,6 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <LiNavItem route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
-                        {
-                            profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={BREADCRUMB_NAMES.ADMIN}
-                                       doShowNotification={showAdminNotification || showAdminTodoNotification} isAdminNotification={true}/>
-                        }
                         <li className="nav-item">
                             <NavbarProfileInformation/>
                             <SignOutButton/>
@@ -112,6 +113,15 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS.SECTIONS.DASHBOARD.NAME}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
+                        <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
+                                   text={LABELS_AND_HEADINGS.SETTINGS}/>
+                        {
+                            profile.role >= 1 &&
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<Icon icon={adminIconDuoTone} size={"1x"}/>}
+                                       doShowNotification={showAdminNotification || showAdminTodoNotification}
+                                       isAdminNotification={true}
+                                       text={BREADCRUMB_NAMES.ADMIN}/>
+                        }
                         <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
                         <LiNavItem route={ROUTES.GRADE_VALUES} onClick={handleClick} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
@@ -122,15 +132,6 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
                         <LiNavItem route={ROUTES.USERS} onClick={handleClick} icon={<Icon icon={usersIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.USERS.ALL_USERS}/>
-                        <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.SETTINGS}/>
-                        {
-                            profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<Icon icon={adminIconDuoTone} size={"1x"}/>}
-                                       doShowNotification={showAdminNotification || showAdminTodoNotification}
-                                       isAdminNotification={true}
-                                       text={BREADCRUMB_NAMES.ADMIN}/>
-                        }
                         <li className="nav-item">
                             <NavbarProfileInformation/>
                             <SignOutButton mobile/>

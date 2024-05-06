@@ -16,6 +16,7 @@ import {
     faCommentsQuestion,
     faDisplayChartUp,
     faEarthAmericas,
+    faEllipsis,
     faEye,
     faEyeSlash,
     faFaceExplode,
@@ -72,6 +73,7 @@ import {
     faCommentsQuestion as faCommentsQuestionDT,
     faDisplayChartUp as faDisplayChartUpDT,
     faEarthAmericas as faEarthAmericasDT,
+    faEllipsis as faEllipsisDT,
     faEye as faEyeDT,
     faEyeSlash as faEyeSlashDT,
     faFaceExplode as faFaceExplodeDT,
@@ -128,6 +130,7 @@ const iconMap = {
     faCommentsQuestion: faCommentsQuestion,
     faDisplayChartUp: faDisplayChartUp,
     faEarthAmericas: faEarthAmericas,
+    faEllipsis: faEllipsis,
     faEye: faEye,
     faEyeSlash: faEyeSlash,
     faFaceExplode: faFaceExplode,
@@ -184,6 +187,7 @@ const iconMapDuoTone = {
     faCommentsQuestionDT: faCommentsQuestionDT,
     faDisplayChartUpDT: faDisplayChartUpDT,
     faEarthAmericasDT: faEarthAmericasDT,
+    faEllipsisDT: faEllipsisDT,
     faEyeDT: faEyeDT,
     faEyeSlashDT: faEyeSlashDT,
     faFaceExplodeDT: faFaceExplodeDT,
@@ -261,6 +265,7 @@ export const logoutIcon = faArrowRightFromArc;
 export const logoIcon = faComet;
 export const mapsIcon = faMapLocationDot;
 export const marvelKlubbenIcon = faBadge;
+export const moreIcon = faEllipsis;
 export const publishersIcon = faBuildingColumns;
 export const registerIcon = faHeartCirclePlus;
 export const saveIcon = faFloppyDisk;
@@ -303,6 +308,7 @@ export const loginIconDuoTone = faArrowDownToArcDT;
 export const logoIconDuoTone = faCometDT;
 export const mapsIconDuoTone = faMapLocationDotDT;
 export const marvelKlubbenIconDuoTone = faBadgeDT;
+export const moreIconDuoTone = faEllipsisDT;
 export const questionIconDuoTone = faCommentsQuestionDT;
 export const logoutIconDuoTone = faArrowRightFromArcDT;
 export const collectionsIconDuoTone = faRectangleHistoryCircleUserDT;
