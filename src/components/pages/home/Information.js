@@ -1,8 +1,8 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants/configConstants";
-import {Icon, infoIconDuoTone} from "./icons";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
+import {Icon, infoIconDuoTone} from "../../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const Information = () => {

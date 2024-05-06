@@ -2,7 +2,7 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import React from "react";
 import SignupSuccess from "../pages/SignUpSuccess";
 import {ROUTES} from "../../helpers/constants/configConstants";
-import {Home} from "../pages/Home";
+import {Home} from "../pages/home/Home";
 import {Dashboard} from "../pages/Dashboard";
 import {OverviewPane} from "../dashboard/dashboardTabPanes/Overview/OverviewPane";
 import {MyTitlesPane} from "../dashboard/dashboardTabPanes/MyTitles/MyTitlesPane";

@@ -1,34 +1,28 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {CONFIG, LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../helpers/constants/configConstants";
-import {PANES} from "../../helpers/constants/textConstants/texts";
-import {TABLES} from "../../helpers/constants/serviceConstants";
-import {useAppContext} from "../../context/AppContext";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {CONFIG, LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../../helpers/constants/configConstants";
+import {PANES} from "../../../helpers/constants/textConstants/texts";
+import {TABLES} from "../../../helpers/constants/serviceConstants";
+import {useAppContext} from "../../../context/AppContext";
+import {HeadingWithBreadCrumbs} from "../../headings";
 import {HomePublic} from "./HomePublic";
-import Footer from "../Footer";
+import Footer from "../../Footer";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
-import {InformationAlert} from "../minis/InformationAlert";
-import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../services/serviceFunctions";
-import {TitlesList} from "../lists/titles/TitlesList";
-import {NoDataAvailable} from "../minis/NoDataAvailable";
-import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../services/issueService";
-import {MessageViewer} from "../message/MessageViewer";
-import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
-import {atLeastOneListDoesExist} from "../../helpers/functions";
-import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
-import {
-    Icon,
-    collectionsIconDuoTone,
-    overviewIconDuoTone,
-    settingsIconDuoTone,
-    titlesIconDuoTone,
-    valueIconDuoTone,
-} from "../icons";
-import {IconLinkCtaLg} from "../minis/IconLinkCtaLg";
-import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import CustomProgressBar from "../CustomProgressBar";
-import {OverlaySpinner} from "../minis/OverlaySpinner";
+import {InformationAlert} from "../../minis/InformationAlert";
+import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
+import {TitlesList} from "../../lists/titles/TitlesList";
+import {NoDataAvailable} from "../../minis/NoDataAvailable";
+import {getAllIssuesWithTitleAndPublisherWithLimit} from "../../../services/issueService";
+import {MessageViewer} from "../../message/MessageViewer";
+import {LazyTextPlaceholder} from "../../minis/LazyTextPlaceholder";
+import {atLeastOneListDoesExist} from "../../../helpers/functions";
+import {IssueLinkCard} from "../../lists/issues/IssueLinkCard";
+import {Icon, settingsIconDuoTone} from "../../icons";
+import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
+import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import CustomProgressBar from "../../CustomProgressBar";
+import {OverlaySpinner} from "../../minis/OverlaySpinner";
+import {DashboardSection} from "./DashboardSection";
 
 
 export const Home = () => {
@@ -134,9 +128,10 @@ export const Home = () => {
                                 admin@svenskamarvelsamlare.se
                             </a>
                         </p>
+                        <DashboardSection/>
                         {
                             atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
-                            <div className={"mb-5"}>
+                            <div className={"mb-3"}>
                                 <MessageViewer viewGlobal/>
                                 {
                                     profile && profile.role > 0 &&
@@ -147,31 +142,6 @@ export const Home = () => {
                                 }
                             </div>
                         }
-                        <h2>{LABELS.SECTIONS.DASHBOARD.NAME}</h2>
-                        <IconLinkCtaLg
-                            variant={"primary"}
-                            icon={overviewIconDuoTone}
-                            path={ROUTES.DASHBOARD.PATH_OVERVIEW}
-                            label={PANES.OVERVIEW.NAME}
-                        />
-                        <IconLinkCtaLg
-                            variant={"primary"}
-                            icon={titlesIconDuoTone}
-                            path={ROUTES.DASHBOARD.PATH_MY_TITLES}
-                            label={PANES.TITLES.NAME}
-                        />
-                        <IconLinkCtaLg
-                            variant={"grade"}
-                            icon={valueIconDuoTone}
-                            path={ROUTES.DASHBOARD.PATH_VALUATION}
-                            label={PANES.VALUATION.NAME}
-                        />
-                        <IconLinkCtaLg
-                            variant={"country"}
-                            icon={collectionsIconDuoTone}
-                            path={ROUTES.DASHBOARD.PATH_COLLECTIONS}
-                            label={PANES.COLLECTIONS.NAME}
-                        />
                     </div>
                 </div>
                 <div className={"row row-padding--secondary"}>
@@ -206,7 +176,7 @@ export const Home = () => {
                                 <NoDataAvailable/>
                         }
                     </div>
-                    <div className={"col-12 mb-4"}>
+                    <div className={"col-12 mb-5"}>
                         <h2>Publikationer</h2>
                         <p className={"mb-4 placeholder-glow"}><span className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
                             <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>

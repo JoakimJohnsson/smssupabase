@@ -1,8 +1,8 @@
 import React from "react";
 import {faBadgeCheck, faOctagonExclamation} from "@fortawesome/pro-regular-svg-icons";
-import {Icon} from "../icons";
+import {Icon} from "../../icons";
 
-const ValidationMessage = ({success, message}) => {
+const SignupValidationMessage = ({success, message}) => {
     return (
         message !== "" &&
         <p className={"form-text"}>
@@ -16,4 +16,4 @@ const ValidationMessage = ({success, message}) => {
     )
 }
 
-export default ValidationMessage;
+export default SignupValidationMessage;
