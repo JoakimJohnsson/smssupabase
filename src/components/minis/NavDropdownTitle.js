@@ -1,13 +1,12 @@
 import React from "react";
-import {Icon, moreIconDuoTone} from "../icons";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {Icon} from "../icons";
 
 
-export const NavDropdownTitle = () => {
+export const NavDropdownTitle = ({icon, label}) => {
     return (
         <>
-            <Icon icon={moreIconDuoTone} size={"2x"}/>
-            <span>{LABELS.COMMON.MORE_CONTENT}</span>
+            <Icon icon={icon} size={"2x"}/>
+            <span>{label}</span>
         </>
     )
 }

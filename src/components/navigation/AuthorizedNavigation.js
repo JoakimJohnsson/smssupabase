@@ -17,12 +17,13 @@ import {
     startIconDuoTone,
     titlesIconDuoTone,
     usersIconDuoTone,
-    valueIconDuoTone
+    valueIconDuoTone, moreIconDuoTone, overviewIconDuoTone, mapsIconDuoTone, collectionsIconDuoTone
 } from "../icons";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
 import {BREADCRUMB_NAMES, LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {NavigationLogo} from "./NavigationLogo";
+import {PANES} from "../../helpers/constants/textConstants/texts";
 
 
 export const AuthorizedNavigation = () => {
@@ -52,16 +53,45 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>}
                                    text={LABELS.COMMON.HOME}
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} icon={<Icon icon={dashboardIconDuoTone} size={"2x"}/>}
-                                   text={LABELS.SECTIONS.DASHBOARD.NAME}/>
-
+                        <NavDropdown as={"li"} title={<NavDropdownTitle icon={dashboardIconDuoTone} label={LABELS.SECTIONS.DASHBOARD.NAME}/>} id="basic-nav-dropdown">
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_OVERVIEW} className={"nav-link nav-link--dropdown"}>
+                                    <Icon icon={overviewIconDuoTone} className={"me-2"}/>
+                                    <span className={"sms-nav-link--text"}>{PANES.OVERVIEW.NAME}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_MY_TITLES} className={"nav-link nav-link--dropdown"}>
+                                    <Icon icon={titlesIconDuoTone} className={"me-2"}/>
+                                    <span className={"sms-nav-link--text"}>{PANES.TITLES.NAME}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_VALUATION} className={"nav-link nav-link--dropdown"}>
+                                    <Icon icon={valueIconDuoTone} className={"me-2"}/>
+                                    <span className={"sms-nav-link--text"}>{PANES.VALUATION.NAME}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_COLLECTIONS} className={"nav-link nav-link--dropdown"}>
+                                    <Icon icon={collectionsIconDuoTone} className={"me-2"}/>
+                                    <span className={"sms-nav-link--text"}>{PANES.COLLECTIONS.NAME}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={"p"} className={"mb-0"}>
+                                <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_MAPS} className={"nav-link nav-link--dropdown"}>
+                                    <Icon icon={mapsIconDuoTone} className={"me-2"}/>
+                                    <span className={"sms-nav-link--text"}>{PANES.MAPS.NAME}</span>
+                                </NavLink>
+                            </NavDropdown.Item>
+                        </NavDropdown>
                         <LiNavItem route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
                         {
                             profile.role >= 1 &&
                             <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={BREADCRUMB_NAMES.ADMIN}
                                        doShowNotification={showAdminNotification || showAdminTodoNotification} isAdminNotification={true}/>
                         }
-                        <NavDropdown as={"li"} title={<NavDropdownTitle/>} id="basic-nav-dropdown">
+                        <NavDropdown as={"li"} title={<NavDropdownTitle icon={moreIconDuoTone} label={LABELS.COMMON.MORE_CONTENT}/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={titlesIconDuoTone} className={"me-2"}/>
@@ -109,8 +139,16 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<Icon icon={startIconDuoTone} size={"1x"}/>}
                                    doShowNotification={showUserNotification} isUserNotification={true}
                                    text={LABELS.COMMON.HOME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.ROOT} onClick={handleClick} icon={<Icon icon={dashboardIconDuoTone} size={"1x"}/>}
-                                   text={LABELS.SECTIONS.DASHBOARD.NAME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_OVERVIEW} onClick={handleClick} icon={<Icon icon={overviewIconDuoTone} size={"1x"}/>}
+                                   text={PANES.OVERVIEW.LONG_NAME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MY_TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
+                                   text={PANES.TITLES.LONG_NAME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_VALUATION} onClick={handleClick} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
+                                   text={PANES.VALUATION.LONG_NAME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_COLLECTIONS} onClick={handleClick} icon={<Icon icon={collectionsIconDuoTone} size={"1x"}/>}
+                                   text={PANES.COLLECTIONS.LONG_NAME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MAPS} onClick={handleClick} icon={<Icon icon={mapsIconDuoTone} size={"1x"}/>}
+                                   text={PANES.MAPS.LONG_NAME}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}

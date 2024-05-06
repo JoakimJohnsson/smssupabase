@@ -15,10 +15,12 @@ export const TEXTS = {
 
 export const PANES = {
     TITLES: {
-        NAME: "Mina titlar"
+        NAME: "Mina titlar",
+        LONG_NAME: "Kontrollpanelen - Mina titlar"
     },
     OVERVIEW: {
         NAME: "Översikt",
+        LONG_NAME: "Kontrollpanelen - Översikt",
         COLLECTING_TITLES_1: "Du samlar på",
         COLLECTING_TITLES_2: "av totalt",
         COLLECTING_TITLES_3: "inlagda titlar.",
@@ -38,6 +40,7 @@ export const PANES = {
     },
     COLLECTIONS: {
         NAME: "Samlingar",
+        LONG_NAME: "Kontrollpanelen - Samlingar",
         COLLECTING: "Samlar på",
         TITLES: "titlar",
         COMPLETE: "% komplett",
@@ -45,11 +48,13 @@ export const PANES = {
     },
     VALUATION: {
         NAME: "Värdering",
+        LONG_NAME: "Kontrollpanelen - Värdering",
         LEAD: "Här visas de senaste värderingarna som sparats i databasen. Vi visar max 20 st. För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
         COLLECTING_VALUE_1: "Det sammanlagda värdet av din samling är: ",
     },
     MAPS: {
         NAME: "Kartor",
+        LONG_NAME: "Kontrollpanelen - Kartor",
         LEAD: "Om du har valt att låta Svenska Marvelsamlare använda din position kan du här enkelt leta efter loppisar, second hand-butiker eller serietidningsaffärer nära dig."
     }
 }
