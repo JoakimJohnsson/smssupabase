@@ -91,6 +91,7 @@ export const LABELS = {
         },
         USERS: {
             ALL_USERS: "Alla användare",
+            ALLOW_LOCATION_ACCESS: "Tillåt platsåtkomst",
             FIRST_NAME: "Förnamn",
             IS_PUBLIC: "Publik information",
             IS_SUPER_ADMIN: " är super admin.",

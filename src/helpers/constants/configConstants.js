@@ -17,6 +17,7 @@ import {
 export const LABELS_AND_HEADINGS = {
     ADD_ISSUES: "Lägg till publikationer",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
+    ALLOW_LOCATION_ACCESS: "Tillåt platsåtkomst",
     REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
     ADD_ISSUE_UPGRADE: "Markera behov av uppgradering",
     REMOVE_ISSUE_UPGRADE: "Ta bort behov av uppgradering",

@@ -107,8 +107,11 @@ export const Home = () => {
                                             className={"text-label me-4"}>{LABELS.SECTIONS.USERS.LAST_NAME}:</span> {profile.lastname}</p>
                                         <p className={"m-0"}><span className={"text-label me-4"}>{LABELS.COMMON.WEBSITE}:</span> {profile.website}
                                         </p>
-                                        <p className={"mb-4"}><span
+                                        <p className={"m-0"}><span
                                             className={"text-label me-4"}>{LABELS.SECTIONS.USERS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
+                                        </p>
+                                        <p className={"mb-4"}><span
+                                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.ALLOW_LOCATION_ACCESS}:</span> {profile.allow_location_access === 0 ? "Nej" : "Ja"}
                                         </p>
                                         <IconLinkCtaLg
                                             variant={"primary"}
