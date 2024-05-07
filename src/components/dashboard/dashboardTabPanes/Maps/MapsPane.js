@@ -15,7 +15,6 @@ export const MapsPane = () => {
             <div className={"col-12 col-md-8 col-xxl-6"}>
                 <p className={"lead"}>{PANES.MAPS.LEAD_1}</p>
                 <p>{PANES.MAPS.TEXT_1}</p>
-                
                 <p className={"mb-4"}><span
                     className={"text-label me-4"}>{LABELS.SECTIONS.USERS.ALLOW_LOCATION_ACCESS}:</span> {profile.allow_location_access === 0 ? "Nej" : "Ja"}
                 </p>

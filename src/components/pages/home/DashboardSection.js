@@ -1,6 +1,6 @@
 import React from "react";
 import {ROUTES} from "../../../helpers/constants/configConstants";
-import {collectionsIconDuoTone, overviewIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons";
+import {collectionsIconDuoTone, mapsIconDuoTone, overviewIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {PANES} from "../../../helpers/constants/textConstants/texts";
@@ -30,10 +30,16 @@ export const DashboardSection = () => {
                 label={PANES.VALUATION.NAME}
             />
             <IconLinkCtaLg
-                variant={"country"}
+                variant={"info"}
                 icon={collectionsIconDuoTone}
                 path={ROUTES.DASHBOARD.PATH_COLLECTIONS}
                 label={PANES.COLLECTIONS.NAME}
+            />
+            <IconLinkCtaLg
+                variant={"country"}
+                icon={mapsIconDuoTone}
+                path={ROUTES.DASHBOARD.PATH_MAPS}
+                label={PANES.MAPS.NAME}
             />
         </>
     )

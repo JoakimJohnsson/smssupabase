@@ -25,9 +25,9 @@ export const FooterDashboardNavigation = () => {
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.VALUATION} text={PANES.VALUATION.NAME} variant={"grade"}
                                         icon={<Icon icon={valueIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                 <div className={"d-none d-md-flex"}>
-                    <FooterDashboardNavLink route={ROUTES.DASHBOARD.COLLECTIONS} text={PANES.COLLECTIONS.NAME} variant={"country"}
+                    <FooterDashboardNavLink route={ROUTES.DASHBOARD.COLLECTIONS} text={PANES.COLLECTIONS.NAME} variant={"info"}
                                             icon={<Icon icon={collectionsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
-                    <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAPS} text={PANES.MAPS.NAME} variant={"info"}
+                    <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAPS} text={PANES.MAPS.NAME} variant={"country"}
                                             icon={<Icon icon={mapsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                 </div>
                 <NavDropdown
@@ -42,12 +42,12 @@ export const FooterDashboardNavigation = () => {
                     drop={"up-centered"}>
                     <NavDropdown.Item eventKey="123123">
                         <FooterDashboardNavLink route={ROUTES.DASHBOARD.COLLECTIONS} text={PANES.COLLECTIONS.NAME}
-                                                variant={"country"}
+                                                variant={"info"}
                                                 icon={<Icon icon={collectionsIconDuoTone} size={"2x"}
                                                             className={"m-0"}/>}/>
                     </NavDropdown.Item>
                     <NavDropdown.Item eventKey="1234234">
-                        <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAPS} text={PANES.MAPS.NAME} variant={"info"}
+                        <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAPS} text={PANES.MAPS.NAME} variant={"country"}
                                                 icon={<Icon icon={mapsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                     </NavDropdown.Item>
                 </NavDropdown>
