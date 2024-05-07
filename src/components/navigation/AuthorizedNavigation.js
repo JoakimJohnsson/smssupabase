@@ -9,7 +9,6 @@ import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
     Icon,
     adminIconDuoTone,
-    dashboardIconDuoTone,
     issueIconDuoTone,
     marvelKlubbenIconDuoTone,
     publishersIconDuoTone,
@@ -53,7 +52,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>}
                                    text={LABELS.COMMON.HOME}
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
-                        <NavDropdown as={"li"} title={<NavDropdownTitle icon={dashboardIconDuoTone} label={LABELS.SECTIONS.DASHBOARD.NAME}/>} id="basic-nav-dropdown">
+                        <NavDropdown as={"li"} title={<NavDropdownTitle icon={moreIconDuoTone} label={LABELS.SECTIONS.DASHBOARD.NAME}/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_OVERVIEW} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={overviewIconDuoTone} className={"me-2"}/>
