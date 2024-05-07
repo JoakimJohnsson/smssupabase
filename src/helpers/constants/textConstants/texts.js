@@ -55,6 +55,7 @@ export const PANES = {
     MAPS: {
         NAME: "Kartor",
         LONG_NAME: "Kontrollpanelen - Kartor",
-        LEAD: "Om du har valt att låta Svenska Marvelsamlare använda din position kan du här enkelt leta efter loppisar, second hand-butiker eller serietidningsaffärer nära dig."
+        LEAD_1: "Om du har valt att låta Svenska Marvelsamlare använda din position kan du här enkelt leta efter loppisar, second hand-butiker eller serietidningsaffärer nära dig.",
+        TEXT_1: "Annars kan du göra en vanlig sökning."
     }
 }

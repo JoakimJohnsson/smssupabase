@@ -37,7 +37,7 @@ import {PrivateRoute} from "./PrivateRoute";
 import {AdminRoute} from "./AdminRoute";
 import {CatchAll} from "./CatchAll";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {MapsPane} from "../dashboard/dashboardTabPanes/Collections/MapsPane";
+import {MapsPane} from "../dashboard/dashboardTabPanes/Maps/MapsPane";
 
 
 export const MyRoutes = () => {
