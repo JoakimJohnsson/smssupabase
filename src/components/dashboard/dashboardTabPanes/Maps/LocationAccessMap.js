@@ -3,6 +3,10 @@ import {APIProvider, Map, AdvancedMarker, Pin, InfoWindow} from "@vis.gl/react-g
 
 export const LocationAccessMap = () => {
 
+    // https://www.npmjs.com/package/@vis.gl/react-google-maps
+    // https://visgl.github.io/react-google-maps/docs/
+    // https://visgl.github.io/react-google-maps/examples
+
     const position = {lat: 53.54, lng: 10}
 
     return (
