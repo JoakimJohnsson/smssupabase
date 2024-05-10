@@ -23,6 +23,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Förbättrade menyer, lättare att hitta kontrollpaneler.</li>
                     <li className={"list-group-item px-0"}>Möjlighet för användare att godkänna användning av platsåtkomst.</li>
                     <li className={"list-group-item px-0"}>Kartfunktion för att enkelt hitta närmaste loppis, second hand eller serietidningsaffär, om användaren tillåtit platsåtkomst.</li>
+                    <li className={"list-group-item px-0"}>Bättre sortering på sidan Alla publikationer.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.6.6 - 2024-05-05</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

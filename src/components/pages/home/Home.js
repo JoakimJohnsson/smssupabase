@@ -88,7 +88,7 @@ export const Home = () => {
                             <HeadingWithBreadCrumbs
                                 text={LABELS_AND_HEADINGS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + LABELS_AND_HEADINGS.WELCOME_TEXT_2}/>
                         </div>
-                        <div className={"mb-4"}>
+                        <div className={"mb-5"}>
                             <div className={"sms-section--light"}>
                                 {
                                     showAlert &&
@@ -119,18 +119,19 @@ export const Home = () => {
                                             path={ROUTES.PROFILE}
                                             label={LABELS_AND_HEADINGS.SETTINGS}
                                         />
+                                        <p>För frågor och förbättringsförslag:</p>
+
+                                            <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                                                <Icon icon={faMailboxFlagUp} className={"me-2"}/>
+                                                admin@svenskamarvelsamlare.se
+                                            </a>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <p>För frågor och förbättringsförslag:</p>
-                        <p className={"mb-5"}>
-                            <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                                <Icon icon={faMailboxFlagUp} className={"me-2"}/>
-                                admin@svenskamarvelsamlare.se
-                            </a>
-                        </p>
+
                         <DashboardSection/>
                         {
                             atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
