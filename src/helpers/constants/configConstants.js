@@ -15,10 +15,7 @@ import {
 
 // 491 rader
 export const LABELS_AND_HEADINGS = {
-    ADD_ISSUES: "Lägg till publikationer",
-    ADD_ISSUE_WANTED: "Markera som efterlyst",
     ALLOW_LOCATION_ACCESS: "Tillåt platsåtkomst",
-    REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
     ADD_ISSUE_UPGRADE: "Markera behov av uppgradering",
     REMOVE_ISSUE_UPGRADE: "Ta bort behov av uppgradering",
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
@@ -193,9 +190,6 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
-    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering, och mer exakt värdering, hittar du hos",
-    GRADE_TEXT_3: "Seriekatalogen",
-    GRADE_TEXT_4: "Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
     GRADE_IS_VALUED_LEAD: "Här kan du markera att alla publikationer på den här titeln har fått rätt värden.",
     GRADE_ISSUE_IS_VALUED_TEXT: "Publikationen har fått grundvärden.",
     GRADE_ADD_VALUE_TEXT: "Grundvärden för denna publikation saknas. Tryck på knappen för att lägga till.",
@@ -520,3 +514,7 @@ export const SK_GRADE_RADIO_VALUES = [
 export const SK_GRADE_RADIO_NAMES = [
     "GD", "VG", "FN", "VF", "NM"
 ]
+
+export const MAP_POSITIONS = {
+    NYKOPING: { lat: 58.7609194, lng: 16.9803637 }
+}

@@ -1,8 +1,13 @@
 // Texts - for longer text blocks
 export const TEXTS = {
+    ADD_ISSUE_WANTED: "Markera som efterlyst",
     ALLOW_LOCATION_ACCESS_PROMPT: "Genom att markera detta alternativ godkänner du att vi använder din platsinformation. Vi följer strikta integritetsprinciper och använder din platsdata endast för detta ändamål. Din platsinformation kommer inte att sparas eller användas för något annat syfte utan ditt uttryckliga samtycke. Du kan när som helst ändra dessa inställningar. Vi värnar om din integritet och tar skyddet av din personliga data på stort allvar.",
+    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering, och mer exakt värdering, hittar du hos",
+    GRADE_TEXT_3: "Seriekatalogen",
+    GRADE_TEXT_4: "Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
+    REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
     SECTIONS: {
         GRADES: {},
         ISSUES: {},

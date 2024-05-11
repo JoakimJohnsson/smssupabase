@@ -1,5 +1,6 @@
 import React from "react";
 import {APIProvider, Map, AdvancedMarker, Pin, InfoWindow} from "@vis.gl/react-google-maps";
+import {MAP_POSITIONS} from "../../../../helpers/constants/configConstants";
 
 export const LocationAccessMap = () => {
 
@@ -7,7 +8,7 @@ export const LocationAccessMap = () => {
     // https://visgl.github.io/react-google-maps/docs/
     // https://visgl.github.io/react-google-maps/examples
 
-    const position = {lat: 53.54, lng: 10}
+    const position = MAP_POSITIONS.NYKOPING;
 
     return (
 
