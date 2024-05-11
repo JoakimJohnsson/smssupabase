@@ -515,6 +515,36 @@ export const SK_GRADE_RADIO_NAMES = [
     "GD", "VG", "FN", "VF", "NM"
 ]
 
-export const MAP_POSITIONS = {
-    NYKOPING: { lat: 58.7609194, lng: 16.9803637 }
+export const COLOR_VARIABLE_NAMES = {
+    PRIMARY: "#41bee0",
+    SECONDARY: "#bccad1",
+    SUCCESS: "#33cc99",
+    INFO: "#e3af9b",
+    WARNING: "#f797d2",
+    DANGER: "#ed5353",
+    GRADE: "#ffd700",
+    FORMAT: "#f09f59",
+    COUNTRY: "#7ad145",
+    COUNTRY_DARKER: "#182d0b",
+    PUBLISHER: "#bc84f5",
+    TITLE: "#ccff66",
+    ISSUE: "#ede798",
+    MARVELKLUBBEN: "#ed1d24",
+    WHITE: "#fff",
+    WHITE_DARKER: "#c0c7cf",
+    BLACK: "#000",
+    BLACK_LIGHTER: "#444",
+    BLACK_LIGHTEST: "#999"
+}
+
+export const MAP_CONFIG = {
+    POSITIONS: {
+        NYKOPING: {lat: 58.7609194, lng: 16.9803637}
+    },
+    COLORS: {
+        PIN_BACKGROUND: COLOR_VARIABLE_NAMES.COUNTRY,
+        PIN_BORDER: COLOR_VARIABLE_NAMES.COUNTRY,
+        PIN_GLYPH: COLOR_VARIABLE_NAMES.COUNTRY_DARKER
+    }
+
 }
