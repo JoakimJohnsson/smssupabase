@@ -115,7 +115,7 @@ export const BREADCRUMB_NAMES = {
     MESSAGES: "Meddelanden",
     MY_TITLES: "Mina titlar",
     COLLECTIONS: "Samlingar",
-    MAPS: "Kartor",
+    MAPS: "Karta",
     OVERVIEW: "Översikt",
     PROFILE: "Inställningar",
     PUBLISHERS: "Alla förlag",

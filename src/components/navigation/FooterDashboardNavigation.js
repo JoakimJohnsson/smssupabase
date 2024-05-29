@@ -27,7 +27,7 @@ export const FooterDashboardNavigation = () => {
                 <div className={"d-none d-md-flex"}>
                     <FooterDashboardNavLink route={ROUTES.DASHBOARD.COLLECTIONS} text={PANES.COLLECTIONS.NAME} variant={"info"}
                                             icon={<Icon icon={collectionsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
-                    <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAPS} text={PANES.MAPS.NAME} variant={"country"}
+                    <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAP} text={PANES.MAP.NAME} variant={"country"}
                                             icon={<Icon icon={mapsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                 </div>
                 <NavDropdown
@@ -47,7 +47,7 @@ export const FooterDashboardNavigation = () => {
                                                             className={"m-0"}/>}/>
                     </NavDropdown.Item>
                     <NavDropdown.Item eventKey="1234234">
-                        <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAPS} text={PANES.MAPS.NAME} variant={"country"}
+                        <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAP} text={PANES.MAP.NAME} variant={"country"}
                                                 icon={<Icon icon={mapsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                     </NavDropdown.Item>
                 </NavDropdown>

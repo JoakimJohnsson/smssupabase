@@ -128,9 +128,9 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
-                                <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_MAPS} className={"nav-link nav-link--dropdown"}>
+                                <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_MAP} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={mapsIconDuoTone} className={"me-2"}/>
-                                    <span className={"sms-nav-link--text"}>{PANES.MAPS.NAME}</span>
+                                    <span className={"sms-nav-link--text"}>{PANES.MAP.NAME}</span>
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
@@ -196,8 +196,8 @@ export const AuthorizedNavigation = () => {
                                    text={PANES.VALUATION.LONG_NAME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.PATH_COLLECTIONS} onClick={() => handleClick("isOpen")} icon={<Icon icon={collectionsIconDuoTone} size={"1x"}/>}
                                    text={PANES.COLLECTIONS.LONG_NAME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MAPS} onClick={() => handleClick("isOpen")} icon={<Icon icon={mapsIconDuoTone} size={"1x"}/>}
-                                   text={PANES.MAPS.LONG_NAME}/>
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MAP} onClick={() => handleClick("isOpen")} icon={<Icon icon={mapsIconDuoTone} size={"1x"}/>}
+                                   text={PANES.MAP.LONG_NAME}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={() => handleClick("isOpen")} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.PROFILE} onClick={() => handleClick("isOpen")} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}

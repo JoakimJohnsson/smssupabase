@@ -130,8 +130,6 @@ export const Home = () => {
                                 </div>
                             </div>
                         </div>
-
-
                         <DashboardSection/>
                         {
                             atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&

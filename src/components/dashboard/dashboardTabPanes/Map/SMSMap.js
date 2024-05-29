@@ -12,6 +12,10 @@ export const SMSMap = () => {
     // https://visgl.github.io/react-google-maps/examples
     // https://www.youtube.com/watch?v=PfZ4oLftItk&list=PL2rFahu9sLJ2QuJaKKYDaJp0YqjFCDCtN
 
+    // TODO titta på videos för att göra sök input med autosuggest - och visa
+    // TODO titta på videos för att få directions
+    // TODO Byta namn på kartor till karta
+
     const {profile} = useAppContext();
     const [loading, setLoading] = useState(true);
     const [open, setOpen] = useState(false);

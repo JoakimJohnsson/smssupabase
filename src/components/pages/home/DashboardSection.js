@@ -38,8 +38,8 @@ export const DashboardSection = () => {
             <IconLinkCtaLg
                 variant={"country"}
                 icon={mapsIconDuoTone}
-                path={ROUTES.DASHBOARD.PATH_MAPS}
-                label={PANES.MAPS.NAME}
+                path={ROUTES.DASHBOARD.PATH_MAP}
+                label={PANES.MAP.NAME}
             />
         </>
     )
