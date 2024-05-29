@@ -11,6 +11,8 @@ import {
     faClipboardListCheck,
     faCalendarHeart,
     faChartLine,
+    faChevronDown,
+    faChevronUp,
     faCircleInfo,
     faComet,
     faCommentsQuestion,
@@ -68,6 +70,8 @@ import {
     faClipboardListCheck as faClipboardListCheckDT,
     faCalendarHeart as faCalendarHeartDT,
     faChartLine as faChartLineDT,
+    faChevronDown as faChevronDownDT,
+    faChevronUp as faChevronUpDT,
     faCircleInfo as faCircleInfoDT,
     faComet as faCometDT,
     faCommentsQuestion as faCommentsQuestionDT,
@@ -125,6 +129,8 @@ const iconMap = {
     faClipboardListCheck: faClipboardListCheck,
     faCalendarHeart: faCalendarHeart,
     faChartLine: faChartLine,
+    faChevronDown: faChevronDown,
+    faChevronUp: faChevronUp,
     faCircleInfo: faCircleInfo,
     faComet: faComet,
     faCommentsQuestion: faCommentsQuestion,
@@ -182,6 +188,8 @@ const iconMapDuoTone = {
     faClipboardListCheckDT: faClipboardListCheckDT,
     faCalendarHeartDT: faCalendarHeartDT,
     faChartLineDT: faChartLineDT,
+    faChevronDownDT: faChevronDownDT,
+    faChevronUpDT: faChevronUpDT,
     faCircleInfoDT: faCircleInfoDT,
     faCometDT: faCometDT,
     faCommentsQuestionDT: faCommentsQuestionDT,
@@ -265,7 +273,8 @@ export const logoutIcon = faArrowRightFromArc;
 export const logoIcon = faComet;
 export const mapsIcon = faMapLocationDot;
 export const marvelKlubbenIcon = faBadge;
-export const moreIcon = faEllipsis;
+export const moreIcon = faChevronDown;
+export const lessIcon = faChevronUp;
 export const publishersIcon = faBuildingColumns;
 export const registerIcon = faHeartCirclePlus;
 export const saveIcon = faFloppyDisk;
@@ -308,7 +317,8 @@ export const loginIconDuoTone = faArrowDownToArcDT;
 export const logoIconDuoTone = faCometDT;
 export const mapsIconDuoTone = faMapLocationDotDT;
 export const marvelKlubbenIconDuoTone = faBadgeDT;
-export const moreIconDuoTone = faEllipsisDT;
+export const moreIconDuoTone = faChevronDownDT;
+export const lessIconDuoTone = faChevronUpDT;
 export const questionIconDuoTone = faCommentsQuestionDT;
 export const logoutIconDuoTone = faArrowRightFromArcDT;
 export const collectionsIconDuoTone = faRectangleHistoryCircleUserDT;

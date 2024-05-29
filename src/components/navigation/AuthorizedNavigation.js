@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {SignOutButton} from "../minis/SignOutButton";
 import {useAppContext} from "../../context/AppContext";
@@ -16,7 +16,7 @@ import {
     startIconDuoTone,
     titlesIconDuoTone,
     usersIconDuoTone,
-    valueIconDuoTone, moreIconDuoTone, overviewIconDuoTone, mapsIconDuoTone, collectionsIconDuoTone
+    valueIconDuoTone, moreIconDuoTone, overviewIconDuoTone, mapsIconDuoTone, collectionsIconDuoTone, lessIconDuoTone
 } from "../icons";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
@@ -26,33 +26,83 @@ import {PANES} from "../../helpers/constants/textConstants/texts";
 
 
 export const AuthorizedNavigation = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    // Object to hold many different open states
+    const [openStates, setOpenStates] = useState({
+        isOpen: false,
+        isOpen2: false,
+        isOpen3: false
+    });
     const collapseClassShow = "collapse navbar-collapse show pt-3 pt-lg-0";
     const collapseClass = "collapse navbar-collapse";
     const {profile, showUserNotification, showAdminNotification, showAdminTodoNotification} = useAppContext();
+    const dropdownRef2 = useRef(null);
+    const dropdownRef3 = useRef(null);
 
-    const handleClick = () => {
-        setIsOpen(!isOpen)
-    }
+    // General click handler to handle open states
+    const handleClick = (key) => {
+        setOpenStates((prevStates) => ({
+            ...prevStates,
+            [key]: !prevStates[key]
+        }));
+    };
+
+    const handleDropdownClick = (myKey, otherKey) => {
+        setOpenStates((prevStates) => ({
+            ...prevStates,
+            [myKey]: !prevStates[myKey],
+            [otherKey]: false
+        }));
+    };
+
+    const closeDropdowns = () => {
+        setOpenStates((prevStates) => ({
+            ...prevStates,
+            isOpen2: false,
+            isOpen3: false
+        }));
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+
+            if (dropdownRef2.current && !dropdownRef2.current.contains(event.target)) {
+                setOpenStates((prevStates) => ({
+                    ...prevStates,
+                    isOpen2: false
+                }));
+            }
+            if (dropdownRef3.current && !dropdownRef3.current.contains(event.target)) {
+                setOpenStates((prevStates) => ({
+                    ...prevStates,
+                    isOpen3: false
+                }));
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [dropdownRef2, dropdownRef3]);
 
     return profile && (
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid px-3 pt-1">
                 <NavigationLogo/>
                 <button
-                    className={isOpen ? "btn sms-icon-btn d-block d-lg-none text-danger px-2" : "btn sms-icon-btn d-block d-lg-none text-primary px-2"}
-                    onClick={handleClick}>
+                    className={openStates.isOpen ? "btn sms-icon-btn d-block d-lg-none text-danger px-2" : "btn sms-icon-btn d-block d-lg-none text-primary px-2"}
+                    onClick={() => handleClick("isOpen")}>
                     <span className={"visually-hidden"}>menu</span>
-                    {isOpen ? <Icon icon={faTimes} className={"fa-2xl sms-icon--hovering"}/> :
+                    {openStates.isOpen ? <Icon icon={faTimes} className={"fa-2xl sms-icon--hovering"}/> :
                         <Icon icon={faBars} className={"fa-2xl sms-icon--hovering"}/>}
                 </button>
-                <div className={isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
-                    {/* desktop ul (no click handler) */}
+                <div className={openStates.isOpen ? collapseClassShow : collapseClass} id="navbarSupportedContent">
+                    {/* desktop ul */}
                     <ul className="d-none d-lg-flex navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>}
+                        <LiNavItem onClick={closeDropdowns} customClass={"ms-3"} route={ROUTES.DEFAULT} icon={<Icon icon={startIconDuoTone} size={"2x"}/>}
                                    text={LABELS.COMMON.HOME}
                                    doShowNotification={showUserNotification} isUserNotification={true}/>
-                        <NavDropdown as={"li"} title={<NavDropdownTitle icon={moreIconDuoTone} label={LABELS.SECTIONS.DASHBOARD.NAME}/>} id="basic-nav-dropdown">
+                        <NavDropdown ref={dropdownRef2} onClick={() => handleDropdownClick("isOpen2", "isOpen3")} as={"li"} title={<NavDropdownTitle icon={openStates.isOpen2 ? lessIconDuoTone : moreIconDuoTone} label={LABELS.SECTIONS.DASHBOARD.NAME}/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_OVERVIEW} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={overviewIconDuoTone} className={"me-2"}/>
@@ -84,13 +134,8 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <LiNavItem route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
-                        {
-                            profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={BREADCRUMB_NAMES.ADMIN}
-                                       doShowNotification={showAdminNotification || showAdminTodoNotification} isAdminNotification={true}/>
-                        }
-                        <NavDropdown as={"li"} title={<NavDropdownTitle icon={moreIconDuoTone} label={LABELS.COMMON.MORE_CONTENT}/>} id="basic-nav-dropdown">
+                        <LiNavItem onClick={closeDropdowns}  route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
+                        <NavDropdown ref={dropdownRef3} onClick={() => handleDropdownClick("isOpen3", "isOpen2")} as={"li"} title={<NavDropdownTitle icon={openStates.isOpen3 ? lessIconDuoTone : moreIconDuoTone} label={LABELS.COMMON.MORE_CONTENT}/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
                                     <Icon icon={titlesIconDuoTone} className={"me-2"}/>
@@ -128,6 +173,11 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
+                        {
+                            profile.role >= 1 &&
+                            <LiNavItem onClick={closeDropdowns}  route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={BREADCRUMB_NAMES.ADMIN}
+                                       doShowNotification={showAdminNotification || showAdminTodoNotification} isAdminNotification={true}/>
+                        }
                         <li className="nav-item">
                             <NavbarProfileInformation/>
                             <SignOutButton/>
@@ -135,40 +185,41 @@ export const AuthorizedNavigation = () => {
                     </ul>
                     {/* mobile ul */}
                     <ul className="d-lg-none navbar-nav me-auto me-sm-0 ms-sm-auto pt-3 pt-lg-0">
-                        <LiNavItem route={ROUTES.DEFAULT} onClick={handleClick} icon={<Icon icon={startIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DEFAULT} onClick={() => handleClick("isOpen")} icon={<Icon icon={startIconDuoTone} size={"1x"}/>}
                                    doShowNotification={showUserNotification} isUserNotification={true}
                                    text={LABELS.COMMON.HOME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.PATH_OVERVIEW} onClick={handleClick} icon={<Icon icon={overviewIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_OVERVIEW} onClick={() => handleClick("isOpen")} icon={<Icon icon={overviewIconDuoTone} size={"1x"}/>}
                                    text={PANES.OVERVIEW.LONG_NAME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MY_TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MY_TITLES} onClick={() => handleClick("isOpen")} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={PANES.TITLES.LONG_NAME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.PATH_VALUATION} onClick={handleClick} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_VALUATION} onClick={() => handleClick("isOpen")} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
                                    text={PANES.VALUATION.LONG_NAME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.PATH_COLLECTIONS} onClick={handleClick} icon={<Icon icon={collectionsIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_COLLECTIONS} onClick={() => handleClick("isOpen")} icon={<Icon icon={collectionsIconDuoTone} size={"1x"}/>}
                                    text={PANES.COLLECTIONS.LONG_NAME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MAPS} onClick={handleClick} icon={<Icon icon={mapsIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MAPS} onClick={() => handleClick("isOpen")} icon={<Icon icon={mapsIconDuoTone} size={"1x"}/>}
                                    text={PANES.MAPS.LONG_NAME}/>
-                        <LiNavItem route={ROUTES.TITLES} onClick={handleClick} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.TITLES} onClick={() => handleClick("isOpen")} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
-                        <LiNavItem route={ROUTES.PROFILE} onClick={handleClick} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.PROFILE} onClick={() => handleClick("isOpen")} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
                                    text={LABELS_AND_HEADINGS.SETTINGS}/>
+
+                        <LiNavItem route={ROUTES.ISSUES} onClick={() => handleClick("isOpen")} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}
+                                   text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
+                        <LiNavItem route={ROUTES.GRADE_VALUES} onClick={() => handleClick("isOpen")} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
+                                   text={LABELS.SECTIONS.GRADES.GRADE_VALUES}/>
+                        <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={() => handleClick("isOpen")} icon={<Icon icon={marvelKlubbenIconDuoTone} size={"1x"}/>}
+                                   text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
+                        <LiNavItem route={ROUTES.PUBLISHERS} onClick={() => handleClick("isOpen")} icon={<Icon icon={publishersIconDuoTone} size={"1x"}/>}
+                                   text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
+                        <LiNavItem route={ROUTES.USERS} onClick={() => handleClick("isOpen")} icon={<Icon icon={usersIconDuoTone} size={"1x"}/>}
+                                   text={LABELS.SECTIONS.USERS.ALL_USERS}/>
                         {
                             profile.role >= 1 &&
-                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={handleClick} icon={<Icon icon={adminIconDuoTone} size={"1x"}/>}
+                            <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={() => handleClick("isOpen")} icon={<Icon icon={adminIconDuoTone} size={"1x"}/>}
                                        doShowNotification={showAdminNotification || showAdminTodoNotification}
                                        isAdminNotification={true}
                                        text={BREADCRUMB_NAMES.ADMIN}/>
                         }
-                        <LiNavItem route={ROUTES.ISSUES} onClick={handleClick} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}
-                                   text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
-                        <LiNavItem route={ROUTES.GRADE_VALUES} onClick={handleClick} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
-                                   text={LABELS.SECTIONS.GRADES.GRADE_VALUES}/>
-                        <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={handleClick} icon={<Icon icon={marvelKlubbenIconDuoTone} size={"1x"}/>}
-                                   text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
-                        <LiNavItem route={ROUTES.PUBLISHERS} onClick={handleClick} icon={<Icon icon={publishersIconDuoTone} size={"1x"}/>}
-                                   text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
-                        <LiNavItem route={ROUTES.USERS} onClick={handleClick} icon={<Icon icon={usersIconDuoTone} size={"1x"}/>}
-                                   text={LABELS.SECTIONS.USERS.ALL_USERS}/>
                         <li className="nav-item">
                             <NavbarProfileInformation/>
                             <SignOutButton mobile/>

@@ -39,7 +39,6 @@ $warning--darker: scale-color($warning, $lightness: $amount-less--lg);
 $danger--darker: scale-color($danger, $lightness: $amount-less--lg);
 $grade--darker: scale-color($grade, $lightness: $amount-less--lg);
 $country--darker: scale-color($country, $lightness: $amount-less--lg);
-
 $primary--lighter: scale-color($primary, $lightness: $amount-more--md);
 $secondary--lighter: scale-color($secondary, $lightness: $amount-more--md);
 $success--lighter: scale-color($success, $lightness: $amount-more--md);
