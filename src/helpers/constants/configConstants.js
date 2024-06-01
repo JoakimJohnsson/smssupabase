@@ -540,7 +540,9 @@ export const COLOR_VARIABLE_NAMES = {
 
 export const MAP_CONFIG = {
     POSITIONS: {
-        NYKOPING: {lat: 58.7609194, lng: 16.9803637}
+        NYKOPING: {lat: 58.7609194, lng: 16.9803637},
+        FROM_TEST: {lat: 58.7679132, lng: 17.0114557},
+        TO_TEST: {lat: 58.7660854, lng: 17.0203226}
     },
     COLORS: {
         PIN_BACKGROUND: COLOR_VARIABLE_NAMES.COUNTRY,

@@ -4,6 +4,7 @@ import {CONFIG, MAP_CONFIG} from "../../../../helpers/constants/configConstants"
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
 import {Spinner} from "react-bootstrap";
+import {Directions} from "./Directions";
 
 export const SMSMap = () => {
 
@@ -11,6 +12,7 @@ export const SMSMap = () => {
     // https://visgl.github.io/react-google-maps/docs/
     // https://visgl.github.io/react-google-maps/examples
     // https://www.youtube.com/watch?v=PfZ4oLftItk&list=PL2rFahu9sLJ2QuJaKKYDaJp0YqjFCDCtN
+    // - directions - https://www.youtube.com/watch?v=tFjOIZGCvuQ&list=PL2rFahu9sLJ2QuJaKKYDaJp0YqjFCDCtN&index=3
 
     // TODO titta på videos för att göra sök input med autosuggest - och visa
     // TODO titta på videos för att få directions
@@ -22,6 +24,8 @@ export const SMSMap = () => {
     const [position, setPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
     const [positionPending, setPositionPending] = useState(true);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
+
+
 
     useEffect(() => {
         if ("geolocation" in navigator && profile && profile.allow_location_access) {
@@ -81,7 +85,60 @@ export const SMSMap = () => {
             </div>
             {/* Map */}
             <div className={"sms-google-map"}>
-                <Map defaultZoom={9} defaultCenter={position} mapId={process.env.REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}>
+                <Map
+                    /*
+                    Available options:
+                    backgroundColor
+                    center
+                    clickableIcons
+                    controlSize
+                    defaultCenter
+                    defaultHeading
+                    defaultTilt
+                    defaultZoom
+                    disableDefaultUI
+                    disableDoubleClickZoom
+                    draggable
+                    draggableCursor
+                    draggingCursor
+                    fullscreenControl
+                    fullscreenControlOptions
+                    gestureHandling
+                    heading
+                    headingInteractionEnabled
+                    isFractionalZoomEnabled
+                    keyboardShortcuts
+                    mapId
+                    mapTypeControl
+                    mapTypeControlOptions
+                    mapTypeId
+                    maxZoom
+                    minZoom
+                    noClear
+                    panControl
+                    panControlOptions
+                    renderingType
+                    restriction
+                    rotateControl
+                    rotateControlOptions
+                    scaleControl
+                    scaleControlOptions
+                    scrollwheel
+                    streetView
+                    streetViewControl
+                    streetViewControlOptions
+                    styles
+                    tilt
+                    tiltInteractionEnabled
+                    zoom
+                    zoomControl
+                    zoomControlOptions
+                    */
+                    defaultZoom={12}
+                    defaultCenter={position}
+                    mapId={process.env.REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}
+                    streetViewControl={true}
+                >
                     <AdvancedMarker position={position} onClick={() => setOpen(true)}>
                         <Pin background={MAP_CONFIG.COLORS.PIN_BACKGROUND}
                              borderColor={MAP_CONFIG.COLORS.PIN_BORDER}
@@ -90,9 +147,11 @@ export const SMSMap = () => {
                     {
                         open &&
                         <InfoWindow position={position} onCloseClick={() => setOpen(false)}>
+                            {/* TODO Hämta namn osv för position!*/}
                             <p className={"text-black"}>Hej!</p>
                         </InfoWindow>
                     }
+                    <Directions fromPosition={MAP_CONFIG.POSITIONS.FROM_TEST} toPosition={MAP_CONFIG.POSITIONS.TO_TEST} />
                 </Map>
             </div>
         </APIProvider>
