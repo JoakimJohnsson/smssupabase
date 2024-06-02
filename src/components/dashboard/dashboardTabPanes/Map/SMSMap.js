@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {APIProvider, Map, AdvancedMarker, Pin, InfoWindow} from "@vis.gl/react-google-maps";
+import {Map, AdvancedMarker, Pin, InfoWindow, useMap} from "@vis.gl/react-google-maps";
 import {CONFIG, MAP_CONFIG} from "../../../../helpers/constants/configConstants";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
@@ -8,9 +8,6 @@ import {Directions} from "./Directions";
 
 export const SMSMap = () => {
 
-    // https://www.npmjs.com/package/@vis.gl/react-google-maps
-    // https://visgl.github.io/react-google-maps/docs/
-    // https://visgl.github.io/react-google-maps/examples
     // https://www.youtube.com/watch?v=PfZ4oLftItk&list=PL2rFahu9sLJ2QuJaKKYDaJp0YqjFCDCtN
     // - directions - https://www.youtube.com/watch?v=tFjOIZGCvuQ&list=PL2rFahu9sLJ2QuJaKKYDaJp0YqjFCDCtN&index=3
 
@@ -19,13 +16,25 @@ export const SMSMap = () => {
     // TODO Byta namn på kartor till karta
 
     const {profile} = useAppContext();
+    const map = useMap();
     const [loading, setLoading] = useState(true);
     const [open, setOpen] = useState(false);
     const [position, setPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
     const [positionPending, setPositionPending] = useState(true);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
+    const [mapTypeControlOptions, setMapTypeControlOptions] = useState({});
 
-
+    // https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api#hooks
+    useEffect(() => {
+        if (!map) return;
+        // Now you can interact with the imperative maps API.
+        // https://developers.google.com/maps/documentation/javascript/reference/map
+        const mapsAPI = window.google.maps;
+        setMapTypeControlOptions({
+            style: mapsAPI.MapTypeControlStyle.DEFAULT,
+            mapTypeIds: [mapsAPI.MapTypeId.ROADMAP, mapsAPI.MapTypeId.SATELLITE]
+        })
+    }, [map]);
 
     useEffect(() => {
         if ("geolocation" in navigator && profile && profile.allow_location_access) {
@@ -64,7 +73,7 @@ export const SMSMap = () => {
     }, [locationAllowedAndSupported]);
 
     return !positionPending ?
-        <APIProvider apiKey={process.env.REACT_APP_GOOGLE_CLOUD_API_KEY}>
+        <>
             {/* Search input form  */}
             <div className={"col-12 form-group mb-5 bg-horse p-4"}>
                 {
@@ -88,55 +97,16 @@ export const SMSMap = () => {
                 <Map
                     /*
                     Available options:
-                    backgroundColor
-                    center
-                    clickableIcons
-                    controlSize
+                    https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
                     defaultCenter
                     defaultHeading
                     defaultTilt
                     defaultZoom
-                    disableDefaultUI
-                    disableDoubleClickZoom
-                    draggable
-                    draggableCursor
-                    draggingCursor
-                    fullscreenControl
-                    fullscreenControlOptions
-                    gestureHandling
-                    heading
-                    headingInteractionEnabled
-                    isFractionalZoomEnabled
-                    keyboardShortcuts
-                    mapId
-                    mapTypeControl
-                    mapTypeControlOptions
-                    mapTypeId
-                    maxZoom
-                    minZoom
-                    noClear
-                    panControl
-                    panControlOptions
-                    renderingType
-                    restriction
-                    rotateControl
-                    rotateControlOptions
-                    scaleControl
-                    scaleControlOptions
-                    scrollwheel
-                    streetView
-                    streetViewControl
-                    streetViewControlOptions
-                    styles
-                    tilt
-                    tiltInteractionEnabled
-                    zoom
-                    zoomControl
-                    zoomControlOptions
                     */
                     defaultZoom={12}
                     defaultCenter={position}
                     mapId={process.env.REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}
+                    mapTypeControlOptions={mapTypeControlOptions}
                     streetViewControl={true}
                 >
                     <AdvancedMarker position={position} onClick={() => setOpen(true)}>
@@ -151,10 +121,10 @@ export const SMSMap = () => {
                             <p className={"text-black"}>Hej!</p>
                         </InfoWindow>
                     }
-                    <Directions fromPosition={MAP_CONFIG.POSITIONS.FROM_TEST} toPosition={MAP_CONFIG.POSITIONS.TO_TEST} />
+                    <Directions fromPosition={MAP_CONFIG.POSITIONS.FROM_TEST} toPosition={MAP_CONFIG.POSITIONS.TO_TEST}/>
                 </Map>
             </div>
-        </APIProvider>
+        </>
         :
         <OverlaySpinner/>
 }

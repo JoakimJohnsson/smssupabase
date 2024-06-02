@@ -507,9 +507,10 @@ input[type="checkbox"] + label {
 .sms-google-map {
   height: 75vh;
   &--directions {
+    color: $black;
     @extend .p-3;
     position: absolute;
     bottom: 0;
-    background-color: $primary;
+    background-color: $country;
   }
 }
