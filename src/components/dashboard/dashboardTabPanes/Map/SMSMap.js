@@ -23,18 +23,22 @@ export const SMSMap = () => {
     const [positionPending, setPositionPending] = useState(true);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
     const [mapTypeControlOptions, setMapTypeControlOptions] = useState({});
+    const [mapsApi, setMapsApi] = useState(null);
 
     // https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api#hooks
     useEffect(() => {
+        // Early exit.
         if (!map) return;
         // Now you can interact with the imperative maps API.
         // https://developers.google.com/maps/documentation/javascript/reference/map
-        const mapsAPI = window.google.maps;
-        setMapTypeControlOptions({
-            style: mapsAPI.MapTypeControlStyle.DEFAULT,
-            mapTypeIds: [mapsAPI.MapTypeId.ROADMAP, mapsAPI.MapTypeId.SATELLITE]
-        })
-    }, [map]);
+        setMapsApi(window.google.maps);
+        if (mapsApi) {
+            setMapTypeControlOptions({
+                style: mapsApi.MapTypeControlStyle.DEFAULT,
+                mapTypeIds: [mapsApi.MapTypeId.ROADMAP]
+            });
+        }
+    }, [map, mapsApi]);
 
     useEffect(() => {
         if ("geolocation" in navigator && profile && profile.allow_location_access) {
@@ -103,11 +107,13 @@ export const SMSMap = () => {
                     defaultTilt
                     defaultZoom
                     */
+                    fullscreenControl={false}
                     defaultZoom={12}
                     defaultCenter={position}
                     mapId={process.env.REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}
+                    mapTypeControl={false}
                     mapTypeControlOptions={mapTypeControlOptions}
-                    streetViewControl={true}
+                    streetViewControl={false}
                 >
                     <AdvancedMarker position={position} onClick={() => setOpen(true)}>
                         <Pin background={MAP_CONFIG.COLORS.PIN_BACKGROUND}
@@ -121,7 +127,7 @@ export const SMSMap = () => {
                             <p className={"text-black"}>Hej!</p>
                         </InfoWindow>
                     }
-                    <Directions fromPosition={MAP_CONFIG.POSITIONS.FROM_TEST} toPosition={MAP_CONFIG.POSITIONS.TO_TEST}/>
+                    <Directions mapsApi={mapsApi} fromPosition={MAP_CONFIG.POSITIONS.FROM_TEST} toPosition={MAP_CONFIG.POSITIONS.TO_TEST}/>
                 </Map>
             </div>
         </>
