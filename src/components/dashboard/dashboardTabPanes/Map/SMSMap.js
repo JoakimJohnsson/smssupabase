@@ -20,6 +20,8 @@ export const SMSMap = () => {
     const [loading, setLoading] = useState(true);
     const [open, setOpen] = useState(false);
     const [position, setPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
+    // TODO set destination by search or buttons
+    const [destination, setDestination] = useState(MAP_CONFIG.POSITIONS.TO_TEST);
     const [positionPending, setPositionPending] = useState(true);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
     const [mapTypeControlOptions, setMapTypeControlOptions] = useState({});
@@ -127,7 +129,11 @@ export const SMSMap = () => {
                             <p className={"text-black"}>Hej!</p>
                         </InfoWindow>
                     }
-                    <Directions mapsApi={mapsApi} fromPosition={MAP_CONFIG.POSITIONS.FROM_TEST} toPosition={MAP_CONFIG.POSITIONS.TO_TEST}/>
+                    {
+                        position && destination &&
+                        // TODO Hantera mobilläge?
+                        <Directions mapsApi={mapsApi} origin={position} destination={destination}/>
+                    }
                 </Map>
             </div>
         </>

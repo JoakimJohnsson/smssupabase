@@ -3,7 +3,7 @@ import {useMap, useMapsLibrary} from "@vis.gl/react-google-maps";
 import {COLOR_VARIABLE_NAMES} from "../../../../helpers/constants/configConstants";
 
 
-export const Directions = ({mapsApi, fromPosition, toPosition}) => {
+export const Directions = ({mapsApi, origin, destination}) => {
 
     const map = useMap();
     const routesLibrary = useMapsLibrary("routes");
@@ -17,15 +17,27 @@ export const Directions = ({mapsApi, fromPosition, toPosition}) => {
 
     // Initialize services and renderer
     useEffect(() => {
+        // https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.PolylineOptions.html
         const polylineOptions = {
             strokeColor: COLOR_VARIABLE_NAMES.COUNTRY,
-            strokeOpacity: 1,
+            strokeOpacity: 0.5,
             strokeWeight: 5
         };
+
+        // TODO - Fix custom market??!?
+        // https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.MarkerOptions.html
+        // const markerOptions = {};
+
         // Early exit.
         if (!routesLibrary || !map || !polylineOptions) return;
         setDirectionsService(new routesLibrary.DirectionsService());
-        setDirectionsRenderer(new routesLibrary.DirectionsRenderer({map, polylineOptions}));
+        setDirectionsRenderer(new routesLibrary.DirectionsRenderer(
+            {
+                map: map,
+                polylineOptions: polylineOptions,
+                suppressMarkers: true // Removes direction markers
+            }
+        ));
     }, [routesLibrary, map]);
 
     useEffect(() => {
@@ -33,15 +45,15 @@ export const Directions = ({mapsApi, fromPosition, toPosition}) => {
         if (!directionsService || !directionsRenderer || !mapsApi) return;
 
         directionsService.route({
-            origin: fromPosition,
-            destination: toPosition,
+            origin: origin,
+            destination: destination,
             travelMode: mapsApi.TravelMode.WALKING,
             provideRouteAlternatives: true
         }).then(response => {
             directionsRenderer.setDirections(response);
             setRoutes(response.routes);
         });
-    }, [directionsService, directionsRenderer, mapsApi, fromPosition, toPosition]);
+    }, [directionsService, directionsRenderer, mapsApi, origin, destination]);
 
     useEffect(() => {
         // Early exit.
@@ -54,8 +66,8 @@ export const Directions = ({mapsApi, fromPosition, toPosition}) => {
             <h2>{selectedRoute.summary}</h2>
             <p>{leg.start_address.split(",")[0]} -> {leg.end_address.split(",")[0]}</p>
             <p>{leg.distance?.text} | {leg.duration?.text}</p>
-            <h2>Alternativa vägar</h2>
-            <ul className={"list-unstyled"}>
+            <h3>Alternativa vägar</h3>
+            <ul className={"list-unstyled mb-0"}>
                 {
                     routes.map((route, index) => {
                         return (
@@ -63,7 +75,9 @@ export const Directions = ({mapsApi, fromPosition, toPosition}) => {
                                 <button
                                     className={`btn ${index === routeIndex ? "btn-primary" : "btn-outline-primary"} mb-2`}
                                     onClick={() => setRouteIndex(index)}
-                                >{route.summary}</button>
+                                >
+                                    {route.summary}
+                                </button>
                             </li>
                         )
                     })

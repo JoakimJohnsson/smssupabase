@@ -507,16 +507,30 @@ input[type="checkbox"] + label {
 .sms-google-map {
   height: 75vh;
   &--directions {
+    font-size: $font-size-small;
+    width: 100%;
     @extend .p-3;
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    bottom: 0;
+    left: 0;
     background-color: $country--darker;
     p {
       margin-bottom: 0;
       &:last-of-type {
         margin-bottom: 1.2rem;
       }
+    }
+    h2 {
+      font-size: $h3-font-size;
+    }
+    h3 {
+      font-size: $h4-font-size;
+    }
+    button {
+      font-size: $font-size-small;
+    }
+    @include media-breakpoint-up(sm) {
+      width: auto;
     }
   }
 }
