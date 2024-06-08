@@ -60,6 +60,10 @@ export const PANES = {
     MAP: {
         NAME: "Karta",
         LONG_NAME: "Kontrollpanelen - Karta",
-        LEAD_1: "Om du har valt att låta Svenska Marvelsamlare använda din position kan du här enkelt leta efter loppisar, second hand-butiker eller serietidningsaffärer nära dig."
+        LEAD_1: "Om du har valt att låta Svenska Marvelsamlare använda din position kan du här enkelt leta efter loppisar, second hand-butiker eller serietidningsaffärer nära dig.",
+        NO_LOCATION_ACCESS: "Dina inställningar tillåter tyvärr inte denna funktion.",
+        FLEA_MARKETS: "Loppmarknader",
+        SECOND_HAND_SHOPS: "Second hand-butiker",
+        COMIC_BOOK_STORES: "Serietidningsaffärer"
     }
 }

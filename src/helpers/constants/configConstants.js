@@ -549,6 +549,19 @@ export const MAP_CONFIG = {
         PIN_BORDER_VARIANT: COLOR_VARIABLE_NAMES.COUNTRY_DARKER,
         PIN_GLYPH: COLOR_VARIABLE_NAMES.COUNTRY_DARKER,
         PIN_GLYPH_VARIANT: COLOR_VARIABLE_NAMES.COUNTRY
+    },
+    REQUESTS: {
+        FLEA_MARKET: {
+            query: "Loppisar",
+            fields: ["name", "geometry"]
+        },
+        SECOND_HAND: {
+            query: "Second hand",
+            fields: ["name", "geometry"]
+        },
+        COMIC_BOOK_STORE: {
+            query: "Serietidningar butik",
+            fields: ["name", "geometry"]
+        },
     }
-
 }
