@@ -1,31 +1,24 @@
 import React, {useEffect, useState} from "react";
-import {Map, AdvancedMarker, Pin, InfoWindow, useMap} from "@vis.gl/react-google-maps";
+import {Map, useMap} from "@vis.gl/react-google-maps";
 import {CONFIG, MAP_CONFIG} from "../../../../helpers/constants/configConstants";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
-import {Spinner} from "react-bootstrap";
+import {Form, Spinner} from "react-bootstrap";
 import {Directions} from "./Directions";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCar, faWalking} from "@fortawesome/pro-thin-svg-icons";
 
 export const SMSMap = () => {
-
-    // https://www.youtube.com/watch?v=PfZ4oLftItk&list=PL2rFahu9sLJ2QuJaKKYDaJp0YqjFCDCtN
-    // - directions - https://www.youtube.com/watch?v=tFjOIZGCvuQ&list=PL2rFahu9sLJ2QuJaKKYDaJp0YqjFCDCtN&index=3
-
-    // TODO titta på videos för att göra sök input med autosuggest - och visa
-    // TODO titta på videos för att få directions
-    // TODO Byta namn på kartor till karta
-
     const {profile} = useAppContext();
     const map = useMap();
     const [loading, setLoading] = useState(true);
-    const [open, setOpen] = useState(false);
     const [position, setPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
-    // TODO set destination by search or buttons
-    const [destination, setDestination] = useState(MAP_CONFIG.POSITIONS.TO_TEST);
+    const [destination, setDestination] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
     const [positionPending, setPositionPending] = useState(true);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
     const [mapTypeControlOptions, setMapTypeControlOptions] = useState({});
     const [mapsApi, setMapsApi] = useState(null);
+    const [travelModeIndex, setTravelModeIndex] = useState(0);
 
     // https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api#hooks
     useEffect(() => {
@@ -68,14 +61,12 @@ export const SMSMap = () => {
         const options = {
             timeout: CONFIG.TIMEOUT_MEGA_XXL
         };
-
         if (locationAllowedAndSupported) {
             navigator.geolocation.getCurrentPosition(success, error, options);
         } else {
             console.log("Geolocation is not supported by this browser.");
             setPositionPending(false);
         }
-
     }, [locationAllowedAndSupported]);
 
     return !positionPending ?
@@ -97,6 +88,26 @@ export const SMSMap = () => {
                                 <p>NOT allowed and supported - no shortcut buttons</p>
                             </>
                 }
+                {/* Travel mode selector */}
+                <Form>
+                    <div className="mb-3">
+                        <Form.Check
+                            type={"radio"}
+                            id={"0"}
+                            name={"travelMode"}
+                            label={<span><FontAwesomeIcon icon={faWalking}/> Promenad</span>}
+                            checked={travelModeIndex === 0}
+                            onChange={() => setTravelModeIndex(0)}
+                        />
+                        <Form.Check
+                            type={"radio"}
+                            id={"1"}
+                            label={<span><FontAwesomeIcon icon={faCar}/> Åka bil</span>}
+                            checked={travelModeIndex === 1}
+                            onChange={() => setTravelModeIndex(1)}
+                        />
+                    </div>
+                </Form>
             </div>
             {/* Map */}
             <div className={"sms-google-map"}>
@@ -117,22 +128,9 @@ export const SMSMap = () => {
                     mapTypeControlOptions={mapTypeControlOptions}
                     streetViewControl={false}
                 >
-                    <AdvancedMarker position={position} onClick={() => setOpen(true)}>
-                        <Pin background={MAP_CONFIG.COLORS.PIN_BACKGROUND}
-                             borderColor={MAP_CONFIG.COLORS.PIN_BORDER}
-                             glyphColor={MAP_CONFIG.COLORS.PIN_GLYPH}/>
-                    </AdvancedMarker>
-                    {
-                        open &&
-                        <InfoWindow position={position} onCloseClick={() => setOpen(false)}>
-                            {/* TODO Hämta namn osv för position!*/}
-                            <p className={"text-black"}>Hej!</p>
-                        </InfoWindow>
-                    }
                     {
                         position && destination &&
-                        // TODO Hantera mobilläge?
-                        <Directions mapsApi={mapsApi} origin={position} destination={destination}/>
+                        <Directions mapsApi={mapsApi} origin={position} destination={destination} travelModeIndex={travelModeIndex}/>
                     }
                 </Map>
             </div>

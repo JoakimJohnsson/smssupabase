@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from "react";
 import {useMap, useMapsLibrary} from "@vis.gl/react-google-maps";
 import {COLOR_VARIABLE_NAMES} from "../../../../helpers/constants/configConstants";
+import {SMSMapMarker} from "./SMSMapMarker";
 
 
-export const Directions = ({mapsApi, origin, destination}) => {
-
+export const Directions = ({mapsApi, origin, destination, travelModeIndex}) => {
     const map = useMap();
     const routesLibrary = useMapsLibrary("routes");
     // Use null as default to avoid runtime errors.
     const [directionsService, setDirectionsService] = useState(null);
     const [directionsRenderer, setDirectionsRenderer] = useState(null);
     const [routes, setRoutes] = useState([]);
+    const [travelModes, setTravelModes] = useState([]);
     const [routeIndex, setRouteIndex] = useState(0);
     const selectedRoute = routes[routeIndex];
     const leg = selectedRoute?.legs[0];
@@ -20,16 +21,11 @@ export const Directions = ({mapsApi, origin, destination}) => {
         // https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.PolylineOptions.html
         const polylineOptions = {
             strokeColor: COLOR_VARIABLE_NAMES.COUNTRY,
-            strokeOpacity: 0.5,
+            strokeOpacity: 0.4,
             strokeWeight: 5
         };
-
-        // TODO - Fix custom market??!?
-        // https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.MarkerOptions.html
-        // const markerOptions = {};
-
         // Early exit.
-        if (!routesLibrary || !map || !polylineOptions) return;
+        if (!routesLibrary || !map || !polylineOptions || !mapsApi) return;
         setDirectionsService(new routesLibrary.DirectionsService());
         setDirectionsRenderer(new routesLibrary.DirectionsRenderer(
             {
@@ -38,22 +34,22 @@ export const Directions = ({mapsApi, origin, destination}) => {
                 suppressMarkers: true // Removes direction markers
             }
         ));
-    }, [routesLibrary, map]);
+        setTravelModes([mapsApi.TravelMode.WALKING, mapsApi.TravelMode.DRIVING]);
+    }, [routesLibrary, map, mapsApi]);
 
     useEffect(() => {
         // Early exit.
-        if (!directionsService || !directionsRenderer || !mapsApi) return;
-
+        if (!directionsService || !directionsRenderer || !mapsApi || !travelModes.length) return;
         directionsService.route({
             origin: origin,
             destination: destination,
-            travelMode: mapsApi.TravelMode.WALKING,
+            travelMode: travelModes[travelModeIndex],
             provideRouteAlternatives: true
         }).then(response => {
             directionsRenderer.setDirections(response);
             setRoutes(response.routes);
         });
-    }, [directionsService, directionsRenderer, mapsApi, origin, destination]);
+    }, [directionsService, directionsRenderer, mapsApi, origin, destination, travelModes, travelModeIndex]);
 
     useEffect(() => {
         // Early exit.
@@ -83,6 +79,9 @@ export const Directions = ({mapsApi, origin, destination}) => {
                     })
                 }
             </ul>
+            {/* Display advanced markers */}
+            <SMSMapMarker position={origin}/>
+            <SMSMapMarker position={destination} isDestination/>
         </div>
     )
 }
