@@ -555,7 +555,7 @@ export const MAP_CONFIG = {
         FLEA_MARKET: {
             query: "Loppisar",
             fields: ["name", "geometry"],
-            name: PANES.MAP.FLEA_MARKETS
+            name: PANES.MAP.FLEA_MARKETS,
         },
         SECOND_HAND: {
             query: "Second hand",

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Map, useMap, useMapsLibrary} from "@vis.gl/react-google-maps";
-import {CONFIG, MAP_CONFIG} from "../../../../helpers/constants/configConstants";
+import {COLOR_VARIABLE_NAMES, CONFIG, MAP_CONFIG} from "../../../../helpers/constants/configConstants";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
 import {Form, Spinner} from "react-bootstrap";
@@ -10,6 +10,7 @@ import {carIconDuoTone, Icon, infoIconDuoTone, walkingIconDuoTone} from "../../.
 import {SMSMapMarker} from "./SMSMapMarker";
 import {getLocation} from "../../../../helpers/functions";
 import {DestinationSelector} from "./DestinationSelector";
+
 
 export const SMSMap = () => {
     const {profile} = useAppContext();
@@ -23,16 +24,25 @@ export const SMSMap = () => {
     const [mapsApi, setMapsApi] = useState(null);
     const [travelModeIndex, setTravelModeIndex] = useState(0);
     const placesLibrary = useMapsLibrary("places");
+    const routesLibrary = useMapsLibrary("routes");
     // Use null as default to avoid runtime errors.
     const [placesService, setPlacesService] = useState(null);
+    const [directionsService, setDirectionsService] = useState(null);
+    const [directionsRenderer, setDirectionsRenderer] = useState(null);
     const [selectedDestination, setSelectedDestination] = useState(null);
     const [selectedDestinationType, setSelectedDestinationType] = useState(null);
 
     // https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api#hooks
-    // Initialize mapsAPI and places service
+    // Initialize mapsAPI and services
     useEffect(() => {
+        // https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.PolylineOptions.html
+        const polylineOptions = {
+            strokeColor: COLOR_VARIABLE_NAMES.COUNTRY,
+            strokeOpacity: 0.4,
+            strokeWeight: 5
+        };
         // Early exit.
-        if (!map || !placesLibrary) return;
+        if (!map || !placesLibrary || !routesLibrary || !polylineOptions) return;
         // Now you can interact with the imperative maps API.
         // https://developers.google.com/maps/documentation/javascript/reference/map
         setMapsApi(window.google.maps);
@@ -43,7 +53,15 @@ export const SMSMap = () => {
             });
             setPlacesService(new placesLibrary.PlacesService(map));
         }
-    }, [map, mapsApi, placesLibrary]);
+        setDirectionsService(new routesLibrary.DirectionsService());
+        setDirectionsRenderer(new routesLibrary.DirectionsRenderer(
+            {
+                map: map,
+                polylineOptions: polylineOptions,
+                suppressMarkers: true // Removes direction markers
+            }
+        ));
+    }, [map, mapsApi, placesLibrary, routesLibrary]);
 
     useEffect(() => {
         if ("geolocation" in navigator && profile && profile.allow_location_access) {
@@ -89,9 +107,9 @@ export const SMSMap = () => {
             }
             , (results, status) => {
                 if (status === "OK" && results) {
-                   setDestinations(results);
-                   // setSelectedDestination(results[0]);
-                   setSelectedDestinationType(request.name);
+                    setDestinations(results);
+                    // setSelectedDestination(results[0]);
+                    setSelectedDestinationType(request.name);
                 }
             });
     }
@@ -107,28 +125,32 @@ export const SMSMap = () => {
                         locationAllowedAndSupported ?
                             <>
                                 {/* Allowed and supported */}
-                                <button
-                                    className={"sms-btn btn btn-outline-country"}
-                                    onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.FLEA_MARKET)}
-                                >
-                                    {PANES.MAP.FLEA_MARKETS}
-                                </button>
-                                <button
-                                    className={"sms-btn btn btn-outline-country"}
-                                    onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.SECOND_HAND)}
-                                >
-                                    {PANES.MAP.SECOND_HAND_SHOPS}
-                                </button>
-                                <button
-                                    className={"sms-btn btn btn-outline-country"}
-                                    onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.COMIC_BOOK_STORE)}
-                                >
-                                    {PANES.MAP.COMIC_BOOK_STORES}
-                                </button>
+                                <h2>{PANES.MAP.SEARCH_FOR_NEAREST}</h2>
+                                <div className={"my-3"}>
+                                    <button
+                                        className={`sms-btn btn ${selectedDestinationType === MAP_CONFIG.REQUESTS.FLEA_MARKET.name ? "btn-country" : "btn-outline-country"}`}
+                                        onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.FLEA_MARKET)}
+                                    >
+                                        {PANES.MAP.FLEA_MARKETS}
+                                    </button>
+                                    <button
+                                        className={`sms-btn btn ${selectedDestinationType === MAP_CONFIG.REQUESTS.SECOND_HAND.name ? "btn-country" : "btn-outline-country"}`}
+                                        onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.SECOND_HAND)}
+                                    >
+                                        {PANES.MAP.SECOND_HAND_SHOPS}
+                                    </button>
+                                    <button
+                                        className={`sms-btn btn ${selectedDestinationType === MAP_CONFIG.REQUESTS.COMIC_BOOK_STORE.name ? "btn-country" : "btn-outline-country"}`}
+                                        onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.COMIC_BOOK_STORE)}
+                                    >
+                                        {PANES.MAP.COMIC_BOOK_STORES}
+                                    </button>
+                                </div>
                                 {/* Destination selector */}
                                 {
                                     destinations && !!destinations.length &&
-                                    <DestinationSelector selectedDestinationType={selectedDestinationType} setSelectedDestination={setSelectedDestination} destinations={destinations}/>
+                                    <DestinationSelector selectedDestinationType={selectedDestinationType}
+                                                         setSelectedDestination={setSelectedDestination} destinations={destinations}/>
                                 }
                                 {/* Travel mode selector */}
                                 {
@@ -180,7 +202,8 @@ export const SMSMap = () => {
                         {/* Add markers */}
                         {
                             position && selectedDestination ?
-                                <Directions mapsApi={mapsApi} origin={position} destination={getLocation(selectedDestination)} travelModeIndex={travelModeIndex}/>
+                                <Directions mapsApi={mapsApi} origin={position} destination={getLocation(selectedDestination)}
+                                            travelModeIndex={travelModeIndex} directionsRenderer={directionsRenderer} directionsService={directionsService}/>
                                 :
                                 <SMSMapMarker position={position}/>
                         }

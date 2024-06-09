@@ -68,7 +68,8 @@ export const PANES = {
         WALKING: "Promenad",
         DRIVING: "Köra bil",
         TRAVEL_MODES: "Färdsätt",
-        NEAREST_DESTINATIONS: "Närmaste",
-        ALTERNATIVE_ROUTES: "Alternativa vägar"
+        NEAREST_DESTINATIONS: "nära dig:",
+        ALTERNATIVE_ROUTES: "Alternativa vägar",
+        SEARCH_FOR_NEAREST: "Sök efter närmaste"
     }
 }

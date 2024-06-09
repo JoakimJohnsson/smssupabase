@@ -1,43 +1,23 @@
 import React, {useEffect, useState} from "react";
-import {useMap, useMapsLibrary} from "@vis.gl/react-google-maps";
-import {COLOR_VARIABLE_NAMES} from "../../../../helpers/constants/configConstants";
+import {useMap} from "@vis.gl/react-google-maps";
 import {SMSMapMarker} from "./SMSMapMarker";
 import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 
 
-export const Directions = ({mapsApi, origin, destination, travelModeIndex}) => {
+export const Directions = ({mapsApi, origin, destination, travelModeIndex, directionsService, directionsRenderer}) => {
     const map = useMap();
-    const routesLibrary = useMapsLibrary("routes");
-    // Use null as default to avoid runtime errors.
-    const [directionsService, setDirectionsService] = useState(null);
-    const [directionsRenderer, setDirectionsRenderer] = useState(null);
     const [routes, setRoutes] = useState([]);
     const [travelModes, setTravelModes] = useState([]);
     const [routeIndex, setRouteIndex] = useState(0);
     const selectedRoute = routes[routeIndex];
     const leg = selectedRoute?.legs[0];
 
-    // Initialize services and renderer
     useEffect(() => {
-        // https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.PolylineOptions.html
-        const polylineOptions = {
-            strokeColor: COLOR_VARIABLE_NAMES.COUNTRY,
-            strokeOpacity: 0.4,
-            strokeWeight: 5
-        };
         // Early exit.
-        if (!routesLibrary || !map || !polylineOptions || !mapsApi) return;
-        setDirectionsService(new routesLibrary.DirectionsService());
-        setDirectionsRenderer(new routesLibrary.DirectionsRenderer(
-            {
-                map: map,
-                polylineOptions: polylineOptions,
-                suppressMarkers: true // Removes direction markers
-            }
-        ));
+        if (!map || !mapsApi) return;
         setTravelModes([mapsApi.TravelMode.WALKING, mapsApi.TravelMode.DRIVING]);
-    }, [routesLibrary, map, mapsApi]);
+    }, [map, mapsApi]);
 
     useEffect(() => {
         // Early exit.
