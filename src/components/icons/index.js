@@ -10,6 +10,7 @@ import {
     faBuildingColumns,
     faClipboardListCheck,
     faCalendarHeart,
+    faCar,
     faChartLine,
     faChevronDown,
     faChevronUp,
@@ -56,7 +57,8 @@ import {
     faTriangleExclamation,
     faTypewriter,
     faUser,
-    faUsers
+    faUsers,
+    faWalking
 } from "@fortawesome/pro-regular-svg-icons";
 
 import {
@@ -69,6 +71,7 @@ import {
     faBuildingColumns as faBuildingColumnsDT,
     faClipboardListCheck as faClipboardListCheckDT,
     faCalendarHeart as faCalendarHeartDT,
+    faCar as faCarDT,
     faChartLine as faChartLineDT,
     faChevronDown as faChevronDownDT,
     faChevronUp as faChevronUpDT,
@@ -115,7 +118,8 @@ import {
     faTriangleExclamation as faTriangleExclamationDT,
     faTypewriter as faTypewriterDT,
     faUser as faUserDT,
-    faUsers as faUsersDT
+    faUsers as faUsersDT,
+    faWalking as faWalkingDT
 } from "@fortawesome/pro-duotone-svg-icons";
 
 const iconMap = {
@@ -128,6 +132,7 @@ const iconMap = {
     faBuildingColumns: faBuildingColumns,
     faClipboardListCheck: faClipboardListCheck,
     faCalendarHeart: faCalendarHeart,
+    faCar: faCar,
     faChartLine: faChartLine,
     faChevronDown: faChevronDown,
     faChevronUp: faChevronUp,
@@ -174,7 +179,8 @@ const iconMap = {
     faTriangleExclamation: faTriangleExclamation,
     faTypewriter: faTypewriter,
     faUser: faUser,
-    faUsers: faUsers
+    faUsers: faUsers,
+    faWalking: faWalking
 }
 
 const iconMapDuoTone = {
@@ -187,6 +193,7 @@ const iconMapDuoTone = {
     faBuildingColumnsDT: faBuildingColumnsDT,
     faClipboardListCheckDT: faClipboardListCheckDT,
     faCalendarHeartDT: faCalendarHeartDT,
+    faCarDT: faCarDT,
     faChartLineDT: faChartLineDT,
     faChevronDownDT: faChevronDownDT,
     faChevronUpDT: faChevronUpDT,
@@ -233,7 +240,8 @@ const iconMapDuoTone = {
     faTriangleExclamationDT: faTriangleExclamationDT,
     faTypewriterDT: faTypewriterDT,
     faUserDT: faUserDT,
-    faUsersDT: faUsersDT
+    faUsersDT: faUsersDT,
+    faWalkingDT: faWalkingDT
 }
 
 export const getIconByName = (iconName) => {
@@ -253,6 +261,7 @@ export const Icon = ({icon, size, className, spin = false}) => {
 // Regular
 export const adminIcon = faShieldCat;
 export const notAdminIcon = faShield;
+export const carIcon = faCar;
 export const collectionPlusIcon = faRectangleHistoryCirclePlus;
 export const collectionCheckIcon = faClipboardListCheck;
 export const collectionSearchIcon = faMagnifyingGlassDollar;
@@ -294,11 +303,13 @@ export const titleIcon = faFile;
 export const usersIcon = faUsers;
 export const userIcon = faUser;
 export const valueIcon = faSackDollar;
+export const walkingIcon = faWalking;
 export const warningIcon = faSealExclamation;
 
 // DuoTone
 export const adminIconDuoTone = faShieldCatDT;
 export const notAdminIconDuoTone = faShieldDT;
+export const carIconDuoTone = faCarDT;
 export const collectionPlusIconDuoTone = faRectangleHistoryCirclePlusDT;
 export const collectionCheckIconDuoTone = faClipboardListCheckDT;
 export const collectionSearchIconDuoTone = faMagnifyingGlassDollarDT;
@@ -339,4 +350,5 @@ export const titleIconDuoTone = faFileDT;
 export const usersIconDuoTone = faUsersDT;
 export const userIconDuoTone = faUserDT;
 export const valueIconDuoTone = faSackDollarDT;
+export const walkingIconDuoTone = faWalkingDT;
 export const warningIconDuoTone = faSealExclamationDT;

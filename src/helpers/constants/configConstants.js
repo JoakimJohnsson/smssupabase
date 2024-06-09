@@ -12,6 +12,7 @@ import {
     faSwords,
     faTRex
 } from "@fortawesome/pro-thin-svg-icons";
+import {PANES} from "./textConstants/texts";
 
 // 491 rader
 export const LABELS_AND_HEADINGS = {
@@ -553,15 +554,18 @@ export const MAP_CONFIG = {
     REQUESTS: {
         FLEA_MARKET: {
             query: "Loppisar",
-            fields: ["name", "geometry"]
+            fields: ["name", "geometry"],
+            name: PANES.MAP.FLEA_MARKETS
         },
         SECOND_HAND: {
             query: "Second hand",
-            fields: ["name", "geometry"]
+            fields: ["name", "geometry"],
+            name: PANES.MAP.SECOND_HAND_SHOPS
         },
         COMIC_BOOK_STORE: {
             query: "Serietidningar butik",
-            fields: ["name", "geometry"]
+            fields: ["name", "geometry"],
+            name: PANES.MAP.COMIC_BOOK_STORES
         },
     }
 }

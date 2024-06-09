@@ -64,6 +64,11 @@ export const PANES = {
         NO_LOCATION_ACCESS: "Dina inställningar tillåter tyvärr inte denna funktion.",
         FLEA_MARKETS: "Loppmarknader",
         SECOND_HAND_SHOPS: "Second hand-butiker",
-        COMIC_BOOK_STORES: "Serietidningsaffärer"
+        COMIC_BOOK_STORES: "Serietidningsaffärer",
+        WALKING: "Promenad",
+        DRIVING: "Köra bil",
+        TRAVEL_MODES: "Färdsätt",
+        NEAREST_DESTINATIONS: "Närmaste",
+        ALTERNATIVE_ROUTES: "Alternativa vägar"
     }
 }

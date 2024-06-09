@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {useMap, useMapsLibrary} from "@vis.gl/react-google-maps";
 import {COLOR_VARIABLE_NAMES} from "../../../../helpers/constants/configConstants";
 import {SMSMapMarker} from "./SMSMapMarker";
+import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons";
+import {PANES} from "../../../../helpers/constants/textConstants/texts";
 
 
 export const Directions = ({mapsApi, origin, destination, travelModeIndex}) => {
@@ -60,9 +62,17 @@ export const Directions = ({mapsApi, origin, destination, travelModeIndex}) => {
     return leg && (
         <div className={"sms-google-map--directions"}>
             <h2>{selectedRoute.summary}</h2>
+            <p>
+                {
+                    travelModeIndex === 0 ?
+                        <span><Icon icon={walkingIconDuoTone}/> {PANES.MAP.WALKING}</span>
+                        :
+                        <span><Icon icon={carIconDuoTone}/> {PANES.MAP.DRIVING}</span>
+                }
+            </p>
             <p>{leg.start_address.split(",")[0]} -> {leg.end_address.split(",")[0]}</p>
             <p>{leg.distance?.text} | {leg.duration?.text}</p>
-            <h3>Alternativa vägar</h3>
+            <h3>{PANES.MAP.ALTERNATIVE_ROUTES}</h3>
             <ul className={"list-unstyled mb-0"}>
                 {
                     routes.map((route, index) => {

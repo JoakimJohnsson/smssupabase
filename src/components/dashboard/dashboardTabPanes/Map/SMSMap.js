@@ -5,17 +5,18 @@ import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
 import {Form, Spinner} from "react-bootstrap";
 import {Directions} from "./Directions";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCar, faWalking} from "@fortawesome/pro-regular-svg-icons";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
-import {Icon, infoIconDuoTone} from "../../../icons";
+import {carIconDuoTone, Icon, infoIconDuoTone, walkingIconDuoTone} from "../../../icons";
+import {SMSMapMarker} from "./SMSMapMarker";
+import {getLocation} from "../../../../helpers/functions";
+import {DestinationSelector} from "./DestinationSelector";
 
 export const SMSMap = () => {
     const {profile} = useAppContext();
     const map = useMap();
     const [loading, setLoading] = useState(true);
     const [position, setPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
-    const [destination, setDestination] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
+    const [destinations, setDestinations] = useState([]);
     const [positionPending, setPositionPending] = useState(true);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
     const [mapTypeControlOptions, setMapTypeControlOptions] = useState({});
@@ -24,6 +25,8 @@ export const SMSMap = () => {
     const placesLibrary = useMapsLibrary("places");
     // Use null as default to avoid runtime errors.
     const [placesService, setPlacesService] = useState(null);
+    const [selectedDestination, setSelectedDestination] = useState(null);
+    const [selectedDestinationType, setSelectedDestinationType] = useState(null);
 
     // https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api#hooks
     // Initialize mapsAPI and places service
@@ -86,9 +89,9 @@ export const SMSMap = () => {
             }
             , (results, status) => {
                 if (status === "OK" && results) {
-                    for (let i = 0; i < results.length; i++) {
-                        console.log(results[i].name);
-                    }
+                   setDestinations(results);
+                   // setSelectedDestination(results[0]);
+                   setSelectedDestinationType(request.name);
                 }
             });
     }
@@ -105,43 +108,53 @@ export const SMSMap = () => {
                             <>
                                 {/* Allowed and supported */}
                                 <button
-                                    className={"sms-btn btn btn-primary"}
+                                    className={"sms-btn btn btn-outline-country"}
                                     onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.FLEA_MARKET)}
                                 >
                                     {PANES.MAP.FLEA_MARKETS}
                                 </button>
                                 <button
-                                    className={"sms-btn btn btn-secondary"}
+                                    className={"sms-btn btn btn-outline-country"}
                                     onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.SECOND_HAND)}
                                 >
                                     {PANES.MAP.SECOND_HAND_SHOPS}
                                 </button>
                                 <button
-                                    className={"sms-btn btn btn-info"}
+                                    className={"sms-btn btn btn-outline-country"}
                                     onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.COMIC_BOOK_STORE)}
                                 >
                                     {PANES.MAP.COMIC_BOOK_STORES}
                                 </button>
+                                {/* Destination selector */}
+                                {
+                                    destinations && !!destinations.length &&
+                                    <DestinationSelector selectedDestinationType={selectedDestinationType} setSelectedDestination={setSelectedDestination} destinations={destinations}/>
+                                }
                                 {/* Travel mode selector */}
-                                <Form>
-                                    <div className="mb-3">
-                                        <Form.Check
-                                            type={"radio"}
-                                            id={"0"}
-                                            name={"travelMode"}
-                                            label={<span><FontAwesomeIcon icon={faWalking}/> Promenad</span>}
-                                            checked={travelModeIndex === 0}
-                                            onChange={() => setTravelModeIndex(0)}
-                                        />
-                                        <Form.Check
-                                            type={"radio"}
-                                            id={"1"}
-                                            label={<span><FontAwesomeIcon icon={faCar}/> Åka bil</span>}
-                                            checked={travelModeIndex === 1}
-                                            onChange={() => setTravelModeIndex(1)}
-                                        />
-                                    </div>
-                                </Form>
+                                {
+                                    selectedDestination &&
+                                    <Form>
+                                        <h2>{PANES.MAP.TRAVEL_MODES}</h2>
+                                        <div className="mb-3">
+                                            <Form.Check
+                                                type={"radio"}
+                                                id={"0"}
+                                                name={"travelMode"}
+                                                label={<span><Icon icon={walkingIconDuoTone}/> {PANES.MAP.WALKING}</span>}
+                                                checked={travelModeIndex === 0}
+                                                onChange={() => setTravelModeIndex(0)}
+                                            />
+                                            <Form.Check
+                                                type={"radio"}
+                                                id={"1"}
+                                                name={"travelMode"}
+                                                label={<span><Icon icon={carIconDuoTone}/> {PANES.MAP.DRIVING}</span>}
+                                                checked={travelModeIndex === 1}
+                                                onChange={() => setTravelModeIndex(1)}
+                                            />
+                                        </div>
+                                    </Form>
+                                }
                             </>
                             :
                             // NOT allowed and supported
@@ -156,14 +169,6 @@ export const SMSMap = () => {
                 locationAllowedAndSupported &&
                 <div className={"sms-google-map"}>
                     <Map
-                        /*
-                        Available options:
-                        https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
-                        defaultCenter
-                        defaultHeading
-                        defaultTilt
-                        defaultZoom
-                        */
                         fullscreenControl={false}
                         defaultZoom={12}
                         defaultCenter={position}
@@ -172,9 +177,12 @@ export const SMSMap = () => {
                         mapTypeControlOptions={mapTypeControlOptions}
                         streetViewControl={false}
                     >
+                        {/* Add markers */}
                         {
-                            position && destination &&
-                            <Directions mapsApi={mapsApi} origin={position} destination={destination} travelModeIndex={travelModeIndex}/>
+                            position && selectedDestination ?
+                                <Directions mapsApi={mapsApi} origin={position} destination={getLocation(selectedDestination)} travelModeIndex={travelModeIndex}/>
+                                :
+                                <SMSMapMarker position={position}/>
                         }
                     </Map>
                 </div>

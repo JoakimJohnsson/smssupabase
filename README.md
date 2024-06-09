@@ -100,13 +100,12 @@ Ask Admin for api keys and id's.
 
 See also inline comments for information.
 
-* https://www.npmjs.com/package/@vis.gl/react-google-maps
-* https://visgl.github.io/react-google-maps/docs/
-* https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api#hooks
-* https://developers.google.com/maps/documentation/javascript/reference/map
-* https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
-* https://developers.google.com/maps/documentation/javascript/directions
-* https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.DirectionsRendererOptions.html
+* [Vis.gl - React google maps - docs](https://visgl.github.io/react-google-maps/docs/)
+* [React google maps - guides](https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api)
+* [Reference - map](https://developers.google.com/maps/documentation/javascript/reference/map)
+* [Reference - map options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions)
+* [Google maps package docs](https://primefaces.github.io/primefaces/jsdocs/modules/node_modules__types_google_maps.google.maps.html)
+  * Information about DirectionsRenderer and PolyLineOptions.
 
 ## <a id="development"></a> Development
 
