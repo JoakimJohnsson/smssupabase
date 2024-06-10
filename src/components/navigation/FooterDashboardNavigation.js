@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {ROUTES} from "../../helpers/constants/configConstants";
 import {PANES} from "../../helpers/constants/textConstants/texts";
 import {
@@ -6,7 +6,7 @@ import {
     collectionsIconDuoTone,
     overviewIconDuoTone,
     titlesIconDuoTone,
-    valueIconDuoTone, mapsIconDuoTone, moreIconDuoTone
+    valueIconDuoTone, mapsIconDuoTone, moreIconDuoTone, lessIconDuoTone
 } from "../icons";
 import {Nav, NavDropdown} from "react-bootstrap";
 import {FooterDashboardNavLink} from "./FooterDashboardNavLink";
@@ -14,6 +14,22 @@ import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const FooterDashboardNavigation = () => {
+    const [open, setOpen] = useState(false);
+    const dropdownRef4 = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+
+            if (dropdownRef4.current && !dropdownRef4.current.contains(event.target)) {
+                setOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [dropdownRef4, open]);
+
     return (
         <footer className="dashboard-footer">
             <Nav className={"w-100 d-flex justify-content-center py-2 py-lg-3"}>
@@ -31,10 +47,12 @@ export const FooterDashboardNavigation = () => {
                                             icon={<Icon icon={mapsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                 </div>
                 <NavDropdown
+                    ref={dropdownRef4}
                     className={"d-inline-block d-md-none"}
+                    onClick={() => setOpen(!open)}
                     title={
                         <div className={"d-flex flex-column align-items-center justify-content-center w-100"}>
-                            <Icon icon={moreIconDuoTone} size={"2x"} className={"m-0"}/>
+                            <Icon icon={open ? moreIconDuoTone : lessIconDuoTone} size={"2x"} className={"m-0"}/>
                             <span className={"footer-navlink-text"}>{LABELS.COMMON.MORE_CONTENT}</span>
                         </div>
                     }

@@ -70,6 +70,6 @@ export const PANES = {
         TRAVEL_MODES: "Färdsätt",
         NEAREST_DESTINATIONS: "nära dig:",
         ALTERNATIVE_ROUTES: "Alternativa vägar",
-        SEARCH_FOR_NEAREST: "Sök efter närmaste"
+        SEARCH_FOR_NEAREST: "Sök"
     }
 }

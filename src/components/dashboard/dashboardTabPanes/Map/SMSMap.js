@@ -212,7 +212,9 @@ export const SMSMap = () => {
                                 :
                                 <SMSMapMarker position={position}/>
                         }
+
                     </Map>
+
                 </div>
             }
         </>

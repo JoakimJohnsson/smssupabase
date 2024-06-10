@@ -52,23 +52,28 @@ export const Directions = ({mapsApi, origin, destination, travelModeIndex, direc
             </p>
             <p>{leg.start_address.split(",")[0]} -> {leg.end_address.split(",")[0]}</p>
             <p>{leg.distance?.text} | {leg.duration?.text}</p>
-            <h3>{PANES.MAP.ALTERNATIVE_ROUTES}</h3>
-            <ul className={"list-unstyled mb-0"}>
-                {
-                    routes.map((route, index) => {
-                        return (
-                            <li key={route.summary}>
-                                <button
-                                    className={`btn ${index === routeIndex ? "btn-primary" : "btn-outline-primary"} mb-2`}
-                                    onClick={() => setRouteIndex(index)}
-                                >
-                                    {route.summary}
-                                </button>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+            {
+                routes && routes.length > 1 &&
+                <>
+                    <h3>{PANES.MAP.ALTERNATIVE_ROUTES}</h3>
+                    <ul className={"list-unstyled mb-0"}>
+                        {
+                            routes.map((route, index) => {
+                                return (
+                                    <li key={route.summary + index}>
+                                        <button
+                                            className={`btn ${index === routeIndex ? "btn-primary" : "btn-outline-primary"} mb-2`}
+                                            onClick={() => setRouteIndex(index)}
+                                        >
+                                            {route.summary}
+                                        </button>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </>
+            }
             {/* Display advanced markers */}
             <SMSMapMarker position={origin}/>
             <SMSMapMarker position={destination} isDestination/>

@@ -11,9 +11,10 @@ export const DestinationSelector = ({selectedDestinationType, setSelectedDestina
                 {
                     destinations.map((destination, index) => {
                         // Do not render more than this
-                        if (index > 5) return false;
+                        if (index > 9) return false;
                         return (
                             <ListGroupItem
+                                key={destination.name + index}
                                 action
                                 onClick={() => setSelectedDestination(destinations[index])}
                                 active={selectedDestination === destination}
