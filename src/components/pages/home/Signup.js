@@ -1,13 +1,13 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAppContext} from "../../context/AppContext";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
-import {MESSAGES} from "../../helpers/constants/textConstants/messages";
-import {validateEmail, validatePassword} from "../../helpers/validations";
-import ValidationMessage from "./ValidationMessage";
-import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../helpers/functions";
-import {Icon, registerIcon, registerIconDuoTone} from "../icons";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {useAppContext} from "../../../context/AppContext";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
+import {MESSAGES} from "../../../helpers/constants/textConstants/messages";
+import {validateEmail, validatePassword} from "../../../helpers/validations";
+import SignupValidationMessage from "./SignupValidationMessage";
+import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../../helpers/functions";
+import {Icon, registerIcon, registerIconDuoTone} from "../../icons";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Signup = () => {
@@ -85,7 +85,7 @@ export const Signup = () => {
                        className={emailInputClass}
                        placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
                        required/>
-                <ValidationMessage success={emailValidated} message={emailValidationMessage}/>
+                <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
                 <label className={"form-label d-flex"} htmlFor="input-signup-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
                 <input id="input-signup-password"
                        type="password"
@@ -101,7 +101,7 @@ export const Signup = () => {
                        className={passwordInputClass}
                        placeholder={"********"}
                        required/>
-                <ValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
+                <SignupValidationMessage success={passwordValidated} message={passwordValidationMessage}/>
                 <button type="submit" className={"btn btn-primary sms-btn"}
                         disabled={!passwordValidated || passwordRef.current.value !== passwordConfirm}>
                     <Icon icon={registerIcon} className={"me-2"}/>{LABELS.COMMON.CREATE_ACCOUNT}

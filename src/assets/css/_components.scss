@@ -23,6 +23,11 @@
   }
 }
 
+.dropdown-toggle::after,
+.dropup .dropdown-toggle::after {
+  display: none;
+}
+
 .sms-hero-header {
   background: center / cover no-repeat url("../images/heroimage.jpg");
 }
@@ -307,6 +312,24 @@ input[type="checkbox"] + label {
   }
 }
 
+.list-group {
+  &.sms-list-group {
+    &.variant-country {
+      .list-group-item {
+        border: $border--country;
+        &:hover, &:active, &:focus, &.active {
+          background-color: $country--lighter;
+          color: $black;
+        }
+        &.active {
+          background-color: $country;
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
 // Accordion
 .accordion.sms-list--accordion {
   .accordion-item {
@@ -494,6 +517,40 @@ input[type="checkbox"] + label {
     @extend .bg-dog, .p-3, .rounded-3;
     &:not(:last-of-type) {
       @extend .mb-4;
+    }
+  }
+}
+
+// Map
+.sms-google-map {
+  height: 75vh;
+  &--directions {
+    font-size: $font-size-small;
+    width: 100%;
+    @extend .p-3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $country--darker;
+    p {
+      margin-bottom: 0;
+      &:last-of-type {
+        margin-bottom: 1.2rem;
+      }
+    }
+    h2 {
+      font-size: $h3-font-size;
+    }
+    h3 {
+      font-size: $h4-font-size;
+    }
+    button {
+      font-size: $font-size-small;
+    }
+    @include media-breakpoint-up(sm) {
+      width: auto;
+      bottom: 0;
+      top: auto;
     }
   }
 }

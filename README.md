@@ -14,7 +14,7 @@
     * [Update packages](#updatepackages)
     * [Recharts](#recharts)
     * [Yet another react lightbox](#lightbox)
-  * [API:s](#apis)
+  * [Maps](#googlemaps)
 * [Development](#development)
   * [Workflow](#workflow)
 * [Deployment](#deployment)
@@ -90,11 +90,22 @@ Please update CSS when upgrading package.
 
 * https://yet-another-react-lightbox.com
 
-### <a id="apis"></a> API:s
+### <a id="googlemaps"></a> Maps
 
-The app uses different Google Maps API:s.
+The app uses different Google Maps API:s, map id's and map styles. 
 
-Ask Admin for REACT_APP_GOOGLE_CLOUD_API_KEY.
+Ask Admin for api keys and id's.
+
+#### Documentation
+
+See also inline comments for information.
+
+* [Vis.gl - React google maps - docs](https://visgl.github.io/react-google-maps/docs/)
+* [React google maps - guides](https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api)
+* [Reference - map](https://developers.google.com/maps/documentation/javascript/reference/map)
+* [Reference - map options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions)
+* [Google maps package docs](https://primefaces.github.io/primefaces/jsdocs/modules/node_modules__types_google_maps.google.maps.html)
+  * Information about DirectionsRenderer and PolyLineOptions.
 
 ## <a id="development"></a> Development
 

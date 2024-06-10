@@ -303,6 +303,11 @@ export const getCurrentDate = () => {
     return new Date();
 }
 
+export const splitBySeparatorAndGetLastElement = (string, separator) => {
+    const elements = string.split(separator);
+    return elements[elements.length -1];
+}
+
 export const getFriendlyDateFromTimestamp = (timestamp) => {
     const date = new Date(timestamp);
     return date.toISOString().split('T')[0];
@@ -485,4 +490,11 @@ export const showLessItems = (data, setItemsToShow, itemsToShow) => {
     } else {
         setItemsToShow(prev => prev - CONFIG.PAGINATION_ITEM_COUNT);
     }
+};
+
+export const getLocation = (destination) => {
+    if (!destination || !destination.geometry || !destination.geometry.location) {
+        throw new Error('Invalid destination object');
+    }
+    return destination.geometry.location;
 };

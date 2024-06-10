@@ -1,6 +1,6 @@
 {
   "name": "sms-supabase",
-  "version": "1.6.6",
+  "version": "1.7.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -9,11 +9,11 @@
     "@fortawesome/pro-solid-svg-icons": "^6.5.1",
     "@fortawesome/pro-thin-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@react-google-maps/api": "^2.19.3",
     "@supabase/supabase-js": "^2.41.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
     "@testing-library/user-event": "^14.5.2",
+    "@vis.gl/react-google-maps": "^0.10.0",
     "eslint": "^8.57.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",

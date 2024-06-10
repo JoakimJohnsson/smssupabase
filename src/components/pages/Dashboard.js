@@ -1,7 +1,7 @@
 import React from "react";
 import {Outlet} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
-import {HomePublic} from "./HomePublic";
+import {HomePublic} from "./home/HomePublic";
 import {FooterDashboardNavigation} from "../navigation/FooterDashboardNavigation";
 
 

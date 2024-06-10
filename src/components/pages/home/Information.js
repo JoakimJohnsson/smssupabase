@@ -1,8 +1,8 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants/configConstants";
-import {Icon, infoIconDuoTone} from "./icons";
+import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
+import {Icon, infoIconDuoTone} from "../../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const Information = () => {
@@ -17,24 +17,22 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.6.6 - 2024-05-05</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.7.0 - 2024-06-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Förbättrade menyer, lättare att hitta kontrollpaneler.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet för användare att godkänna användning av platsåtkomst.</li>
+                    <li className={"list-group-item px-0"}>Kartfunktion för att enkelt hitta närmaste loppis, second hand eller serietidningsaffär, om användaren tillåtit platsåtkomst.</li>
+                    <li className={"list-group-item px-0"}>Bättre sortering på sidan Alla publikationer.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.6.6 - 2024-05-05</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Förbättrad länk till Seriekatalogen för titel.</li>
                     <li className={"list-group-item px-0"}>Visa status för marvelklubben-samlingen på Kontrollpanelens översikt.</li>
                     <li className={"list-group-item px-0"}>Förbättrad visning av Skickvärderingar.</li>
                     <li className={"list-group-item px-0"}>Visa mer / mindre funktion för stora filtersökningar där det behövdes. T.ex. Marvelklubben
                         och Alla publikationer.
                     </li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.6.4 - 2024-04-02</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Nu visas senast inlagda titlar och publikationer korrekt på startsidan.</li>
-                    <li className={"list-group-item px-0"}>Det är nu möjligt att skicka meddelanden till admin med ämnet "Kompletteringar".</li>
-                    <li className={"list-group-item px-0"}>Tydligare information om varianter i lista med skickvärderingar.</li>
-                    <li className={"list-group-item px-0"}>Länk till seriekatalogen försöker nu hänvisa till rätt titel.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet att lägga till beskrivning på publikationer.</li>
-                    <li className={"list-group-item px-0"}>Omdirigera till startsida med login om man försöker nå sida utan att vara inloggad.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

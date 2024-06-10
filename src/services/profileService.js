@@ -12,6 +12,7 @@ export const updateProfileData = async (id, data) => {
                 firstname: data.firstname,
                 lastname: data.lastname,
                 is_public: data.is_public,
+                allow_location_access: data.allow_location_access,
                 updated_at: new Date().toISOString()
             }])
             .eq("id", id);

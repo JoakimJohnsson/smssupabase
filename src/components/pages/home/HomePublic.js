@@ -1,9 +1,9 @@
 import React from "react";
-import {HeroHeader} from "../header/HeroHeader";
-import {Signup} from "../signup/Signup";
-import Login from "../Login";
-import ForgotPassword from "../ForgotPassword";
-import Information from "../Information";
+import {HeroHeader} from "../../header/HeroHeader";
+import {Signup} from "./Signup";
+import Login from "./Login";
+import ForgotPassword from "./ForgotPassword";
+import Information from "./Information";
 
 
 export const HomePublic = () => {

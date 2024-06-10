@@ -15,6 +15,17 @@
       text-align: left;
     }
   }
+  .dropdown-menu {
+    background-color: $color-bg-whale;
+    border: none;
+    border-radius: 0;
+  }
+  .dropdown-item:hover, .dropdown-item:focus {
+    background-color: transparent;
+  }
+  .dropdown-item.active, .dropdown-item:active {
+    background-color: transparent;
+  }
   .nav-link {
     background-color: $color-bg-whale;
     border-radius: $border-radius-lg;

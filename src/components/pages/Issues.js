@@ -23,7 +23,9 @@ export const Issues = () => {
         getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
     }, []);
 
-    const filteredData = issuesData.filter(issue => {
+    const filteredData = issuesData
+        .sort((a, b) => sortByName(a.titles, b.titles))
+        .filter(issue => {
             return (
                 filterQueryIssueByTitleNamePublisherNameYearAndSource(issue, query)
             )
@@ -58,7 +60,6 @@ export const Issues = () => {
                             <ul className={"sms-list--with-cards"}>
                                 {
                                     filteredData.slice(0, itemsToShow)
-                                        .sort((a, b) => sortByName(a.titles, b.titles))
                                         .map(issue => (
                                             <IssueCard key={issue.id} issue={issue}/>
                                         ))

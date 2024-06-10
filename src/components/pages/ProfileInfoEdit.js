@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {isTrue} from "../../helpers/functions";
 import {updateProfileData} from "../../services/profileService";
 import {handleChange} from "../../services/serviceFunctions";
@@ -31,11 +32,18 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
         setSearchParams({edit: false});
     }
 
-    const handlePublicCheckboxChange = (value) => {
+    const handleIsPublicCheckboxChange = (value) => {
         if (value === 1) {
             setNewProfile({...newProfile, "is_public": 0})
         } else {
             setNewProfile({...newProfile, "is_public": 1})
+        }
+    }
+    const handleAllowLocationAccessCheckboxChange = (value) => {
+        if (value === 1) {
+            setNewProfile({...newProfile, "allow_location_access": 0})
+        } else {
+            setNewProfile({...newProfile, "allow_location_access": 1})
         }
     }
 
@@ -80,10 +88,25 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                     type="checkbox"
                     value={newProfile.is_public}
                     checked={newProfile.is_public === 1}
-                    onChange={() => handlePublicCheckboxChange(newProfile.is_public)}
+                    onChange={() => handleIsPublicCheckboxChange(newProfile.is_public)}
                     disabled={!edit || loading}
                 />
                 <label className={"form-label"} htmlFor="is_public">{LABELS_AND_HEADINGS.MAKE_PUBLIC}</label>
+            </div>
+            <div className={"mb-4 alert alert-info"}>
+                <input
+                    id={"allow_location_access"}
+                    name={"allow_location_access"}
+                    className={"form-check-input me-2"}
+                    type="checkbox"
+                    value={newProfile.allow_location_access}
+                    checked={newProfile.allow_location_access === 1}
+                    onChange={() => handleAllowLocationAccessCheckboxChange(newProfile.allow_location_access)}
+                    disabled={!edit || loading}
+                />
+
+                <label className={"form-label text-black"} htmlFor="is_public">{LABELS_AND_HEADINGS.ALLOW_LOCATION_ACCESS}</label>
+                <div className={"fs-small text-info--darker"}>{TEXTS.ALLOW_LOCATION_ACCESS_PROMPT}</div>
             </div>
             {
                 edit ?
