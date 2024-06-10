@@ -2,7 +2,7 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import React from "react";
 import SignupSuccess from "../pages/SignUpSuccess";
 import {ROUTES} from "../../helpers/constants/configConstants";
-import {Home} from "../pages/Home";
+import {Home} from "../pages/home/Home";
 import {Dashboard} from "../pages/Dashboard";
 import {OverviewPane} from "../dashboard/dashboardTabPanes/Overview/OverviewPane";
 import {MyTitlesPane} from "../dashboard/dashboardTabPanes/MyTitles/MyTitlesPane";
@@ -35,8 +35,9 @@ import {GradeValues} from "../pages/GradeValues";
 import {ValuationPane} from "../dashboard/dashboardTabPanes/Valuation/ValuationPane";
 import {PrivateRoute} from "./PrivateRoute";
 import {AdminRoute} from "./AdminRoute";
-import {RouteLoadingIndicator} from "./RouteLoadingIndicator";
 import {CatchAll} from "./CatchAll";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
+import {MapPane} from "../dashboard/dashboardTabPanes/Map/MapPane";
 
 
 export const MyRoutes = () => {
@@ -48,7 +49,7 @@ export const MyRoutes = () => {
             {
                 evaluatingUser ?
                     (
-                        <Route path="*" element={<RouteLoadingIndicator/>}/>
+                        <Route path="*" element={<OverlaySpinner/>}/>
                     )
                     :
                     user && profile ?
@@ -63,6 +64,7 @@ export const MyRoutes = () => {
                                     <Route path={ROUTES.DASHBOARD.VALUATION} element={<PrivateRoute><ValuationPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.MY_TITLES} element={<PrivateRoute><MyTitlesPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.COLLECTIONS} element={<PrivateRoute><CollectionsPane/></PrivateRoute>}/>
+                                    <Route path={ROUTES.DASHBOARD.MAP} element={<PrivateRoute><MapPane/></PrivateRoute>}/>
                                     <Route path={"*"} element={<CatchAll/>}/>
                                 </Route>
                                 <Route path={ROUTES.PROFILE} element={<PrivateRoute><Profile/></PrivateRoute>}/>

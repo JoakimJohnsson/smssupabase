@@ -1,7 +1,8 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getIssueName, objectDoesExist, renderGradeValue} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
@@ -252,7 +253,7 @@ export const Issue = () => {
                                                     variant={"secondary"}
                                                     icon={isWantingIssue ? faCloudXmark : faCloudQuestion}
                                                     onClick={() => handleWanted()}
-                                                    label={isWantingIssue ? LABELS_AND_HEADINGS.REMOVE_ISSUE_WANTED : LABELS_AND_HEADINGS.ADD_ISSUE_WANTED}
+                                                    label={isWantingIssue ? TEXTS.REMOVE_ISSUE_WANTED : TEXTS.ADD_ISSUE_WANTED}
                                                     id={"message-form-toggler"}
                                                     showLabel={true}
                                                 />

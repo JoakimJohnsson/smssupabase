@@ -1,10 +1,10 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAppContext} from "../context/AppContext";
-import {simpleInputValidation} from "../helpers/validations";
-import {LABELS_AND_HEADINGS} from "../helpers/constants/configConstants";
-import {Icon, loginIcon, loginIconDuoTone} from "./icons";
-import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
+import {useAppContext} from "../../../context/AppContext";
+import {simpleInputValidation} from "../../../helpers/validations";
+import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
+import {Icon, loginIcon, loginIconDuoTone} from "../../icons";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const Login = () => {

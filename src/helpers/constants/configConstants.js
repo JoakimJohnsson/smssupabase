@@ -12,12 +12,11 @@ import {
     faSwords,
     faTRex
 } from "@fortawesome/pro-thin-svg-icons";
+import {PANES} from "./textConstants/texts";
 
 // 491 rader
 export const LABELS_AND_HEADINGS = {
-    ADD_ISSUES: "Lägg till publikationer",
-    ADD_ISSUE_WANTED: "Markera som efterlyst",
-    REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
+    ALLOW_LOCATION_ACCESS: "Tillåt platsåtkomst",
     ADD_ISSUE_UPGRADE: "Markera behov av uppgradering",
     REMOVE_ISSUE_UPGRADE: "Ta bort behov av uppgradering",
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
@@ -192,9 +191,6 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
-    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering, och mer exakt värdering, hittar du hos",
-    GRADE_TEXT_3: "Seriekatalogen",
-    GRADE_TEXT_4: "Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
     GRADE_IS_VALUED_LEAD: "Här kan du markera att alla publikationer på den här titeln har fått rätt värden.",
     GRADE_ISSUE_IS_VALUED_TEXT: "Publikationen har fått grundvärden.",
     GRADE_ADD_VALUE_TEXT: "Grundvärden för denna publikation saknas. Tryck på knappen för att lägga till.",
@@ -269,7 +265,9 @@ export const ROUTES = {
         COLLECTIONS: "collections",
         PATH_COLLECTIONS: "/dashboard/collections",
         VALUATION: "valuation",
-        PATH_VALUATION: "/dashboard/valuation"
+        PATH_VALUATION: "/dashboard/valuation",
+        MAP: "map",
+        PATH_MAP: "/dashboard/map"
     },
     ADMIN: {
         ROOT: "/admin",
@@ -358,6 +356,7 @@ export const STATISTICS = {
 export const CONFIG = {
     FREQUENT_ICON_INDEX: 0,
     FREQUENT_ICON_PROBABILITY: 0.7,
+    TIMEOUT_MEGA_XXL: 10000,
     TIMEOUT_XXL: 2000,
     TIMEOUT_XL: 1000,
     TIMEOUT_LG: 500,
@@ -517,3 +516,56 @@ export const SK_GRADE_RADIO_VALUES = [
 export const SK_GRADE_RADIO_NAMES = [
     "GD", "VG", "FN", "VF", "NM"
 ]
+
+export const COLOR_VARIABLE_NAMES = {
+    PRIMARY: "#41bee0",
+    SECONDARY: "#bccad1",
+    SUCCESS: "#33cc99",
+    INFO: "#e3af9b",
+    WARNING: "#f797d2",
+    DANGER: "#ed5353",
+    GRADE: "#ffd700",
+    FORMAT: "#f09f59",
+    COUNTRY: "#7ad145",
+    COUNTRY_DARKER: "#182d0b",
+    PUBLISHER: "#bc84f5",
+    TITLE: "#ccff66",
+    ISSUE: "#ede798",
+    MARVELKLUBBEN: "#ed1d24",
+    WHITE: "#fff",
+    WHITE_DARKER: "#c0c7cf",
+    BLACK: "#000",
+    BLACK_LIGHTER: "#444",
+    BLACK_LIGHTEST: "#999"
+}
+
+export const MAP_CONFIG = {
+    POSITIONS: {
+        NYKOPING: {lat: 58.7609194, lng: 16.9803637},
+    },
+    COLORS: {
+        PIN_BACKGROUND: COLOR_VARIABLE_NAMES.COUNTRY,
+        PIN_BACKGROUND_VARIANT: COLOR_VARIABLE_NAMES.COUNTRY_DARKER,
+        PIN_BORDER: COLOR_VARIABLE_NAMES.COUNTRY,
+        PIN_BORDER_VARIANT: COLOR_VARIABLE_NAMES.COUNTRY_DARKER,
+        PIN_GLYPH: COLOR_VARIABLE_NAMES.COUNTRY_DARKER,
+        PIN_GLYPH_VARIANT: COLOR_VARIABLE_NAMES.COUNTRY
+    },
+    REQUESTS: {
+        FLEA_MARKET: {
+            query: "Loppisar",
+            fields: ["name", "geometry"],
+            name: PANES.MAP.FLEA_MARKETS,
+        },
+        SECOND_HAND: {
+            query: "Second hand",
+            fields: ["name", "geometry"],
+            name: PANES.MAP.SECOND_HAND_SHOPS
+        },
+        COMIC_BOOK_STORE: {
+            query: "Serietidningar butik",
+            fields: ["name", "geometry"],
+            name: PANES.MAP.COMIC_BOOK_STORES
+        },
+    }
+}
