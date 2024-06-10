@@ -45,7 +45,7 @@ export const SMSMap = () => {
         if (!map || !placesLibrary || !routesLibrary || !polylineOptions) return;
         // Now you can interact with the imperative maps API.
         // https://developers.google.com/maps/documentation/javascript/reference/map
-        setMapsApi(window.google.maps);
+        setMapsApi(window.google?.maps);
         if (mapsApi) {
             setMapTypeControlOptions({
                 style: mapsApi.MapTypeControlStyle.DEFAULT,

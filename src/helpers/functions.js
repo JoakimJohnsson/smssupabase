@@ -493,5 +493,8 @@ export const showLessItems = (data, setItemsToShow, itemsToShow) => {
 };
 
 export const getLocation = (destination) => {
-    return (destination.geometry.location);
-}
+    if (!destination || !destination.geometry || !destination.geometry.location) {
+        throw new Error('Invalid destination object');
+    }
+    return destination.geometry.location;
+};
