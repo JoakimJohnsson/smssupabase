@@ -312,6 +312,24 @@ input[type="checkbox"] + label {
   }
 }
 
+.list-group {
+  &.sms-list-group {
+    &.variant-country {
+      .list-group-item {
+        border: $border--country;
+        &:hover, &:active, &:focus, &.active {
+          background-color: $country--lighter;
+          color: $black;
+        }
+        &.active {
+          background-color: $country;
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
 // Accordion
 .accordion.sms-list--accordion {
   .accordion-item {

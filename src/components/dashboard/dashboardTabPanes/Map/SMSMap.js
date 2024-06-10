@@ -149,8 +149,12 @@ export const SMSMap = () => {
                                 {/* Destination selector */}
                                 {
                                     destinations && !!destinations.length &&
-                                    <DestinationSelector selectedDestinationType={selectedDestinationType}
-                                                         setSelectedDestination={setSelectedDestination} destinations={destinations}/>
+                                    <DestinationSelector
+                                        selectedDestinationType={selectedDestinationType}
+                                        setSelectedDestination={setSelectedDestination}
+                                        destinations={destinations}
+                                        selectedDestination={selectedDestination}
+                                    />
                                 }
                                 {/* Travel mode selector */}
                                 {
@@ -203,7 +207,8 @@ export const SMSMap = () => {
                         {
                             position && selectedDestination ?
                                 <Directions mapsApi={mapsApi} origin={position} destination={getLocation(selectedDestination)}
-                                            travelModeIndex={travelModeIndex} directionsRenderer={directionsRenderer} directionsService={directionsService}/>
+                                            travelModeIndex={travelModeIndex} directionsRenderer={directionsRenderer}
+                                            directionsService={directionsService}/>
                                 :
                                 <SMSMapMarker position={position}/>
                         }
