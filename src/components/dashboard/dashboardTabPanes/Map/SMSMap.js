@@ -6,7 +6,7 @@ import {useAppContext} from "../../../../context/AppContext";
 import {Form, Spinner} from "react-bootstrap";
 import {Directions} from "./Directions";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
-import {carIconDuoTone, Icon, infoIconDuoTone, walkingIconDuoTone} from "../../../icons";
+import {Icon, infoIconDuoTone} from "../../../icons";
 import {SMSMapMarker} from "./SMSMapMarker";
 import {getLocation} from "../../../../helpers/functions";
 import {DestinationSelector} from "./DestinationSelector";
@@ -18,7 +18,8 @@ export const SMSMap = () => {
     const {profile} = useAppContext();
     const map = useMap();
     const [loading, setLoading] = useState(true);
-    const [position, setPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
+    const [userPosition, setUserPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
+    const [userLocation, setUserLocation] = useState(null);
     const [destinations, setDestinations] = useState([]);
     const [positionPending, setPositionPending] = useState(true);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
@@ -74,14 +75,15 @@ export const SMSMap = () => {
         }
     }, [profile]);
 
-    // Getting users current position
+    // Getting user position
     useEffect(() => {
         setPositionPending(true);
         const success = (position) => {
-            setPosition({
+            setUserPosition({
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             });
+            setUserLocation("Hejsan svejsan!")
             setPositionPending(false);
         };
         const error = (error) => {
@@ -102,7 +104,7 @@ export const SMSMap = () => {
     const handlePlacesSearch = (request) => {
         placesService.nearbySearch(
             {
-                location: position,
+                location: userPosition,
                 language: "sv",
                 keyword: request.query,
                 rankBy: mapsApi.places.RankBy.DISTANCE
@@ -131,6 +133,8 @@ export const SMSMap = () => {
                         locationAllowedAndSupported ?
                             <>
                                 {/* Allowed and supported */}
+                                <h2>{PANES.MAP.CURRENT_LOCATION}</h2>
+                                <p>{PANES.MAP.YOUR_CURRENT_LOCATION} {userLocation}</p>
                                 <h2>{PANES.MAP.SEARCH_FOR_NEAREST}</h2>
                                 <div className={"my-3"}>
                                     <button
@@ -181,7 +185,7 @@ export const SMSMap = () => {
                                                 type={"radio"}
                                                 id={"0"}
                                                 name={"travelMode"}
-                                                label={<span><Icon icon={walkingIconDuoTone}/> {PANES.MAP.WALKING}</span>}
+                                                label={<span>{PANES.MAP.WALKING}</span>}
                                                 checked={travelModeIndex === 0}
                                                 onChange={() => setTravelModeIndex(0)}
                                             />
@@ -189,7 +193,7 @@ export const SMSMap = () => {
                                                 type={"radio"}
                                                 id={"1"}
                                                 name={"travelMode"}
-                                                label={<span><Icon icon={carIconDuoTone}/> {PANES.MAP.DRIVING}</span>}
+                                                label={<span>{PANES.MAP.DRIVING}</span>}
                                                 checked={travelModeIndex === 1}
                                                 onChange={() => setTravelModeIndex(1)}
                                             />
@@ -212,7 +216,7 @@ export const SMSMap = () => {
                     <Map
                         fullscreenControl={false}
                         defaultZoom={12}
-                        defaultCenter={position}
+                        defaultCenter={userPosition}
                         mapId={process.env.REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}
                         mapTypeControl={false}
                         mapTypeControlOptions={mapTypeControlOptions}
@@ -220,12 +224,12 @@ export const SMSMap = () => {
                     >
                         {/* Add markers */}
                         {
-                            position && selectedDestination ?
-                                <Directions mapsApi={mapsApi} origin={position} destination={getLocation(selectedDestination)}
+                            userPosition && selectedDestination ?
+                                <Directions mapsApi={mapsApi} origin={userPosition} destination={getLocation(selectedDestination)}
                                             travelModeIndex={travelModeIndex} directionsRenderer={directionsRenderer}
                                             directionsService={directionsService}/>
                                 :
-                                <SMSMapMarker position={position}/>
+                                <SMSMapMarker position={userPosition}/>
                         }
                     </Map>
                 </div>

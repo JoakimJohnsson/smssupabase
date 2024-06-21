@@ -61,6 +61,7 @@ export const PANES = {
         NAME: "Karta",
         LONG_NAME: "Kontrollpanelen - Karta",
         LEAD_1: "Om du har valt att låta Svenska Marvelsamlare använda din position kan du här enkelt leta efter loppisar, second hand-butiker eller serietidningsaffärer nära dig.",
+        LEAD_2: "Du kan även ange platsinformation manuellt.",
         NO_LOCATION_ACCESS: "Dina inställningar tillåter tyvärr inte denna funktion.",
         FLEA_MARKETS: "Loppmarknader",
         SECOND_HAND_SHOPS: "Second hand-butiker",
@@ -70,6 +71,8 @@ export const PANES = {
         TRAVEL_MODES: "Färdsätt",
         NEAREST_DESTINATIONS: "nära dig:",
         ALTERNATIVE_ROUTES: "Alternativa vägar",
-        SEARCH_FOR_NEAREST: "Sök"
+        SEARCH_FOR_NEAREST: "Sök",
+        CURRENT_LOCATION: "Nuvarande plats",
+        YOUR_CURRENT_LOCATION: "Din nuvarande plats är:"
     }
 }
