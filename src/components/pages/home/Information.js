@@ -17,16 +17,20 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.7.0 - 2024-06-10</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.7.1 - 2024-06-xx</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Karta - möjlighet att ange egen plats.</li>
+                    <li className={"list-group-item px-0"}>Karta - Knapp för att rensa vald sökning.</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.7.0 - 2024-06-10</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Förbättrade menyer, lättare att hitta kontrollpaneler.</li>
                     <li className={"list-group-item px-0"}>Möjlighet för användare att godkänna användning av platsåtkomst.</li>
-                    <li className={"list-group-item px-0"}>Kartfunktion för att enkelt hitta närmaste loppis, second hand eller serietidningsaffär, om användaren tillåtit platsåtkomst.</li>
+                    <li className={"list-group-item px-0"}>Kartfunktion för att enkelt hitta närmaste loppis, second hand eller serietidningsaffär, om
+                        användaren tillåtit platsåtkomst.
+                    </li>
                     <li className={"list-group-item px-0"}>Bättre sortering på sidan Alla publikationer.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.6.6 - 2024-05-05</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Förbättrad länk till Seriekatalogen för titel.</li>
                     <li className={"list-group-item px-0"}>Visa status för marvelklubben-samlingen på Kontrollpanelens översikt.</li>
                     <li className={"list-group-item px-0"}>Förbättrad visning av Skickvärderingar.</li>

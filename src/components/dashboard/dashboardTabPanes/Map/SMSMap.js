@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Map, useMap, useMapsLibrary} from "@vis.gl/react-google-maps";
-import {COLOR_VARIABLE_NAMES, CONFIG, MAP_CONFIG} from "../../../../helpers/constants/configConstants";
+import {COLOR_VARIABLE_NAMES, CONFIG, LABELS_AND_HEADINGS, MAP_CONFIG} from "../../../../helpers/constants/configConstants";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
 import {Form, Spinner} from "react-bootstrap";
@@ -10,6 +10,8 @@ import {carIconDuoTone, Icon, infoIconDuoTone, walkingIconDuoTone} from "../../.
 import {SMSMapMarker} from "./SMSMapMarker";
 import {getLocation} from "../../../../helpers/functions";
 import {DestinationSelector} from "./DestinationSelector";
+import {IconButton} from "../../../minis/IconButton";
+import {faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 
 
 export const SMSMap = () => {
@@ -108,10 +110,14 @@ export const SMSMap = () => {
             , (results, status) => {
                 if (status === "OK" && results) {
                     setDestinations(results);
-                    // setSelectedDestination(results[0]);
                     setSelectedDestinationType(request.name);
                 }
             });
+    }
+
+    const handleReset = () => {
+        setDestinations(null);
+        setSelectedDestinationType(null);
     }
 
     return !positionPending ?
@@ -145,6 +151,15 @@ export const SMSMap = () => {
                                     >
                                         {PANES.MAP.COMIC_BOOK_STORES}
                                     </button>
+                                    {
+                                        selectedDestinationType &&
+                                        <IconButton
+                                            variant={"outline-country"}
+                                            label={LABELS_AND_HEADINGS.RESET}
+                                            icon={faDeleteLeft}
+                                            onClick={handleReset}
+                                        />
+                                    }
                                 </div>
                                 {/* Destination selector */}
                                 {
