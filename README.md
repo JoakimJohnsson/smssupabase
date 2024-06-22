@@ -102,6 +102,7 @@ See also inline comments for information.
 
 * [Vis.gl - React google maps - docs](https://visgl.github.io/react-google-maps/docs/)
 * [React google maps - guides](https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api)
+* [Reference](https://developers.google.com/maps/documentation/javascript/reference)
 * [Reference - map](https://developers.google.com/maps/documentation/javascript/reference/map)
 * [Reference - map options](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions)
 * [Google maps package docs](https://primefaces.github.io/primefaces/jsdocs/modules/node_modules__types_google_maps.google.maps.html)

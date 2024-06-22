@@ -492,9 +492,26 @@ export const showLessItems = (data, setItemsToShow, itemsToShow) => {
     }
 };
 
+// Map utils
 export const getLocation = (destination) => {
     if (!destination || !destination.geometry || !destination.geometry.location) {
         throw new Error('Invalid destination object');
     }
     return destination.geometry.location;
+};
+
+export const getLocationFromPosition = (geocoder, position) => {
+    return new Promise((resolve, reject) => {
+        geocoder.geocode({location: position}, (results, status) => {
+            if (status === "OK") {
+                if (results[0]) {
+                    resolve(results[0]);
+                } else {
+                    reject("No location found");
+                }
+            } else {
+                reject("Geocoder failed due to: " + status);
+            }
+        }).then();
+    });
 };

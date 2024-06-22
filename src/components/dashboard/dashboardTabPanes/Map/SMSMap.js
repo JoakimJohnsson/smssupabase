@@ -8,10 +8,11 @@ import {Directions} from "./Directions";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {Icon, infoIconDuoTone} from "../../../icons";
 import {SMSMapMarker} from "./SMSMapMarker";
-import {getLocation} from "../../../../helpers/functions";
+import {getLocation, getLocationFromPosition} from "../../../../helpers/functions";
 import {DestinationSelector} from "./DestinationSelector";
 import {IconButton} from "../../../minis/IconButton";
 import {faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
+import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 
 
 export const SMSMap = () => {
@@ -28,15 +29,17 @@ export const SMSMap = () => {
     const [travelModeIndex, setTravelModeIndex] = useState(0);
     const placesLibrary = useMapsLibrary("places");
     const routesLibrary = useMapsLibrary("routes");
+    const geocodingLibrary = useMapsLibrary("geocoding");
     // Use null as default to avoid runtime errors.
     const [placesService, setPlacesService] = useState(null);
     const [directionsService, setDirectionsService] = useState(null);
+    const [geocoder, setGeocoder] = useState(null);
     const [directionsRenderer, setDirectionsRenderer] = useState(null);
     const [selectedDestination, setSelectedDestination] = useState(null);
     const [selectedDestinationType, setSelectedDestinationType] = useState(null);
 
     // https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api#hooks
-    // Initialize mapsAPI and services
+    // Initialize mapsAPI, libraries and services
     useEffect(() => {
         // https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.PolylineOptions.html
         const polylineOptions = {
@@ -45,7 +48,7 @@ export const SMSMap = () => {
             strokeWeight: 5
         };
         // Early exit.
-        if (!map || !placesLibrary || !routesLibrary || !polylineOptions) return;
+        if (!map || !placesLibrary || !routesLibrary || !geocodingLibrary || !polylineOptions) return;
         // Now you can interact with the imperative maps API.
         // https://developers.google.com/maps/documentation/javascript/reference/map
         setMapsApi(window.google?.maps);
@@ -57,6 +60,7 @@ export const SMSMap = () => {
             setPlacesService(new placesLibrary.PlacesService(map));
         }
         setDirectionsService(new routesLibrary.DirectionsService());
+        setGeocoder(new geocodingLibrary.Geocoder());
         setDirectionsRenderer(new routesLibrary.DirectionsRenderer(
             {
                 map: map,
@@ -64,7 +68,7 @@ export const SMSMap = () => {
                 suppressMarkers: true // Removes direction markers
             }
         ));
-    }, [map, mapsApi, placesLibrary, routesLibrary]);
+    }, [geocodingLibrary, map, mapsApi, placesLibrary, routesLibrary]);
 
     useEffect(() => {
         if ("geolocation" in navigator && profile && profile.allow_location_access) {
@@ -83,7 +87,6 @@ export const SMSMap = () => {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             });
-            setUserLocation("Hejsan svejsan!")
             setPositionPending(false);
         };
         const error = (error) => {
@@ -101,7 +104,20 @@ export const SMSMap = () => {
         }
     }, [locationAllowedAndSupported]);
 
+    // Getting user location
+    useEffect(() => {
+        if (!geocoder || !userPosition || positionPending) return;
+        getLocationFromPosition(geocoder, userPosition)
+            .then(result => {
+                setUserLocation(result);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, [geocoder, positionPending, userPosition]);
+
     const handlePlacesSearch = (request) => {
+        if (!placesService) return;
         placesService.nearbySearch(
             {
                 location: userPosition,
@@ -122,6 +138,7 @@ export const SMSMap = () => {
         setSelectedDestinationType(null);
     }
 
+
     return !positionPending ?
         <>
             {/* Search input form  */}
@@ -134,7 +151,14 @@ export const SMSMap = () => {
                             <>
                                 {/* Allowed and supported */}
                                 <h2>{PANES.MAP.CURRENT_LOCATION}</h2>
-                                <p>{PANES.MAP.YOUR_CURRENT_LOCATION} {userLocation}</p>
+                                <p>
+                                    {PANES.MAP.YOUR_CURRENT_LOCATION} {
+                                    userLocation ?
+                                        userLocation.formatted_address
+                                        :
+                                        <LazyTextPlaceholder charCount={12}/>
+                                }
+                                </p>
                                 <h2>{PANES.MAP.SEARCH_FOR_NEAREST}</h2>
                                 <div className={"my-3"}>
                                     <button
