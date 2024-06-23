@@ -4,11 +4,13 @@ import {SMSMapMarker} from "./SMSMapMarker";
 import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useDirectionsService} from "../../../../helpers/customHooks/useDirectionsService";
+import {useDirectionsRenderer} from "../../../../helpers/customHooks/useDirectionsRenderer";
 
 
-export const Directions = ({mapsApi, origin, destination, travelModeIndex, directionsRenderer}) => {
+export const Directions = ({mapsApi, origin, destination, travelModeIndex}) => {
     const map = useMap();
     const {directionsService} = useDirectionsService();
+    const {directionsRenderer} = useDirectionsRenderer();
     const [routes, setRoutes] = useState([]);
     const [travelModes, setTravelModes] = useState([]);
     const [routeIndex, setRouteIndex] = useState(0);

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {Map, useMap, useMapsLibrary} from "@vis.gl/react-google-maps";
-import {COLOR_VARIABLE_NAMES, CONFIG, LABELS_AND_HEADINGS, MAP_CONFIG} from "../../../../helpers/constants/configConstants";
+import {Map} from "@vis.gl/react-google-maps";
+import {CONFIG, LABELS_AND_HEADINGS, MAP_CONFIG} from "../../../../helpers/constants/configConstants";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {useAppContext} from "../../../../context/AppContext";
 import {Form, Spinner} from "react-bootstrap";
@@ -13,11 +13,14 @@ import {DestinationSelector} from "./DestinationSelector";
 import {IconButton} from "../../../minis/IconButton";
 import {faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
+import {usePlacesService} from "../../../../helpers/customHooks/usePlacesService";
+import {useGeocoder} from "../../../../helpers/customHooks/useGeocoder";
 
 
 export const SMSMap = () => {
     const {profile} = useAppContext();
-    const map = useMap();
+    const {placesService} = usePlacesService();
+    const {geocoder} = useGeocoder();
     const [loading, setLoading] = useState(true);
     const [userPosition, setUserPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
     const [userLocation, setUserLocation] = useState(null);
@@ -27,28 +30,13 @@ export const SMSMap = () => {
     const [mapTypeControlOptions, setMapTypeControlOptions] = useState({});
     const [mapsApi, setMapsApi] = useState(null);
     const [travelModeIndex, setTravelModeIndex] = useState(0);
-    const placesLibrary = useMapsLibrary("places");
-    const routesLibrary = useMapsLibrary("routes");
-    const geocodingLibrary = useMapsLibrary("geocoding");
     // Use null as default to avoid runtime errors.
-    const [placesService, setPlacesService] = useState(null);
-    const [directionsService, setDirectionsService] = useState(null);
-    const [geocoder, setGeocoder] = useState(null);
-    const [directionsRenderer, setDirectionsRenderer] = useState(null);
     const [selectedDestination, setSelectedDestination] = useState(null);
     const [selectedDestinationType, setSelectedDestinationType] = useState(null);
 
     // https://visgl.github.io/react-google-maps/docs/guides/interacting-with-google-maps-api#hooks
-    // Initialize mapsAPI, libraries and services
+    // Initialize mapsAPI
     useEffect(() => {
-        // https://primefaces.github.io/primefaces/jsdocs/interfaces/node_modules__types_google_maps.google.maps.PolylineOptions.html
-        const polylineOptions = {
-            strokeColor: COLOR_VARIABLE_NAMES.COUNTRY,
-            strokeOpacity: 0.4,
-            strokeWeight: 5
-        };
-        // Early exit.
-        if (!map || !placesLibrary || !routesLibrary || !geocodingLibrary || !polylineOptions) return;
         // Now you can interact with the imperative maps API.
         // https://developers.google.com/maps/documentation/javascript/reference/map
         setMapsApi(window.google?.maps);
@@ -57,18 +45,9 @@ export const SMSMap = () => {
                 style: mapsApi.MapTypeControlStyle.DEFAULT,
                 mapTypeIds: [mapsApi.MapTypeId.ROADMAP]
             });
-            setPlacesService(new placesLibrary.PlacesService(map));
         }
-        setDirectionsService(new routesLibrary.DirectionsService());
-        setGeocoder(new geocodingLibrary.Geocoder());
-        setDirectionsRenderer(new routesLibrary.DirectionsRenderer(
-            {
-                map: map,
-                polylineOptions: polylineOptions,
-                suppressMarkers: true // Removes direction markers
-            }
-        ));
-    }, [geocodingLibrary, map, mapsApi, placesLibrary, routesLibrary]);
+
+    }, [mapsApi]);
 
     useEffect(() => {
         if ("geolocation" in navigator && profile && profile.allow_location_access) {
@@ -250,8 +229,7 @@ export const SMSMap = () => {
                         {
                             userPosition && selectedDestination ?
                                 <Directions mapsApi={mapsApi} origin={userPosition} destination={getLocation(selectedDestination)}
-                                            travelModeIndex={travelModeIndex} directionsRenderer={directionsRenderer}
-                                            directionsService={directionsService}/>
+                                            travelModeIndex={travelModeIndex}/>
                                 :
                                 <SMSMapMarker position={userPosition}/>
                         }
