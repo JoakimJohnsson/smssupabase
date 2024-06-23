@@ -3,10 +3,12 @@ import {useMap} from "@vis.gl/react-google-maps";
 import {SMSMapMarker} from "./SMSMapMarker";
 import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {useDirectionsService} from "../../../../helpers/customHooks/useDirectionsService";
 
 
-export const Directions = ({mapsApi, origin, destination, travelModeIndex, directionsService, directionsRenderer}) => {
+export const Directions = ({mapsApi, origin, destination, travelModeIndex, directionsRenderer}) => {
     const map = useMap();
+    const {directionsService} = useDirectionsService();
     const [routes, setRoutes] = useState([]);
     const [travelModes, setTravelModes] = useState([]);
     const [routeIndex, setRouteIndex] = useState(0);
