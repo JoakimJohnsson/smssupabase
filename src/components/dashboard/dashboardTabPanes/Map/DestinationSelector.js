@@ -28,7 +28,7 @@ export const DestinationSelector = ({selectedDestinationType, setSelectedDestina
     return (
         <>
             <h3>{selectedDestinationType} {PANES.MAP.NEAREST_DESTINATIONS}</h3>
-            <ListGroup action className={"my-3 sms-list-group variant-country"}>
+            <ListGroup action={true} className={"my-3 sms-list-group variant-country"}>
                 {renderedDestinations}
             </ListGroup>
         </>
