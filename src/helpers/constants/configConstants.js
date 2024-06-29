@@ -149,6 +149,7 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
+    USEFUL_LINKS: "Nyttiga länkar",
     USERS: "Användare",
     UTILS: "Verktyg, knappar och reglage",
     VALUE: "Värde",

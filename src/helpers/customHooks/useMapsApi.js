@@ -12,7 +12,7 @@ export const useMapsApi = () => {
         // Now you can interact with the imperative maps API.
         // https://developers.google.com/maps/documentation/javascript/reference/map
         setMapsApi(window.google?.maps);
-        if (mapsApi) {
+        if (mapsApi && mapsApi.MapTypeControlStyle) {
             setMapTypeControlOptions({
                 style: mapsApi.MapTypeControlStyle.DEFAULT,
                 mapTypeIds: [mapsApi.MapTypeId.ROADMAP]

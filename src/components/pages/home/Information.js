@@ -22,6 +22,7 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Karta - möjlighet att ange egen plats.</li>
                     <li className={"list-group-item px-0"}>Karta - Knapp för att rensa vald sökning.</li>
+                    <li className={"list-group-item px-0"}>Har lagt till en sektion med nyttiga länkar i kontrollpanelen.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.7.0 - 2024-06-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
