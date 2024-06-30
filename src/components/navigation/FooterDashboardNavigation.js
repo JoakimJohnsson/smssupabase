@@ -60,7 +60,7 @@ export const FooterDashboardNavigation = () => {
                     drop={"up-centered"}>
                     <NavDropdown.Item eventKey="123123">
                         <FooterDashboardNavLink route={ROUTES.DASHBOARD.COLLECTIONS} text={PANES.COLLECTIONS.NAME}
-                                                variant={"info"}
+                                                variant={"warning"}
                                                 icon={<Icon icon={collectionsIconDuoTone} size={"2x"}
                                                             className={"m-0"}/>}/>
                     </NavDropdown.Item>
