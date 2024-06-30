@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {useMap} from "@vis.gl/react-google-maps";
-import {SMSMapMarker} from "./SMSMapMarker";
+import {SmsMapMarker} from "./SmsMapMarker";
 import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useDirectionsService} from "../../../../helpers/customHooks/useDirectionsService";
 import {useDirectionsRenderer} from "../../../../helpers/customHooks/useDirectionsRenderer";
 
 
-export const Directions = ({mapsApi, origin, destination, travelModeIndex}) => {
+export const SmsMapDirections = ({mapsApi, origin, destination, travelModeIndex}) => {
     const map = useMap();
     const {directionsService} = useDirectionsService();
     const {directionsRenderer} = useDirectionsRenderer();
@@ -79,8 +79,8 @@ export const Directions = ({mapsApi, origin, destination, travelModeIndex}) => {
                 </>
             }
             {/* Display advanced markers */}
-            <SMSMapMarker position={origin}/>
-            <SMSMapMarker position={destination} isDestination/>
+            <SmsMapMarker position={origin}/>
+            <SmsMapMarker position={destination} isDestination/>
         </div>
     )
 }

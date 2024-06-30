@@ -1,7 +1,7 @@
 import React from "react";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {SMSMap} from "./SMSMap";
+import {SmsMap} from "./SmsMap";
 import {APIProvider} from "@vis.gl/react-google-maps";
 
 
@@ -15,7 +15,7 @@ export const MapPane = () => {
                     <p>{PANES.MAP.LEAD_2}</p>
                 </div>
                 <div className={"col-12 pb-5"}>
-                    <SMSMap/>
+                    <SmsMap/>
                 </div>
             </div>
         </APIProvider>

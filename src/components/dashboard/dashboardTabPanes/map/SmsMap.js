@@ -2,19 +2,21 @@ import React, {useState} from "react";
 import {Map} from "@vis.gl/react-google-maps";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {Form} from "react-bootstrap";
-import {Directions} from "./Directions";
+import {SmsMapDirections} from "./SmsMapDirections";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {Icon, infoIconDuoTone} from "../../../icons";
-import {SMSMapMarker} from "./SMSMapMarker";
+import {SmsMapMarker} from "./SmsMapMarker";
 import {getLocation} from "../../../../helpers/functions";
-import {DestinationSelector} from "./DestinationSelector";
+import {DestinationSelector} from "./smsMapControls/locationAllowed/DestinationSelector";
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {useUserPosition} from "../../../../helpers/customHooks/useUserPosition";
-import {DestinationSearch} from "./DestinationSearch";
+import {DestinationSearch} from "./smsMapControls/locationAllowed/DestinationSearch";
 import {useMapsApi} from "../../../../helpers/customHooks/useMapsApi";
+import {LocationAllowedControls} from "./smsMapControls/locationAllowed/LocationAllowedControls";
+import {DefaultControls} from "./smsMapControls/default/DefaultControls";
 
 
-export const SMSMap = () => {
+export const SmsMap = () => {
     const {userPosition, positionPending, userLocation, locationAllowedAndSupported} = useUserPosition();
     const {mapsApi, mapTypeControlOptions} = useMapsApi();
     const [destinations, setDestinations] = useState([]);
@@ -30,6 +32,7 @@ export const SMSMap = () => {
                     locationAllowedAndSupported ?
                         <>
                             {/* Allowed and supported */}
+                            <LocationAllowedControls/>
                             <h2>{PANES.MAP.CURRENT_LOCATION}</h2>
                             <p>
                                 {PANES.MAP.YOUR_CURRENT_LOCATION} {
@@ -83,11 +86,14 @@ export const SMSMap = () => {
                             }
                         </>
                         :
-                        // NOT allowed and supported
-                        <p className={"alert alert-info d-flex align-items-center m-0"}>
-                            <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
-                            {PANES.MAP.NO_LOCATION_ACCESS}
-                        </p>
+                        <>
+                            {/* NOT allowed and supported */}
+                            <DefaultControls/>
+                            <p className={"alert alert-info d-flex align-items-center m-0"}>
+                                <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
+                                {PANES.MAP.NO_LOCATION_ACCESS}
+                            </p>
+                        </>
                 }
             </div>
             {/* Map */}
@@ -106,10 +112,10 @@ export const SMSMap = () => {
                         {/* Add markers */}
                         {
                             userPosition && selectedDestination ?
-                                <Directions mapsApi={mapsApi} origin={userPosition} destination={getLocation(selectedDestination)}
-                                            travelModeIndex={travelModeIndex}/>
+                                <SmsMapDirections mapsApi={mapsApi} origin={userPosition} destination={getLocation(selectedDestination)}
+                                                  travelModeIndex={travelModeIndex}/>
                                 :
-                                <SMSMapMarker position={userPosition}/>
+                                <SmsMapMarker position={userPosition}/>
                         }
                     </Map>
                 </div>
