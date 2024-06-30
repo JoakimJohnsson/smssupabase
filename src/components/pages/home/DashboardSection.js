@@ -30,7 +30,7 @@ export const DashboardSection = () => {
                 label={PANES.VALUATION.NAME}
             />
             <IconLinkCtaLg
-                variant={"info"}
+                variant={"warning"}
                 icon={collectionsIconDuoTone}
                 path={ROUTES.DASHBOARD.PATH_COLLECTIONS}
                 label={PANES.COLLECTIONS.NAME}
