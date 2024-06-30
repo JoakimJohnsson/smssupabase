@@ -5,7 +5,7 @@ import {getRowsByTable} from "../../services/serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
-import FilterFormSimple from "../search-filter/FilterFormSimple";
+import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {sortByName} from "../../helpers/functions";
 import {Link} from "react-router-dom";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";

@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {handleBacking} from "../../../../helpers/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
-import FilterFormSimple from "../../../search-filter/FilterFormSimple";
+import FilterFormSimple from "../../../searchFilter/FilterFormSimple";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";

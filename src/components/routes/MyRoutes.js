@@ -4,9 +4,9 @@ import SignupSuccess from "../pages/SignUpSuccess";
 import {ROUTES} from "../../helpers/constants/configConstants";
 import {Home} from "../pages/home/Home";
 import {Dashboard} from "../pages/Dashboard";
-import {OverviewPane} from "../dashboard/dashboardTabPanes/Overview/OverviewPane";
-import {MyTitlesPane} from "../dashboard/dashboardTabPanes/MyTitles/MyTitlesPane";
-import {CollectionsPane} from "../dashboard/dashboardTabPanes/Collections/CollectionsPane";
+import {OverviewPane} from "../dashboard/dashboardTabPanes/overview/OverviewPane";
+import {MyTitlesPane} from "../dashboard/dashboardTabPanes/myTitles/MyTitlesPane";
+import {CollectionsPane} from "../dashboard/dashboardTabPanes/collections/CollectionsPane";
 import Profile from "../pages/Profile";
 import {Title} from "../pages/Title";
 import {Titles} from "../pages/Titles";
@@ -32,12 +32,12 @@ import {Users} from "../pages/Users";
 import {AdminMessages} from "../pages/admin/message/AdminMessages";
 import {AdminMessage} from "../pages/admin/message/AdminMessage";
 import {GradeValues} from "../pages/GradeValues";
-import {ValuationPane} from "../dashboard/dashboardTabPanes/Valuation/ValuationPane";
+import {ValuationPane} from "../dashboard/dashboardTabPanes/valuation/ValuationPane";
 import {PrivateRoute} from "./PrivateRoute";
 import {AdminRoute} from "./AdminRoute";
 import {CatchAll} from "./CatchAll";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {MapPane} from "../dashboard/dashboardTabPanes/Map/MapPane";
+import {MapPane} from "../dashboard/dashboardTabPanes/map/MapPane";
 
 
 export const MyRoutes = () => {
