@@ -515,3 +515,19 @@ export const getLocationFromPosition = (geocoder, position) => {
         }).then();
     });
 };
+
+export const getPostalTownOrCountry = (addressComponents) => {
+    let postalTown = null;
+    let country = null;
+    addressComponents.forEach(component => {
+        if (component.types.includes('postal_town')) {
+            postalTown = component.long_name;
+        }
+        if (component.types.includes('country')) {
+            country = component.long_name;
+        }
+    });
+
+    // Return postal town if available, otherwise return country
+    return postalTown || country;
+}

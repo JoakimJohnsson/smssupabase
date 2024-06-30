@@ -1,5 +1,5 @@
 import React, {useMemo} from "react";
-import {PANES} from "../../../../../../helpers/constants/textConstants/texts";
+import {PANES} from "../../../../../helpers/constants/textConstants/texts";
 import {ListGroup, ListGroupItem} from "react-bootstrap";
 
 

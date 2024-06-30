@@ -1,8 +1,8 @@
 import React from "react";
-import {PANES} from "../../../../../../helpers/constants/textConstants/texts";
-import {usePlacesService} from "../../../../../../helpers/customHooks/usePlacesService";
-import {LABELS_AND_HEADINGS, MAP_CONFIG} from "../../../../../../helpers/constants/configConstants";
-import {IconButton} from "../../../../../minis/IconButton";
+import {PANES} from "../../../../../helpers/constants/textConstants/texts";
+import {usePlacesService} from "../../../../../helpers/customHooks/usePlacesService";
+import {LABELS_AND_HEADINGS, MAP_CONFIG} from "../../../../../helpers/constants/configConstants";
+import {IconButton} from "../../../../minis/IconButton";
 import {faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 
 
