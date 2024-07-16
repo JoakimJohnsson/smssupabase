@@ -41,6 +41,10 @@ A Pro version of Font Awesome is used. Add a file called .npmrc in root folder. 
 @fortawesome:registry=https://npm.fontawesome.com/
 //npm.fontawesome.com/:_authToken=< Ask Admin for token >
 ```
+Otherwise you might get this error when doing `npm install`:
+```
+npm error Incorrect or missing password.
+```
 
 #### <a id="localenv"></a> Local Environment file
 
