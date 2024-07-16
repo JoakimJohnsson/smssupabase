@@ -3,7 +3,8 @@ import {PANES} from "../../../../../helpers/constants/textConstants/texts";
 import {usePlacesService} from "../../../../../helpers/customHooks/usePlacesService";
 import {LABELS_AND_HEADINGS, MAP_CONFIG} from "../../../../../helpers/constants/configConstants";
 import {IconButton} from "../../../../minis/IconButton";
-import {faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
+import {faDeleteLeft, faStore, faPhoneRotary, faCartShopping} from "@fortawesome/pro-solid-svg-icons";
+import {faStore as faStoreReg, faPhoneRotary as faPhoneRotaryReg, faCartShopping as faCartShoppingReg} from "@fortawesome/pro-regular-svg-icons";
 
 
 export const DestinationSearch = ({userPosition, mapsApi, setDestinations, setSelectedDestinationType, selectedDestinationType}) => {
@@ -36,24 +37,28 @@ export const DestinationSearch = ({userPosition, mapsApi, setDestinations, setSe
         <>
             <h2>{PANES.MAP.SEARCH_FOR_NEAREST}</h2>
             <div className={"my-3"}>
-                <button
-                    className={`sms-btn btn ${selectedDestinationType === MAP_CONFIG.REQUESTS.FLEA_MARKET.name ? "btn-country" : "btn-outline-country"}`}
+
+                <IconButton
+                    variant={`${selectedDestinationType === MAP_CONFIG.REQUESTS.FLEA_MARKET.name ? "country" : "outline-country"}`}
+                    label={PANES.MAP.FLEA_MARKETS}
+                    icon={selectedDestinationType === MAP_CONFIG.REQUESTS.FLEA_MARKET.name ? faStore : faStoreReg}
                     onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.FLEA_MARKET)}
-                >
-                    {PANES.MAP.FLEA_MARKETS}
-                </button>
-                <button
-                    className={`sms-btn btn ${selectedDestinationType === MAP_CONFIG.REQUESTS.SECOND_HAND.name ? "btn-country" : "btn-outline-country"}`}
+                />
+
+                <IconButton
+                    variant={`${selectedDestinationType === MAP_CONFIG.REQUESTS.SECOND_HAND.name ? "country" : "outline-country"}`}
+                    label={PANES.MAP.SECOND_HAND_SHOPS}
+                    icon={selectedDestinationType === MAP_CONFIG.REQUESTS.SECOND_HAND.name ? faPhoneRotary : faPhoneRotaryReg}
                     onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.SECOND_HAND)}
-                >
-                    {PANES.MAP.SECOND_HAND_SHOPS}
-                </button>
-                <button
-                    className={`sms-btn btn ${selectedDestinationType === MAP_CONFIG.REQUESTS.COMIC_BOOK_STORE.name ? "btn-country" : "btn-outline-country"}`}
+                />
+
+                <IconButton
+                    variant={`${selectedDestinationType === MAP_CONFIG.REQUESTS.COMIC_BOOK_STORE.name ? "country" : "outline-country"}`}
+                    label={PANES.MAP.COMIC_BOOK_STORES}
+                    icon={selectedDestinationType === MAP_CONFIG.REQUESTS.COMIC_BOOK_STORE.name ? faCartShopping : faCartShoppingReg}
                     onClick={() => handlePlacesSearch(MAP_CONFIG.REQUESTS.COMIC_BOOK_STORE)}
-                >
-                    {PANES.MAP.COMIC_BOOK_STORES}
-                </button>
+                />
+
                 {
                     selectedDestinationType &&
                     <IconButton
