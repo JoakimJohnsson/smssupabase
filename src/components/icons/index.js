@@ -253,7 +253,7 @@ export const getDuoToneIconByName = (iconName) => {
 }
 
 export const Icon = ({icon, size, className, spin = false}) => {
-    return (
+    return icon && (
         <FontAwesomeIcon icon={icon} size={size} className={className} spin={spin}/>
     )
 }
