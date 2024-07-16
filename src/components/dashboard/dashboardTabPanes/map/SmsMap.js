@@ -15,6 +15,9 @@ import {SelectedOrigin} from "./smsMapControls/SelectedOrigin";
 
 
 export const SmsMap = () => {
+    // TODO
+    //  - använd user location istället för user position!!!!
+    //  - user position ska vara null - inte nyköping
     const {userPosition, positionPending, locationAllowedAndSupported} = useUserPosition();
     const {mapsApi, mapTypeControlOptions} = useMapsApi();
     const [destinations, setDestinations] = useState([]);
