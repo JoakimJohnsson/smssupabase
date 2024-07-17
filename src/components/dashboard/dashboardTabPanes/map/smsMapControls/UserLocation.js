@@ -5,7 +5,7 @@ import {LazyTextPlaceholder} from "../../../../minis/LazyTextPlaceholder";
 import {useUserPosition} from "../../../../../helpers/customHooks/useUserPosition";
 
 
-export const CurrentUserLocation = () => {
+export const UserLocation = () => {
     const {userLocation} = useUserPosition();
 
     return (

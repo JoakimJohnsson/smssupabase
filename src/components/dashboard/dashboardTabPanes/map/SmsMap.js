@@ -5,43 +5,54 @@ import {Form} from "react-bootstrap";
 import {SmsMapDirections} from "./SmsMapDirections";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {SmsMapMarker} from "./SmsMapMarker";
-import {getLocation} from "../../../../helpers/functions";
+import {getPositionFromLocation} from "../../../../helpers/functions";
 import {DestinationSelector} from "./smsMapControls/DestinationSelector";
 import {useUserPosition} from "../../../../helpers/customHooks/useUserPosition";
 import {DestinationSearch} from "./smsMapControls/DestinationSearch";
 import {useMapsApi} from "../../../../helpers/customHooks/useMapsApi";
-import {CurrentUserLocation} from "./smsMapControls/CurrentUserLocation";
-import {SelectedOrigin} from "./smsMapControls/SelectedOrigin";
+import {UserLocation} from "./smsMapControls/UserLocation";
+import {SelectedOriginLocation} from "./smsMapControls/SelectedOriginLocation";
 
 
 export const SmsMap = () => {
-    // TODO
-    //  - använd user location istället för user position!!!!
-    //  - user position ska vara null - inte nyköping
-    const {userPosition, positionPending, locationAllowedAndSupported} = useUserPosition();
+
+    const {userLocation, positionPending, locationAllowedAndSupported} = useUserPosition();
     const {mapsApi, mapTypeControlOptions} = useMapsApi();
     const [destinations, setDestinations] = useState([]);
     const [travelModeIndex, setTravelModeIndex] = useState(0);
-    const [selectedDestination, setSelectedDestination] = useState(null);
-    const [selectedOrigin, setSelectedOrigin] = useState(null);
+    const [selectedDestinationLocation, setSelectedDestinationLocation] = useState(null);
+    const [otherLocation, setOtherLocation] = useState(null);
+    const [location, setLocation] = useState(null);
     const [selectedDestinationType, setSelectedDestinationType] = useState(null);
 
-    // TODO - Reda ut position / origin o.s.v. om man inte har tillåtit o.s.v.
-
     useEffect(() => {
-        setSelectedOrigin(null);
+        setOtherLocation(null);
     }, []);
 
-    return !positionPending ?
+    // If user has set other location - use other location.
+    useEffect(() => {
+        if (otherLocation) {
+            setLocation(otherLocation);
+        } else {
+            setLocation(userLocation);
+        }
+    }, [otherLocation, userLocation]);
+
+    return !positionPending && location ?
         <>
             <div className={"col-12 form-group mb-5 bg-horse p-4"}>
                 <h2>{PANES.MAP.LOCATION}</h2>
                 {/* If allowed - show user location */}
+                <div className={"mb-4"}>
                 {
                     locationAllowedAndSupported &&
-                    <CurrentUserLocation/>
+                    <UserLocation/>
                 }
-                <SelectedOrigin selectedOrigin={selectedOrigin}/>
+                {
+                    otherLocation &&
+                    <SelectedOriginLocation selectedOrigin={otherLocation}/>
+                }
+                </div>
                 {
                     <>
                     <h3>{locationAllowedAndSupported ? PANES.MAP.CHOSE_OTHER_LOCATION : PANES.MAP.CHOSE_LOCATION}</h3>
@@ -50,7 +61,7 @@ export const SmsMap = () => {
                 }
 
                 {/* Nearest destination search */}
-                <DestinationSearch userPosition={userPosition} mapsApi={mapsApi} setDestinations={setDestinations}
+                <DestinationSearch userPosition={getPositionFromLocation(location)} mapsApi={mapsApi} setDestinations={setDestinations}
                                    setSelectedDestinationType={setSelectedDestinationType}
                                    selectedDestinationType={selectedDestinationType}/>
 
@@ -59,15 +70,15 @@ export const SmsMap = () => {
                     destinations && !!destinations.length &&
                     <DestinationSelector
                         selectedDestinationType={selectedDestinationType}
-                        setSelectedDestination={setSelectedDestination}
+                        setSelectedDestination={setSelectedDestinationLocation}
                         destinations={destinations}
-                        selectedDestination={selectedDestination}
+                        selectedDestination={selectedDestinationLocation}
                     />
                 }
 
                 {/* Travel mode selector */}
                 {
-                    selectedDestination &&
+                    selectedDestinationLocation &&
                     <Form>
                         <h2>{PANES.MAP.TRAVEL_MODES}</h2>
                         <div className="mb-3">
@@ -96,7 +107,7 @@ export const SmsMap = () => {
                     <Map
                         fullscreenControl={false}
                         defaultZoom={12}
-                        defaultCenter={userPosition}
+                        defaultCenter={getPositionFromLocation(userLocation)}
                         mapId={process.env.REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}
                         mapTypeControl={false}
                         mapTypeControlOptions={mapTypeControlOptions}
@@ -104,11 +115,11 @@ export const SmsMap = () => {
                     >
                         {/* Add markers */}
                         {
-                            userPosition && selectedDestination ?
-                                <SmsMapDirections mapsApi={mapsApi} origin={userPosition} destination={getLocation(selectedDestination)}
+                            userLocation && selectedDestinationLocation ?
+                                <SmsMapDirections mapsApi={mapsApi} origin={getPositionFromLocation(userLocation)} destination={getPositionFromLocation(selectedDestinationLocation)}
                                                   travelModeIndex={travelModeIndex}/>
                                 :
-                                <SmsMapMarker position={userPosition}/>
+                                <SmsMapMarker position={getPositionFromLocation(userLocation)}/>
                         }
                     </Map>
                 </div>

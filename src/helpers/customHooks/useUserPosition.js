@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {CONFIG, MAP_CONFIG} from "../constants/configConstants";
+import {CONFIG} from "../constants/configConstants";
 import {useAppContext} from "../../context/AppContext";
 import {useGeocoder} from "./useGeocoder";
 import {getLocationFromPosition} from "../functions";
@@ -9,7 +9,7 @@ export const useUserPosition = () => {
 
     const {profile} = useAppContext();
     const {geocoder} = useGeocoder();
-    const [userPosition, setUserPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
+    // const [userPosition, setUserPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
     const [positionPending, setPositionPending] = useState(true);
     const [userLocation, setUserLocation] = useState(null);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
@@ -34,11 +34,17 @@ export const useUserPosition = () => {
                 return;
             }
 
-            const success = (position) => {
-                setUserPosition({
+            const success = async (position) => {
+                const userPos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
-                });
+                }
+                try {
+                    const result = await getLocationFromPosition(geocoder, userPos);
+                    setUserLocation(result);
+                } catch (error) {
+                    console.error('Error fetching user location: ', error);
+                }
                 setPositionPending(false);
             };
 
@@ -56,23 +62,7 @@ export const useUserPosition = () => {
 
         setPositionPending(true);
         fetchUserPosition();
-    }, [locationAllowedAndSupported]);
+    }, [geocoder, locationAllowedAndSupported]);
 
-    // Getting user location
-    useEffect(() => {
-        const fetchUserLocation = async () => {
-            if (!geocoder || !userPosition || positionPending) return;
-
-            try {
-                const result = await getLocationFromPosition(geocoder, userPosition);
-                setUserLocation(result);
-            } catch (error) {
-                console.error('Error fetching user location: ', error);
-            }
-        };
-
-        fetchUserLocation().then();
-    }, [geocoder, userPosition, positionPending]);
-
-    return {userPosition, positionPending, userLocation, locationAllowedAndSupported};
+    return {positionPending, userLocation, locationAllowedAndSupported};
 }
