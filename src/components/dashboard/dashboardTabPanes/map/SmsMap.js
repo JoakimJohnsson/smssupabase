@@ -5,18 +5,19 @@ import {Form} from "react-bootstrap";
 import {SmsMapDirections} from "./SmsMapDirections";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {SmsMapMarker} from "./SmsMapMarker";
-import {getPositionFromLocation} from "../../../../helpers/functions";
+import {getLocationFromPosition, getPositionFromLocation} from "../../../../helpers/functions";
 import {DestinationSelector} from "./smsMapControls/DestinationSelector";
 import {useUserPosition} from "../../../../helpers/customHooks/useUserPosition";
 import {DestinationSearch} from "./smsMapControls/DestinationSearch";
 import {useMapsApi} from "../../../../helpers/customHooks/useMapsApi";
 import {UserLocation} from "./smsMapControls/UserLocation";
 import {SelectedOriginLocation} from "./smsMapControls/SelectedOriginLocation";
+import {MAP_CONFIG} from "../../../../helpers/constants/configConstants";
 
 
 export const SmsMap = () => {
 
-    const {userLocation, positionPending, locationAllowedAndSupported} = useUserPosition();
+    const {userLocation, positionPending, locationAllowedAndSupported, geocoder} = useUserPosition();
     const {mapsApi, mapTypeControlOptions} = useMapsApi();
     const [destinations, setDestinations] = useState([]);
     const [travelModeIndex, setTravelModeIndex] = useState(0);
@@ -26,44 +27,71 @@ export const SmsMap = () => {
     const [selectedDestinationType, setSelectedDestinationType] = useState(null);
 
     useEffect(() => {
-        setOtherLocation(null);
-    }, []);
+
+        const fetchDefaultLocation = async () => {
+            try {
+                const result = await getLocationFromPosition(geocoder, MAP_CONFIG.POSITIONS.NYKOPING);
+                setLocation(result);
+            } catch (error) {
+                console.error('Error fetching user location: ', error);
+            }
+        }
+
+        if (!locationAllowedAndSupported) {
+            // Set default location. Not really necessary, but fun.
+            // User can search for other locations.
+            fetchDefaultLocation().then();
+        } else {
+            // Location is set to user position.
+            // User can still search for other locations to use for location.
+            setOtherLocation(null);
+        }
+    }, [geocoder, locationAllowedAndSupported]);
 
     // If user has set other location - use other location.
     useEffect(() => {
-        if (otherLocation) {
-            setLocation(otherLocation);
-        } else {
-            setLocation(userLocation);
-        }
-    }, [otherLocation, userLocation]);
+        if (locationAllowedAndSupported) {
+            if (otherLocation) {
+                setLocation(otherLocation);
+            } else {
+                setLocation(userLocation);
+            }
 
-    return !positionPending && location ?
+        }
+
+    }, [locationAllowedAndSupported, otherLocation, userLocation]);
+
+    return !positionPending ?
         <>
             <div className={"col-12 form-group mb-5 bg-horse p-4"}>
                 <h2>{PANES.MAP.LOCATION}</h2>
                 {/* If allowed - show user location */}
                 <div className={"mb-4"}>
-                {
-                    locationAllowedAndSupported &&
-                    <UserLocation/>
-                }
-                {
-                    otherLocation &&
-                    <SelectedOriginLocation selectedOrigin={otherLocation}/>
-                }
+                    {
+                        locationAllowedAndSupported &&
+                        <UserLocation/>
+                    }
+                    {
+                        otherLocation &&
+                        <SelectedOriginLocation selectedOrigin={otherLocation}/>
+                    }
                 </div>
                 {
                     <>
-                    <h3>{locationAllowedAndSupported ? PANES.MAP.CHOSE_OTHER_LOCATION : PANES.MAP.CHOSE_LOCATION}</h3>
-                    <p>Platsväljare med autocomplete</p>
+                        <h3>{locationAllowedAndSupported ? PANES.MAP.CHOSE_OTHER_LOCATION : PANES.MAP.CHOSE_LOCATION}</h3>
+                        <p>Platsväljare med autocomplete</p>
                     </>
                 }
 
                 {/* Nearest destination search */}
-                <DestinationSearch userPosition={getPositionFromLocation(location)} mapsApi={mapsApi} setDestinations={setDestinations}
-                                   setSelectedDestinationType={setSelectedDestinationType}
-                                   selectedDestinationType={selectedDestinationType}/>
+                {
+                    location &&
+                    <DestinationSearch userPosition={getPositionFromLocation(location)} mapsApi={mapsApi}
+                                       setDestinations={setDestinations}
+                                       setSelectedDestinationType={setSelectedDestinationType}
+                                       selectedDestinationType={selectedDestinationType}/>
+                }
+
 
                 {/* Destination selector */}
                 {
@@ -103,11 +131,13 @@ export const SmsMap = () => {
                 }
             </div>
             {/* Map */}
-                <div className={"sms-google-map"}>
+            <div className={"sms-google-map"}>
+                {
+                    location &&
                     <Map
                         fullscreenControl={false}
                         defaultZoom={12}
-                        defaultCenter={getPositionFromLocation(userLocation)}
+                        defaultCenter={getPositionFromLocation(location)}
                         mapId={process.env.REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}
                         mapTypeControl={false}
                         mapTypeControlOptions={mapTypeControlOptions}
@@ -115,15 +145,16 @@ export const SmsMap = () => {
                     >
                         {/* Add markers */}
                         {
-                            userLocation && selectedDestinationLocation ?
-                                <SmsMapDirections mapsApi={mapsApi} origin={getPositionFromLocation(userLocation)} destination={getPositionFromLocation(selectedDestinationLocation)}
+                            location && selectedDestinationLocation ?
+                                <SmsMapDirections mapsApi={mapsApi} origin={getPositionFromLocation(location)}
+                                                  destination={getPositionFromLocation(selectedDestinationLocation)}
                                                   travelModeIndex={travelModeIndex}/>
                                 :
-                                <SmsMapMarker position={getPositionFromLocation(userLocation)}/>
+                                <SmsMapMarker position={getPositionFromLocation(location)}/>
                         }
                     </Map>
-                </div>
-
+                }
+            </div>
         </>
         :
         <OverlaySpinner/>

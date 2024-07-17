@@ -9,7 +9,6 @@ export const useUserPosition = () => {
 
     const {profile} = useAppContext();
     const {geocoder} = useGeocoder();
-    // const [userPosition, setUserPosition] = useState(MAP_CONFIG.POSITIONS.NYKOPING);
     const [positionPending, setPositionPending] = useState(true);
     const [userLocation, setUserLocation] = useState(null);
     const [locationAllowedAndSupported, setLocationAllowedAndSupported] = useState(false);
@@ -64,5 +63,5 @@ export const useUserPosition = () => {
         fetchUserPosition();
     }, [geocoder, locationAllowedAndSupported]);
 
-    return {positionPending, userLocation, locationAllowedAndSupported};
+    return {positionPending, userLocation, locationAllowedAndSupported, geocoder};
 }
