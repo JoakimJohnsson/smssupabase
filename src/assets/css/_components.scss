@@ -547,8 +547,8 @@ input[type="checkbox"] + label {
     button {
       font-size: $font-size-small;
     }
-    @include media-breakpoint-up(sm) {
-      width: auto;
+    @include media-breakpoint-up(md) {
+      width: 350px;
       bottom: 0;
       top: auto;
     }

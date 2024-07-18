@@ -47,7 +47,7 @@ export const SmsMapDirections = ({origin, destination, travelModeIndex}) => {
 
     return leg && (
         <div className={"sms-google-map--directions"}>
-            <h2 className={"text-capitalize"}>{selectedRoute.summary}</h2>
+            <h2>{selectedRoute.summary}</h2>
             <p>
                 {
                     travelModeIndex === 0 ?

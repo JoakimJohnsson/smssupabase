@@ -12,9 +12,10 @@ import {DestinationSearch} from "./smsMapControls/DestinationSearch";
 import {useMapsApi} from "../../../../helpers/customHooks/useMapsApi";
 import {UserLocation} from "./smsMapControls/UserLocation";
 import {SelectedOriginLocation} from "./smsMapControls/SelectedOriginLocation";
-import {MAP_CONFIG} from "../../../../helpers/constants/configConstants";
+import {MAP_CONFIG, TEXTS} from "../../../../helpers/constants/configConstants";
 import {useGeocoder} from "../../../../helpers/customHooks/useGeocoder";
 import {LocationSelector} from "./smsMapControls/LocationSelector";
+import {Icon, infoIconDuoTone} from "../../../icons";
 
 
 export const SmsMap = () => {
@@ -72,6 +73,10 @@ export const SmsMap = () => {
                     }
                     <SelectedOriginLocation selectedOrigin={otherLocation}/>
                 </div>
+                <div className={"alert alert-info d-flex align-items-center mb-4"}>
+                    <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
+                    {PANES.MAP.DISCLAIMER}
+                </div>
                 {
                     <LocationSelector setLocation={setOtherLocation}/>
                 }
@@ -79,7 +84,7 @@ export const SmsMap = () => {
                 {/* Nearest destination search */}
                 {
                     location &&
-                    <DestinationSearch userPosition={getPositionFromLocation(location)}
+                    <DestinationSearch position={getPositionFromLocation(location)}
                                        setDestinations={setDestinations}
                                        setSelectedDestinationType={setSelectedDestinationType}
                                        selectedDestinationType={selectedDestinationType}/>

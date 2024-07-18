@@ -8,7 +8,7 @@ import {faStore as faStoreReg, faPhoneRotary as faPhoneRotaryReg, faCartShopping
 import {useMapsApi} from "../../../../../helpers/customHooks/useMapsApi";
 
 
-export const DestinationSearch = ({userPosition, setDestinations, setSelectedDestinationType, selectedDestinationType}) => {
+export const DestinationSearch = ({position, setDestinations, setSelectedDestinationType, selectedDestinationType}) => {
 
     const {placesService} = usePlacesService();
     const {mapsApi} = useMapsApi();
@@ -17,7 +17,7 @@ export const DestinationSearch = ({userPosition, setDestinations, setSelectedDes
         if (!placesService) return;
         placesService.nearbySearch(
             {
-                location: userPosition,
+                location: position,
                 language: "sv",
                 keyword: request.query,
                 rankBy: mapsApi.places.RankBy.DISTANCE
