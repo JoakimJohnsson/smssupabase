@@ -5,11 +5,13 @@ import {LABELS_AND_HEADINGS, MAP_CONFIG} from "../../../../../helpers/constants/
 import {IconButton} from "../../../../minis/IconButton";
 import {faDeleteLeft, faStore, faPhoneRotary, faCartShopping} from "@fortawesome/pro-solid-svg-icons";
 import {faStore as faStoreReg, faPhoneRotary as faPhoneRotaryReg, faCartShopping as faCartShoppingReg} from "@fortawesome/pro-regular-svg-icons";
+import {useMapsApi} from "../../../../../helpers/customHooks/useMapsApi";
 
 
-export const DestinationSearch = ({userPosition, mapsApi, setDestinations, setSelectedDestinationType, selectedDestinationType}) => {
+export const DestinationSearch = ({userPosition, setDestinations, setSelectedDestinationType, selectedDestinationType}) => {
 
     const {placesService} = usePlacesService();
+    const {mapsApi} = useMapsApi();
 
     const handlePlacesSearch = (request) => {
         if (!placesService) return;

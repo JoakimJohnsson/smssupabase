@@ -13,12 +13,15 @@ import {useMapsApi} from "../../../../helpers/customHooks/useMapsApi";
 import {UserLocation} from "./smsMapControls/UserLocation";
 import {SelectedOriginLocation} from "./smsMapControls/SelectedOriginLocation";
 import {MAP_CONFIG} from "../../../../helpers/constants/configConstants";
+import {useGeocoder} from "../../../../helpers/customHooks/useGeocoder";
+import {LocationSelector} from "./smsMapControls/LocationSelector";
 
 
 export const SmsMap = () => {
 
-    const {userLocation, positionPending, locationAllowedAndSupported, geocoder} = useUserPosition();
-    const {mapsApi, mapTypeControlOptions} = useMapsApi();
+    const {userLocation, positionPending, locationAllowedAndSupported} = useUserPosition();
+    const {geocoder} = useGeocoder();
+    const {mapTypeControlOptions} = useMapsApi();
     const [destinations, setDestinations] = useState([]);
     const [travelModeIndex, setTravelModeIndex] = useState(0);
     const [selectedDestinationLocation, setSelectedDestinationLocation] = useState(null);
@@ -50,15 +53,11 @@ export const SmsMap = () => {
 
     // If user has set other location - use other location.
     useEffect(() => {
-        if (locationAllowedAndSupported) {
-            if (otherLocation) {
-                setLocation(otherLocation);
-            } else {
-                setLocation(userLocation);
-            }
-
+        if (otherLocation) {
+            setLocation(otherLocation);
+        } else {
+            setLocation(userLocation);
         }
-
     }, [locationAllowedAndSupported, otherLocation, userLocation]);
 
     return !positionPending ?
@@ -71,22 +70,16 @@ export const SmsMap = () => {
                         locationAllowedAndSupported &&
                         <UserLocation/>
                     }
-                    {
-                        otherLocation &&
-                        <SelectedOriginLocation selectedOrigin={otherLocation}/>
-                    }
+                    <SelectedOriginLocation selectedOrigin={otherLocation}/>
                 </div>
                 {
-                    <>
-                        <h3>{locationAllowedAndSupported ? PANES.MAP.CHOSE_OTHER_LOCATION : PANES.MAP.CHOSE_LOCATION}</h3>
-                        <p>Platsväljare med autocomplete</p>
-                    </>
+                    <LocationSelector setLocation={setOtherLocation}/>
                 }
 
                 {/* Nearest destination search */}
                 {
                     location &&
-                    <DestinationSearch userPosition={getPositionFromLocation(location)} mapsApi={mapsApi}
+                    <DestinationSearch userPosition={getPositionFromLocation(location)}
                                        setDestinations={setDestinations}
                                        setSelectedDestinationType={setSelectedDestinationType}
                                        selectedDestinationType={selectedDestinationType}/>
@@ -146,7 +139,7 @@ export const SmsMap = () => {
                         {/* Add markers */}
                         {
                             location && selectedDestinationLocation ?
-                                <SmsMapDirections mapsApi={mapsApi} origin={getPositionFromLocation(location)}
+                                <SmsMapDirections origin={getPositionFromLocation(location)}
                                                   destination={getPositionFromLocation(selectedDestinationLocation)}
                                                   travelModeIndex={travelModeIndex}/>
                                 :

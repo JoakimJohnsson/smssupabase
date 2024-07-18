@@ -554,17 +554,17 @@ export const MAP_CONFIG = {
     },
     REQUESTS: {
         FLEA_MARKET: {
-            query: "Loppisar",
+            query: ["flea market", "loppisar", "loppmarknad"],
             fields: ["name", "geometry"],
             name: PANES.MAP.FLEA_MARKETS,
         },
         SECOND_HAND: {
-            query: "Second hand",
+            query: ["Second hand"],
             fields: ["name", "geometry"],
             name: PANES.MAP.SECOND_HAND_SHOPS
         },
         COMIC_BOOK_STORE: {
-            query: "Serietidningar butik",
+            query: ["Serietidningar butik", "comic book store"],
             fields: ["name", "geometry"],
             name: PANES.MAP.COMIC_BOOK_STORES
         },

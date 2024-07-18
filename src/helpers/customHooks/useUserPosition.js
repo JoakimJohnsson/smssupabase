@@ -63,5 +63,5 @@ export const useUserPosition = () => {
         fetchUserPosition();
     }, [geocoder, locationAllowedAndSupported]);
 
-    return {positionPending, userLocation, locationAllowedAndSupported, geocoder};
+    return {positionPending, userLocation, locationAllowedAndSupported};
 }

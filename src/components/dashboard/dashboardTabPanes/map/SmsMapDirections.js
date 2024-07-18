@@ -5,12 +5,14 @@ import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useDirectionsService} from "../../../../helpers/customHooks/useDirectionsService";
 import {useDirectionsRenderer} from "../../../../helpers/customHooks/useDirectionsRenderer";
+import {useMapsApi} from "../../../../helpers/customHooks/useMapsApi";
 
 
-export const SmsMapDirections = ({mapsApi, origin, destination, travelModeIndex}) => {
+export const SmsMapDirections = ({origin, destination, travelModeIndex}) => {
     const map = useMap();
     const {directionsService} = useDirectionsService();
     const {directionsRenderer} = useDirectionsRenderer();
+    const {mapsApi} = useMapsApi();
     const [routes, setRoutes] = useState([]);
     const [travelModes, setTravelModes] = useState([]);
     const [routeIndex, setRouteIndex] = useState(0);

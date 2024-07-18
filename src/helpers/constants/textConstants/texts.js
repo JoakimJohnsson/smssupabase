@@ -74,7 +74,7 @@ export const PANES = {
         LOCATION: "Plats",
         YOUR_CURRENT_LOCATION: "Din nuvarande plats:",
         YOUR_SELECTED_ORIGIN_LOCATION: "Din valda plats:",
-        NO_SELECTED_ORIGIN_LOCATION: "Du har inte valt någon plats än.",
+        NO_SELECTED_ORIGIN_LOCATION: "Du har inte valt någon annan plats än.",
         CHOSE_LOCATION: "Välj plats:",
         CHOSE_OTHER_LOCATION: "Välj en annan plats:"
     }
