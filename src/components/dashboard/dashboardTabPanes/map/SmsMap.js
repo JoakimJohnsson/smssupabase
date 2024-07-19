@@ -12,7 +12,7 @@ import {DestinationSearch} from "./smsMapControls/DestinationSearch";
 import {useMapsApi} from "../../../../helpers/customHooks/useMapsApi";
 import {UserLocation} from "./smsMapControls/UserLocation";
 import {SelectedOriginLocation} from "./smsMapControls/SelectedOriginLocation";
-import {MAP_CONFIG, TEXTS} from "../../../../helpers/constants/configConstants";
+import {MAP_CONFIG} from "../../../../helpers/constants/configConstants";
 import {useGeocoder} from "../../../../helpers/customHooks/useGeocoder";
 import {LocationSelector} from "./smsMapControls/LocationSelector";
 import {Icon, infoIconDuoTone} from "../../../icons";
