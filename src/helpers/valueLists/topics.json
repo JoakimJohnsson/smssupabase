@@ -1,5 +1,15 @@
 [
   {
+    "id": 7093,
+    "isGlobal": false,
+    "name": "Kommentar",
+    "nameEn": "Comment",
+    "description": "Har du något att säga?.",
+    "descriptionEn": "Do you have something to say?.",
+    "shade": 600,
+    "icon": "faComment"
+  },
+  {
     "id": 8362,
     "isGlobal": false,
     "name": "Förbättringsförslag",

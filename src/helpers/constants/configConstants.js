@@ -83,6 +83,7 @@ export const LABELS_AND_HEADINGS = {
     MESSAGES_MARK_AS_INACTIVE: "Markera som inaktivt",
     MESSAGES_MARK_AS_TODO: "Åtgärd krävs",
     MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
+    MESSAGE_USER_CREATE: "Skicka ett meddelande till",
     CALCULATING_VALUATION: "Beräknar ny värdering!",
     OPEN: "Öppna",
     ON_COMICS_ORG: "på Comics.org",

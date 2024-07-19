@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import marvel from "../../../assets/images/publishers/marvel.gif";
+import {getUserName} from "../../../helpers/functions";
 
 
 export const UserCard = ({user}) => {
@@ -9,7 +10,7 @@ export const UserCard = ({user}) => {
 
     useEffect(() => {
         if (user) {
-            setDisplayName(user.firstname + " " + user.lastname);
+            setDisplayName(getUserName(user));
         }
     }, [user])
 

@@ -16,6 +16,7 @@ import {
     faChevronUp,
     faCircleInfo,
     faComet,
+    faComment,
     faCommentsQuestion,
     faDisplayChartUp,
     faEarthAmericas,
@@ -77,6 +78,7 @@ import {
     faChevronUp as faChevronUpDT,
     faCircleInfo as faCircleInfoDT,
     faComet as faCometDT,
+    faComment as faCommentDT,
     faCommentsQuestion as faCommentsQuestionDT,
     faDisplayChartUp as faDisplayChartUpDT,
     faEarthAmericas as faEarthAmericasDT,
@@ -138,6 +140,7 @@ const iconMap = {
     faChevronUp: faChevronUp,
     faCircleInfo: faCircleInfo,
     faComet: faComet,
+    faComment: faComment,
     faCommentsQuestion: faCommentsQuestion,
     faDisplayChartUp: faDisplayChartUp,
     faEarthAmericas: faEarthAmericas,
@@ -199,6 +202,7 @@ const iconMapDuoTone = {
     faChevronUpDT: faChevronUpDT,
     faCircleInfoDT: faCircleInfoDT,
     faCometDT: faCometDT,
+    faCommentDT: faCommentDT,
     faCommentsQuestionDT: faCommentsQuestionDT,
     faDisplayChartUpDT: faDisplayChartUpDT,
     faEarthAmericasDT: faEarthAmericasDT,
@@ -330,6 +334,7 @@ export const mapsIconDuoTone = faMapLocationDotDT;
 export const marvelKlubbenIconDuoTone = faBadgeDT;
 export const moreIconDuoTone = faChevronDownDT;
 export const lessIconDuoTone = faChevronUpDT;
+export const commentIconDuoTone = faCommentDT;
 export const questionIconDuoTone = faCommentsQuestionDT;
 export const logoutIconDuoTone = faArrowRightFromArcDT;
 export const collectionsIconDuoTone = faRectangleHistoryCircleUserDT;
