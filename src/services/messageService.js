@@ -95,3 +95,21 @@ export const getAllTodoMessages = async (setData) => {
         console.error(error);
     }
 }
+
+export const getAllUserMessages = async (user, setData) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(TABLES.MESSAGES)
+            .select("*")
+            .eq("receiver_id", user.id)
+            .order("created_at", {ascending: true})
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        if (data) {
+            setData(data);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}

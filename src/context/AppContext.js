@@ -4,7 +4,12 @@ import {CONFIG} from "../helpers/constants/configConstants";
 import {MESSAGES} from "../helpers/constants/textConstants/messages";
 import {TABLES} from "../helpers/constants/serviceConstants";
 import {getRowByTableAndId} from "../services/serviceFunctions";
-import {getAllActiveGlobalMessages, getAllTodoMessages, getAllUnreadMessages} from "../services/messageService";
+import {
+    getAllActiveGlobalMessages,
+    getAllTodoMessages,
+    getAllUnreadMessages,
+    getAllUserMessages
+} from "../services/messageService";
 
 
 const AppContext = React.createContext();
@@ -16,6 +21,7 @@ export function AppContextProvider({children}) {
     const [evaluatingUser, setEvaluatingUser] = useState(true);
     const [activeGlobalMessages, setActiveGlobalMessages] = useState(null);
     const [unreadMessages, setUnreadMessages] = useState(null);
+    const [userMessages, setUserMessages] = useState(null);
     const [todoMessages, setTodoMessages] = useState(null);
     const [showUserNotification, setShowUserNotification] = useState(false);
     const [showAdminNotification, setShowAdminNotification] = useState(false);
@@ -31,7 +37,10 @@ export function AppContextProvider({children}) {
         getAllActiveGlobalMessages(setActiveGlobalMessages).then();
         getAllUnreadMessages(setUnreadMessages).then();
         getAllTodoMessages(setTodoMessages).then();
-    }, []);
+        if (user) {
+            getAllUserMessages(user, setUserMessages).then();
+        }
+    }, [user]);
 
     useEffect(() => {
         // Check active session and sets the user
@@ -118,6 +127,7 @@ export function AppContextProvider({children}) {
         activeGlobalMessages,
         unreadMessages,
         todoMessages,
+        userMessages,
         fetchMessages,
         profile,
         setProfile,
