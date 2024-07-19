@@ -43,6 +43,7 @@ export const getAllActiveGlobalMessages = async (setData) => {
             .select("*")
             .eq("is_global", 1)
             .eq("status", 1)
+            .is("receiver_id", null)
             .order("created_at", {ascending: false})
         if (error && status !== 406) {
             console.error(error);
@@ -62,6 +63,7 @@ export const getAllUnreadMessages = async (setData) => {
             .select("*")
             .eq("is_global", 0)
             .eq("status", 0)
+            .is("receiver_id", null)
             .order("created_at", {ascending: true})
         if (error && status !== 406) {
             console.error(error);
@@ -81,6 +83,7 @@ export const getAllTodoMessages = async (setData) => {
             .select("*")
             .eq("is_global", 0)
             .eq("status", 2)
+            .is("receiver_id", null)
             .order("created_at", {ascending: true})
         if (error && status !== 406) {
             console.error(error);

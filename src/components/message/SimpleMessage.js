@@ -72,7 +72,7 @@ export const SimpleMessage = ({user}) => {
                                         origin_id: null,
                                         origin_table: null,
                                         is_global: 0,
-                                        status: 0,
+                                        status: 1,
                                         sender_id: null,
                                         receiver_id: user.id,
                                         topic_id: 7093,

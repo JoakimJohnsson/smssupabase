@@ -2,7 +2,6 @@ import React, {useEffect, useState, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
-import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {IconButton} from "../../../minis/IconButton";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {filterGlobalMessage, handleBacking} from "../../../../helpers/functions";
@@ -13,23 +12,59 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {Icon, globalIconDuoTone} from "../../../icons";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {supabase} from "../../../../supabase/supabaseClient";
 
 
 export const AdminMessages = () => {
 
     const [messagesData, setMessagesData] = useState(null);
     const [messages, setMessages] = useState(null);
+    const [sentMessages, setSentMessages] = useState(null);
     const [globalMessages, setGlobalMessages] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    const fetchAdminMessages = useCallback(() => {
-        getRowsByTable(TABLES.MESSAGES, setMessagesData).then(() => setLoading(false));
+    // Messages sent to Admin by Users will not have a receiver id.
+    const fetchAdminMessages = useCallback(async () => {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.MESSAGES)
+                .select("*")
+                .is("receiver_id", null)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data) {
+                setMessagesData(data);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }, []);
+
+    // Messages sent to users will not have a sender id.
+    const fetchSentMessages = useCallback(async () => {
+        try {
+            let {data, error, status} = await supabase
+                .from(TABLES.MESSAGES)
+                .select("*")
+                .is("sender_id", null)
+            if (error && status !== 406) {
+                console.error(error);
+            }
+            if (data) {
+                setSentMessages(data);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }, []);
 
     useEffect(() => {
-        fetchAdminMessages();
-    }, [fetchAdminMessages]);
+        fetchAdminMessages().then(r => {
+            fetchSentMessages().then(r => setLoading(false))
+        });
+    }, [fetchAdminMessages, fetchSentMessages]);
 
     useEffect(() => {
         if (messagesData) {
@@ -45,8 +80,10 @@ export const AdminMessages = () => {
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
                     <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
                     <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
-                    <a href={"#global-message-section"} className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
-                        <Icon icon={globalIconDuoTone} className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}
+                    <a href={"#global-message-section"}
+                       className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
+                        <Icon icon={globalIconDuoTone}
+                              className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}
                     </a>
                 </div>
             </div>
@@ -67,14 +104,24 @@ export const AdminMessages = () => {
                                             :
                                             <NoDataAvailable/>
                                     }
-                                    <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h2>
+                                    <h2>{LABELS_AND_HEADINGS.MESSAGES_SENT}</h2>
                                     {
-                                        globalMessages ?
-                                            <MessagesList messagesData={globalMessages} setMessagesData={setGlobalMessages}/>
+                                        sentMessages ?
+                                            <MessagesList messagesData={sentMessages}
+                                                          setMessagesData={setSentMessages}/>
                                             :
                                             <NoDataAvailable/>
                                     }
-                                    <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                                    <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h2>
+                                    {
+                                        globalMessages ?
+                                            <MessagesList messagesData={globalMessages}
+                                                          setMessagesData={setGlobalMessages}/>
+                                            :
+                                            <NoDataAvailable/>
+                                    }
+                                    <IconButton variant={"outline-primary"} icon={faArrowLeft}
+                                                onClick={() => handleBacking(navigate)}
                                                 label={LABELS.COMMON.BACK}/>
                                 </>
                         }
