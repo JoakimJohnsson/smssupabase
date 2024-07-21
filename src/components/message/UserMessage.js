@@ -113,11 +113,11 @@ export const UserMessage = ({
                             }
                             disabled={title === "" || text === "" || topic_id === ""}
                     >
-                        {LABELS_AND_HEADINGS.SEND}
+                        {LABELS.COMMON.SEND}
                     </button>
                     <button className={"btn btn-secondary sms-btn"}
                             onClick={resetAddMessageForm}>
-                        {LABELS_AND_HEADINGS.RESET_FORM}
+                        {LABELS.COMMON.RESET_FORM}
                     </button>
                 </div>
             }

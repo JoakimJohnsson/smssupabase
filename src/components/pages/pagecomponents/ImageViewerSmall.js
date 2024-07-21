@@ -1,11 +1,11 @@
 import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ImageViewerSmall = ({url, fileName, linked = false}) => {
 
-    const altText = linked ? LABELS_AND_HEADINGS.GO_TO + " " + fileName : fileName;
+    const altText = linked ? LABELS.COMMON.GO_TO + " " + fileName : fileName;
 
     return url && fileName ? (
             <img

@@ -11,6 +11,7 @@ import {HeadingWithBreadCrumbs} from "../../../headings";
 import {OverviewValuation} from "./OverviewValuation";
 import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
 import {OverviewLinks} from "./OverviewLinks";
+import {OverviewMessages} from "./OverviewMessages";
 
 
 export const OverviewPane = () => {
@@ -40,6 +41,7 @@ export const OverviewPane = () => {
                     <CustomSpinner size={"4x"}/>
                     :
                     <>
+                        <OverviewMessages />
                         <OverviewLinks />
                         <OverviewTitles titlesData={userTitlesData}/>
                         <OverviewIssues titlesData={userTitlesData} issuesData={userIssuesData}/>

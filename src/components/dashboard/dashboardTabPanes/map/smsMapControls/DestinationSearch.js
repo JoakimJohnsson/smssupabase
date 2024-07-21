@@ -1,11 +1,12 @@
 import React from "react";
 import {PANES} from "../../../../../helpers/constants/textConstants/texts";
 import {usePlacesService} from "../../../../../helpers/customHooks/usePlacesService";
-import {LABELS_AND_HEADINGS, MAP_CONFIG} from "../../../../../helpers/constants/configConstants";
+import {MAP_CONFIG} from "../../../../../helpers/constants/configConstants";
 import {IconButton} from "../../../../minis/IconButton";
 import {faDeleteLeft, faStore, faPhoneRotary, faCartShopping} from "@fortawesome/pro-solid-svg-icons";
 import {faStore as faStoreReg, faPhoneRotary as faPhoneRotaryReg, faCartShopping as faCartShoppingReg} from "@fortawesome/pro-regular-svg-icons";
 import {useMapsApi} from "../../../../../helpers/customHooks/useMapsApi";
+import {LABELS} from "../../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const DestinationSearch = ({position, setDestinations, setSelectedDestinationType, selectedDestinationType}) => {
@@ -65,7 +66,7 @@ export const DestinationSearch = ({position, setDestinations, setSelectedDestina
                     selectedDestinationType &&
                     <IconButton
                         variant={"outline-country"}
-                        label={LABELS_AND_HEADINGS.RESET}
+                        label={LABELS.COMMON.RESET}
                         icon={faDeleteLeft}
                         onClick={handleReset}
                     />

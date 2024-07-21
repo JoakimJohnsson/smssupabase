@@ -1,6 +1,6 @@
 import {useAppContext} from "../../context/AppContext";
 import React, {useEffect, useState} from "react";
-import {FILETYPES, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {FILETYPES, TEXTS} from "../../helpers/constants/configConstants";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
@@ -11,6 +11,7 @@ import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {supabase} from "../../supabase/supabaseClient";
 import {ProfileInfoCredentials} from "./ProfileInfoCredentials";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const Profile = () => {
@@ -73,7 +74,7 @@ const Profile = () => {
                     <>
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col"}>
-                                <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.SETTINGS}/>
+                                <HeadingWithBreadCrumbs text={LABELS.COMMON.SETTINGS}/>
                                 <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                                 <p>{TEXTS.SETTINGS_INFO}</p>
                                 <p>

@@ -88,8 +88,8 @@ export const Home = () => {
                             <HeadingWithBreadCrumbs
                                 text={LABELS_AND_HEADINGS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + LABELS_AND_HEADINGS.WELCOME_TEXT_2}/>
                             {
-                                !!userMessages.length &&
-                                <InformationAlert variant={"info"} text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
+                                userMessages && !!userMessages.length &&
+                                <InformationAlert variant={"success"} text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
                             }
                         </div>
                         <div className={"mb-5"}>
