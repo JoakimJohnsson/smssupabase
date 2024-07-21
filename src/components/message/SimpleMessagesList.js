@@ -1,15 +1,14 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {NoDataAvailable} from "../minis/NoDataAvailable";
 import {ListToolBox} from "../lists/ListToolBox";
 import {ROUTES} from "../../helpers/constants/configConstants";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {sortByDateCreatedDesc} from "../../helpers/functions";
-import {MessageIcons} from "./MessageIcons";
 import {CalendarDate} from "../minis/CalendarDate";
+import {TopicIcon} from "./TopicIcon";
 
 
-export const MessagesList = ({messagesData, setMessagesData}) => {
+export const SimpleMessagesList = ({messagesData, setMessagesData}) => {
 
     return messagesData && (
         <ul className={"sms-list--with-tools mb-4"}>
@@ -19,16 +18,14 @@ export const MessagesList = ({messagesData, setMessagesData}) => {
                             .sort((a, b) => sortByDateCreatedDesc(a, b)).map((m, index) =>
                                 <li key={index} className={"list-group-item px-0"}>
                                     <div className={"row"}>
-                                        <div className={"col-12 d-flex justify-content-between"}>
+                                        <div className={"col-12 d-flex justify-content-between mb-3"}>
                                             <div className={"d-flex align-items-center"}>
                                                 <div className={"pe-3"}>
                                                     <CalendarDate dateString={m.created_at}/>
                                                 </div>
                                                 <div className={"d-flex align-items-center"}>
-                                                    <MessageIcons message={m} showBorder={true} size={"fa-2x"}/>
-                                                    <Link to={`/admin/messages/${m.id}`} className={"me-3"}>
-                                                        {m.title}
-                                                    </Link>
+                                                    <TopicIcon topicId={m.topic_id} size={"fa-2x"}/>
+                                                    <h3 className={"m-0"}>{m.title}</h3>
                                                 </div>
                                             </div>
                                             <div className={"d-flex align-items-center"}>
@@ -46,6 +43,9 @@ export const MessagesList = ({messagesData, setMessagesData}) => {
                                                     />
                                                 }
                                             </div>
+                                        </div>
+                                        <div className={"ms-1 ms-sm-2 mb-2"}>
+                                            {m.text}
                                         </div>
                                     </div>
                                 </li>)

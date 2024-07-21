@@ -216,7 +216,7 @@ export const deleteAllTotalValuationValueForUserByUserId = async (userId) => {
 
 // HANDLERS
 export const handleDelete = async (table, id, name, setData, initialData, image_filename, bucket, setInformationMessage) => {
-    if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + MESSAGES.CONFIRM.FROM + table + ".")) {
+    if (!window.confirm(MESSAGES.CONFIRM.DELETE + name + ".")) {
         return false;
     }
     try {

@@ -128,6 +128,7 @@ export function AppContextProvider({children}) {
         unreadMessages,
         todoMessages,
         userMessages,
+        setUserMessages,
         fetchMessages,
         profile,
         setProfile,

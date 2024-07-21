@@ -9,7 +9,7 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
-export const AdminTools = ({item, name, displayName, data, setData, route, table, imageBucket, showEditButton}) => {
+export const AdvancedTools = ({item, name, displayName, data, setData, route, table, imageBucket, showEditButton}) => {
 
     const editText = LABELS.COMMON.EDIT + " " + displayName;
     const deleteText = LABELS.COMMON.DELETE + " " + displayName;

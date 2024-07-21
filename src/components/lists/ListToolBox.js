@@ -1,5 +1,5 @@
 import React from "react";
-import {AdminTools} from "./AdminTools";
+import {AdvancedTools} from "./AdvancedTools";
 import {UserTools} from "./UserTools";
 
 
@@ -9,7 +9,7 @@ export const ListToolBox = ({
                                 displayName,
                                 data,
                                 setData,
-                                showAdminInfo,
+                                showAdvancedTools,
                                 route,
                                 table,
                                 imageBucket = false,
@@ -21,9 +21,9 @@ export const ListToolBox = ({
                                 showEditButton = true
                             }) => {
 
-    return showAdminInfo ?
-        <AdminTools item={item} name={name} displayName={displayName} data={data} setData={setData} route={route} table={table}
-                    imageBucket={imageBucket} showEditButton={showEditButton}/>
+    return showAdvancedTools ?
+        <AdvancedTools item={item} name={name} displayName={displayName} data={data} setData={setData} route={route} table={table}
+                       imageBucket={imageBucket} showEditButton={showEditButton}/>
         :
         isTitle || isIssue ?
             <UserTools item={item} displayName={displayName} isTitle={isTitle} fetchTitleProgress={fetchTitleProgress}
