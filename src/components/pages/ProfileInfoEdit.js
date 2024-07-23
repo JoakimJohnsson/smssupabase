@@ -111,7 +111,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
             {
                 edit ?
                     <>
-                        <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
+                        <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS.COMMON.SAVE} icon={saveIcon} loading={loading}/>
                         <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                             {LABELS.COMMON.ABORT}
                         </button>

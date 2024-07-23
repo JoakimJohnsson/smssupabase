@@ -23,6 +23,7 @@ import {FunctionButton} from "../minis/FunctionButton";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {NoMatch} from "../routes/NoMatch";
+import {SimpleMessage} from "../message/SimpleMessage";
 
 
 export const User = () => {
@@ -118,6 +119,7 @@ export const User = () => {
                                                     onClick={handleDeleteValuationValues}
                                                     label={LABELS_AND_HEADINGS.REMOVE_ALL_VALUATION_VALUES_FOR_USER}
                                                 />
+                                                <SimpleMessage user={user}/>
                                             </>
                                         }
                                         <h2>{LABELS.COMMON.INFORMATION}</h2>

@@ -3,7 +3,7 @@ import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitlesForUser} from "../../../../services/titleService";
-import FilterFormFormat from "../../../search-filter/FilterFormFormat";
+import FilterFormFormat from "../../../searchFilter/FilterFormFormat";
 import {useFormatQueryFilter} from "../../../../helpers/customHooks/useFormatQueryFilter";
 import {MyTitlesPaneList} from "./MyTitlesPaneList";
 import {HeadingWithBreadCrumbs} from "../../../headings";

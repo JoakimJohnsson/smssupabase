@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
 import {addPublisherData} from "../../../../services/publisherService";
 import {handleInput} from "../../../../services/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
@@ -108,7 +107,7 @@ export const AdminPublisherAdd = () => {
                         </button>
                         <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddPublisherForm}>
-                            {LABELS_AND_HEADINGS.RESET_FORM}
+                            {LABELS.COMMON.RESET_FORM}
                         </button>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS.COMMON.BACK}/>

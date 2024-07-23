@@ -12,7 +12,7 @@ import {
 import {getRowsByTable} from "../../services/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
-import FilterFormFormat from "../search-filter/FilterFormFormat";
+import FilterFormFormat from "../searchFilter/FilterFormFormat";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 

@@ -2,7 +2,6 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
@@ -25,7 +24,7 @@ const FilterFormSimple = ({query, setSearchParams, placeholder}) => {
                         query !== "" &&
                         <button className="btn btn-primary" onClick={() => setSearchParams({query: ""})}>
                             <FontAwesomeIcon icon={faTimes} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.RESET}
+                            {LABELS.COMMON.RESET}
                         </button>
                     }
                 </div>

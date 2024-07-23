@@ -96,7 +96,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.FORMAT_DB}</label>
+                <label className={"form-label"} htmlFor="format">{LABELS.SECTIONS.TITLES.FORMAT_DB}</label>
                 {
                     formatData &&
                     <select
@@ -124,7 +124,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                 {
                     edit ?
                         <>
-                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
+                            <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS.COMMON.SAVE} icon={saveIcon} loading={loading}/>
                             <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                 {LABELS.COMMON.ABORT}
                             </button>

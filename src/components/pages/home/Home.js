@@ -27,7 +27,7 @@ import {DashboardSection} from "./DashboardSection";
 
 export const Home = () => {
 
-    const {user, profile, activeGlobalMessages, unreadMessages, todoMessages} = useAppContext();
+    const {user, profile, activeGlobalMessages, unreadMessages, todoMessages, userMessages} = useAppContext();
     const [showAlert, setShowAlert] = useState(false);
     const [alertText, setAlertText] = useState("");
     const [totalTitles, setTotalTitles] = useState(0);
@@ -87,6 +87,10 @@ export const Home = () => {
                         <div className={"mb-5"}>
                             <HeadingWithBreadCrumbs
                                 text={LABELS_AND_HEADINGS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + LABELS_AND_HEADINGS.WELCOME_TEXT_2}/>
+                            {
+                                userMessages && !!userMessages.length &&
+                                <InformationAlert variant={"success"} text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
+                            }
                         </div>
                         <div className={"mb-5"}>
                             <div className={"sms-section--light"}>

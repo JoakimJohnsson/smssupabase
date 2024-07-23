@@ -1,5 +1,5 @@
 import React, {useMemo} from "react";
-import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {PANES} from "../../../../../helpers/constants/textConstants/texts";
 import {ListGroup, ListGroupItem} from "react-bootstrap";
 
 
@@ -15,7 +15,7 @@ export const DestinationSelector = ({selectedDestinationType, setSelectedDestina
         return destinations.slice(0, 10).map((destination, index) => (
             <ListGroupItem
                 key={destination.name + index}
-                action={true}
+                action="true"
                 onClick={() => setSelectedDestination(destinations[index])}
                 active={selectedDestination === destination}
             >
@@ -28,7 +28,7 @@ export const DestinationSelector = ({selectedDestinationType, setSelectedDestina
     return (
         <>
             <h3>{selectedDestinationType} {PANES.MAP.NEAREST_DESTINATIONS}</h3>
-            <ListGroup action className={"my-3 sms-list-group variant-country"}>
+            <ListGroup action="true" className={"my-3 sms-list-group variant-country"}>
                 {renderedDestinations}
             </ListGroup>
         </>

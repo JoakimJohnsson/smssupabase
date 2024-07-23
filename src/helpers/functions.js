@@ -492,9 +492,43 @@ export const showLessItems = (data, setItemsToShow, itemsToShow) => {
     }
 };
 
-export const getLocation = (destination) => {
-    if (!destination || !destination.geometry || !destination.geometry.location) {
-        throw new Error('Invalid destination object');
+// Map utils
+export const getPositionFromLocation = (location) => {
+    if (!location || !location.geometry || !location.geometry.location) {
+        throw new Error('Invalid location object');
     }
-    return destination.geometry.location;
+    return location.geometry.location;
 };
+
+export const getLocationFromPosition = (geocoder, position) => {
+    return new Promise((resolve, reject) => {
+        geocoder?.geocode({location: position}, (results, status) => {
+            if (status === "OK") {
+                if (results[0]) {
+                    resolve(results[0]);
+                } else {
+                    reject("No location found");
+                }
+            } else {
+                reject("Geocoder failed due to: " + status);
+            }
+        }).then();
+    });
+};
+
+export const getPostalTownOrCountry = (addressComponents) => {
+    let postalTown = null;
+    let country = null;
+
+    addressComponents.forEach(component => {
+        if (component.types.includes('postal_town')) {
+            postalTown = component.long_name;
+        }
+        if (component.types.includes('country')) {
+            country = component.long_name;
+        }
+    });
+
+    // Return postal town if available, otherwise return country
+    return postalTown || country;
+}

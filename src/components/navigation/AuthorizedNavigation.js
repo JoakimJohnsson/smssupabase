@@ -4,7 +4,7 @@ import {SignOutButton} from "../minis/SignOutButton";
 import {useAppContext} from "../../context/AppContext";
 import {NavbarProfileInformation} from "../NavbarProfileInformation";
 import {LiNavItem} from "../lists/LiNavItem";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
+import {ROUTES} from "../../helpers/constants/configConstants";
 import {faBars, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {
     Icon,
@@ -134,7 +134,7 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <LiNavItem onClick={closeDropdowns}  route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS_AND_HEADINGS.SETTINGS}/>
+                        <LiNavItem onClick={closeDropdowns}  route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS.COMMON.SETTINGS}/>
                         <NavDropdown ref={dropdownRef3} onClick={() => handleDropdownClick("isOpen3", "isOpen2")} as={"li"} title={<NavDropdownTitle icon={openStates.isOpen3 ? lessIconDuoTone : moreIconDuoTone} label={LABELS.COMMON.MORE_CONTENT}/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
@@ -201,7 +201,7 @@ export const AuthorizedNavigation = () => {
                         <LiNavItem route={ROUTES.TITLES} onClick={() => handleClick("isOpen")} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
                         <LiNavItem route={ROUTES.PROFILE} onClick={() => handleClick("isOpen")} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
-                                   text={LABELS_AND_HEADINGS.SETTINGS}/>
+                                   text={LABELS.COMMON.SETTINGS}/>
 
                         <LiNavItem route={ROUTES.ISSUES} onClick={() => handleClick("isOpen")} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>

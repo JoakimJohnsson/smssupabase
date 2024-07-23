@@ -29,7 +29,7 @@ export const CollectionsPane = () => {
                         {
                             usersData.map((user) =>
                                 // List public users other than profile
-                                user.is_public === 1 && user.id !== profile.id &&
+                                user?.is_public === 1 && user.id !== profile.id &&
                                 <CollectionsPaneListItem user={user} key={user.id}/>
                             )
                         }

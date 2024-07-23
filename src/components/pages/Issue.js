@@ -309,7 +309,7 @@ export const Issue = () => {
                                             <h2>{LABELS.SECTIONS.GRADES.GRADE_VALUE}</h2>
                                             <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                                 <caption>
-                                                    <p className={"mb-0"}>{LABELS_AND_HEADINGS.GRADE_VALUES_FOR} {displayName}</p>
+                                                    <p className={"mb-0"}>{LABELS.SECTIONS.GRADES.GRADE_VALUES_FOR} {displayName}</p>
                                                     <SeriekatalogenTitleLink titleName={issue?.titles?.name}/>
                                                 </caption>
                                                 <thead>
@@ -338,7 +338,7 @@ export const Issue = () => {
                                     {
                                         isCollectingIssue &&
                                         <div className={"sms-section--light section--grade mb-4"}>
-                                            <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
+                                            <h2>{LABELS.SECTIONS.GRADES.GRADE}</h2>
                                             <div className={"mb-3"}>
                                                 {
                                                     isCollectingIssue && grades &&
