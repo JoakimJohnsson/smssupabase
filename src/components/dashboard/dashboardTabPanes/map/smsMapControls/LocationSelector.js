@@ -2,23 +2,25 @@ import React, {useEffect, useRef, useState} from "react";
 import {PANES} from "../../../../../helpers/constants/textConstants/texts";
 import {useUserPosition} from "../../../../../helpers/customHooks/useUserPosition";
 import {useMapsApi} from "../../../../../helpers/customHooks/useMapsApi";
+import {useMapsLibrary} from "@vis.gl/react-google-maps";
 
 
 export const LocationSelector = ({setLocation}) => {
 
     const {locationAllowedAndSupported} = useUserPosition();
+    const placesLibrary = useMapsLibrary("places");
     const [placeAutocomplete, setPlaceAutocomplete] = useState(null);
     const inputRef = useRef(null);
     const {mapsApi} = useMapsApi();
 
     useEffect(() => {
-        if (!mapsApi || !mapsApi.places || !inputRef.current) return;
+        if (!placesLibrary || !inputRef.current) return;
         const options = {
             fields: ['geometry', 'name', 'formatted_address', 'address_components']
         };
-        const autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, options);
+        const autocomplete = new placesLibrary.Autocomplete(inputRef.current, options);
         setPlaceAutocomplete(autocomplete);
-    }, [mapsApi]);
+    }, [placesLibrary]);
 
     useEffect(() => {
         if (!mapsApi || !mapsApi.event || !placeAutocomplete) return;
