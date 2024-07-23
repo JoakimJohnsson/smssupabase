@@ -8,7 +8,7 @@ import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {UsersList} from "../../../lists/users/UsersList";
 import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
-import FilterFormSimple from "../../../search-filter/FilterFormSimple";
+import FilterFormSimple from "../../../searchFilter/FilterFormSimple";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";

@@ -50,7 +50,7 @@ export const TitlesList = ({titlesData, setTitlesData, showToolbox = false, show
                                                     displayName={t.name + " " + t.start_year}
                                                     data={titlesData}
                                                     setData={setTitlesData}
-                                                    showAdminInfo={showAdminInfo}
+                                                    showAdvancedTools={showAdminInfo}
                                                     route={ROUTES.ADMIN.TITLES}
                                                     table={TABLES.TITLES}
                                                     imageBucket={BUCKETS.TITLE_IMAGES}

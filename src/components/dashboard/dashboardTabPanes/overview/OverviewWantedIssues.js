@@ -14,7 +14,12 @@ export const OverviewWantedIssues = () => {
     const {user} = useAppContext();
 
     useEffect(() => {
-        getWantedIssuesForUser(user.id, setIssuesData).then(() => setLoading(false));
+        getWantedIssuesForUser(user.id, setIssuesData)
+            .then(() => setLoading(false))
+            .catch(error => {
+                console.error("Failed to get wanted issues: " + error);
+                setLoading(false);
+            });
     }, [user.id]);
 
     return (

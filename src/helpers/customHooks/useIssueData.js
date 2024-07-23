@@ -13,7 +13,7 @@ export const useIssueData = (id, withFetchAndSetIssue = false) => {
 
     useEffect(() => {
         fetchData();
-    }, [fetchData])
+    }, [fetchData]);
 
     if (withFetchAndSetIssue) {
         return {
@@ -22,14 +22,10 @@ export const useIssueData = (id, withFetchAndSetIssue = false) => {
             loading,
             fetchData
         };
-
     } else {
         return {
             issue,
             loading
         };
-
     }
-
-
 }

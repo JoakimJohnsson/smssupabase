@@ -1,12 +1,18 @@
 import React, {useEffect, useState} from "react";
 import {useMap} from "@vis.gl/react-google-maps";
-import {SMSMapMarker} from "./SMSMapMarker";
+import {SmsMapMarker} from "./SmsMapMarker";
 import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {useDirectionsService} from "../../../../helpers/customHooks/useDirectionsService";
+import {useDirectionsRenderer} from "../../../../helpers/customHooks/useDirectionsRenderer";
+import {useMapsApi} from "../../../../helpers/customHooks/useMapsApi";
 
 
-export const Directions = ({mapsApi, origin, destination, travelModeIndex, directionsService, directionsRenderer}) => {
+export const SmsMapDirections = ({origin, destination, travelModeIndex}) => {
     const map = useMap();
+    const {directionsService} = useDirectionsService();
+    const {directionsRenderer} = useDirectionsRenderer();
+    const {mapsApi} = useMapsApi();
     const [routes, setRoutes] = useState([]);
     const [travelModes, setTravelModes] = useState([]);
     const [routeIndex, setRouteIndex] = useState(0);
@@ -41,7 +47,7 @@ export const Directions = ({mapsApi, origin, destination, travelModeIndex, direc
 
     return leg && (
         <div className={"sms-google-map--directions"}>
-            <h2 className={"text-capitalize"}>{selectedRoute.summary}</h2>
+            <h2>{selectedRoute.summary}</h2>
             <p>
                 {
                     travelModeIndex === 0 ?
@@ -75,8 +81,8 @@ export const Directions = ({mapsApi, origin, destination, travelModeIndex, direc
                 </>
             }
             {/* Display advanced markers */}
-            <SMSMapMarker position={origin}/>
-            <SMSMapMarker position={destination} isDestination/>
+            <SmsMapMarker position={origin}/>
+            <SmsMapMarker position={destination} isDestination/>
         </div>
     )
 }

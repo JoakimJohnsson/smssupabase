@@ -39,7 +39,7 @@ export const MessagesList = ({messagesData, setMessagesData}) => {
                                                         displayName={m.title}
                                                         data={messagesData}
                                                         setData={setMessagesData}
-                                                        showAdminInfo={true}
+                                                        showAdvancedTools={true}
                                                         route={ROUTES.ADMIN.MESSAGES}
                                                         table={TABLES.MESSAGES}
                                                         showEditButton={false}

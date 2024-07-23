@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {TEXTS} from "../../../../helpers/constants/configConstants";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {isSKGradeName, isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";
@@ -42,7 +42,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
-                <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
+                <h2>{LABELS.SECTIONS.GRADES.GRADE}</h2>
                 {
                     <div className={"mb-4"}>
                         <h3>{LABELS.SECTIONS.GRADES.ADD_GRADE_VALUE_VALUES}</h3>
@@ -55,7 +55,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                                 :
                                 <>
                                     <p>{TEXTS.GRADE_ISSUE_IS_VALUED_TEXT}</p>
-                                    <IconButton variant={"danger"} onClick={handleDeleteGradeValues} label={LABELS_AND_HEADINGS.REMOVE}
+                                    <IconButton variant={"danger"} onClick={handleDeleteGradeValues} label={LABELS.COMMON.REMOVE}
                                                 icon={faTimes}/>
                                 </>
                         }
@@ -96,7 +96,7 @@ export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeVal
                         {
                             editGradeValue ?
                                 <>
-                                    <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS_AND_HEADINGS.SAVE} icon={saveIcon} loading={loading}/>
+                                    <IconButton variant={"primary"} onClick={handleSubmit} label={LABELS.COMMON.SAVE} icon={saveIcon} loading={loading}/>
                                     <button className={"btn btn-secondary sms-btn"} onClick={handleAbort}>
                                         {LABELS.COMMON.ABORT}
                                     </button>

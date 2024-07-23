@@ -121,7 +121,7 @@ export const AdminTitleAdd = () => {
                             value={end_year || ""}
                             onChange={(e) => handleInput(e, setEnd_year)}
                         />
-                        <label className={"form-label"} htmlFor="format">{LABELS_AND_HEADINGS.FORMAT_DB}</label>
+                        <label className={"form-label"} htmlFor="format">{LABELS.SECTIONS.TITLES.FORMAT_DB}</label>
                         {
                             formatData &&
                             <select
@@ -159,7 +159,7 @@ export const AdminTitleAdd = () => {
                         </button>
                         <button className={"btn btn-secondary sms-btn"}
                                 onClick={resetAddTitleForm}>
-                            {LABELS_AND_HEADINGS.RESET_FORM}
+                            {LABELS.COMMON.RESET_FORM}
                         </button>
                         <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                                     label={LABELS.COMMON.BACK}/>

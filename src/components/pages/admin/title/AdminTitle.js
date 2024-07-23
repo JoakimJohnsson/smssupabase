@@ -235,7 +235,7 @@ export const AdminTitle = () => {
                                 <div className={"sms-dashboard-col"}>
                                     <div className={"sms-section--light"}>
                                         <div className={"mb-3"}>
-                                            <h2>{LABELS_AND_HEADINGS.GRADE}</h2>
+                                            <h2>{LABELS.SECTIONS.GRADES.GRADE}</h2>
                                             <p>{TEXTS.GRADE_IS_VALUED_LEAD}</p>
                                             {
                                                 is_valued === 0 ?
@@ -421,7 +421,7 @@ export const AdminTitle = () => {
                                             </button>
                                             <button className={"btn btn-secondary sms-btn"}
                                                     onClick={resetAddIssueForm}>
-                                                {LABELS_AND_HEADINGS.RESET_FORM}
+                                                {LABELS.COMMON.RESET_FORM}
                                             </button>
                                         </div>
                                     </div>

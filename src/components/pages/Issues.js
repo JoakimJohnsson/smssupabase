@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {CONFIG, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
-import FilterFormSimple from "../search-filter/FilterFormSimple";
+import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {getAllIssuesWithTitleAndPublisher} from "../../services/issueService";
 import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";

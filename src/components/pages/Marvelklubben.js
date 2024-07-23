@@ -4,7 +4,7 @@ import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../services/issueService";
 import {IssueCard} from "../lists/issues/IssueCard";
-import FilterFormSimple from "../search-filter/FilterFormSimple";
+import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";

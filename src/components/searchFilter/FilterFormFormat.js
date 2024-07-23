@@ -105,7 +105,7 @@ const FilterFormFormat = ({
                         filterQuery !== "" &&
                         <button className="btn btn-primary" onClick={() => updateSearchParams()}>
                             <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.SEARCH}
+                            {LABELS.COMMON.SEARCH}
                         </button>
                     }
                 </div>
@@ -141,7 +141,7 @@ const FilterFormFormat = ({
             </button>
             <button className="btn btn-lg btn-outline-primary mb-3" onClick={() => handleReset()}>
                 <FontAwesomeIcon icon={faDeleteLeft} className={"me-2"}/>
-                {LABELS_AND_HEADINGS.RESET_FILTER}
+                {LABELS.COMMON.RESET_FILTER}
             </button>
         </div>
     )

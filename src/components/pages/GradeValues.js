@@ -11,7 +11,7 @@ import {
 } from "../../helpers/functions";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
 import {getRowsByTable} from "../../services/serviceFunctions";
-import FilterFormFormat from "../search-filter/FilterFormFormat";
+import FilterFormFormat from "../searchFilter/FilterFormFormat";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {GradeValuesListItem} from "./GradeValuesListItem";
 import {Accordion} from "react-bootstrap";

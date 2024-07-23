@@ -25,6 +25,7 @@ export const LABELS = {
         EDIT: "Redigera",
         EDIT_INFORMATION: "Redigera information",
         EMAIL: "E-postadress",
+        GO_TO: "Gå till",
         HOME: "Hem",
         ID: "Id",
         IMAGE: "Bild",
@@ -38,6 +39,17 @@ export const LABELS = {
         NAME_DB: "Namn (name)",
         NEXT: "Nästa",
         NUMBER_DB: "Nummer (number)",
+        PAUSE: "Pausa",
+        REMOVE: "Ta bort",
+        RESET: "Rensa",
+        RESET_FILTER: "Rensa alla filter",
+        RESET_FORM: "Rensa formulär",
+        RESET_PASSWORD: "Ändra lösenord",
+        SAVE: "Spara",
+        SEARCH: "Sök",
+        SEND: "Skicka",
+        SETTINGS: "Inställningar",
+        SETTINGS_CREDENTIALS: "Inloggningsuppgifter",
         SHOW_MORE: "Visa mer",
         SHOW_LESS: "Visa mindre",
         WEBSITE: "Webbplats",
@@ -49,14 +61,20 @@ export const LABELS = {
             NAME: "Kontrollpanel",
             LINKS: {
                 MY_TITLES: "Kontrollpanel / Mina titlar"
+            },
+            OVERVIEW: {
+                INCOMING_MESSAGES: "Inkomna meddelanden",
+                USEFUL_LINKS: "Nyttiga länkar"
             }
         },
         GRADES: {
+            GRADE: "Skickgradering",
             ADD_GRADE: "Lägg till skickgradering",
+            GRADE_VALUE: "Skickvärdering",
+            GRADE_VALUES: "Skickvärderingar",
+            GRADE_VALUES_FOR: "Skickvärdering för",
             ADD_GRADE_VALUE_VALUES: "Lägg till skickvärden för publikationerna",
             EDIT_GRADE_VALUE_VALUES: "Redigera skickvärden",
-            GRADE_VALUE: "Skickvärdering",
-            GRADE_VALUES: "Skickvärderingar"
         },
         ISSUES: {
             ALL_ISSUES: "Alla publikationer",
@@ -64,6 +82,8 @@ export const LABELS = {
             IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
             ISSUES: "Publikationer",
             VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
+            UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
+            NO_UPGRADE_ISSUES: "Du har inga publikationer i behov av uppgradering."
         },
         MARVELKLUBBEN: {
             IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
@@ -87,7 +107,8 @@ export const LABELS = {
             ADD_TITLE: "Lägg till titel",
             ALL_TITLES: "Alla titlar",
             COMICS_ORG_URL_DB: "Länk till Comics.org (comics_org_url)",
-            END_YEAR_DB: "Slutår (end_year)"
+            END_YEAR_DB: "Slutår (end_year)",
+            FORMAT_DB: "Format (format)"
         },
         USERS: {
             ALL_USERS: "Alla användare",

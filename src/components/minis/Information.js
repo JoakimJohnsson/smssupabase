@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {ALERT_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {ALERT_VARIANTS} from "../../helpers/constants/configConstants";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {useAppContext} from "../../context/AppContext";
 import {faTimes, faPause} from "@fortawesome/pro-solid-svg-icons";
@@ -68,7 +68,7 @@ export const Information = ({message}) => {
             <div className={"position-absolute top-0 end-0 p-2"}>
                 {
                     !pauseCounter &&
-                    <button type="button" className="p-1 btn text-black-50" aria-label={LABELS_AND_HEADINGS.PAUSE}
+                    <button type="button" className="p-1 btn text-black-50" aria-label={LABELS.COMMON.PAUSE}
                             onClick={() => setPauseCounter(!pauseCounter)}>
                         <Icon icon={faPause} className={"fa-lg sms-icon--hovering"}/>
                     </button>

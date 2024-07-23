@@ -13,7 +13,7 @@ import {
     sortByNameAndStartYear
 } from "../../../../helpers/functions";
 import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import FilterFormAdminTitles from "../../../search-filter/FilterFormAdminTitles";
+import FilterFormAdminTitles from "../../../searchFilter/FilterFormAdminTitles";
 import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdminTitlesQueryFilter";
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
