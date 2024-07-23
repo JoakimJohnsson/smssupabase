@@ -72,7 +72,6 @@ export const PANES = {
         ALTERNATIVE_ROUTES: "Alternativa vägar",
         SEARCH_FOR_NEAREST: "Sök",
         LOCATION: "Plats",
-        DISCLAIMER: "OBS Om du upplever problem med denna funktionalitet - Testa att gå till en annan sida och sen komma tillbaka hit.",
         YOUR_CURRENT_LOCATION: "Din nuvarande plats:",
         YOUR_SELECTED_ORIGIN_LOCATION: "Din valda plats:",
         NO_SELECTED_ORIGIN_LOCATION: "Du har inte valt någon annan plats än.",

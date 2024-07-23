@@ -15,7 +15,6 @@ import {SelectedOriginLocation} from "./smsMapControls/SelectedOriginLocation";
 import {MAP_CONFIG} from "../../../../helpers/constants/configConstants";
 import {useGeocoder} from "../../../../helpers/customHooks/useGeocoder";
 import {LocationSelector} from "./smsMapControls/LocationSelector";
-import {InformationAlert} from "../../../minis/InformationAlert";
 
 
 export const SmsMap = () => {
@@ -73,7 +72,6 @@ export const SmsMap = () => {
                     }
                     <SelectedOriginLocation selectedOrigin={otherLocation}/>
                 </div>
-                <InformationAlert variant={"info"} text={PANES.MAP.DISCLAIMER}/>
                 {
                     <LocationSelector setLocation={setOtherLocation}/>
                 }

@@ -18,7 +18,7 @@ export const SimpleMessage = ({user}) => {
     const [open, setOpen] = useState(false);
     const {setInformationMessage} = useAppContext();
 
-    const resetAddMessageForm = async () => {
+    const resetAddMessageForm = () => {
         setTitle("")
         setText("");
         setFormInputClass("form-input--error");
@@ -79,7 +79,7 @@ export const SimpleMessage = ({user}) => {
                                         title: trimInputString(title),
                                         text: trimInputString(text)
                                     }, setInformationMessage).then(() => {
-                                        resetAddMessageForm().then();
+                                        resetAddMessageForm();
                                     });
                                 }
                             }
