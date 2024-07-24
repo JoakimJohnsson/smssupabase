@@ -11,7 +11,8 @@ import {
     faStrawberry,
     faSwords,
     faTRex
-} from "@fortawesome/pro-thin-svg-icons";
+} from "@fortawesome/sharp-duotone-solid-svg-icons";
+
 import {PANES} from "./textConstants/texts";
 
 // 225 rader
@@ -338,7 +339,7 @@ export const STATISTICS = {
 
 export const CONFIG = {
     FREQUENT_ICON_INDEX: 0,
-    FREQUENT_ICON_PROBABILITY: 0.7,
+    FREQUENT_ICON_PROBABILITY: 0.3,
     TIMEOUT_MEGA_XXL: 10000,
     TIMEOUT_XXL: 2000,
     TIMEOUT_XL: 1000,
