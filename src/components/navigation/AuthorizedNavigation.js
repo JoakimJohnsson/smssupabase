@@ -134,7 +134,6 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <LiNavItem onClick={closeDropdowns}  route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS.COMMON.SETTINGS}/>
                         <NavDropdown ref={dropdownRef3} onClick={() => handleDropdownClick("isOpen3", "isOpen2")} as={"li"} title={<NavDropdownTitle icon={openStates.isOpen3 ? lessIconDuoTone : moreIconDuoTone} label={LABELS.COMMON.MORE_CONTENT}/>} id="basic-nav-dropdown">
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.TITLES} className={"nav-link nav-link--dropdown"}>
@@ -173,6 +172,7 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                         </NavDropdown>
+                        <LiNavItem onClick={closeDropdowns}  route={ROUTES.PROFILE} icon={<Icon icon={settingsIconDuoTone} size={"2x"}/>} text={LABELS.COMMON.SETTINGS}/>
                         {
                             profile.role >= 1 &&
                             <LiNavItem onClick={closeDropdowns}  route={ROUTES.ADMIN.ROOT} icon={<Icon icon={adminIconDuoTone} size={"2x"}/>} text={BREADCRUMB_NAMES.ADMIN}
@@ -200,9 +200,6 @@ export const AuthorizedNavigation = () => {
                                    text={PANES.MAP.LONG_NAME}/>
                         <LiNavItem route={ROUTES.TITLES} onClick={() => handleClick("isOpen")} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
-                        <LiNavItem route={ROUTES.PROFILE} onClick={() => handleClick("isOpen")} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
-                                   text={LABELS.COMMON.SETTINGS}/>
-
                         <LiNavItem route={ROUTES.ISSUES} onClick={() => handleClick("isOpen")} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
                         <LiNavItem route={ROUTES.GRADE_VALUES} onClick={() => handleClick("isOpen")} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
@@ -213,6 +210,8 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
                         <LiNavItem route={ROUTES.USERS} onClick={() => handleClick("isOpen")} icon={<Icon icon={usersIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.USERS.ALL_USERS}/>
+                        <LiNavItem route={ROUTES.PROFILE} onClick={() => handleClick("isOpen")} icon={<Icon icon={settingsIconDuoTone} size={"1x"}/>}
+                                   text={LABELS.COMMON.SETTINGS}/>
                         {
                             profile.role >= 1 &&
                             <LiNavItem route={ROUTES.ADMIN.ROOT} onClick={() => handleClick("isOpen")} icon={<Icon icon={adminIconDuoTone} size={"1x"}/>}
