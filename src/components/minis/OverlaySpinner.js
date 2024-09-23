@@ -6,7 +6,7 @@ export const OverlaySpinner = () => {
 
 
     return (
-        <div className={"overlay-spinner-wrapper"}>
+        <div className={"overlay-spinner-wrapper"} role="status" aria-live="polite" aria-label="Loading">
             <Icon icon={faSpinner} size={"4x"} className={"overlay-spinner"} spin/>
         </div>
     )
