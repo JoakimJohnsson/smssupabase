@@ -6,7 +6,7 @@ import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 const ChangePassword = () => {
 
      useEffect(() => {
-        supabase.auth.onAuthStateChange(async (event, session) => {
+        supabase.auth.onAuthStateChange(async (event) => {
             if (event === "PASSWORD_RECOVERY") {
                 const newPassword = prompt("What would you like your new password to be?");
                 const { data, error } = await supabase.auth

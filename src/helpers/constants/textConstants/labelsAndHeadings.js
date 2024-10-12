@@ -13,7 +13,7 @@ export const LABELS = {
         CHOOSE: "--- Välj ---",
         CLOSE: "Stäng",
         CONTACT: "Kontakt",
-        MORE_CONTENT: "Mer",
+        MORE_CONTENT: "Innehåll",
         CREATE_ACCOUNT: "Registrera dig",
         CREATED_AT: "Inlagd",
         DATE: "Datum",

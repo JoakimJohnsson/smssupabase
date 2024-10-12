@@ -121,7 +121,7 @@ export const Home = () => {
                                             variant={"primary"}
                                             icon={settingsIconDuoTone}
                                             path={ROUTES.PROFILE}
-                                            label={LABELS_AND_HEADINGS.SETTINGS}
+                                            label={LABELS.COMMON.SETTINGS}
                                         />
                                         <p>För frågor och förbättringsförslag:</p>
 

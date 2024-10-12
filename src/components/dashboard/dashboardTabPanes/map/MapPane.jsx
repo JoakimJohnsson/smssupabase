@@ -7,7 +7,7 @@ import {APIProvider} from "@vis.gl/react-google-maps";
 
 export const MapPane = () => {
     return (
-        <APIProvider apiKey={process.env.REACT_APP_GOOGLE_CLOUD_API_KEY}>
+        <APIProvider apiKey={import.meta.env.VITE_GOOGLE_CLOUD_API_KEY}>
             <div className={"sms-page-col"}>
                 <HeadingWithBreadCrumbs text={PANES.MAP.NAME}/>
                 <div className={"col-12 col-md-8 col-xxl-6 mb-5"}>
