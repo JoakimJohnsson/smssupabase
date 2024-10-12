@@ -56,7 +56,7 @@ export const SmsMapDirections = ({origin, destination, travelModeIndex}) => {
                         <span><Icon icon={carIconDuoTone}/> {PANES.MAP.DRIVING}</span>
                 }
             </p>
-            <p>{leg.start_address.split(",")[0]} -> {leg.end_address.split(",")[0]}</p>
+            <p>{leg.start_address.split(",")[0]} - {leg.end_address.split(",")[0]}</p>
             <p>{leg.distance?.text} | {leg.duration?.text}</p>
             {
                 routes && routes.length > 1 &&

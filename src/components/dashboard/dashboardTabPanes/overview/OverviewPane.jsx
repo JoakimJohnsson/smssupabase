@@ -41,11 +41,11 @@ export const OverviewPane = () => {
                     <CustomSpinner size={"4x"}/>
                     :
                     <>
-                        <OverviewMessages />
-                        <OverviewLinks />
+                        <OverviewMessages/>
+                        <OverviewLinks/>
                         <OverviewTitles titlesData={userTitlesData}/>
                         <OverviewIssues titlesData={userTitlesData} issuesData={userIssuesData}/>
-                        <OverviewValuation />
+                        <OverviewValuation/>
                         <OverviewWantedIssues/>
                         <OverviewUpgradeIssues/>
                     </>

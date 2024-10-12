@@ -61,8 +61,8 @@ export const AdminMessages = () => {
     }, []);
 
     useEffect(() => {
-        fetchAdminMessages().then(r => {
-            fetchSentMessages().then(r => setLoading(false))
+        fetchAdminMessages().then(() => {
+            fetchSentMessages().then(() => setLoading(false))
         });
     }, [fetchAdminMessages, fetchSentMessages]);
 
