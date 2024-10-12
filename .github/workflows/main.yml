@@ -27,10 +27,10 @@ jobs:
             scope: '@fortawesome'
         - name: 🔨 Build Project
           env:
-            REACT_APP_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-            REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-            REACT_APP_GOOGLE_CLOUD_API_KEY: ${{ secrets.GOOGLE_CLOUD_API_KEY }}
-            REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID: ${{ secrets.GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID }}
+            VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+            VITE_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+            VITE_GOOGLE_CLOUD_API_KEY: ${{ secrets.GOOGLE_CLOUD_API_KEY }}
+            VITE_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID: ${{ secrets.GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID }}
             NODE_AUTH_TOKEN: ${{ secrets.FORTAWESOME_AUTH_TOKEN }}
           run: |
             npm install
@@ -40,7 +40,7 @@ jobs:
           with:
             server: ${{ secrets.FTP_HOST_UNOEURO }}
             server-dir: svenskamarvelsamlare.se/
-            local-dir: build/
+            local-dir: dist/
             username: ${{ secrets.FTP_HOST_UNOEURO_USERNAME }}
             password: ${{ secrets.FTP_HOST_UNOEURO_PASSWORD }}
             port: 21

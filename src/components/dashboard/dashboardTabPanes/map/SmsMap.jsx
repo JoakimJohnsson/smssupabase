@@ -131,7 +131,7 @@ export const SmsMap = () => {
                         fullscreenControl={false}
                         defaultZoom={12}
                         defaultCenter={getPositionFromLocation(location)}
-                        mapId={process.env.REACT_APP_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}
+                        mapId={import.meta.env.VITE_GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID}
                         mapTypeControl={false}
                         mapTypeControlOptions={mapTypeControlOptions}
                         streetViewControl={false}
