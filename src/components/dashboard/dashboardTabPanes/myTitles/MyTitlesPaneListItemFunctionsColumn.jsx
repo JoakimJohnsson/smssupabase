@@ -17,10 +17,14 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
         getIssuesByTitleId(setIssuesData, title.id).then(() => setLoadingGradingStatus(false));
     }, [title.id]);
 
-    const handleCheckGradingStatus = () => {
+    const handleCheckGradingStatus = async () => {
         setGradingStatusOpen(!gradingStatusOpen);
         setLoadingGradingStatus(true);
-        checkGradingStatus(issuesData, user.id, setIssueNeedsGrading).then(() => setLoadingGradingStatus(false));
+        try {
+            await checkGradingStatus(issuesData, user.id, setIssueNeedsGrading);
+        } finally {
+            setLoadingGradingStatus(false);
+        }
     }
 
     useEffect(() => {
