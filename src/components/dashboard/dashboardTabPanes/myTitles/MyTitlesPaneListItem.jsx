@@ -15,7 +15,7 @@ export const MyTitlesPaneListItem = ({title}) => {
     const [titleProgress, setTitleProgress] = useState({});
     const [completed, setCompleted] = useState(false);
 
-    let collectTextParts = titleProgress?.noCollectedIssues + " / " + titleProgress.totalIssues;
+    let collectTextParts = titleProgress ? `${titleProgress.noCollectedIssues} / ${titleProgress.totalIssues}` : '0 / 0';
 
     const fetchTitleProgress = useCallback(async () => {
         setTitleProgress(await getTitleProgressForUser(title, user.id))

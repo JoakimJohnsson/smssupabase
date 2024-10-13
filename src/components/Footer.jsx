@@ -3,11 +3,10 @@ import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants/configConstants";
 import {TABLES} from "../helpers/constants/serviceConstants";
 import {getRowByTableAndId} from "../services/serviceFunctions";
 import {useAppContext} from "../context/AppContext";
-
+import packageJson from '../../package.json';
 
 const Footer = () => {
 
-    const package_json = require('../../package.json');
     const [utilsData, setUtilsData] = useState(null)
     const {user} = useAppContext();
 
@@ -41,7 +40,7 @@ const Footer = () => {
                     <div className={"col-12 col-md-6 py-2 d-flex align-items-end"}>
                         <p className={"fs-smallest text-end m-0 w-100"}>
                             <span>© 2024 {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE} | </span>
-                            <span className={"text-nowrap"}>v{package_json.version} {utilsData && " | " + utilsData.release_date}</span>
+                            <span className={"text-nowrap"}>v{packageJson.version} {utilsData && " | " + utilsData.release_date}</span>
                         </p>
                     </div>
                 </div>
