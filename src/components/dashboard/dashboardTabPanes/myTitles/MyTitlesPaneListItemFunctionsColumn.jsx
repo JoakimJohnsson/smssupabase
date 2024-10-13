@@ -1,7 +1,13 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {checkGradingStatus} from "../../../../services/collectingService";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {gradingIconDuoTone, Icon, infoIconDuoTone, statusIconFailDuoTone, statusIconSuccessDuoTone} from "../../../icons";
+import {
+    gradingIconDuoTone,
+    Icon,
+    infoIconDuoTone,
+    statusIconFailDuoTone,
+    statusIconSuccessDuoTone
+} from "../../../icons";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
 import {getIssuesByTitleId} from "../../../../services/issueService";
 
@@ -17,10 +23,17 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
         getIssuesByTitleId(setIssuesData, title.id).then(() => setLoadingGradingStatus(false));
     }, [title.id]);
 
-    const handleCheckGradingStatus = () => {
+    const handleCheckGradingStatus = async () => {
         setGradingStatusOpen(!gradingStatusOpen);
-        setLoadingGradingStatus(true);
-        checkGradingStatus(issuesData, user.id, setIssueNeedsGrading).then(() => setLoadingGradingStatus(false));
+        // No need to check grading status if tha grading status section is closed
+        if (!gradingStatusOpen) {
+            setLoadingGradingStatus(true);
+            try {
+                await checkGradingStatus(issuesData, user.id, setIssueNeedsGrading);
+            } finally {
+                setLoadingGradingStatus(false);
+            }
+        }
     }
 
     useEffect(() => {
@@ -48,7 +61,8 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
                                                 </p>
                                                 :
                                                 <p className={"alert alert-success d-flex align-items-center m-0"}>
-                                                    <Icon icon={statusIconSuccessDuoTone} className={"me-3"} size={"2x"}/>
+                                                    <Icon icon={statusIconSuccessDuoTone} className={"me-3"}
+                                                          size={"2x"}/>
                                                     {TEXTS.GRADE_FOUND}
                                                 </p>
                                         }

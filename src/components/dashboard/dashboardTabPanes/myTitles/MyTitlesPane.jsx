@@ -18,8 +18,17 @@ export const MyTitlesPane = () => {
     const {user} = useAppContext();
 
     useEffect(() => {
-        getTitlesForUser(user.id, setTitlesData).then(() => setLoading(false));
-    }, [user.id])
+        const fetchTitles = async () => {
+            try {
+                await getTitlesForUser(user.id, setTitlesData);
+            } catch (error) {
+                console.error('Failed to fetch titles:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchTitles(); // It's ok to ignore returned Promise here
+    }, [user.id]);
 
     return (
         <div className={"sms-page-col"}>

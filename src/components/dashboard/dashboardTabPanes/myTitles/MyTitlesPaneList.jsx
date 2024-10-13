@@ -9,7 +9,10 @@ import {MyTitlesPaneListItem} from "./MyTitlesPaneListItem";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 
 
-export const MyTitlesPaneList = ({query, titlesData, comic, comiclarge, album, pocket, hardcover, special, collectible}) => {
+export const MyTitlesPaneList = (props) => {
+
+    // Destructuring props - for readability
+    const {query, titlesData, comic, comiclarge, album, pocket, hardcover, special, collectible} = props;
 
     return titlesData && !!titlesData.length ?
         (
