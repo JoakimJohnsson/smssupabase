@@ -18,10 +18,6 @@ export const MyTitlesPane = () => {
     const {user} = useAppContext();
 
     useEffect(() => {
-        getTitlesForUser(user.id, setTitlesData).then(() => setLoading(false));
-    }, [user.id]);
-
-    useEffect(() => {
         const fetchTitles = async () => {
             try {
                 await getTitlesForUser(user.id, setTitlesData);
