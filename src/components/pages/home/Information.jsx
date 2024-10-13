@@ -21,7 +21,6 @@ const Information = () => {
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Applikationen använder nu Vite som byggverktyg.</li>
-                    <li className={"list-group-item px-0"}>Mindre förbättringar för navigering.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.8.0 - 2024-06-10</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

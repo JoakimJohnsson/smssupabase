@@ -7,12 +7,19 @@ export const useIssueData = (id, withFetchAndSetIssue = false) => {
     const [issue, setIssue] = useState({});
     const [loading, setLoading] = useState(true);
 
-    const fetchData = useCallback(() => {
-        getIssueWithPublisherAndTitle(setIssue, id).then(() => setLoading(false));
+    const fetchData = useCallback(async () => {
+        setLoading(true);
+        try {
+            await getIssueWithPublisherAndTitle(setIssue, id);
+        } catch (error) {
+            console.error('Failed to fetch issue data:', error);
+        } finally {
+            setLoading(false);
+        }
     }, [id]);
 
     useEffect(() => {
-        fetchData();
+        fetchData(); // Ignoring Promise
     }, [fetchData]);
 
     if (withFetchAndSetIssue) {
@@ -28,4 +35,4 @@ export const useIssueData = (id, withFetchAndSetIssue = false) => {
             loading
         };
     }
-}
+};
