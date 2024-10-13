@@ -17,12 +17,23 @@ import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadi
 export const AdminUsers = () => {
 
     const [usersData, setUsersData] = useState(null);
+    const [loading, setLoading] = useState(false);
     const {setSearchParams, query} = useSimpleQueryFilter();
     const navigate = useNavigate();
 
     useEffect(() => {
-        getRowsByTable(TABLES.PROFILES, setUsersData).then();
-    }, [])
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                await getRowsByTable(TABLES.PROFILES, setUsersData);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData(); // Promise can be ignored
+    }, []);
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
@@ -31,15 +42,17 @@ export const AdminUsers = () => {
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
                     <p className={"lead"}>{TEXTS.SHOWING_LATEST_USERS}</p>
                     <p className={"mb-5"}>{TEXTS.USERS_COUNT_TEXT_1} {usersData && usersData.length} {TEXTS.USERS_COUNT_TEXT_2}</p>
-                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams}
+                                      placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
                     <div className={"sms-section--light"}>
                         {
-                            usersData ?
-                                <UsersList usersData={usersData} setUsersData={setUsersData} query={query}/>
-                                :
+                            loading ?
                                 <OverlaySpinner/>
+                                :
+                                <UsersList usersData={usersData} setUsersData={setUsersData} query={query}/>
                         }
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft}
+                                    onClick={() => handleBacking(navigate)}
                                     label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>

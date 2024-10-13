@@ -20,6 +20,7 @@ const Information = () => {
                 <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.9.X - 2024-XX-XX</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad information om användare i admin gränssnitt.</li>
                     <li className={"list-group-item px-0"}>...</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.9.0 - 2024-10-13</h3>

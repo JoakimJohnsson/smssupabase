@@ -2,14 +2,7 @@ import {supabase} from "../supabase/supabaseClient";
 
 // Helper methods for performing SQL Supabase database functions defined and edited in the SMS Supabase project.
 
-export const deleteAllGradeValuesForIssue = async (issueId, callbackFunction) => {
-    try {
-        await supabase.rpc('delete_all_grade_values_for_issue', {input_issue_id: issueId}).then(() => callbackFunction());
-    } catch (error) {
-        console.error(error);
-    }
-}
-
+// Collecting
 export const doesUserCollectIssue = async (userId, issueId) => {
     try {
         return await supabase.rpc('does_user_collect_issue', {input_user_id: userId, input_issue_id: issueId});
@@ -25,6 +18,15 @@ export const doesUserCollectTitle = async (userId, titleId) => {
     } catch (error) {
         console.error(error);
         return false;
+    }
+}
+
+// Grade values
+export const deleteAllGradeValuesForIssue = async (issueId, callbackFunction) => {
+    try {
+        await supabase.rpc('delete_all_grade_values_for_issue', {input_issue_id: issueId}).then(() => callbackFunction());
+    } catch (error) {
+        console.error(error);
     }
 }
 
@@ -61,3 +63,17 @@ export const updateGradeValuesForTitles = async (titleId, prValue, gdValue, vgVa
     }
 }
 
+// User
+export const getUserIdByUserEmail = async (email) => {
+    try {
+        const { data, error } = await supabase.rpc('get_user_id_by_user_email', { input_user_email: email });
+        if (error) {
+            console.error("Error calling function: ", error);
+            return null;
+        }
+        return data;
+    } catch (error) {
+        console.log("Unexpected error: ", error);
+        return null;
+    }
+}

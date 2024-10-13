@@ -5,6 +5,7 @@ import {simpleInputValidation} from "../../../helpers/validations";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {Icon, loginIcon, loginIconDuoTone} from "../../icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {updateProfileLastLogin} from "../../../services/profileService";
 
 
 const Login = () => {
@@ -31,6 +32,7 @@ const Login = () => {
             setFormErrorMessage(error.message);
             setShowFormError(true);
         } else {
+            await updateProfileLastLogin(email);
             navigate("/");
         }
     }
