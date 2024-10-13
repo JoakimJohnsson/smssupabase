@@ -17,39 +17,15 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.9.0 - 2024-10-13</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.9.X - 2024-XX-XX</h3>
+                <ul className={"list-group list-group-flush mb-4"}>
+                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
+                    <li className={"list-group-item px-0"}>...</li>
+                </ul>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.9.0 - 2024-10-13</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Applikationen använder nu Vite som byggverktyg.</li>
-                </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.8.0 - 2024-06-10</h3>
-                <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Karta - möjlighet att ange egen plats för sökningar.</li>
-                    <li className={"list-group-item px-0"}>Karta - Knapp för att rensa vald sökning.</li>
-                    <li className={"list-group-item px-0"}>Har lagt till en sektion med nyttiga länkar i
-                        kontrollpanelen.
-                    </li>
-                    <li className={"list-group-item px-0"}>Möjlighet för Admin att skicka meddelanden till användare.
-                    </li>
-                    <li className={"list-group-item px-0"}>Förbättrade sökresultat för loppisar o.s.v. när man är
-                        utomlands.
-                    </li>
-                    <li className={"list-group-item px-0"}>Förbättrade menyer, lättare att hitta kontrollpaneler.</li>
-                    <li className={"list-group-item px-0"}>Möjlighet för användare att godkänna användning av
-                        platsåtkomst.
-                    </li>
-                    <li className={"list-group-item px-0"}>Kartfunktion för att enkelt hitta närmaste loppis, second
-                        hand eller serietidningsaffär, om användaren tillåtit platsåtkomst.
-                    </li>
-                    <li className={"list-group-item px-0"}>Bättre sortering på sidan Alla publikationer.</li>
-                    <li className={"list-group-item px-0"}>Förbättrad länk till Seriekatalogen för titel.</li>
-                    <li className={"list-group-item px-0"}>Visa status för marvelklubben-samlingen på Kontrollpanelens
-                        översikt.
-                    </li>
-                    <li className={"list-group-item px-0"}>Förbättrad visning av Skickvärderingar.</li>
-                    <li className={"list-group-item px-0"}>Visa mer / mindre funktion för stora filtersökningar där det
-                        behövdes. T.ex. Marvelklubben och Alla publikationer.
-                    </li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
