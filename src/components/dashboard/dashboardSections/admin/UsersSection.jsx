@@ -13,7 +13,7 @@ export const UsersSection = () => {
     const [totalProfiles, setTotalProfiles] = useState(null);
 
     useEffect(() => {
-        getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "updated_at", setLimitedUsersData, 5, true).then();
+        getRowsByTableWithLimitAndOrderByColumn(TABLES.PROFILES, "updated_at", setLimitedUsersData, 5, false).then();
     }, [])
 
     useEffect(() => {

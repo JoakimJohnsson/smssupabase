@@ -147,6 +147,7 @@ export const getRowsByTableWithLimitAndOrderByColumn = async (table, column, set
         let {data, error, status} = await supabase
             .from(table)
             .select("*")
+            .not(column, 'is', null)
             .limit(limit)
             .order(column, {ascending: ascending})
         if (error && status !== 406) {

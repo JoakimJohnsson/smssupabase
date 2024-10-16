@@ -387,12 +387,14 @@ input[type="checkbox"] + label {
 // Images
 .list-image {
   width: 30px;
+  height: 30px;
   object-fit: cover;
   border-radius: 0;
   background-color: $light;
   border: 1px solid;
   &.list-image--large {
     width: 60px;
+    height: 100%;
   }
   &.grayscale {
     @extend .grayscale-90;
