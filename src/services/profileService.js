@@ -1,6 +1,7 @@
 import {supabase} from "../supabase/supabaseClient";
 import {MESSAGES} from "../helpers/constants/textConstants/messages";
 import {TABLES} from "../helpers/constants/serviceConstants";
+import {getUserIdByUserEmail} from "../helpers/databaseFunctions";
 
 
 export const updateProfileData = async (id, data) => {
@@ -35,6 +36,21 @@ export const updateProfileRole = async (id, value, setInformationMessage) => {
             .eq("id", id);
     } catch (error) {
         console.error(error);
+    }
+}
+
+export const updateProfileLastLogin = async (email) => {
+    const date = new Date().toISOString();
+    const userId = await getUserIdByUserEmail(email);
+    if (userId) {
+        try {
+            await supabase
+                .from(TABLES.PROFILES)
+                .update({last_login: date})
+                .eq("id", userId);
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
 

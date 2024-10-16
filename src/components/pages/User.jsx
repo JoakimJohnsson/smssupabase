@@ -143,8 +143,8 @@ export const User = () => {
                                                         wantedIssuesData ?
                                                             wantedIssuesData
                                                                 .sort((a, b) => sortByName(a.titles, b.titles))
-                                                                .map((issue, index) =>
-                                                                    <IssueLinkCard key={issue.id} issue={issue} index={index}/>
+                                                                .map((issue) =>
+                                                                    <IssueLinkCard key={issue.id} issue={issue}/>
                                                                 )
                                                             :
                                                             <p>{LABELS_AND_HEADINGS.NO_WANTED_ISSUES_USER}</p>

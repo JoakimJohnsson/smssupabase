@@ -192,8 +192,8 @@ export const Home = () => {
                                 <ul className={"sms-list--with-cards"}>
                                     {
                                         limitedIssuesData
-                                            .map((issue, index) =>
-                                                <IssueLinkCard key={issue.id} issue={issue} index={index}/>
+                                            .map((issue) =>
+                                                <IssueLinkCard key={issue.id} issue={issue}/>
                                             )
                                     }
                                 </ul>

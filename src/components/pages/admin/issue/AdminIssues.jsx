@@ -1,47 +1,71 @@
-import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {handleBacking, sortByName} from "../../../../helpers/functions";
-import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
-import {IconButton} from "../../../minis/IconButton";
-import {getAllIssuesWithTitleAndPublisher} from "../../../../services/issueService";
+import React from "react";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {CONFIG, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import FilterFormSimple from "../../../searchFilter/FilterFormSimple";
+import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
+import {ShowMoreButtons} from "../../../minis/ShowMoreButtons";
+import {useShowMoreFilteredData} from "../../../../helpers/customHooks/useShowMoreFilteredData";
+import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 
 
 export const AdminIssues = () => {
 
-    const [issuesData, setIssuesData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
-    }, [])
+    const {query, setSearchParams, filteredData, itemsToShow, setItemsToShow, loading} = useShowMoreFilteredData();
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams}
+                                      placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
+                    <p className={"text-uppercase fs-large placeholder-glow"}>
+                        {TEXTS.SHOWING} <span className={"fw-bolder"}>
+                        {
+                            filteredData && filteredData.length ?
+                                itemsToShow < filteredData.length ?
+                                    itemsToShow
+                                    :
+                                    filteredData.length
+                                :
+                                <LazyTextPlaceholder charCount={2}/>
+                        }
+                        </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
+                        <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
+                    </p>
                     {
                         loading ?
                             <OverlaySpinner/>
                             :
                             <ul className={"sms-list--with-cards"}>
-
                                 {
-                                    issuesData
-                                        .sort((a, b) => sortByName(a.titles, b.titles))
-                                        .map((issue, index) =>
-                                            <IssueLinkCard key={issue.id} issue={issue} index={index}/>
-                                        )
+                                    filteredData.slice(0, itemsToShow)
+                                        .map(issue => (
+                                            <IssueLinkCard key={issue.id} issue={issue} admin/>
+                                        ))
                                 }
                             </ul>
                     }
-                    <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                label={LABELS.COMMON.BACK}/>
+                    {
+                        filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&
+                        <p className={"text-uppercase fs-large placeholder-glow"}>
+                            {TEXTS.SHOWING} <span className={"fw-bolder"}>
+                        {
+                            filteredData && filteredData.length ?
+                                itemsToShow < filteredData.length ?
+                                    itemsToShow
+                                    :
+                                    filteredData.length
+                                :
+                                <LazyTextPlaceholder charCount={2}/>
+                        }
+                        </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
+                            <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
+                        </p>
+                    }
+                    <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
                 </div>
             </div>
         </main>

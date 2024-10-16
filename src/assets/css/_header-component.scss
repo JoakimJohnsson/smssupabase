@@ -59,6 +59,11 @@
       display: inline-block;
       margin-top: 2px;
     }
+    &.dropdown {
+      svg {
+        margin-right: 0;
+      }
+    }
   }
 }
 // SMS logo out of header

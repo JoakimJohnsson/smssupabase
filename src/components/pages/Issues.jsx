@@ -1,36 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {CONFIG, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../searchFilter/FilterFormSimple";
-import {getAllIssuesWithTitleAndPublisher} from "../../services/issueService";
-import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../helpers/functions";
-import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {IssueCard} from "../lists/issues/IssueCard";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {ShowMoreButtons} from "../minis/ShowMoreButtons";
+import {useShowMoreFilteredData} from "../../helpers/customHooks/useShowMoreFilteredData";
 
 
 export const Issues = () => {
 
-    const [loading, setLoading] = useState(true);
-    const [issuesData, setIssuesData] = useState([]);
-    const [itemsToShow, setItemsToShow] = useState(CONFIG.PAGINATION_ITEM_COUNT);
-    const {setSearchParams, query} = useSimpleQueryFilter();
-
-    useEffect(() => {
-        getAllIssuesWithTitleAndPublisher(setIssuesData).then(() => setLoading(false));
-    }, []);
-
-    const filteredData = issuesData
-        .sort((a, b) => sortByName(a.titles, b.titles))
-        .filter(issue => {
-            return (
-                filterQueryIssueByTitleNamePublisherNameYearAndSource(issue, query)
-            )
-        }
-    );
+    const {query, setSearchParams, filteredData, itemsToShow, setItemsToShow, loading} = useShowMoreFilteredData();
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>

@@ -35,8 +35,8 @@ export const OverviewWantedIssues = () => {
                                 issuesData ?
                                 issuesData
                                     .sort((a, b) => sortByName(a.titles, b.titles))
-                                    .map((issue, index) =>
-                                        <IssueLinkCard key={issue.id} issue={issue} index={index} simple/>
+                                    .map((issue) =>
+                                        <IssueLinkCard key={issue.id} issue={issue} simple/>
                                     )
                                     :
                                     <p>{LABELS_AND_HEADINGS.NO_WANTED_ISSUES}</p>
