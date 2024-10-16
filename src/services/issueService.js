@@ -101,7 +101,7 @@ export const deleteAllIssues = async (issuesData, setIssuesData, setInformationM
 
 export const getIssueByTitleAndNumber = async (number, titleId, year) => {
     try {
-        let {data, error} = await supabase
+        let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
             .select("*")
             .eq("title_id", titleId)
@@ -109,7 +109,7 @@ export const getIssueByTitleAndNumber = async (number, titleId, year) => {
             .eq("year", year)
             .limit(1)
             .single()
-        if (error) {
+        if (error && status !== 406) {
             console.error(error);
             return null;
         }
