@@ -17,13 +17,12 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.9.X - 2024-XX-XX</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.9.1 - 2024-10-16</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Förbättrad information om användare i Admin gränssnitt.</li>
                     <li className={"list-group-item px-0"}>Lagt till sökformulär och paginering på Adminsida för alla publikationer.</li>
                     <li className={"list-group-item px-0"}>Publikationsväljaren på publikationssida kan nu hoppa mellan årtal.</li>
-                    <li className={"list-group-item px-0"}>...</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.9.0 - 2024-10-13</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
