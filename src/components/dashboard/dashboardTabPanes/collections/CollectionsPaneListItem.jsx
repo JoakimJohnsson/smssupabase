@@ -5,6 +5,7 @@ import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {Link} from "react-router-dom";
 import CustomProgressBar from "../../../CustomProgressBar";
+import {getUserName} from "../../../../helpers/functions";
 
 
 export const CollectionsPaneListItem = ({user}) => {
@@ -15,17 +16,10 @@ export const CollectionsPaneListItem = ({user}) => {
     const [totalIssuesCountForCollection, setTotalIssuesCountForCollection] = useState(null);
     const [userIssuesCount, setUserIssuesCount] = useState(null);
     const [progress, setProgress] = useState(0);
-    const [displayName, setDisplayName] = useState("");
-
-    useEffect(() => {
-        if (user) {
-            setDisplayName(user.firstname + " " + user.lastname);
-        }
-    }, [user])
 
     useEffect(() => {
         getTitlesForUser(user.id, setTitlesData).then(() => setLoading(false));
-    }, [user.id])
+    }, [user.id]);
 
     useEffect(() => {
         getRowCountByTableAndUserId(TABLES.USERS_ISSUES, user.id, setUserIssuesCount).then();
@@ -53,9 +47,9 @@ export const CollectionsPaneListItem = ({user}) => {
 
     return titlesData && !loading &&
         <li className={"user-card user-card--full"}>
-            <Link to={`/users/${user.id}`} title={displayName}>
+            <Link to={`/users/${user.id}`} title={getUserName(user)}>
                 <div className={"bg-horse p-3"}>
-                    <h2>{displayName}</h2>
+                    <h2>{getUserName(user)}</h2>
                     <p>
                         {PANES.COLLECTIONS.COLLECTING} {titlesData.length} / {totalTitles} {PANES.COLLECTIONS.TITLES}.
                     </p>

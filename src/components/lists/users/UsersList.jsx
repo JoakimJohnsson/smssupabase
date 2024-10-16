@@ -12,6 +12,7 @@ import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Icon, adminIconDuoTone} from "../../icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {FriendlyDate} from "../../minis/FriendlyDate";
 
 
 export const UsersList = ({usersData, setUsersData, limited = false, query = ""}) => {
@@ -51,18 +52,18 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                                                     <img src={u.image_url} className={"list-image me-2"}
                                                          alt={LABELS_AND_HEADINGS.PROFILE_IMAGE + " " + u.firstname || getUserName(u)}/>
                                                 }
-                                                {
-                                                    <Link to={`/users/${u.id}`}
-                                                          title={getUserName(u)}>
-                                                        {
-                                                            u.firstname && u.lastname
-                                                                ?
-                                                                u.firstname + " " + u.lastname
-                                                                :
-                                                                getUserName(u)
-                                                        }
-                                                    </Link>
-                                                }
+                                                <div>
+                                                    {
+                                                        <Link to={`/users/${u.id}`} title={getUserName(u)}>
+                                                            {getUserName(u)}
+                                                        </Link>
+                                                    }
+                                                    { u.last_login &&
+                                                        <p className={"mb-0"}>
+                                                            {LABELS.COMMON.LATEST_LOG_IN} <FriendlyDate dateString={u.last_login}/>
+                                                        </p>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                         <div className={"sms-list-col--tools"}>
@@ -71,9 +72,11 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                                                     u.role !== 2 ?
                                                         (
                                                             u.role === 1 ?
-                                                                <RemoveAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
+                                                                <RemoveAdminButton user={u}
+                                                                                   handleChangeAdmin={handleChangeAdmin}/>
                                                                 :
-                                                                <AddAdminButton user={u} handleChangeAdmin={handleChangeAdmin}/>
+                                                                <AddAdminButton user={u}
+                                                                                handleChangeAdmin={handleChangeAdmin}/>
                                                         )
                                                         :
                                                         <OverlayTrigger

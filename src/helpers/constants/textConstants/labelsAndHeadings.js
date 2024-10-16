@@ -35,6 +35,7 @@ export const LABELS = {
         LIST_VIEW_GRADE_VALUE_SHOW: "Visa skickvärdering",
         LIST_VIEW_GRID_SHOW: "Visa som grid",
         LIST_VIEW_LIST_SHOW: "Visa som lista",
+        LATEST_LOG_IN: "Senast inloggad:",
         LOG_IN: "Logga in",
         NAME_DB: "Namn (name)",
         NEXT: "Nästa",

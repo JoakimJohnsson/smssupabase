@@ -20,6 +20,8 @@
   * [Development](#development)
     * [Workflow](#workflow)
     * [GitHub Actions for development](#github-actions-for-development)
+    * [Supabase](#supabase)
+      * [Database Functions](#database-functions)
   * [Deployment](#deployment)
     * [GitHub Actions for deployment](#github-actions-for-deployment)
     * [Versioning](#versioning)
@@ -143,6 +145,16 @@ https://github.com/JoakimJohnsson/smssupabase/issues
 ### GitHub Actions for development
 
 Edit .github/workflows/pr-agent.yml to make changes in the GitHub Action script for PR Agent.
+
+### Supabase
+
+https://app.supabase.com/projects
+
+#### Database Functions
+
+We try to use Supabase Database Functions where we can. See `databaseFunctions.js` for details.
+
+Use the SQL Editor to create or update database functions.
 
 ## Deployment
 

@@ -99,23 +99,24 @@ export const deleteAllIssues = async (issuesData, setIssuesData, setInformationM
     }
 }
 
-export const getIssueIdByTitleAndNumber = async (number, titleId, year, setIssueId) => {
+export const getIssueByTitleAndNumber = async (number, titleId, year) => {
     try {
-        let {data} = await supabase
+        let {data, error, status} = await supabase
             .from(TABLES.ISSUES)
-            .select("id")
+            .select("*")
             .eq("title_id", titleId)
             .eq("number", number)
             .eq("year", year)
             .limit(1)
             .single()
-        if (data) {
-            setIssueId(data.id);
-        } else {
-            setIssueId(null);
+        if (error && status !== 406) {
+            console.error(error);
+            return null;
         }
+        return data ? data : null;
     } catch (error) {
         console.error(error);
+        return null;
     }
 }
 
