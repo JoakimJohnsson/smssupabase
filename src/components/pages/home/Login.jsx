@@ -32,7 +32,11 @@ const Login = () => {
             setFormErrorMessage(error.message);
             setShowFormError(true);
         } else {
-            await updateProfileLastLogin(email);
+            try {
+                await updateProfileLastLogin(email);
+            } catch (error) {
+                console.error("Failed to update last login:", error);
+            }
             navigate("/");
         }
     }
