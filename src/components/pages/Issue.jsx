@@ -13,7 +13,7 @@ import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
 import {MarvelKlubbenBadge} from "../grade/MarvelKlubbenBadge";
-import {getIssueIdByTitleAndNumber} from "../../services/issueService";
+import {getIssueByTitleAndNumber} from "../../services/issueService";
 import {faArrowLeftLong, faArrowRightLong, faCloudQuestion, faCloudXmark, faCloudArrowUp} from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
@@ -77,15 +77,29 @@ export const Issue = () => {
     const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
     const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
 
-    const fetchIssueIds = useCallback(() => {
+    const fetchIssueIds = useCallback(async () => {
         if (issue.number && issue.title_id && issue.year) {
             let prevNumber = issue.number - 1;
             let nextNumber = issue.number + 1;
             let titleId = issue.title_id;
             let year = issue.year;
-            getIssueIdByTitleAndNumber(prevNumber, titleId, year, setPrevIssueId).then(() => {
-                getIssueIdByTitleAndNumber(nextNumber, titleId, year, setNextIssueId).then(() => setLoadingButtons(false));
-            });
+            try {
+                let prevIssue = await getIssueByTitleAndNumber(prevNumber, titleId, year);
+                if (!prevIssue) {
+                    // Try again with previous year and #1
+                    prevIssue = await getIssueByTitleAndNumber(1, titleId, year -1);
+                }
+                setPrevIssueId(prevIssue?.id);
+                let nextIssue = await getIssueByTitleAndNumber(nextNumber, titleId, year);
+                if (!nextIssue) {
+                    // Try again with next year and #1
+                    nextIssue = await getIssueByTitleAndNumber(1, titleId, year +1);
+                }
+                setNextIssueId(nextIssue?.id);
+                setLoadingButtons(false);
+            } catch (error) {
+                console.error(error);
+            }
         }
     }, [issue]);
 
