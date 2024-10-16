@@ -30,8 +30,8 @@ export const OverviewUpgradeIssues = () => {
                                 issuesData ?
                                 issuesData
                                     .sort((a, b) => sortByName(a.titles, b.titles))
-                                    .map((issue, index) =>
-                                        <IssueLinkCard key={issue.id} issue={issue} index={index} simple/>
+                                    .map((issue) =>
+                                        <IssueLinkCard key={issue.id} issue={issue} simple/>
                                     )
                                     :
                                     <p>{LABELS.SECTIONS.ISSUES.NO_UPGRADE_ISSUES}</p>
