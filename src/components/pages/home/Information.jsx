@@ -17,10 +17,10 @@ const Information = () => {
                     <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
                     <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
                 </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.9.2 - 2024-XX-XX</h3>
+                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v1.9.2 - 2024-10-17</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                    <li className={"list-group-item px-0"}>...</li>
+                    <li className={"list-group-item px-0"}>Bugfixar.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.9.1 - 2024-10-16</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
