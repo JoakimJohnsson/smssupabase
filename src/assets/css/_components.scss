@@ -355,7 +355,7 @@ input[type="checkbox"] + label {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $color-bg-dog--trans;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, $color-bg-dog--trans 40%, rgba(0,212,255,0) 100%);
   z-index: 90000;
   .overlay-spinner {
     position: absolute;

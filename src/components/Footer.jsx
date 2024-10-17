@@ -1,22 +1,13 @@
-import React, {useState, useCallback, useEffect} from "react";
+import React from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants/configConstants";
-import {TABLES} from "../helpers/constants/serviceConstants";
-import {getRowByTableAndId} from "../services/serviceFunctions";
 import {useAppContext} from "../context/AppContext";
 import packageJson from '../../package.json';
+import {useUtilsData} from "../helpers/customHooks/useUtilsData";
 
 const Footer = () => {
 
-    const [utilsData, setUtilsData] = useState(null)
     const {user} = useAppContext();
-
-    const fetchUtilsData = useCallback(() => {
-        getRowByTableAndId(TABLES.UTILS, setUtilsData, 1).then();
-    }, [])
-
-    useEffect(() => {
-        fetchUtilsData();
-    }, [fetchUtilsData])
+    const {utilsData} = useUtilsData();
 
     return !user && (
         <footer className={"p-3 p-sm-5 border-top bg-whale"}>
