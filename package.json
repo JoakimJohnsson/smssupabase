@@ -57,6 +57,6 @@
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@babel/plugin-transform-private-property-in-object": "^7.25.8",
         "eslint-config-react-app": "^7.0.1",
-        "sass": "^1.80.2"
+        "sass": "1.76.0"
     }
 }
