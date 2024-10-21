@@ -113,7 +113,6 @@ export function AppContextProvider({children}) {
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
-        signUp: (data) => supabase.auth.signUp(data),
         signIn: (data) => supabase.auth.signInWithPassword(data),
         signOut: () => supabase.auth.signOut(),
         informationMessage: informationMessage,

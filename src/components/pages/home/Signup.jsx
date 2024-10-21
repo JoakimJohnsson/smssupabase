@@ -1,6 +1,5 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAppContext} from "../../../context/AppContext";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
 import {MESSAGES} from "../../../helpers/constants/textConstants/messages";
 import {validateEmail, validatePassword} from "../../../helpers/validations";
@@ -8,6 +7,7 @@ import SignupValidationMessage from "./SignupValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../../helpers/functions";
 import {Icon, registerIcon, registerIconDuoTone} from "../../icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {supabase} from "../../../supabase/supabaseClient.js";
 
 
 export const Signup = () => {
@@ -25,7 +25,6 @@ export const Signup = () => {
 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {signUp} = useAppContext();
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
@@ -44,7 +43,7 @@ export const Signup = () => {
             setFormErrorMessage(MESSAGES.ERROR.VALIDATION_PASSWORD_CONFIRM);
             setShowFormError(true);
         } else {
-            const {error} = await signUp({email, password});
+            const {error} = await supabase.auth.signUp({email, password});
             if (error) {
                 setFormErrorMessage(error.message);
                 setShowFormError(true);
