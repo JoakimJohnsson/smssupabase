@@ -1,11 +1,11 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAppContext} from "../../../context/AppContext";
 import {simpleInputValidation} from "../../../helpers/validations";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {Icon, loginIcon, loginIconDuoTone} from "../../icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {updateProfileLastLogin} from "../../../services/profileService";
+import {supabase} from "../../../supabase/supabaseClient.js";
 
 
 const Login = () => {
@@ -18,7 +18,6 @@ const Login = () => {
 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {signIn} = useAppContext();
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
@@ -26,7 +25,7 @@ const Login = () => {
 
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const {error} = await signIn({email, password});
+        const {error} = await supabase.auth.signInWithPassword({email, password});
 
         if (error) {
             setFormErrorMessage(error.message);
