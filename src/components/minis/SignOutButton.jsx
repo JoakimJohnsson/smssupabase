@@ -4,16 +4,17 @@ import {useAppContext} from "../../context/AppContext";
 import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Icon, logoutIconDuoTone} from "../icons";
+import {supabase} from "../../supabase/supabaseClient.js";
 
 
 export const SignOutButton = ({mobile}) => {
 
-    const {signOut, setProfile, setUser} = useAppContext();
+    const {setProfile, setUser} = useAppContext();
     const navigate = useNavigate();
     const size = mobile ? "1x" : "2x";
 
     async function handleSignOut() {
-        await signOut().then(() => {
+        await supabase.auth.signOut().then(() => {
             setProfile(null);
             setUser(null);
         })

@@ -113,7 +113,6 @@ export function AppContextProvider({children}) {
 
     // Will be passed down to Signup, Login and Dashboard components
     const value = {
-        signOut: () => supabase.auth.signOut(),
         informationMessage: informationMessage,
         setInformationMessage: setInformationMessage,
         user,
