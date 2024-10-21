@@ -129,8 +129,7 @@ export function AppContextProvider({children}) {
         fetchMessages,
         profile,
         setProfile,
-        fetchProfileData,
-        session: () => supabase.auth.getSession()
+        fetchProfileData
     }
 
     return (
