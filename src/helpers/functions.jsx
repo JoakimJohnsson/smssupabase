@@ -169,10 +169,11 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
         return 1;
     }
 }
+
 export const getIssueName = (issue) => {
     let number = issue.number;
     let variantSuffix = "";
-    if (issue.is_variant === 1) {
+    if (isVariant(issue)) {
         variantSuffix = issue.variant_suffix;
     }
     if (issue.is_double === 1) {
@@ -189,6 +190,18 @@ export const getIssueName = (issue) => {
             }
         }
     }
+}
+
+export const getIssueNumber = (issue) => {
+    if (isVariant(issue)) {
+        return issue.number + issue.variant_suffix;
+    } else {
+        return issue.number;
+    }
+}
+
+export const isVariant = (issue) => {
+    return issue && issue.is_variant === 1;
 }
 
 export const getUserName = (user) => {

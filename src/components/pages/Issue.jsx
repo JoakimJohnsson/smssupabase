@@ -287,30 +287,34 @@ export const Issue = () => {
                                         <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                     </div>
                                     <div className={"mb-5"}>
+                                        <h2>{LABELS.COMMON.INFORMATION}</h2>
                                         {
                                             issue.description &&
-                                            <p className={"lead mb-4"}>{issue.description}</p>
+                                            <p className={"mb-4"}>{issue.description}</p>
                                         }
-                                        <h2>{issue?.titles?.name}</h2>
+                                        <h3>{issue?.titles?.name}</h3>
                                         <p className={"mb-4"}>{issue?.titles?.description}</p>
-                                        <h2>{issue?.publishers?.name}</h2>
+                                        <h3>{issue?.publishers?.name}</h3>
                                         <div className={"mb-4"}>
                                             <p className={"mb-4"}>{issue?.publishers?.description}</p>
-                                            <h2>{LABELS.COMMON.LINKS}</h2>
+                                            <h3>{LABELS.COMMON.LINKS}</h3>
                                             {
                                                 issue?.titles?.wiki_url &&
-                                                <a className={"d-block"} href={issue?.titles?.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                                <a className={"d-block"} href={issue?.titles?.wiki_url}
+                                                   target={"_blank"} rel={"noreferrer"}>
                                                     {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue?.titles?.name}
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                             }
                                             {
                                                 issue?.titles?.comics_org_url &&
-                                                <a className={"d-block"} href={issue?.titles?.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                                <a className={"d-block"} href={issue?.titles?.comics_org_url}
+                                                   target={"_blank"} rel={"noreferrer"}>
                                                     {issue?.titles?.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                             }
+                                            <SeriekatalogenTitleLink titleName={issue?.titles?.name}/>
                                         </div>
                                         {
                                             issue.source && issue.source !== "" &&
@@ -324,7 +328,7 @@ export const Issue = () => {
                                             <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                                 <caption>
                                                     <p className={"mb-0"}>{LABELS.SECTIONS.GRADES.GRADE_VALUES_FOR} {displayName}</p>
-                                                    <SeriekatalogenTitleLink titleName={issue?.titles?.name}/>
+
                                                 </caption>
                                                 <thead>
                                                 <tr>

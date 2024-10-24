@@ -9,6 +9,7 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 import {GradeBadge} from "../../grade/GradeBadge";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";
+import {getIssueNumber} from "../../../helpers/functions.jsx";
 
 
 export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress = false, listViewMissing, doUpdate}) => {
@@ -38,7 +39,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
                 setIsCollectingIssue(false);
             }
         }
-    }, [doUpdate, setIsCollectingIssue])
+    }, [doUpdate, setIsCollectingIssue]);
 
     return issue && issue.titles && (
         (!listViewMissing || (listViewMissing && !isCollectingIssue)) &&
@@ -52,7 +53,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
                         loading={"lazy"}
                     />
                     {
-                        <div className={`issue-card--number ${isCollectingIssue ? "bg-success" : "bg-secondary"}`}>{issue.number}</div>
+                        <div className={`issue-card--number ${isCollectingIssue ? "bg-success" : "bg-secondary"}`}>{getIssueNumber(issue)}</div>
                     }
                 </div>
             </Link>
