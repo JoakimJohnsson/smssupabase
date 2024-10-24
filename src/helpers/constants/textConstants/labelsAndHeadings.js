@@ -65,7 +65,7 @@ export const LABELS = {
             },
             OVERVIEW: {
                 INCOMING_MESSAGES: "Inkomna meddelanden",
-                USEFUL_LINKS: "Nyttiga länkar"
+                SHORTCUTS: "Genvägar"
             }
         },
         GRADES: {
