@@ -9,7 +9,7 @@ export const MyTitlesPaneListItemProgress = ({titleProgress, collectTextParts}) 
                 titleProgress.progress === 100 ?
                     <CustomProgressBar rounded={false} label={collectTextParts} variant={"success"} valueNow={titleProgress.progress}/>
                     :
-                    <CustomProgressBar rounded={false} label={collectTextParts} variant={"grade"} valueNow={titleProgress.progress}/>
+                    <CustomProgressBar rounded={false} label={collectTextParts} variant={"primary"} valueNow={titleProgress.progress}/>
             }
         </div>
     )

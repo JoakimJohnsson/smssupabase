@@ -166,7 +166,7 @@ export const Home = () => {
                                             <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE} variant={"success"} valueNow={progress}/>
                                             :
                                             <CustomProgressBar label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}
-                                                               variant={"grade"} valueNow={progress}/>
+                                                               variant={"primary"} valueNow={progress}/>
                                     }
                                 </>
                             }
