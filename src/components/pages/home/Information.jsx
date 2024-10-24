@@ -25,6 +25,7 @@ const Information = () => {
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Bugfixar.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att visa värde för en enskild titel.</li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.9.1 | 2024-10-16</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

@@ -21,7 +21,12 @@ export const TEXTS = {
 export const PANES = {
     TITLES: {
         NAME: "Mina titlar",
-        LONG_NAME: "Kontrollpanelen - Mina titlar"
+        LONG_NAME: "Kontrollpanelen - Mina titlar",
+        COLLECTING_CHECK_GRADING_STATUS_OPEN_1: "Beräknar värdet och kontrollerar om något exemplar av",
+        COLLECTING_CHECK_GRADING_STATUS_OPEN_2: "behöver skickgradering.",
+        GRADE_MISSING: "Det verkar som att några publikationer saknar skickgradering.",
+        GRADE_FOUND: "Alla publikationer har skickgradering.",
+        COLLECTING_VALUE_1: "Det sammanlagda värdet av denna titel är: ",
     },
     OVERVIEW: {
         NAME: "Översikt",

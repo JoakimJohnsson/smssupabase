@@ -26,6 +26,7 @@ import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoT
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {PANES} from "../../helpers/constants/textConstants/texts";
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
 
@@ -251,7 +252,7 @@ export const Title = () => {
                                         isCollectingTitle && issueNeedsGrading &&
                                         <div className={"alert alert-info d-flex align-items-center mb-4"}>
                                             <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
-                                            {TEXTS.GRADE_MISSING}
+                                            {PANES.TITLES.GRADE_MISSING}
                                         </div>
                                     }
                                     <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.COMMON.ISSUES}</h2>

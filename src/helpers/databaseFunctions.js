@@ -39,6 +39,15 @@ export const getGradeValueByIssueIdAndGrade = async (issueId, grade) => {
     }
 }
 
+export const getTitleTotalValuesByUserAndTitle = async (userId, titleId) => {
+    const {data, error} = await supabase.rpc('get_title_total_values_by_user_and_title', {input_user_id: userId, input_title_id: titleId});
+    if (error) {
+        console.error("Error in get_title_total_values_by_user: ", error);
+        return null;
+    }
+    return data;
+}
+
 export const insertAllGradeValuesForIssue = async (issueId, callbackFunction) => {
     try {
         await supabase.rpc('insert_all_grade_values_for_issue', {input_issue_id: issueId, input_value: 0}).then(() => callbackFunction());
