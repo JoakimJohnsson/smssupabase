@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -72,7 +73,7 @@ export const GradeValues = () => {
                         hardcover={hardcover}
                         special={special}
                         collectible={collectible}
-                        placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                        placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
                     <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {

@@ -2,9 +2,17 @@
 export const TEXTS = {
     ADD_ISSUE_WANTED: "Markera som efterlyst",
     ALLOW_LOCATION_ACCESS_PROMPT: "Genom att markera detta alternativ godkänner du att vi använder din platsinformation. Vi följer strikta integritetsprinciper och använder din platsdata endast för detta ändamål. Din platsinformation kommer inte att sparas eller användas för något annat syfte utan ditt uttryckliga samtycke. Du kan när som helst ändra dessa inställningar. Vi värnar om din integritet och tar skyddet av din personliga data på stort allvar.",
+    FILTER_NUMBER_TITLE_OR_YEAR: "Filtrera på nummer, titel eller årtal",
+    FILTER_TITLE_OR_YEAR: "Filtrera på titel eller årtal",
+    FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE: "Filtrera på titel, förlag, årtal eller källmaterial",
+    FILTER_NAME: "Filtrera på namn",
+    FILTER_PUBLISHER_NAME: "Filtrera på förlagets namn",
     GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering, och mer exakt värdering, hittar du hos",
     GRADE_TEXT_3: "Seriekatalogen",
     GRADE_TEXT_4: "Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
+    MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
+    MARVELKLUBBEN_TEXT_1: "Du måste lägga börja samla på titeln för att kunna lägga till publikationen i din samling.",
+    MARVELKLUBBEN_TEXT_2: "Mer information om Marvelklubben hittar du på",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
     REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
@@ -15,7 +23,12 @@ export const TEXTS = {
         PUBLISHERS: {},
         TITLES: {},
         USERS: {}
-    }
+    },
+    SHOWING: "Visar",
+    SHOWING_OF: "av",
+    SHOWING_LATEST_USERS: "Visar de senast uppdaterade användarna från databasen.",
+    USERS_COUNT_TEXT_1: "Totalt finns det ",
+    USERS_COUNT_TEXT_2: "användare.",
 }
 
 export const PANES = {

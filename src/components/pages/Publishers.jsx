@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../services/serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
@@ -9,6 +8,7 @@ import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {sortByName} from "../../helpers/functions";
 import {Link} from "react-router-dom";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 
 
 export const Publishers = () => {
@@ -26,7 +26,7 @@ export const Publishers = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
-                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_PUBLISHER_NAME}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_PUBLISHER_NAME}/>
                     {
                         loading ?
                             <OverlaySpinner/>
