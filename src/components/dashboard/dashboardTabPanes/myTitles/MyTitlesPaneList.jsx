@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {
     filterByFormat,
     filterTitlesData,
@@ -6,41 +6,42 @@ import {
     sortByNameAndStartYear
 } from "../../../../helpers/functions";
 import {MyTitlesPaneListItem} from "./MyTitlesPaneListItem";
-import {NoDataAvailable} from "../../../minis/NoDataAvailable";
+import FilteredListInfo from "../../../searchFilter/FilteredListInfo.jsx";
 
 
 export const MyTitlesPaneList = (props) => {
+    const {
+        query,
+        titlesData,
+        ...formats // Capture comic, comiclarge, album, pocket, hardcover, special, collectible as formats
+    } = props;
 
-    // Destructuring props - for readability
-    const {query, titlesData, comic, comiclarge, album, pocket, hardcover, special, collectible} = props;
+    // Check if any format filters are active
+    const isFormatFilterActive = useMemo(() => hasTrueValue(Object.values(formats)), [formats]);
 
-    return titlesData && !!titlesData.length ?
-        (
-            <ul className={"sms-list--with-cards"}>
-                {
-                    query ?
-                        filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special, collectible)
-                            .map((t) =>
-                                <MyTitlesPaneListItem key={t.id} title={t}/>
-                            )
-                        :
-                        titlesData
-                            .filter((title) => {
-                                if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special, collectible])) {
-                                    return (
-                                        filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special, collectible)
-                                    )
-                                } else {
-                                    return true;
-                                }
-                            })
-                            .sort((a, b) => sortByNameAndStartYear(a, b))
-                            .map((t) =>
-                                <MyTitlesPaneListItem key={t.id} title={t}/>
-                            )
-                }
+    // Memoize filtered and sorted data
+    const filteredTitles = useMemo(() => {
+        if (!titlesData || !titlesData.length) return [];
+
+        if (query) {
+            return filterTitlesData(titlesData, query, ...Object.values(formats));
+        }
+
+        const filtered = isFormatFilterActive
+            ? titlesData.filter((title) => filterByFormat(title, ...Object.values(formats)))
+            : titlesData;
+
+        return filtered.sort((a, b) => sortByNameAndStartYear(a, b));
+    }, [titlesData, query, formats, isFormatFilterActive]);
+
+    return (
+        <>
+            <FilteredListInfo filteredData={filteredTitles} totalData={titlesData}/>
+            <ul className="sms-list--with-cards">
+                {filteredTitles.map((t) => (
+                    <MyTitlesPaneListItem key={t.id} title={t}/>
+                ))}
             </ul>
-        )
-        :
-        <NoDataAvailable/>
-}
+        </>
+    );
+};
