@@ -2,7 +2,9 @@ import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useParams} from "react-router-dom";
 import {getRowByTableAndId, handleCollectingTitle} from "../../services/serviceFunctions";
-import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../helpers/constants/configConstants";
+import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {PANES, TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
@@ -25,8 +27,6 @@ import {Message} from "../message/Message";
 import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {PANES} from "../../helpers/constants/textConstants/texts";
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
 
@@ -43,8 +43,8 @@ export const Title = () => {
     const {id} = useParams();
     const {isCollectingTitle, setIsCollectingTitle} = useCollectingStatus(user.id, false, id);
     const displayName = title.name + " " + title.start_year;
-    const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
-    const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
+    const collectTitleTextStart = TEXTS.COLLECT_TITLE_START + " " + displayName;
+    const collectTitleTextStop = TEXTS.COLLECT_TITLE_STOP + " " + displayName;
     const [listViewGrid, setListViewGrid] = useState(true);
     const [listViewMissing, setListViewMissing] = useState(false);
     const [listViewGradeValue, setListViewGradeValue] = useState(false);
@@ -136,9 +136,9 @@ export const Title = () => {
                                                 onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, false)}>
                                                 {
                                                     isCollectingTitle ?
-                                                        <>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
+                                                        <>{TEXTS.COLLECT_TITLE_STOP + " " + title.name}</>
                                                         :
-                                                        <>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
+                                                        <>{TEXTS.COLLECT_TITLE_START + " " + title.name}</>
                                                 }
                                             </button>
                                             :
@@ -233,13 +233,13 @@ export const Title = () => {
                                                         titleProgress.progress !== 100 &&
                                                         <FunctionButton variant={"danger"} icon={faCartPlus}
                                                                         onClick={() => addAllIssues()}
-                                                                        label={LABELS_AND_HEADINGS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
+                                                                        label={TEXTS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
                                                     }
                                                     {
                                                         titleProgress.progress > 0 &&
                                                         <FunctionButton variant={"danger"} icon={faTrashCanList}
                                                                         onClick={() => removeAllIssues()}
-                                                                        label={LABELS_AND_HEADINGS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
+                                                                        label={TEXTS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
 
                                                     }
                                                 </>

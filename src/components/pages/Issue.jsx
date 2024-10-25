@@ -2,6 +2,7 @@ import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useNavigate, useParams} from "react-router-dom";
 import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getIssueName, objectDoesExist, renderGradeValue} from "../../helpers/functions";
@@ -42,7 +43,6 @@ import {
 } from "../icons";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
 
@@ -74,8 +74,8 @@ export const Issue = () => {
         setIsCollectingTitle
     } = useCollectingStatus(user.id, id, issue.title_id);
 
-    const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
-    const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
+    const collectIssueTextStart = TEXTS.COLLECT_ISSUE_START + " " + displayName + " " + TEXTS.COLLECT_ISSUE_START_2;
+    const collectIssueTextStop = TEXTS.COLLECT_ISSUE_STOP + " " + displayName + " " + TEXTS.COLLECT_ISSUE_STOP_2;
 
     const fetchIssueIds = useCallback(async () => {
         if (issue.number && issue.title_id && issue.year) {
@@ -181,10 +181,10 @@ export const Issue = () => {
                                             </button>
                                             :
                                             <button
-                                                aria-label={LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue?.titles?.name}
+                                                aria-label={TEXTS.COLLECT_TITLE_START + " " + issue?.titles?.name}
                                                 className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
                                                 onClick={() => handleCollectingTitle(user.id, issue?.titles?.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
-                                                {LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue?.titles?.name}
+                                                {TEXTS.COLLECT_TITLE_START + " " + issue?.titles?.name}
                                             </button>
                                     }
                                     {

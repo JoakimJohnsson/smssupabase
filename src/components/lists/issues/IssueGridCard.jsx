@@ -3,7 +3,8 @@ import {useAppContext} from "../../../context/AppContext";
 import {handleCollectingIssue} from "../../../services/serviceFunctions";
 import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
+import {CONFIG} from "../../../helpers/constants/configConstants";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
@@ -18,8 +19,8 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
     const {isCollectingIssue, setIsCollectingIssue, grades, fetchGrades} = useCollectingStatus(user.id, issue.id, false);
     const {displayName} = useIssueDisplayName(issue);
 
-    const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
-    const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
+    const collectIssueTextStart = TEXTS.COLLECT_ISSUE_START + " " + displayName + " " + TEXTS.COLLECT_ISSUE_START_2;
+    const collectIssueTextStop = TEXTS.COLLECT_ISSUE_STOP + " " + displayName + " " + TEXTS.COLLECT_ISSUE_STOP_2;
 
     const handleClick = async () => {
         handleCollectingIssue(user.id, issue.id, setInformationMessage, isCollectingIssue, setIsCollectingIssue);

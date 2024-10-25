@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../context/AppContext";
 import {Icon} from "../icons";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
@@ -12,8 +12,8 @@ export const TitleTool = ({title, displayName, isCard = false, setUserCollectsTi
 
     const {setInformationMessage, user} = useAppContext();
     const {isCollectingTitle, setIsCollectingTitle} = useCollectingStatus(user.id, false, title.id);
-    const collectTitleTextStart = LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + displayName;
-    const collectTitleTextStop = LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + displayName;
+    const collectTitleTextStart = TEXTS.COLLECT_TITLE_START + " " + displayName;
+    const collectTitleTextStop = TEXTS.COLLECT_TITLE_STOP + " " + displayName;
     const collectTitleIcon = isCollectingTitle ? faBadgeCheck : faBadge;
     const collectTitleBtnClassName = isCollectingTitle ? "btn text-success sms-tool-btn" : "btn text-light sms-tool-btn";
 
@@ -30,9 +30,9 @@ export const TitleTool = ({title, displayName, isCard = false, setUserCollectsTi
                 onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
                 {
                     isCollectingTitle ?
-                        <>{LABELS_AND_HEADINGS.COLLECT_TITLE_STOP + " " + title.name}</>
+                        <>{TEXTS.COLLECT_TITLE_STOP + " " + title.name}</>
                         :
-                        <>{LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + title.name}</>
+                        <>{TEXTS.COLLECT_TITLE_START + " " + title.name}</>
                 }
             </button>
         )
