@@ -81,7 +81,9 @@ export const PANES = {
         COLLECTING_MARVELKLUBBEN_1: "Du har",
         COLLECTING_MARVELKLUBBEN_2: "publikationer i din Marvelklubben-samling. Den är till",
         GRADE: "Gradering",
-        COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har en snittgradering på"
+        COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har en snittgradering på",
+        SEE_PROFILE_FOR_MORE_WANTED: "Se alla efterlysningar på din profilsida",
+        SEE_PROFILE_FOR_MORE_NEEDS_GRADING: "Se fler publikationer på din profilsida",
     },
     COLLECTIONS: {
         NAME: "Samlingar",

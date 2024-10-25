@@ -5,6 +5,9 @@ import {sortByName} from "../../../../helpers/functions";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {useAppContext} from "../../../../context/AppContext";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {Link} from "react-router-dom";
+import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
+import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
 
 
 export const OverviewUpgradeIssues = () => {
@@ -27,16 +30,32 @@ export const OverviewUpgradeIssues = () => {
                         :
                         <ul className={"sms-list--with-cards"}>
                             {
-                                issuesData ?
-                                issuesData
-                                    .sort((a, b) => sortByName(a.titles, b.titles))
-                                    .map((issue) =>
-                                        <IssueLinkCard key={issue.id} issue={issue} simple/>
-                                    )
+                                issuesData && issuesData.length ?
+                                    <>
+                                        {
+                                            issuesData
+                                                .sort((a, b) => sortByName(a.titles, b.titles))
+                                                .map((issue, index) => {
+                                                        if (index < 3) {
+                                                            return <IssueLinkCard key={issue.id} issue={issue} simple/>
+                                                        } else {
+                                                            return null;
+                                                        }
+                                                    }
+                                                )
+                                        }
+                                    </>
                                     :
                                     <p>{LABELS.SECTIONS.ISSUES.NO_UPGRADE_ISSUES}</p>
                             }
                         </ul>
+                }
+                {
+                    issuesData && issuesData.length > 3 &&
+                    <Link className={"btn btn-outline-primary sms-btn d-inline-block"} to={`/users/${user.id}`}>
+                        <Icon icon={userIconDuoTone} className={"me-2"} size={"1x"}/>
+                        {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_NEEDS_GRADING}
+                    </Link>
                 }
             </div>
         </div>

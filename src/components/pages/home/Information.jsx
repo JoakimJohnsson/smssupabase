@@ -31,6 +31,9 @@ const Information = () => {
                     <li className={"list-group-item px-0"}>Små förbättringar på startsidan, lite bättre
                         användarupplevelse.
                     </li>
+                    <li className={"list-group-item px-0"}>
+                        Förbättrad visning av efterlysta publikationer och publikationer som behöver uppgradering. Både i kontrollpanelen och på profilsida.
+                    </li>
                 </ul>
                 <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
