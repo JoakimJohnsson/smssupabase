@@ -71,7 +71,7 @@ export const LABELS_AND_HEADINGS = {
     PROFILE_IMAGE: "Profilbild",
     CHOOSE_PUBLISHER_FOR_ISSUE: "Välj förlag för dina publikationer",
     RELEASE_LATEST: "Senaste releasen",
-    RELEASE_PREVIOUS: "Föregående releaser",
+    RELEASE_PREVIOUS: "Tidigare förbättringar",
     RELEASE_FUTURE: "Kommande funktionalitet",
     REMOVE_ALL_VALUATION_VALUES_FOR_USER: "Ta bort alla sparade värderingar för användaren",
     SEE_ALL_PUBLISHERS: "Se alla förlag",

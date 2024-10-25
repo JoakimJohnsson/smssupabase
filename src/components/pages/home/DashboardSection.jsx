@@ -1,7 +1,6 @@
 import React from "react";
 import {ROUTES} from "../../../helpers/constants/configConstants";
 import {collectionsIconDuoTone, mapsIconDuoTone, overviewIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons";
-import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {PANES} from "../../../helpers/constants/textConstants/texts";
 
@@ -10,7 +9,6 @@ export const DashboardSection = () => {
 
     return (
         <>
-            <h2>{LABELS.SECTIONS.DASHBOARD.NAME}</h2>
             <IconLinkCtaLg
                 variant={"primary"}
                 icon={overviewIconDuoTone}

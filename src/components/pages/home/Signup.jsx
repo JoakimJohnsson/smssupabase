@@ -71,11 +71,15 @@ export const Signup = () => {
     return (
         <>
             <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"create-account-section"}>
-                <div className={"text-center mb-4 mb-sm-5"}>
-                    <Icon icon={registerIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
-                    <h2>{LABELS.COMMON.CREATE_ACCOUNT}</h2>
+                <div className={"mb-4 mb-sm-5"}>
+                    <div className={"text-center"}>
+                        <Icon icon={registerIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
+                        <h2>{LABELS.COMMON.CREATE_ACCOUNT}</h2>
+                    </div>
                     <p className={"lead"}>{TEXTS.CONSENT}</p>
                 </div>
+
+
                 <label className={"form-label"} htmlFor="input-signup-email">{LABELS.COMMON.EMAIL}</label>
                 <input id="input-signup-email"
                        type="email"
@@ -85,7 +89,8 @@ export const Signup = () => {
                        placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
                        required/>
                 <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
-                <label className={"form-label d-flex"} htmlFor="input-signup-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
+                <label className={"form-label d-flex"}
+                       htmlFor="input-signup-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
                 <input id="input-signup-password"
                        type="password"
                        ref={passwordRef}
@@ -93,7 +98,8 @@ export const Signup = () => {
                        className={passwordInputClass}
                        placeholder={"********"}
                        required/>
-                <label className={"form-label d-flex"} htmlFor="input-signup-password-confirm">{LABELS_AND_HEADINGS.PASSWORD_CONFIRM}</label>
+                <label className={"form-label d-flex"}
+                       htmlFor="input-signup-password-confirm">{LABELS_AND_HEADINGS.PASSWORD_CONFIRM}</label>
                 <input id="input-signup-password-confirm"
                        type="password"
                        onChange={(e) => setPasswordConfirm(e.target.value)}
