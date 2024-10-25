@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {CONFIG, LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {PANES} from "../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../../context/AppContext";
@@ -19,7 +20,6 @@ import {IssueLinkCard} from "../../lists/issues/IssueLinkCard";
 import {Icon, settingsIconDuoTone} from "../../icons";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
-import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import CustomProgressBar from "../../CustomProgressBar";
 import {OverlaySpinner} from "../../minis/OverlaySpinner";
 import {DashboardSection} from "./DashboardSection";
@@ -152,7 +152,7 @@ export const Home = () => {
                 </div>
                 <div className={"row row-padding--secondary"}>
                     <div className={"col-12 mb-4"}>
-                        <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
+                        <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
                         <p className={"mb-4 placeholder-glow"}><span className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ?
                             <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
                         <div className={"mb-4"}>

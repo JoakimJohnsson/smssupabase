@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {TitlesList} from "../../../lists/titles/TitlesList";
@@ -19,7 +20,6 @@ import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdmi
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitles = () => {
@@ -66,7 +66,7 @@ export const AdminTitles = () => {
                                 :
                                 <LazyTextPlaceholder charCount={2}/>
                         }
-                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
+                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.TITLES.TITLES}
                     </p>
                     <div className={"sms-section--light"}>
                         {
