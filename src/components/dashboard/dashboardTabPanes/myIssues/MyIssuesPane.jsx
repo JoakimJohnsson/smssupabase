@@ -10,8 +10,8 @@ import {CONFIG} from "../../../../helpers/constants/configConstants.jsx";
 import FilterFormSimple from "../../../searchFilter/FilterFormSimple.jsx";
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder.jsx";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings.js";
-import {IssueCard} from "../../../lists/issues/IssueCard.jsx";
 import {ShowMoreButtons} from "../../../minis/ShowMoreButtons.jsx";
+import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard.jsx";
 
 
 export const MyIssuesPane = () => {
@@ -69,7 +69,7 @@ export const MyIssuesPane = () => {
                         {
                             filteredData.slice(0, itemsToShow)
                                 .map(issue => (
-                                    <IssueCard key={issue.id} issue={issue}/>
+                                    <IssueLinkCard key={issue.id} issue={issue}/>
                                 ))
                         }
                     </ul>
