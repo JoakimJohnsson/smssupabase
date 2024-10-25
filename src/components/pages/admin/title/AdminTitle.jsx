@@ -9,7 +9,9 @@ import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId
 } from "../../../../services/issueService";
-import {CONFIG, FILETYPES, LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {CONFIG, FILETYPES, LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -27,7 +29,6 @@ import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
 import {updateGradeValuesForTitles} from "../../../../helpers/databaseFunctions";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {NoMatch} from "../../../routes/NoMatch";
 
 
@@ -291,7 +292,7 @@ export const AdminTitle = () => {
                                     <div className={"sms-section--light pb-5"}>
                                         <div className={"mb-4"}>
                                             <h2>{LABELS_AND_HEADINGS.CHOOSE_PUBLISHER_FOR_ISSUE}</h2>
-                                            <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
+                                            <label className={"form-label"} htmlFor="publisher">{LABELS.SECTIONS.PUBLISHERS.PUBLISHER_DB}</label>
                                             {
                                                 publishersData &&
                                                 <select
@@ -333,8 +334,8 @@ export const AdminTitle = () => {
                                                 value={description || ""}
                                                 onChange={(e) => handleInput(e, setDescription)}
                                             />
-                                            <label className={"form-label mb-0"} htmlFor="source">{LABELS_AND_HEADINGS.SOURCE_DB}</label>
-                                            <p className={"form-text"}>{LABELS_AND_HEADINGS.SOURCE_EXAMPLE}</p>
+                                            <label className={"form-label mb-0"} htmlFor="source">{LABELS.SECTIONS.ISSUES.SOURCE_DB}</label>
+                                            <p className={"form-text"}>{TEXTS.SOURCE_EXAMPLE}</p>
                                             <textarea
                                                 id={"source"}
                                                 name={"source"}
@@ -428,7 +429,7 @@ export const AdminTitle = () => {
                                 </div>
                                 <div className={"sms-dashboard-col"}>
                                     <div className={"sms-section--light"}>
-                                        <h2>{LABELS_AND_HEADINGS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
+                                        <h2>{TEXTS.DELETE_ALL_ISSUES_FOR} {title.name}</h2>
                                         <p>{TEXTS.DELETE_ALL_ISSUES_INFO}</p>
                                         <button className={"btn btn-danger d-flex align-items-center"} disabled={!(issuesData && issuesData.length > 0)}
                                                 onClick={() => handleDeleteIssues(issuesData)}>

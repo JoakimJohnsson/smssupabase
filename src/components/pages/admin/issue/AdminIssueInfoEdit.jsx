@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {isTrue, printOptions, printTitleOptions} from "../../../../helpers/functions";
 import {getRowsByTable, handleChange} from "../../../../services/serviceFunctions";
@@ -8,7 +9,6 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {editIcon, saveIcon} from "../../../icons";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, title}) => {
@@ -70,7 +70,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
                 <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
-                <label className={"form-label"} htmlFor="title">{LABELS_AND_HEADINGS.TITLE_DB}</label>
+                <label className={"form-label"} htmlFor="title">{LABELS.COMMON.TITLES.TITLE_DB}</label>
                 {
                     titlesData &&
                     <select
@@ -84,7 +84,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         {printTitleOptions(titlesData)}
                     </select>
                 }
-                <label className={"form-label"} htmlFor="publisher">{LABELS_AND_HEADINGS.PUBLISHER_DB}</label>
+                <label className={"form-label"} htmlFor="publisher">{LABELS.COMMON.PUBLISHERS.PUBLISHER_DB}</label>
                 {
                     publishersData &&
                     <select
@@ -130,8 +130,8 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                     onChange={(e) => handleChange(newIssue, setNewIssue, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label mb-0"} htmlFor="source">{LABELS_AND_HEADINGS.SOURCE_DB}</label>
-                <p className={"form-text"}>{LABELS_AND_HEADINGS.SOURCE_EXAMPLE}</p>
+                <label className={"form-label mb-0"} htmlFor="source">{LABELS.SECTIONS.ISSUES.SOURCE_DB}</label>
+                <p className={"form-text"}>{TEXTS.SOURCE_EXAMPLE}</p>
                 <textarea
                     id={"source"}
                     name={"source"}

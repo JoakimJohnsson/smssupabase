@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {Link} from "react-router-dom";
 import {TitleTool} from "../lists/TitleTool";
 import formatData from "../../helpers/valueLists/formats.json";
@@ -18,7 +18,7 @@ export const TitlesListItem = ({title}) => {
                 <div className={"image-container mb-2 position-relative"}>
                     <img
                         src={title.image_url}
-                        alt={LABELS_AND_HEADINGS.TITLE + " " + title.name}
+                        alt={LABELS.SECTIONS.TITLES.TITLE + " " + title.name}
                         className="w-100"
                         loading={"lazy"}
                     />

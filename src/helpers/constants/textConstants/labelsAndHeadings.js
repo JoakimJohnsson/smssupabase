@@ -10,6 +10,7 @@ export const LABELS = {
         BACK_TO: "Tillbaka till",
         BACK_TO_TOP: "Tillbaka till toppen",
         BREADCRUMB: "Brödsmula",
+        CHANGE_PASSWORD: "Ändra lösenord",
         CHOOSE: "--- Välj ---",
         CLOSE: "Stäng",
         CONTACT: "Kontakt",
@@ -82,9 +83,10 @@ export const LABELS = {
             IS_DOUBLE_DB: "Dubbelnummer (is_double)",
             IS_VARIANT_DB: "Variant (is_variant) - Används även för undertitel",
             ISSUES: "Publikationer",
-            VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
+            NO_UPGRADE_ISSUES: "Du har inga publikationer i behov av uppgradering.",
+            SOURCE_DB: "Källor (source)",
             UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
-            NO_UPGRADE_ISSUES: "Du har inga publikationer i behov av uppgradering."
+            VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
         },
         MARVELKLUBBEN: {
             IS_MARVELKLUBBEN_DB: "Ingår i marvelklubben (is_marvelklubben)",
@@ -102,14 +104,19 @@ export const LABELS = {
         PUBLISHERS: {
             ADD_PUBLISHER: "Lägg till förlag",
             ALL_PUBLISHERS: "Alla förlag",
-            COUNTRY_DB: "Utgivningsland (country)"
+            COUNTRY_DB: "Utgivningsland (country)",
+            PUBLISHERS: "Förlag",
+            PUBLISHER_DB: "Förlag (publisher)",
         },
         TITLES: {
             ADD_TITLE: "Lägg till titel",
             ALL_TITLES: "Alla titlar",
             COMICS_ORG_URL_DB: "Länk till Comics.org (comics_org_url)",
             END_YEAR_DB: "Slutår (end_year)",
-            FORMAT_DB: "Format (format)"
+            FORMAT_DB: "Format (format)",
+            TITLE: "Titel",
+            TITLES: "Titlar",
+            TITLE_DB: "Titel (title)",
         },
         USERS: {
             ALL_USERS: "Alla användare",

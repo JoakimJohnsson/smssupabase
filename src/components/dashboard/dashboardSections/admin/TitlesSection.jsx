@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
@@ -7,7 +8,6 @@ import {TitlesList} from "../../../lists/titles/TitlesList";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {IconButton} from "../../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const TitlesSection = () => {
@@ -22,7 +22,7 @@ export const TitlesSection = () => {
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light h-100"}>
-                <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
+                <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
                 {
                     limitedTitlesData ?
                         <>
