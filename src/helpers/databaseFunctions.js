@@ -21,6 +21,15 @@ export const doesUserCollectTitle = async (userId, titleId) => {
     }
 }
 
+export const getUserIssues = async (userId) => {
+    try {
+        return await supabase.rpc('get_user_issues', {input_user_id: userId});
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
 // Grade values
 export const deleteAllGradeValuesForIssue = async (issueId, callbackFunction) => {
     try {

@@ -191,6 +191,8 @@ export const ROUTES = {
         ROOT: "dashboard",
         OVERVIEW: "overview",
         PATH_OVERVIEW: "/dashboard/overview",
+        MY_ISSUES: "my-issues",
+        PATH_MY_ISSUES: "/dashboard/my-issues",
         MY_TITLES: "my-titles",
         PATH_MY_TITLES: "/dashboard/my-titles",
         COLLECTIONS: "collections",

@@ -148,6 +148,7 @@ export const BREADCRUMB_NAMES = {
     MARVELKLUBBEN: "Marvelklubben",
     MESSAGES: "Meddelanden",
     MY_TITLES: "Mina titlar",
+    MY_ISSUES: "Mina publikationer",
     COLLECTIONS: "Samlingar",
     MAPS: "Karta",
     OVERVIEW: "Översikt",

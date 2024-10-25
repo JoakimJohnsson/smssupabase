@@ -64,6 +64,10 @@ export const PANES = {
         GRADE_FOUND: "Alla publikationer har skickgradering.",
         COLLECTING_VALUE_1: "Det sammanlagda värdet av denna titel är: ",
     },
+    ISSUES: {
+        NAME: "Mina publikationer",
+        LONG_NAME: "Kontrollpanelen - Mina publikationer"
+    },
     OVERVIEW: {
         NAME: "Översikt",
         LONG_NAME: "Kontrollpanelen - Översikt",
