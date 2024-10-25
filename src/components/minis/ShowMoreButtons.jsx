@@ -1,17 +1,12 @@
 import React from "react";
 import {CONFIG} from "../../helpers/constants/configConstants";
-import {handleBacking, showLessItems, showMoreItems} from "../../helpers/functions";
+import {showLessItems, showMoreItems} from "../../helpers/functions";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {faPlus, faMinus} from "@fortawesome/pro-duotone-svg-icons";
 import {FunctionButton} from "./FunctionButton";
-import {IconButton} from "./IconButton";
-import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
-import {useNavigate} from "react-router-dom";
 
 
 export const ShowMoreButtons = ({data, setItemsToShow, itemsToShow}) => {
-
-    const navigate = useNavigate();
 
     return data && !!data.length && (
         <>
@@ -37,8 +32,6 @@ export const ShowMoreButtons = ({data, setItemsToShow, itemsToShow}) => {
                     />
                 }
             </div>
-            <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                        label={LABELS.COMMON.BACK}/>
         </>
     )
 }
