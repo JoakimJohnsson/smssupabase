@@ -512,7 +512,7 @@ input[type="checkbox"] + label {
 
 // Global message viewer
 .global-message-viewer {
-  @extend .mt-5;
+  @extend .mt-3;
   .global-message {
     @extend .bg-dog, .p-3, .rounded-3;
     &:not(:last-of-type) {

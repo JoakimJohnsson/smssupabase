@@ -84,7 +84,7 @@ export const Home = () => {
             <main id="main-content" className={"container-fluid main-container dashboard"}>
                 <div className={"row row-padding--main"}>
                     <div className={"sms-page-col"}>
-                        <div className={"mb-5"}>
+
                             <HeadingWithBreadCrumbs
                                 text={LABELS_AND_HEADINGS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + LABELS_AND_HEADINGS.WELCOME_TEXT_2}/>
                             {
@@ -92,9 +92,9 @@ export const Home = () => {
                                 <InformationAlert variant={"success"}
                                                   text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
                             }
-                        </div>
+
                         {
-                            atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
+                            !atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
                             <div className={"mb-5"}>
                                 <MessageViewer viewGlobal/>
                                 {

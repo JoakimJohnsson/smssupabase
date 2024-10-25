@@ -101,8 +101,8 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
     }
 
     return (
-        <nav aria-label={LABELS.COMMON.BREADCRUMB} className={"mb-5 breadcrumb-nav hide"}>
-            <ol className="breadcrumb small">
+        <nav aria-label={LABELS.COMMON.BREADCRUMB} className={"breadcrumb-nav hide"}>
+            <ol className="breadcrumb small mb-0">
                 {breadcrumbs.map(({match, breadcrumb}, index) => {
                         return printBreadCrumbLinkItems(index, breadcrumb, match);
                     }
