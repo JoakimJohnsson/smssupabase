@@ -24,7 +24,7 @@ export const TEXTS = {
     FILTER_PUBLISHER_NAME: "Filtrera på förlagets namn",
     GRADE_IS_NOT_VALUED: "Vissa publikationer saknar värden.",
     GRADE_IS_VALUED_LEAD: "Här kan du markera att alla publikationer på den här titeln har fått rätt värden.",
-    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. Mer information om skickgradering, och mer exakt värdering, hittar du hos",
+    GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. På så sätt kan du ha mer än ett ex av varje publikation i din samling. Mer information om skickgradering, och mer exakt värdering, hittar du hos",
     GRADE_TEXT_3: "Seriekatalogen",
     GRADE_TEXT_4: "Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
     GRADE_TITLE_IS_VALUED: "Alla publikationer har fått rätt värden.",
