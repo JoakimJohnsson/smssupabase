@@ -104,8 +104,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                     onChange={() => handleAllowLocationAccessCheckboxChange(newProfile.allow_location_access)}
                     disabled={!edit || loading}
                 />
-
-                <label className={"form-label text-black"} htmlFor="is_public">{LABELS_AND_HEADINGS.ALLOW_LOCATION_ACCESS}</label>
+                <label className={"form-label text-black"} htmlFor="allow_location_access">{LABELS_AND_HEADINGS.ALLOW_LOCATION_ACCESS}</label>
                 <div className={"fs-small text-info--darker"}>{TEXTS.ALLOW_LOCATION_ACCESS_PROMPT}</div>
             </div>
             {
