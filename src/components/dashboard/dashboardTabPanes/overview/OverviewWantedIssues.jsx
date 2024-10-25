@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {getWantedIssuesForUser} from "../../../../services/collectingService";
@@ -28,7 +28,7 @@ export const OverviewWantedIssues = () => {
     return (
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light h-100"}>
-                <h2>{LABELS_AND_HEADINGS.WANTED_ISSUES}</h2>
+                <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
                 {
                     loading ?
                         <CustomSpinner/>
@@ -51,7 +51,7 @@ export const OverviewWantedIssues = () => {
                                         }
                                     </>
                                     :
-                                    <p>{LABELS_AND_HEADINGS.NO_WANTED_ISSUES}</p>
+                                    <p>{LABELS.COMMON.NO_WANTED_ISSUES}</p>
                             }
                         </ul>
                 }

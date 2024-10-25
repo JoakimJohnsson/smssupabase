@@ -15,7 +15,7 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 190 rader
+// 172 rader
 export const LABELS_AND_HEADINGS = {
     ALLOW_LOCATION_ACCESS: "Tillåt platsåtkomst",
     ADD_ISSUE_UPGRADE: "Markera behov av uppgradering",
@@ -36,12 +36,8 @@ export const LABELS_AND_HEADINGS = {
     GENERATE_ISSUES: "Lägg till publikationer",
     GENERATING_ISSUES: "Lägger till publikationer",
     INFORMATION_ABOUT: "Information om",
-    INFORMATION_MISSING: "Information saknas.",
     MAKE_PUBLIC: "Gör din profilsida och information publik",
     MISSING_ISSUES: "Saknade publikationer",
-    WANTED_ISSUES: "Efterlysta publikationer",
-    NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
-    NO_WANTED_ISSUES_USER: "Inga efterlysta publikationer.",
     MENU: "Meny",
     MESSAGE_TITLE_SUFFIX_FOR: "för",
     MESSAGE_TITLE_SUFFIX_FOR_TITLE: "för titeln",
@@ -73,7 +69,6 @@ export const LABELS_AND_HEADINGS = {
     RELEASE_LATEST: "Senaste releasen",
     RELEASE_PREVIOUS: "Tidigare förbättringar",
     RELEASE_FUTURE: "Kommande funktionalitet",
-    REMOVE_ALL_VALUATION_VALUES_FOR_USER: "Ta bort alla sparade värderingar för användaren",
     SEE_ALL_PUBLISHERS: "Se alla förlag",
     SEE_ALL_MESSAGES: "Se alla meddelanden",
     SEE_ALL_TITLES: "Se alla titlar",

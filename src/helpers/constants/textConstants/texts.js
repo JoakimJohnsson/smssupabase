@@ -33,6 +33,7 @@ export const TEXTS = {
     MARVELKLUBBEN_TEXT_2: "Mer information om Marvelklubben hittar du på",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
+    REMOVE_ALL_VALUATION_VALUES_FOR_USER: "Ta bort alla sparade värderingar för användaren",
     REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
     SECTIONS: {
         GRADES: {},

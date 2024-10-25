@@ -31,6 +31,7 @@ export const LABELS = {
         ID: "Id",
         IMAGE: "Bild",
         INFORMATION: "Information",
+        INFORMATION_MISSING: "Information saknas.",
         LINKS: "Länkar",
         LIST_VIEW_GRADE_VALUE_HIDE: "Dölj skickvärdering",
         LIST_VIEW_GRADE_VALUE_SHOW: "Visa skickvärdering",
@@ -54,6 +55,10 @@ export const LABELS = {
         SETTINGS_CREDENTIALS: "Inloggningsuppgifter",
         SHOW_MORE: "Visa mer",
         SHOW_LESS: "Visa mindre",
+        WANTED_ISSUES: "Efterlysta publikationer",
+        NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
+        NO_WANTED_ISSUES_USER: "Inga efterlysta publikationer.",
+        NO_UPGRADE_ISSUES_USER: "Inga publikationer som behöver uppgradering.",
         WEBSITE: "Webbplats",
         WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
         YEAR_DB: "År (year)"
