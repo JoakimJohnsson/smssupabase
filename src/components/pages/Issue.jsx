@@ -14,7 +14,6 @@ import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
 import {MarvelKlubbenBadge} from "../grade/MarvelKlubbenBadge";
-import {getIssueByTitleAndNumber} from "../../services/issueService";
 import {faArrowLeftLong, faArrowRightLong, faCloudQuestion, faCloudXmark, faCloudArrowUp} from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
@@ -45,6 +44,7 @@ import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
+import {getAdjacentIssueIds} from "../../helpers/databaseFunctions.js";
 
 
 export const Issue = () => {
@@ -79,23 +79,10 @@ export const Issue = () => {
 
     const fetchIssueIds = useCallback(async () => {
         if (issue.number && issue.title_id && issue.year) {
-            let prevNumber = issue.number - 1;
-            let nextNumber = issue.number + 1;
-            let titleId = issue.title_id;
-            let year = issue.year;
             try {
-                let prevIssue = await getIssueByTitleAndNumber(prevNumber, titleId, year);
-                if (!prevIssue) {
-                    // Try again with previous year and #1
-                    prevIssue = await getIssueByTitleAndNumber(1, titleId, year -1);
-                }
-                setPrevIssueId(prevIssue?.id);
-                let nextIssue = await getIssueByTitleAndNumber(nextNumber, titleId, year);
-                if (!nextIssue) {
-                    // Try again with next year and #1
-                    nextIssue = await getIssueByTitleAndNumber(1, titleId, year +1);
-                }
-                setNextIssueId(nextIssue?.id);
+                const adjacentIssues = await getAdjacentIssueIds(issue.title_id, issue.year, issue.number, issue.is_variant, issue.variant_suffix);
+                setPrevIssueId(adjacentIssues?.prevIssueId);
+                setNextIssueId(adjacentIssues?.nextIssueId)
                 setLoadingButtons(false);
             } catch (error) {
                 console.error(error);
