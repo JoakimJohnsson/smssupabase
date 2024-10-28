@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {Icon, sendIcon, questionIconDuoTone} from "../../icons";
 import {requestPasswordResetForEmail} from "../../../services/serviceFunctions";
-import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const ForgotPassword = () => {
@@ -22,7 +22,7 @@ const ForgotPassword = () => {
                    type="email"
                    onChange={(e) => setEmail(e.target.value)}
                    className={"form-control"}
-                   placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
+                   placeholder={LABELS.COMMON.PLACEHOLDER_MAIL}
                    required/>
             <div className={"form-text mb-3"}>{TEXTS.CHANGE_PASSWORD_SEND_INFO}</div>
             <button type="submit" className={"btn btn-primary sms-btn"} disabled={email === ""}>

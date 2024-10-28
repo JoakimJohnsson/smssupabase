@@ -2,8 +2,8 @@ import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {simpleInputValidation} from "../../../helpers/validations";
 import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
-import {Icon, loginIcon, loginIconDuoTone} from "../../icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {Icon, loginIcon, loginIconDuoTone} from "../../icons";
 import {updateProfileLastLogin} from "../../../services/profileService";
 import {supabase} from "../../../supabase/supabaseClient.js";
 
@@ -52,7 +52,7 @@ const Login = () => {
                    ref={emailRef}
                    onChange={(e) => simpleInputValidation(e, setEmailValidated)}
                    className={emailValidated ? "form-input--success" : "form-input--default"}
-                   placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
+                   placeholder={LABELS.COMMON.PLACEHOLDER_MAIL}
                    required/>
             <label className={"form-label"} htmlFor="input-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
             <input id="input-password"

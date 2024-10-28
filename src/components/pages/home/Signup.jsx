@@ -1,12 +1,12 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {MESSAGES} from "../../../helpers/constants/textConstants/messages";
 import {validateEmail, validatePassword} from "../../../helpers/validations";
 import SignupValidationMessage from "./SignupValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../../helpers/functions";
 import {Icon, registerIcon, registerIconDuoTone} from "../../icons";
-import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {supabase} from "../../../supabase/supabaseClient.js";
 
 
@@ -86,7 +86,7 @@ export const Signup = () => {
                        ref={emailRef}
                        onSubmit={(e) => handleEmailValidation(e)}
                        className={emailInputClass}
-                       placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
+                       placeholder={LABELS.COMMON.PLACEHOLDER_MAIL}
                        required/>
                 <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
                 <label className={"form-label d-flex"}
@@ -99,7 +99,7 @@ export const Signup = () => {
                        placeholder={"********"}
                        required/>
                 <label className={"form-label d-flex"}
-                       htmlFor="input-signup-password-confirm">{LABELS_AND_HEADINGS.PASSWORD_CONFIRM}</label>
+                       htmlFor="input-signup-password-confirm">{LABELS.COMMON.PASSWORD_CONFIRM}</label>
                 <input id="input-signup-password-confirm"
                        type="password"
                        onChange={(e) => setPasswordConfirm(e.target.value)}
