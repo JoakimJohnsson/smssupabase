@@ -144,8 +144,6 @@ export const TEXTS = {
     MESSAGES_ADMIN_TEXT_1: "Här kan du hantera meddelanden.",
     MESSAGES_ADMIN_TEXT_2: "Du kan bland annat sända ut globala meddelanden som visas för alla användare. Samt administrera inkomna meddelanden.",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet.",
-    SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt ändra dina inloggningsuppgifter.",
-    SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SETTINGS_CREDENTIALS: "Ändra din e-postadress (användarnamn) eller lösenord här.",
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",

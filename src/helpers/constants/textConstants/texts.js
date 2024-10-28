@@ -43,6 +43,8 @@ export const TEXTS = {
         TITLES: {},
         USERS: {}
     },
+    SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt ändra dina inloggningsuppgifter.",
+    SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SHOWING: "Visar",
     SHOWING_OF: "av",
     SHOWING_LATEST_USERS: "Visar de senast uppdaterade användarna från databasen.",

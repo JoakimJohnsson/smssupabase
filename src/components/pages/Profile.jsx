@@ -1,6 +1,8 @@
 import {useAppContext} from "../../context/AppContext";
 import React, {useEffect, useState} from "react";
-import {FILETYPES, TEXTS} from "../../helpers/constants/configConstants";
+import {FILETYPES} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
@@ -11,7 +13,6 @@ import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {supabase} from "../../supabase/supabaseClient";
 import {ProfileInfoCredentials} from "./ProfileInfoCredentials";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 const Profile = () => {

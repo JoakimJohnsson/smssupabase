@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {CONFIG} from "../../helpers/constants/configConstants";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../services/issueService";
 import {IssueCard} from "../lists/issues/IssueCard";
 import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {ShowMoreButtons} from "../minis/ShowMoreButtons";
 
