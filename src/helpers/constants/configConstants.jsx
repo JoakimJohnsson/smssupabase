@@ -444,11 +444,22 @@ export const GRADE_RADIOS = [
 
 export const SK_GRADE_RADIO_VALUES = [
     2.0, 4.0, 6.0, 8.0, 9.4
-]
+];
 
 export const SK_GRADE_RADIO_NAMES = [
     "GD", "VG", "FN", "VF", "NM"
-]
+];
+
+export const LOADING_STATES = {
+    NONE: 'none',
+    GENERAL: 'general',
+    NEW_VALUE: 'new_value',
+    GENERATE_ISSUES: 'generate_issues',
+    DELETE_ISSUES: 'delete_issues',
+    IS_VALUED: 'is_valued',
+    GRADE_VALUES: 'grade_values',
+    // Add other specific states as needed
+};
 
 export const COLOR_VARIABLE_NAMES = {
     PRIMARY: "#41bee0",

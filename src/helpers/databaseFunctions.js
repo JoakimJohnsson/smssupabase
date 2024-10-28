@@ -1,4 +1,5 @@
 import {supabase} from "../supabase/supabaseClient";
+import {LOADING_STATES} from "./constants/configConstants.jsx";
 
 // Helper methods for performing SQL Supabase database functions defined and edited in the SMS Supabase project.
 
@@ -94,7 +95,7 @@ export const insertAllGradeValuesForIssue = async (issueId, callbackFunction) =>
     }
 }
 
-export const updateGradeValuesForTitles = async (titleId, prValue, gdValue, vgValue, fnValue, vfValue, nmValue, callbackFunction) => {
+export const updateGradeValuesForTitles = async (titleId, prValue, gdValue, vgValue, fnValue, vfValue, nmValue, setLoadingState) => {
     try {
         await supabase.rpc('update_grade_values_for_titles', {
             title_ids: [titleId],
@@ -104,7 +105,7 @@ export const updateGradeValuesForTitles = async (titleId, prValue, gdValue, vgVa
             value_fn: fnValue,
             value_vf: vfValue,
             value_nm: nmValue,
-        }).then(() => callbackFunction(false));
+        }).then(() => setLoadingState(LOADING_STATES.NONE));
     } catch (error) {
         console.error(error);
     }

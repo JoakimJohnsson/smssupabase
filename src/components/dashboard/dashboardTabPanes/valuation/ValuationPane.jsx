@@ -1,5 +1,5 @@
 import React, {useState, useCallback, useEffect} from "react";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {CONFIG, LABELS_AND_HEADINGS, LOADING_STATES} from "../../../../helpers/constants/configConstants";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -17,17 +17,16 @@ import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadi
 export const ValuationPane = () => {
 
     const {user, setInformationMessage} = useAppContext();
-    const [loading, setLoading] = useState(false);
+    const [loadingState, setLoadingState] = useState(LOADING_STATES.NONE);
     const [totalValuationValuesForUser, setTotalValuationValuesForUser] = useState(null);
     const [grades, setGrades] = useState(null);
-    const [loadingNewValue, setLoadingNewValue] = useState(false);
 
     const fetchTotalValuationValuesForUser = useCallback(async () => {
-        setLoading(true);
+        setLoadingState(LOADING_STATES.GENERAL);
         await ServiceFunctions.getTotalValuationValuesForUser(user.id).then((result) => {
             setTotalValuationValuesForUser(result);
             setTimeout(() => {
-                setLoading(false);
+                setLoadingState(LOADING_STATES.NONE);
             }, CONFIG.TIMEOUT_LG);
         })
     }, [user.id]);
@@ -51,7 +50,7 @@ export const ValuationPane = () => {
     }, [fetchTotalValuationValuesForUser]);
 
     const handleDoCalculateAndAddNewValue = async () => {
-        setLoadingNewValue(true);
+        setLoadingState(LOADING_STATES.NEW_VALUE);
         if (grades && grades.length > 0) {
             const newTotalValuationValue = await getTotalGradeValue(grades);
             if (totalValuationValuesForUser && totalValuationValuesForUser.length > 0) {
@@ -72,11 +71,11 @@ export const ValuationPane = () => {
                 await ServiceFunctions.addTotalValuationValueForUser(user.id, newTotalValuationValue);
             }
             await fetchTotalValuationValuesForUser();
-            setLoadingNewValue(false);
+            setLoadingState(LOADING_STATES.NONE);
         } else {
             // No grades found
             // No need to save new value
-            setLoadingNewValue(false);
+            setLoadingState(LOADING_STATES.NONE);
             setInformationMessage({show: true, status: 1, error: LABELS_AND_HEADINGS.VALUATION_CALCULATE_MESSAGE_3});
         }
     };
@@ -107,14 +106,14 @@ export const ValuationPane = () => {
                 </p>
             }
             {
-                loading ?
+                loadingState === LOADING_STATES.GENERAL ?
                     <OverlaySpinner/>
                     :
                     <div className={"row"}>
                         <div className={"col-12"}>
                             <div className={"mb-3"}>
                                 {
-                                    loadingNewValue ?
+                                    loadingState === LOADING_STATES.NEW_VALUE ?
                                         <NoDataAvailable isValuation/>
                                         :
                                         <FunctionButton
@@ -122,7 +121,7 @@ export const ValuationPane = () => {
                                             label={LABELS_AND_HEADINGS.VALUATION_CALCULATE}
                                             icon={valueIconDuoTone}
                                             onClick={handleDoCalculateAndAddNewValue}
-                                            disabled={loadingNewValue}
+                                            disabled={loadingState === LOADING_STATES.NEW_VALUE}
                                         />
                                 }
                             </div>

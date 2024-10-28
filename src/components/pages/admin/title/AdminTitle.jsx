@@ -9,7 +9,7 @@ import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId
 } from "../../../../services/issueService";
-import {CONFIG, FILETYPES, LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {CONFIG, FILETYPES, LABELS_AND_HEADINGS, LOADING_STATES} from "../../../../helpers/constants/configConstants";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
@@ -38,11 +38,7 @@ export const AdminTitle = () => {
     const [titleData, setTitleData] = useState({});
     const [issuesData, setIssuesData] = useState({});
     const [publishersData, setPublishersData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [loadingGI, setLoadingGI] = useState(false);
-    const [loadingDI, setLoadingDI] = useState(false);
-    const [loadingIV, setLoadingIV] = useState(false);
-    const [loadingGG, setLoadingGG] = useState(false);
+    const [loadingState, setLoadingState] = useState(LOADING_STATES.NONE);
     const [uploading, setUploading] = useState(false);
     const [imageFilename, setImageFilename] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -73,8 +69,9 @@ export const AdminTitle = () => {
     const [chosenPublisherName, setChosenPublisherName] = useState("");
 
     useEffect(() => {
+        setLoadingState(LOADING_STATES.GENERAL);
         getRowsByTable(TABLES.PUBLISHERS, setPublishersData).then();
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (publishersData && publisher_id) {
@@ -84,7 +81,7 @@ export const AdminTitle = () => {
 
     const fetchTitleAndIssuesData = useCallback(() => {
         getRowByTableAndId(TABLES.TITLES, setTitle, id).then(() => {
-            getIssuesWithTitleAndPublisherAndGradeValuesByTitleId(setIssuesData, id).then(() => setLoading(false));
+            getIssuesWithTitleAndPublisherAndGradeValuesByTitleId(setIssuesData, id).then(() => setLoadingState(LOADING_STATES.NONE));
         });
     }, [id]);
 
@@ -124,50 +121,50 @@ export const AdminTitle = () => {
     }
 
     const handleGenerateIssues = () => {
-        setLoadingGI(true);
+        setLoadingState(LOADING_STATES.GENERATE_ISSUES);
         if (publisher_id && titleData && validateTitleData(titleData)) {
             generateIssuesForTitle(titleData, setInformationMessage, publisher_id).then(() => {
                 setTimeout(() => {
-                    setLoadingGI(false);
+                    setLoadingState(LOADING_STATES.NONE);
                     fetchTitleAndIssuesData();
                 }, CONFIG.TIMEOUT_XL);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_UPLOAD_MISSING_INFO});
             setTimeout(() => {
-                setLoadingGI(false);
+                setLoadingState(LOADING_STATES.NONE);
             }, CONFIG.TIMEOUT_XL);
         }
     }
 
     const handleDeleteIssues = (issuesData) => {
-        setLoadingDI(true);
+        setLoadingState(LOADING_STATES.DELETE_ISSUES);
         if (issuesData && issuesData.length > 0) {
             deleteAllIssues(issuesData, setIssuesData, setInformationMessage).then(() => {
                 setTimeout(() => {
-                    setLoadingDI(false);
+                    setLoadingState(LOADING_STATES.NONE);
                     fetchTitleAndIssuesData();
                 }, CONFIG.TIMEOUT_XL);
             })
         } else {
             setInformationMessage({show: true, status: 4, error: MESSAGES.ERROR.VALIDATION_DELETE});
             setTimeout(() => {
-                setLoadingDI(false);
+                setLoadingState(LOADING_STATES.NONE);
             }, CONFIG.TIMEOUT_XL);
         }
     }
 
     const handleIsValued = () => {
-        setLoadingIV(true);
+        setLoadingState(LOADING_STATES.IS_VALUED);
         if (is_valued === 0) {
             updateIsValued(title.id, 1).then(() => {
                 setIs_valued(1);
-                setLoadingIV(false);
+                setLoadingState(LOADING_STATES.NONE);
             });
         } else {
             updateIsValued(title.id, 0).then(() => {
                 setIs_valued(0);
-                setLoadingIV(false);
+                setLoadingState(LOADING_STATES.NONE);
             });
         }
     }
@@ -189,14 +186,14 @@ export const AdminTitle = () => {
     };
 
     const handleUpdateDefaultGradeValues = async () => {
-        setLoadingGG(true);
-        await updateGradeValuesForTitles(title.id, updateGradeValues.pr, updateGradeValues.gd, updateGradeValues.vg, updateGradeValues.fn, updateGradeValues.vf, updateGradeValues.nm, setLoadingGG);
+        setLoadingState(LOADING_STATES.GRADE_VALUES);
+        await updateGradeValuesForTitles(title.id, updateGradeValues.pr, updateGradeValues.gd, updateGradeValues.vg, updateGradeValues.fn, updateGradeValues.vf, updateGradeValues.nm, setLoadingState);
     }
 
     return objectDoesExist(title) ? (
             <main id="main-content" className={"container-fluid main-container"}>
                 {
-                    title && loading ?
+                    title && loadingState === LOADING_STATES.GENERAL ?
                         <div className={"row row-padding--main"}>
                             <OverlaySpinner/>
                         </div>
@@ -244,7 +241,7 @@ export const AdminTitle = () => {
                                                     :
                                                     <p className={"alert alert-success"}>{TEXTS.GRADE_TITLE_IS_VALUED}</p>
                                             }
-                                            <IconButton variant={"primary"} icon={valueIcon} onClick={handleIsValued} loading={loadingIV}
+                                            <IconButton variant={"primary"} icon={valueIcon} onClick={handleIsValued} loading={loadingState === LOADING_STATES.IS_VALUED}
                                                         label={LABELS_AND_HEADINGS.UPDATE}/>
                                         </div>
                                         <div>
@@ -263,14 +260,14 @@ export const AdminTitle = () => {
                                                                 min={0}
                                                                 value={value}
                                                                 onChange={handleInputChange}
-                                                                disabled={is_valued === 1 || loadingGG}
+                                                                disabled={is_valued === 1 || loadingState === LOADING_STATES.GRADE_VALUES}
                                                             />
                                                         </div>
                                                     )
                                                 })
                                             }
                                             <IconButton variant={"primary"} icon={valueIcon} onClick={handleUpdateDefaultGradeValues}
-                                                        label={LABELS_AND_HEADINGS.UPDATE} disabled={is_valued === 1} loading={loadingGG}/>
+                                                        label={LABELS_AND_HEADINGS.UPDATE} disabled={is_valued === 1} loading={loadingState === LOADING_STATES.GRADE_VALUES}/>
                                         </div>
 
                                     </div>
@@ -434,7 +431,7 @@ export const AdminTitle = () => {
                                         <button className={"btn btn-danger d-flex align-items-center"} disabled={!(issuesData && issuesData.length > 0)}
                                                 onClick={() => handleDeleteIssues(issuesData)}>
                                             {
-                                                loadingDI ?
+                                                loadingState === LOADING_STATES.DELETE_ISSUES ?
                                                     <>
                                                         <CustomSpinner size={"1x"} className={"me-2"}/>
                                                         {LABELS.COMMON.DELETING}
@@ -458,7 +455,7 @@ export const AdminTitle = () => {
                                                     <p className={"alert alert-success"}>{TEXTS.AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER + chosenPublisherName}.</p>
                                                     <button className={"btn btn-primary sms-btn"} onClick={() => handleGenerateIssues()}>
                                                         {
-                                                            loadingGI ?
+                                                            loadingState === LOADING_STATES.GENERATE_ISSUES ?
                                                                 <>
                                                                     <CustomSpinner size={"1x"} className={"me-2"}/>
                                                                     {LABELS_AND_HEADINGS.GENERATING_ISSUES}
