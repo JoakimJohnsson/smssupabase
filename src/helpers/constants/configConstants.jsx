@@ -17,7 +17,6 @@ import {PANES} from "./textConstants/texts";
 
 // 166 rader
 export const LABELS_AND_HEADINGS = {
-    ALLOW_LOCATION_ACCESS: "Tillåt platsåtkomst",
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
@@ -31,7 +30,6 @@ export const LABELS_AND_HEADINGS = {
     GENERATE_ISSUES: "Lägg till publikationer",
     GENERATING_ISSUES: "Lägger till publikationer",
     INFORMATION_ABOUT: "Information om",
-    MAKE_PUBLIC: "Gör din profilsida och information publik",
     MISSING_ISSUES: "Saknade publikationer",
     MENU: "Meny",
     MESSAGE_TITLE_SUFFIX_FOR: "för",

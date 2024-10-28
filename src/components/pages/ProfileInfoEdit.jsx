@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {isTrue} from "../../helpers/functions";
 import {updateProfileData} from "../../services/profileService";
@@ -8,7 +8,6 @@ import {useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 import {IconButton} from "../minis/IconButton";
 import {editIcon, saveIcon} from "../icons";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}) => {
@@ -91,7 +90,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                     onChange={() => handleIsPublicCheckboxChange(newProfile.is_public)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="is_public">{LABELS_AND_HEADINGS.MAKE_PUBLIC}</label>
+                <label className={"form-label"} htmlFor="is_public">{TEXTS.MAKE_PUBLIC}</label>
             </div>
             <div className={"mb-4 alert alert-info"}>
                 <input
@@ -104,7 +103,7 @@ export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}
                     onChange={() => handleAllowLocationAccessCheckboxChange(newProfile.allow_location_access)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label text-black"} htmlFor="allow_location_access">{LABELS_AND_HEADINGS.ALLOW_LOCATION_ACCESS}</label>
+                <label className={"form-label text-black"} htmlFor="allow_location_access">{LABELS.SECTIONS.USERS.ALLOW_LOCATION_ACCESS}</label>
                 <div className={"fs-small text-info--darker"}>{TEXTS.ALLOW_LOCATION_ACCESS_PROMPT}</div>
             </div>
             {

@@ -28,6 +28,7 @@ export const TEXTS = {
     GRADE_TEXT_3: "Seriekatalogen",
     GRADE_TEXT_4: "Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
     GRADE_TITLE_IS_VALUED: "Alla publikationer har fått rätt värden.",
+    MAKE_PUBLIC: "Gör din profilsida och information publik",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
     MARVELKLUBBEN_TEXT_1: "Du måste lägga börja samla på titeln för att kunna lägga till publikationen i din samling.",
     MARVELKLUBBEN_TEXT_2: "Mer information om Marvelklubben hittar du på",
