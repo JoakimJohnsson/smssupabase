@@ -15,16 +15,13 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 172 rader
+// 166 rader
 export const LABELS_AND_HEADINGS = {
     ALLOW_LOCATION_ACCESS: "Tillåt platsåtkomst",
-    ADD_ISSUE_UPGRADE: "Markera behov av uppgradering",
-    REMOVE_ISSUE_UPGRADE: "Ta bort behov av uppgradering",
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
-    COPY: "exemplar",
     COPY_VALUE: "Värde:",
     COPY_NOT_VALUED: "(Värden ej inlagda för denna titel)",
     COPY_VALUE_SEK: "kr",
@@ -57,13 +54,11 @@ export const LABELS_AND_HEADINGS = {
     MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
     MESSAGE_USER_CREATE: "Skicka ett meddelande till",
     CALCULATING_VALUATION: "Beräknar ny värdering!",
-    ON_COMICS_ORG: "på Comics.org",
     PASSWORD: "Lösenord",
     NEW_PASSWORD: "Nytt lösenord",
     PASSWORD_CONFIRM: "Bekräfta lösenord",
     YOUR_INFORMATION: "Din information",
     PLACEHOLDER_MAIL: "namn@posten.se",
-    PREVIOUS: "Tidigare",
     PROFILE_IMAGE: "Profilbild",
     CHOOSE_PUBLISHER_FOR_ISSUE: "Välj förlag för dina publikationer",
     RELEASE_LATEST: "Senaste releasen",
@@ -73,7 +68,6 @@ export const LABELS_AND_HEADINGS = {
     SEE_ALL_MESSAGES: "Se alla meddelanden",
     SEE_ALL_TITLES: "Se alla titlar",
     SEE_ALL_USERS: "Se alla användare",
-    SERIEWIKIN_FOR: "Seriewikin för",
     SHOW_ALL_ISSUES: "Visa alla publikationer",
     SHOW_MISSING_ISSUES: "Visa endast saknade publikationer",
     SHOW_ORIGINAL_IMAGE: "Visa originalbild",

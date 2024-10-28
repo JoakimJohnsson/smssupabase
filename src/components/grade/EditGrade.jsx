@@ -3,6 +3,7 @@ import {ButtonGroup} from "react-bootstrap";
 import {editGrade, deleteGrade} from "../../services/collectingService";
 import {useAppContext} from "../../context/AppContext";
 import {GRADE_RADIOS, GRADE_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {IconButton} from "../minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {getDataGradeValue, isSKGradeValue} from "../../helpers/functions";
@@ -35,7 +36,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
     return radioValue && (
         <div className={"border rounded-3 p-3 bg-dog mb-4"}>
             <h3 className={"mb-4"}>
-                <span className={"d-block mb-2 pb-2 border-bottom text-capitalize"}>{LABELS_AND_HEADINGS.COPY} {index + 1}</span>
+                <span className={"d-block mb-2 pb-2 border-bottom text-capitalize"}>{LABELS.COMMON.COPY} {index + 1}</span>
                 {
                     issueValue >= 0 &&
                     <span className={"small"}>{LABELS_AND_HEADINGS.COPY_VALUE} {issueValue} {LABELS_AND_HEADINGS.COPY_VALUE_SEK} {issue.titles.is_valued === 0 && LABELS_AND_HEADINGS.COPY_NOT_VALUED}</span>
@@ -72,7 +73,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
                 })}
             </ButtonGroup>
             <IconButton variant={"danger"} icon={faTrashCan} onClick={handleDeleteGrade}
-                        label={LABELS_AND_HEADINGS.DELETE_GRADE + " " + LABELS_AND_HEADINGS.COPY + " " + (index + 1)}/>
+                        label={LABELS_AND_HEADINGS.DELETE_GRADE + " " + LABELS.COMMON.COPY + " " + (index + 1)}/>
         </div>
     )
 }

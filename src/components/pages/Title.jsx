@@ -161,14 +161,14 @@ export const Title = () => {
                                     {
                                         title.wiki_url &&
                                         <a className={"d-block"} href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                            {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {title.name}
+                                            {LABELS.SECTIONS.TITLES.SERIEWIKIN_FOR} {title.name}
                                             <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                         </a>
                                     }
                                     {
                                         title.comics_org_url &&
                                         <a className={"d-block"} href={title.comics_org_url} target={"_blank"} rel={"noreferrer"}>
-                                            {title.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                            {title.name} {LABELS.SECTIONS.TITLES.ON_COMICS_ORG}
                                             <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                         </a>
                                     }

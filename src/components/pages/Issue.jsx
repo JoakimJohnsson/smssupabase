@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
+import {ROUTES} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
@@ -187,7 +187,7 @@ export const Issue = () => {
                                                                 onClick={() => navigate(`/issues/${prevIssueId}`)}
                                                                 disabled={!prevIssueId}
                                                                 className={"btn btn-sm btn-outline-secondary me-3"}
-                                                                aria-label={LABELS_AND_HEADINGS.PREVIOUS}>
+                                                                aria-label={LABELS.COMMON.PREVIOUS}>
                                                                 <Icon icon={faArrowLeftLong} className={"fa-2x"}/>
                                                             </button>
                                                             <button
@@ -244,7 +244,7 @@ export const Issue = () => {
                                             countryData &&
                                             <CountryBadge countryId={issue?.publishers?.country_id}/>
                                         }
-                                        <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS_AND_HEADINGS.COPY}</span>
+                                        <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS.COMMON.COPY}</span>
                                     </div>
                                     <div className={"mb-3"}>
                                         {
@@ -264,7 +264,7 @@ export const Issue = () => {
                                                         variant={"secondary"}
                                                         icon={isUpgradingIssue ? faCloudXmark : faCloudArrowUp}
                                                         onClick={() => handleUpgrade()}
-                                                        label={isUpgradingIssue ? LABELS_AND_HEADINGS.REMOVE_ISSUE_UPGRADE : LABELS_AND_HEADINGS.ADD_ISSUE_UPGRADE}
+                                                        label={isUpgradingIssue ? LABELS.SECTIONS.ISSUES.REMOVE_ISSUE_UPGRADE : LABELS.SECTIONS.ISSUES.ADD_ISSUE_UPGRADE}
                                                         id={"message-form-toggler"}
                                                         showLabel={true}
                                                     />
@@ -289,7 +289,7 @@ export const Issue = () => {
                                                 issue?.titles?.wiki_url &&
                                                 <a className={"d-block"} href={issue?.titles?.wiki_url}
                                                    target={"_blank"} rel={"noreferrer"}>
-                                                    {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue?.titles?.name}
+                                                    {LABELS.SECTIONS.TITLES.SERIEWIKIN_FOR} {issue?.titles?.name}
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                             }
@@ -297,7 +297,7 @@ export const Issue = () => {
                                                 issue?.titles?.comics_org_url &&
                                                 <a className={"d-block"} href={issue?.titles?.comics_org_url}
                                                    target={"_blank"} rel={"noreferrer"}>
-                                                    {issue?.titles?.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                                    {issue?.titles?.name} {LABELS.SECTIONS.TITLES.ON_COMICS_ORG}
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                             }
