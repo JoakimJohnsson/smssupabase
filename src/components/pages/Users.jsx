@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../services/serviceFunctions";
 import {HeadingWithBreadCrumbs} from "../headings";
@@ -8,7 +9,6 @@ import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilt
 import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {UserCard} from "../lists/users/UserCard";
 import {filterQueryByFirstNameAndLastName} from "../../helpers/functions";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Users = () => {

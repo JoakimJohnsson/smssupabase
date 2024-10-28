@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {
@@ -13,7 +14,7 @@ import {getRowsByTable} from "../../services/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
 import FilterFormFormat from "../searchFilter/FilterFormFormat";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+
 import FilteredListInfo from "../searchFilter/FilteredListInfo.jsx";
 
 
