@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useParams} from "react-router-dom";
 import {getRowByTableAndId, handleCollectingTitle} from "../../services/serviceFunctions";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
+import {ROUTES} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {PANES, TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
@@ -217,11 +217,11 @@ export const Title = () => {
                                                 listViewMissing ?
                                                     <FunctionButton variant={"secondary"} icon={faGrid2Plus}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
-                                                                    label={LABELS_AND_HEADINGS.SHOW_ALL_ISSUES} id={"list-variant-toggler"}/>
+                                                                    label={LABELS.SECTIONS.TITLES.SHOW_ALL_ISSUES} id={"list-variant-toggler"}/>
                                                     :
                                                     <FunctionButton variant={"secondary"} icon={faGrid2}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
-                                                                    label={LABELS_AND_HEADINGS.SHOW_MISSING_ISSUES} id={"list-variant-toggler"}/>
+                                                                    label={LABELS.SECTIONS.TITLES.SHOW_MISSING_ISSUES} id={"list-variant-toggler"}/>
                                                 :
                                                 false
                                         }

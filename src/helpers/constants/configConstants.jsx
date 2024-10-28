@@ -61,8 +61,6 @@ export const LABELS_AND_HEADINGS = {
     SEE_ALL_MESSAGES: "Se alla meddelanden",
     SEE_ALL_TITLES: "Se alla titlar",
     SEE_ALL_USERS: "Se alla användare",
-    SHOW_ALL_ISSUES: "Visa alla publikationer",
-    SHOW_MISSING_ISSUES: "Visa endast saknade publikationer",
     SHOW_ORIGINAL_IMAGE: "Visa originalbild",
     SIGN_OUT: "Logga ut",
     SKIP_LINK_TEXT: "Gå direkt till innehåll",

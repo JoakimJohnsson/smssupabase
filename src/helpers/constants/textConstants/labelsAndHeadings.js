@@ -131,6 +131,8 @@ export const LABELS = {
             FORMAT_DB: "Format (format)",
             ON_COMICS_ORG: "på Comics.org",
             SERIEWIKIN_FOR: "Seriewikin för",
+            SHOW_ALL_ISSUES: "Visa alla publikationer",
+            SHOW_MISSING_ISSUES: "Visa endast saknade publikationer",
             TITLE: "Titel",
             TITLES: "Titlar",
             TITLE_DB: "Titel (title)",
