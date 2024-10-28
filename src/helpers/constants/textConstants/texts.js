@@ -49,6 +49,7 @@ export const TEXTS = {
     SHOWING: "Visar",
     SHOWING_OF: "av",
     SHOWING_LATEST_USERS: "Visar de senast uppdaterade användarna från databasen.",
+    SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SOURCE_EXAMPLE: "EXEMPEL: Titel #1 (år) - https://comics.org/issue/12345; Amazing Spiderman #225 (1998) - https://comics.org/issue/23543254",
     TOTAL_PUBLISHED: "Totalt gavs det ut",
     TOTAL_PUBLISHED_PUBLICATION: "publikation som kan vara intressant för marvelsamlare.",

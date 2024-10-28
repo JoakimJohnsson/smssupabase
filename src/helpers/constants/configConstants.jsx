@@ -15,7 +15,7 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 166 rader
+// 155 rader
 export const LABELS_AND_HEADINGS = {
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
@@ -65,7 +65,6 @@ export const LABELS_AND_HEADINGS = {
     SHOW_MISSING_ISSUES: "Visa endast saknade publikationer",
     SHOW_ORIGINAL_IMAGE: "Visa originalbild",
     SIGN_OUT: "Logga ut",
-    SIGN_UP_SUCCESS: "Registreringen lyckades!",
     SKIP_LINK_TEXT: "Gå direkt till innehåll",
     SORT_REVERSE: "Omvänd ordning",
     SORT_CHOSE: "Välj sortering",
@@ -141,7 +140,6 @@ export const TEXTS = {
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_MESSAGES: "Visar senast inkomna eller skickade meddelanden, samt eventuella globala meddelanden från Admin.",
-    SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen. För att lägga till en ny titel:",
     SHOWING_LATEST_TITLES_STEP_1: "Skapa titel",
     SHOWING_LATEST_TITLES_STEP_2: "Lägg till publikationer",
