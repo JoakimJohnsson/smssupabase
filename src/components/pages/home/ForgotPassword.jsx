@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {Icon, sendIcon, questionIconDuoTone} from "../../icons";
 import {requestPasswordResetForEmail} from "../../../services/serviceFunctions";
 
@@ -17,7 +17,7 @@ const ForgotPassword = () => {
                 <Icon icon={questionIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
                 <h2>{LABELS.COMMON.FORGOT_PASSWORD}</h2>
             </div>
-            <label className={"form-label"} htmlFor="input-forgot-email">{LABELS_AND_HEADINGS.EMAIL_SEND}</label>
+            <label className={"form-label"} htmlFor="input-forgot-email">{LABELS.COMMON.EMAIL_SEND}</label>
             <input id="input-forgot-email"
                    type="email"
                    onChange={(e) => setEmail(e.target.value)}

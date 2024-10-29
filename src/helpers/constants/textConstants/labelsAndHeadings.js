@@ -28,6 +28,7 @@ export const LABELS = {
         EDIT: "Redigera",
         EDIT_INFORMATION: "Redigera information",
         EMAIL: "E-postadress",
+        EMAIL_SEND: "Ange din e-postadress",
         FORGOT_PASSWORD: "Glömt lösenordet?",
         GO_TO: "Gå till",
         HOME: "Hem",

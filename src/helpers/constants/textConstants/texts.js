@@ -6,6 +6,9 @@ export const TEXTS = {
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer. Välj förlag ovanför.",
     AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER: "Du har valt förlaget ",
     AUTO_GENERATE_ISSUES_NO_CHOICE: "Du har inte valt något förlag än!",
+    CHANGE_PASSWORD_SEND_INFO: "Vi skickar information för att bekräfta återställning av lösenord.",
+    CHANGE_PASSWORD_INFO: "OBS! Lösenordet ändras direkt - vi skickar ingen information för att bekräfta återställning av lösenord.",
+    CHANGE_EMAIL_SEND_INFO: "Vi skickar information för att bekräfta ändring av e-postadress.",
     COLLECT_TITLE_START: "Börja samla på titeln",
     COLLECT_TITLE_STOP: "Sluta samla på titeln",
     COLLECT_TITLE_STOP_REMOVE: "Du måste tömma samlingen på publikationer innan du kan sluta samla på den här titeln.",
@@ -47,6 +50,7 @@ export const TEXTS = {
         TITLES: {},
         USERS: {}
     },
+    SETTINGS_CREDENTIALS: "Ändra din e-postadress (användarnamn) eller lösenord här.",
     SETTINGS_LEAD: "Här kan du ställa in profilbild, ändra din information samt ändra dina inloggningsuppgifter.",
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SHOWING: "Visar",

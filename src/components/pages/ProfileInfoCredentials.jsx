@@ -1,6 +1,6 @@
 import React from "react";
-import {TEXTS} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {Icon, keyIcon, sendIcon} from "../icons";
 
 
