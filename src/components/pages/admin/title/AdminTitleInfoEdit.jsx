@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
 import {isTrue, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {updateTitleData} from "../../../../services/titleService";
