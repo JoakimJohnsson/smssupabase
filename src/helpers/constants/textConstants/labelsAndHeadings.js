@@ -71,6 +71,8 @@ export const LABELS = {
         SHOW_MORE: "Visa mer",
         SHOW_LESS: "Visa mindre",
         SIGN_UP_SUCCESS: "Registreringen lyckades!",
+        SVENSKA_MARVELSAMLARE: "Svenska Marvelsamlare",
+        SVENSKA_MARVELSAMLARE_SHORT: "SMS",
         WANTED_ISSUES: "Efterlysta publikationer",
         NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
         NO_WANTED_ISSUES_USER: "Inga efterlysta publikationer.",
