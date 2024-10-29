@@ -9,7 +9,7 @@ import {
     addIssueData, deleteAllIssues,
     generateIssuesForTitle, getIssuesWithTitleAndPublisherAndGradeValuesByTitleId
 } from "../../../../services/issueService";
-import {CONFIG, FILETYPES, LABELS_AND_HEADINGS, LOADING_STATES} from "../../../../helpers/constants/configConstants";
+import {CONFIG, FILETYPES, LOADING_STATES} from "../../../../helpers/constants/configConstants";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
@@ -242,10 +242,10 @@ export const AdminTitle = () => {
                                                     <p className={"alert alert-success"}>{TEXTS.GRADE_TITLE_IS_VALUED}</p>
                                             }
                                             <IconButton variant={"primary"} icon={valueIcon} onClick={handleIsValued} loading={loadingState === LOADING_STATES.IS_VALUED}
-                                                        label={LABELS_AND_HEADINGS.UPDATE}/>
+                                                        label={LABELS.COMMON.UPDATE}/>
                                         </div>
                                         <div>
-                                            <h3>{LABELS_AND_HEADINGS.UPDATE_DEFAULT_VALUES}</h3>
+                                            <h3>{TEXTS.UPDATE_DEFAULT_VALUES}</h3>
                                             {
                                                 Object.entries(updateGradeValues).map(([key, value]) => {
                                                     return (
@@ -267,7 +267,7 @@ export const AdminTitle = () => {
                                                 })
                                             }
                                             <IconButton variant={"primary"} icon={valueIcon} onClick={handleUpdateDefaultGradeValues}
-                                                        label={LABELS_AND_HEADINGS.UPDATE} disabled={is_valued === 1} loading={loadingState === LOADING_STATES.GRADE_VALUES}/>
+                                                        label={LABELS.COMMON.UPDATE} disabled={is_valued === 1} loading={loadingState === LOADING_STATES.GRADE_VALUES}/>
                                         </div>
 
                                     </div>
@@ -288,7 +288,7 @@ export const AdminTitle = () => {
                                 <div className={"sms-dashboard-col"}>
                                     <div className={"sms-section--light pb-5"}>
                                         <div className={"mb-4"}>
-                                            <h2>{LABELS_AND_HEADINGS.CHOOSE_PUBLISHER_FOR_ISSUE}</h2>
+                                            <h2>{TEXTS.CHOOSE_PUBLISHER_FOR_ISSUE}</h2>
                                             <label className={"form-label"} htmlFor="publisher">{LABELS.SECTIONS.PUBLISHERS.PUBLISHER_DB}</label>
                                             {
                                                 publishersData &&
@@ -301,7 +301,7 @@ export const AdminTitle = () => {
                                                     {printOptions(publishersData)}
                                                 </select>
                                             }
-                                            <h2>{LABELS_AND_HEADINGS.ADD_ISSUE_FOR} {title.name}</h2>
+                                            <h2>{TEXTS.ADD_ISSUE_FOR} {title.name}</h2>
                                             <label className={"form-label"} htmlFor="year">{LABELS.COMMON.YEAR_DB}</label>
                                             <input
                                                 id="year"
@@ -447,7 +447,7 @@ export const AdminTitle = () => {
                                 </div>
                                 <div className={"sms-dashboard-col"}>
                                     <div className={"sms-section--light"}>
-                                        <h2>{LABELS_AND_HEADINGS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
+                                        <h2>{TEXTS.AUTO_GENERATE_ISSUES_FOR} {title.name}</h2>
                                         <p>{TEXTS.AUTO_GENERATE_ISSUES_INFO}</p>
                                         {
                                             publisher_id ?
@@ -458,12 +458,12 @@ export const AdminTitle = () => {
                                                             loadingState === LOADING_STATES.GENERATE_ISSUES ?
                                                                 <>
                                                                     <CustomSpinner size={"1x"} className={"me-2"}/>
-                                                                    {LABELS_AND_HEADINGS.GENERATING_ISSUES}
+                                                                    {TEXTS.GENERATING_ISSUES}
                                                                 </>
                                                                 :
                                                                 <>
                                                                     <Icon icon={issueIcon} className={"me-2"}/>
-                                                                    {LABELS_AND_HEADINGS.GENERATE_ISSUES}
+                                                                    {TEXTS.GENERATE_ISSUES}
                                                                 </>
                                                         }
                                                     </button>

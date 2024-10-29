@@ -1,15 +1,18 @@
 // Texts - for longer text blocks
 export const TEXTS = {
+    ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
     ADMIN_TITLE_LEAD: "Här kan du redigera information om titeln. Du kan lägga till en bild (logotyp), samt även publikationer. Publikationer kan läggas till en och en, eller i bulk.",
     ALLOW_LOCATION_ACCESS_PROMPT: "Genom att markera detta alternativ godkänner du att vi använder din platsinformation. Vi följer strikta integritetsprinciper och använder din platsdata endast för detta ändamål. Din platsinformation kommer inte att sparas eller användas för något annat syfte utan ditt uttryckliga samtycke. Du kan när som helst ändra dessa inställningar. Vi värnar om din integritet och tar skyddet av din personliga data på stort allvar.",
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar.",
+    AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     AUTO_GENERATE_ISSUES_INFO: "Genererar automatiskt publikationer för varje år. Baserat på startår till slutår och totala antalet publikationer. Välj förlag ovanför.",
     AUTO_GENERATE_ISSUES_CHOSEN_PUBLISHER: "Du har valt förlaget ",
     AUTO_GENERATE_ISSUES_NO_CHOICE: "Du har inte valt något förlag än!",
     CHANGE_PASSWORD_SEND_INFO: "Vi skickar information för att bekräfta återställning av lösenord.",
     CHANGE_PASSWORD_INFO: "OBS! Lösenordet ändras direkt - vi skickar ingen information för att bekräfta återställning av lösenord.",
     CHANGE_EMAIL_SEND_INFO: "Vi skickar information för att bekräfta ändring av e-postadress.",
+    CHOOSE_PUBLISHER_FOR_ISSUE: "Välj förlag för dina publikationer",
     COLLECT_TITLE_START: "Börja samla på titeln",
     COLLECT_TITLE_STOP: "Sluta samla på titeln",
     COLLECT_TITLE_STOP_REMOVE: "Du måste tömma samlingen på publikationer innan du kan sluta samla på den här titeln.",
@@ -33,6 +36,8 @@ export const TEXTS = {
     FOOTER_INFO_TEXT_1: "Denna sajt innehåller bilder och information vars copyright ägs av",
     FOOTER_INFO_TEXT_2: "och används i enlighet med Fair use doctrine of the United States.",
     FOOTER_INFO_TEXT_3: "Information har också hämtats från följande källor:",
+    GENERATE_ISSUES: "Lägg till publikationer",
+    GENERATING_ISSUES: "Lägger till publikationer",
     GRADE_IS_NOT_VALUED: "Vissa publikationer saknar värden.",
     GRADE_IS_VALUED_LEAD: "Här kan du markera att alla publikationer på den här titeln har fått rätt värden.",
     GRADE_TEXT_2: "Ange en skickgradering för varje exemplar du har. På så sätt kan du ha mer än ett ex av varje publikation i din samling. Mer information om skickgradering, och mer exakt värdering, hittar du hos",
@@ -68,8 +73,11 @@ export const TEXTS = {
     TOTAL_PUBLISHED: "Totalt gavs det ut",
     TOTAL_PUBLISHED_PUBLICATION: "publikation som kan vara intressant för marvelsamlare.",
     TOTAL_PUBLISHED_PUBLICATIONS: "publikationer som kan vara intressanta för marvelsamlare.",
+    UPDATE_DEFAULT_VALUES: "Populera publikationer med grundläggande värden - OBS! alla publikationer måste ha fått sin skickgradering",
     USERS_COUNT_TEXT_1: "Totalt finns det ",
     USERS_COUNT_TEXT_2: "användare.",
+    UTILS: "Speciella funktioner för förbättrade användarupplevelser.",
+    UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
 }
 
 export const PANES = {

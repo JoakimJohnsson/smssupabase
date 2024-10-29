@@ -15,18 +15,14 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 143 rader
+// 123 rader
 export const LABELS_AND_HEADINGS = {
-    ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
-    AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
     COPY_VALUE: "Värde:",
     COPY_NOT_VALUED: "(Värden ej inlagda för denna titel)",
     COPY_VALUE_SEK: "kr",
     FIND_TITLES: "Hitta titlar",
-    GENERATE_ISSUES: "Lägg till publikationer",
-    GENERATING_ISSUES: "Lägger till publikationer",
     INFORMATION_ABOUT: "Information om",
     MISSING_ISSUES: "Saknade publikationer",
     MENU: "Meny",
@@ -50,7 +46,6 @@ export const LABELS_AND_HEADINGS = {
     CALCULATING_VALUATION: "Beräknar ny värdering!",
     YOUR_INFORMATION: "Din information",
     PROFILE_IMAGE: "Profilbild",
-    CHOOSE_PUBLISHER_FOR_ISSUE: "Välj förlag för dina publikationer",
     RELEASE_LATEST: "Senaste releasen",
     RELEASE_PREVIOUS: "Tidigare förbättringar",
     RELEASE_FUTURE: "Kommande funktionalitet",
@@ -75,14 +70,10 @@ export const LABELS_AND_HEADINGS = {
     TOPIC: "Ämne",
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     TOTAL_ISSUES_DB: "Totalt antal publikationer (total_issues)",
-    UPDATE: "Uppdatera",
-    UPDATE_DEFAULT_VALUES: "Populera publikationer med grundläggande värden - OBS! alla publikationer måste ha fått sin skickgradering",
-    RELEASE_DATE: "Releasedatum",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
-    UTILS: "Verktyg, knappar och reglage",
     VALUE: "Värde",
     VALUATION: "Värdering",
     VALUATION_CALCULATE: "Beräkna ny värdering",
@@ -129,9 +120,7 @@ export const TEXTS = {
     LATEST_TITLES: "Senast inlagda titlar:",
     TOTAL_ISSUE_COUNT: "Totalt antal inlagda publikationer:",
     LATEST_ISSUES: "Senast inlagda publikationer:",
-    SHOWING_USERS: "Här kan du se alla registrerade användare.",
-    UTILS: "Speciella funktioner för förbättrade användarupplevelser.",
-    UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
+    SHOWING_USERS: "Här kan du se alla registrerade användare."
 }
 
 export const ROUTES = {
