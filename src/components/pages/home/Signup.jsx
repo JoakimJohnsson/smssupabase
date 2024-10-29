@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
+import {TEXTS} from "../../../helpers/constants/configConstants";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {MESSAGES} from "../../../helpers/constants/textConstants/messages";
 import {validateEmail, validatePassword} from "../../../helpers/validations";
