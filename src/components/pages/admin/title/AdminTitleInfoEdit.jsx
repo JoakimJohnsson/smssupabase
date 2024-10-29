@@ -76,7 +76,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                     onChange={(e) => handleChange(newTitle, setNewTitle, e.target.name, e.target.value)}
                     disabled={!edit || loading}
                 />
-                <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
+                <label className={"form-label"} htmlFor="startyear">{LABELS.COMMON.START_YEAR_DB}</label>
                 <input
                     id={"startyear"}
                     name={"start_year"}
@@ -110,7 +110,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         {printOptions(formatData)}
                     </select>
                 }
-                <label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>
+                <label className={"form-label"} htmlFor="totalissues">{LABELS.COMMON.TOTAL_ISSUES_DB}</label>
                 <input
                     id={"totalissues"}
                     name={"total_issues"}
