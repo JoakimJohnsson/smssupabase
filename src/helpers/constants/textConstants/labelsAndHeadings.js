@@ -1,4 +1,9 @@
 // Labels - used in buttons, forms and such
+// TODO When moved from configConstants:
+//  COMMON -> Example: abort, save, deleting, close etc.
+//  COMMON.FUNCTION -> Example: COMMON.EMAIL, COMMON.PASSWORD - Similar functions - Remove SECTIONS
+//  Similar for texts - some labels should be texts! ...1 and ...2 should be texts
+//  Also - better naming
 export const LABELS = {
     COMMON: {
         ABORT: "Avbryt",

@@ -15,7 +15,7 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 155 rader
+// 143 rader
 export const LABELS_AND_HEADINGS = {
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
