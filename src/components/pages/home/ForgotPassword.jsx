@@ -15,7 +15,7 @@ const ForgotPassword = () => {
               id={"forgot-password-section"}>
             <div className={"text-center mb-4 mb-sm-5"}>
                 <Icon icon={questionIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
-                <h2>{LABELS_AND_HEADINGS.FORGOT_PASSWORD}</h2>
+                <h2>{LABELS.COMMON.FORGOT_PASSWORD}</h2>
             </div>
             <label className={"form-label"} htmlFor="input-forgot-email">{LABELS_AND_HEADINGS.EMAIL_SEND}</label>
             <input id="input-forgot-email"

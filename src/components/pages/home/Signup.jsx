@@ -90,7 +90,7 @@ export const Signup = () => {
                        required/>
                 <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
                 <label className={"form-label d-flex"}
-                       htmlFor="input-signup-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
+                       htmlFor="input-signup-password">{LABELS.COMMON.PASSWORD}</label>
                 <input id="input-signup-password"
                        type="password"
                        ref={passwordRef}

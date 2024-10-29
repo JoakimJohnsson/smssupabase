@@ -1,7 +1,6 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {simpleInputValidation} from "../../../helpers/validations";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {Icon, loginIcon, loginIconDuoTone} from "../../icons";
 import {updateProfileLastLogin} from "../../../services/profileService";
@@ -54,7 +53,7 @@ const Login = () => {
                    className={emailValidated ? "form-input--success" : "form-input--default"}
                    placeholder={LABELS.COMMON.PLACEHOLDER_MAIL}
                    required/>
-            <label className={"form-label"} htmlFor="input-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
+            <label className={"form-label"} htmlFor="input-password">{LABELS.COMMON.PASSWORD}</label>
             <input id="input-password"
                    type="password"
                    ref={passwordRef}
@@ -63,7 +62,7 @@ const Login = () => {
                    placeholder={"********"}
                    required/>
             <div className={"text-center mb-3"}>
-                <a href={"#forgot-password-section"}>{LABELS_AND_HEADINGS.FORGOT_PASSWORD}</a>
+                <a href={"#forgot-password-section"}>{LABELS.COMMON.FORGOT_PASSWORD}</a>
             </div>
             <button type="submit" className={emailValidated && passwordValidated ? "btn btn-primary sms-btn" : "btn btn-primary sms-btn disabled"}>
                 <Icon icon={loginIcon} className={"me-2"}/>{LABELS.COMMON.LOG_IN}
