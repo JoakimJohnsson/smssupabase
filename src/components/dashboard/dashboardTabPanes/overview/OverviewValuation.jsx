@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useCallback} from "react";
-import {CONFIG, LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {CONFIG, ROUTES} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import * as ServiceFunctions from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
@@ -32,7 +33,7 @@ export const OverviewValuation = () => {
     return (
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light h-100"}>
-                <h2>{LABELS_AND_HEADINGS.VALUATION}</h2>
+                <h2>{LABELS.COMMON.VALUATION}</h2>
                 <div className={"mb-3"}>
                     {
                         (totalValuationValuesForUser == null || totalValuationValuesForUser.length <= 0) &&

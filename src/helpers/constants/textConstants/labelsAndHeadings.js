@@ -1,5 +1,6 @@
 // Labels - used in buttons, forms and such
 // TODO When moved from configConstants:
+//  Move texts and messages to this same file? index.js rename???
 //  COMMON -> Example: abort, save, deleting, close etc.
 //  COMMON.FUNCTION -> Example: COMMON.EMAIL, COMMON.PASSWORD - Similar functions - Remove SECTIONS
 //  Similar for texts - some labels should be texts! ...1 and ...2 should be texts
@@ -76,6 +77,9 @@ export const LABELS = {
         SVENSKA_MARVELSAMLARE_SHORT: "SMS",
         UPDATE: "Uppdatera",
         UTILS: "Verktyg, knappar och reglage",
+        VALUATION: "Värdering",
+        VALUATION_CALCULATE: "Beräkna ny värdering",
+        VALUE: "Värde",
         WANTED_ISSUES: "Efterlysta publikationer",
         NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
         NO_WANTED_ISSUES_USER: "Inga efterlysta publikationer.",

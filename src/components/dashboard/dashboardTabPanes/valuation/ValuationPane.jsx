@@ -1,6 +1,7 @@
 import React, {useState, useCallback, useEffect} from "react";
-import {CONFIG, LABELS_AND_HEADINGS, LOADING_STATES} from "../../../../helpers/constants/configConstants";
-import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {CONFIG, LOADING_STATES} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import * as ServiceFunctions from "../../../../services/serviceFunctions";
@@ -11,7 +12,6 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {FunctionButton} from "../../../minis/FunctionButton";
 import {valueIconDuoTone} from "../../../icons";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ValuationPane = () => {
@@ -64,7 +64,7 @@ export const ValuationPane = () => {
                     await ServiceFunctions.addTotalValuationValueForUser(user.id, newTotalValuationValue);
                 } else {
                     // No need to save new value
-                    setInformationMessage({show: true, status: 2, error: LABELS_AND_HEADINGS.VALUATION_CALCULATE_MESSAGE_1});
+                    setInformationMessage({show: true, status: 2, error: TEXTS.VALUATION_CALCULATE_MESSAGE_1});
                 }
             } else {
                 // Add the new value
@@ -76,7 +76,7 @@ export const ValuationPane = () => {
             // No grades found
             // No need to save new value
             setLoadingState(LOADING_STATES.NONE);
-            setInformationMessage({show: true, status: 1, error: LABELS_AND_HEADINGS.VALUATION_CALCULATE_MESSAGE_3});
+            setInformationMessage({show: true, status: 1, error: TEXTS.VALUATION_CALCULATE_MESSAGE_3});
         }
     };
 
@@ -85,7 +85,7 @@ export const ValuationPane = () => {
             return (
                 <div className="bg-grade-100 rounded text-black p-3">
                     <p className="mb-0"><span className={"text-label"}>{LABELS.COMMON.DATE}:</span> {getFriendlyDateFromTimestamp(label)}</p>
-                    <p className="mb-0"><span className={"text-label"}>{LABELS_AND_HEADINGS.VALUE}:</span> {payload[0].value} kr</p>
+                    <p className="mb-0"><span className={"text-label"}>{LABELS.COMMON.VALUE}:</span> {payload[0].value} kr</p>
                 </div>
             );
         }
@@ -118,7 +118,7 @@ export const ValuationPane = () => {
                                         :
                                         <FunctionButton
                                             variant={"primary"}
-                                            label={LABELS_AND_HEADINGS.VALUATION_CALCULATE}
+                                            label={LABELS.COMMON.VALUATION_CALCULATE}
                                             icon={valueIconDuoTone}
                                             onClick={handleDoCalculateAndAddNewValue}
                                             disabled={loadingState === LOADING_STATES.NEW_VALUE}
@@ -140,7 +140,7 @@ export const ValuationPane = () => {
                                         <Tooltip content={<CustomTooltip/>}/>
                                         <Legend/>
                                         <Line
-                                            name={LABELS_AND_HEADINGS.VALUE}
+                                            name={LABELS.COMMON.VALUE}
                                             type="monotone"
                                             dataKey="total_valuation_value"
                                             stroke="#ffd700"

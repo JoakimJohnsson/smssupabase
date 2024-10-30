@@ -15,7 +15,7 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 123 rader
+// 99 rader
 export const LABELS_AND_HEADINGS = {
     ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
@@ -71,12 +71,6 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
-    VALUE: "Värde",
-    VALUATION: "Värdering",
-    VALUATION_CALCULATE: "Beräkna ny värdering",
-    VALUATION_CALCULATE_MESSAGE_1: "Ingen värdeförändring - behöver inte spara ny värdering.",
-    VALUATION_CALCULATE_MESSAGE_2: "Inga värderingar funna - sparar ny värdering.",
-    VALUATION_CALCULATE_MESSAGE_3: "För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer."
 }
 
 export const TEXTS = {
