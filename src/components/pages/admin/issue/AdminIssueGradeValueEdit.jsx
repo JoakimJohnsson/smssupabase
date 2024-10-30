@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import {TEXTS} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {isSKGradeName, isTrue} from "../../../../helpers/functions";
 import {useNavigate, useSearchParams} from "react-router-dom";
@@ -9,7 +10,6 @@ import {useAppContext} from "../../../../context/AppContext";
 import {updateGradeValuesValues} from "../../../../services/collectingService";
 import {editIcon, saveIcon} from "../../../icons";
 import {deleteAllGradeValuesForIssue, insertAllGradeValuesForIssue} from "../../../../helpers/databaseFunctions";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminIssueGradeValueEdit = ({issue, title, gradeValues, setGradeValues, fetchGradeValues}) => {

@@ -1,6 +1,8 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {useParams} from "react-router-dom";
-import {FILETYPES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {FILETYPES} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
@@ -12,7 +14,6 @@ import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
 import {getGradeValuesByIssueId} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {NoMatch} from "../../../routes/NoMatch";
 
 

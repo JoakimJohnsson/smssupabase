@@ -2,9 +2,10 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch, faDeleteLeft, faCircleXmark, faFilter} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
-import {isTrue} from "../../helpers/functions";
+import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {isTrue} from "../../helpers/functions";
 
 
 const FilterFormFormat = ({

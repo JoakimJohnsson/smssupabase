@@ -8,8 +8,7 @@ import {
     statusIconFailDuoTone,
     statusIconSuccessDuoTone
 } from "../../../icons";
-import {TEXTS} from "../../../../helpers/constants/configConstants";
-import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {getIssuesByTitleId} from "../../../../services/issueService";
 import {getTitleTotalValuesByUserAndTitle} from "../../../../helpers/databaseFunctions.js";
 

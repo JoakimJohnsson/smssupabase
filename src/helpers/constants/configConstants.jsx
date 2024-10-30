@@ -15,7 +15,7 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 99 rader
+// 69 rader
 export const LABELS_AND_HEADINGS = {
     ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
@@ -66,32 +66,6 @@ export const LABELS_AND_HEADINGS = {
     UPLOAD_IMAGE: "Ladda upp en bild",
     UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
-}
-
-export const TEXTS = {
-    ADMIN_LEAD: "Här kan du som är Admin lägga in och redigera data i databasen.",
-    ADMIN_INFO: "När all annan info är klar - Ladda upp bilden. Så blir det lätt att få översikt över vilka objekt som behöver mer content. För frågor och instruktioner - maila Super-Admin.",
-    ADMIN_INFO_2: "För frågor, support och förslag på kommande funktioner - maila Super-Admin.",
-    ADMIN_ISSUE_LEAD: "Här kan du redigera information om publikationen och lägga till en bild (framsida).",
-    ADMIN_ISSUE_TEXT: "Hämta ner bild från titelns cover gallery på Grand Comics Database (large). Ladda sedan upp den. Här kan du även ange om publikationen ingår i Marvelklubben eller inte, samt ange numrering.",
-    ADMIN_PUBLISHER_LEAD: "Här kan du redigera information om förlaget och lägga till en bild (logotyp).",
-    COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES: "Du har inte lagt in några publikationer i samlingen.",
-    CONSENT: "Svenska Marvelsamlare är måna om att skydda dina personliga uppgifter. När du loggar in, eller registrerar dig, bekräftar och godkänner du att vi endast använder denna information, och eventuella cookies, för att administrera ditt konto och tillhandahålla de tjänster du förväntar dig av oss.",
-    GRADE_ISSUE_IS_VALUED_TEXT: "Publikationen har fått grundvärden.",
-    GRADE_ADD_VALUE_TEXT: "Grundvärden för denna publikation saknas. Tryck på knappen för att lägga till.",
-    GRADE_VALUED: "Har värden",
-    GRADE_NOT_VALUED: "Saknar värden",
-    INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
-    MESSAGE_WAS_SENT: "Meddelandet skickades",
-    MESSAGE_LINK: "Länk till bifogat objekt",
-    MESSAGE_LINK_SENDER: "Länk till anmälare",
-    MESSAGES_ADMIN_TEXT_1: "Här kan du hantera meddelanden.",
-    MESSAGES_ADMIN_TEXT_2: "Du kan bland annat sända ut globala meddelanden som visas för alla användare. Samt administrera inkomna meddelanden.",
-    SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
-    SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
-    SHOWING_LATEST_MESSAGES: "Visar senast inkomna eller skickade meddelanden, samt eventuella globala meddelanden från Admin.",
-    STATUS_404_ROUTE: "Hittade tyvärr ingen route för",
-    SHOWING_USERS: "Här kan du se alla registrerade användare."
 }
 
 export const ROUTES = {
