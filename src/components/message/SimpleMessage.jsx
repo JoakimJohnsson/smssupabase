@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {useCommonFormStates} from "../../helpers/customHooks/useCommonFormStates";
 import {getUserName, trimInputString} from "../../helpers/functions";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {FunctionButton} from "../minis/FunctionButton";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
 import {handleInput} from "../../services/serviceFunctions";
@@ -48,7 +47,7 @@ export const SimpleMessage = ({user}) => {
             {
                 open &&
                 <div className={"sms-section--light primary mb-3 p-3"}>
-                    <h2>{LABELS_AND_HEADINGS.MESSAGE_USER_CREATE} {getUserName(user)}</h2>
+                    <h2>{LABELS.COMMON.MESSAGE_USER_CREATE} {getUserName(user)}</h2>
                     <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
                     <input
                         id={"title"}
@@ -61,7 +60,7 @@ export const SimpleMessage = ({user}) => {
                     <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
                     <textarea
                         className={formInputClass}
-                        placeholder={LABELS_AND_HEADINGS.ADD_MESSAGE_PLACEHOLDER}
+                        placeholder={LABELS.COMMON.ADD_MESSAGE_PLACEHOLDER}
                         value={text || ""}
                         onChange={(e) => handleInput(e, setText)}
                     />

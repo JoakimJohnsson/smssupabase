@@ -1,12 +1,12 @@
 import React from "react";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {CONFIG} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const GlobalMessage = ({
@@ -34,7 +34,7 @@ export const GlobalMessage = ({
                 }
                 {title}
             </p>
-            <label className={"form-label"} htmlFor="topic">{LABELS_AND_HEADINGS.TOPIC}</label>
+            <label className={"form-label"} htmlFor="topic">{LABELS.COMMON.TOPIC}</label>
             {
                 topicData &&
                 <select
@@ -52,7 +52,7 @@ export const GlobalMessage = ({
             <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
             <textarea
                 className={formInputClass}
-                placeholder={LABELS_AND_HEADINGS.ADD_MESSAGE_PLACEHOLDER}
+                placeholder={LABELS.COMMON.ADD_MESSAGE_PLACEHOLDER}
                 value={text || ""}
                 onChange={(e) => handleInput(e, setText)}
             />
