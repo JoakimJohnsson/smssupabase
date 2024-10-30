@@ -44,7 +44,6 @@ export const LABELS_AND_HEADINGS = {
     MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
     MESSAGE_USER_CREATE: "Skicka ett meddelande till",
     CALCULATING_VALUATION: "Beräknar ny värdering!",
-    YOUR_INFORMATION: "Din information",
     PROFILE_IMAGE: "Profilbild",
     RELEASE_LATEST: "Senaste releasen",
     RELEASE_PREVIOUS: "Tidigare förbättringar",
@@ -77,9 +76,7 @@ export const LABELS_AND_HEADINGS = {
     VALUATION_CALCULATE: "Beräkna ny värdering",
     VALUATION_CALCULATE_MESSAGE_1: "Ingen värdeförändring - behöver inte spara ny värdering.",
     VALUATION_CALCULATE_MESSAGE_2: "Inga värderingar funna - sparar ny värdering.",
-    VALUATION_CALCULATE_MESSAGE_3: "För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
-    WELCOME_TEXT_1: "Hej",
-    WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!"
+    VALUATION_CALCULATE_MESSAGE_3: "För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer."
 }
 
 export const TEXTS = {
@@ -89,10 +86,6 @@ export const TEXTS = {
     ADMIN_ISSUE_LEAD: "Här kan du redigera information om publikationen och lägga till en bild (framsida).",
     ADMIN_ISSUE_TEXT: "Hämta ner bild från titelns cover gallery på Grand Comics Database (large). Ladda sedan upp den. Här kan du även ange om publikationen ingår i Marvelklubben eller inte, samt ange numrering.",
     ADMIN_PUBLISHER_LEAD: "Här kan du redigera information om förlaget och lägga till en bild (logotyp).",
-    ALERT_HOME_NAME_INFO: "Under inställningar kan du redigera din personliga information och lägga in en profilbild. Här väljer du också om din personliga profilsida ska vara publik.",
-    ALERT_HOME_IS_PUBLIC_INFO: "Under inställningar kan du ställa in om din personliga profilsida ska vara publik.",
-    ADDING_TITLE_TEXT_1: "Vi har lagt in totalt",
-    ADDING_TITLE_TEXT_2: "% av alla titlar i databasen.",
     COLLECTING_CHECK_GRADING_STATUS_NO_ISSUES: "Du har inte lagt in några publikationer i samlingen.",
     CONSENT: "Svenska Marvelsamlare är måna om att skydda dina personliga uppgifter. När du loggar in, eller registrerar dig, bekräftar och godkänner du att vi endast använder denna information, och eventuella cookies, för att administrera ditt konto och tillhandahålla de tjänster du förväntar dig av oss.",
     GRADE_ISSUE_IS_VALUED_TEXT: "Publikationen har fått grundvärden.",
@@ -108,16 +101,7 @@ export const TEXTS = {
     SETTINGS_RESET_PASSWORD: "Klicka på knappen så skickas instruktioner för att återställa eller ändra lösenordet till din e-postadress.",
     SHOWING_LATEST_PUBLISHERS: "Visar de senast inlagda förlagen från databasen.",
     SHOWING_LATEST_MESSAGES: "Visar senast inkomna eller skickade meddelanden, samt eventuella globala meddelanden från Admin.",
-    SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen. För att lägga till en ny titel:",
-    SHOWING_LATEST_TITLES_STEP_1: "Skapa titel",
-    SHOWING_LATEST_TITLES_STEP_2: "Lägg till publikationer",
-    SHOWING_LATEST_TITLES_STEP_3: "För varje publikation - lägg till skickgradering",
-    SHOWING_LATEST_TITLES_STEP_4: "På titeln - populera alla publikationer med grundvärden för skickgradering",
     STATUS_404_ROUTE: "Hittade tyvärr ingen route för",
-    TOTAL_TITLE_COUNT: "Totalt antal inlagda titlar:",
-    LATEST_TITLES: "Senast inlagda titlar:",
-    TOTAL_ISSUE_COUNT: "Totalt antal inlagda publikationer:",
-    LATEST_ISSUES: "Senast inlagda publikationer:",
     SHOWING_USERS: "Här kan du se alla registrerade användare."
 }
 

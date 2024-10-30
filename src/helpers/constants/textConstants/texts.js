@@ -2,7 +2,11 @@
 export const TEXTS = {
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
+    ADDING_TITLE_TEXT_1: "Vi har lagt in totalt",
+    ADDING_TITLE_TEXT_2: "% av alla titlar i databasen.",
     ADMIN_TITLE_LEAD: "Här kan du redigera information om titeln. Du kan lägga till en bild (logotyp), samt även publikationer. Publikationer kan läggas till en och en, eller i bulk.",
+    ALERT_HOME_NAME_INFO: "Under inställningar kan du redigera din personliga information och lägga in en profilbild. Här väljer du också om din personliga profilsida ska vara publik.",
+    ALERT_HOME_IS_PUBLIC_INFO: "Under inställningar kan du ställa in om din personliga profilsida ska vara publik.",
     ALLOW_LOCATION_ACCESS_PROMPT: "Genom att markera detta alternativ godkänner du att vi använder din platsinformation. Vi följer strikta integritetsprinciper och använder din platsdata endast för detta ändamål. Din platsinformation kommer inte att sparas eller användas för något annat syfte utan ditt uttryckliga samtycke. Du kan när som helst ändra dessa inställningar. Vi värnar om din integritet och tar skyddet av din personliga data på stort allvar.",
     ALWAYS_AVAILABLE: "Perfekt att använda när du är ute på fältet och letar tidningar.",
     AUTO_GENERATE_ISSUES_FOR: "Lägg till publikationer för",
@@ -44,6 +48,8 @@ export const TEXTS = {
     GRADE_TEXT_3: "Seriekatalogen",
     GRADE_TEXT_4: "Använd gärna meddelandefunktionen för att meddela Admin om värden behöver uppdateras.",
     GRADE_TITLE_IS_VALUED: "Alla publikationer har fått rätt värden.",
+    LATEST_ISSUES: "Senast inlagda publikationer:",
+    LATEST_TITLES: "Senast inlagda titlar:",
     MAKE_PUBLIC: "Gör din profilsida och information publik",
     MANAGE_YOUR_COLLECTION: "Övervaka och administrera din samling.",
     MARVELKLUBBEN_LEAD: "En överblick över alla publikationer som ingick i Marvelklubben.",
@@ -67,17 +73,26 @@ export const TEXTS = {
     SETTINGS_INFO: "För frågor - kontakta Super-Admin.",
     SHOWING: "Visar",
     SHOWING_OF: "av",
+    SHOWING_LATEST_TITLES: "Visar de senast inlagda titlarna från databasen. För att lägga till en ny titel:",
+    SHOWING_LATEST_TITLES_STEP_1: "Skapa titel",
+    SHOWING_LATEST_TITLES_STEP_2: "Lägg till publikationer",
+    SHOWING_LATEST_TITLES_STEP_3: "För varje publikation - lägg till skickgradering",
+    SHOWING_LATEST_TITLES_STEP_4: "På titeln - populera alla publikationer med grundvärden för skickgradering",
     SHOWING_LATEST_USERS: "Visar de senast uppdaterade användarna från databasen.",
     SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SOURCE_EXAMPLE: "EXEMPEL: Titel #1 (år) - https://comics.org/issue/12345; Amazing Spiderman #225 (1998) - https://comics.org/issue/23543254",
+    TOTAL_ISSUE_COUNT: "Totalt antal inlagda publikationer:",
     TOTAL_PUBLISHED: "Totalt gavs det ut",
     TOTAL_PUBLISHED_PUBLICATION: "publikation som kan vara intressant för marvelsamlare.",
     TOTAL_PUBLISHED_PUBLICATIONS: "publikationer som kan vara intressanta för marvelsamlare.",
+    TOTAL_TITLE_COUNT: "Totalt antal inlagda titlar:",
     UPDATE_DEFAULT_VALUES: "Populera publikationer med grundläggande värden - OBS! alla publikationer måste ha fått sin skickgradering",
     USERS_COUNT_TEXT_1: "Totalt finns det ",
     USERS_COUNT_TEXT_2: "användare.",
     UTILS: "Speciella funktioner för förbättrade användarupplevelser.",
-    UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum."
+    UTILS_UPDATE_RELEASE_DATE: "Uppdatera datum för senaste release till dagens datum.",
+    WELCOME_TEXT_1: "Hej",
+    WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!"
 }
 
 export const PANES = {

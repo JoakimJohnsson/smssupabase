@@ -82,7 +82,8 @@ export const LABELS = {
         NO_UPGRADE_ISSUES_USER: "Inga publikationer som behöver uppgradering.",
         WEBSITE: "Webbplats",
         WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
-        YEAR_DB: "År (year)"
+        YEAR_DB: "År (year)",
+        YOUR_INFORMATION: "Din information",
     },
     SECTIONS: {
         DASHBOARD: {

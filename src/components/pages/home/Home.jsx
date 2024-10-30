@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {CONFIG, LABELS_AND_HEADINGS, ROUTES, STATISTICS, TEXTS} from "../../../helpers/constants/configConstants";
+import {CONFIG, ROUTES, STATISTICS} from "../../../helpers/constants/configConstants";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
-import {PANES} from "../../../helpers/constants/textConstants/texts";
+import {PANES, TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../headings";
@@ -86,7 +86,7 @@ export const Home = () => {
                     <div className={"sms-page-col"}>
 
                             <HeadingWithBreadCrumbs
-                                text={LABELS_AND_HEADINGS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + LABELS_AND_HEADINGS.WELCOME_TEXT_2}/>
+                                text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
                             {
                                 userMessages && !!userMessages.length &&
                                 <InformationAlert variant={"success"}
@@ -111,7 +111,7 @@ export const Home = () => {
                                 showAlert &&
                                 <InformationAlert variant={"info"} text={alertText}/>
                             }
-                            <h2>{LABELS_AND_HEADINGS.YOUR_INFORMATION}</h2>
+                            <h2>{LABELS.COMMON.YOUR_INFORMATION}</h2>
                             <div className={"row"}>
                                 <div className={"col-12 mb-4"}>
                                     <DashboardSection/>
