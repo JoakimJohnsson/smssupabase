@@ -17,7 +17,6 @@ import {PANES} from "./textConstants/texts";
 
 // 69 rader
 export const LABELS_AND_HEADINGS = {
-    ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
     DELETE_GRADE: "Ta bort skickgradering för",
     COPY_VALUE: "Värde:",
     COPY_NOT_VALUED: "(Värden ej inlagda för denna titel)",
@@ -30,12 +29,6 @@ export const LABELS_AND_HEADINGS = {
     MESSAGE_GLOBAL: "Globalt meddelande",
     MESSAGES_GLOBAL: "Globala meddelanden",
     MESSAGES_GLOBAL_SEND: "Skicka globalt meddelande",
-    MESSAGES_FROM_ADMIN: "Meddelanden från Admin",
-    MESSAGES_MARK_AS_READ: "Markera som läst",
-    MESSAGES_MARK_AS_UNREAD: "Markera som oläst",
-    MESSAGES_MARK_AS_ACTIVE: "Markera som aktivt",
-    MESSAGES_MARK_AS_INACTIVE: "Markera som inaktivt",
-    MESSAGES_MARK_AS_TODO: "Åtgärd krävs",
     CALCULATING_VALUATION: "Beräknar ny värdering!",
     RELEASE_LATEST: "Senaste releasen",
     RELEASE_PREVIOUS: "Tidigare förbättringar",

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {getDataIcon} from "../../helpers/functions";
 import topicData from "../../helpers/valueLists/topics.json";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {FriendlyDate} from "../minis/FriendlyDate";
 import {
     getIconByName,
@@ -12,7 +12,6 @@ import {
 } from "../icons";
 import {Link} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo = false}) => {
@@ -22,9 +21,9 @@ export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo 
 
     const getHeading = () => {
         if (viewGlobal) {
-            return LABELS_AND_HEADINGS.MESSAGES_FROM_ADMIN;
+            return LABELS.COMMON.MESSAGES_FROM_ADMIN;
         } else if (viewTodo) {
-            return LABELS_AND_HEADINGS.MESSAGES_MARK_AS_TODO;
+            return LABELS.COMMON.MESSAGES_MARK_AS_TODO;
         } else {
             return LABELS.SECTIONS.MESSAGES.MESSAGES;
         }
@@ -78,7 +77,7 @@ export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo 
                             {
                                 !viewGlobal &&
                                 <Link to={`/admin/messages/${m.id}`} className={"me-3"}>
-                                    {LABELS_AND_HEADINGS.ADMINISTRATE_MESSAGE} {m.title}
+                                    {LABELS.COMMON.ADMINISTRATE_MESSAGE} {m.title}
                                 </Link>
                             }
                         </div>
