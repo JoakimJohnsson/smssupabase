@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
@@ -36,13 +36,13 @@ export const MessagesSection = () => {
                         <>
                             <p>{TEXTS.SHOWING_LATEST_MESSAGES}</p>
                             <MessagesList messagesData={messages} setMessagesData={setMessages}/>
-                            <h3>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h3>
+                            <h3>{LABELS.COMMON.MESSAGES_GLOBAL}</h3>
                             <MessagesList messagesData={globalMessages} setMessagesData={setGlobalMessages}/>
                         </>
                         :
                         <NoDataAvailable/>
                 }
-                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.SEE_ALL_MESSAGES}</Link>
+                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
             </div>
         </div>
     )

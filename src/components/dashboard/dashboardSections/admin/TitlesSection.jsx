@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
@@ -40,7 +40,7 @@ export const TitlesSection = () => {
                         <NoDataAvailable />
                 }
                 <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
-                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
+                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.TITLES}>{LABELS.COMMON.SEE_ALL_TITLES}</Link>
             </div>
         </div>
     )

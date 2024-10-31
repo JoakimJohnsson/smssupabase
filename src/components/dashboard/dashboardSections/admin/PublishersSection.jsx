@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
@@ -35,7 +35,7 @@ export const PublishersSection = () => {
                 }
                 <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
                             label={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
-                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS_AND_HEADINGS.SEE_ALL_PUBLISHERS}</Link>
+                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.PUBLISHERS}>{LABELS.COMMON.SEE_ALL_PUBLISHERS}</Link>
             </div>
         </div>
     )

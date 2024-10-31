@@ -15,7 +15,7 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 69 rader
+// 42 rader
 export const LABELS_AND_HEADINGS = {
     DELETE_GRADE: "Ta bort skickgradering för",
     COPY_VALUE: "Värde:",
@@ -23,16 +23,8 @@ export const LABELS_AND_HEADINGS = {
     COPY_VALUE_SEK: "kr",
     INFORMATION_ABOUT: "Information om",
     MENU: "Meny",
-    MESSAGES_RECEIVED: "Inkomna meddelanden",
-    MESSAGES_SENT: "Skickade meddelanden",
     MESSAGE_GLOBAL: "Globalt meddelande",
-    MESSAGES_GLOBAL: "Globala meddelanden",
-    MESSAGES_GLOBAL_SEND: "Skicka globalt meddelande",
     CALCULATING_VALUATION: "Beräknar ny värdering!",
-    SEE_ALL_PUBLISHERS: "Se alla förlag",
-    SEE_ALL_MESSAGES: "Se alla meddelanden",
-    SEE_ALL_TITLES: "Se alla titlar",
-    SEE_ALL_USERS: "Se alla användare",
     SHOW_ORIGINAL_IMAGE: "Visa originalbild",
     SIGN_OUT: "Logga ut",
     SKIP_LINK_TEXT: "Gå direkt till innehåll",
@@ -48,7 +40,6 @@ export const LABELS_AND_HEADINGS = {
     STATUS_404: "404",
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
-    USERS: "Användare",
 }
 
 export const ROUTES = {

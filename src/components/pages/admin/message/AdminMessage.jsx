@@ -69,7 +69,7 @@ export const AdminMessage = () => {
                                                   to={`/users/${message.sender_id}`}>{TEXTS.MESSAGE_LINK_SENDER}</Link>
                                         }
                                         <Link className={"btn btn-outline-primary sms-btn"}
-                                              to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.SEE_ALL_MESSAGES}</Link>
+                                              to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
                                     </div>
                                 </div>
                             </div>
