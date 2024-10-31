@@ -53,6 +53,8 @@ export const LABELS = {
         MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
         MESSAGE_USER_CREATE: "Skicka ett meddelande till",
         MESSAGE_USE_THIS_OBJECT: "Bifoga information om detta objekt",
+        MESSAGE_TITLE_SUFFIX_FOR: "för",
+        MESSAGE_TITLE_SUFFIX_FOR_TITLE: "för titeln",
         NAME_DB: "Namn (name)",
         NEW_EMAIL: "Ny e-postadress",
         NEXT: "Nästa",

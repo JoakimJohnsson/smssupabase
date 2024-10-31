@@ -26,8 +26,6 @@ export const LABELS_AND_HEADINGS = {
     INFORMATION_ABOUT: "Information om",
     MISSING_ISSUES: "Saknade publikationer",
     MENU: "Meny",
-    MESSAGE_TITLE_SUFFIX_FOR: "för",
-    MESSAGE_TITLE_SUFFIX_FOR_TITLE: "för titeln",
     MESSAGES_RECEIVED: "Inkomna meddelanden",
     MESSAGES_SENT: "Skickade meddelanden",
     MESSAGE_GLOBAL: "Globalt meddelande",

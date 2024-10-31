@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {useCommonFormStates} from "../../helpers/customHooks/useCommonFormStates";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataDescription, getDataName, getIssueName} from "../../helpers/functions";
 import {UserMessage} from "./UserMessage";
 import {GlobalMessage} from "./GlobalMessage";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Message = ({originObject, originTable, isGlobalMessage = false, fetchAdminMessages = false}) => {
@@ -48,15 +47,15 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
         if (useThisObject) {
             if (originTable === TABLES.ISSUES) {
                 if (topic_id !== "") {
-                    setTitle(currentTitle => currentTitle + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
+                    setTitle(currentTitle => currentTitle + " " + LABELS.COMMON.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
                 } else {
-                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
+                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " " + LABELS.COMMON.MESSAGE_TITLE_SUFFIX_FOR + " " + getIssueName(originObject));
                 }
             } else if (originTable === TABLES.TITLES) {
                 if (topic_id !== "") {
-                    setTitle(currentTitle => currentTitle + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
+                    setTitle(currentTitle => currentTitle + " " + LABELS.COMMON.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
                 } else {
-                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " " + LABELS_AND_HEADINGS.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
+                    setTitle(LABELS.SECTIONS.MESSAGES.MESSAGE + " " + LABELS.COMMON.MESSAGE_TITLE_SUFFIX_FOR_TITLE + " " + originObject.name);
                 }
             } else {
                 if (topic_id !== "") {
