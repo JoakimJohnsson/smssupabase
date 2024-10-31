@@ -38,7 +38,6 @@ export const LABELS_AND_HEADINGS = {
     MESSAGES_MARK_AS_INACTIVE: "Markera som inaktivt",
     MESSAGES_MARK_AS_TODO: "Åtgärd krävs",
     CALCULATING_VALUATION: "Beräknar ny värdering!",
-    PROFILE_IMAGE: "Profilbild",
     RELEASE_LATEST: "Senaste releasen",
     RELEASE_PREVIOUS: "Tidigare förbättringar",
     RELEASE_FUTURE: "Kommande funktionalitet",

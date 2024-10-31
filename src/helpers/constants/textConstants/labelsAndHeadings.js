@@ -65,6 +65,7 @@ export const LABELS = {
         PAUSE: "Pausa",
         PLACEHOLDER_MAIL: "namn@posten.se",
         PREVIOUS: "Tidigare",
+        PROFILE_IMAGE: "Profilbild",
         RELEASE_DATE: "Releasedatum",
         REMOVE: "Ta bort",
         RESET: "Rensa",
