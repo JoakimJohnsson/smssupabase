@@ -84,6 +84,8 @@ export const LABELS = {
         SVENSKA_MARVELSAMLARE_SHORT: "SMS",
         TOPIC: "Ämne",
         UPDATE: "Uppdatera",
+        UPLOAD_IMAGE: "Ladda upp en bild",
+        UPLOADING_IMAGE: "Laddar upp en bild",
         UTILS: "Verktyg, knappar och reglage",
         VALUATION: "Värdering",
         VALUATION_CALCULATE: "Beräkna ny värdering",

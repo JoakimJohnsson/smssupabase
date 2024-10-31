@@ -60,8 +60,6 @@ export const LABELS_AND_HEADINGS = {
     STATUS_404: "404",
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
-    UPLOAD_IMAGE: "Ladda upp en bild",
-    UPLOADING_IMAGE: "Laddar upp en bild",
     USERS: "Användare",
 }
 
