@@ -1,5 +1,4 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {Icon, infoIconDuoTone} from "../../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
@@ -22,7 +21,7 @@ const Information = () => {
                 <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
             </div>
             <div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v{packageJson.version} {utilsData && " | " + utilsData.release_date}</h3>
+                <h3>{LABELS.COMMON.RELEASE_LATEST} v{packageJson.version} {utilsData && " | " + utilsData.release_date}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Bugfixar.</li>
@@ -42,7 +41,7 @@ const Information = () => {
                     </li>
                     <li className={"list-group-item px-0"}>Ytterligare förbättringar av publikationsväljaren.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS}</h3>
+                <h3>{LABELS.COMMON.RELEASE_PREVIOUS}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Förbättrad information om användare i Admin gränssnitt.</li>
                     <li className={"list-group-item px-0"}>Lagt till sökformulär och paginering på Adminsida för alla
@@ -53,7 +52,7 @@ const Information = () => {
                     </li>
                     <li className={"list-group-item px-0"}>Applikationen använder nu Vite som byggverktyg.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
+                <h3>{LABELS.COMMON.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Optimering av bilder.</li>
                     <li className={"list-group-item px-0"}>Utökad funktionalitet och förbättrade vyer i
