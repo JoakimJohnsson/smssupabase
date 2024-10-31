@@ -1,10 +1,4 @@
 // Labels - used in buttons, forms and such
-// TODO When moved from configConstants:
-//  Move texts and messages to this same file? index.js rename???
-//  COMMON -> Example: abort, save, deleting, close etc.
-//  COMMON.FUNCTION -> Example: COMMON.EMAIL, COMMON.PASSWORD - Similar functions - Remove SECTIONS
-//  Similar for texts - some labels should be texts! ...1 and ...2 should be texts
-//  Also - better naming
 export const LABELS = {
     COMMON: {
         ABORT: "Avbryt",
@@ -102,9 +96,14 @@ export const LABELS = {
         SEND: "Skicka",
         SETTINGS: "Inställningar",
         SETTINGS_CREDENTIALS: "Inloggningsuppgifter",
+        SHOW_ORIGINAL_IMAGE: "Visa originalbild",
         SHOW_MORE: "Visa mer",
         SHOW_LESS: "Visa mindre",
+        SIGN_OUT: "Logga ut",
         SIGN_UP_SUCCESS: "Registreringen lyckades!",
+        SKIP_LINK_TEXT: "Gå direkt till innehåll",
+        SOURCE_COMICS: "Källor (Comics.org)",
+        STATUS_404: "404",
         SVENSKA_MARVELSAMLARE: "Svenska Marvelsamlare",
         SVENSKA_MARVELSAMLARE_SHORT: "SMS",
         TOPIC: "Ämne",

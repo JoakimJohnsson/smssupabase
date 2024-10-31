@@ -15,17 +15,6 @@ import {
 
 import {PANES} from "./textConstants/texts";
 
-// 42 rader
-export const LABELS_AND_HEADINGS = {
-    SHOW_ORIGINAL_IMAGE: "Visa originalbild",
-    SIGN_OUT: "Logga ut",
-    SKIP_LINK_TEXT: "Gå direkt till innehåll",
-    SOURCE_COMICS: "Källor (Comics.org)",
-    STATUS_404: "404",
-    TOTAL_ISSUES: "Totalt antal utgivna publikationer",
-    UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
-}
-
 export const ROUTES = {
     DEFAULT: "/",
     SUCCESS: "/success",
