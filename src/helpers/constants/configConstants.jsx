@@ -24,7 +24,6 @@ export const LABELS_AND_HEADINGS = {
     COPY_VALUE_SEK: "kr",
     FIND_TITLES: "Hitta titlar",
     INFORMATION_ABOUT: "Information om",
-    MISSING_ISSUES: "Saknade publikationer",
     MENU: "Meny",
     MESSAGES_RECEIVED: "Inkomna meddelanden",
     MESSAGES_SENT: "Skickade meddelanden",
