@@ -17,22 +17,10 @@ import {PANES} from "./textConstants/texts";
 
 // 42 rader
 export const LABELS_AND_HEADINGS = {
-    INFORMATION_ABOUT: "Information om",
-    MENU: "Meny",
-    MESSAGE_GLOBAL: "Globalt meddelande",
-    CALCULATING_VALUATION: "Beräknar ny värdering!",
     SHOW_ORIGINAL_IMAGE: "Visa originalbild",
     SIGN_OUT: "Logga ut",
     SKIP_LINK_TEXT: "Gå direkt till innehåll",
-    SORT_REVERSE: "Omvänd ordning",
-    SORT_CHOSE: "Välj sortering",
-    SORT_9_0: "Sortera 9 till 0",
-    SORT_0_9: "Sortera 0 till 9",
-    SORT_A_Z: "Sortera A till Ö",
-    SORT_Z_A: "Sortera Ö till A",
     SOURCE_COMICS: "Källor (Comics.org)",
-    START: "Starta",
-    START_YEAR: "Startår",
     STATUS_404: "404",
     TOTAL_ISSUES: "Totalt antal utgivna publikationer",
     UPLOAD_NEW_IMAGE: "Ladda upp en ny bild",
