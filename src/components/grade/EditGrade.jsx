@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {ButtonGroup} from "react-bootstrap";
 import {editGrade, deleteGrade} from "../../services/collectingService";
 import {useAppContext} from "../../context/AppContext";
-import {GRADE_RADIOS, GRADE_VARIANTS, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {GRADE_RADIOS, GRADE_VARIANTS} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {IconButton} from "../minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
@@ -39,7 +39,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
                 <span className={"d-block mb-2 pb-2 border-bottom text-capitalize"}>{LABELS.COMMON.COPY} {index + 1}</span>
                 {
                     issueValue >= 0 &&
-                    <span className={"small"}>{LABELS_AND_HEADINGS.COPY_VALUE} {issueValue} {LABELS_AND_HEADINGS.COPY_VALUE_SEK} {issue.titles.is_valued === 0 && LABELS_AND_HEADINGS.COPY_NOT_VALUED}</span>
+                    <span className={"small"}>{LABELS.COMMON.COPY_VALUE} {issueValue} {LABELS.COMMON.COPY_VALUE_SEK} {issue.titles.is_valued === 0 && LABELS.COMMON.COPY_NOT_VALUED}</span>
                 }
             </h3>
             <ButtonGroup className={"mb-2 d-flex flex-wrap "}>
@@ -73,7 +73,7 @@ export const EditGrade = ({grade, fetchGrades, issue, index, gradeValues}) => {
                 })}
             </ButtonGroup>
             <IconButton variant={"danger"} icon={faTrashCan} onClick={handleDeleteGrade}
-                        label={LABELS_AND_HEADINGS.DELETE_GRADE + " " + LABELS.COMMON.COPY + " " + (index + 1)}/>
+                        label={LABELS.COMMON.DELETE_GRADE + " " + LABELS.COMMON.COPY + " " + (index + 1)}/>
         </div>
     )
 }

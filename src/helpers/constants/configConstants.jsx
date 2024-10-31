@@ -17,10 +17,6 @@ import {PANES} from "./textConstants/texts";
 
 // 42 rader
 export const LABELS_AND_HEADINGS = {
-    DELETE_GRADE: "Ta bort skickgradering för",
-    COPY_VALUE: "Värde:",
-    COPY_NOT_VALUED: "(Värden ej inlagda för denna titel)",
-    COPY_VALUE_SEK: "kr",
     INFORMATION_ABOUT: "Information om",
     MENU: "Meny",
     MESSAGE_GLOBAL: "Globalt meddelande",
