@@ -19,9 +19,9 @@ import {
     faList,
     faGrid2,
     faGrid2Plus,
-    faTrashCanList,
-    faCartPlus,
-    faCloudXmark, faCloudQuestion
+    faTimes,
+    faPlus,
+    faHeart
 } from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser, objectDoesExist} from "../../helpers/functions";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
@@ -43,6 +43,7 @@ import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
+import {MESSAGES} from "../../helpers/constants/textConstants/messages.js";
 
 
 export const Title = () => {
@@ -107,6 +108,9 @@ export const Title = () => {
     }, [user.id, title.id]);
 
     const addAllIssues = () => {
+        if (!window.confirm(MESSAGES.CONFIRM.ADD_ALL_ISSUES)) {
+            return false;
+        }
         issuesData.map((issue) => {
             setAddIssue(false);
             setAddIssue(false);
@@ -120,6 +124,9 @@ export const Title = () => {
     }
 
     const removeAllIssues = () => {
+        if (!window.confirm(MESSAGES.CONFIRM.REMOVE_ALL_ISSUES)) {
+            return false;
+        }
         issuesData.map((issue) => {
             setAddIssue(false);
             setAddIssue(false);
@@ -234,8 +241,8 @@ export const Title = () => {
                                         <TitleProgress titleProgress={titleProgress}/>
                                     }
                                     <div className={"sms-btn-group"}>
-                                        <FunctionButton variant={isFavoriteTitle ? "btn-success" : "btn-outline-secondary"}
-                                                        icon={isFavoriteTitle ? faCloudXmark : faCloudQuestion}
+                                        <FunctionButton variant={isFavoriteTitle ? "btn-marvelklubben" : "btn-outline-secondary"}
+                                                        icon={faHeart}
                                                         onClick={() => handleFavorite()}
                                                         label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
                                                         showLabel={false}
@@ -259,7 +266,7 @@ export const Title = () => {
                                                                     showLabel={false}
                                                     />
                                                     :
-                                                    <FunctionButton variant={"btn-secondary"}
+                                                    <FunctionButton variant={"btn-success"}
                                                                     icon={faGrid}
                                                                     onClick={() => setListViewGrid(!listViewGrid)}
                                                                     label={LABELS.COMMON.LIST_VIEW_GRID_SHOW}
@@ -271,7 +278,7 @@ export const Title = () => {
                                         {
                                             !listViewGradeValue && listViewGrid && (titleProgress.progress !== 100) ?
                                                 listViewMissing ?
-                                                    <FunctionButton variant={"btn-secondary"}
+                                                    <FunctionButton variant={"btn-success"}
                                                                     icon={faGrid2Plus}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
                                                                     label={LABELS.SECTIONS.TITLES.SHOW_ALL_ISSUES}
@@ -294,7 +301,7 @@ export const Title = () => {
                                                     {
                                                         titleProgress.progress !== 100 &&
                                                         <FunctionButton variant={"btn-outline-danger"}
-                                                                        icon={faCartPlus}
+                                                                        icon={faPlus}
                                                                         onClick={() => addAllIssues()}
                                                                         label={TEXTS.COLLECTING_ADD_ALL}
                                                                         showLabel={false}
@@ -303,7 +310,7 @@ export const Title = () => {
                                                     {
                                                         titleProgress.progress > 0 &&
                                                         <FunctionButton variant={"btn-outline-danger"}
-                                                                        icon={faTrashCanList}
+                                                                        icon={faTimes}
                                                                         onClick={() => removeAllIssues()}
                                                                         label={TEXTS.COLLECTING_REMOVE_ALL}
                                                                         showLabel={false}

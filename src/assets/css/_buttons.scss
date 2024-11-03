@@ -83,7 +83,7 @@
 }
 
 .sms-btn-group {
-  @extend .btn-group;
+  @extend .btn-group, .d-block;
   @extend .mb-3;
   .sms-function-btn {
     margin: 0 .3rem .3rem 0;

@@ -17,11 +17,10 @@ import {MarvelKlubbenBadge} from "../grade/MarvelKlubbenBadge";
 import {
     faArrowLeftLong,
     faArrowRightLong,
-    faCloudQuestion,
-    faCloudXmark,
-    faHeart,
-    faHeartCirclePlus,
-    faCloudArrowUp
+    faBadgeSheriff,
+    faBone,
+    faBoneBreak,
+    faHeart
 } from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
@@ -291,7 +290,7 @@ export const Issue = () => {
                                     <div className={"sms-btn-group"}>
                                         <FunctionButton
                                             variant={isFavoriteIssue ? "btn-marvelklubben" : "btn-outline-secondary"}
-                                            icon={isFavoriteIssue ? faHeart : faHeartCirclePlus}
+                                            icon={faHeart}
                                             onClick={() => handleFavorite()}
                                             label={isFavoriteIssue ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
                                             showLabel={false}
@@ -300,8 +299,8 @@ export const Issue = () => {
                                             isCollectingTitle &&
                                             <>
                                                 <FunctionButton
-                                                    variant={isWantingIssue ? "btn-outline-success" : "btn-outline-secondary"}
-                                                    icon={isWantingIssue ? faCloudXmark : faCloudQuestion}
+                                                    variant={isWantingIssue ? "btn-success" : "btn-outline-secondary"}
+                                                    icon={faBadgeSheriff}
                                                     onClick={() => handleWanted()}
                                                     label={isWantingIssue ? TEXTS.REMOVE_ISSUE_WANTED : TEXTS.ADD_ISSUE_WANTED}
                                                     showLabel={false}
@@ -309,8 +308,8 @@ export const Issue = () => {
                                                 {
                                                     isCollectingIssue &&
                                                     <FunctionButton
-                                                        variant={isUpgradingIssue ? "btn-outline-success" : "btn-outline-secondary"}
-                                                        icon={isUpgradingIssue ? faCloudXmark : faCloudArrowUp}
+                                                        variant={isUpgradingIssue ? "btn-grade" : "btn-outline-secondary"}
+                                                        icon={isUpgradingIssue ? faBoneBreak : faBone}
                                                         onClick={() => handleUpgrade()}
                                                         label={isUpgradingIssue ? LABELS.SECTIONS.ISSUES.REMOVE_ISSUE_UPGRADE : LABELS.SECTIONS.ISSUES.ADD_ISSUE_UPGRADE}
                                                         showLabel={false}
