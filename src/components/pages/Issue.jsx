@@ -19,6 +19,8 @@ import {
     faArrowRightLong,
     faCloudQuestion,
     faCloudXmark,
+    faHeart,
+    faHeartCirclePlus,
     faCloudArrowUp
 } from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
@@ -288,11 +290,11 @@ export const Issue = () => {
                                     </div>
                                     <div className={"sms-btn-group"}>
                                         <FunctionButton
-                                            variant={isFavoriteIssue ? "btn-outline-success" : "btn-outline-secondary"}
-                                            icon={isFavoriteIssue ? faCloudXmark : faCloudQuestion}
+                                            variant={isFavoriteIssue ? "btn-marvelklubben" : "btn-outline-secondary"}
+                                            icon={isFavoriteIssue ? faHeart : faHeartCirclePlus}
                                             onClick={() => handleFavorite()}
                                             label={isFavoriteIssue ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
-                                            showLabel={true}
+                                            showLabel={false}
                                         />
                                         {
                                             isCollectingTitle &&
@@ -302,7 +304,7 @@ export const Issue = () => {
                                                     icon={isWantingIssue ? faCloudXmark : faCloudQuestion}
                                                     onClick={() => handleWanted()}
                                                     label={isWantingIssue ? TEXTS.REMOVE_ISSUE_WANTED : TEXTS.ADD_ISSUE_WANTED}
-                                                    showLabel={true}
+                                                    showLabel={false}
                                                 />
                                                 {
                                                     isCollectingIssue &&
@@ -311,14 +313,13 @@ export const Issue = () => {
                                                         icon={isUpgradingIssue ? faCloudXmark : faCloudArrowUp}
                                                         onClick={() => handleUpgrade()}
                                                         label={isUpgradingIssue ? LABELS.SECTIONS.ISSUES.REMOVE_ISSUE_UPGRADE : LABELS.SECTIONS.ISSUES.ADD_ISSUE_UPGRADE}
-                                                        showLabel={true}
+                                                        showLabel={false}
                                                     />
                                                 }
                                             </>
                                         }
                                     </div>
                                     <Message originObject={issue} originTable={TABLES.ISSUES}/>
-
                                     <div className={"mb-5"}>
                                         <h2>{LABELS.COMMON.INFORMATION}</h2>
                                         {

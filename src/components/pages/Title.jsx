@@ -234,46 +234,56 @@ export const Title = () => {
                                         <TitleProgress titleProgress={titleProgress}/>
                                     }
                                     <div className={"sms-btn-group"}>
-                                        <FunctionButton
-                                            variant={isFavoriteTitle ? "btn-outline-success" : "btn-outline-secondary"}
-                                            icon={isFavoriteTitle ? faCloudXmark : faCloudQuestion}
-                                            onClick={() => handleFavorite()}
-                                            label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
-                                            showLabel={true}
+                                        <FunctionButton variant={isFavoriteTitle ? "btn-success" : "btn-outline-secondary"}
+                                                        icon={isFavoriteTitle ? faCloudXmark : faCloudQuestion}
+                                                        onClick={() => handleFavorite()}
+                                                        label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
+                                                        showLabel={false}
                                         />
                                         {
-                                            <FunctionButton variant={"btn-outline-grade"} icon={valueIconDuoTone}
+                                            <FunctionButton variant={listViewGradeValue ? "btn-grade" : "btn-outline-secondary"}
+                                                            icon={valueIconDuoTone}
                                                             onClick={() => setListViewGradeValue(!listViewGradeValue)}
                                                             label={listViewGradeValue ? LABELS.COMMON.LIST_VIEW_GRADE_VALUE_HIDE : LABELS.COMMON.LIST_VIEW_GRADE_VALUE_SHOW}
-                                                            id={"list-variant-toggler"} disabled={!title.is_valued}/>
+                                                            disabled={!title.is_valued}
+                                                            showLabel={false}
+                                            />
                                         }
                                         {
                                             !listViewGradeValue ?
                                                 listViewGrid ?
-                                                    <FunctionButton variant={"btn-outline-secondary"} icon={faList}
+                                                    <FunctionButton variant={"btn-outline-secondary"}
+                                                                    icon={faList}
                                                                     onClick={() => setListViewGrid(!listViewGrid)}
                                                                     label={LABELS.COMMON.LIST_VIEW_LIST_SHOW}
-                                                                    id={"list-variant-toggler"}/>
+                                                                    showLabel={false}
+                                                    />
                                                     :
-                                                    <FunctionButton variant={"btn-outline-secondary"} icon={faGrid}
+                                                    <FunctionButton variant={"btn-secondary"}
+                                                                    icon={faGrid}
                                                                     onClick={() => setListViewGrid(!listViewGrid)}
                                                                     label={LABELS.COMMON.LIST_VIEW_GRID_SHOW}
-                                                                    id={"list-variant-toggler"}/>
+                                                                    showLabel={false}
+                                                    />
                                                 :
                                                 false
                                         }
                                         {
                                             !listViewGradeValue && listViewGrid && (titleProgress.progress !== 100) ?
                                                 listViewMissing ?
-                                                    <FunctionButton variant={"btn-outline-secondary"} icon={faGrid2Plus}
+                                                    <FunctionButton variant={"btn-secondary"}
+                                                                    icon={faGrid2Plus}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
                                                                     label={LABELS.SECTIONS.TITLES.SHOW_ALL_ISSUES}
-                                                                    id={"list-variant-toggler"}/>
+                                                                    showLabel={false}
+                                                    />
                                                     :
-                                                    <FunctionButton variant={"btn-outline-secondary"} icon={faGrid2}
+                                                    <FunctionButton variant={"btn-outline-secondary"}
+                                                                    icon={faGrid2}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
                                                                     label={LABELS.SECTIONS.TITLES.SHOW_MISSING_ISSUES}
-                                                                    id={"list-variant-toggler"}/>
+                                                                    showLabel={false}
+                                                    />
                                                 :
                                                 false
                                         }
@@ -283,17 +293,21 @@ export const Title = () => {
                                                 <>
                                                     {
                                                         titleProgress.progress !== 100 &&
-                                                        <FunctionButton variant={"btn-outline-danger"} icon={faCartPlus}
+                                                        <FunctionButton variant={"btn-outline-danger"}
+                                                                        icon={faCartPlus}
                                                                         onClick={() => addAllIssues()}
                                                                         label={TEXTS.COLLECTING_ADD_ALL}
-                                                                        id={"list-variant-toggler"}/>
+                                                                        showLabel={false}
+                                                        />
                                                     }
                                                     {
                                                         titleProgress.progress > 0 &&
-                                                        <FunctionButton variant={"btn-outline-danger"} icon={faTrashCanList}
+                                                        <FunctionButton variant={"btn-outline-danger"}
+                                                                        icon={faTrashCanList}
                                                                         onClick={() => removeAllIssues()}
                                                                         label={TEXTS.COLLECTING_REMOVE_ALL}
-                                                                        id={"list-variant-toggler"}/>
+                                                                        showLabel={false}
+                                                        />
 
                                                     }
                                                 </>

@@ -8,7 +8,7 @@ export const FunctionButton = ({customClass, variant, onClick, label, icon, show
     const className = customClass ? defaultClass + " " + customClass : defaultClass;
 
     return (
-        <button onClick={onClick} className={className} disabled={disabled}>
+        <button onClick={onClick} className={className} disabled={disabled} aria-label={label}>
             {icon && <Icon icon={icon} className={"fa-xl fa-fw"}/>}
             {showLabel && <span className={"mx-3"}>{label}</span>}
         </button>
