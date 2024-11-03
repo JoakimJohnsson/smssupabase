@@ -2,6 +2,7 @@
 export const TEXTS = {
     ADD_ISSUE_FOR: "Lägg till enstaka publikation för",
     ADD_ISSUE_WANTED: "Markera som efterlyst",
+    ADD_FAVORITE: "Markera som favorit",
     ADDING_TITLE_TEXT_1: "Vi har lagt in totalt",
     ADDING_TITLE_TEXT_2: "% av alla titlar i databasen.",
     ADMIN_LEAD: "Här kan du som är Admin lägga in och redigera data i databasen.",
@@ -78,6 +79,7 @@ export const TEXTS = {
     NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",
     REMOVE_ALL_VALUATION_VALUES_FOR_USER: "Ta bort alla sparade värderingar för användaren",
     REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
+    REMOVE_FAVORITE: "Ta bort som favorit",
     SECTIONS: {
         GRADES: {},
         ISSUES: {},

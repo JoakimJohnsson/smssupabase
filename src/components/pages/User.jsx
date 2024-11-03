@@ -122,7 +122,7 @@ export const User = () => {
                                                     )
                                                 }
                                                 <FunctionButton
-                                                    variant={"danger"}
+                                                    variant={"btn-outline-danger"}
                                                     icon={faFaceExplode}
                                                     onClick={handleDeleteValuationValues}
                                                     label={TEXTS.REMOVE_ALL_VALUATION_VALUES_FOR_USER}

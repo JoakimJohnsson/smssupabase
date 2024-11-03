@@ -124,7 +124,8 @@ export const Title = () => {
                             :
                             <>
                                 <div className={"sms-page-col"}>
-                                    <HeadingWithBreadCrumbs text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
+                                    <HeadingWithBreadCrumbs
+                                        text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                                 </div>
                                 <div className={"col-12 col-lg-5 col-xl-4 mb-5"}>
                                     <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
@@ -167,7 +168,8 @@ export const Title = () => {
                                     }
                                     {
                                         title.comics_org_url &&
-                                        <a className={"d-block"} href={title.comics_org_url} target={"_blank"} rel={"noreferrer"}>
+                                        <a className={"d-block"} href={title.comics_org_url} target={"_blank"}
+                                           rel={"noreferrer"}>
                                             {title.name} {LABELS.SECTIONS.TITLES.ON_COMICS_ORG}
                                             <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                         </a>
@@ -194,9 +196,9 @@ export const Title = () => {
                                         isCollectingTitle &&
                                         <TitleProgress titleProgress={titleProgress}/>
                                     }
-                                    <div className={"mb-3"}>
+                                    <div className={"sms-btn-group"}>
                                         {
-                                            <FunctionButton variant={"grade"} icon={valueIconDuoTone}
+                                            <FunctionButton variant={"btn-outline-grade"} icon={valueIconDuoTone}
                                                             onClick={() => setListViewGradeValue(!listViewGradeValue)}
                                                             label={listViewGradeValue ? LABELS.COMMON.LIST_VIEW_GRADE_VALUE_HIDE : LABELS.COMMON.LIST_VIEW_GRADE_VALUE_SHOW}
                                                             id={"list-variant-toggler"} disabled={!title.is_valued}/>
@@ -204,24 +206,30 @@ export const Title = () => {
                                         {
                                             !listViewGradeValue ?
                                                 listViewGrid ?
-                                                    <FunctionButton variant={"secondary"} icon={faList} onClick={() => setListViewGrid(!listViewGrid)}
-                                                                    label={LABELS.COMMON.LIST_VIEW_LIST_SHOW} id={"list-variant-toggler"}/>
+                                                    <FunctionButton variant={"btn-outline-secondary"} icon={faList}
+                                                                    onClick={() => setListViewGrid(!listViewGrid)}
+                                                                    label={LABELS.COMMON.LIST_VIEW_LIST_SHOW}
+                                                                    id={"list-variant-toggler"}/>
                                                     :
-                                                    <FunctionButton variant={"secondary"} icon={faGrid} onClick={() => setListViewGrid(!listViewGrid)}
-                                                                    label={LABELS.COMMON.LIST_VIEW_GRID_SHOW} id={"list-variant-toggler"}/>
+                                                    <FunctionButton variant={"btn-outline-secondary"} icon={faGrid}
+                                                                    onClick={() => setListViewGrid(!listViewGrid)}
+                                                                    label={LABELS.COMMON.LIST_VIEW_GRID_SHOW}
+                                                                    id={"list-variant-toggler"}/>
                                                 :
                                                 false
                                         }
                                         {
                                             !listViewGradeValue && listViewGrid && (titleProgress.progress !== 100) ?
                                                 listViewMissing ?
-                                                    <FunctionButton variant={"secondary"} icon={faGrid2Plus}
+                                                    <FunctionButton variant={"btn-outline-secondary"} icon={faGrid2Plus}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
-                                                                    label={LABELS.SECTIONS.TITLES.SHOW_ALL_ISSUES} id={"list-variant-toggler"}/>
+                                                                    label={LABELS.SECTIONS.TITLES.SHOW_ALL_ISSUES}
+                                                                    id={"list-variant-toggler"}/>
                                                     :
-                                                    <FunctionButton variant={"secondary"} icon={faGrid2}
+                                                    <FunctionButton variant={"btn-outline-secondary"} icon={faGrid2}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
-                                                                    label={LABELS.SECTIONS.TITLES.SHOW_MISSING_ISSUES} id={"list-variant-toggler"}/>
+                                                                    label={LABELS.SECTIONS.TITLES.SHOW_MISSING_ISSUES}
+                                                                    id={"list-variant-toggler"}/>
                                                 :
                                                 false
                                         }
@@ -231,23 +239,25 @@ export const Title = () => {
                                                 <>
                                                     {
                                                         titleProgress.progress !== 100 &&
-                                                        <FunctionButton variant={"danger"} icon={faCartPlus}
+                                                        <FunctionButton variant={"btn-outline-danger"} icon={faCartPlus}
                                                                         onClick={() => addAllIssues()}
-                                                                        label={TEXTS.COLLECTING_ADD_ALL} id={"list-variant-toggler"}/>
+                                                                        label={TEXTS.COLLECTING_ADD_ALL}
+                                                                        id={"list-variant-toggler"}/>
                                                     }
                                                     {
                                                         titleProgress.progress > 0 &&
-                                                        <FunctionButton variant={"danger"} icon={faTrashCanList}
+                                                        <FunctionButton variant={"btn-outline-danger"} icon={faTrashCanList}
                                                                         onClick={() => removeAllIssues()}
-                                                                        label={TEXTS.COLLECTING_REMOVE_ALL} id={"list-variant-toggler"}/>
+                                                                        label={TEXTS.COLLECTING_REMOVE_ALL}
+                                                                        id={"list-variant-toggler"}/>
 
                                                     }
                                                 </>
                                                 :
                                                 false
                                         }
-                                        <Message originObject={title} originTable={TABLES.TITLES}/>
                                     </div>
+                                    <Message originObject={title} originTable={TABLES.TITLES}/>
                                     {
                                         isCollectingTitle && issueNeedsGrading &&
                                         <div className={"alert alert-info d-flex align-items-center mb-4"}>
@@ -256,8 +266,10 @@ export const Title = () => {
                                         </div>
                                     }
                                     <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.COMMON.ISSUES}</h2>
-                                    <IssuesList issuesData={issuesData} showAdminInfo={false} showCollectingButtons={isCollectingTitle}
-                                                listViewGrid={listViewGrid} listViewMissing={listViewMissing} listViewGrades={listViewGradeValue}
+                                    <IssuesList issuesData={issuesData} showAdminInfo={false}
+                                                showCollectingButtons={isCollectingTitle}
+                                                listViewGrid={listViewGrid} listViewMissing={listViewMissing}
+                                                listViewGrades={listViewGradeValue}
                                                 fetchTitleProgress={fetchTitleProgress}
                                                 doUpdate={doUpdate}/>
                                 </div>

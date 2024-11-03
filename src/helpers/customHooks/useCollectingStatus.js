@@ -1,16 +1,17 @@
 import {useCallback, useEffect, useMemo, useState} from "react";
 import {
     checkIfIsCollectingIssue,
-    checkIfIsUpgradingIssue,
-    checkIfIsWantingIssue,
     getGradesByUserIdAndIssueId
 } from "../../services/collectingService";
 import {doesUserCollectTitle} from "../databaseFunctions";
+import {TABLES} from "../constants/serviceConstants.js";
+import {userIssueExists} from "../../services/serviceFunctions.js";
 
 
 export const useCollectingStatus = (userId, issueId, titleId) => {
 
     const [isCollectingIssue, setIsCollectingIssue] = useState(false);
+    const [isFavoriteIssue, setIsFavoriteIssue] = useState(false);
     const [isCollectingTitle, setIsCollectingTitle] = useState(false);
     const [isWantingIssue, setIsWantingIssue] = useState(false);
     const [isUpgradingIssue, setIsUpgradingIssue] = useState(false);
@@ -31,20 +32,22 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         }
     }, [userId, issueId, fetchGrades]);
 
-    useEffect(() => {
-        // Reset value before checking
+    useEffect( () => {
+        // Reset values before checking
         setIsWantingIssue(false);
-        if (userId && issueId) {
-            checkIfIsWantingIssue(userId, issueId, setIsWantingIssue).then();
-        }
-    }, [userId, issueId]);
-
-    useEffect(() => {
-        // Reset value before checking
         setIsUpgradingIssue(false);
-        if (userId && issueId) {
-            checkIfIsUpgradingIssue(userId, issueId, setIsUpgradingIssue).then();
-        }
+        setIsFavoriteIssue(false);
+        const checkIssues = async () => {
+            if (userId && issueId) {
+                const wantedIssueExists = await userIssueExists(userId, issueId, TABLES.USERS_ISSUES_WANTED);
+                const upgradeIssueExists = await userIssueExists(userId, issueId, TABLES.USERS_ISSUES_UPGRADE);
+                const favoriteIssueExists = await userIssueExists(userId, issueId, TABLES.USERS_ISSUES_FAVORITE);
+                setIsWantingIssue(wantedIssueExists);
+                setIsUpgradingIssue(upgradeIssueExists);
+                setIsFavoriteIssue(favoriteIssueExists);
+            }
+        };
+        checkIssues();
     }, [userId, issueId]);
 
     useEffect(() => {
@@ -70,11 +73,13 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         setIsCollectingIssue,
         isWantingIssue,
         setIsWantingIssue,
+        isFavoriteIssue,
+        setIsFavoriteIssue,
         isUpgradingIssue,
         setIsUpgradingIssue,
         grades,
         isCollectingTitle,
         setIsCollectingTitle,
         fetchGrades
-    }), [isCollectingIssue, isWantingIssue, isUpgradingIssue, grades, isCollectingTitle, fetchGrades]);
+    }), [isCollectingIssue, isWantingIssue, isFavoriteIssue, isUpgradingIssue, grades, isCollectingTitle, fetchGrades]);
 }

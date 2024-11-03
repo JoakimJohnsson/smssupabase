@@ -31,9 +31,9 @@ export const UserMessage = ({
     const {user, setInformationMessage, fetchMessages} = useAppContext();
 
     return (
-        <>
+        <div className="mb-3">
             <FunctionButton
-                variant={"primary"}
+                variant={"btn-outline-primary"}
                 icon={open ? faTimes : faMessages}
                 onClick={() => setOpen(!open)}
                 label={open ? LABELS.SECTIONS.MESSAGES.MESSAGE_CLOSE : LABELS.SECTIONS.MESSAGES.MESSAGE_SHOW}
@@ -121,6 +121,6 @@ export const UserMessage = ({
                     </button>
                 </div>
             }
-        </>
+        </div>
     )
 }

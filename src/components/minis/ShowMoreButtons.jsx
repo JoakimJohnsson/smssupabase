@@ -14,7 +14,7 @@ export const ShowMoreButtons = ({data, setItemsToShow, itemsToShow}) => {
                 {
                     itemsToShow < data.length &&
                     <FunctionButton
-                        variant={"primary"}
+                        variant={"btn-outline-primary"}
                         label={LABELS.COMMON.SHOW_MORE}
                         icon={faPlus}
                         onClick={() => showMoreItems(data, setItemsToShow)}
@@ -24,7 +24,7 @@ export const ShowMoreButtons = ({data, setItemsToShow, itemsToShow}) => {
                 {
                     (itemsToShow > CONFIG.PAGINATION_ITEM_COUNT) && !(itemsToShow > data.length) &&
                     <FunctionButton
-                        variant={"secondary"}
+                        variant={"btn-outline-secondary"}
                         label={LABELS.COMMON.SHOW_LESS}
                         icon={faMinus}
                         onClick={() => showLessItems(data, setItemsToShow, itemsToShow)}

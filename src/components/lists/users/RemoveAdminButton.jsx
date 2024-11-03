@@ -36,7 +36,7 @@ export const RemoveAdminButton = ({user, handleChangeAdmin, useTooltip = true}) 
         )
         :
         <FunctionButton
-            variant={"danger"}
+            variant={"btn-outline-danger"}
             customClass={"me-2"}
             icon={adminIconDuoTone}
             label={LABELS.SECTIONS.USERS.REMOVE_ADMIN_1 + getUserName(user) + LABELS.SECTIONS.USERS.REMOVE_ADMIN_2}

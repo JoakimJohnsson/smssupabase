@@ -20,6 +20,8 @@ export const TABLES = {
     USERS_ISSUES: "users_issues",
     USERS_ISSUES_WANTED: "users_issues_wanted",
     USERS_ISSUES_UPGRADE: "users_issues_upgrade",
+    USERS_ISSUES_FAVORITE: "users_issues_favorite",
+    USERS_TITLES_FAVORITE: "users_titles_favorite",
     GRADES: "grades",
     GRADE_VALUES: "grade_values",
     UTILS: "utils",

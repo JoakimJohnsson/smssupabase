@@ -94,40 +94,6 @@ export const checkIfIsCollectingIssueSimple = async (issueId, userId) => {
     }
 }
 
-export const checkIfIsWantingIssue = async (userId, issueId, setIsWantingIssue) => {
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.USERS_ISSUES_WANTED)
-            .select()
-            .match({user_id: userId, issue_id: issueId});
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data && data.length > 0) {
-            setIsWantingIssue(true);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-export const checkIfIsUpgradingIssue = async (userId, issueId, setIsUpgradingIssue) => {
-    try {
-        let {data, error, status} = await supabase
-            .from(TABLES.USERS_ISSUES_UPGRADE)
-            .select()
-            .match({user_id: userId, issue_id: issueId});
-        if (error && status !== 406) {
-            console.error(error);
-        }
-        if (data && data.length > 0) {
-            setIsUpgradingIssue(true);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 export const addIssueToCollection = async (userId, issueId) => {
     try {
         await supabase
@@ -355,31 +321,6 @@ export const getAllGradesByUserId = async (userId, setGrades) => {
 }
 
 // WANTED
-
-export const addIssueToWanted = async (userId, issueId) => {
-    try {
-        await supabase
-            .from(TABLES.USERS_ISSUES_WANTED)
-            .insert([{
-                user_id: userId,
-                issue_id: issueId,
-            }]);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-export const removeIssueFromWanted = async (userId, issueId) => {
-    try {
-        await supabase
-            .from(TABLES.USERS_ISSUES_WANTED)
-            .delete()
-            .match({user_id: userId, issue_id: issueId});
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 export const getWantedIssuesForUser = async (userId, setData) => {
     if (userId) {
         try {
@@ -400,31 +341,6 @@ export const getWantedIssuesForUser = async (userId, setData) => {
 }
 
 // UPGRADE
-
-export const addIssueToUpgrade = async (userId, issueId) => {
-    try {
-        await supabase
-            .from(TABLES.USERS_ISSUES_UPGRADE)
-            .insert([{
-                user_id: userId,
-                issue_id: issueId,
-            }]);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-export const removeIssueFromUpgrade = async (userId, issueId) => {
-    try {
-        await supabase
-            .from(TABLES.USERS_ISSUES_UPGRADE)
-            .delete()
-            .match({user_id: userId, issue_id: issueId});
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 export const getUpgradeIssuesForUser = async (userId, setData) => {
     if (userId) {
         try {

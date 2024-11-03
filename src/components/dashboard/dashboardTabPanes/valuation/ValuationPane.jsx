@@ -117,7 +117,7 @@ export const ValuationPane = () => {
                                         <NoDataAvailable isValuation/>
                                         :
                                         <FunctionButton
-                                            variant={"primary"}
+                                            variant={"btn-outline-primary"}
                                             label={LABELS.COMMON.VALUATION_CALCULATE}
                                             icon={valueIconDuoTone}
                                             onClick={handleDoCalculateAndAddNewValue}

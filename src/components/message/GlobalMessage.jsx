@@ -24,7 +24,7 @@ export const GlobalMessage = ({
     const {user, setInformationMessage, fetchMessages} = useAppContext();
 
     return (
-        <>
+        <div className="mb-3">
 
             <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
             <p className={"h5 text-white"}>
@@ -87,6 +87,6 @@ export const GlobalMessage = ({
                     onClick={resetAddMessageForm}>
                 {LABELS.COMMON.RESET_FORM}
             </button>
-        </>
+        </div>
     )
 }

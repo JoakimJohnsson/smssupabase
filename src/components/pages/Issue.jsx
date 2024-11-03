@@ -14,19 +14,26 @@ import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
 import {MarvelKlubbenBadge} from "../grade/MarvelKlubbenBadge";
-import {faArrowLeftLong, faArrowRightLong, faCloudQuestion, faCloudXmark, faCloudArrowUp} from "@fortawesome/pro-duotone-svg-icons";
+import {
+    faArrowLeftLong,
+    faArrowRightLong,
+    faCloudQuestion,
+    faCloudXmark,
+    faCloudArrowUp
+} from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
 import {useAppContext} from "../../context/AppContext";
-import {handleCollectingIssue, handleCollectingTitle} from "../../services/serviceFunctions";
+import {
+    addIssueToTable,
+    handleCollectingIssue,
+    handleCollectingTitle,
+    removeIssueFromTable
+} from "../../services/serviceFunctions";
 import {
     addGrade,
-    addIssueToUpgrade,
-    addIssueToWanted,
     getGradesByUserIdAndIssueId,
-    getGradeValuesByIssueId,
-    removeIssueFromUpgrade,
-    removeIssueFromWanted
+    getGradeValuesByIssueId
 } from "../../services/collectingService";
 import {Sources} from "./pagecomponents/Sources";
 import {Message} from "../message/Message";
@@ -68,6 +75,8 @@ export const Issue = () => {
         setIsCollectingIssue,
         isWantingIssue,
         setIsWantingIssue,
+        isFavoriteIssue,
+        setIsFavoriteIssue,
         isUpgradingIssue,
         setIsUpgradingIssue,
         isCollectingTitle,
@@ -119,17 +128,31 @@ export const Issue = () => {
 
     const handleWanted = () => {
         if (isWantingIssue) {
-            removeIssueFromWanted(user.id, issue.id).then(() => setIsWantingIssue(false));
+            removeIssueFromTable(user.id, issue.id, TABLES.USERS_ISSUES_WANTED)
+                .then(() => setIsWantingIssue(false));
         } else {
-            addIssueToWanted(user.id, issue.id).then(() => setIsWantingIssue(true));
+            addIssueToTable(user.id, issue.id, TABLES.USERS_ISSUES_WANTED)
+                .then(() => setIsWantingIssue(true));
         }
     }
 
     const handleUpgrade = () => {
         if (isUpgradingIssue) {
-            removeIssueFromUpgrade(user.id, issue.id).then(() => setIsUpgradingIssue(false));
+            removeIssueFromTable(user.id, issue.id, TABLES.USERS_ISSUES_UPGRADE)
+                .then(() => setIsUpgradingIssue(false));
         } else {
-            addIssueToUpgrade(user.id, issue.id).then(() => setIsUpgradingIssue(true));
+            addIssueToTable(user.id, issue.id, TABLES.USERS_ISSUES_UPGRADE)
+                .then(() => setIsUpgradingIssue(true));
+        }
+    }
+
+    const handleFavorite = () => {
+        if (isFavoriteIssue) {
+            removeIssueFromTable(user.id, issue.id, TABLES.USERS_ISSUES_FAVORITE)
+                .then(() => setIsFavoriteIssue(false));
+        } else {
+            addIssueToTable(user.id, issue.id, TABLES.USERS_ISSUES_FAVORITE)
+                .then(() => setIsFavoriteIssue(true));
         }
     }
 
@@ -146,10 +169,12 @@ export const Issue = () => {
                             :
                             <>
                                 <div className={"sms-page-col"}>
-                                    <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true} bcName={getIssueName(issue)}/>
+                                    <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
+                                                            bcName={getIssueName(issue)}/>
                                 </div>
                                 <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
-                                    <ImageViewerCover url={issue.image_url} displayName={displayName} isCollectingIssue={isCollectingIssue}/>
+                                    <ImageViewerCover url={issue.image_url} displayName={displayName}
+                                                      isCollectingIssue={isCollectingIssue}/>
                                     {
                                         isCollectingTitle ?
                                             <button
@@ -161,9 +186,11 @@ export const Issue = () => {
                                                 }}>
                                                 {
                                                     isCollectingIssue ?
-                                                        <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.DELETE}</>
+                                                        <><Icon icon={faMinus} size={"1x"}
+                                                                className={"me-2"}/>{LABELS.COMMON.DELETE}</>
                                                         :
-                                                        <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.ADD}</>
+                                                        <><Icon icon={faPlus} size={"1x"}
+                                                                className={"me-2"}/>{LABELS.COMMON.ADD}</>
                                                 }
                                             </button>
                                             :
@@ -193,7 +220,8 @@ export const Issue = () => {
                                                             <button
                                                                 onClick={() => navigate(`/issues/${nextIssueId}`)}
                                                                 disabled={!nextIssueId}
-                                                                className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS.COMMON.NEXT}>
+                                                                className={"btn btn-sm btn-outline-secondary "}
+                                                                aria-label={LABELS.COMMON.NEXT}>
                                                                 <Icon icon={faArrowRightLong} className={"fa-2x"}/>
                                                             </button>
                                                         </div>
@@ -244,35 +272,42 @@ export const Issue = () => {
                                             countryData &&
                                             <CountryBadge countryId={issue?.publishers?.country_id}/>
                                         }
-                                        <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS.COMMON.COPY}</span>
+                                        <span
+                                            className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS.COMMON.COPY}</span>
                                     </div>
-                                    <div className={"mb-3"}>
+                                    <div className={"sms-btn-group"}>
+                                        <FunctionButton
+                                            variant={isFavoriteIssue ? "btn-outline-success" : "btn-outline-secondary"}
+                                            icon={isFavoriteIssue ? faCloudXmark : faCloudQuestion}
+                                            onClick={() => handleFavorite()}
+                                            label={isFavoriteIssue ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
+                                            showLabel={true}
+                                        />
                                         {
                                             isCollectingTitle &&
                                             <>
                                                 <FunctionButton
-                                                    variant={"secondary"}
+                                                    variant={isWantingIssue ? "btn-outline-success" : "btn-outline-secondary"}
                                                     icon={isWantingIssue ? faCloudXmark : faCloudQuestion}
                                                     onClick={() => handleWanted()}
                                                     label={isWantingIssue ? TEXTS.REMOVE_ISSUE_WANTED : TEXTS.ADD_ISSUE_WANTED}
-                                                    id={"message-form-toggler"}
                                                     showLabel={true}
                                                 />
                                                 {
                                                     isCollectingIssue &&
                                                     <FunctionButton
-                                                        variant={"secondary"}
+                                                        variant={isUpgradingIssue ? "btn-outline-success" : "btn-outline-secondary"}
                                                         icon={isUpgradingIssue ? faCloudXmark : faCloudArrowUp}
                                                         onClick={() => handleUpgrade()}
                                                         label={isUpgradingIssue ? LABELS.SECTIONS.ISSUES.REMOVE_ISSUE_UPGRADE : LABELS.SECTIONS.ISSUES.ADD_ISSUE_UPGRADE}
-                                                        id={"message-form-toggler"}
                                                         showLabel={true}
                                                     />
                                                 }
                                             </>
                                         }
-                                        <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                     </div>
+                                    <Message originObject={issue} originTable={TABLES.ISSUES}/>
+
                                     <div className={"mb-5"}>
                                         <h2>{LABELS.COMMON.INFORMATION}</h2>
                                         {
@@ -347,12 +382,14 @@ export const Issue = () => {
                                             <div className={"mb-3"}>
                                                 {
                                                     isCollectingIssue && grades &&
-                                                    grades.sort((a, b) => a.id - b.id).map((g, index) => <GradeBadge key={g.id} grade={g.grade}
-                                                                                                                     index={index}/>)
+                                                    grades.sort((a, b) => a.id - b.id).map((g, index) => <GradeBadge
+                                                        key={g.id} grade={g.grade}
+                                                        index={index}/>)
                                                 }
                                             </div>
                                             <p>
-                                                {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer"
+                                                {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html"
+                                                                        rel="noreferrer"
                                                                         target={"_blank"}>{TEXTS.GRADE_TEXT_3}</a>.
                                             </p>
                                             <p>{TEXTS.GRADE_TEXT_4}</p>
@@ -360,7 +397,8 @@ export const Issue = () => {
                                                 grades &&
                                                 grades.sort((a, b) => a.id - b.id).map((grade, index) => {
                                                     return gradeValues && !!gradeValues.length && (
-                                                        <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index}
+                                                        <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades}
+                                                                   issue={issue} index={index}
                                                                    gradeValues={gradeValues}/>
                                                     );
                                                 })

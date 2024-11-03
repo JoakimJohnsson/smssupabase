@@ -325,3 +325,43 @@ export const handleChange = (obj, setObj, name, value) => {
 export const handleInput = (e, setInput) => {
     setInput(e.target.value)
 }
+
+// ADD / REMOVE ISSUES AND TITLES FROM JOIN TABLES
+export const addIssueToTable = async (userId, issueId, table) => {
+    try {
+        await supabase
+            .from(table)
+            .insert([{
+                user_id: userId,
+                issue_id: issueId,
+            }]).then();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const removeIssueFromTable = async (userId, issueId, table) => {
+    try {
+        await supabase
+            .from(table)
+            .delete()
+            .match({user_id: userId, issue_id: issueId});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const userIssueExists = async (userId, issueId, table) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(table)
+            .select()
+            .match({user_id: userId, issue_id: issueId});
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        return data && data.length > 0;
+    } catch (error) {
+        console.error(error);
+    }
+}

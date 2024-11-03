@@ -40,6 +40,7 @@ const Information = () => {
                         publikationer i din samling.
                     </li>
                     <li className={"list-group-item px-0"}>Ytterligare förbättringar av publikationsväljaren.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att lägga till sina favorittitlar och favoritpublikationer.</li>
                 </ul>
                 <h3>{LABELS.COMMON.RELEASE_PREVIOUS}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>

@@ -37,7 +37,7 @@ export const SimpleMessage = ({user}) => {
     return user && (
         <>
             <FunctionButton
-                variant={"primary"}
+                variant={"btn-outline-primary"}
                 icon={open ? faTimes : faMessages}
                 onClick={() => setOpen(!open)}
                 label={open ? LABELS.SECTIONS.MESSAGES.MESSAGE_CLOSE : LABELS.SECTIONS.MESSAGES.MESSAGE_SHOW}
