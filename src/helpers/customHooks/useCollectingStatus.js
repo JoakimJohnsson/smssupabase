@@ -11,7 +11,6 @@ import {userIssueExists} from "../../services/serviceFunctions.js";
 export const useCollectingStatus = (userId, issueId, titleId) => {
 
     const [isCollectingIssue, setIsCollectingIssue] = useState(false);
-    const [isFavoriteIssue, setIsFavoriteIssue] = useState(false);
     const [isCollectingTitle, setIsCollectingTitle] = useState(false);
     const [isWantingIssue, setIsWantingIssue] = useState(false);
     const [isUpgradingIssue, setIsUpgradingIssue] = useState(false);
@@ -36,15 +35,12 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         // Reset values before checking
         setIsWantingIssue(false);
         setIsUpgradingIssue(false);
-        setIsFavoriteIssue(false);
         const checkIssues = async () => {
             if (userId && issueId) {
                 const wantedIssueExists = await userIssueExists(userId, issueId, TABLES.USERS_ISSUES_WANTED);
                 const upgradeIssueExists = await userIssueExists(userId, issueId, TABLES.USERS_ISSUES_UPGRADE);
-                const favoriteIssueExists = await userIssueExists(userId, issueId, TABLES.USERS_ISSUES_FAVORITE);
                 setIsWantingIssue(wantedIssueExists);
                 setIsUpgradingIssue(upgradeIssueExists);
-                setIsFavoriteIssue(favoriteIssueExists);
             }
         };
         checkIssues();
@@ -73,13 +69,11 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         setIsCollectingIssue,
         isWantingIssue,
         setIsWantingIssue,
-        isFavoriteIssue,
-        setIsFavoriteIssue,
         isUpgradingIssue,
         setIsUpgradingIssue,
         grades,
         isCollectingTitle,
         setIsCollectingTitle,
         fetchGrades
-    }), [isCollectingIssue, isWantingIssue, isFavoriteIssue, isUpgradingIssue, grades, isCollectingTitle, fetchGrades]);
+    }), [isCollectingIssue, isWantingIssue, isUpgradingIssue, grades, isCollectingTitle, fetchGrades]);
 }

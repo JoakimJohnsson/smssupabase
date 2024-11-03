@@ -1,14 +1,28 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useParams} from "react-router-dom";
-import {getRowByTableAndId, handleCollectingTitle} from "../../services/serviceFunctions";
+import {
+    addTitleToTable,
+    getRowByTableAndId,
+    handleCollectingTitle,
+    removeTitleFromTable,
+    userTitleExists
+} from "../../services/serviceFunctions";
 import {ROUTES} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {PANES, TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {IssuesList} from "../lists/issues/IssuesList";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {faGrid, faList, faGrid2, faGrid2Plus, faTrashCanList, faCartPlus} from "@fortawesome/pro-duotone-svg-icons";
+import {
+    faGrid,
+    faList,
+    faGrid2,
+    faGrid2Plus,
+    faTrashCanList,
+    faCartPlus,
+    faCloudXmark, faCloudQuestion
+} from "@fortawesome/pro-duotone-svg-icons";
 import {getCalculatedYear, getTitleProgressForUser, objectDoesExist} from "../../helpers/functions";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -42,6 +56,7 @@ export const Title = () => {
     const [doUpdate, setDoUpdate] = useState({});
     const {id} = useParams();
     const {isCollectingTitle, setIsCollectingTitle} = useCollectingStatus(user.id, false, id);
+    const [isFavoriteTitle, setIsFavoriteTitle] = useState(false);
     const displayName = title.name + " " + title.start_year;
     const collectTitleTextStart = TEXTS.COLLECT_TITLE_START + " " + displayName;
     const collectTitleTextStop = TEXTS.COLLECT_TITLE_STOP + " " + displayName;
@@ -79,6 +94,18 @@ export const Title = () => {
         }
     }, [titleProgress]);
 
+    useEffect(() => {
+        // Reset values before checking
+        setIsFavoriteTitle(false);
+        const checkTitle = async () => {
+            if (user.id && title.id) {
+                const favoriteTitleExists = await userTitleExists(user.id, title.id, TABLES.USERS_TITLES_FAVORITE);
+                setIsFavoriteTitle(favoriteTitleExists);
+            }
+        };
+        checkTitle();
+    }, [user.id, title.id]);
+
     const addAllIssues = () => {
         issuesData.map((issue) => {
             setAddIssue(false);
@@ -104,6 +131,16 @@ export const Title = () => {
                 });
             })
         });
+    }
+
+    const handleFavorite = () => {
+        if (isFavoriteTitle) {
+            removeTitleFromTable(user.id, title.id, TABLES.USERS_TITLES_FAVORITE)
+                .then(() => setIsFavoriteTitle(false));
+        } else {
+            addTitleToTable(user.id, title.id, TABLES.USERS_TITLES_FAVORITE)
+                .then(() => setIsFavoriteTitle(true));
+        }
     }
 
     useEffect(() => {
@@ -197,6 +234,13 @@ export const Title = () => {
                                         <TitleProgress titleProgress={titleProgress}/>
                                     }
                                     <div className={"sms-btn-group"}>
+                                        <FunctionButton
+                                            variant={isFavoriteTitle ? "btn-outline-success" : "btn-outline-secondary"}
+                                            icon={isFavoriteTitle ? faCloudXmark : faCloudQuestion}
+                                            onClick={() => handleFavorite()}
+                                            label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
+                                            showLabel={true}
+                                        />
                                         {
                                             <FunctionButton variant={"btn-outline-grade"} icon={valueIconDuoTone}
                                                             onClick={() => setListViewGradeValue(!listViewGradeValue)}

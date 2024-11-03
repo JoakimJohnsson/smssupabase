@@ -365,3 +365,42 @@ export const userIssueExists = async (userId, issueId, table) => {
         console.error(error);
     }
 }
+
+export const addTitleToTable = async (userId, titleId, table) => {
+    try {
+        await supabase
+            .from(table)
+            .insert([{
+                user_id: userId,
+                title_id: titleId,
+            }]).then();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const removeTitleFromTable = async (userId, titleId, table) => {
+    try {
+        await supabase
+            .from(table)
+            .delete()
+            .match({user_id: userId, title_id: titleId});
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const userTitleExists = async (userId, titleId, table) => {
+    try {
+        let {data, error, status} = await supabase
+            .from(table)
+            .select()
+            .match({user_id: userId, title_id: titleId});
+        if (error && status !== 406) {
+            console.error(error);
+        }
+        return data && data.length > 0;
+    } catch (error) {
+        console.error(error);
+    }
+}

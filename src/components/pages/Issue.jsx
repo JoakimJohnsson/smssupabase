@@ -28,7 +28,7 @@ import {
     addIssueToTable,
     handleCollectingIssue,
     handleCollectingTitle,
-    removeIssueFromTable
+    removeIssueFromTable, userIssueExists
 } from "../../services/serviceFunctions";
 import {
     addGrade,
@@ -65,6 +65,7 @@ export const Issue = () => {
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
     const [loadingButtons, setLoadingButtons] = useState(true);
+    const [isFavoriteIssue, setIsFavoriteIssue] = useState(false);
     const navigate = useNavigate();
     const {
         issue,
@@ -75,8 +76,6 @@ export const Issue = () => {
         setIsCollectingIssue,
         isWantingIssue,
         setIsWantingIssue,
-        isFavoriteIssue,
-        setIsFavoriteIssue,
         isUpgradingIssue,
         setIsUpgradingIssue,
         isCollectingTitle,
@@ -106,6 +105,18 @@ export const Issue = () => {
     const fetchGradeValues = useCallback(() => {
         getGradeValuesByIssueId(id, setGradeValues).then();
     }, [id]);
+
+    useEffect( () => {
+        // Reset values before checking
+        setIsFavoriteIssue(false);
+        const checkIssue = async () => {
+            if (user.id && issue.id) {
+                const favoriteIssueExists = await userIssueExists(user.id, issue.id, TABLES.USERS_ISSUES_FAVORITE);
+                setIsFavoriteIssue(favoriteIssueExists);
+            }
+        };
+        checkIssue();
+    }, [user.id, issue.id]);
 
     useEffect(() => {
         if (issue) {
