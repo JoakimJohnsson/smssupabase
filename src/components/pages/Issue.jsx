@@ -287,13 +287,12 @@ export const Issue = () => {
                                         <span
                                             className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS.COMMON.COPY}</span>
                                     </div>
-                                    <div className={"sms-btn-group"}>
+                                    <div className={"sms-btn-group mb-4"}>
                                         <FunctionButton
                                             variant={isFavoriteIssue ? "btn-marvelklubben" : "btn-outline-secondary"}
                                             icon={faHeart}
                                             onClick={() => handleFavorite()}
                                             label={isFavoriteIssue ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
-                                            showLabel={false}
                                         />
                                         {
                                             isCollectingTitle &&
@@ -303,7 +302,6 @@ export const Issue = () => {
                                                     icon={faBadgeSheriff}
                                                     onClick={() => handleWanted()}
                                                     label={isWantingIssue ? TEXTS.REMOVE_ISSUE_WANTED : TEXTS.ADD_ISSUE_WANTED}
-                                                    showLabel={false}
                                                 />
                                                 {
                                                     isCollectingIssue &&
@@ -312,7 +310,6 @@ export const Issue = () => {
                                                         icon={isUpgradingIssue ? faBoneBreak : faBone}
                                                         onClick={() => handleUpgrade()}
                                                         label={isUpgradingIssue ? LABELS.SECTIONS.ISSUES.REMOVE_ISSUE_UPGRADE : LABELS.SECTIONS.ISSUES.ADD_ISSUE_UPGRADE}
-                                                        showLabel={false}
                                                     />
                                                 }
                                             </>

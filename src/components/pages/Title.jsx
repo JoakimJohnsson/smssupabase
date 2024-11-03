@@ -245,7 +245,6 @@ export const Title = () => {
                                                         icon={faHeart}
                                                         onClick={() => handleFavorite()}
                                                         label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
-                                                        showLabel={false}
                                         />
                                         {
                                             <FunctionButton variant={listViewGradeValue ? "btn-grade" : "btn-outline-secondary"}
@@ -253,7 +252,6 @@ export const Title = () => {
                                                             onClick={() => setListViewGradeValue(!listViewGradeValue)}
                                                             label={listViewGradeValue ? LABELS.COMMON.LIST_VIEW_GRADE_VALUE_HIDE : LABELS.COMMON.LIST_VIEW_GRADE_VALUE_SHOW}
                                                             disabled={!title.is_valued}
-                                                            showLabel={false}
                                             />
                                         }
                                         {
@@ -263,14 +261,12 @@ export const Title = () => {
                                                                     icon={faList}
                                                                     onClick={() => setListViewGrid(!listViewGrid)}
                                                                     label={LABELS.COMMON.LIST_VIEW_LIST_SHOW}
-                                                                    showLabel={false}
                                                     />
                                                     :
                                                     <FunctionButton variant={"btn-success"}
                                                                     icon={faGrid}
                                                                     onClick={() => setListViewGrid(!listViewGrid)}
                                                                     label={LABELS.COMMON.LIST_VIEW_GRID_SHOW}
-                                                                    showLabel={false}
                                                     />
                                                 :
                                                 false
@@ -282,46 +278,42 @@ export const Title = () => {
                                                                     icon={faGrid2Plus}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
                                                                     label={LABELS.SECTIONS.TITLES.SHOW_ALL_ISSUES}
-                                                                    showLabel={false}
                                                     />
                                                     :
                                                     <FunctionButton variant={"btn-outline-secondary"}
                                                                     icon={faGrid2}
                                                                     onClick={() => setListViewMissing(!listViewMissing)}
                                                                     label={LABELS.SECTIONS.TITLES.SHOW_MISSING_ISSUES}
-                                                                    showLabel={false}
                                                     />
                                                 :
                                                 false
                                         }
-                                        {
-                                            !listViewGradeValue ?
-                                                isCollectingTitle && listViewGrid &&
-                                                <>
-                                                    {
-                                                        titleProgress.progress !== 100 &&
-                                                        <FunctionButton variant={"btn-outline-danger"}
-                                                                        icon={faPlus}
-                                                                        onClick={() => addAllIssues()}
-                                                                        label={TEXTS.COLLECTING_ADD_ALL}
-                                                                        showLabel={false}
-                                                        />
-                                                    }
-                                                    {
-                                                        titleProgress.progress > 0 &&
-                                                        <FunctionButton variant={"btn-outline-danger"}
-                                                                        icon={faTimes}
-                                                                        onClick={() => removeAllIssues()}
-                                                                        label={TEXTS.COLLECTING_REMOVE_ALL}
-                                                                        showLabel={false}
-                                                        />
-
-                                                    }
-                                                </>
-                                                :
-                                                false
-                                        }
                                     </div>
+                                    {
+                                        !listViewGradeValue ?
+                                            isCollectingTitle && listViewGrid &&
+                                            <div className={"sms-btn-group mb-4"}>
+                                                {
+                                                    titleProgress.progress !== 100 &&
+                                                    <FunctionButton variant={"btn-outline-danger"}
+                                                                    icon={faPlus}
+                                                                    onClick={() => addAllIssues()}
+                                                                    label={TEXTS.COLLECTING_ADD_ALL}
+                                                    />
+                                                }
+                                                {
+                                                    titleProgress.progress > 0 &&
+                                                    <FunctionButton variant={"btn-outline-danger"}
+                                                                    icon={faTimes}
+                                                                    onClick={() => removeAllIssues()}
+                                                                    label={TEXTS.COLLECTING_REMOVE_ALL}
+                                                    />
+
+                                                }
+                                            </div>
+                                            :
+                                            false
+                                    }
                                     <Message originObject={title} originTable={TABLES.TITLES}/>
                                     {
                                         isCollectingTitle && issueNeedsGrading &&
