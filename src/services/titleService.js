@@ -48,7 +48,7 @@ export const getTitlesForUser = async (userId, setTitlesData) => {
             .from(TABLES.USERS)
             .select(`
             id,
-            titles (*)
+            titles!users_titles (*)
             `).eq("id", userId)
         if (error && status !== 406) {
             console.error(error);
