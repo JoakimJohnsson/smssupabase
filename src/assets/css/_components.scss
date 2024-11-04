@@ -3,26 +3,6 @@
 @import "./bootstrap/scss/variables";
 
 // Links
-.nav-link {
-  cursor: pointer;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  color: $primary;
-  padding: .4rem .4rem;
-  &.active {
-    color: $primary--lighter;
-  }
-  &:hover, &:focus {
-    color: $primary--lighter;
-  }
-  // Icons
-  svg {
-    width: 24px;
-    margin-right: .5rem;
-  }
-}
-
 .dropdown-toggle::after,
 .dropup .dropdown-toggle::after {
   display: none;
@@ -284,7 +264,7 @@ input[type="checkbox"] + label {
         @extend .hocus-standard, .text-black;
       }
       .issue-link-card--content {
-        @extend .p-0, .bg-primary;
+        @extend .p-0;
       }
     }
     &.user-card {

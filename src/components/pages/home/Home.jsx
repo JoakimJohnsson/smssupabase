@@ -17,7 +17,7 @@ import {MessageViewer} from "../../message/MessageViewer";
 import {LazyTextPlaceholder} from "../../minis/LazyTextPlaceholder";
 import {atLeastOneListDoesExist} from "../../../helpers/functions";
 import {IssueLinkCard} from "../../lists/issues/IssueLinkCard";
-import {Icon, settingsIconDuoTone} from "../../icons";
+import {Icon, settingsIconDuoTone, userIconDuoTone} from "../../icons";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
 import CustomProgressBar from "../../CustomProgressBar";
@@ -111,6 +111,14 @@ export const Home = () => {
                             }
                             <h2>{LABELS.COMMON.YOUR_INFORMATION}</h2>
                             <div className={"row"}>
+                                <div className={"col-12 mb-4"}>
+                                    <IconLinkCtaLg
+                                        variant={"warning"}
+                                        icon={userIconDuoTone}
+                                        path={`/users/${profile.id}`}
+                                        label={LABELS.COMMON.YOUR_PAGE}
+                                    />
+                                </div>
                                 <div className={"col-12 mb-4"}>
                                     <DashboardSection/>
                                 </div>

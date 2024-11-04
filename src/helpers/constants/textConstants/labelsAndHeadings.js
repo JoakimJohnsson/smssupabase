@@ -123,6 +123,7 @@ export const LABELS = {
         WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
         YEAR_DB: "År (year)",
         YOUR_INFORMATION: "Din information",
+        YOUR_PAGE: "Din sida",
     },
     SECTIONS: {
         DASHBOARD: {

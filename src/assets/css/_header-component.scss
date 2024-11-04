@@ -49,6 +49,15 @@
       &:hover, &:focus {
         color: $primary--lighter;
       }
+      &.to-profile a {
+        color: $warning;
+        &.active {
+          color: $warning--lighter;
+        }
+        &:hover, &:focus {
+          color: $warning--lighter;
+        }
+      }
       // Icons
       svg {
         width: 24px;

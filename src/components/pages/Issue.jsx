@@ -298,7 +298,7 @@ export const Issue = () => {
                                             isCollectingTitle &&
                                             <>
                                                 <FunctionButton
-                                                    variant={isWantingIssue ? "btn-success" : "btn-outline-secondary"}
+                                                    variant={isWantingIssue ? "btn-publisher" : "btn-outline-secondary"}
                                                     icon={faBadgeSheriff}
                                                     onClick={() => handleWanted()}
                                                     label={isWantingIssue ? TEXTS.REMOVE_ISSUE_WANTED : TEXTS.ADD_ISSUE_WANTED}
