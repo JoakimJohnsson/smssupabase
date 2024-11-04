@@ -12,12 +12,15 @@ import {OverviewValuation} from "./OverviewValuation";
 import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
 import {OverviewLinks} from "./OverviewLinks";
 import {OverviewMessages} from "./OverviewMessages";
+import {getUserIssueData} from "../../../../helpers/databaseFunctions.js";
+import {OverviewFavoriteIssues} from "./OverviewFavoriteIssues.jsx";
 
 
 export const OverviewPane = () => {
 
     const {user} = useAppContext();
     const [userTitlesData, setUserTitlesData] = useState(null);
+    const [userCollectedIssuesData, setUserCollectedIssuesData] = useState(null);
     const [userIssuesData, setUserIssuesData] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -29,9 +32,21 @@ export const OverviewPane = () => {
 
     useEffect(() => {
         if (user) {
-            getCollectedIssuesWithTitlesForUser(user.id, setUserIssuesData).then(() => setLoading(false));
+            getCollectedIssuesWithTitlesForUser(user.id, setUserCollectedIssuesData).then(() => setLoading(false));
         }
     }, [user]);
+
+    useEffect(() => {
+        const fetchIssuesData = async () => {
+            const result = await getUserIssueData(user.id);
+            if (result) {
+                if (result.data) {
+                    setUserIssuesData(result.data);
+                }
+            }
+        };
+        fetchIssuesData().then(() => setLoading(false));
+    }, [user.id]);
 
     return (
         <>
@@ -44,10 +59,11 @@ export const OverviewPane = () => {
                         <OverviewMessages/>
                         <OverviewLinks/>
                         <OverviewTitles titlesData={userTitlesData}/>
-                        <OverviewIssues titlesData={userTitlesData} issuesData={userIssuesData}/>
+                        <OverviewIssues titlesData={userTitlesData} issuesData={userCollectedIssuesData}/>
                         <OverviewValuation/>
-                        <OverviewWantedIssues/>
-                        <OverviewUpgradeIssues/>
+                        <OverviewWantedIssues data={userIssuesData?.wanted}/>
+                        <OverviewUpgradeIssues data={userIssuesData?.upgraded}/>
+                        <OverviewFavoriteIssues data={userIssuesData?.favorites}/>
                     </>
             }
         </>

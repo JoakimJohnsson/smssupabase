@@ -18,12 +18,12 @@ import {RemoveAdminButton} from "../lists/users/RemoveAdminButton";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
-import {getUpgradeIssuesForUser, getWantedIssuesForUser} from "../../services/collectingService";
 import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
 import {FunctionButton} from "../minis/FunctionButton";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 import {NoMatch} from "../routes/NoMatch";
 import {SimpleMessage} from "../message/SimpleMessage";
+import {getUserIssueData} from "../../helpers/databaseFunctions.js";
 
 
 export const User = () => {
@@ -33,8 +33,7 @@ export const User = () => {
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const {profile, setInformationMessage} = useAppContext();
-    const [wantedIssuesData, setWantedIssuesData] = useState(null);
-    const [upgradeIssuesData, setUpgradeIssuesData] = useState(null);
+    const [userIssuesData, setUserIssuesData] = useState(null);
 
     const fetchUserData = useCallback(() => {
         getRowByTableAndId(TABLES.PROFILES, setUser, id).then(() => setLoading(false));
@@ -67,15 +66,18 @@ export const User = () => {
     }
 
     useEffect(() => {
-        if (user && user.id) {
-            getWantedIssuesForUser(user.id, setWantedIssuesData).then(() => {
-                getUpgradeIssuesForUser(user.id, setUpgradeIssuesData).then(() => setLoading(false));
-            });
+        const fetchIssuesData = async () => {
+            const result = await getUserIssueData(user.id);
+            if (result) {
+                if (result.data) {
+                    setUserIssuesData(result.data);
+                }
+            }
+        };
+        fetchIssuesData().then(() => setLoading(false));
+    }, [user.id]);
 
-        }
-    }, [user]);
-
-    return objectDoesExist(user) ? (
+    return objectDoesExist(user) && userIssuesData ? (
             <main id="main-content" className={"container-fluid main-container"}>
                 <div className={"row row-padding--main"}>
                     {
@@ -144,6 +146,27 @@ export const User = () => {
                                             }
                                         </p>
                                         <div className={"sms-section--light mb-5"}>
+                                            <h2>{LABELS.SECTIONS.ISSUES.FAVORITES}</h2>
+                                            {
+                                                loading ?
+                                                    <CustomSpinner size={"4x"}/>
+                                                    :
+                                                    <ul className={"sms-list--with-cards"}>
+                                                        {
+                                                            userIssuesData.favorites ?
+                                                                userIssuesData.favorites
+                                                                    .sort((a, b) => sortByName(a.titles, b.titles))
+                                                                    .map((issue) =>
+                                                                        <IssueLinkCard key={issue.id} issue={issue}
+                                                                                       variant={"marvelklubben"}/>
+                                                                    )
+                                                                :
+                                                                <p>{LABELS.COMMON.NO_FAVORITE_ISSUES_USER}</p>
+                                                        }
+                                                    </ul>
+                                            }
+                                        </div>
+                                        <div className={"sms-section--light mb-5"}>
                                             <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
                                             {
                                                 loading ?
@@ -151,11 +174,12 @@ export const User = () => {
                                                     :
                                                     <ul className={"sms-list--with-cards"}>
                                                         {
-                                                            wantedIssuesData ?
-                                                                wantedIssuesData
+                                                            userIssuesData.wanted ?
+                                                                userIssuesData.wanted
                                                                     .sort((a, b) => sortByName(a.titles, b.titles))
                                                                     .map((issue) =>
-                                                                        <IssueLinkCard key={issue.id} issue={issue}/>
+                                                                        <IssueLinkCard key={issue.id} issue={issue}
+                                                                                       variant={"publisher"}/>
                                                                     )
                                                                 :
                                                                 <p>{LABELS.COMMON.NO_WANTED_ISSUES_USER}</p>
@@ -171,11 +195,12 @@ export const User = () => {
                                                     :
                                                     <ul className={"sms-list--with-cards"}>
                                                         {
-                                                            upgradeIssuesData ?
-                                                                upgradeIssuesData
+                                                            userIssuesData.upgraded ?
+                                                                userIssuesData.upgraded
                                                                     .sort((a, b) => sortByName(a.titles, b.titles))
                                                                     .map((issue) =>
-                                                                        <IssueLinkCard key={issue.id} issue={issue}/>
+                                                                        <IssueLinkCard key={issue.id} issue={issue}
+                                                                                       variant={"grade"}/>
                                                                     )
                                                                 :
                                                                 <p>{LABELS.COMMON.NO_UPGRADE_ISSUES_USER}</p>

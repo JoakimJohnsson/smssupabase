@@ -31,6 +31,15 @@ export const getUserIssues = async (userId) => {
     }
 }
 
+export const getUserIssueData = async (userId) => {
+    try {
+        return await supabase.rpc('get_user_issue_data', {input_user_id: userId});
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
 export const getAdjacentIssueIds = async (titleId, currentYear, currentNumber, isVariant, variantSuffix) => {
     const {data: prevIssueId} = await supabase
         .rpc('get_previous_issue_id', {

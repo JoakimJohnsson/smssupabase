@@ -119,6 +119,7 @@ export const LABELS = {
         NO_WANTED_ISSUES: "Du har inga efterlysta publikationer.",
         NO_WANTED_ISSUES_USER: "Inga efterlysta publikationer.",
         NO_UPGRADE_ISSUES_USER: "Inga publikationer som behöver uppgradering.",
+        NO_FAVORITE_ISSUES_USER: "Inga favoriter här.",
         WEBSITE: "Webbplats",
         WIKI_URL_DB: "Länk till Seriewikin (wiki_url)",
         YEAR_DB: "År (year)",
@@ -155,6 +156,7 @@ export const LABELS = {
             REMOVE_ISSUE_UPGRADE: "Ta bort behov av uppgradering",
             SOURCE_DB: "Källor (source)",
             UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
+            FAVORITES: "Mina favoriter",
             VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
         },
         MARVELKLUBBEN: {

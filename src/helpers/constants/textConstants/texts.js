@@ -156,6 +156,7 @@ export const PANES = {
         COLLECTING_ISSUES_GRADE_1: "Publikationerna i din samling har en snittgradering på",
         SEE_PROFILE_FOR_MORE_WANTED: "Se alla efterlysningar på din profilsida",
         SEE_PROFILE_FOR_MORE_NEEDS_GRADING: "Se fler publikationer på din profilsida",
+        SEE_PROFILE_FOR_MORE_FAVORITES: "Se fler favoriter på din profilsida",
     },
     COLLECTIONS: {
         NAME: "Samlingar",
