@@ -31,9 +31,10 @@ export const getUserIssues = async (userId) => {
     }
 }
 
-export const getUserIssueData = async (userId) => {
+// Returns wanted, upgraded and favorites lists of issues and titles.
+export const getUserSelectedIssuesAndTitlesData = async (userId) => {
     try {
-        return await supabase.rpc('get_user_issue_data', {input_user_id: userId});
+        return await supabase.rpc('get_user_selected_issue_and_titles_data', {input_user_id: userId});
     } catch (error) {
         console.error(error);
         return false;

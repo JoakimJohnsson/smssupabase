@@ -12,8 +12,9 @@ import {OverviewValuation} from "./OverviewValuation";
 import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
 import {OverviewLinks} from "./OverviewLinks";
 import {OverviewMessages} from "./OverviewMessages";
-import {getUserIssueData} from "../../../../helpers/databaseFunctions.js";
+import {getUserSelectedIssuesAndTitlesData} from "../../../../helpers/databaseFunctions.js";
 import {OverviewFavoriteIssues} from "./OverviewFavoriteIssues.jsx";
+import {OverviewFavoriteTitles} from "./OverviewFavoriteTitles.jsx";
 
 
 export const OverviewPane = () => {
@@ -38,7 +39,7 @@ export const OverviewPane = () => {
 
     useEffect(() => {
         const fetchIssuesData = async () => {
-            const result = await getUserIssueData(user.id);
+            const result = await getUserSelectedIssuesAndTitlesData(user.id);
             if (result) {
                 if (result.data) {
                     setUserIssuesData(result.data);
@@ -47,6 +48,8 @@ export const OverviewPane = () => {
         };
         fetchIssuesData().then(() => setLoading(false));
     }, [user.id]);
+
+    console.log(userIssuesData);
 
     return (
         <>
@@ -63,7 +66,8 @@ export const OverviewPane = () => {
                         <OverviewValuation/>
                         <OverviewWantedIssues data={userIssuesData?.wanted}/>
                         <OverviewUpgradeIssues data={userIssuesData?.upgraded}/>
-                        <OverviewFavoriteIssues data={userIssuesData?.favorites}/>
+                        <OverviewFavoriteIssues data={userIssuesData?.favorite_issues}/>
+                        <OverviewFavoriteTitles data={userIssuesData?.favorite_titles}/>
                     </>
             }
         </>

@@ -23,7 +23,8 @@ import {FunctionButton} from "../minis/FunctionButton";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 import {NoMatch} from "../routes/NoMatch";
 import {SimpleMessage} from "../message/SimpleMessage";
-import {getUserIssueData} from "../../helpers/databaseFunctions.js";
+import {getUserSelectedIssuesAndTitlesData} from "../../helpers/databaseFunctions.js";
+import {TitlesListItem} from "./TitlesListItem.jsx";
 
 
 export const User = () => {
@@ -67,7 +68,7 @@ export const User = () => {
 
     useEffect(() => {
         const fetchIssuesData = async () => {
-            const result = await getUserIssueData(user.id);
+            const result = await getUserSelectedIssuesAndTitlesData(user.id);
             if (result) {
                 if (result.data) {
                     setUserIssuesData(result.data);
@@ -153,8 +154,8 @@ export const User = () => {
                                                     :
                                                     <ul className={"sms-list--with-cards"}>
                                                         {
-                                                            userIssuesData.favorites ?
-                                                                userIssuesData.favorites
+                                                            userIssuesData.favorite_issues ?
+                                                                userIssuesData.favorite_issues
                                                                     .sort((a, b) => sortByName(a.titles, b.titles))
                                                                     .map((issue) =>
                                                                         <IssueLinkCard key={issue.id} issue={issue}
@@ -167,45 +168,56 @@ export const User = () => {
                                             }
                                         </div>
                                         <div className={"sms-section--light mb-5"}>
+                                            <h2>{LABELS.SECTIONS.TITLES.FAVORITES}</h2>
+                                            {
+                                                <ul className={"sms-list--with-cards"}>
+                                                    {
+                                                        userIssuesData.favorite_titles ?
+                                                            userIssuesData.favorite_titles
+                                                                .sort((a, b) => sortByName(a, b))
+                                                                .map((title) =>
+                                                                    <TitlesListItem key={title.id} title={title}/>
+                                                                )
+                                                            :
+                                                            <p>{LABELS.COMMON.NO_FAVORITE_ISSUES_USER}</p>
+                                                    }
+                                                </ul>
+                                            }
+                                        </div>
+                                        <div className={"sms-section--light mb-5"}>
                                             <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
                                             {
-                                                loading ?
-                                                    <CustomSpinner size={"4x"}/>
-                                                    :
-                                                    <ul className={"sms-list--with-cards"}>
-                                                        {
-                                                            userIssuesData.wanted ?
-                                                                userIssuesData.wanted
-                                                                    .sort((a, b) => sortByName(a.titles, b.titles))
-                                                                    .map((issue) =>
-                                                                        <IssueLinkCard key={issue.id} issue={issue}
-                                                                                       variant={"publisher"}/>
-                                                                    )
-                                                                :
-                                                                <p>{LABELS.COMMON.NO_WANTED_ISSUES_USER}</p>
-                                                        }
-                                                    </ul>
+                                                <ul className={"sms-list--with-cards"}>
+                                                    {
+                                                        userIssuesData.wanted ?
+                                                            userIssuesData.wanted
+                                                                .sort((a, b) => sortByName(a.titles, b.titles))
+                                                                .map((issue) =>
+                                                                    <IssueLinkCard key={issue.id} issue={issue}
+                                                                                   variant={"publisher"}/>
+                                                                )
+                                                            :
+                                                            <p>{LABELS.COMMON.NO_WANTED_ISSUES_USER}</p>
+                                                    }
+                                                </ul>
                                             }
                                         </div>
                                         <div className={"sms-section--light mb-5"}>
                                             <h2>{LABELS.SECTIONS.ISSUES.UPGRADE_ISSUES}</h2>
                                             {
-                                                loading ?
-                                                    <CustomSpinner size={"4x"}/>
-                                                    :
-                                                    <ul className={"sms-list--with-cards"}>
-                                                        {
-                                                            userIssuesData.upgraded ?
-                                                                userIssuesData.upgraded
-                                                                    .sort((a, b) => sortByName(a.titles, b.titles))
-                                                                    .map((issue) =>
-                                                                        <IssueLinkCard key={issue.id} issue={issue}
-                                                                                       variant={"grade"}/>
-                                                                    )
-                                                                :
-                                                                <p>{LABELS.COMMON.NO_UPGRADE_ISSUES_USER}</p>
-                                                        }
-                                                    </ul>
+                                                <ul className={"sms-list--with-cards"}>
+                                                    {
+                                                        userIssuesData.upgraded ?
+                                                            userIssuesData.upgraded
+                                                                .sort((a, b) => sortByName(a.titles, b.titles))
+                                                                .map((issue) =>
+                                                                    <IssueLinkCard key={issue.id} issue={issue}
+                                                                                   variant={"grade"}/>
+                                                                )
+                                                            :
+                                                            <p>{LABELS.COMMON.NO_UPGRADE_ISSUES_USER}</p>
+                                                    }
+                                                </ul>
                                             }
                                         </div>
                                     </div>

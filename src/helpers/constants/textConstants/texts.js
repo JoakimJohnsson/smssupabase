@@ -157,6 +157,7 @@ export const PANES = {
         SEE_PROFILE_FOR_MORE_WANTED: "Se alla efterlysningar på din profilsida",
         SEE_PROFILE_FOR_MORE_NEEDS_GRADING: "Se fler publikationer på din profilsida",
         SEE_PROFILE_FOR_MORE_FAVORITES: "Se fler favoriter på din profilsida",
+        SEE_PROFILE_FOR_MORE_FAVORITE_TITLES: "Se fler favorittitlar på din profilsida",
     },
     COLLECTIONS: {
         NAME: "Samlingar",
