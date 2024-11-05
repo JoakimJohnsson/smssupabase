@@ -22,7 +22,7 @@ export const OverviewPane = () => {
     const {user} = useAppContext();
     const [userTitlesData, setUserTitlesData] = useState(null);
     const [userCollectedIssuesData, setUserCollectedIssuesData] = useState(null);
-    const [userIssuesData, setUserIssuesData] = useState(null);
+    const [userSelectedIssuesTitlesData, setUserSelectedIssuesTitlesData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -42,14 +42,12 @@ export const OverviewPane = () => {
             const result = await getUserSelectedIssuesAndTitlesData(user.id);
             if (result) {
                 if (result.data) {
-                    setUserIssuesData(result.data);
+                    setUserSelectedIssuesTitlesData(result.data);
                 }
             }
         };
         fetchIssuesData().then(() => setLoading(false));
     }, [user.id]);
-
-    console.log(userIssuesData);
 
     return (
         <>
@@ -64,10 +62,10 @@ export const OverviewPane = () => {
                         <OverviewTitles titlesData={userTitlesData}/>
                         <OverviewIssues titlesData={userTitlesData} issuesData={userCollectedIssuesData}/>
                         <OverviewValuation/>
-                        <OverviewWantedIssues data={userIssuesData?.wanted}/>
-                        <OverviewUpgradeIssues data={userIssuesData?.upgraded}/>
-                        <OverviewFavoriteIssues data={userIssuesData?.favorite_issues}/>
-                        <OverviewFavoriteTitles data={userIssuesData?.favorite_titles}/>
+                        <OverviewWantedIssues data={userSelectedIssuesTitlesData?.wanted}/>
+                        <OverviewUpgradeIssues data={userSelectedIssuesTitlesData?.upgraded}/>
+                        <OverviewFavoriteIssues data={userSelectedIssuesTitlesData?.favorite_issues}/>
+                        <OverviewFavoriteTitles data={userSelectedIssuesTitlesData?.favorite_titles}/>
                     </>
             }
         </>

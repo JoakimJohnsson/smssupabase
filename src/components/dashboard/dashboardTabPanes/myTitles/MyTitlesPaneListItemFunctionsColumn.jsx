@@ -23,8 +23,9 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
 
     const fetchTitleValue = useCallback(async () => {
         const data = await getTitleTotalValuesByUserAndTitle(user.id, title.id);
+
         if (data) {
-            if (data[0].total_value) {
+            if (data[0]?.total_value) {
                 setTitleValue(data[0].total_value);
             } else {
                 setTitleValue(0);
