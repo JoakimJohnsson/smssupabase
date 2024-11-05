@@ -34,7 +34,7 @@ export const User = () => {
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const {profile, setInformationMessage} = useAppContext();
-    const [userIssuesData, setUserIssuesData] = useState(null);
+    const [userSelectedIssuesTitlesData, setUserSelectedIssuesTitlesData] = useState(null);
 
     const fetchUserData = useCallback(() => {
         getRowByTableAndId(TABLES.PROFILES, setUser, id).then(() => setLoading(false));
@@ -71,14 +71,14 @@ export const User = () => {
             const result = await getUserSelectedIssuesAndTitlesData(user.id);
             if (result) {
                 if (result.data) {
-                    setUserIssuesData(result.data);
+                    setUserSelectedIssuesTitlesData(result.data);
                 }
             }
         };
         fetchIssuesData().then(() => setLoading(false));
     }, [user.id]);
 
-    return objectDoesExist(user) && userIssuesData ? (
+    return objectDoesExist(user) && userSelectedIssuesTitlesData ? (
             <main id="main-content" className={"container-fluid main-container"}>
                 <div className={"row row-padding--main"}>
                     {
@@ -154,8 +154,8 @@ export const User = () => {
                                                     :
                                                     <ul className={"sms-list--with-cards"}>
                                                         {
-                                                            userIssuesData.favorite_issues ?
-                                                                userIssuesData.favorite_issues
+                                                            userSelectedIssuesTitlesData.favorite_issues ?
+                                                                userSelectedIssuesTitlesData.favorite_issues
                                                                     .sort((a, b) => sortByName(a.titles, b.titles))
                                                                     .map((issue) =>
                                                                         <IssueLinkCard key={issue.id} issue={issue}
@@ -172,8 +172,8 @@ export const User = () => {
                                             {
                                                 <ul className={"sms-list--with-cards"}>
                                                     {
-                                                        userIssuesData.favorite_titles ?
-                                                            userIssuesData.favorite_titles
+                                                        userSelectedIssuesTitlesData.favorite_titles ?
+                                                            userSelectedIssuesTitlesData.favorite_titles
                                                                 .sort((a, b) => sortByName(a, b))
                                                                 .map((title) =>
                                                                     <TitlesListItem key={title.id} title={title}/>
@@ -189,8 +189,8 @@ export const User = () => {
                                             {
                                                 <ul className={"sms-list--with-cards"}>
                                                     {
-                                                        userIssuesData.wanted ?
-                                                            userIssuesData.wanted
+                                                        userSelectedIssuesTitlesData.wanted ?
+                                                            userSelectedIssuesTitlesData.wanted
                                                                 .sort((a, b) => sortByName(a.titles, b.titles))
                                                                 .map((issue) =>
                                                                     <IssueLinkCard key={issue.id} issue={issue}
@@ -207,8 +207,8 @@ export const User = () => {
                                             {
                                                 <ul className={"sms-list--with-cards"}>
                                                     {
-                                                        userIssuesData.upgraded ?
-                                                            userIssuesData.upgraded
+                                                        userSelectedIssuesTitlesData.upgraded ?
+                                                            userSelectedIssuesTitlesData.upgraded
                                                                 .sort((a, b) => sortByName(a.titles, b.titles))
                                                                 .map((issue) =>
                                                                     <IssueLinkCard key={issue.id} issue={issue}
