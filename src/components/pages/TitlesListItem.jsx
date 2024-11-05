@@ -9,7 +9,6 @@ import {getDataName} from "../../helpers/functions";
 export const TitlesListItem = ({title}) => {
     const [userCollectsTitle, setUserCollectsTitle] = useState(false);
 
-    console.log("title", title);
     return (
 
         <li key={title.id} className={"title-card simple"}>
