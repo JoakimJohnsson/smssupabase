@@ -1,9 +1,10 @@
 import React from "react";
-import {CONFIG, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {CONFIG} from "../../helpers/constants/configConstants";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../searchFilter/FilterFormSimple";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {IssueCard} from "../lists/issues/IssueCard";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {ShowMoreButtons} from "../minis/ShowMoreButtons";
@@ -20,7 +21,7 @@ export const Issues = () => {
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
                     <FilterFormSimple query={query} setSearchParams={setSearchParams}
-                                      placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
+                                      placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
                     <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {

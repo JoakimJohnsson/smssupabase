@@ -1,5 +1,6 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
+import {ROUTES} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {Icon} from "../icons";
 import {Link} from "react-router-dom";
 import {useLogoIcon} from "../../helpers/customHooks/useLogoIcon";
@@ -16,8 +17,8 @@ export const NavigationLogo = () => {
             {/* mobile icon */}
             <Icon icon={icon} size={"3x"} className={"ms-2 me-3 text-grade d-flex d-sm-none"}/>
             <div className={"sms-logo-text"}>
-                <span className={"d-none d-sm-inline"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}</span>
-                <span className={"d-inline d-sm-none"}>{LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE_SHORT}</span>
+                <span className={"d-none d-sm-inline"}>{LABELS.COMMON.SVENSKA_MARVELSAMLARE}</span>
+                <span className={"d-inline d-sm-none"}>{LABELS.COMMON.SVENSKA_MARVELSAMLARE_SHORT}</span>
             </div>
         </Link>
     )

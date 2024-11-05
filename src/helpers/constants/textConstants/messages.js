@@ -28,6 +28,8 @@ export const MESSAGES = {
         VALIDATION_DELETE: "Lyckades radera informationen från databasen"
     },
     CONFIRM: {
+        ADD_ALL_ISSUES: "Vill du verkligen lägga till alla publikationer till samlingen?",
+        REMOVE_ALL_ISSUES: "Vill du verkligen ta bort alla publikationer från samlingen?",
         DELETE: "Du kommer nu ta bort ",
         DELETE_GRADES: "Vill du verkligen ta bort grundläggande graderingsvärden för denna publikation?",
         REMOVE_1: "Vill du verkligen sluta samla på ",

@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
 import {MESSAGE_STATUS_TEXT, MESSAGE_STATUS_TEXT_GLOBAL} from "../../../../helpers/constants/textConstants/messages";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../services/serviceFunctions";
@@ -49,7 +50,7 @@ export const AdminMessage = () => {
                                         <h2>
                                             <span>{message.title} - </span>
                                             <span>{message.is_global ? MESSAGE_STATUS_TEXT_GLOBAL[message.status].name : MESSAGE_STATUS_TEXT[message.status].name} </span>
-                                            <span>{message.is_global === 1 && " - " + LABELS_AND_HEADINGS.MESSAGE_GLOBAL}</span>
+                                            <span>{message.is_global === 1 && " - " + LABELS.COMMON.MESSAGE_GLOBAL}</span>
                                         </h2>
                                         <div className={"mb-4"}>
                                             <MessageIcons message={message} size={"fa-3x"}/>
@@ -68,7 +69,7 @@ export const AdminMessage = () => {
                                                   to={`/users/${message.sender_id}`}>{TEXTS.MESSAGE_LINK_SENDER}</Link>
                                         }
                                         <Link className={"btn btn-outline-primary sms-btn"}
-                                              to={ROUTES.ADMIN.MESSAGES}>{LABELS_AND_HEADINGS.SEE_ALL_MESSAGES}</Link>
+                                              to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
                                     </div>
                                 </div>
                             </div>

@@ -1,19 +1,20 @@
 import {useNavigate} from "react-router-dom";
 import React from "react";
 import {useAppContext} from "../../context/AppContext";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Icon, logoutIconDuoTone} from "../icons";
+import {supabase} from "../../supabase/supabaseClient.js";
 
 
 export const SignOutButton = ({mobile}) => {
 
-    const {signOut, setProfile, setUser} = useAppContext();
+    const {setProfile, setUser} = useAppContext();
     const navigate = useNavigate();
     const size = mobile ? "1x" : "2x";
 
     async function handleSignOut() {
-        await signOut().then(() => {
+        await supabase.auth.signOut().then(() => {
             setProfile(null);
             setUser(null);
         })
@@ -26,17 +27,17 @@ export const SignOutButton = ({mobile}) => {
                 placement={"bottom"}
                 overlay={
                     <Tooltip id={"logout-tooltip"}>
-                        {LABELS_AND_HEADINGS.SIGN_OUT}
+                        {LABELS.COMMON.SIGN_OUT}
                     </Tooltip>
                 }
             >
-                <button onClick={handleSignOut} className="nav-link border-0" aria-label={LABELS_AND_HEADINGS.SIGN_OUT}>
-                    <Icon icon={logoutIconDuoTone} size={size}/> <span className={"sms-nav-link--text d-lg-none d-xl-inline"}>{LABELS_AND_HEADINGS.SIGN_OUT}</span>
+                <button onClick={handleSignOut} className="nav-link border-0" aria-label={LABELS.COMMON.SIGN_OUT}>
+                    <Icon icon={logoutIconDuoTone} size={size}/> <span className={"sms-nav-link--text d-lg-none d-xl-inline"}>{LABELS.COMMON.SIGN_OUT}</span>
                 </button>
             </OverlayTrigger>
         )
         :
-        <button onClick={handleSignOut} className="nav-link border-0" aria-label={LABELS_AND_HEADINGS.SIGN_OUT}>
-            <Icon icon={logoutIconDuoTone} size={size}/> <span className={"sms-nav-link--text d-lg-none d-xl-inline"}>{LABELS_AND_HEADINGS.SIGN_OUT}</span>
+        <button onClick={handleSignOut} className="nav-link border-0" aria-label={LABELS.COMMON.SIGN_OUT}>
+            <Icon icon={logoutIconDuoTone} size={size}/> <span className={"sms-nav-link--text d-lg-none d-xl-inline"}>{LABELS.COMMON.SIGN_OUT}</span>
         </button>
 }

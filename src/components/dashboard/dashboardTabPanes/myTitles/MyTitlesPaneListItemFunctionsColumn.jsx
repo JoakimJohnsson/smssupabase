@@ -8,8 +8,9 @@ import {
     statusIconFailDuoTone,
     statusIconSuccessDuoTone
 } from "../../../icons";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {getIssuesByTitleId} from "../../../../services/issueService";
+import {getTitleTotalValuesByUserAndTitle} from "../../../../helpers/databaseFunctions.js";
 
 
 export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}) => {
@@ -17,7 +18,19 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
     const [gradingStatusOpen, setGradingStatusOpen] = useState(false);
     const [issuesData, setIssuesData] = useState({});
     const [issueNeedsGrading, setIssueNeedsGrading] = useState(false);
+    const [titleValue, setTitleValue] = useState(null);
     const [loadingGradingStatus, setLoadingGradingStatus] = useState(false);
+
+    const fetchTitleValue = useCallback(async () => {
+        const data = await getTitleTotalValuesByUserAndTitle(user.id, title.id);
+        if (data) {
+            if (data[0].total_value) {
+                setTitleValue(data[0].total_value);
+            } else {
+                setTitleValue(0);
+            }
+        }
+    }, [title, user.id]);
 
     const fetchIssuesData = useCallback(() => {
         getIssuesByTitleId(setIssuesData, title.id).then(() => setLoadingGradingStatus(false));
@@ -30,6 +43,7 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
             setLoadingGradingStatus(true);
             try {
                 await checkGradingStatus(issuesData, user.id, setIssueNeedsGrading);
+                fetchTitleValue();
             } finally {
                 setLoadingGradingStatus(false);
             }
@@ -38,11 +52,12 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
 
     useEffect(() => {
         fetchIssuesData();
-    }, [fetchIssuesData]);
+    }, [fetchIssuesData, fetchTitleValue]);
 
     return (
         <div className={"col-12"}>
             <div className={"p-3"}>
+
                 {
                     gradingStatusOpen ?
                         <>
@@ -54,16 +69,23 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
                                     :
                                     <>
                                         {
+                                            titleValue !== null &&
+                                            <p>
+                                                {PANES.TITLES.COLLECTING_VALUE_1} <span
+                                                className={"text-grade"}>{titleValue}</span> kr.
+                                            </p>
+                                        }
+                                        {
                                             issueNeedsGrading ?
                                                 <p className={"alert alert-danger d-flex align-items-center m-0"}>
                                                     <Icon icon={statusIconFailDuoTone} className={"me-3"} size={"2x"}/>
-                                                    {TEXTS.GRADE_MISSING}
+                                                    {PANES.TITLES.GRADE_MISSING}
                                                 </p>
                                                 :
                                                 <p className={"alert alert-success d-flex align-items-center m-0"}>
                                                     <Icon icon={statusIconSuccessDuoTone} className={"me-3"}
                                                           size={"2x"}/>
-                                                    {TEXTS.GRADE_FOUND}
+                                                    {PANES.TITLES.GRADE_FOUND}
                                                 </p>
                                         }
                                     </>
@@ -78,9 +100,9 @@ export const MyTitlesPaneListItemFunctionsColumn = ({title, user, titleProgress}
                                         <Icon icon={gradingIconDuoTone} className={"me-2"} size={"2x"}/>
                                         <span className={"mx-3"}>
                                                     {
-                                                        LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_1 +
+                                                        PANES.TITLES.COLLECTING_CHECK_GRADING_STATUS_OPEN_1 +
                                                         ` ${title.name} ` +
-                                                        LABELS_AND_HEADINGS.COLLECTING_CHECK_GRADING_STATUS_OPEN_2
+                                                        PANES.TITLES.COLLECTING_CHECK_GRADING_STATUS_OPEN_2
                                                     }
                                                 </span>
                                     </button>

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {CONFIG} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {NoRouteAvailable} from "../minis/NoRouteAvailable";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 
@@ -27,7 +28,7 @@ export const NoMatch = () => {
                     <main id="main-content" className={"container-fluid main-container"}>
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
-                                <HeadingWithBreadCrumbs text={LABELS_AND_HEADINGS.STATUS_404}/>
+                                <HeadingWithBreadCrumbs text={LABELS.COMMON.STATUS_404}/>
                                 <NoRouteAvailable/>
                             </div>
                         </div>

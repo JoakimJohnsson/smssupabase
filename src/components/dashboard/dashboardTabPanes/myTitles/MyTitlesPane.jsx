@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
-import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitlesForUser} from "../../../../services/titleService";
 import FilterFormFormat from "../../../searchFilter/FilterFormFormat";
@@ -47,7 +46,7 @@ export const MyTitlesPane = () => {
                             pocket={pocket}
                             hardcover={hardcover}
                             special={special}
-                            placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                            placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
                         <MyTitlesPaneList query={query} titlesData={titlesData} comic={comic} comiclarge={comiclarge} album={album} pocket={pocket}
                                           hardcover={hardcover} special={special} collectible={collectible}/>
                     </>

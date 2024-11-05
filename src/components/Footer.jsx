@@ -1,8 +1,10 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../helpers/constants/configConstants";
+import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../helpers/constants/textConstants/texts";
 import {useAppContext} from "../context/AppContext";
 import packageJson from '../../package.json';
 import {useUtilsData} from "../helpers/customHooks/useUtilsData";
+
 
 const Footer = () => {
 
@@ -30,7 +32,7 @@ const Footer = () => {
                     </div>
                     <div className={"col-12 col-md-6 py-2 d-flex align-items-end"}>
                         <p className={"fs-smallest text-end m-0 w-100"}>
-                            <span>© 2024 {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE} | </span>
+                            <span>© 2024 {LABELS.COMMON.SVENSKA_MARVELSAMLARE} | </span>
                             <span className={"text-nowrap"}>v{packageJson.version} {utilsData && " | " + utilsData.release_date}</span>
                         </p>
                     </div>

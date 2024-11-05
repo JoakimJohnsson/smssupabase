@@ -1,7 +1,13 @@
 import React from "react";
 import {ROUTES} from "../../../helpers/constants/configConstants";
-import {collectionsIconDuoTone, mapsIconDuoTone, overviewIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons";
-import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {
+    collectionsIconDuoTone,
+    mapsIconDuoTone,
+    overviewIconDuoTone,
+    titleIconDuoTone,
+    titlesIconDuoTone,
+    valueIconDuoTone
+} from "../../icons";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {PANES} from "../../../helpers/constants/textConstants/texts";
 
@@ -10,7 +16,6 @@ export const DashboardSection = () => {
 
     return (
         <>
-            <h2>{LABELS.SECTIONS.DASHBOARD.NAME}</h2>
             <IconLinkCtaLg
                 variant={"primary"}
                 icon={overviewIconDuoTone}
@@ -22,6 +27,12 @@ export const DashboardSection = () => {
                 icon={titlesIconDuoTone}
                 path={ROUTES.DASHBOARD.PATH_MY_TITLES}
                 label={PANES.TITLES.NAME}
+            />
+            <IconLinkCtaLg
+                variant={"primary"}
+                icon={titleIconDuoTone}
+                path={ROUTES.DASHBOARD.PATH_MY_ISSUES}
+                label={PANES.ISSUES.NAME}
             />
             <IconLinkCtaLg
                 variant={"grade"}

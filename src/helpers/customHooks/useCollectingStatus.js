@@ -1,11 +1,11 @@
 import {useCallback, useEffect, useMemo, useState} from "react";
 import {
     checkIfIsCollectingIssue,
-    checkIfIsUpgradingIssue,
-    checkIfIsWantingIssue,
     getGradesByUserIdAndIssueId
 } from "../../services/collectingService";
 import {doesUserCollectTitle} from "../databaseFunctions";
+import {TABLES} from "../constants/serviceConstants.js";
+import {userIssueExists} from "../../services/serviceFunctions.js";
 
 
 export const useCollectingStatus = (userId, issueId, titleId) => {
@@ -31,20 +31,19 @@ export const useCollectingStatus = (userId, issueId, titleId) => {
         }
     }, [userId, issueId, fetchGrades]);
 
-    useEffect(() => {
-        // Reset value before checking
+    useEffect( () => {
+        // Reset values before checking
         setIsWantingIssue(false);
-        if (userId && issueId) {
-            checkIfIsWantingIssue(userId, issueId, setIsWantingIssue).then();
-        }
-    }, [userId, issueId]);
-
-    useEffect(() => {
-        // Reset value before checking
         setIsUpgradingIssue(false);
-        if (userId && issueId) {
-            checkIfIsUpgradingIssue(userId, issueId, setIsUpgradingIssue).then();
-        }
+        const checkIssues = async () => {
+            if (userId && issueId) {
+                const wantedIssueExists = await userIssueExists(userId, issueId, TABLES.USERS_ISSUES_WANTED);
+                const upgradeIssueExists = await userIssueExists(userId, issueId, TABLES.USERS_ISSUES_UPGRADE);
+                setIsWantingIssue(wantedIssueExists);
+                setIsUpgradingIssue(upgradeIssueExists);
+            }
+        };
+        checkIssues();
     }, [userId, issueId]);
 
     useEffect(() => {

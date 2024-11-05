@@ -42,6 +42,8 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
                 return BREADCRUMB_NAMES.MESSAGES;
             case "my titles":
                 return BREADCRUMB_NAMES.MY_TITLES;
+            case "my issues":
+                return BREADCRUMB_NAMES.MY_ISSUES;
             case "collections":
                 return BREADCRUMB_NAMES.COLLECTIONS;
             case "map":
@@ -99,8 +101,8 @@ export const Breadcrumbs = ({doIgnoreName, bcName}) => {
     }
 
     return (
-        <nav aria-label={LABELS.COMMON.BREADCRUMB} className={"mb-5 breadcrumb-nav hide"}>
-            <ol className="breadcrumb small">
+        <nav aria-label={LABELS.COMMON.BREADCRUMB} className={"breadcrumb-nav hide"}>
+            <ol className="breadcrumb small mb-0">
                 {breadcrumbs.map(({match, breadcrumb}, index) => {
                         return printBreadCrumbLinkItems(index, breadcrumb, match);
                     }

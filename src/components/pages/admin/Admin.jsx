@@ -1,5 +1,7 @@
 import React from "react";
-import {ROUTES, TEXTS} from "../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../helpers/constants/configConstants";
+import {BREADCRUMB_NAMES, LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {TitlesSection} from "../../dashboard/dashboardSections/admin/TitlesSection";
 import {PublishersSection} from "../../dashboard/dashboardSections/admin/PublishersSection";
 import {HeadingWithBreadCrumbs} from "../../headings";
@@ -11,7 +13,6 @@ import {UtilsSection} from "../../dashboard/dashboardSections/admin/UtilsSection
 import {Link} from "react-router-dom";
 import {MessagesSection} from "../../dashboard/dashboardSections/admin/MessagesSection";
 import {isSuperAdmin} from "../../../services/profileService";
-import {BREADCRUMB_NAMES, LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const Admin = () => {
@@ -21,7 +22,7 @@ export const Admin = () => {
     return (
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row row-padding--main"}>
-                <div className={"sms-page-col--full"}>
+                <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={BREADCRUMB_NAMES.ADMIN}/>
                     <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
                     <p>{TEXTS.ADMIN_INFO}</p>

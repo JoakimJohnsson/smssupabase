@@ -38,6 +38,7 @@ import {AdminRoute} from "./AdminRoute";
 import {CatchAll} from "./CatchAll";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {MapPane} from "../dashboard/dashboardTabPanes/map/MapPane";
+import {MyIssuesPane} from "../dashboard/dashboardTabPanes/myIssues/MyIssuesPane.jsx";
 
 
 export const MyRoutes = () => {
@@ -63,6 +64,7 @@ export const MyRoutes = () => {
                                     <Route path={ROUTES.DASHBOARD.OVERVIEW} element={<PrivateRoute><OverviewPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.VALUATION} element={<PrivateRoute><ValuationPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.MY_TITLES} element={<PrivateRoute><MyTitlesPane/></PrivateRoute>}/>
+                                    <Route path={ROUTES.DASHBOARD.MY_ISSUES} element={<PrivateRoute><MyIssuesPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.COLLECTIONS} element={<PrivateRoute><CollectionsPane/></PrivateRoute>}/>
                                     <Route path={ROUTES.DASHBOARD.MAP} element={<PrivateRoute><MapPane/></PrivateRoute>}/>
                                     <Route path={"*"} element={<CatchAll/>}/>

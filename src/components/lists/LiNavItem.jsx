@@ -22,7 +22,7 @@ export const LiNavItem = ({
 
     return (
         <li className={className}>
-            <NavLink exact={"true"} to={route} className={"nav-link"} onClick={onClick}>
+            <NavLink exact={"true"} to={route} className={`nav-link ${customClass}`} onClick={onClick}>
                 {icon}
                 <span className={"sms-nav-link--text"}>{text}</span>
                 {

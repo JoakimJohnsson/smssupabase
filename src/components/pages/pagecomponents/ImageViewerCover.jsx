@@ -3,7 +3,7 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import CustomLightbox from "../../CustomLightbox";
 import {Icon} from "../../icons";
 import {faSearch} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ImageViewerCover = ({url, displayName, isCollectingIssue = false}) => {
@@ -21,7 +21,7 @@ export const ImageViewerCover = ({url, displayName, isCollectingIssue = false}) 
                         className={`cover-image${isCollectingIssue ? "" : " grayscale"}`}
                         loading={"lazy"}
                         onClick={() => setOpenLightbox(true)}
-                        aria-label={LABELS_AND_HEADINGS.SHOW_ORIGINAL_IMAGE}
+                        aria-label={LABELS.COMMON.SHOW_ORIGINAL_IMAGE}
                     />
                     <Icon icon={faSearch} size={"1x"} className={`zoom-icon ${isCollectingIssue ? " bg-success" : " bg-secondary"}`}/>
                 </div>

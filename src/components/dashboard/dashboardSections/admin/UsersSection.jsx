@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings.js";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
@@ -23,7 +25,7 @@ export const UsersSection = () => {
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light h-100"}>
-                <h2>{LABELS_AND_HEADINGS.USERS}</h2>
+                <h2>{LABELS.COMMON.USERS}</h2>
                 {
                     limitedUsersData ?
                         <>
@@ -34,7 +36,7 @@ export const UsersSection = () => {
                         :
                         <NoDataAvailable/>
                 }
-                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.USERS}>{LABELS_AND_HEADINGS.SEE_ALL_USERS}</Link>
+                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.USERS}>{LABELS.COMMON.SEE_ALL_USERS}</Link>
             </div>
         </div>
     )

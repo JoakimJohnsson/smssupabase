@@ -51,10 +51,10 @@ export const CollectionsPaneListItem = ({user}) => {
                 <div className={"bg-horse p-3"}>
                     <h2>{getUserName(user)}</h2>
                     <p>
-                        {PANES.COLLECTIONS.COLLECTING} {titlesData.length} / {totalTitles} {PANES.COLLECTIONS.TITLES}.
+                        {PANES.COLLECTIONS.COLLECTING} <span className={"text-warning"}>{titlesData.length} / {totalTitles}</span> {PANES.COLLECTIONS.TITLES}.
                     </p>
                     {
-                        <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE} variant={progress === 100 ? "success" : "grade"}
+                        <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE} variant={progress === 100 ? "success" : "warning"}
                                            valueNow={progress}/>
                     }
                 </div>

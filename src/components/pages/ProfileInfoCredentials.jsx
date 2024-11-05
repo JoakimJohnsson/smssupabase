@@ -1,7 +1,7 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
-import {Icon, keyIcon, sendIcon} from "../icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {Icon, keyIcon, sendIcon} from "../icons";
 
 
 export const ProfileInfoCredentials = ({
@@ -24,19 +24,19 @@ export const ProfileInfoCredentials = ({
             <h2>{LABELS.COMMON.SETTINGS_CREDENTIALS}</h2>
             <p>{TEXTS.SETTINGS_CREDENTIALS}</p>
             <div className={"mb-3"}>
-                <label className={"form-label"} htmlFor="input-email">{LABELS_AND_HEADINGS.NEW_EMAIL}</label>
+                <label className={"form-label"} htmlFor="input-email">{LABELS.COMMON.NEW_EMAIL}</label>
                 <input id="input-email"
                        type="email"
                        onChange={(e) => setNewEmail(e.target.value)}
                        className={"form-control mb-3"}
-                       placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
+                       placeholder={LABELS.COMMON.PLACEHOLDER_MAIL}
                        required/>
-                <label className={"form-label"} htmlFor="input-confirm-email">{LABELS_AND_HEADINGS.CONFIRM_NEW_EMAIL}</label>
+                <label className={"form-label"} htmlFor="input-confirm-email">{LABELS.COMMON.CONFIRM_NEW_EMAIL}</label>
                 <input id="input-confirm-email"
                        type="email"
                        onChange={(e) => setConfirmNewEmail(e.target.value)}
                        className={"form-control"}
-                       placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
+                       placeholder={LABELS.COMMON.PLACEHOLDER_MAIL}
                        required/>
                 <div className={"form-text mb-3"}>{TEXTS.CHANGE_EMAIL_SEND_INFO}</div>
                 <button className={"btn btn-primary sms-btn"} onClick={() => handleChangeEmail()}
@@ -48,7 +48,7 @@ export const ProfileInfoCredentials = ({
             </div>
             <div>
                 <label className={"form-label d-flex"}
-                       htmlFor="input-current-password">{LABELS_AND_HEADINGS.NEW_PASSWORD}</label>
+                       htmlFor="input-current-password">{LABELS.COMMON.NEW_PASSWORD}</label>
                 <input id="input-current-password"
                        type="password"
                        onChange={(e) => setNewPassword(e.target.value)}
@@ -56,7 +56,7 @@ export const ProfileInfoCredentials = ({
                        placeholder={"********"}
                        required/>
                 <label className={"form-label d-flex"}
-                       htmlFor="input-new-password">{LABELS_AND_HEADINGS.PASSWORD_CONFIRM}</label>
+                       htmlFor="input-new-password">{LABELS.COMMON.PASSWORD_CONFIRM}</label>
                 <input id="input-new-password"
                        type="password"
                        onChange={(e) => setConfirmNewPassword(e.target.value)}

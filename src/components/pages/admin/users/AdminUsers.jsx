@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useNavigate} from "react-router-dom";
@@ -43,7 +43,7 @@ export const AdminUsers = () => {
                     <p className={"lead"}>{TEXTS.SHOWING_LATEST_USERS}</p>
                     <p className={"mb-5"}>{TEXTS.USERS_COUNT_TEXT_1} {usersData && usersData.length} {TEXTS.USERS_COUNT_TEXT_2}</p>
                     <FilterFormSimple query={query} setSearchParams={setSearchParams}
-                                      placeholder={LABELS_AND_HEADINGS.FILTER_NAME}/>
+                                      placeholder={TEXTS.FILTER_NAME}/>
                     <div className={"sms-section--light"}>
                         {
                             loading ?

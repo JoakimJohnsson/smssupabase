@@ -1,6 +1,6 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {Icon, statusIconSadFailDuoTone, valueIconDuoTone} from "../icons";
 
 
@@ -12,7 +12,7 @@ export const NoDataAvailable = ({isUser = false, isValuation = false}) => {
     if (isUser) {
         label = TEXTS.NO_USER_AVAILABLE;
     } else if (isValuation) {
-        label = LABELS_AND_HEADINGS.CALCULATING_VALUATION;
+        label = LABELS.COMMON.CALCULATING_VALUATION;
         icon = valueIconDuoTone;
     }
 
