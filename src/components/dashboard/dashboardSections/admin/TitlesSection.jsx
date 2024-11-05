@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {Link, useNavigate} from "react-router-dom";
 import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
@@ -7,7 +9,6 @@ import {TitlesList} from "../../../lists/titles/TitlesList";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {IconButton} from "../../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const TitlesSection = () => {
@@ -22,7 +23,7 @@ export const TitlesSection = () => {
     return (
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light h-100"}>
-                <h2>{LABELS_AND_HEADINGS.TITLES}</h2>
+                <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
                 {
                     limitedTitlesData ?
                         <>
@@ -39,7 +40,7 @@ export const TitlesSection = () => {
                         <NoDataAvailable />
                 }
                 <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)} label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
-                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.TITLES}>{LABELS_AND_HEADINGS.SEE_ALL_TITLES}</Link>
+                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.TITLES}>{LABELS.COMMON.SEE_ALL_TITLES}</Link>
             </div>
         </div>
     )

@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, ROUTES, TEXTS} from "../../../../helpers/constants/configConstants";
+import {ROUTES} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {TitlesList} from "../../../lists/titles/TitlesList";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
@@ -18,7 +20,6 @@ import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdmi
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitles = () => {
@@ -56,7 +57,7 @@ export const AdminTitles = () => {
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
-                    <FilterFormAdminTitles query={query} isvalued={isvalued} isnotvalued={isnotvalued} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                    <FilterFormAdminTitles query={query} isvalued={isvalued} isnotvalued={isnotvalued} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
                     <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
@@ -65,7 +66,7 @@ export const AdminTitles = () => {
                                 :
                                 <LazyTextPlaceholder charCount={2}/>
                         }
-                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
+                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.TITLES.TITLES}
                     </p>
                     <div className={"sms-section--light"}>
                         {

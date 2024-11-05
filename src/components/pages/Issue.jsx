@@ -1,7 +1,8 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {useNavigate, useParams} from "react-router-dom";
-import {LABELS_AND_HEADINGS, ROUTES} from "../../helpers/constants/configConstants";
+import {ROUTES} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getIssueName, objectDoesExist, renderGradeValue} from "../../helpers/functions";
@@ -13,20 +14,27 @@ import {FormatBadge} from "../minis/FormatBadge";
 import {CountryBadge} from "../minis/CountryBadge";
 import {GradeBadge} from "../grade/GradeBadge";
 import {MarvelKlubbenBadge} from "../grade/MarvelKlubbenBadge";
-import {getIssueByTitleAndNumber} from "../../services/issueService";
-import {faArrowLeftLong, faArrowRightLong, faCloudQuestion, faCloudXmark, faCloudArrowUp} from "@fortawesome/pro-duotone-svg-icons";
+import {
+    faArrowLeftLong,
+    faArrowRightLong,
+    faBadgeSheriff,
+    faBone,
+    faBoneBreak,
+    faHeart
+} from "@fortawesome/pro-duotone-svg-icons";
 import {CustomSpinner} from "../minis/CustomSpinner";
 import {ImageViewerCover} from "./pagecomponents/ImageViewerCover";
 import {useAppContext} from "../../context/AppContext";
-import {handleCollectingIssue, handleCollectingTitle} from "../../services/serviceFunctions";
+import {
+    addIssueToTable,
+    handleCollectingIssue,
+    handleCollectingTitle,
+    removeIssueFromTable, userIssueExists
+} from "../../services/serviceFunctions";
 import {
     addGrade,
-    addIssueToUpgrade,
-    addIssueToWanted,
     getGradesByUserIdAndIssueId,
-    getGradeValuesByIssueId,
-    removeIssueFromUpgrade,
-    removeIssueFromWanted
+    getGradeValuesByIssueId
 } from "../../services/collectingService";
 import {Sources} from "./pagecomponents/Sources";
 import {Message} from "../message/Message";
@@ -42,9 +50,9 @@ import {
 } from "../icons";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
+import {getAdjacentIssueIds} from "../../helpers/databaseFunctions.js";
 
 
 export const Issue = () => {
@@ -58,6 +66,7 @@ export const Issue = () => {
     const [displayName, setDisplayName] = useState("");
     const [nextIssueId, setNextIssueId] = useState(null);
     const [loadingButtons, setLoadingButtons] = useState(true);
+    const [isFavoriteIssue, setIsFavoriteIssue] = useState(false);
     const navigate = useNavigate();
     const {
         issue,
@@ -74,28 +83,15 @@ export const Issue = () => {
         setIsCollectingTitle
     } = useCollectingStatus(user.id, id, issue.title_id);
 
-    const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
-    const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
+    const collectIssueTextStart = TEXTS.COLLECT_ISSUE_START + " " + displayName + " " + TEXTS.COLLECT_ISSUE_START_2;
+    const collectIssueTextStop = TEXTS.COLLECT_ISSUE_STOP + " " + displayName + " " + TEXTS.COLLECT_ISSUE_STOP_2;
 
     const fetchIssueIds = useCallback(async () => {
         if (issue.number && issue.title_id && issue.year) {
-            let prevNumber = issue.number - 1;
-            let nextNumber = issue.number + 1;
-            let titleId = issue.title_id;
-            let year = issue.year;
             try {
-                let prevIssue = await getIssueByTitleAndNumber(prevNumber, titleId, year);
-                if (!prevIssue) {
-                    // Try again with previous year and #1
-                    prevIssue = await getIssueByTitleAndNumber(1, titleId, year -1);
-                }
-                setPrevIssueId(prevIssue?.id);
-                let nextIssue = await getIssueByTitleAndNumber(nextNumber, titleId, year);
-                if (!nextIssue) {
-                    // Try again with next year and #1
-                    nextIssue = await getIssueByTitleAndNumber(1, titleId, year +1);
-                }
-                setNextIssueId(nextIssue?.id);
+                const adjacentIssues = await getAdjacentIssueIds(issue.title_id, issue.year, issue.number, issue.is_variant, issue.variant_suffix);
+                setPrevIssueId(adjacentIssues?.prevIssueId);
+                setNextIssueId(adjacentIssues?.nextIssueId)
                 setLoadingButtons(false);
             } catch (error) {
                 console.error(error);
@@ -110,6 +106,18 @@ export const Issue = () => {
     const fetchGradeValues = useCallback(() => {
         getGradeValuesByIssueId(id, setGradeValues).then();
     }, [id]);
+
+    useEffect( () => {
+        // Reset values before checking
+        setIsFavoriteIssue(false);
+        const checkIssue = async () => {
+            if (user.id && issue.id) {
+                const favoriteIssueExists = await userIssueExists(user.id, issue.id, TABLES.USERS_ISSUES_FAVORITE);
+                setIsFavoriteIssue(favoriteIssueExists);
+            }
+        };
+        checkIssue();
+    }, [user.id, issue.id]);
 
     useEffect(() => {
         if (issue) {
@@ -132,17 +140,31 @@ export const Issue = () => {
 
     const handleWanted = () => {
         if (isWantingIssue) {
-            removeIssueFromWanted(user.id, issue.id).then(() => setIsWantingIssue(false));
+            removeIssueFromTable(user.id, issue.id, TABLES.USERS_ISSUES_WANTED)
+                .then(() => setIsWantingIssue(false));
         } else {
-            addIssueToWanted(user.id, issue.id).then(() => setIsWantingIssue(true));
+            addIssueToTable(user.id, issue.id, TABLES.USERS_ISSUES_WANTED)
+                .then(() => setIsWantingIssue(true));
         }
     }
 
     const handleUpgrade = () => {
         if (isUpgradingIssue) {
-            removeIssueFromUpgrade(user.id, issue.id).then(() => setIsUpgradingIssue(false));
+            removeIssueFromTable(user.id, issue.id, TABLES.USERS_ISSUES_UPGRADE)
+                .then(() => setIsUpgradingIssue(false));
         } else {
-            addIssueToUpgrade(user.id, issue.id).then(() => setIsUpgradingIssue(true));
+            addIssueToTable(user.id, issue.id, TABLES.USERS_ISSUES_UPGRADE)
+                .then(() => setIsUpgradingIssue(true));
+        }
+    }
+
+    const handleFavorite = () => {
+        if (isFavoriteIssue) {
+            removeIssueFromTable(user.id, issue.id, TABLES.USERS_ISSUES_FAVORITE)
+                .then(() => setIsFavoriteIssue(false));
+        } else {
+            addIssueToTable(user.id, issue.id, TABLES.USERS_ISSUES_FAVORITE)
+                .then(() => setIsFavoriteIssue(true));
         }
     }
 
@@ -159,10 +181,12 @@ export const Issue = () => {
                             :
                             <>
                                 <div className={"sms-page-col"}>
-                                    <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true} bcName={getIssueName(issue)}/>
+                                    <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
+                                                            bcName={getIssueName(issue)}/>
                                 </div>
                                 <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
-                                    <ImageViewerCover url={issue.image_url} displayName={displayName} isCollectingIssue={isCollectingIssue}/>
+                                    <ImageViewerCover url={issue.image_url} displayName={displayName}
+                                                      isCollectingIssue={isCollectingIssue}/>
                                     {
                                         isCollectingTitle ?
                                             <button
@@ -174,17 +198,19 @@ export const Issue = () => {
                                                 }}>
                                                 {
                                                     isCollectingIssue ?
-                                                        <><Icon icon={faMinus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.DELETE}</>
+                                                        <><Icon icon={faMinus} size={"1x"}
+                                                                className={"me-2"}/>{LABELS.COMMON.DELETE}</>
                                                         :
-                                                        <><Icon icon={faPlus} size={"1x"} className={"me-2"}/>{LABELS.COMMON.ADD}</>
+                                                        <><Icon icon={faPlus} size={"1x"}
+                                                                className={"me-2"}/>{LABELS.COMMON.ADD}</>
                                                 }
                                             </button>
                                             :
                                             <button
-                                                aria-label={LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue?.titles?.name}
+                                                aria-label={TEXTS.COLLECT_TITLE_START + " " + issue?.titles?.name}
                                                 className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
                                                 onClick={() => handleCollectingTitle(user.id, issue?.titles?.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
-                                                {LABELS_AND_HEADINGS.COLLECT_TITLE_START + " " + issue?.titles?.name}
+                                                {TEXTS.COLLECT_TITLE_START + " " + issue?.titles?.name}
                                             </button>
                                     }
                                     {
@@ -200,13 +226,14 @@ export const Issue = () => {
                                                                 onClick={() => navigate(`/issues/${prevIssueId}`)}
                                                                 disabled={!prevIssueId}
                                                                 className={"btn btn-sm btn-outline-secondary me-3"}
-                                                                aria-label={LABELS_AND_HEADINGS.PREVIOUS}>
+                                                                aria-label={LABELS.COMMON.PREVIOUS}>
                                                                 <Icon icon={faArrowLeftLong} className={"fa-2x"}/>
                                                             </button>
                                                             <button
                                                                 onClick={() => navigate(`/issues/${nextIssueId}`)}
                                                                 disabled={!nextIssueId}
-                                                                className={"btn btn-sm btn-outline-secondary "} aria-label={LABELS.COMMON.NEXT}>
+                                                                className={"btn btn-sm btn-outline-secondary "}
+                                                                aria-label={LABELS.COMMON.NEXT}>
                                                                 <Icon icon={faArrowRightLong} className={"fa-2x"}/>
                                                             </button>
                                                         </div>
@@ -257,60 +284,67 @@ export const Issue = () => {
                                             countryData &&
                                             <CountryBadge countryId={issue?.publishers?.country_id}/>
                                         }
-                                        <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS_AND_HEADINGS.COPY}</span>
+                                        <span
+                                            className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS.COMMON.COPY}</span>
                                     </div>
-                                    <div className={"mb-3"}>
+                                    <div className={"sms-btn-group mb-4"}>
+                                        <FunctionButton
+                                            variant={isFavoriteIssue ? "btn-marvelklubben" : "btn-outline-secondary"}
+                                            icon={faHeart}
+                                            onClick={() => handleFavorite()}
+                                            label={isFavoriteIssue ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
+                                        />
                                         {
                                             isCollectingTitle &&
                                             <>
                                                 <FunctionButton
-                                                    variant={"secondary"}
-                                                    icon={isWantingIssue ? faCloudXmark : faCloudQuestion}
+                                                    variant={isWantingIssue ? "btn-publisher" : "btn-outline-secondary"}
+                                                    icon={faBadgeSheriff}
                                                     onClick={() => handleWanted()}
                                                     label={isWantingIssue ? TEXTS.REMOVE_ISSUE_WANTED : TEXTS.ADD_ISSUE_WANTED}
-                                                    id={"message-form-toggler"}
-                                                    showLabel={true}
                                                 />
                                                 {
                                                     isCollectingIssue &&
                                                     <FunctionButton
-                                                        variant={"secondary"}
-                                                        icon={isUpgradingIssue ? faCloudXmark : faCloudArrowUp}
+                                                        variant={isUpgradingIssue ? "btn-grade" : "btn-outline-secondary"}
+                                                        icon={isUpgradingIssue ? faBoneBreak : faBone}
                                                         onClick={() => handleUpgrade()}
-                                                        label={isUpgradingIssue ? LABELS_AND_HEADINGS.REMOVE_ISSUE_UPGRADE : LABELS_AND_HEADINGS.ADD_ISSUE_UPGRADE}
-                                                        id={"message-form-toggler"}
-                                                        showLabel={true}
+                                                        label={isUpgradingIssue ? LABELS.SECTIONS.ISSUES.REMOVE_ISSUE_UPGRADE : LABELS.SECTIONS.ISSUES.ADD_ISSUE_UPGRADE}
                                                     />
                                                 }
                                             </>
                                         }
-                                        <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                     </div>
+                                    <Message originObject={issue} originTable={TABLES.ISSUES}/>
                                     <div className={"mb-5"}>
+                                        <h2>{LABELS.COMMON.INFORMATION}</h2>
                                         {
                                             issue.description &&
-                                            <p className={"lead mb-4"}>{issue.description}</p>
+                                            <p className={"mb-4"}>{issue.description}</p>
                                         }
-                                        <h2>{issue?.titles?.name}</h2>
+                                        <h3>{issue?.titles?.name}</h3>
                                         <p className={"mb-4"}>{issue?.titles?.description}</p>
-                                        <h2>{issue?.publishers?.name}</h2>
+                                        <h3>{issue?.publishers?.name}</h3>
                                         <div className={"mb-4"}>
                                             <p className={"mb-4"}>{issue?.publishers?.description}</p>
-                                            <h2>{LABELS.COMMON.LINKS}</h2>
+                                            <h3>{LABELS.COMMON.LINKS}</h3>
                                             {
                                                 issue?.titles?.wiki_url &&
-                                                <a className={"d-block"} href={issue?.titles?.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                                    {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {issue?.titles?.name}
+                                                <a className={"d-block"} href={issue?.titles?.wiki_url}
+                                                   target={"_blank"} rel={"noreferrer"}>
+                                                    {LABELS.SECTIONS.TITLES.SERIEWIKIN_FOR} {issue?.titles?.name}
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                             }
                                             {
                                                 issue?.titles?.comics_org_url &&
-                                                <a className={"d-block"} href={issue?.titles?.comics_org_url} target={"_blank"} rel={"noreferrer"}>
-                                                    {issue?.titles?.name} {LABELS_AND_HEADINGS.ON_COMICS_ORG}
+                                                <a className={"d-block"} href={issue?.titles?.comics_org_url}
+                                                   target={"_blank"} rel={"noreferrer"}>
+                                                    {issue?.titles?.name} {LABELS.SECTIONS.TITLES.ON_COMICS_ORG}
                                                     <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                                 </a>
                                             }
+                                            <SeriekatalogenTitleLink titleName={issue?.titles?.name}/>
                                         </div>
                                         {
                                             issue.source && issue.source !== "" &&
@@ -324,7 +358,7 @@ export const Issue = () => {
                                             <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                                 <caption>
                                                     <p className={"mb-0"}>{LABELS.SECTIONS.GRADES.GRADE_VALUES_FOR} {displayName}</p>
-                                                    <SeriekatalogenTitleLink titleName={issue?.titles?.name}/>
+
                                                 </caption>
                                                 <thead>
                                                 <tr>
@@ -356,12 +390,14 @@ export const Issue = () => {
                                             <div className={"mb-3"}>
                                                 {
                                                     isCollectingIssue && grades &&
-                                                    grades.sort((a, b) => a.id - b.id).map((g, index) => <GradeBadge key={g.id} grade={g.grade}
-                                                                                                                     index={index}/>)
+                                                    grades.sort((a, b) => a.id - b.id).map((g, index) => <GradeBadge
+                                                        key={g.id} grade={g.grade}
+                                                        index={index}/>)
                                                 }
                                             </div>
                                             <p>
-                                                {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html" rel="noreferrer"
+                                                {TEXTS.GRADE_TEXT_2} <a href="https://seriekatalogen.se/grades/index.html"
+                                                                        rel="noreferrer"
                                                                         target={"_blank"}>{TEXTS.GRADE_TEXT_3}</a>.
                                             </p>
                                             <p>{TEXTS.GRADE_TEXT_4}</p>
@@ -369,7 +405,8 @@ export const Issue = () => {
                                                 grades &&
                                                 grades.sort((a, b) => a.id - b.id).map((grade, index) => {
                                                     return gradeValues && !!gradeValues.length && (
-                                                        <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades} issue={issue} index={index}
+                                                        <EditGrade key={grade.id} grade={grade} fetchGrades={fetchGrades}
+                                                                   issue={issue} index={index}
                                                                    gradeValues={gradeValues}/>
                                                     );
                                                 })

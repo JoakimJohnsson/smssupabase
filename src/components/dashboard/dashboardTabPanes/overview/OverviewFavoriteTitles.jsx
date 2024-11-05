@@ -1,21 +1,21 @@
 import React from "react";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
-import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {sortByName} from "../../../../helpers/functions";
-import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {useAppContext} from "../../../../context/AppContext";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
+import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
+import {TitlesListItem} from "../../../pages/TitlesListItem.jsx";
 
 
-export const OverviewWantedIssues = ({data}) => {
+export const OverviewFavoriteTitles = ({data}) => {
 
     const {user} = useAppContext();
 
     return (
-        <div className={"sms-dashboard-col--sm"}>
+        <div className={"col-12"}>
             <div className={"sms-section--light h-100"}>
-                <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
+                <h2>{LABELS.SECTIONS.TITLES.FAVORITES}</h2>
                 {
                     <ul className={"sms-list--with-cards"}>
                         {
@@ -23,11 +23,10 @@ export const OverviewWantedIssues = ({data}) => {
                                 <>
                                     {
                                         data
-                                            .sort((a, b) => sortByName(a.titles, b.titles))
-                                            .map((issue, index) => {
-                                                    if (index < 3) {
-                                                        return <IssueLinkCard key={issue.id} issue={issue}
-                                                                              variant={"publisher"} simple/>
+                                            .sort((a, b) => sortByName(a, b))
+                                            .map((title, index) => {
+                                                    if (index < 4) {
+                                                        return <TitlesListItem key={title.id} title={title}/>
                                                     } else {
                                                         return null;
                                                     }
@@ -36,15 +35,15 @@ export const OverviewWantedIssues = ({data}) => {
                                     }
                                 </>
                                 :
-                                <p>{LABELS.COMMON.NO_WANTED_ISSUES}</p>
+                                <p>{LABELS.COMMON.NO_FAVORITE_TITLES_USER}</p>
                         }
                     </ul>
                 }
                 {
-                    data && data.length > 3 &&
+                    data && data.length > 4 &&
                     <Link className={"btn btn-outline-primary sms-btn d-inline-block"} to={`/users/${user.id}`}>
                         <Icon icon={userIconDuoTone} className={"me-2"} size={"1x"}/>
-                        {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_WANTED}
+                        {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_FAVORITE_TITLES}
                     </Link>
                 }
             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {updateMessageStatus} from "../../services/messageService";
 import {
     Icon,
@@ -34,7 +34,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             disabled={message.status === 0}
                         >
                             <Icon icon={statusIconInactive} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_INACTIVE}
+                            {LABELS.COMMON.MESSAGES_MARK_AS_INACTIVE}
                         </button>
                         <button
                             onClick={() => handleSubmit(1)}
@@ -42,7 +42,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             disabled={message.status === 1}
                         >
                             <Icon icon={statusIconActive} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_ACTIVE}
+                            {LABELS.COMMON.MESSAGES_MARK_AS_ACTIVE}
                         </button>
                     </>
                     :
@@ -53,7 +53,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             disabled={message.status === 0}
                         >
                             <Icon icon={statusIconUnRead} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_UNREAD}
+                            {LABELS.COMMON.MESSAGES_MARK_AS_UNREAD}
                         </button>
                         <button
                             onClick={() => handleSubmit(1)}
@@ -61,7 +61,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             disabled={message.status === 1}
                         >
                             <Icon icon={statusIconRead} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_READ}
+                            {LABELS.COMMON.MESSAGES_MARK_AS_READ}
                         </button>
                         <button
                             onClick={() => handleSubmit(2)}
@@ -69,7 +69,7 @@ export const MessageStatusChanger = ({message, fetchMessageData}) => {
                             disabled={message.status === 2}
                         >
                             <Icon icon={statusIconTodo} className={"me-2"}/>
-                            {LABELS_AND_HEADINGS.MESSAGES_MARK_AS_TODO}
+                            {LABELS.COMMON.MESSAGES_MARK_AS_TODO}
                         </button>
                     </>
             }

@@ -1,13 +1,13 @@
 import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAppContext} from "../../../context/AppContext";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {MESSAGES} from "../../../helpers/constants/textConstants/messages";
 import {validateEmail, validatePassword} from "../../../helpers/validations";
 import SignupValidationMessage from "./SignupValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../../helpers/functions";
 import {Icon, registerIcon, registerIconDuoTone} from "../../icons";
-import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {supabase} from "../../../supabase/supabaseClient.js";
 
 
 export const Signup = () => {
@@ -25,7 +25,6 @@ export const Signup = () => {
 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const {signUp} = useAppContext();
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
@@ -44,7 +43,7 @@ export const Signup = () => {
             setFormErrorMessage(MESSAGES.ERROR.VALIDATION_PASSWORD_CONFIRM);
             setShowFormError(true);
         } else {
-            const {error} = await signUp({email, password});
+            const {error} = await supabase.auth.signUp({email, password});
             if (error) {
                 setFormErrorMessage(error.message);
                 setShowFormError(true);
@@ -72,21 +71,26 @@ export const Signup = () => {
     return (
         <>
             <form onSubmit={handleSubmit} className={"sms-section--light mb-5"} id={"create-account-section"}>
-                <div className={"text-center mb-4 mb-sm-5"}>
-                    <Icon icon={registerIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
-                    <h2>{LABELS.COMMON.CREATE_ACCOUNT}</h2>
+                <div className={"mb-4 mb-sm-5"}>
+                    <div className={"text-center"}>
+                        <Icon icon={registerIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
+                        <h2>{LABELS.COMMON.CREATE_ACCOUNT}</h2>
+                    </div>
                     <p className={"lead"}>{TEXTS.CONSENT}</p>
                 </div>
+
+
                 <label className={"form-label"} htmlFor="input-signup-email">{LABELS.COMMON.EMAIL}</label>
                 <input id="input-signup-email"
                        type="email"
                        ref={emailRef}
                        onSubmit={(e) => handleEmailValidation(e)}
                        className={emailInputClass}
-                       placeholder={LABELS_AND_HEADINGS.PLACEHOLDER_MAIL}
+                       placeholder={LABELS.COMMON.PLACEHOLDER_MAIL}
                        required/>
                 <SignupValidationMessage success={emailValidated} message={emailValidationMessage}/>
-                <label className={"form-label d-flex"} htmlFor="input-signup-password">{LABELS_AND_HEADINGS.PASSWORD}</label>
+                <label className={"form-label d-flex"}
+                       htmlFor="input-signup-password">{LABELS.COMMON.PASSWORD}</label>
                 <input id="input-signup-password"
                        type="password"
                        ref={passwordRef}
@@ -94,7 +98,8 @@ export const Signup = () => {
                        className={passwordInputClass}
                        placeholder={"********"}
                        required/>
-                <label className={"form-label d-flex"} htmlFor="input-signup-password-confirm">{LABELS_AND_HEADINGS.PASSWORD_CONFIRM}</label>
+                <label className={"form-label d-flex"}
+                       htmlFor="input-signup-password-confirm">{LABELS.COMMON.PASSWORD_CONFIRM}</label>
                 <input id="input-signup-password-confirm"
                        type="password"
                        onChange={(e) => setPasswordConfirm(e.target.value)}

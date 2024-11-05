@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
-import {CONFIG, LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {CONFIG} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {FunctionButton} from "../minis/FunctionButton";
 import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
@@ -8,7 +9,6 @@ import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const UserMessage = ({
@@ -31,9 +31,9 @@ export const UserMessage = ({
     const {user, setInformationMessage, fetchMessages} = useAppContext();
 
     return (
-        <>
+        <div className="mb-3">
             <FunctionButton
-                variant={"primary"}
+                variant={"btn-outline-primary"}
                 icon={open ? faTimes : faMessages}
                 onClick={() => setOpen(!open)}
                 label={open ? LABELS.SECTIONS.MESSAGES.MESSAGE_CLOSE : LABELS.SECTIONS.MESSAGES.MESSAGE_SHOW}
@@ -43,7 +43,7 @@ export const UserMessage = ({
             {
                 open &&
                 <div className={"sms-section--light primary mb-3 p-3"}>
-                    <h2>{LABELS_AND_HEADINGS.MESSAGE_ADMIN_CREATE}</h2>
+                    <h2>{LABELS.COMMON.MESSAGE_ADMIN_CREATE}</h2>
                     <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
                     <p className={"h5 text-black"}>
                         {
@@ -56,7 +56,7 @@ export const UserMessage = ({
                         description &&
                         <p className={"mb-2"}>{description}</p>
                     }
-                    <label className={"form-label"} htmlFor="topic">{LABELS_AND_HEADINGS.TOPIC}</label>
+                    <label className={"form-label"} htmlFor="topic">{LABELS.COMMON.TOPIC}</label>
                     {
                         topicData &&
                         <select
@@ -80,12 +80,12 @@ export const UserMessage = ({
                             checked={useThisObject}
                             onChange={() => setUseThisObject(!useThisObject)}
                         />
-                        <label className={"form-label"} htmlFor="useThisObject">{LABELS_AND_HEADINGS.MESSAGE_USE_THIS_OBJECT}</label>
+                        <label className={"form-label"} htmlFor="useThisObject">{LABELS.COMMON.MESSAGE_USE_THIS_OBJECT}</label>
                     </div>
                     <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
                     <textarea
                         className={formInputClass}
-                        placeholder={LABELS_AND_HEADINGS.ADD_MESSAGE_PLACEHOLDER}
+                        placeholder={LABELS.COMMON.ADD_MESSAGE_PLACEHOLDER}
                         value={text || ""}
                         onChange={(e) => handleInput(e, setText)}
                     />
@@ -121,6 +121,6 @@ export const UserMessage = ({
                     </button>
                 </div>
             }
-        </>
+        </div>
     )
 }

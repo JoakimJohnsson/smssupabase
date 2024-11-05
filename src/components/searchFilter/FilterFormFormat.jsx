@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import formatData from "../../helpers/valueLists/formats.json";
 import {isTrue} from "../../helpers/functions";
 import FilterButton from "./FilterButton";
@@ -137,7 +136,7 @@ const FilterFormFormat = ({
             </div>
             <button className="btn btn-lg btn-primary mb-3 me-3" onClick={() => updateSearchParams()} disabled={!readyForSearch}>
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                {LABELS_AND_HEADINGS.FIND_TITLES}
+                {LABELS.COMMON.FIND_TITLES}
             </button>
             <button className="btn btn-lg btn-outline-primary mb-3" onClick={() => handleReset()}>
                 <FontAwesomeIcon icon={faDeleteLeft} className={"me-2"}/>

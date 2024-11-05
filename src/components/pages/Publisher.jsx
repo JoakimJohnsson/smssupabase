@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {Link, useParams} from "react-router-dom";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
@@ -14,7 +14,6 @@ import {IssuesList} from "../lists/issues/IssuesList";
 import {getRowByTableAndId} from "../../services/serviceFunctions";
 import {getIssuesWithTitleAndPublisherByPublisherId} from "../../services/issueService";
 import {useAppContext} from "../../context/AppContext";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {objectDoesExist} from "../../helpers/functions";
 import {NoMatch} from "../routes/NoMatch";
 
@@ -71,7 +70,7 @@ export const Publisher = () => {
                                         publisher.wiki_url &&
                                         <p>
                                             <a href={publisher.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                                {LABELS_AND_HEADINGS.SERIEWIKIN_FOR} {publisher.name}
+                                                {LABELS.SECTIONS.TITLES.SERIEWIKIN_FOR} {publisher.name}
                                                 <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
                                             </a>
                                         </p>

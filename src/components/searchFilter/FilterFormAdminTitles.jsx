@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch, faDeleteLeft, faCircleXmark, faFilter} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
-import {isTrue} from "../../helpers/functions";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {isTrue} from "../../helpers/functions";
 
 
 const FilterFormFormat = ({
@@ -109,7 +109,7 @@ const FilterFormFormat = ({
             </div>
             <button className="btn btn-lg btn-primary mb-3 me-3" onClick={() => updateSearchParams()} disabled={!readyForSearch}>
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                {LABELS_AND_HEADINGS.FIND_TITLES}
+                {LABELS.COMMON.FIND_TITLES}
             </button>
             <button className="btn btn-lg btn-outline-primary mb-3" onClick={() => handleResetAll()}>
                 <FontAwesomeIcon icon={faDeleteLeft} className={"me-2"}/>

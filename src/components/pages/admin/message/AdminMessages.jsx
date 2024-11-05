@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {IconButton} from "../../../minis/IconButton";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
@@ -11,7 +12,6 @@ import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {Icon, globalIconDuoTone} from "../../../icons";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {supabase} from "../../../../supabase/supabaseClient";
 
 
@@ -83,7 +83,7 @@ export const AdminMessages = () => {
                     <a href={"#global-message-section"}
                        className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
                         <Icon icon={globalIconDuoTone}
-                              className={"btn-cta--icon"}/>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}
+                              className={"btn-cta--icon"}/>{LABELS.COMMON.MESSAGES_GLOBAL_SEND}
                     </a>
                 </div>
             </div>
@@ -97,14 +97,14 @@ export const AdminMessages = () => {
                                 </div>
                                 :
                                 <>
-                                    <h2>{LABELS_AND_HEADINGS.MESSAGES_RECEIVED}</h2>
+                                    <h2>{LABELS.COMMON.MESSAGES_RECEIVED}</h2>
                                     {
                                         messages ?
                                             <MessagesList messagesData={messages} setMessagesData={setMessages}/>
                                             :
                                             <NoDataAvailable/>
                                     }
-                                    <h2>{LABELS_AND_HEADINGS.MESSAGES_SENT}</h2>
+                                    <h2>{LABELS.COMMON.MESSAGES_SENT}</h2>
                                     {
                                         sentMessages ?
                                             <MessagesList messagesData={sentMessages}
@@ -112,7 +112,7 @@ export const AdminMessages = () => {
                                             :
                                             <NoDataAvailable/>
                                     }
-                                    <h2>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL}</h2>
+                                    <h2>{LABELS.COMMON.MESSAGES_GLOBAL}</h2>
                                     {
                                         globalMessages ?
                                             <MessagesList messagesData={globalMessages}
@@ -129,7 +129,7 @@ export const AdminMessages = () => {
                 </div>
                 <div className={"sms-dashboard-col mb-5"}>
                     <div className={"sms-section--light"}>
-                        <h2 id={"global-message-section"}>{LABELS_AND_HEADINGS.MESSAGES_GLOBAL_SEND}</h2>
+                        <h2 id={"global-message-section"}>{LABELS.COMMON.MESSAGES_GLOBAL_SEND}</h2>
                         <Message isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {getRowsByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
 import {updateProfileRole} from "../../../services/profileService";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../../context/AppContext";
 import {RemoveAdminButton} from "./RemoveAdminButton";
@@ -11,7 +11,6 @@ import {getUserName, hasImage} from "../../../helpers/functions";
 import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Icon, adminIconDuoTone} from "../../icons";
-import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {FriendlyDate} from "../../minis/FriendlyDate";
 
 
@@ -50,7 +49,7 @@ export const UsersList = ({usersData, setUsersData, limited = false, query = ""}
                                                 {
                                                     hasImage(u) &&
                                                     <img src={u.image_url} className={"list-image me-2"}
-                                                         alt={LABELS_AND_HEADINGS.PROFILE_IMAGE + " " + u.firstname || getUserName(u)}/>
+                                                         alt={LABELS.COMMON.PROFILE_IMAGE + " " + u.firstname || getUserName(u)}/>
                                                 }
                                                 <div>
                                                     {

@@ -1,5 +1,6 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
 import {IconLinkCta} from "../minis/IconLinkCta";
 import {
@@ -11,7 +12,6 @@ import {
     loginIconDuoTone,
     registerIconDuoTone
 } from "../icons";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {useLogoIcon} from "../../helpers/customHooks/useLogoIcon";
 
 
@@ -27,7 +27,7 @@ export const HeroHeader = () => {
                     <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
                         <Icon icon={icon} size={"4x"} className={"fa-icon--cta"}/>
                         <h1 className={"sms-logo-text mb-5"}>
-                            {LABELS_AND_HEADINGS.SVENSKA_MARVELSAMLARE}
+                            {LABELS.COMMON.SVENSKA_MARVELSAMLARE}
                         </h1>
                         <div className={"mb-5"}>
                             <IconLinkCta

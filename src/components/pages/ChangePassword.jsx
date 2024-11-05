@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {LABELS_AND_HEADINGS} from "../../helpers/constants/configConstants";
 import {supabase} from "../../supabase/supabaseClient";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
@@ -21,7 +20,7 @@ const ChangePassword = () => {
         <main id="main-content" className={"container-fluid main-container"}>
             <div className={"row justify-content-center py-5"}>
                 <div className={"col-12 col-md-6 text-center"}>
-                    <h1 className={"text-primary"}>{LABELS_AND_HEADINGS.CHANGE_PASSWORD}</h1>
+                    <h1 className={"text-primary"}>{LABELS.COMMON.CHANGE_PASSWORD}</h1>
                     <a href={"/"}>
                         {LABELS.COMMON.BACK}
                     </a>

@@ -11,7 +11,7 @@ export const NavbarProfileInformation = () => {
     const {profile} = useAppContext();
 
     return profile ? (
-            <div className="nav-link pe-0 d-none d-lg-flex">
+            <div className="nav-link pe-0 d-none d-lg-flex to-profile">
                 <Link to={`/users/${profile.id}`} className={"hocus-standard"}
                       title={getUserName(profile)}>
                     <img src={profile.image_url ? profile.image_url : marvel} className={"list-image"} alt={"avatar"}/>

@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {CONFIG, LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {CONFIG} from "../../helpers/constants/configConstants";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../services/issueService";
 import {IssueCard} from "../lists/issues/IssueCard";
 import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {ShowMoreButtons} from "../minis/ShowMoreButtons";
 
@@ -38,7 +39,7 @@ export const Marvelklubben = () => {
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
                     <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"
                                                        target="_blank">Wikipedia</a>.</p>
-                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={LABELS_AND_HEADINGS.FILTER_NUMBER_TITLE_OR_YEAR}/>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NUMBER_TITLE_OR_YEAR}/>
                     <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {

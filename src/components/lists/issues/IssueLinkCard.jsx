@@ -4,7 +4,7 @@ import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayN
 import {hasImage} from "../../../helpers/functions";
 
 
-export const IssueLinkCard = ({issue, simple = false, admin = false}) => {
+export const IssueLinkCard = ({issue, simple = false, admin = false, variant="primary"}) => {
 
     const {displayName} = useIssueDisplayName(issue);
     const issuePath = admin ? "/admin/issues/" : "/issues/";
@@ -12,7 +12,7 @@ export const IssueLinkCard = ({issue, simple = false, admin = false}) => {
     return issue && (
         <li className={simple ? "issue-link-card simple" : "issue-link-card"}>
             <Link to={`${issuePath}${issue.id}`} title={displayName}>
-                <div className={"issue-link-card--content d-flex align-items-center h-100"}>
+                <div className={`bg-${variant} issue-link-card--content d-flex align-items-center h-100`}>
                     {
                         hasImage(issue) &&
                         <img src={issue.image_url} className={"list-image border-0 list-image--large me-2"} alt={""}/>

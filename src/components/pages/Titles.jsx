@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {
@@ -13,8 +14,8 @@ import {getRowsByTable} from "../../services/serviceFunctions";
 import {TitlesListItem} from "./TitlesListItem";
 import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
 import FilterFormFormat from "../searchFilter/FilterFormFormat";
-import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+
+import FilteredListInfo from "../searchFilter/FilteredListInfo.jsx";
 
 
 export const Titles = () => {
@@ -62,17 +63,8 @@ export const Titles = () => {
                         hardcover={hardcover}
                         special={special}
                         collectible={collectible}
-                        placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
-                    <p className={"text-uppercase fs-large placeholder-glow"}>
-                        {TEXTS.SHOWING} <span className={"fw-bolder"}>
-                        {
-                            filteredTitlesData ?
-                                filteredTitlesData.length
-                                :
-                                <LazyTextPlaceholder charCount={2}/>
-                        }
-                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
-                    </p>
+                        placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
+                    <FilteredListInfo filteredData={filteredTitlesData} totalData={titlesData}/>
                     {
                         loading ?
                             <OverlaySpinner/>

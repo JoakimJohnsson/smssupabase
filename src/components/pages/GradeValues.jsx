@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../helpers/constants/configConstants";
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -18,7 +19,6 @@ import {Accordion} from "react-bootstrap";
 import AccordionHeader from "react-bootstrap/AccordionHeader";
 import AccordionBody from "react-bootstrap/AccordionBody";
 import AccordionItem from "react-bootstrap/AccordionItem";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {FormatBadge} from "../minis/FormatBadge";
 
 
@@ -72,7 +72,7 @@ export const GradeValues = () => {
                         hardcover={hardcover}
                         special={special}
                         collectible={collectible}
-                        placeholder={LABELS_AND_HEADINGS.FILTER_TITLE_OR_YEAR}/>
+                        placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
                     <p className={"text-uppercase fs-large placeholder-glow"}>
                         {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
@@ -82,7 +82,7 @@ export const GradeValues = () => {
                                 <LazyTextPlaceholder charCount={2}/>
                         }
                         </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length :
-                        <LazyTextPlaceholder charCount={3}/>} {LABELS_AND_HEADINGS.TITLES}
+                        <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.TITLES.TITLES}
                     </p>
                     {
                         loading ?

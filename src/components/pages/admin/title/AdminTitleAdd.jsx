@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../../helpers/constants/configConstants";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {addTitleData} from "../../../../services/titleService";
 import {handleInput} from "../../../../services/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
@@ -10,7 +10,6 @@ import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const AdminTitleAdd = () => {
@@ -103,7 +102,7 @@ export const AdminTitleAdd = () => {
                             value={comics_org_url || ""}
                             onChange={(e) => handleInput(e, setComics_org_url)}
                         />
-                        <label className={"form-label"} htmlFor="startyear">{LABELS_AND_HEADINGS.START_YEAR_DB}</label>
+                        <label className={"form-label"} htmlFor="startyear">{LABELS.COMMON.START_YEAR_DB}</label>
                         <input
                             id="startyear"
                             name={"start_year"}
@@ -133,7 +132,7 @@ export const AdminTitleAdd = () => {
                                 {printOptions(formatData)}
                             </select>
                         }
-                        <label className={"form-label"} htmlFor="totalissues">{LABELS_AND_HEADINGS.TOTAL_ISSUES_DB}</label>
+                        <label className={"form-label"} htmlFor="totalissues">{LABELS.COMMON.TOTAL_ISSUES_DB}</label>
                         <input
                             id="totalissues"
                             name={"total_issues"}

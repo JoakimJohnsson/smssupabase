@@ -3,11 +3,11 @@ import {useAppContext} from "../../../context/AppContext";
 import {handleCollectingIssue} from "../../../services/serviceFunctions";
 import {Icon} from "../../icons";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {Link} from "react-router-dom";
 import {useIssueDisplayName} from "../../../helpers/customHooks/useIssueDisplayName";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus";
-import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const IssueCard = ({issue}) => {
@@ -16,8 +16,8 @@ export const IssueCard = ({issue}) => {
     const {isCollectingTitle, isCollectingIssue, setIsCollectingIssue} = useCollectingStatus(user.id, issue.id, issue.title_id);
     const {displayName} = useIssueDisplayName(issue);
 
-    const collectIssueTextStart = LABELS_AND_HEADINGS.COLLECT_ISSUE_START + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_START_2;
-    const collectIssueTextStop = LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP + " " + displayName + " " + LABELS_AND_HEADINGS.COLLECT_ISSUE_STOP_2;
+    const collectIssueTextStart = TEXTS.COLLECT_ISSUE_START + " " + displayName + " " + TEXTS.COLLECT_ISSUE_START_2;
+    const collectIssueTextStop = TEXTS.COLLECT_ISSUE_STOP + " " + displayName + " " + TEXTS.COLLECT_ISSUE_STOP_2;
 
     return issue && issue.titles && (
         <li className={"issue-card"}>

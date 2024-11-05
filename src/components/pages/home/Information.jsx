@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS, TEXTS} from "../../../helpers/constants/configConstants";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {Icon, infoIconDuoTone} from "../../icons";
 import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
@@ -13,28 +13,49 @@ const Information = () => {
 
     return (
         <div className={"sms-section--light"} id={"info-section"}>
-            <div className={"text-center"}>
-                <Icon icon={infoIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
+            <div className={"mb-4 mb-sm-5"}>
+                <div className={"text-center"}>
+                    <Icon icon={infoIconDuoTone} size={"2x"} className={"fa-icon--cta"}/>
+                    <h2>{LABELS.COMMON.INFORMATION}</h2>
+                </div>
+                <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
             </div>
             <div>
-                <div className={"text-center mb-4 mb-sm-5"}>
-                    <h2 className={"text-center"}>{LABELS.COMMON.INFORMATION}</h2>
-                    <p className={"lead"}>{TEXTS.INFO_TEXT_1}</p>
-                </div>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_LATEST} v{packageJson.version} {utilsData && " | " + utilsData.release_date}</h3>
+                <h3>{LABELS.COMMON.RELEASE_LATEST} v{packageJson.version} {utilsData && " | " + utilsData.release_date}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Bugfixar.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att visa värde för en enskild titel.</li>
+                    <li className={"list-group-item px-0"}>Tydligare information om varianter.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad filtrering och funktion på olika sökfilter.</li>
+                    <li className={"list-group-item px-0"}>Små förbättringar på startsidan, lite bättre
+                        användarupplevelse.
+                    </li>
+                    <li className={"list-group-item px-0"}>
+                        Förbättrad visning av efterlysta publikationer och publikationer som behöver uppgradering. Både
+                        i kontrollpanelen och på profilsida.
+                    </li>
+                    <li className={"list-group-item px-0"}>
+                        Ny vy i kontrollpanelen - Mina publikationer. Likt Mina titlar kan du här titta igenom alla
+                        publikationer i din samling.
+                    </li>
+                    <li className={"list-group-item px-0"}>Ytterligare förbättringar av publikationsväljaren.</li>
+                    <li className={"list-group-item px-0"}>Möjlighet att lägga till sina favorittitlar och favoritpublikationer.</li>
+                    <li className={"list-group-item px-0"}>Förbättrad UX för funktionsknappar på titel och publikation.</li>
+                    <li className={"list-group-item px-0"}>Prestandaförbättringar för databasen - minskat antal anrop och kortare svarstider.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_PREVIOUS} v1.9.1 | 2024-10-16</h3>
+                <h3>{LABELS.COMMON.RELEASE_PREVIOUS}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
-                    <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                     <li className={"list-group-item px-0"}>Förbättrad information om användare i Admin gränssnitt.</li>
-                    <li className={"list-group-item px-0"}>Lagt till sökformulär och paginering på Adminsida för alla publikationer.</li>
-                    <li className={"list-group-item px-0"}>Publikationsväljaren på publikationssida kan nu hoppa mellan årtal.</li>
+                    <li className={"list-group-item px-0"}>Lagt till sökformulär och paginering på Adminsida för alla
+                        publikationer.
+                    </li>
+                    <li className={"list-group-item px-0"}>Publikationsväljaren på publikationssida kan nu hoppa mellan
+                        årtal.
+                    </li>
                     <li className={"list-group-item px-0"}>Applikationen använder nu Vite som byggverktyg.</li>
                 </ul>
-                <h3>{LABELS_AND_HEADINGS.RELEASE_FUTURE}</h3>
+                <h3>{LABELS.COMMON.RELEASE_FUTURE}</h3>
                 <ul className={"list-group list-group-flush mb-4"}>
                     <li className={"list-group-item px-0"}>Optimering av bilder.</li>
                     <li className={"list-group-item px-0"}>Utökad funktionalitet och förbättrade vyer i

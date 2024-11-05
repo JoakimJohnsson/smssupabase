@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {LABELS_AND_HEADINGS} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {SourceLink} from "./SourceLink";
 
 
@@ -15,7 +15,7 @@ export const Sources = ({issue}) => {
 
     return (
         <div className={"mb-4"}>
-            <h2>{LABELS_AND_HEADINGS.SOURCE_COMICS}</h2>
+            <h2>{LABELS.COMMON.SOURCE_COMICS}</h2>
             {
                 sources.length &&
                 sources.map((source, index) => {

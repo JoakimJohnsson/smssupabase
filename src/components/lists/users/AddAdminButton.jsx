@@ -36,7 +36,7 @@ export const AddAdminButton = ({user, handleChangeAdmin, useTooltip = true}) => 
         )
         :
         <FunctionButton
-            variant={"danger"}
+            variant={"btn-outline-danger"}
             customClass={"me-2"}
             icon={notAdminIconDuoTone}
             label={LABELS.COMMON.ADD_ADMIN_1 + getUserName(user) + LABELS.COMMON.ADD_ADMIN_2}

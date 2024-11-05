@@ -1,5 +1,5 @@
 import React from "react";
-import {TEXTS} from "../../helpers/constants/configConstants";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import CustomProgressBar from "../CustomProgressBar";
 
 
@@ -20,7 +20,7 @@ export const TitleProgress = ({titleProgress}) => {
                         titleProgress.progress === 100 ?
                             <CustomProgressBar label={collectTextParts} variant={"success"} valueNow={titleProgress.progress}/>
                             :
-                            <CustomProgressBar label={collectTextParts} variant={"grade"} valueNow={titleProgress.progress}/>
+                            <CustomProgressBar label={collectTextParts} variant={"primary"} valueNow={titleProgress.progress}/>
                     }
                 </>
             }

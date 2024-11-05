@@ -1,5 +1,5 @@
 import React from "react";
-import {LABELS_AND_HEADINGS} from "../helpers/constants/configConstants";
+import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
 import {CustomSpinner} from "./minis/CustomSpinner";
 import {NoDataAvailable} from "./minis/NoDataAvailable";
 import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "../services/imageService";
@@ -7,7 +7,6 @@ import {IconButton} from "./minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {useAppContext} from "../context/AppContext";
 import {Icon, imageIcon} from "./icons";
-import {LABELS} from "../helpers/constants/textConstants/labelsAndHeadings";
 
 
 export const ImageUploader = ({
@@ -72,12 +71,12 @@ export const ImageUploader = ({
                                 {uploading ?
                                     <>
                                         <CustomSpinner size={"1x"} color={"text-black"} className={"me-2"}/>
-                                        {LABELS_AND_HEADINGS.UPLOADING_IMAGE}
+                                        {LABELS.COMMON.UPLOADING_IMAGE}
                                     </>
                                     :
                                     <>
                                         <Icon icon={imageIcon} size={"1x"} className={"me-2"}/>
-                                        {LABELS_AND_HEADINGS.UPLOAD_IMAGE}
+                                        {LABELS.COMMON.UPLOAD_IMAGE}
                                     </>
                                 }
                             </label>

@@ -18,7 +18,7 @@ export const OverviewLinks = () => {
     return linksData ?
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light h-100"}>
-                <h2>{LABELS.SECTIONS.DASHBOARD.OVERVIEW.USEFUL_LINKS}</h2>
+                <h2>{LABELS.SECTIONS.DASHBOARD.OVERVIEW.SHORTCUTS}</h2>
 
                 <h3>{LABELS.COMMON.MORE_CONTENT}</h3>
                 <ul className={"list-unstyled"}>
