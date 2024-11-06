@@ -18,6 +18,10 @@ const Information = () => {
                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                 <li className={"list-group-item px-0"}>Möjlighet att exportera viss data som CSV.</li>
                 <li className={"list-group-item px-0"}>Möjlighet att exportera viss data som PDF.</li>
+                <li className={"list-group-item px-0"}>Vid felrapport skapas nu automatiskt en issue på GitHub.</li>
+                <li className={"list-group-item px-0"}>Vyn för publika Samlingar har fått en uppfräschning och mer information.</li>
+                <li className={"list-group-item px-0"}>Kartan har blivit större och fått nya ikoner och funktioner.</li>
+                <li className={"list-group-item px-0"}>Nu kan man lägga till stjärnbetyg på alla titlar och publikationer.</li>
                 <li className={"list-group-item px-0"}>...</li>
             </ul>
             <h3>{LABELS.COMMON.RELEASE_PREVIOUS}</h3>
