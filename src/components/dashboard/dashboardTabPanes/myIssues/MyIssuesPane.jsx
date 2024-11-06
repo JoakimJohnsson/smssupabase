@@ -43,39 +43,13 @@ export const MyIssuesPane = () => {
         );
 
     return (
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={PANES.ISSUES.NAME}/>
-            <FilterFormSimple query={query} setSearchParams={setSearchParams}
-                              placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
-            <p className={"text-uppercase fs-large placeholder-glow"}>
-                {TEXTS.SHOWING} <span className={"fw-bolder"}>
-                        {
-                            filteredData && filteredData.length ?
-                                itemsToShow < filteredData.length ?
-                                    itemsToShow
-                                    :
-                                    filteredData.length
-                                :
-                                <LazyTextPlaceholder charCount={2}/>
-                        }
-                        </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
-                <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
-            </p>
-            {
-                loading ?
-                    <OverlaySpinner/>
-                    :
-                    <ul className={"sms-list--with-cards"}>
-                        {
-                            filteredData.slice(0, itemsToShow)
-                                .map(issue => (
-                                    <IssueLinkCard key={issue.id} issue={issue}/>
-                                ))
-                        }
-                    </ul>
-            }
-            {
-                filteredData && filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&
+        <div className="col-12">
+            <div className="row row-padding--main">
+                <HeadingWithBreadCrumbs text={PANES.ISSUES.NAME}/>
+                <div>
+                    <FilterFormSimple query={query} setSearchParams={setSearchParams}
+                                      placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
+                </div>
                 <p className={"text-uppercase fs-large placeholder-glow"}>
                     {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
@@ -90,8 +64,38 @@ export const MyIssuesPane = () => {
                         </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
                     <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
                 </p>
-            }
-            <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
+                {
+                    loading ?
+                        <OverlaySpinner/>
+                        :
+                        <ul className={"sms-list--with-cards"}>
+                            {
+                                filteredData.slice(0, itemsToShow)
+                                    .map(issue => (
+                                        <IssueLinkCard key={issue.id} issue={issue}/>
+                                    ))
+                            }
+                        </ul>
+                }
+                {
+                    filteredData && filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&
+                    <p className={"text-uppercase fs-large placeholder-glow"}>
+                        {TEXTS.SHOWING} <span className={"fw-bolder"}>
+                        {
+                            filteredData && filteredData.length ?
+                                itemsToShow < filteredData.length ?
+                                    itemsToShow
+                                    :
+                                    filteredData.length
+                                :
+                                <LazyTextPlaceholder charCount={2}/>
+                        }
+                        </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
+                        <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
+                    </p>
+                }
+                <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
+            </div>
         </div>
     )
 }
