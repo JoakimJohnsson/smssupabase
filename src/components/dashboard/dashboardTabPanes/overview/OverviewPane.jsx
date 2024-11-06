@@ -6,7 +6,6 @@ import {OverviewTitles} from "./OverviewTitles";
 import {OverviewIssues} from "./OverviewIssues";
 import {OverviewUpgradeIssues} from "./OverviewUpgradeIssues";
 import {OverviewWantedIssues} from "./OverviewWantedIssues";
-import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {OverviewValuation} from "./OverviewValuation";
 import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
@@ -15,6 +14,7 @@ import {OverviewMessages} from "./OverviewMessages";
 import {getUserSelectedIssuesAndTitlesData} from "../../../../helpers/databaseFunctions.js";
 import {OverviewFavoriteIssues} from "./OverviewFavoriteIssues.jsx";
 import {OverviewFavoriteTitles} from "./OverviewFavoriteTitles.jsx";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner.jsx";
 
 
 export const OverviewPane = () => {
@@ -54,7 +54,7 @@ export const OverviewPane = () => {
             <HeadingWithBreadCrumbs text={PANES.OVERVIEW.NAME}/>
             {
                 loading ?
-                    <CustomSpinner size={"4x"}/>
+                    <OverlaySpinner/>
                     :
                     <>
                         <OverviewMessages/>

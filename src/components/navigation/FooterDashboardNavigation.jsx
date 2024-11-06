@@ -32,13 +32,13 @@ export const FooterDashboardNavigation = () => {
 
     return (
         <footer className="dashboard-footer">
-            <Nav className={"w-100 d-flex justify-content-center py-2 py-lg-3"}>
+            <Nav className={"w-100 d-flex justify-content-center py-3 py-lg-3"}>
 
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.OVERVIEW} text={PANES.OVERVIEW.NAME} variant={"primary"}
                                         icon={<Icon icon={overviewIconDuoTone} size={"2x"} className={"m-0"}/>}/>
-                <FooterDashboardNavLink route={ROUTES.DASHBOARD.MY_TITLES} text={PANES.TITLES.NAME} variant={"primary"}
+                <FooterDashboardNavLink route={ROUTES.DASHBOARD.MY_TITLES} text={PANES.TITLES.SHORT_NAME} variant={"primary"}
                                         icon={<Icon icon={titlesIconDuoTone} size={"2x"} className={"m-0"}/>}/>
-                <FooterDashboardNavLink route={ROUTES.DASHBOARD.MY_ISSUES} text={PANES.ISSUES.NAME} variant={"primary"}
+                <FooterDashboardNavLink route={ROUTES.DASHBOARD.MY_ISSUES} text={PANES.ISSUES.SHORT_NAME} variant={"primary"}
                                         icon={<Icon icon={titleIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                 <div className={"d-none d-lg-flex"}>
                     <FooterDashboardNavLink route={ROUTES.DASHBOARD.VALUATION} text={PANES.VALUATION.NAME} variant={"grade"}
