@@ -70,7 +70,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
         <div className={"sms-dashboard-col"}>
             <div className={"sms-section--light"}>
                 <h2>{LABELS.COMMON.EDIT_INFORMATION}</h2>
-                <label className={"form-label"} htmlFor="title">{LABELS.COMMON.TITLES.TITLE_DB}</label>
+                <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.TITLES.TITLE_DB}</label>
                 {
                     titlesData &&
                     <select
@@ -84,7 +84,7 @@ export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, titl
                         {printTitleOptions(titlesData)}
                     </select>
                 }
-                <label className={"form-label"} htmlFor="publisher">{LABELS.COMMON.PUBLISHERS.PUBLISHER_DB}</label>
+                <label className={"form-label"} htmlFor="publisher">{LABELS.SECTIONS.PUBLISHERS.PUBLISHER_DB}</label>
                 {
                     publishersData &&
                     <select
