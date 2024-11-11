@@ -11,8 +11,8 @@ export async function doesEmailExist(emailReference) {
 }
 
 export const prepareUrl = (url) => {
-    if (url && url.substring(0, 7) !== "http://") {
-        return "https://" + url;
+    if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+        return 'https://' + url;
     } else {
         return url;
     }

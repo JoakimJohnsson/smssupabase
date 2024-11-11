@@ -12,6 +12,12 @@ export default defineConfig ({
     preview: {
         port: 3000
     },
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: './src/tests/setupTests.js',
+        include: ['src/tests/**/*.{test,spec}.{js,jsx,ts,tsx}'] // Only run tests in this folder
+    },
     css: {
         preprocessorOptions: {
             scss: {
