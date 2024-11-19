@@ -85,13 +85,13 @@ export const ValuationPane = () => {
     };
 
     const CustomTooltip = ({active, payload, label}) => {
-        if (active && payload && payload.length && payload[0].hasOwnProperty('value')) {
+        if (active && payload && payload.length && Object.prototype.hasOwnProperty.call(payload[0], 'value')) {
             return (
                 <div className="bg-grade-100 rounded text-black p-3">
                     <p className="mb-0"><span
-                        className={"text-label"}>{LABELS.COMMON.DATE}:</span> {getFriendlyDateFromTimestamp(label)}</p>
+                        className="text-label">{LABELS.COMMON.DATE}:</span> {getFriendlyDateFromTimestamp(label)}</p>
                     <p className="mb-0"><span
-                        className={"text-label"}>{LABELS.COMMON.VALUE}:</span> {payload[0].value} kr</p>
+                        className="text-label">{LABELS.COMMON.VALUE}:</span> {payload[0].value} kr</p>
                 </div>
             );
         }

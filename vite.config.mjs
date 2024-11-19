@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import jsconfigPaths from 'vite-jsconfig-paths'
+import jsconfigPaths from 'vite-jsconfig-paths';
+import eslint from "vite-plugin-eslint";
 
 export default defineConfig ({
 
-    plugins: [react(), jsconfigPaths()],
+    plugins: [react(), jsconfigPaths(), eslint()],
     server: {
         port: 3000,
         open: '/'
