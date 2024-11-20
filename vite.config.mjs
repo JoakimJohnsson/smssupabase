@@ -19,18 +19,23 @@ export default defineConfig({
                 manualChunks(id) { // The id parameter represents the path to each module/file.
                     // Group React libraries
                     if (id.includes('react')) {
-                        return 'react';
+                        return 'vendor-react';
                     }
 
                     // Group other libraries
                     if (id.includes('@supabase/supabase-js') ||
                         id.includes('@vis.gl/react-google-maps')) {
-                        return 'other';
+                        return 'vendor-other';
                     }
 
                     // Group FontAwesome libraries
                     if (id.includes('@fortawesome')) {
-                        return 'fontawesome';
+                        return 'vendor-fontawesome';
+                    }
+
+                    // Group Babel libraries
+                    if (id.includes('@babel')) {
+                        return 'vendor-babel';
                     }
 
                     // Create a chunk for src/components folder
