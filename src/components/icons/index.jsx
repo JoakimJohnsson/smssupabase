@@ -42,6 +42,7 @@ import {
     faLightbulbOn,
     faMagnifyingGlassDollar,
     faMapLocationDot,
+    faMessageMedical,
     faMosquito,
     faMoneyCheckPen,
     faPresentationScreen,
@@ -106,6 +107,7 @@ import {
     faLightbulbOn as faLightbulbOnDT,
     faMagnifyingGlassDollar as faMagnifyingGlassDollarDT,
     faMapLocationDot as faMapLocationDotDT,
+    faMessageMedical as faMessageMedicalDT,
     faMosquito as faMosquitoDT,
     faMoneyCheckPen as faMoneyCheckPenDT,
     faPresentationScreen as faPresentationScreenDT,
@@ -170,6 +172,7 @@ const iconMap = {
     faLightbulbOn: faLightbulbOn,
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
     faMapLocationDot: faMapLocationDot,
+    faMessageMedical: faMessageMedical,
     faMosquito: faMosquito,
     faMoneyCheckPen: faMoneyCheckPen,
     faPresentationScreen: faPresentationScreen,
@@ -234,6 +237,7 @@ const iconMapDuoTone = {
     faLightbulbOnDT: faLightbulbOnDT,
     faMagnifyingGlassDollarDT: faMagnifyingGlassDollarDT,
     faMapLocationDotDT: faMapLocationDotDT,
+    faMessageMedicalDT: faMessageMedicalDT,
     faMosquitoDT: faMosquitoDT,
     faMoneyCheckPenDT: faMoneyCheckPenDT,
     faPresentationScreenDT: faPresentationScreenDT,
@@ -296,6 +300,7 @@ export const logoIcon = faComet;
 export const mapsIcon = faMapLocationDot;
 export const marvelKlubbenIcon = faBadge;
 export const moreIcon = faChevronDown;
+export const githubMessageIcon = faMessageMedical;
 export const lessIcon = faChevronUp;
 export const pdfIcon = faFilePdf;
 export const publishersIcon = faBuildingColumns;
@@ -333,6 +338,7 @@ export const dangerIconDuoTone = faShieldExclamationDT;
 export const dataIconDuoTone = faListTimelineDT;
 export const dateIconDuoTone = faCalendarHeartDT;
 export const editIconDuoTone = faMoneyCheckPenDT;
+export const githubMessageIconDuoTone = faMessageMedicalDT;
 export const globalIconDuoTone = faEarthAmericasDT;
 export const gradingIconDuoTone = faScaleUnbalancedDT;
 export const imageIconDuoTone = faFileImageDT;
