@@ -44,8 +44,9 @@ export default defineConfig({
                         if (match) {
                             return `components-${match[1]}`; // Create chunks
                         }
-                        return 'components'; // Default for files directly in /components/
+                        return 'components';
                     }
+                    return 'default';
                 },
             },
         }
