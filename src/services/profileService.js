@@ -54,7 +54,7 @@ export const updateProfileLastLogin = async (email) => {
     }
 }
 
-// Calculate if to show full info - If the user have a public profile, or if logged in profile is super admin, or logged in profile is looking at her own info.
+// Calculate if to show full info - If the user have a public profile, or if logged in profile is super admin, or logged in profile is looking at their own info.
 export const showFullInfo = (user, profile) => {
     return user.is_public || profile.role === 2 || (user.id === profile.id);
 }

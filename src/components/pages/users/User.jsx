@@ -8,7 +8,7 @@ import {TABLES} from "../../../helpers/constants/serviceConstants.js";
 import {useParams} from "react-router-dom";
 import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall.jsx";
 import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
-import {getAnonDisplayName, getUserName, objectDoesExist, prepareUrl, sortByName} from "../../../helpers/functions.jsx";
+import {getAnonDisplayName, getUserName, objectDoesExist, prepareUrl} from "../../../helpers/functions.jsx";
 import marvel from "../../../assets/images/publishers/marvel.gif";
 import {NoDataAvailable} from "../../minis/NoDataAvailable.jsx";
 import {useAppContext} from "../../../context/AppContext.jsx";
@@ -17,14 +17,15 @@ import {AddAdminButton} from "../../lists/users/AddAdminButton.jsx";
 import {RemoveAdminButton} from "../../lists/users/RemoveAdminButton.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {Icon} from "../../icons/index.jsx";
-import {CustomSpinner} from "../../minis/CustomSpinner.jsx";
-import {IssueLinkCard} from "../../lists/issues/IssueLinkCard.jsx";
 import {FunctionButton} from "../../minis/FunctionButton.jsx";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 import {NoMatch} from "../../routes/NoMatch.jsx";
 import {SimpleMessage} from "../../message/SimpleMessage.jsx";
 import {getUserSelectedIssuesAndTitlesData} from "../../../helpers/databaseFunctions.js";
-import {TitlesListItem} from "../titles/TitlesListItem.jsx";
+import {FavoriteTitles} from "./FavoriteTitles.jsx";
+import {FavoriteIssues} from "./FavoriteIssues.jsx";
+import {WantedIssues} from "./WantedIssues.jsx";
+import {UpgradeIssues} from "./UpgradeIssues.jsx";
 
 
 export const User = () => {
@@ -146,80 +147,10 @@ export const User = () => {
                                                     <>{LABELS.COMMON.INFORMATION_MISSING}</>
                                             }
                                         </p>
-                                        <div className={"sms-section--light mb-5"}>
-                                            <h2>{LABELS.SECTIONS.ISSUES.FAVORITES}</h2>
-                                            {
-                                                loading ?
-                                                    <CustomSpinner size={"4x"}/>
-                                                    :
-                                                    <ul className={"sms-list--with-cards"}>
-                                                        {
-                                                            userSelectedIssuesTitlesData.favorite_issues ?
-                                                                userSelectedIssuesTitlesData.favorite_issues
-                                                                    .sort((a, b) => sortByName(a.titles, b.titles))
-                                                                    .map((issue) =>
-                                                                        <IssueLinkCard key={issue.id} issue={issue}
-                                                                                       variant={"marvelklubben"}/>
-                                                                    )
-                                                                :
-                                                                <p>{LABELS.COMMON.NO_FAVORITE_ISSUES_USER}</p>
-                                                        }
-                                                    </ul>
-                                            }
-                                        </div>
-                                        <div className={"sms-section--light mb-5"}>
-                                            <h2>{LABELS.SECTIONS.TITLES.FAVORITES}</h2>
-                                            {
-                                                <ul className={"sms-list--with-cards"}>
-                                                    {
-                                                        userSelectedIssuesTitlesData.favorite_titles ?
-                                                            userSelectedIssuesTitlesData.favorite_titles
-                                                                .sort((a, b) => sortByName(a, b))
-                                                                .map((title) =>
-                                                                    <TitlesListItem key={title.id} title={title}/>
-                                                                )
-                                                            :
-                                                            <p>{LABELS.COMMON.NO_FAVORITE_ISSUES_USER}</p>
-                                                    }
-                                                </ul>
-                                            }
-                                        </div>
-                                        <div className={"sms-section--light mb-5"}>
-                                            <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
-                                            {
-                                                <ul className={"sms-list--with-cards"}>
-                                                    {
-                                                        userSelectedIssuesTitlesData.wanted ?
-                                                            userSelectedIssuesTitlesData.wanted
-                                                                .sort((a, b) => sortByName(a.titles, b.titles))
-                                                                .map((issue) =>
-                                                                    <IssueLinkCard key={issue.id} issue={issue}
-                                                                                   variant={"publisher"}/>
-                                                                )
-                                                            :
-                                                            <p>{LABELS.COMMON.NO_WANTED_ISSUES_USER}</p>
-                                                    }
-                                                </ul>
-                                            }
-                                        </div>
-                                        <div className={"sms-section--light mb-5"}>
-                                            <h2>{LABELS.SECTIONS.ISSUES.UPGRADE_ISSUES}</h2>
-                                            {
-                                                <ul className={"sms-list--with-cards"}>
-                                                    {
-                                                        userSelectedIssuesTitlesData.upgraded ?
-                                                            userSelectedIssuesTitlesData.upgraded
-                                                                .sort((a, b) => sortByName(a.titles, b.titles))
-                                                                .map((issue) =>
-                                                                    <IssueLinkCard key={issue.id} issue={issue}
-                                                                                   variant={"grade"}/>
-                                                                )
-                                                            :
-                                                            <p>{LABELS.COMMON.NO_UPGRADE_ISSUES_USER}</p>
-                                                    }
-                                                </ul>
-                                            }
-                                        </div>
+                                        <FavoriteIssues data={userSelectedIssuesTitlesData}/>
+                                        <FavoriteTitles data={userSelectedIssuesTitlesData}/>
+                                        <WantedIssues data={userSelectedIssuesTitlesData}/>
+                                        <UpgradeIssues data={userSelectedIssuesTitlesData}/>
                                     </div>
                                 }
                             </>
