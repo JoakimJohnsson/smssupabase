@@ -13,7 +13,17 @@ export const MyTitlesPane = () => {
 
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
-    const {setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible} = useFormatQueryFilter();
+    const {
+        setSearchParams,
+        query,
+        comic,
+        comiclarge,
+        album,
+        pocket,
+        hardcover,
+        special,
+        collectible
+    } = useFormatQueryFilter();
     const {user} = useAppContext();
 
     useEffect(() => {
@@ -30,28 +40,31 @@ export const MyTitlesPane = () => {
     }, [user.id]);
 
     return (
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={PANES.TITLES.NAME}/>
-            {
-                loading ?
-                    <OverlaySpinner/>
-                    :
-                    <>
-                        <FilterFormFormat
-                            setSearchParams={setSearchParams}
-                            query={query}
-                            comic={comic}
-                            comiclarge={comiclarge}
-                            album={album}
-                            pocket={pocket}
-                            hardcover={hardcover}
-                            special={special}
-                            placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
-                        <MyTitlesPaneList query={query} titlesData={titlesData} comic={comic} comiclarge={comiclarge} album={album} pocket={pocket}
-                                          hardcover={hardcover} special={special} collectible={collectible}/>
-                    </>
+        <div className="col-12">
+            <div className="row row-padding--main">
+                <HeadingWithBreadCrumbs text={PANES.TITLES.NAME}/>
+                {
+                    loading ?
+                        <OverlaySpinner/>
+                        :
+                        <div>
+                            <FilterFormFormat
+                                setSearchParams={setSearchParams}
+                                query={query}
+                                comic={comic}
+                                comiclarge={comiclarge}
+                                album={album}
+                                pocket={pocket}
+                                hardcover={hardcover}
+                                special={special}
+                                placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
+                            <MyTitlesPaneList query={query} titlesData={titlesData} comic={comic}
+                                              comiclarge={comiclarge} album={album} pocket={pocket}
+                                              hardcover={hardcover} special={special} collectible={collectible}/>
+                        </div>
 
-            }
+                }
+            </div>
         </div>
     )
 }

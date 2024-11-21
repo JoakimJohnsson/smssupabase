@@ -23,6 +23,7 @@ import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
 import CustomProgressBar from "../../CustomProgressBar";
 import {OverlaySpinner} from "../../minis/OverlaySpinner";
 import {DashboardSection} from "./DashboardSection";
+import ReleaseNotes from "./ReleaseNotes.jsx";
 
 
 export const Home = () => {
@@ -84,13 +85,13 @@ export const Home = () => {
             <main id="main-content" className={"container-fluid main-container dashboard"}>
                 <div className={"row row-padding--main"}>
                     <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs
-                                text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
-                            {
-                                userMessages && !!userMessages.length &&
-                                <InformationAlert variant={"success"}
-                                                  text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
-                            }
+                        <HeadingWithBreadCrumbs
+                            text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
+                        {
+                            userMessages && !!userMessages.length &&
+                            <InformationAlert variant={"success"}
+                                              text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
+                        }
                         {
                             atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
                             <div className={"mb-5"}>
@@ -209,6 +210,10 @@ export const Home = () => {
                                     :
                                     <NoDataAvailable/>
                             }
+                        </div>
+                        <div className={"sms-section--light mb-5"}>
+                            <h2>{LABELS.COMMON.INFORMATION}</h2>
+                            <ReleaseNotes/>
                         </div>
                     </div>
                 </div>

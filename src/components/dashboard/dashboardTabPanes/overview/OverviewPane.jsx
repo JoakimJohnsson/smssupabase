@@ -50,24 +50,26 @@ export const OverviewPane = () => {
     }, [user.id]);
 
     return (
-        <>
-            <HeadingWithBreadCrumbs text={PANES.OVERVIEW.NAME}/>
-            {
-                loading ?
-                    <OverlaySpinner/>
-                    :
-                    <>
-                        <OverviewMessages/>
-                        <OverviewLinks/>
-                        <OverviewTitles titlesData={userTitlesData}/>
-                        <OverviewIssues titlesData={userTitlesData} issuesData={userCollectedIssuesData}/>
-                        <OverviewValuation/>
-                        <OverviewWantedIssues data={userSelectedIssuesTitlesData?.wanted}/>
-                        <OverviewUpgradeIssues data={userSelectedIssuesTitlesData?.upgraded}/>
-                        <OverviewFavoriteIssues data={userSelectedIssuesTitlesData?.favorite_issues}/>
-                        <OverviewFavoriteTitles data={userSelectedIssuesTitlesData?.favorite_titles}/>
-                    </>
-            }
-        </>
+        <div className="col-12">
+            <div className="row row-padding--main">
+                <HeadingWithBreadCrumbs text={PANES.OVERVIEW.NAME}/>
+                {
+                    loading ?
+                        <OverlaySpinner/>
+                        :
+                        <>
+                            <OverviewMessages/>
+                            <OverviewLinks/>
+                            <OverviewTitles titlesData={userTitlesData}/>
+                            <OverviewIssues titlesData={userTitlesData} issuesData={userCollectedIssuesData}/>
+                            <OverviewValuation/>
+                            <OverviewWantedIssues data={userSelectedIssuesTitlesData?.wanted}/>
+                            <OverviewUpgradeIssues data={userSelectedIssuesTitlesData?.upgraded}/>
+                            <OverviewFavoriteIssues data={userSelectedIssuesTitlesData?.favorite_issues}/>
+                            <OverviewFavoriteTitles data={userSelectedIssuesTitlesData?.favorite_titles}/>
+                        </>
+                }
+            </div>
+        </div>
     )
 }

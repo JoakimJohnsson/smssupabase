@@ -62,6 +62,8 @@ export const TEXTS = {
     GRADE_VALUED: "Har värden",
     GRADE_NOT_VALUED: "Saknar värden",
     INFO_TEXT_1: "Här hittar du information om aktuella releaser och kommande funktionalitet.",
+    ISSUE_CREATED: "Lyckades skicka upp en issue till GitHub.",
+    ISSUE_CREATED_ERROR: "Kunde tyvärr inte skicka upp denna issue till GitHub.",
     LATEST_ISSUES: "Senast inlagda publikationer:",
     LATEST_TITLES: "Senast inlagda titlar:",
     MAKE_PUBLIC: "Gör din profilsida och information publik",

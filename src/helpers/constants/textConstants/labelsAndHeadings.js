@@ -60,6 +60,7 @@ export const LABELS = {
         MESSAGES_MARK_AS_UNREAD: "Markera som oläst",
         MESSAGES_MARK_AS_ACTIVE: "Markera som aktivt",
         MESSAGES_MARK_AS_INACTIVE: "Markera som inaktivt",
+        MESSAGES_ADD_ISSUE_ON_GITHUB: "Skapa en issue på GitHub",
         MESSAGES_MARK_AS_TODO: "Åtgärd krävs",
         MESSAGE_USER_CREATE: "Skicka ett meddelande till",
         MESSAGE_USE_THIS_OBJECT: "Bifoga information om detta objekt",
