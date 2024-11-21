@@ -1,30 +1,30 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../headings";
-import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../services/serviceFunctions";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {TEXTS} from "../../helpers/constants/textConstants/texts";
-import {MESSAGES} from "../../helpers/constants/textConstants/messages";
-import {TABLES} from "../../helpers/constants/serviceConstants";
+import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
+import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../../services/serviceFunctions.js";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
+import {MESSAGES} from "../../../helpers/constants/textConstants/messages.js";
+import {TABLES} from "../../../helpers/constants/serviceConstants.js";
 import {useParams} from "react-router-dom";
-import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
-import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {getAnonDisplayName, getUserName, objectDoesExist, prepareUrl, sortByName} from "../../helpers/functions";
-import marvel from "../../assets/images/publishers/marvel.gif";
-import {NoDataAvailable} from "../minis/NoDataAvailable";
-import {useAppContext} from "../../context/AppContext";
-import {showFullInfo, updateProfileRole} from "../../services/profileService";
-import {AddAdminButton} from "../lists/users/AddAdminButton";
-import {RemoveAdminButton} from "../lists/users/RemoveAdminButton";
+import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall.jsx";
+import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
+import {getAnonDisplayName, getUserName, objectDoesExist, prepareUrl, sortByName} from "../../../helpers/functions.jsx";
+import marvel from "../../../assets/images/publishers/marvel.gif";
+import {NoDataAvailable} from "../../minis/NoDataAvailable.jsx";
+import {useAppContext} from "../../../context/AppContext.jsx";
+import {showFullInfo, updateProfileRole} from "../../../services/profileService.js";
+import {AddAdminButton} from "../../lists/users/AddAdminButton.jsx";
+import {RemoveAdminButton} from "../../lists/users/RemoveAdminButton.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {Icon} from "../icons";
-import {CustomSpinner} from "../minis/CustomSpinner";
-import {IssueLinkCard} from "../lists/issues/IssueLinkCard";
-import {FunctionButton} from "../minis/FunctionButton";
+import {Icon} from "../../icons/index.jsx";
+import {CustomSpinner} from "../../minis/CustomSpinner.jsx";
+import {IssueLinkCard} from "../../lists/issues/IssueLinkCard.jsx";
+import {FunctionButton} from "../../minis/FunctionButton.jsx";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
-import {NoMatch} from "../routes/NoMatch";
-import {SimpleMessage} from "../message/SimpleMessage";
-import {getUserSelectedIssuesAndTitlesData} from "../../helpers/databaseFunctions.js";
-import {TitlesListItem} from "./TitlesListItem.jsx";
+import {NoMatch} from "../../routes/NoMatch.jsx";
+import {SimpleMessage} from "../../message/SimpleMessage.jsx";
+import {getUserSelectedIssuesAndTitlesData} from "../../../helpers/databaseFunctions.js";
+import {TitlesListItem} from "../titles/TitlesListItem.jsx";
 
 
 export const User = () => {
@@ -38,7 +38,7 @@ export const User = () => {
 
     const fetchUserData = useCallback(() => {
         getRowByTableAndId(TABLES.PROFILES, setUser, id).then(() => setLoading(false));
-    }, [id])
+    }, [id]);
 
     useEffect(() => {
         fetchUserData();

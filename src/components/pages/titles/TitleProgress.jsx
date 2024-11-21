@@ -1,6 +1,6 @@
 import React from "react";
-import {TEXTS} from "../../helpers/constants/textConstants/texts";
-import CustomProgressBar from "../CustomProgressBar";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
+import CustomProgressBar from "../../CustomProgressBar.jsx";
 
 
 export const TitleProgress = ({titleProgress}) => {

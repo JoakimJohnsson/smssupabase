@@ -5,7 +5,7 @@ import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadi
 import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
 import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
-import {TitlesListItem} from "../../../pages/TitlesListItem.jsx";
+import {TitlesListItem} from "../../../pages/titles/TitlesListItem.jsx";
 
 
 export const OverviewFavoriteTitles = ({data}) => {

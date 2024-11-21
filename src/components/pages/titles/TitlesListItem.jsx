@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
 import {Link} from "react-router-dom";
-import {TitleTool} from "../lists/TitleTool";
-import formatData from "../../helpers/valueLists/formats.json";
-import {getDataName} from "../../helpers/functions";
+import {TitleTool} from "../../lists/TitleTool.jsx";
+import formatData from "../../../helpers/valueLists/formats.json";
+import {getDataName} from "../../../helpers/functions.jsx";
 
 
 export const TitlesListItem = ({title}) => {

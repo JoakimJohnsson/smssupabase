@@ -58,8 +58,8 @@ export const OverviewPane = () => {
                         <OverlaySpinner/>
                         :
                         <>
-                            <OverviewMessages/>
                             <OverviewLinks/>
+                            <OverviewMessages/>
                             <OverviewTitles titlesData={userTitlesData}/>
                             <OverviewIssues titlesData={userTitlesData} issuesData={userCollectedIssuesData}/>
                             <OverviewValuation/>
