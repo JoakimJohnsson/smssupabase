@@ -159,6 +159,12 @@ export const LABELS = {
             SOURCE_DB: "Källor (source)",
             UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
             FAVORITES: "Mina favoritpublikationer",
+            EXPORT_FAVORITES_CSV: "Exportera favoritpublikationer som CSV",
+            EXPORT_FAVORITES_PDF: "Exportera favoritpublikationer som PDF",
+            EXPORT_WANTED_CSV: "Exportera efterlysningar som CSV",
+            EXPORT_WANTED_PDF: "Exportera efterlysningar som PDF",
+            EXPORT_UPGRADE_CSV: "Exportera uppgraderingar som CSV",
+            EXPORT_UPGRADE_PDF: "Exportera uppgraderingar som PDF",
             VARIANT_SUFFIX_DB: "Variant suffix (variant_suffix)",
         },
         MARVELKLUBBEN: {

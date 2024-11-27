@@ -2,6 +2,7 @@ import React from "react";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {sortByName} from "../../../helpers/functions.jsx";
 import {IssueLinkCard} from "../../lists/issues/IssueLinkCard.jsx";
+import {ExportDataButton} from "../../minis/ExportDataButton.jsx";
 
 
 export const UpgradeIssues = ({data}) => {
@@ -24,6 +25,8 @@ export const UpgradeIssues = ({data}) => {
                     }
                 </ul>
             }
+            <ExportDataButton data={data} label={LABELS.SECTIONS.ISSUES.EXPORT_UPGRADE_CSV} variant={"btn-outline-grade"} />
+            <ExportDataButton doExportPdf data={data} label={LABELS.SECTIONS.ISSUES.EXPORT_UPGRADE_PDF} variant={"btn-outline-grade"} />
         </div>
     )
 }

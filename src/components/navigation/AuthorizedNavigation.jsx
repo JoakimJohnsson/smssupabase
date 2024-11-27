@@ -22,16 +22,18 @@ import {
     mapsIconDuoTone,
     collectionsIconDuoTone,
     lessIconDuoTone,
-    titleIconDuoTone
+    titleIconDuoTone, userIconDuoTone
 } from "../icons";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
 import {BREADCRUMB_NAMES, LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {NavigationLogo} from "./NavigationLogo";
 import {PANES} from "../../helpers/constants/textConstants/texts";
+import {getUserName} from "../../helpers/functions.jsx";
 
 
 export const AuthorizedNavigation = () => {
+
     // Object to hold many different open states
     const [openStates, setOpenStates] = useState({
         isOpen: false,
@@ -166,7 +168,7 @@ export const AuthorizedNavigation = () => {
                                 </NavLink>
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
-                                <NavLink exact={"true"} to={ROUTES.MARVELKLUBBEN} className={"nav-link nav-link--dropdown"}>
+                                <NavLink exact={"true"} to={ROUTES.MARVELKLUBBEN} className={"nav-link nav-link--dropdown text-marvelklubben"}>
                                     <Icon icon={marvelKlubbenIconDuoTone} className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}</span>
                                 </NavLink>
@@ -191,7 +193,7 @@ export const AuthorizedNavigation = () => {
                                        doShowNotification={showAdminNotification || showAdminTodoNotification} isAdminNotification={true}/>
                         }
                         <li className="nav-item">
-                            <NavbarProfileInformation/>
+                            <NavbarProfileInformation profile={profile} />
                             <SignOutButton/>
                         </li>
                     </ul>
@@ -218,7 +220,7 @@ export const AuthorizedNavigation = () => {
                                    text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
                         <LiNavItem route={ROUTES.GRADE_VALUES} onClick={() => handleClick("isOpen")} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.GRADES.GRADE_VALUES}/>
-                        <LiNavItem route={ROUTES.MARVELKLUBBEN} onClick={() => handleClick("isOpen")} icon={<Icon icon={marvelKlubbenIconDuoTone} size={"1x"}/>}
+                        <LiNavItem customClass={"text-marvelklubben"} route={ROUTES.MARVELKLUBBEN} onClick={() => handleClick("isOpen")} icon={<Icon icon={marvelKlubbenIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
                         <LiNavItem route={ROUTES.PUBLISHERS} onClick={() => handleClick("isOpen")} icon={<Icon icon={publishersIconDuoTone} size={"1x"}/>}
                                    text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
@@ -233,8 +235,9 @@ export const AuthorizedNavigation = () => {
                                        isAdminNotification={true}
                                        text={BREADCRUMB_NAMES.ADMIN}/>
                         }
+                        <LiNavItem customClass={"text-warning"} route={`/users/${profile.id}`} onClick={() => handleClick("isOpen")} icon={<Icon icon={userIconDuoTone} size={"1x"}/>}
+                                   text={getUserName(profile)}/>
                         <li className="nav-item">
-                            <NavbarProfileInformation/>
                             <SignOutButton mobile/>
                         </li>
                     </ul>
