@@ -1,14 +1,14 @@
 import React from "react";
 import {csvIconDuoTone, pdfIconDuoTone} from "../icons";
 import {FunctionButton} from "./FunctionButton.jsx";
-import {exportToCSV, exportToPDF} from "../../helpers/exportUtil.js";
+import {exportToCSV, exportIssuesToPDF} from "../../helpers/exportUtil.js";
 
 
 export const ExportDataButton = ({doExportPdf = false, data, fileName, label, variant}) => {
 
     const handleExport = () => {
         if (doExportPdf) {
-            exportToPDF(data, fileName);
+            exportIssuesToPDF(data, fileName);
         } else {
             exportToCSV(data, fileName);
         }

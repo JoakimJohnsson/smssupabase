@@ -29,7 +29,7 @@ export const FavoriteIssues = ({data}) => {
             </ul>
             <ExportDataButton data={exportData} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_FAVORITES_CSV}
                               variant={"btn-outline-marvelklubben"}/>
-            {/*<ExportDataButton doExportPdf data={data} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_FAVORITES_PDF} variant={"btn-outline-marvelklubben"} />*/}
+            <ExportDataButton doExportPdf data={exportData} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_FAVORITES_PDF} variant={"btn-outline-marvelklubben"} />
         </div>
     )
 }

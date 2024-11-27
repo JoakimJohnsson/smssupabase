@@ -31,7 +31,7 @@ export const UpgradeIssues = ({data}) => {
             }
             <ExportDataButton data={exportData} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_UPGRADE_CSV}
                               variant={"btn-outline-grade"}/>
-            {/*<ExportDataButton doExportPdf data={data} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_UPGRADE_PDF} variant={"btn-outline-grade"} />*/}
+            <ExportDataButton doExportPdf data={exportData} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_UPGRADE_PDF} variant={"btn-outline-grade"} />
         </div>
     )
 }
