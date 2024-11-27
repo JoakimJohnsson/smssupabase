@@ -232,6 +232,14 @@ export const sortByName = (a, b) => {
     return 0;
 }
 
+export const sortByTitleYearNumber = (a, b) => {
+    const titleComparison = a.titles.name.localeCompare(b.titles.name, 'sv');
+    if (titleComparison !== 0) return titleComparison;
+    const yearComparison = a.year - b.year;
+    if (yearComparison !== 0) return yearComparison;
+    return a.number - b.number;
+};
+
 export const sortByDateCreated = (a, b) => {
     if (a.created_at < b.created_at) return -1;
     if (a.created_at > b.created_at) return 1;
@@ -311,6 +319,14 @@ export const atLeastOneListDoesExist = (arrayOfLists) => {
 export const getCurrentDateAsISOString = () => {
     return (new Date()).toISOString();
 }
+
+export const getCurrentDateAsString = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}${month}${day}`;
+};
 
 export const getCurrentDate = () => {
     return new Date();

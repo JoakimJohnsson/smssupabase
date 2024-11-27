@@ -12,8 +12,8 @@ export const FavoriteTitles = ({data}) => {
             {
                 <ul className={"sms-list--with-cards"}>
                     {
-                        data.favorite_titles ?
-                            data.favorite_titles
+                        data ?
+                            data
                                 .sort((a, b) => sortByName(a, b))
                                 .map((title) =>
                                     <TitlesListItem key={title.id} title={title}/>

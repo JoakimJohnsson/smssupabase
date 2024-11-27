@@ -147,10 +147,10 @@ export const User = () => {
                                                     <>{LABELS.COMMON.INFORMATION_MISSING}</>
                                             }
                                         </p>
-                                        <FavoriteIssues data={userSelectedIssuesTitlesData}/>
-                                        <FavoriteTitles data={userSelectedIssuesTitlesData}/>
-                                        <WantedIssues data={userSelectedIssuesTitlesData}/>
-                                        <UpgradeIssues data={userSelectedIssuesTitlesData}/>
+                                        <FavoriteIssues data={userSelectedIssuesTitlesData.favorite_issues}/>
+                                        <FavoriteTitles data={userSelectedIssuesTitlesData.favorite_titles}/>
+                                        <WantedIssues data={userSelectedIssuesTitlesData.wanted}/>
+                                        <UpgradeIssues data={userSelectedIssuesTitlesData.upgraded}/>
                                     </div>
                                 }
                             </>
