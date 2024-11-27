@@ -14,7 +14,7 @@ export const exportToCSV = (data, fileName) => {
         header: true, // Add CSV header row
     });
     // Create a Blob from the CSV string
-    const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+    const blob = new Blob(["\uFEFF" + csv], {type: 'text/csv;charset=utf-8;'});
     // Save the file
     saveAs(blob, `${fileName}-${getCurrentDateAsString()}.csv`);
 };
