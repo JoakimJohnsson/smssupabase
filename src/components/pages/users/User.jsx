@@ -8,8 +8,13 @@ import {TABLES} from "../../../helpers/constants/serviceConstants.js";
 import {useParams} from "react-router-dom";
 import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall.jsx";
 import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
-import {getAnonDisplayName, getUserName, objectDoesExist, prepareUrl} from "../../../helpers/functions.jsx";
-import marvel from "../../../assets/images/publishers/marvel.gif";
+import {
+    getAnonDisplayName,
+    getRandomProfileImage,
+    getUserName,
+    objectDoesExist,
+    prepareUrl
+} from "../../../helpers/functions.jsx";
 import {NoDataAvailable} from "../../minis/NoDataAvailable.jsx";
 import {useAppContext} from "../../../context/AppContext.jsx";
 import {showFullInfo, updateProfileRole} from "../../../services/profileService.js";
@@ -100,7 +105,7 @@ export const User = () => {
                                     showFullInfo(user, profile) ?
                                         <div className={"col-12 col-md-5 col-xl-3 mb-5"}>
                                             {
-                                                <ImageViewerSmall url={user.image_url || marvel} fileName={userName}/>
+                                                <ImageViewerSmall url={user.image_url || getRandomProfileImage()} fileName={userName}/>
                                             }
                                         </div>
                                         :

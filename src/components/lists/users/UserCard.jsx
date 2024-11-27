@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import marvel from "../../../assets/images/publishers/marvel.gif";
-import {getUserName} from "../../../helpers/functions";
+import {getRandomProfileImage, getUserName} from "../../../helpers/functions";
 
 
 export const UserCard = ({user}) => {
@@ -19,7 +18,7 @@ export const UserCard = ({user}) => {
             <Link to={`/users/${user.id}`} title={displayName}>
                 <div className={"user-image--wrapper position-relative"}>
                     <img
-                        src={user.image_url ? user.image_url : marvel}
+                        src={user.image_url ? user.image_url : getRandomProfileImage()}
                         alt={displayName}
                         className="user-image"
                     />

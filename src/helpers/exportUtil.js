@@ -23,6 +23,7 @@ export const exportToPDF = (data, filename) => {
 };
 
 export const getExportDataForIssues = (data) => {
+    if (!data) return null;
     return data
         .sort((a, b) => sortByTitleYearNumber(a, b))
         .map(issue => ({

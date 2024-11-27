@@ -4,6 +4,8 @@ import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
 import {getGradeValueByIssueIdAndGrade} from "./databaseFunctions";
+const images = import.meta.glob('../assets/images/profiles/profile-*.png', { eager: true });
+
 
 export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
@@ -223,6 +225,12 @@ export const getAnonDisplayName = (user) => {
 export const hasImage = (item) => {
     return item && item.image_filename && item.image_url;
 }
+
+export const getRandomProfileImage = () => {
+    const imagePaths = Object.values(images).map((img) => img.default); // Get array of image paths
+    const randomIndex = Math.floor(Math.random() * imagePaths.length); // Random index
+    return imagePaths[randomIndex]; // Return a random image path
+};
 
 export const sortByName = (a, b) => {
     let aName = sortableName(a.name);
