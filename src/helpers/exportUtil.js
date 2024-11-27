@@ -14,7 +14,7 @@ export const exportToCSV = (data, fileName) => {
         header: true, // Add CSV header row
     });
     // Create a Blob from the CSV string
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
     // Save the file
     saveAs(blob, `${fileName}-${getCurrentDateAsString()}.csv`);
 };
@@ -46,10 +46,10 @@ export const getExportDataForIssues = (data) => {
     return data
         .sort((a, b) => sortByTitleYearNumber(a, b))
         .map(issue => ({
-        Titel: issue.titles.name,
+            Titel: issue.titles.name,
             \u00C5r: issue.year,
-        Nummer: getIssueNumber(issue),
-        Variant: issue.is_variant === 1 ? "ja" : "nej",
-        Marvelklubben: issue.is_marvelklubben === 1 ? issue.marvelklubben_number : "nej",
-    }));
+            Nummer: getIssueNumber(issue),
+            Variant: issue.is_variant === 1 ? "ja" : "nej",
+            Marvelklubben: issue.is_marvelklubben === 1 ? issue.marvelklubben_number : "nej",
+        }));
 }
