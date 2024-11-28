@@ -36,6 +36,8 @@ export const UtilsGetFullName = () => {
         return null;
     }
 
+    <p>Output: {getFullName(givenName, familyName)}</p>
+
 
     return (
         <div className={"sms-section--light mb-3"}>
@@ -46,7 +48,7 @@ export const UtilsGetFullName = () => {
             <pre className={"border p-2"}><code>{getFullNameJS}</code></pre>
             <p>givenName: Joakim</p>
             <p>familyName: Johnsson</p>
-            <p className={"alert alert-success"}>Output: {getFullName(familyName, givenName)}</p>
+            <p className={"alert alert-success"}>Output: {getFullName(givenName, familyName)}</p>
         </div>
     )
 }
