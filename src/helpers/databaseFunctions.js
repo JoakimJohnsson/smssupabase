@@ -31,6 +31,15 @@ export const getUserIssues = async (userId) => {
     }
 }
 
+export const getMissingUserIssues = async (userId) => {
+    try {
+        return await supabase.rpc('get_missing_user_issues', {input_user_id: userId});
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
 // Returns wanted, upgraded and favorites lists of issues and titles.
 export const getUserSelectedIssuesAndTitlesData = async (userId) => {
     try {
