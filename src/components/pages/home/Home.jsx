@@ -1,6 +1,6 @@
 import React, {} from "react";
 import {HeadingWithBreadCrumbs} from "../../headings";
-import {SearchAndFilterTest} from "./SearchAndFilterTest.jsx";
+import {DivaPublicationsTest} from "./DivaPublicationsTest.jsx";
 import {UtilsTest} from "./UtilsTest.jsx";
 
 export const Home = () => {
@@ -10,7 +10,7 @@ export const Home = () => {
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={"Test publikationer DiVA JS"}/>
                 </div>
-                <SearchAndFilterTest/>
+                <DivaPublicationsTest/>
                 <UtilsTest/>
             </div>
         </main>
