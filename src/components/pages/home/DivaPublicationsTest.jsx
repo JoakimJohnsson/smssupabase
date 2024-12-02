@@ -69,7 +69,7 @@ export const DivaPublicationsTest = () => {
     const doShowClearButton = query !== "";
 
     return publications && !!publications.length && (
-        <div>
+        <div className={"mb-4"}>
             <label htmlFor="query">Search publications</label>
             <input id="query"
                    name="query"
