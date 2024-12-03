@@ -14,6 +14,7 @@ export const TABLES = {
     MESSAGES: "messages",
     PROFILES: "profiles",
     PUBLISHERS: "publishers",
+    REVIEWS: "reviews",
     TITLES: "titles",
     USER_TOTAL_VALUATION_VALUES: "user_total_valuation_values",
     USERS_TITLES: "users_titles",
@@ -26,4 +27,9 @@ export const TABLES = {
     GRADE_VALUES: "grade_values",
     UTILS: "utils",
     USERS: "users"
+}
+
+export const ITEM_TYPES = {
+    TITLE: "title",
+    ISSUE: "issue"
 }
