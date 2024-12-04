@@ -5,6 +5,10 @@ import {faStar as faStarRegular} from "@fortawesome/pro-regular-svg-icons";
 
 export const EditStarReview = ({item, stars, setStars, saveReview}) => {
 
+    const baseClasses = "hocus-standard me-2";
+    const activeClasses = "text-grade px-2 py-1 border border-grade rounded-5";
+    const inactiveClasses = "text-grade-100 p-2 border border-light rounded-3";
+
     const handleEditStarReview = (index) => {
         const newStars = index + 1;
         setStars(newStars);
@@ -14,11 +18,11 @@ export const EditStarReview = ({item, stars, setStars, saveReview}) => {
     return (
         <div className={"sms-section--light section--warning mb-4"}>
             <h2>{LABELS.COMMON.REVIEW}</h2>
-            <div className={"mb-3 fs-1 d-flex align-items-center"}>
-                <span className={"fs-3 me-3"}>{LABELS.COMMON.REVIEW_YOURS}</span>
+            <div className={"mb-3 fs-1"}>
+                <p className={"fs-3 mb-3"}>{LABELS.COMMON.REVIEW_YOURS}</p>
                 {[...Array(5)].map((_, index) => (
                     <span
-                        className={index < stars ? "text-grade hocus-standard" : "text-grade-100 hocus-standard"}
+                        className={`${baseClasses} ${index < stars ? activeClasses : inactiveClasses}`}
                         key={index}
                         onClick={() => handleEditStarReview(index)}
                         onKeyDown={(e) => {
