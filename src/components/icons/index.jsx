@@ -25,6 +25,8 @@ import {
     faEyeSlash,
     faFaceExplode,
     faFile,
+    faFilePdf,
+    faFileCsv,
     faFileImage,
     faFiles,
     faFileLines,
@@ -40,6 +42,7 @@ import {
     faLightbulbOn,
     faMagnifyingGlassDollar,
     faMapLocationDot,
+    faMessageMedical,
     faMosquito,
     faMoneyCheckPen,
     faPresentationScreen,
@@ -87,6 +90,8 @@ import {
     faEyeSlash as faEyeSlashDT,
     faFaceExplode as faFaceExplodeDT,
     faFile as faFileDT,
+    faFilePdf as faFilePdfDT,
+    faFileCsv as faFileCsvDT,
     faFileImage as faFileImageDT,
     faFiles as faFilesDT,
     faFileLines as faFileLinesDT,
@@ -102,6 +107,7 @@ import {
     faLightbulbOn as faLightbulbOnDT,
     faMagnifyingGlassDollar as faMagnifyingGlassDollarDT,
     faMapLocationDot as faMapLocationDotDT,
+    faMessageMedical as faMessageMedicalDT,
     faMosquito as faMosquitoDT,
     faMoneyCheckPen as faMoneyCheckPenDT,
     faPresentationScreen as faPresentationScreenDT,
@@ -149,6 +155,8 @@ const iconMap = {
     faEyeSlash: faEyeSlash,
     faFaceExplode: faFaceExplode,
     faFile: faFile,
+    faFilePdf: faFilePdf,
+    faFileCsv: faFileCsv,
     faFileImage: faFileImage,
     faFiles: faFiles,
     faFileLines: faFileLines,
@@ -164,6 +172,7 @@ const iconMap = {
     faLightbulbOn: faLightbulbOn,
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
     faMapLocationDot: faMapLocationDot,
+    faMessageMedical: faMessageMedical,
     faMosquito: faMosquito,
     faMoneyCheckPen: faMoneyCheckPen,
     faPresentationScreen: faPresentationScreen,
@@ -211,6 +220,8 @@ const iconMapDuoTone = {
     faEyeSlashDT: faEyeSlashDT,
     faFaceExplodeDT: faFaceExplodeDT,
     faFileDT: faFileDT,
+    faFilePdfDT: faFilePdfDT,
+    faFileCsvDT: faFileCsvDT,
     faFileImageDT: faFileImageDT,
     faFilesDT: faFilesDT,
     faFileLinesDT: faFileLinesDT,
@@ -226,6 +237,7 @@ const iconMapDuoTone = {
     faLightbulbOnDT: faLightbulbOnDT,
     faMagnifyingGlassDollarDT: faMagnifyingGlassDollarDT,
     faMapLocationDotDT: faMapLocationDotDT,
+    faMessageMedicalDT: faMessageMedicalDT,
     faMosquitoDT: faMosquitoDT,
     faMoneyCheckPenDT: faMoneyCheckPenDT,
     faPresentationScreenDT: faPresentationScreenDT,
@@ -269,6 +281,7 @@ export const carIcon = faCar;
 export const collectionPlusIcon = faRectangleHistoryCirclePlus;
 export const collectionCheckIcon = faClipboardListCheck;
 export const collectionSearchIcon = faMagnifyingGlassDollar;
+export const csvIcon = faFileCsv;
 export const dangerIcon = faShieldExclamation;
 export const dateIcon = faCalendarHeart;
 export const dashboardIcon = faChartLine;
@@ -287,7 +300,9 @@ export const logoIcon = faComet;
 export const mapsIcon = faMapLocationDot;
 export const marvelKlubbenIcon = faBadge;
 export const moreIcon = faChevronDown;
+export const githubMessageIcon = faMessageMedical;
 export const lessIcon = faChevronUp;
+export const pdfIcon = faFilePdf;
 export const publishersIcon = faBuildingColumns;
 export const registerIcon = faHeartCirclePlus;
 export const saveIcon = faFloppyDisk;
@@ -317,11 +332,13 @@ export const carIconDuoTone = faCarDT;
 export const collectionPlusIconDuoTone = faRectangleHistoryCirclePlusDT;
 export const collectionCheckIconDuoTone = faClipboardListCheckDT;
 export const collectionSearchIconDuoTone = faMagnifyingGlassDollarDT;
+export const csvIconDuoTone = faFileCsvDT;
 export const dashboardIconDuoTone = faChartLineDT;
 export const dangerIconDuoTone = faShieldExclamationDT;
 export const dataIconDuoTone = faListTimelineDT;
 export const dateIconDuoTone = faCalendarHeartDT;
 export const editIconDuoTone = faMoneyCheckPenDT;
+export const githubMessageIconDuoTone = faMessageMedicalDT;
 export const globalIconDuoTone = faEarthAmericasDT;
 export const gradingIconDuoTone = faScaleUnbalancedDT;
 export const imageIconDuoTone = faFileImageDT;
@@ -339,6 +356,7 @@ export const questionIconDuoTone = faCommentsQuestionDT;
 export const logoutIconDuoTone = faArrowRightFromArcDT;
 export const collectionsIconDuoTone = faRectangleHistoryCircleUserDT;
 export const overviewIconDuoTone = faPresentationScreenDT;
+export const pdfIconDuoTone = faFilePdfDT;
 export const publishersIconDuoTone = faBuildingColumnsDT;
 export const registerIconDuoTone = faHeartCirclePlusDT;
 export const saveIconDuoTone = faFloppyDiskDT;

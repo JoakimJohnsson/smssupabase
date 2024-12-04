@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
 import {useParams} from "react-router-dom";
 import {
     addTitleToTable,
@@ -7,12 +7,12 @@ import {
     handleCollectingTitle,
     removeTitleFromTable,
     userTitleExists
-} from "../../services/serviceFunctions";
-import {ROUTES} from "../../helpers/constants/configConstants";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {PANES, TEXTS} from "../../helpers/constants/textConstants/texts";
-import {TABLES} from "../../helpers/constants/serviceConstants";
-import {IssuesList} from "../lists/issues/IssuesList";
+} from "../../../services/serviceFunctions.js";
+import {ROUTES} from "../../../helpers/constants/configConstants.jsx";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
+import {PANES, TEXTS} from "../../../helpers/constants/textConstants/texts.js";
+import {ITEM_TYPES, TABLES} from "../../../helpers/constants/serviceConstants.js";
+import {IssuesList} from "../../lists/issues/IssuesList.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {
     faGrid,
@@ -23,27 +23,29 @@ import {
     faPlus,
     faHeart
 } from "@fortawesome/pro-duotone-svg-icons";
-import {getCalculatedYear, getTitleProgressForUser, objectDoesExist} from "../../helpers/functions";
-import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
-import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {useAppContext} from "../../context/AppContext";
-import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../services/issueService";
-import {FunctionButton} from "../minis/FunctionButton";
-import {TitleProgress} from "./TitleProgress";
-import {FormatBadge} from "../minis/FormatBadge";
+import {getCalculatedYear, getTitleProgressForUser, objectDoesExist} from "../../../helpers/functions.jsx";
+import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall.jsx";
+import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
+import {useAppContext} from "../../../context/AppContext.jsx";
+import {getIssuesWithTitleAndPublisherAndGradeValuesByTitleId} from "../../../services/issueService.js";
+import {FunctionButton} from "../../minis/FunctionButton.jsx";
+import {TitleProgress} from "./TitleProgress.jsx";
+import {FormatBadge} from "../../minis/FormatBadge.jsx";
 import {
     addIssueToCollection,
     checkGradingStatus,
     deleteAllGradesByUserAndIssue,
     deleteIssueFromCollectionSimple
-} from "../../services/collectingService";
-import {Message} from "../message/Message";
-import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../icons";
-import {IconLink} from "../minis/IconLink";
-import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
-import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
-import {NoMatch} from "../routes/NoMatch";
-import {MESSAGES} from "../../helpers/constants/textConstants/messages.js";
+} from "../../../services/collectingService.js";
+import {Message} from "../../message/Message.jsx";
+import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons/index.jsx";
+import {IconLink} from "../../minis/IconLink.jsx";
+import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus.js";
+import {SeriekatalogenTitleLink} from "../../minis/SeriekatalogenTitleLink.jsx";
+import {NoMatch} from "../../routes/NoMatch.jsx";
+import {MESSAGES} from "../../../helpers/constants/textConstants/messages.js";
+import {EditStarReview} from "../../star/EditStarReview.jsx";
+import {addStarReview, getReviewByUserIdItemTypeAndId, updateStarReview} from "../../../services/reviewservice.js";
 
 
 export const Title = () => {
@@ -51,6 +53,8 @@ export const Title = () => {
     const {setInformationMessage, user, profile} = useAppContext();
     const [title, setTitle] = useState({});
     const [issuesData, setIssuesData] = useState({});
+    const [review, setReview] = useState(null);
+    const [stars, setStars] = useState(0);
     const [loading, setLoading] = useState(true);
     const [addIssue, setAddIssue] = useState(false);
     const [removeIssue, setRemoveIssue] = useState(false);
@@ -88,6 +92,19 @@ export const Title = () => {
     useEffect(() => {
         fetchTitleProgress().then();
     }, [fetchTitleProgress]);
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            if (user.id && title.id) {
+                const fetchedReview = await getReviewByUserIdItemTypeAndId(user.id, ITEM_TYPES.TITLE, title.id);
+                if (fetchedReview) {
+                    setReview(fetchedReview);
+                    setStars(fetchedReview.stars);
+                }
+            }
+        };
+        fetchReviews();
+    }, [user.id, title.id]);
 
     useEffect(() => {
         if (titleProgress && titleProgress.progress === 100) {
@@ -157,7 +174,19 @@ export const Title = () => {
                 removeIssue: removeIssue
             }
         )
-    }, [addIssue, removeIssue])
+    }, [addIssue, removeIssue]);
+
+    const saveReview = async (updatedStars) => {
+        if (review) {
+            // If a review exists, update it
+            await updateStarReview(review.id, updatedStars);
+            setReview({ ...review, stars: updatedStars }); // Update local state
+        } else {
+            // If no review exists, create a new one
+            const newReview = await addStarReview(user.id, ITEM_TYPES.TITLE, title.id, updatedStars);
+            setReview(newReview);
+        }
+    };
 
     return objectDoesExist(title) ? (
             <main id="main-content" className={"container-fluid main-container"}>
@@ -241,17 +270,19 @@ export const Title = () => {
                                         <TitleProgress titleProgress={titleProgress}/>
                                     }
                                     <div className={"sms-btn-group"}>
-                                        <FunctionButton variant={isFavoriteTitle ? "btn-marvelklubben" : "btn-outline-secondary"}
-                                                        icon={faHeart}
-                                                        onClick={() => handleFavorite()}
-                                                        label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
+                                        <FunctionButton
+                                            variant={isFavoriteTitle ? "btn-marvelklubben" : "btn-outline-secondary"}
+                                            icon={faHeart}
+                                            onClick={() => handleFavorite()}
+                                            label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
                                         />
                                         {
-                                            <FunctionButton variant={listViewGradeValue ? "btn-grade" : "btn-outline-secondary"}
-                                                            icon={valueIconDuoTone}
-                                                            onClick={() => setListViewGradeValue(!listViewGradeValue)}
-                                                            label={listViewGradeValue ? LABELS.COMMON.LIST_VIEW_GRADE_VALUE_HIDE : LABELS.COMMON.LIST_VIEW_GRADE_VALUE_SHOW}
-                                                            disabled={!title.is_valued}
+                                            <FunctionButton
+                                                variant={listViewGradeValue ? "btn-grade" : "btn-outline-secondary"}
+                                                icon={valueIconDuoTone}
+                                                onClick={() => setListViewGradeValue(!listViewGradeValue)}
+                                                label={listViewGradeValue ? LABELS.COMMON.LIST_VIEW_GRADE_VALUE_HIDE : LABELS.COMMON.LIST_VIEW_GRADE_VALUE_SHOW}
+                                                disabled={!title.is_valued}
                                             />
                                         }
                                         {
@@ -322,7 +353,10 @@ export const Title = () => {
                                             {PANES.TITLES.GRADE_MISSING}
                                         </div>
                                     }
-                                    <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.COMMON.ISSUES}</h2>
+
+                                    <EditStarReview item={title} stars={stars} setStars={setStars} saveReview={saveReview}/>
+
+                                    <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.SECTIONS.ISSUES.ISSUES}</h2>
                                     <IssuesList issuesData={issuesData} showAdminInfo={false}
                                                 showCollectingButtons={isCollectingTitle}
                                                 listViewGrid={listViewGrid} listViewMissing={listViewMissing}

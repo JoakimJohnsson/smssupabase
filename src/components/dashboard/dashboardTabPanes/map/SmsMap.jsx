@@ -62,69 +62,69 @@ export const SmsMap = () => {
 
     return !positionPending ?
         <>
-            <div className={"col-12 form-group mb-5 bg-horse p-4"}>
-                <h2>{PANES.MAP.LOCATION}</h2>
-                {/* If allowed - show user location */}
-                <div className={"mb-4"}>
+            <div className={"col-12 py-4 py-sm-5 bg-whale"}>
+                <div className={"row row-padding--secondary"}>
+                    <h2>{PANES.MAP.LOCATION}</h2>
+                    {/* If allowed - show user location */}
+                    <div className={"mb-4"}>
+                        {
+                            locationAllowedAndSupported &&
+                            <UserLocation/>
+                        }
+                        <SelectedOriginLocation selectedOrigin={otherLocation}/>
+                    </div>
                     {
-                        locationAllowedAndSupported &&
-                        <UserLocation/>
+                        <LocationSelector setLocation={setOtherLocation}/>
                     }
-                    <SelectedOriginLocation selectedOrigin={otherLocation}/>
+
+                    {/* Nearest destination search */}
+                    {
+                        location &&
+                        <DestinationSearch position={getPositionFromLocation(location)}
+                                           setDestinations={setDestinations}
+                                           setSelectedDestinationType={setSelectedDestinationType}
+                                           selectedDestinationType={selectedDestinationType}/>
+                    }
+                    {/* Destination selector */}
+                    {
+                        destinations && !!destinations.length &&
+                        <DestinationSelector
+                            selectedDestinationType={selectedDestinationType}
+                            setSelectedDestination={setSelectedDestinationLocation}
+                            destinations={destinations}
+                            selectedDestination={selectedDestinationLocation}
+                        />
+                    }
+
+                    {/* Travel mode selector */}
+                    {
+                        selectedDestinationLocation &&
+                        <Form>
+                            <h2>{PANES.MAP.TRAVEL_MODES}</h2>
+                            <div className="mb-3">
+                                <Form.Check
+                                    type={"radio"}
+                                    id={"0"}
+                                    name={"travelMode"}
+                                    label={<span>{PANES.MAP.WALKING}</span>}
+                                    checked={travelModeIndex === 0}
+                                    onChange={() => setTravelModeIndex(0)}
+                                />
+                                <Form.Check
+                                    type={"radio"}
+                                    id={"1"}
+                                    name={"travelMode"}
+                                    label={<span>{PANES.MAP.DRIVING}</span>}
+                                    checked={travelModeIndex === 1}
+                                    onChange={() => setTravelModeIndex(1)}
+                                />
+                            </div>
+                        </Form>
+                    }
                 </div>
-                {
-                    <LocationSelector setLocation={setOtherLocation}/>
-                }
-
-                {/* Nearest destination search */}
-                {
-                    location &&
-                    <DestinationSearch position={getPositionFromLocation(location)}
-                                       setDestinations={setDestinations}
-                                       setSelectedDestinationType={setSelectedDestinationType}
-                                       selectedDestinationType={selectedDestinationType}/>
-                }
-
-
-                {/* Destination selector */}
-                {
-                    destinations && !!destinations.length &&
-                    <DestinationSelector
-                        selectedDestinationType={selectedDestinationType}
-                        setSelectedDestination={setSelectedDestinationLocation}
-                        destinations={destinations}
-                        selectedDestination={selectedDestinationLocation}
-                    />
-                }
-
-                {/* Travel mode selector */}
-                {
-                    selectedDestinationLocation &&
-                    <Form>
-                        <h2>{PANES.MAP.TRAVEL_MODES}</h2>
-                        <div className="mb-3">
-                            <Form.Check
-                                type={"radio"}
-                                id={"0"}
-                                name={"travelMode"}
-                                label={<span>{PANES.MAP.WALKING}</span>}
-                                checked={travelModeIndex === 0}
-                                onChange={() => setTravelModeIndex(0)}
-                            />
-                            <Form.Check
-                                type={"radio"}
-                                id={"1"}
-                                name={"travelMode"}
-                                label={<span>{PANES.MAP.DRIVING}</span>}
-                                checked={travelModeIndex === 1}
-                                onChange={() => setTravelModeIndex(1)}
-                            />
-                        </div>
-                    </Form>
-                }
             </div>
             {/* Map */}
-            <div className={"sms-google-map"}>
+            <div className={"sms-google-map p-0"}>
                 {
                     location &&
                     <Map

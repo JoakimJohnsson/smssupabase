@@ -37,7 +37,6 @@ export const UserMessage = ({
                 icon={open ? faTimes : faMessages}
                 onClick={() => setOpen(!open)}
                 label={open ? LABELS.SECTIONS.MESSAGES.MESSAGE_CLOSE : LABELS.SECTIONS.MESSAGES.MESSAGE_SHOW}
-                id={"message-form-toggler"}
                 showLabel={true}
             />
             {

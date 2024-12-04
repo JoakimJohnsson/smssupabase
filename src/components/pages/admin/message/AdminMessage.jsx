@@ -1,7 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {ROUTES} from "../../../../helpers/constants/configConstants";
-import {MESSAGE_STATUS_TEXT, MESSAGE_STATUS_TEXT_GLOBAL} from "../../../../helpers/constants/textConstants/messages";
+import {
+    MESSAGE_STATUS_TEXT,
+    MESSAGE_STATUS_TEXT_GLOBAL,
+} from "../../../../helpers/constants/textConstants/messages";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../../../headings";
@@ -13,6 +16,9 @@ import {MessageStatusChanger} from "../../../message/MessageStatusChanger";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {objectDoesExist} from "../../../../helpers/functions";
 import {NoMatch} from "../../../routes/NoMatch";
+import {githubMessageIcon, Icon} from "../../../icons/index.jsx";
+import {Octokit} from "@octokit/core";
+import {useAppContext} from "../../../../context/AppContext.jsx";
 
 
 export const AdminMessage = () => {
@@ -20,6 +26,7 @@ export const AdminMessage = () => {
     const [message, setMessage] = useState({});
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
+    const {setInformationMessage} = useAppContext();
 
     const fetchMessageData = useCallback(() => {
         getRowByTableAndId(TABLES.MESSAGES, setMessage, id).then(() => setLoading(false));
@@ -28,6 +35,22 @@ export const AdminMessage = () => {
     useEffect(() => {
         fetchMessageData();
     }, [id, fetchMessageData]);
+
+    const handleAddIssueToGithub = async () => {
+        try {
+            const octokit = new Octokit({
+                auth: import.meta.env.VITE_GITHUB_ACCESS_TOKEN
+            })
+            await octokit.request("POST /repos/JoakimJohnsson/smssupabase/issues", {
+                title: message.title,
+                body: message.text,
+            });
+            setInformationMessage({show: true, status: 2, error: TEXTS.ISSUE_CREATED});
+        } catch (error) {
+            console.error("Error creating issue: ", error);
+            setInformationMessage({show: true, status: 4, error: TEXTS.ISSUE_CREATED_ERROR});
+        }
+    }
 
     return objectDoesExist(message) ? (
             <main id="main-content" className={"container-fluid main-container"}>
@@ -70,6 +93,13 @@ export const AdminMessage = () => {
                                         }
                                         <Link className={"btn btn-outline-primary sms-btn"}
                                               to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
+                                        <button
+                                            onClick={() => handleAddIssueToGithub()}
+                                            className={"btn btn-outline-title sms-btn"}
+                                        >
+                                            <Icon icon={githubMessageIcon} className={"me-2"}/>
+                                            {LABELS.COMMON.MESSAGES_ADD_ISSUE_ON_GITHUB}
+                                        </button>
                                     </div>
                                 </div>
                             </div>

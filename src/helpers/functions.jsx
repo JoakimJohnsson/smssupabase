@@ -4,6 +4,8 @@ import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
 import {getGradeValueByIssueIdAndGrade} from "./databaseFunctions";
+const images = import.meta.glob('../assets/images/profiles/profile-*.png', { eager: true });
+
 
 export async function doesEmailExist(emailReference) {
     let {data: email} = await supabase.from("users").select("email").eq("email", emailReference)
@@ -11,8 +13,8 @@ export async function doesEmailExist(emailReference) {
 }
 
 export const prepareUrl = (url) => {
-    if (url && url.substring(0, 7) !== "http://") {
-        return "https://" + url;
+    if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+        return 'https://' + url;
     } else {
         return url;
     }
@@ -224,6 +226,12 @@ export const hasImage = (item) => {
     return item && item.image_filename && item.image_url;
 }
 
+export const getRandomProfileImage = () => {
+    const imagePaths = Object.values(images).map((img) => img.default); // Get array of image paths
+    const randomIndex = Math.floor(Math.random() * imagePaths.length); // Random index
+    return imagePaths[randomIndex]; // Return a random image path
+};
+
 export const sortByName = (a, b) => {
     let aName = sortableName(a.name);
     let bName = sortableName(b.name);
@@ -231,6 +239,14 @@ export const sortByName = (a, b) => {
     if (aName > bName) return 1;
     return 0;
 }
+
+export const sortByTitleYearNumber = (a, b) => {
+    const titleComparison = a.titles.name.localeCompare(b.titles.name, 'sv');
+    if (titleComparison !== 0) return titleComparison;
+    const yearComparison = a.year - b.year;
+    if (yearComparison !== 0) return yearComparison;
+    return a.number - b.number;
+};
 
 export const sortByDateCreated = (a, b) => {
     if (a.created_at < b.created_at) return -1;
@@ -311,6 +327,14 @@ export const atLeastOneListDoesExist = (arrayOfLists) => {
 export const getCurrentDateAsISOString = () => {
     return (new Date()).toISOString();
 }
+
+export const getCurrentDateAsString = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}${month}${day}`;
+};
 
 export const getCurrentDate = () => {
     return new Date();

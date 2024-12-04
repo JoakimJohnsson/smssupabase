@@ -23,6 +23,9 @@ import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
 import CustomProgressBar from "../../CustomProgressBar";
 import {OverlaySpinner} from "../../minis/OverlaySpinner";
 import {DashboardSection} from "./DashboardSection";
+import ReleaseNotes from "./ReleaseNotes.jsx";
+import {getTop5Issues, getTop5Titles} from "../../../helpers/databaseFunctions.js";
+import {TitlesListItem} from "../titles/TitlesListItem.jsx";
 
 
 export const Home = () => {
@@ -37,6 +40,8 @@ export const Home = () => {
     const [loadingUser, setLoadingUser] = useState(true);
     const [limitedTitlesData, setLimitedTitlesData] = useState(null);
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
+    const [top5Issues, setTop5Issues] = useState(null);
+    const [top5Titles, setTop5Titles] = useState(null);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -80,17 +85,38 @@ export const Home = () => {
         }
     }, [totalTitles]);
 
+    useEffect(() => {
+        const fetchIssues = async () => {
+            const result = await getTop5Issues();
+            if (result) {
+                if (result.data) {
+                    setTop5Issues(result.data);
+                }
+            }
+        };
+        const fetchTitles = async () => {
+            const result = await getTop5Titles();
+            if (result) {
+                if (result.data) {
+                    setTop5Titles(result.data);
+                }
+            }
+        };
+        fetchIssues();
+        fetchTitles();
+    }, []);
+
     return profile && user && user.id ? (
             <main id="main-content" className={"container-fluid main-container dashboard"}>
                 <div className={"row row-padding--main"}>
                     <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs
-                                text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
-                            {
-                                userMessages && !!userMessages.length &&
-                                <InformationAlert variant={"success"}
-                                                  text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
-                            }
+                        <HeadingWithBreadCrumbs
+                            text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
+                        {
+                            userMessages && !!userMessages.length &&
+                            <InformationAlert variant={"success"}
+                                              text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
+                        }
                         {
                             atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
                             <div className={"mb-5"}>
@@ -157,6 +183,15 @@ export const Home = () => {
                         </div>
                         <div className={"sms-section--light mb-5"}>
                             <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
+
+                            <p className={"text-label"}>{LABELS.SECTIONS.TITLES.TOP_5}</p>
+                            <ul className={"sms-list--with-cards"}>
+                                {
+                                    top5Titles &&
+                                    top5Titles.map((title) => <TitlesListItem key={title.id} title={title}/>)
+                                }
+                            </ul>
+
                             <p className={"mb-4 placeholder-glow"}><span
                                 className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ?
                                 <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
@@ -182,7 +217,8 @@ export const Home = () => {
                             {
                                 limitedTitlesData ?
                                     <>
-                                        <TitlesList titlesData={limitedTitlesData} setTitlesData={setLimitedTitlesData}
+                                        <TitlesList titlesData={limitedTitlesData}
+                                                    setTitlesData={setLimitedTitlesData}
                                                     doSortByName={false} showCreatedInfo
                                                     showToolbox={false}/>
                                     </>
@@ -191,7 +227,17 @@ export const Home = () => {
                             }
                         </div>
                         <div className={"sms-section--light mb-5"}>
-                            <h2>Publikationer</h2>
+                            <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
+
+
+                            <p className={"text-label"}>{LABELS.SECTIONS.ISSUES.TOP_5}</p>
+                            <ul className={"sms-list--with-cards"}>
+                                {
+                                    top5Issues &&
+                                    top5Issues.map((issue) => <IssueLinkCard key={issue.id} issue={issue}/>)
+                                }
+                            </ul>
+
                             <p className={"mb-4 placeholder-glow"}><span
                                 className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
                                 <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
@@ -210,6 +256,10 @@ export const Home = () => {
                                     <NoDataAvailable/>
                             }
                         </div>
+                        <div className={"sms-section--light mb-5"}>
+                            <h2>{LABELS.COMMON.INFORMATION}</h2>
+                            <ReleaseNotes/>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -217,7 +267,7 @@ export const Home = () => {
         :
         loadingUser ?
             <div className={"row row-padding-main"}>
-                <OverlaySpinner/>
+            <OverlaySpinner/>
             </div>
             :
             <>

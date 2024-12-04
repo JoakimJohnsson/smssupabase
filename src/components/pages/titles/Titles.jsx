@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from "react";
-import {TEXTS} from "../../helpers/constants/textConstants/texts";
-import {TABLES} from "../../helpers/constants/serviceConstants";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {HeadingWithBreadCrumbs} from "../headings";
-import {OverlaySpinner} from "../minis/OverlaySpinner";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
+import {TABLES} from "../../../helpers/constants/serviceConstants.js";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
+import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
+import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
 import {
     filterByFormat,
     filterTitlesData,
     hasTrueValue,
     sortByNameAndStartYear
-} from "../../helpers/functions";
-import {getRowsByTable} from "../../services/serviceFunctions";
-import {TitlesListItem} from "./TitlesListItem";
-import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
-import FilterFormFormat from "../searchFilter/FilterFormFormat";
+} from "../../../helpers/functions.jsx";
+import {getRowsByTable} from "../../../services/serviceFunctions.js";
+import {TitlesListItem} from "./TitlesListItem.jsx";
+import {useFormatQueryFilter} from "../../../helpers/customHooks/useFormatQueryFilter.js";
+import FilterFormFormat from "../../searchFilter/FilterFormFormat.jsx";
 
-import FilteredListInfo from "../searchFilter/FilteredListInfo.jsx";
+import FilteredListInfo from "../../searchFilter/FilteredListInfo.jsx";
 
 
 export const Titles = () => {

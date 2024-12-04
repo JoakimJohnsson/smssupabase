@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {TEXTS} from "../../helpers/constants/textConstants/texts";
-import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {TABLES} from "../../helpers/constants/serviceConstants";
-import {getRowsByTable} from "../../services/serviceFunctions";
-import {HeadingWithBreadCrumbs} from "../headings";
-import {OverlaySpinner} from "../minis/OverlaySpinner";
-import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
-import FilterFormSimple from "../searchFilter/FilterFormSimple";
-import {UserCard} from "../lists/users/UserCard";
-import {filterQueryByFirstNameAndLastName} from "../../helpers/functions";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
+import {TABLES} from "../../../helpers/constants/serviceConstants.js";
+import {getRowsByTable} from "../../../services/serviceFunctions.js";
+import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
+import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
+import {useSimpleQueryFilter} from "../../../helpers/customHooks/useSimpleQueryFilter.js";
+import FilterFormSimple from "../../searchFilter/FilterFormSimple.jsx";
+import {UserCard} from "../../lists/users/UserCard.jsx";
+import {filterQueryByFirstNameAndLastName} from "../../../helpers/functions.jsx";
 
 
 export const Users = () => {
@@ -19,7 +19,7 @@ export const Users = () => {
 
     useEffect(() => {
         getRowsByTable(TABLES.PROFILES, setUsersData).then(() => setLoading(false));
-    }, [])
+    }, []);
 
     return (
         <main id="main-content" className={"container-fluid main-container"}>

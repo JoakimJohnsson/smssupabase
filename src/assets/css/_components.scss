@@ -28,17 +28,21 @@
 // Content
 .main-container {
   min-height: $main-content-min-height;
+
   h1, .h1 {
     margin-bottom: 3rem;
   }
+
   .row-padding--main {
     @extend .px-3, .py-5, .p-sm-5;
   }
+
   .row-padding--secondary {
     @extend .px-3, .px-sm-5;
   }
+
   .row-padding--dashboard {
-    @extend .px-3, .px-sm-5, .pt-5;
+    @extend .px-0;
     padding-bottom: 8rem;
   }
 }
@@ -64,35 +68,49 @@
   &.section--grade {
     @extend .rounded-3, .border, .border-grade, .p-3;
   }
+
+  &.section--warning {
+    @extend .rounded-3, .border, .border-warning, .p-3;
+  }
+
   .form-control, .form-select {
     border-bottom: 3px solid $gray-600;
     border-radius: 0;
+
     &:focus {
       border-bottom: 3px solid $primary;
     }
+
     &.success {
       border-bottom: 3px solid $success;
     }
+
     &.danger {
       border-bottom: 3px solid $danger;
     }
+
     &:disabled {
       opacity: .8;
     }
   }
+
   h2 {
     @extend .border-bottom, .pb-3, .mb-4;
   }
+
   .form-label {
     color: $white--darker;
     font-weight: 300;
   }
+
   &.primary {
     background-color: $primary--lighter;
     color: $black;
+
     h2 {
       color: $black;
     }
+
     .form-label {
       color: $black--lighter;
     }
@@ -104,9 +122,11 @@
   &--default {
     @extend .form-control, .mb-3;
   }
+
   &--success {
     @extend .form-control, .success, .mb-3;
   }
+
   &--error {
     @extend .form-control, .danger, .mb-3;
   }
@@ -147,15 +167,18 @@ input[type="checkbox"] + label {
 // List
 .sms-list--with-tools {
   @extend .list-group, .list-group-flush, .small, .list-unstyled;
+
   .sms-list-col--main {
     @extend .col-12, .d-flex, .flex-column, .justify-content-center;
   }
+
   .sms-list-col--tools {
     @extend .col-12;
     display: flex;
     align-items: center;
     padding-top: .4rem;
   }
+
   @media (min-width: 320px) {
     .sms-list-col--main {
       // approx .col-9
@@ -174,15 +197,19 @@ input[type="checkbox"] + label {
 
 .sms-list--with-cards {
   @extend .row, .list-unstyled;
+
   li {
     &.title-card {
       @extend .col-12, .col-md-6, .col-xl-4, .mb-5;
+
       &.simple {
         @extend .col-12, .col-lg-6, .col-xl-4, .col-xxl-3;
       }
+
       .image-container {
         background-color: $white;
       }
+
       .title-card--year {
         @extend .h6, .py-1, .px-2, .mb-0;
         color: $black;
@@ -193,12 +220,15 @@ input[type="checkbox"] + label {
         justify-content: center;
       }
     }
+
     &.issue-card {
       @extend .col-12, .mb-4;
       flex: 0 0 auto;
+
       a {
         @extend .hocus-standard;
       }
+
       @media (min-width: 450px) {
         // .col-6
         width: 50%;
@@ -223,6 +253,7 @@ input[type="checkbox"] + label {
         // .col-2
         width: 20%;
       }
+
       .issue-card--marvelklubben {
         @extend .h5, .py-1, .px-2;
         color: $black;
@@ -234,6 +265,7 @@ input[type="checkbox"] + label {
         align-items: center;
         justify-content: center;
       }
+
       .issue-card--label {
         @extend .h6, .py-1, .px-2;
         position: absolute;
@@ -244,6 +276,7 @@ input[type="checkbox"] + label {
         align-items: center;
         justify-content: center;
       }
+
       .issue-card--number {
         @extend .h6, .py-1, .px-2;
         color: $black;
@@ -255,28 +288,36 @@ input[type="checkbox"] + label {
         justify-content: center;
       }
     }
+
     &.issue-link-card {
       @extend .col-12, .col-lg-6, .col-xl-4, .mb-4;
+
       &.simple {
         @extend .col-12;
       }
+
       a {
         @extend .hocus-standard, .text-black;
       }
+
       .issue-link-card--content {
         @extend .p-0;
       }
     }
+
     &.user-card {
       &.user-card--full {
         @extend .col-12, .mb-4;
       }
+
       &.user-card--responsive {
         @extend .col-12, .col-sm-6, .col-md-4, .col-lg-3, .mb-4;
       }
+
       a {
         @extend .hocus-standard;
       }
+
       .user-card--label {
         @extend .h6, .py-1, .px-2;
         position: absolute;
@@ -297,10 +338,12 @@ input[type="checkbox"] + label {
     &.variant-country {
       .list-group-item {
         border: $border--country;
+
         &:hover, &:active, &:focus, &.active {
           background-color: $country--lighter;
           color: $black;
         }
+
         &.active {
           background-color: $country;
           color: $black;
@@ -315,13 +358,16 @@ input[type="checkbox"] + label {
   .accordion-item {
     background-color: transparent;
     border: none;
+
     &:not(:last-child) {
       border-bottom: $border--default;
     }
   }
+
   .accordion-body {
     padding: 1rem 0;
   }
+
   .accordion-button {
     padding: 1rem 0;
     background-color: transparent;
@@ -335,8 +381,9 @@ input[type="checkbox"] + label {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, $color-bg-dog--trans 40%, rgba(0,212,255,0) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $color-bg-dog--trans 40%, rgba(0, 212, 255, 0) 100%);
   z-index: 90000;
+
   .overlay-spinner {
     position: absolute;
     top: 30%;
@@ -358,6 +405,7 @@ input[type="checkbox"] + label {
   margin-right: .5rem;
   margin-bottom: .5rem;
   white-space: normal;
+
   &.small {
     @extend .py-1, .px-2;
     margin-right: .2rem;
@@ -372,10 +420,12 @@ input[type="checkbox"] + label {
   border-radius: 0;
   background-color: $light;
   border: 1px solid;
+
   &.list-image--large {
     width: 60px;
     height: 100%;
   }
+
   &.grayscale {
     @extend .grayscale-90;
   }
@@ -388,23 +438,28 @@ input[type="checkbox"] + label {
   overflow: hidden;
   border: $border--secondary;
   position: relative;
+
   &.collecting {
     border: $border--success;
   }
+
   .cover-image {
     width: 105%;
     border-radius: 0;
     object-fit: cover;
     object-position: -4px -4px;
+
     &.grayscale {
       @extend .grayscale-90;
     }
   }
+
   &:hover {
     .zoom-icon {
       display: flex;
     }
   }
+
   .zoom-icon {
     display: none;
     @extend .p-2;
@@ -422,6 +477,7 @@ input[type="checkbox"] + label {
   width: 100%;
   aspect-ratio: 3/2.5;
   overflow: hidden;
+
   .user-image {
     width: 100%;
     height: 100%;
@@ -452,6 +508,7 @@ input[type="checkbox"] + label {
 .skip-link {
   background-color: $color-bg-whale;
   text-align: center;
+
   a {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -461,6 +518,7 @@ input[type="checkbox"] + label {
     padding: 0;
     position: absolute;
     width: 1px;
+
     &:active,
     &:focus {
       clip: auto;
@@ -493,8 +551,10 @@ input[type="checkbox"] + label {
 // Global message viewer
 .global-message-viewer {
   @extend .mt-3;
+
   .global-message {
     @extend .bg-dog, .p-3, .rounded-3;
+
     &:not(:last-of-type) {
       @extend .mb-4;
     }
@@ -504,6 +564,7 @@ input[type="checkbox"] + label {
 // Map
 .sms-google-map {
   height: 75vh;
+
   &--directions {
     font-size: $font-size-small;
     width: 100%;
@@ -512,25 +573,48 @@ input[type="checkbox"] + label {
     top: 0;
     left: 0;
     background-color: $country--darker;
+
     p {
       margin-bottom: 0;
+
       &:last-of-type {
         margin-bottom: 1.2rem;
       }
     }
+
     h2 {
       font-size: $h3-font-size;
     }
+
     h3 {
       font-size: $h4-font-size;
     }
+
     button {
       font-size: $font-size-small;
     }
+
     @include media-breakpoint-up(md) {
       width: 350px;
       bottom: 0;
       top: auto;
+    }
+  }
+
+  .sms-custom-pin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: $h1-font-size;
+    color: $country;
+    .location-text {
+      background-color: $country--darker;
+      border-radius: $border-radius-lg;
+      padding: .5rem 1rem;
+      text-align: center;
+      font-size: $font-size-small;
+      margin-bottom: 0;
     }
   }
 }
