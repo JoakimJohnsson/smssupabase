@@ -7,6 +7,8 @@ import {
     getIssueNumber,
     sortByTitleYearNumber
 } from "./functions.jsx";
+import {getMissingUserIssues} from "./databaseFunctions.js";
+import {LABELS} from "./constants/textConstants/labelsAndHeadings.js";
 
 export const exportToCSV = (data, fileName) => {
     // Convert data to CSV
@@ -53,3 +55,15 @@ export const getExportDataForIssues = (data) => {
             Marvelklubben: issue.is_marvelklubben === 1 ? issue.marvelklubben_number : "nej",
         }));
 }
+
+export const exportMissingIssuesForUser = async (doExportPdf, user) => {
+    const result = await getMissingUserIssues(user.id);
+    if (result) {
+        const exportData = getExportDataForIssues(result.data);
+        if (doExportPdf) {
+            exportIssuesToPDF(exportData, LABELS.SECTIONS.ISSUES.MISSING_ISSUES_FILENAME);
+        } else {
+            exportToCSV(exportData, LABELS.SECTIONS.ISSUES.MISSING_ISSUES_FILENAME);
+        }
+    }
+};

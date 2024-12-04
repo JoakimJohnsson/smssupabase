@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {PANES} from "../../../../helpers/constants/textConstants/texts";
+import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowCountByTableAndUserId} from "../../../../services/serviceFunctions";
 import {getTotalMarvelklubbenCountForIssuesData} from "../../../../services/issueService";
@@ -9,6 +9,9 @@ import {getAverageGrade} from "../../../../helpers/functions";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {STATISTICS} from "../../../../helpers/constants/configConstants";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
+import {csvIconDuoTone, pdfIconDuoTone} from "../../../icons/index.jsx";
+import {FunctionButton} from "../../../minis/FunctionButton.jsx";
+import {exportMissingIssuesForUser} from "../../../../helpers/exportUtil.js";
 
 
 export const OverviewIssues = ({titlesData, issuesData}) => {
@@ -54,6 +57,8 @@ export const OverviewIssues = ({titlesData, issuesData}) => {
         }
     }, [grades]);
 
+
+
     return (
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light h-100"}>
@@ -80,6 +85,22 @@ export const OverviewIssues = ({titlesData, issuesData}) => {
                     {PANES.OVERVIEW.COLLECTING_MARVELKLUBBEN_1} {userMarvelklubbenIssuesCount} {PANES.OVERVIEW.COLLECTING_MARVELKLUBBEN_2} {Math.round(userMarvelklubbenIssuesCount / STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT * 100)}%
                     ({userMarvelklubbenIssuesCount}/{STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                 </p>
+                <h3>{LABELS.SECTIONS.ISSUES.MISSING_ISSUES}</h3>
+                <p>{TEXTS.MISSING_ISSUES_DOWNLOAD}</p>
+                <FunctionButton
+                    variant={"btn-primary"}
+                    icon={csvIconDuoTone}
+                    onClick={() => exportMissingIssuesForUser(false, user)}
+                    label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
+                    showLabel={true}
+                />
+                <FunctionButton
+                    variant={"btn-primary"}
+                    icon={pdfIconDuoTone}
+                    onClick={() => exportMissingIssuesForUser(true, user)}
+                    label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
+                    showLabel={true}
+                />
             </div>
         </div>
     )

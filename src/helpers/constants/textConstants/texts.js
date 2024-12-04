@@ -76,6 +76,7 @@ export const TEXTS = {
     MESSAGE_LINK_SENDER: "Länk till anmälare",
     MESSAGES_ADMIN_TEXT_1: "Här kan du hantera meddelanden.",
     MESSAGES_ADMIN_TEXT_2: "Du kan bland annat sända ut globala meddelanden som visas för alla användare. Samt administrera inkomna meddelanden.",
+    MISSING_ISSUES_DOWNLOAD: "Här har du möjlighet att exportera en lista över alla publikationer du saknar i din samling.",
     NEW_TITLES: "Nya titlar och funktioner läggs till regelbundet.",
     NO_DATA_AVAILABLE: "Det finns inget att visa!",
     NO_USER_AVAILABLE: "Denna användare har ingen publik profil!",

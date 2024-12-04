@@ -30,6 +30,31 @@ export const getUserIssues = async (userId) => {
         return false;
     }
 }
+export const getTop5Issues = async () => {
+    try {
+        return await supabase.rpc('get_top_5_highest_rated_issues');
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+export const getTop5Titles = async () => {
+    try {
+        return await supabase.rpc('get_top_5_highest_rated_titles');
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
+export const getMissingUserIssues = async (userId) => {
+    try {
+        return await supabase.rpc('get_missing_user_issues', {input_user_id: userId});
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
 
 // Returns wanted, upgraded and favorites lists of issues and titles.
 export const getUserSelectedIssuesAndTitlesData = async (userId) => {

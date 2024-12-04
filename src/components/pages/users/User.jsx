@@ -21,7 +21,7 @@ import {showFullInfo, updateProfileRole} from "../../../services/profileService.
 import {AddAdminButton} from "../../lists/users/AddAdminButton.jsx";
 import {RemoveAdminButton} from "../../lists/users/RemoveAdminButton.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {Icon} from "../../icons/index.jsx";
+import {csvIconDuoTone, Icon, pdfIconDuoTone} from "../../icons/index.jsx";
 import {FunctionButton} from "../../minis/FunctionButton.jsx";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 import {NoMatch} from "../../routes/NoMatch.jsx";
@@ -31,6 +31,7 @@ import {FavoriteTitles} from "./FavoriteTitles.jsx";
 import {FavoriteIssues} from "./FavoriteIssues.jsx";
 import {WantedIssues} from "./WantedIssues.jsx";
 import {UpgradeIssues} from "./UpgradeIssues.jsx";
+import {exportMissingIssuesForUser} from "../../../helpers/exportUtil.js";
 
 
 export const User = () => {
@@ -105,7 +106,8 @@ export const User = () => {
                                     showFullInfo(user, profile) ?
                                         <div className={"col-12 col-md-5 col-xl-3 mb-5"}>
                                             {
-                                                <ImageViewerSmall url={user.image_url || getRandomProfileImage()} fileName={userName}/>
+                                                <ImageViewerSmall url={user.image_url || getRandomProfileImage()}
+                                                                  fileName={userName}/>
                                             }
                                         </div>
                                         :
@@ -152,6 +154,22 @@ export const User = () => {
                                                     <>{LABELS.COMMON.INFORMATION_MISSING}</>
                                             }
                                         </p>
+                                        <div className={"mb-3"}>
+                                            <FunctionButton
+                                                variant={"btn-outline-primary"}
+                                                icon={csvIconDuoTone}
+                                                onClick={() => exportMissingIssuesForUser(false, user)}
+                                                label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
+                                                showLabel={true}
+                                            />
+                                            <FunctionButton
+                                                variant={"btn-outline-primary"}
+                                                icon={pdfIconDuoTone}
+                                                onClick={() => exportMissingIssuesForUser(true, user)}
+                                                label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
+                                                showLabel={true}
+                                            />
+                                        </div>
                                         <FavoriteIssues data={userSelectedIssuesTitlesData.favorite_issues}/>
                                         <FavoriteTitles data={userSelectedIssuesTitlesData.favorite_titles}/>
                                         <WantedIssues data={userSelectedIssuesTitlesData.wanted}/>
