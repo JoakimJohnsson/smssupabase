@@ -356,7 +356,7 @@ export const Title = () => {
 
                                     <EditStarReview item={title} stars={stars} setStars={setStars} saveReview={saveReview}/>
 
-                                    <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.COMMON.ISSUES}</h2>
+                                    <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.SECTIONS.ISSUES.ISSUES}</h2>
                                     <IssuesList issuesData={issuesData} showAdminInfo={false}
                                                 showCollectingButtons={isCollectingTitle}
                                                 listViewGrid={listViewGrid} listViewMissing={listViewMissing}
