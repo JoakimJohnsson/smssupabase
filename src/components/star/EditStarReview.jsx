@@ -39,15 +39,15 @@ export const EditStarReview = ({item, stars, setStars, saveReview}) => {
                 >
                     <span className={"me-3 p-3 bg-elephant rounded-4"}>{item.avg_rating.toFixed(1)}</span>
                     {[...Array(Math.floor(item.avg_rating))].map((_, index) => (
-                        <span className={"text-grade"} key={`full-${index}`}><Icon icon={faStar}/></span>
+                        <span aria-hidden={true} className={"text-grade"} key={`full-${index}`}><Icon icon={faStar}/></span>
                     ))}
                     {/* Add a half star if there is a fractional part */}
                     {item.avg_rating % 1 >= 0.5 && (
-                        <span className={"text-grade"} key="half"><Icon icon={faStarHalfStroke}/></span>
+                        <span aria-hidden={true} className={"text-grade"} key="half"><Icon icon={faStarHalfStroke}/></span>
                     )}
                     {/* Fill in the remaining empty stars */}
                     {[...Array(5 - Math.ceil(item.avg_rating))].map((_, index) => (
-                        <span className={"text-grade-100"} key={`empty-${index}`}><Icon icon={faStarRegular}/></span>
+                        <span aria-hidden={true} className={"text-grade-100"} key={`empty-${index}`}><Icon icon={faStarRegular}/></span>
                     ))}
                 </div>
             </div>
