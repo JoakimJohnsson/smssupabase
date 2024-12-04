@@ -169,6 +169,7 @@ export const LABELS = {
             SOURCE_DB: "Källor (source)",
             UPGRADE_ISSUES: "Publikationer i behov av uppgradering",
             FAVORITES: "Favoritpublikationer",
+            TOP_5: "Topp 5 publikationer",
             EXPORT_MISSING_CSV: "Exportera saknade publikationer som CSV",
             EXPORT_MISSING_PDF: "Exportera saknade publikationer som PDF",
             EXPORT_FAVORITES_CSV: "Exportera favoritpublikationer som CSV",
@@ -214,6 +215,7 @@ export const LABELS = {
             TOTAL_ISSUES_DB: "Totalt antal publikationer (total_issues)",
             TITLE: "Titel",
             TITLES: "Titlar",
+            TOP_5: "Topp 5 titlar",
             TITLE_DB: "Titel (title)",
         },
         USERS: {

@@ -30,6 +30,22 @@ export const getUserIssues = async (userId) => {
         return false;
     }
 }
+export const getTop5Issues = async () => {
+    try {
+        return await supabase.rpc('get_top_5_highest_rated_issues');
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+export const getTop5Titles = async () => {
+    try {
+        return await supabase.rpc('get_top_5_highest_rated_titles');
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
 
 export const getMissingUserIssues = async (userId) => {
     try {
