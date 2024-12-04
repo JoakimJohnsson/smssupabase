@@ -94,7 +94,6 @@ export const Title = () => {
     }, [fetchTitleProgress]);
 
     useEffect(() => {
-
         const fetchReviews = async () => {
             if (user.id && title.id) {
                 const fetchedReview = await getReviewByUserIdItemTypeAndId(user.id, ITEM_TYPES.TITLE, title.id);
@@ -355,7 +354,7 @@ export const Title = () => {
                                         </div>
                                     }
 
-                                    <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
+                                    <EditStarReview item={title} stars={stars} setStars={setStars} saveReview={saveReview}/>
 
                                     <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.COMMON.ISSUES}</h2>
                                     <IssuesList issuesData={issuesData} showAdminInfo={false}

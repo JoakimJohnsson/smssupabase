@@ -4,7 +4,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {ROUTES} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
-import {TABLES} from "../../helpers/constants/serviceConstants";
+import {ITEM_TYPES, TABLES} from "../../helpers/constants/serviceConstants";
 import {getIssueName, objectDoesExist, renderGradeValue} from "../../helpers/functions";
 import countryData from "../../helpers/valueLists/countries.json";
 import {useIssueData} from "../../helpers/customHooks/useIssueData";
@@ -53,12 +53,16 @@ import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
 import {getAdjacentIssueIds} from "../../helpers/databaseFunctions.js";
+import {EditStarReview} from "../star/EditStarReview.jsx";
+import {addStarReview, getReviewByUserIdItemTypeAndId, updateStarReview} from "../../services/reviewservice.js";
 
 
 export const Issue = () => {
 
     const {id} = useParams();
     const {setInformationMessage, user, profile} = useAppContext();
+    const [review, setReview] = useState(null);
+    const [stars, setStars] = useState(0);
     const [grades, setGrades] = useState([]);
     const [gradeValues, setGradeValues] = useState([]);
     const [totalCopies, setTotalCopies] = useState(null);
@@ -138,6 +142,19 @@ export const Issue = () => {
         }
     }, [grades, isCollectingIssue]);
 
+    useEffect(() => {
+        const fetchReviews = async () => {
+            if (user.id && issue.id) {
+                const fetchedReview = await getReviewByUserIdItemTypeAndId(user.id, ITEM_TYPES.ISSUE, issue.id);
+                if (fetchedReview) {
+                    setReview(fetchedReview);
+                    setStars(fetchedReview.stars);
+                }
+            }
+        };
+        fetchReviews();
+    }, [user.id, issue.id]);
+
     const handleWanted = () => {
         if (isWantingIssue) {
             removeIssueFromTable(user.id, issue.id, TABLES.USERS_ISSUES_WANTED)
@@ -171,6 +188,18 @@ export const Issue = () => {
     const handleAddGrade = () => {
         addGrade(user.id, issue.id).then(() => fetchGrades());
     }
+
+    const saveReview = async (updatedStars) => {
+        if (review) {
+            // If a review exists, update it
+            await updateStarReview(review.id, updatedStars);
+            setReview({ ...review, stars: updatedStars }); // Update local state
+        } else {
+            // If no review exists, create a new one
+            const newReview = await addStarReview(user.id, ITEM_TYPES.ISSUE, issue.id, updatedStars);
+            setReview(newReview);
+        }
+    };
 
     return objectDoesExist(issue) ? (
             <main id="main-content" className={"container-fluid main-container"}>
@@ -316,6 +345,7 @@ export const Issue = () => {
                                         }
                                     </div>
                                     <Message originObject={issue} originTable={TABLES.ISSUES}/>
+                                    <EditStarReview item={issue} stars={stars} setStars={setStars} saveReview={saveReview}/>
                                     <div className={"mb-5"}>
                                         <h2>{LABELS.COMMON.INFORMATION}</h2>
                                         {

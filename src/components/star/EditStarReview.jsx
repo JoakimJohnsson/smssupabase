@@ -1,4 +1,4 @@
-export const EditStarReview = ({stars, setStars, saveReview}) => {
+export const EditStarReview = ({item, stars, setStars, saveReview}) => {
 
     const handleEditStarReview = (index) => {
         const newStars = index + 1;
@@ -8,6 +8,7 @@ export const EditStarReview = ({stars, setStars, saveReview}) => {
 
     return (
         <div>
+            <h2>{item.avg_rating}</h2>
             {[...Array(5)].map((_, index) => (
                 <span
                     key={index}
