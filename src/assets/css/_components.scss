@@ -65,9 +65,12 @@
   @include media-breakpoint-up(sm) {
     background-color: $color-bg-horse;
   }
-
   &.section--grade {
     @extend .rounded-3, .border, .border-grade, .p-3;
+  }
+
+  &.section--warning {
+    @extend .rounded-3, .border, .border-warning, .p-3;
   }
 
   .form-control, .form-select {
