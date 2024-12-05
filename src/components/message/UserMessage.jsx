@@ -31,7 +31,7 @@ export const UserMessage = ({
     const {user, setInformationMessage, fetchMessages} = useAppContext();
 
     return (
-        <div className="mb-3">
+        <div>
             <FunctionButton
                 variant={"btn-outline-primary"}
                 icon={open ? faTimes : faMessages}

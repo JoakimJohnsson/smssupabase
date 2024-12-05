@@ -1,10 +1,14 @@
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings.js";
 import {Icon} from "../icons/index.jsx";
-import {faStar, faStarHalfStroke} from "@fortawesome/pro-solid-svg-icons";
+import {faStar} from "@fortawesome/pro-solid-svg-icons";
 import {faStar as faStarRegular} from "@fortawesome/pro-regular-svg-icons";
+import {faStar as faStarDuoTone, faTimes} from "@fortawesome/pro-duotone-svg-icons";
+import {FunctionButton} from "../minis/FunctionButton.jsx";
+import React, {useState} from "react";
 
-export const EditStarReview = ({item, stars, setStars, saveReview}) => {
+export const EditStarReview = ({stars, setStars, saveReview}) => {
 
+    const [open, setOpen] = useState(false);
     const baseClasses = "hocus-standard me-2";
     const activeClasses = "text-grade px-2 py-1 border border-grade rounded-5";
     const inactiveClasses = "text-grade-100 p-2 border border-light rounded-3";
@@ -16,45 +20,36 @@ export const EditStarReview = ({item, stars, setStars, saveReview}) => {
     }
 
     return (
-        <div className={"sms-section--light section--warning mb-4"}>
-            <h2>{LABELS.COMMON.REVIEW}</h2>
-            <div className={"mb-3 fs-1"}>
-                <p className={"fs-3 mb-3"}>{LABELS.COMMON.REVIEW_YOURS}</p>
-                {[...Array(5)].map((_, index) => (
-                    <span
-                        className={`${baseClasses} ${index < stars ? activeClasses : inactiveClasses}`}
-                        key={index}
-                        onClick={() => handleEditStarReview(index)}
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') handleEditStarReview(index);
-                        }}
-                        tabIndex={0}
-                        role="button"
-                        aria-label={`${LABELS.COMMON.SET_REVIEW} ${index + 1} stars`}
-                    ><Icon icon={index < stars ? faStar : faStarRegular}/></span>
-                ))}
-            </div>
-
-            <div className={"fs-1 rounded-2"}>
-                <span className={"fs-3 me-2"}>{LABELS.COMMON.REVIEW_AVERAGE}</span>
-                <div className={"d-flex align-items-center"}
-                     role="img"
-                     aria-label={`${item.avg_rating.toFixed(1)} ${LABELS.COMMON.REVIEW_OF_5_STARS}`}
-                >
-                    <span className={"me-3 p-3 bg-elephant rounded-4"}>{item.avg_rating.toFixed(1)}</span>
-                    {[...Array(Math.floor(item.avg_rating))].map((_, index) => (
-                        <span aria-hidden={true} className={"text-grade"} key={`full-${index}`}><Icon icon={faStar}/></span>
-                    ))}
-                    {/* Add a half star if there is a fractional part */}
-                    {item.avg_rating % 1 >= 0.5 && (
-                        <span aria-hidden={true} className={"text-grade"} key="half"><Icon icon={faStarHalfStroke}/></span>
-                    )}
-                    {/* Fill in the remaining empty stars */}
-                    {[...Array(5 - Math.ceil(item.avg_rating))].map((_, index) => (
-                        <span aria-hidden={true} className={"text-grade-100"} key={`empty-${index}`}><Icon icon={faStarRegular}/></span>
-                    ))}
+        <div className="mb-3">
+            <FunctionButton
+                variant={"btn-outline-warning"}
+                icon={open ? faTimes : faStarDuoTone}
+                onClick={() => setOpen(!open)}
+                label={open ? LABELS.COMMON.CLOSE_REVIEW : LABELS.COMMON.REVIEW}
+                showLabel={true}
+            />
+            {
+                open &&
+                <div className={"sms-section--light section--warning mb-4"}>
+                    <h2>{LABELS.COMMON.ADD_REVIEW}</h2>
+                    <div className={"mb-3 fs-1"}>
+                        <p className={"fs-3 mb-3"}>{LABELS.COMMON.REVIEW_YOURS}</p>
+                        {[...Array(5)].map((_, index) => (
+                            <span
+                                className={`${baseClasses} ${index < stars ? activeClasses : inactiveClasses}`}
+                                key={index}
+                                onClick={() => handleEditStarReview(index)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') handleEditStarReview(index);
+                                }}
+                                tabIndex={0}
+                                role="button"
+                                aria-label={`${LABELS.COMMON.SET_REVIEW} ${index + 1} stars`}
+                            ><Icon icon={index < stars ? faStar : faStarRegular}/></span>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     )
 };
