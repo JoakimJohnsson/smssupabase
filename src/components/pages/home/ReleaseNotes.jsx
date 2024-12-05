@@ -19,7 +19,6 @@ const Information = () => {
                 <li className={"list-group-item px-0"}>Möjlighet att exportera sina saknade publikationer som CSV och PDF.</li>
                 <li className={"list-group-item px-0"}>Möjlighet att exportera lite annan data som CSV och PDF.</li>
                 <li className={"list-group-item px-0"}>Vid felrapport skapas nu automatiskt en issue på GitHub.</li>
-                <li className={"list-group-item px-0"}>Vyn för publika Samlingar har fått en uppfräschning och mer information.</li>
                 <li className={"list-group-item px-0"}>Kartan har blivit större och fått nya ikoner.</li>
                 <li className={"list-group-item px-0"}>Nu kan man lägga till stjärnbetyg på alla titlar och publikationer.</li>
                 <li className={"list-group-item px-0"}>På prov - Slumpmässigt utvalda AI-genererade profilbilder för de användare som ej lagt in en egen.</li>

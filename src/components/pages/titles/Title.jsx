@@ -45,7 +45,12 @@ import {SeriekatalogenTitleLink} from "../../minis/SeriekatalogenTitleLink.jsx";
 import {NoMatch} from "../../routes/NoMatch.jsx";
 import {MESSAGES} from "../../../helpers/constants/textConstants/messages.js";
 import {EditStarReview} from "../../star/EditStarReview.jsx";
-import {addStarReview, getReviewByUserIdItemTypeAndId, updateStarReview} from "../../../services/reviewservice.js";
+import {
+    addStarReview,
+    getReviewByUserIdItemTypeAndId,
+    updateStarReview
+} from "../../../services/reviewservice.js";
+import {StarReviewBadge} from "../../star/StarReviewBadge.jsx";
 
 
 export const Title = () => {
@@ -180,7 +185,7 @@ export const Title = () => {
         if (review) {
             // If a review exists, update it
             await updateStarReview(review.id, updatedStars);
-            setReview({ ...review, stars: updatedStars }); // Update local state
+            setReview({...review, stars: updatedStars}); // Update local state
         } else {
             // If no review exists, create a new one
             const newReview = await addStarReview(user.id, ITEM_TYPES.TITLE, title.id, updatedStars);
@@ -218,7 +223,10 @@ export const Title = () => {
                                             :
                                             <p>{TEXTS.COLLECT_TITLE_STOP_REMOVE}</p>
                                     }
-                                    <FormatBadge formatId={title.format_id} customClass={"mb-3"}/>
+                                    <div className={"mb-3"}>
+                                        <FormatBadge formatId={title.format_id}/>
+                                        <StarReviewBadge item={title}/>
+                                    </div>
                                     {
                                         title.description &&
                                         <>
@@ -346,6 +354,7 @@ export const Title = () => {
                                             false
                                     }
                                     <Message originObject={title} originTable={TABLES.TITLES}/>
+                                    <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
                                     {
                                         isCollectingTitle && issueNeedsGrading &&
                                         <div className={"alert alert-info d-flex align-items-center mb-4"}>
@@ -353,9 +362,6 @@ export const Title = () => {
                                             {PANES.TITLES.GRADE_MISSING}
                                         </div>
                                     }
-
-                                    <EditStarReview item={title} stars={stars} setStars={setStars} saveReview={saveReview}/>
-
                                     <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.SECTIONS.ISSUES.ISSUES}</h2>
                                     <IssuesList issuesData={issuesData} showAdminInfo={false}
                                                 showCollectingButtons={isCollectingTitle}
