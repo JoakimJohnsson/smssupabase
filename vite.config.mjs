@@ -13,44 +13,6 @@ export default defineConfig({
     preview: {
         port: 3000
     },
-    build: {
-        rollupOptions: {
-            output: {
-                manualChunks(id) { // The id parameter represents the path to each module/file.
-                    // Group React libraries
-                    if (id.includes('react')) {
-                        return 'vendor-react';
-                    }
-
-                    // Group other libraries
-                    if (id.includes('@supabase/supabase-js') ||
-                        id.includes('@vis.gl/react-google-maps')) {
-                        return 'vendor-other';
-                    }
-
-                    // Group FontAwesome libraries
-                    if (id.includes('@fortawesome')) {
-                        return 'vendor-fontawesome';
-                    }
-
-                    // Group Babel libraries
-                    if (id.includes('@babel')) {
-                        return 'vendor-babel';
-                    }
-
-                    // Create a chunk for src/components folder
-                    if (id.includes('/src/components/')) {
-                        const match = id.match(/\/src\/components\/([^/]+)/); // Match subfolder or file
-                        if (match) {
-                            return `components-${match[1]}`; // Create chunks
-                        }
-                        return 'components';
-                    }
-                    return 'default';
-                },
-            },
-        }
-    },
     test: {
         globals: true,
         environment: "jsdom",

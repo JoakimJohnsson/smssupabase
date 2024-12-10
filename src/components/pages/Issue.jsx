@@ -54,7 +54,12 @@ import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
 import {getAdjacentIssueIds} from "../../helpers/databaseFunctions.js";
 import {EditStarReview} from "../star/EditStarReview.jsx";
-import {addStarReview, getReviewByUserIdItemTypeAndId, updateStarReview} from "../../services/reviewservice.js";
+import {
+    addStarReview,
+    getReviewByUserIdItemTypeAndId,
+    updateStarReview
+} from "../../services/reviewservice.js";
+import {StarReviewBadge} from "../star/StarReviewBadge.jsx";
 
 
 export const Issue = () => {
@@ -313,8 +318,8 @@ export const Issue = () => {
                                             countryData &&
                                             <CountryBadge countryId={issue?.publishers?.country_id}/>
                                         }
-                                        <span
-                                            className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS.COMMON.COPY}</span>
+                                        <span className={"tag-badge bg-white text-black"}>{totalCopies} {LABELS.COMMON.COPY}</span>
+                                        <StarReviewBadge item={issue}/>
                                     </div>
                                     <div className={"sms-btn-group mb-4"}>
                                         <FunctionButton
@@ -345,7 +350,7 @@ export const Issue = () => {
                                         }
                                     </div>
                                     <Message originObject={issue} originTable={TABLES.ISSUES}/>
-                                    <EditStarReview item={issue} stars={stars} setStars={setStars} saveReview={saveReview}/>
+                                    <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
                                     <div className={"mb-5"}>
                                         <h2>{LABELS.COMMON.INFORMATION}</h2>
                                         {
