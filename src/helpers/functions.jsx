@@ -1,10 +1,16 @@
 import {supabase} from "../supabase/supabaseClient";
-import {CONFIG, LOGO_ICONS, SK_GRADE_RADIO_NAMES, SK_GRADE_RADIO_VALUES} from "./constants/configConstants";
+import {
+    CONFIG,
+    LOGO_ICONS,
+    SK_GRADE_RADIO_NAMES,
+    SK_GRADE_RADIO_VALUES
+} from "./constants/configConstants";
 import {MESSAGES} from "./constants/textConstants/messages";
 import React from "react";
 import {getNoCollectedIssues} from "../services/collectingService";
 import {getGradeValueByIssueIdAndGrade} from "./databaseFunctions";
-const images = import.meta.glob('../assets/images/profiles/profile-*.png', { eager: true });
+
+const images = import.meta.glob('../assets/images/profiles/profile-*.png', {eager: true});
 
 
 export async function doesEmailExist(emailReference) {
@@ -18,7 +24,7 @@ export const prepareUrl = (url) => {
     } else {
         return url;
     }
-}
+};
 
 export const getCalculatedYear = (startYear, endYear) => {
     if (startYear === endYear) {
@@ -26,49 +32,53 @@ export const getCalculatedYear = (startYear, endYear) => {
     } else {
         return startYear + " - " + endYear;
     }
-}
+};
 
 export const getDataName = (data, id) => {
     // Make sure the id is a number.
     const numericId = Number(id);
     return data.find(f => f.id === numericId).name;
-}
+};
 
 export const getDataDescription = (data, id) => {
     // Make sure the id is a number.
     const numericId = Number(id);
     return data.find(f => f.id === numericId).description;
-}
+};
 
 export const getDataGradeValue = (data, grade) => {
     return data.find(f => f.grade === grade).value;
-}
+};
 
 export const getDataGradeValuesByGradeName = (data, gradeName) => {
     return data.find(gv => gv.grade_name === gradeName).value;
-}
+};
 
 export const getDataShade = (data, id) => {
     // Make sure the id is a number.
     const numericId = Number(id);
     return data.find(f => f.id === numericId).shade;
-}
+};
 
 export const getDataIcon = (data, id) => {
     // Make sure the id is a number.
     const numericId = Number(id);
     return data.find(f => f.id === numericId).icon;
-}
+};
 
 export const getLogoIcon = () => {
+
+    // const iconSet = LOGO_ICONS.DEFAULT;
+    const iconSet = isChristmasTime() ? LOGO_ICONS.XMAS : LOGO_ICONS.DEFAULT;
+
     if (Math.random() < CONFIG.FREQUENT_ICON_PROBABILITY) {
-        // One logo returns more often (faComet)
-        return LOGO_ICONS[CONFIG.FREQUENT_ICON_INDEX];
+        // One logo returns more often (the first icon in the set)
+        return iconSet[CONFIG.FREQUENT_ICON_INDEX];
     } else {
-        const randomIndex = Math.floor(Math.random() * LOGO_ICONS.length);
-        return LOGO_ICONS[randomIndex];
+        const randomIndex = Math.floor(Math.random() * iconSet.length);
+        return iconSet[randomIndex];
     }
-}
+};
 
 export const handleEmailInput = (success, setEmailInputClass, setEmailValidated, setEmailValidationMessage) => {
     if (success) {
@@ -80,7 +90,7 @@ export const handleEmailInput = (success, setEmailInputClass, setEmailValidated,
         setEmailValidated(false);
         setEmailValidationMessage(MESSAGES.ERROR.VALIDATION_EMAIL);
     }
-}
+};
 
 export const trimInputString = (input) => {
     // Define a regular expression pattern to match Swedish letters, spaces, and numbers. And some characters like ':' and '/'.
@@ -90,7 +100,7 @@ export const trimInputString = (input) => {
     }
     const result = input.match(pattern);
     return result ? result.join("") : "";
-}
+};
 
 export const handlePasswordInput = (success, setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage) => {
     if (success) {
@@ -102,7 +112,7 @@ export const handlePasswordInput = (success, setPasswordInputClass, setPasswordV
         setPasswordValidated(false)
         setPasswordValidationMessage(MESSAGES.ERROR.VALIDATION_PASSWORD);
     }
-}
+};
 
 export const handleGenericFormInput = (success, setInputClass, setValidated) => {
     if (success) {
@@ -112,16 +122,16 @@ export const handleGenericFormInput = (success, setInputClass, setValidated) => 
         setInputClass("form-input--error");
         setValidated(false);
     }
-}
+};
 
 export const handleBacking = (navigate) => {
     navigate(-1);
-}
+};
 
 export const generateUniqueHashedFilename = (fileExt, fileType) => {
     let number = Math.random() * 100;
     return fileType + number.toString().replace(".", "") + "." + fileExt;
-}
+};
 
 export const printOptions = (data) => {
     return data && (
@@ -130,7 +140,7 @@ export const printOptions = (data) => {
             .map(
                 (item) => <option key={item.id} value={item.id}>{item.name}</option>)
     )
-}
+};
 
 export const printTitleOptions = (titleData) => {
     return titleData && (
@@ -139,12 +149,12 @@ export const printTitleOptions = (titleData) => {
             .map(
                 (item) => <option key={item.id} value={item.id}>{item.name} {item.start_year}</option>)
     )
-}
+};
 
 export const getObjectNameById = (data, myId) => {
     let obj = data.filter(item => item.id === myId);
     return obj[0].name;
-}
+};
 
 export const getYearsList = (startYear, endYear) => {
     let list = [];
@@ -152,7 +162,7 @@ export const getYearsList = (startYear, endYear) => {
         list.push(i);
     }
     return list;
-}
+};
 
 export const getIndexList = (length) => {
     let list = [];
@@ -160,7 +170,7 @@ export const getIndexList = (length) => {
         list.push(i.toString());
     }
     return list;
-}
+};
 
 export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
     if (startYear < endYear) {
@@ -170,7 +180,7 @@ export const getIssuesPerYear = (totalIssues, startYear, endYear) => {
     } else {
         return 1;
     }
-}
+};
 
 export const getIssueName = (issue) => {
     let number = issue.number;
@@ -192,7 +202,7 @@ export const getIssueName = (issue) => {
             }
         }
     }
-}
+};
 
 export const getIssueNumber = (issue) => {
     if (isVariant(issue)) {
@@ -200,11 +210,11 @@ export const getIssueNumber = (issue) => {
     } else {
         return issue.number;
     }
-}
+};
 
 export const isVariant = (issue) => {
     return issue && issue.is_variant === 1;
-}
+};
 
 export const getUserName = (user) => {
     if (user.firstname && user.lastname) {
@@ -216,15 +226,15 @@ export const getUserName = (user) => {
     } else {
         return getAnonDisplayName(user);
     }
-}
+};
 
 export const getAnonDisplayName = (user) => {
     return user.id.substring(0, 5) + " " + user.id.substring(user.id.length - 7, user.id.length);
-}
+};
 
 export const hasImage = (item) => {
     return item && item.image_filename && item.image_url;
-}
+};
 
 export const getRandomProfileImage = () => {
     const imagePaths = Object.values(images).map((img) => img.default); // Get array of image paths
@@ -238,7 +248,7 @@ export const sortByName = (a, b) => {
     if (aName < bName) return -1;
     if (aName > bName) return 1;
     return 0;
-}
+};
 
 export const sortByTitleYearNumber = (a, b) => {
     const titleComparison = a.titles.name.localeCompare(b.titles.name, 'sv');
@@ -252,13 +262,13 @@ export const sortByDateCreated = (a, b) => {
     if (a.created_at < b.created_at) return -1;
     if (a.created_at > b.created_at) return 1;
     return 0;
-}
+};
 
 export const sortByDateCreatedDesc = (a, b) => {
     if (a.created_at < b.created_at) return 1;
     if (a.created_at > b.created_at) return -1;
     return 0;
-}
+};
 
 export const sortByNameAndStartYear = (a, b) => {
     let aName = sortableName(a.name);
@@ -268,7 +278,7 @@ export const sortByNameAndStartYear = (a, b) => {
     if (a.start_year < b.start_year) return -1;
     if (a.start_year > b.start_year) return 1;
     return 0;
-}
+};
 
 export const sortByNumberAndVariantSuffix = (a, b) => {
     // First, compare by number
@@ -279,7 +289,7 @@ export const sortByNumberAndVariantSuffix = (a, b) => {
     let suffixA = a.variant_suffix || '';
     let suffixB = b.variant_suffix || '';
     return suffixA.localeCompare(suffixB);
-}
+};
 
 export const getTitleProgressForUser = async (title, userId) => {
     let totalIssues = title.total_issues;
@@ -293,7 +303,7 @@ export const getTitleProgressForUser = async (title, userId) => {
         noMissingIssues: totalIssues - noCollectedIssues,
         progress: Math.round(noCollectedIssues / totalIssues * 100)
     };
-}
+};
 
 // Helper function for converting string value "true" to boolean value.
 export const isTrue = (string) => (string === "true");
@@ -310,11 +320,11 @@ export const hasTrueValue = (stringArray) => {
 
 export const objectDoesExist = (object) => {
     return Object.entries(object).length > 0;
-}
+};
 
 export const listDoesExist = (list) => {
     return list && list.length > 0;
-}
+};
 
 export const allListsDoesExist = (arrayOfLists) => {
     return arrayOfLists.every(list => listDoesExist(list));
@@ -326,7 +336,7 @@ export const atLeastOneListDoesExist = (arrayOfLists) => {
 
 export const getCurrentDateAsISOString = () => {
     return (new Date()).toISOString();
-}
+};
 
 export const getCurrentDateAsString = () => {
     const today = new Date();
@@ -338,22 +348,37 @@ export const getCurrentDateAsString = () => {
 
 export const getCurrentDate = () => {
     return new Date();
+};
+
+export const isChristmasTime = () => {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    // Define the start and end of the Christmas time period
+    const startOfXmas = new Date(currentYear, 10, 25); // November is month 10 (zero-indexed)
+    const endOfXmas = new Date(currentYear + 1, 0, 15); // January is month 0
+    // Check if the current date is within the range
+    if (now >= startOfXmas && now <= endOfXmas) {
+        return true;
+    }
+    // Special case for the start of the next year (January 1 to 15)
+    const startOfXmasPreviousYear = new Date(currentYear - 1, 10, 25);
+    return now >= startOfXmasPreviousYear && now <= endOfXmas;
 }
 
 export const splitBySeparatorAndGetLastElement = (string, separator) => {
     const elements = string.split(separator);
-    return elements[elements.length -1];
-}
+    return elements[elements.length - 1];
+};
 
 export const getFriendlyDateFromTimestamp = (timestamp) => {
     const date = new Date(timestamp);
     return date.toISOString().split('T')[0];
-}
+};
 
 export const getTinyFriendlyDateFromTimestamp = (timestamp) => {
     const date = new Date(timestamp);
     return date.toLocaleDateString('sv-SE', {day: 'numeric', month: 'numeric'});
-}
+};
 
 export const getAverageGrade = (grades) => {
     let totalGradeAmount = 0.0;
@@ -361,10 +386,9 @@ export const getAverageGrade = (grades) => {
         totalGradeAmount += grades[i].grade;
     }
     return totalGradeAmount / grades.length || 0.0;
-}
+};
 
 export const getTotalGradeValue = async (grades) => {
-
     let totalGradeValue = 0;
     for (let i = 0; i < grades.length; i++) {
         try {
@@ -377,29 +401,29 @@ export const getTotalGradeValue = async (grades) => {
         }
     }
     return totalGradeValue;
-}
+};
 
 export const isSKGradeValue = (gradeValue) => {
     return SK_GRADE_RADIO_VALUES.includes(gradeValue);
-}
+};
 
 export const isSKGradeName = (gradeName) => {
     return SK_GRADE_RADIO_NAMES.includes(gradeName);
-}
+};
 
 export const sortableName = (name) => {
     return name.trim().replace(":", "").replace("-", "").toLowerCase();
-}
+};
 
 // Helper function for removing whitespace from strings - i.e. "My string" --> "mystring" or "my-string" if provided "-" as replacement.
 export const trimAndReplace = (string, replacement = "") => {
     return string.trim().toLowerCase().replaceAll(" ", replacement);
-}
+};
 
 export const trimAndReplaceSwedishCharacters = (string, replacement = "") => {
     let trimmedString = trimAndReplace(string, replacement)
     return trimmedString.replaceAll("å", "a").replaceAll("ä", "a").replaceAll("ö", "o");
-}
+};
 
 // Filter functions
 export const filterQueryByNameAndStartYear = (obj, query) => {
@@ -410,7 +434,8 @@ export const filterQueryByNameAndStartYear = (obj, query) => {
             .includes(query.toLowerCase()) ||
         query === ""
     )
-}
+};
+
 export const filterQueryByFirstNameAndLastName = (user, query) => {
     return (
         user.firstname?.toLowerCase()
@@ -419,7 +444,8 @@ export const filterQueryByFirstNameAndLastName = (user, query) => {
             .includes(query.toLowerCase()) ||
         query === ""
     )
-}
+};
+
 export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query) => {
     return (
         issue.id.toLowerCase()
@@ -436,7 +462,7 @@ export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, que
             .includes(query.toLowerCase()) ||
         query === ""
     )
-}
+};
 
 export const filterGlobalMessage = (message, showGlobal) => {
     if (showGlobal) {
@@ -444,7 +470,7 @@ export const filterGlobalMessage = (message, showGlobal) => {
     } else {
         return message.is_global === 0;
     }
-}
+};
 
 export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover, special, collectible) => {
     return (
@@ -456,14 +482,14 @@ export const filterByFormat = (obj, comic, comiclarge, album, pocket, hardcover,
         (isTrue(special) && obj.format_id === 26224) ||
         (isTrue(collectible) && obj.format_id === 674899)
     )
-}
+};
 
 export const filterByIsValued = (obj, isvalued, isnotvalued) => {
     return (
         (isTrue(isvalued) && obj.is_valued === 1) ||
         (isTrue(isnotvalued) && obj.is_valued === 0)
     )
-}
+};
 
 export const filterTitlesData = (titlesData, query, comic, comiclarge, album, pocket, hardcover, special, collectible) => {
     return (
@@ -484,7 +510,7 @@ export const filterTitlesData = (titlesData, query, comic, comiclarge, album, po
             })
             .sort((a, b) => sortByNameAndStartYear(a, b))
     )
-}
+};
 
 export const filterAdminTitlesData = (titlesData, query, isvalued, isnotvalued) => {
     return (
@@ -505,7 +531,7 @@ export const filterAdminTitlesData = (titlesData, query, isvalued, isnotvalued) 
             })
             .sort((a, b) => sortByNameAndStartYear(a, b))
     )
-}
+};
 
 export const renderGradeValue = (issueData, gradeName) => {
     try {
@@ -515,7 +541,7 @@ export const renderGradeValue = (issueData, gradeName) => {
     } catch (error) {
         console.error(error);
     }
-}
+};
 
 export const showMoreItems = (data, setItemsToShow) => {
     setItemsToShow(prev => prev + CONFIG.PAGINATION_ITEM_COUNT);
@@ -568,4 +594,4 @@ export const getPostalTownOrCountry = (addressComponents) => {
 
     // Return postal town if available, otherwise return country
     return postalTown || country;
-}
+};

@@ -10,7 +10,14 @@ import {
     faStarfighterTwinIonEngineAdvanced,
     faStrawberry,
     faSwords,
-    faTRex
+    faTRex,
+    faGifts,
+    faWreath,
+    faCandyCane,
+    faOrnament,
+    faHatSanta,
+    faTreeChristmas,
+    faHollyBerry
 } from "@fortawesome/sharp-duotone-solid-svg-icons";
 
 import {PANES} from "./textConstants/texts";
@@ -62,14 +69,14 @@ export const ROUTES = {
         MESSAGES: "/admin/messages/",
         MESSAGE_ID: "/admin/messages/:id"
     }
-}
+};
 
 export const FILETYPES = {
     AVATAR_IMAGE: "avatar-img-",
     ISSUE_IMAGE: "issue-img-",
     PUBLISHER_IMAGE: "publisher-img-",
     TITLE_IMAGE: "title-img-",
-}
+};
 
 export const ALERT_VARIANTS = {
     1: {
@@ -92,20 +99,31 @@ export const ALERT_VARIANTS = {
         variant: "danger",
         icon: <Icon icon={dangerIconDuoTone} className={"fa-2xl me-3"}/>
     }
-}
+};
 
-export const LOGO_ICONS = [
-    faComet,
-    faBat,
-    faBird,
-    faCat,
-    faDolphin,
-    faStarfighterTwinIonEngineAdvanced,
-    faHippo,
-    faStrawberry,
-    faSwords,
-    faTRex
-]
+export const LOGO_ICONS = {
+    DEFAULT:[
+        faComet,
+        faBat,
+        faBird,
+        faCat,
+        faDolphin,
+        faStarfighterTwinIonEngineAdvanced,
+        faHippo,
+        faStrawberry,
+        faSwords,
+        faTRex
+        ],
+    XMAS: [
+        faTreeChristmas,
+        faGifts,
+        faWreath,
+        faCandyCane,
+        faOrnament,
+        faHatSanta,
+        faHollyBerry
+    ]
+}
 
 export const VARIANT_MAPPER = {
     info: 1,
