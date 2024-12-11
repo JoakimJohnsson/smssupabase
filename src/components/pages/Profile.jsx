@@ -6,8 +6,7 @@ import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
-import {Icon} from "../icons";
+import {Icon, mailIcon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -80,7 +79,7 @@ const Profile = () => {
                                 <p>{TEXTS.SETTINGS_INFO}</p>
                                 <p>
                                     <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
+                                        <Icon icon={mailIcon} className={"me-2"}/>
                                         admin@svenskamarvelsamlare.se
                                     </a>
                                 </p>

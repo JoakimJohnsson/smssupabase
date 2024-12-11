@@ -41,6 +41,7 @@ import {
     faLightbulb,
     faLightbulbOn,
     faMagnifyingGlassDollar,
+    faMailboxFlagUp,
     faMapLocationDot,
     faMessageMedical,
     faMosquito,
@@ -106,6 +107,7 @@ import {
     faLightbulb as faLightbulbDT,
     faLightbulbOn as faLightbulbOnDT,
     faMagnifyingGlassDollar as faMagnifyingGlassDollarDT,
+    faMailboxFlagUp as faMailboxFlagUpDT,
     faMapLocationDot as faMapLocationDotDT,
     faMessageMedical as faMessageMedicalDT,
     faMosquito as faMosquitoDT,
@@ -171,6 +173,7 @@ const iconMap = {
     faLightbulb: faLightbulb,
     faLightbulbOn: faLightbulbOn,
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faMailboxFlagUp: faMailboxFlagUp,
     faMapLocationDot: faMapLocationDot,
     faMessageMedical: faMessageMedical,
     faMosquito: faMosquito,
@@ -236,6 +239,7 @@ const iconMapDuoTone = {
     faLightbulbDT: faLightbulbDT,
     faLightbulbOnDT: faLightbulbOnDT,
     faMagnifyingGlassDollarDT: faMagnifyingGlassDollarDT,
+    faMailboxFlagUpDT: faMailboxFlagUpDT,
     faMapLocationDotDT: faMapLocationDotDT,
     faMessageMedicalDT: faMessageMedicalDT,
     faMosquitoDT: faMosquitoDT,
@@ -298,6 +302,7 @@ export const loginIcon = faArrowDownToArc;
 export const logoutIcon = faArrowRightFromArc;
 export const logoIcon = faComet;
 export const mapsIcon = faMapLocationDot;
+export const mailIcon = faMailboxFlagUp;
 export const marvelKlubbenIcon = faBadge;
 export const moreIcon = faChevronDown;
 export const githubMessageIcon = faMessageMedical;
@@ -348,6 +353,7 @@ export const keyIconDuoTone = faKeyDT;
 export const loginIconDuoTone = faArrowDownToArcDT;
 export const logoIconDuoTone = faCometDT;
 export const mapsIconDuoTone = faMapLocationDotDT;
+export const mailIconDuoTone = faMailboxFlagUpDT;
 export const marvelKlubbenIconDuoTone = faBadgeDT;
 export const moreIconDuoTone = faChevronDownDT;
 export const lessIconDuoTone = faChevronUpDT;

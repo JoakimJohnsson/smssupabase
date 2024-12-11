@@ -7,7 +7,6 @@ import {useAppContext} from "../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../headings";
 import {HomePublic} from "./HomePublic";
 import Footer from "../../Footer";
-import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {InformationAlert} from "../../minis/InformationAlert";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
 import {TitlesList} from "../../lists/titles/TitlesList";
@@ -17,7 +16,7 @@ import {MessageViewer} from "../../message/MessageViewer";
 import {LazyTextPlaceholder} from "../../minis/LazyTextPlaceholder";
 import {atLeastOneListDoesExist} from "../../../helpers/functions";
 import {IssueLinkCard} from "../../lists/issues/IssueLinkCard";
-import {Icon, settingsIconDuoTone, userIconDuoTone} from "../../icons";
+import {Icon, mailIcon, settingsIconDuoTone, userIconDuoTone} from "../../icons";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
 import CustomProgressBar from "../../CustomProgressBar";
@@ -175,7 +174,7 @@ export const Home = () => {
                                     />
                                     <p>För frågor och förbättringsförslag:</p>
                                     <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
+                                        <Icon icon={mailIcon} className={"me-2"}/>
                                         admin@svenskamarvelsamlare.se
                                     </a>
                                 </div>

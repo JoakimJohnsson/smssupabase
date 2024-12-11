@@ -5,8 +5,7 @@ import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {TitlesSection} from "../../dashboard/dashboardSections/admin/TitlesSection";
 import {PublishersSection} from "../../dashboard/dashboardSections/admin/PublishersSection";
 import {HeadingWithBreadCrumbs} from "../../headings";
-import {Icon} from "../../icons";
-import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
+import {Icon, mailIcon} from "../../icons";
 import {UsersSection} from "../../dashboard/dashboardSections/admin/UsersSection";
 import {useAppContext} from "../../../context/AppContext";
 import {UtilsSection} from "../../dashboard/dashboardSections/admin/UtilsSection";
@@ -28,7 +27,7 @@ export const Admin = () => {
                     <p>{TEXTS.ADMIN_INFO}</p>
                     <p>
                         <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                            <Icon icon={faMailboxFlagUp} className={"me-2"}/>
+                            <Icon icon={mailIcon} className={"me-2"}/>
                             admin@svenskamarvelsamlare.se
                         </a>
                     </p>
