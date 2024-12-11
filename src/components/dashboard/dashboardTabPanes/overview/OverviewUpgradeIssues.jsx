@@ -42,7 +42,7 @@ export const OverviewUpgradeIssues = ({data}) => {
                 }
                 {
                     data && data.length > 3 &&
-                    <Link className={"btn btn-outline-primary sms-btn d-inline-block"} to={`/users/${user.id}`}>
+                    <Link className={"btn btn-outline-warning sms-btn d-inline-block"} to={`/users/${user.id}`}>
                         <Icon icon={userIconDuoTone} className={"me-2"} size={"1x"}/>
                         {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_NEEDS_GRADING}
                     </Link>
