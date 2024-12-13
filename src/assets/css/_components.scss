@@ -27,7 +27,7 @@
 
 // Content
 .main-container {
-  @extend .container-fluid, .p-0;
+  @extend .container-fluid;
   min-height: $main-content-min-height;
 
   h1, .h1 {

@@ -6,7 +6,6 @@ import {TABLES} from "../../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../headings";
 import {HomePublic} from "./HomePublic";
-import Footer from "../../Footer";
 import {InformationAlert} from "../../minis/InformationAlert";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
 import {TitlesList} from "../../lists/titles/TitlesList";
@@ -268,6 +267,5 @@ export const Home = () => {
             :
             <>
                 <HomePublic/>
-                <Footer/>
             </>
 }

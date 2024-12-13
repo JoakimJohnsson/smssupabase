@@ -4,6 +4,7 @@ import {AppContextProvider} from "./context/AppContext"
 import {MyRoutes} from "./components/routes/MyRoutes";
 import {Header} from "./components/header/Header";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import Footer from "./components/Footer.jsx";
 
 
 export const App = () => {
@@ -16,6 +17,7 @@ export const App = () => {
                     <MyRoutes/>
                     <ScrollToTopButton/>
                 </main>
+                <Footer/>
             </Router>
         </AppContextProvider>
 )
