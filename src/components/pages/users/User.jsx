@@ -86,7 +86,7 @@ export const User = () => {
     }, [user.id]);
 
     return objectDoesExist(user) && userSelectedIssuesTitlesData ? (
-            <main id="main-content" className={"container-fluid main-container"}>
+            <main id="main-content" className={"main-container"}>
                 <div className={"row row-padding--main"}>
                     {
                         loading ?

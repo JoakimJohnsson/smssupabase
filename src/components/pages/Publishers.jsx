@@ -22,7 +22,7 @@ export const Publishers = () => {
     }, [])
 
     return (
-        <main id="main-content" className={"container-fluid main-container"}>
+        <main id="main-content" className={"main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>

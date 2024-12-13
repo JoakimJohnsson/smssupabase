@@ -11,7 +11,7 @@ export const Dashboard = () => {
 
     return user ? (
         <>
-            <main id="main-content" className={"container-fluid main-container dashboard"}>
+            <main id="main-content" className={"main-container"}>
                     <div className={"row row-padding--dashboard"}>
                         <Outlet/>
                     </div>

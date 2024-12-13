@@ -191,7 +191,7 @@ export const AdminTitle = () => {
     }
 
     return objectDoesExist(title) ? (
-            <main id="main-content" className={"container-fluid main-container"}>
+            <main id="main-content" className={"main-container"}>
                 {
                     title && loadingState === LOADING_STATES.GENERAL ?
                         <div className={"row row-padding--main"}>

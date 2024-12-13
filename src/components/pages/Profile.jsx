@@ -64,7 +64,7 @@ const Profile = () => {
     }
 
     return (
-        <main id="main-content" className={"container-fluid main-container"}>
+        <main id="main-content" className={"main-container"}>
             {
                 loading ?
                     <div className={"row row-padding--main"}>

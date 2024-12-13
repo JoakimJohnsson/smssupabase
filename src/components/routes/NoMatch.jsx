@@ -21,11 +21,9 @@ export const NoMatch = () => {
         <>
             {
                 loading ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
+                    <OverlaySpinner/>
                     :
-                    <main id="main-content" className={"container-fluid main-container"}>
+                    <main id="main-content" className={"main-container"}>
                         <div className={"row row-padding--main"}>
                             <div className={"sms-page-col--full"}>
                                 <HeadingWithBreadCrumbs text={LABELS.COMMON.STATUS_404}/>

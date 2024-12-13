@@ -106,7 +106,7 @@ export const Home = () => {
     }, []);
 
     return profile && user && user.id ? (
-            <main id="main-content" className={"container-fluid main-container dashboard"}>
+            <main id="main-content" className={"main-container"}>
                 <div className={"row row-padding--main"}>
                     <div className={"sms-page-col"}>
                         <HeadingWithBreadCrumbs

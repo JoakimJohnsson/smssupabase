@@ -194,7 +194,7 @@ export const Title = () => {
     };
 
     return objectDoesExist(title) ? (
-            <main id="main-content" className={"container-fluid main-container"}>
+            <main id="main-content" className={"main-container"}>
                 <div className={"row row-padding--main"}>
                     {
                         loading ?

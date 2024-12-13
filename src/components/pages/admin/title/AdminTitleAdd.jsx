@@ -57,7 +57,7 @@ export const AdminTitleAdd = () => {
 
 
     return (
-        <main id="main-content" className={"container-fluid main-container"}>
+        <main id="main-content" className={"main-container"}>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
