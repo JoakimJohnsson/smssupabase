@@ -17,23 +17,13 @@ export const NoMatch = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    return (
-        <>
-            {
-                loading ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
-                    :
-                    <main id="main-content" className={"container-fluid main-container"}>
-                        <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col--full"}>
-                                <HeadingWithBreadCrumbs text={LABELS.COMMON.STATUS_404}/>
-                                <NoRouteAvailable/>
-                            </div>
-                        </div>
-                    </main>
-            }
-        </>
-    )
+    return loading ?
+        <OverlaySpinner/>
+        :
+        <div className={"row row-padding--main"}>
+            <div className={"sms-page-col--full"}>
+                <HeadingWithBreadCrumbs text={LABELS.COMMON.STATUS_404}/>
+                <NoRouteAvailable/>
+            </div>
+        </div>
 }

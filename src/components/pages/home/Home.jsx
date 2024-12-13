@@ -7,7 +7,6 @@ import {useAppContext} from "../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../headings";
 import {HomePublic} from "./HomePublic";
 import Footer from "../../Footer";
-import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
 import {InformationAlert} from "../../minis/InformationAlert";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
 import {TitlesList} from "../../lists/titles/TitlesList";
@@ -17,7 +16,7 @@ import {MessageViewer} from "../../message/MessageViewer";
 import {LazyTextPlaceholder} from "../../minis/LazyTextPlaceholder";
 import {atLeastOneListDoesExist} from "../../../helpers/functions";
 import {IssueLinkCard} from "../../lists/issues/IssueLinkCard";
-import {Icon, settingsIconDuoTone, userIconDuoTone} from "../../icons";
+import {Icon, mailIcon, settingsIconDuoTone, userIconDuoTone} from "../../icons";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
 import CustomProgressBar from "../../CustomProgressBar";
@@ -106,168 +105,165 @@ export const Home = () => {
         fetchTitles();
     }, []);
 
-    return profile && user && user.id ? (
-            <main id="main-content" className={"container-fluid main-container dashboard"}>
-                <div className={"row row-padding--main"}>
-                    <div className={"sms-page-col"}>
-                        <HeadingWithBreadCrumbs
-                            text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
+    return profile && user && user.id ?
+        <div className={"row row-padding--main"}>
+            <div className={"sms-page-col"}>
+                <HeadingWithBreadCrumbs
+                    text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
+                {
+                    userMessages && !!userMessages.length &&
+                    <InformationAlert variant={"success"}
+                                      text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
+                }
+                {
+                    atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
+                    <div className={"mb-5"}>
+                        <MessageViewer viewGlobal/>
                         {
-                            userMessages && !!userMessages.length &&
-                            <InformationAlert variant={"success"}
-                                              text={"Du har fått ett personligt meddelanden - gå till kontrollpanelens översikt för att läsa!"}/>
+                            profile && profile.role > 0 &&
+                            <>
+                                <MessageViewer viewUnread/>
+                                <MessageViewer viewTodo/>
+                            </>
                         }
-                        {
-                            atLeastOneListDoesExist([activeGlobalMessages, unreadMessages, todoMessages]) &&
-                            <div className={"mb-5"}>
-                                <MessageViewer viewGlobal/>
-                                {
-                                    profile && profile.role > 0 &&
-                                    <>
-                                        <MessageViewer viewUnread/>
-                                        <MessageViewer viewTodo/>
-                                    </>
-                                }
-                            </div>
-                        }
-                        <div className={"sms-section--light mb-5"}>
-                            {
-                                showAlert &&
-                                <InformationAlert variant={"info"} text={alertText}/>
-                            }
-                            <h2>{LABELS.COMMON.YOUR_INFORMATION}</h2>
-                            <div className={"row"}>
-                                <div className={"col-12 mb-4"}>
-                                    <IconLinkCtaLg
-                                        variant={"warning"}
-                                        icon={userIconDuoTone}
-                                        path={`/users/${profile.id}`}
-                                        label={LABELS.COMMON.YOUR_PAGE}
-                                    />
-                                </div>
-                                <div className={"col-12 mb-4"}>
-                                    <DashboardSection/>
-                                </div>
-                                <div className={"col-12 col-md-4"}>
-                                    <ImageViewerSmall url={profile.image_url} fileName={profile.image_filename}/>
-                                </div>
-                                <div className={"col-12 col-md-8"}>
-                                    <p className={"m-0"}><span
-                                        className={"text-label me-4"}>{LABELS.SECTIONS.USERS.FIRST_NAME}:</span> {profile.firstname}
-                                    </p>
-                                    <p className={"m-0"}><span
-                                        className={"text-label me-4"}>{LABELS.SECTIONS.USERS.LAST_NAME}:</span> {profile.lastname}
-                                    </p>
-                                    <p className={"m-0"}><span
-                                        className={"text-label me-4"}>{LABELS.COMMON.WEBSITE}:</span> {profile.website}
-                                    </p>
-                                    <p className={"m-0"}><span
-                                        className={"text-label me-4"}>{LABELS.SECTIONS.USERS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
-                                    </p>
-                                    <p className={"mb-4"}><span
-                                        className={"text-label me-4"}>{LABELS.SECTIONS.USERS.ALLOW_LOCATION_ACCESS}:</span> {profile.allow_location_access === 0 ? "Nej" : "Ja"}
-                                    </p>
-                                    <IconLinkCtaLg
-                                        variant={"primary"}
-                                        icon={settingsIconDuoTone}
-                                        path={ROUTES.PROFILE}
-                                        label={LABELS.COMMON.SETTINGS}
-                                    />
-                                    <p>För frågor och förbättringsförslag:</p>
-                                    <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
-                                        admin@svenskamarvelsamlare.se
-                                    </a>
-                                </div>
-                            </div>
+                    </div>
+                }
+                <div className={"sms-section--light mb-5"}>
+                    {
+                        showAlert &&
+                        <InformationAlert variant={"info"} text={alertText}/>
+                    }
+                    <h2>{LABELS.COMMON.YOUR_INFORMATION}</h2>
+                    <div className={"row"}>
+                        <div className={"col-12 mb-4"}>
+                            <IconLinkCtaLg
+                                variant={"warning"}
+                                icon={userIconDuoTone}
+                                path={`/users/${profile.id}`}
+                                label={LABELS.COMMON.YOUR_PAGE}
+                            />
                         </div>
-                        <div className={"sms-section--light mb-5"}>
-                            <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
-
-                            <p className={"text-label"}>{LABELS.SECTIONS.TITLES.TOP_5}</p>
-                            <ul className={"sms-list--with-cards"}>
-                                {
-                                    top5Titles &&
-                                    top5Titles.map((title) => <TitlesListItem key={title.id} title={title}/>)
-                                }
-                            </ul>
-
-                            <p className={"mb-4 placeholder-glow"}><span
-                                className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ?
-                                <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
-                            <div className={"mb-4"}>
-                                {
-                                    <>
-                                        <p>
-                                            {TEXTS.ADDING_TITLE_TEXT_1 + " " + progress + TEXTS.ADDING_TITLE_TEXT_2}
-                                        </p>
-                                        {
-                                            progress === 100 ?
-                                                <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE}
-                                                                   variant={"success"} valueNow={progress}/>
-                                                :
-                                                <CustomProgressBar
-                                                    label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}
-                                                    variant={"primary"} valueNow={progress}/>
-                                        }
-                                    </>
-                                }
-                            </div>
-                            <h3>{TEXTS.LATEST_TITLES}</h3>
-                            {
-                                limitedTitlesData ?
-                                    <>
-                                        <TitlesList titlesData={limitedTitlesData}
-                                                    setTitlesData={setLimitedTitlesData}
-                                                    doSortByName={false} showCreatedInfo
-                                                    showToolbox={false}/>
-                                    </>
-                                    :
-                                    <NoDataAvailable/>
-                            }
+                        <div className={"col-12 mb-4"}>
+                            <DashboardSection/>
                         </div>
-                        <div className={"sms-section--light mb-5"}>
-                            <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
-
-
-                            <p className={"text-label"}>{LABELS.SECTIONS.ISSUES.TOP_5}</p>
-                            <ul className={"sms-list--with-cards"}>
-                                {
-                                    top5Issues &&
-                                    top5Issues.map((issue) => <IssueLinkCard key={issue.id} issue={issue}/>)
-                                }
-                            </ul>
-
-                            <p className={"mb-4 placeholder-glow"}><span
-                                className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
-                                <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
-                            <h3 className={"mb-3"}>{TEXTS.LATEST_ISSUES}</h3>
-                            {
-                                limitedIssuesData ?
-                                    <ul className={"sms-list--with-cards"}>
-                                        {
-                                            limitedIssuesData
-                                                .map((issue) =>
-                                                    <IssueLinkCard key={issue.id} issue={issue}/>
-                                                )
-                                        }
-                                    </ul>
-                                    :
-                                    <NoDataAvailable/>
-                            }
+                        <div className={"col-12 col-md-4"}>
+                            <ImageViewerSmall url={profile.image_url} fileName={profile.image_filename}/>
                         </div>
-                        <div className={"sms-section--light mb-5"}>
-                            <h2>{LABELS.COMMON.INFORMATION}</h2>
-                            <ReleaseNotes/>
+                        <div className={"col-12 col-md-8"}>
+                            <p className={"m-0"}><span
+                                className={"text-label me-4"}>{LABELS.SECTIONS.USERS.FIRST_NAME}:</span> {profile.firstname}
+                            </p>
+                            <p className={"m-0"}><span
+                                className={"text-label me-4"}>{LABELS.SECTIONS.USERS.LAST_NAME}:</span> {profile.lastname}
+                            </p>
+                            <p className={"m-0"}><span
+                                className={"text-label me-4"}>{LABELS.COMMON.WEBSITE}:</span> {profile.website}
+                            </p>
+                            <p className={"m-0"}><span
+                                className={"text-label me-4"}>{LABELS.SECTIONS.USERS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
+                            </p>
+                            <p className={"mb-4"}><span
+                                className={"text-label me-4"}>{LABELS.SECTIONS.USERS.ALLOW_LOCATION_ACCESS}:</span> {profile.allow_location_access === 0 ? "Nej" : "Ja"}
+                            </p>
+                            <IconLinkCtaLg
+                                variant={"primary"}
+                                icon={settingsIconDuoTone}
+                                path={ROUTES.PROFILE}
+                                label={LABELS.COMMON.SETTINGS}
+                            />
+                            <p>För frågor och förbättringsförslag:</p>
+                            <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                                <Icon icon={mailIcon} className={"me-2"}/>
+                                admin@svenskamarvelsamlare.se
+                            </a>
                         </div>
                     </div>
                 </div>
-            </main>
-        )
+                <div className={"sms-section--light mb-5"}>
+                    <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
+
+                    <p className={"text-label"}>{LABELS.SECTIONS.TITLES.TOP_5}</p>
+                    <ul className={"sms-list--with-cards"}>
+                        {
+                            top5Titles &&
+                            top5Titles.map((title) => <TitlesListItem key={title.id} title={title}/>)
+                        }
+                    </ul>
+
+                    <p className={"mb-4 placeholder-glow"}><span
+                        className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ?
+                        <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
+                    <div className={"mb-4"}>
+                        {
+                            <>
+                                <p>
+                                    {TEXTS.ADDING_TITLE_TEXT_1 + " " + progress + TEXTS.ADDING_TITLE_TEXT_2}
+                                </p>
+                                {
+                                    progress === 100 ?
+                                        <CustomProgressBar label={progress + PANES.COLLECTIONS.COMPLETE}
+                                                           variant={"success"} valueNow={progress}/>
+                                        :
+                                        <CustomProgressBar
+                                            label={progress > 10 ? totalTitles + " / " + STATISTICS.TOTAL_TITLES_COUNT : ""}
+                                            variant={"primary"} valueNow={progress}/>
+                                }
+                            </>
+                        }
+                    </div>
+                    <h3>{TEXTS.LATEST_TITLES}</h3>
+                    {
+                        limitedTitlesData ?
+                            <>
+                                <TitlesList titlesData={limitedTitlesData}
+                                            setTitlesData={setLimitedTitlesData}
+                                            doSortByName={false} showCreatedInfo
+                                            showToolbox={false}/>
+                            </>
+                            :
+                            <NoDataAvailable/>
+                    }
+                </div>
+                <div className={"sms-section--light mb-5"}>
+                    <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
+
+
+                    <p className={"text-label"}>{LABELS.SECTIONS.ISSUES.TOP_5}</p>
+                    <ul className={"sms-list--with-cards"}>
+                        {
+                            top5Issues &&
+                            top5Issues.map((issue) => <IssueLinkCard key={issue.id} issue={issue}/>)
+                        }
+                    </ul>
+
+                    <p className={"mb-4 placeholder-glow"}><span
+                        className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
+                        <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
+                    <h3 className={"mb-3"}>{TEXTS.LATEST_ISSUES}</h3>
+                    {
+                        limitedIssuesData ?
+                            <ul className={"sms-list--with-cards"}>
+                                {
+                                    limitedIssuesData
+                                        .map((issue) =>
+                                            <IssueLinkCard key={issue.id} issue={issue}/>
+                                        )
+                                }
+                            </ul>
+                            :
+                            <NoDataAvailable/>
+                    }
+                </div>
+                <div className={"sms-section--light mb-5"}>
+                    <h2>{LABELS.COMMON.INFORMATION}</h2>
+                    <ReleaseNotes/>
+                </div>
+            </div>
+        </div>
         :
         loadingUser ?
             <div className={"row row-padding-main"}>
-            <OverlaySpinner/>
+                <OverlaySpinner/>
             </div>
             :
             <>

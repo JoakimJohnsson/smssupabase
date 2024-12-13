@@ -85,102 +85,99 @@ export const User = () => {
         fetchIssuesData().then(() => setLoading(false));
     }, [user.id]);
 
-    return objectDoesExist(user) && userSelectedIssuesTitlesData ? (
-            <main id="main-content" className={"container-fluid main-container"}>
-                <div className={"row row-padding--main"}>
-                    {
-                        loading ?
-                            <OverlaySpinner/>
-                            :
-                            <>
-                                <div className={"sms-page-col"}>
+    return objectDoesExist(user) && userSelectedIssuesTitlesData ?
+        <div className={"row row-padding--main"}>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <>
+                        <div className={"sms-page-col"}>
+                            {
+                                showFullInfo(user, profile) ?
+                                    <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>
+                                    :
+                                    <HeadingWithBreadCrumbs text={getAnonDisplayName(user)} doIgnoreName={true}
+                                                            bcName={getAnonDisplayName(user)}/>
+                            }
+                        </div>
+                        {
+                            showFullInfo(user, profile) ?
+                                <div className={"col-12 col-md-5 col-xl-3 mb-5"}>
                                     {
-                                        showFullInfo(user, profile) ?
-                                            <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>
-                                            :
-                                            <HeadingWithBreadCrumbs text={getAnonDisplayName(user)} doIgnoreName={true}
-                                                                    bcName={getAnonDisplayName(user)}/>
+                                        <ImageViewerSmall url={user.image_url || getRandomProfileImage()}
+                                                          fileName={userName}/>
                                     }
                                 </div>
+                                :
+                                <NoDataAvailable isUser/>
+                        }
+                        {
+                            showFullInfo(user, profile) &&
+                            <div className={"col-12 col-md-7 col-xl-9"}>
                                 {
-                                    showFullInfo(user, profile) ?
-                                        <div className={"col-12 col-md-5 col-xl-3 mb-5"}>
-                                            {
-                                                <ImageViewerSmall url={user.image_url || getRandomProfileImage()}
-                                                                  fileName={userName}/>
-                                            }
-                                        </div>
-                                        :
-                                        <NoDataAvailable isUser/>
-                                }
-                                {
-                                    showFullInfo(user, profile) &&
-                                    <div className={"col-12 col-md-7 col-xl-9"}>
+                                    profile && profile.role === 2 &&
+                                    <>
                                         {
-                                            profile && profile.role === 2 &&
-                                            <>
-                                                {
-                                                    user.role !== 2 &&
-                                                    (
-                                                        user.role === 1 ?
-                                                            <RemoveAdminButton user={user}
-                                                                               handleChangeAdmin={handleChangeAdmin}
-                                                                               useTooltip={false}/>
-                                                            :
-                                                            <AddAdminButton user={user}
-                                                                            handleChangeAdmin={handleChangeAdmin}
-                                                                            useTooltip={false}/>
-                                                    )
-                                                }
-                                                <FunctionButton
-                                                    variant={"btn-outline-danger"}
-                                                    icon={faFaceExplode}
-                                                    onClick={handleDeleteValuationValues}
-                                                    label={TEXTS.REMOVE_ALL_VALUATION_VALUES_FOR_USER}
-                                                />
-                                                <SimpleMessage user={user}/>
-                                            </>
-                                        }
-                                        <h2>{LABELS.COMMON.INFORMATION}</h2>
-                                        <p className={"mb-4"}>
-                                            {
-                                                user.website ?
-                                                    <a href={prepareUrl(user.website)} target={"_blank"}
-                                                       rel="noreferrer">
-                                                        {LABELS.SECTIONS.USERS.MY_WEBSITE} <Icon
-                                                        icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                                    </a>
+                                            user.role !== 2 &&
+                                            (
+                                                user.role === 1 ?
+                                                    <RemoveAdminButton user={user}
+                                                                       handleChangeAdmin={handleChangeAdmin}
+                                                                       useTooltip={false}/>
                                                     :
-                                                    <>{LABELS.COMMON.INFORMATION_MISSING}</>
-                                            }
-                                        </p>
-                                        <div className={"mb-3"}>
-                                            <FunctionButton
-                                                variant={"btn-outline-primary"}
-                                                icon={csvIconDuoTone}
-                                                onClick={() => exportMissingIssuesForUser(false, user)}
-                                                label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
-                                                showLabel={true}
-                                            />
-                                            <FunctionButton
-                                                variant={"btn-outline-primary"}
-                                                icon={pdfIconDuoTone}
-                                                onClick={() => exportMissingIssuesForUser(true, user)}
-                                                label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
-                                                showLabel={true}
-                                            />
-                                        </div>
-                                        <FavoriteIssues data={userSelectedIssuesTitlesData.favorite_issues}/>
-                                        <FavoriteTitles data={userSelectedIssuesTitlesData.favorite_titles}/>
-                                        <WantedIssues data={userSelectedIssuesTitlesData.wanted}/>
-                                        <UpgradeIssues data={userSelectedIssuesTitlesData.upgraded}/>
-                                    </div>
+                                                    <AddAdminButton user={user}
+                                                                    handleChangeAdmin={handleChangeAdmin}
+                                                                    useTooltip={false}/>
+                                            )
+                                        }
+                                        <FunctionButton
+                                            variant={"btn-outline-danger"}
+                                            icon={faFaceExplode}
+                                            onClick={handleDeleteValuationValues}
+                                            label={TEXTS.REMOVE_ALL_VALUATION_VALUES_FOR_USER}
+                                        />
+                                        <SimpleMessage user={user}/>
+                                    </>
                                 }
-                            </>
-                    }
-                </div>
-            </main>
-        )
+                                <h2>{LABELS.COMMON.INFORMATION}</h2>
+                                <p className={"mb-4"}>
+                                    {
+                                        user.website ?
+                                            <a href={prepareUrl(user.website)} target={"_blank"}
+                                               rel="noreferrer">
+                                                {LABELS.SECTIONS.USERS.MY_WEBSITE} <Icon
+                                                icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                            </a>
+                                            :
+                                            <>{LABELS.COMMON.INFORMATION_MISSING}</>
+                                    }
+                                </p>
+                                <div className={"mb-3"}>
+                                    <FunctionButton
+                                        variant={"btn-outline-primary"}
+                                        icon={csvIconDuoTone}
+                                        onClick={() => exportMissingIssuesForUser(false, user)}
+                                        label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
+                                        showLabel={true}
+                                    />
+                                    <FunctionButton
+                                        variant={"btn-outline-primary"}
+                                        icon={pdfIconDuoTone}
+                                        onClick={() => exportMissingIssuesForUser(true, user)}
+                                        label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
+                                        showLabel={true}
+                                    />
+                                </div>
+                                <FavoriteIssues data={userSelectedIssuesTitlesData.favorite_issues}/>
+                                <FavoriteTitles data={userSelectedIssuesTitlesData.favorite_titles}/>
+                                <WantedIssues data={userSelectedIssuesTitlesData.wanted}/>
+                                <UpgradeIssues data={userSelectedIssuesTitlesData.upgraded}/>
+                            </div>
+                        }
+                    </>
+            }
+        </div>
         :
         <NoMatch/>
 }

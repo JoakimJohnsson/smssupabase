@@ -47,7 +47,7 @@ export const AdminPublisherAdd = () => {
     }, [name, description, country_id, setFormInputClass, wiki_url])
 
     return (
-        <main id="main-content" className={"container-fluid main-container"}>
+        <>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
@@ -83,7 +83,8 @@ export const AdminPublisherAdd = () => {
                             value={wiki_url || ""}
                             onChange={(e) => handleInput(e, setWiki_url)}
                         />
-                        <label className={"form-label"} htmlFor="country">{LABELS.SECTIONS.PUBLISHERS.COUNTRY_DB}</label>
+                        <label className={"form-label"}
+                               htmlFor="country">{LABELS.SECTIONS.PUBLISHERS.COUNTRY_DB}</label>
                         {
                             countryData &&
                             <select
@@ -109,11 +110,12 @@ export const AdminPublisherAdd = () => {
                                 onClick={resetAddPublisherForm}>
                             {LABELS.COMMON.RESET_FORM}
                         </button>
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft}
+                                    onClick={() => handleBacking(navigate)}
                                     label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>
             </div>
-        </main>
+        </>
     )
 }
