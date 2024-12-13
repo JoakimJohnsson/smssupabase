@@ -23,7 +23,17 @@ export const Titles = () => {
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
-    const {setSearchParams, query, comic, comiclarge, album, pocket, hardcover, special, collectible} = useFormatQueryFilter();
+    const {
+        setSearchParams,
+        query,
+        comic,
+        comiclarge,
+        album,
+        pocket,
+        hardcover,
+        special,
+        collectible
+    } = useFormatQueryFilter();
 
     useEffect(() => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
@@ -49,35 +59,33 @@ export const Titles = () => {
     }, [album, collectible, comic, comiclarge, hardcover, pocket, query, special, titlesData]);
 
     return (
-        <main id="main-content" className={"main-container"}>
-            <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
-                    <FilterFormFormat
-                        setSearchParams={setSearchParams}
-                        query={query}
-                        comic={comic}
-                        comiclarge={comiclarge}
-                        album={album}
-                        pocket={pocket}
-                        hardcover={hardcover}
-                        special={special}
-                        collectible={collectible}
-                        placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
-                    <FilteredListInfo filteredData={filteredTitlesData} totalData={titlesData}/>
-                    {
-                        loading ?
-                            <OverlaySpinner/>
-                            :
-                            <ul className={"sms-list--with-cards"}>
-                                {
-                                    filteredTitlesData &&
-                                    filteredTitlesData.map((title) => <TitlesListItem key={title.id} title={title}/>)
-                                }
-                            </ul>
-                    }
-                </div>
+        <div className={"row row-padding--main"}>
+            <div className={"sms-page-col"}>
+                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
+                <FilterFormFormat
+                    setSearchParams={setSearchParams}
+                    query={query}
+                    comic={comic}
+                    comiclarge={comiclarge}
+                    album={album}
+                    pocket={pocket}
+                    hardcover={hardcover}
+                    special={special}
+                    collectible={collectible}
+                    placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
+                <FilteredListInfo filteredData={filteredTitlesData} totalData={titlesData}/>
+                {
+                    loading ?
+                        <OverlaySpinner/>
+                        :
+                        <ul className={"sms-list--with-cards"}>
+                            {
+                                filteredTitlesData &&
+                                filteredTitlesData.map((title) => <TitlesListItem key={title.id} title={title}/>)
+                            }
+                        </ul>
+                }
             </div>
-        </main>
+        </div>
     )
 }

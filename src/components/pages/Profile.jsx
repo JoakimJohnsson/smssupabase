@@ -64,7 +64,7 @@ const Profile = () => {
     }
 
     return (
-        <main id="main-content" className={"main-container"}>
+        <>
             {
                 loading ?
                     <div className={"row row-padding--main"}>
@@ -88,7 +88,8 @@ const Profile = () => {
                         <div className={"row row-padding--secondary"}>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light h-100"}>
-                                    <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile} setNewProfile={setNewProfile}/>
+                                    <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile}
+                                                     setNewProfile={setNewProfile}/>
                                 </div>
                             </div>
                             <div className={"sms-dashboard-col"}>
@@ -129,7 +130,7 @@ const Profile = () => {
                         </div>
                     </>
             }
-        </main>
+        </>
     )
 }
 

@@ -57,7 +57,7 @@ export const AdminTitleAdd = () => {
 
 
     return (
-        <main id="main-content" className={"main-container"}>
+        <>
             <div className={"row row-padding--main"}>
                 <div className={"col-12"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
@@ -93,7 +93,8 @@ export const AdminTitleAdd = () => {
                             value={wiki_url || ""}
                             onChange={(e) => handleInput(e, setWiki_url)}
                         />
-                        <label className={"form-label"} htmlFor="comicsorgurl">{LABELS.SECTIONS.TITLES.COMICS_ORG_URL_DB}</label>
+                        <label className={"form-label"}
+                               htmlFor="comicsorgurl">{LABELS.SECTIONS.TITLES.COMICS_ORG_URL_DB}</label>
                         <input
                             id="comicsorgurl"
                             name="comics_orgurl"
@@ -160,11 +161,12 @@ export const AdminTitleAdd = () => {
                                 onClick={resetAddTitleForm}>
                             {LABELS.COMMON.RESET_FORM}
                         </button>
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                        <IconButton variant={"outline-primary"} icon={faArrowLeft}
+                                    onClick={() => handleBacking(navigate)}
                                     label={LABELS.COMMON.BACK}/>
                     </div>
                 </div>
             </div>
-        </main>
+        </>
     )
 }

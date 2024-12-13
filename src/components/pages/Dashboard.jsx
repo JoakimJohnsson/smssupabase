@@ -9,16 +9,13 @@ export const Dashboard = () => {
 
     const {user} = useAppContext();
 
-    return user ? (
+    return user ?
         <>
-            <main id="main-content" className={"main-container"}>
-                    <div className={"row row-padding--dashboard"}>
-                        <Outlet/>
-                    </div>
-            </main>
-            <FooterDashboardNavigation />
+            <div className={"row row-padding--dashboard"}>
+                <Outlet/>
+            </div>
+            <FooterDashboardNavigation/>
         </>
-        )
         :
         <HomePublic/>
 }

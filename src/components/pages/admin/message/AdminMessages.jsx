@@ -74,7 +74,7 @@ export const AdminMessages = () => {
     }, [messagesData]);
 
     return (
-        <main id="main-content" className={"main-container"}>
+        <>
             <div className={"row row-padding--main"}>
                 <div className={"sms-page-col"}>
                     <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
@@ -134,6 +134,6 @@ export const AdminMessages = () => {
                     </div>
                 </div>
             </div>
-        </main>
+        </>
     )
 }
