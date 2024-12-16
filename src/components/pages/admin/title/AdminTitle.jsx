@@ -206,7 +206,7 @@ export const AdminTitle = () => {
                     :
                     <>
                         <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col--full"}>
+                            <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs
                                     text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>

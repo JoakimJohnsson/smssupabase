@@ -14,11 +14,13 @@ export const App = () => {
             <Router>
                 <Header/>
                 <main id="main-content" className={"main-container"}>
-                    <MyRoutes/>
-                    <ScrollToTopButton/>
+                    <div className={"main-container__row"}>
+                        <MyRoutes/>
+                        <ScrollToTopButton/>
+                    </div>
                 </main>
                 <Footer/>
             </Router>
         </AppContextProvider>
-)
+    )
 }

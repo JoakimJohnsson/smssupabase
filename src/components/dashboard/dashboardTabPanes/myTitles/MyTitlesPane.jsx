@@ -40,31 +40,28 @@ export const MyTitlesPane = () => {
     }, [user.id]);
 
     return (
-        <div className="col-12">
-            <div className="row row-padding--main">
-                <HeadingWithBreadCrumbs text={PANES.TITLES.NAME}/>
-                {
-                    loading ?
-                        <OverlaySpinner/>
-                        :
-                        <div>
-                            <FilterFormFormat
-                                setSearchParams={setSearchParams}
-                                query={query}
-                                comic={comic}
-                                comiclarge={comiclarge}
-                                album={album}
-                                pocket={pocket}
-                                hardcover={hardcover}
-                                special={special}
-                                placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
-                            <MyTitlesPaneList query={query} titlesData={titlesData} comic={comic}
-                                              comiclarge={comiclarge} album={album} pocket={pocket}
-                                              hardcover={hardcover} special={special} collectible={collectible}/>
-                        </div>
-
-                }
-            </div>
-        </div>
+        <>
+            <HeadingWithBreadCrumbs text={PANES.TITLES.NAME}/>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <div>
+                        <FilterFormFormat
+                            setSearchParams={setSearchParams}
+                            query={query}
+                            comic={comic}
+                            comiclarge={comiclarge}
+                            album={album}
+                            pocket={pocket}
+                            hardcover={hardcover}
+                            special={special}
+                            placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
+                        <MyTitlesPaneList query={query} titlesData={titlesData} comic={comic}
+                                          comiclarge={comiclarge} album={album} pocket={pocket}
+                                          hardcover={hardcover} special={special} collectible={collectible}/>
+                    </div>
+            }
+        </>
     )
 }

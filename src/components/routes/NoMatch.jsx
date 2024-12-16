@@ -21,7 +21,7 @@ export const NoMatch = () => {
         <OverlaySpinner/>
         :
         <div className={"row row-padding--main"}>
-            <div className={"sms-page-col--full"}>
+            <div className={"sms-page-col"}>
                 <HeadingWithBreadCrumbs text={LABELS.COMMON.STATUS_404}/>
                 <NoRouteAvailable/>
             </div>

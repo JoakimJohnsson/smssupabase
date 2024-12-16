@@ -59,33 +59,31 @@ export const Titles = () => {
     }, [album, collectible, comic, comiclarge, hardcover, pocket, query, special, titlesData]);
 
     return (
-        <div className={"row row-padding--main"}>
-            <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
-                <FilterFormFormat
-                    setSearchParams={setSearchParams}
-                    query={query}
-                    comic={comic}
-                    comiclarge={comiclarge}
-                    album={album}
-                    pocket={pocket}
-                    hardcover={hardcover}
-                    special={special}
-                    collectible={collectible}
-                    placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
-                <FilteredListInfo filteredData={filteredTitlesData} totalData={titlesData}/>
-                {
-                    loading ?
-                        <OverlaySpinner/>
-                        :
-                        <ul className={"sms-list--with-cards"}>
-                            {
-                                filteredTitlesData &&
-                                filteredTitlesData.map((title) => <TitlesListItem key={title.id} title={title}/>)
-                            }
-                        </ul>
-                }
-            </div>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
+            <FilterFormFormat
+                setSearchParams={setSearchParams}
+                query={query}
+                comic={comic}
+                comiclarge={comiclarge}
+                album={album}
+                pocket={pocket}
+                hardcover={hardcover}
+                special={special}
+                collectible={collectible}
+                placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
+            <FilteredListInfo filteredData={filteredTitlesData} totalData={titlesData}/>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <ul className={"sms-list--with-cards"}>
+                        {
+                            filteredTitlesData &&
+                            filteredTitlesData.map((title) => <TitlesListItem key={title.id} title={title}/>)
+                        }
+                    </ul>
+            }
         </div>
     )
 }

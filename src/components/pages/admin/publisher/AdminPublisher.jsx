@@ -49,7 +49,7 @@ export const AdminPublisher = () => {
                     :
                     <>
                         <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col--full"}>
+                            <div className={"sms-page-col"}>
                                 <HeadingWithBreadCrumbs text={publisher.name}/>
                                 <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
                                 <IconButton variant={"primary"} icon={publishersIconDuoTone}
