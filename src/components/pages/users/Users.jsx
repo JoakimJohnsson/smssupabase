@@ -22,39 +22,37 @@ export const Users = () => {
     }, []);
 
     return (
-        <div className={"row row-padding--main"}>
-            <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
-                <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NAME}/>
-                {
-                    loading ?
-                        <OverlaySpinner/>
-                        :
-                        <ul className={"sms-list--with-cards"}>
-                            {
-                                query ?
-                                    usersData
-                                        .filter((user) => {
-                                                return (
-                                                    filterQueryByFirstNameAndLastName(user, query)
-                                                )
-                                            }
-                                        )
-                                        .map((user) =>
-                                            // Only show public users here
-                                            user.is_public === 1 &&
-                                            <UserCard key={user.id} user={user}/>
-                                        )
-                                    :
-                                    usersData.map((user) =>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
+            <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NAME}/>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <ul className={"sms-list--with-cards"}>
+                        {
+                            query ?
+                                usersData
+                                    .filter((user) => {
+                                            return (
+                                                filterQueryByFirstNameAndLastName(user, query)
+                                            )
+                                        }
+                                    )
+                                    .map((user) =>
                                         // Only show public users here
                                         user.is_public === 1 &&
                                         <UserCard key={user.id} user={user}/>
                                     )
-                            }
-                        </ul>
-                }
-            </div>
+                                :
+                                usersData.map((user) =>
+                                    // Only show public users here
+                                    user.is_public === 1 &&
+                                    <UserCard key={user.id} user={user}/>
+                                )
+                        }
+                    </ul>
+            }
         </div>
     )
 }

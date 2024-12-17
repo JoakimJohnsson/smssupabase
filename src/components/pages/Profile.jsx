@@ -72,20 +72,18 @@ const Profile = () => {
                     </div>
                     :
                     <>
-                        <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col"}>
-                                <HeadingWithBreadCrumbs text={LABELS.COMMON.SETTINGS}/>
-                                <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
-                                <p>{TEXTS.SETTINGS_INFO}</p>
-                                <p>
-                                    <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                                        <Icon icon={mailIcon} className={"me-2"}/>
-                                        admin@svenskamarvelsamlare.se
-                                    </a>
-                                </p>
-                            </div>
+                        <div className={"sms-page-col mb-5"}>
+                            <HeadingWithBreadCrumbs text={LABELS.COMMON.SETTINGS}/>
+                            <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
+                            <p>{TEXTS.SETTINGS_INFO}</p>
+                            <p>
+                                <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                                    <Icon icon={mailIcon} className={"me-2"}/>
+                                    admin@svenskamarvelsamlare.se
+                                </a>
+                            </p>
                         </div>
-                        <div className={"row row-padding--secondary"}>
+                        <div className={"row"}>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light h-100"}>
                                     <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile}

@@ -22,61 +22,59 @@ export const Publishers = () => {
     }, [])
 
     return (
-        <div className={"row row-padding--main"}>
-            <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
-                <FilterFormSimple query={query} setSearchParams={setSearchParams}
-                                  placeholder={TEXTS.FILTER_PUBLISHER_NAME}/>
-                {
-                    loading ?
-                        <OverlaySpinner/>
-                        :
-                        <ul className={"sms-list--with-cards"}>
-                            {
-                                query ?
-                                    publishersData
-                                        .filter(publisher => publisher.name.toLowerCase()
-                                                .includes(query.toLowerCase()) ||
-                                            query === ""
-                                        )
-                                        .sort((a, b) => sortByName(a, b))
-                                        .map((publisher) =>
-                                            <li key={publisher.id} className={"title-card"}>
-                                                <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
-                                                      title={publisher.name}>
-                                                    <div className={"image-container mb-2 position-relative"}>
-                                                        <img
-                                                            src={publisher.image_url}
-                                                            alt={publisher.name}
-                                                            className="w-100"
-                                                            loading={"lazy"}
-                                                        />
-                                                    </div>
-                                                </Link>
-                                            </li>
-                                        )
-                                    :
-                                    publishersData
-                                        .sort((a, b) => sortByName(a, b))
-                                        .map((publisher) =>
-                                            <li key={publisher.id} className={"title-card"}>
-                                                <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
-                                                      title={publisher.name}>
-                                                    <div className={"image-container mb-2 position-relative"}>
-                                                        <img
-                                                            src={publisher.image_url}
-                                                            alt={publisher.name}
-                                                            className="w-100"
-                                                            loading={"lazy"}
-                                                        />
-                                                    </div>
-                                                </Link>
-                                            </li>
-                                        )
-                            }
-                        </ul>
-                }
-            </div>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
+            <FilterFormSimple query={query} setSearchParams={setSearchParams}
+                              placeholder={TEXTS.FILTER_PUBLISHER_NAME}/>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <ul className={"sms-list--with-cards"}>
+                        {
+                            query ?
+                                publishersData
+                                    .filter(publisher => publisher.name.toLowerCase()
+                                            .includes(query.toLowerCase()) ||
+                                        query === ""
+                                    )
+                                    .sort((a, b) => sortByName(a, b))
+                                    .map((publisher) =>
+                                        <li key={publisher.id} className={"title-card"}>
+                                            <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
+                                                  title={publisher.name}>
+                                                <div className={"image-container mb-2 position-relative"}>
+                                                    <img
+                                                        src={publisher.image_url}
+                                                        alt={publisher.name}
+                                                        className="w-100"
+                                                        loading={"lazy"}
+                                                    />
+                                                </div>
+                                            </Link>
+                                        </li>
+                                    )
+                                :
+                                publishersData
+                                    .sort((a, b) => sortByName(a, b))
+                                    .map((publisher) =>
+                                        <li key={publisher.id} className={"title-card"}>
+                                            <Link to={`/publishers/${publisher.id}`} className={"hocus-standard"}
+                                                  title={publisher.name}>
+                                                <div className={"image-container mb-2 position-relative"}>
+                                                    <img
+                                                        src={publisher.image_url}
+                                                        alt={publisher.name}
+                                                        className="w-100"
+                                                        loading={"lazy"}
+                                                    />
+                                                </div>
+                                            </Link>
+                                        </li>
+                                    )
+                        }
+                    </ul>
+            }
         </div>
     )
 }

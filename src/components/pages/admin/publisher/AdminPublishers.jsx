@@ -26,25 +26,22 @@ export const AdminPublishers = () => {
     }, [])
 
     return (
-        <div className={"row row-padding--main"}>
-            <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
-                <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NAME}/>
-                <div className={"sms-section--light"}>
-                    {
-                        publishersData ?
-                            <PublishersList publishersData={publishersData} setPublishersData={setPublishersData}
-                                            showAdminInfo={true}
-                                            query={query}/>
-                            :
-                            <OverlaySpinner/>
-                    }
-                    <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
-                                label={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
-                    <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                label={LABELS.COMMON.BACK}/>
-                </div>
-
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
+            <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NAME}/>
+            <div className={"sms-section--light"}>
+                {
+                    publishersData ?
+                        <PublishersList publishersData={publishersData} setPublishersData={setPublishersData}
+                                        showAdminInfo={true}
+                                        query={query}/>
+                        :
+                        <OverlaySpinner/>
+                }
+                <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.PUBLISHER_ADD)}
+                            label={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
+                <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                            label={LABELS.COMMON.BACK}/>
             </div>
         </div>
     )

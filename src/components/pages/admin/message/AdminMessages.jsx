@@ -75,19 +75,17 @@ export const AdminMessages = () => {
 
     return (
         <>
-            <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
-                    <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
-                    <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
-                    <a href={"#global-message-section"}
-                       className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
-                        <Icon icon={globalIconDuoTone}
-                              className={"btn-cta--icon"}/>{LABELS.COMMON.MESSAGES_GLOBAL_SEND}
-                    </a>
-                </div>
+            <div className={"sms-page-col"}>
+                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
+                <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
+                <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
+                <a href={"#global-message-section"}
+                   className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
+                    <Icon icon={globalIconDuoTone}
+                          className={"btn-cta--icon"}/>{LABELS.COMMON.MESSAGES_GLOBAL_SEND}
+                </a>
             </div>
-            <div className={"row row-padding--secondary"}>
+            <div className={"row"}>
                 <div className={"sms-page-col mb-5"}>
                     <div className={"sms-section--light"}>
                         {
