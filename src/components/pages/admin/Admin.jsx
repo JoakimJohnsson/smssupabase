@@ -20,30 +20,28 @@ export const Admin = () => {
 
     return (
         <>
-            <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={BREADCRUMB_NAMES.ADMIN}/>
-                    <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
-                    <p>{TEXTS.ADMIN_INFO}</p>
-                    <p>
-                        <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                            <Icon icon={mailIcon} className={"me-2"}/>
-                            admin@svenskamarvelsamlare.se
-                        </a>
-                    </p>
-                    <Link className={"btn btn-primary sms-btn"}
-                          to={ROUTES.ADMIN.TITLES}>{LABELS.SECTIONS.TITLES.ALL_TITLES}</Link>
-                    <Link className={"btn btn-primary sms-btn"}
-                          to={ROUTES.ADMIN.ISSUES}>{LABELS.SECTIONS.ISSUES.ALL_ISSUES}</Link>
-                    <Link className={"btn btn-primary sms-btn"}
-                          to={ROUTES.ADMIN.PUBLISHERS}>{LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}</Link>
-                    <Link className={"btn btn-primary sms-btn"}
-                          to={ROUTES.ADMIN.USERS}>{LABELS.SECTIONS.USERS.ALL_USERS}</Link>
-                    <Link className={"btn btn-primary sms-btn"}
-                          to={ROUTES.ADMIN.MESSAGES}>{LABELS.SECTIONS.MESSAGES.ALL_MESSAGES}</Link>
-                </div>
+            <div className={"sms-page-col mb-5"}>
+                <HeadingWithBreadCrumbs text={BREADCRUMB_NAMES.ADMIN}/>
+                <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
+                <p>{TEXTS.ADMIN_INFO}</p>
+                <p>
+                    <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                        <Icon icon={mailIcon} className={"me-2"}/>
+                        admin@svenskamarvelsamlare.se
+                    </a>
+                </p>
+                <Link className={"btn btn-primary sms-btn"}
+                      to={ROUTES.ADMIN.TITLES}>{LABELS.SECTIONS.TITLES.ALL_TITLES}</Link>
+                <Link className={"btn btn-primary sms-btn"}
+                      to={ROUTES.ADMIN.ISSUES}>{LABELS.SECTIONS.ISSUES.ALL_ISSUES}</Link>
+                <Link className={"btn btn-primary sms-btn"}
+                      to={ROUTES.ADMIN.PUBLISHERS}>{LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}</Link>
+                <Link className={"btn btn-primary sms-btn"}
+                      to={ROUTES.ADMIN.USERS}>{LABELS.SECTIONS.USERS.ALL_USERS}</Link>
+                <Link className={"btn btn-primary sms-btn"}
+                      to={ROUTES.ADMIN.MESSAGES}>{LABELS.SECTIONS.MESSAGES.ALL_MESSAGES}</Link>
             </div>
-            <div className={"row row-padding--secondary mb-5"}>
+            <div className={"row"}>
                 {
                     isSuperAdmin(profile) &&
                     <MessagesSection/>

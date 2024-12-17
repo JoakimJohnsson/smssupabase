@@ -27,11 +27,15 @@
 
 // Content
 .main-container {
-  @extend .container-fluid, .p-0;
+  @extend .container-fluid;
   min-height: $main-content-min-height;
 
   h1, .h1 {
     margin-bottom: 3rem;
+  }
+
+  &__row {
+    @extend .px-3, .py-5, .p-sm-5;
   }
 
   .row-padding--main {
@@ -150,10 +154,11 @@ input[type="checkbox"] + label {
 
 .sms-page-col {
   @extend .col-12;
-}
 
-.sms-page-col--full {
-  @extend .col-12, .col-xxl-10;
+  .sms-dashboard-row {
+    @extend .row;
+    margin-bottom: 6rem;
+  }
 }
 
 // Breadcrumb

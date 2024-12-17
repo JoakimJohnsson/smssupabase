@@ -11,8 +11,10 @@ export const Dashboard = () => {
 
     return user ?
         <>
-            <div className={"row row-padding--dashboard"}>
-                <Outlet/>
+            <div className="sms-page-col">
+                <div className="sms-dashboard-row">
+                    <Outlet/>
+                </div>
             </div>
             <FooterDashboardNavigation/>
         </>

@@ -4,6 +4,7 @@ import {AppContextProvider} from "./context/AppContext"
 import {MyRoutes} from "./components/routes/MyRoutes";
 import {Header} from "./components/header/Header";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import Footer from "./components/Footer.jsx";
 
 
 export const App = () => {
@@ -13,10 +14,13 @@ export const App = () => {
             <Router>
                 <Header/>
                 <main id="main-content" className={"main-container"}>
-                    <MyRoutes/>
-                    <ScrollToTopButton/>
+                    <div className={"main-container__row"}>
+                        <MyRoutes/>
+                        <ScrollToTopButton/>
+                    </div>
                 </main>
+                <Footer/>
             </Router>
         </AppContextProvider>
-)
+    )
 }

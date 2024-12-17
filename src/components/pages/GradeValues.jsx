@@ -68,22 +68,21 @@ export const GradeValues = () => {
     };
 
     return (
-        <div className={"row row-padding--main"}>
-            <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.GRADES.GRADE_VALUES}/>
-                <FilterFormFormat
-                    setSearchParams={setSearchParams}
-                    query={query}
-                    comic={comic}
-                    comiclarge={comiclarge}
-                    album={album}
-                    pocket={pocket}
-                    hardcover={hardcover}
-                    special={special}
-                    collectible={collectible}
-                    placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
-                <p className={"text-uppercase fs-large placeholder-glow"}>
-                    {TEXTS.SHOWING} <span className={"fw-bolder"}>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.GRADES.GRADE_VALUES}/>
+            <FilterFormFormat
+                setSearchParams={setSearchParams}
+                query={query}
+                comic={comic}
+                comiclarge={comiclarge}
+                album={album}
+                pocket={pocket}
+                hardcover={hardcover}
+                special={special}
+                collectible={collectible}
+                placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
+            <p className={"text-uppercase fs-large placeholder-glow"}>
+                {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredTitlesData ?
                                 filteredTitlesData.length
@@ -91,34 +90,33 @@ export const GradeValues = () => {
                                 <LazyTextPlaceholder charCount={2}/>
                         }
                         </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length :
-                    <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.TITLES.TITLES}
-                </p>
-                {
-                    loading ?
-                        <OverlaySpinner/>
-                        :
-                        <Accordion className={"sms-list--accordion mb-4"} flush onSelect={handleSelect}>
-                            {
-                                filteredTitlesData &&
-                                filteredTitlesData.map(
-                                    (title, index) =>
-                                        <AccordionItem eventKey={index.toString()} key={index} onToggle={() => {
-                                            setActiveKey(index.toString())
-                                        }}>
-                                            <AccordionHeader as={"h2"} className={"pb-0 mb-0"}>{title.name}
-                                                <FormatBadge formatId={title.format_id}
-                                                             customClass={"d-inline-block mx-3 mb-0"}
-                                                             year={title.start_year}/></AccordionHeader>
-                                            <AccordionBody>
-                                                <GradeValuesListItem title={title}
-                                                                     isActive={activeKey === index.toString()}/>
-                                            </AccordionBody>
-                                        </AccordionItem>
-                                )
-                            }
-                        </Accordion>
-                }
-            </div>
+                <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.TITLES.TITLES}
+            </p>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <Accordion className={"sms-list--accordion mb-4"} flush onSelect={handleSelect}>
+                        {
+                            filteredTitlesData &&
+                            filteredTitlesData.map(
+                                (title, index) =>
+                                    <AccordionItem eventKey={index.toString()} key={index} onToggle={() => {
+                                        setActiveKey(index.toString())
+                                    }}>
+                                        <AccordionHeader as={"h2"} className={"pb-0 mb-0"}>{title.name}
+                                            <FormatBadge formatId={title.format_id}
+                                                         customClass={"d-inline-block mx-3 mb-0"}
+                                                         year={title.start_year}/></AccordionHeader>
+                                        <AccordionBody>
+                                            <GradeValuesListItem title={title}
+                                                                 isActive={activeKey === index.toString()}/>
+                                        </AccordionBody>
+                                    </AccordionItem>
+                            )
+                        }
+                    </Accordion>
+            }
         </div>
     )
 }
