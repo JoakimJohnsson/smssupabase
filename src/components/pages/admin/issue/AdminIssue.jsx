@@ -51,44 +51,41 @@ export const AdminIssue = () => {
         <>
             {
                 loading ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
+                    <OverlaySpinner/>
                     :
                     <>
-                        <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col"}>
-                                <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
-                                                        bcName={getIssueName(issue)}/>
-                                <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
-                                <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={issueIconDuoTone}
-                                    path={`/issues/${issue.id}`}
-                                    label={getIssueName(issue)}
-                                />
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={titleIconDuoTone}
-                                    path={`/titles/${issue.title_id}`}
-                                    label={issue.titles.name + " " + issue.titles.start_year}
-                                />
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={titleIconDuoTone}
-                                    path={`/admin/titles/${issue.title_id}`}
-                                    label={LABELS.COMMON.EDIT + " " + issue.titles.name + " " + issue.titles.start_year}
-                                />
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={publishersIconDuoTone}
-                                    path={`/admin/publishers/${issue.publisher_id}`}
-                                    label={LABELS.COMMON.EDIT + " " + issue.publishers.name}
-                                />
-                            </div>
+
+                        <div className={"sms-page-col"}>
+                            <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
+                                                    bcName={getIssueName(issue)}/>
+                            <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
+                            <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
+                            <IconLink
+                                variant={"primary"}
+                                icon={issueIconDuoTone}
+                                path={`/issues/${issue.id}`}
+                                label={getIssueName(issue)}
+                            />
+                            <IconLink
+                                variant={"primary"}
+                                icon={titleIconDuoTone}
+                                path={`/titles/${issue.title_id}`}
+                                label={issue.titles.name + " " + issue.titles.start_year}
+                            />
+                            <IconLink
+                                variant={"primary"}
+                                icon={titleIconDuoTone}
+                                path={`/admin/titles/${issue.title_id}`}
+                                label={LABELS.COMMON.EDIT + " " + issue.titles.name + " " + issue.titles.start_year}
+                            />
+                            <IconLink
+                                variant={"primary"}
+                                icon={publishersIconDuoTone}
+                                path={`/admin/publishers/${issue.publisher_id}`}
+                                label={LABELS.COMMON.EDIT + " " + issue.publishers.name}
+                            />
                         </div>
-                        <div className={"row row-padding--secondary"}>
+                        <div className={"row"}>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light"}>
                                     <ImageUploader

@@ -200,9 +200,7 @@ export const AdminTitle = () => {
         <>
             {
                 title && loadingState === LOADING_STATES.GENERAL ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
+                    <OverlaySpinner/>
                     :
                     <>
                         <div className={"row row-padding--main"}>
