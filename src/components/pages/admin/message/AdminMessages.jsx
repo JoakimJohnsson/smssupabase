@@ -90,9 +90,7 @@ export const AdminMessages = () => {
                     <div className={"sms-section--light"}>
                         {
                             loading ?
-                                <div className={"row row-padding--main"}>
-                                    <OverlaySpinner/>
-                                </div>
+                                <OverlaySpinner/>
                                 :
                                 <>
                                     <h2>{LABELS.COMMON.MESSAGES_RECEIVED}</h2>
