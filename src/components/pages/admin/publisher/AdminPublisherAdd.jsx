@@ -48,72 +48,68 @@ export const AdminPublisherAdd = () => {
 
     return (
         <>
-            <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
-                </div>
+            <div className={"sms-page-col"}>
+                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
             </div>
-            <div className={"row row-padding--secondary"}>
-                <div className={"sms-dashboard-col"}>
-                    <div className={"sms-section--light"}>
-                        <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
-                        <input
-                            id="name"
-                            name="name"
+            <div className={"sms-dashboard-col"}>
+                <div className={"sms-section--light"}>
+                    <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
+                    <input
+                        id="name"
+                        name="name"
+                        className={formInputClass}
+                        type="text"
+                        value={name || ""}
+                        onChange={(e) => handleInput(e, setName)}
+                    />
+                    <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
+                    <input
+                        id="description"
+                        name="description"
+                        className={formInputClass}
+                        type="text"
+                        value={description || ""}
+                        onChange={(e) => handleInput(e, setDescription)}
+                    />
+                    <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
+                    <input
+                        id="wikiurl"
+                        name="wiki_url"
+                        className={formInputClass}
+                        type="text"
+                        value={wiki_url || ""}
+                        onChange={(e) => handleInput(e, setWiki_url)}
+                    />
+                    <label className={"form-label"}
+                           htmlFor="country">{LABELS.SECTIONS.PUBLISHERS.COUNTRY_DB}</label>
+                    {
+                        countryData &&
+                        <select
+                            id="country"
+                            name="country"
                             className={formInputClass}
-                            type="text"
-                            value={name || ""}
-                            onChange={(e) => handleInput(e, setName)}
-                        />
-                        <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
-                        <input
-                            id="description"
-                            name="description"
-                            className={formInputClass}
-                            type="text"
-                            value={description || ""}
-                            onChange={(e) => handleInput(e, setDescription)}
-                        />
-                        <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
-                        <input
-                            id="wikiurl"
-                            name="wiki_url"
-                            className={formInputClass}
-                            type="text"
-                            value={wiki_url || ""}
-                            onChange={(e) => handleInput(e, setWiki_url)}
-                        />
-                        <label className={"form-label"}
-                               htmlFor="country">{LABELS.SECTIONS.PUBLISHERS.COUNTRY_DB}</label>
-                        {
-                            countryData &&
-                            <select
-                                id="country"
-                                name="country"
-                                className={formInputClass}
-                                onChange={(e) => setCountry_id(e.target.value)}>
-                                <option value={""}>{LABELS.COMMON.CHOOSE}</option>
-                                {printOptions(countryData)}
-                            </select>
-                        }
-                        <button className={"btn btn-primary sms-btn"}
-                                onClick={() => addPublisherData({
-                                    name: name,
-                                    description: description,
-                                    wiki_url: wiki_url,
-                                    country_id: country_id
-                                }, setInformationMessage).then(() => resetAddPublisherForm())}
-                                disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
-                            {LABELS.COMMON.ADD}
-                        </button>
-                        <button className={"btn btn-secondary sms-btn"}
-                                onClick={resetAddPublisherForm}>
-                            {LABELS.COMMON.RESET_FORM}
-                        </button>
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft}
-                                    onClick={() => handleBacking(navigate)}
-                                    label={LABELS.COMMON.BACK}/>
-                    </div>
+                            onChange={(e) => setCountry_id(e.target.value)}>
+                            <option value={""}>{LABELS.COMMON.CHOOSE}</option>
+                            {printOptions(countryData)}
+                        </select>
+                    }
+                    <button className={"btn btn-primary sms-btn"}
+                            onClick={() => addPublisherData({
+                                name: name,
+                                description: description,
+                                wiki_url: wiki_url,
+                                country_id: country_id
+                            }, setInformationMessage).then(() => resetAddPublisherForm())}
+                            disabled={!country_id || name === "" || description === "" || wiki_url === ""}>
+                        {LABELS.COMMON.ADD}
+                    </button>
+                    <button className={"btn btn-secondary sms-btn"}
+                            onClick={resetAddPublisherForm}>
+                        {LABELS.COMMON.RESET_FORM}
+                    </button>
+                    <IconButton variant={"outline-primary"} icon={faArrowLeft}
+                                onClick={() => handleBacking(navigate)}
+                                label={LABELS.COMMON.BACK}/>
                 </div>
             </div>
         </>

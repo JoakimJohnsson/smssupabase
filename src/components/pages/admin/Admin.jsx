@@ -20,7 +20,7 @@ export const Admin = () => {
 
     return (
         <>
-            <div className={"sms-page-col mb-5"}>
+            <div className={"sms-page-col"}>
                 <HeadingWithBreadCrumbs text={BREADCRUMB_NAMES.ADMIN}/>
                 <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
                 <p>{TEXTS.ADMIN_INFO}</p>

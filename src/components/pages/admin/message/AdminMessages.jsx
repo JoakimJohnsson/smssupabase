@@ -86,7 +86,7 @@ export const AdminMessages = () => {
                 </a>
             </div>
             <div className={"row"}>
-                <div className={"sms-page-col mb-5"}>
+                <div className={"sms-page-col"}>
                     <div className={"sms-section--light"}>
                         {
                             loading ?

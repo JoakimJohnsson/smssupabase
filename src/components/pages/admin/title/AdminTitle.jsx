@@ -203,7 +203,7 @@ export const AdminTitle = () => {
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"sms-page-col mb-5"}>
+                        <div className={"sms-page-col"}>
                             <HeadingWithBreadCrumbs
                                 text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
@@ -280,20 +280,7 @@ export const AdminTitle = () => {
 
                                 </div>
                             </div>
-                        </div>
-                        <div className={"row row-padding--secondary"}>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light mb-4"}>
-                                    <h2>{LABELS.COMMON.ISSUES}</h2>
-                                    {
-                                        issuesData && issuesData.length > 0 ?
-                                            <IssuesList issuesData={issuesData} setIssuesData={setIssuesData}
-                                                        showAdminInfo={true}/>
-                                            :
-                                            <NoDataAvailable/>
-                                    }
-                                </div>
-                            </div>
+
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light pb-5"}>
                                     <div className={"mb-4"}>
@@ -438,6 +425,18 @@ export const AdminTitle = () => {
                                             {LABELS.COMMON.RESET_FORM}
                                         </button>
                                     </div>
+                                </div>
+                            </div>
+                            <div className={"sms-dashboard-col"}>
+                                <div className={"sms-section--light mb-4"}>
+                                    <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
+                                    {
+                                        issuesData && issuesData.length > 0 ?
+                                            <IssuesList issuesData={issuesData} setIssuesData={setIssuesData}
+                                                        showAdminInfo={true}/>
+                                            :
+                                            <NoDataAvailable/>
+                                    }
                                 </div>
                             </div>
                             <div className={"sms-dashboard-col"}>

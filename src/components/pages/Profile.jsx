@@ -67,12 +67,10 @@ const Profile = () => {
         <>
             {
                 loading ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
+                    <OverlaySpinner/>
                     :
                     <>
-                        <div className={"sms-page-col mb-5"}>
+                        <div className={"sms-page-col"}>
                             <HeadingWithBreadCrumbs text={LABELS.COMMON.SETTINGS}/>
                             <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                             <p>{TEXTS.SETTINGS_INFO}</p>
