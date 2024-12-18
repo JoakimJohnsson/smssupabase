@@ -5,7 +5,7 @@ import {BackButton} from "../minis/BackButton.jsx";
 export const HeadingWithBreadCrumbs = ({text, doIgnoreName, bcName}) => {
     return (
         <>
-            <div className={"d-flex justify-content-between align-items-center mb-3"}>
+            <div className={"d-flex justify-content-between align-items-center mb-5"}>
                 <Breadcrumbs doIgnoreName={doIgnoreName} bcName={bcName}/>
                 <BackButton/>
             </div>

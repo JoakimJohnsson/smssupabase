@@ -36,24 +36,22 @@ export const AdminUsers = () => {
     }, []);
 
     return (
-        <div className={"row row-padding--main"}>
-            <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
-                <p className={"lead"}>{TEXTS.SHOWING_LATEST_USERS}</p>
-                <p className={"mb-5"}>{TEXTS.USERS_COUNT_TEXT_1} {usersData && usersData.length} {TEXTS.USERS_COUNT_TEXT_2}</p>
-                <FilterFormSimple query={query} setSearchParams={setSearchParams}
-                                  placeholder={TEXTS.FILTER_NAME}/>
-                <div className={"sms-section--light"}>
-                    {
-                        loading ?
-                            <OverlaySpinner/>
-                            :
-                            <UsersList usersData={usersData} setUsersData={setUsersData} query={query}/>
-                    }
-                    <IconButton variant={"outline-primary"} icon={faArrowLeft}
-                                onClick={() => handleBacking(navigate)}
-                                label={LABELS.COMMON.BACK}/>
-                </div>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
+            <p className={"lead"}>{TEXTS.SHOWING_LATEST_USERS}</p>
+            <p className={"mb-5"}>{TEXTS.USERS_COUNT_TEXT_1} {usersData && usersData.length} {TEXTS.USERS_COUNT_TEXT_2}</p>
+            <FilterFormSimple query={query} setSearchParams={setSearchParams}
+                              placeholder={TEXTS.FILTER_NAME}/>
+            <div className={"sms-section--light"}>
+                {
+                    loading ?
+                        <OverlaySpinner/>
+                        :
+                        <UsersList usersData={usersData} setUsersData={setUsersData} query={query}/>
+                }
+                <IconButton variant={"outline-primary"} icon={faArrowLeft}
+                            onClick={() => handleBacking(navigate)}
+                            label={LABELS.COMMON.BACK}/>
             </div>
         </div>
     )

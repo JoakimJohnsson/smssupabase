@@ -200,25 +200,21 @@ export const AdminTitle = () => {
         <>
             {
                 title && loadingState === LOADING_STATES.GENERAL ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
+                    <OverlaySpinner/>
                     :
                     <>
-                        <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col--full"}>
-                                <HeadingWithBreadCrumbs
-                                    text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
-                                <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
-                                <IconLink
-                                    variant={"primary"}
-                                    icon={titleIconDuoTone}
-                                    path={`/titles/${title.id}`}
-                                    label={title.name}
-                                />
-                            </div>
+                        <div className={"sms-page-col mb-5"}>
+                            <HeadingWithBreadCrumbs
+                                text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
+                            <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
+                            <IconLink
+                                variant={"primary"}
+                                icon={titleIconDuoTone}
+                                path={`/titles/${title.id}`}
+                                label={title.name}
+                            />
                         </div>
-                        <div className={"row row-padding--secondary"}>
+                        <div className={"row"}>
                             <AdminTitleInfoEdit title={title} setTitle={setTitle} newTitle={newTitle}
                                                 setNewTitle={setNewTitle}/>
                             <div className={"sms-dashboard-col"}>
