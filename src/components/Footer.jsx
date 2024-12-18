@@ -14,7 +14,7 @@ const Footer = () => {
     return !user && (
         <footer className={"p-3 p-sm-5 border-top bg-whale"}>
             <div className={"container"}>
-                <div className={"row row-padding--secondary"}>
+                <div className={"row"}>
                     <div className={"col-12 col-md-6 py-2 border-md-end"}>
                         <p className={"fs-smaller"}>
                             <span className={"me-1"}>{TEXTS.FOOTER_INFO_TEXT_1}</span>

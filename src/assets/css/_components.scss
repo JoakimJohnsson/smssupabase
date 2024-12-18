@@ -68,14 +68,6 @@
     @extend .px-3, .py-5, .p-sm-5;
   }
 
-  .row-padding--main {
-    @extend .px-3, .py-5, .p-sm-5;
-  }
-
-  .row-padding--secondary {
-    @extend .px-3, .px-sm-5;
-  }
-
   .row-padding--dashboard {
     @extend .px-0;
     padding-bottom: 8rem;
