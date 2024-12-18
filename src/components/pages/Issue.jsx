@@ -207,7 +207,7 @@ export const Issue = () => {
     };
 
     return objectDoesExist(issue) ?
-        <div className={"row row-padding--main"}>
+        <div className={"row"}>
             {
                 loading ?
                     <OverlaySpinner/>
@@ -275,7 +275,7 @@ export const Issue = () => {
                                 </>
                             }
                         </div>
-                        <div className={"col-12 col-md-8 col-xl-6"}>
+                        <div className={"col-12 col-md-8 col-xl-9"}>
                             <IconLink
                                 variant={"primary"}
                                 icon={titlesIconDuoTone}

@@ -38,7 +38,7 @@ export const Publisher = () => {
 
 
     return objectDoesExist(publisher) ?
-        <div className={"row row-padding--main"}>
+        <div className={"row"}>
             {
                 loading ?
                     <OverlaySpinner/>

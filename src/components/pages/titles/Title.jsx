@@ -194,7 +194,7 @@ export const Title = () => {
     };
 
     return objectDoesExist(title) ?
-        <div className={"row row-padding--main"}>
+        <div className={"row"}>
             {
                 loading ?
                     <OverlaySpinner/>

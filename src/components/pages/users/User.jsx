@@ -86,7 +86,7 @@ export const User = () => {
     }, [user.id]);
 
     return objectDoesExist(user) && userSelectedIssuesTitlesData ?
-        <div className={"row row-padding--main"}>
+        <div className={"row"}>
             {
                 loading ?
                     <OverlaySpinner/>
@@ -103,7 +103,7 @@ export const User = () => {
                         </div>
                         {
                             showFullInfo(user, profile) ?
-                                <div className={"col-12 col-md-5 col-xl-3 mb-5"}>
+                                <div className={"col-12 col-md-5 col-xl-4 mb-5"}>
                                     {
                                         <ImageViewerSmall url={user.image_url || getRandomProfileImage()}
                                                           fileName={userName}/>
@@ -114,7 +114,7 @@ export const User = () => {
                         }
                         {
                             showFullInfo(user, profile) &&
-                            <div className={"col-12 col-md-7 col-xl-9"}>
+                            <div className={"col-12 col-md-7 col-xl-8"}>
                                 {
                                     profile && profile.role === 2 &&
                                     <>

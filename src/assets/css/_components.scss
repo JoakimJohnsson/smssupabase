@@ -184,11 +184,11 @@ input[type="checkbox"] + label {
 
 .sms-page-col {
   @extend .col-12;
+}
 
-  .sms-dashboard-row {
-    @extend .row;
-    margin-bottom: 6rem;
-  }
+.sms-dashboard-row {
+  @extend .row;
+  margin-bottom: 6rem;
 }
 
 // Breadcrumb
