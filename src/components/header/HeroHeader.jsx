@@ -20,11 +20,11 @@ export const HeroHeader = () => {
    const {icon} = useLogoIcon();
 
     return (
-        <header className={"sms-hero-header mb-5"}>
+        <div className={"sms-hero-header mb-5"}>
             <SkipLink/>
             <div className={"container-fluid"}>
                 <div className={"row"}>
-                    <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center"}>
+                    <div className={"col-12 p-5 d-flex align-items-center justify-content-center flex-column text-center z-2"}>
                         <Icon icon={icon} size={"4x"} className={"fa-icon--cta"}/>
                         <h1 className={"sms-logo-text mb-5"}>
                             {LABELS.COMMON.SVENSKA_MARVELSAMLARE}
@@ -60,6 +60,6 @@ export const HeroHeader = () => {
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
     )
 };

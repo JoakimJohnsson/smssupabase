@@ -42,7 +42,8 @@ export const MessagesSection = () => {
                         :
                         <NoDataAvailable/>
                 }
-                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
+                <Link className={"btn btn-outline-primary sms-btn"}
+                      to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
             </div>
         </div>
     )

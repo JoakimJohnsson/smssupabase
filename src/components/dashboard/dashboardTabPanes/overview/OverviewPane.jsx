@@ -56,7 +56,7 @@ export const OverviewPane = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <div className={"row"}>
+                    <>
                         <OverviewLinks/>
                         <OverviewMessages/>
                         <OverviewTitles titlesData={userTitlesData}/>
@@ -66,7 +66,7 @@ export const OverviewPane = () => {
                         <OverviewUpgradeIssues data={userSelectedIssuesTitlesData?.upgraded}/>
                         <OverviewFavoriteIssues data={userSelectedIssuesTitlesData?.favorite_issues}/>
                         <OverviewFavoriteTitles data={userSelectedIssuesTitlesData?.favorite_titles}/>
-                    </div>
+                    </>
             }
         </>
     )

@@ -20,10 +20,8 @@ export const NoMatch = () => {
     return loading ?
         <OverlaySpinner/>
         :
-        <div className={"row row-padding--main"}>
-            <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.COMMON.STATUS_404}/>
-                <NoRouteAvailable/>
-            </div>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.COMMON.STATUS_404}/>
+            <NoRouteAvailable/>
         </div>
 }

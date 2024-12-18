@@ -43,21 +43,17 @@ export const AdminPublisher = () => {
         <>
             {
                 loading ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
+                    <OverlaySpinner/>
                     :
                     <>
-                        <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col"}>
-                                <HeadingWithBreadCrumbs text={publisher.name}/>
-                                <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
-                                <IconButton variant={"primary"} icon={publishersIconDuoTone}
-                                            onClick={() => navigate(`/publishers/${publisher.id}`)}
-                                            label={publisher.name}/>
-                            </div>
+                        <div className={"sms-page-col"}>
+                            <HeadingWithBreadCrumbs text={publisher.name}/>
+                            <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
+                            <IconButton variant={"primary"} icon={publishersIconDuoTone}
+                                        onClick={() => navigate(`/publishers/${publisher.id}`)}
+                                        label={publisher.name}/>
                         </div>
-                        <div className={"row row-padding--secondary"}>
+                        <div className={"row"}>
                             <AdminPublisherInfoEdit publisher={publisher} setPublisher={setPublisher}
                                                     newPublisher={newPublisher}
                                                     setNewPublisher={setNewPublisher}/>

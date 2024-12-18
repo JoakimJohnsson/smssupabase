@@ -56,20 +56,16 @@ export const AdminMessage = () => {
         <>
             {
                 loading ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
+                    <OverlaySpinner/>
                     :
                     <>
-                        <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col"}>
-                                {/* Table MESSAGE does not have a name column - ignore name and use message title instead. */}
-                                <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title}
-                                                        text={LABELS.SECTIONS.MESSAGES.MESSAGE}/>
-                            </div>
+                        <div className={"sms-page-col"}>
+                            {/* Table MESSAGE does not have a name column - ignore name and use message title instead. */}
+                            <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title}
+                                                    text={LABELS.SECTIONS.MESSAGES.MESSAGE}/>
                         </div>
-                        <div className={"row row-padding--secondary"}>
-                            <div className={"col-12 col-lg-10"}>
+                        <div className={"row"}>
+                            <div className={"col-12"}>
                                 <div className={"sms-section--light"}>
                                     <h2>
                                         <span>{message.title} - </span>
