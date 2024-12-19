@@ -56,7 +56,7 @@ export const MyIssuesPane = () => {
                             :
                             <LazyTextPlaceholder charCount={2}/>
                     }
-                </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
+                </span> {TEXTS.SHOWING_OF} {issuesData ? issuesData.length :
                 <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
             </p>
             {
