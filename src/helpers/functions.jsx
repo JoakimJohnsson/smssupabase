@@ -446,22 +446,17 @@ export const filterQueryByFirstNameAndLastName = (user, query) => {
     )
 };
 
-export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query) => {
-    return (
-        issue.id.toLowerCase()
-            .includes(query.toLowerCase()) ||
-        issue.titles.name.toLowerCase()
-            .includes(query.toLowerCase()) ||
-        issue.publishers.name.toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
-        issue.year.toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
-        issue.source.toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
-        getIssueName(issue).toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
-        query === ""
-    )
+export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query, selectedGrades) => {
+    const lowerCaseQuery = query.toLowerCase();
+    const matchesQuery = issue.id.toLowerCase().includes(lowerCaseQuery) ||
+        issue.titles.name.toLowerCase().includes(lowerCaseQuery) ||
+        issue.publishers.name.toString().toLowerCase().includes(lowerCaseQuery) ||
+        issue.year.toString().toLowerCase().includes(lowerCaseQuery) ||
+        issue.source.toString().toLowerCase().includes(lowerCaseQuery) ||
+        getIssueName(issue).toString().toLowerCase().includes(lowerCaseQuery) ||
+        query === "";
+    const matchesGrades = selectedGrades.length === 0 || issue.grades.some(grade => selectedGrades.includes(grade.grade.toString()));
+    return matchesQuery && matchesGrades;
 };
 
 export const filterGlobalMessage = (message, showGlobal) => {

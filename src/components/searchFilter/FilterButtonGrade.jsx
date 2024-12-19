@@ -2,7 +2,6 @@ import React from "react";
 import {faFilter, faCircleXmark} from "@fortawesome/pro-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-
 const FilterButtonGrade = ({grade, state, setState, setReadyForSearch}) => {
 
     const handleChange = () => {
@@ -20,4 +19,5 @@ const FilterButtonGrade = ({grade, state, setState, setReadyForSearch}) => {
         </div>
     )
 };
+
 export default FilterButtonGrade;
