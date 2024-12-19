@@ -15,7 +15,7 @@ const FilterButtonGrade = ({grade, state, setState, setReadyForSearch}) => {
                    onChange={() => handleChange()} checked={state}/>
             <label className={`btn ${state ? "btn-secondary" : "btn-outline-light"} mb-2`}
                    htmlFor={grade.id}><FontAwesomeIcon icon={state ? faCircleXmark : faFilter}
-                                                       className={"me-2"}/>{grade.text + " " + grade.id}</label>
+                                                       className={"me-2"}/>{grade.text + " " + parseFloat(grade.id).toFixed(1)}</label>
         </div>
     )
 };

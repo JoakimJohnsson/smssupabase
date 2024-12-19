@@ -5,6 +5,8 @@ import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import FilterButtonGrade from "./FilterButtonGrade.jsx";
 import {GRADE_VARIANTS} from "../../helpers/constants/configConstants.jsx";
+import {initializeFilterGrades} from "../../helpers/functions.jsx";
+
 
 const FilterFormMyIssues = ({
                                 setSearchParams,
@@ -13,18 +15,9 @@ const FilterFormMyIssues = ({
                                 setSelectedGrades
                             }) => {
 
-    const [filterQuery, setFilterQuery] = useState("");
+    const [filterQuery, setFilterQuery] = useState(query || "");
     const [readyForSearch, setReadyForSearch] = useState(false);
-    const [filterGrades, setFilterGrades] = useState(
-        Object.keys(GRADE_VARIANTS).reduce((acc, key) => {
-            acc[key] = false;
-            return acc;
-        }, {})
-    );
-
-    useEffect(() => {
-        setFilterQuery(query || "");
-    }, [query]);
+    const [filterGrades, setFilterGrades] = useState(initializeFilterGrades);
 
     useEffect(() => {
         const selected = Object.keys(filterGrades).filter(key => filterGrades[key]);
@@ -37,29 +30,24 @@ const FilterFormMyIssues = ({
             ...filterGrades
         });
         setReadyForSearch(false);
-    }
+    };
 
     const handleEnter = (e) => {
         if (e.key === 'Enter') {
             updateSearchParams();
         }
-    }
+    };
 
     const handleChange = (e) => {
         setReadyForSearch(true);
         setFilterQuery(e.target.value);
-    }
+    };
 
     const handleReset = () => {
         setReadyForSearch(true);
         setFilterQuery("");
-        setFilterGrades(
-            Object.keys(GRADE_VARIANTS).reduce((acc, key) => {
-                acc[key] = false;
-                return acc;
-            }, {})
-        );
-    }
+        setFilterGrades(initializeFilterGrades());
+    };
 
     const toggleGrade = (key) => {
         setFilterGrades(prevState => ({
@@ -67,7 +55,7 @@ const FilterFormMyIssues = ({
             [key]: !prevState[key]
         }));
         setReadyForSearch(true);
-    }
+    };
 
     return (
         <div className={"col-12 form-group mb-4 bg-horse p-4"}>
@@ -81,12 +69,12 @@ const FilterFormMyIssues = ({
                            className="form-control border-bottom-0"
                            placeholder={placeholder}
                            value={filterQuery}
-                           onKeyDown={(e) => handleEnter(e)}
-                           onChange={(e) => handleChange(e)}
+                           onKeyDown={handleEnter}
+                           onChange={handleChange}
                     />
                     {
                         filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => updateSearchParams()}>
+                        <button className="btn btn-primary" onClick={updateSearchParams}>
                             <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
                             {LABELS.COMMON.SEARCH}
                         </button>
@@ -98,27 +86,25 @@ const FilterFormMyIssues = ({
                     {
                         Object.keys(GRADE_VARIANTS)
                             .sort((a, b) => GRADE_VARIANTS[a].id - GRADE_VARIANTS[b].id)
-                            .map((key, index) => {
-                            return (
+                            .map((key, index) => (
                                 <FilterButtonGrade grade={GRADE_VARIANTS[key]} state={filterGrades[key]}
                                                    setState={() => toggleGrade(key)}
                                                    setReadyForSearch={setReadyForSearch} key={index}/>
-                            );
-                        })
+                            ))
                     }
                 </div>
             </div>
-            <button className="btn btn-lg btn-primary mb-3 me-3" onClick={() => updateSearchParams()}
+            <button className="btn btn-lg btn-primary mb-3 me-3" onClick={updateSearchParams}
                     disabled={!readyForSearch}>
                 <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
                 {LABELS.COMMON.FIND_ISSUES}
             </button>
-            <button className="btn btn-lg btn-outline-primary mb-3" onClick={() => handleReset()}>
+            <button className="btn btn-lg btn-outline-primary mb-3" onClick={handleReset}>
                 <FontAwesomeIcon icon={faDeleteLeft} className={"me-2"}/>
                 {LABELS.COMMON.RESET_FILTER}
             </button>
         </div>
-    )
+    );
 };
 
 export default FilterFormMyIssues;

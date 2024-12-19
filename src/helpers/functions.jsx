@@ -1,6 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
 import {
-    CONFIG,
+    CONFIG, GRADE_VARIANTS,
     LOGO_ICONS,
     SK_GRADE_RADIO_NAMES,
     SK_GRADE_RADIO_VALUES
@@ -592,4 +592,11 @@ export const getPostalTownOrCountry = (addressComponents) => {
 
     // Return postal town if available, otherwise return country
     return postalTown || country;
+};
+
+export const initializeFilterGrades = () => {
+    return Object.keys(GRADE_VARIANTS).reduce((acc, key) => {
+        acc[key] = false;
+        return acc;
+    }, {});
 };
