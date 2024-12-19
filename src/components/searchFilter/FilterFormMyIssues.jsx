@@ -96,7 +96,9 @@ const FilterFormMyIssues = ({
             <div className="col-12 mb-2">
                 <div className={"input-group"}>
                     {
-                        Object.keys(GRADE_VARIANTS).map((key, index) => {
+                        Object.keys(GRADE_VARIANTS)
+                            .sort((a, b) => GRADE_VARIANTS[a].id - GRADE_VARIANTS[b].id)
+                            .map((key, index) => {
                             return (
                                 <FilterButtonGrade grade={GRADE_VARIANTS[key]} state={filterGrades[key]}
                                                    setState={() => toggleGrade(key)}

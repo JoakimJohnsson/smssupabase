@@ -455,7 +455,10 @@ export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, que
         issue.source.toString().toLowerCase().includes(lowerCaseQuery) ||
         getIssueName(issue).toString().toLowerCase().includes(lowerCaseQuery) ||
         query === "";
-    const matchesGrades = selectedGrades.length === 0 || issue.grades.some(grade => selectedGrades.includes(grade.grade.toString()));
+    let matchesGrades = true;
+    if (selectedGrades?.length > 0) {
+        matchesGrades = issue.grades?.some(grade => selectedGrades.includes(grade.grade.toString()));
+    }
     return matchesQuery && matchesGrades;
 };
 

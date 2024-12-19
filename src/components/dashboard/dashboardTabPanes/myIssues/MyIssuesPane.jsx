@@ -13,6 +13,7 @@ import {ShowMoreButtons} from "../../../minis/ShowMoreButtons.jsx";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard.jsx";
 import FilterFormMyIssues from "../../../searchFilter/FilterFormMyIssues.jsx";
 
+
 export const MyIssuesPane = () => {
     const [loading, setLoading] = useState(true);
     const [itemsToShow, setItemsToShow] = useState(CONFIG.PAGINATION_ITEM_COUNT);
@@ -47,7 +48,7 @@ export const MyIssuesPane = () => {
             <p className={"text-uppercase fs-large placeholder-glow"}>
                 {TEXTS.SHOWING} <span className={"fw-bolder"}>
                     {
-                        filteredData && filteredData.length ?
+                        filteredData ?
                             itemsToShow < filteredData.length ?
                                 itemsToShow
                                 :
