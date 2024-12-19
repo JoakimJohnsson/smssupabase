@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
+import {faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import FilterButtonGrade from "./FilterButtonGrade.jsx";
@@ -16,7 +16,6 @@ const FilterFormMyIssues = ({
                             }) => {
 
     const [filterQuery, setFilterQuery] = useState(query || "");
-    const [readyForSearch, setReadyForSearch] = useState(false);
     const [filterGrades, setFilterGrades] = useState(initializeFilterGrades);
 
     useEffect(() => {
@@ -29,24 +28,17 @@ const FilterFormMyIssues = ({
             query: filterQuery,
             ...filterGrades
         });
-        setReadyForSearch(false);
-    };
-
-    const handleEnter = (e) => {
-        if (e.key === 'Enter') {
-            updateSearchParams();
-        }
     };
 
     const handleChange = (e) => {
-        setReadyForSearch(true);
         setFilterQuery(e.target.value);
+        updateSearchParams();
     };
 
     const handleReset = () => {
-        setReadyForSearch(true);
         setFilterQuery("");
         setFilterGrades(initializeFilterGrades());
+        setSearchParams({});
     };
 
     const toggleGrade = (key) => {
@@ -54,7 +46,6 @@ const FilterFormMyIssues = ({
             ...prevState,
             [key]: !prevState[key]
         }));
-        setReadyForSearch(true);
     };
 
     return (
@@ -69,16 +60,8 @@ const FilterFormMyIssues = ({
                            className="form-control border-bottom-0"
                            placeholder={placeholder}
                            value={filterQuery}
-                           onKeyDown={handleEnter}
                            onChange={handleChange}
                     />
-                    {
-                        filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={updateSearchParams}>
-                            <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                            {LABELS.COMMON.SEARCH}
-                        </button>
-                    }
                 </div>
             </div>
             <div className="col-12 mb-2">
@@ -88,17 +71,11 @@ const FilterFormMyIssues = ({
                             .sort((a, b) => GRADE_VARIANTS[a].id - GRADE_VARIANTS[b].id)
                             .map((key, index) => (
                                 <FilterButtonGrade grade={GRADE_VARIANTS[key]} state={filterGrades[key]}
-                                                   setState={() => toggleGrade(key)}
-                                                   setReadyForSearch={setReadyForSearch} key={index}/>
+                                                   setState={() => toggleGrade(key)} key={index}/>
                             ))
                     }
                 </div>
             </div>
-            <button className="btn btn-lg btn-primary mb-3 me-3" onClick={updateSearchParams}
-                    disabled={!readyForSearch}>
-                <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                {LABELS.COMMON.FIND_ISSUES}
-            </button>
             <button className="btn btn-lg btn-outline-primary mb-3" onClick={handleReset}>
                 <FontAwesomeIcon icon={faDeleteLeft} className={"me-2"}/>
                 {LABELS.COMMON.RESET_FILTER}
