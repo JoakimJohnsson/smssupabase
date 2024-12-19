@@ -4,7 +4,7 @@ import {faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import formatData from "../../helpers/valueLists/formats.json";
 import {isTrue} from "../../helpers/functions";
-import FilterButton from "./FilterButton";
+import FilterButtonFormat from "./FilterButtonFormat.jsx";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
 
@@ -112,26 +112,26 @@ const FilterFormFormat = ({
             <div className="col-12 mb-2">
                 <div className={"input-group"}>
                     {/* comic 32545 */}
-                    <FilterButton format={getFormat(32545)} state={filterComic} setState={setFilterComic}
-                                  setReadyForSearch={setReadyForSearch}/>
+                    <FilterButtonFormat format={getFormat(32545)} state={filterComic} setState={setFilterComic}
+                                        setReadyForSearch={setReadyForSearch}/>
                     {/* comiclarge 33541 */}
-                    <FilterButton format={getFormat(33541)} state={filterComiclarge} setState={setFilterComiclarge}
-                                  setReadyForSearch={setReadyForSearch}/>
+                    <FilterButtonFormat format={getFormat(33541)} state={filterComiclarge} setState={setFilterComiclarge}
+                                        setReadyForSearch={setReadyForSearch}/>
                     {/* album 23445 */}
-                    <FilterButton format={getFormat(23445)} state={filterAlbum} setState={setFilterAlbum}
-                                  setReadyForSearch={setReadyForSearch}/>
+                    <FilterButtonFormat format={getFormat(23445)} state={filterAlbum} setState={setFilterAlbum}
+                                        setReadyForSearch={setReadyForSearch}/>
                     {/* pocket 24543 */}
-                    <FilterButton format={getFormat(24543)} state={filterPocket} setState={setFilterPocket}
-                                  setReadyForSearch={setReadyForSearch}/>
+                    <FilterButtonFormat format={getFormat(24543)} state={filterPocket} setState={setFilterPocket}
+                                        setReadyForSearch={setReadyForSearch}/>
                     {/* hardcover 23577 */}
-                    <FilterButton format={getFormat(23577)} state={filterHardcover} setState={setFilterHardcover}
-                                  setReadyForSearch={setReadyForSearch}/>
+                    <FilterButtonFormat format={getFormat(23577)} state={filterHardcover} setState={setFilterHardcover}
+                                        setReadyForSearch={setReadyForSearch}/>
                     {/* special 26224 */}
-                    <FilterButton format={getFormat(26224)} state={filterSpecial} setState={setFilterSpecial}
-                                  setReadyForSearch={setReadyForSearch}/>
+                    <FilterButtonFormat format={getFormat(26224)} state={filterSpecial} setState={setFilterSpecial}
+                                        setReadyForSearch={setReadyForSearch}/>
                     {/* special 674899 */}
-                    <FilterButton format={getFormat(674899)} state={filterCollectible} setState={setFilterCollectible}
-                                  setReadyForSearch={setReadyForSearch}/>
+                    <FilterButtonFormat format={getFormat(674899)} state={filterCollectible} setState={setFilterCollectible}
+                                        setReadyForSearch={setReadyForSearch}/>
                 </div>
             </div>
             <button className="btn btn-lg btn-primary mb-3 me-3" onClick={() => updateSearchParams()} disabled={!readyForSearch}>

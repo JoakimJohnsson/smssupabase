@@ -162,116 +162,139 @@ export const CONFIG = {
 
 export const GRADE_VARIANTS = {
     0.5: {
+        id: 0.5,
         text: "PR",
         displayName: "Poor",
         color: "100"
     },
     1: {
+        id: 1,
         text: "FR",
         displayName: "Fair",
         color: "100"
     },
     1.5: {
+        id: 1.5,
         text: "FR/GD",
         displayName: "Fair / Good",
         color: "100"
     },
     2: {
+        id: 2,
         text: "GD",
         displayName: "Good",
         color: "200"
     },
     2.5: {
+        id: 2.5,
         text: "GD+",
         displayName: "Good (+)",
         color: "200"
     },
     3: {
+        id: 3,
         text: "GD/VG",
         displayName: "Good / Very good",
         color: "200"
     },
     3.5: {
+        id: 3.5,
         text: "VG-",
         displayName: "Very good (-)",
         color: "300"
     },
     4: {
+        id: 4,
         text: "VG",
         displayName: "Very good",
         color: "300"
     },
     4.5: {
+        id: 4.5,
         text: "VG+",
         displayName: "Very good (+)",
         color: "300"
     },
     5: {
+        id: 5,
         text: "VG/FN",
         displayName: "Very good / Fine",
         color: "400"
     },
     5.5: {
+        id: 5.5,
         text: "FN-",
         displayName: "Fine (-)",
         color: "500"
     },
     6: {
+        id: 6,
         text: "FN",
         displayName: "Fine",
         color: "600"
     },
     6.5: {
+        id: 6.5,
         text: "FN+",
         displayName: "Fine (+)",
         color: "700"
     },
     7: {
+        id: 7,
         text: "FN/VF",
         displayName: "Fine / Very fine",
         color: "700"
     },
     7.5: {
+        id: 7.5,
         text: "VF-",
         displayName: "Very fine (-)",
         color: "800"
     },
     8: {
+        id: 8,
         text: "VF",
         displayName: "Very fine",
         color: "800"
     },
     8.5: {
+        id: 8.5,
         text: "VF+",
         displayName: "Very fine (+)",
         color: "800"
     },
     9: {
+        id: 9,
         text: "VF/NM",
         displayName: "Very fine / Near mint",
         color: "0"
     },
     9.2: {
+        id: 9.2,
         text: "NM-",
         displayName: "Near mint (-)",
         color: "0"
     },
     9.4: {
+        id: 9.4,
         text: "NM",
         displayName: "Near mint",
         color: "0"
     },
     9.6: {
+        id: 9.6,
         text: "NM+",
         displayName: "Near mint (+)",
         color: "0"
     },
     9.8: {
+        id: 9.8,
         text: "NM/M",
         displayName: "Near mint / mint",
         color: "0"
     },
     9.9: {
+        id: 9.9,
         text: "M",
         displayName: "Mint",
         color: "0"
