@@ -213,7 +213,7 @@ export const Issue = () => {
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"sms-page-col"}>
+                        <div className={"col-12"}>
                             <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
                                                     bcName={getIssueName(issue)}/>
                         </div>
@@ -352,17 +352,15 @@ export const Issue = () => {
                             <Message originObject={issue} originTable={TABLES.ISSUES}/>
                             <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
                             <div className={"mb-5"}>
-                                <h2>{LABELS.COMMON.INFORMATION}</h2>
+                                <p className={"mb-4"}>{issue?.titles?.description}</p>
                                 {
                                     issue.description &&
                                     <p className={"mb-4"}>{issue.description}</p>
                                 }
-                                <h3>{issue?.titles?.name}</h3>
-                                <p className={"mb-4"}>{issue?.titles?.description}</p>
-                                <h3>{issue?.publishers?.name}</h3>
+                                <h2>{issue?.publishers?.name}</h2>
                                 <div className={"mb-4"}>
                                     <p className={"mb-4"}>{issue?.publishers?.description}</p>
-                                    <h3>{LABELS.COMMON.LINKS}</h3>
+                                    <h2>{LABELS.COMMON.LINKS}</h2>
                                     {
                                         issue?.titles?.wiki_url &&
                                         <a className={"d-block"} href={issue?.titles?.wiki_url}

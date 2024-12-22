@@ -92,7 +92,7 @@ export const User = () => {
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"sms-page-col"}>
+                        <div className={"col-12"}>
                             {
                                 showFullInfo(user, profile) ?
                                     <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>

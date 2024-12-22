@@ -200,7 +200,7 @@ export const Title = () => {
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"sms-page-col"}>
+                        <div className={"col-12"}>
                             <HeadingWithBreadCrumbs
                                 text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                         </div>
