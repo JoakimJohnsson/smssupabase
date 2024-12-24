@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch, faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
+import {faDeleteLeft} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import formatData from "../../helpers/valueLists/formats.json";
 import {isTrue} from "../../helpers/functions";
 import FilterButtonFormat from "./FilterButtonFormat.jsx";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-
 
 const FilterFormFormat = ({
                               setSearchParams,
@@ -21,7 +20,6 @@ const FilterFormFormat = ({
                               placeholder
                           }) => {
 
-    // Initial states to hold our input queries
     const [filterQuery, setFilterQuery] = useState("");
     const [filterComic, setFilterComic] = useState(false);
     const [filterComiclarge, setFilterComiclarge] = useState(false);
@@ -30,9 +28,7 @@ const FilterFormFormat = ({
     const [filterHardcover, setFilterHardcover] = useState(false);
     const [filterSpecial, setFilterSpecial] = useState(false);
     const [filterCollectible, setFilterCollectible] = useState(false);
-    const [readyForSearch, setReadyForSearch] = useState(false);
 
-    // Pick up search params if provided
     useEffect(() => {
         setFilterQuery(query || "");
         setFilterComic(isTrue(comic) || false);
@@ -43,6 +39,10 @@ const FilterFormFormat = ({
         setFilterSpecial(isTrue(special) || false);
         setFilterCollectible(isTrue(collectible) || false);
     }, [query, comic, comiclarge, album, pocket, hardcover, special, collectible]);
+
+    useEffect(() => {
+        updateSearchParams();
+    }, [filterQuery, filterComic, filterComiclarge, filterAlbum, filterPocket, filterHardcover, filterSpecial, filterCollectible]);
 
     const updateSearchParams = () => {
         setSearchParams({
@@ -55,22 +55,13 @@ const FilterFormFormat = ({
             special: filterSpecial,
             collectible: filterCollectible
         });
-        setReadyForSearch(false);
-    }
-
-    const handleEnter = (e) => {
-        if (e.key === 'Enter') {
-            updateSearchParams();
-        }
     }
 
     const handleChange = (e) => {
-        setReadyForSearch(true);
         setFilterQuery(e.target.value);
     }
 
     const handleReset = () => {
-        setReadyForSearch(true);
         setFilterQuery("");
         setFilterComic(false);
         setFilterComiclarge(false);
@@ -97,52 +88,27 @@ const FilterFormFormat = ({
                            className="form-control border-bottom-0"
                            placeholder={placeholder}
                            value={filterQuery}
-                           onKeyDown={(e) => handleEnter(e)}
-                           onChange={(e) => handleChange(e)}
+                           onChange={handleChange}
                     />
-                    {
-                        filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => updateSearchParams()}>
-                            <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                            {LABELS.COMMON.SEARCH}
-                        </button>
-                    }
                 </div>
             </div>
             <div className="col-12 mb-2">
                 <div className={"input-group"}>
-                    {/* comic 32545 */}
-                    <FilterButtonFormat format={getFormat(32545)} state={filterComic} setState={setFilterComic}
-                                        setReadyForSearch={setReadyForSearch}/>
-                    {/* comiclarge 33541 */}
-                    <FilterButtonFormat format={getFormat(33541)} state={filterComiclarge} setState={setFilterComiclarge}
-                                        setReadyForSearch={setReadyForSearch}/>
-                    {/* album 23445 */}
-                    <FilterButtonFormat format={getFormat(23445)} state={filterAlbum} setState={setFilterAlbum}
-                                        setReadyForSearch={setReadyForSearch}/>
-                    {/* pocket 24543 */}
-                    <FilterButtonFormat format={getFormat(24543)} state={filterPocket} setState={setFilterPocket}
-                                        setReadyForSearch={setReadyForSearch}/>
-                    {/* hardcover 23577 */}
-                    <FilterButtonFormat format={getFormat(23577)} state={filterHardcover} setState={setFilterHardcover}
-                                        setReadyForSearch={setReadyForSearch}/>
-                    {/* special 26224 */}
-                    <FilterButtonFormat format={getFormat(26224)} state={filterSpecial} setState={setFilterSpecial}
-                                        setReadyForSearch={setReadyForSearch}/>
-                    {/* special 674899 */}
-                    <FilterButtonFormat format={getFormat(674899)} state={filterCollectible} setState={setFilterCollectible}
-                                        setReadyForSearch={setReadyForSearch}/>
+                    <FilterButtonFormat format={getFormat(32545)} state={filterComic} setState={setFilterComic}/>
+                    <FilterButtonFormat format={getFormat(33541)} state={filterComiclarge} setState={setFilterComiclarge}/>
+                    <FilterButtonFormat format={getFormat(23445)} state={filterAlbum} setState={setFilterAlbum}/>
+                    <FilterButtonFormat format={getFormat(24543)} state={filterPocket} setState={setFilterPocket}/>
+                    <FilterButtonFormat format={getFormat(23577)} state={filterHardcover} setState={setFilterHardcover}/>
+                    <FilterButtonFormat format={getFormat(26224)} state={filterSpecial} setState={setFilterSpecial}/>
+                    <FilterButtonFormat format={getFormat(674899)} state={filterCollectible} setState={setFilterCollectible}/>
                 </div>
             </div>
-            <button className="btn btn-lg btn-primary mb-3 me-3" onClick={() => updateSearchParams()} disabled={!readyForSearch}>
-                <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                {LABELS.COMMON.FIND_TITLES}
-            </button>
-            <button className="btn btn-lg btn-outline-primary mb-3" onClick={() => handleReset()}>
+            <button className="btn btn-lg btn-outline-primary mb-3" onClick={handleReset}>
                 <FontAwesomeIcon icon={faDeleteLeft} className={"me-2"}/>
                 {LABELS.COMMON.RESET_FILTER}
             </button>
         </div>
     )
 };
+
 export default FilterFormFormat;
