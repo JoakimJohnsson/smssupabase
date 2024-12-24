@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch, faDeleteLeft, faCircleXmark, faFilter} from "@fortawesome/pro-solid-svg-icons";
+import {faDeleteLeft, faCircleXmark, faFilter} from "@fortawesome/pro-solid-svg-icons";
 import {faFilters} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
@@ -19,14 +19,17 @@ const FilterFormFormat = ({
     const [filterQuery, setFilterQuery] = useState("");
     const [filterIsValued, setFilterIsValued] = useState(false);
     const [filterIsNotValued, setFilterIsNotValued] = useState(false);
-    const [readyForSearch, setReadyForSearch] = useState(false);
 
-    // Pick up search params if provided
     useEffect(() => {
         setFilterQuery(query || "");
         setFilterIsValued(isTrue(isvalued) || false);
         setFilterIsNotValued(isTrue(isnotvalued) || false);
     }, [query, isvalued, isnotvalued]);
+
+    // Pick up search params if provided
+    useEffect(() => {
+        updateSearchParams();
+    }, [filterQuery, filterIsValued, filterIsNotValued]);
 
     const updateSearchParams = () => {
         setSearchParams({
@@ -34,27 +37,17 @@ const FilterFormFormat = ({
             isvalued: filterIsValued,
             isnotvalued: filterIsNotValued
         });
-        setReadyForSearch(false);
-    }
-
-    const handleEnter = (e) => {
-        if (e.key === 'Enter') {
-            updateSearchParams();
-        }
     }
 
     const handleChange = (e) => {
-        setReadyForSearch(true);
         setFilterQuery(e.target.value);
     }
 
     const handleCheckboxChange = (setState, state) => {
-        setReadyForSearch(true);
         setState(!state);
     }
 
     const handleReset = () => {
-        setReadyForSearch(true);
         setFilterQuery("");
     }
 
@@ -76,16 +69,8 @@ const FilterFormFormat = ({
                            className="form-control border-bottom-0"
                            placeholder={placeholder}
                            value={filterQuery}
-                           onKeyDown={(e) => handleEnter(e)}
-                           onChange={(e) => handleChange(e)}
+                           onChange={handleChange}
                     />
-                    {
-                        filterQuery !== "" &&
-                        <button className="btn btn-primary" onClick={() => updateSearchParams()}>
-                            <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                            {LABELS.COMMON.SEARCH}
-                        </button>
-                    }
                 </div>
             </div>
             <div className="col-12 mb-2">
@@ -107,10 +92,6 @@ const FilterFormFormat = ({
 
                 </div>
             </div>
-            <button className="btn btn-lg btn-primary mb-3 me-3" onClick={() => updateSearchParams()} disabled={!readyForSearch}>
-                <FontAwesomeIcon icon={faSearch} className={"me-2"}/>
-                {LABELS.COMMON.FIND_TITLES}
-            </button>
             <button className="btn btn-lg btn-outline-primary mb-3" onClick={() => handleResetAll()}>
                 <FontAwesomeIcon icon={faDeleteLeft} className={"me-2"}/>
                 {LABELS.COMMON.RESET_FILTER}

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { debounce } from "lodash";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
 import {TABLES} from "../../../helpers/constants/serviceConstants.js";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
@@ -21,6 +22,7 @@ export const Titles = () => {
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
+    const [debouncedQuery, setDebouncedQuery] = useState("");
     const {
         setSearchParams,
         query,
@@ -37,24 +39,36 @@ export const Titles = () => {
         getRowsByTable(TABLES.TITLES, setTitlesData).then(() => setLoading(false));
     }, []);
 
+    // Debounce the query input
+    useEffect(() => {
+        const debouncedQueryUpdate = debounce(() => {
+            setDebouncedQuery(query); // Update the debounced query state
+        }, 300); // 300ms debounce time
+
+        debouncedQueryUpdate();
+        return () => debouncedQueryUpdate.cancel(); // Cleanup on unmount or query change
+    }, [query]);
+
     useEffect(() => {
         if (titlesData) {
-            if (query) {
-                setFilteredTitlesData(filterTitlesData(titlesData, query, comic, comiclarge, album, pocket, hardcover, special, collectible));
+            if (debouncedQuery) {
+                setFilteredTitlesData(
+                    filterTitlesData(titlesData, debouncedQuery, comic, comiclarge, album, pocket, hardcover, special, collectible)
+                );
             } else {
-                setFilteredTitlesData(titlesData
-                    .filter((title) => {
-                        if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special, collectible])) {
-                            return (
-                                filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special, collectible)
-                            )
-                        } else {
+                setFilteredTitlesData(
+                    titlesData
+                        .filter((title) => {
+                            if (hasTrueValue([comic, comiclarge, album, pocket, hardcover, special, collectible])) {
+                                return filterByFormat(title, comic, comiclarge, album, pocket, hardcover, special, collectible);
+                            }
                             return true;
-                        }
-                    }).sort((a, b) => sortByNameAndStartYear(a, b)));
+                        })
+                        .sort((a, b) => sortByNameAndStartYear(a, b))
+                );
             }
         }
-    }, [album, collectible, comic, comiclarge, hardcover, pocket, query, special, titlesData]);
+    }, [debouncedQuery, titlesData, comic, comiclarge, album, pocket, hardcover, special, collectible]);
 
     return (
         <div className={"sms-page-col"}>
