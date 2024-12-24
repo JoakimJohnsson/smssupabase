@@ -14,12 +14,10 @@ import {getRowsByTable} from "../../../services/serviceFunctions.js";
 import {TitlesListItem} from "./TitlesListItem.jsx";
 import {useFormatQueryFilter} from "../../../helpers/customHooks/useFormatQueryFilter.js";
 import FilterFormFormat from "../../searchFilter/FilterFormFormat.jsx";
-
 import FilteredListInfo from "../../searchFilter/FilteredListInfo.jsx";
 
 
 export const Titles = () => {
-
     const [loading, setLoading] = useState(true);
     const [titlesData, setTitlesData] = useState(null);
     const [filteredTitlesData, setFilteredTitlesData] = useState(null);
