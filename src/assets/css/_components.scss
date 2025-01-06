@@ -92,12 +92,18 @@
   @include media-breakpoint-up(sm) {
     background-color: $color-bg-horse;
   }
-  &.section--grade {
-    @extend .rounded-3, .border, .border-grade, .p-3;
-  }
 
-  &.section--warning {
-    @extend .rounded-3, .border, .border-warning, .p-3;
+  &.variant {
+    @extend .rounded-3, .border, .p-3;
+    &--grade {
+      @extend .border-grade;
+    }
+    &--warning {
+      @extend .border-warning;
+    }
+    &--primary {
+      @extend .border-primary;
+    }
   }
 
   .form-control, .form-select {
@@ -128,19 +134,6 @@
   .form-label {
     color: $white--darker;
     font-weight: 300;
-  }
-
-  &.primary {
-    background-color: $primary--lighter;
-    color: $black;
-
-    h2 {
-      color: $black;
-    }
-
-    .form-label {
-      color: $black--lighter;
-    }
   }
 }
 

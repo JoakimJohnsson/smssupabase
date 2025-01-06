@@ -45,7 +45,7 @@ export const SimpleMessage = ({user}) => {
             />
             {
                 open &&
-                <div className={"sms-section--light primary mb-3 p-3"}>
+                <div className={"sms-section--light variant variant--primary mb-3 p-3"}>
                     <h2>{LABELS.COMMON.MESSAGE_USER_CREATE} {getUserName(user)}</h2>
                     <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
                     <input

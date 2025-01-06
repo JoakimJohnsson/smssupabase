@@ -30,7 +30,7 @@ export const EditStarReview = ({stars, setStars, saveReview}) => {
             />
             {
                 open &&
-                <div className={"sms-section--light section--warning mb-4"}>
+                <div className={"sms-section--light variant variant--warning mb-4"}>
                     <h2>{LABELS.COMMON.ADD_REVIEW}</h2>
                     <div className={"mb-3 fs-1"}>
                         <p className={"fs-3 mb-3"}>{LABELS.COMMON.REVIEW_YOURS}</p>

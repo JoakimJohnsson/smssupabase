@@ -386,7 +386,7 @@ export const Issue = () => {
                             </div>
                             {
                                 !!issue?.titles?.is_valued && issue.grade_values && !!issue.grade_values.length &&
-                                <div className={"sms-section--light section--grade mb-4"}>
+                                <div className={"sms-section--light variant variant--grade mb-4"}>
                                     <h2>{LABELS.SECTIONS.GRADES.GRADE_VALUE}</h2>
                                     <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                         <caption>
@@ -418,7 +418,7 @@ export const Issue = () => {
                             }
                             {
                                 isCollectingIssue &&
-                                <div className={"sms-section--light section--grade mb-4"}>
+                                <div className={"sms-section--light variant variant--grade mb-4"}>
                                     <h2>{LABELS.SECTIONS.GRADES.GRADE}</h2>
                                     <div className={"mb-3"}>
                                         {
