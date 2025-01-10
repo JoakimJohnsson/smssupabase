@@ -18,6 +18,7 @@ const ReleaseNotes = () => {
             <ul className={"list-group list-group-flush mb-4"}>
                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                 <li className={"list-group-item px-0"}>Möjlighet att filtrera lista med Mina publikationer på skickgradering.</li>
+                <li className={"list-group-item px-0"}>Uppdaterad och förbättrad layout på knappar.</li>
             </ul>
             <Icon icon={faBinaryLock} size={"2x"} className={"fa-icon--cta"}/>
             <h3>{LABELS.COMMON.RELEASE_PREVIOUS}</h3>

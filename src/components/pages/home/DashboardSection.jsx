@@ -4,7 +4,7 @@ import {
     collectionsIconDuoTone,
     mapsIconDuoTone,
     overviewIconDuoTone,
-    titleIconDuoTone,
+    issueIconDuoTone,
     titlesIconDuoTone,
     valueIconDuoTone
 } from "../../icons";
@@ -30,7 +30,7 @@ export const DashboardSection = () => {
             />
             <IconLinkCtaLg
                 variant={"primary"}
-                icon={titleIconDuoTone}
+                icon={issueIconDuoTone}
                 path={ROUTES.DASHBOARD.PATH_MY_ISSUES}
                 label={PANES.ISSUES.NAME}
             />

@@ -2,7 +2,6 @@ import React from "react";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {SkipLink} from "../pages/pagecomponents/SkipLink";
-import {IconLinkCta} from "../minis/IconLinkCta";
 import {
     Icon,
     collectionCheckIconDuoTone,
@@ -13,6 +12,7 @@ import {
     registerIconDuoTone
 } from "../icons";
 import {useLogoIcon} from "../../helpers/customHooks/useLogoIcon";
+import {IconLinkCtaLg} from "../minis/IconLinkCtaLg.jsx";
 
 
 export const HeroHeader = () => {
@@ -30,19 +30,19 @@ export const HeroHeader = () => {
                             {LABELS.COMMON.SVENSKA_MARVELSAMLARE}
                         </h1>
                         <div className={"mb-5"}>
-                            <IconLinkCta
+                            <IconLinkCtaLg
                                 variant={"primary"}
                                 icon={loginIconDuoTone}
                                 path={"#login-section"}
                                 label={LABELS.COMMON.LOG_IN}
                             />
-                            <IconLinkCta
+                            <IconLinkCtaLg
                                 variant={"primary"}
                                 icon={registerIconDuoTone}
                                 path={"#create-account-section"}
                                 label={LABELS.COMMON.CREATE_ACCOUNT}
                             />
-                            <IconLinkCta
+                            <IconLinkCtaLg
                                 variant={"secondary"}
                                 icon={infoIconDuoTone}
                                 path={"#info-section"}

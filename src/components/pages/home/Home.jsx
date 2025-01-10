@@ -132,7 +132,6 @@ export const Home = () => {
                     showAlert &&
                     <InformationAlert variant={"info"} text={alertText}/>
                 }
-                <h2>{LABELS.COMMON.YOUR_INFORMATION}</h2>
                 <div className={"row"}>
                     <div className={"col-12"}>
                         <IconLinkCtaLg
@@ -152,6 +151,13 @@ export const Home = () => {
                         </div>
                     }
                     <div className={"col-12 col-md-8"}>
+                        <h2>{LABELS.COMMON.YOUR_INFORMATION}</h2>
+                        <IconLinkCtaLg
+                            variant={"primary"}
+                            icon={settingsIconDuoTone}
+                            path={ROUTES.PROFILE}
+                            label={LABELS.COMMON.SETTINGS}
+                        />
                         <p className={"m-0"}><span
                             className={"text-label me-4"}>{LABELS.SECTIONS.USERS.FIRST_NAME}:</span> {profile.firstname}
                         </p>
@@ -167,12 +173,6 @@ export const Home = () => {
                         <p className={"mb-4"}><span
                             className={"text-label me-4"}>{LABELS.SECTIONS.USERS.ALLOW_LOCATION_ACCESS}:</span> {profile.allow_location_access === 0 ? "Nej" : "Ja"}
                         </p>
-                        <IconLinkCtaLg
-                            variant={"primary"}
-                            icon={settingsIconDuoTone}
-                            path={ROUTES.PROFILE}
-                            label={LABELS.COMMON.SETTINGS}
-                        />
                         <p>För frågor och förbättringsförslag:</p>
                         <a href={"mailto: admin@svenskamarvelsamlare.se"}>
                             <Icon icon={mailIcon} className={"me-2"}/>
