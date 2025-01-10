@@ -40,6 +40,7 @@ export const Home = () => {
     const [limitedIssuesData, setLimitedIssuesData] = useState(null);
     const [top5Issues, setTop5Issues] = useState(null);
     const [top5Titles, setTop5Titles] = useState(null);
+    const hasProfileImage = profile && profile.image_filename && profile.image_url;
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -133,7 +134,7 @@ export const Home = () => {
                 }
                 <h2>{LABELS.COMMON.YOUR_INFORMATION}</h2>
                 <div className={"row"}>
-                    <div className={"col-12 mb-4"}>
+                    <div className={"col-12"}>
                         <IconLinkCtaLg
                             variant={"warning"}
                             icon={userIconDuoTone}
@@ -144,9 +145,12 @@ export const Home = () => {
                     <div className={"col-12 mb-4"}>
                         <DashboardSection/>
                     </div>
-                    <div className={"col-12 col-md-4"}>
-                        <ImageViewerSmall url={profile.image_url} fileName={profile.image_filename}/>
-                    </div>
+                    {
+                        hasProfileImage &&
+                        <div className={"col-12 col-md-4"}>
+                            <ImageViewerSmall url={profile.image_url} fileName={profile.image_filename}/>
+                        </div>
+                    }
                     <div className={"col-12 col-md-8"}>
                         <p className={"m-0"}><span
                             className={"text-label me-4"}>{LABELS.SECTIONS.USERS.FIRST_NAME}:</span> {profile.firstname}

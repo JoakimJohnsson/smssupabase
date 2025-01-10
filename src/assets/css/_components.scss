@@ -322,7 +322,7 @@ input[type="checkbox"] + label {
       }
 
       .issue-link-card--content {
-        @extend .p-0;
+        @extend .p-0, .mb-2;
       }
     }
 
@@ -630,7 +630,6 @@ input[type="checkbox"] + label {
     font-size: $h1-font-size;
     color: $country;
     .location-text {
-      background-color: $country--darker;
       border-radius: $border-radius-lg;
       padding: .5rem 1rem;
       text-align: center;
