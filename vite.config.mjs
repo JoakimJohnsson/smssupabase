@@ -31,7 +31,6 @@ export default defineConfig({
             output: {
                 manualChunks(id) {
                     if (id.includes('node_modules')) {
-                        console.log("processing node_modules", id);
                         if (id.includes('react')) {
                             return 'react';
                         }
