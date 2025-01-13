@@ -2,11 +2,9 @@ import React from "react";
 import {faFilter, faCircleXmark} from "@fortawesome/pro-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-
-const FilterButton = ({format, state, setState, setReadyForSearch}) => {
+const FilterButtonFormat = ({format, state, setState}) => {
 
     const handleChange = () => {
-        setReadyForSearch(true);
         setState(!state);
     }
 
@@ -17,4 +15,4 @@ const FilterButton = ({format, state, setState, setReadyForSearch}) => {
         </div>
     )
 };
-export default FilterButton;
+export default FilterButtonFormat;

@@ -7,20 +7,20 @@ import {getUserIssues} from "../../../../helpers/databaseFunctions.js";
 import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../../../helpers/functions.jsx";
 import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter.js";
 import {CONFIG} from "../../../../helpers/constants/configConstants.jsx";
-import FilterFormSimple from "../../../searchFilter/FilterFormSimple.jsx";
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder.jsx";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings.js";
 import {ShowMoreButtons} from "../../../minis/ShowMoreButtons.jsx";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard.jsx";
+import FilterFormMyIssues from "../../../searchFilter/FilterFormMyIssues.jsx";
 
 
 export const MyIssuesPane = () => {
-
     const [loading, setLoading] = useState(true);
     const [itemsToShow, setItemsToShow] = useState(CONFIG.PAGINATION_ITEM_COUNT);
     const [issuesData, setIssuesData] = useState(null);
     const {setSearchParams, query} = useSimpleQueryFilter();
     const {user} = useAppContext();
+    const [selectedGrades, setSelectedGrades] = useState([]);
 
     useEffect(() => {
         const fetchIssues = async () => {
@@ -35,32 +35,28 @@ export const MyIssuesPane = () => {
     }, [user.id]);
 
     const filteredData = issuesData?.sort((a, b) => sortByName(a.titles, b.titles))
-        .filter(issue => {
-                return (
-                    filterQueryIssueByTitleNamePublisherNameYearAndSource(issue, query)
-                )
-            }
-        );
+        .filter(issue => filterQueryIssueByTitleNamePublisherNameYearAndSource(issue, query, selectedGrades));
 
     return (
         <>
             <HeadingWithBreadCrumbs text={PANES.ISSUES.NAME}/>
             <div>
-                <FilterFormSimple query={query} setSearchParams={setSearchParams}
-                                  placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
+                <FilterFormMyIssues query={query} setSearchParams={setSearchParams}
+                                    placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}
+                                    setSelectedGrades={setSelectedGrades}/>
             </div>
             <p className={"text-uppercase fs-large placeholder-glow"}>
                 {TEXTS.SHOWING} <span className={"fw-bolder"}>
-                        {
-                            filteredData && filteredData.length ?
-                                itemsToShow < filteredData.length ?
-                                    itemsToShow
-                                    :
-                                    filteredData.length
+                    {
+                        filteredData ?
+                            itemsToShow < filteredData.length ?
+                                itemsToShow
                                 :
-                                <LazyTextPlaceholder charCount={2}/>
-                        }
-                        </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
+                                filteredData.length
+                            :
+                            <LazyTextPlaceholder charCount={2}/>
+                    }
+                </span> {TEXTS.SHOWING_OF} {issuesData ? issuesData.length :
                 <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
             </p>
             {
@@ -89,7 +85,7 @@ export const MyIssuesPane = () => {
                                 :
                                 <LazyTextPlaceholder charCount={2}/>
                         }
-                        </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
+                    </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
                     <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
                 </p>
             }

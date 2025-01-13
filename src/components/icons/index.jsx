@@ -17,6 +17,7 @@ import {
     faCircleInfo,
     faComet,
     faComment,
+    faCopy,
     faCommentsQuestion,
     faDisplayChartUp,
     faEarthAmericas,
@@ -83,6 +84,7 @@ import {
     faCircleInfo as faCircleInfoDT,
     faComet as faCometDT,
     faComment as faCommentDT,
+    faCopy as faCopyDT,
     faCommentsQuestion as faCommentsQuestionDT,
     faDisplayChartUp as faDisplayChartUpDT,
     faEarthAmericas as faEarthAmericasDT,
@@ -149,6 +151,7 @@ const iconMap = {
     faCircleInfo: faCircleInfo,
     faComet: faComet,
     faComment: faComment,
+    faCopy: faCopy,
     faCommentsQuestion: faCommentsQuestion,
     faDisplayChartUp: faDisplayChartUp,
     faEarthAmericas: faEarthAmericas,
@@ -215,6 +218,7 @@ const iconMapDuoTone = {
     faCircleInfoDT: faCircleInfoDT,
     faCometDT: faCometDT,
     faCommentDT: faCommentDT,
+    faCopyDT: faCopyDT,
     faCommentsQuestionDT: faCommentsQuestionDT,
     faDisplayChartUpDT: faDisplayChartUpDT,
     faEarthAmericasDT: faEarthAmericasDT,
@@ -296,6 +300,7 @@ export const gradingIconDuo = faScaleUnbalanced;
 export const imageIcon = faFileImage;
 export const infoIcon = faCircleInfo;
 export const issueIcon = faFileLines;
+export const issuesIcon = faCopy;
 export const keyIcon = faKey;
 export const linkIcon = faLink;
 export const loginIcon = faArrowDownToArc;
@@ -349,6 +354,7 @@ export const gradingIconDuoTone = faScaleUnbalancedDT;
 export const imageIconDuoTone = faFileImageDT;
 export const infoIconDuoTone = faCircleInfoDT;
 export const issueIconDuoTone = faFileLinesDT;
+export const issuesIconDuoTone = faCopyDT;
 export const keyIconDuoTone = faKeyDT;
 export const loginIconDuoTone = faArrowDownToArcDT;
 export const logoIconDuoTone = faCometDT;

@@ -37,6 +37,7 @@ export const LABELS = {
         EMAIL: "E-postadress",
         EMAIL_SEND: "Ange din e-postadress",
         FIND_TITLES: "Hitta titlar",
+        FIND_ISSUES: "Hitta publikationer",
         FORGOT_PASSWORD: "Glömt lösenordet?",
         GO_TO: "Gå till",
         HOME: "Hem",

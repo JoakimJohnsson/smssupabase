@@ -207,13 +207,13 @@ export const Issue = () => {
     };
 
     return objectDoesExist(issue) ?
-        <div className={"row row-padding--main"}>
+        <div className={"row"}>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"sms-page-col"}>
+                        <div className={"col-12"}>
                             <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
                                                     bcName={getIssueName(issue)}/>
                         </div>
@@ -275,7 +275,7 @@ export const Issue = () => {
                                 </>
                             }
                         </div>
-                        <div className={"col-12 col-md-8 col-xl-6"}>
+                        <div className={"col-12 col-md-8 col-xl-9"}>
                             <IconLink
                                 variant={"primary"}
                                 icon={titlesIconDuoTone}
@@ -352,17 +352,15 @@ export const Issue = () => {
                             <Message originObject={issue} originTable={TABLES.ISSUES}/>
                             <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
                             <div className={"mb-5"}>
-                                <h2>{LABELS.COMMON.INFORMATION}</h2>
+                                <p className={"mb-4"}>{issue?.titles?.description}</p>
                                 {
                                     issue.description &&
                                     <p className={"mb-4"}>{issue.description}</p>
                                 }
-                                <h3>{issue?.titles?.name}</h3>
-                                <p className={"mb-4"}>{issue?.titles?.description}</p>
-                                <h3>{issue?.publishers?.name}</h3>
+                                <h2>{issue?.publishers?.name}</h2>
                                 <div className={"mb-4"}>
                                     <p className={"mb-4"}>{issue?.publishers?.description}</p>
-                                    <h3>{LABELS.COMMON.LINKS}</h3>
+                                    <h2>{LABELS.COMMON.LINKS}</h2>
                                     {
                                         issue?.titles?.wiki_url &&
                                         <a className={"d-block"} href={issue?.titles?.wiki_url}
@@ -388,7 +386,7 @@ export const Issue = () => {
                             </div>
                             {
                                 !!issue?.titles?.is_valued && issue.grade_values && !!issue.grade_values.length &&
-                                <div className={"sms-section--light section--grade mb-4"}>
+                                <div className={"sms-section--light variant variant--grade mb-4"}>
                                     <h2>{LABELS.SECTIONS.GRADES.GRADE_VALUE}</h2>
                                     <table className={"table table-sm table-responsive table-striped mb-0 mt-3"}>
                                         <caption>
@@ -420,7 +418,7 @@ export const Issue = () => {
                             }
                             {
                                 isCollectingIssue &&
-                                <div className={"sms-section--light section--grade mb-4"}>
+                                <div className={"sms-section--light variant variant--grade mb-4"}>
                                     <h2>{LABELS.SECTIONS.GRADES.GRADE}</h2>
                                     <div className={"mb-3"}>
                                         {

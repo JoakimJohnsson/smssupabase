@@ -29,6 +29,7 @@ export function AppContextProvider({children}) {
     const [profile, setProfile] = useState(null);
     const [informationMessage, _setInformationMessage] = useState(MESSAGES.EMPTY);
 
+
     const fetchProfileData = useCallback((id) => {
         getRowByTableAndId(TABLES.PROFILES, setProfile, id).then();
     }, []);

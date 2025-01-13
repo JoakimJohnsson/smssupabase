@@ -22,7 +22,7 @@ import {
     mapsIconDuoTone,
     collectionsIconDuoTone,
     lessIconDuoTone,
-    titleIconDuoTone, userIconDuoTone
+    userIconDuoTone
 } from "../icons";
 import {NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
@@ -125,7 +125,7 @@ export const AuthorizedNavigation = () => {
                             </NavDropdown.Item>
                             <NavDropdown.Item as={"p"} className={"mb-0"}>
                                 <NavLink exact={"true"} to={ROUTES.DASHBOARD.PATH_MY_ISSUES} className={"nav-link nav-link--dropdown"}>
-                                    <Icon icon={titleIconDuoTone} className={"me-2"}/>
+                                    <Icon icon={issueIconDuoTone} className={"me-2"}/>
                                     <span className={"sms-nav-link--text"}>{PANES.ISSUES.NAME}</span>
                                 </NavLink>
                             </NavDropdown.Item>
@@ -206,7 +206,7 @@ export const AuthorizedNavigation = () => {
                                    text={PANES.OVERVIEW.LONG_NAME}/>
                         <LiNavItem route={ROUTES.DASHBOARD.PATH_MY_TITLES} onClick={() => handleClick("isOpen")} icon={<Icon icon={titlesIconDuoTone} size={"1x"}/>}
                                    text={PANES.TITLES.LONG_NAME}/>
-                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MY_ISSUES} onClick={() => handleClick("isOpen")} icon={<Icon icon={titleIconDuoTone} size={"1x"}/>}
+                        <LiNavItem route={ROUTES.DASHBOARD.PATH_MY_ISSUES} onClick={() => handleClick("isOpen")} icon={<Icon icon={issueIconDuoTone} size={"1x"}/>}
                                    text={PANES.ISSUES.LONG_NAME}/>
                         <LiNavItem customClass={"text-grade"} route={ROUTES.DASHBOARD.PATH_VALUATION} onClick={() => handleClick("isOpen")} icon={<Icon icon={valueIconDuoTone} size={"1x"}/>}
                                    text={PANES.VALUATION.LONG_NAME}/>

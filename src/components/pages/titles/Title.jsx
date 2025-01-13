@@ -194,13 +194,13 @@ export const Title = () => {
     };
 
     return objectDoesExist(title) ?
-        <div className={"row row-padding--main"}>
+        <div className={"row"}>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"sms-page-col"}>
+                        <div className={"col-12"}>
                             <HeadingWithBreadCrumbs
                                 text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                         </div>

@@ -16,24 +16,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     @include media-breakpoint-up(sm) {
       padding: 1rem 3rem;
     }
 
+    .btn-cta--icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 3.5rem;
+      height: 3.5rem;
+      position: absolute;
+      top: -15px;
+    }
+
     .btn-cta--icon {
-      @extend .me-2, .me-sm-3, .align-self-center;
       font-size: 1.5rem;
     }
 
     &.btn-cta__lg {
-      @extend .rounded-1, .flex-column;
+      @extend .rounded-3, .flex-column;
       @include media-breakpoint-up(md) {
         display: inline-flex;
         margin-right: 2rem;
-      }
-
-      .btn-cta--icon {
-        @extend .me-0, .mb-2, .align-self-center;
       }
     }
   }

@@ -12,7 +12,7 @@ export const InformationAlert = ({variant, text}) => {
     }
 
     return alertIcon && (
-        <Alert variant={variant} className={"d-flex align-items-center"}>
+        <Alert variant={variant} className={"d-flex align-items-center mb-5"}>
             <div>
                 {alertIcon}
             </div>

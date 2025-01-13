@@ -10,7 +10,7 @@ export const FunctionButton = ({customClass, variant, onClick, label, icon, show
     return (
         <button onClick={onClick} className={className} disabled={disabled} aria-label={label}>
             {icon && <Icon icon={icon} className={"fa-xl fa-fw"}/>}
-            {showLabel && <span className={"mx-3 d-none d-md-inline"}>{label}</span>}
+            {showLabel && <span className={"mx-3"}>{label}</span>}
         </button>
     )
 }

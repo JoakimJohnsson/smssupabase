@@ -7,11 +7,12 @@ import {useAppContext} from "../../../../context/AppContext";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
 import {getAverageGrade} from "../../../../helpers/functions";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
-import {STATISTICS} from "../../../../helpers/constants/configConstants";
+import {ROUTES, STATISTICS} from "../../../../helpers/constants/configConstants";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
-import {csvIconDuoTone, pdfIconDuoTone} from "../../../icons/index.jsx";
+import {csvIconDuoTone, issueIconDuoTone, pdfIconDuoTone} from "../../../icons/index.jsx";
 import {FunctionButton} from "../../../minis/FunctionButton.jsx";
 import {exportMissingIssuesForUser} from "../../../../helpers/exportUtil.js";
+import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";
 
 
 export const OverviewIssues = ({titlesData, issuesData}) => {
@@ -63,6 +64,12 @@ export const OverviewIssues = ({titlesData, issuesData}) => {
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
+                <IconLinkCtaLg
+                    variant={"primary"}
+                    icon={issueIconDuoTone}
+                    path={ROUTES.DASHBOARD.PATH_MY_ISSUES}
+                    label={PANES.ISSUES.NAME}
+                />
                 {
                     userIssuesCount ?
                         <>

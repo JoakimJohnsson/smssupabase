@@ -1,6 +1,6 @@
 import {supabase} from "../supabase/supabaseClient";
 import {
-    CONFIG,
+    CONFIG, GRADE_VARIANTS,
     LOGO_ICONS,
     SK_GRADE_RADIO_NAMES,
     SK_GRADE_RADIO_VALUES
@@ -446,22 +446,20 @@ export const filterQueryByFirstNameAndLastName = (user, query) => {
     )
 };
 
-export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query) => {
-    return (
-        issue.id.toLowerCase()
-            .includes(query.toLowerCase()) ||
-        issue.titles.name.toLowerCase()
-            .includes(query.toLowerCase()) ||
-        issue.publishers.name.toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
-        issue.year.toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
-        issue.source.toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
-        getIssueName(issue).toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
-        query === ""
-    )
+export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query, selectedGrades) => {
+    const lowerCaseQuery = query.toLowerCase();
+    const matchesQuery = issue.id.toLowerCase().includes(lowerCaseQuery) ||
+        issue.titles.name.toLowerCase().includes(lowerCaseQuery) ||
+        issue.publishers.name.toString().toLowerCase().includes(lowerCaseQuery) ||
+        issue.year.toString().toLowerCase().includes(lowerCaseQuery) ||
+        issue.source.toString().toLowerCase().includes(lowerCaseQuery) ||
+        getIssueName(issue).toString().toLowerCase().includes(lowerCaseQuery) ||
+        query === "";
+    let matchesGrades = true;
+    if (selectedGrades?.length > 0) {
+        matchesGrades = issue.grades?.some(grade => selectedGrades.includes(grade.grade.toString()));
+    }
+    return matchesQuery && matchesGrades;
 };
 
 export const filterGlobalMessage = (message, showGlobal) => {
@@ -594,4 +592,11 @@ export const getPostalTownOrCountry = (addressComponents) => {
 
     // Return postal town if available, otherwise return country
     return postalTown || country;
+};
+
+export const initializeFilterGrades = () => {
+    return Object.keys(GRADE_VARIANTS).reduce((acc, key) => {
+        acc[key] = false;
+        return acc;
+    }, {});
 };

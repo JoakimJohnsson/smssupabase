@@ -58,113 +58,109 @@ export const AdminTitleAdd = () => {
 
     return (
         <>
-            <div className={"row row-padding--main"}>
-                <div className={"col-12"}>
-                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
-                </div>
+            <div className={"col-12"}>
+                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
             </div>
-            <div className={"row row-padding--secondary"}>
-                <div className={"sms-dashboard-col"}>
-                    <div className={"sms-section--light"}>
-                        <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
-                        <input
-                            id={"name"}
-                            name={"name"}
+            <div className={"sms-dashboard-col"}>
+                <div className={"sms-section--light"}>
+                    <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
+                    <input
+                        id={"name"}
+                        name={"name"}
+                        className={formInputClass}
+                        type={"text"}
+                        value={name || ""}
+                        onChange={(e) => handleInput(e, setName)}
+                    />
+                    <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
+                    <input
+                        id={"description"}
+                        name={"description"}
+                        className={formInputClass}
+                        type={"text"}
+                        value={description || ""}
+                        onChange={(e) => handleInput(e, setDescription)}
+                    />
+                    <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
+                    <input
+                        id="wikiurl"
+                        name="wiki_url"
+                        className={formInputClass}
+                        type="text"
+                        value={wiki_url || ""}
+                        onChange={(e) => handleInput(e, setWiki_url)}
+                    />
+                    <label className={"form-label"}
+                           htmlFor="comicsorgurl">{LABELS.SECTIONS.TITLES.COMICS_ORG_URL_DB}</label>
+                    <input
+                        id="comicsorgurl"
+                        name="comics_orgurl"
+                        className={formInputClass}
+                        type="text"
+                        value={comics_org_url || ""}
+                        onChange={(e) => handleInput(e, setComics_org_url)}
+                    />
+                    <label className={"form-label"} htmlFor="startyear">{LABELS.COMMON.START_YEAR_DB}</label>
+                    <input
+                        id="startyear"
+                        name={"start_year"}
+                        className={formInputClass}
+                        type="number"
+                        value={start_year || ""}
+                        onChange={(e) => handleInput(e, setStart_year)}
+                    />
+                    <label className={"form-label"} htmlFor="endyear">{LABELS.SECTIONS.TITLES.END_YEAR_DB}</label>
+                    <input
+                        id="endyear"
+                        name={"end_year"}
+                        className={formInputClass}
+                        type="number"
+                        value={end_year || ""}
+                        onChange={(e) => handleInput(e, setEnd_year)}
+                    />
+                    <label className={"form-label"} htmlFor="format">{LABELS.SECTIONS.TITLES.FORMAT_DB}</label>
+                    {
+                        formatData &&
+                        <select
+                            id="format"
+                            name={"format_id"}
                             className={formInputClass}
-                            type={"text"}
-                            value={name || ""}
-                            onChange={(e) => handleInput(e, setName)}
-                        />
-                        <label className={"form-label"} htmlFor="description">{LABELS.COMMON.DESCRIPTION_DB}</label>
-                        <input
-                            id={"description"}
-                            name={"description"}
-                            className={formInputClass}
-                            type={"text"}
-                            value={description || ""}
-                            onChange={(e) => handleInput(e, setDescription)}
-                        />
-                        <label className={"form-label"} htmlFor="wikiurl">{LABELS.COMMON.WIKI_URL_DB}</label>
-                        <input
-                            id="wikiurl"
-                            name="wiki_url"
-                            className={formInputClass}
-                            type="text"
-                            value={wiki_url || ""}
-                            onChange={(e) => handleInput(e, setWiki_url)}
-                        />
-                        <label className={"form-label"}
-                               htmlFor="comicsorgurl">{LABELS.SECTIONS.TITLES.COMICS_ORG_URL_DB}</label>
-                        <input
-                            id="comicsorgurl"
-                            name="comics_orgurl"
-                            className={formInputClass}
-                            type="text"
-                            value={comics_org_url || ""}
-                            onChange={(e) => handleInput(e, setComics_org_url)}
-                        />
-                        <label className={"form-label"} htmlFor="startyear">{LABELS.COMMON.START_YEAR_DB}</label>
-                        <input
-                            id="startyear"
-                            name={"start_year"}
-                            className={formInputClass}
-                            type="number"
-                            value={start_year || ""}
-                            onChange={(e) => handleInput(e, setStart_year)}
-                        />
-                        <label className={"form-label"} htmlFor="endyear">{LABELS.SECTIONS.TITLES.END_YEAR_DB}</label>
-                        <input
-                            id="endyear"
-                            name={"end_year"}
-                            className={formInputClass}
-                            type="number"
-                            value={end_year || ""}
-                            onChange={(e) => handleInput(e, setEnd_year)}
-                        />
-                        <label className={"form-label"} htmlFor="format">{LABELS.SECTIONS.TITLES.FORMAT_DB}</label>
-                        {
-                            formatData &&
-                            <select
-                                id="format"
-                                name={"format_id"}
-                                className={formInputClass}
-                                onChange={(e) => handleInput(e, setFormat_id)}>
-                                <option value={""}>{LABELS.COMMON.CHOOSE}</option>
-                                {printOptions(formatData)}
-                            </select>
-                        }
-                        <label className={"form-label"} htmlFor="totalissues">{LABELS.COMMON.TOTAL_ISSUES_DB}</label>
-                        <input
-                            id="totalissues"
-                            name={"total_issues"}
-                            className={formInputClass}
-                            type="number"
-                            min="1"
-                            value={total_issues || ""}
-                            onChange={(e) => handleInput(e, setTotal_issues)}
-                        />
-                        <button className={"btn btn-primary sms-btn"}
-                                onClick={() => addTitleData({
-                                    name: name,
-                                    description: description,
-                                    wiki_url: wiki_url,
-                                    comics_org_url: comics_org_url,
-                                    start_year: start_year,
-                                    end_year: end_year,
-                                    format_id: format_id,
-                                    total_issues: total_issues,
-                                }, setInformationMessage).then(() => resetAddTitleForm())}
-                                disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === "" || comics_org_url === ""}>
-                            {LABELS.COMMON.ADD}
-                        </button>
-                        <button className={"btn btn-secondary sms-btn"}
-                                onClick={resetAddTitleForm}>
-                            {LABELS.COMMON.RESET_FORM}
-                        </button>
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft}
-                                    onClick={() => handleBacking(navigate)}
-                                    label={LABELS.COMMON.BACK}/>
-                    </div>
+                            onChange={(e) => handleInput(e, setFormat_id)}>
+                            <option value={""}>{LABELS.COMMON.CHOOSE}</option>
+                            {printOptions(formatData)}
+                        </select>
+                    }
+                    <label className={"form-label"} htmlFor="totalissues">{LABELS.COMMON.TOTAL_ISSUES_DB}</label>
+                    <input
+                        id="totalissues"
+                        name={"total_issues"}
+                        className={formInputClass}
+                        type="number"
+                        min="1"
+                        value={total_issues || ""}
+                        onChange={(e) => handleInput(e, setTotal_issues)}
+                    />
+                    <button className={"btn btn-primary sms-btn"}
+                            onClick={() => addTitleData({
+                                name: name,
+                                description: description,
+                                wiki_url: wiki_url,
+                                comics_org_url: comics_org_url,
+                                start_year: start_year,
+                                end_year: end_year,
+                                format_id: format_id,
+                                total_issues: total_issues,
+                            }, setInformationMessage).then(() => resetAddTitleForm())}
+                            disabled={!start_year || !end_year || !total_issues || name === "" || description === "" || wiki_url === "" || comics_org_url === ""}>
+                        {LABELS.COMMON.ADD}
+                    </button>
+                    <button className={"btn btn-secondary sms-btn"}
+                            onClick={resetAddTitleForm}>
+                        {LABELS.COMMON.RESET_FORM}
+                    </button>
+                    <IconButton variant={"outline-primary"} icon={faArrowLeft}
+                                onClick={() => handleBacking(navigate)}
+                                label={LABELS.COMMON.BACK}/>
                 </div>
             </div>
         </>
