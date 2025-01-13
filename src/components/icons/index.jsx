@@ -17,6 +17,7 @@ import {
     faCircleInfo,
     faComet,
     faComment,
+    faCopy,
     faCommentsQuestion,
     faDisplayChartUp,
     faEarthAmericas,
@@ -41,6 +42,7 @@ import {
     faLightbulb,
     faLightbulbOn,
     faMagnifyingGlassDollar,
+    faMailboxFlagUp,
     faMapLocationDot,
     faMessageMedical,
     faMosquito,
@@ -82,6 +84,7 @@ import {
     faCircleInfo as faCircleInfoDT,
     faComet as faCometDT,
     faComment as faCommentDT,
+    faCopy as faCopyDT,
     faCommentsQuestion as faCommentsQuestionDT,
     faDisplayChartUp as faDisplayChartUpDT,
     faEarthAmericas as faEarthAmericasDT,
@@ -106,6 +109,7 @@ import {
     faLightbulb as faLightbulbDT,
     faLightbulbOn as faLightbulbOnDT,
     faMagnifyingGlassDollar as faMagnifyingGlassDollarDT,
+    faMailboxFlagUp as faMailboxFlagUpDT,
     faMapLocationDot as faMapLocationDotDT,
     faMessageMedical as faMessageMedicalDT,
     faMosquito as faMosquitoDT,
@@ -147,6 +151,7 @@ const iconMap = {
     faCircleInfo: faCircleInfo,
     faComet: faComet,
     faComment: faComment,
+    faCopy: faCopy,
     faCommentsQuestion: faCommentsQuestion,
     faDisplayChartUp: faDisplayChartUp,
     faEarthAmericas: faEarthAmericas,
@@ -171,6 +176,7 @@ const iconMap = {
     faLightbulb: faLightbulb,
     faLightbulbOn: faLightbulbOn,
     faMagnifyingGlassDollar: faMagnifyingGlassDollar,
+    faMailboxFlagUp: faMailboxFlagUp,
     faMapLocationDot: faMapLocationDot,
     faMessageMedical: faMessageMedical,
     faMosquito: faMosquito,
@@ -212,6 +218,7 @@ const iconMapDuoTone = {
     faCircleInfoDT: faCircleInfoDT,
     faCometDT: faCometDT,
     faCommentDT: faCommentDT,
+    faCopyDT: faCopyDT,
     faCommentsQuestionDT: faCommentsQuestionDT,
     faDisplayChartUpDT: faDisplayChartUpDT,
     faEarthAmericasDT: faEarthAmericasDT,
@@ -236,6 +243,7 @@ const iconMapDuoTone = {
     faLightbulbDT: faLightbulbDT,
     faLightbulbOnDT: faLightbulbOnDT,
     faMagnifyingGlassDollarDT: faMagnifyingGlassDollarDT,
+    faMailboxFlagUpDT: faMailboxFlagUpDT,
     faMapLocationDotDT: faMapLocationDotDT,
     faMessageMedicalDT: faMessageMedicalDT,
     faMosquitoDT: faMosquitoDT,
@@ -292,12 +300,14 @@ export const gradingIconDuo = faScaleUnbalanced;
 export const imageIcon = faFileImage;
 export const infoIcon = faCircleInfo;
 export const issueIcon = faFileLines;
+export const issuesIcon = faCopy;
 export const keyIcon = faKey;
 export const linkIcon = faLink;
 export const loginIcon = faArrowDownToArc;
 export const logoutIcon = faArrowRightFromArc;
 export const logoIcon = faComet;
 export const mapsIcon = faMapLocationDot;
+export const mailIcon = faMailboxFlagUp;
 export const marvelKlubbenIcon = faBadge;
 export const moreIcon = faChevronDown;
 export const githubMessageIcon = faMessageMedical;
@@ -344,10 +354,12 @@ export const gradingIconDuoTone = faScaleUnbalancedDT;
 export const imageIconDuoTone = faFileImageDT;
 export const infoIconDuoTone = faCircleInfoDT;
 export const issueIconDuoTone = faFileLinesDT;
+export const issuesIconDuoTone = faCopyDT;
 export const keyIconDuoTone = faKeyDT;
 export const loginIconDuoTone = faArrowDownToArcDT;
 export const logoIconDuoTone = faCometDT;
 export const mapsIconDuoTone = faMapLocationDotDT;
+export const mailIconDuoTone = faMailboxFlagUpDT;
 export const marvelKlubbenIconDuoTone = faBadgeDT;
 export const moreIconDuoTone = faChevronDownDT;
 export const lessIconDuoTone = faChevronUpDT;

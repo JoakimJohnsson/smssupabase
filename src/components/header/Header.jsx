@@ -9,11 +9,10 @@ export const Header = () => {
 
     const {informationMessage, user, profile} = useAppContext();
 
-    return user && profile && (
+    return user && profile &&
         <header className={"sms-header"}>
             <SkipLink/>
             <AuthorizedNavigation/>
             <Information message={informationMessage}/>
         </header>
-    )
 };

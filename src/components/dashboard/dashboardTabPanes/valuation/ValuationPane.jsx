@@ -99,68 +99,66 @@ export const ValuationPane = () => {
     };
 
     return (
-        <div className="col-12">
-            <div className="row row-padding--main">
-                <HeadingWithBreadCrumbs text={PANES.VALUATION.NAME}/>
-                <div className={"col-12 col-md-8 col-xxl-6"}>
-                    <p className={"lead"}>{PANES.VALUATION.LEAD}</p>
-                </div>
-                {
-                    totalValuationValuesForUser && !!totalValuationValuesForUser.length &&
-                    <p>
-                        {PANES.VALUATION.COLLECTING_VALUE_1} <span
-                        className={"text-grade"}>{totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value}</span> kr.
-                    </p>
-                }
-                {
-                    loadingState === LOADING_STATES.GENERAL ?
-                        <OverlaySpinner/>
-                        :
-                        <div className={"row"}>
-                            <div className={"col-12"}>
-                                <div className={"mb-3"}>
-                                    {
-                                        loadingState === LOADING_STATES.NEW_VALUE ?
-                                            <NoDataAvailable isValuation/>
-                                            :
-                                            <FunctionButton
-                                                variant={"btn-outline-primary"}
-                                                label={LABELS.COMMON.VALUATION_CALCULATE}
-                                                icon={valueIconDuoTone}
-                                                onClick={handleDoCalculateAndAddNewValue}
-                                                disabled={loadingState === LOADING_STATES.NEW_VALUE}
-                                            />
-                                    }
-                                </div>
-                                {totalValuationValuesForUser && !!totalValuationValuesForUser.length &&
-                                    <ResponsiveContainer width="100%" height={300}>
-                                        <LineChart
-                                            width={600}
-                                            height={300}
-                                            data={totalValuationValuesForUser}
-                                            margin={{top: 10, right: 10, left: 10, bottom: 10}}
-                                        >
-                                            <CartesianGrid strokeDasharray="3 3"/>
-                                            <XAxis interval={3}
-                                                   tickFormatter={(tick) => getTinyFriendlyDateFromTimestamp(tick)}
-                                                   dataKey="total_valuation_date"/>
-                                            <YAxis/>
-                                            <Tooltip content={<CustomTooltip/>}/>
-                                            <Legend/>
-                                            <Line
-                                                name={LABELS.COMMON.VALUE}
-                                                type="monotone"
-                                                dataKey="total_valuation_value"
-                                                stroke="#ffd700"
-                                                activeDot={{r: 8}}
-                                            />
-                                        </LineChart>
-                                    </ResponsiveContainer>
+        <>
+            <HeadingWithBreadCrumbs text={PANES.VALUATION.NAME}/>
+            <div className={"col-12 col-md-8 col-xxl-6"}>
+                <p className={"lead"}>{PANES.VALUATION.LEAD}</p>
+            </div>
+            {
+                totalValuationValuesForUser && !!totalValuationValuesForUser.length &&
+                <p>
+                    {PANES.VALUATION.COLLECTING_VALUE_1} <span
+                    className={"text-grade"}>{totalValuationValuesForUser[totalValuationValuesForUser.length - 1].total_valuation_value}</span> kr.
+                </p>
+            }
+            {
+                loadingState === LOADING_STATES.GENERAL ?
+                    <OverlaySpinner/>
+                    :
+                    <div className={"row"}>
+                        <div className={"col-12"}>
+                            <div className={"mb-3"}>
+                                {
+                                    loadingState === LOADING_STATES.NEW_VALUE ?
+                                        <NoDataAvailable isValuation/>
+                                        :
+                                        <FunctionButton
+                                            variant={"btn-outline-primary"}
+                                            label={LABELS.COMMON.VALUATION_CALCULATE}
+                                            icon={valueIconDuoTone}
+                                            onClick={handleDoCalculateAndAddNewValue}
+                                            disabled={loadingState === LOADING_STATES.NEW_VALUE}
+                                        />
                                 }
                             </div>
+                            {totalValuationValuesForUser && !!totalValuationValuesForUser.length &&
+                                <ResponsiveContainer width="100%" height={300}>
+                                    <LineChart
+                                        width={600}
+                                        height={300}
+                                        data={totalValuationValuesForUser}
+                                        margin={{top: 10, right: 10, left: 10, bottom: 10}}
+                                    >
+                                        <CartesianGrid strokeDasharray="3 3"/>
+                                        <XAxis interval={3}
+                                               tickFormatter={(tick) => getTinyFriendlyDateFromTimestamp(tick)}
+                                               dataKey="total_valuation_date"/>
+                                        <YAxis/>
+                                        <Tooltip content={<CustomTooltip/>}/>
+                                        <Legend/>
+                                        <Line
+                                            name={LABELS.COMMON.VALUE}
+                                            type="monotone"
+                                            dataKey="total_valuation_value"
+                                            stroke="#ffd700"
+                                            activeDot={{r: 8}}
+                                        />
+                                    </LineChart>
+                                </ResponsiveContainer>
+                            }
                         </div>
-                }
-            </div>
-        </div>
+                    </div>
+            }
+        </>
     )
 }

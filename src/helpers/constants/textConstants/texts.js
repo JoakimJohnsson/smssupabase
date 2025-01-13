@@ -104,7 +104,6 @@ export const TEXTS = {
     SHOWING_LATEST_TITLES_STEP_3: "För varje publikation - lägg till skickgradering",
     SHOWING_LATEST_TITLES_STEP_4: "På titeln - populera alla publikationer med grundvärden för skickgradering",
     SHOWING_LATEST_USERS: "Visar de senast uppdaterade användarna från databasen.",
-    SIGN_UP_SUCCESS_TEXT: "Visar de senast inlagda förlagen från databasen.",
     SOURCE_EXAMPLE: "EXEMPEL: Titel #1 (år) - https://comics.org/issue/12345; Amazing Spiderman #225 (1998) - https://comics.org/issue/23543254",
     STATUS_404_ROUTE: "Hittade tyvärr ingen route för",
     TOTAL_ISSUE_COUNT: "Totalt antal inlagda publikationer:",

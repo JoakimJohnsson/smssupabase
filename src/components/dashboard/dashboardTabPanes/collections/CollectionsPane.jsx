@@ -19,24 +19,22 @@ export const CollectionsPane = () => {
     }, [])
 
     return (
-        <div className="col-12">
-            <div className="row row-padding--main">
-                <HeadingWithBreadCrumbs text={PANES.COLLECTIONS.NAME}/>
-                {
-                    loading ?
-                        <OverlaySpinner/>
-                        :
-                        <ul className={"sms-list--with-cards"}>
-                            {
-                                usersData.map((user) =>
-                                    // List public users other than profile
-                                    user?.is_public === 1 && user.id !== profile.id &&
-                                    <CollectionsPaneListItem user={user} key={user.id}/>
-                                )
-                            }
-                        </ul>
-                }
-            </div>
-        </div>
+        <>
+            <HeadingWithBreadCrumbs text={PANES.COLLECTIONS.NAME}/>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <ul className={"sms-list--with-cards"}>
+                        {
+                            usersData.map((user) =>
+                                // List public users other than profile
+                                user?.is_public === 1 && user.id !== profile.id &&
+                                <CollectionsPaneListItem user={user} key={user.id}/>
+                            )
+                        }
+                    </ul>
+            }
+        </>
     )
 }

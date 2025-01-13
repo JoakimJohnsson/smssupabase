@@ -39,48 +39,45 @@ export const AdminPublisher = () => {
         setNewPublisher({...publisher});
     }, [publisher])
 
-    return objectDoesExist(publisher) ? (
-            <main id="main-content" className={"container-fluid main-container"}>
-                {
-                    loading ?
-                        <div className={"row row-padding--main"}>
-                            <OverlaySpinner/>
+    return objectDoesExist(publisher) ?
+        <>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <>
+                        <div className={"sms-page-col"}>
+                            <HeadingWithBreadCrumbs text={publisher.name}/>
+                            <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
+                            <IconButton variant={"primary"} icon={publishersIconDuoTone}
+                                        onClick={() => navigate(`/publishers/${publisher.id}`)}
+                                        label={publisher.name}/>
                         </div>
-                        :
-                        <>
-                            <div className={"row row-padding--main"}>
-                                <div className={"sms-page-col--full"}>
-                                    <HeadingWithBreadCrumbs text={publisher.name}/>
-                                    <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
-                                    <IconButton variant={"primary"} icon={publishersIconDuoTone} onClick={() => navigate(`/publishers/${publisher.id}`)}
-                                                label={publisher.name}/>
+                        <div className={"row"}>
+                            <AdminPublisherInfoEdit publisher={publisher} setPublisher={setPublisher}
+                                                    newPublisher={newPublisher}
+                                                    setNewPublisher={setNewPublisher}/>
+                            <div className={"sms-dashboard-col"}>
+                                <div className={"sms-section--light"}>
+                                    <ImageUploader
+                                        imageUrl={imageUrl}
+                                        setImageUrl={setImageUrl}
+                                        imageFilename={imageFilename}
+                                        setImageFilename={setImageFilename}
+                                        uploading={uploading}
+                                        setUploading={setUploading}
+                                        bucketName={BUCKETS.PUBLISHER_IMAGES}
+                                        tableName={TABLES.PUBLISHERS}
+                                        fileType={FILETYPES.PUBLISHER_IMAGE}
+                                        id={publisher.id}
+                                        update={fetchPublisherAndTitlesData}
+                                    />
                                 </div>
                             </div>
-                            <div className={"row row-padding--secondary"}>
-                                <AdminPublisherInfoEdit publisher={publisher} setPublisher={setPublisher} newPublisher={newPublisher}
-                                                        setNewPublisher={setNewPublisher}/>
-                                <div className={"sms-dashboard-col"}>
-                                    <div className={"sms-section--light"}>
-                                        <ImageUploader
-                                            imageUrl={imageUrl}
-                                            setImageUrl={setImageUrl}
-                                            imageFilename={imageFilename}
-                                            setImageFilename={setImageFilename}
-                                            uploading={uploading}
-                                            setUploading={setUploading}
-                                            bucketName={BUCKETS.PUBLISHER_IMAGES}
-                                            tableName={TABLES.PUBLISHERS}
-                                            fileType={FILETYPES.PUBLISHER_IMAGE}
-                                            id={publisher.id}
-                                            update={fetchPublisherAndTitlesData}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </>
-                }
-            </main>
-        )
+                        </div>
+                    </>
+            }
+        </>
         :
         <NoMatch/>
 }

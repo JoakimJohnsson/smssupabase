@@ -69,11 +69,27 @@
 }
 
 .bg-danger--lighter {
-  background-color: $danger--darker !important;
+  background-color: $danger--lighter !important;
 }
 
 .bg-danger--darker {
-  background-color: $danger--lighter !important;
+  background-color: $danger--darker !important;
+}
+
+.bg-grade--darker {
+  background-color: $grade--darker !important;
+}
+
+.bg-grade--lighter {
+  background-color: $grade--lighter !important;
+}
+
+.bg-country--darker {
+  background-color: $country--darker !important;
+}
+
+.bg-country--lighter {
+  background-color: $country--lighter !important;
 }
 
 .bg-format-0 {

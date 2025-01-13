@@ -74,27 +74,23 @@ export const AdminMessages = () => {
     }, [messagesData]);
 
     return (
-        <main id="main-content" className={"container-fluid main-container"}>
-            <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
-                    <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
-                    <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
-                    <a href={"#global-message-section"}
-                       className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
-                        <Icon icon={globalIconDuoTone}
-                              className={"btn-cta--icon"}/>{LABELS.COMMON.MESSAGES_GLOBAL_SEND}
-                    </a>
-                </div>
+        <>
+            <div className={"sms-page-col"}>
+                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
+                <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
+                <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
+                <a href={"#global-message-section"}
+                   className={"btn btn-primary btn-cta d-inline-block d-xxl-none mb-4"}>
+                    <Icon icon={globalIconDuoTone}
+                          className={"btn-cta--icon"}/>{LABELS.COMMON.MESSAGES_GLOBAL_SEND}
+                </a>
             </div>
-            <div className={"row row-padding--secondary"}>
-                <div className={"sms-page-col--full mb-5"}>
+            <div className={"row"}>
+                <div className={"sms-page-col"}>
                     <div className={"sms-section--light"}>
                         {
                             loading ?
-                                <div className={"row row-padding--main"}>
-                                    <OverlaySpinner/>
-                                </div>
+                                <OverlaySpinner/>
                                 :
                                 <>
                                     <h2>{LABELS.COMMON.MESSAGES_RECEIVED}</h2>
@@ -134,6 +130,6 @@ export const AdminMessages = () => {
                     </div>
                 </div>
             </div>
-        </main>
+        </>
     )
 }

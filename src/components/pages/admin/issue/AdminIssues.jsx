@@ -16,14 +16,12 @@ export const AdminIssues = () => {
     const {query, setSearchParams, filteredData, itemsToShow, setItemsToShow, loading} = useShowMoreFilteredData();
 
     return (
-        <main id="main-content" className={"container-fluid main-container"}>
-            <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
-                    <FilterFormSimple query={query} setSearchParams={setSearchParams}
-                                      placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
-                    <p className={"text-uppercase fs-large placeholder-glow"}>
-                        {TEXTS.SHOWING} <span className={"fw-bolder"}>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
+            <FilterFormSimple query={query} setSearchParams={setSearchParams}
+                              placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
+            <p className={"text-uppercase fs-large placeholder-glow"}>
+                {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredData && filteredData.length ?
                                 itemsToShow < filteredData.length ?
@@ -34,25 +32,25 @@ export const AdminIssues = () => {
                                 <LazyTextPlaceholder charCount={2}/>
                         }
                         </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
-                        <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
-                    </p>
-                    {
-                        loading ?
-                            <OverlaySpinner/>
-                            :
-                            <ul className={"sms-list--with-cards"}>
-                                {
-                                    filteredData.slice(0, itemsToShow)
-                                        .map(issue => (
-                                            <IssueLinkCard key={issue.id} issue={issue} admin/>
-                                        ))
-                                }
-                            </ul>
-                    }
-                    {
-                        filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&
-                        <p className={"text-uppercase fs-large placeholder-glow"}>
-                            {TEXTS.SHOWING} <span className={"fw-bolder"}>
+                <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
+            </p>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <ul className={"sms-list--with-cards"}>
+                        {
+                            filteredData.slice(0, itemsToShow)
+                                .map(issue => (
+                                    <IssueLinkCard key={issue.id} issue={issue} admin/>
+                                ))
+                        }
+                    </ul>
+            }
+            {
+                filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&
+                <p className={"text-uppercase fs-large placeholder-glow"}>
+                    {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredData && filteredData.length ?
                                 itemsToShow < filteredData.length ?
@@ -63,12 +61,10 @@ export const AdminIssues = () => {
                                 <LazyTextPlaceholder charCount={2}/>
                         }
                         </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
-                            <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
-                        </p>
-                    }
-                    <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
-                </div>
-            </div>
-        </main>
+                    <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
+                </p>
+            }
+            <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
+        </div>
     )
 }

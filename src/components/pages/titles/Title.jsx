@@ -193,188 +193,185 @@ export const Title = () => {
         }
     };
 
-    return objectDoesExist(title) ? (
-            <main id="main-content" className={"container-fluid main-container"}>
-                <div className={"row row-padding--main"}>
-                    {
-                        loading ?
-                            <OverlaySpinner/>
-                            :
-                            <>
-                                <div className={"sms-page-col"}>
-                                    <HeadingWithBreadCrumbs
-                                        text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
-                                </div>
-                                <div className={"col-12 col-lg-5 col-xl-4 mb-5"}>
-                                    <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
-                                    {
-                                        titleProgress.progress === 0 ?
-                                            <button
-                                                aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                                                className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
-                                                onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, false)}>
-                                                {
-                                                    isCollectingTitle ?
-                                                        <>{TEXTS.COLLECT_TITLE_STOP + " " + title.name}</>
-                                                        :
-                                                        <>{TEXTS.COLLECT_TITLE_START + " " + title.name}</>
-                                                }
-                                            </button>
-                                            :
-                                            <p>{TEXTS.COLLECT_TITLE_STOP_REMOVE}</p>
-                                    }
-                                    <div className={"mb-3"}>
-                                        <FormatBadge formatId={title.format_id}/>
-                                        <StarReviewBadge item={title}/>
-                                    </div>
-                                    {
-                                        title.description &&
-                                        <>
-                                            <p>{title.description}</p>
-                                            <p>
-                                                <span className={"me-2"}>{TEXTS.TOTAL_PUBLISHED}</span>
-                                                {title.total_issues}
-                                                <span className={"ms-2"}>
+    return objectDoesExist(title) ?
+        <div className={"row"}>
+            {
+                loading ?
+                    <OverlaySpinner/>
+                    :
+                    <>
+                        <div className={"col-12"}>
+                            <HeadingWithBreadCrumbs
+                                text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
+                        </div>
+                        <div className={"col-12 col-lg-5 col-xl-4 mb-5"}>
+                            <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
+                            {
+                                titleProgress.progress === 0 ?
+                                    <button
+                                        aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
+                                        className={`btn ${isCollectingTitle ? "btn-success" : "btn-outline-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center mb-4`}
+                                        onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, false)}>
+                                        {
+                                            isCollectingTitle ?
+                                                <>{TEXTS.COLLECT_TITLE_STOP + " " + title.name}</>
+                                                :
+                                                <>{TEXTS.COLLECT_TITLE_START + " " + title.name}</>
+                                        }
+                                    </button>
+                                    :
+                                    <p>{TEXTS.COLLECT_TITLE_STOP_REMOVE}</p>
+                            }
+                            <div className={"mb-3"}>
+                                <FormatBadge formatId={title.format_id}/>
+                                <StarReviewBadge item={title}/>
+                            </div>
+                            {
+                                title.description &&
+                                <>
+                                    <p>{title.description}</p>
+                                    <p>
+                                        <span className={"me-2"}>{TEXTS.TOTAL_PUBLISHED}</span>
+                                        {title.total_issues}
+                                        <span className={"ms-2"}>
                                                 {title.total_issues > 1 ? TEXTS.TOTAL_PUBLISHED_PUBLICATIONS : TEXTS.TOTAL_PUBLISHED_PUBLICATION}
                                             </span>
-                                            </p>
-                                        </>
-                                    }
-                                    {
-                                        title.wiki_url &&
-                                        <a className={"d-block"} href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
-                                            {LABELS.SECTIONS.TITLES.SERIEWIKIN_FOR} {title.name}
-                                            <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                        </a>
-                                    }
-                                    {
-                                        title.comics_org_url &&
-                                        <a className={"d-block"} href={title.comics_org_url} target={"_blank"}
-                                           rel={"noreferrer"}>
-                                            {title.name} {LABELS.SECTIONS.TITLES.ON_COMICS_ORG}
-                                            <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
-                                        </a>
-                                    }
-                                    <SeriekatalogenTitleLink titleName={title.name}/>
-                                </div>
-                                <div className={"col-12 col-lg-7 col-xl-8"}>
-                                    <IconLink
-                                        variant={"primary"}
-                                        icon={titlesIconDuoTone}
-                                        path={ROUTES.DASHBOARD.PATH_MY_TITLES}
-                                        label={LABELS.SECTIONS.DASHBOARD.LINKS.MY_TITLES}
+                                    </p>
+                                </>
+                            }
+                            {
+                                title.wiki_url &&
+                                <a className={"d-block"} href={title.wiki_url} target={"_blank"} rel={"noreferrer"}>
+                                    {LABELS.SECTIONS.TITLES.SERIEWIKIN_FOR} {title.name}
+                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                </a>
+                            }
+                            {
+                                title.comics_org_url &&
+                                <a className={"d-block"} href={title.comics_org_url} target={"_blank"}
+                                   rel={"noreferrer"}>
+                                    {title.name} {LABELS.SECTIONS.TITLES.ON_COMICS_ORG}
+                                    <Icon icon={faArrowUpRightFromSquare} className={"ms-2"}/>
+                                </a>
+                            }
+                            <SeriekatalogenTitleLink titleName={title.name}/>
+                        </div>
+                        <div className={"col-12 col-lg-7 col-xl-8"}>
+                            <IconLink
+                                variant={"primary"}
+                                icon={titlesIconDuoTone}
+                                path={ROUTES.DASHBOARD.PATH_MY_TITLES}
+                                label={LABELS.SECTIONS.DASHBOARD.LINKS.MY_TITLES}
+                            />
+                            {
+                                profile && profile.role >= 1 &&
+                                <IconLink
+                                    variant={"primary"}
+                                    icon={editIconDuoTone}
+                                    path={`/admin/titles/${title.id}?edit=true`}
+                                    label={LABELS.COMMON.EDIT + " " + title.name}
+                                />
+                            }
+                            {
+                                isCollectingTitle &&
+                                <TitleProgress titleProgress={titleProgress}/>
+                            }
+                            <div className={"sms-btn-group"}>
+                                <FunctionButton
+                                    variant={isFavoriteTitle ? "btn-marvelklubben" : "btn-outline-secondary"}
+                                    icon={faHeart}
+                                    onClick={() => handleFavorite()}
+                                    label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
+                                />
+                                {
+                                    <FunctionButton
+                                        variant={listViewGradeValue ? "btn-grade" : "btn-outline-secondary"}
+                                        icon={valueIconDuoTone}
+                                        onClick={() => setListViewGradeValue(!listViewGradeValue)}
+                                        label={listViewGradeValue ? LABELS.COMMON.LIST_VIEW_GRADE_VALUE_HIDE : LABELS.COMMON.LIST_VIEW_GRADE_VALUE_SHOW}
+                                        disabled={!title.is_valued}
                                     />
-                                    {
-                                        profile && profile.role >= 1 &&
-                                        <IconLink
-                                            variant={"primary"}
-                                            icon={editIconDuoTone}
-                                            path={`/admin/titles/${title.id}?edit=true`}
-                                            label={LABELS.COMMON.EDIT + " " + title.name}
-                                        />
-                                    }
-                                    {
-                                        isCollectingTitle &&
-                                        <TitleProgress titleProgress={titleProgress}/>
-                                    }
-                                    <div className={"sms-btn-group"}>
-                                        <FunctionButton
-                                            variant={isFavoriteTitle ? "btn-marvelklubben" : "btn-outline-secondary"}
-                                            icon={faHeart}
-                                            onClick={() => handleFavorite()}
-                                            label={isFavoriteTitle ? TEXTS.REMOVE_FAVORITE : TEXTS.ADD_FAVORITE}
-                                        />
+                                }
+                                {
+                                    !listViewGradeValue ?
+                                        listViewGrid ?
+                                            <FunctionButton variant={"btn-outline-secondary"}
+                                                            icon={faList}
+                                                            onClick={() => setListViewGrid(!listViewGrid)}
+                                                            label={LABELS.COMMON.LIST_VIEW_LIST_SHOW}
+                                            />
+                                            :
+                                            <FunctionButton variant={"btn-success"}
+                                                            icon={faGrid}
+                                                            onClick={() => setListViewGrid(!listViewGrid)}
+                                                            label={LABELS.COMMON.LIST_VIEW_GRID_SHOW}
+                                            />
+                                        :
+                                        false
+                                }
+                                {
+                                    !listViewGradeValue && listViewGrid && (titleProgress.progress !== 100) ?
+                                        listViewMissing ?
+                                            <FunctionButton variant={"btn-success"}
+                                                            icon={faGrid2Plus}
+                                                            onClick={() => setListViewMissing(!listViewMissing)}
+                                                            label={LABELS.SECTIONS.TITLES.SHOW_ALL_ISSUES}
+                                            />
+                                            :
+                                            <FunctionButton variant={"btn-outline-secondary"}
+                                                            icon={faGrid2}
+                                                            onClick={() => setListViewMissing(!listViewMissing)}
+                                                            label={LABELS.SECTIONS.TITLES.SHOW_MISSING_ISSUES}
+                                            />
+                                        :
+                                        false
+                                }
+                            </div>
+                            {
+                                !listViewGradeValue ?
+                                    isCollectingTitle && listViewGrid &&
+                                    <div className={"sms-btn-group mb-4"}>
                                         {
-                                            <FunctionButton
-                                                variant={listViewGradeValue ? "btn-grade" : "btn-outline-secondary"}
-                                                icon={valueIconDuoTone}
-                                                onClick={() => setListViewGradeValue(!listViewGradeValue)}
-                                                label={listViewGradeValue ? LABELS.COMMON.LIST_VIEW_GRADE_VALUE_HIDE : LABELS.COMMON.LIST_VIEW_GRADE_VALUE_SHOW}
-                                                disabled={!title.is_valued}
+                                            titleProgress.progress !== 100 &&
+                                            <FunctionButton variant={"btn-outline-danger"}
+                                                            icon={faPlus}
+                                                            onClick={() => addAllIssues()}
+                                                            label={TEXTS.COLLECTING_ADD_ALL}
                                             />
                                         }
                                         {
-                                            !listViewGradeValue ?
-                                                listViewGrid ?
-                                                    <FunctionButton variant={"btn-outline-secondary"}
-                                                                    icon={faList}
-                                                                    onClick={() => setListViewGrid(!listViewGrid)}
-                                                                    label={LABELS.COMMON.LIST_VIEW_LIST_SHOW}
-                                                    />
-                                                    :
-                                                    <FunctionButton variant={"btn-success"}
-                                                                    icon={faGrid}
-                                                                    onClick={() => setListViewGrid(!listViewGrid)}
-                                                                    label={LABELS.COMMON.LIST_VIEW_GRID_SHOW}
-                                                    />
-                                                :
-                                                false
-                                        }
-                                        {
-                                            !listViewGradeValue && listViewGrid && (titleProgress.progress !== 100) ?
-                                                listViewMissing ?
-                                                    <FunctionButton variant={"btn-success"}
-                                                                    icon={faGrid2Plus}
-                                                                    onClick={() => setListViewMissing(!listViewMissing)}
-                                                                    label={LABELS.SECTIONS.TITLES.SHOW_ALL_ISSUES}
-                                                    />
-                                                    :
-                                                    <FunctionButton variant={"btn-outline-secondary"}
-                                                                    icon={faGrid2}
-                                                                    onClick={() => setListViewMissing(!listViewMissing)}
-                                                                    label={LABELS.SECTIONS.TITLES.SHOW_MISSING_ISSUES}
-                                                    />
-                                                :
-                                                false
+                                            titleProgress.progress > 0 &&
+                                            <FunctionButton variant={"btn-outline-danger"}
+                                                            icon={faTimes}
+                                                            onClick={() => removeAllIssues()}
+                                                            label={TEXTS.COLLECTING_REMOVE_ALL}
+                                            />
+
                                         }
                                     </div>
-                                    {
-                                        !listViewGradeValue ?
-                                            isCollectingTitle && listViewGrid &&
-                                            <div className={"sms-btn-group mb-4"}>
-                                                {
-                                                    titleProgress.progress !== 100 &&
-                                                    <FunctionButton variant={"btn-outline-danger"}
-                                                                    icon={faPlus}
-                                                                    onClick={() => addAllIssues()}
-                                                                    label={TEXTS.COLLECTING_ADD_ALL}
-                                                    />
-                                                }
-                                                {
-                                                    titleProgress.progress > 0 &&
-                                                    <FunctionButton variant={"btn-outline-danger"}
-                                                                    icon={faTimes}
-                                                                    onClick={() => removeAllIssues()}
-                                                                    label={TEXTS.COLLECTING_REMOVE_ALL}
-                                                    />
-
-                                                }
-                                            </div>
-                                            :
-                                            false
-                                    }
-                                    <Message originObject={title} originTable={TABLES.TITLES}/>
-                                    <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
-                                    {
-                                        isCollectingTitle && issueNeedsGrading &&
-                                        <div className={"alert alert-info d-flex align-items-center mb-4"}>
-                                            <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
-                                            {PANES.TITLES.GRADE_MISSING}
-                                        </div>
-                                    }
-                                    <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.SECTIONS.ISSUES.ISSUES}</h2>
-                                    <IssuesList issuesData={issuesData} showAdminInfo={false}
-                                                showCollectingButtons={isCollectingTitle}
-                                                listViewGrid={listViewGrid} listViewMissing={listViewMissing}
-                                                listViewGrades={listViewGradeValue}
-                                                fetchTitleProgress={fetchTitleProgress}
-                                                doUpdate={doUpdate}/>
+                                    :
+                                    false
+                            }
+                            <Message originObject={title} originTable={TABLES.TITLES}/>
+                            <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
+                            {
+                                isCollectingTitle && issueNeedsGrading &&
+                                <div className={"alert alert-info d-flex align-items-center mb-4"}>
+                                    <Icon icon={infoIconDuoTone} className={"me-3"} size={"2x"}/>
+                                    {PANES.TITLES.GRADE_MISSING}
                                 </div>
-                            </>
-                    }
-                </div>
-            </main>
-        )
+                            }
+                            <h2>{listViewGradeValue ? LABELS.SECTIONS.GRADES.GRADE_VALUE : LABELS.SECTIONS.ISSUES.ISSUES}</h2>
+                            <IssuesList issuesData={issuesData} showAdminInfo={false}
+                                        showCollectingButtons={isCollectingTitle}
+                                        listViewGrid={listViewGrid} listViewMissing={listViewMissing}
+                                        listViewGrades={listViewGradeValue}
+                                        fetchTitleProgress={fetchTitleProgress}
+                                        doUpdate={doUpdate}/>
+                        </div>
+                    </>
+            }
+        </div>
         :
         <NoMatch/>
 }

@@ -62,8 +62,7 @@ export const SmsMap = () => {
 
     return !positionPending ?
         <>
-            <div className={"col-12 py-4 py-sm-5 bg-whale"}>
-                <div className={"row row-padding--secondary"}>
+            <div className={"col-12"}>
                     <h2>{PANES.MAP.LOCATION}</h2>
                     {/* If allowed - show user location */}
                     <div className={"mb-4"}>
@@ -99,7 +98,7 @@ export const SmsMap = () => {
                     {/* Travel mode selector */}
                     {
                         selectedDestinationLocation &&
-                        <Form>
+                        <Form className={"mb-4"}>
                             <h2>{PANES.MAP.TRAVEL_MODES}</h2>
                             <div className="mb-3">
                                 <Form.Check
@@ -121,7 +120,6 @@ export const SmsMap = () => {
                             </div>
                         </Form>
                     }
-                </div>
             </div>
             {/* Map */}
             <div className={"sms-google-map p-0"}>

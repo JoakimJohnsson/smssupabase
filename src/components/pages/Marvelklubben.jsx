@@ -31,17 +31,16 @@ export const Marvelklubben = () => {
     );
 
     return (
-        <main id="main-content" className="container-fluid main-container">
-            <div className="row row-padding--main">
-                <div className="sms-page-col">
-                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
-                    <p className="lead">{TEXTS.MARVELKLUBBEN_LEAD}</p>
-                    <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
-                    <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"
-                                                       target="_blank">Wikipedia</a>.</p>
-                    <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NUMBER_TITLE_OR_YEAR}/>
-                    <p className={"text-uppercase fs-large placeholder-glow"}>
-                        {TEXTS.SHOWING} <span className={"fw-bolder"}>
+        <div className="sms-page-col">
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
+            <p className="lead">{TEXTS.MARVELKLUBBEN_LEAD}</p>
+            <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
+            <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"
+                                               target="_blank">Wikipedia</a>.</p>
+            <FilterFormSimple query={query} setSearchParams={setSearchParams}
+                              placeholder={TEXTS.FILTER_NUMBER_TITLE_OR_YEAR}/>
+            <p className={"text-uppercase fs-large placeholder-glow"}>
+                {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredData ?
                                 itemsToShow < filteredData.length ?
@@ -52,23 +51,23 @@ export const Marvelklubben = () => {
                                 <LazyTextPlaceholder charCount={2}/>
                         }
                         </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
-                        <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
-                    </p>
-                    {loading ?
-                        <OverlaySpinner/>
-                        :
-                        <ul className="sms-list--with-cards">
-                            {
-                                filteredData.slice(0, itemsToShow).map(issue => (
-                                    <IssueCard key={issue.id} issue={issue}/>
-                                ))
-                            }
-                        </ul>
-                    }
+                <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
+            </p>
+            {loading ?
+                <OverlaySpinner/>
+                :
+                <ul className="sms-list--with-cards">
                     {
-                        filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&
-                        <p className={"text-uppercase fs-large placeholder-glow"}>
-                            {TEXTS.SHOWING} <span className={"fw-bolder"}>
+                        filteredData.slice(0, itemsToShow).map(issue => (
+                            <IssueCard key={issue.id} issue={issue}/>
+                        ))
+                    }
+                </ul>
+            }
+            {
+                filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&
+                <p className={"text-uppercase fs-large placeholder-glow"}>
+                    {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredData ?
                                 itemsToShow < filteredData.length ?
@@ -79,12 +78,10 @@ export const Marvelklubben = () => {
                                 <LazyTextPlaceholder charCount={2}/>
                         }
                         </span> {TEXTS.SHOWING_OF} {filteredData ? filteredData.length :
-                            <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
-                        </p>
-                    }
-                    <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
-                </div>
-            </div>
-        </main>
+                    <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.ISSUES.ISSUES}
+                </p>
+            }
+            <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
+        </div>
     );
 };

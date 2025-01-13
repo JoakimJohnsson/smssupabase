@@ -6,8 +6,7 @@ import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadCrumbs} from "../headings";
-import {faMailboxFlagUp} from "@fortawesome/pro-regular-svg-icons";
-import {Icon} from "../icons";
+import {Icon, mailIcon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
@@ -65,31 +64,28 @@ const Profile = () => {
     }
 
     return (
-        <main id="main-content" className={"container-fluid main-container"}>
+        <>
             {
                 loading ?
-                    <div className={"row row-padding--main"}>
-                        <OverlaySpinner/>
-                    </div>
+                    <OverlaySpinner/>
                     :
                     <>
-                        <div className={"row row-padding--main"}>
-                            <div className={"sms-page-col"}>
-                                <HeadingWithBreadCrumbs text={LABELS.COMMON.SETTINGS}/>
-                                <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
-                                <p>{TEXTS.SETTINGS_INFO}</p>
-                                <p>
-                                    <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                                        <Icon icon={faMailboxFlagUp} className={"me-2"}/>
-                                        admin@svenskamarvelsamlare.se
-                                    </a>
-                                </p>
-                            </div>
+                        <div className={"sms-page-col"}>
+                            <HeadingWithBreadCrumbs text={LABELS.COMMON.SETTINGS}/>
+                            <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
+                            <p>{TEXTS.SETTINGS_INFO}</p>
+                            <p>
+                                <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                                    <Icon icon={mailIcon} className={"me-2"}/>
+                                    admin@svenskamarvelsamlare.se
+                                </a>
+                            </p>
                         </div>
-                        <div className={"row row-padding--secondary"}>
+                        <div className={"row"}>
                             <div className={"sms-dashboard-col"}>
                                 <div className={"sms-section--light h-100"}>
-                                    <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile} setNewProfile={setNewProfile}/>
+                                    <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile}
+                                                     setNewProfile={setNewProfile}/>
                                 </div>
                             </div>
                             <div className={"sms-dashboard-col"}>
@@ -130,7 +126,7 @@ const Profile = () => {
                         </div>
                     </>
             }
-        </main>
+        </>
     )
 }
 

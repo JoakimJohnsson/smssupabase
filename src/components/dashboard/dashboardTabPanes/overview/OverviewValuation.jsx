@@ -34,6 +34,12 @@ export const OverviewValuation = () => {
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.COMMON.VALUATION}</h2>
+                <IconLinkCtaLg
+                    variant={"grade"}
+                    icon={valueIconDuoTone}
+                    path={ROUTES.DASHBOARD.PATH_VALUATION}
+                    label={PANES.VALUATION.NAME}
+                />
                 <div className={"mb-3"}>
                     {
                         (totalValuationValuesForUser == null || totalValuationValuesForUser.length <= 0) &&
@@ -61,12 +67,6 @@ export const OverviewValuation = () => {
                                 </>
                     }
                 </div>
-                <IconLinkCtaLg
-                    variant={"grade"}
-                    icon={valueIconDuoTone}
-                    path={ROUTES.DASHBOARD.PATH_VALUATION}
-                    label={PANES.VALUATION.NAME}
-                />
             </div>
         </div>
     )

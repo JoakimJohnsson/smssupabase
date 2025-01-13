@@ -41,10 +41,10 @@ export const UserMessage = ({
             />
             {
                 open &&
-                <div className={"sms-section--light primary mb-3 p-3"}>
+                <div className={"sms-section--light variant variant--primary mb-3 p-3"}>
                     <h2>{LABELS.COMMON.MESSAGE_ADMIN_CREATE}</h2>
                     <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
-                    <p className={"h5 text-black"}>
+                    <p className={"h5"}>
                         {
                             topic_id &&
                             <Icon icon={getIconByName(getDataIcon(topicData, topic_id))} className={`me-2 fa-fw`}/>

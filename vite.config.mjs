@@ -25,5 +25,52 @@ export default defineConfig({
                 api: "modern-compiler",
             }
         }
+    },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        if (id.includes('react')) {
+                            return 'react';
+                        }
+                        if (id.includes('@fortawesome')) {
+                            return 'fontawesome';
+                        }
+                        if (id.includes('@supabase')) {
+                            return 'supabase';
+                        }
+                        if (id.includes('lodash')) {
+                            return 'lodash';
+                        }
+                        if (id.includes('recharts')) {
+                            return 'recharts';
+                        }
+                        if (id.includes('validator')) {
+                            return 'validator';
+                        }
+                        if (id.includes('d3')) {
+                            return 'd3';
+                        }
+                        if (id.includes('core-js')) {
+                            return 'core-js';
+                        }
+                        if (id.includes('@octokit')) {
+                            return 'octokit';
+                        }
+                        if (id.includes('@popperjs')) {
+                            return 'popperjs';
+                        }
+                        if (id.includes('jspdf')) {
+                            return 'jspdf';
+                        }
+                        if (id.includes('papaparse')) {
+                            return 'papaparse';
+                        }
+                        return 'vendor';
+                    }
+                }
+            }
+        }
     }
 });

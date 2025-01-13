@@ -22,15 +22,15 @@ export const OverviewTitles = ({titlesData}) => {
         <div className={"sms-dashboard-col--sm"}>
             <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
-                <p className={"mb-3"}>
-                    {PANES.OVERVIEW.COLLECTING_TITLES_1} {titlesData.length} {PANES.OVERVIEW.COLLECTING_TITLES_2} {totalTitles} {PANES.OVERVIEW.COLLECTING_TITLES_3}
-                </p>
                 <IconLinkCtaLg
                     variant={"primary"}
                     icon={titlesIconDuoTone}
                     path={ROUTES.DASHBOARD.PATH_MY_TITLES}
                     label={PANES.TITLES.NAME}
                 />
+                <p className={"mb-3"}>
+                    {PANES.OVERVIEW.COLLECTING_TITLES_1} {titlesData.length} {PANES.OVERVIEW.COLLECTING_TITLES_2} {totalTitles} {PANES.OVERVIEW.COLLECTING_TITLES_3}
+                </p>
             </div>
         </div>
         :

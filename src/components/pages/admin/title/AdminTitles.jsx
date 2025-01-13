@@ -53,35 +53,34 @@ export const AdminTitles = () => {
     }, [isnotvalued, isvalued, query, titlesData]);
 
     return (
-        <main id="main-content" className={"container-fluid main-container"}>
-            <div className={"row row-padding--main"}>
-                <div className={"sms-page-col"}>
-                    <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
-                    <FilterFormAdminTitles query={query} isvalued={isvalued} isnotvalued={isnotvalued} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
-                    <p className={"text-uppercase fs-large placeholder-glow"}>
-                        {TEXTS.SHOWING} <span className={"fw-bolder"}>
+        <div className={"sms-page-col"}>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
+            <FilterFormAdminTitles query={query} isvalued={isvalued} isnotvalued={isnotvalued}
+                                   setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
+            <p className={"text-uppercase fs-large placeholder-glow"}>
+                {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
                             filteredTitlesData ?
                                 filteredTitlesData.length
                                 :
                                 <LazyTextPlaceholder charCount={2}/>
                         }
-                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length : <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.TITLES.TITLES}
-                    </p>
-                    <div className={"sms-section--light"}>
-                        {
-                            filteredTitlesData ?
-                                <TitlesList titlesData={filteredTitlesData} setTitlesData={setTitlesData} showAdminInfo={true} query={query} showToolbox/>
-                                :
-                                <OverlaySpinner/>
-                        }
-                        <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
-                                    label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
-                        <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
-                                    label={LABELS.COMMON.BACK}/>
-                    </div>
-                </div>
+                        </span> {TEXTS.SHOWING_OF} {titlesData ? titlesData.length :
+                <LazyTextPlaceholder charCount={3}/>} {LABELS.SECTIONS.TITLES.TITLES}
+            </p>
+            <div className={"sms-section--light"}>
+                {
+                    filteredTitlesData ?
+                        <TitlesList titlesData={filteredTitlesData} setTitlesData={setTitlesData}
+                                    showAdminInfo={true} query={query} showToolbox/>
+                        :
+                        <OverlaySpinner/>
+                }
+                <IconButton variant={"primary"} icon={faPlus} onClick={() => navigate(ROUTES.ADMIN.TITLE_ADD)}
+                            label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
+                <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
+                            label={LABELS.COMMON.BACK}/>
             </div>
-        </main>
+        </div>
     )
 }

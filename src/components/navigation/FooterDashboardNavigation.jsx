@@ -6,7 +6,7 @@ import {
     collectionsIconDuoTone,
     overviewIconDuoTone,
     titlesIconDuoTone,
-    valueIconDuoTone, mapsIconDuoTone, moreIconDuoTone, lessIconDuoTone, titleIconDuoTone
+    valueIconDuoTone, mapsIconDuoTone, moreIconDuoTone, lessIconDuoTone, issueIconDuoTone
 } from "../icons";
 import {Nav, NavDropdown} from "react-bootstrap";
 import {FooterDashboardNavLink} from "./FooterDashboardNavLink";
@@ -39,7 +39,7 @@ export const FooterDashboardNavigation = () => {
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.MY_TITLES} text={PANES.TITLES.SHORT_NAME} variant={"primary"}
                                         icon={<Icon icon={titlesIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                 <FooterDashboardNavLink route={ROUTES.DASHBOARD.MY_ISSUES} text={PANES.ISSUES.SHORT_NAME} variant={"primary"}
-                                        icon={<Icon icon={titleIconDuoTone} size={"2x"} className={"m-0"}/>}/>
+                                        icon={<Icon icon={issueIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                 <div className={"d-none d-lg-flex"}>
                     <FooterDashboardNavLink route={ROUTES.DASHBOARD.VALUATION} text={PANES.VALUATION.NAME} variant={"grade"}
                                             icon={<Icon icon={valueIconDuoTone} size={"2x"} className={"m-0"}/>}/>

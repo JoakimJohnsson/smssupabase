@@ -27,7 +27,7 @@ export const GlobalMessage = ({
         <div className="mb-3">
 
             <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
-            <p className={"h5 text-white"}>
+            <p className={"h5"}>
                 {
                     topic_id &&
                     <Icon icon={getIconByName(getDataIcon(topicData, topic_id))} className={`me-2 fa-fw`}/>

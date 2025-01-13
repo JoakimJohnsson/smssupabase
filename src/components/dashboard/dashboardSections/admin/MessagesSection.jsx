@@ -28,7 +28,7 @@ export const MessagesSection = () => {
     }, [limitedMessagesData]);
 
     return (
-        <div className={"sms-page-col--full mb-5 "}>
+        <div className={"sms-page-col"}>
             <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.SECTIONS.MESSAGES.MESSAGES}</h2>
                 {
@@ -42,7 +42,8 @@ export const MessagesSection = () => {
                         :
                         <NoDataAvailable/>
                 }
-                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
+                <Link className={"btn btn-outline-primary sms-btn"}
+                      to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
             </div>
         </div>
     )
