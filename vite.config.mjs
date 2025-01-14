@@ -67,7 +67,6 @@ export default defineConfig({
                         if (id.includes('papaparse')) {
                             return 'papaparse';
                         }
-                        return 'vendor';
                     }
                 }
             }
