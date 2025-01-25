@@ -24,6 +24,7 @@ import {DashboardSection} from "./DashboardSection";
 import ReleaseNotes from "./ReleaseNotes.jsx";
 import {getTop5Issues, getTop5Titles} from "../../../helpers/databaseFunctions.js";
 import {TitlesListItem} from "../titles/TitlesListItem.jsx";
+import SearchBox from "../../SearchBox.jsx";
 
 
 export const Home = () => {
@@ -183,6 +184,7 @@ export const Home = () => {
             </div>
             <div className={"sms-section--light mb-5"}>
                 <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
+                <SearchBox route={ROUTES.TITLES} placeholder={TEXTS.SEARCH_TITLE_OR_YEAR} label={LABELS.SECTIONS.TITLES.TITLES}/>
                 <div className={"mb-4"}>
                     {
                         <>
@@ -227,6 +229,7 @@ export const Home = () => {
             </div>
             <div className={"sms-section--light mb-5"}>
                 <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
+                <SearchBox route={ROUTES.ISSUES} placeholder={TEXTS.SEARCH_NUMBER_TITLE_OR_YEAR} label={LABELS.SECTIONS.ISSUES.ISSUES}/>
                 <p className={"mb-4 placeholder-glow"}><span
                     className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
                     <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>

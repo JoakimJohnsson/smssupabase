@@ -18,6 +18,8 @@ const ReleaseNotes = () => {
             <ul className={"list-group list-group-flush mb-4"}>
                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
                 <li className={"list-group-item px-0"}>Recension heter numera Betyg överallt.</li>
+                <li className={"list-group-item px-0"}>Möjlighet att söka alla titlar och publikationer från startsidan.</li>
+                <li className={"list-group-item px-0"}>Sök och filter tar nu hänsyn till hela sökfrågan, vilket ger mer exakta resultat.</li>
             </ul>
             <Icon icon={faBinaryLock} size={"2x"} className={"fa-icon--cta"}/>
             <h3>{LABELS.COMMON.RELEASE_PREVIOUS}</h3>
