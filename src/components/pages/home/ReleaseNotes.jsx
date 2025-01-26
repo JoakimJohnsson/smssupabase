@@ -20,6 +20,7 @@ const ReleaseNotes = () => {
                 <li className={"list-group-item px-0"}>Recension heter numera Betyg överallt.</li>
                 <li className={"list-group-item px-0"}>Möjlighet att söka alla titlar och publikationer från startsidan.</li>
                 <li className={"list-group-item px-0"}>Sök och filter tar nu hänsyn till hela sökfrågan, vilket ger mer exakta resultat.</li>
+                <li className={"list-group-item px-0"}>Förbättrad komponent för att lägga till betyg eller skicka meddelande på titel och publikation.</li>
             </ul>
             <Icon icon={faBinaryLock} size={"2x"} className={"fa-icon--cta"}/>
             <h3>{LABELS.COMMON.RELEASE_PREVIOUS}</h3>
