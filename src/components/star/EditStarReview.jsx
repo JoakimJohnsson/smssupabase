@@ -8,7 +8,7 @@ import React, {useState} from "react";
 
 export const EditStarReview = ({stars, setStars, saveReview}) => {
 
-    const [open, setOpen] = useState(false);
+    const [openReview, setOpen] = useState(false);
     const baseClasses = "hocus-standard me-2";
     const activeClasses = "text-grade px-2 py-1 border border-grade rounded-5";
     const inactiveClasses = "text-grade-100 p-2 border border-light rounded-3";
