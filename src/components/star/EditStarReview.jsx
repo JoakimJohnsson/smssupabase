@@ -17,6 +17,7 @@ export const EditStarReview = ({stars, setStars, saveReview}) => {
         const newStars = index + 1;
         setStars(newStars);
         saveReview(newStars);
+
     }
 
     return (

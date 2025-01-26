@@ -224,6 +224,7 @@ export const MessageReview = ({originObject, originTable, stars, setStars, saveR
                                     aria-label={`${LABELS.COMMON.SET_REVIEW} ${index + 1} stars`}
                                 ><Icon icon={index < stars ? faStar : faStarRegular}/></span>
                             ))}
+
                         </div>
                     </div>
                 }
