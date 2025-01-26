@@ -17,9 +17,8 @@ import {getIconByName, Icon} from "../icons/index.jsx";
 import {handleInput} from "../../services/serviceFunctions.js";
 import {addMessageData} from "../../services/messageService.js";
 import {CONFIG} from "../../helpers/constants/configConstants.jsx";
-import {faStar} from "@fortawesome/pro-solid-svg-icons";
-import {faStar as faStarRegular} from "@fortawesome/pro-regular-svg-icons";
 import {useAppContext} from "../../context/AppContext.jsx";
+import {EditStarReview} from "../star/EditStarReview.jsx";
 
 
 export const MessageReview = ({originObject, originTable, stars, setStars, saveReview}) => {
@@ -103,22 +102,22 @@ export const MessageReview = ({originObject, originTable, stars, setStars, saveR
     return (
         <>
             <div>
-            <div className={"sms-btn-group"}>
-                <FunctionButton
-                    variant={open.message ? "btn-primary" : "btn-outline-secondary"}
-                    icon={open.message ? faTimes : faMessages}
-                    onClick={() => setOpen({"message": !open.message, "review": false})}
-                    label={open.message ? LABELS.SECTIONS.MESSAGES.MESSAGE_CLOSE : LABELS.SECTIONS.MESSAGES.MESSAGE_SHOW}
-                    showLabel={true}
-                />
-                <FunctionButton
-                    variant={open.review ? "btn-warning" : "btn-outline-secondary"}
-                    icon={open.review ? faTimes : faStarDuoTone}
-                    onClick={() => setOpen({message: false, review: !open.review})}
-                    label={open.review ? LABELS.COMMON.CLOSE_REVIEW : LABELS.COMMON.REVIEW}
-                    showLabel={true}
-                />
-            </div>
+                <div className={"sms-btn-group"}>
+                    <FunctionButton
+                        variant={open.message ? "btn-primary" : "btn-outline-secondary"}
+                        icon={open.message ? faTimes : faMessages}
+                        onClick={() => setOpen({"message": !open.message, "review": false})}
+                        label={open.message ? LABELS.SECTIONS.MESSAGES.MESSAGE_CLOSE : LABELS.SECTIONS.MESSAGES.MESSAGE_SHOW}
+                        showLabel={true}
+                    />
+                    <FunctionButton
+                        variant={open.review ? "btn-warning" : "btn-outline-secondary"}
+                        icon={open.review ? faTimes : faStarDuoTone}
+                        onClick={() => setOpen({message: false, review: !open.review})}
+                        label={open.review ? LABELS.COMMON.CLOSE_REVIEW : LABELS.COMMON.REVIEW}
+                        showLabel={true}
+                    />
+                </div>
 
                 {
                     open.message &&
@@ -207,26 +206,8 @@ export const MessageReview = ({originObject, originTable, stars, setStars, saveR
 
                 {
                     open.review &&
-                    <div className={"sms-section--light variant variant--warning mb-4"}>
-                        <h2>{LABELS.COMMON.ADD_REVIEW}</h2>
-                        <div className={"mb-3 fs-1"}>
-                            <p className={"fs-3 mb-3"}>{LABELS.COMMON.REVIEW_YOURS}</p>
-                            {[...Array(5)].map((_, index) => (
-                                <span
-                                    className={`${baseClasses} ${index < stars ? activeClasses : inactiveClasses}`}
-                                    key={index}
-                                    onClick={() => handleEditStarReview(index)}
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter' || e.key === ' ') handleEditStarReview(index);
-                                    }}
-                                    tabIndex={0}
-                                    role="button"
-                                    aria-label={`${LABELS.COMMON.SET_REVIEW} ${index + 1} stars`}
-                                ><Icon icon={index < stars ? faStar : faStarRegular}/></span>
-                            ))}
-
-                        </div>
-                    </div>
+                    <EditStarReview stars={stars} baseClasses={baseClasses} activeClasses={activeClasses}
+                                    inactiveClasses={inactiveClasses} handleEditStarReview={handleEditStarReview}/>
                 }
             </div>
         </>
