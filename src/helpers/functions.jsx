@@ -69,6 +69,9 @@ export const getDataIcon = (data, id) => {
 export const getLogoIcon = () => {
 
     // const iconSet = LOGO_ICONS.DEFAULT;
+
+    console.log("isChristmasTime: " + isChristmasTime());
+
     const iconSet = isChristmasTime() ? LOGO_ICONS.XMAS : LOGO_ICONS.DEFAULT;
 
     if (Math.random() < CONFIG.FREQUENT_ICON_PROBABILITY) {
@@ -353,17 +356,19 @@ export const getCurrentDate = () => {
 export const isChristmasTime = () => {
     const now = new Date();
     const currentYear = now.getFullYear();
-    // Define the start and end of the Christmas time period
-    const startOfXmas = new Date(currentYear, 10, 25); // November is month 10 (zero-indexed)
-    const endOfXmas = new Date(currentYear + 1, 0, 15); // January is month 0
-    // Check if the current date is within the range
-    if (now >= startOfXmas && now <= endOfXmas) {
-        return true;
+    const month = now.getMonth();
+    let startOfXmas, endOfXmas;
+
+    if (month === 0) { // January
+        startOfXmas = new Date(currentYear - 1, 10, 25); // November 25 of the previous year
+        endOfXmas = new Date(currentYear, 0, 15); // January 15 of the current year
+    } else { // December
+        startOfXmas = new Date(currentYear, 10, 25); // November 25 of the current year
+        endOfXmas = new Date(currentYear + 1, 0, 15); // January 15 of the next year
     }
-    // Special case for the start of the next year (January 1 to 15)
-    const startOfXmasPreviousYear = new Date(currentYear - 1, 10, 25);
-    return now >= startOfXmasPreviousYear && now <= endOfXmas;
-}
+
+    return now >= startOfXmas && now <= endOfXmas;
+};
 
 export const splitBySeparatorAndGetLastElement = (string, separator) => {
     const elements = string.split(separator);
