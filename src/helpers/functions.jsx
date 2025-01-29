@@ -67,13 +67,7 @@ export const getDataIcon = (data, id) => {
 };
 
 export const getLogoIcon = () => {
-
-    // const iconSet = LOGO_ICONS.DEFAULT;
-
-    console.log("isChristmasTime: " + isChristmasTime());
-
     const iconSet = isChristmasTime() ? LOGO_ICONS.XMAS : LOGO_ICONS.DEFAULT;
-
     if (Math.random() < CONFIG.FREQUENT_ICON_PROBABILITY) {
         // One logo returns more often (the first icon in the set)
         return iconSet[CONFIG.FREQUENT_ICON_INDEX];

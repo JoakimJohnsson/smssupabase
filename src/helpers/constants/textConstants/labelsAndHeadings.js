@@ -52,6 +52,7 @@ export const LABELS = {
         LIST_VIEW_LIST_SHOW: "Lista",
         LATEST_LOG_IN: "Senast inloggad:",
         LOG_IN: "Logga in",
+        MENU: "Meny",
         MESSAGE_ADMIN_CREATE: "Skicka ett meddelande till Admin",
         MESSAGE_GLOBAL: "Globalt meddelande",
         MESSAGES_GLOBAL: "Globala meddelanden",
