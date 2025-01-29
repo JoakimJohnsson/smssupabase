@@ -23,7 +23,7 @@ export const Issues = () => {
             <p className={"text-uppercase fs-large placeholder-glow"}>
                 {TEXTS.SHOWING} <span className={"fw-bolder"}>
                         {
-                            filteredData && filteredData.length ?
+                            filteredData && filteredData.length >= 0 ?
                                 itemsToShow < filteredData.length ?
                                     itemsToShow
                                     :

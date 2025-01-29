@@ -17,12 +17,19 @@ const ReleaseNotes = () => {
             <h3>{LABELS.COMMON.RELEASE_LATEST} v{packageJson.version} {utilsData && " | " + utilsData.release_date}</h3>
             <ul className={"list-group list-group-flush mb-4"}>
                 <li className={"list-group-item px-0"}>Blandade småfixar och förbättringar.</li>
-                <li className={"list-group-item px-0"}>Möjlighet att filtrera lista med Mina publikationer på skickgradering.</li>
-                <li className={"list-group-item px-0"}>Uppdaterad och förbättrad layout på knappar.</li>
+                <li className={"list-group-item px-0"}>Recension heter numera Betyg överallt.</li>
+                <li className={"list-group-item px-0"}>Möjlighet att söka alla titlar och publikationer från startsidan.</li>
+                <li className={"list-group-item px-0"}>Sök och filter tar nu hänsyn till hela sökfrågan, vilket ger mer exakta resultat.</li>
+                <li className={"list-group-item px-0"}>Förbättrad komponent för att lägga till betyg eller skicka meddelande på titel och publikation.</li>
+                <li className={"list-group-item px-0"}>Förbättrad gruppering av länkar i mobilmeny.</li>
             </ul>
             <Icon icon={faBinaryLock} size={"2x"} className={"fa-icon--cta"}/>
             <h3>{LABELS.COMMON.RELEASE_PREVIOUS}</h3>
             <ul className={"list-group list-group-flush mb-4"}>
+                <li className={"list-group-item px-0"}>Möjlighet att filtrera lista med Mina publikationer på
+                    skickgradering.
+                </li>
+                <li className={"list-group-item px-0"}>Uppdaterad och förbättrad layout på knappar.</li>
                 <li className={"list-group-item px-0"}>Möjlighet att exportera sina saknade publikationer som CSV och
                     PDF.
                 </li>
@@ -34,26 +41,6 @@ const ReleaseNotes = () => {
                 </li>
                 <li className={"list-group-item px-0"}>På prov - Slumpmässigt utvalda AI-genererade profilbilder för de
                     användare som ej lagt in en egen.
-                </li>
-                <li className={"list-group-item px-0"}>Möjlighet att visa värde för en enskild titel.</li>
-                <li className={"list-group-item px-0"}>Tydligare information om varianter.</li>
-                <li className={"list-group-item px-0"}>Förbättrad filtrering och funktion på olika sökfilter.</li>
-                <li className={"list-group-item px-0"}>Små förbättringar på startsidan, lite bättre
-                    användarupplevelse.
-                </li>
-                <li className={"list-group-item px-0"}>Förbättrad visning av efterlysta publikationer och publikationer
-                    som behöver uppgradering. Både i kontrollpanelen och på profilsida.
-                </li>
-                <li className={"list-group-item px-0"}>Ny vy i kontrollpanelen - Mina publikationer. Likt Mina titlar
-                    kan du här titta igenom alla publikationer i din samling.
-                </li>
-                <li className={"list-group-item px-0"}>Ytterligare förbättringar av publikationsväljaren.</li>
-                <li className={"list-group-item px-0"}>Möjlighet att lägga till sina favorittitlar och
-                    favoritpublikationer.
-                </li>
-                <li className={"list-group-item px-0"}>Förbättrad UX för funktionsknappar på titel och publikation.</li>
-                <li className={"list-group-item px-0"}>Prestandaförbättringar för databasen - minskat antal anrop och
-                    kortare svarstider.
                 </li>
             </ul>
             <Icon icon={faCrystalBall} size={"2x"} className={"fa-icon--cta"}/>
