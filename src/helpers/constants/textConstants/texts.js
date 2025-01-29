@@ -83,6 +83,8 @@ export const TEXTS = {
     REMOVE_ALL_VALUATION_VALUES_FOR_USER: "Ta bort alla sparade värderingar för användaren",
     REMOVE_ISSUE_WANTED: "Ta bort efterlysning",
     REMOVE_FAVORITE: "Ta bort favorit",
+    SEARCH_NUMBER_TITLE_OR_YEAR: "Sök på nummer, titel eller årtal",
+    SEARCH_TITLE_OR_YEAR: "Sök på titel eller årtal",
     SECTIONS: {
         GRADES: {},
         ISSUES: {},

@@ -67,10 +67,7 @@ export const getDataIcon = (data, id) => {
 };
 
 export const getLogoIcon = () => {
-
-    // const iconSet = LOGO_ICONS.DEFAULT;
     const iconSet = isChristmasTime() ? LOGO_ICONS.XMAS : LOGO_ICONS.DEFAULT;
-
     if (Math.random() < CONFIG.FREQUENT_ICON_PROBABILITY) {
         // One logo returns more often (the first icon in the set)
         return iconSet[CONFIG.FREQUENT_ICON_INDEX];
@@ -353,17 +350,19 @@ export const getCurrentDate = () => {
 export const isChristmasTime = () => {
     const now = new Date();
     const currentYear = now.getFullYear();
-    // Define the start and end of the Christmas time period
-    const startOfXmas = new Date(currentYear, 10, 25); // November is month 10 (zero-indexed)
-    const endOfXmas = new Date(currentYear + 1, 0, 15); // January is month 0
-    // Check if the current date is within the range
-    if (now >= startOfXmas && now <= endOfXmas) {
-        return true;
+    const month = now.getMonth();
+    let startOfXmas, endOfXmas;
+
+    if (month === 0) { // January
+        startOfXmas = new Date(currentYear - 1, 10, 25); // November 25 of the previous year
+        endOfXmas = new Date(currentYear, 0, 15); // January 15 of the current year
+    } else { // December
+        startOfXmas = new Date(currentYear, 10, 25); // November 25 of the current year
+        endOfXmas = new Date(currentYear + 1, 0, 15); // January 15 of the next year
     }
-    // Special case for the start of the next year (January 1 to 15)
-    const startOfXmasPreviousYear = new Date(currentYear - 1, 10, 25);
-    return now >= startOfXmasPreviousYear && now <= endOfXmas;
-}
+
+    return now >= startOfXmas && now <= endOfXmas;
+};
 
 export const splitBySeparatorAndGetLastElement = (string, separator) => {
     const elements = string.split(separator);
@@ -427,38 +426,45 @@ export const trimAndReplaceSwedishCharacters = (string, replacement = "") => {
 
 // Filter functions
 export const filterQueryByNameAndStartYear = (obj, query) => {
-    return (
-        obj.name.toLowerCase()
-            .includes(query.toLowerCase()) ||
-        obj.start_year.toString().toLowerCase()
-            .includes(query.toLowerCase()) ||
+    const lowerCaseQuery = query.toLowerCase();
+    const queryTerms = lowerCaseQuery.split(' ');
+
+    return queryTerms.every(term =>
+        obj.name.toLowerCase().includes(term) ||
+        obj.start_year.toString().toLowerCase().includes(term) ||
         query === ""
-    )
+    );
 };
 
 export const filterQueryByFirstNameAndLastName = (user, query) => {
-    return (
-        user.firstname?.toLowerCase()
-            .includes(query.toLowerCase()) ||
-        user.lastname?.toLowerCase()
-            .includes(query.toLowerCase()) ||
+    const lowerCaseQuery = query.toLowerCase();
+    const queryTerms = lowerCaseQuery.split(' ');
+
+    return queryTerms.every(term =>
+        user.firstname?.toLowerCase().includes(term) ||
+        user.lastname?.toLowerCase().includes(term) ||
         query === ""
-    )
+    );
 };
 
 export const filterQueryIssueByTitleNamePublisherNameYearAndSource = (issue, query, selectedGrades) => {
     const lowerCaseQuery = query.toLowerCase();
-    const matchesQuery = issue.id.toLowerCase().includes(lowerCaseQuery) ||
-        issue.titles.name.toLowerCase().includes(lowerCaseQuery) ||
-        issue.publishers.name.toString().toLowerCase().includes(lowerCaseQuery) ||
-        issue.year.toString().toLowerCase().includes(lowerCaseQuery) ||
-        issue.source.toString().toLowerCase().includes(lowerCaseQuery) ||
-        getIssueName(issue).toString().toLowerCase().includes(lowerCaseQuery) ||
-        query === "";
+    const queryTerms = lowerCaseQuery.split(' ');
+
+    const matchesQuery = queryTerms.every(term =>
+        issue.id.toLowerCase().includes(term) ||
+        issue.titles.name.toLowerCase().includes(term) ||
+        issue.publishers.name.toString().toLowerCase().includes(term) ||
+        issue.year.toString().toLowerCase().includes(term) ||
+        issue.source.toString().toLowerCase().includes(term) ||
+        getIssueName(issue).toString().toLowerCase().includes(term)
+    );
+
     let matchesGrades = true;
     if (selectedGrades?.length > 0) {
         matchesGrades = issue.grades?.some(grade => selectedGrades.includes(grade.grade.toString()));
     }
+
     return matchesQuery && matchesGrades;
 };
 
