@@ -24,6 +24,7 @@ import {DashboardSection} from "./DashboardSection";
 import ReleaseNotes from "./ReleaseNotes.jsx";
 import {getTop5Issues, getTop5Titles} from "../../../helpers/databaseFunctions.js";
 import {TitlesListItem} from "../titles/TitlesListItem.jsx";
+import SearchBox from "../../SearchBox.jsx";
 
 
 export const Home = () => {
@@ -159,19 +160,19 @@ export const Home = () => {
                             label={LABELS.COMMON.SETTINGS}
                         />
                         <p className={"m-0"}><span
-                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.FIRST_NAME}:</span> {profile.firstname}
+                            className={"text-label"}>{LABELS.SECTIONS.USERS.FIRST_NAME}:</span> {profile.firstname}
                         </p>
                         <p className={"m-0"}><span
-                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.LAST_NAME}:</span> {profile.lastname}
+                            className={"text-label"}>{LABELS.SECTIONS.USERS.LAST_NAME}:</span> {profile.lastname}
                         </p>
                         <p className={"m-0"}><span
-                            className={"text-label me-4"}>{LABELS.COMMON.WEBSITE}:</span> {profile.website}
+                            className={"text-label"}>{LABELS.COMMON.WEBSITE}:</span> {profile.website}
                         </p>
                         <p className={"m-0"}><span
-                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
+                            className={"text-label"}>{LABELS.SECTIONS.USERS.IS_PUBLIC}:</span> {profile.is_public === 0 ? "Nej" : "Ja"}
                         </p>
                         <p className={"mb-4"}><span
-                            className={"text-label me-4"}>{LABELS.SECTIONS.USERS.ALLOW_LOCATION_ACCESS}:</span> {profile.allow_location_access === 0 ? "Nej" : "Ja"}
+                            className={"text-label"}>{LABELS.SECTIONS.USERS.ALLOW_LOCATION_ACCESS}:</span> {profile.allow_location_access === 0 ? "Nej" : "Ja"}
                         </p>
                         <p>För frågor och förbättringsförslag:</p>
                         <a href={"mailto: admin@svenskamarvelsamlare.se"}>
@@ -183,18 +184,7 @@ export const Home = () => {
             </div>
             <div className={"sms-section--light mb-5"}>
                 <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
-
-                <p className={"text-label"}>{LABELS.SECTIONS.TITLES.TOP_5}</p>
-                <ul className={"sms-list--with-cards"}>
-                    {
-                        top5Titles &&
-                        top5Titles.map((title) => <TitlesListItem key={title.id} title={title}/>)
-                    }
-                </ul>
-
-                <p className={"mb-4 placeholder-glow"}><span
-                    className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ?
-                    <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
+                <SearchBox route={ROUTES.TITLES} placeholder={TEXTS.SEARCH_TITLE_OR_YEAR} label={LABELS.SECTIONS.TITLES.TITLES}/>
                 <div className={"mb-4"}>
                     {
                         <>
@@ -213,7 +203,18 @@ export const Home = () => {
                         </>
                     }
                 </div>
-                <h3>{TEXTS.LATEST_TITLES}</h3>
+                <p className={"mb-4 placeholder-glow"}><span
+                    className={"text-label"}>{TEXTS.TOTAL_TITLE_COUNT}</span> {loading ?
+                    <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
+
+                <p className={"text-label"}>{LABELS.SECTIONS.TITLES.TOP_5}</p>
+                <ul className={"sms-list--with-cards"}>
+                    {
+                        top5Titles &&
+                        top5Titles.map((title) => <TitlesListItem key={title.id} title={title}/>)
+                    }
+                </ul>
+                <p className={"text-label"}>{TEXTS.LATEST_TITLES}</p>
                 {
                     limitedTitlesData ?
                         <>
@@ -228,8 +229,10 @@ export const Home = () => {
             </div>
             <div className={"sms-section--light mb-5"}>
                 <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
-
-
+                <SearchBox route={ROUTES.ISSUES} placeholder={TEXTS.SEARCH_NUMBER_TITLE_OR_YEAR} label={LABELS.SECTIONS.ISSUES.ISSUES}/>
+                <p className={"mb-4 placeholder-glow"}><span
+                    className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
+                    <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
                 <p className={"text-label"}>{LABELS.SECTIONS.ISSUES.TOP_5}</p>
                 <ul className={"sms-list--with-cards"}>
                     {
@@ -237,11 +240,7 @@ export const Home = () => {
                         top5Issues.map((issue) => <IssueLinkCard key={issue.id} issue={issue}/>)
                     }
                 </ul>
-
-                <p className={"mb-4 placeholder-glow"}><span
-                    className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
-                    <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
-                <h3 className={"mb-3"}>{TEXTS.LATEST_ISSUES}</h3>
+                <p className={" text-label mb-3"}>{TEXTS.LATEST_ISSUES}</p>
                 {
                     limitedIssuesData ?
                         <ul className={"sms-list--with-cards"}>

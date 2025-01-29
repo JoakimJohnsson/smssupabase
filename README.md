@@ -22,6 +22,7 @@
     * [GitHub Actions for development](#github-actions-for-development)
     * [Supabase](#supabase)
       * [Database Functions](#database-functions)
+  * [Build](#build)
   * [Deployment](#deployment)
     * [GitHub Actions for deployment](#github-actions-for-deployment)
     * [Versioning](#versioning)
@@ -156,10 +157,15 @@ We try to use Supabase Database Functions where we can. See `databaseFunctions.j
 
 Use the SQL Editor to create or update database functions.
 
+## Build
+
+To test the build locally. Run `npm run build` and then `npm run serve`. This will help you catch any potential issues
+when deploying.
+
 ## Deployment
 
 On push to main (merging release<x.x.x> into main) - project will automatically be built and deployed
-to www.svenskamarvelsamlare.se.
+to www.svenskamarvelsamlare.se. Make sure to update version and test the build before merging.
 
 ### GitHub Actions for deployment
 

@@ -11,8 +11,8 @@ export const OverviewIssuesValueComparison = ({oldValue, newValue, timeStamp}) =
     return (
         <>
             <p>{PANES.OVERVIEW.COLLECTING_VALUE_1}</p>
-            <div className={"d-flex justify-content-center p-2 text-grade"}>
-                <p className={"fs-x-large py-3 px-5 d-flex align-items-center rounded border border-grade"}>
+            <div className={"text-grade"}>
+                <p className={"fs-x-large py-3 px-5 d-flex align-items-center justify-content-center rounded border border-grade"}>
                     <Icon icon={valueIconDuoTone} size={"2x"} className={"me-3 "}/>
                     <span>{newValue + " kr"}</span>
                 </p>

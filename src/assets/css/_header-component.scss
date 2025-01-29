@@ -31,7 +31,6 @@
   }
   .nav-item {
     display: flex;
-    align-items: center;
     min-height: 47px;
     @include media-breakpoint-up(lg) {
       margin-right: .5rem;
@@ -69,8 +68,20 @@
       margin-top: 2px;
     }
     &.dropdown {
+      display: inline-block;
       svg {
         margin-right: 0;
+      }
+      @include media-breakpoint-up(lg) {
+        display: flex;
+      }
+      .dropdown-menu {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        @include media-breakpoint-up(lg) {
+          background: $dropdown-bg;
+        }
       }
     }
   }

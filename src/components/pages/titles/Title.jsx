@@ -37,20 +37,19 @@ import {
     deleteAllGradesByUserAndIssue,
     deleteIssueFromCollectionSimple
 } from "../../../services/collectingService.js";
-import {Message} from "../../message/Message.jsx";
 import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons/index.jsx";
 import {IconLink} from "../../minis/IconLink.jsx";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus.js";
 import {SeriekatalogenTitleLink} from "../../minis/SeriekatalogenTitleLink.jsx";
 import {NoMatch} from "../../routes/NoMatch.jsx";
 import {MESSAGES} from "../../../helpers/constants/textConstants/messages.js";
-import {EditStarReview} from "../../star/EditStarReview.jsx";
 import {
     addStarReview,
     getReviewByUserIdItemTypeAndId,
     updateStarReview
 } from "../../../services/reviewservice.js";
 import {StarReviewBadge} from "../../star/StarReviewBadge.jsx";
+import {MessageReview} from "../../message/MessageReview.jsx";
 
 
 export const Title = () => {
@@ -352,8 +351,7 @@ export const Title = () => {
                                     :
                                     false
                             }
-                            <Message originObject={title} originTable={TABLES.TITLES}/>
-                            <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
+                            <MessageReview originObject={title} originTable={TABLES.TITLES} stars={stars} setStars={setStars} saveReview={saveReview}/>
                             {
                                 isCollectingTitle && issueNeedsGrading &&
                                 <div className={"alert alert-info d-flex align-items-center mb-4"}>

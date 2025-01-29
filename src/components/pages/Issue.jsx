@@ -37,7 +37,6 @@ import {
     getGradeValuesByIssueId
 } from "../../services/collectingService";
 import {Sources} from "./pagecomponents/Sources";
-import {Message} from "../message/Message";
 import {FunctionButton} from "../minis/FunctionButton";
 import {EditGrade} from "../grade/EditGrade";
 import {IconButton} from "../minis/IconButton";
@@ -53,13 +52,13 @@ import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";
 import {NoMatch} from "../routes/NoMatch";
 import {getAdjacentIssueIds} from "../../helpers/databaseFunctions.js";
-import {EditStarReview} from "../star/EditStarReview.jsx";
 import {
     addStarReview,
     getReviewByUserIdItemTypeAndId,
     updateStarReview
 } from "../../services/reviewservice.js";
 import {StarReviewBadge} from "../star/StarReviewBadge.jsx";
+import {MessageReview} from "../message/MessageReview.jsx";
 
 
 export const Issue = () => {
@@ -349,8 +348,7 @@ export const Issue = () => {
                                     </>
                                 }
                             </div>
-                            <Message originObject={issue} originTable={TABLES.ISSUES}/>
-                            <EditStarReview stars={stars} setStars={setStars} saveReview={saveReview}/>
+                            <MessageReview originObject={issue} originTable={TABLES.ISSUES} stars={stars} setStars={setStars} saveReview={saveReview}/>
                             <div className={"mb-5"}>
                                 <p className={"mb-4"}>{issue?.titles?.description}</p>
                                 {
