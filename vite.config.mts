@@ -1,11 +1,12 @@
 import {defineConfig} from "vite";
 import react from "@vitejs/plugin-react";
-import jsconfigPaths from "vite-jsconfig-paths";
+import viteTsconfigPaths from "vite-tsconfig-paths";
 import eslint from "vite-plugin-eslint";
+import { configDefaults } from "vitest/config";
 
 
 export default defineConfig({
-    plugins: [react(), jsconfigPaths(), eslint()],
+    plugins: [react(), viteTsconfigPaths(), eslint()],
     server: {
         port: 3000,
         open: "/"
@@ -14,6 +15,7 @@ export default defineConfig({
         port: 3000
     },
     test: {
+        ...configDefaults,
         globals: true,
         environment: "jsdom",
         setupFiles: "src/tests/setupTests.js",
