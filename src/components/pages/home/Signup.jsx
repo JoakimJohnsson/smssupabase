@@ -54,18 +54,11 @@ export const Signup = () => {
     }
 
     const handleEmailValidation = (e) => {
-        // Send true for success
-        validateEmail(e) ?
-            handleEmailInput(true, setEmailInputClass, setEmailValidated, setEmailValidationMessage)
-            :
-            handleEmailInput(false, setEmailInputClass, setEmailValidated, setEmailValidationMessage);
+        handleEmailInput(validateEmail(e), setEmailInputClass, setEmailValidated, setEmailValidationMessage);
     }
 
     const handlePasswordValidation = (e) => {
-        validatePassword(e) ?
-            handlePasswordInput(true, setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage)
-            :
-            handlePasswordInput(false, setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage);
+        handlePasswordInput(validatePassword(e), setPasswordInputClass, setPasswordValidated, setPasswordValidationMessage);
     }
 
     return (
