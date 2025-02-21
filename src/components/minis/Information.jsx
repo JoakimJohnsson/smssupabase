@@ -32,7 +32,9 @@ export const Information = ({message}) => {
     useEffect(() => {
         if (message && message.show && !pauseCounter) {
             if (counter > 0) {
-                setTimeout(() => setCounter(counter - 1), 100);
+                // Clear timeout to avoid potential memory leaks or unwanted behavior
+                const timeoutId = setTimeout(() => setCounter(counter - 1), 100);
+                return () => clearTimeout(timeoutId);
             }
             if (counter === 0) {
                 closeInformationMessage();
