@@ -80,7 +80,7 @@ export const IssueGridCard = ({issue, showCollectingButtons, fetchTitleProgress 
                     >
                         <button
                             aria-label={isCollectingIssue ? collectIssueTextStop : collectIssueTextStart}
-                            className={`btn btn-sm ${isCollectingIssue ? "btn-success" : "btn-secondary"} justify-content-center w-100 rounded-0`}
+                            className={`btn ${isCollectingIssue ? "btn-success" : "btn-secondary"} justify-content-center w-100 rounded-0`}
                             onClick={() => handleClick()}>
                             {
                                 isCollectingIssue ?

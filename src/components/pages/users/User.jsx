@@ -75,6 +75,8 @@ export const User = () => {
 
     useEffect(() => {
         const fetchIssuesData = async () => {
+            // Early exit
+            if (!user.id) return;
             const result = await getUserSelectedIssuesAndTitlesData(user.id);
             if (result) {
                 if (result.data) {
