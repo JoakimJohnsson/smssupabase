@@ -12,17 +12,15 @@ export const MyRoutes = () => {
 
     return (
         <Routes>
-            {
+            <Route path="*" element={
                 evaluatingUser ?
-                    (
-                        <Route path="*" element={<OverlaySpinner/>}/>
-                    )
+                    <OverlaySpinner/>
                     :
-                    user && profile ?
-                        <Route path="*" element={<AuthenticatedRoutes/>}/>
+                    (user && profile) ?
+                        <AuthenticatedRoutes/>
                         :
-                        <Route path="*" element={<PublicRoutes/>}/>
-            }
+                        <PublicRoutes/>
+            }/>
         </Routes>
     );
 }
