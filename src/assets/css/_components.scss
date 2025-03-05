@@ -638,3 +638,46 @@ input[type="checkbox"] + label {
     }
   }
 }
+
+// Draft js editor
+
+.draft-editor-container {
+  @extend .mb-4;
+
+  .editor-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+
+    .btn {
+      margin-right: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      color: #333;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #e6e6e6;
+      }
+
+      &:active {
+        background-color: #ccc;
+      }
+    }
+  }
+
+  .editor-box {
+    color: $black;
+    min-height: 200px;
+    padding: 10px;
+    border-radius: $border-radius-sm;
+    border: $border--default;
+    background-color: $white;
+    cursor: text;
+
+    &:focus-within {
+      border-color: $primary;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+}
