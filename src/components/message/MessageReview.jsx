@@ -15,20 +15,20 @@ import {FunctionButton} from "../minis/FunctionButton.jsx";
 import {faMessages, faStar as faStarDuoTone, faTimes} from "@fortawesome/pro-duotone-svg-icons";
 import {getIconByName, Icon} from "../icons/index.jsx";
 import {handleInput} from "../../services/serviceFunctions.js";
-import {addMessageData} from "../../services/messageService.js";
-import {CONFIG} from "../../helpers/constants/configConstants.jsx";
 import {useAppContext} from "../../context/AppContext.jsx";
 import {EditStarReview} from "../star/EditStarReview.jsx";
+import {DraftEditor} from "../draft/DraftEditor.jsx";
 
 
 export const MessageReview = ({originObject, originTable, stars, setStars, saveReview}) => {
 
-    const {user, setInformationMessage, fetchMessages} = useAppContext();
+    const {user} = useAppContext();
     const {formInputClass, setFormInputClass} = useCommonFormStates();
     const [topic_id, setTopic_id] = useState("");
     const [description, setDescription] = useState("");
     const [title, setTitle] = useState(LABELS.SECTIONS.MESSAGES.MESSAGE);
     const [text, setText] = useState("");
+    const [isReset, setIsReset] = useState(false);
     const [useThisObject, setUseThisObject] = useState(false);
     const [open, setOpen] = useState({"message": false, "review": false});
     const baseClasses = "hocus-standard me-2";
@@ -48,6 +48,7 @@ export const MessageReview = ({originObject, originTable, stars, setStars, saveR
         }
         setText("");
         setFormInputClass("form-input--error");
+        setIsReset(true);
     }
 
     useEffect(() => {
@@ -163,47 +164,32 @@ export const MessageReview = ({originObject, originTable, stars, setStars, saveR
                                    htmlFor="useThisObject">{LABELS.COMMON.MESSAGE_USE_THIS_OBJECT}</label>
                         </div>
                         <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
-                        <textarea
-                            className={formInputClass}
-                            placeholder={LABELS.COMMON.ADD_MESSAGE_PLACEHOLDER}
-                            value={text || ""}
-                            onChange={(e) => handleInput(e, setText)}
-                        />
-                        <button className={"btn btn-primary sms-btn"}
-                                onClick={
-                                    () => {
-                                        addMessageData({
-                                            origin_id: originObject.id,
-                                            origin_table: originTable,
-                                            is_global: 0,
-                                            status: 0,
-                                            sender_id: user.id,
-                                            receiver_id: null,
-                                            topic_id: topic_id,
-                                            title: trimInputString(title),
-                                            text: trimInputString(text)
-                                        }, setInformationMessage).then(() => {
-                                            resetAddMessageForm();
-                                            // Update after a while.
-                                            setTimeout(() => {
-                                                fetchMessages();
-                                            }, CONFIG.TIMEOUT_XXL);
-                                        });
-                                    }
+                        <DraftEditor
+                            text={text}
+                            setText={setText}
+                            isReset={isReset}
+                            setIsReset={setIsReset}
+                            resetAddMessageForm={resetAddMessageForm}
+                            title={title}
+                            topic_id={topic_id}
+                            messageData={
+                                {
+                                    origin_id: originObject.id,
+                                    origin_table: originTable,
+                                    is_global: 0,
+                                    status: 0,
+                                    sender_id: user.id,
+                                    receiver_id: null,
+                                    topic_id: topic_id,
+                                    title: trimInputString(title),
+                                    text: text
                                 }
-                                disabled={title === "" || text === "" || topic_id === ""}
-                        >
-                            {LABELS.COMMON.SEND}
-                        </button>
-                        <button className={"btn btn-secondary sms-btn"}
-                                onClick={resetAddMessageForm}>
-                            {LABELS.COMMON.RESET_FORM}
-                        </button>
+                            }
+                        />
                     </div>
                 }
             </div>
             <div className="mb-3">
-
                 {
                     open.review &&
                     <EditStarReview stars={stars} baseClasses={baseClasses} activeClasses={activeClasses}
