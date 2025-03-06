@@ -15,6 +15,7 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
     const [description, setDescription] = useState("");
     const [title, setTitle] = useState(LABELS.SECTIONS.MESSAGES.MESSAGE);
     const [text, setText] = useState("");
+    const [isReset, setIsReset] = useState(false);
     const [useThisObject, setUseThisObject] = useState(false);
 
     const resetAddMessageForm = async () => {
@@ -24,6 +25,7 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
         }
         setText("");
         setFormInputClass("form-input--error");
+        setIsReset(true);
     }
 
     useEffect(() => {
@@ -86,6 +88,8 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
                 title={title}
                 text={text}
                 setText={setText}
+                isReset={isReset}
+                setIsReset={setIsReset}
                 fetchAdminMessages={fetchAdminMessages}
             />
             :
@@ -99,6 +103,8 @@ export const Message = ({originObject, originTable, isGlobalMessage = false, fet
                 description={description}
                 text={text}
                 setText={setText}
+                isReset={isReset}
+                setIsReset={setIsReset}
                 useThisObject={useThisObject}
                 setUseThisObject={setUseThisObject}
                 originObject={originObject}

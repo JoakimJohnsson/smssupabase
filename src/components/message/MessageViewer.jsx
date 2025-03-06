@@ -12,6 +12,7 @@ import {
 } from "../icons";
 import {Link} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
+import {DraftRenderer} from "../draft/DraftRenderer.jsx";
 
 
 export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo = false}) => {
@@ -73,7 +74,7 @@ export const MessageViewer = ({viewGlobal = false, viewUnread = false, viewTodo 
                                 <FriendlyDate dateString={m.created_at}/>
                             </div>
                             <h3>{m.title}</h3>
-                            <p className={"text-parsed"}>{m.text}</p>
+                            <DraftRenderer text={m.text}/>
                             {
                                 !viewGlobal &&
                                 <Link to={`/admin/messages/${m.id}`} className={"me-3"}>
