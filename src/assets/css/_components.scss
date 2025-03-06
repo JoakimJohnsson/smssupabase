@@ -645,34 +645,17 @@ input[type="checkbox"] + label {
   @extend .mb-4;
 
   .editor-toolbar {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-
+    @extend .d-flex, .justify-content-start, .mb-3;
     .btn {
-      margin-right: 5px;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      color: #333;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #e6e6e6;
-      }
-
-      &:active {
-        background-color: #ccc;
-      }
+      @extend .d-flex, .align-items-center, .justify-content-center, .me-3;
+      min-width: 2.5rem;
     }
   }
 
   .editor-box {
-    color: $black;
+    @extend .text-black, .p-2, .rounded-1, .bg-light;
     min-height: 200px;
-    padding: 10px;
-    border-radius: $border-radius-sm;
     border: $border--default;
-    background-color: $white;
     cursor: text;
 
     &:focus-within {
