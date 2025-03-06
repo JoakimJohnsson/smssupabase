@@ -1,31 +1,31 @@
 import React from "react";
-import {CONFIG} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
+import {DraftEditor} from "../draft/DraftEditor.jsx";
 
 
 export const GlobalMessage = ({
-                                     topic_id,
-                                     setTopic_id,
-                                     text,
-                                     setText,
-                                     updateTitle,
-                                     resetAddMessageForm,
-                                     formInputClass,
-                                     title,
-                                     fetchAdminMessages
-                                 }) => {
+                                  topic_id,
+                                  setTopic_id,
+                                  text,
+                                  setText,
+                                  isReset,
+                                  setIsReset,
+                                  updateTitle,
+                                  resetAddMessageForm,
+                                  formInputClass,
+                                  title,
+                                  fetchAdminMessages
+                              }) => {
 
-    const {user, setInformationMessage, fetchMessages} = useAppContext();
+    const {user} = useAppContext();
 
     return (
         <div className="mb-3">
-
             <label className={"form-label"} htmlFor="title">{LABELS.SECTIONS.MESSAGES.MESSAGE_TITLE}</label>
             <p className={"h5"}>
                 {
@@ -50,16 +50,17 @@ export const GlobalMessage = ({
                 </select>
             }
             <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
-            <textarea
-                className={formInputClass}
-                placeholder={LABELS.COMMON.ADD_MESSAGE_PLACEHOLDER}
-                value={text || ""}
-                onChange={(e) => handleInput(e, setText)}
-            />
-            <button className={"btn btn-primary sms-btn"}
-                    onClick={
-                () => {
-                    addMessageData({
+            <DraftEditor
+                text={text}
+                setText={setText}
+                isReset={isReset}
+                setIsReset={setIsReset}
+                resetAddMessageForm={resetAddMessageForm}
+                title={title}
+                topic_id={topic_id}
+                callbackFunction={fetchAdminMessages}
+                messageData={
+                    {
                         origin_id: null,
                         origin_table: null,
                         is_global: 1,
@@ -68,25 +69,10 @@ export const GlobalMessage = ({
                         receiver_id: null,
                         topic_id: topic_id,
                         title: trimInputString(title),
-                        text: trimInputString(text)
-                    }, setInformationMessage).then(() => {
-                        resetAddMessageForm();
-                        fetchAdminMessages();
-                        // Update messages after a while.
-                        setTimeout(() => {
-                            fetchMessages();
-                        }, CONFIG.TIMEOUT_XXL);
-                    });
+                        text: text
+                    }
                 }
-            }
-                    disabled={title === "" || text === "" || topic_id === ""}
-            >
-                {LABELS.COMMON.SEND}
-            </button>
-            <button className={"btn btn-secondary sms-btn"}
-                    onClick={resetAddMessageForm}>
-                {LABELS.COMMON.RESET_FORM}
-            </button>
+            />
         </div>
     )
 }
