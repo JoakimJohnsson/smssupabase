@@ -1,34 +1,35 @@
 import React, {useState} from "react";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
-import {CONFIG} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {FunctionButton} from "../minis/FunctionButton";
-import {addMessageData} from "../../services/messageService";
 import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
 import {getIconByName, Icon} from "../icons";
+import {DraftEditor} from "../draft/DraftEditor.jsx";
 
 
 export const UserMessage = ({
-                                   topic_id,
-                                   setTopic_id,
-                                   text,
-                                   setText,
-                                   updateTitle,
-                                   resetAddMessageForm,
-                                   formInputClass,
-                                   title,
-                                   description,
-                                   useThisObject,
-                                   setUseThisObject,
-                                   originObject,
-                                   originTable
-                               }) => {
+                                topic_id,
+                                setTopic_id,
+                                text,
+                                setText,
+                                isReset,
+                                setIsReset,
+                                updateTitle,
+                                resetAddMessageForm,
+                                formInputClass,
+                                title,
+                                description,
+                                useThisObject,
+                                setUseThisObject,
+                                originObject,
+                                originTable
+                            }) => {
 
     const [open, setOpen] = useState(false);
-    const {user, setInformationMessage, fetchMessages} = useAppContext();
+    const {user} = useAppContext();
 
     return (
         <div>
@@ -79,45 +80,33 @@ export const UserMessage = ({
                             checked={useThisObject}
                             onChange={() => setUseThisObject(!useThisObject)}
                         />
-                        <label className={"form-label"} htmlFor="useThisObject">{LABELS.COMMON.MESSAGE_USE_THIS_OBJECT}</label>
+                        <label className={"form-label"}
+                               htmlFor="useThisObject">{LABELS.COMMON.MESSAGE_USE_THIS_OBJECT}</label>
                     </div>
-                    <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
-                    <textarea
-                        className={formInputClass}
-                        placeholder={LABELS.COMMON.ADD_MESSAGE_PLACEHOLDER}
-                        value={text || ""}
-                        onChange={(e) => handleInput(e, setText)}
-                    />
-                    <button className={"btn btn-primary sms-btn"}
-                            onClick={
-                                () => {
-                                    addMessageData({
-                                        origin_id: originObject.id,
-                                        origin_table: originTable,
-                                        is_global: 0,
-                                        status: 0,
-                                        sender_id: user.id,
-                                        receiver_id: null,
-                                        topic_id: topic_id,
-                                        title: trimInputString(title),
-                                        text: trimInputString(text)
-                                    }, setInformationMessage).then(() => {
-                                        resetAddMessageForm();
-                                        // Update after a while.
-                                        setTimeout(() => {
-                                            fetchMessages();
-                                        }, CONFIG.TIMEOUT_XXL);
-                                    });
-                                }
+                    <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE} Ett
+                        meddelande</label>
+                    <DraftEditor
+                        text={text}
+                        setText={setText}
+                        isReset={isReset}
+                        setIsReset={setIsReset}
+                        resetAddMessageForm={resetAddMessageForm}
+                        title={title}
+                        topic_id={topic_id}
+                        messageData={
+                            {
+                                origin_id: originObject.id,
+                                origin_table: originTable,
+                                is_global: 0,
+                                status: 0,
+                                sender_id: user.id,
+                                receiver_id: null,
+                                topic_id: topic_id,
+                                title: trimInputString(title),
+                                text: text
                             }
-                            disabled={title === "" || text === "" || topic_id === ""}
-                    >
-                        {LABELS.COMMON.SEND}
-                    </button>
-                    <button className={"btn btn-secondary sms-btn"}
-                            onClick={resetAddMessageForm}>
-                        {LABELS.COMMON.RESET_FORM}
-                    </button>
+                        }
+                    />
                 </div>
             }
         </div>
