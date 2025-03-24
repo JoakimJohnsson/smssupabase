@@ -6,6 +6,7 @@ import {TABLES} from "../../helpers/constants/serviceConstants";
 import {sortByDateCreatedDesc} from "../../helpers/functions";
 import {CalendarDate} from "../minis/CalendarDate";
 import {TopicIcon} from "./TopicIcon";
+import {DraftRenderer} from "../draft/DraftRenderer.jsx";
 
 
 export const SimpleMessagesList = ({messagesData, setMessagesData}) => {
@@ -16,8 +17,8 @@ export const SimpleMessagesList = ({messagesData, setMessagesData}) => {
                 messagesData.length ?
                     (messagesData
                             .sort((a, b) => sortByDateCreatedDesc(a, b)).map((m, index) =>
-                                <li key={index} className={"list-group-item px-0"}>
-                                    <div className={"row"}>
+                                <li key={index} className={"list-group-item px-0 py-0"}>
+                                    <div className={"row pt-3"}>
                                         <div className={"col-12 d-flex justify-content-between mb-3"}>
                                             <div className={"d-flex align-items-center"}>
                                                 <div className={"pe-3"}>
@@ -45,7 +46,7 @@ export const SimpleMessagesList = ({messagesData, setMessagesData}) => {
                                             </div>
                                         </div>
                                         <div className={"ms-1 ms-sm-2 mb-2"}>
-                                            {m.text}
+                                            <DraftRenderer text={m.text}/>
                                         </div>
                                     </div>
                                 </li>)

@@ -156,7 +156,7 @@ export const getUserIdByUserEmail = async (email) => {
         }
         return data;
     } catch (error) {
-        console.log("Unexpected error: ", error);
+        console.error("Unexpected error: ", error);
         return null;
     }
 }

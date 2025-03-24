@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, useCallback} from 'react';
+import React, {useContext, useState, useEffect, useCallback, useMemo} from 'react';
 import {supabase} from '../supabase/supabaseClient';
 import {CONFIG} from "../helpers/constants/configConstants";
 import {MESSAGES} from "../helpers/constants/textConstants/messages";
@@ -113,9 +113,9 @@ export function AppContextProvider({children}) {
     }, [todoMessages]);
 
     // Will be passed down to Signup, Login and Dashboard components
-    const value = {
-        informationMessage: informationMessage,
-        setInformationMessage: setInformationMessage,
+    const value = useMemo(() => ({
+        informationMessage,
+        setInformationMessage,
         user,
         setUser,
         evaluatingUser,
@@ -131,7 +131,22 @@ export function AppContextProvider({children}) {
         profile,
         setProfile,
         fetchProfileData
-    }
+    }), [
+        informationMessage,
+        setInformationMessage,
+        user,
+        evaluatingUser,
+        showUserNotification,
+        showAdminNotification,
+        showAdminTodoNotification,
+        activeGlobalMessages,
+        unreadMessages,
+        todoMessages,
+        userMessages,
+        profile,
+        fetchMessages,
+        fetchProfileData
+    ]);
 
     return (
         <AppContext.Provider value={value}>

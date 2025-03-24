@@ -26,7 +26,7 @@ export const TitleTool = ({title, displayName, isCard = false, setUserCollectsTi
     return isCard ? (
             <button
                 aria-label={isCollectingTitle ? collectTitleTextStop : collectTitleTextStart}
-                className={`btn ${isCollectingTitle ? "btn-success" : "btn-secondary"} btn-sm p-2 rounded-0 w-100 flex-column justify-content-center`}
+                className={`btn ${isCollectingTitle ? "btn-success" : "btn-secondary"} p-2 rounded-0 w-100 flex-column justify-content-center`}
                 onClick={() => handleCollectingTitle(user.id, title.id, setInformationMessage, isCollectingTitle, setIsCollectingTitle, true)}>
                 {
                     isCollectingTitle ?

@@ -15,7 +15,7 @@ export const DestinationSearch = ({position, setDestinations, setSelectedDestina
     const {mapsApi} = useMapsApi();
 
     const handlePlacesSearch = (request) => {
-        if (!placesService) return;
+        if (!placesService || !mapsApi) return;
         placesService.nearbySearch(
             {
                 location: position,
@@ -24,9 +24,11 @@ export const DestinationSearch = ({position, setDestinations, setSelectedDestina
                 rankBy: mapsApi.places.RankBy.DISTANCE
             }
             , (results, status) => {
-                if (status === "OK" && results) {
+                if (status === window.google?.maps.places.PlacesServiceStatus.OK && results) {
                     setDestinations(results);
                     setSelectedDestinationType(request.name);
+                } else {
+                    console.error("PlacesService failed with status:", status);
                 }
             });
     }

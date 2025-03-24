@@ -1,9 +1,11 @@
 import eslintPluginReact from "eslint-plugin-react";
 import js from "@eslint/js";
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default [
     js.configs.recommended,
+    ...tseslint.configs.recommended,
     {
         files: ["**/*.{js,jsx,ts,tsx}"],
         languageOptions: {

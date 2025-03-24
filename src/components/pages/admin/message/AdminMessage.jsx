@@ -19,6 +19,7 @@ import {NoMatch} from "../../../routes/NoMatch";
 import {githubMessageIcon, Icon} from "../../../icons/index.jsx";
 import {Octokit} from "@octokit/core";
 import {useAppContext} from "../../../../context/AppContext.jsx";
+import {DraftRenderer} from "../../../draft/DraftRenderer.jsx";
 
 
 export const AdminMessage = () => {
@@ -77,7 +78,7 @@ export const AdminMessage = () => {
                                     </div>
                                     <p className={"mb-3 lead"}>{TEXTS.MESSAGE_WAS_SENT} <FriendlyDate
                                         dateString={message.created_at}/>.</p>
-                                    <p className={"mb-5 text-parsed"}>{message.text}</p>
+                                    <DraftRenderer text={message.text}/>
                                     <MessageStatusChanger message={message} fetchMessageData={fetchMessageData}/>
                                     {
                                         message.origin_table && message.origin_id &&
