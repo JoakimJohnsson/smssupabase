@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "draft-js/dist/Draft.css";
 import "./assets/css/main.scss";
 import {App} from "./App";
 

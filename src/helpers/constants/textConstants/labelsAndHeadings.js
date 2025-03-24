@@ -3,7 +3,7 @@ export const LABELS = {
     COMMON: {
         ABORT: "Avbryt",
         ADD: "Lägg till",
-        ADD_MESSAGE_PLACEHOLDER: "Skriv ett meddelande här",
+        ADD_MESSAGE_PLACEHOLDER: "Skriv ett meddelande här...",
         ADMIN: "Admin",
         ADMINISTRATE_MESSAGE: "Administrera meddelandet -",
         ADD_ADMIN_1: "Gör ",

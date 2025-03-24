@@ -28,12 +28,13 @@ export const useUserPosition = () => {
     useEffect(() => {
         const fetchUserPosition = () => {
             if (!locationAllowedAndSupported) {
-                console.log("Geolocation is not supported by this browser or access is not allowed.");
+                console.info("Geolocation is not supported by this browser or access is not allowed.");
                 setPositionPending(false);
                 return;
             }
 
             const success = async (position) => {
+                console.info("Found user position.")
                 const userPos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,

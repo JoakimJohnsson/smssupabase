@@ -3,10 +3,14 @@ import react from "@vitejs/plugin-react";
 import viteTsconfigPaths from "vite-tsconfig-paths";
 import eslint from "vite-plugin-eslint";
 import { configDefaults } from "vitest/config";
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 
 export default defineConfig({
-    plugins: [react(), viteTsconfigPaths(), eslint()],
+    plugins: [react(), viteTsconfigPaths(), eslint(), nodePolyfills()],
+    define: {
+        global: "window", // Fixes "global is not defined"
+    },
     server: {
         port: 3000,
         open: "/"
