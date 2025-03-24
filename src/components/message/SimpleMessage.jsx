@@ -5,8 +5,7 @@ import {getUserName, trimInputString} from "../../helpers/functions";
 import {FunctionButton} from "../minis/FunctionButton";
 import {faMessages, faTimes} from "@fortawesome/pro-duotone-svg-icons";
 import {handleInput} from "../../services/serviceFunctions";
-import {addMessageData} from "../../services/messageService";
-import {useAppContext} from "../../context/AppContext";
+import {DraftEditor} from "../draft/DraftEditor.jsx";
 
 
 export const SimpleMessage = ({user}) => {
@@ -14,12 +13,13 @@ export const SimpleMessage = ({user}) => {
     const {formInputClass, setFormInputClass} = useCommonFormStates();
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
+    const [isReset, setIsReset] = useState(false);
     const [open, setOpen] = useState(false);
-    const {setInformationMessage} = useAppContext();
 
     const resetAddMessageForm = () => {
         setTitle("")
         setText("");
+        setIsReset(true);
         setFormInputClass("form-input--error");
     }
 
@@ -57,38 +57,28 @@ export const SimpleMessage = ({user}) => {
                         onChange={(e) => handleInput(e, setTitle)}
                     />
                     <label className={"form-label"} htmlFor="text">{LABELS.SECTIONS.MESSAGES.MESSAGE}</label>
-                    <textarea
-                        className={formInputClass}
-                        placeholder={LABELS.COMMON.ADD_MESSAGE_PLACEHOLDER}
-                        value={text || ""}
-                        onChange={(e) => handleInput(e, setText)}
-                    />
-                    <button className={"btn btn-primary sms-btn"}
-                            onClick={
-                                () => {
-                                    addMessageData({
-                                        origin_id: null,
-                                        origin_table: null,
-                                        is_global: 0,
-                                        status: 1,
-                                        sender_id: null,
-                                        receiver_id: user.id,
-                                        topic_id: 7093,
-                                        title: trimInputString(title),
-                                        text: trimInputString(text)
-                                    }, setInformationMessage).then(() => {
-                                        resetAddMessageForm();
-                                    });
-                                }
+                    <DraftEditor
+                        text={text} s
+                        setText={setText}
+                        isReset={isReset}
+                        setIsReset={setIsReset}
+                        resetAddMessageForm={resetAddMessageForm}
+                        title={title}
+                        topic_id={7093}
+                        messageData={
+                            {
+                                origin_id: null,
+                                origin_table: null,
+                                is_global: 0,
+                                status: 1,
+                                sender_id: null,
+                                receiver_id: user.id,
+                                topic_id: 7093,
+                                title: trimInputString(title),
+                                text: text
                             }
-                            disabled={title === "" || text === ""}
-                    >
-                        {LABELS.COMMON.SEND}
-                    </button>
-                    <button className={"btn btn-secondary sms-btn"}
-                            onClick={resetAddMessageForm}>
-                        {LABELS.COMMON.RESET_FORM}
-                    </button>
+                        }
+                    />
                 </div>
             }
         </>

@@ -243,7 +243,7 @@ export const handleDelete = async (table, id, name, setData, initialData, image_
         } else if (table === TABLES.TITLES) {
             // Delete all users titles
             try {
-                console.log("Deleting title");
+                console.info("Deleting title");
                 await supabase
                     .from(TABLES.USERS_TITLES)
                     .delete()
@@ -252,7 +252,7 @@ export const handleDelete = async (table, id, name, setData, initialData, image_
                 console.error(error);
             }
         }
-        console.log("Deleting rows");
+        console.info("Deleting rows");
         deleteRowsByTableAndId(table, id, setData, initialData, setInformationMessage, false)
             .then(() => {
                 if (image_filename && image_filename !== "") {

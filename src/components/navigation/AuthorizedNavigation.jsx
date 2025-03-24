@@ -19,7 +19,8 @@ import {
     valueIconDuoTone,
     moreIconDuoTone,
     overviewIconDuoTone,
-    mapsIconDuoTone,
+    // Maps section temporarily disabled awaiting rework and Google Maps api fixes
+    // mapsIconDuoTone,
     collectionsIconDuoTone,
     lessIconDuoTone,
 } from "../icons";
@@ -136,6 +137,7 @@ export const AuthorizedNavigation = () => {
                                     <span className={"sms-nav-link--text"}>{PANES.COLLECTIONS.NAME}</span>
                                 </NavLink>
                             </NavDropdown.Item>
+                            {/* Maps section temporarily disabled awaiting rework and Google Maps api fixes
                             <NavDropdown.Item as="p" className={"mb-0"}>
                                 <NavLink onClick={closeEveryThing}  exact={"true"} to={ROUTES.DASHBOARD.PATH_MAP}
                                          className={"nav-link nav-link--dropdown text-country"}>
@@ -143,6 +145,7 @@ export const AuthorizedNavigation = () => {
                                     <span className={"sms-nav-link--text"}>{PANES.MAP.NAME}</span>
                                 </NavLink>
                             </NavDropdown.Item>
+                            */}
                         </NavDropdown>
                         <NavDropdown as="li"
                             title={<NavDropdownTitle icon={isDropdown2Expanded ? lessIconDuoTone : moreIconDuoTone}

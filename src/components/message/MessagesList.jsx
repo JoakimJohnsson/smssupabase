@@ -15,43 +15,44 @@ export const MessagesList = ({messagesData, setMessagesData}) => {
         <ul className={"sms-list--with-tools mb-4"}>
             {
                 messagesData.length ?
-                    (messagesData
-                            .sort((a, b) => sortByDateCreatedDesc(a, b)).map((m, index) =>
-                                <li key={index} className={"list-group-item px-0"}>
-                                    <div className={"row"}>
-                                        <div className={"col-12 d-flex justify-content-between"}>
-                                            <div className={"d-flex align-items-center"}>
-                                                <div className={"pe-3"}>
-                                                    <CalendarDate dateString={m.created_at}/>
-                                                </div>
-                                                <div className={"d-flex align-items-center"}>
-                                                    <MessageIcons message={m} showBorder={true} size={"fa-2x"}/>
-                                                    <Link to={`/admin/messages/${m.id}`} className={"me-3"}>
-                                                        {m.title}
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                            <div className={"d-flex align-items-center"}>
-                                                {
-                                                    <ListToolBox
-                                                        item={m}
-                                                        name={m.title}
-                                                        displayName={m.title}
-                                                        data={messagesData}
-                                                        setData={setMessagesData}
-                                                        showAdvancedTools={true}
-                                                        route={ROUTES.ADMIN.MESSAGES}
-                                                        table={TABLES.MESSAGES}
-                                                        showEditButton={false}
-                                                    />
-                                                }
-                                            </div>
+                    messagesData
+                        .sort((a, b) => sortByDateCreatedDesc(a, b)).map((m, index) =>
+                        <li key={index} className={"list-group-item px-0"}>
+                            <div className={"row"}>
+                                <div className={"col-12 d-flex justify-content-between"}>
+                                    <div className={"d-flex align-items-center"}>
+                                        <div className={"pe-3"}>
+                                            <CalendarDate dateString={m.created_at}/>
+                                        </div>
+                                        <div className={"d-flex align-items-center"}>
+                                            <MessageIcons message={m} showBorder={true} size={"fa-2x"}/>
+                                            <Link to={`/admin/messages/${m.id}`} className={"me-3"}>
+                                                {m.title}
+                                            </Link>
                                         </div>
                                     </div>
-                                </li>)
-                    )
+                                    <div className={"d-flex align-items-center"}>
+                                        {
+                                            <ListToolBox
+                                                item={m}
+                                                name={m.title}
+                                                displayName={m.title}
+                                                data={messagesData}
+                                                setData={setMessagesData}
+                                                showAdvancedTools={true}
+                                                route={ROUTES.ADMIN.MESSAGES}
+                                                table={TABLES.MESSAGES}
+                                                showEditButton={false}
+                                            />
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </li>)
                     :
-                    (<NoDataAvailable/>)
+                    <li>
+                        <NoDataAvailable/>
+                    </li>
             }
         </ul>
     )
