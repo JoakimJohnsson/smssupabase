@@ -20,6 +20,8 @@ import {githubMessageIcon, Icon} from "../../../icons/index.jsx";
 import {Octokit} from "@octokit/core";
 import {useAppContext} from "../../../../context/AppContext.jsx";
 import {DraftRenderer} from "../../../draft/DraftRenderer.jsx";
+import {convertFromRaw} from "draft-js";
+import {stateToHTML} from "draft-js-export-html";
 
 
 export const AdminMessage = () => {
@@ -39,12 +41,15 @@ export const AdminMessage = () => {
 
     const handleAddIssueToGithub = async () => {
         try {
+            // Convert the Draft.js data to html string
+            const contentState = convertFromRaw(JSON.parse(message.text));
+            const htmlContent = stateToHTML(contentState);
             const octokit = new Octokit({
                 auth: import.meta.env.VITE_GITHUB_ACCESS_TOKEN
             })
             await octokit.request("POST /repos/JoakimJohnsson/smssupabase/issues", {
                 title: message.title,
-                body: message.text,
+                body: htmlContent.toString(),
             });
             setInformationMessage({show: true, status: 2, error: TEXTS.ISSUE_CREATED});
         } catch (error) {
