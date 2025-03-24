@@ -6,7 +6,12 @@ import {
     collectionsIconDuoTone,
     overviewIconDuoTone,
     titlesIconDuoTone,
-    valueIconDuoTone, mapsIconDuoTone, moreIconDuoTone, lessIconDuoTone, issueIconDuoTone
+    valueIconDuoTone,
+    // Maps section temporarily disabled awaiting rework and Google Maps api fixes
+    // mapsIconDuoTone,
+    moreIconDuoTone,
+    lessIconDuoTone,
+    issueIconDuoTone
 } from "../icons";
 import {Nav, NavDropdown} from "react-bootstrap";
 import {FooterDashboardNavLink} from "./FooterDashboardNavLink";
@@ -45,8 +50,10 @@ export const FooterDashboardNavigation = () => {
                                             icon={<Icon icon={valueIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                     <FooterDashboardNavLink route={ROUTES.DASHBOARD.COLLECTIONS} text={PANES.COLLECTIONS.NAME} variant={"warning"}
                                             icon={<Icon icon={collectionsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
+                    {/* Maps section temporarily disabled awaiting rework and Google Maps api fixes
                     <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAP} text={PANES.MAP.NAME} variant={"country"}
                                             icon={<Icon icon={mapsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
+                    */}
                 </div>
                 <NavDropdown
                     ref={dropdownRef4}
@@ -72,10 +79,12 @@ export const FooterDashboardNavigation = () => {
                                                 icon={<Icon icon={collectionsIconDuoTone} size={"2x"}
                                                             className={"m-0"}/>}/>
                     </NavDropdown.Item>
+                    {/* Maps section temporarily disabled awaiting rework and Google Maps api fixes
                     <NavDropdown.Item eventKey="1234234">
                         <FooterDashboardNavLink route={ROUTES.DASHBOARD.MAP} text={PANES.MAP.NAME} variant={"country"}
                                                 icon={<Icon icon={mapsIconDuoTone} size={"2x"} className={"m-0"}/>}/>
                     </NavDropdown.Item>
+                    */}
                 </NavDropdown>
             </Nav>
         </footer>

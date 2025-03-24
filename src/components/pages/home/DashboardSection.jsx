@@ -2,7 +2,8 @@ import React from "react";
 import {ROUTES} from "../../../helpers/constants/configConstants";
 import {
     collectionsIconDuoTone,
-    mapsIconDuoTone,
+    // Maps section temporarily disabled awaiting rework and Google Maps api fixes
+    // mapsIconDuoTone,
     overviewIconDuoTone,
     issueIconDuoTone,
     titlesIconDuoTone,
@@ -46,12 +47,14 @@ export const DashboardSection = () => {
                 path={ROUTES.DASHBOARD.PATH_COLLECTIONS}
                 label={PANES.COLLECTIONS.NAME}
             />
+            {/* Maps section temporarily disabled awaiting rework and Google Maps api fixes
             <IconLinkCtaLg
                 variant={"country"}
                 icon={mapsIconDuoTone}
                 path={ROUTES.DASHBOARD.PATH_MAP}
                 label={PANES.MAP.NAME}
             />
+            */}
         </>
     )
 }

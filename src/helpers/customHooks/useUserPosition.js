@@ -34,6 +34,7 @@ export const useUserPosition = () => {
             }
 
             const success = async (position) => {
+                console.info("Found user position.")
                 const userPos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
