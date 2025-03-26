@@ -21,7 +21,6 @@ import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
 import CustomProgressBar from "../../CustomProgressBar";
 import {OverlaySpinner} from "../../minis/OverlaySpinner";
 import {DashboardSection} from "./DashboardSection";
-import ReleaseNotes from "./ReleaseNotes.jsx";
 import {getTop5Issues, getTop5Titles} from "../../../helpers/databaseFunctions.js";
 import {TitlesListItem} from "../titles/TitlesListItem.jsx";
 import SearchBox from "../../SearchBox.jsx";
@@ -254,10 +253,6 @@ export const Home = () => {
                         :
                         <NoDataAvailable/>
                 }
-            </div>
-            <div className={"sms-section--light mb-5"}>
-                <h2>{LABELS.COMMON.INFORMATION}</h2>
-                <ReleaseNotes/>
             </div>
         </div>
         :

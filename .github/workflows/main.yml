@@ -47,3 +47,9 @@ jobs:
             port: 21
             dangerous-clean-slate: true
             dry-run: false
+        - name: 🔄 Update Release Date
+          run: |
+            curl -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/rpc/update_release_date" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json"
