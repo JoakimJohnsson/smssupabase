@@ -49,7 +49,7 @@ export const AdminMessage = () => {
             })
             await octokit.request("POST /repos/JoakimJohnsson/smssupabase/issues", {
                 title: message.title,
-                body: htmlContent.toString(),
+                body: htmlContent,
             });
             setInformationMessage({show: true, status: 2, error: TEXTS.ISSUE_CREATED});
         } catch (error) {
