@@ -171,6 +171,22 @@ to www.svenskamarvelsamlare.se. Make sure to update version and test the build b
 
 Edit .github/workflows/main.yml to make changes in the GitHub Action script for Deployment.
 
+The following secrets are used in the workflow:
+
+- FORTAWESOME_AUTH_TOKEN
+- FTP_HOST_UNOEURO
+- FTP_HOST_UNOEURO_PASSWORD
+- FTP_HOST_UNOEURO_PORT
+- FTP_HOST_UNOEURO_USERNAME
+- GH_ACCESS_TOKEN
+- GOOGLE_CLOUD_API_KEY
+- GOOGLE_CLOUD_SMS_LOCATION_ACCESS_MAP_ID
+- GOOGLE_CLOUD_SMS_MAP_ID
+- OPENAI_KEY
+- SMSSUPABASE_REPO_TOKEN
+- SUPABASE_ANON_KEY
+- SUPABASE_URL
+
 ### Versioning
 
 Before merging develop to release-<x.x.x> - Please run `npm version <major> <minor> <patch>` (see below) to update
