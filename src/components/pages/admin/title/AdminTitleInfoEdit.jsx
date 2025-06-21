@@ -110,7 +110,7 @@ export const AdminTitleInfoEdit = ({title, setTitle, newTitle, setNewTitle}) => 
                         {printOptions(formatData)}
                     </select>
                 }
-                <label className={"form-label"} htmlFor="totalissues">{LABELS.COMMON.TOTAL_ISSUES_DB}</label>
+                <label className={"form-label"} htmlFor="totalissues">{LABELS.SECTIONS.TITLES.TOTAL_ISSUES_DB}</label>
                 <input
                     id={"totalissues"}
                     name={"total_issues"}
