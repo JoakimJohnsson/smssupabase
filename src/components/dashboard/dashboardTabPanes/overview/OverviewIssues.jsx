@@ -13,6 +13,7 @@ import {csvIconDuoTone, issueIconDuoTone, pdfIconDuoTone} from "../../../icons/i
 import {FunctionButton} from "../../../minis/FunctionButton.jsx";
 import {exportMissingIssuesForUser} from "../../../../helpers/exportUtil.js";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";
+import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
 export const OverviewIssues = ({titlesData, issuesData}) => {
@@ -59,56 +60,53 @@ export const OverviewIssues = ({titlesData, issuesData}) => {
     }, [grades]);
 
 
-
     return (
-        <div className={"sms-dashboard-col--sm"}>
-            <div className={"sms-section--light h-100"}>
-                <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
-                <IconLinkCtaLg
-                    variant={"primary"}
-                    icon={issueIconDuoTone}
-                    path={ROUTES.DASHBOARD.PATH_MY_ISSUES}
-                    label={PANES.ISSUES.NAME}
-                />
-                {
-                    userIssuesCount ?
-                        <>
-                            <p>
-                                {PANES.OVERVIEW.COLLECTING_ISSUES_1} {userIssuesCount && userIssuesCount} {PANES.OVERVIEW.COLLECTING_ISSUES_2} {STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT > 0 ? Math.round(userMarvelklubbenIssuesCount / STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT * 100) : 0}%
-                                ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
-                            </p>
-                            <h3>{PANES.OVERVIEW.GRADE}</h3>
-                            <p>{PANES.OVERVIEW.COLLECTING_ISSUES_GRADE_1} <span
-                                className={averageGrade > 6 ? "text-success" : "text-danger"}>{averageGrade}</span>.</p>
-                        </>
-                        :
+        <DashboardSectionLight>
+            <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
+            <IconLinkCtaLg
+                variant={"primary"}
+                icon={issueIconDuoTone}
+                path={ROUTES.DASHBOARD.PATH_MY_ISSUES}
+                label={PANES.ISSUES.NAME}
+            />
+            {
+                userIssuesCount ?
+                    <>
                         <p>
-                            {PANES.OVERVIEW.COLLECTING_ISSUES_1} 0 {PANES.OVERVIEW.COLLECTING_ISSUES_2} 0%
-                            (0/0) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
+                            {PANES.OVERVIEW.COLLECTING_ISSUES_1} {userIssuesCount && userIssuesCount} {PANES.OVERVIEW.COLLECTING_ISSUES_2} {STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT > 0 ? Math.round(userMarvelklubbenIssuesCount / STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT * 100) : 0}%
+                            ({userIssuesCount}/{totalIssuesCountForCollection}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
                         </p>
-                }
-                <h3>{LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}</h3>
-                <p>
-                    {PANES.OVERVIEW.COLLECTING_MARVELKLUBBEN_1} {userMarvelklubbenIssuesCount} {PANES.OVERVIEW.COLLECTING_MARVELKLUBBEN_2} {Math.round(userMarvelklubbenIssuesCount / STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT * 100)}%
-                    ({userMarvelklubbenIssuesCount}/{STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
-                </p>
-                <h3>{LABELS.SECTIONS.ISSUES.MISSING_ISSUES}</h3>
-                <p>{TEXTS.MISSING_ISSUES_DOWNLOAD}</p>
-                <FunctionButton
-                    variant={"btn-primary"}
-                    icon={csvIconDuoTone}
-                    onClick={() => exportMissingIssuesForUser(false, user)}
-                    label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
-                    showLabel={true}
-                />
-                <FunctionButton
-                    variant={"btn-primary"}
-                    icon={pdfIconDuoTone}
-                    onClick={() => exportMissingIssuesForUser(true, user)}
-                    label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
-                    showLabel={true}
-                />
-            </div>
-        </div>
+                        <h3>{PANES.OVERVIEW.GRADE}</h3>
+                        <p>{PANES.OVERVIEW.COLLECTING_ISSUES_GRADE_1} <span
+                            className={averageGrade > 6 ? "text-success" : "text-danger"}>{averageGrade}</span>.</p>
+                    </>
+                    :
+                    <p>
+                        {PANES.OVERVIEW.COLLECTING_ISSUES_1} 0 {PANES.OVERVIEW.COLLECTING_ISSUES_2} 0%
+                        (0/0) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
+                    </p>
+            }
+            <h3>{LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}</h3>
+            <p>
+                {PANES.OVERVIEW.COLLECTING_MARVELKLUBBEN_1} {userMarvelklubbenIssuesCount} {PANES.OVERVIEW.COLLECTING_MARVELKLUBBEN_2} {Math.round(userMarvelklubbenIssuesCount / STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT * 100)}%
+                ({userMarvelklubbenIssuesCount}/{STATISTICS.TOTAL_MARVELKLUBBEN_ISSUES_COUNT}) {PANES.OVERVIEW.COLLECTING_ISSUES_3}
+            </p>
+            <h3>{LABELS.SECTIONS.ISSUES.MISSING_ISSUES}</h3>
+            <p>{TEXTS.MISSING_ISSUES_DOWNLOAD}</p>
+            <FunctionButton
+                variant={"btn-primary"}
+                icon={csvIconDuoTone}
+                onClick={() => exportMissingIssuesForUser(false, user)}
+                label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
+                showLabel={true}
+            />
+            <FunctionButton
+                variant={"btn-primary"}
+                icon={pdfIconDuoTone}
+                onClick={() => exportMissingIssuesForUser(true, user)}
+                label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
+                showLabel={true}
+            />
+        </DashboardSectionLight>
     )
 }
