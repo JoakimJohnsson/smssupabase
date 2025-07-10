@@ -2,6 +2,7 @@ import {saveAs} from 'file-saver';
 import Papa from 'papaparse';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { autoTable } from 'jspdf-autotable'
 import {
     getCurrentDateAsString,
     getIssueNumber,
@@ -33,12 +34,13 @@ export const exportIssuesToPDF = (data, fileName) => {
         item.Variant,
         item.Marvelklubben,
     ]);
+
     // Add a table to the PDF
-    doc.autoTable({
+    autoTable(doc, {
         head: [['Titel', 'Årtal', 'Nummer', 'Variant', 'Marvelklubben']],
         body: tableData,
         startY: 20, // Position the table below the title
-    });
+    })
     // Save the PDF
     doc.save(`${fileName}-${getCurrentDateAsString()}.pdf`);
 };
