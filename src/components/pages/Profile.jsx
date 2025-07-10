@@ -12,6 +12,7 @@ import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {supabase} from "../../supabase/supabaseClient";
 import {ProfileInfoCredentials} from "./ProfileInfoCredentials";
+import {DashboardSectionLight} from "./pagecomponents/DashboardSectionLight.jsx";
 
 
 const Profile = () => {
@@ -82,47 +83,41 @@ const Profile = () => {
                             </p>
                         </div>
                         <div className={"row"}>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light h-100"}>
-                                    <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile}
-                                                     setNewProfile={setNewProfile}/>
-                                </div>
-                            </div>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light h-100"}>
-                                    <ProfileInfoCredentials
-                                        newEmail={newEmail}
-                                        setNewEmail={setNewEmail}
-                                        confirmNewEmail={confirmNewEmail}
-                                        setConfirmNewEmail={setConfirmNewEmail}
-                                        handleChangeEmail={handleChangeEmail}
-                                        message={message}
-                                        pwMessage={pwMessage}
-                                        newPassword={newPassword}
-                                        setNewPassword={setNewPassword}
-                                        confirmNewPassword={confirmNewPassword}
-                                        setConfirmNewPassword={setConfirmNewPassword}
-                                        handleChangePassword={handleChangePassword}
-                                    />
-                                </div>
-                            </div>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light h-100"}>
-                                    <ImageUploader
-                                        imageUrl={imageUrl}
-                                        setImageUrl={setImageUrl}
-                                        imageFilename={imageFilename}
-                                        setImageFilename={setImageFilename}
-                                        uploading={uploading}
-                                        setUploading={setUploading}
-                                        bucketName={BUCKETS.AVATAR_IMAGES}
-                                        tableName={TABLES.PROFILES}
-                                        fileType={FILETYPES.AVATAR_IMAGE}
-                                        id={profile.id}
-                                        update={() => fetchProfileData(profile.id)}
-                                    />
-                                </div>
-                            </div>
+                            <DashboardSectionLight>
+                                <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile}
+                                                 setNewProfile={setNewProfile}/>
+                            </DashboardSectionLight>
+                            <DashboardSectionLight>
+                                <ProfileInfoCredentials
+                                    newEmail={newEmail}
+                                    setNewEmail={setNewEmail}
+                                    confirmNewEmail={confirmNewEmail}
+                                    setConfirmNewEmail={setConfirmNewEmail}
+                                    handleChangeEmail={handleChangeEmail}
+                                    message={message}
+                                    pwMessage={pwMessage}
+                                    newPassword={newPassword}
+                                    setNewPassword={setNewPassword}
+                                    confirmNewPassword={confirmNewPassword}
+                                    setConfirmNewPassword={setConfirmNewPassword}
+                                    handleChangePassword={handleChangePassword}
+                                />
+                            </DashboardSectionLight>
+                            <DashboardSectionLight>
+                                <ImageUploader
+                                    imageUrl={imageUrl}
+                                    setImageUrl={setImageUrl}
+                                    imageFilename={imageFilename}
+                                    setImageFilename={setImageFilename}
+                                    uploading={uploading}
+                                    setUploading={setUploading}
+                                    bucketName={BUCKETS.AVATAR_IMAGES}
+                                    tableName={TABLES.PROFILES}
+                                    fileType={FILETYPES.AVATAR_IMAGE}
+                                    id={profile.id}
+                                    update={() => fetchProfileData(profile.id)}
+                                />
+                            </DashboardSectionLight>
                         </div>
                     </>
             }

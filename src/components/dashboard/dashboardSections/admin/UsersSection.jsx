@@ -7,6 +7,7 @@ import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../..
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {UsersList} from "../../../lists/users/UsersList";
 import {Link} from "react-router-dom";
+import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
 export const UsersSection = () => {
@@ -23,21 +24,20 @@ export const UsersSection = () => {
     }, []);
 
     return (
-        <div className={"sms-dashboard-col"}>
-            <div className={"sms-section--light h-100"}>
-                <h2>{LABELS.COMMON.USERS}</h2>
-                {
-                    limitedUsersData ?
-                        <>
-                            <p>{TEXTS.SHOWING_LATEST_USERS}</p>
-                            <p>{TEXTS.USERS_COUNT_TEXT_1} {totalProfiles} {TEXTS.USERS_COUNT_TEXT_2}</p>
-                            <UsersList usersData={limitedUsersData} setUsersData={setLimitedUsersData} limited/>
-                        </>
-                        :
-                        <NoDataAvailable/>
-                }
-                <Link className={"btn btn-outline-primary sms-btn"} to={ROUTES.ADMIN.USERS}>{LABELS.COMMON.SEE_ALL_USERS}</Link>
-            </div>
-        </div>
+        <DashboardSectionLight>
+            <h2>{LABELS.COMMON.USERS}</h2>
+            {
+                limitedUsersData ?
+                    <>
+                        <p>{TEXTS.SHOWING_LATEST_USERS}</p>
+                        <p>{TEXTS.USERS_COUNT_TEXT_1} {totalProfiles} {TEXTS.USERS_COUNT_TEXT_2}</p>
+                        <UsersList usersData={limitedUsersData} setUsersData={setLimitedUsersData} limited/>
+                    </>
+                    :
+                    <NoDataAvailable/>
+            }
+            <Link className={"btn btn-outline-primary sms-btn"}
+                  to={ROUTES.ADMIN.USERS}>{LABELS.COMMON.SEE_ALL_USERS}</Link>
+        </DashboardSectionLight>
     )
 }
