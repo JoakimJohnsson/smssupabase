@@ -88,21 +88,19 @@ export const User = () => {
     }, [user.id]);
 
     return objectDoesExist(user) && userSelectedIssuesTitlesData ?
-        <div className={"row"}>
+        <>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"col-12"}>
-                            {
-                                showFullInfo(user, profile) ?
-                                    <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>
-                                    :
-                                    <HeadingWithBreadCrumbs text={getAnonDisplayName(user)} doIgnoreName={true}
-                                                            bcName={getAnonDisplayName(user)}/>
-                            }
-                        </div>
+                        {
+                            showFullInfo(user, profile) ?
+                                <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>
+                                :
+                                <HeadingWithBreadCrumbs text={getAnonDisplayName(user)} doIgnoreName={true}
+                                                        bcName={getAnonDisplayName(user)}/>
+                        }
                         {
                             showFullInfo(user, profile) ?
                                 <div className={"col-12 col-md-5 col-xl-4 mb-5"}>
@@ -179,7 +177,7 @@ export const User = () => {
                         }
                     </>
             }
-        </div>
+        </>
         :
         <NoMatch/>
 }

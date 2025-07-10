@@ -38,15 +38,13 @@ export const Publisher = () => {
 
 
     return objectDoesExist(publisher) ?
-        <div className={"row"}>
+        <>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"col-12"}>
-                            <HeadingWithBreadCrumbs text={publisher.name}/>
-                        </div>
+                        <HeadingWithBreadCrumbs text={publisher.name}/>
                         <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
                             <ImageViewerSmall url={publisher.image_url} fileName={publisher.image_filename}/>
                             <div className={"mb-2"}>
@@ -84,7 +82,7 @@ export const Publisher = () => {
                         </div>
                     </>
             }
-        </div>
+        </>
         :
         <NoMatch/>
 }

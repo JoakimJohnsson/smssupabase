@@ -58,9 +58,7 @@ export const AdminTitleAdd = () => {
 
     return (
         <>
-            <div className={"col-12"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
-            </div>
+            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
             <div className={"sms-dashboard-col"}>
                 <div className={"sms-section--light"}>
                     <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>
@@ -130,7 +128,8 @@ export const AdminTitleAdd = () => {
                             {printOptions(formatData)}
                         </select>
                     }
-                    <label className={"form-label"} htmlFor="totalissues">{LABELS.SECTIONS.TITLES.TOTAL_ISSUES_DB}</label>
+                    <label className={"form-label"}
+                           htmlFor="totalissues">{LABELS.SECTIONS.TITLES.TOTAL_ISSUES_DB}</label>
                     <input
                         id="totalissues"
                         name={"total_issues"}

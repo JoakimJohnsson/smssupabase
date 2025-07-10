@@ -206,16 +206,14 @@ export const Issue = () => {
     };
 
     return objectDoesExist(issue) ?
-        <div className={"row"}>
+        <>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
                     <>
-                        <div className={"col-12"}>
-                            <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
-                                                    bcName={getIssueName(issue)}/>
-                        </div>
+                        <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
+                                                bcName={getIssueName(issue)}/>
                         <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
                             <ImageViewerCover url={issue.image_url} displayName={displayName}
                                               isCollectingIssue={isCollectingIssue}/>
@@ -348,7 +346,8 @@ export const Issue = () => {
                                     </>
                                 }
                             </div>
-                            <MessageReview originObject={issue} originTable={TABLES.ISSUES} stars={stars} setStars={setStars} saveReview={saveReview}/>
+                            <MessageReview originObject={issue} originTable={TABLES.ISSUES} stars={stars}
+                                           setStars={setStars} saveReview={saveReview}/>
                             <div className={"mb-5"}>
                                 <p className={"mb-4"}>{issue?.titles?.description}</p>
                                 {
@@ -449,7 +448,7 @@ export const Issue = () => {
                         </div>
                     </>
             }
-        </div>
+        </>
         :
         <NoMatch/>
 }
