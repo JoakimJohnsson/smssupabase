@@ -2,6 +2,7 @@ import React from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {IssueGridCard} from "./IssueGridCard";
 import {sortByNumberAndVariantSuffix} from "../../../helpers/functions";
+import {SmsListWithCards} from "../../pages/pagecomponents/SmsListWithCards.jsx";
 
 
 export const IssuesListGrid = ({groupedIssuesData, showCollectingButtons, fetchTitleProgress, listViewMissing, doUpdate}) => {
@@ -13,7 +14,7 @@ export const IssuesListGrid = ({groupedIssuesData, showCollectingButtons, fetchT
                 (groupedIssuesData.map((year, index) =>
                         <div key={index}>
                             <h3 className={"h5"}>{year[0].year}</h3>
-                            <ul className={"sms-list--with-cards mb-0"}>
+                            <SmsListWithCards>
                                 {
                                     year.length ?
                                         (year.sort((a, b) => sortByNumberAndVariantSuffix(a, b)).map((issue) =>
@@ -23,7 +24,7 @@ export const IssuesListGrid = ({groupedIssuesData, showCollectingButtons, fetchT
                                         :
                                         (<NoDataAvailable/>)
                                 }
-                            </ul>
+                            </SmsListWithCards>
                         </div>)
                 )
             }

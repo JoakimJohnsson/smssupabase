@@ -12,6 +12,7 @@ import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadi
 import {ShowMoreButtons} from "../../../minis/ShowMoreButtons.jsx";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard.jsx";
 import FilterFormMyIssues from "../../../searchFilter/FilterFormMyIssues.jsx";
+import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 
 
 export const MyIssuesPane = () => {
@@ -63,14 +64,14 @@ export const MyIssuesPane = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             filteredData.slice(0, itemsToShow)
                                 .map(issue => (
                                     <IssueLinkCard key={issue.id} issue={issue}/>
                                 ))
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
             {
                 filteredData && filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&

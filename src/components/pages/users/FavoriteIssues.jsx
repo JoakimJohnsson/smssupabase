@@ -4,6 +4,7 @@ import {sortByTitleYearNumber} from "../../../helpers/functions.jsx";
 import {IssueLinkCard} from "../../lists/issues/IssueLinkCard.jsx";
 import {ExportDataButton} from "../../minis/ExportDataButton.jsx";
 import {getExportDataForIssues} from "../../../helpers/exportUtil.js";
+import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
 
 
 export const FavoriteIssues = ({data}) => {
@@ -14,7 +15,7 @@ export const FavoriteIssues = ({data}) => {
     return (
         <div className={"sms-section--light mb-5"}>
             <h2>{LABELS.SECTIONS.ISSUES.FAVORITES}</h2>
-            <ul className={"sms-list--with-cards"}>
+            <SmsListWithCards>
                 {
                     data ?
                         data
@@ -26,7 +27,7 @@ export const FavoriteIssues = ({data}) => {
                         :
                         <p>{LABELS.COMMON.NO_FAVORITE_ISSUES_USER}</p>
                 }
-            </ul>
+            </SmsListWithCards>
             <ExportDataButton data={exportData} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_FAVORITES_CSV}
                               variant={"btn-outline-marvelklubben"}/>
             <ExportDataButton doExportPdf data={exportData} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_FAVORITES_PDF} variant={"btn-outline-marvelklubben"} />

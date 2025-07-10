@@ -9,6 +9,7 @@ import {sortByName} from "../../helpers/functions";
 import {Link} from "react-router-dom";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {SmsListWithCards} from "./pagecomponents/SmsListWithCards.jsx";
 
 
 export const Publishers = () => {
@@ -30,7 +31,7 @@ export const Publishers = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             query ?
                                 publishersData
@@ -73,7 +74,7 @@ export const Publishers = () => {
                                         </li>
                                     )
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
         </div>
     )

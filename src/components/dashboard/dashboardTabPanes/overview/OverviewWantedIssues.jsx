@@ -6,6 +6,7 @@ import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {useAppContext} from "../../../../context/AppContext";
 import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
+import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 
 
 export const OverviewWantedIssues = ({data}) => {
@@ -17,7 +18,7 @@ export const OverviewWantedIssues = ({data}) => {
             <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
                 {
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             data && data.length ?
                                 <>
@@ -38,7 +39,7 @@ export const OverviewWantedIssues = ({data}) => {
                                 :
                                 <p>{LABELS.COMMON.NO_WANTED_ISSUES}</p>
                         }
-                    </ul>
+                    </SmsListWithCards>
                 }
                 {
                     data && data.length > 3 &&

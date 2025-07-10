@@ -4,6 +4,7 @@ import {sortByTitleYearNumber} from "../../../helpers/functions.jsx";
 import {IssueLinkCard} from "../../lists/issues/IssueLinkCard.jsx";
 import {ExportDataButton} from "../../minis/ExportDataButton.jsx";
 import {getExportDataForIssues} from "../../../helpers/exportUtil.js";
+import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
 
 
 export const WantedIssues = ({data}) => {
@@ -15,7 +16,7 @@ export const WantedIssues = ({data}) => {
         <div className={"sms-section--light mb-5"}>
             <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
             {
-                <ul className={"sms-list--with-cards"}>
+                <SmsListWithCards>
                     {
                         data ?
                             data
@@ -27,7 +28,7 @@ export const WantedIssues = ({data}) => {
                             :
                             <p>{LABELS.COMMON.NO_WANTED_ISSUES_USER}</p>
                     }
-                </ul>
+                </SmsListWithCards>
             }
             <ExportDataButton data={exportData} fileName={fileName} label={LABELS.SECTIONS.ISSUES.EXPORT_WANTED_CSV}
                               variant={"btn-outline-publisher"}/>

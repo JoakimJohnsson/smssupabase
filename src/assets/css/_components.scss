@@ -65,7 +65,7 @@
   }
 
   &__row {
-    @extend .px-3, .py-5, .p-sm-5;
+    @extend .px-3, .py-5, .p-sm-5, .row;
   }
 
   .row-padding--dashboard {

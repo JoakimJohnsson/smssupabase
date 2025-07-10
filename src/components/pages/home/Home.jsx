@@ -24,6 +24,7 @@ import {DashboardSection} from "./DashboardSection";
 import {getTop5Issues, getTop5Titles} from "../../../helpers/databaseFunctions.js";
 import {TitlesListItem} from "../titles/TitlesListItem.jsx";
 import SearchBox from "../../SearchBox.jsx";
+import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
 
 
 export const Home = () => {
@@ -183,7 +184,8 @@ export const Home = () => {
             </div>
             <div className={"sms-section--light mb-5"}>
                 <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
-                <SearchBox route={ROUTES.TITLES} placeholder={TEXTS.SEARCH_TITLE_OR_YEAR} label={LABELS.SECTIONS.TITLES.TITLES}/>
+                <SearchBox route={ROUTES.TITLES} placeholder={TEXTS.SEARCH_TITLE_OR_YEAR}
+                           label={LABELS.SECTIONS.TITLES.TITLES}/>
                 <div className={"mb-4"}>
                     {
                         <>
@@ -207,12 +209,12 @@ export const Home = () => {
                     <LazyTextPlaceholder charCount={3}/> : totalTitles}</p>
 
                 <p className={"text-label"}>{LABELS.SECTIONS.TITLES.TOP_5}</p>
-                <ul className={"sms-list--with-cards"}>
+                <SmsListWithCards>
                     {
                         top5Titles &&
                         top5Titles.map((title) => <TitlesListItem key={title.id} title={title}/>)
                     }
-                </ul>
+                </SmsListWithCards>
                 <p className={"text-label"}>{TEXTS.LATEST_TITLES}</p>
                 {
                     limitedTitlesData ?
@@ -228,28 +230,29 @@ export const Home = () => {
             </div>
             <div className={"sms-section--light mb-5"}>
                 <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
-                <SearchBox route={ROUTES.ISSUES} placeholder={TEXTS.SEARCH_NUMBER_TITLE_OR_YEAR} label={LABELS.SECTIONS.ISSUES.ISSUES}/>
+                <SearchBox route={ROUTES.ISSUES} placeholder={TEXTS.SEARCH_NUMBER_TITLE_OR_YEAR}
+                           label={LABELS.SECTIONS.ISSUES.ISSUES}/>
                 <p className={"mb-4 placeholder-glow"}><span
                     className={"text-label"}>{TEXTS.TOTAL_ISSUE_COUNT}</span> {loading ?
                     <LazyTextPlaceholder charCount={4}/> : totalIssues}</p>
                 <p className={"text-label"}>{LABELS.SECTIONS.ISSUES.TOP_5}</p>
-                <ul className={"sms-list--with-cards"}>
+                <SmsListWithCards>
                     {
                         top5Issues &&
                         top5Issues.map((issue) => <IssueLinkCard key={issue.id} issue={issue}/>)
                     }
-                </ul>
+                </SmsListWithCards>
                 <p className={" text-label mb-3"}>{TEXTS.LATEST_ISSUES}</p>
                 {
                     limitedIssuesData ?
-                        <ul className={"sms-list--with-cards"}>
+                        <SmsListWithCards>
                             {
                                 limitedIssuesData
                                     .map((issue) =>
                                         <IssueLinkCard key={issue.id} issue={issue}/>
                                     )
                             }
-                        </ul>
+                        </SmsListWithCards>
                         :
                         <NoDataAvailable/>
                 }

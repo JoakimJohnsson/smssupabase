@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
 import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
 import {TitlesListItem} from "../../../pages/titles/TitlesListItem.jsx";
+import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 
 
 export const OverviewFavoriteTitles = ({data}) => {
@@ -17,7 +18,7 @@ export const OverviewFavoriteTitles = ({data}) => {
             <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.SECTIONS.TITLES.FAVORITES}</h2>
                 {
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             data && data.length ?
                                 <>
@@ -37,7 +38,7 @@ export const OverviewFavoriteTitles = ({data}) => {
                                 :
                                 <p>{LABELS.COMMON.NO_FAVORITE_TITLES_USER}</p>
                         }
-                    </ul>
+                    </SmsListWithCards>
                 }
                 {
                     data && data.length > 4 &&

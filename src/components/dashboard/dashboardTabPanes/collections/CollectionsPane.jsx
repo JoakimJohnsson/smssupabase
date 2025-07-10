@@ -6,6 +6,7 @@ import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
 import {HeadingWithBreadCrumbs} from "../../../headings";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 
 
 export const CollectionsPane = () => {
@@ -25,7 +26,7 @@ export const CollectionsPane = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             usersData.map((user) =>
                                 // List public users other than profile
@@ -33,7 +34,7 @@ export const CollectionsPane = () => {
                                 <CollectionsPaneListItem user={user} key={user.id}/>
                             )
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
         </>
     )

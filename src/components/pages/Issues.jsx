@@ -9,6 +9,7 @@ import {IssueCard} from "../lists/issues/IssueCard";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {ShowMoreButtons} from "../minis/ShowMoreButtons";
 import {useShowMoreFilteredData} from "../../helpers/customHooks/useShowMoreFilteredData";
+import {SmsListWithCards} from "./pagecomponents/SmsListWithCards.jsx";
 
 
 export const Issues = () => {
@@ -38,14 +39,14 @@ export const Issues = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             filteredData.slice(0, itemsToShow)
                                 .map(issue => (
                                     <IssueCard key={issue.id} issue={issue}/>
                                 ))
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
             {
                 filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&

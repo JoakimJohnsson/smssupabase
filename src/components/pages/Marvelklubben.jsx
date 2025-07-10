@@ -10,6 +10,7 @@ import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {ShowMoreButtons} from "../minis/ShowMoreButtons";
+import {SmsListWithCards} from "./pagecomponents/SmsListWithCards.jsx";
 
 
 export const Marvelklubben = () => {
@@ -56,13 +57,13 @@ export const Marvelklubben = () => {
             {loading ?
                 <OverlaySpinner/>
                 :
-                <ul className="sms-list--with-cards">
+                <SmsListWithCards>
                     {
                         filteredData.slice(0, itemsToShow).map(issue => (
                             <IssueCard key={issue.id} issue={issue}/>
                         ))
                     }
-                </ul>
+                </SmsListWithCards>
             }
             {
                 filteredData.length > CONFIG.PAGINATION_ITEM_COUNT &&

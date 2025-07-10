@@ -16,6 +16,7 @@ import {TitlesListItem} from "./TitlesListItem.jsx";
 import {useFormatQueryFilter} from "../../../helpers/customHooks/useFormatQueryFilter.js";
 import FilterFormFormat from "../../searchFilter/FilterFormFormat.jsx";
 import FilteredListInfo from "../../searchFilter/FilteredListInfo.jsx";
+import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
 
 
 export const Titles = () => {
@@ -89,12 +90,12 @@ export const Titles = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             filteredTitlesData &&
                             filteredTitlesData.map((title) => <TitlesListItem key={title.id} title={title}/>)
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
         </div>
     )

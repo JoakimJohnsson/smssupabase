@@ -9,6 +9,7 @@ import {useSimpleQueryFilter} from "../../../helpers/customHooks/useSimpleQueryF
 import FilterFormSimple from "../../searchFilter/FilterFormSimple.jsx";
 import {UserCard} from "../../lists/users/UserCard.jsx";
 import {filterQueryByFirstNameAndLastName} from "../../../helpers/functions.jsx";
+import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
 
 
 export const Users = () => {
@@ -29,7 +30,7 @@ export const Users = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             query ?
                                 usersData
@@ -51,7 +52,7 @@ export const Users = () => {
                                     <UserCard key={user.id} user={user}/>
                                 )
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
         </div>
     )

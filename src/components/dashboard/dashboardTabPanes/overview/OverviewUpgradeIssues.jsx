@@ -6,6 +6,7 @@ import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadi
 import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
 import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
+import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 
 
 export const OverviewUpgradeIssues = ({data}) => {
@@ -17,7 +18,7 @@ export const OverviewUpgradeIssues = ({data}) => {
             <div className={"sms-section--light h-100"}>
                 <h2>{LABELS.SECTIONS.ISSUES.UPGRADE_ISSUES}</h2>
                 {
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             data && data.length ?
                                 <>
@@ -38,7 +39,7 @@ export const OverviewUpgradeIssues = ({data}) => {
                                 :
                                 <p>{LABELS.SECTIONS.ISSUES.NO_UPGRADE_ISSUES}</p>
                         }
-                    </ul>
+                    </SmsListWithCards>
                 }
                 {
                     data && data.length > 3 &&

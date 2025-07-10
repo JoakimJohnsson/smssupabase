@@ -7,6 +7,7 @@ import {
 } from "../../../../helpers/functions";
 import {MyTitlesPaneListItem} from "./MyTitlesPaneListItem";
 import FilteredListInfo from "../../../searchFilter/FilteredListInfo.jsx";
+import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 
 
 export const MyTitlesPaneList = (props) => {
@@ -37,11 +38,11 @@ export const MyTitlesPaneList = (props) => {
     return (
         <>
             <FilteredListInfo filteredData={filteredTitles} totalData={titlesData}/>
-            <ul className="sms-list--with-cards">
+            <SmsListWithCards>
                 {filteredTitles.map((t) => (
                     <MyTitlesPaneListItem key={t.id} title={t}/>
                 ))}
-            </ul>
+            </SmsListWithCards>
         </>
     );
 };
