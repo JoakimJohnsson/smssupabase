@@ -1,11 +1,11 @@
 import React from "react";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
-import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
-import {useAppContext} from "../../../../context/AppContext";
-import {updateReleaseDate} from "../../../../services/utilsService";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
+import {useAppContext} from "../../../context/AppContext";
+import {updateReleaseDate} from "../../../services/utilsService";
 import {faCalendarHeart} from "@fortawesome/pro-regular-svg-icons";
-import {IconButton} from "../../../minis/IconButton";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {IconButton} from "../../minis/IconButton";
+import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
 export const UtilsSection = () => {

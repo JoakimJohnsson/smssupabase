@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {ROUTES} from "../../../../helpers/constants/configConstants";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings.js";
-import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
-import {TABLES} from "../../../../helpers/constants/serviceConstants";
-import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
-import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {UsersList} from "../../../lists/users/UsersList";
+import {ROUTES} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
+import {TABLES} from "../../../helpers/constants/serviceConstants";
+import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
+import {NoDataAvailable} from "../../minis/NoDataAvailable";
+import {UsersList} from "../../lists/users/UsersList";
 import {Link} from "react-router-dom";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
 export const UsersSection = () => {

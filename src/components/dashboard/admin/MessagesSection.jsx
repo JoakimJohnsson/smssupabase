@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {ROUTES} from "../../../../helpers/constants/configConstants";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
-import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
-import {TABLES} from "../../../../helpers/constants/serviceConstants";
+import {ROUTES} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
+import {TABLES} from "../../../helpers/constants/serviceConstants";
 import {Link} from "react-router-dom";
-import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
-import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {MessagesList} from "../../../message/MessagesList";
-import {filterGlobalMessage} from "../../../../helpers/functions";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
+import {NoDataAvailable} from "../../minis/NoDataAvailable";
+import {MessagesList} from "../../message/MessagesList";
+import {filterGlobalMessage} from "../../../helpers/functions";
+import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
 export const MessagesSection = () => {

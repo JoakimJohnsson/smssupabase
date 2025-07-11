@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {ROUTES} from "../../../../helpers/constants/configConstants";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
-import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
-import {TABLES} from "../../../../helpers/constants/serviceConstants";
+import {ROUTES} from "../../../helpers/constants/configConstants";
+import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../../helpers/constants/textConstants/texts";
+import {TABLES} from "../../../helpers/constants/serviceConstants";
 import {Link, useNavigate} from "react-router-dom";
-import {getRowsByTableWithLimitAndOrderByColumn} from "../../../../services/serviceFunctions";
-import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {PublishersList} from "../../../lists/publishers/PublishersList";
-import {IconButton} from "../../../minis/IconButton";
+import {getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
+import {NoDataAvailable} from "../../minis/NoDataAvailable";
+import {PublishersList} from "../../lists/publishers/PublishersList";
+import {IconButton} from "../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
 export const PublishersSection = () => {

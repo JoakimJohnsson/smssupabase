@@ -129,7 +129,7 @@ export const PANES = {
         NAME: "Mina titlar",
         LONG_NAME: "Kontrollpanelen - Mina titlar",
         SHORT_NAME: "Titlar",
-        COLLECTING_CHECK_GRADING_STATUS_OPEN_1: "Beräknar värdet och kontrollerar om något exemplar av",
+        COLLECTING_CHECK_GRADING_STATUS_OPEN_1: "Klicka här för att beräkna värdet och kontrollera om något exemplar av",
         COLLECTING_CHECK_GRADING_STATUS_OPEN_2: "behöver skickgradering.",
         GRADE_MISSING: "Det verkar som att några publikationer saknar skickgradering.",
         GRADE_FOUND: "Alla publikationer har skickgradering.",
