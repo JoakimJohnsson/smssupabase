@@ -7,7 +7,7 @@ import {
 } from "../../../../helpers/constants/textConstants/messages";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {MessageIcons} from "../../../message/MessageIcons";
@@ -67,7 +67,7 @@ export const AdminMessage = () => {
                     <>
                         <div className={"sms-page-col"}>
                             {/* Table MESSAGE does not have a name column - ignore name and use message title instead. */}
-                            <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title}
+                            <HeadingWithBreadcrumbs doIgnoreName={true} bcName={message.title}
                                                     text={LABELS.SECTIONS.MESSAGES.MESSAGE}/>
                         </div>
                         <div className={"row"}>

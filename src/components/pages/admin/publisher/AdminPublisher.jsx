@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {FILETYPES} from "../../../../helpers/constants/configConstants";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
@@ -47,7 +47,7 @@ export const AdminPublisher = () => {
                     :
                     <>
                         <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs text={publisher.name}/>
+                            <HeadingWithBreadcrumbs text={publisher.name}/>
                             <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
                             <IconButton variant={"primary"} icon={publishersIconDuoTone}
                                         onClick={() => navigate(`/publishers/${publisher.id}`)}

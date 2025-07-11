@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {Link, useParams} from "react-router-dom";
@@ -44,7 +44,7 @@ export const Publisher = () => {
                     <OverlaySpinner/>
                     :
                     <>
-                        <HeadingWithBreadCrumbs text={publisher.name}/>
+                        <HeadingWithBreadcrumbs text={publisher.name}/>
                         <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
                             <ImageViewerSmall url={publisher.image_url} fileName={publisher.image_filename}/>
                             <div className={"mb-2"}>

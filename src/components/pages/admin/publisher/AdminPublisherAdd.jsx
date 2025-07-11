@@ -4,7 +4,7 @@ import {handleInput} from "../../../../services/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
 import countryData from "../../../../helpers/valueLists/countries.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
@@ -49,7 +49,7 @@ export const AdminPublisherAdd = () => {
     return (
         <>
             <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
+                <HeadingWithBreadcrumbs text={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
             </div>
             <div className={"sms-dashboard-col"}>
                 <div className={"sms-section--light"}>

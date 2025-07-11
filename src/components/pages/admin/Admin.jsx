@@ -4,7 +4,7 @@ import {BREADCRUMB_NAMES, LABELS} from "../../../helpers/constants/textConstants
 import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {TitlesSection} from "../../dashboards/admin/TitlesSection";
 import {PublishersSection} from "../../dashboards/admin/PublishersSection";
-import {HeadingWithBreadCrumbs} from "../../headings";
+import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
 import {Icon, mailIcon} from "../../icons";
 import {UsersSection} from "../../dashboards/admin/UsersSection";
 import {useAppContext} from "../../../context/AppContext";
@@ -21,7 +21,7 @@ export const Admin = () => {
     return (
         <>
             <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={BREADCRUMB_NAMES.ADMIN}/>
+                <HeadingWithBreadcrumbs text={BREADCRUMB_NAMES.ADMIN}/>
                 <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
                 <p>{TEXTS.ADMIN_INFO}</p>
                 <p>

@@ -11,7 +11,7 @@ import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../../../searchFilter/FilterFormSimple";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
@@ -27,7 +27,7 @@ export const AdminPublishers = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
             <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NAME}/>
             <div className={"sms-section--light"}>
                 {

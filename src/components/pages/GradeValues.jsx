@@ -3,7 +3,7 @@ import { debounce } from "lodash"; // Import lodash for debouncing
 import { LABELS } from "../../helpers/constants/textConstants/labelsAndHeadings";
 import { TEXTS } from "../../helpers/constants/textConstants/texts";
 import { TABLES } from "../../helpers/constants/serviceConstants";
-import { HeadingWithBreadCrumbs } from "../headings";
+import { HeadingWithBreadcrumbs } from "../headings/HeadingWithBreadcrumbs.jsx";
 import { OverlaySpinner } from "../minis/OverlaySpinner";
 import {
     filterByFormat,
@@ -120,7 +120,7 @@ export const GradeValues = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.GRADES.GRADE_VALUES} />
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.GRADES.GRADE_VALUES} />
             <FilterFormFormat
                 setSearchParams={setSearchParams}
                 query={query}

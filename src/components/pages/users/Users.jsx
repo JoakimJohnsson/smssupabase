@@ -3,7 +3,7 @@ import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
 import {TABLES} from "../../../helpers/constants/serviceConstants.js";
 import {getRowsByTable} from "../../../services/serviceFunctions.js";
-import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
+import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
 import {useSimpleQueryFilter} from "../../../helpers/customHooks/useSimpleQueryFilter.js";
 import FilterFormSimple from "../../searchFilter/FilterFormSimple.jsx";
@@ -24,7 +24,7 @@ export const Users = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
             <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NAME}/>
             {
                 loading ?

@@ -4,7 +4,7 @@ import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 
@@ -21,7 +21,7 @@ export const CollectionsPane = () => {
 
     return (
         <>
-            <HeadingWithBreadCrumbs text={PANES.COLLECTIONS.NAME}/>
+            <HeadingWithBreadcrumbs text={PANES.COLLECTIONS.NAME}/>
             {
                 loading ?
                     <OverlaySpinner/>

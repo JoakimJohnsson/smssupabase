@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {CONFIG} from "../../helpers/constants/configConstants";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../services/issueService";
 import {IssueCard} from "../lists/issues/IssueCard";
@@ -33,7 +33,7 @@ export const Marvelklubben = () => {
 
     return (
         <div className="sms-page-col">
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
             <p className="lead">{TEXTS.MARVELKLUBBEN_LEAD}</p>
             <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
             <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"

@@ -4,7 +4,7 @@ import {FILETYPES} from "../../../../helpers/constants/configConstants";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName, objectDoesExist} from "../../../../helpers/functions";
@@ -56,7 +56,7 @@ export const AdminIssue = () => {
                     <>
 
                         <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
+                            <HeadingWithBreadcrumbs text={getIssueName(issue)} doIgnoreName={true}
                                                     bcName={getIssueName(issue)}/>
                             <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                             <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>

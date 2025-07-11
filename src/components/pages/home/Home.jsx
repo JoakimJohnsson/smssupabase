@@ -4,7 +4,7 @@ import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings
 import {PANES, TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../../context/AppContext";
-import {HeadingWithBreadCrumbs} from "../../headings";
+import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
 import {HomePublic} from "./HomePublic";
 import {InformationAlert} from "../../minis/InformationAlert";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
@@ -108,7 +108,7 @@ export const Home = () => {
 
     return profile && user && user.id ?
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs
+            <HeadingWithBreadcrumbs
                 text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
             {
                 userMessages && !!userMessages.length &&

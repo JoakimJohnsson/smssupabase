@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
+import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
 import {useParams} from "react-router-dom";
 import {
     addTitleToTable,
@@ -199,7 +199,7 @@ export const Title = () => {
                 <OverlaySpinner/>
                 :
                 <>
-                    <HeadingWithBreadCrumbs
+                    <HeadingWithBreadcrumbs
                         text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                     <div className={"col-12 col-lg-5 col-xl-4 mb-5"}>
                         <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>

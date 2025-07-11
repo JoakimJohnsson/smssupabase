@@ -10,7 +10,7 @@ import {MessagesList} from "../../../message/MessagesList";
 import {Message} from "../../../message/Message";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {globalIconDuoTone} from "../../../icons";
 import {supabase} from "../../../../supabase/supabaseClient";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";
@@ -77,7 +77,7 @@ export const AdminMessages = () => {
     return (
         <>
             <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
+                <HeadingWithBreadcrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
                 <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
                 <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
                 <IconLinkCtaLg

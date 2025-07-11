@@ -5,7 +5,7 @@ import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {Icon, mailIcon} from "../icons";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
@@ -72,7 +72,7 @@ const Profile = () => {
                     :
                     <>
                         <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs text={LABELS.COMMON.SETTINGS}/>
+                            <HeadingWithBreadcrumbs text={LABELS.COMMON.SETTINGS}/>
                             <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                             <p>{TEXTS.SETTINGS_INFO}</p>
                             <p>

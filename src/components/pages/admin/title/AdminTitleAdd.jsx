@@ -5,7 +5,7 @@ import {handleInput} from "../../../../services/serviceFunctions";
 import {handleBacking, printOptions} from "../../../../helpers/functions";
 import formatData from "../../../../helpers/valueLists/formats.json";
 import {useCommonFormStates} from "../../../../helpers/customHooks/useCommonFormStates";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../../../../context/AppContext";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
@@ -58,7 +58,7 @@ export const AdminTitleAdd = () => {
 
     return (
         <>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
             <div className={"sms-dashboard-col"}>
                 <div className={"sms-section--light"}>
                     <label className={"form-label"} htmlFor="name">{LABELS.COMMON.NAME_DB}</label>

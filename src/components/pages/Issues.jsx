@@ -2,7 +2,7 @@ import React from "react";
 import {CONFIG} from "../../helpers/constants/configConstants";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import FilterFormSimple from "../searchFilter/FilterFormSimple";
 import {IssueCard} from "../lists/issues/IssueCard";
@@ -18,7 +18,7 @@ export const Issues = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
             <FilterFormSimple query={query} setSearchParams={setSearchParams}
                               placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
             <p className={"text-uppercase fs-large placeholder-glow"}>

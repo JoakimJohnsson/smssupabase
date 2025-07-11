@@ -3,7 +3,7 @@ import { debounce } from "lodash";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
 import {TABLES} from "../../../helpers/constants/serviceConstants.js";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
-import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
+import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
 import {
     filterByFormat,
@@ -73,7 +73,7 @@ export const Titles = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
             <FilterFormFormat
                 setSearchParams={setSearchParams}
                 query={query}

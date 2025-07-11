@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
+import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
 import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../../services/serviceFunctions.js";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
@@ -96,9 +96,9 @@ export const User = () => {
                     <>
                         {
                             showFullInfo(user, profile) ?
-                                <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>
+                                <HeadingWithBreadcrumbs text={userName} doIgnoreName={true} bcName={userName}/>
                                 :
-                                <HeadingWithBreadCrumbs text={getAnonDisplayName(user)} doIgnoreName={true}
+                                <HeadingWithBreadcrumbs text={getAnonDisplayName(user)} doIgnoreName={true}
                                                         bcName={getAnonDisplayName(user)}/>
                         }
                         {

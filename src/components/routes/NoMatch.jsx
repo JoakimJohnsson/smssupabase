@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {CONFIG} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {NoRouteAvailable} from "../minis/NoRouteAvailable";
@@ -21,7 +21,7 @@ export const NoMatch = () => {
         <OverlaySpinner/>
         :
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.COMMON.STATUS_404}/>
+            <HeadingWithBreadcrumbs text={LABELS.COMMON.STATUS_404}/>
             <NoRouteAvailable/>
         </div>
 }

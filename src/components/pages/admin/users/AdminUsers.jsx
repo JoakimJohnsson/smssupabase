@@ -10,7 +10,7 @@ import {UsersList} from "../../../lists/users/UsersList";
 import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../../../searchFilter/FilterFormSimple";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 
@@ -37,7 +37,7 @@ export const AdminUsers = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
             <p className={"lead"}>{TEXTS.SHOWING_LATEST_USERS}</p>
             <p className={"mb-5"}>{TEXTS.USERS_COUNT_TEXT_1} {usersData && usersData.length} {TEXTS.USERS_COUNT_TEXT_2}</p>
             <FilterFormSimple query={query} setSearchParams={setSearchParams}

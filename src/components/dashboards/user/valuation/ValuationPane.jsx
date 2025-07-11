@@ -3,7 +3,7 @@ import {CONFIG, LOADING_STATES} from "../../../../helpers/constants/configConsta
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import * as ServiceFunctions from "../../../../services/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
@@ -100,7 +100,7 @@ export const ValuationPane = () => {
 
     return (
         <>
-            <HeadingWithBreadCrumbs text={PANES.VALUATION.NAME}/>
+            <HeadingWithBreadcrumbs text={PANES.VALUATION.NAME}/>
             <div className={"col-12 col-md-8 col-xxl-6"}>
                 <p className={"lead"}>{PANES.VALUATION.LEAD}</p>
             </div>

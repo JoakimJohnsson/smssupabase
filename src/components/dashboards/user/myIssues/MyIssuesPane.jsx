@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts.js";
 import {useAppContext} from "../../../../context/AppContext.jsx";
-import {HeadingWithBreadCrumbs} from "../../../headings/index.jsx";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner.jsx";
 import {getUserIssues} from "../../../../helpers/databaseFunctions.js";
 import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../../../helpers/functions.jsx";
@@ -40,7 +40,7 @@ export const MyIssuesPane = () => {
 
     return (
         <>
-            <HeadingWithBreadCrumbs text={PANES.ISSUES.NAME}/>
+            <HeadingWithBreadcrumbs text={PANES.ISSUES.NAME}/>
             <div>
                 <FilterFormMyIssues query={query} setSearchParams={setSearchParams}
                                     placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}

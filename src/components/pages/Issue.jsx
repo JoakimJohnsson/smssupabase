@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {useNavigate, useParams} from "react-router-dom";
 import {ROUTES} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
@@ -212,7 +212,7 @@ export const Issue = () => {
                     <OverlaySpinner/>
                     :
                     <>
-                        <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
+                        <HeadingWithBreadcrumbs text={getIssueName(issue)} doIgnoreName={true}
                                                 bcName={getIssueName(issue)}/>
                         <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
                             <ImageViewerCover url={issue.image_url} displayName={displayName}

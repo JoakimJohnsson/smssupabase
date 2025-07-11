@@ -6,7 +6,7 @@ import {OverviewTitlesSection} from "./OverviewTitlesSection.jsx";
 import {OverviewIssuesSection} from "./OverviewIssuesSection.jsx";
 import {OverviewUpgradeIssuesSection} from "./OverviewUpgradeIssuesSection.jsx";
 import {OverviewWantedIssuesSection} from "./OverviewWantedIssuesSection.jsx";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverviewValuationSection} from "./OverviewValuationSection.jsx";
 import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
 import {OverviewLinksSection} from "./OverviewLinksSection.jsx";
@@ -51,7 +51,7 @@ export const OverviewPane = () => {
 
     return (
         <>
-            <HeadingWithBreadCrumbs text={PANES.OVERVIEW.NAME}/>
+            <HeadingWithBreadcrumbs text={PANES.OVERVIEW.NAME}/>
             {
                 loading ?
                     <OverlaySpinner/>

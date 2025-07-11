@@ -14,7 +14,7 @@ import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
@@ -204,7 +204,7 @@ export const AdminTitle = () => {
                     :
                     <>
                         <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs
+                            <HeadingWithBreadcrumbs
                                 text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
                             <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
                             <IconLink

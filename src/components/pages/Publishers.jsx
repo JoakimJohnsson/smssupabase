@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../services/serviceFunctions";
-import {HeadingWithBreadCrumbs} from "../headings";
+import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../searchFilter/FilterFormSimple";
@@ -24,7 +24,7 @@ export const Publishers = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
             <FilterFormSimple query={query} setSearchParams={setSearchParams}
                               placeholder={TEXTS.FILTER_PUBLISHER_NAME}/>
             {

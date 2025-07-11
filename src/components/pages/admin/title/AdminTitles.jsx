@@ -19,7 +19,7 @@ import FilterFormAdminTitles from "../../../searchFilter/FilterFormAdminTitles";
 import {useAdminTitlesQueryFilter} from "../../../../helpers/customHooks/useAdminTitlesQueryFilter";
 import {LazyTextPlaceholder} from "../../../minis/LazyTextPlaceholder";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 
 
 export const AdminTitles = () => {
@@ -54,7 +54,7 @@ export const AdminTitles = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
             <FilterFormAdminTitles query={query} isvalued={isvalued} isnotvalued={isnotvalued}
                                    setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_TITLE_OR_YEAR}/>
             <p className={"text-uppercase fs-large placeholder-glow"}>

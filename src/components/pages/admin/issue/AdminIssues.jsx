@@ -1,6 +1,6 @@
 import React from "react";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {HeadingWithBreadCrumbs} from "../../../headings";
+import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {CONFIG} from "../../../../helpers/constants/configConstants";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
@@ -18,7 +18,7 @@ export const AdminIssues = () => {
 
     return (
         <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
+            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.ISSUES.ALL_ISSUES}/>
             <FilterFormSimple query={query} setSearchParams={setSearchParams}
                               placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}/>
             <p className={"text-uppercase fs-large placeholder-glow"}>
