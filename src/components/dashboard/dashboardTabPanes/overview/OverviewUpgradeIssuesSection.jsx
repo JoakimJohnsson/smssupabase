@@ -1,22 +1,22 @@
 import React from "react";
-import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
-import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {sortByName} from "../../../../helpers/functions";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {useAppContext} from "../../../../context/AppContext";
+import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
+import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
-export const OverviewWantedIssues = ({data}) => {
+export const OverviewUpgradeIssuesSection = ({data}) => {
 
     const {user} = useAppContext();
 
     return (
         <DashboardSectionLight>
-            <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
+            <h2>{LABELS.SECTIONS.ISSUES.UPGRADE_ISSUES}</h2>
             {
                 <SmsListWithCards>
                     {
@@ -27,8 +27,8 @@ export const OverviewWantedIssues = ({data}) => {
                                         .sort((a, b) => sortByName(a.titles, b.titles))
                                         .map((issue, index) => {
                                                 if (index < 3) {
-                                                    return <IssueLinkCard key={issue.id} issue={issue}
-                                                                          variant={"publisher"} simple/>
+                                                    return <IssueLinkCard key={issue.id} issue={issue} variant={"grade"}
+                                                                          simple/>
                                                 } else {
                                                     return null;
                                                 }
@@ -37,7 +37,7 @@ export const OverviewWantedIssues = ({data}) => {
                                 }
                             </>
                             :
-                            <p>{LABELS.COMMON.NO_WANTED_ISSUES}</p>
+                            <p>{LABELS.SECTIONS.ISSUES.NO_UPGRADE_ISSUES}</p>
                     }
                 </SmsListWithCards>
             }
@@ -45,7 +45,7 @@ export const OverviewWantedIssues = ({data}) => {
                 data && data.length > 3 &&
                 <Link className={"btn btn-outline-warning sms-btn d-inline-block"} to={`/users/${user.id}`}>
                     <Icon icon={userIconDuoTone} className={"me-2"} size={"1x"}/>
-                    {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_WANTED}
+                    {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_NEEDS_GRADING}
                 </Link>
             }
         </DashboardSectionLight>

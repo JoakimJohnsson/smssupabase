@@ -2,18 +2,18 @@ import React, {useState, useEffect} from "react";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
 import {getTitlesForUser} from "../../../../services/titleService";
-import {OverviewTitles} from "./OverviewTitles";
-import {OverviewIssues} from "./OverviewIssues";
-import {OverviewUpgradeIssues} from "./OverviewUpgradeIssues";
-import {OverviewWantedIssues} from "./OverviewWantedIssues";
+import {OverviewTitlesSection} from "./OverviewTitlesSection.jsx";
+import {OverviewIssuesSection} from "./OverviewIssuesSection.jsx";
+import {OverviewUpgradeIssuesSection} from "./OverviewUpgradeIssuesSection.jsx";
+import {OverviewWantedIssuesSection} from "./OverviewWantedIssuesSection.jsx";
 import {HeadingWithBreadCrumbs} from "../../../headings";
-import {OverviewValuation} from "./OverviewValuation";
+import {OverviewValuationSection} from "./OverviewValuationSection.jsx";
 import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
-import {OverviewLinks} from "./OverviewLinks";
-import {OverviewMessages} from "./OverviewMessages";
+import {OverviewLinksSection} from "./OverviewLinksSection.jsx";
+import {OverviewMessagesSection} from "./OverviewMessagesSection.jsx";
 import {getUserSelectedIssuesAndTitlesData} from "../../../../helpers/databaseFunctions.js";
-import {OverviewFavoriteIssues} from "./OverviewFavoriteIssues.jsx";
-import {OverviewFavoriteTitles} from "./OverviewFavoriteTitles.jsx";
+import {OverviewFavoriteIssuesSection} from "./OverviewFavoriteIssuesSection.jsx";
+import {OverviewFavoriteTitlesSection} from "./OverviewFavoriteTitlesSection.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner.jsx";
 
 
@@ -57,15 +57,15 @@ export const OverviewPane = () => {
                     <OverlaySpinner/>
                     :
                     <>
-                        <OverviewLinks/>
-                        <OverviewMessages/>
-                        <OverviewTitles titlesData={userTitlesData}/>
-                        <OverviewIssues titlesData={userTitlesData} issuesData={userCollectedIssuesData}/>
-                        <OverviewValuation/>
-                        <OverviewWantedIssues data={userSelectedIssuesTitlesData?.wanted}/>
-                        <OverviewUpgradeIssues data={userSelectedIssuesTitlesData?.upgraded}/>
-                        <OverviewFavoriteIssues data={userSelectedIssuesTitlesData?.favorite_issues}/>
-                        <OverviewFavoriteTitles data={userSelectedIssuesTitlesData?.favorite_titles}/>
+                        <OverviewLinksSection/>
+                        <OverviewMessagesSection/>
+                        <OverviewTitlesSection titlesData={userTitlesData}/>
+                        <OverviewIssuesSection titlesData={userTitlesData} issuesData={userCollectedIssuesData}/>
+                        <OverviewValuationSection/>
+                        <OverviewWantedIssuesSection data={userSelectedIssuesTitlesData?.wanted}/>
+                        <OverviewUpgradeIssuesSection data={userSelectedIssuesTitlesData?.upgraded}/>
+                        <OverviewFavoriteIssuesSection data={userSelectedIssuesTitlesData?.favorite_issues}/>
+                        <OverviewFavoriteTitlesSection data={userSelectedIssuesTitlesData?.favorite_titles}/>
                     </>
             }
         </>

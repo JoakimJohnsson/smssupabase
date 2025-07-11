@@ -10,13 +10,13 @@ import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.j
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
-export const OverviewUpgradeIssues = ({data}) => {
+export const OverviewFavoriteIssuesSection = ({data}) => {
 
     const {user} = useAppContext();
 
     return (
         <DashboardSectionLight>
-            <h2>{LABELS.SECTIONS.ISSUES.UPGRADE_ISSUES}</h2>
+            <h2>{LABELS.SECTIONS.ISSUES.FAVORITES}</h2>
             {
                 <SmsListWithCards>
                     {
@@ -27,7 +27,8 @@ export const OverviewUpgradeIssues = ({data}) => {
                                         .sort((a, b) => sortByName(a.titles, b.titles))
                                         .map((issue, index) => {
                                                 if (index < 3) {
-                                                    return <IssueLinkCard key={issue.id} issue={issue} variant={"grade"}
+                                                    return <IssueLinkCard key={issue.id} issue={issue}
+                                                                          variant={"marvelklubben"}
                                                                           simple/>
                                                 } else {
                                                     return null;
@@ -37,7 +38,7 @@ export const OverviewUpgradeIssues = ({data}) => {
                                 }
                             </>
                             :
-                            <p>{LABELS.SECTIONS.ISSUES.NO_UPGRADE_ISSUES}</p>
+                            <p>{LABELS.COMMON.NO_FAVORITE_ISSUES_USER}</p>
                     }
                 </SmsListWithCards>
             }
@@ -45,7 +46,7 @@ export const OverviewUpgradeIssues = ({data}) => {
                 data && data.length > 3 &&
                 <Link className={"btn btn-outline-warning sms-btn d-inline-block"} to={`/users/${user.id}`}>
                     <Icon icon={userIconDuoTone} className={"me-2"} size={"1x"}/>
-                    {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_NEEDS_GRADING}
+                    {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_FAVORITES}
                 </Link>
             }
         </DashboardSectionLight>

@@ -9,7 +9,7 @@ import {TitlesListItem} from "../../../pages/titles/TitlesListItem.jsx";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 
 
-export const OverviewFavoriteTitles = ({data}) => {
+export const OverviewFavoriteTitlesSection = ({data}) => {
 
     const {user} = useAppContext();
 

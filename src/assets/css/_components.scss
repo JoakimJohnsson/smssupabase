@@ -80,12 +80,6 @@
   margin-bottom: $grid-gutter-width;
 }
 
-// Overview
-.sms-dashboard-col--sm {
-  @extend .col-12, .col-lg-6;
-  margin-bottom: $grid-gutter-width;
-}
-
 .sms-section--light {
   @extend .p-0, .p-sm-4, .p-md-5;
   border-radius: $border-radius-sm;

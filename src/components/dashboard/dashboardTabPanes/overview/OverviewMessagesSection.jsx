@@ -5,7 +5,7 @@ import {SimpleMessagesList} from "../../../message/SimpleMessagesList";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
-export const OverviewMessages = () => {
+export const OverviewMessagesSection = () => {
 
     const {userMessages, setUserMessages} = useAppContext();
 

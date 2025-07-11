@@ -10,7 +10,7 @@ import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
-export const OverviewTitles = ({titlesData}) => {
+export const OverviewTitlesSection = ({titlesData}) => {
 
     const [totalTitles, setTotalTitles] = useState(0);
 
@@ -19,7 +19,6 @@ export const OverviewTitles = ({titlesData}) => {
     }, []);
 
     return titlesData ?
-
         <DashboardSectionLight>
             <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
             <IconLinkCtaLg

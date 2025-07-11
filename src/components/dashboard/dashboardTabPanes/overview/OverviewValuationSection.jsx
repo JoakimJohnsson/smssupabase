@@ -11,7 +11,7 @@ import {valueIconDuoTone} from "../../../icons";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
-export const OverviewValuation = () => {
+export const OverviewValuationSection = () => {
 
     const [loading, setLoading] = useState(false);
     const [totalValuationValuesForUser, setTotalValuationValuesForUser] = useState(null);

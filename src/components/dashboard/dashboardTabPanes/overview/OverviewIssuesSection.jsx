@@ -16,7 +16,7 @@ import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 
-export const OverviewIssues = ({titlesData, issuesData}) => {
+export const OverviewIssuesSection = ({titlesData, issuesData}) => {
 
     const [userIssuesCount, setUserIssuesCount] = useState(null);
     const [totalIssuesCountForCollection, setTotalIssuesCountForCollection] = useState(null);
