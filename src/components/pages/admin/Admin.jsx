@@ -2,15 +2,15 @@ import React from "react";
 import {ROUTES} from "../../../helpers/constants/configConstants";
 import {BREADCRUMB_NAMES, LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts";
-import {TitlesSection} from "../../dashboard/admin/TitlesSection";
-import {PublishersSection} from "../../dashboard/admin/PublishersSection";
+import {TitlesSection} from "../../dashboards/admin/TitlesSection";
+import {PublishersSection} from "../../dashboards/admin/PublishersSection";
 import {HeadingWithBreadCrumbs} from "../../headings";
 import {Icon, mailIcon} from "../../icons";
-import {UsersSection} from "../../dashboard/admin/UsersSection";
+import {UsersSection} from "../../dashboards/admin/UsersSection";
 import {useAppContext} from "../../../context/AppContext";
-import {UtilsSection} from "../../dashboard/admin/UtilsSection";
+import {UtilsSection} from "../../dashboards/admin/UtilsSection";
 import {Link} from "react-router-dom";
-import {MessagesSection} from "../../dashboard/admin/MessagesSection";
+import {MessagesSection} from "../../dashboards/admin/MessagesSection";
 import {isSuperAdmin} from "../../../services/profileService";
 
 
