@@ -8,7 +8,7 @@ import {getRowsByTableWithLimitAndOrderByColumn} from "../../../services/service
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {MessagesList} from "../../message/MessagesList";
 import {filterGlobalMessage} from "../../../helpers/functions";
-import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const MessagesSection = () => {
@@ -29,7 +29,7 @@ export const MessagesSection = () => {
     }, [limitedMessagesData]);
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.SECTIONS.MESSAGES.MESSAGES}</h2>
             {
                 limitedMessagesData ?
@@ -44,7 +44,7 @@ export const MessagesSection = () => {
             }
             <Link className={"btn btn-outline-primary sms-btn"}
                   to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
-        </DashboardSectionLight>
+        </PageSectionLight>
 
     )
 }

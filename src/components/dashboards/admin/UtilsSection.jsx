@@ -5,7 +5,7 @@ import {useAppContext} from "../../../context/AppContext";
 import {updateReleaseDate} from "../../../services/utilsService";
 import {faCalendarHeart} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../minis/IconButton";
-import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const UtilsSection = () => {
@@ -17,12 +17,12 @@ export const UtilsSection = () => {
     }
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.COMMON.UTILS}</h2>
             <p>{TEXTS.UTILS}</p>
             <h3>{LABELS.COMMON.RELEASE_DATE}</h3>
             <p>{TEXTS.UTILS_UPDATE_RELEASE_DATE}</p>
             <IconButton variant={"primary"} icon={faCalendarHeart} onClick={handleClick} label={LABELS.COMMON.UPDATE}/>
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }

@@ -13,7 +13,7 @@ import {csvIconDuoTone, issueIconDuoTone, pdfIconDuoTone} from "../../../icons/I
 import {FunctionButton} from "../../../minis/FunctionButton.jsx";
 import {exportMissingIssuesForUser} from "../../../../helpers/exportUtil.js";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const OverviewIssuesSection = ({titlesData, issuesData}) => {
@@ -61,7 +61,7 @@ export const OverviewIssuesSection = ({titlesData, issuesData}) => {
 
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.SECTIONS.ISSUES.ISSUES}</h2>
             <IconLinkCtaLg
                 variant={"primary"}
@@ -107,6 +107,6 @@ export const OverviewIssuesSection = ({titlesData, issuesData}) => {
                 label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
                 showLabel={true}
             />
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }

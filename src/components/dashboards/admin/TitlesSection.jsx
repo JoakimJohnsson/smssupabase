@@ -9,7 +9,7 @@ import {TitlesList} from "../../lists/titles/TitlesList";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {IconButton} from "../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const TitlesSection = () => {
@@ -22,7 +22,7 @@ export const TitlesSection = () => {
     }, [])
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
             {
                 limitedTitlesData ?
@@ -44,6 +44,6 @@ export const TitlesSection = () => {
                         label={LABELS.SECTIONS.TITLES.ADD_TITLE}/>
             <Link className={"btn btn-outline-primary sms-btn"}
                   to={ROUTES.ADMIN.TITLES}>{LABELS.COMMON.SEE_ALL_TITLES}</Link>
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }

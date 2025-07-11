@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/Icons.jsx";
 import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const OverviewFavoriteIssuesSection = ({data}) => {
@@ -15,7 +15,7 @@ export const OverviewFavoriteIssuesSection = ({data}) => {
     const {user} = useAppContext();
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.SECTIONS.ISSUES.FAVORITES}</h2>
             {
                 <SmsListWithCards>
@@ -49,6 +49,6 @@ export const OverviewFavoriteIssuesSection = ({data}) => {
                     {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_FAVORITES}
                 </Link>
             }
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }

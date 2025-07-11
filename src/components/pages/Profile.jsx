@@ -12,7 +12,7 @@ import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {supabase} from "../../supabase/supabaseClient";
 import {ProfileInfoCredentials} from "./ProfileInfoCredentials";
-import {DashboardSectionLight} from "./pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "./pagecomponents/PageSectionLight.jsx";
 
 
 const Profile = () => {
@@ -83,11 +83,11 @@ const Profile = () => {
                             </p>
                         </div>
                         <div className={"row"}>
-                            <DashboardSectionLight>
+                            <PageSectionLight>
                                 <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile}
                                                  setNewProfile={setNewProfile}/>
-                            </DashboardSectionLight>
-                            <DashboardSectionLight>
+                            </PageSectionLight>
+                            <PageSectionLight>
                                 <ProfileInfoCredentials
                                     newEmail={newEmail}
                                     setNewEmail={setNewEmail}
@@ -102,8 +102,8 @@ const Profile = () => {
                                     setConfirmNewPassword={setConfirmNewPassword}
                                     handleChangePassword={handleChangePassword}
                                 />
-                            </DashboardSectionLight>
-                            <DashboardSectionLight>
+                            </PageSectionLight>
+                            <PageSectionLight>
                                 <ImageUploader
                                     imageUrl={imageUrl}
                                     setImageUrl={setImageUrl}
@@ -117,7 +117,7 @@ const Profile = () => {
                                     id={profile.id}
                                     update={() => fetchProfileData(profile.id)}
                                 />
-                            </DashboardSectionLight>
+                            </PageSectionLight>
                         </div>
                     </>
             }

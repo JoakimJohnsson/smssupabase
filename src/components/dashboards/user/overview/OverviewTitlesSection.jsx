@@ -7,7 +7,7 @@ import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {titlesIconDuoTone} from "../../../icons/Icons.jsx";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const OverviewTitlesSection = ({titlesData}) => {
@@ -19,7 +19,7 @@ export const OverviewTitlesSection = ({titlesData}) => {
     }, []);
 
     return titlesData ?
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.SECTIONS.TITLES.TITLES}</h2>
             <IconLinkCtaLg
                 variant={"primary"}
@@ -30,7 +30,7 @@ export const OverviewTitlesSection = ({titlesData}) => {
             <p className={"mb-3"}>
                 {PANES.OVERVIEW.COLLECTING_TITLES_1} {titlesData.length} {PANES.OVERVIEW.COLLECTING_TITLES_2} {totalTitles} {PANES.OVERVIEW.COLLECTING_TITLES_3}
             </p>
-        </DashboardSectionLight>
+        </PageSectionLight>
         :
         <CustomSpinner className={"mb-3 d-block"}/>
 }

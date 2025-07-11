@@ -7,7 +7,7 @@ import {useAppContext} from "../../../../context/AppContext";
 import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/Icons.jsx";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const OverviewWantedIssuesSection = ({data}) => {
@@ -15,7 +15,7 @@ export const OverviewWantedIssuesSection = ({data}) => {
     const {user} = useAppContext();
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.COMMON.WANTED_ISSUES}</h2>
             {
                 <SmsListWithCards>
@@ -48,6 +48,6 @@ export const OverviewWantedIssuesSection = ({data}) => {
                     {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_WANTED}
                 </Link>
             }
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }

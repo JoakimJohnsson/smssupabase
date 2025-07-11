@@ -11,13 +11,13 @@ import {
     titlesIconDuoTone, usersIconDuoTone,
     valueIconDuoTone
 } from "../../../icons/Icons.jsx";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const OverviewLinksSection = () => {
 
     return linksData ?
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.SECTIONS.DASHBOARD.OVERVIEW.SHORTCUTS}</h2>
 
             <h3>{LABELS.COMMON.MORE_CONTENT}</h3>
@@ -72,7 +72,7 @@ export const OverviewLinksSection = () => {
                     })
                 }
             </ul>
-        </DashboardSectionLight>
+        </PageSectionLight>
         :
         <CustomSpinner className={"mb-3 d-block"}/>
 }

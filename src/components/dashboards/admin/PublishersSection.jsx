@@ -9,7 +9,7 @@ import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {PublishersList} from "../../lists/publishers/PublishersList";
 import {IconButton} from "../../minis/IconButton";
 import {faPlus} from "@fortawesome/pro-regular-svg-icons";
-import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const PublishersSection = () => {
@@ -22,7 +22,7 @@ export const PublishersSection = () => {
     }, [])
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.SECTIONS.PUBLISHERS.PUBLISHERS}</h2>
             {
                 limitedPublishersData ?
@@ -38,6 +38,6 @@ export const PublishersSection = () => {
                         label={LABELS.SECTIONS.PUBLISHERS.ADD_PUBLISHER}/>
             <Link className={"btn btn-outline-primary sms-btn"}
                   to={ROUTES.ADMIN.PUBLISHERS}>{LABELS.COMMON.SEE_ALL_PUBLISHERS}</Link>
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }

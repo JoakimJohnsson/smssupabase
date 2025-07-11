@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import {Icon, userIconDuoTone} from "../../../icons/Icons.jsx";
 import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const OverviewUpgradeIssuesSection = ({data}) => {
@@ -15,7 +15,7 @@ export const OverviewUpgradeIssuesSection = ({data}) => {
     const {user} = useAppContext();
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.SECTIONS.ISSUES.UPGRADE_ISSUES}</h2>
             {
                 <SmsListWithCards>
@@ -48,6 +48,6 @@ export const OverviewUpgradeIssuesSection = ({data}) => {
                     {PANES.OVERVIEW.SEE_PROFILE_FOR_MORE_NEEDS_GRADING}
                 </Link>
             }
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }

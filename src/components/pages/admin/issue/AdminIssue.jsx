@@ -4,7 +4,6 @@ import {FILETYPES} from "../../../../helpers/constants/configConstants";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName, objectDoesExist} from "../../../../helpers/functions";
@@ -15,6 +14,8 @@ import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
 import {getGradeValuesByIssueId} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
 import {NoMatch} from "../../../routes/NoMatch";
+import {PageSectionLight} from "../../pagecomponents/PageSectionLight.jsx";
+import {PageMainContent} from "../../pagecomponents/PageMainContent.jsx";
 
 
 export const AdminIssue = () => {
@@ -54,10 +55,8 @@ export const AdminIssue = () => {
                     <OverlaySpinner/>
                     :
                     <>
-
-                        <div className={"sms-page-col"}>
-                            <HeadingWithBreadcrumbs text={getIssueName(issue)} doIgnoreName={true}
-                                                    bcName={getIssueName(issue)}/>
+                        <PageMainContent heading={getIssueName(issue)} doIgnoreName={true}
+                                         bcName={getIssueName(issue)}>
                             <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                             <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
                             <IconLink
@@ -84,10 +83,9 @@ export const AdminIssue = () => {
                                 path={`/admin/publishers/${issue.publisher_id}`}
                                 label={LABELS.COMMON.EDIT + " " + issue.publishers.name}
                             />
-                        </div>
+                        </PageMainContent>
                         <div className={"row"}>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light"}>
+                            <PageSectionLight>
                                     <ImageUploader
                                         imageUrl={imageUrl}
                                         setImageUrl={setImageUrl}
@@ -101,8 +99,7 @@ export const AdminIssue = () => {
                                         id={issue.id}
                                         update={fetchData}
                                     />
-                                </div>
-                            </div>
+                            </PageSectionLight>
                             <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue}
                                                 setNewIssue={setNewIssue} title={issue.titles}/>
                             <AdminIssueGradeValueEdit issue={issue} title={issue.titles} gradeValues={gradeValues}

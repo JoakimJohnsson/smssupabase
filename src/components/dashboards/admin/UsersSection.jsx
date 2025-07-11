@@ -7,7 +7,7 @@ import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../..
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import {UsersList} from "../../lists/users/UsersList";
 import {Link} from "react-router-dom";
-import {DashboardSectionLight} from "../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const UsersSection = () => {
@@ -24,7 +24,7 @@ export const UsersSection = () => {
     }, []);
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.COMMON.USERS}</h2>
             {
                 limitedUsersData ?
@@ -38,6 +38,6 @@ export const UsersSection = () => {
             }
             <Link className={"btn btn-outline-primary sms-btn"}
                   to={ROUTES.ADMIN.USERS}>{LABELS.COMMON.SEE_ALL_USERS}</Link>
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }

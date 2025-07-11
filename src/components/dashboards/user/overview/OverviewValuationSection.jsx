@@ -8,7 +8,7 @@ import {OverviewIssuesValueComparison} from "./OverviewIssuesValueComparison";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
 import {valueIconDuoTone} from "../../../icons/Icons.jsx";
-import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
+import {PageSectionLight} from "../../../pages/pagecomponents/PageSectionLight.jsx";
 
 
 export const OverviewValuationSection = () => {
@@ -32,7 +32,7 @@ export const OverviewValuationSection = () => {
     }, [fetchTotalValuationValuesForUser]);
 
     return (
-        <DashboardSectionLight>
+        <PageSectionLight>
             <h2>{LABELS.COMMON.VALUATION}</h2>
             <IconLinkCtaLg
                 variant={"grade"}
@@ -67,6 +67,6 @@ export const OverviewValuationSection = () => {
                             </>
                 }
             </div>
-        </DashboardSectionLight>
+        </PageSectionLight>
     )
 }
