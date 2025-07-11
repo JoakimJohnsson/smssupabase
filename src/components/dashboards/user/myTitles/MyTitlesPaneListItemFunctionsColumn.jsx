@@ -7,7 +7,7 @@ import {
     infoIconDuoTone,
     statusIconFailDuoTone,
     statusIconSuccessDuoTone
-} from "../../../icons";
+} from "../../../icons/Icons.jsx";
 import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {getIssuesByTitleId} from "../../../../services/issueService";
 import {getTitleTotalValuesByUserAndTitle} from "../../../../helpers/databaseFunctions.js";

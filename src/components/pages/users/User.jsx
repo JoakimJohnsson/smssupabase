@@ -21,7 +21,7 @@ import {showFullInfo, updateProfileRole} from "../../../services/profileService.
 import {AddAdminButton} from "../../lists/users/AddAdminButton.jsx";
 import {RemoveAdminButton} from "../../lists/users/RemoveAdminButton.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {csvIconDuoTone, Icon, pdfIconDuoTone} from "../../icons/index.jsx";
+import {csvIconDuoTone, Icon, pdfIconDuoTone} from "../../icons/Icons.jsx";
 import {FunctionButton} from "../../minis/FunctionButton.jsx";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 import {NoMatch} from "../../routes/NoMatch.jsx";

@@ -8,7 +8,7 @@ import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.j
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName, objectDoesExist} from "../../../../helpers/functions";
-import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons";
+import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons/Icons.jsx";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";

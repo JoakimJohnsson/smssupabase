@@ -1,5 +1,5 @@
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings.js";
-import {Icon} from "../icons/index.jsx";
+import {Icon} from "../icons/Icons.jsx";
 import {faStar, faStarHalfStroke} from "@fortawesome/pro-solid-svg-icons";
 import {faStar as faStarRegular} from "@fortawesome/pro-regular-svg-icons";
 import React from "react";

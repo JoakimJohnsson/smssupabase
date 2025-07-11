@@ -11,7 +11,7 @@ import {Message} from "../../../message/Message";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
-import {globalIconDuoTone} from "../../../icons";
+import {globalIconDuoTone} from "../../../icons/Icons.jsx";
 import {supabase} from "../../../../supabase/supabaseClient";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";
 

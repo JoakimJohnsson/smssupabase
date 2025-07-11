@@ -6,7 +6,7 @@ import {MESSAGES} from "../../../helpers/constants/textConstants/messages";
 import {validateEmail, validatePassword} from "../../../helpers/validations";
 import SignupValidationMessage from "./SignupValidationMessage";
 import {doesEmailExist, handleEmailInput, handlePasswordInput} from "../../../helpers/functions";
-import {Icon, registerIcon, registerIconDuoTone} from "../../icons";
+import {Icon, registerIcon, registerIconDuoTone} from "../../icons/Icons.jsx";
 import {supabase} from "../../../supabase/supabaseClient.js";
 
 

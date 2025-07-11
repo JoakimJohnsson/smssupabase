@@ -1,6 +1,6 @@
 import React from "react";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
-import {Icon, valueIconDuoTone} from "../../../icons";
+import {Icon, valueIconDuoTone} from "../../../icons/Icons.jsx";
 
 
 export const OverviewIssuesValueComparison = ({oldValue, newValue, timeStamp}) => {

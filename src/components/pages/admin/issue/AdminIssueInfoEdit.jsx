@@ -8,7 +8,7 @@ import {updateIssueData} from "../../../../services/issueService";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
-import {editIcon, saveIcon} from "../../../icons";
+import {editIcon, saveIcon} from "../../../icons/Icons.jsx";
 
 
 export const AdminIssueInfoEdit = ({issue, setIssue, newIssue, setNewIssue, title}) => {

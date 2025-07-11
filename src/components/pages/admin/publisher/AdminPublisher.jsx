@@ -8,7 +8,7 @@ import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {publishersIconDuoTone} from "../../../icons";
+import {publishersIconDuoTone} from "../../../icons/Icons.jsx";
 import {IconButton} from "../../../minis/IconButton";
 import {objectDoesExist} from "../../../../helpers/functions";
 import {NoMatch} from "../../../routes/NoMatch";

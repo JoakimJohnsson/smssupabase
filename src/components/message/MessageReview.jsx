@@ -13,7 +13,7 @@ import {
 } from "../../helpers/functions";
 import {FunctionButton} from "../minis/FunctionButton.jsx";
 import {faMessages, faStar as faStarDuoTone, faTimes} from "@fortawesome/pro-duotone-svg-icons";
-import {getIconByName, Icon} from "../icons/index.jsx";
+import {getIconByName, Icon} from "../icons/Icons.jsx";
 import {handleInput} from "../../services/serviceFunctions.js";
 import {useAppContext} from "../../context/AppContext.jsx";
 import {EditStarReview} from "../star/EditStarReview.jsx";

@@ -9,7 +9,7 @@ import {getAverageGrade} from "../../../../helpers/functions";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {ROUTES, STATISTICS} from "../../../../helpers/constants/configConstants";
 import {getTotalIssuesCountForTitlesData} from "../../../../services/titleService";
-import {csvIconDuoTone, issueIconDuoTone, pdfIconDuoTone} from "../../../icons/index.jsx";
+import {csvIconDuoTone, issueIconDuoTone, pdfIconDuoTone} from "../../../icons/Icons.jsx";
 import {FunctionButton} from "../../../minis/FunctionButton.jsx";
 import {exportMissingIssuesForUser} from "../../../../helpers/exportUtil.js";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";

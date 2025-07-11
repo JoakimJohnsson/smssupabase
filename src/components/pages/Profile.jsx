@@ -6,7 +6,7 @@ import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../helpers/constants/serviceConstants";
 import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
-import {Icon, mailIcon} from "../icons";
+import {Icon, mailIcon} from "../icons/Icons.jsx";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";

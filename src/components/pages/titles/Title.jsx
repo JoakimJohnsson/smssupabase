@@ -37,7 +37,7 @@ import {
     deleteAllGradesByUserAndIssue,
     deleteIssueFromCollectionSimple
 } from "../../../services/collectingService.js";
-import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons/index.jsx";
+import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons/Icons.jsx";
 import {IconLink} from "../../minis/IconLink.jsx";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus.js";
 import {SeriekatalogenTitleLink} from "../../minis/SeriekatalogenTitleLink.jsx";

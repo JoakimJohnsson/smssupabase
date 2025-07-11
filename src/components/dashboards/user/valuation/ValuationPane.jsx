@@ -14,7 +14,7 @@ import {
 } from "../../../../helpers/functions";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {FunctionButton} from "../../../minis/FunctionButton";
-import {valueIconDuoTone} from "../../../icons";
+import {valueIconDuoTone} from "../../../icons/Icons.jsx";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
 
 

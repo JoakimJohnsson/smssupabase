@@ -5,7 +5,7 @@ import {TABLES} from "../../helpers/constants/serviceConstants";
 import {Link, useParams} from "react-router-dom";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import countryData from "../../helpers/valueLists/countries.json";
-import {editIcon, Icon} from "../icons";
+import {editIcon, Icon} from "../icons/Icons.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {CustomSpinner} from "../minis/CustomSpinner";

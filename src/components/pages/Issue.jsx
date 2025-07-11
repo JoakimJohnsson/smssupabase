@@ -46,7 +46,7 @@ import {
     publishersIconDuoTone,
     titleIconDuoTone,
     titlesIconDuoTone,
-} from "../icons";
+} from "../icons/Icons.jsx";
 import {IconLink} from "../minis/IconLink";
 import {useCollectingStatus} from "../../helpers/customHooks/useCollectingStatus";
 import {SeriekatalogenTitleLink} from "../minis/SeriekatalogenTitleLink";

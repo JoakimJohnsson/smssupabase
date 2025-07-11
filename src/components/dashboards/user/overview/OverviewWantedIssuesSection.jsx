@@ -5,7 +5,7 @@ import {sortByName} from "../../../../helpers/functions";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard";
 import {useAppContext} from "../../../../context/AppContext";
 import {Link} from "react-router-dom";
-import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
+import {Icon, userIconDuoTone} from "../../../icons/Icons.jsx";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 

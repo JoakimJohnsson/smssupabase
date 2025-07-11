@@ -3,7 +3,7 @@ import {sortByName} from "../../../../helpers/functions";
 import {useAppContext} from "../../../../context/AppContext";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {Link} from "react-router-dom";
-import {Icon, userIconDuoTone} from "../../../icons/index.jsx";
+import {Icon, userIconDuoTone} from "../../../icons/Icons.jsx";
 import {PANES} from "../../../../helpers/constants/textConstants/texts.js";
 import {TitlesListItem} from "../../../pages/titles/TitlesListItem.jsx";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";

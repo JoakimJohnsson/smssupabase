@@ -23,7 +23,7 @@ import {
     // mapsIconDuoTone,
     collectionsIconDuoTone,
     lessIconDuoTone,
-} from "../icons";
+} from "../icons/Icons.jsx";
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {NavDropdownTitle} from "../minis/NavDropdownTitle";
 import {BREADCRUMB_NAMES, LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";

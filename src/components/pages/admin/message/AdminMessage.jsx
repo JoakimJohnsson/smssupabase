@@ -16,7 +16,7 @@ import {MessageStatusChanger} from "../../../message/MessageStatusChanger";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {objectDoesExist} from "../../../../helpers/functions";
 import {NoMatch} from "../../../routes/NoMatch";
-import {githubMessageIcon, Icon} from "../../../icons/index.jsx";
+import {githubMessageIcon, Icon} from "../../../icons/Icons.jsx";
 import {Octokit} from "@octokit/core";
 import {useAppContext} from "../../../../context/AppContext.jsx";
 import {DraftRenderer} from "../../../draft/DraftRenderer.jsx";

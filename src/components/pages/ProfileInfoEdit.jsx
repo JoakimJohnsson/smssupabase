@@ -7,7 +7,7 @@ import {handleChange} from "../../services/serviceFunctions";
 import {useSearchParams} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 import {IconButton} from "../minis/IconButton";
-import {editIcon, saveIcon} from "../icons";
+import {editIcon, saveIcon} from "../icons/Icons.jsx";
 
 
 export const ProfileInfoEdit = ({profile, setProfile, newProfile, setNewProfile}) => {

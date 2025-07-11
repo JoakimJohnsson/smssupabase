@@ -10,7 +10,7 @@ import {
     marvelKlubbenIconDuoTone, publishersIconDuoTone,
     titlesIconDuoTone, usersIconDuoTone,
     valueIconDuoTone
-} from "../../../icons";
+} from "../../../icons/Icons.jsx";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 

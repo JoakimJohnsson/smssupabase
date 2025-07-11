@@ -1,5 +1,5 @@
 import React from "react";
-import {Icon} from "../icons";
+import {Icon} from "../icons/Icons.jsx";
 
 
 export const NavDropdownTitle = ({icon, label}) => {

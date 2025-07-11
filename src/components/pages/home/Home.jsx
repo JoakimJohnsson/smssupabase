@@ -15,7 +15,7 @@ import {MessageViewer} from "../../message/MessageViewer";
 import {LazyTextPlaceholder} from "../../minis/LazyTextPlaceholder";
 import {atLeastOneListDoesExist} from "../../../helpers/functions";
 import {IssueLinkCard} from "../../lists/issues/IssueLinkCard";
-import {Icon, mailIcon, settingsIconDuoTone, userIconDuoTone} from "../../icons";
+import {Icon, mailIcon, settingsIconDuoTone, userIconDuoTone} from "../../icons/Icons.jsx";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall";
 import CustomProgressBar from "../../CustomProgressBar";

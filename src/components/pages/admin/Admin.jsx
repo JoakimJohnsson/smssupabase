@@ -5,7 +5,7 @@ import {TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {TitlesSection} from "../../dashboards/admin/TitlesSection";
 import {PublishersSection} from "../../dashboards/admin/PublishersSection";
 import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
-import {Icon, mailIcon} from "../../icons";
+import {Icon, mailIcon} from "../../icons/Icons.jsx";
 import {UsersSection} from "../../dashboards/admin/UsersSection";
 import {useAppContext} from "../../../context/AppContext";
 import {UtilsSection} from "../../dashboards/admin/UtilsSection";

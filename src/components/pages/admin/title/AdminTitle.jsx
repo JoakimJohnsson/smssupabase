@@ -29,7 +29,7 @@ import {
 } from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
-import {Icon, issueIcon, valueIcon, titleIconDuoTone} from "../../../icons";
+import {Icon, issueIcon, valueIcon, titleIconDuoTone} from "../../../icons/Icons.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";

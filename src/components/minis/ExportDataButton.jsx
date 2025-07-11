@@ -1,5 +1,5 @@
 import React from "react";
-import {csvIconDuoTone, pdfIconDuoTone} from "../icons";
+import {csvIconDuoTone, pdfIconDuoTone} from "../icons/Icons.jsx";
 import {FunctionButton} from "./FunctionButton.jsx";
 import {exportToCSV, exportIssuesToPDF} from "../../helpers/exportUtil.js";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {Icon} from "../../../icons/index.jsx";
+import {Icon} from "../../../icons/Icons.jsx";
 import {faLocationXmark, faLocationSmile} from "@fortawesome/pro-solid-svg-icons";
 
 

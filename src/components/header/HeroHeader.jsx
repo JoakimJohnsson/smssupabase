@@ -10,7 +10,7 @@ import {
     infoIconDuoTone,
     loginIconDuoTone,
     registerIconDuoTone
-} from "../icons";
+} from "../icons/Icons.jsx";
 import {useLogoIcon} from "../../helpers/customHooks/useLogoIcon";
 import {IconLinkCtaLg} from "../minis/IconLinkCtaLg.jsx";
 

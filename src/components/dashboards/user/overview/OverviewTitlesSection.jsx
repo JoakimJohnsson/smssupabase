@@ -5,7 +5,7 @@ import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
-import {titlesIconDuoTone} from "../../../icons";
+import {titlesIconDuoTone} from "../../../icons/Icons.jsx";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 

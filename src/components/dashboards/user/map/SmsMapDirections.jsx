@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useMap} from "@vis.gl/react-google-maps";
 import {SmsMapMarker} from "./SmsMapMarker";
-import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons";
+import {carIconDuoTone, Icon, walkingIconDuoTone} from "../../../icons/Icons.jsx";
 import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {useDirectionsService} from "../../../../helpers/customHooks/useDirectionsService";
 import {useDirectionsRenderer} from "../../../../helpers/customHooks/useDirectionsRenderer";

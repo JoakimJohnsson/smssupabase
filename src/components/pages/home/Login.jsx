@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {simpleInputValidation} from "../../../helpers/validations";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
-import {Icon, loginIcon, loginIconDuoTone} from "../../icons";
+import {Icon, loginIcon, loginIconDuoTone} from "../../icons/Icons.jsx";
 import {updateProfileLastLogin} from "../../../services/profileService";
 import {supabase} from "../../../supabase/supabaseClient.js";
 

@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../context/AppContext";
-import {Icon} from "../icons";
+import {Icon} from "../icons/Icons.jsx";
 import {faBadgeCheck, faBadge} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {handleCollectingTitle} from "../../services/serviceFunctions";

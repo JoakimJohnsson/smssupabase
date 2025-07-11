@@ -8,7 +8,7 @@ import {faArrowLeft, faPlus, faTimes} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
 import {useAppContext} from "../../../../context/AppContext";
 import {updateGradeValuesValues} from "../../../../services/collectingService";
-import {editIcon, saveIcon} from "../../../icons";
+import {editIcon, saveIcon} from "../../../icons/Icons.jsx";
 import {deleteAllGradeValuesForIssue, insertAllGradeValuesForIssue} from "../../../../helpers/databaseFunctions";
 
 

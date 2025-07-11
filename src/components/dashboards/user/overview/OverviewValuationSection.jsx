@@ -7,7 +7,7 @@ import {useAppContext} from "../../../../context/AppContext";
 import {OverviewIssuesValueComparison} from "./OverviewIssuesValueComparison";
 import {CustomSpinner} from "../../../minis/CustomSpinner";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg";
-import {valueIconDuoTone} from "../../../icons";
+import {valueIconDuoTone} from "../../../icons/Icons.jsx";
 import {DashboardSectionLight} from "../../../pages/pagecomponents/DashboardSectionLight.jsx";
 
 

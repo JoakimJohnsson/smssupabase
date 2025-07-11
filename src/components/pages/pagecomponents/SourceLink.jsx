@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Icon} from "../../icons";
+import {Icon} from "../../icons/Icons.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 
 
