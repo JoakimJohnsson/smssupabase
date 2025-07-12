@@ -6,13 +6,11 @@ export const PageMainContent = ({heading = "", variant = "standard", doIgnoreNam
 
     let className = `sms-page-col`;
 
-    console.log("variant", variant);
-
     return (
-        <div className={className}>
+        <div className={className + " " + variant}>
             {
                 heading &&
-                <HeadingWithBreadcrumbs text={heading} doIgnoreName={doIgnoreName} bcName={bcName} />
+                <HeadingWithBreadcrumbs text={heading} doIgnoreName={doIgnoreName} bcName={bcName}/>
             }
             {children}
         </div>

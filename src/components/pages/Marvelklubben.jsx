@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {CONFIG} from "../../helpers/constants/configConstants";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
-import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {getAllMarvelklubbenIssues} from "../../services/issueService";
 import {IssueCard} from "../lists/issues/IssueCard";
@@ -11,6 +10,7 @@ import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilt
 import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
 import {ShowMoreButtons} from "../minis/ShowMoreButtons";
 import {SmsListWithCards} from "./pagecomponents/SmsListWithCards.jsx";
+import {PageMainContent} from "./pagecomponents/PageMainContent.jsx";
 
 
 export const Marvelklubben = () => {
@@ -32,8 +32,7 @@ export const Marvelklubben = () => {
     );
 
     return (
-        <div className="sms-page-col">
-            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}/>
+        <PageMainContent heading={LABELS.SECTIONS.MARVELKLUBBEN.MARVELKLUBBEN}>
             <p className="lead">{TEXTS.MARVELKLUBBEN_LEAD}</p>
             <p>{TEXTS.MARVELKLUBBEN_TEXT_1}</p>
             <p>{TEXTS.MARVELKLUBBEN_TEXT_2} <a href="https://sv.wikipedia.org/wiki/Marvelklubben" rel="noreferrer"
@@ -83,6 +82,6 @@ export const Marvelklubben = () => {
                 </p>
             }
             <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
-        </div>
+        </PageMainContent>
     );
 };
