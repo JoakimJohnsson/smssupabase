@@ -6,8 +6,9 @@ import {getTitlesForUser} from "../../../../services/titleService";
 import FilterFormFormat from "../../../searchFilter/FilterFormFormat";
 import {useFormatQueryFilter} from "../../../../helpers/customHooks/useFormatQueryFilter";
 import {MyTitlesPaneList} from "./MyTitlesPaneList";
-import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
+import {PageMainContent} from "../../../pages/pagecomponents/PageMainContent.jsx";
+
 
 export const MyTitlesPane = () => {
     const [loading, setLoading] = useState(true);
@@ -50,8 +51,7 @@ export const MyTitlesPane = () => {
     }, [query]);
 
     return (
-        <>
-            <HeadingWithBreadcrumbs text={PANES.TITLES.NAME}/>
+        <PageMainContent heading={PANES.TITLES.NAME}>
             {
                 loading ?
                     <OverlaySpinner/>
@@ -81,6 +81,6 @@ export const MyTitlesPane = () => {
                         />
                     </>
             }
-        </>
+        </PageMainContent>
     );
 };

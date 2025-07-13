@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts.js";
 import {useAppContext} from "../../../../context/AppContext.jsx";
-import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner.jsx";
 import {getUserIssues} from "../../../../helpers/databaseFunctions.js";
 import {filterQueryIssueByTitleNamePublisherNameYearAndSource, sortByName} from "../../../../helpers/functions.jsx";
@@ -13,6 +12,7 @@ import {ShowMoreButtons} from "../../../minis/ShowMoreButtons.jsx";
 import {IssueLinkCard} from "../../../lists/issues/IssueLinkCard.jsx";
 import FilterFormMyIssues from "../../../searchFilter/FilterFormMyIssues.jsx";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
+import {PageMainContent} from "../../../pages/pagecomponents/PageMainContent.jsx";
 
 
 export const MyIssuesPane = () => {
@@ -39,8 +39,7 @@ export const MyIssuesPane = () => {
         .filter(issue => filterQueryIssueByTitleNamePublisherNameYearAndSource(issue, query, selectedGrades));
 
     return (
-        <>
-            <HeadingWithBreadcrumbs text={PANES.ISSUES.NAME}/>
+        <PageMainContent heading={PANES.ISSUES.NAME}>
             <div>
                 <FilterFormMyIssues query={query} setSearchParams={setSearchParams}
                                     placeholder={TEXTS.FILTER_TITLE_PUBLISHER_YEAR_OR_SOURCE}
@@ -91,6 +90,6 @@ export const MyIssuesPane = () => {
                 </p>
             }
             <ShowMoreButtons data={filteredData} setItemsToShow={setItemsToShow} itemsToShow={itemsToShow}/>
-        </>
+        </PageMainContent>
     )
 }

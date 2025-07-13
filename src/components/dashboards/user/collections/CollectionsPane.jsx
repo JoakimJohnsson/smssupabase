@@ -4,9 +4,9 @@ import {PANES} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../../../services/serviceFunctions";
 import {useAppContext} from "../../../../context/AppContext";
-import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {SmsListWithCards} from "../../../pages/pagecomponents/SmsListWithCards.jsx";
+import {PageMainContent} from "../../../pages/pagecomponents/PageMainContent.jsx";
 
 
 export const CollectionsPane = () => {
@@ -20,8 +20,7 @@ export const CollectionsPane = () => {
     }, [])
 
     return (
-        <>
-            <HeadingWithBreadcrumbs text={PANES.COLLECTIONS.NAME}/>
+        <PageMainContent heading={PANES.COLLECTIONS.NAME}>
             {
                 loading ?
                     <OverlaySpinner/>
@@ -36,6 +35,6 @@ export const CollectionsPane = () => {
                         }
                     </SmsListWithCards>
             }
-        </>
+        </PageMainContent>
     )
 }

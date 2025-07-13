@@ -6,7 +6,6 @@ import {OverviewTitlesSection} from "./OverviewTitlesSection.jsx";
 import {OverviewIssuesSection} from "./OverviewIssuesSection.jsx";
 import {OverviewUpgradeIssuesSection} from "./OverviewUpgradeIssuesSection.jsx";
 import {OverviewWantedIssuesSection} from "./OverviewWantedIssuesSection.jsx";
-import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {OverviewValuationSection} from "./OverviewValuationSection.jsx";
 import {getCollectedIssuesWithTitlesForUser} from "../../../../services/collectingService";
 import {OverviewLinksSection} from "./OverviewLinksSection.jsx";
@@ -15,6 +14,7 @@ import {getUserSelectedIssuesAndTitlesData} from "../../../../helpers/databaseFu
 import {OverviewFavoriteIssuesSection} from "./OverviewFavoriteIssuesSection.jsx";
 import {OverviewFavoriteTitlesSection} from "./OverviewFavoriteTitlesSection.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner.jsx";
+import {PageMainContent} from "../../../pages/pagecomponents/PageMainContent.jsx";
 
 
 export const OverviewPane = () => {
@@ -50,13 +50,12 @@ export const OverviewPane = () => {
     }, [user.id]);
 
     return (
-        <>
-            <HeadingWithBreadcrumbs text={PANES.OVERVIEW.NAME}/>
+        <PageMainContent heading={PANES.OVERVIEW.NAME}>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
+                    <div className="row">
                         <OverviewLinksSection/>
                         <OverviewMessagesSection/>
                         <OverviewTitlesSection titlesData={userTitlesData}/>
@@ -66,8 +65,8 @@ export const OverviewPane = () => {
                         <OverviewUpgradeIssuesSection data={userSelectedIssuesTitlesData?.upgraded}/>
                         <OverviewFavoriteIssuesSection data={userSelectedIssuesTitlesData?.favorite_issues}/>
                         <OverviewFavoriteTitlesSection data={userSelectedIssuesTitlesData?.favorite_titles}/>
-                    </>
+                    </div>
             }
-        </>
+        </PageMainContent>
     )
 }

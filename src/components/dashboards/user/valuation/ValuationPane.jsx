@@ -3,7 +3,6 @@ import {CONFIG, LOADING_STATES} from "../../../../helpers/constants/configConsta
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {PANES, TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {useAppContext} from "../../../../context/AppContext";
-import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import * as ServiceFunctions from "../../../../services/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
@@ -16,6 +15,7 @@ import {NoDataAvailable} from "../../../minis/NoDataAvailable";
 import {FunctionButton} from "../../../minis/FunctionButton";
 import {valueIconDuoTone} from "../../../icons/Icons.jsx";
 import {getAllGradesByUserId} from "../../../../services/collectingService";
+import {PageMainContent} from "../../../pages/pagecomponents/PageMainContent.jsx";
 
 
 export const ValuationPane = () => {
@@ -99,8 +99,7 @@ export const ValuationPane = () => {
     };
 
     return (
-        <>
-            <HeadingWithBreadcrumbs text={PANES.VALUATION.NAME}/>
+        <PageMainContent heading={PANES.VALUATION.NAME}>
             <div className={"lead-wrapper"}>
                 <p className={"lead"}>{PANES.VALUATION.LEAD}</p>
             </div>
@@ -159,6 +158,6 @@ export const ValuationPane = () => {
                         </div>
                     </div>
             }
-        </>
+        </PageMainContent>
     )
 }
