@@ -101,7 +101,7 @@ export const ValuationPane = () => {
     return (
         <>
             <HeadingWithBreadcrumbs text={PANES.VALUATION.NAME}/>
-            <div className={"col-12 col-md-8 col-xxl-6"}>
+            <div className={"lead-wrapper"}>
                 <p className={"lead"}>{PANES.VALUATION.LEAD}</p>
             </div>
             {

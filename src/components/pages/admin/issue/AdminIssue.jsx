@@ -54,11 +54,13 @@ export const AdminIssue = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <PageMainContent heading={getIssueName(issue)} doIgnoreName={true}
-                                         bcName={getIssueName(issue)}>
+                    <PageMainContent heading={getIssueName(issue)} doIgnoreName={true}
+                                     bcName={getIssueName(issue)}>
+                        <div className="lead-wrapper">
                             <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                             <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
+                        </div>
+                        <div className="mb-5">
                             <IconLink
                                 variant={"primary"}
                                 icon={issueIconDuoTone}
@@ -83,22 +85,22 @@ export const AdminIssue = () => {
                                 path={`/admin/publishers/${issue.publisher_id}`}
                                 label={LABELS.COMMON.EDIT + " " + issue.publishers.name}
                             />
-                        </PageMainContent>
+                        </div>
                         <div className={"row"}>
                             <PageSectionLight>
-                                    <ImageUploader
-                                        imageUrl={imageUrl}
-                                        setImageUrl={setImageUrl}
-                                        imageFilename={imageFilename}
-                                        setImageFilename={setImageFilename}
-                                        uploading={uploading}
-                                        setUploading={setUploading}
-                                        bucketName={BUCKETS.ISSUE_IMAGES}
-                                        tableName={TABLES.ISSUES}
-                                        fileType={FILETYPES.ISSUE_IMAGE}
-                                        id={issue.id}
-                                        update={fetchData}
-                                    />
+                                <ImageUploader
+                                    imageUrl={imageUrl}
+                                    setImageUrl={setImageUrl}
+                                    imageFilename={imageFilename}
+                                    setImageFilename={setImageFilename}
+                                    uploading={uploading}
+                                    setUploading={setUploading}
+                                    bucketName={BUCKETS.ISSUE_IMAGES}
+                                    tableName={TABLES.ISSUES}
+                                    fileType={FILETYPES.ISSUE_IMAGE}
+                                    id={issue.id}
+                                    update={fetchData}
+                                />
                             </PageSectionLight>
                             <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue}
                                                 setNewIssue={setNewIssue} title={issue.titles}/>
@@ -106,7 +108,7 @@ export const AdminIssue = () => {
                                                       setGradeValues={setGradeValues}
                                                       fetchGradeValues={fetchGradeValues}/>
                         </div>
-                    </>
+                    </PageMainContent>
             }
         </>
         :

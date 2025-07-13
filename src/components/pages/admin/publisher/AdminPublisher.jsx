@@ -3,7 +3,6 @@ import {useNavigate, useParams} from "react-router-dom";
 import {FILETYPES} from "../../../../helpers/constants/configConstants";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminPublisherInfoEdit} from "./AdminPublisherInfoEdit";
@@ -12,6 +11,8 @@ import {publishersIconDuoTone} from "../../../icons/Icons.jsx";
 import {IconButton} from "../../../minis/IconButton";
 import {objectDoesExist} from "../../../../helpers/functions";
 import {NoMatch} from "../../../routes/NoMatch";
+import {PageMainContent} from "../../pagecomponents/PageMainContent.jsx";
+import {PageSectionLight} from "../../pagecomponents/PageSectionLight.jsx";
 
 
 export const AdminPublisher = () => {
@@ -45,10 +46,11 @@ export const AdminPublisher = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <div className={"sms-page-col"}>
-                            <HeadingWithBreadcrumbs text={publisher.name}/>
+                    <PageMainContent heading={publisher.name}>
+                        <div className={"lead-wrapper"}>
                             <p className={"lead"}>{TEXTS.ADMIN_PUBLISHER_LEAD}</p>
+                        </div>
+                        <div className="mb-5">
                             <IconButton variant={"primary"} icon={publishersIconDuoTone}
                                         onClick={() => navigate(`/publishers/${publisher.id}`)}
                                         label={publisher.name}/>
@@ -57,25 +59,23 @@ export const AdminPublisher = () => {
                             <AdminPublisherInfoEdit publisher={publisher} setPublisher={setPublisher}
                                                     newPublisher={newPublisher}
                                                     setNewPublisher={setNewPublisher}/>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light"}>
-                                    <ImageUploader
-                                        imageUrl={imageUrl}
-                                        setImageUrl={setImageUrl}
-                                        imageFilename={imageFilename}
-                                        setImageFilename={setImageFilename}
-                                        uploading={uploading}
-                                        setUploading={setUploading}
-                                        bucketName={BUCKETS.PUBLISHER_IMAGES}
-                                        tableName={TABLES.PUBLISHERS}
-                                        fileType={FILETYPES.PUBLISHER_IMAGE}
-                                        id={publisher.id}
-                                        update={fetchPublisherAndTitlesData}
-                                    />
-                                </div>
-                            </div>
+                            <PageSectionLight>
+                                <ImageUploader
+                                    imageUrl={imageUrl}
+                                    setImageUrl={setImageUrl}
+                                    imageFilename={imageFilename}
+                                    setImageFilename={setImageFilename}
+                                    uploading={uploading}
+                                    setUploading={setUploading}
+                                    bucketName={BUCKETS.PUBLISHER_IMAGES}
+                                    tableName={TABLES.PUBLISHERS}
+                                    fileType={FILETYPES.PUBLISHER_IMAGE}
+                                    id={publisher.id}
+                                    update={fetchPublisherAndTitlesData}
+                                />
+                            </PageSectionLight>
                         </div>
-                    </>
+                    </PageMainContent>
             }
         </>
         :

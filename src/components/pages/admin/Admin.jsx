@@ -20,15 +20,17 @@ export const Admin = () => {
 
     return (
         <PageMainContent heading={BREADCRUMB_NAMES.ADMIN}>
-            <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
-            <p>{TEXTS.ADMIN_INFO}</p>
-            <p>
-                <a href={"mailto: admin@svenskamarvelsamlare.se"}>
-                    <Icon icon={mailIcon} className={"me-2"}/>
-                    admin@svenskamarvelsamlare.se
-                </a>
-            </p>
-            <div className={"mb-5"}>
+            <div className="lead-wrapper">
+                <p className={"lead"}>{TEXTS.ADMIN_LEAD}</p>
+                <p>{TEXTS.ADMIN_INFO}</p>
+                <p>
+                    <a href={"mailto: admin@svenskamarvelsamlare.se"}>
+                        <Icon icon={mailIcon} className={"me-2"}/>
+                        admin@svenskamarvelsamlare.se
+                    </a>
+                </p>
+            </div>
+            <div className="mb-5">
                 <Link className={"btn btn-primary sms-btn"}
                       to={ROUTES.ADMIN.TITLES}>{LABELS.SECTIONS.TITLES.ALL_TITLES}</Link>
                 <Link className={"btn btn-primary sms-btn"}
