@@ -11,8 +11,8 @@ import {faArrowLeft, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {useSimpleQueryFilter} from "../../../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../../../searchFilter/FilterFormSimple";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
-import {HeadingWithBreadcrumbs} from "../../../headings/HeadingWithBreadcrumbs.jsx";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
+import {PageMainContent} from "../../pagecomponents/PageMainContent.jsx";
 
 
 export const AdminPublishers = () => {
@@ -26,8 +26,7 @@ export const AdminPublishers = () => {
     }, [])
 
     return (
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
+        <PageMainContent heading={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}>
             <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NAME}/>
             <div className={"sms-section--light"}>
                 {
@@ -43,6 +42,6 @@ export const AdminPublishers = () => {
                 <IconButton variant={"outline-primary"} icon={faArrowLeft} onClick={() => handleBacking(navigate)}
                             label={LABELS.COMMON.BACK}/>
             </div>
-        </div>
+        </PageMainContent>
     )
 }

@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { debounce } from "lodash"; // Import lodash for debouncing
-import { LABELS } from "../../helpers/constants/textConstants/labelsAndHeadings";
-import { TEXTS } from "../../helpers/constants/textConstants/texts";
-import { TABLES } from "../../helpers/constants/serviceConstants";
-import { HeadingWithBreadcrumbs } from "../headings/HeadingWithBreadcrumbs.jsx";
-import { OverlaySpinner } from "../minis/OverlaySpinner";
+import React, {useEffect, useState} from "react";
+import {debounce} from "lodash"; // Import lodash for debouncing
+import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
+import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {TABLES} from "../../helpers/constants/serviceConstants";
+import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {
     filterByFormat,
     filterTitlesData,
     hasTrueValue,
     sortByNameAndStartYear
 } from "../../helpers/functions";
-import { useFormatQueryFilter } from "../../helpers/customHooks/useFormatQueryFilter";
-import { getRowsByTable } from "../../services/serviceFunctions";
+import {useFormatQueryFilter} from "../../helpers/customHooks/useFormatQueryFilter";
+import {getRowsByTable} from "../../services/serviceFunctions";
 import FilterFormFormat from "../searchFilter/FilterFormFormat";
-import { LazyTextPlaceholder } from "../minis/LazyTextPlaceholder";
-import { GradeValuesListItem } from "./GradeValuesListItem";
-import { Accordion } from "react-bootstrap";
+import {LazyTextPlaceholder} from "../minis/LazyTextPlaceholder";
+import {GradeValuesListItem} from "./GradeValuesListItem";
+import {Accordion} from "react-bootstrap";
 import AccordionHeader from "react-bootstrap/AccordionHeader";
 import AccordionBody from "react-bootstrap/AccordionBody";
 import AccordionItem from "react-bootstrap/AccordionItem";
-import { FormatBadge } from "../minis/FormatBadge";
+import {FormatBadge} from "../minis/FormatBadge";
+import {PageMainContent} from "./pagecomponents/PageMainContent.jsx";
 
 export const GradeValues = () => {
     const [loading, setLoading] = useState(true);
@@ -119,8 +119,7 @@ export const GradeValues = () => {
     };
 
     return (
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadcrumbs text={LABELS.SECTIONS.GRADES.GRADE_VALUES} />
+        <PageMainContent heading={LABELS.SECTIONS.GRADES.GRADE_VALUES}>
             <FilterFormFormat
                 setSearchParams={setSearchParams}
                 query={query}
@@ -139,19 +138,19 @@ export const GradeValues = () => {
                     {filteredTitlesData ? (
                         filteredTitlesData.length
                     ) : (
-                        <LazyTextPlaceholder charCount={2} />
+                        <LazyTextPlaceholder charCount={2}/>
                     )}
                 </span>{" "}
                 {TEXTS.SHOWING_OF}{" "}
                 {titlesData ? (
                     titlesData.length
                 ) : (
-                    <LazyTextPlaceholder charCount={3} />
+                    <LazyTextPlaceholder charCount={3}/>
                 )}{" "}
                 {LABELS.SECTIONS.TITLES.TITLES}
             </p>
             {loading ? (
-                <OverlaySpinner />
+                <OverlaySpinner/>
             ) : (
                 <Accordion
                     className={"sms-list--accordion mb-4"}
@@ -188,6 +187,6 @@ export const GradeValues = () => {
                         ))}
                 </Accordion>
             )}
-        </div>
+        </PageMainContent>
     );
 };
