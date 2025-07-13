@@ -14,16 +14,19 @@ import {FunctionButton} from "../../../minis/FunctionButton.jsx";
 import {exportMissingIssuesForUser} from "../../../../helpers/exportUtil.js";
 import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";
 import {PageSectionLight} from "../../../pages/pagecomponents/PageSectionLight.jsx";
+import {OverlaySpinner} from "../../../minis/OverlaySpinner.jsx";
 
 
 export const OverviewIssuesSection = ({titlesData, issuesData}) => {
 
     const [userIssuesCount, setUserIssuesCount] = useState(null);
+    const [loadingCsv, setLoadingCsv] = useState(false);
+    const [loadingPdf, setLoadingPdf] = useState(false);
     const [totalIssuesCountForCollection, setTotalIssuesCountForCollection] = useState(null);
     const [userMarvelklubbenIssuesCount, setUserMarvelklubbenIssuesCount] = useState(null);
     const [grades, setGrades] = useState(null);
     const [averageGrade, setAverageGrade] = useState(null);
-    const {user} = useAppContext();
+    const {user, setInformationMessage} = useAppContext();
 
     useEffect(() => {
         if (user) {
@@ -59,6 +62,21 @@ export const OverviewIssuesSection = ({titlesData, issuesData}) => {
         }
     }, [grades]);
 
+    const handleCsvExport = () => {
+        setLoadingCsv(true);
+        exportMissingIssuesForUser(false, user).then(() => {
+            setLoadingCsv(false);
+            setInformationMessage({show: true, status: 2, error: TEXTS.SAVED_DOCUMENT_MESSAGE});
+        });
+    }
+
+    const handlePdfExport = () => {
+        setLoadingPdf(true);
+        exportMissingIssuesForUser(true, user).then(() => {
+            setLoadingPdf(false);
+            setInformationMessage({show: true, status: 2, error: TEXTS.SAVED_DOCUMENT_MESSAGE});
+        });
+    }
 
     return (
         <PageSectionLight>
@@ -96,17 +114,21 @@ export const OverviewIssuesSection = ({titlesData, issuesData}) => {
             <FunctionButton
                 variant={"btn-primary"}
                 icon={csvIconDuoTone}
-                onClick={() => exportMissingIssuesForUser(false, user)}
+                onClick={handleCsvExport}
                 label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
                 showLabel={true}
             />
             <FunctionButton
                 variant={"btn-primary"}
                 icon={pdfIconDuoTone}
-                onClick={() => exportMissingIssuesForUser(true, user)}
+                onClick={handlePdfExport}
                 label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
                 showLabel={true}
             />
+            {
+                (loadingCsv || loadingPdf) &&
+                <OverlaySpinner/>
+            }
         </PageSectionLight>
     )
 }
