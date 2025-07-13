@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {CONFIG} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {NoRouteAvailable} from "../minis/NoRouteAvailable";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
+import {PageMainContent} from "../pages/pagecomponents/PageMainContent.jsx";
 
 
 export const NoMatch = () => {
@@ -20,8 +20,7 @@ export const NoMatch = () => {
     return loading ?
         <OverlaySpinner/>
         :
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadcrumbs text={LABELS.COMMON.STATUS_404}/>
+        <PageMainContent heading={LABELS.COMMON.STATUS_404}>
             <NoRouteAvailable/>
-        </div>
+        </PageMainContent>
 }
