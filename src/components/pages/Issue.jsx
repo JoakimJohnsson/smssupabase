@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {useNavigate, useParams} from "react-router-dom";
 import {ROUTES} from "../../helpers/constants/configConstants";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
@@ -59,6 +58,7 @@ import {
 } from "../../services/reviewservice.js";
 import {StarReviewBadge} from "../star/StarReviewBadge.jsx";
 import {MessageReview} from "../message/MessageReview.jsx";
+import {PageMainContent} from "./pagecomponents/PageMainContent.jsx";
 
 
 export const Issue = () => {
@@ -211,9 +211,11 @@ export const Issue = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <HeadingWithBreadcrumbs text={getIssueName(issue)} doIgnoreName={true}
-                                                bcName={getIssueName(issue)}/>
+                    <PageMainContent heading={getIssueName(issue)}
+                                     variant={"row"}
+                                     doIgnoreName={true}
+                                     bcName={getIssueName(issue)}
+                    >
                         <div className={"col-12 col-md-4 col-xl-3 mb-4"}>
                             <ImageViewerCover url={issue.image_url} displayName={displayName}
                                               isCollectingIssue={isCollectingIssue}/>
@@ -446,7 +448,7 @@ export const Issue = () => {
                                 </div>
                             }
                         </div>
-                    </>
+                    </PageMainContent>
             }
         </>
         :

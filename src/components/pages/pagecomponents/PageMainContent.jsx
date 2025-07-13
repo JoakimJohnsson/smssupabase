@@ -4,10 +4,19 @@ import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx"
 
 export const PageMainContent = ({heading = "", variant = "standard", doIgnoreName = false, bcName = "", children}) => {
 
-    let className = `sms-page-col`;
+    let className;
+    switch (variant) {
+        case "row":
+            className = "row";
+            break;
+        case "standard":
+        default:
+            className = "sms-page-col";
+            break;
+    }
 
     return (
-        <div className={className + " " + variant}>
+        <div className={className}>
             {
                 heading &&
                 <HeadingWithBreadcrumbs text={heading} doIgnoreName={doIgnoreName} bcName={bcName}/>

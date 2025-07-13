@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadcrumbs} from "../headings/HeadingWithBreadcrumbs.jsx";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {Link, useParams} from "react-router-dom";
@@ -16,6 +15,7 @@ import {getIssuesWithTitleAndPublisherByPublisherId} from "../../services/issueS
 import {useAppContext} from "../../context/AppContext";
 import {objectDoesExist} from "../../helpers/functions";
 import {NoMatch} from "../routes/NoMatch";
+import {PageMainContent} from "./pagecomponents/PageMainContent.jsx";
 
 
 export const Publisher = () => {
@@ -43,8 +43,7 @@ export const Publisher = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <HeadingWithBreadcrumbs text={publisher.name}/>
+                    <PageMainContent heading={publisher.name} variant={"row"}>
                         <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
                             <ImageViewerSmall url={publisher.image_url} fileName={publisher.image_filename}/>
                             <div className={"mb-2"}>
@@ -80,7 +79,7 @@ export const Publisher = () => {
                                                       showCollectingButtons={false}/> :
                                 <CustomSpinner/>}
                         </div>
-                    </>
+                    </PageMainContent>
             }
         </>
         :

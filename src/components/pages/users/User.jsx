@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
 import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../../services/serviceFunctions.js";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
@@ -32,6 +31,7 @@ import {FavoriteIssues} from "./FavoriteIssues.jsx";
 import {WantedIssues} from "./WantedIssues.jsx";
 import {UpgradeIssues} from "./UpgradeIssues.jsx";
 import {exportMissingIssuesForUser} from "../../../helpers/exportUtil.js";
+import {PageMainContent} from "../pagecomponents/PageMainContent.jsx";
 
 
 export const User = () => {
@@ -87,20 +87,16 @@ export const User = () => {
         fetchIssuesData().then(() => setLoading(false));
     }, [user.id]);
 
+    const heading = showFullInfo(user, profile) ? userName : getAnonDisplayName(user);
+    const bcName = showFullInfo(user, profile) ? userName : getAnonDisplayName(user);
+
     return objectDoesExist(user) && userSelectedIssuesTitlesData ?
         <>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        {
-                            showFullInfo(user, profile) ?
-                                <HeadingWithBreadcrumbs text={userName} doIgnoreName={true} bcName={userName}/>
-                                :
-                                <HeadingWithBreadcrumbs text={getAnonDisplayName(user)} doIgnoreName={true}
-                                                        bcName={getAnonDisplayName(user)}/>
-                        }
+                    <PageMainContent heading={heading} variant={"row"} doIgnoreName={true} bcName={bcName}>
                         {
                             showFullInfo(user, profile) ?
                                 <div className={"col-12 col-md-5 col-xl-4 mb-5"}>
@@ -175,7 +171,7 @@ export const User = () => {
                                 <UpgradeIssues data={userSelectedIssuesTitlesData.upgraded}/>
                             </div>
                         }
-                    </>
+                    </PageMainContent>
             }
         </>
         :

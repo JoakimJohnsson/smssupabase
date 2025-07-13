@@ -4,7 +4,6 @@ import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings
 import {PANES, TEXTS} from "../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../helpers/constants/serviceConstants";
 import {useAppContext} from "../../../context/AppContext";
-import {HeadingWithBreadcrumbs} from "../../headings/HeadingWithBreadcrumbs.jsx";
 import {HomePublic} from "./HomePublic";
 import {InformationAlert} from "../../minis/InformationAlert";
 import {getCountByTable, getRowsByTableWithLimitAndOrderByColumn} from "../../../services/serviceFunctions";
@@ -25,6 +24,7 @@ import {getTop5Issues, getTop5Titles} from "../../../helpers/databaseFunctions.j
 import {TitlesListItem} from "../titles/TitlesListItem.jsx";
 import SearchBox from "../../SearchBox.jsx";
 import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
+import {PageMainContent} from "../pagecomponents/PageMainContent.jsx";
 
 
 export const Home = () => {
@@ -107,9 +107,7 @@ export const Home = () => {
     }, []);
 
     return profile && user && user.id ?
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadcrumbs
-                text={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}/>
+        <PageMainContent heading={TEXTS.WELCOME_TEXT_1 + " " + profile.firstname + ", " + TEXTS.WELCOME_TEXT_2}>
             {
                 userMessages && !!userMessages.length &&
                 <InformationAlert variant={"success"}
@@ -257,7 +255,7 @@ export const Home = () => {
                         <NoDataAvailable/>
                 }
             </div>
-        </div>
+        </PageMainContent>
         :
         loadingUser ?
             <div className={"row row-padding-main"}>
