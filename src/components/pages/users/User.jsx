@@ -9,7 +9,6 @@ import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall.jsx";
 import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
 import {
     getAnonDisplayName,
-    getRandomProfileImage,
     getUserName,
     objectDoesExist,
     prepareUrl
@@ -39,6 +38,8 @@ export const User = () => {
     const [user, setUser] = useState({});
     const [userName, setUserName] = useState("");
     const [loading, setLoading] = useState(true);
+    const [loadingCsv, setLoadingCsv] = useState(false);
+    const [loadingPdf, setLoadingPdf] = useState(false);
     const {id} = useParams();
     const {profile, setInformationMessage} = useAppContext();
     const [userSelectedIssuesTitlesData, setUserSelectedIssuesTitlesData] = useState(null);
@@ -90,6 +91,22 @@ export const User = () => {
     const heading = showFullInfo(user, profile) ? userName : getAnonDisplayName(user);
     const bcName = showFullInfo(user, profile) ? userName : getAnonDisplayName(user);
 
+    const handleCsvExport = () => {
+        setLoadingCsv(true);
+        exportMissingIssuesForUser(false, user).then(() => {
+            setLoadingCsv(false);
+            setInformationMessage({show: true, status: 2, error: TEXTS.SAVED_DOCUMENT_MESSAGE});
+        });
+    }
+
+    const handlePdfExport = () => {
+        setLoadingPdf(true);
+        exportMissingIssuesForUser(true, user).then(() => {
+            setLoadingPdf(false);
+            setInformationMessage({show: true, status: 2, error: TEXTS.SAVED_DOCUMENT_MESSAGE});
+        });
+    }
+
     return objectDoesExist(user) && userSelectedIssuesTitlesData ?
         <>
             {
@@ -101,7 +118,7 @@ export const User = () => {
                             showFullInfo(user, profile) ?
                                 <div className={"col-12 col-md-5 col-xl-4 mb-5"}>
                                     {
-                                        <ImageViewerSmall url={user.image_url || getRandomProfileImage()}
+                                        <ImageViewerSmall url={user.image_url}
                                                           fileName={userName}/>
                                     }
                                 </div>
@@ -153,17 +170,21 @@ export const User = () => {
                                     <FunctionButton
                                         variant={"btn-outline-primary"}
                                         icon={csvIconDuoTone}
-                                        onClick={() => exportMissingIssuesForUser(false, user)}
+                                        onClick={handleCsvExport}
                                         label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
                                         showLabel={true}
                                     />
                                     <FunctionButton
                                         variant={"btn-outline-primary"}
                                         icon={pdfIconDuoTone}
-                                        onClick={() => exportMissingIssuesForUser(true, user)}
+                                        onClick={handlePdfExport}
                                         label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
                                         showLabel={true}
                                     />
+                                    {
+                                        (loadingCsv || loadingPdf) &&
+                                        <OverlaySpinner/>
+                                    }
                                 </div>
                                 <FavoriteIssues data={userSelectedIssuesTitlesData.favorite_issues}/>
                                 <FavoriteTitles data={userSelectedIssuesTitlesData.favorite_titles}/>

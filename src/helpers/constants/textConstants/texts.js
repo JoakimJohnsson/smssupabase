@@ -120,6 +120,7 @@ export const TEXTS = {
     VALUATION_CALCULATE_MESSAGE_1: "Ingen värdeförändring - behöver inte spara ny värdering.",
     VALUATION_CALCULATE_MESSAGE_2: "Inga värderingar funna - sparar ny värdering.",
     VALUATION_CALCULATE_MESSAGE_3: "För att vi ska kunna beräkna en värdering måste du lägga in skickgraderingar på dina publikationer.",
+    SAVED_DOCUMENT_MESSAGE: "Dokumentet genererades och sparades.",
     WELCOME_TEXT_1: "Hej",
     WELCOME_TEXT_2: "och välkommen till Svenska Marvelsamlare!"
 }
