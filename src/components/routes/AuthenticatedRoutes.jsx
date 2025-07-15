@@ -6,9 +6,9 @@ import SignupSuccess from "../pages/SignUpSuccess";
 import ChangePassword from "../pages/ChangePassword";
 import {CatchAll} from "./CatchAll";
 import {Dashboard} from "../pages/Dashboard";
-import {OverviewPane} from "../dashboard/dashboardTabPanes/overview/OverviewPane";
-import {MyTitlesPane} from "../dashboard/dashboardTabPanes/myTitles/MyTitlesPane";
-import {CollectionsPane} from "../dashboard/dashboardTabPanes/collections/CollectionsPane";
+import {OverviewPane} from "../dashboards/user/overview/OverviewPane";
+import {MyTitlesPane} from "../dashboards/user/myTitles/MyTitlesPane";
+import {CollectionsPane} from "../dashboards/user/collections/CollectionsPane";
 import Profile from "../pages/Profile";
 import {Title} from "../pages/titles/Title.jsx";
 import {Titles} from "../pages/titles/Titles.jsx";
@@ -32,11 +32,11 @@ import {Users} from "../pages/users/Users.jsx";
 import {AdminMessages} from "../pages/admin/message/AdminMessages";
 import {AdminMessage} from "../pages/admin/message/AdminMessage";
 import {GradeValues} from "../pages/GradeValues";
-import {ValuationPane} from "../dashboard/dashboardTabPanes/valuation/ValuationPane";
+import {ValuationPane} from "../dashboards/user/valuation/ValuationPane";
 import {PrivateRoute} from "./PrivateRoute";
 import {AdminRoute} from "./AdminRoute";
-import {MapPane} from "../dashboard/dashboardTabPanes/map/MapPane";
-import {MyIssuesPane} from "../dashboard/dashboardTabPanes/myIssues/MyIssuesPane.jsx";
+import {MapPane} from "../dashboards/user/map/MapPane";
+import {MyIssuesPane} from "../dashboards/user/myIssues/MyIssuesPane.jsx";
 
 
 export const AuthenticatedRoutes = () => {

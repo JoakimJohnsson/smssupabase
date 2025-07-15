@@ -1,5 +1,5 @@
 import React from "react";
-import {Icon} from "../icons";
+import {Icon} from "../icons/Icons.jsx";
 import {CustomSpinner} from "./CustomSpinner";
 
 export const IconButton = ({customClass, variant, onClick, label, icon, disabled = false, loading = false}) => {

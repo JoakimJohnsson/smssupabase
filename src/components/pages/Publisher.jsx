@@ -1,11 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../headings";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {Link, useParams} from "react-router-dom";
 import {ImageViewerSmall} from "./pagecomponents/ImageViewerSmall";
 import countryData from "../../helpers/valueLists/countries.json";
-import {editIcon, Icon} from "../icons";
+import {editIcon, Icon} from "../icons/Icons.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {CustomSpinner} from "../minis/CustomSpinner";
@@ -16,6 +15,7 @@ import {getIssuesWithTitleAndPublisherByPublisherId} from "../../services/issueS
 import {useAppContext} from "../../context/AppContext";
 import {objectDoesExist} from "../../helpers/functions";
 import {NoMatch} from "../routes/NoMatch";
+import {PageMainContent} from "./pagecomponents/PageMainContent.jsx";
 
 
 export const Publisher = () => {
@@ -38,15 +38,12 @@ export const Publisher = () => {
 
 
     return objectDoesExist(publisher) ?
-        <div className={"row"}>
+        <>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <div className={"col-12"}>
-                            <HeadingWithBreadCrumbs text={publisher.name}/>
-                        </div>
+                    <PageMainContent heading={publisher.name} variant={"row"}>
                         <div className={"col-12 col-md-4 col-lg-5 col-xl-3 mb-5"}>
                             <ImageViewerSmall url={publisher.image_url} fileName={publisher.image_filename}/>
                             <div className={"mb-2"}>
@@ -82,9 +79,9 @@ export const Publisher = () => {
                                                       showCollectingButtons={false}/> :
                                 <CustomSpinner/>}
                         </div>
-                    </>
+                    </PageMainContent>
             }
-        </div>
+        </>
         :
         <NoMatch/>
 }

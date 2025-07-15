@@ -3,7 +3,7 @@ import {faArrowLeftLong} from "@fortawesome/pro-duotone-svg-icons";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {useNavigate} from "react-router-dom";
 import {handleBacking} from "../../helpers/functions.jsx";
-import {Icon} from "../icons/index.jsx";
+import {Icon} from "../icons/Icons.jsx";
 
 
 export const BackButton = () => {

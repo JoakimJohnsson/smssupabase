@@ -3,7 +3,7 @@ import React from "react";
 import {useAppContext} from "../../context/AppContext";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
-import {Icon, logoutIconDuoTone} from "../icons";
+import {Icon, logoutIconDuoTone} from "../icons/Icons.jsx";
 import {supabase} from "../../supabase/supabaseClient.js";
 
 

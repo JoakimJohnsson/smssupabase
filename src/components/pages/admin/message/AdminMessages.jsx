@@ -10,10 +10,9 @@ import {MessagesList} from "../../../message/MessagesList";
 import {Message} from "../../../message/Message";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {NoDataAvailable} from "../../../minis/NoDataAvailable";
-import {HeadingWithBreadCrumbs} from "../../../headings";
-import {globalIconDuoTone} from "../../../icons";
 import {supabase} from "../../../../supabase/supabaseClient";
-import {IconLinkCtaLg} from "../../../minis/IconLinkCtaLg.jsx";
+import {PageSectionLight} from "../../pagecomponents/PageSectionLight.jsx";
+import {PageMainContent} from "../../pagecomponents/PageMainContent.jsx";
 
 
 export const AdminMessages = () => {
@@ -75,63 +74,52 @@ export const AdminMessages = () => {
     }, [messagesData]);
 
     return (
-        <>
-            <div className={"sms-page-col"}>
-                <HeadingWithBreadCrumbs text={LABELS.SECTIONS.MESSAGES.MESSAGES}/>
+        <PageMainContent heading={LABELS.SECTIONS.MESSAGES.MESSAGES}>
+            <div className={"lead-wrapper"}>
                 <p className={"lead"}>{TEXTS.MESSAGES_ADMIN_TEXT_1}</p>
-                <p className={"mb-4"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
-                <IconLinkCtaLg
-                    variant={"primary"}
-                    icon={globalIconDuoTone}
-                    path={"#global-message-section"}
-                    label={LABELS.COMMON.MESSAGES_GLOBAL_SEND}
-                />
+                <p className={"mb-5"}>{TEXTS.MESSAGES_ADMIN_TEXT_2}</p>
             </div>
             <div className={"row"}>
-                <div className={"sms-page-col"}>
-                    <div className={"sms-section--light"}>
-                        {
-                            loading ?
-                                <OverlaySpinner/>
-                                :
-                                <>
-                                    <h2>{LABELS.COMMON.MESSAGES_RECEIVED}</h2>
-                                    {
-                                        messages ?
-                                            <MessagesList messagesData={messages} setMessagesData={setMessages}/>
-                                            :
-                                            <NoDataAvailable/>
-                                    }
-                                    <h2>{LABELS.COMMON.MESSAGES_SENT}</h2>
-                                    {
-                                        sentMessages ?
-                                            <MessagesList messagesData={sentMessages}
-                                                          setMessagesData={setSentMessages}/>
-                                            :
-                                            <NoDataAvailable/>
-                                    }
-                                    <h2>{LABELS.COMMON.MESSAGES_GLOBAL}</h2>
-                                    {
-                                        globalMessages ?
-                                            <MessagesList messagesData={globalMessages}
-                                                          setMessagesData={setGlobalMessages}/>
-                                            :
-                                            <NoDataAvailable/>
-                                    }
-                                    <IconButton variant={"outline-primary"} icon={faArrowLeft}
-                                                onClick={() => handleBacking(navigate)}
-                                                label={LABELS.COMMON.BACK}/>
-                                </>
-                        }
-                    </div>
-                </div>
-                <div className={"sms-dashboard-col mb-5"}>
-                    <div className={"sms-section--light"}>
-                        <h2 id={"global-message-section"}>{LABELS.COMMON.MESSAGES_GLOBAL_SEND}</h2>
-                        <Message isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>
-                    </div>
-                </div>
+                <PageSectionLight>
+                    {
+                        loading ?
+                            <OverlaySpinner/>
+                            :
+                            <>
+                                <h2>{LABELS.COMMON.MESSAGES_RECEIVED}</h2>
+                                {
+                                    messages ?
+                                        <MessagesList messagesData={messages} setMessagesData={setMessages}/>
+                                        :
+                                        <NoDataAvailable/>
+                                }
+                                <h2>{LABELS.COMMON.MESSAGES_SENT}</h2>
+                                {
+                                    sentMessages ?
+                                        <MessagesList messagesData={sentMessages}
+                                                      setMessagesData={setSentMessages}/>
+                                        :
+                                        <NoDataAvailable/>
+                                }
+                                <h2>{LABELS.COMMON.MESSAGES_GLOBAL}</h2>
+                                {
+                                    globalMessages ?
+                                        <MessagesList messagesData={globalMessages}
+                                                      setMessagesData={setGlobalMessages}/>
+                                        :
+                                        <NoDataAvailable/>
+                                }
+                                <IconButton variant={"outline-primary"} icon={faArrowLeft}
+                                            onClick={() => handleBacking(navigate)}
+                                            label={LABELS.COMMON.BACK}/>
+                            </>
+                    }
+                </PageSectionLight>
+                <PageSectionLight>
+                    <h2 id={"global-message-section"}>{LABELS.COMMON.MESSAGES_GLOBAL_SEND}</h2>
+                    <Message isGlobalMessage={true} fetchAdminMessages={fetchAdminMessages}/>
+                </PageSectionLight>
             </div>
-        </>
+        </PageMainContent>
     )
 }

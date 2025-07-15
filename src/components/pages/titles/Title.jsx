@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
 import {useParams} from "react-router-dom";
 import {
     addTitleToTable,
@@ -37,7 +36,7 @@ import {
     deleteAllGradesByUserAndIssue,
     deleteIssueFromCollectionSimple
 } from "../../../services/collectingService.js";
-import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons/index.jsx";
+import {Icon, editIconDuoTone, infoIconDuoTone, titlesIconDuoTone, valueIconDuoTone} from "../../icons/Icons.jsx";
 import {IconLink} from "../../minis/IconLink.jsx";
 import {useCollectingStatus} from "../../../helpers/customHooks/useCollectingStatus.js";
 import {SeriekatalogenTitleLink} from "../../minis/SeriekatalogenTitleLink.jsx";
@@ -50,6 +49,7 @@ import {
 } from "../../../services/reviewservice.js";
 import {StarReviewBadge} from "../../star/StarReviewBadge.jsx";
 import {MessageReview} from "../../message/MessageReview.jsx";
+import {PageMainContent} from "../pagecomponents/PageMainContent.jsx";
 
 
 export const Title = () => {
@@ -193,16 +193,13 @@ export const Title = () => {
     };
 
     return objectDoesExist(title) ?
-        <div className={"row"}>
+        <>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <div className={"col-12"}>
-                            <HeadingWithBreadCrumbs
-                                text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
-                        </div>
+                    <PageMainContent heading={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}
+                                     variant={"row"}>
                         <div className={"col-12 col-lg-5 col-xl-4 mb-5"}>
                             <ImageViewerSmall url={title.image_url} fileName={title.image_filename}/>
                             {
@@ -351,7 +348,8 @@ export const Title = () => {
                                     :
                                     false
                             }
-                            <MessageReview originObject={title} originTable={TABLES.TITLES} stars={stars} setStars={setStars} saveReview={saveReview}/>
+                            <MessageReview originObject={title} originTable={TABLES.TITLES} stars={stars}
+                                           setStars={setStars} saveReview={saveReview}/>
                             {
                                 isCollectingTitle && issueNeedsGrading &&
                                 <div className={"alert alert-info d-flex align-items-center mb-4"}>
@@ -367,9 +365,9 @@ export const Title = () => {
                                         fetchTitleProgress={fetchTitleProgress}
                                         doUpdate={doUpdate}/>
                         </div>
-                    </>
+                    </PageMainContent>
             }
-        </div>
+        </>
         :
         <NoMatch/>
 }

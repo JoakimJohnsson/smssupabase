@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {CustomSpinner} from "../../minis/CustomSpinner";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {getUserName} from "../../../helpers/functions";
-import {Icon, notAdminIconDuoTone} from "../../icons";
+import {Icon, notAdminIconDuoTone} from "../../icons/Icons.jsx";
 import {FunctionButton} from "../../minis/FunctionButton";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 

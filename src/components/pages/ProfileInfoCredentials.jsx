@@ -1,7 +1,7 @@
 import React from "react";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
-import {Icon, keyIcon, sendIcon} from "../icons";
+import {Icon, keyIcon, sendIcon} from "../icons/Icons.jsx";
 
 
 export const ProfileInfoCredentials = ({

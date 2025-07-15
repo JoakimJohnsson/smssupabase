@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts";
-import {Icon, sendIcon, questionIconDuoTone} from "../../icons";
+import {Icon, sendIcon, questionIconDuoTone} from "../../icons/Icons.jsx";
 import {requestPasswordResetForEmail} from "../../../services/serviceFunctions";
 
 

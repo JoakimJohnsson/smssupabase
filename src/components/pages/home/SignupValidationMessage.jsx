@@ -1,6 +1,6 @@
 import React from "react";
 import {faBadgeCheck, faOctagonExclamation} from "@fortawesome/pro-regular-svg-icons";
-import {Icon} from "../../icons";
+import {Icon} from "../../icons/Icons.jsx";
 
 const SignupValidationMessage = ({success, message}) => {
     return (

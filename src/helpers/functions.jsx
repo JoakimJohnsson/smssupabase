@@ -226,7 +226,7 @@ export const getUserName = (user) => {
 };
 
 export const getAnonDisplayName = (user) => {
-    return user.id.substring(0, 5) + " " + user.id.substring(user.id.length - 7, user.id.length);
+    return user.id?.substring(0, 5) + " " + user.id?.substring(user.id.length - 7, user.id.length);
 };
 
 export const hasImage = (item) => {

@@ -12,7 +12,7 @@ import {
     moreIconDuoTone,
     lessIconDuoTone,
     issueIconDuoTone
-} from "../icons";
+} from "../icons/Icons.jsx";
 import {Nav, NavDropdown} from "react-bootstrap";
 import {FooterDashboardNavLink} from "./FooterDashboardNavLink";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";

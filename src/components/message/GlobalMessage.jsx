@@ -4,7 +4,7 @@ import {useAppContext} from "../../context/AppContext";
 import {handleInput} from "../../services/serviceFunctions";
 import topicData from "../../helpers/valueLists/topics.json";
 import {getDataIcon, printOptions, trimInputString} from "../../helpers/functions";
-import {getIconByName, Icon} from "../icons";
+import {getIconByName, Icon} from "../icons/Icons.jsx";
 import {DraftEditor} from "../draft/DraftEditor.jsx";
 
 

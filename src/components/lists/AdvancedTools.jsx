@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {CONFIG} from "../../helpers/constants/configConstants";
 import {handleDelete} from "../../services/serviceFunctions";
 import {useAppContext} from "../../context/AppContext";
-import {Icon} from "../icons";
+import {Icon} from "../icons/Icons.jsx";
 import {faPenCircle, faCircleXmark} from "@fortawesome/pro-duotone-svg-icons";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";

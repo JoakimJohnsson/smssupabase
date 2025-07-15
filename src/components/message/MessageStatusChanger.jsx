@@ -8,7 +8,7 @@ import {
     statusIconRead,
     statusIconTodo,
     statusIconUnRead,
-} from "../icons";
+} from "../icons/Icons.jsx";
 import {useAppContext} from "../../context/AppContext";
 
 

@@ -2,6 +2,7 @@ import React from "react";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {sortByName} from "../../../helpers/functions.jsx";
 import {TitlesListItem} from "../titles/TitlesListItem.jsx";
+import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
 
 
 export const FavoriteTitles = ({data}) => {
@@ -10,7 +11,7 @@ export const FavoriteTitles = ({data}) => {
         <div className={"sms-section--light mb-5"}>
             <h2>{LABELS.SECTIONS.TITLES.FAVORITES}</h2>
             {
-                <ul className={"sms-list--with-cards"}>
+                <SmsListWithCards>
                     {
                         data ?
                             data
@@ -21,7 +22,7 @@ export const FavoriteTitles = ({data}) => {
                             :
                             <p>{LABELS.COMMON.NO_FAVORITE_ISSUES_USER}</p>
                     }
-                </ul>
+                </SmsListWithCards>
             }
         </div>
     )

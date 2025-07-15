@@ -14,7 +14,6 @@ import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {MESSAGES} from "../../../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminTitleInfoEdit} from "./AdminTitleInfoEdit";
 import {IssuesList} from "../../../lists/issues/IssuesList";
@@ -29,13 +28,14 @@ import {
 } from "../../../../helpers/functions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
-import {Icon, issueIcon, valueIcon, titleIconDuoTone} from "../../../icons";
+import {Icon, issueIcon, valueIcon, titleIconDuoTone} from "../../../icons/Icons.jsx";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {IconButton} from "../../../minis/IconButton";
 import {updateIsValued} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
 import {updateGradeValuesForTitles} from "../../../../helpers/databaseFunctions";
 import {NoMatch} from "../../../routes/NoMatch";
+import {PageMainContent} from "../../pagecomponents/PageMainContent.jsx";
 
 
 export const AdminTitle = () => {
@@ -202,11 +202,11 @@ export const AdminTitle = () => {
                 title && loadingState === LOADING_STATES.GENERAL ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs
-                                text={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}/>
+                    <PageMainContent heading={title.name + " " + getCalculatedYear(title.start_year, title.end_year)}>
+                        <div className={"lead-wrapper"}>
                             <p className={"lead"}>{TEXTS.ADMIN_TITLE_LEAD}</p>
+                        </div>
+                        <div className="mb-5">
                             <IconLink
                                 variant={"primary"}
                                 icon={titleIconDuoTone}
@@ -491,7 +491,7 @@ export const AdminTitle = () => {
                                 </div>
                             </div>
                         </div>
-                    </>
+                    </PageMainContent>
             }
         </>
         :

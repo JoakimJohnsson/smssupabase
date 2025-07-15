@@ -4,17 +4,18 @@ import {FILETYPES} from "../../../../helpers/constants/configConstants";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {BUCKETS, TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../../../headings";
 import {ImageUploader} from "../../../ImageUploader";
 import {AdminIssueInfoEdit} from "./AdminIssueInfoEdit";
 import {getIssueName, objectDoesExist} from "../../../../helpers/functions";
-import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons";
+import {issueIconDuoTone, publishersIconDuoTone, titleIconDuoTone} from "../../../icons/Icons.jsx";
 import {useIssueData} from "../../../../helpers/customHooks/useIssueData";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {AdminIssueGradeValueEdit} from "./AdminIssueGradeValueEdit";
 import {getGradeValuesByIssueId} from "../../../../services/collectingService";
 import {IconLink} from "../../../minis/IconLink";
 import {NoMatch} from "../../../routes/NoMatch";
+import {PageSectionLight} from "../../pagecomponents/PageSectionLight.jsx";
+import {PageMainContent} from "../../pagecomponents/PageMainContent.jsx";
 
 
 export const AdminIssue = () => {
@@ -53,13 +54,13 @@ export const AdminIssue = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-
-                        <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs text={getIssueName(issue)} doIgnoreName={true}
-                                                    bcName={getIssueName(issue)}/>
+                    <PageMainContent heading={getIssueName(issue)} doIgnoreName={true}
+                                     bcName={getIssueName(issue)}>
+                        <div className="lead-wrapper">
                             <p className={"lead"}>{TEXTS.ADMIN_ISSUE_LEAD}</p>
                             <p>{TEXTS.ADMIN_ISSUE_TEXT}</p>
+                        </div>
+                        <div className="mb-5">
                             <IconLink
                                 variant={"primary"}
                                 icon={issueIconDuoTone}
@@ -86,30 +87,28 @@ export const AdminIssue = () => {
                             />
                         </div>
                         <div className={"row"}>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light"}>
-                                    <ImageUploader
-                                        imageUrl={imageUrl}
-                                        setImageUrl={setImageUrl}
-                                        imageFilename={imageFilename}
-                                        setImageFilename={setImageFilename}
-                                        uploading={uploading}
-                                        setUploading={setUploading}
-                                        bucketName={BUCKETS.ISSUE_IMAGES}
-                                        tableName={TABLES.ISSUES}
-                                        fileType={FILETYPES.ISSUE_IMAGE}
-                                        id={issue.id}
-                                        update={fetchData}
-                                    />
-                                </div>
-                            </div>
+                            <PageSectionLight>
+                                <ImageUploader
+                                    imageUrl={imageUrl}
+                                    setImageUrl={setImageUrl}
+                                    imageFilename={imageFilename}
+                                    setImageFilename={setImageFilename}
+                                    uploading={uploading}
+                                    setUploading={setUploading}
+                                    bucketName={BUCKETS.ISSUE_IMAGES}
+                                    tableName={TABLES.ISSUES}
+                                    fileType={FILETYPES.ISSUE_IMAGE}
+                                    id={issue.id}
+                                    update={fetchData}
+                                />
+                            </PageSectionLight>
                             <AdminIssueInfoEdit issue={issue} setIssue={setIssue} newIssue={newIssue}
                                                 setNewIssue={setNewIssue} title={issue.titles}/>
                             <AdminIssueGradeValueEdit issue={issue} title={issue.titles} gradeValues={gradeValues}
                                                       setGradeValues={setGradeValues}
                                                       fetchGradeValues={fetchGradeValues}/>
                         </div>
-                    </>
+                    </PageMainContent>
             }
         </>
         :

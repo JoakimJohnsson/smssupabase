@@ -3,7 +3,7 @@ import {ALERT_VARIANTS} from "../../helpers/constants/configConstants";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {useAppContext} from "../../context/AppContext";
 import {faTimes, faPause} from "@fortawesome/pro-solid-svg-icons";
-import {Icon} from "../icons";
+import {Icon} from "../icons/Icons.jsx";
 import {ProgressBar} from "react-bootstrap";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 
