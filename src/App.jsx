@@ -16,8 +16,8 @@ export const App = () => {
                 <main id="main-content" className={"main-container"}>
                     <div className={"main-container__row"}>
                         <MyRoutes/>
-                        <ScrollToTopButton/>
                     </div>
+                    <ScrollToTopButton/>
                 </main>
                 <Footer/>
             </Router>

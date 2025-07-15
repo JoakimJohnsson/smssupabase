@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
-import { debounce } from "lodash";
+import {debounce} from "lodash";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
 import {TABLES} from "../../../helpers/constants/serviceConstants.js";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
-import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
 import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
 import {
     filterByFormat,
@@ -16,6 +15,8 @@ import {TitlesListItem} from "./TitlesListItem.jsx";
 import {useFormatQueryFilter} from "../../../helpers/customHooks/useFormatQueryFilter.js";
 import FilterFormFormat from "../../searchFilter/FilterFormFormat.jsx";
 import FilteredListInfo from "../../searchFilter/FilteredListInfo.jsx";
+import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
+import {PageMainContent} from "../pagecomponents/PageMainContent.jsx";
 
 
 export const Titles = () => {
@@ -71,8 +72,7 @@ export const Titles = () => {
     }, [debouncedQuery, titlesData, comic, comiclarge, album, pocket, hardcover, special, collectible]);
 
     return (
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.TITLES.ALL_TITLES}/>
+        <PageMainContent heading={LABELS.SECTIONS.TITLES.ALL_TITLES}>
             <FilterFormFormat
                 setSearchParams={setSearchParams}
                 query={query}
@@ -89,13 +89,13 @@ export const Titles = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             filteredTitlesData &&
                             filteredTitlesData.map((title) => <TitlesListItem key={title.id} title={title}/>)
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
-        </div>
+        </PageMainContent>
     )
 }

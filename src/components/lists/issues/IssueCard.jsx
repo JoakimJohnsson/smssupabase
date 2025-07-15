@@ -1,7 +1,7 @@
 import React from "react";
 import {useAppContext} from "../../../context/AppContext";
 import {handleCollectingIssue} from "../../../services/serviceFunctions";
-import {Icon} from "../../icons";
+import {Icon} from "../../icons/Icons.jsx";
 import {faMinus, faPlus} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts";

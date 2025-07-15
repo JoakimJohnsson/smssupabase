@@ -10,7 +10,7 @@ import {AddAdminButton} from "./AddAdminButton";
 import {getUserName, hasImage} from "../../../helpers/functions";
 import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
-import {Icon, adminIconDuoTone} from "../../icons";
+import {Icon, adminIconDuoTone} from "../../icons/Icons.jsx";
 import {FriendlyDate} from "../../minis/FriendlyDate";
 
 

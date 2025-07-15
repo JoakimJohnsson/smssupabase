@@ -6,7 +6,7 @@ import {deleteImageFromBucket, updateImageDataOnTable, uploadImage} from "../ser
 import {IconButton} from "./minis/IconButton";
 import {faTrashCan} from "@fortawesome/pro-regular-svg-icons";
 import {useAppContext} from "../context/AppContext";
-import {Icon, imageIcon} from "./icons";
+import {Icon, imageIcon} from "./icons/Icons.jsx";
 
 
 export const ImageUploader = ({

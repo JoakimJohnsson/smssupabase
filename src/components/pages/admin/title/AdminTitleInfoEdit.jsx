@@ -7,7 +7,7 @@ import {handleChange} from "../../../../services/serviceFunctions";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {faArrowLeft} from "@fortawesome/pro-regular-svg-icons";
 import {IconButton} from "../../../minis/IconButton";
-import {editIcon, saveIcon} from "../../../icons";
+import {editIcon, saveIcon} from "../../../icons/Icons.jsx";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 
 

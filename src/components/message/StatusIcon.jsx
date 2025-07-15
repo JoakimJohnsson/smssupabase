@@ -6,7 +6,7 @@ import {
     statusIconRead,
     statusIconTodo,
     statusIconUnRead
-} from "../icons";
+} from "../icons/Icons.jsx";
 
 
 export const StatusIcon = ({isGlobal, statusId, size}) => {

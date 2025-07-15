@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
-import {Icon} from "../icons";
+import {Icon} from "../icons/Icons.jsx";
 import {useAppContext} from "../../context/AppContext";
 import {faBellExclamation, faEyeSlash, faLightbulbOn} from "@fortawesome/pro-regular-svg-icons";
 

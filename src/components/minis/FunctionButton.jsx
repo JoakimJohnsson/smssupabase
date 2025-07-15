@@ -1,5 +1,5 @@
 import React from "react";
-import {Icon} from "../icons";
+import {Icon} from "../icons/Icons.jsx";
 
 
 export const FunctionButton = ({customClass, variant, onClick, label, icon, showLabel = true, disabled = false}) => {

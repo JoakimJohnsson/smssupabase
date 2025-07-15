@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
 import {deleteAllTotalValuationValueForUserByUserId, getRowByTableAndId} from "../../../services/serviceFunctions.js";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
@@ -10,7 +9,6 @@ import {ImageViewerSmall} from "../pagecomponents/ImageViewerSmall.jsx";
 import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
 import {
     getAnonDisplayName,
-    getRandomProfileImage,
     getUserName,
     objectDoesExist,
     prepareUrl
@@ -21,7 +19,7 @@ import {showFullInfo, updateProfileRole} from "../../../services/profileService.
 import {AddAdminButton} from "../../lists/users/AddAdminButton.jsx";
 import {RemoveAdminButton} from "../../lists/users/RemoveAdminButton.jsx";
 import {faArrowUpRightFromSquare} from "@fortawesome/pro-regular-svg-icons";
-import {csvIconDuoTone, Icon, pdfIconDuoTone} from "../../icons/index.jsx";
+import {csvIconDuoTone, Icon, pdfIconDuoTone} from "../../icons/Icons.jsx";
 import {FunctionButton} from "../../minis/FunctionButton.jsx";
 import {faFaceExplode} from "@fortawesome/pro-duotone-svg-icons";
 import {NoMatch} from "../../routes/NoMatch.jsx";
@@ -32,6 +30,7 @@ import {FavoriteIssues} from "./FavoriteIssues.jsx";
 import {WantedIssues} from "./WantedIssues.jsx";
 import {UpgradeIssues} from "./UpgradeIssues.jsx";
 import {exportMissingIssuesForUser} from "../../../helpers/exportUtil.js";
+import {PageMainContent} from "../pagecomponents/PageMainContent.jsx";
 
 
 export const User = () => {
@@ -39,6 +38,8 @@ export const User = () => {
     const [user, setUser] = useState({});
     const [userName, setUserName] = useState("");
     const [loading, setLoading] = useState(true);
+    const [loadingCsv, setLoadingCsv] = useState(false);
+    const [loadingPdf, setLoadingPdf] = useState(false);
     const {id} = useParams();
     const {profile, setInformationMessage} = useAppContext();
     const [userSelectedIssuesTitlesData, setUserSelectedIssuesTitlesData] = useState(null);
@@ -87,27 +88,37 @@ export const User = () => {
         fetchIssuesData().then(() => setLoading(false));
     }, [user.id]);
 
+    const heading = showFullInfo(user, profile) ? userName : getAnonDisplayName(user);
+    const bcName = showFullInfo(user, profile) ? userName : getAnonDisplayName(user);
+
+    const handleCsvExport = () => {
+        setLoadingCsv(true);
+        exportMissingIssuesForUser(false, user).then(() => {
+            setLoadingCsv(false);
+            setInformationMessage({show: true, status: 2, error: TEXTS.SAVED_DOCUMENT_MESSAGE});
+        });
+    }
+
+    const handlePdfExport = () => {
+        setLoadingPdf(true);
+        exportMissingIssuesForUser(true, user).then(() => {
+            setLoadingPdf(false);
+            setInformationMessage({show: true, status: 2, error: TEXTS.SAVED_DOCUMENT_MESSAGE});
+        });
+    }
+
     return objectDoesExist(user) && userSelectedIssuesTitlesData ?
-        <div className={"row"}>
+        <>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <div className={"col-12"}>
-                            {
-                                showFullInfo(user, profile) ?
-                                    <HeadingWithBreadCrumbs text={userName} doIgnoreName={true} bcName={userName}/>
-                                    :
-                                    <HeadingWithBreadCrumbs text={getAnonDisplayName(user)} doIgnoreName={true}
-                                                            bcName={getAnonDisplayName(user)}/>
-                            }
-                        </div>
+                    <PageMainContent heading={heading} variant={"row"} doIgnoreName={true} bcName={bcName}>
                         {
                             showFullInfo(user, profile) ?
                                 <div className={"col-12 col-md-5 col-xl-4 mb-5"}>
                                     {
-                                        <ImageViewerSmall url={user.image_url || getRandomProfileImage()}
+                                        <ImageViewerSmall url={user.image_url}
                                                           fileName={userName}/>
                                     }
                                 </div>
@@ -159,17 +170,21 @@ export const User = () => {
                                     <FunctionButton
                                         variant={"btn-outline-primary"}
                                         icon={csvIconDuoTone}
-                                        onClick={() => exportMissingIssuesForUser(false, user)}
+                                        onClick={handleCsvExport}
                                         label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_CSV}
                                         showLabel={true}
                                     />
                                     <FunctionButton
                                         variant={"btn-outline-primary"}
                                         icon={pdfIconDuoTone}
-                                        onClick={() => exportMissingIssuesForUser(true, user)}
+                                        onClick={handlePdfExport}
                                         label={LABELS.SECTIONS.ISSUES.EXPORT_MISSING_PDF}
                                         showLabel={true}
                                     />
+                                    {
+                                        (loadingCsv || loadingPdf) &&
+                                        <OverlaySpinner/>
+                                    }
                                 </div>
                                 <FavoriteIssues data={userSelectedIssuesTitlesData.favorite_issues}/>
                                 <FavoriteTitles data={userSelectedIssuesTitlesData.favorite_titles}/>
@@ -177,9 +192,9 @@ export const User = () => {
                                 <UpgradeIssues data={userSelectedIssuesTitlesData.upgraded}/>
                             </div>
                         }
-                    </>
+                    </PageMainContent>
             }
-        </div>
+        </>
         :
         <NoMatch/>
 }

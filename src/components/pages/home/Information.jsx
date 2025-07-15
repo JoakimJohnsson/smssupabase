@@ -1,6 +1,6 @@
 import React from "react";
 import {TEXTS} from "../../../helpers/constants/textConstants/texts";
-import {Icon, infoIconDuoTone, mailIcon, mailIconDuoTone} from "../../icons";
+import {Icon, infoIconDuoTone, mailIcon, mailIconDuoTone} from "../../icons/Icons.jsx";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 
 

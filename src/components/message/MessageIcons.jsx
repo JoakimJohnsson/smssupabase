@@ -1,5 +1,5 @@
 import React from "react";
-import {globalIcon, Icon} from "../icons";
+import {globalIcon, Icon} from "../icons/Icons.jsx";
 import {TopicIcon} from "./TopicIcon";
 import {StatusIcon} from "./StatusIcon";
 

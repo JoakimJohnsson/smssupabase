@@ -3,12 +3,13 @@ import {TEXTS} from "../../../helpers/constants/textConstants/texts.js";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings.js";
 import {TABLES} from "../../../helpers/constants/serviceConstants.js";
 import {getRowsByTable} from "../../../services/serviceFunctions.js";
-import {HeadingWithBreadCrumbs} from "../../headings/index.jsx";
 import {OverlaySpinner} from "../../minis/OverlaySpinner.jsx";
 import {useSimpleQueryFilter} from "../../../helpers/customHooks/useSimpleQueryFilter.js";
 import FilterFormSimple from "../../searchFilter/FilterFormSimple.jsx";
 import {UserCard} from "../../lists/users/UserCard.jsx";
 import {filterQueryByFirstNameAndLastName} from "../../../helpers/functions.jsx";
+import {SmsListWithCards} from "../pagecomponents/SmsListWithCards.jsx";
+import {PageMainContent} from "../pagecomponents/PageMainContent.jsx";
 
 
 export const Users = () => {
@@ -22,14 +23,13 @@ export const Users = () => {
     }, []);
 
     return (
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.USERS.ALL_USERS}/>
+        <PageMainContent heading={LABELS.SECTIONS.USERS.ALL_USERS}>
             <FilterFormSimple query={query} setSearchParams={setSearchParams} placeholder={TEXTS.FILTER_NAME}/>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             query ?
                                 usersData
@@ -51,8 +51,8 @@ export const Users = () => {
                                     <UserCard key={user.id} user={user}/>
                                 )
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
-        </div>
+        </PageMainContent>
     )
 }

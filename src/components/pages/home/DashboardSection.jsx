@@ -8,7 +8,7 @@ import {
     issueIconDuoTone,
     titlesIconDuoTone,
     valueIconDuoTone
-} from "../../icons";
+} from "../../icons/Icons.jsx";
 import {IconLinkCtaLg} from "../../minis/IconLinkCtaLg";
 import {PANES} from "../../../helpers/constants/textConstants/texts";
 

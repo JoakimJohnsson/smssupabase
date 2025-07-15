@@ -1,5 +1,5 @@
 import React from "react";
-import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons";
+import {dangerIconDuoTone, Icon, infoIconDuoTone, statusIconSuccessDuoTone, warningIconDuoTone} from "../../components/icons/Icons.jsx";
 import {
     faBat,
     faBird,

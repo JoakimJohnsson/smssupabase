@@ -7,7 +7,6 @@ import {
 } from "../../../../helpers/constants/textConstants/messages";
 import {TEXTS} from "../../../../helpers/constants/textConstants/texts";
 import {TABLES} from "../../../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../../../headings";
 import {getRowByTableAndId} from "../../../../services/serviceFunctions";
 import {OverlaySpinner} from "../../../minis/OverlaySpinner";
 import {MessageIcons} from "../../../message/MessageIcons";
@@ -16,12 +15,13 @@ import {MessageStatusChanger} from "../../../message/MessageStatusChanger";
 import {LABELS} from "../../../../helpers/constants/textConstants/labelsAndHeadings";
 import {objectDoesExist} from "../../../../helpers/functions";
 import {NoMatch} from "../../../routes/NoMatch";
-import {githubMessageIcon, Icon} from "../../../icons/index.jsx";
+import {githubMessageIcon, Icon} from "../../../icons/Icons.jsx";
 import {Octokit} from "@octokit/core";
 import {useAppContext} from "../../../../context/AppContext.jsx";
 import {DraftRenderer} from "../../../draft/DraftRenderer.jsx";
 import {convertFromRaw} from "draft-js";
 import {stateToHTML} from "draft-js-export-html";
+import {PageMainContent} from "../../pagecomponents/PageMainContent.jsx";
 
 
 export const AdminMessage = () => {
@@ -64,50 +64,42 @@ export const AdminMessage = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <div className={"sms-page-col"}>
-                            {/* Table MESSAGE does not have a name column - ignore name and use message title instead. */}
-                            <HeadingWithBreadCrumbs doIgnoreName={true} bcName={message.title}
-                                                    text={LABELS.SECTIONS.MESSAGES.MESSAGE}/>
-                        </div>
-                        <div className={"row"}>
-                            <div className={"col-12"}>
-                                <div className={"sms-section--light"}>
-                                    <h2>
-                                        <span>{message.title} - </span>
-                                        <span>{message.is_global ? MESSAGE_STATUS_TEXT_GLOBAL[message.status].name : MESSAGE_STATUS_TEXT[message.status].name} </span>
-                                        <span>{message.is_global === 1 && " - " + LABELS.COMMON.MESSAGE_GLOBAL}</span>
-                                    </h2>
-                                    <div className={"mb-4"}>
-                                        <MessageIcons message={message} size={"fa-3x"}/>
-                                    </div>
-                                    <p className={"mb-3 lead"}>{TEXTS.MESSAGE_WAS_SENT} <FriendlyDate
-                                        dateString={message.created_at}/>.</p>
-                                    <DraftRenderer text={message.text}/>
-                                    <MessageStatusChanger message={message} fetchMessageData={fetchMessageData}/>
-                                    {
-                                        message.origin_table && message.origin_id &&
-                                        <Link className={"btn btn-outline-primary sms-btn"}
-                                              to={`/${message.origin_table}/${message.origin_id}`}>{TEXTS.MESSAGE_LINK}</Link>
-                                    }
-                                    {
-                                        message.sender_id &&
-                                        <Link className={"btn btn-outline-primary sms-btn"}
-                                              to={`/users/${message.sender_id}`}>{TEXTS.MESSAGE_LINK_SENDER}</Link>
-                                    }
-                                    <Link className={"btn btn-outline-primary sms-btn"}
-                                          to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
-                                    <button
-                                        onClick={() => handleAddIssueToGithub()}
-                                        className={"btn btn-outline-title sms-btn"}
-                                    >
-                                        <Icon icon={githubMessageIcon} className={"me-2"}/>
-                                        {LABELS.COMMON.MESSAGES_ADD_ISSUE_ON_GITHUB}
-                                    </button>
-                                </div>
+                    <PageMainContent heading={LABELS.SECTIONS.MESSAGES.MESSAGE} doIgnoreName={true}
+                                     bcName={message.title}>
+                        <div className={"sms-section--light"}>
+                            <h2>
+                                <span>{message.title} - </span>
+                                <span>{message.is_global ? MESSAGE_STATUS_TEXT_GLOBAL[message.status].name : MESSAGE_STATUS_TEXT[message.status].name} </span>
+                                <span>{message.is_global === 1 && " - " + LABELS.COMMON.MESSAGE_GLOBAL}</span>
+                            </h2>
+                            <div className={"mb-4"}>
+                                <MessageIcons message={message} size={"fa-3x"}/>
                             </div>
+                            <p className={"mb-3 lead"}>{TEXTS.MESSAGE_WAS_SENT} <FriendlyDate
+                                dateString={message.created_at}/>.</p>
+                            <DraftRenderer text={message.text}/>
+                            <MessageStatusChanger message={message} fetchMessageData={fetchMessageData}/>
+                            {
+                                message.origin_table && message.origin_id &&
+                                <Link className={"btn btn-outline-primary sms-btn"}
+                                      to={`/${message.origin_table}/${message.origin_id}`}>{TEXTS.MESSAGE_LINK}</Link>
+                            }
+                            {
+                                message.sender_id &&
+                                <Link className={"btn btn-outline-primary sms-btn"}
+                                      to={`/users/${message.sender_id}`}>{TEXTS.MESSAGE_LINK_SENDER}</Link>
+                            }
+                            <Link className={"btn btn-outline-primary sms-btn"}
+                                  to={ROUTES.ADMIN.MESSAGES}>{LABELS.COMMON.SEE_ALL_MESSAGES}</Link>
+                            <button
+                                onClick={() => handleAddIssueToGithub()}
+                                className={"btn btn-outline-title sms-btn"}
+                            >
+                                <Icon icon={githubMessageIcon} className={"me-2"}/>
+                                {LABELS.COMMON.MESSAGES_ADD_ISSUE_ON_GITHUB}
+                            </button>
                         </div>
-                    </>
+                    </PageMainContent>
             }
         </>
         :

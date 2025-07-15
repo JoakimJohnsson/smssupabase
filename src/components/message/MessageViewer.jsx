@@ -9,7 +9,7 @@ import {
     statusIconActiveDuoTone,
     statusIconTodoDuoTone,
     statusIconUnreadDuoTone
-} from "../icons";
+} from "../icons/Icons.jsx";
 import {Link} from "react-router-dom";
 import {useAppContext} from "../../context/AppContext";
 import {DraftRenderer} from "../draft/DraftRenderer.jsx";

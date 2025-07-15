@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {NoDataAvailable} from "../../minis/NoDataAvailable";
 import CustomLightbox from "../../CustomLightbox";
-import {Icon} from "../../icons";
+import {Icon} from "../../icons/Icons.jsx";
 import {faSearch} from "@fortawesome/pro-regular-svg-icons";
 import {LABELS} from "../../../helpers/constants/textConstants/labelsAndHeadings";
 

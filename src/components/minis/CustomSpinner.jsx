@@ -1,6 +1,6 @@
 import React from "react";
 import {faSpinner} from "@fortawesome/pro-regular-svg-icons";
-import {Icon} from "../icons";
+import {Icon} from "../icons/Icons.jsx";
 
 export const CustomSpinner = ({size, color, className}) => {
     let spinnerClass = "";

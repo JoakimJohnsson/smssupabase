@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {TABLES} from "../../helpers/constants/serviceConstants";
 import {getRowsByTable} from "../../services/serviceFunctions";
-import {HeadingWithBreadCrumbs} from "../headings";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {useSimpleQueryFilter} from "../../helpers/customHooks/useSimpleQueryFilter";
 import FilterFormSimple from "../searchFilter/FilterFormSimple";
@@ -9,6 +8,8 @@ import {sortByName} from "../../helpers/functions";
 import {Link} from "react-router-dom";
 import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
+import {SmsListWithCards} from "./pagecomponents/SmsListWithCards.jsx";
+import {PageMainContent} from "./pagecomponents/PageMainContent.jsx";
 
 
 export const Publishers = () => {
@@ -22,15 +23,14 @@ export const Publishers = () => {
     }, [])
 
     return (
-        <div className={"sms-page-col"}>
-            <HeadingWithBreadCrumbs text={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}/>
+        <PageMainContent heading={LABELS.SECTIONS.PUBLISHERS.ALL_PUBLISHERS}>
             <FilterFormSimple query={query} setSearchParams={setSearchParams}
                               placeholder={TEXTS.FILTER_PUBLISHER_NAME}/>
             {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <ul className={"sms-list--with-cards"}>
+                    <SmsListWithCards>
                         {
                             query ?
                                 publishersData
@@ -73,8 +73,8 @@ export const Publishers = () => {
                                         </li>
                                     )
                         }
-                    </ul>
+                    </SmsListWithCards>
             }
-        </div>
+        </PageMainContent>
     )
 }

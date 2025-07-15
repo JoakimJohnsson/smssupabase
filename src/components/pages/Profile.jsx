@@ -5,13 +5,14 @@ import {LABELS} from "../../helpers/constants/textConstants/labelsAndHeadings";
 import {TEXTS} from "../../helpers/constants/textConstants/texts";
 import {MESSAGES} from "../../helpers/constants/textConstants/messages";
 import {BUCKETS, TABLES} from "../../helpers/constants/serviceConstants";
-import {HeadingWithBreadCrumbs} from "../headings";
-import {Icon, mailIcon} from "../icons";
+import {Icon, mailIcon} from "../icons/Icons.jsx";
 import {ImageUploader} from "../ImageUploader";
 import {ProfileInfoEdit} from "./ProfileInfoEdit";
 import {OverlaySpinner} from "../minis/OverlaySpinner";
 import {supabase} from "../../supabase/supabaseClient";
 import {ProfileInfoCredentials} from "./ProfileInfoCredentials";
+import {PageSectionLight} from "./pagecomponents/PageSectionLight.jsx";
+import {PageMainContent} from "./pagecomponents/PageMainContent.jsx";
 
 
 const Profile = () => {
@@ -69,9 +70,8 @@ const Profile = () => {
                 loading ?
                     <OverlaySpinner/>
                     :
-                    <>
-                        <div className={"sms-page-col"}>
-                            <HeadingWithBreadCrumbs text={LABELS.COMMON.SETTINGS}/>
+                    <PageMainContent heading={LABELS.COMMON.SETTINGS}>
+                        <div className={"lead-wrapper"}>
                             <p className={"lead"}>{TEXTS.SETTINGS_LEAD}</p>
                             <p>{TEXTS.SETTINGS_INFO}</p>
                             <p>
@@ -82,49 +82,43 @@ const Profile = () => {
                             </p>
                         </div>
                         <div className={"row"}>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light h-100"}>
-                                    <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile}
-                                                     setNewProfile={setNewProfile}/>
-                                </div>
-                            </div>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light h-100"}>
-                                    <ProfileInfoCredentials
-                                        newEmail={newEmail}
-                                        setNewEmail={setNewEmail}
-                                        confirmNewEmail={confirmNewEmail}
-                                        setConfirmNewEmail={setConfirmNewEmail}
-                                        handleChangeEmail={handleChangeEmail}
-                                        message={message}
-                                        pwMessage={pwMessage}
-                                        newPassword={newPassword}
-                                        setNewPassword={setNewPassword}
-                                        confirmNewPassword={confirmNewPassword}
-                                        setConfirmNewPassword={setConfirmNewPassword}
-                                        handleChangePassword={handleChangePassword}
-                                    />
-                                </div>
-                            </div>
-                            <div className={"sms-dashboard-col"}>
-                                <div className={"sms-section--light h-100"}>
-                                    <ImageUploader
-                                        imageUrl={imageUrl}
-                                        setImageUrl={setImageUrl}
-                                        imageFilename={imageFilename}
-                                        setImageFilename={setImageFilename}
-                                        uploading={uploading}
-                                        setUploading={setUploading}
-                                        bucketName={BUCKETS.AVATAR_IMAGES}
-                                        tableName={TABLES.PROFILES}
-                                        fileType={FILETYPES.AVATAR_IMAGE}
-                                        id={profile.id}
-                                        update={() => fetchProfileData(profile.id)}
-                                    />
-                                </div>
-                            </div>
+                            <PageSectionLight>
+                                <ProfileInfoEdit profile={profile} setProfile={setProfile} newProfile={newProfile}
+                                                 setNewProfile={setNewProfile}/>
+                            </PageSectionLight>
+                            <PageSectionLight>
+                                <ProfileInfoCredentials
+                                    newEmail={newEmail}
+                                    setNewEmail={setNewEmail}
+                                    confirmNewEmail={confirmNewEmail}
+                                    setConfirmNewEmail={setConfirmNewEmail}
+                                    handleChangeEmail={handleChangeEmail}
+                                    message={message}
+                                    pwMessage={pwMessage}
+                                    newPassword={newPassword}
+                                    setNewPassword={setNewPassword}
+                                    confirmNewPassword={confirmNewPassword}
+                                    setConfirmNewPassword={setConfirmNewPassword}
+                                    handleChangePassword={handleChangePassword}
+                                />
+                            </PageSectionLight>
+                            <PageSectionLight>
+                                <ImageUploader
+                                    imageUrl={imageUrl}
+                                    setImageUrl={setImageUrl}
+                                    imageFilename={imageFilename}
+                                    setImageFilename={setImageFilename}
+                                    uploading={uploading}
+                                    setUploading={setUploading}
+                                    bucketName={BUCKETS.AVATAR_IMAGES}
+                                    tableName={TABLES.PROFILES}
+                                    fileType={FILETYPES.AVATAR_IMAGE}
+                                    id={profile.id}
+                                    update={() => fetchProfileData(profile.id)}
+                                />
+                            </PageSectionLight>
                         </div>
-                    </>
+                    </PageMainContent>
             }
         </>
     )
