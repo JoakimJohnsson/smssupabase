@@ -19,7 +19,7 @@ const SearchBox = ({route, placeholder, label}) => {
 
     return (
         <form className={"form-group mb-3 sms-section--light variant variant--primary bg-light"} onSubmit={handleSearch}>
-            <label className={"form-label sr-only"} htmlFor={label}>{label}</label>
+            <label className={"form-label visually-hidden"} htmlFor={label}>{label}</label>
             <div className="input-group">
 
                 <input
